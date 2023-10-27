@@ -1,15 +1,10 @@
-import Login from '@/components/authComponent/Login'
-import Register from '@/components/authComponent/Register'
-import Signup from '@/components/authComponent/Signup'
-import { Box } from '@mui/material'
-import React from 'react'
+import Register from "@/components/authComponent/Register";
+import { Box } from "@mui/material";
 
-const Random = () => {
+export default function AuthPage() {
   return (
     <Box>
-      <Register/>
+      <Register />
     </Box>
-  )
+  );
 }
-
-export default Auth
