@@ -68,7 +68,7 @@ const Signup = () => {
       password: "",
     },
     onSubmit: async (data: SignupData) => {
-      console.log("data", data);
+      console.log("data2", data);
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required("Email is required"),
