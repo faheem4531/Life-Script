@@ -61,7 +61,7 @@ export default function Register() {
             md: "150px",
           },
           right: {
-            xs: "120px",
+            xs: "160px",
             md: "250px",
           },
 
@@ -75,7 +75,7 @@ export default function Register() {
               display: "none", // Hide the indicator line
             },
             "& .MuiTab-root": {
-              minWidth: "auto",
+              width: "100px",
               borderRadius: "20px", // Make the tabs circular
               backgroundColor: "transparent", // Clear the background color
               color: "#186F65",
