@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   Box,
   Checkbox,
+  Divider,
   FormControlLabel,
   Grid,
   TextField,
@@ -45,7 +46,7 @@ const Signup = () => {
           </Typography>
           <TextField
             variant="outlined"
-            label="Email"
+            placeholder="Email"
             sx={{
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
@@ -59,7 +60,7 @@ const Signup = () => {
           </Typography>
           <TextField
             variant="outlined"
-            label="UserName"
+            placeholder="UserName"
             sx={{
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
@@ -70,7 +71,7 @@ const Signup = () => {
           />
           <Box>
             <Typography sx={{ marginTop: "10px", marginRight: "300px" }}>
-              {" "}
+             
               Password
             </Typography>
             <TextField
@@ -81,7 +82,7 @@ const Signup = () => {
                 },
                 width: "400px",
               }}
-              label="Password"
+              placeholder="Password"
               type={showPassword ? "text" : "password"}
               variant="outlined"
               InputProps={{
@@ -102,8 +103,8 @@ const Signup = () => {
               sx={{
                 display: "flex",
                 gap: 15,
-                marginTop: "5px",
-                marginLeft: "120px",
+                marginTop: "15px",
+                marginLeft:{sm:'',md:'120px'}
               }}
             >
               <Box>
@@ -133,10 +134,40 @@ const Signup = () => {
               color: "white",
               width: "300px",
               marginTop: "10px",
+              "&:hover": {
+                backgroundColor: "#186F65", 
+              },
             }}
           >
             Sign Up
           </Button>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent:'center', marginTop:'10px'}}>
+          <Box>
+            <Divider
+              sx={{
+                marginTop: "10px",
+                
+                backgroundColor: "black",
+                width: "97px",
+              }}
+              orientation="horizontal"
+            />
+          </Box>
+          <Box>
+            <Typography sx={{ marginLeft: "10px" }}>Or Sign Up with</Typography>
+          </Box>
+          <Box>
+            <Divider
+              sx={{
+                marginTop: "10px",
+                marginLeft: "10px",
+                backgroundColor: "black",
+                width: "97px",
+              }}
+              orientation="horizontal"
+            />
+          </Box>
         </Box>
       </Grid>
     </Grid>

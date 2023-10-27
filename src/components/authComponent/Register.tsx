@@ -52,14 +52,26 @@ export default function Register() {
         sx={{
           borderBottom: 1,
           borderColor: "divider",
-          position: "absolute",
-          top: "150px",
-          right: "250px",
+          position: {
+            xs: "absolute",
+            md: "absolute",
+          },
+          top: {
+            xs: "760px",
+            md: "150px",
+          },
+          right: {
+            xs: "150px",
+            md: "250px",
+          },
+
           background: "wheat",
           borderRadius: "40px",
         }}
       >
-        <Tabs sx={{  "& .MuiTabs-indicator": {
+        <Tabs
+          sx={{
+            "& .MuiTabs-indicator": {
               display: "none", // Hide the indicator line
             },
             "& .MuiTab-root": {
@@ -69,7 +81,7 @@ export default function Register() {
               color: "#186F65",
               "&.Mui-selected": {
                 backgroundColor: "#186F65", // Set green background for the active tab
-                color:'white'
+                color: "white",
               },
             },
           }}
