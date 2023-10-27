@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Random from "./_auth/Auth";
 import { Box } from "@mui/material";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
