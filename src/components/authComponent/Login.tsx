@@ -5,6 +5,8 @@ import {
   Divider,
   FormControlLabel,
   Grid,
+  Icon,
+  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -16,8 +18,35 @@ import Image from "next/image";
 import LoginImage from "../../../public/Login.svg";
 import Logo from "../../../public/logo.svg";
 import Button from "@mui/material/Button";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import googleLogo from "../../../public/googleIcon.svg";
+import fbLogo from "../../../public/fbIcon.svg";
+import Link from "next/link";
 
 const Login = () => {
+  const isXs = useMediaQuery("(max-width:600px)");
+  const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
+  const isLg = useMediaQuery("(min-width:961px)");
+
+  let imageStyle = {
+    width: "300px", // Default width for xs screens
+    height: "400px", // Default height for xs screens
+  };
+
+  if (isMd) {
+    imageStyle = {
+      width: "400px", // Customize this for md screens
+      height: "500px", // Customize this for md screens
+    };
+  }
+
+  if (isLg) {
+    imageStyle = {
+      width: "500px", // Customize this for lg screens
+      height: "700px", // Customize this for lg screens
+    };
+  }
+
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -32,10 +61,7 @@ const Login = () => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} sm={6} textAlign={"center"}>
-        <Box sx = {{width : {md : "300px", xs : "200px"}, height : {md : "300px", xs : "200px"}}}> 
-             <Image src={LoginImage} width={500} height={600} alt="Login Image" />
-             </Box>
-
+        <Image src={LoginImage} alt="image of login" style={imageStyle} />
       </Grid>
 
       <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
@@ -46,7 +72,13 @@ const Login = () => {
             industry.
           </Typography>
 
-          <Typography sx={{ marginRight: "300px", marginTop: "10px" }}>
+          <Typography
+            sx={{
+              marginRight: "300px",
+              marginTop: "10px",
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
             User name
           </Typography>
           <TextField
@@ -61,7 +93,13 @@ const Login = () => {
             }}
           />
           <Box>
-            <Typography sx={{ marginTop: "10px", marginRight: "300px" }}>
+            <Typography
+              sx={{
+                marginRight: "300px",
+                marginTop: "10px",
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
               Password
             </Typography>
             <TextField
@@ -94,7 +132,8 @@ const Login = () => {
                 display: "flex",
                 gap: 15,
                 marginTop: "10px",
-                marginLeft: { sm: "", md: "120px" },
+                // marginLeft: { sm: "", md: "120px" },
+                justifyContent: "center",
               }}
             >
               <Box>
@@ -107,10 +146,20 @@ const Login = () => {
                     />
                   }
                   label="Remember Me"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                    },
+                  }}
                 />
               </Box>
               <Box>
-                <Typography sx={{ marginTop: "9px" }}>
+                <Typography
+                  sx={{
+                    marginTop: "9px",
+                    fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                  }}
+                >
                   Forgot Password?
                 </Typography>
               </Box>
@@ -125,7 +174,7 @@ const Login = () => {
               width: "300px",
               marginTop: "20px",
               "&:hover": {
-                backgroundColor: "#186F65", 
+                backgroundColor: "#186F65",
               },
             }}
           >
@@ -160,6 +209,34 @@ const Login = () => {
               orientation="horizontal"
             />
           </Box>
+        </Box>
+        <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+          <Link href="#">
+            <Paper
+              elevation={4}
+              sx={{
+                width: "68px",
+                height: "40px",
+                paddingTop: "20px",
+                borderRadius: "14px",
+              }}
+            >
+              <Image src={googleLogo} alt="Sign in with google" />
+            </Paper>
+          </Link>
+          <Link href="#">
+            <Paper
+              elevation={4}
+              sx={{
+                width: "68px",
+                height: "40px",
+                paddingTop: "20px",
+                borderRadius: "14px",
+              }}
+            >
+              <Image src={fbLogo} alt="Sign in with facebook." />
+            </Paper>
+          </Link>
         </Box>
       </Grid>
     </Grid>

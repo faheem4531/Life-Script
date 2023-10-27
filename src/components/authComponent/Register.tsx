@@ -57,11 +57,11 @@ export default function Register() {
             md: "absolute",
           },
           top: {
-            xs: "760px",
+            xs: "560px",
             md: "150px",
           },
           right: {
-            xs: "150px",
+            xs: "120px",
             md: "250px",
           },
 
