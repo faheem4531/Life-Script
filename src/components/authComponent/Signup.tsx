@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from "react";
+import { SignupData } from "@/interface/authInterface";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   Box,
   Checkbox,
   Divider,
   FormControlLabel,
   Grid,
+  Paper,
   TextField,
   Typography,
-  Paper,
 } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import SignupImage from "../../../public/Signup.svg";
-import Image from "next/image";
-import Logo from "../../../public/logo.svg";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useFormik } from "formik";
+import Image from "next/image";
+import { useState } from "react";
+import * as Yup from "yup";
+import SignupImage from "../../../public/Signup.svg";
 import googleLogo from "../../../public/googleIcon.svg";
+import Logo from "../../../public/logo.svg";
 
-import fbLogo from "../../../public/fbIcon.svg";
 import Link from "next/link";
+import fbLogo from "../../../public/fbIcon.svg";
 
 const Signup = () => {
   const isXs = useMediaQuery("(max-width:600px)");
@@ -54,9 +57,25 @@ const Signup = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const handleRememberMeChange = (event) => {
+  const handleRememberMeChange = (event: any) => {
     setRememberMe(event.target.checked);
   };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      username: "",
+      password: "",
+    },
+    onSubmit: async (data: SignupData) => {
+      console.log("data", data);
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required("Email is required"),
+      password: Yup.string().required("Password is required"),
+      username: Yup.string().required("User Name is required"),
+    }),
+  });
 
   return (
     <Grid container spacing={1}>
@@ -77,46 +96,6 @@ const Signup = () => {
             industry.
           </Typography>
 
-          <Typography
-            sx={{
-              marginRight: "300px",
-              marginTop: "10px",
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-            }}
-          >
-            Email Address
-          </Typography>
-          <TextField
-            variant="outlined"
-            placeholder="Email"
-            sx={{
-              marginTop: "15px",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "50px", // Adjust the border radius as needed
-              },
-              width: "400px",
-            }}
-          />
-          <Typography
-            sx={{
-              marginRight: "300px",
-              marginTop: "10px",
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-            }}
-          >
-            User name
-          </Typography>
-          <TextField
-            variant="outlined"
-            placeholder="UserName"
-            sx={{
-              marginTop: "15px",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "50px", // Adjust the border radius as needed
-              },
-              width: "400px",
-            }}
-          />
           <Box>
             <Typography
               sx={{
@@ -125,33 +104,97 @@ const Signup = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Password
+              Email Address
             </Typography>
             <TextField
+              variant="outlined"
+              placeholder="Email"
+              name="email"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               sx={{
-                marginTop: "10px",
+                marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
                 width: "400px",
               }}
-              placeholder="Password"
-              type={showPassword ? "text" : "password"}
+            />
+          </Box>
+          {formik.touched.email && formik.errors.email && (
+            <span style={{ color: "red" }}>{formik.errors.email}</span>
+          )}
+          <Box>
+            <Typography
+              sx={{
+                marginRight: "300px",
+                marginTop: "10px",
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              User name
+            </Typography>
+            <TextField
               variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={togglePasswordVisibility} edge="end">
-                      {showPassword ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                ),
+              placeholder="UserName"
+              name="username"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              sx={{
+                marginTop: "15px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "50px", // Adjust the border radius as needed
+                },
+                width: "400px",
               }}
             />
+          </Box>
+          {formik.touched.username && formik.errors.username && (
+            <span style={{ color: "red" }}>{formik.errors.username}</span>
+          )}
+          <Box>
+            <Box>
+              <Typography
+                sx={{
+                  marginRight: "300px",
+                  marginTop: "10px",
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                }}
+              >
+                Password
+              </Typography>
+              <TextField
+                sx={{
+                  marginTop: "10px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "50px", // Adjust the border radius as needed
+                  },
+                  width: "400px",
+                }}
+                placeholder="Password"
+                name="password"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                type={showPassword ? "text" : "password"}
+                variant="outlined"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={togglePasswordVisibility} edge="end">
+                        {showPassword ? (
+                          <VisibilityOffIcon />
+                        ) : (
+                          <VisibilityIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+            {formik.touched.password && formik.errors.password && (
+              <span style={{ color: "red" }}>{formik.errors.password}</span>
+            )}
             <Box
               sx={{
                 display: "flex",
@@ -179,18 +222,21 @@ const Signup = () => {
                 />
               </Box>
               <Box>
-              <Typography
+                <Typography
                   sx={{
                     marginTop: "9px",
                     fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
                   }}
-                > Forgot Password?
+                >
+                  {" "}
+                  Forgot Password?
                 </Typography>
               </Box>
             </Box>
           </Box>
           <Button
             variant="contained"
+            onClick={(event) => formik.handleSubmit()}
             sx={{
               borderRadius: "10px",
               backgroundColor: "#186F65",

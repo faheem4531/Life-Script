@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from "react";
+import { LoginData } from "@/interface/authInterface";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   Box,
   Checkbox,
   Divider,
   FormControlLabel,
   Grid,
-  Icon,
   Paper,
   TextField,
   Typography,
 } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import Image from "next/image";
-import LoginImage from "../../../public/Login.svg";
-import Logo from "../../../public/logo.svg";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import googleLogo from "../../../public/googleIcon.svg";
-import fbLogo from "../../../public/fbIcon.svg";
+import { useFormik } from "formik";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import * as Yup from "yup";
+import LoginImage from "../../../public/Login.svg";
+import fbLogo from "../../../public/fbIcon.svg";
+import googleLogo from "../../../public/googleIcon.svg";
+import Logo from "../../../public/logo.svg";
 
 const Login = () => {
   const isXs = useMediaQuery("(max-width:600px)");
@@ -54,9 +56,23 @@ const Login = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const handleRememberMeChange = (event) => {
+  const handleRememberMeChange = (event: any) => {
     setRememberMe(event.target.checked);
   };
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (data: LoginData) => {
+      console.log("data", data);
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required("Email is required"),
+      password: Yup.string().required("Password is required"),
+    }),
+  });
 
   return (
     <Grid container spacing={1}>
@@ -72,26 +88,6 @@ const Login = () => {
             industry.
           </Typography>
 
-          <Typography
-            sx={{
-              marginRight: "300px",
-              marginTop: "10px",
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-            }}
-          >
-            User name
-          </Typography>
-          <TextField
-            variant="outlined"
-            placeholder="Enter Your E-mail"
-            sx={{
-              marginTop: "15px",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "50px", // Adjust the border radius as needed
-              },
-              width: "400px",
-            }}
-          />
           <Box>
             <Typography
               sx={{
@@ -100,9 +96,14 @@ const Login = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Password
+              User name
             </Typography>
             <TextField
+              variant="outlined"
+              placeholder="Enter Your E-mail"
+              name="email"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
@@ -110,23 +111,60 @@ const Login = () => {
                 },
                 width: "400px",
               }}
-              placeholder="Password"
-              type={showPassword ? "text" : "password"}
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={togglePasswordVisibility} edge="end">
-                      {showPassword ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
             />
+          </Box>
+          {formik.touched.email && formik.errors.email && (
+            <span style={{ color: "red" }}>{formik.errors.email}</span>
+          )}
+          <Box>
+            <Box>
+              <Typography
+                sx={{
+                  marginRight: "300px",
+                  marginTop: "10px",
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                }}
+              >
+                Password
+              </Typography>
+              <TextField
+                sx={{
+                  marginTop: "15px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: "50px", // Adjust the border radius as needed
+                  },
+                  width: "400px",
+                }}
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                variant="outlined"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={togglePasswordVisibility} edge="end">
+                        {showPassword ? (
+                          <VisibilityOffIcon />
+                        ) : (
+                          <VisibilityIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </Box>
+            {formik.touched.password && formik.errors.password && (
+              <span
+                style={{
+                  color: "red",
+                }}
+              >
+                {formik.errors.password}
+              </span>
+            )}
             <Box
               sx={{
                 display: "flex",
@@ -167,6 +205,8 @@ const Login = () => {
           </Box>
           <Button
             variant="contained"
+            onClick={(event) => formik.handleSubmit()}
+            type="submit"
             sx={{
               borderRadius: "10px",
               backgroundColor: "#186F65",

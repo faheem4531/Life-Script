@@ -1,13 +1,6 @@
 import { Inter } from "next/font/google";
 import Head from "next/head";
-<<<<<<< HEAD
 import AuthPage from "./_auth/Auth";
-=======
-import Image from "next/image";
-import Random from "./_auth/Auth";
-import { Box } from "@mui/material";
-
->>>>>>> 679041571556ee674b4caa0a3434edd182f9457b
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
