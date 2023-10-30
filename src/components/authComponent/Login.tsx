@@ -1,4 +1,5 @@
 import { LoginData } from "@/interface/authInterface";
+import { login } from "@/store/slices/authSlice";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
@@ -6,27 +7,21 @@ import {
   Checkbox,
   Divider,
   FormControlLabel,
-  Grid,
-  Paper,
   TextField,
   Typography,
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import GoogleIcon from "@mui/icons-material/Google";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { useFormik } from "formik";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 import LoginImage from "../../../public/Login.svg";
-import SignupImage from "../../../public/Signup.svg";
-import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
-import styles from "./Login.module.css";
 
 const Login = () => {
   // const isXs = useMediaQuery("(max-width:600px)");
@@ -55,6 +50,8 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const dispatch: any = useDispatch();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -71,10 +68,24 @@ const Login = () => {
     },
     onSubmit: async (data: LoginData) => {
       console.log("data", data);
+      setLoading(true);
+      dispatch(login(data))
+        .unwrap()
+        .then(() => {
+          toast.success("Logged in successfully");
+          setLoading(false);
+        })
+        .catch((error: any) => {
+          console.log("4444", error);
+          toast.error(error.message);
+          setLoading(false);
+        });
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required("Email is required"),
-      password: Yup.string().required("Password is required"),
+      password: Yup.string()
+        .min(8, "Password must be 8 characters long")
+        .required("Password is required"),
     }),
   });
 

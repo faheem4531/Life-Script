@@ -1,11 +1,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { toast } from "react-toastify";
 
 class API {
   private instance: AxiosInstance;
 
   constructor() {
-    this.instance = axios.create();
+    this.instance = axios.create({
+      baseURL: "http://localhost:8000", // base URL
+    });
 
     this.instance.interceptors.request.use(
       this.requestInterceptor,
@@ -35,13 +36,13 @@ class API {
   }
 
   private responseErrorInterceptor(error: any) {
-    if (error.response) {
-      toast.error(error.response.data.message);
-    } else if (error.request) {
-      toast.error("No response received from the server");
-    } else {
-      toast.error("Error occurred while making the request");
-    }
+    // if (error.response) {
+    //   toast.error(error.response.data.message);
+    // } else if (error.request) {
+    //   toast.error("No response received from the server");
+    // } else {
+    //   toast.error("Error occurred while making the request");
+    // }
     return Promise.reject(error);
   }
 

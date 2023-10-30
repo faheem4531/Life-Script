@@ -19,7 +19,7 @@ export const login = createAsyncThunk<UserData, LoginData>(
       const response = await loginApi(data);
       return response;
     } catch (error: any) {
-      throw new Error(error);
+      throw new Error(error.props);
     }
   }
 );
@@ -31,7 +31,7 @@ export const signup = createAsyncThunk<UserData, SignupData>(
       const response = await signupApi(data);
       return response;
     } catch (error: any) {
-      throw new Error(error);
+      throw new Error(error.props);
     }
   }
 );
