@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import Button from "@mui/material/Button";
+import GoogleIcon from "@mui/icons-material/Google";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -21,33 +22,36 @@ import Link from "next/link";
 import { useState } from "react";
 import * as Yup from "yup";
 import LoginImage from "../../../public/Login.svg";
+import SignupImage from "../../../public/Signup.svg";
 import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
+import styles from "./Login.module.css";
 
 const Login = () => {
-  const isXs = useMediaQuery("(max-width:600px)");
-  const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
-  const isLg = useMediaQuery("(min-width:961px)");
+  // const isXs = useMediaQuery("(max-width:600px)");
+  // const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
+  // const isLg = useMediaQuery("(min-width:961px)");
+  // const isXl = useMediaQuery('(min-width: 1050px)');
 
-  let imageStyle = {
-    width: "300px", // Default width for xs screens
-    height: "400px", // Default height for xs screens
-  };
+  // let imageStyle = {
+  //   width: "300px",
+  //   height: "400px",
+  // };
 
-  if (isMd) {
-    imageStyle = {
-      width: "400px", // Customize this for md screens
-      height: "500px", // Customize this for md screens
-    };
-  }
+  // if (isMd) {
+  //   imageStyle = {
+  //     width: "400px",
+  //     height: "500px",
+  //   };
+  // }
 
-  if (isLg) {
-    imageStyle = {
-      width: "500px", // Customize this for lg screens
-      height: "700px", // Customize this for lg screens
-    };
-  }
+  // if (isLg) {
+  //   imageStyle = {
+  //     width: "500px",
+  //     height: "700px",
+  //   };
+  // }
 
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -75,32 +79,54 @@ const Login = () => {
   });
 
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={12} sm={6} textAlign={"center"}>
-        <Image src={LoginImage} alt="image of login" style={imageStyle} />
-      </Grid>
+    // <Grid container spacing={1}>
+    //   <Grid item xs={12} md={6} sm={6} textAlign={"center"}>
+    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box sx={{ margin: 0 }}>
+        <Image
+          src={LoginImage}
+          alt="image of login"
+          width={650}
+          height={700}
+          // style={imageStyle}
+        />
 
-      <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
-        <Image src={Logo} width={184} height={100} alt="Logo Image" />
-        <Box sx={{ marginTop: "70px" }}>
-          <Typography>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.
+        {/* </Grid> */}
+      </Box>
+      {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
+      <Box
+      // textAlign={'center'}
+      >
+        <Box textAlign={"center"}>
+          <Image src={Logo} width={184} height={100} alt="Logo Image" />
+          <Typography
+            sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
+          >
+            Your Autobiography Companion
+          </Typography>
+        </Box>
+        <Box sx={{ marginTop: "100px" }}>
+          <Typography sx={{ color: "#5B5B5B" }}>
+            Continue the immersive experience of expressing your
+          </Typography>
+          <Typography sx={{ color: "#5B5B5B" }}>
+            {" "}
+            personal narrative in a unique way.
           </Typography>
 
           <Box>
             <Typography
               sx={{
                 marginRight: "300px",
-                marginTop: "10px",
+                marginTop: "56px",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              User name
+              Email Address
             </Typography>
             <TextField
               variant="outlined"
-              placeholder="Enter Your E-mail"
+              placeholder="Enter Your E-mail Address"
               name="email"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -109,7 +135,7 @@ const Login = () => {
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
-                width: "400px",
+                width: "580px",
               }}
             />
           </Box>
@@ -121,7 +147,7 @@ const Login = () => {
               <Typography
                 sx={{
                   marginRight: "300px",
-                  marginTop: "10px",
+                  marginTop: "40px",
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
@@ -133,7 +159,7 @@ const Login = () => {
                   "& .MuiOutlinedInput-root": {
                     borderRadius: "50px", // Adjust the border radius as needed
                   },
-                  width: "400px",
+                  width: "580px",
                 }}
                 placeholder="Password"
                 type={showPassword ? "text" : "password"}
@@ -168,10 +194,11 @@ const Login = () => {
             <Box
               sx={{
                 display: "flex",
-                gap: 15,
+                justifyContent: "space-between",
+                // gap: 15,
                 marginTop: "10px",
                 // marginLeft: { sm: "", md: "120px" },
-                justifyContent: "center",
+                // justifyContent: "center",
               }}
             >
               <Box>
@@ -186,7 +213,8 @@ const Login = () => {
                   label="Remember Me"
                   sx={{
                     "& .MuiTypography-root": {
-                      fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                      // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                      fontSize: "16",
                     },
                   }}
                 />
@@ -195,91 +223,107 @@ const Login = () => {
                 <Typography
                   sx={{
                     marginTop: "9px",
-                    fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                    // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                    fontSize: "16",
                   }}
                 >
-                  Forgot Password?
+                  Forget Password?
                 </Typography>
               </Box>
             </Box>
           </Box>
-          <Button
-            variant="contained"
-            onClick={(event) => formik.handleSubmit()}
-            type="submit"
-            sx={{
-              borderRadius: "10px",
-              backgroundColor: "#186F65",
-              color: "white",
-              width: "300px",
-              marginTop: "20px",
-              "&:hover": {
+          <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+            <Button
+              variant="contained"
+              onClick={(event) => formik.handleSubmit()}
+              type="submit"
+              sx={{
+                borderRadius: "48px",
                 backgroundColor: "#186F65",
-              },
-            }}
-          >
-            Login
-          </Button>
-        </Box>
-        <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "10px" }}
-        >
-          <Box>
-            <Divider
-              sx={{
-                marginTop: "10px",
+                color: "white",
+                width: "310px",
+                marginTop: "20px",
+                "&:hover": {
+                  backgroundColor: "#186F65",
+                },
+              }}
+            >
+              Login
+            </Button>
 
-                backgroundColor: "black",
-                width: "97px",
-              }}
-              orientation="horizontal"
-            />
-          </Box>
-          <Box>
-            <Typography sx={{ marginLeft: "10px" }}>Or Login with</Typography>
-          </Box>
-          <Box>
-            <Divider
+            <Box
               sx={{
-                marginTop: "10px",
-                marginLeft: "10px",
-                backgroundColor: "black",
-                width: "97px",
-              }}
-              orientation="horizontal"
-            />
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
-          <Link href="#">
-            <Paper
-              elevation={4}
-              sx={{
-                width: "68px",
-                height: "40px",
-                paddingTop: "20px",
-                borderRadius: "14px",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "30px",
               }}
             >
-              <Image src={googleLogo} alt="Sign in with google" />
-            </Paper>
-          </Link>
-          <Link href="#">
-            <Paper
-              elevation={4}
+              <Box>
+                <Divider
+                  sx={{
+                    marginTop: "10px",
+
+                    backgroundColor: "black",
+                    width: "97px",
+                  }}
+                  orientation="horizontal"
+                />
+              </Box>
+              <Box>
+                <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
+                  Or Login with
+                </Typography>
+              </Box>
+              <Box>
+                <Divider
+                  sx={{
+                    marginTop: "10px",
+                    marginLeft: "10px",
+                    backgroundColor: "black",
+                    width: "97px",
+                  }}
+                  orientation="horizontal"
+                />
+              </Box>
+            </Box>
+          </Box>
+          <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+            <Button
+              variant="contained"
+              onClick={(event) => formik.handleSubmit()}
+              type="submit"
               sx={{
-                width: "68px",
-                height: "40px",
+                borderRadius: "48px",
+                backgroundColor: "white",
+                color: "black",
+                width: "310px",
+                marginTop: "20px",
                 paddingTop: "20px",
-                borderRadius: "14px",
+                paddingBottom: "20px",
+                "& .MuiButton-startIcon": {
+                  marginRight: "8px", // Adjust the spacing between the icon and text
+                },
+                "&:hover": {
+                  backgroundColor: "white",
+                },
               }}
+              startIcon={
+                <Image
+                  src={googleLogo}
+                  alt="Google Logo"
+                  width={24}
+                  height={24}
+                />
+              }
             >
-              <Image src={fbLogo} alt="Sign in with facebook." />
-            </Paper>
-          </Link>
+              Login with Google
+            </Button>
+          </Box>
         </Box>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
+    // {/* </Grid> */}
+    // {/* </Grid> */}
   );
 };
 

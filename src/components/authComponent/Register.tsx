@@ -57,12 +57,12 @@ export default function Register() {
             md: "absolute",
           },
           top: {
-            xs: "560px",
-            md: "150px",
+            xs: "580px",
+            md: "200px",
           },
           right: {
             xs: "160px",
-            md: "250px",
+            md: "190px",
           },
 
           background: "wheat",
@@ -75,15 +75,15 @@ export default function Register() {
               display: "none", // Hide the indicator line
             },
             "& .MuiTab-root": {
-              width: "100px",
-              borderRadius: "20px", // Make the tabs circular
+              width: "150px",
+              borderRadius: "25px", // Make the tabs circular
               backgroundColor: "transparent", // Clear the background color
               color: "#186F65",
               "&.Mui-selected": {
                 backgroundColor: "#186F65", // Set green background for the active tab
                 color: "white",
               },
-            },
+            }, padding:'10px',
           }}
           value={value}
           onChange={handleChange}
