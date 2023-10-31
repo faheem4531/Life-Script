@@ -1,16 +1,62 @@
 import {
+  ChangePassword,
+  ForgetPassword,
   LoginData,
   SignupData,
   UpdatePasswordData,
   UserData,
+  VerifyEmail,
 } from "@/interface/authInterface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { signOut } from "next-auth/react";
-import { loginApi, signupApi, updatePasswordApi } from "../api/authApi";
+import {
+  changePasswordApi,
+  forgetPasswordApi,
+  loginApi,
+  signupApi,
+  updatePasswordApi,
+  verifyEmailApi,
+} from "../api/authApi";
 
 const initialState = {
   user: {} as UserData,
 };
+
+export const changePassword = createAsyncThunk<UserData, ChangePassword>(
+  "user/verify-email",
+  async (data) => {
+    try {
+      const response = await changePasswordApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const forgetPassword = createAsyncThunk<UserData, ForgetPassword>(
+  "user/verify-email",
+  async (data) => {
+    try {
+      const response = await forgetPasswordApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const verifyEmail = createAsyncThunk<UserData, VerifyEmail>(
+  "user/verify-email",
+  async (data) => {
+    try {
+      const response = await verifyEmailApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
 
 export const login = createAsyncThunk<UserData, LoginData>(
   "auth/login",

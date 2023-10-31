@@ -20,3 +20,20 @@ export interface SignupData {
   password: string;
   name: string;
 }
+
+export interface VerifyEmail {
+  email: string;
+  otp: string;
+}
+
+export interface ForgetPassword {
+  email: string;
+  type: string;
+}
+
+export interface ChangePassword {
+  password: string;
+  confirmPassword?: string;
+  email: string;
+  otp: string;
+}

@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import { Provider as StoreProvider } from "react-redux";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import { store } from "../store/store";
 import AuthPage from "./_auth/Auth";
 
@@ -19,7 +19,7 @@ export default function Home() {
         </Head>
         <AuthPage />
       </StoreProvider>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </>
   );
 }
