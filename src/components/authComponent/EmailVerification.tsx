@@ -1,61 +1,42 @@
-import { LoginData } from "@/interface/authInterface";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+"use client";
+import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useFormik } from "formik";
+import { verifyEmail } from "@/store/slices/authSlice";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import * as Yup from "yup";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import Email from "../../../public/EmailVerification.svg";
-import SignupImage from "../../../public/Signup.svg";
-import fbLogo from "../../../public/fbIcon.svg";
-import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
-import styles from "./Login.module.css";
+
+const CryptoJS = require("crypto-js");
 
 const EmailVerification = () => {
-  // const isXs = useMediaQuery("(max-width:600px)");
-  // const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
-  // const isLg = useMediaQuery("(min-width:961px)");
-  // const isXl = useMediaQuery('(min-width: 1050px)');
-
-  // let imageStyle = {
-  //   width: "300px",
-  //   height: "400px",
-  // };
-
-  // if (isMd) {
-  //   imageStyle = {
-  //     width: "400px",
-  //     height: "500px",
-  //   };
-  // }
-
-  // if (isLg) {
-  //   imageStyle = {
-  //     width: "500px",
-  //     height: "700px",
-  //   };
-  // }
-
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const dispatch: any = useDispatch();
 
+  function handleVerifyEmail() {
+    dispatch(verifyEmail({ email: userEmail, otp: otp }))
+      .unwrap()
+      .then(() => {
+        toast.success("Email verified successfully");
+        router.push("/");
+      })
+      .catch((error: any) => {
+        toast.error(error || "Failed to verify email");
+      });
+  }
+
+  function getTokenFromURL(url: any) {
+    var queryString = url.split("?")[1];
+    var params = new URLSearchParams(queryString);
+    return params.get("token");
+  }
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -64,23 +45,24 @@ const EmailVerification = () => {
     setRememberMe(event.target.checked);
   };
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: async (data: LoginData) => {
-      console.log("data", data);
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email().required("Email is required"),
-      password: Yup.string().required("Password is required"),
-    }),
-  });
+  const router = useRouter();
+  const currentUrl = router.asPath;
+  const token = getTokenFromURL(currentUrl);
+  const ciphertext = token?.replace(/ /g, "+");
+  console.log("token", token, typeof token);
+
+  useEffect(() => {
+    if (ciphertext) {
+      const bytes = CryptoJS.AES.decrypt(ciphertext, "No_Key_Found");
+      const originalText = bytes.toString(CryptoJS.enc.Utf8);
+      const decryptedData = JSON.parse(originalText);
+
+      setUserEmail(decryptedData.email);
+      setOtp(decryptedData.otp);
+    }
+  }, [ciphertext]);
 
   return (
-    // <Grid container spacing={1}>
-    //   <Grid item xs={12} md={6} sm={6} textAlign={"center"}>
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
       <Box sx={{ margin: 0 }}>
         <Image
@@ -119,8 +101,7 @@ const EmailVerification = () => {
             <TextField
               variant="outlined"
               name="email"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
+              value={userEmail}
               disabled
               sx={{
                 marginTop: "15px",
@@ -131,10 +112,9 @@ const EmailVerification = () => {
               }}
             />
           </Box>
-          {formik.touched.email && formik.errors.email && (
-            <span style={{ color: "red" }}>{formik.errors.email}</span>
-          )}
-          <Typography sx={{ marginTop: "23px" , color :'#5B5B5B', fontSize:'21px'}}>
+          <Typography
+            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+          >
             Your email has been verified. Click on the button to <br /> proceed
             forward.
           </Typography>
@@ -148,8 +128,8 @@ const EmailVerification = () => {
           >
             <Button
               variant="contained"
-              onClick={(event) => formik.handleSubmit()}
-              type="submit"
+              disabled={!userEmail}
+              onClick={(event: any) => handleVerifyEmail()}
               sx={{
                 borderRadius: "48px",
                 backgroundColor: "#186F65",
@@ -159,19 +139,15 @@ const EmailVerification = () => {
                 "&:hover": {
                   backgroundColor: "#186F65",
                 },
-                textTransform: 'none',
+                textTransform: "none",
               }}
             >
               Lets Begin
             </Button>
-
-           
           </Box>
         </Box>
       </Box>
     </Box>
-    // {/* </Grid> */}
-    // {/* </Grid> */}
   );
 };
 

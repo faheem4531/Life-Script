@@ -1,60 +1,24 @@
-import { LoginData } from "@/interface/authInterface";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { ForgetPassword } from "@/interface/authInterface";
+import { forgetPassword } from "@/store/slices/authSlice";
 import { useFormik } from "formik";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
-import SignupImage from "../../../public/Signup.svg";
-import fbLogo from "../../../public/fbIcon.svg";
-import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
-import styles from "./Login.module.css";
 
 const ForgetPassword = () => {
-  // const isXs = useMediaQuery("(max-width:600px)");
-  // const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
-  // const isLg = useMediaQuery("(min-width:961px)");
-  // const isXl = useMediaQuery('(min-width: 1050px)');
-
-  // let imageStyle = {
-  //   width: "300px",
-  //   height: "400px",
-  // };
-
-  // if (isMd) {
-  //   imageStyle = {
-  //     width: "400px",
-  //     height: "500px",
-  //   };
-  // }
-
-  // if (isLg) {
-  //   imageStyle = {
-  //     width: "500px",
-  //     height: "700px",
-  //   };
-  // }
-
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const dispatch: any = useDispatch();
+  const [emailSent, setEmailSent] = useState("");
+  const router = useRouter();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -67,20 +31,26 @@ const ForgetPassword = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
+      type: "password",
     },
-    onSubmit: async (data: LoginData) => {
+    onSubmit: async (data: ForgetPassword) => {
       console.log("data", data);
+      dispatch(forgetPassword(data))
+        .unwrap()
+        .then(() => {
+          toast.success("Email sent successfully");
+          router.push("/verify/forgetPasswordLink");
+        })
+        .catch((error: any) => {
+          toast.error(error.message);
+        });
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required("Email is required"),
-      password: Yup.string().required("Password is required"),
     }),
   });
 
   return (
-    // <Grid container spacing={1}>
-    //   <Grid item xs={12} md={6} sm={6} textAlign={"center"}>
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
       <Box sx={{ margin: 0 }}>
         <Image
@@ -102,26 +72,33 @@ const ForgetPassword = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-Forgot Password?          </Typography>
+            Forgot Password?{" "}
+          </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
-        
           <Box>
+            <Typography
+              sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+            >
+              Please enter email associated with the Lifescript <br /> account
+              to send password reset link.
+            </Typography>
             <Typography
               sx={{
                 marginRight: "300px",
-                marginTop: "56px",
+                marginTop: "26px",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email 
+              Email
             </Typography>
             <TextField
               variant="outlined"
               name="email"
+              placeholder="Enter you Email"
+              value={formik.values.email}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              disabled
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
@@ -134,11 +111,14 @@ Forgot Password?          </Typography>
           {formik.touched.email && formik.errors.email && (
             <span style={{ color: "red" }}>{formik.errors.email}</span>
           )}
-          <Typography sx={{marginTop:'23px', color :'#5B5B5B', fontSize:'21px'}}>
-          We’ve sent you an email with a verification link. Kindly <br /> click on it and reset your password.
-          </Typography>
-          
-          <Box sx={{ justifyContent: "center", textAlign: "center", marginTop:'130px' }}>
+
+          <Box
+            sx={{
+              justifyContent: "center",
+              textAlign: "center",
+              marginTop: "80px",
+            }}
+          >
             <Button
               variant="contained"
               onClick={(event) => formik.handleSubmit()}
@@ -148,19 +128,17 @@ Forgot Password?          </Typography>
                 backgroundColor: "#186F65",
                 color: "white",
                 width: "310px",
-                marginTop: "20px",
+                padding: "10px",
+                // marginTop: "20px",
                 "&:hover": {
                   backgroundColor: "#186F65",
                 },
-                textTransform:'none'
+                textTransform: "none",
               }}
             >
-              Next
+              Continue
             </Button>
-
-        <Typography sx={{color:'rgba(0, 0, 0, 0.42);', marginTop:'20px'}}>Already have an account? Login</Typography>
           </Box>
-      
         </Box>
       </Box>
     </Box>
@@ -169,4 +147,4 @@ Forgot Password?          </Typography>
   );
 };
 
-export default ForgetPassword ;
+export default ForgetPassword;

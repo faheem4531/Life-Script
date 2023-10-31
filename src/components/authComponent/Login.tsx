@@ -15,6 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useFormik } from "formik";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -52,6 +53,7 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
+  const router = useRouter();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -74,9 +76,9 @@ const Login = () => {
         .then(() => {
           toast.success("Logged in successfully");
           setLoading(false);
+          router.push("/change-password/getStarted");
         })
         .catch((error: any) => {
-          console.log("4444", error);
           toast.error(error.message);
           setLoading(false);
         });
@@ -230,7 +232,10 @@ const Login = () => {
                   }}
                 />
               </Box>
-              <Box>
+              <Box
+                sx={{ cursor: "pointer" }}
+                onClick={(event: any) => router.push("/verify/forgetPassword")}
+              >
                 <Typography
                   sx={{
                     marginTop: "9px",
@@ -301,7 +306,6 @@ const Login = () => {
           <Box sx={{ justifyContent: "center", textAlign: "center" }}>
             <Button
               variant="contained"
-              onClick={(event) => formik.handleSubmit()}
               type="submit"
               sx={{
                 borderRadius: "48px",

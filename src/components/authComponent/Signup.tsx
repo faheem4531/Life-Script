@@ -13,6 +13,7 @@ import {
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useState } from "react";
@@ -25,37 +26,6 @@ import Logo from "../../../public/logo.svg";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-  // const isSM = useMediaQuery("(max-width:600px)");
-  // const isXs = useMediaQuery("(max-width:600px)");
-  // const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
-  // const isLg = useMediaQuery("(min-width:1020px)");
-
-  //   let imageStyle = {
-  //     width: "300px",
-  //     height: "400px",
-  //   };
-  // if (isSM){
-  //   imageStyle = {
-  //     width: "350px",
-  //     height: "500px",
-  //   };
-
-  // }
-
-  //   if (isMd) {
-  //     imageStyle = {
-  //       width: "350px",
-  //       height: "500px",
-  //     };
-  //   }
-
-  //   if (isLg) {
-  //     imageStyle = {
-  //       width: "500px",
-  //       height: "700px",
-  //     };
-  //   }
-
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
@@ -68,6 +38,18 @@ const Signup = () => {
     setRememberMe(event.target.checked);
   };
 
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
+  });
+
+  const handleGoogleLoginSuccess = (e: any) => {
+    console.log("test", e);
+  };
+
+  const handleGoogleLoginFailure = () => {
+    // Handle the case when Google login fails.
+  };
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -75,7 +57,6 @@ const Signup = () => {
       password: "",
     },
     onSubmit: async (data: SignupData) => {
-      console.log("data2", data);
       dispatch(signup(data))
         .unwrap()
         .then(() => {
@@ -122,7 +103,6 @@ const Signup = () => {
             {" "}
             personal narrative in a unique way.
           </Typography>
-
           <Box>
             <Typography
               sx={{
@@ -319,8 +299,8 @@ const Signup = () => {
           <Box sx={{ justifyContent: "center", textAlign: "center" }}>
             <Button
               variant="contained"
-              onClick={(event) => formik.handleSubmit()}
               type="submit"
+              onClick={() => handleGoogleLogin()}
               sx={{
                 borderRadius: "48px",
                 backgroundColor: "white",
@@ -348,6 +328,14 @@ const Signup = () => {
               Sign Up with Google
             </Button>
           </Box>
+          {/* <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
+            <Box sx={{ marginTop: 2, borderRadius: "50px" }}>
+              <GoogleLogin
+                onSuccess={handleGoogleLoginSuccess}
+                onError={handleGoogleLoginFailure}
+              />
+            </Box>
+          </GoogleOAuthProvider> */}
         </Box>
       </Box>
     </Box>

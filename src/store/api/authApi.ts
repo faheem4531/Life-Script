@@ -1,12 +1,16 @@
 import {
+  ChangePassword,
+  ForgetPassword,
   LoginData,
   SignupData,
   UpdatePasswordData,
+  VerifyEmail,
 } from "@/interface/authInterface";
 import api from "@/services/api";
 import Error from "next/error";
 
 export async function loginApi(data: LoginData) {
+  localStorage.clear();
   try {
     const res = await api.post("/auth/login", data);
 
@@ -43,8 +47,54 @@ export async function updatePasswordApi(data: UpdatePasswordData) {
 }
 
 export async function signupApi(data: SignupData) {
+  localStorage.clear();
   try {
     const res = await api.post("/auth/", data);
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign up");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function verifyEmailApi(data: VerifyEmail) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/verify-otp", data);
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign up");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function forgetPasswordApi(data: ForgetPassword) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/forget-password", data);
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign up");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function changePasswordApi(data: ChangePassword) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/change-password", data);
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
