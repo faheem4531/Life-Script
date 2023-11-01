@@ -65,51 +65,51 @@ export default function Register() {
             alt="Signup Image"
           />
         )}
-      </Box>  
+      </Box>
       <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
         <Box textAlign={"center"}>
-          <Image src={Logo} width={223} height={165} alt="Logo Image" />
+          <Image src={Logo} width={200} height={150} alt="Logo Image" />
         </Box>
-        <Box sx={{display:'flex', justifyContent:'center'}}>
-        <Box
-          sx={{
-            borderBottom: 1,
-            borderColor: "divider",
-            maxWidth: '580px',
-
-            background: "white",
-            borderRadius: "40px",
-          }}
-        >
-          <Tabs
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box
             sx={{
-              "& .MuiTabs-flexContainer": {
-                marginTop: "82px",
-                justifyContent: "center",
-              },
-              "& .MuiTabs-indicator": {
-                display: "none", // Hide the indicator line
-              },
-              "& .MuiTab-root": {
-                width: "300px",
-                borderRadius: "25px",
-                // backgroundColor: "wheat",
+              marginTop: "40px",
+              height: "auto",
+              border: "1px solid black",
+              maxWidth: "580px",
 
-                color: "#186F65",
-                "&.Mui-selected": {
-                  backgroundColor: "#186F65",
-                  color: "white",
-                },
-              },
+              background: "white",
+              borderRadius: "40px",
             }}
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
           >
-            <Tab label="Login" {...a11yProps(0)} />
-            <Tab label="Register" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
+            <Tabs
+              sx={{
+                "& .MuiTabs-flexContainer": {
+                  justifyContent: "center",
+                },
+                "& .MuiTabs-indicator": {
+                  display: "none", // Hide the indicator line
+                },
+                "& .MuiTab-root": {
+                  width: "290px",
+                  borderRadius: "25px",
+                  // backgroundColor: "wheat",
+
+                  color: "#186F65",
+                  "&.Mui-selected": {
+                    backgroundColor: "#186F65",
+                    color: "white",
+                  },
+                },
+              }}
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="Login" {...a11yProps(0)} />
+              <Tab label="Register" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
         </Box>
         <CustomTabPanel value={value} index={0}>
           <Login />

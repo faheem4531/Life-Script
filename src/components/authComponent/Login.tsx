@@ -93,180 +93,165 @@ const Login = () => {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-
-      {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
-      <Box
-      // textAlign={'center'}
-      >
-       
-        {/* <Box sx={{ marginTop: "100px" }}>
-          <Typography sx={{ color: "#5B5B5B" }}>
-            Continue the immersive experience of expressing your
+      <Box>
+        <Box>
+          <Typography
+            sx={{
+              // marginRight: "300px",
+              marginTop: "30px",
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
+            Email
           </Typography>
-          <Typography sx={{ color: "#5B5B5B" }}>
-            {" "}
-            personal narrative in a unique way.
-          </Typography> */}
-
+          <TextField
+            variant="outlined"
+            placeholder="Enter Your E-mail Address"
+            name="email"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            sx={{
+              marginTop: "10px",
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "50px", // Adjust the border radius as needed
+              },
+              width: "580px",
+            }}
+          />
+        </Box>
+        {formik.touched.email && formik.errors.email && (
+          <span style={{ color: "red" }}>{formik.errors.email}</span>
+        )}
+        <Box>
           <Box>
             <Typography
               sx={{
                 // marginRight: "300px",
-                marginTop: "64px",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                marginTop: "30px",
+                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email 
+              Password
             </Typography>
             <TextField
-              variant="outlined"
-              placeholder="Enter Your E-mail Address"
-              name="email"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
               sx={{
-                marginTop: "15px",
+                marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
                 width: "580px",
               }}
+              placeholder="Password"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </Box>
-          {formik.touched.email && formik.errors.email && (
-            <span style={{ color: "red" }}>{formik.errors.email}</span>
+          {formik.touched.password && formik.errors.password && (
+            <span
+              style={{
+                color: "red",
+              }}
+            >
+              {formik.errors.password}
+            </span>
           )}
-          <Box>
-            <Box>
-              <Typography
-                sx={{
-                  // marginRight: "300px",
-                  marginTop: "40px",
-                  // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                }}
-              >
-                Password
+          {loginFailed && (
+            <Box sx={{ marginTop: "10px" }}>
+              <Typography sx={{ color: "red" }}>
+                Incorrect password or email
               </Typography>
-              <TextField
+            </Box>
+          )}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "30px",
+              // gap: 15,
+              // marginLeft: { sm: "", md: "120px" },
+              // justifyContent: "center",
+            }}
+          >
+            <Box>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={rememberMe}
+                    onChange={handleRememberMeChange}
+                    color="primary"
+                  />
+                }
+                label="Remember Me"
                 sx={{
-                  marginTop: "15px",
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "50px", // Adjust the border radius as needed
+                  "& .MuiTypography-root": {
+                    // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                    fontSize: "16",
                   },
-                  width: "580px",
-                }}
-                placeholder="Password"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={togglePasswordVisibility} edge="end">
-                        {showPassword ? (
-                          <VisibilityOffIcon />
-                        ) : (
-                          <VisibilityIcon />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
                 }}
               />
             </Box>
-            {formik.touched.password && formik.errors.password && (
-              <span
-                style={{
-                  color: "red",
+            <Box
+              sx={{ cursor: "pointer" }}
+              onClick={(event: any) => router.push("/verify/forgetPassword")}
+            >
+              <Typography
+                sx={{
+                  marginTop: "9px",
+                  // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                  fontSize: "16",
                 }}
               >
-                {formik.errors.password}
-              </span>
-            )}
-            {loginFailed && (
-              <Box sx={{ marginTop: "5px" }}>
-                <Typography sx={{ color: "red" }}>
-                  Incorrect password or email
-                </Typography>
-              </Box>
-            )}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop:'43px',
-                // gap: 15,
-                // marginLeft: { sm: "", md: "120px" },
-                // justifyContent: "center",
-
-              }}
-            >
-              <Box>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={rememberMe}
-                      onChange={handleRememberMeChange}
-                      color="primary"
-                    />
-                  }
-                  label="Remember Me"
-                  sx={{
-                    "& .MuiTypography-root": {
-                      // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                      fontSize: "16",
-                    },
-                  }}
-                />
-              </Box>
-              <Box
-                sx={{ cursor: "pointer" }}
-                onClick={(event: any) => router.push("/verify/forgetPassword")}
-              >
-                <Typography
-                  sx={{
-                    marginTop: "9px",
-                    // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                    fontSize: "16",
-                  }}
-                >
-                  Forget Password?
-                </Typography>
-              </Box>
+                Forget Password?
+              </Typography>
             </Box>
           </Box>
-          <Box sx={{ justifyContent: "center", textAlign: "center" }}>
-            <Button
-              variant="contained"
-              onClick={(event) => formik.handleSubmit()}
-              type="submit"
-              sx={{
-                borderRadius: "48px",
+        </Box>
+        <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+          <Button
+            variant="contained"
+            onClick={(event) => formik.handleSubmit()}
+            type="submit"
+            sx={{
+              borderRadius: "48px",
+              backgroundColor: "#186F65",
+              color: "white",
+              width: "310px",
+              marginTop: "20px",
+              "&:hover": {
                 backgroundColor: "#186F65",
-                color: "white",
-                width: "310px",
-                marginTop: "64px",
-                "&:hover": {
-                  backgroundColor: "#186F65",
-                },
-              }}
-            >
-              Login
-            </Button>
+              },
+            }}
+          >
+            Login
+          </Button>
 
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "34px",
-              }}
-            >
-              <Box>
-                <Divider
-                  sx={{
-                    marginTop: "10px",
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "34px",
+            }}
+          >
+            <Box>
+              <Divider
+                sx={{
+                  marginTop: "10px",
 
                   backgroundColor: "black",
                   width: "97px",

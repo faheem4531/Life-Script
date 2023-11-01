@@ -92,8 +92,8 @@ const Signup = () => {
         <Box>
           <Typography
             sx={{
-              marginRight: "300px",
-              marginTop: "56px",
+              // marginRight: "300px",
+              marginTop: "30px",
               // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -106,7 +106,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             sx={{
-              marginTop: "15px",
+              marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
               },
@@ -121,7 +121,7 @@ const Signup = () => {
           <Typography
             sx={{
               // marginRight: "300px",
-              marginTop: "40px",
+              marginTop: "30px",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -134,7 +134,7 @@ const Signup = () => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             sx={{
-              marginTop: "15px",
+              marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
               },
@@ -150,7 +150,7 @@ const Signup = () => {
             <Typography
               sx={{
                 // marginRight: "300px",
-                marginTop: "40px",
+                marginTop: "30px",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
@@ -158,7 +158,7 @@ const Signup = () => {
             </Typography>
             <TextField
               sx={{
-                marginTop: "15px",
+                marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
