@@ -1,14 +1,13 @@
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
-import LoginImage from "../../../public/Login.svg";
-import SignupImage from "../../../public/EmailVerification.svg";
 import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Image from "next/image";
+import * as React from "react";
+import SignupImage from "../../../public/EmailVerification.svg";
+import LoginImage from "../../../public/Login.svg";
+import Logo from "../../../public/logo.svg";
 import Login from "./Login";
 import Signup from "./Signup";
-import Logo from "../../../public/logo.svg";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -51,70 +50,65 @@ export default function Register() {
   };
 
   return (
-    <Box display="flex" justifyContent={"space-around"} >
-      <Box sx={{ margin: 0 }}>
+    <Box display="flex" justifyContent={"space-around"}>
+      <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
         {value == 0 ? (
           <Image
             src={LoginImage}
             alt="image of login"
-            width={650}
-            height={700}
+            style={{ height: "100%", width: "100%" }}
           />
         ) : (
           <Image
             src={SignupImage}
-            width={650}
-            height={700}
+            style={{ height: "100%", width: "100%" }}
             alt="Signup Image"
           />
         )}
       </Box>
-      <Box>
-      <Box textAlign={"center"}>
-            <Image src={Logo} width={223} height={165} alt="Logo Image" />
-            </Box>
+      <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
+        <Box textAlign={"center"}>
+          <Image src={Logo} width={223} height={165} alt="Logo Image" />
+        </Box>
         <Box
           sx={{
             borderBottom: 1,
-            borderColor:'divider',
+            borderColor: "divider",
 
             background: "white",
             borderRadius: "40px",
           }}
         >
-         
+          <Tabs
+            sx={{
+              "& .MuiTabs-flexContainer": {
+                marginTop: "82px",
+                justifyContent: "center",
+              },
+              "& .MuiTabs-indicator": {
+                display: "none", // Hide the indicator line
+              },
+              "& .MuiTab-root": {
+                width: "300px",
+                borderRadius: "25px",
+                // backgroundColor: "wheat",
 
-            <Tabs
-              sx={{
-                
-                "& .MuiTabs-flexContainer": {
-                  marginTop:'82px',
-                  justifyContent: "center", 
+                color: "#186F65",
+                "&.Mui-selected": {
+                  backgroundColor: "#186F65",
+                  color: "white",
                 },
-                "& .MuiTabs-indicator": {
-                  display: "none", // Hide the indicator line
-                },
-                "& .MuiTab-root": {
-                  width: "300px",
-                  borderRadius: "25px", 
-                  // backgroundColor: "wheat", 
-                  
-                  color: "#186F65",
-                  "&.Mui-selected": {
-                    backgroundColor: "#186F65", 
-                    color: "white",
-                  },
-                },
-              }}
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
-            >
-              <Tab label="Login" {...a11yProps(0)} />
-              <Tab label="Register" {...a11yProps(1)} />
-            </Tabs>
-          </Box>
-        
+              },
+            }}
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Login" {...a11yProps(0)} />
+            <Tab label="Register" {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+
         <CustomTabPanel value={value} index={0}>
           <Login />
         </CustomTabPanel>
@@ -122,6 +116,6 @@ export default function Register() {
           <Signup />
         </CustomTabPanel>
       </Box>
-      </Box>
+    </Box>
   );
 }

@@ -16,7 +16,14 @@ const LetsStarted = () => {
           padding: 0,
         }}
       >
-        <Typography>Hi Naseer 👋</Typography>
+        <Box sx={{ mt: 20, ml: 10 }}>
+          <Typography
+            sx={{ color: "white", fontSize: "40px", fontWeight: "400px" }}
+          >
+            Hi Naseer 👋
+          </Typography>
+        </Box>
+        <Box></Box>
       </Box>
     </div>
   );

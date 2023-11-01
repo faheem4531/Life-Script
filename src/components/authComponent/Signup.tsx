@@ -21,7 +21,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import googleLogo from "../../../public/googleIcon.svg";
-import Logo from "../../../public/logo.svg";
 
 import { toast } from "react-toastify";
 
@@ -57,28 +56,6 @@ const Signup = () => {
       });
   };
 
-  // const handleGoogleLoginSuccess = (tokenResponse: any) => {
-  //   const accessToken = tokenResponse.access_token;
-
-  //   // Use the access token to fetch user credentials from Google API
-  // fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
-  //   headers: {
-  //     Authorization: `Bearer ${accessToken}`,
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((userData) => {
-  //     // Now you have the user's credentials in userData
-  //     console.log("User Credentials:", userData);
-
-  //     // You can do whatever you need with the user's credentials here
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error fetching user data:", error);
-  //     // Handle the error here
-  //   });
-  // };
-
   const handleGoogleLoginFailure = () => {
     toast.error("Failed to signup with google");
   };
@@ -112,43 +89,63 @@ const Signup = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
       <Box>
-        
-        {/* <Box sx={{ marginTop: "100px" }}>
-          <Typography sx={{ color: "#5B5B5B" }}>
-            Continue the immersive experience of expressing your
+        <Box>
+          <Typography
+            sx={{
+              marginRight: "300px",
+              marginTop: "56px",
+              // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
+            Email
           </Typography>
-          <Typography sx={{ color: "#5B5B5B" }}>
-            {" "}
-            personal narrative in a unique way.
-          </Typography> */}
-          <Box>
-            <Typography
-              sx={{
-                marginRight: "300px",
-                marginTop: "56px",
-                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Email 
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="Email"
-              name="email"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              sx={{
-                marginTop: "15px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px", // Adjust the border radius as needed
-                },
-                width: "580px",
-              }}
-            />
-          </Box>
-          {formik.touched.email && formik.errors.email && (
-            <span style={{ color: "red" }}>{formik.errors.email}</span>
-          )}
+          <TextField
+            variant="outlined"
+            placeholder="Email"
+            name="email"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            sx={{
+              marginTop: "15px",
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "50px", // Adjust the border radius as needed
+              },
+              width: "580px",
+            }}
+          />
+        </Box>
+        {formik.touched.email && formik.errors.email && (
+          <span style={{ color: "red" }}>{formik.errors.email}</span>
+        )}
+        <Box>
+          <Typography
+            sx={{
+              // marginRight: "300px",
+              marginTop: "40px",
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
+            User name
+          </Typography>
+          <TextField
+            variant="outlined"
+            placeholder="UserName"
+            name="name"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            sx={{
+              marginTop: "15px",
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "50px", // Adjust the border radius as needed
+              },
+              width: "580px",
+            }}
+          />
+        </Box>
+        {formik.touched.name && formik.errors.name && (
+          <span style={{ color: "red" }}>{formik.errors.name}</span>
+        )}
+        <Box>
           <Box>
             <Typography
               sx={{
@@ -157,14 +154,9 @@ const Signup = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              User name
+              Password
             </Typography>
             <TextField
-              variant="outlined"
-              placeholder="UserName"
-              name="name"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
@@ -172,181 +164,157 @@ const Signup = () => {
                 },
                 width: "580px",
               }}
+              placeholder="Password"
+              name="password"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </Box>
           {formik.touched.name && formik.errors.name && (
             <span style={{ color: "red" }}>{formik.errors.name}</span>
           )}
-          <Box>
+          <Box
+            sx={{
+              display: "flex",
+              // gap: 15,
+              marginTop: "10px",
+              // marginLeft: { sm: "", md: "120px" },
+              // justifyContent: "center",
+              justifyContent: "space-between",
+            }}
+          >
             <Box>
-              <Typography
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={rememberMe}
+                    onChange={handleRememberMeChange}
+                    color="primary"
+                  />
+                }
+                label="Remember Me"
                 sx={{
-                  // marginRight: "300px",
-                  marginTop: "40px",
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                }}
-              >
-                Password
-              </Typography>
-              <TextField
-                sx={{
-                  marginTop: "15px",
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "50px", // Adjust the border radius as needed
+                  "& .MuiTypography-root": {
+                    fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
                   },
-                  width: "580px",
-                }}
-                placeholder="Password"
-                name="password"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                type={showPassword ? "text" : "password"}
-                variant="outlined"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={togglePasswordVisibility} edge="end">
-                        {showPassword ? (
-                          <VisibilityOffIcon />
-                        ) : (
-                          <VisibilityIcon />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
                 }}
               />
             </Box>
-            {formik.touched.name && formik.errors.name && (
-              <span style={{ color: "red" }}>{formik.errors.name}</span>
-            )}
-            <Box
-              sx={{
-                display: "flex",
-                // gap: 15,
-                marginTop: "10px",
-                // marginLeft: { sm: "", md: "120px" },
-                // justifyContent: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Box>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={rememberMe}
-                      onChange={handleRememberMeChange}
-                      color="primary"
-                    />
-                  }
-                  label="Remember Me"
-                  sx={{
-                    "& .MuiTypography-root": {
-                      fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                    },
-                  }}
-                />
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    marginTop: "9px",
-                    fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                  }}
-                >
-                  Forgot Password?
-                </Typography>
-              </Box>
+            <Box>
+              <Typography
+                sx={{
+                  marginTop: "9px",
+                  fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                }}
+              >
+                Forgot Password?
+              </Typography>
             </Box>
           </Box>
-          <Box sx={{ justifyContent: "center", textAlign: "center" }}>
-            <Button
-              variant="contained"
-              onClick={(event) => formik.handleSubmit()}
-              type="submit"
-              sx={{
-                borderRadius: "48px",
+        </Box>
+        <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+          <Button
+            variant="contained"
+            onClick={(event) => formik.handleSubmit()}
+            type="submit"
+            sx={{
+              borderRadius: "48px",
+              backgroundColor: "#186F65",
+              color: "white",
+              width: "310px",
+              marginTop: "20px",
+              "&:hover": {
                 backgroundColor: "#186F65",
-                color: "white",
-                width: "310px",
-                marginTop: "20px",
-                "&:hover": {
-                  backgroundColor: "#186F65",
-                },
-              }}
-            >
-              Sign Up
-            </Button>
+              },
+            }}
+          >
+            Sign Up
+          </Button>
 
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "30px",
-              }}
-            >
-              <Box>
-                <Divider
-                  sx={{
-                    marginTop: "10px",
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "30px",
+            }}
+          >
+            <Box>
+              <Divider
+                sx={{
+                  marginTop: "10px",
 
-                    backgroundColor: "black",
-                    width: "97px",
-                  }}
-                  orientation="horizontal"
-                />
-              </Box>
-              <Box>
-                <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-                  Or Login with
-                </Typography>
-              </Box>
-              <Box>
-                <Divider
-                  sx={{
-                    marginTop: "10px",
-                    marginLeft: "10px",
-                    backgroundColor: "black",
-                    width: "97px",
-                  }}
-                  orientation="horizontal"
-                />
-              </Box>
+                  backgroundColor: "black",
+                  width: "97px",
+                }}
+                orientation="horizontal"
+              />
+            </Box>
+            <Box>
+              <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
+                Or Login with
+              </Typography>
+            </Box>
+            <Box>
+              <Divider
+                sx={{
+                  marginTop: "10px",
+                  marginLeft: "10px",
+                  backgroundColor: "black",
+                  width: "97px",
+                }}
+                orientation="horizontal"
+              />
             </Box>
           </Box>
-          <Box sx={{ justifyContent: "center", textAlign: "center" }}>
-            <Button
-              variant="contained"
-              type="submit"
-              onClick={() => handleGoogleLogin()}
-              sx={{
-                borderRadius: "48px",
+        </Box>
+        <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={() => handleGoogleLogin()}
+            sx={{
+              borderRadius: "48px",
+              backgroundColor: "white",
+              color: "black",
+              width: "310px",
+              marginTop: "20px",
+              paddingTop: "20px",
+              paddingBottom: "20px",
+              "& .MuiButton-startIcon": {
+                marginRight: "8px", // Adjust the spacing between the icon and text
+              },
+              "&:hover": {
                 backgroundColor: "white",
-                color: "black",
-                width: "310px",
-                marginTop: "20px",
-                paddingTop: "20px",
-                paddingBottom: "20px",
-                "& .MuiButton-startIcon": {
-                  marginRight: "8px", // Adjust the spacing between the icon and text
-                },
-                "&:hover": {
-                  backgroundColor: "white",
-                },
-              }}
-              startIcon={
-                <Image
-                  src={googleLogo}
-                  alt="Google Logo"
-                  width={24}
-                  height={24}
-                />
-              }
-            >
-              Sign Up with Google
-            </Button>
-          </Box>
-          {/* <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
+              },
+            }}
+            startIcon={
+              <Image
+                src={googleLogo}
+                alt="Google Logo"
+                width={24}
+                height={24}
+              />
+            }
+          >
+            Sign Up with Google
+          </Button>
+        </Box>
+        {/* <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
             <Box sx={{ marginTop: 2, borderRadius: "50px" }}>
               <GoogleLogin
                 onSuccess={handleGoogleLoginSuccess}
@@ -354,8 +322,8 @@ const Signup = () => {
               />
             </Box>
           </GoogleOAuthProvider> */}
-        </Box>
       </Box>
+    </Box>
     // </Box>
   );
 };
