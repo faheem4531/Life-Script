@@ -21,6 +21,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import googleLogo from "../../../public/googleIcon.svg";
+import fbLogo from "../../../public/fbIcon.svg"
+
 
 import { toast } from "react-toastify";
 
@@ -282,21 +284,24 @@ const Signup = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+        <Box sx={{display:'flex', gap:1 ,justifyContent:'center'}}>
+        <Box >
           <Button
             variant="contained"
             type="submit"
             onClick={() => handleGoogleLogin()}
             sx={{
-              borderRadius: "48px",
+              alignItems:'center',
+              borderRadius: "13px",
               backgroundColor: "white",
               color: "black",
-              width: "310px",
+              width: "68px",
+              height:'47px',
+
               marginTop: "20px",
-              paddingTop: "20px",
-              paddingBottom: "20px",
+              // paddingTop: "20px",
+              // paddingBottom: "20px",
               "& .MuiButton-startIcon": {
-                marginRight: "8px", // Adjust the spacing between the icon and text
               },
               "&:hover": {
                 backgroundColor: "white",
@@ -311,8 +316,41 @@ const Signup = () => {
               />
             }
           >
-            Sign Up with Google
           </Button>
+        </Box>
+        <Box>
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={() => handleGoogleLogin()}
+            sx={{
+              alignItems:'center',
+              borderRadius: "13px",
+              backgroundColor: "white",
+              color: "black",
+              width: "68px",
+              height:'47px',
+              
+              marginTop: "20px",
+              // paddingTop: "20px",
+              // paddingBottom: "20px",
+              "& .MuiButton-startIcon": {
+              },
+              "&:hover": {
+                backgroundColor: "white",
+              },
+            }}
+            startIcon={
+              <Image
+                src={fbLogo}
+                alt="Google Logo"
+                width={24}
+                height={24}
+              />
+            }
+          >
+          </Button>
+        </Box>
         </Box>
         {/* <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
             <Box sx={{ marginTop: 2, borderRadius: "50px" }}>

@@ -22,6 +22,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import googleLogo from "../../../public/googleIcon.svg";
+import fbLogo from "../../../public/fbIcon.svg"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -277,21 +278,24 @@ const Login = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+        <Box sx={{display:'flex', gap:1 ,justifyContent:'center'}}>
+        <Box >
           <Button
             variant="contained"
             type="submit"
             onClick={() => handleGoogleLogin()}
             sx={{
-              borderRadius: "48px",
+              alignItems:'center',
+              borderRadius: "13px",
               backgroundColor: "white",
               color: "black",
-              width: "310px",
+              maxWidth: "68px",
+              maxHeight:'47px',
+
               marginTop: "20px",
-              paddingTop: "20px",
-              paddingBottom: "20px",
+              // paddingTop: "20px",
+              // paddingBottom: "20px",
               "& .MuiButton-startIcon": {
-                marginRight: "8px", // Adjust the spacing between the icon and text
               },
               "&:hover": {
                 backgroundColor: "white",
@@ -306,8 +310,41 @@ const Login = () => {
               />
             }
           >
-            Login with Google
           </Button>
+        </Box>
+        <Box>
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={() => handleGoogleLogin()}
+            sx={{
+              alignItems:'center',
+              borderRadius: "13px",
+              backgroundColor: "white",
+              color: "black",
+              maxWidth: "68px",
+              maxHeight:'47px',
+
+              marginTop: "20px",
+              // paddingTop: "20px",
+              // paddingBottom: "20px",
+              "& .MuiButton-startIcon": {
+              },
+              "&:hover": {
+                backgroundColor: "white",
+              },
+            }}
+            startIcon={
+              <Image
+                src={fbLogo}
+                alt="Google Logo"
+                width={24}
+                height={24}
+              />
+            }
+          >
+          </Button>
+        </Box>
         </Box>
       </Box>
       {/* </Box> */}
