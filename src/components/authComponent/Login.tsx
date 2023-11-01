@@ -50,6 +50,7 @@ const Login = () => {
   // }
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
@@ -61,6 +62,10 @@ const Login = () => {
 
   const handleRememberMeChange = (event: any) => {
     setRememberMe(event.target.checked);
+  };
+
+  const handleForgotPasswordClick = () => {
+    setIsForgotPasswordClicked(true);
   };
 
   const formik = useFormik({
@@ -112,11 +117,11 @@ const Login = () => {
       >
         <Box textAlign={"center"}>
           <Image src={Logo} width={184} height={100} alt="Logo Image" />
-          <Typography
+          {/* <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
             Your Autobiography Companion
-          </Typography>
+          </Typography> */}
         </Box>
         <Box sx={{ marginTop: "100px" }}>
           <Typography sx={{ color: "#5B5B5B" }}>
@@ -305,7 +310,7 @@ const Login = () => {
           </Box>
           <Box sx={{ justifyContent: "center", textAlign: "center" }}>
             <Button
-              variant="contained"
+              variant="Login"
               type="submit"
               sx={{
                 borderRadius: "48px",

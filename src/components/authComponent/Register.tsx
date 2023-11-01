@@ -65,7 +65,7 @@ export default function Register() {
             md: "190px",
           },
 
-          background: "wheat",
+          background: "white",
           borderRadius: "40px",
         }}
       >
@@ -83,7 +83,7 @@ export default function Register() {
                 backgroundColor: "#186F65", // Set green background for the active tab
                 color: "white",
               },
-            }, padding:'10px',
+            }, 
           }}
           value={value}
           onChange={handleChange}
