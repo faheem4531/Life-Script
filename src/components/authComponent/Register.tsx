@@ -50,7 +50,11 @@ export default function Register() {
   };
 
   return (
-    <Box display="flex" justifyContent={"space-around"} sx={{ padding: 3 }}>
+    <Box
+      display="flex"
+      justifyContent={"space-around"}
+      sx={{ padding: 3, backgroundColor: "#FFF7EA" }}
+    >
       <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
         {value == 0 ? (
           <Image
