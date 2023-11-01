@@ -30,6 +30,46 @@ export async function loginApi(data: LoginData) {
   }
 }
 
+export async function googleLoginApi(data: { credential: string }) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/google/callback/sign-in", data);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
+
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function googleSignupApi(data: { credential: string }) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/google/callback/sign-up", data);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
+
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function updatePasswordApi(data: UpdatePasswordData) {
   try {
     const id = data.id;

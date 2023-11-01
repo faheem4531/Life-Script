@@ -1,5 +1,5 @@
 import { LoginData } from "@/interface/authInterface";
-import { login } from "@/store/slices/authSlice";
+import { googleLogin, login } from "@/store/slices/authSlice";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
@@ -13,6 +13,7 @@ import {
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -25,36 +26,13 @@ import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
 
 const Login = () => {
-  // const isXs = useMediaQuery("(max-width:600px)");
-  // const isMd = useMediaQuery("(min-width:601px) and (max-width:960px)");
-  // const isLg = useMediaQuery("(min-width:961px)");
-  // const isXl = useMediaQuery('(min-width: 1050px)');
-
-  // let imageStyle = {
-  //   width: "300px",
-  //   height: "400px",
-  // };
-
-  // if (isMd) {
-  //   imageStyle = {
-  //     width: "400px",
-  //     height: "500px",
-  //   };
-  // }
-
-  // if (isLg) {
-  //   imageStyle = {
-  //     width: "500px",
-  //     height: "700px",
-  //   };
-  // }
-
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
   const router = useRouter();
+  const [loginFailed, setLoginFailed] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -64,8 +42,26 @@ const Login = () => {
     setRememberMe(event.target.checked);
   };
 
-  const handleForgotPasswordClick = () => {
-    setIsForgotPasswordClicked(true);
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
+    onError: () => handleGoogleLoginFailure(),
+  });
+
+  const handleGoogleLoginSuccess = (e: any) => {
+    console.log("test", e);
+    dispatch(googleLogin({ credential: e.access_token }))
+      .unwrap()
+      .then(() => {
+        toast.success("Signed in successfully");
+        router.push("/change-password/getStarted");
+      })
+      .catch((error: any) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogleLoginFailure = () => {
+    toast.error("Failed to signup with google");
   };
 
   const formik = useFormik({
@@ -75,6 +71,7 @@ const Login = () => {
     },
     onSubmit: async (data: LoginData) => {
       console.log("data", data);
+      setLoginFailed(false);
       setLoading(true);
       dispatch(login(data))
         .unwrap()
@@ -84,7 +81,7 @@ const Login = () => {
           router.push("/change-password/getStarted");
         })
         .catch((error: any) => {
-          toast.error(error.message);
+          setLoginFailed(true);
           setLoading(false);
         });
     },
@@ -209,12 +206,18 @@ const Login = () => {
                 {formik.errors.password}
               </span>
             )}
+            {loginFailed && (
+              <Box sx={{ marginTop: "5px" }}>
+                <Typography sx={{ color: "red" }}>
+                  Incorrect password or email
+                </Typography>
+              </Box>
+            )}
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
                 // gap: 15,
-                marginTop: "10px",
                 // marginLeft: { sm: "", md: "120px" },
                 // justifyContent: "center",
               }}
@@ -263,7 +266,7 @@ const Login = () => {
                 backgroundColor: "#186F65",
                 color: "white",
                 width: "310px",
-                marginTop: "20px",
+                marginTop: "10px",
                 "&:hover": {
                   backgroundColor: "#186F65",
                 },
@@ -312,6 +315,7 @@ const Login = () => {
             <Button
               variant="Login"
               type="submit"
+              onClick={() => handleGoogleLogin()}
               sx={{
                 borderRadius: "48px",
                 backgroundColor: "white",
