@@ -1,5 +1,5 @@
 import { SignupData } from "@/interface/authInterface";
-import { signup } from "@/store/slices/authSlice";
+import { googleSignup, signup } from "@/store/slices/authSlice";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
@@ -16,6 +16,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
@@ -29,6 +30,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
+  const router = useRouter();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -40,14 +42,46 @@ const Signup = () => {
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
+    onError: () => handleGoogleLoginFailure(),
   });
 
   const handleGoogleLoginSuccess = (e: any) => {
     console.log("test", e);
+    dispatch(googleSignup({ credential: e.access_token }))
+      .unwrap()
+      .then(() => {
+        toast.success("Signed up successfully");
+        router.push("/change-password/getStarted");
+      })
+      .catch((error: any) => {
+        toast.error(error.message);
+      });
   };
 
+  // const handleGoogleLoginSuccess = (tokenResponse: any) => {
+  //   const accessToken = tokenResponse.access_token;
+
+  //   // Use the access token to fetch user credentials from Google API
+  // fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
+  //   headers: {
+  //     Authorization: `Bearer ${accessToken}`,
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((userData) => {
+  //     // Now you have the user's credentials in userData
+  //     console.log("User Credentials:", userData);
+
+  //     // You can do whatever you need with the user's credentials here
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching user data:", error);
+  //     // Handle the error here
+  //   });
+  // };
+
   const handleGoogleLoginFailure = () => {
-    // Handle the case when Google login fails.
+    toast.error("Failed to signup with google");
   };
 
   const formik = useFormik({
@@ -61,6 +95,7 @@ const Signup = () => {
         .unwrap()
         .then(() => {
           toast.success("Verification email sent");
+          router.push(`/verify/verificationSent/?email=${data.email}`);
         })
         .catch((error: any) => {
           toast.error(error?.message || "Failed to sign up");

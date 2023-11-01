@@ -12,6 +12,8 @@ import { signOut } from "next-auth/react";
 import {
   changePasswordApi,
   forgetPasswordApi,
+  googleLoginApi,
+  googleSignupApi,
   loginApi,
   signupApi,
   updatePasswordApi,
@@ -63,6 +65,30 @@ export const login = createAsyncThunk<UserData, LoginData>(
   async (data) => {
     try {
       const response = await loginApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const googleLogin = createAsyncThunk<UserData, any>(
+  "auth/googleLogin",
+  async (data: { credential: string }) => {
+    try {
+      const response = await googleLoginApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const googleSignup = createAsyncThunk<UserData, any>(
+  "auth/googleLogin",
+  async (data: { credential: string }) => {
+    try {
+      const response = await googleSignupApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
