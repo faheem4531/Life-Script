@@ -65,15 +65,17 @@ export default function Register() {
             alt="Signup Image"
           />
         )}
-      </Box>
+      </Box>  
       <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
         </Box>
+        <Box sx={{display:'flex', justifyContent:'center'}}>
         <Box
           sx={{
             borderBottom: 1,
             borderColor: "divider",
+            maxWidth: '580px',
 
             background: "white",
             borderRadius: "40px",
@@ -108,7 +110,7 @@ export default function Register() {
             <Tab label="Register" {...a11yProps(1)} />
           </Tabs>
         </Box>
-
+        </Box>
         <CustomTabPanel value={value} index={0}>
           <Login />
         </CustomTabPanel>
