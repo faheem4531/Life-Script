@@ -50,7 +50,7 @@ export default function Register() {
   };
 
   return (
-    <Box display="flex" justifyContent={"space-around"}>
+    <Box display="flex" justifyContent={"space-around"} sx={{ padding: 3 }}>
       <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
         {value == 0 ? (
           <Image
@@ -61,7 +61,7 @@ export default function Register() {
         ) : (
           <Image
             src={SignupImage}
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "auto", width: "100%" }}
             alt="Signup Image"
           />
         )}
