@@ -21,7 +21,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import LoginImage from "../../../public/Login.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
 
@@ -97,47 +96,30 @@ const Login = () => {
     // <Grid container spacing={1}>
     //   <Grid item xs={12} md={6} sm={6} textAlign={"center"}>
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-      <Box sx={{ margin: 0 }}>
-        <Image
-          src={LoginImage}
-          alt="image of login"
-          width={650}
-          height={700}
-          // style={imageStyle}
-        />
 
-        {/* </Grid> */}
-      </Box>
       {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
       // textAlign={'center'}
       >
-        <Box textAlign={"center"}>
-          <Image src={Logo} width={184} height={100} alt="Logo Image" />
-          {/* <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
-          >
-            Your Autobiography Companion
-          </Typography> */}
-        </Box>
-        <Box sx={{ marginTop: "100px" }}>
+       
+        {/* <Box sx={{ marginTop: "100px" }}>
           <Typography sx={{ color: "#5B5B5B" }}>
             Continue the immersive experience of expressing your
           </Typography>
           <Typography sx={{ color: "#5B5B5B" }}>
             {" "}
             personal narrative in a unique way.
-          </Typography>
+          </Typography> */}
 
           <Box>
             <Typography
               sx={{
-                marginRight: "300px",
-                marginTop: "56px",
+                // marginRight: "300px",
+                // marginTop: "56px",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email Address
+              Email 
             </Typography>
             <TextField
               variant="outlined"
@@ -161,9 +143,9 @@ const Login = () => {
             <Box>
               <Typography
                 sx={{
-                  marginRight: "300px",
+                  // marginRight: "300px",
                   marginTop: "40px",
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                  // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
                 Password
@@ -313,7 +295,7 @@ const Login = () => {
           </Box>
           <Box sx={{ justifyContent: "center", textAlign: "center" }}>
             <Button
-              variant="Login"
+              variant="contained"
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
@@ -344,8 +326,8 @@ const Login = () => {
             </Button>
           </Box>
         </Box>
-      </Box>
-    </Box>
+      {/* </Box> */}
+     </Box>
     // {/* </Grid> */}
     // {/* </Grid> */}
   );

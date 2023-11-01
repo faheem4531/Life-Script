@@ -2,9 +2,13 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
+import LoginImage from "../../../public/Login.svg";
+import SignupImage from "../../../public/EmailVerification.svg";
 import Box from "@mui/material/Box";
 import Login from "./Login";
 import Signup from "./Signup";
+import Logo from "../../../public/logo.svg";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,58 +51,77 @@ export default function Register() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box
-        sx={{
-          borderBottom: 1,
-          borderColor: "divider",
-          position: {
-            xs: "absolute",
-            md: "absolute",
-          },
-          top: {
-            xs: "580px",
-            md: "200px",
-          },
-          right: {
-            xs: "160px",
-            md: "190px",
-          },
-
-          background: "white",
-          borderRadius: "40px",
-        }}
-      >
-        <Tabs
-          sx={{
-            "& .MuiTabs-indicator": {
-              display: "none", // Hide the indicator line
-            },
-            "& .MuiTab-root": {
-              width: "150px",
-              borderRadius: "25px", // Make the tabs circular
-              backgroundColor: "transparent", // Clear the background color
-              color: "#186F65",
-              "&.Mui-selected": {
-                backgroundColor: "#186F65", // Set green background for the active tab
-                color: "white",
-              },
-            }, 
-          }}
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="Login" {...a11yProps(0)} />
-          <Tab label="Register" {...a11yProps(1)} />
-        </Tabs>
+    <Box display="flex" justifyContent={"space-around"} >
+      <Box sx={{ margin: 0 }}>
+        {value == 0 ? (
+          <Image
+            src={LoginImage}
+            alt="image of login"
+            width={650}
+            height={700}
+          />
+        ) : (
+          <Image
+            src={SignupImage}
+            width={650}
+            height={700}
+            alt="Signup Image"
+          />
+        )}
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <Login />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <Signup />
-      </CustomTabPanel>
-    </Box>
+      <Box>
+      <Box textAlign={"center"}>
+            <Image src={Logo} width={223} height={165} alt="Logo Image" />
+            </Box>
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor:'divider',
+
+            background: "white",
+            borderRadius: "40px",
+          }}
+        >
+         
+
+            <Tabs
+              sx={{
+                
+                "& .MuiTabs-flexContainer": {
+                  marginTop:'82px',
+                  justifyContent: "center", 
+                },
+                "& .MuiTabs-indicator": {
+                  display: "none", // Hide the indicator line
+                },
+                "& .MuiTab-root": {
+                  width: "300px",
+                  borderRadius: "25px", 
+                  // backgroundColor: "wheat", 
+                  
+                  color: "#186F65",
+                  "&.Mui-selected": {
+                    backgroundColor: "#186F65", 
+                    color: "white",
+                  },
+                },
+              }}
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="Login" {...a11yProps(0)} />
+              <Tab label="Register" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+        
+        <CustomTabPanel value={value} index={0}>
+          <Login />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <Signup />
+        </CustomTabPanel>
+      </Box>
+      </Box>
   );
 }

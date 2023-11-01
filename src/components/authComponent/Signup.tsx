@@ -20,7 +20,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import SignupImage from "../../../public/Signup.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
 
@@ -112,41 +111,25 @@ const Signup = () => {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-      <Box sx={{ margin: 0 }}>
-        <Image
-          src={SignupImage}
-          width={650}
-          height={700}
-          alt="Signup Image"
-          // style={imageStyle}
-        />
-      </Box>
       <Box>
-        <Box textAlign={"center"}>
-          <Image src={Logo} width={184} height={100} alt="Logo Image" />
-          <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
-          >
-            Your Autobiography Companion
-          </Typography>
-        </Box>
-        <Box sx={{ marginTop: "100px" }}>
+        
+        {/* <Box sx={{ marginTop: "100px" }}>
           <Typography sx={{ color: "#5B5B5B" }}>
             Continue the immersive experience of expressing your
           </Typography>
           <Typography sx={{ color: "#5B5B5B" }}>
             {" "}
             personal narrative in a unique way.
-          </Typography>
+          </Typography> */}
           <Box>
             <Typography
               sx={{
                 marginRight: "300px",
                 marginTop: "56px",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email Address
+              Email 
             </Typography>
             <TextField
               variant="outlined"
@@ -169,7 +152,7 @@ const Signup = () => {
           <Box>
             <Typography
               sx={{
-                marginRight: "300px",
+                // marginRight: "300px",
                 marginTop: "40px",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
@@ -198,7 +181,7 @@ const Signup = () => {
             <Box>
               <Typography
                 sx={{
-                  marginRight: "300px",
+                  // marginRight: "300px",
                   marginTop: "40px",
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
@@ -373,7 +356,7 @@ const Signup = () => {
           </GoogleOAuthProvider> */}
         </Box>
       </Box>
-    </Box>
+    // </Box>
   );
 };
 
