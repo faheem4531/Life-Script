@@ -5,7 +5,8 @@ class API {
 
   constructor() {
     this.instance = axios.create({
-      baseURL: "http://localhost:8000", // base URL
+      baseURL:
+        "http://lifescript-env.eba-fdhnvpkx.eu-north-1.elasticbeanstalk.com/", // base URL
     });
 
     this.instance.interceptors.request.use(
