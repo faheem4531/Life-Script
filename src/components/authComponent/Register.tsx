@@ -54,10 +54,11 @@ export default function Register() {
       display="flex"
       justifyContent={"space-around"}
       alignItems="flex-start"
-      sx={{ p: 3, backgroundColor: "#FFF7EA" }}
+      sx={{ p: 2, backgroundColor: "#FFF7EA" }}
       overflow="hidden"
+      height="100vh"
     >
-      <Box sx={{ margin: 0, height: "auto", minWidth: "55%" }}>
+      <Box sx={{ height: "auto" }}>
         {value == 0 ? (
           <Image
             src={LoginImage}
@@ -65,13 +66,19 @@ export default function Register() {
             style={{
               height: "100%",
               maxHeight: "92vh",
-              width: "auto",
+              width: "100%",
+              objectFit: "contain",
             }}
           />
         ) : (
           <Image
             src={SignupImage}
-            style={{ height: "100%", maxHeight: "92vh", width: "auto" }}
+            style={{
+              height: "100%",
+              maxHeight: "92vh",
+              width: "100%",
+              objectFit: "contain",
+            }}
             alt="Signup Image"
           />
         )}
@@ -133,14 +140,12 @@ export default function Register() {
             </Tabs>
           </Box>
         </Box>
-        <Box sx={{ pr: "0px" }}>
-          <CustomTabPanel value={value} index={0}>
-            <Login />
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={1}>
-            <Signup />
-          </CustomTabPanel>
-        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <Login />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <Signup />
+        </CustomTabPanel>
       </Box>
     </Box>
   );

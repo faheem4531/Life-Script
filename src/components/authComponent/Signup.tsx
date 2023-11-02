@@ -90,40 +90,9 @@ const Signup = () => {
       <Box>
         <Box>
           <Typography
-            sx={
-              {
-                // marginRight: "300px",
-                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }
-            }
-          >
-            Name
-          </Typography>
-          <Box>
-          <TextField
-            variant="outlined"
-            placeholder="Enter your Full Name"
-            name="name"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            sx={{
-              marginTop: "10px",
-              "& .MuiOutlinedInput-root": {
-                backgroundColor:'white',
-                borderRadius: "50px", // Adjust the border radius as needed
-              },
-              width: "460px",
-            }}
-          />
-        </Box>
-        {formik.touched.name && formik.errors.name && (
-          <span style={{ color: "red" }}>{formik.errors.name}</span>
-        )}
-          
-          <Typography
             sx={{
               // marginRight: "300px",
-              marginTop: "24px",
+              // marginTop: "24px",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -139,8 +108,7 @@ const Signup = () => {
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
-                backgroundColor:'white',
-
+                backgroundColor: "white",
               },
               width: "460px",
             }}
@@ -149,7 +117,36 @@ const Signup = () => {
         {formik.touched.email && formik.errors.email && (
           <span style={{ color: "red" }}>{formik.errors.email}</span>
         )}
-       
+
+        <Typography
+          sx={{
+            // marginRight: "300px",
+            // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            marginTop: "24px",
+          }}
+        >
+          Name
+        </Typography>
+        <Box>
+          <TextField
+            variant="outlined"
+            placeholder="Enter your Full Name"
+            name="name"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            sx={{
+              marginTop: "10px",
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: "white",
+                borderRadius: "50px", // Adjust the border radius as needed
+              },
+              width: "460px",
+            }}
+          />
+        </Box>
+        {formik.touched.name && formik.errors.name && (
+          <span style={{ color: "red" }}>{formik.errors.name}</span>
+        )}
 
         <Box>
           <Box>
@@ -167,8 +164,7 @@ const Signup = () => {
                 marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
-                  backgroundColor:'white',
-
+                  backgroundColor: "white",
                 },
                 width: "460px",
               }}

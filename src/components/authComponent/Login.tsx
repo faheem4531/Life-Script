@@ -101,7 +101,7 @@ const Login = () => {
           </Typography>
           <TextField
             variant="outlined"
-            placeholder="Enter Your E-mail Address"
+            placeholder="Enter your Email address"
             name="email"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -109,8 +109,7 @@ const Login = () => {
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px",
-                backgroundColor:'white',
-
+                backgroundColor: "white",
               },
               width: "460px",
             }}
@@ -135,11 +134,11 @@ const Login = () => {
                 marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
-                  backgroundColor:'white',
+                  backgroundColor: "white",
                 },
                 width: "460px",
               }}
-              placeholder="Password"
+              placeholder="Enter your password"
               type={showPassword ? "text" : "password"}
               name="password"
               onBlur={formik.handleBlur}
