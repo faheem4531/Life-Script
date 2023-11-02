@@ -109,6 +109,8 @@ const Login = () => {
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px",
+                backgroundColor:'white',
+
               },
               width: "460px",
             }}
@@ -133,6 +135,7 @@ const Login = () => {
                 marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
+                  backgroundColor:'white',
                 },
                 width: "460px",
               }}
