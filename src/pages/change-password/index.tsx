@@ -90,9 +90,13 @@ const ResetPassword = () => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+    <Box sx={{ display: "flex", justifyContent: "space-around",backgroundColor:'#FFF7EA' }}>
       <Box sx={{ margin: 0 }}>
-        <Image src={Forget} alt="image of login" width={650} height={700} />
+      <Image
+            src={Forget}
+            alt="login Image"
+            style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
+          />
       </Box>
 
       <Box>
@@ -122,6 +126,7 @@ const ResetPassword = () => {
             sx={{
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
+                backgroundColor:'white',
                 borderRadius: "50px", // Adjust the border radius as needed
               },
               width: "580px",
@@ -166,6 +171,7 @@ const ResetPassword = () => {
             sx={{
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
+                backgroundColor:'white',
                 borderRadius: "50px", // Adjust the border radius as needed
               },
               width: "580px",
