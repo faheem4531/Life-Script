@@ -53,17 +53,23 @@ const ForgetPassword = () => {
   });
 
   return (
-    <Grid sx={{ display: "flex", justifyContent: "space-around", backgroundColor:'#FFF7EA', }}>
+    <Grid
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+        backgroundColor: "#FFF7EA",
+        p: "20px",
+        height: "100vh",
+      }}
+    >
       <Box sx={{ margin: 0 }}>
-      <Image
-            src={Forget}
-            alt="login Image"
-            style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-          />
-
+        <Image
+          src={Forget}
+          alt="login Image"
+          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
+        />
       </Box>
-      <Box
-      >
+      <Box>
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography
@@ -72,7 +78,7 @@ const ForgetPassword = () => {
             Forgot Password?{" "}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "171px" }}>
+        <Box sx={{ marginTop: "100px" }}>
           <Box>
             <Typography
               sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
@@ -85,7 +91,7 @@ const ForgetPassword = () => {
                 // marginRight: "300px",
                 marginTop: "34px",
                 // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                fontSize:'21px',
+                fontSize: "21px",
               }}
             >
               Email
@@ -100,10 +106,10 @@ const ForgetPassword = () => {
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
-                  backgroundColor:'white',
+                  backgroundColor: "white",
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
-                width: "580px",
+                width: "500px",
               }}
             />
           </Box>
@@ -120,7 +126,7 @@ const ForgetPassword = () => {
             sx={{
               justifyContent: "center",
               textAlign: "center",
-              marginTop: "112px",
+              marginTop: "60px",
             }}
           >
             <Button
@@ -131,7 +137,7 @@ const ForgetPassword = () => {
                 borderRadius: "48px",
                 backgroundColor: "#186F65",
                 color: "white",
-                width: "404px",
+                width: "300px",
                 padding: "15px",
                 "&:hover": {
                   backgroundColor: "#186F65",

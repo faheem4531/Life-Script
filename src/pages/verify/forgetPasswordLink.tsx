@@ -38,25 +38,33 @@ const ForgetPasswordLink = () => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" , backgroundColor:'#FFF7EA', }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+        backgroundColor: "#FFF7EA",
+        height: "100vh",
+        p: "20px",
+      }}
+    >
       <Box sx={{ margin: 0 }}>
-              <Image
-            src={Forget}
-            alt="login Image"
-            style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-          />
+        <Image
+          src={Forget}
+          alt="login Image"
+          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
+        />
       </Box>
 
       <Box>
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "50px" }}
+            sx={{ color: "#000000", fontSize: "30px", marginTop: "40px" }}
           >
             Forgot Password?{" "}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "232px" }}>
+        <Box sx={{ marginTop: "100px" }}>
           <Box>
             <Typography
               sx={{
