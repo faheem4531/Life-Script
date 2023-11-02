@@ -90,11 +90,12 @@ const Signup = () => {
       <Box>
         <Box>
           <Typography
-            sx={{
-              // marginRight: "300px",
-              marginTop: "30px",
-              // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-            }}
+            sx={
+              {
+                // marginRight: "300px",
+                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }
+            }
           >
             Email
           </Typography>
@@ -109,7 +110,7 @@ const Signup = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
               },
-              width: "580px",
+              width: "460px",
             }}
           />
         </Box>
@@ -120,7 +121,7 @@ const Signup = () => {
           <Typography
             sx={{
               // marginRight: "300px",
-              marginTop: "30px",
+              marginTop: "24px",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -137,7 +138,7 @@ const Signup = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
               },
-              width: "580px",
+              width: "460px",
             }}
           />
         </Box>
@@ -149,7 +150,7 @@ const Signup = () => {
             <Typography
               sx={{
                 // marginRight: "300px",
-                marginTop: "30px",
+                marginTop: "24px",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
@@ -161,7 +162,7 @@ const Signup = () => {
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
-                width: "580px",
+                width: "460px",
               }}
               placeholder="Password"
               name="password"
@@ -246,7 +247,7 @@ const Signup = () => {
             sx={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "30px",
+              marginTop: "20px",
             }}
           >
             <Box>
@@ -289,10 +290,10 @@ const Signup = () => {
                 borderRadius: "13px",
                 backgroundColor: "white",
                 color: "black",
-                width: "68px",
-                height: "47px",
+                maxWidth: "68px",
+                maxHeight: "47px",
 
-                marginTop: "20px",
+                marginTop: "10px",
                 "& .MuiButton-startIcon": {},
                 "&:hover": {
                   backgroundColor: "white",
@@ -317,12 +318,16 @@ const Signup = () => {
                 alignItems: "center",
                 borderRadius: "13px",
                 backgroundColor: "white",
-                color: "white",
-                width: "68px",
-                height: "47px",
-                marginTop: "20px",
+                color: "black",
+                maxWidth: "68px",
+                maxHeight: "47px",
+
+                marginTop: "10px",
+                // paddingTop: "20px",
+                // paddingBottom: "20px",
+                "& .MuiButton-startIcon": {},
                 "&:hover": {
-                  backgroundColor: "darkblue",
+                  backgroundColor: "white",
                 },
               }}
               startIcon={

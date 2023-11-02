@@ -2,14 +2,7 @@ import { LoginData } from "@/interface/authInterface";
 import { googleLogin, login } from "@/store/slices/authSlice";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -101,7 +94,6 @@ const Login = () => {
           <Typography
             sx={{
               // marginRight: "300px",
-              marginTop: "30px",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -116,9 +108,9 @@ const Login = () => {
             sx={{
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
-                borderRadius: "50px", // Adjust the border radius as needed
+                borderRadius: "50px",
               },
-              width: "580px",
+              width: "460px",
             }}
           />
         </Box>
@@ -130,7 +122,7 @@ const Login = () => {
             <Typography
               sx={{
                 // marginRight: "300px",
-                marginTop: "30px",
+                marginTop: "24px",
                 // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
@@ -142,7 +134,7 @@ const Login = () => {
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
-                width: "580px",
+                width: "460px",
               }}
               placeholder="Password"
               type={showPassword ? "text" : "password"}
@@ -184,14 +176,14 @@ const Login = () => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              marginTop: "30px",
+              justifyContent: "flex-end",
+              marginTop: "10px",
               // gap: 15,
               // marginLeft: { sm: "", md: "120px" },
               // justifyContent: "center",
             }}
           >
-            <Box>
+            {/* <Box>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -203,19 +195,18 @@ const Login = () => {
                 label="Remember Me"
                 sx={{
                   "& .MuiTypography-root": {
-                    // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
                     fontSize: "16",
                   },
                 }}
               />
-            </Box>
+            </Box> */}
             <Box
               sx={{ cursor: "pointer" }}
               onClick={(event: any) => router.push("/verify/forgetPassword")}
             >
               <Typography
                 sx={{
-                  marginTop: "9px",
+                  // marginTop: "9px",
                   // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
                   fontSize: "16",
                 }}
@@ -248,7 +239,7 @@ const Login = () => {
             sx={{
               display: "flex",
               justifyContent: "center",
-              marginTop: "34px",
+              marginTop: "20px",
             }}
           >
             <Box>
@@ -294,7 +285,7 @@ const Login = () => {
                 maxWidth: "68px",
                 maxHeight: "47px",
 
-                marginTop: "20px",
+                marginTop: "10px",
                 "& .MuiButton-startIcon": {},
                 "&:hover": {
                   backgroundColor: "white",
@@ -323,7 +314,7 @@ const Login = () => {
                 maxWidth: "68px",
                 maxHeight: "47px",
 
-                marginTop: "20px",
+                marginTop: "10px",
                 // paddingTop: "20px",
                 // paddingBottom: "20px",
                 "& .MuiButton-startIcon": {},
