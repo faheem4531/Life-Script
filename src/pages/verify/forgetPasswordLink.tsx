@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 
 import { useFormik } from "formik";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
@@ -11,6 +12,8 @@ import Logo from "../../../public/logo.svg";
 const ForgetPasswordLink = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const router = useRouter();
+  const { email } = router.query;
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -59,8 +62,7 @@ const ForgetPasswordLink = () => {
               }}
             >
               Reset Password link has been sent to <br />
-              JohnDoe01@gmail.com. Please click on the link to <br /> reset your
-              password
+              {email}. Please click on the link to <br /> reset your password
             </Typography>
           </Box>
         </Box>

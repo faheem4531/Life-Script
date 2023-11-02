@@ -50,10 +50,50 @@ export async function googleLoginApi(data: { credential: string }) {
   }
 }
 
+export async function facebookLoginApi(data: { credential: string }) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/facebook/callback/sign-in", data);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
+
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function googleSignupApi(data: { credential: string }) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/google/callback/sign-up", data);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
+
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function facebookSignupApi(data: { credential: string }) {
+  localStorage.clear();
+  try {
+    const res = await api.post("/auth/facebook/callback/sign-up", data);
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);

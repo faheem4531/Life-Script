@@ -53,9 +53,10 @@ export default function Register() {
     <Box
       display="flex"
       justifyContent={"space-around"}
+      alignItems="flex-start"
       sx={{ padding: 3, backgroundColor: "#FFF7EA" }}
     >
-      <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
+      <Box sx={{ margin: 0, height: "auto" }}>
         {value == 0 ? (
           <Image
             src={LoginImage}
@@ -70,9 +71,9 @@ export default function Register() {
           />
         )}
       </Box>
-      <Box sx={{ margin: 0, height: "100%", width: "100%" }}>
+      <Box sx={{ margin: 0, height: "auto" }}>
         <Box textAlign={"center"}>
-          <Image src={Logo} width={200} height={150} alt="Logo Image" />
+          <Image src={Logo} width={180} height={140} alt="Logo Image" />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Box

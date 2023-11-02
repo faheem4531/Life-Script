@@ -219,7 +219,7 @@ const ResetPassword = () => {
               textTransform: "none",
             }}
           >
-            Continue
+            Reset Password
           </Button>
 
           <Typography
@@ -229,7 +229,7 @@ const ResetPassword = () => {
               fontSize: "18px",
             }}
           >
-            After clicking Rest Password. You will be redirected to the <br />{" "}
+            After clicking Reset Password. You will be redirected to the <br />{" "}
             login page.
           </Typography>
         </Box>

@@ -39,7 +39,7 @@ const ForgetPassword = () => {
         .unwrap()
         .then(() => {
           toast.success("Email sent successfully");
-          router.push("/verify/forgetPasswordLink");
+          router.push(`/verify/forgetPasswordLink?email=${data.email}`);
         })
         .catch((error: any) => {
           toast.error(error.message);

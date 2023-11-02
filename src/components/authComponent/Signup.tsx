@@ -2,27 +2,20 @@ import { SignupData } from "@/interface/authInterface";
 import { googleSignup, signup } from "@/store/slices/authSlice";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import {
-  Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
-import fbLogo from "../../../public/fbIcon.svg"
-
 
 import { toast } from "react-toastify";
 
@@ -38,6 +31,10 @@ const Signup = () => {
 
   const handleRememberMeChange = (event: any) => {
     setRememberMe(event.target.checked);
+  };
+
+  const responseFacebook = (response: any) => {
+    console.log(response);
   };
 
   const handleGoogleLogin = useGoogleLogin({
@@ -190,13 +187,10 @@ const Signup = () => {
           {formik.touched.name && formik.errors.name && (
             <span style={{ color: "red" }}>{formik.errors.name}</span>
           )}
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
-              // gap: 15,
               marginTop: "10px",
-              // marginLeft: { sm: "", md: "120px" },
-              // justifyContent: "center",
               justifyContent: "space-between",
             }}
           >
@@ -227,7 +221,7 @@ const Signup = () => {
                 Forgot Password?
               </Typography>
             </Box>
-          </Box>
+          </Box> */}
         </Box>
         <Box sx={{ justifyContent: "center", textAlign: "center" }}>
           <Button
@@ -245,7 +239,7 @@ const Signup = () => {
               },
             }}
           >
-            Sign Up
+            Register
           </Button>
 
           <Box
@@ -284,82 +278,64 @@ const Signup = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{display:'flex', gap:1 ,justifyContent:'center'}}>
-        <Box >
-          <Button
-            variant="contained"
-            type="submit"
-            onClick={() => handleGoogleLogin()}
-            sx={{
-              alignItems:'center',
-              borderRadius: "13px",
-              backgroundColor: "white",
-              color: "black",
-              width: "68px",
-              height:'47px',
+        <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
+          <Box>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={() => handleGoogleLogin()}
+              sx={{
+                alignItems: "center",
+                borderRadius: "13px",
+                backgroundColor: "white",
+                color: "black",
+                width: "68px",
+                height: "47px",
 
-              marginTop: "20px",
-              // paddingTop: "20px",
-              // paddingBottom: "20px",
-              "& .MuiButton-startIcon": {
-              },
-              "&:hover": {
+                marginTop: "20px",
+                "& .MuiButton-startIcon": {},
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              startIcon={
+                <Image
+                  src={googleLogo}
+                  alt="Google Logo"
+                  width={24}
+                  height={24}
+                />
+              }
+            ></Button>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={() => signIn("facebook")}
+              sx={{
+                alignItems: "center",
+                borderRadius: "13px",
                 backgroundColor: "white",
-              },
-            }}
-            startIcon={
-              <Image
-                src={googleLogo}
-                alt="Google Logo"
-                width={24}
-                height={24}
-              />
-            }
-          >
-          </Button>
+                color: "white",
+                width: "68px",
+                height: "47px",
+                marginTop: "20px",
+                "&:hover": {
+                  backgroundColor: "darkblue",
+                },
+              }}
+              startIcon={
+                <Image
+                  src={fbLogo}
+                  alt="Facebook Logo"
+                  width={24}
+                  height={24}
+                />
+              }
+            ></Button>
+          </Box>
         </Box>
-        <Box>
-          <Button
-            variant="contained"
-            type="submit"
-            onClick={() => handleGoogleLogin()}
-            sx={{
-              alignItems:'center',
-              borderRadius: "13px",
-              backgroundColor: "white",
-              color: "black",
-              width: "68px",
-              height:'47px',
-              
-              marginTop: "20px",
-              // paddingTop: "20px",
-              // paddingBottom: "20px",
-              "& .MuiButton-startIcon": {
-              },
-              "&:hover": {
-                backgroundColor: "white",
-              },
-            }}
-            startIcon={
-              <Image
-                src={fbLogo}
-                alt="Google Logo"
-                width={24}
-                height={24}
-              />
-            }
-          >
-          </Button>
-        </Box>
-        </Box>
-        {/* <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
-            <Box sx={{ marginTop: 2, borderRadius: "50px" }}>
-              <GoogleLogin
-                onSuccess={handleGoogleLoginSuccess}
-                onError={handleGoogleLoginFailure}
-              />
-            </Box>
-          </GoogleOAuthProvider> */}
       </Box>
     </Box>
     // </Box>

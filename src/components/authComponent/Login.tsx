@@ -18,11 +18,12 @@ import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
+import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
-import fbLogo from "../../../public/fbIcon.svg"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,6 +33,7 @@ const Login = () => {
   const dispatch: any = useDispatch();
   const router = useRouter();
   const [loginFailed, setLoginFailed] = useState(false);
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -103,7 +105,7 @@ const Login = () => {
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
-            Email
+            {t("login-page.email")}
           </Typography>
           <TextField
             variant="outlined"
@@ -278,73 +280,62 @@ const Login = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{display:'flex', gap:1 ,justifyContent:'center'}}>
-        <Box >
-          <Button
-            variant="contained"
-            type="submit"
-            onClick={() => handleGoogleLogin()}
-            sx={{
-              alignItems:'center',
-              borderRadius: "13px",
-              backgroundColor: "white",
-              color: "black",
-              maxWidth: "68px",
-              maxHeight:'47px',
-
-              marginTop: "20px",
-              // paddingTop: "20px",
-              // paddingBottom: "20px",
-              "& .MuiButton-startIcon": {
-              },
-              "&:hover": {
+        <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
+          <Box>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={() => handleGoogleLogin()}
+              sx={{
+                alignItems: "center",
+                borderRadius: "13px",
                 backgroundColor: "white",
-              },
-            }}
-            startIcon={
-              <Image
-                src={googleLogo}
-                alt="Google Logo"
-                width={24}
-                height={24}
-              />
-            }
-          >
-          </Button>
-        </Box>
-        <Box>
-          <Button
-            variant="contained"
-            type="submit"
-            onClick={() => handleGoogleLogin()}
-            sx={{
-              alignItems:'center',
-              borderRadius: "13px",
-              backgroundColor: "white",
-              color: "black",
-              maxWidth: "68px",
-              maxHeight:'47px',
+                color: "black",
+                maxWidth: "68px",
+                maxHeight: "47px",
 
-              marginTop: "20px",
-              // paddingTop: "20px",
-              // paddingBottom: "20px",
-              "& .MuiButton-startIcon": {
-              },
-              "&:hover": {
+                marginTop: "20px",
+                "& .MuiButton-startIcon": {},
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              startIcon={
+                <Image
+                  src={googleLogo}
+                  alt="Google Logo"
+                  width={24}
+                  height={24}
+                />
+              }
+            ></Button>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={() => handleGoogleLogin()}
+              sx={{
+                alignItems: "center",
+                borderRadius: "13px",
                 backgroundColor: "white",
-              },
-            }}
-            startIcon={
-              <Image
-                src={fbLogo}
-                alt="Google Logo"
-                width={24}
-                height={24}
-              />
-            }
-          >
-          </Button>
-        </Box>
+                color: "black",
+                maxWidth: "68px",
+                maxHeight: "47px",
+
+                marginTop: "20px",
+                // paddingTop: "20px",
+                // paddingBottom: "20px",
+                "& .MuiButton-startIcon": {},
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              startIcon={
+                <Image src={fbLogo} alt="Google Logo" width={24} height={24} />
+              }
+            ></Button>
+          </Box>
         </Box>
       </Box>
       {/* </Box> */}

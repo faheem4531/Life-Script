@@ -11,6 +11,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { signOut } from "next-auth/react";
 import {
   changePasswordApi,
+  facebookLoginApi,
+  facebookSignupApi,
   forgetPasswordApi,
   googleLoginApi,
   googleSignupApi,
@@ -85,10 +87,34 @@ export const googleLogin = createAsyncThunk<UserData, any>(
 );
 
 export const googleSignup = createAsyncThunk<UserData, any>(
-  "auth/googleLogin",
+  "auth/googleSignup",
   async (data: { credential: string }) => {
     try {
       const response = await googleSignupApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const facebookLogin = createAsyncThunk<UserData, any>(
+  "auth/facebookLogin",
+  async (data: { credential: string }) => {
+    try {
+      const response = await facebookLoginApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const facebookSignup = createAsyncThunk<UserData, any>(
+  "auth/facebookSignup",
+  async (data: { credential: string }) => {
+    try {
+      const response = await facebookSignupApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
