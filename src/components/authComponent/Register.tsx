@@ -54,34 +54,47 @@ export default function Register() {
       display="flex"
       justifyContent={"space-around"}
       alignItems="flex-start"
-      sx={{ padding: 3, backgroundColor: "#FFF7EA" }}
+      sx={{ pt: 1, pb: 1, backgroundColor: "#FFF7EA" }}
+      overflow="hidden"
     >
-      <Box sx={{ margin: 0, height: "auto" }}>
+      <Box sx={{ margin: 0, height: "auto", minWidth: "55%" }}>
         {value == 0 ? (
           <Image
             src={LoginImage}
-            alt="image of login"
-            style={{ height: "100%", width: "100%" }}
+            alt="login Image"
+            style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
           />
         ) : (
           <Image
             src={SignupImage}
-            style={{ height: "auto", width: "100%" }}
+            style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
             alt="Signup Image"
           />
         )}
       </Box>
-      <Box sx={{ margin: 0, height: "auto" }}>
+      <Box
+        sx={{
+          margin: 0,
+          height: "auto",
+          minWidth: "45%",
+        }}
+      >
         <Box textAlign={"center"}>
-          <Image src={Logo} width={180} height={140} alt="Logo Image" />
+          <Image src={Logo} width={160} height={130} alt="Logo Image" />
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            pl: "20px",
+          }}
+        >
           <Box
             sx={{
-              marginTop: "40px",
+              marginTop: "30px",
               height: "auto",
               border: "1px solid black",
-              maxWidth: "580px",
+              maxWidth: "460px",
 
               background: "white",
               borderRadius: "40px",
@@ -96,7 +109,7 @@ export default function Register() {
                   display: "none", // Hide the indicator line
                 },
                 "& .MuiTab-root": {
-                  width: "290px",
+                  width: "230px",
                   borderRadius: "25px",
                   // backgroundColor: "wheat",
 
@@ -116,12 +129,14 @@ export default function Register() {
             </Tabs>
           </Box>
         </Box>
-        <CustomTabPanel value={value} index={0}>
-          <Login />
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <Signup />
-        </CustomTabPanel>
+        <Box sx={{ pr: "20px" }}>
+          <CustomTabPanel value={value} index={0}>
+            <Login />
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            <Signup />
+          </CustomTabPanel>
+        </Box>
       </Box>
     </Box>
   );
