@@ -3,6 +3,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Image from "next/image";
 import * as React from "react";
+import { useState } from "react";
 import SignupImage from "../../../public/EmailVerification.svg";
 import LoginImage from "../../../public/Login.svg";
 import Logo from "../../../public/logo.svg";
@@ -43,7 +44,7 @@ function a11yProps(index: number) {
 }
 
 export default function Register() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -56,7 +57,7 @@ export default function Register() {
       alignItems="flex-start"
       sx={{ p: 2, backgroundColor: "#FFF7EA" }}
       overflow="hidden"
-      height="100vh"
+      height="96vh"
     >
       <Box sx={{ height: "auto" }}>
         {value == 0 ? (
@@ -102,7 +103,7 @@ export default function Register() {
         >
           <Box
             sx={{
-              marginTop: "30px",
+              marginTop: "20px",
               height: "auto",
               border: "1px solid black",
               maxWidth: "460px",
@@ -141,10 +142,10 @@ export default function Register() {
           </Box>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <Login />
+          <Login signinClick={() => setValue(1)} />
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <Signup />
+          <Signup signupClick={() => setValue(0)} />
         </CustomTabPanel>
       </Box>
     </Box>

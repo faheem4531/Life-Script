@@ -8,8 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -18,7 +20,7 @@ import * as Yup from "yup";
 import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 
-const Login = () => {
+const Login = ({ signinClick }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -210,7 +212,7 @@ const Login = () => {
                 sx={{
                   // marginTop: "9px",
                   // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                  fontSize: "16",
+                  fontSize: "14px",
                 }}
               >
                 Forget Password?
@@ -273,62 +275,86 @@ const Login = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "center",
+          }}
+        >
           <Box>
             <Button
               variant="contained"
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "center", // Center the content horizontally and vertically
                 borderRadius: "13px",
                 backgroundColor: "white",
                 color: "black",
-                maxWidth: "68px",
-                maxHeight: "47px",
-
+                width: "40px", // Use "width" instead of "maxWidth" for button width
+                height: "40px", // Use "height" instead of "maxHeight" for button height
                 marginTop: "10px",
-                "& .MuiButton-startIcon": {},
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+            >
+              <Image
+                src={googleLogo}
+                alt="Google Logo"
+                width={24}
+                height={24}
+              />
+            </Button>
+          </Box>
+          <Box>
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={() => signIn("facebook")}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center", // Center the content horizontally and vertically
+                borderRadius: "13px",
+                backgroundColor: "white",
+                color: "black",
+                width: "40px", // Use "width" instead of "maxWidth" for button width
+                height: "40px", // Use "height" instead of "maxHeight" for button height
+                marginTop: "10px",
                 "&:hover": {
                   backgroundColor: "white",
                 },
               }}
               startIcon={
                 <Image
-                  src={googleLogo}
-                  alt="Google Logo"
+                  src={fbLogo}
+                  alt="Facebook Logo"
                   width={24}
                   height={24}
                 />
               }
             ></Button>
           </Box>
-          <Box>
-            <Button
-              variant="contained"
-              type="submit"
-              onClick={() => handleGoogleLogin()}
-              sx={{
-                alignItems: "center",
-                borderRadius: "13px",
-                backgroundColor: "white",
-                color: "black",
-                maxWidth: "68px",
-                maxHeight: "47px",
-
-                marginTop: "10px",
-                // paddingTop: "20px",
-                // paddingBottom: "20px",
-                "& .MuiButton-startIcon": {},
-                "&:hover": {
-                  backgroundColor: "white",
-                },
-              }}
-              startIcon={
-                <Image src={fbLogo} alt="Google Logo" width={24} height={24} />
-              }
-            ></Button>
-          </Box>
+        </Box>
+        <Box
+          sx={{
+            mt: "20px",
+            fontSize: "16px",
+            textAlign: "center",
+            color: "#186F65",
+          }}
+        >
+          Not a member yet?{" "}
+          <a
+            style={{ textDecoration: "underline", cursor: "pointer" }}
+            onClick={signinClick}
+          >
+            Register now
+          </a>
         </Box>
       </Box>
       {/* </Box> */}

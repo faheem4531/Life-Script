@@ -19,7 +19,7 @@ import googleLogo from "../../../public/googleIcon.svg";
 
 import { toast } from "react-toastify";
 
-const Signup = () => {
+const Signup = ({ signupClick }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
@@ -283,22 +283,28 @@ const Signup = () => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "center",
+          }}
+        >
           <Box>
             <Button
               variant="contained"
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "center", // Center the content horizontally and vertically
                 borderRadius: "13px",
                 backgroundColor: "white",
                 color: "black",
-                maxWidth: "68px",
-                maxHeight: "47px",
-
+                width: "40px", // Use "width" instead of "maxWidth" for button width
+                height: "40px", // Use "height" instead of "maxHeight" for button height
                 marginTop: "10px",
-                "& .MuiButton-startIcon": {},
                 "&:hover": {
                   backgroundColor: "white",
                 },
@@ -319,17 +325,15 @@ const Signup = () => {
               type="submit"
               onClick={() => signIn("facebook")}
               sx={{
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "center", // Center the content horizontally and vertically
                 borderRadius: "13px",
                 backgroundColor: "white",
                 color: "black",
-                maxWidth: "68px",
-                maxHeight: "47px",
-
+                width: "40px", // Use "width" instead of "maxWidth" for button width
+                height: "40px", // Use "height" instead of "maxHeight" for button height
                 marginTop: "10px",
-                // paddingTop: "20px",
-                // paddingBottom: "20px",
-                "& .MuiButton-startIcon": {},
                 "&:hover": {
                   backgroundColor: "white",
                 },
@@ -344,6 +348,22 @@ const Signup = () => {
               }
             ></Button>
           </Box>
+        </Box>
+        <Box
+          sx={{
+            mt: "20px",
+            fontSize: "16px",
+            textAlign: "center",
+            color: "#186F65",
+          }}
+        >
+          Not a member yet?{" "}
+          <a
+            style={{ textDecoration: "underline", cursor: "pointer" }}
+            onClick={signupClick}
+          >
+            Login now
+          </a>
         </Box>
       </Box>
     </Box>
