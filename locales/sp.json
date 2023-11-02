@@ -1,5 +1,14 @@
 {
   "login-page": {
-    "email": "correo electrónico"
+    "email": "Correo electrónico",
+    "enter-email": "Ingresa tu dirección de correo electrónico",
+    "password": "Contraseña",
+    "enter-password": "Ingresa tu contraseña",
+    "forget-password": "¿Olvidaste tu contraseña?",
+    "login": "Iniciar sesión",
+    "login-with": "o iniciar sesión con",
+    "not-member": "¿Aún no eres miembro?",
+    "register-now": "Regístrate ahora",
+    "incorrect": "Contraseña o correo electrónico incorrecto"
   }
 }

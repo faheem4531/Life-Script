@@ -103,7 +103,7 @@ const Login = ({ signinClick }) => {
           </Typography>
           <TextField
             variant="outlined"
-            placeholder="Enter your Email address"
+            placeholder={t("login-page.enter-email")}
             name="email"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -129,7 +129,7 @@ const Login = ({ signinClick }) => {
                 // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Password
+              {t("login-page.password")}
             </Typography>
             <TextField
               sx={{
@@ -140,7 +140,7 @@ const Login = ({ signinClick }) => {
                 },
                 width: "460px",
               }}
-              placeholder="Enter your password"
+              placeholder={t("login-page.enter-password")}
               type={showPassword ? "text" : "password"}
               name="password"
               onBlur={formik.handleBlur}
@@ -215,7 +215,7 @@ const Login = ({ signinClick }) => {
                   fontSize: "14px",
                 }}
               >
-                Forget Password?
+                {t("login-page.forget-password")}
               </Typography>
             </Box>
           </Box>
@@ -236,7 +236,7 @@ const Login = ({ signinClick }) => {
               },
             }}
           >
-            Login
+            {t("login-page.login")}
           </Button>
 
           <Box
@@ -259,7 +259,7 @@ const Login = ({ signinClick }) => {
             </Box>
             <Box>
               <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-                Or Login with
+                {t("login-page.login-with")}
               </Typography>
             </Box>
             <Box>
@@ -348,19 +348,17 @@ const Login = ({ signinClick }) => {
             color: "#186F65",
           }}
         >
-          Not a member yet?{" "}
+          {t("login-page.not-member")}
           <a
             style={{ textDecoration: "underline", cursor: "pointer" }}
             onClick={signinClick}
           >
-            Register now
+            {t("login-page.register-now")}
           </a>
         </Box>
       </Box>
       {/* </Box> */}
     </Box>
-    // {/* </Grid> */}
-    // {/* </Grid> */}
   );
 };
 

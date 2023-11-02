@@ -1,5 +1,14 @@
 {
   "login-page": {
-    "email": "Email"
+    "email": "Email",
+    "enter-email": "Enter your email address",
+    "password": "Password",
+    "enter-password": "Enter your password",
+    "forget-password": "Forget password?",
+    "login": "Login",
+    "login-with": "Or login with",
+    "not-member": "Not a member yet",
+    "register-now": "Register now",
+    "incorrect": "Incorrect password or email"
   }
 }

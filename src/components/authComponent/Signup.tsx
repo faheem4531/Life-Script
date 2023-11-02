@@ -309,15 +309,14 @@ const Signup = ({ signupClick }) => {
                   backgroundColor: "white",
                 },
               }}
-              startIcon={
-                <Image
-                  src={googleLogo}
-                  alt="Google Logo"
-                  width={24}
-                  height={24}
-                />
-              }
-            ></Button>
+            >
+              <Image
+                src={googleLogo}
+                alt="Google Logo"
+                width={24}
+                height={24}
+              />
+            </Button>
           </Box>
           <Box>
             <Button

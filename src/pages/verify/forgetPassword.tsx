@@ -1,4 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 
 import { ForgetPassword } from "@/interface/authInterface";
@@ -53,31 +53,26 @@ const ForgetPassword = () => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+    <Grid sx={{ display: "flex", justifyContent: "space-around", backgroundColor:'#FFF7EA', }}>
       <Box sx={{ margin: 0 }}>
-        <Image
-          src={Forget}
-          alt="image of login"
-          width={650}
-          height={700}
-          // style={imageStyle}
-        />
+      <Image
+            src={Forget}
+            alt="login Image"
+            style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
+          />
 
-        {/* </Grid> */}
       </Box>
-      {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
-      // textAlign={'center'}
       >
         <Box textAlign={"center"}>
-          <Image src={Logo} width={184} height={100} alt="Logo Image" />
+          <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
             Forgot Password?{" "}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "100px" }}>
+        <Box sx={{ marginTop: "171px" }}>
           <Box>
             <Typography
               sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
@@ -87,9 +82,10 @@ const ForgetPassword = () => {
             </Typography>
             <Typography
               sx={{
-                marginRight: "300px",
-                marginTop: "26px",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                // marginRight: "300px",
+                marginTop: "34px",
+                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                fontSize:'21px',
               }}
             >
               Email
@@ -104,6 +100,7 @@ const ForgetPassword = () => {
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
+                  backgroundColor:'white',
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
                 width: "580px",
@@ -123,7 +120,7 @@ const ForgetPassword = () => {
             sx={{
               justifyContent: "center",
               textAlign: "center",
-              marginTop: "40px",
+              marginTop: "112px",
             }}
           >
             <Button
@@ -134,9 +131,8 @@ const ForgetPassword = () => {
                 borderRadius: "48px",
                 backgroundColor: "#186F65",
                 color: "white",
-                width: "310px",
-                padding: "10px",
-                // marginTop: "20px",
+                width: "404px",
+                padding: "15px",
                 "&:hover": {
                   backgroundColor: "#186F65",
                 },
@@ -148,7 +144,7 @@ const ForgetPassword = () => {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Grid>
   );
 };
 
