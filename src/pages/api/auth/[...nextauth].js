@@ -11,8 +11,8 @@ export default NextAuth({
       // clientSecret: "40973a1ce353c433ef815f0ad9d5442f",
 
       //latest
-      clientId: "2175064239503659",
-      clientSecret: "64b852efd1c030c5f50c913dce05e798",
+      clientId: "992689178504048",
+      clientSecret: "92e52db83ee8ed023a59fb87dcff04b6",
     }),
   ],
 });
