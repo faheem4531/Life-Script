@@ -286,7 +286,7 @@ const Signup = ({ signupClick }) => {
             </Box>
             <Box>
               <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-                Or Login with
+                Or Register with
               </Typography>
             </Box>
             <Box>
@@ -375,7 +375,7 @@ const Signup = ({ signupClick }) => {
             color: "#186F65",
           }}
         >
-          Not a member yet?{" "}
+          Already registered?{" "}
           <a
             style={{ textDecoration: "underline", cursor: "pointer" }}
             onClick={signupClick}
