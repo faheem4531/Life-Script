@@ -208,7 +208,7 @@ const Signup = ({ signupClick }) => {
               }}
             />
           </Box>
-          {formik.touched.name && formik.errors.name && (
+          {formik.touched.password && formik.errors.password && (
             <span style={{ color: "red" }}>{formik.errors.password}</span>
           )}
           {/* <Box

@@ -84,7 +84,7 @@ const Login = ({ signinClick }) => {
     validationSchema: Yup.object({
       email: Yup.string().email().required("Email is required"),
       password: Yup.string()
-        .min(8, "Password must be 8 characters long")
+        .min(8, "Wrong password")
         .required("Password is required"),
     }),
   });
