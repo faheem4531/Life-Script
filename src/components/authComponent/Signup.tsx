@@ -8,10 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import fbLogo from "../../../public/fbIcon.svg";
@@ -24,6 +24,20 @@ const Signup = ({ signupClick }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
   const router = useRouter();
+  const { data: session, status } = useSession();
+
+  useEffect(() => {
+    const socialSignin = async () => {
+      if (status === "authenticated") {
+        const data = {
+          email: session?.user?.email,
+          name: session?.user?.name || session?.user?.email,
+        };
+        // dispatch(facebookSignup())
+      }
+    };
+    socialSignin();
+  }, [status]);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -86,7 +100,12 @@ const Signup = ({ signupClick }) => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+      }}
+    >
       <Box>
         <Box>
           <Typography

@@ -57,7 +57,7 @@ export default function Register() {
       alignItems="flex-start"
       sx={{ p: 2, backgroundColor: "#FFF7EA" }}
       overflow="hidden"
-      height="96vh"
+      height="100%"
     >
       <Box sx={{ height: "auto" }}>
         {value == 0 ? (
@@ -67,6 +67,7 @@ export default function Register() {
             style={{
               height: "100%",
               maxHeight: "92vh",
+              minHeight: "92vh",
               width: "100%",
               objectFit: "contain",
             }}
@@ -141,12 +142,14 @@ export default function Register() {
             </Tabs>
           </Box>
         </Box>
-        <CustomTabPanel value={value} index={0}>
-          <Login signinClick={() => setValue(1)} />
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <Signup signupClick={() => setValue(0)} />
-        </CustomTabPanel>
+        <Box>
+          <CustomTabPanel value={value} index={0}>
+            <Login signinClick={() => setValue(1)} />
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            <Signup signupClick={() => setValue(0)} />
+          </CustomTabPanel>
+        </Box>
       </Box>
     </Box>
   );
