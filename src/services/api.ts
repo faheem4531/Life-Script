@@ -7,6 +7,7 @@ class API {
     this.instance = axios.create({
       baseURL:
         "http://lifescript-env.eba-fdhnvpkx.eu-north-1.elasticbeanstalk.com/", // base URL
+      // "https://d805-72-255-21-37.ngrok-free.app",
     });
 
     this.instance.interceptors.request.use(
