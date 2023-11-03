@@ -55,21 +55,32 @@ const ForgetPassword = () => {
   return (
     <Grid
       sx={{
-        display: "flex",
-        justifyContent: "space-around",
+        display: "grid",
         backgroundColor: "#FFF7EA",
+        alignItems: 'center',
+        gridTemplateColumns: {
+          sm: "repeat(2, minmax(0, 1fr))",
+          xs: "repeat(1, minmax(0, 1fr))"
+        },
+        gap: '1rem',
         p: "20px",
-        height: "100vh",
+        height: "100dvh",
+        overflowY: 'scroll',
       }}
     >
-      <Box sx={{ margin: 0 }}>
+      <Box sx={{ margin: 0, display: {sm: 'block', xs: 'none'} }}>
         <Image
           src={Forget}
           alt="login Image"
           style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
         />
       </Box>
-      <Box>
+      <Box sx={{
+        maxWidth: "500px",
+        width: '100%',
+        margin: '0 auto'
+      }}
+      >
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography
@@ -109,7 +120,7 @@ const ForgetPassword = () => {
                   backgroundColor: "white",
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
-                width: "500px",
+                width: "100%",
               }}
             />
           </Box>

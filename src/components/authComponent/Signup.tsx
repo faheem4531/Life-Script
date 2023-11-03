@@ -103,10 +103,14 @@ const Signup = ({ signupClick }) => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "space-around",
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        margin: "0 auto",
+        maxWidth: "460px",
+        width: '100%'
       }}
     >
-      <Box>
+      <Box width="100%">
         <Box>
           <Typography
             sx={{
@@ -124,12 +128,12 @@ const Signup = ({ signupClick }) => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             sx={{
-              marginTop: "10px",
+              margin: "10px 0",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
                 backgroundColor: "white",
               },
-              width: "460px",
+              width: "100%",
             }}
           />
         </Box>
@@ -154,12 +158,12 @@ const Signup = ({ signupClick }) => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             sx={{
-              marginTop: "10px",
+              margin: "10px 0",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
                 borderRadius: "50px", // Adjust the border radius as needed
               },
-              width: "460px",
+              width: "100%",
             }}
           />
         </Box>
@@ -180,12 +184,12 @@ const Signup = ({ signupClick }) => {
             </Typography>
             <TextField
               sx={{
-                marginTop: "10px",
+                margin: "10px 0",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                   backgroundColor: "white",
                 },
-                width: "460px",
+                width: "100%",
               }}
               placeholder="Enter your Password"
               name="password"

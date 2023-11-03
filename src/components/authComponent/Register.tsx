@@ -28,7 +28,7 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: '24px 0' }}>
           <Box>{children}</Box>
         </Box>
       )}
@@ -52,14 +52,22 @@ export default function Register() {
 
   return (
     <Box
-      display="flex"
-      justifyContent={"space-around"}
-      alignItems="flex-start"
-      sx={{ p: 2, backgroundColor: "#FFF7EA" }}
-      overflow="hidden"
-      height="100%"
+      display="grid"
+      alignItems="center"
+      overflow="scroll"
+      height="100dvh"
+      boxSizing="border-box"
+      gap="1rem"
+      sx={{ 
+        p: 2, 
+        backgroundColor: "#FFF7EA",
+        gridTemplateColumns: {
+          sm: "repeat(2, minmax(0, 1fr))",
+          xs: "repeat(1, minmax(0, 1fr))"
+        }
+       }}
     >
-      <Box sx={{ height: "auto" }}>
+      <Box sx={{ height: "auto", display: {sm: 'block', xs: 'none'} }}>
         {value == 0 ? (
           <Image
             src={LoginImage}
@@ -89,7 +97,7 @@ export default function Register() {
         sx={{
           margin: 0,
           height: "auto",
-          minWidth: "45%",
+          width: "100%",
         }}
       >
         <Box textAlign={"center"}>
@@ -108,7 +116,7 @@ export default function Register() {
               height: "auto",
               border: "1px solid black",
               maxWidth: "460px",
-
+              width: "100%",
               background: "white",
               borderRadius: "40px",
             }}
@@ -122,7 +130,7 @@ export default function Register() {
                   display: "none", // Hide the indicator line
                 },
                 "& .MuiTab-root": {
-                  width: "230px",
+                  width: "50%",
                   borderRadius: "25px",
                   // backgroundColor: "wheat",
 

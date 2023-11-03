@@ -40,14 +40,20 @@ const ForgetPasswordLink = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "space-around",
+        display: "grid",
+        alignItems: "center",
+        gridTemplateColumns: {
+          sm: "repeat(2, minmax(0, 1fr))",
+          xs: "repeat(1, minmax(0, 1fr))"
+        },
+        gap: '1rem',
         backgroundColor: "#FFF7EA",
-        height: "100vh",
+        height: "100dvh",
         p: "20px",
+        boxSizing: 'border-box'
       }}
     >
-      <Box sx={{ margin: 0 }}>
+      <Box sx={{ margin: 0, display: {sm: 'block', xs: 'none'} }}>
         <Image
           src={Forget}
           alt="login Image"
@@ -55,7 +61,11 @@ const ForgetPasswordLink = () => {
         />
       </Box>
 
-      <Box>
+      <Box sx={{ 
+        maxWidth: "500px",
+        width: '100%',
+        margin: '0 auto'
+      }}>
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography

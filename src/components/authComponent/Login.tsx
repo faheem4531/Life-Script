@@ -90,13 +90,21 @@ const Login = ({ signinClick }) => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-      <Box>
-        <Box>
+    <Box sx={{ 
+      display: "flex", 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      margin: "0 auto",
+      maxWidth: "460px",
+      width: '100%'
+      }}>
+        <Box
+        width='100%'
+        >
           <Typography
             sx={{
               // marginRight: "300px",
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
             {t("login-page.email")}
@@ -108,19 +116,19 @@ const Login = ({ signinClick }) => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             sx={{
-              marginTop: "10px",
+              margin: "10px 0",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px",
                 backgroundColor: "white",
               },
-              width: "460px",
+              width: '100%'
             }}
           />
-        </Box>
         {formik.touched.email && formik.errors.email && (
           <span style={{ color: "red" }}>{formik.errors.email}</span>
         )}
-        <Box>
+        </Box>
+        <Box width="100%">
           <Box>
             <Typography
               sx={{
@@ -133,12 +141,12 @@ const Login = ({ signinClick }) => {
             </Typography>
             <TextField
               sx={{
-                marginTop: "10px",
+                margin: "10px 0",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                   backgroundColor: "white",
                 },
-                width: "460px",
+                width: '100%'
               }}
               placeholder={t("login-page.enter-password")}
               type={showPassword ? "text" : "password"}
@@ -356,8 +364,6 @@ const Login = ({ signinClick }) => {
             {t("login-page.register-now")}
           </a>
         </Box>
-      </Box>
-      {/* </Box> */}
     </Box>
   );
 };
