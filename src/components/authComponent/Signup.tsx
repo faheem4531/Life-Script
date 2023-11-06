@@ -85,7 +85,7 @@ const Signup = ({ signupClick }) => {
       dispatch(signup(data))
         .unwrap()
         .then(() => {
-          toast.success("Verification email sent");
+          toast.success(t("signup-page.verificationEmailSent"));
           router.push(`/verify/verificationSent/?email=${data.email}`);
         })
         .catch((error: any) => {
@@ -93,11 +93,11 @@ const Signup = ({ signupClick }) => {
         });
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required("Email is required"),
+      email: Yup.string().email().required(t("signup-page.emailRequired")),
       password: Yup.string()
-        .min(8, "Password must be 8 characters long")
-        .required("Password is required"),
-      name: Yup.string().required(" Name is required"),
+        .min(8, t("signup-page.passwordLength"))
+        .required(t("signup-page.passwordRequired")),
+      name: Yup.string().required(t("signup-page.nameRequired")),
     }),
   });
 

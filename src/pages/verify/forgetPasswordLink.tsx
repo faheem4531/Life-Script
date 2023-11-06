@@ -72,7 +72,8 @@ const ForgetPasswordLink = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "40px" }}
           >
-            Forgot Password?{" "}
+            {t("ForgetPassswordLink.forgotPassword")}
+            
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
@@ -84,8 +85,8 @@ const ForgetPasswordLink = () => {
                 justifyContent: "left",
               }}
             >
-              Reset Password link has been sent to <br />
-              {email}. Please click on the link to <br /> reset your password
+              {t("ForgetPassswordLink.resetPassword")} <br />
+              {email}. {t("ForgetPassswordLink.clickLink")}<br /> {t("ForgetPassswordLink.reset")}
             </Typography>
           </Box>
         </Box>

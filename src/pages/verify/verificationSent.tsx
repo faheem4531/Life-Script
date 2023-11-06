@@ -55,7 +55,7 @@ const EmailVerificationLink = () => {
         </Box>
         <Box sx={{ marginTop: "291px" }}>
           <Typography
-            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px", textAlign:'center'}}
           >
             {t("VerificationSent.verifcationLink")} {email}. <br /> {t("VerificationSent.clicktoVerify")}
           </Typography>

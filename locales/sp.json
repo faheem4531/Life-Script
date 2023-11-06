@@ -9,7 +9,14 @@
     "login-with": "o iniciar sesión con",
     "not-member": "¿Aún no eres miembro?",
     "register-now": "Regístrate ahora",
-    "incorrect": "Contraseña o correo electrónico incorrecto"
+    "incorrect": "Contraseña o correo electrónico incorrecto",
+    "emailRequired":"correo electronico es requerido",
+    "passwordRequired": "se requiere contraseña",
+    "passwordLength":"La contraseña debe tener 8 caracteres",
+    "loggedIn":"Iniciado sesión correctamente",
+    "IncorrectEmail":"Contraseña o correo electrónico incorrecto"
+
+
   },
   "signup-page": {
     "email": "Correo electrónico",
@@ -23,7 +30,12 @@
     "or-register-with": "O regístrate con",
     "incorrect": "Contraseña o correo electrónico incorrecto",
     "alreadyRegisterd": "Ya registrado?",
-    "loginNow": "Inicia sesión ahora"
+    "loginNow": "Inicia sesión ahora",
+    "emailRequired":"correo electronico es requerido",
+    "passwordRequired": "se requiere contraseña",
+    "passwordLength":"La contraseña debe tener 8 caracteres",
+    "nameRequired":"Se requiere el nombre",
+    "verificationEmailSent":"El mensaje de verificación ha sido enviado"
   },
   "Register": {
     "Login": "Acceso",
@@ -57,7 +69,14 @@
     "emailVerified":"Su correo electrónico ha sido verificado. Haga clic en el botón para",
     "proceedForward":"seguir adelante.",
     "letsBegin":"Vamos a empezar."
+    },
+    "ForgetPassswordLink":{
+      "forgotPassword": "Has olvidado tu contraseña?",
+      "resetPassword":"El enlace para restablecer contraseña ha sido enviado a",
+      "clickLink":"Por favor haga clic en el enlace para",
+      "reset": "Restablecer su contraseña"
     }
+   
 }
   
 
