@@ -16,14 +16,16 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
-
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+
 
 const Signup = ({ signupClick }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
   const router = useRouter();
+   const { t } = useTranslation();
   // const { data: session, status } = useSession();
 
   // useEffect(() => {
@@ -119,11 +121,11 @@ const Signup = ({ signupClick }) => {
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
-            Email
+              {t("signup-page.email")}
           </Typography>
           <TextField
             variant="outlined"
-            placeholder="Enter your Email Address"
+            placeholder={t("signup-page.enter-email")}
             name="email"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -148,12 +150,13 @@ const Signup = ({ signupClick }) => {
             marginTop: "24px",
           }}
         >
-          Name
+          {/* {t("signup-page.")} */}
+          {t("signup-page.name")}
         </Typography>
         <Box>
           <TextField
             variant="outlined"
-            placeholder="Enter your Full Name"
+            placeholder={t("signup-page.enter-name")}
             name="name"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -180,7 +183,7 @@ const Signup = ({ signupClick }) => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Password
+            {t("signup-page.password")}
             </Typography>
             <TextField
               sx={{
@@ -191,7 +194,7 @@ const Signup = ({ signupClick }) => {
                 },
                 width: "100%",
               }}
-              placeholder="Enter your Password"
+              placeholder={t("signup-page.enter-password")}
               name="password"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -267,7 +270,7 @@ const Signup = ({ signupClick }) => {
               },
             }}
           >
-            Register
+           {t("signup-page.register")}
           </Button>
 
           <Box
@@ -290,7 +293,7 @@ const Signup = ({ signupClick }) => {
             </Box>
             <Box>
               <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-                Or Register with
+              {t("signup-page.or-register-with")}
               </Typography>
             </Box>
             <Box>
@@ -379,12 +382,12 @@ const Signup = ({ signupClick }) => {
             color: "#186F65",
           }}
         >
-          Already registered?{" "}
+             {t("signup-page.alreadyRegisterd")}
           <a
             style={{ textDecoration: "underline", cursor: "pointer" }}
             onClick={signupClick}
           >
-            Login now
+             {t("signup-page.loginNow")}
           </a>
         </Box>
       </Box>

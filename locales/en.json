@@ -10,5 +10,51 @@
     "not-member": "Not a member yet?",
     "register-now": "Register now",
     "incorrect": "Incorrect password or email"
-  }
+  },
+  "signup-page": {
+    "email": "Email",
+    "enter-email": "Enter your email address",
+    "name": "Name",
+    "enter-name": "Enter your full name ",
+    "password": "Password",
+    "enter-password": "Enter your password",
+    "Register": "Register",
+    "register": "Register",
+    "incorrect": "Incorrect password or email",
+    "or-register-with": "Or Register with",
+    "alreadyRegisterd": "Already registered?",
+    "loginNow": "Login now"
+  },
+  "Register": {
+    "Login": "Login",
+    "Register": "Register"
+  },
+  "ForgetPassword": {
+    "forgotPassword?": "Forgot Password?",
+    "enterEmail": "Please enter email associated with the LifeScript account to send password link.",
+    "email": "Email",
+    "enter-email": "Enter your email address",
+    "continue": "Continue"
+  },
+  "VerificationSent": {
+    "emailVerification" : "Email Verification",
+    "verifcationLink" : "We've sent a verification link to",
+    "clicktoVerify":"Kindly click on the link to verify."
+
+  },
+  "ResetPassword": {
+    "resetPassword":"Reset Password",
+    "password": "Password",
+    "confirmPassword":"Confirm Password",
+    "confirm":"Confirm",
+    "redirect":"After clicking Reset Password. You will be redirected to the",
+    "loginPage":"login page."
+  },
+  "Verify": {
+    "emailVerification" : "Email Verification",
+    "email": "Email",
+    "emailVerified":"Your email has been verified. Click on the button to",
+    "proceedForward":"proceed forward.",
+    "letsBegin":"Lets Begin"
+    }
 }

@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
 import Logo from "../../../public/logo.svg";
-
+import { useTranslation } from "react-i18next";
 import { ChangePassword } from "@/interface/authInterface";
 import { toast } from "react-toastify";
 
@@ -26,7 +26,7 @@ const ResetPassword = () => {
   const [userEmail, setUserEmail] = useState("");
   const [otp, setOtp] = useState("");
   const dispatch: any = useDispatch();
-
+  const { t } = useTranslation();
   const router = useRouter();
   const currentUrl = router.asPath;
   const token = getTokenFromURL(currentUrl);
@@ -113,7 +113,7 @@ const ResetPassword = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "30px" }}
           >
-            Reset Password
+            {t("ResetPassword.resetPassword")}
           </Typography>
         </Box>
 
@@ -127,7 +127,7 @@ const ResetPassword = () => {
                 fontSize: "21px",
               }}
             >
-              Password
+              {t("ResetPassword.password")}
             </Typography>
           </Box>
           <TextField
@@ -139,7 +139,7 @@ const ResetPassword = () => {
               },
               width: "580px",
             }}
-            placeholder="Password"
+            placeholder={t("ResetPassword.password")}
             type={showPassword ? "text" : "password"}
             name="password"
             value={formik.values.password}
@@ -172,7 +172,7 @@ const ResetPassword = () => {
                 fontSize: "21px",
               }}
             >
-              Confirm Password
+              {t("ResetPassword.confirmPassword")}
             </Typography>
           </Box>
           <TextField
@@ -184,7 +184,7 @@ const ResetPassword = () => {
               },
               width: "580px",
             }}
-            placeholder="Confirm password"
+            placeholder={t("ResetPassword.confirmPassword")}
             type={showPassword ? "text" : "password"}
             name="password"
             value={formik.values.confirmPassword}
@@ -233,7 +233,7 @@ const ResetPassword = () => {
               textTransform: "none",
             }}
           >
-            Reset Password
+               {t("ResetPassword.confirm")}
           </Button>
 
           <Typography
@@ -243,8 +243,7 @@ const ResetPassword = () => {
               fontSize: "18px",
             }}
           >
-            After clicking Reset Password. You will be redirected to the <br />{" "}
-            login page.
+            {t("ResetPassword.redirect")} <br />{t("ResetPassword.loginPage")}
           </Typography>
         </Box>
       </Box>

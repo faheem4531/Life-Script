@@ -9,6 +9,8 @@ import LoginImage from "../../../public/Login.svg";
 import Logo from "../../../public/logo.svg";
 import Login from "./Login";
 import Signup from "./Signup";
+import { useTranslation } from "react-i18next";
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -44,6 +46,7 @@ function a11yProps(index: number) {
 }
 
 export default function Register() {
+  const { t } = useTranslation();
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -145,8 +148,8 @@ export default function Register() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Login" {...a11yProps(0)} />
-              <Tab label="Register" {...a11yProps(1)} />
+              <Tab label={t("Register.Login")} {...a11yProps(0)} />
+              <Tab label={t("Register.Register")}{...a11yProps(1)} />
             </Tabs>
           </Box>
         </Box>

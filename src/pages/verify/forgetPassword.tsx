@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
 import Logo from "../../../public/logo.svg";
+import { useTranslation } from "react-i18next";
 
 const ForgetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,6 +21,7 @@ const ForgetPassword = () => {
   const dispatch: any = useDispatch();
   const [emailSent, setEmailSent] = useState("");
   const router = useRouter();
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -57,36 +59,37 @@ const ForgetPassword = () => {
       sx={{
         display: "grid",
         backgroundColor: "#FFF7EA",
-        alignItems: 'center',
+        alignItems: "center",
         gridTemplateColumns: {
           sm: "repeat(2, minmax(0, 1fr))",
-          xs: "repeat(1, minmax(0, 1fr))"
+          xs: "repeat(1, minmax(0, 1fr))",
         },
-        gap: '1rem',
+        gap: "1rem",
         p: "20px",
         height: "100dvh",
-        overflowY: 'scroll',
+        overflowY: "scroll",
       }}
     >
-      <Box sx={{ margin: 0, display: {sm: 'block', xs: 'none'} }}>
+      <Box sx={{ margin: 0, display: { sm: "block", xs: "none" } }}>
         <Image
           src={Forget}
           alt="login Image"
           style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
         />
       </Box>
-      <Box sx={{
-        maxWidth: "500px",
-        width: '100%',
-        margin: '0 auto'
-      }}
+      <Box
+        sx={{
+          maxWidth: "500px",
+          width: "100%",
+          margin: "0 auto",
+        }}
       >
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-            Forgot Password?{" "}
+            {t("ForgetPassword.forgotPassword?")}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
@@ -94,8 +97,7 @@ const ForgetPassword = () => {
             <Typography
               sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
             >
-              Please enter email associated with the Lifescript <br /> account
-              to send password reset link.
+              {t("ForgetPassword.enterEmail")}
             </Typography>
             <Typography
               sx={{
@@ -105,12 +107,12 @@ const ForgetPassword = () => {
                 fontSize: "21px",
               }}
             >
-              Email
+              {t("ForgetPassword.email")}
             </Typography>
             <TextField
               variant="outlined"
               name="email"
-              placeholder="Enter you Email"
+              placeholder={t("ForgetPassword.enter-email")}
               value={formik.values.email}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -156,7 +158,7 @@ const ForgetPassword = () => {
                 textTransform: "none",
               }}
             >
-              Continue
+               {t("ForgetPassword.continue")}
             </Button>
           </Box>
         </Box>

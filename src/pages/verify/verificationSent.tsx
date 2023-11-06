@@ -1,6 +1,6 @@
 import { LoginData } from "@/interface/authInterface";
 import { Box, Typography } from "@mui/material";
-
+import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -14,6 +14,7 @@ const EmailVerificationLink = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
   const { email } = router.query;
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -49,15 +50,14 @@ const EmailVerificationLink = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-            Email Verification{" "}
+            {t("VerificationSent.emailVerification")}{" "}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "291px" }}>
           <Typography
             sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
           >
-            We've sent a verification link to {email}. <br /> Kindly click on
-            the link to verify.
+            {t("VerificationSent.verifcationLink")} {email}. <br /> {t("VerificationSent.clicktoVerify")}
           </Typography>
         </Box>
       </Box>

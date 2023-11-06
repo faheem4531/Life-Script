@@ -10,5 +10,54 @@
     "not-member": "¿Aún no eres miembro?",
     "register-now": "Regístrate ahora",
     "incorrect": "Contraseña o correo electrónico incorrecto"
-  }
+  },
+  "signup-page": {
+    "email": "Correo electrónico",
+    "enter-email": "Ingresa tu dirección de correo electrónico",
+    "name": "Nombre",
+    "enter-name": "Introduce tu Nombre completo ",
+    "password": "Contraseña",
+    "enter-password": "Ingresa tu contraseña",
+    "register": "Registro",
+    "login-with": "o iniciar sesión con",
+    "or-register-with": "O regístrate con",
+    "incorrect": "Contraseña o correo electrónico incorrecto",
+    "alreadyRegisterd": "Ya registrado?",
+    "loginNow": "Inicia sesión ahora"
+  },
+  "Register": {
+    "Login": "Acceso",
+    "Register": "Registro"
+  },
+  "ForgetPassword": {
+    "forgotPassword?": "Has olvidado tu contraseña?",
+    "enterEmail": "Ingrese el correo electrónico asociado con la cuenta de LifeScript para enviar el enlace de contraseña.",
+    "email": "Correo electrónico",
+    "enter-email": "Ingresa tu dirección de correo electrónico",
+    "continue": "Continuar"
+  },
+  "VerificationSent": {
+    "emailVerification" : "Verificacion de email",
+    "verifcationLink" : "Hemos enviado un enlace de verificación a",
+    "clicktoVerify":"Por favor haga clic en el enlace para verificar."
+
+  },
+  "ResetPassword": {
+    "resetPassword":"Restablecer la contraseña",
+    "password": "Contraseña",
+    "confirmPassword":"confirmar Contraseña",
+    "confirm":"Confirmar",
+    "redirect":"Después de hacer clic en Restablecer contraseña. Serás redirigido al",
+    "loginPage":"página de inicio de sesión"
+
+  },
+  "Verify": {
+    "emailVerification" : "verificacion de email",
+    "email": "Correo electrónico",
+    "emailVerified":"Su correo electrónico ha sido verificado. Haga clic en el botón para",
+    "proceedForward":"seguir adelante.",
+    "letsBegin":"Vamos a empezar."
+    }
 }
+  
+

@@ -1,6 +1,6 @@
 import { LoginData } from "@/interface/authInterface";
 import { Box, Typography } from "@mui/material";
-
+import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -14,6 +14,7 @@ const ForgetPasswordLink = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
   const { email } = router.query;
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
