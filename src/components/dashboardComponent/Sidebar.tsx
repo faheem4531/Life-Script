@@ -13,7 +13,7 @@ import Suport from "@/_assets/svg/support.svg"
 
 const SideBar = () => {
   return (
-    <Box sx={{ width: "220px", backgroundColor: "#197065", minHeight: "90vh", color: "#fff" }}>
+    <Box sx={{ color: "#fff" }}>
       <Box sx={{ padding: "35px 29px 0 11px" }}>
         <a className={styles.link}>
           <Image alt='icon' src={OverView} />Overview
