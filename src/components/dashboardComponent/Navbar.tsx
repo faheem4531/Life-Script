@@ -8,8 +8,29 @@ import Noti from "@/_assets/svg/header-bell.svg"
 import Search from "@/_assets/svg/searchbar.svg"
 import { InputBase } from '@mui/material';
 import Button from '../button/Button'
+import More from "@/_assets/svg/nav-menue.svg"
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+
+const options = [
+  'None',
+  'Atria',
+  'Callisto',
+];
+const ITEM_HEIGHT = 48;
 
 const NavBar = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#197065", padding: "8px 25px 8px 14px" }}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -58,6 +79,42 @@ const NavBar = () => {
           alt='logo'
           className={styles.logo}
         />
+        {/* More option :start */}
+        <div>
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? 'long-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <Image
+              alt='options' src={More} />
+          </IconButton>
+          <Menu
+            id="long-menu"
+            MenuListProps={{
+              'aria-labelledby': 'long-button',
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+              style: {
+                maxHeight: ITEM_HEIGHT * 4.5,
+                width: '20ch',
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+                {option}
+              </MenuItem>
+            ))}
+          </Menu>
+        </div>
+        {/* More option :end */}
       </Box>
     </Box>
   )
