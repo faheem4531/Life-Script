@@ -11,3 +11,11 @@
     width: 70px;
   }
 }
+
+/* styling for Details Card   */
+
+@media (max-width:1400px) {
+  .header {
+    padding: 20px 0 20px 15px !important;
+  }
+}

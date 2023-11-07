@@ -2,7 +2,7 @@
 "use client";
 
 import * as React from 'react';
-// import { styled } from '@mui/material/styles';
+import styles from "./HomeSteps.module.css"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -37,7 +37,7 @@ export default function DetailCard() {
 
   return (
     <Card sx={{ maxWidth: 512, borderRadius: "6.5px" }}>
-      <div style={{ backgroundColor: "#197065", padding: "25px 0 25px 17px" }}>
+      <div style={{ backgroundColor: "#197065", padding: "25px 0 25px 17px" }} className={styles.header}>
         <IconButton
           aria-label="more"
           id="long-button"
