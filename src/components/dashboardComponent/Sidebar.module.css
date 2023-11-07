@@ -1,0 +1,15 @@
+.link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  column-gap: 8px;
+  padding: 8px 8px 8px 15px;
+  width: 180px;
+  border-radius: 10px;
+  margin-bottom: 35px;
+}
+
+.active {
+  background-color: #fff;
+  color: #197065;
+}
