@@ -1,0 +1,13 @@
+@media (max-width:1200px) {
+  .typo {
+    font-size: 15px;
+  }
+
+  .stepContainer {
+    padding: 25px 0;
+  }
+
+  .logo {
+    width: 70px;
+  }
+}

@@ -1,14 +1,22 @@
 import React from 'react'
+
 import styles from "@/styles/Dashboard.module.css"
+import { Box } from '@mui/material'
 import NavBar from '@/components/dashboardComponent/Navbar'
 import SideBar from '@/components/dashboardComponent/Sidebar'
-import { Box } from '@mui/material'
+import HomeSteps from '@/components/dashboardComponent/HomeSteps'
+
 const Dashboard = () => {
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
       <NavBar />
       <Box sx={{ display: "flex", marginTop: "1px" }}>
-        <SideBar />
+        <Box sx={{ width: "220px" }}>
+          <SideBar />
+        </Box>
+        <Box sx={{ width: "100%", maxWidth: "1600px", height: "100%", padding: "36px 33px 100px" }}>
+          <HomeSteps />
+        </Box>
       </Box>
     </Box>
   )
