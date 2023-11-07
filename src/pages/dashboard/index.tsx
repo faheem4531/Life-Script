@@ -1,12 +1,16 @@
 import React from 'react'
 import styles from "@/styles/Dashboard.module.css"
 import NavBar from '@/components/dashboardComponent/Navbar'
-
+import SideBar from '@/components/dashboardComponent/Sidebar'
+import { Box } from '@mui/material'
 const Dashboard = () => {
   return (
-    <div>
+    <Box>
       <NavBar />
-    </div>
+      <Box sx={{ display: "flex", marginTop: "1px" }}>
+        <SideBar />
+      </Box>
+    </Box>
   )
 }
 
