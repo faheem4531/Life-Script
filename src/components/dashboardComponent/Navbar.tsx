@@ -24,7 +24,7 @@ const NavBar = () => {
             src={Search}
             alt='logo'
           />
-          <InputBase sx={{ backgroundColor: "#fff", width: "100%", paddingLeft: "5px", opacity: ".6" }} placeholder='Search' />
+          <InputBase sx={{ backgroundColor: "#fff", width: "100%", paddingLeft: "5px", opacity: ".6", fontSize: "16px" }} placeholder='Search' />
         </Box>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>

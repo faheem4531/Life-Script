@@ -1,16 +1,31 @@
-@media (max-width:1200px) {
+@media (max-width:1400px) {
   .typo {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .stepContainer {
-    padding: 25px 0;
+    padding: 20px 0;
   }
 
   .logo {
     width: 70px;
   }
 }
+
+@media (max-width:992px) {
+  .typo {
+    font-size: 14px;
+  }
+
+  .stepContainer {
+    padding: 10px 0;
+  }
+
+  .logo {
+    width: 50px;
+  }
+}
+
 
 /* styling for Details Card   */
 

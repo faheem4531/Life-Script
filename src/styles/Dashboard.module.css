@@ -4,6 +4,18 @@
   gap: 50px 30px;
 }
 
+.MainContainer {
+  display: flex;
+  /* grid-template-columns: 220px 1fr; */
+}
+
+.subContainer {
+  background-image: url(../_assets/png/dashboard-bg.png);
+  background-repeat: no-repeat;
+  position: right;
+  background-size: 100%;
+}
+
 @media (max-width:1200px) {
   .CardsContainer {
     grid-template-columns: repeat(2, 1fr);
