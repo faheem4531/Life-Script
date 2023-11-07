@@ -25,11 +25,11 @@ const EmailVerification = () => {
     dispatch(verifyEmail({ email: userEmail, otp: otp }))
       .unwrap()
       .then(() => {
-        toast.success("Email verified successfully");
+        toast.success(t("Verify.emailVerifiedSuccessfully"));
         router.push("/");
       })
       .catch((error: any) => {
-        toast.error(error || "Failed to verify email");
+        toast.error(error || t("Verify.failedVerifyEmail"));
       });
   }
 

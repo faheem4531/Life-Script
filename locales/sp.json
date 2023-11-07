@@ -14,7 +14,9 @@
     "passwordRequired": "se requiere contraseña",
     "passwordLength":"La contraseña debe tener 8 caracteres",
     "loggedIn":"Iniciado sesión correctamente",
-    "IncorrectEmail":"Contraseña o correo electrónico incorrecto"
+    "IncorrectEmail":"Contraseña o correo electrónico incorrecto",
+    "failedSignupGoogle":"No se pudo registrar con Google"
+
 
 
   },
@@ -35,7 +37,12 @@
     "passwordRequired": "se requiere contraseña",
     "passwordLength":"La contraseña debe tener 8 caracteres",
     "nameRequired":"Se requiere el nombre",
-    "verificationEmailSent":"El mensaje de verificación ha sido enviado"
+    "verificationEmailSent":"El mensaje de verificación ha sido enviado",
+    "failedSignup":"No se pudo registrar",
+    "signedUpSuccessfully":"registrado exitosamente",
+    "failedSignupGoogle":"No se pudo registrar con Google"
+
+
   },
   "Register": {
     "Login": "Acceso",
@@ -46,7 +53,12 @@
     "enterEmail": "Ingrese el correo electrónico asociado con la cuenta de LifeScript para enviar el enlace de contraseña.",
     "email": "Correo electrónico",
     "enter-email": "Ingresa tu dirección de correo electrónico",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "emailSentSuccessfully":"Correo electrónico enviado correctamente",
+    "emailRequired":"correo electronico es requerido",
+    "userNotFound":"Usuario no encontrado"
+
+
   },
   "VerificationSent": {
     "emailVerification" : "Verificacion de email",
@@ -68,7 +80,11 @@
     "email": "Correo electrónico",
     "emailVerified":"Su correo electrónico ha sido verificado. Haga clic en el botón para",
     "proceedForward":"seguir adelante.",
-    "letsBegin":"Vamos a empezar."
+    "letsBegin":"Vamos a empezar.",
+    "emailVerifiedSuccessfully": "Correo electrónico verificado exitosamente",
+    "failedVerifyEmail":"No se pudo verificar el correo electrónico"
+
+    
     },
     "ForgetPassswordLink":{
       "forgotPassword": "Has olvidado tu contraseña?",

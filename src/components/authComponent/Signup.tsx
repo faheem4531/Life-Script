@@ -63,7 +63,7 @@ const Signup = ({ signupClick }) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
       .then(() => {
-        toast.success("Signed up successfully");
+        toast.success(t("signup-page.signedUpSuccessfully"));
         router.push("/change-password/getStarted");
       })
       .catch((error: any) => {
@@ -72,7 +72,7 @@ const Signup = ({ signupClick }) => {
   };
 
   const handleGoogleLoginFailure = () => {
-    toast.error("Failed to signup with google");
+    toast.error(t("signup-page.failedSignupGoogle"));
   };
 
   const formik = useFormik({
@@ -89,7 +89,7 @@ const Signup = ({ signupClick }) => {
           router.push(`/verify/verificationSent/?email=${data.email}`);
         })
         .catch((error: any) => {
-          toast.error(error?.message || "Failed to sign up");
+          toast.error(error?.message || t("signup-page.failedSignup"));
         });
     },
     validationSchema: Yup.object({

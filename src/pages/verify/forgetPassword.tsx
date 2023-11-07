@@ -42,7 +42,7 @@ const ForgetPassword = () => {
       dispatch(forgetPassword(data))
         .unwrap()
         .then(() => {
-          toast.success("Email sent successfully");
+          toast.success(t("ForgetPassword.emailSentSuccessfully"));
           router.push(`/verify/forgetPasswordLink?email=${data.email}`);
         })
         .catch((error: any) => {
@@ -50,7 +50,7 @@ const ForgetPassword = () => {
         });
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required("Email is required"),
+      email: Yup.string().email().required(t("ForgetPassword.emailRequired")),
     }),
   });
 
@@ -131,7 +131,7 @@ const ForgetPassword = () => {
           )}
           {sentFailed && (
             <Box sx={{ mt: 2 }}>
-              <Typography sx={{ color: "red" }}>User not found</Typography>
+              <Typography sx={{ color: "red" }}>{t("ForgetPassword.userNotFound")}</Typography>
             </Box>
           )}
 

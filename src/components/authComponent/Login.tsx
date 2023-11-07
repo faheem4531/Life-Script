@@ -57,7 +57,7 @@ const Login = ({ signinClick }) => {
   };
 
   const handleGoogleLoginFailure = () => {
-    toast.error("Failed to signup with google");
+    toast.error(t("login-page.failedSignupGoogle"));
   };
 
   const formik = useFormik({
