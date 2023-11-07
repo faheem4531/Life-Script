@@ -2,7 +2,7 @@
 "use client";
 
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -96,10 +96,63 @@ export default function DetailCard() {
           <Image alt='check' src={Tick} />
           The Best Project You've Worked On
         </Typography>
-        <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px" marginTop="30px">
-          Last Edited 3 Days Ago
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "20px" }}>
+          <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px" >
+            Last Edited 3 Days Ago
+          </Typography>
+          <CircularWithValueLabel />
+        </Box>
       </CardContent>
     </Card>
   );
+}
+
+
+// Progress Bar code  
+function CircularProgressWithLabel(props) {
+  return (
+    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+      <CircularProgress color="success" variant="determinate" {...props} />
+      <Box
+        sx={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          position: 'absolute',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography variant="caption" component="div" color="#197065">
+          {`${Math.round(props.value)}%`}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
+CircularProgressWithLabel.propTypes = {
+  /**
+   * The value of the progress indicator for the determinate variant.
+   * Value between 0 and 100.
+   * @default 0
+   */
+  value: PropTypes.number.isRequired,
+};
+
+function CircularWithValueLabel() {
+  const [progress, setProgress] = React.useState(10);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
+    }, 800);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return <CircularProgressWithLabel value={progress} />;
 }
