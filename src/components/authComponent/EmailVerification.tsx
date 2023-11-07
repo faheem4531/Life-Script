@@ -1,7 +1,7 @@
 "use client";
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-
+import { useTranslation } from "react-i18next";
 import { verifyEmail } from "@/store/slices/authSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -19,16 +19,17 @@ const EmailVerification = () => {
   const [userEmail, setUserEmail] = useState("");
   const [otp, setOtp] = useState("");
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
 
   function handleVerifyEmail() {
     dispatch(verifyEmail({ email: userEmail, otp: otp }))
       .unwrap()
       .then(() => {
-        toast.success("Email verified successfully");
+        toast.success(t("Verify.emailVerifiedSuccessfully"));
         router.push("/");
       })
       .catch((error: any) => {
-        toast.error(error || "Failed to verify email");
+        toast.error(error || t("Verify.failedVerifyEmail"));
       });
   }
 
@@ -84,7 +85,7 @@ const EmailVerification = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-            Email Verification{" "}
+            {t("Verify.emailVerification")}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
@@ -96,7 +97,7 @@ const EmailVerification = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email
+              {t("Verify.email")}
             </Typography>
             <TextField
               variant="outlined"
@@ -115,8 +116,8 @@ const EmailVerification = () => {
           <Typography
             sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
           >
-            Your email has been verified. Click on the button to <br /> proceed
-            forward.
+            {t("Verify.emailVerified")}
+            <br /> {t("Verify.proceedForward")}
           </Typography>
 
           <Box
@@ -142,7 +143,7 @@ const EmailVerification = () => {
                 textTransform: "none",
               }}
             >
-              Lets Begin
+              {t("Verify.letsBegin")}{" "}
             </Button>
           </Box>
         </Box>

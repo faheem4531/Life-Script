@@ -48,7 +48,7 @@ const Login = ({ signinClick }) => {
     dispatch(googleLogin({ credential: e.access_token }))
       .unwrap()
       .then(() => {
-        toast.success("Signed in successfully");
+        toast.success(t("login-page.loggedIn"));
         router.push("/change-password/getStarted");
       })
       .catch((error: any) => {
@@ -57,7 +57,7 @@ const Login = ({ signinClick }) => {
   };
 
   const handleGoogleLoginFailure = () => {
-    toast.error("Failed to signup with google");
+    toast.error(t("login-page.failedSignupGoogle"));
   };
 
   const formik = useFormik({
@@ -72,7 +72,7 @@ const Login = ({ signinClick }) => {
       dispatch(login(data))
         .unwrap()
         .then(() => {
-          toast.success("Logged in successfully");
+          toast.success(t("login-page.loggedIn"));
           setLoading(false);
           router.push("/change-password/getStarted");
         })
@@ -82,29 +82,21 @@ const Login = ({ signinClick }) => {
         });
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required("Email is required"),
+      email: Yup.string().email().required(t("login-page.emailRequired")),
       password: Yup.string()
-        .min(8, "Wrong password")
-        .required("Password is required"),
+        .min(8, t("login-page.passwordLength"))
+        .required(t("login-page.passwordRequired")),
     }),
   });
 
   return (
-    <Box sx={{ 
-      display: "flex", 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      margin: "0 auto",
-      maxWidth: "460px",
-      width: '100%'
-      }}>
-        <Box
-        width='100%'
-        >
+    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box>
+        <Box>
           <Typography
             sx={{
               // marginRight: "300px",
-              // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
             {t("login-page.email")}
@@ -116,19 +108,19 @@ const Login = ({ signinClick }) => {
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             sx={{
-              margin: "10px 0",
+              marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px",
                 backgroundColor: "white",
               },
-              width: '100%'
+              width: "460px",
             }}
           />
+        </Box>
         {formik.touched.email && formik.errors.email && (
           <span style={{ color: "red" }}>{formik.errors.email}</span>
         )}
-        </Box>
-        <Box width="100%">
+        <Box>
           <Box>
             <Typography
               sx={{
@@ -141,12 +133,12 @@ const Login = ({ signinClick }) => {
             </Typography>
             <TextField
               sx={{
-                margin: "10px 0",
+                marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                   backgroundColor: "white",
                 },
-                width: '100%'
+                width: "460px",
               }}
               placeholder={t("login-page.enter-password")}
               type={showPassword ? "text" : "password"}
@@ -181,7 +173,7 @@ const Login = ({ signinClick }) => {
           {loginFailed && (
             <Box sx={{ marginTop: "10px" }}>
               <Typography sx={{ color: "red" }}>
-                Incorrect password or email
+                {t("login-page.IncorrectEmail")}
               </Typography>
             </Box>
           )}
@@ -364,6 +356,8 @@ const Login = ({ signinClick }) => {
             {t("login-page.register-now")}
           </a>
         </Box>
+      </Box>
+      {/* </Box> */}
     </Box>
   );
 };

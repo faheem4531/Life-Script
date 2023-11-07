@@ -1,6 +1,6 @@
 import { LoginData } from "@/interface/authInterface";
 import { Box, Typography } from "@mui/material";
-
+import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -14,6 +14,7 @@ const ForgetPasswordLink = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
   const { email } = router.query;
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -71,7 +72,8 @@ const ForgetPasswordLink = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "40px" }}
           >
-            Forgot Password?{" "}
+            {t("ForgetPassswordLink.forgotPassword")}
+            
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
@@ -83,8 +85,8 @@ const ForgetPasswordLink = () => {
                 justifyContent: "left",
               }}
             >
-              Reset Password link has been sent to <br />
-              {email}. Please click on the link to <br /> reset your password
+              {t("ForgetPassswordLink.resetPassword")} <br />
+              {email}. {t("ForgetPassswordLink.clickLink")}<br /> {t("ForgetPassswordLink.reset")}
             </Typography>
           </Box>
         </Box>

@@ -1,6 +1,6 @@
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-
+import { useTranslation } from "react-i18next";
 import { ForgetPassword } from "@/interface/authInterface";
 import { forgetPassword } from "@/store/slices/authSlice";
 import { useFormik } from "formik";
@@ -19,7 +19,7 @@ const ForgetPassword = () => {
   const dispatch: any = useDispatch();
   const [emailSent, setEmailSent] = useState("");
   const router = useRouter();
-
+  const { t } = useTranslation();
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -72,7 +72,7 @@ const ForgetPassword = () => {
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-            Forgot Password?{" "}
+            {t("ForgetPassword.forgotPassword?")}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
@@ -80,8 +80,7 @@ const ForgetPassword = () => {
             <Typography
               sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
             >
-              Please enter email associated with the Lifescript <br /> account
-              to send password reset link.
+              {t("ForgetPassword.forgotPassword?")}
             </Typography>
             <Typography
               sx={{
@@ -90,7 +89,7 @@ const ForgetPassword = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email
+              {t("ForgetPassword.enterEmail")}
             </Typography>
             <TextField
               variant="outlined"

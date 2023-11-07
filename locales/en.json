@@ -9,6 +9,81 @@
     "login-with": "Or login with",
     "not-member": "Not a member yet?",
     "register-now": "Register now",
-    "incorrect": "Incorrect password or email"
-  }
+    "incorrect": "Incorrect password or email",
+    "emailRequired":"Email is required",
+    "passwordRequired": "Password is required",
+    "passwordLength":"Password must be 8 characters long",
+    "loggedIn":"Signed in successfully",
+    "failedSignupGoogle":"Failed to sign up with Google"
+  },
+  "signup-page": {
+    "email": "Email",
+    "enter-email": "Enter your email address",
+    "name": "Name",
+    "enter-name": "Enter your full name ",
+    "password": "Password",
+    "enter-password": "Enter your password",
+    "Register": "Register",
+    "register": "Register",
+    "incorrect": "Incorrect password or email",
+    "or-register-with": "Or Register with",
+    "alreadyRegisterd": "Already registered?",
+    "loginNow": "Login now",
+    "emailRequired":"Email is required",
+    "passwordRequired": "Password is required",
+    "passwordLength":"Password must be 8 characters long",
+    "nameRequired":"Name is Required",
+    "loggedIn":"Signed in successfully",
+    "IncorrectEmail":"Incorrect password or email",
+    "verificationEmailSent":"Verification email sent",
+    "failedSignup":"Failed to sign up",
+    "signedUpSuccessfully":"Signed up successfully",
+    "failedSignupGoogle":"Failed to sign up with Google"
+
+    
+  },
+  "Register": {
+    "Login": "Login",
+    "Register": "Register"
+  },
+  "ForgetPassword": {
+    "forgotPassword?": "Forgot Password?",
+    "enterEmail": "Please enter email associated with the LifeScript account to send password link.",
+    "email": "Email",
+    "enter-email": "Enter your email address",
+    "continue": "Continue",
+    "emailSentSuccessfully":"Email sent successfully",
+    "emailRequired":"Email is required",
+    "userNotFound":"User not found"
+  },
+  "VerificationSent": {
+    "emailVerification" : "Email Verification",
+    "verifcationLink" : "We've sent a verification link to",
+    "clicktoVerify":"Kindly click on the link to verify."
+
+  },
+  "ResetPassword": {
+    "resetPassword":"Reset Password",
+    "password": "Password",
+    "confirmPassword":"Confirm Password",
+    "confirm":"Confirm",
+    "redirect":"After clicking Reset Password. You will be redirected to the",
+    "loginPage":"login page."
+  },
+  "Verify": {
+    "emailVerification" : "Email Verification",
+    "email": "Email",
+    "emailVerified":"Your email has been verified. Click on the button to",
+    "proceedForward":"proceed forward.",
+    "letsBegin":"Lets Begin",
+    "emailVerifiedSuccessfully": "Email verified successfully",
+    "failedVerifyEmail":"Failed to verify email"
+    },
+    "ForgetPassswordLink":{
+      "forgotPassword": "Forgot Password?",
+      "resetPassword":"Reset Password link has been sent to",
+      "clickLink":"Please click on the link to",
+      "reset": "reset your password"
+
+    }
 }
