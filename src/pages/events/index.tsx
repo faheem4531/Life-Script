@@ -11,6 +11,13 @@ const Editor = dynamic(
   { ssr: false }
 );
 
+const customStyles = {
+  editor: {
+    height: "100px",
+    border: "2px solid black",
+  },
+};
+
 export default function RichTextEditor() {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -22,40 +29,13 @@ export default function RichTextEditor() {
     const data = convertToRaw(editorState.getCurrentContent());
   };
 
-  function uploadImageCallBack(file: any) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://api.imgur.com/3/image");
-      xhr.setRequestHeader("Authorization", "Client-ID XXXXX");
-      const data = new FormData();
-      data.append("image", file);
-      xhr.send(data);
-      xhr.addEventListener("load", () => {
-        const response = JSON.parse(xhr.responseText);
-        resolve(response);
-      });
-      xhr.addEventListener("error", () => {
-        const error = JSON.parse(xhr.responseText);
-        reject(error);
-      });
-    });
-  }
-
   return (
     <>
       <Editor
         editorState={editorState}
-        toolbarClassName="toolbarClassName"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
         onEditorStateChange={updateTextDescription}
         toolbar={{
-          options: ["inline", "list", "textAlign", "link", "history", "image"],
-
-          image: {
-            uploadCallback: uploadImageCallBack,
-            alt: { present: true, mandatory: true },
-          },
+          controls: ["inline", "list", "textAlign", "link", "history", "image"],
         }}
       />
     </>
