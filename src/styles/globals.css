@@ -114,3 +114,19 @@ a {
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+.icon-tabler-photo {
+  display: none !important;
+}
+
+.ql-image {
+  background-image: url("../_assets/svg/imagepicker.svg") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  width: 100px !important;
+  border: 0px !important;
+}
+
+.ql-image:hover {
+  background-color: transparent !important;
+}
