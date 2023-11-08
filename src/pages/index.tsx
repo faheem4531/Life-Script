@@ -4,6 +4,7 @@ import { Provider as StoreProvider } from "react-redux";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import { store } from "../store/store";
+
 import AuthPage from "./_auth/Auth";
 
 const inter = Inter({ subsets: ["latin"] });
