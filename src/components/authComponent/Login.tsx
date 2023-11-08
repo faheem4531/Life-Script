@@ -90,9 +90,12 @@ const Login = ({ signinClick }) => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-      <Box>
-        <Box>
+    <Box sx={{ display: "flex", justifyContent: "center", color: "#000" }}>
+      <Box sx={{
+        maxWidth: "460px", margin: "0 auto", minWidth: "280px", width: "100%",
+        marginX: { sx: "0 35px" }
+      }}>
+        <Box >
           <Typography
             sx={{
               // marginRight: "300px",
@@ -113,7 +116,8 @@ const Login = ({ signinClick }) => {
                 borderRadius: "50px",
                 backgroundColor: "white",
               },
-              width: "460px",
+              width: "100%",
+              // width: "460px",
             }}
           />
         </Box>
@@ -138,7 +142,7 @@ const Login = ({ signinClick }) => {
                   borderRadius: "50px", // Adjust the border radius as needed
                   backgroundColor: "white",
                 },
-                width: "460px",
+                width: "100%",
               }}
               placeholder={t("login-page.enter-password")}
               type={showPassword ? "text" : "password"}
@@ -220,7 +224,7 @@ const Login = ({ signinClick }) => {
             </Box>
           </Box>
         </Box>
-        <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+        <Box sx={{ justifyContent: "start", textAlign: "center" }}>
           <Button
             variant="contained"
             onClick={(event) => formik.handleSubmit()}
@@ -229,11 +233,12 @@ const Login = ({ signinClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "310px",
-              marginTop: "20px",
+              width: "70%",
+              marginTop: { xs: "75px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
+
             }}
           >
             {t("login-page.login")}
