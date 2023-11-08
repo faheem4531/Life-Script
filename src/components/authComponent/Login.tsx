@@ -234,7 +234,7 @@ const Login = ({ signinClick }) => {
               backgroundColor: "#186F65",
               color: "white",
               width: "70%",
-              marginTop: { xs: "75px", sm: "20px" },
+              marginTop: { xs: "60px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
