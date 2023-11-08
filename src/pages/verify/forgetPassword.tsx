@@ -61,16 +61,17 @@ const ForgetPassword = () => {
         backgroundColor: "#FFF7EA",
         alignItems: "center",
         gridTemplateColumns: {
-          sm: "repeat(2, minmax(0, 1fr))",
+          md: "repeat(2, minmax(0, 1fr))",
           xs: "repeat(1, minmax(0, 1fr))",
         },
         gap: "1rem",
         p: "20px",
         height: "100dvh",
         overflowY: "scroll",
+        color: "#000",
       }}
     >
-      <Box sx={{ margin: 0, display: { sm: "block", xs: "none" } }}>
+      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
         <Image
           src={Forget}
           alt="login Image"
@@ -93,7 +94,7 @@ const ForgetPassword = () => {
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
-          <Box>
+          <Box sx={{ marginBottom: "14px" }}>
             <Typography
               sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
             >
@@ -158,7 +159,7 @@ const ForgetPassword = () => {
                 textTransform: "none",
               }}
             >
-               {t("ForgetPassword.continue")}
+              {t("ForgetPassword.continue")}
             </Button>
           </Box>
         </Box>
