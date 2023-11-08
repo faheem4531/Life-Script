@@ -61,7 +61,9 @@ export default function Register() {
       height="100dvh"
       boxSizing="border-box"
       gap="1rem"
+      color="#000"
       sx={{
+        overflowX: "hidden",
         p: 2,
         backgroundColor: "#FFF7EA",
         gridTemplateColumns: {
