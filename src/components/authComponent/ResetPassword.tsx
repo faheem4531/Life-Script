@@ -62,16 +62,32 @@ const ResetPassword = () => {
   });
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-      <Box sx={{ margin: 0 }}>
-        <Image src={Forget} alt="image of login" width={650} height={700} />
+    <Box sx={{
+      display: "grid",
+      alignItems: "center",
+      gridTemplateColumns: {
+        md: "repeat(2, minmax(0, 1fr))",
+        xs: "repeat(1, minmax(0, 1fr))"
+      },
+      gap: '1rem',
+      backgroundColor: "#FFF7EA",
+      minHeight: "100vh",
+      p: "20px",
+      boxSizing: 'border-box',
+      color: "#000"
+    }}>
+      <Box sx={{ margin: 0, display: { md: 'block', xs: 'none' } }}>
+        <Image src={Forget} alt="image of login" style={{ height: "100%", maxHeight: "92vh", width: "100%" }} />
       </Box>
 
-      <Box>
+      <Box sx={{
+        maxWidth: "460px", margin: "0 auto", minWidth: "280px", width: "100%",
+        marginX: { sx: "0 35px" }
+      }}>
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={135} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "50px" }}
+            sx={{ color: "#000000", marginTop: "50px", fontSize: { sx: "15px", sm: "30px" } }}
           >
             Reset Password
           </Typography>
@@ -81,10 +97,8 @@ const ResetPassword = () => {
           <Box>
             <Typography
               sx={{
-                // marginRight: "450px",
-
-                marginTop: "34px",
-                fontSize: "21px",
+                marginTop: "5rem",
+                fontSize: { sx: "15px", sm: "21px" }
               }}
             >
               Password
@@ -96,7 +110,7 @@ const ResetPassword = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "50px", // Adjust the border radius as needed
               },
-              width: "580px",
+              width: "100%",
             }}
             placeholder="Password"
             type={showPassword ? "text" : "password"}
@@ -118,10 +132,8 @@ const ResetPassword = () => {
         <Box>
           <Typography
             sx={{
-              // marginRight: "450px",
-
               marginTop: "40px",
-              fontSize: "21px",
+              fontSize: { sx: "15px", sm: "21px" }
             }}
           >
             Confirm Password
@@ -133,7 +145,7 @@ const ResetPassword = () => {
             "& .MuiOutlinedInput-root": {
               borderRadius: "50px", // Adjust the border radius as needed
             },
-            width: "580px",
+            width: "100%",
           }}
           placeholder="Confirm Password"
           type={showConfirmPassword ? "text" : "password"}
@@ -173,7 +185,8 @@ const ResetPassword = () => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "404px",
+              maxWidth: "404px",
+              width: "70%",
               pt: "16px",
               pb: "16px",
 
@@ -193,7 +206,7 @@ const ResetPassword = () => {
               fontSize: "18px",
             }}
           >
-            After clicking Rest Password. You will be redirected to the <br />{" "}
+            After clicking Rest Password. You will be redirected to the
             login page.
           </Typography>
         </Box>
