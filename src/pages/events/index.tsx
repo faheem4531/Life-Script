@@ -16,8 +16,8 @@ export default function Answers() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minWidth: "90vh",
-            padding: "10px 80px",
+            minWidth: "85vh",
+            padding: "30px 80px",
           }}
         >
           <RichTextEditor />

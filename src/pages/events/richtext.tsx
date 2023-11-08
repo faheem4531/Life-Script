@@ -29,7 +29,7 @@ const RichTextEditor = () => {
         ]}
         style={{
           marginTop: "30px",
-          minHeight: "85vh",
+          minHeight: "80vh",
           minWidth: "100vh",
           overflowY: "auto",
         }}
