@@ -1,5 +1,4 @@
-import { Box, TextField, Typography } from "@mui/material";
-import Arrow from "../../../public/startArrow.png";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 import BookImage from "../../../public/getTitleBook.svg";
@@ -20,7 +19,7 @@ const getTitle = () => {
         sx={{
           backgroundImage: 'url("/GetTitle.svg")',
           backgroundSize: "cover", // Adjust as needed
-          backgroundPosition: "center center", // Adjust as needed
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat", // Adjust as needed
           width: "100%",
           height: "100vh", // Adjust the height as needed
@@ -44,26 +43,55 @@ const getTitle = () => {
           >
             What would you like to <br /> call your lifescript?
           </Typography>
-          <Box sx={{ marginTop: "200px" }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-  <TextField
-    variant="standard"
-    value={text}
-    onChange={handleChange}
-    sx={{ width: '540px' }}
-    InputProps={{
-      style: { fontSize: '43px' },
-    }}
-  />
-  <Typography sx={{ alignSelf: 'flex-end', fontSize:'30px',color:'#969696' }}>
-    {text.length}/{maxLength}
-  </Typography>
-</Box>
-
+          <Box sx={{ marginTop: "00px" }}>
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <TextField
+                variant="standard"
+                value={text}
+                onChange={handleChange}
+                sx={{ width: "540px" }}
+                InputProps={{
+                  style: { fontSize: "43px" },
+                }}
+              />
+              <Typography
+                sx={{
+                  alignSelf: "flex-end",
+                  fontSize: "30px",
+                  color: "#969696",
+                }}
+              >
+                {text.length}/{maxLength}
+              </Typography>
+            </Box>
           </Box>
+          <Button variant="outlined" sx={{backgroundColor:'#FCE09B',borderColor:'#FCE09B', borderRadius:'31.5px',width:'291px',height:'63px',color:'#186F65'}}>
+            Start Writing
+          </Button>
         </Box>
-        <Box sx={{ marginTop: "150px",marginRight:'23px' }}>
+        {/* <Box sx={{ marginTop: "150px",marginRight:'23px' }}>
           <Image src={BookImage} alt="book image" width={608} height={729} />
+        </Box> */}
+
+        <Box
+          sx={{
+            height: "auto",
+            display: { sm: "block", xs: "none" },
+            marginTop: "100px",
+            marginRight: "100px",
+          }}
+        >
+          <Image
+            src={BookImage}
+            alt="login Image"
+            style={{
+              height: "100%",
+              maxHeight: "70vh",
+              minHeight: "52vh",
+              width: "100%",
+              objectFit: "contain",
+            }}
+          />
         </Box>
       </Box>
     </div>

@@ -14,7 +14,8 @@
     "passwordRequired": "Password is required",
     "passwordLength":"Password must be 8 characters long",
     "loggedIn":"Signed in successfully",
-    "failedSignupGoogle":"Failed to sign up with Google"
+    "failedSignupGoogle":"Failed to sign up with Google",
+    "IncorrectEmail":"Incorrect password or email"
   },
   "signup-page": {
     "email": "Email",
