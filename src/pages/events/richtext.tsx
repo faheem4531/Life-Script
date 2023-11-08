@@ -15,15 +15,7 @@ const RichTextEditor = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        backgroundColor: "#FFF7EA",
-        height: "auto",
-        overflowY: "hidden",
-      }}
-    >
+    <Box sx={{ minWidth: "50vh" }}>
       <Rte
         value={editorValue}
         onChange={handleEditorChange}
@@ -37,10 +29,8 @@ const RichTextEditor = () => {
         ]}
         style={{
           marginTop: "30px",
-          marginBottom: "30px",
-          minHeight: "80vh",
-          maxHeight: "80vh",
-          minWidth: "70vh",
+          minHeight: "85vh",
+          minWidth: "100vh",
           overflowY: "auto",
         }}
       />
