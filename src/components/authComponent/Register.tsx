@@ -61,16 +61,18 @@ export default function Register() {
       height="100dvh"
       boxSizing="border-box"
       gap="1rem"
-      sx={{ 
-        p: 2, 
+      color="#000"
+      sx={{
+        overflowX: "hidden",
+        p: 2,
         backgroundColor: "#FFF7EA",
         gridTemplateColumns: {
-          sm: "repeat(2, minmax(0, 1fr))",
+          md: "repeat(2, minmax(0, 1fr))",
           xs: "repeat(1, minmax(0, 1fr))"
         }
-       }}
+      }}
     >
-      <Box sx={{ height: "auto", display: {sm: 'block', xs: 'none'} }}>
+      <Box sx={{ height: "auto", display: { md: 'block', xs: 'none' } }}>
         {value == 0 ? (
           <Image
             src={LoginImage}

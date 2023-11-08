@@ -25,7 +25,7 @@ const Signup = ({ signupClick }) => {
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
   const router = useRouter();
-   const { t } = useTranslation();
+  const { t } = useTranslation();
   // const { data: session, status } = useSession();
 
   // useEffect(() => {
@@ -105,8 +105,8 @@ const Signup = ({ signupClick }) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: 'column', 
-        alignItems: 'center', 
+        flexDirection: 'column',
+        alignItems: 'center',
         margin: "0 auto",
         maxWidth: "460px",
         width: '100%'
@@ -121,7 +121,7 @@ const Signup = ({ signupClick }) => {
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
-              {t("signup-page.email")}
+            {t("signup-page.email")}
           </Typography>
           <TextField
             variant="outlined"
@@ -183,7 +183,7 @@ const Signup = ({ signupClick }) => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-            {t("signup-page.password")}
+              {t("signup-page.password")}
             </Typography>
             <TextField
               sx={{
@@ -263,14 +263,14 @@ const Signup = ({ signupClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "310px",
-              marginTop: "20px",
+              width: "70%",
+              marginTop: { xs: "40px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
             }}
           >
-           {t("signup-page.register")}
+            {t("signup-page.register")}
           </Button>
 
           <Box
@@ -293,7 +293,7 @@ const Signup = ({ signupClick }) => {
             </Box>
             <Box>
               <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-              {t("signup-page.or-register-with")}
+                {t("signup-page.or-register-with")}
               </Typography>
             </Box>
             <Box>
@@ -382,12 +382,12 @@ const Signup = ({ signupClick }) => {
             color: "#186F65",
           }}
         >
-             {t("signup-page.alreadyRegisterd")}
+          {t("signup-page.alreadyRegisterd")}
           <a
             style={{ textDecoration: "underline", cursor: "pointer" }}
             onClick={signupClick}
           >
-             {t("signup-page.loginNow")}
+            {t("signup-page.loginNow")}
           </a>
         </Box>
       </Box>
