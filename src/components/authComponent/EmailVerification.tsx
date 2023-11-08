@@ -65,7 +65,6 @@ const EmailVerification = () => {
 
   return (
     <Box
-      //  sx={{ display: "flex", justifyContent: "space-around" }}
       sx={{
         display: "grid",
         alignItems: "center",
