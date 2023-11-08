@@ -1,7 +1,7 @@
 import DetailCard from "@/components/dashboardComponent/DetailCard";
-import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
+import ChooseTemplate from "@/components/dashboardComponent/chooseTemplate";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
           }}
           className={styles.subContainer}
         >
-          <HomeSteps />
+          <ChooseTemplate />
           <Box sx={{ marginTop: "48px" }} className={styles.CardsContainer}>
             <DetailCard />
             <DetailCard />
