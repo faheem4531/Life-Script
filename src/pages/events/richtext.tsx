@@ -34,6 +34,7 @@ const RichTextEditor = () => {
           ["image"],
         ]}
         style={{
+          paddingTop: "5px",
           marginTop: "30px",
           minHeight: "80vh",
           minWidth: "100vh",
