@@ -1,6 +1,8 @@
-import { Box } from "@mui/material";
+import { gptChat } from "@/store/slices/chatSlice";
+import { Box, Button } from "@mui/material";
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Rte = dynamic(() => import("@mantine/rte"), {
   ssr: false,
@@ -8,12 +10,16 @@ const Rte = dynamic(() => import("@mantine/rte"), {
 
 const RichTextEditor = () => {
   const [editorValue, setEditorValue] = useState("");
+  const dispatch: any = useDispatch();
   console.log("vall", editorValue);
 
   const handleEditorChange = (value) => {
     setEditorValue(value);
   };
 
+  const callgpt = () => {
+    dispatch(gptChat({ prompt: editorValue }));
+  };
   return (
     <Box sx={{ minWidth: "50vh" }}>
       <Rte
@@ -34,6 +40,11 @@ const RichTextEditor = () => {
           overflowY: "auto",
         }}
       />
+      <Box>
+        <Button variant="contained" onClick={callgpt}>
+          click
+        </Button>
+      </Box>
     </Box>
   );
 };
