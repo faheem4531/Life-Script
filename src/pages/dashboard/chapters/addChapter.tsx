@@ -1,21 +1,20 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 
-export default function AddQuestion({ questionData }) {
-  const [question, setQuestion] = useState("");
+export default function AddChapter({ chapterData }) {
+  const [chapter, setChapter] = useState("");
 
   const handleSubmit = () => {
-    questionData(question);
+    chapterData(chapter);
   };
   return (
     <Box sx={{ margin: "10px" }}>
       <Box>
         <TextField
           variant="outlined"
-          placeholder="Add Question"
-          name="email"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Add Chapter"
+          value={chapter}
+          onChange={(e) => setChapter(e.target.value)}
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {

@@ -11,8 +11,13 @@ import { useState } from "react";
 import addIcon from "../../../../public/addicon.svg";
 import arrow from "../../../../public/arrow-cropped.svg";
 
-const Dashboard = () => {
+const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+
+  const submitQuestion = (question: string) => {
+    console.log("question", question);
+  };
+
   return (
     <>
       <Box sx={{ overflowX: "hidden" }}>
@@ -79,10 +84,15 @@ const Dashboard = () => {
         }}
         customStyles={{ backgroundColor: "auto" }}
       >
-        <AddQuestion />
+        <AddQuestion
+          questionData={(question: string) => {
+            setOpenModal(false);
+            submitQuestion(question);
+          }}
+        />
       </CustomizationDialog>
     </>
   );
 };
 
-export default Dashboard;
+export default chapterName;

@@ -8,7 +8,7 @@ export async function chatApi(data: any) {
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed to Sign in");
+      throw new Error(errors ? errors[0] : "Failed");
     } else {
       throw new Error(error.response?.data?.message);
     }
@@ -17,11 +17,11 @@ export async function chatApi(data: any) {
 export async function createChapterApi(data: { title: string }) {
   try {
     const res = await api.post("/chapters", data);
-    return res.data;
+    return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed to Sign in");
+      throw new Error(errors ? errors[0] : "Failed");
     } else {
       throw new Error(error.response?.data?.message);
     }
@@ -35,7 +35,7 @@ export async function getChaptersApi() {
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed to Sign in");
+      throw new Error(errors ? errors[0] : "Failed");
     } else {
       throw new Error(error.response?.data?.message);
     }
@@ -45,11 +45,28 @@ export async function getChaptersApi() {
 export async function getChapterbyIdApi(data: { id: string }) {
   try {
     const res = await api.get(`/chapters/${data.id}`);
-    return res.data;
+    return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed to Sign in");
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function createQuestionApi(data: {
+  text: string;
+  chapter: string;
+}) {
+  try {
+    const res = await api.post("/questions", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
     } else {
       throw new Error(error.response?.data?.message);
     }

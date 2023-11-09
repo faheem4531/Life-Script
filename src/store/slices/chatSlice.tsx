@@ -1,7 +1,12 @@
 import { UserData } from "@/interface/authInterface";
 import { chatWithgpt } from "@/interface/chatInterface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { chatApi, createChapterApi, getChaptersApi } from "../api/chatApi";
+import {
+  chatApi,
+  createChapterApi,
+  getChapterbyIdApi,
+  getChaptersApi,
+} from "../api/chatApi";
 const initialState = {
   chats: [],
 };
@@ -46,7 +51,7 @@ export const getChapterbyId = createAsyncThunk<UserData, { id: string }>(
   "chat/get-chapterbyId",
   async (data: { id: string }) => {
     try {
-      const response = await getChapterbyId(data);
+      const response = await getChapterbyIdApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -1,4 +1,8 @@
-import { createChapter, getChapters } from "@/store/slices/chatSlice";
+import {
+  createChapter,
+  getChapterbyId,
+  getChapters,
+} from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
@@ -10,12 +14,32 @@ import Check from "../../../public/checkIcon.png";
 
 const AddChapterName = () => {
   const [chapterName, setChapterName] = useState("");
+  console.log("chapternnn", chapterName);
+  const [chapterId, setChapterId] = useState();
   const dispatch: any = useDispatch();
 
   const saveChapterName = () => {
     console.log("cname", chapterName);
-    dispatch(createChapter({ title: chapterName }));
+    dispatch(createChapter({ title: chapterName }))
+      .unwrap()
+      .then((res: any) => {
+        res && setChapterId(res._id);
+      })
+      .catch(() => {});
   };
+
+  useEffect(() => {
+    if (chapterId) {
+      dispatch(getChapterbyId({ id: chapterId }))
+        .unwrap()
+        .then((res: any) => {
+          if (res) {
+            setChapterName(res.title);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [chapterId]);
 
   useEffect(() => {
     dispatch(getChapters());

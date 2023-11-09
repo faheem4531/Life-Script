@@ -15,7 +15,7 @@ import styles from "./Navbar.module.css";
 const options = ["None", "Atria", "Callisto"];
 const ITEM_HEIGHT = 48;
 
-const NavBar = () => {
+const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -65,7 +65,10 @@ const NavBar = () => {
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <Button
-          onClick={() => {}}
+          onClick={() => {
+            console.log("clicked", newChapter);
+            newChapter();
+          }}
           title="Start a new Chapter"
           border="1px solid #fff"
           background="transparent"
