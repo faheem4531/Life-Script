@@ -6,6 +6,7 @@ import {
   createChapterApi,
   getChapterbyIdApi,
   getChaptersApi,
+  updateChapterApi,
 } from "../api/chatApi";
 const initialState = {
   chats: [],
@@ -28,6 +29,18 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateChapter = createAsyncThunk<UserData, any>(
+  "chat/update-chapter",
+  async (data: { title: string; id: string }) => {
+    try {
+      const response = await updateChapterApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

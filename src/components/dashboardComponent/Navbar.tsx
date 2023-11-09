@@ -66,8 +66,7 @@ const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
       <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <Button
           onClick={() => {
-            console.log("clicked", newChapter);
-            newChapter();
+            return newChapter();
           }}
           title="Start a new Chapter"
           border="1px solid #fff"

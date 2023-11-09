@@ -7,12 +7,15 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import addIcon from "../../../../public/addicon.svg";
 import arrow from "../../../../public/arrow-cropped.svg";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const router = useRouter();
+  const { chapterId } = router.query;
 
   const submitQuestion = (question: string) => {
     console.log("question", question);
@@ -34,7 +37,7 @@ const chapterName = () => {
               padding: "10px 33px 20px",
             }}
           >
-            <AddChapterName />
+            <AddChapterName chapterId={chapterId} />
             <Box sx={{ backgroundColor: "white" }}>
               <Box sx={{ marginTop: "35px" }}>
                 <ProgressBar />

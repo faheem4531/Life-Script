@@ -19,7 +19,7 @@ import styles from "./HomeSteps.module.css";
 const options = ["None", "Atria", "Callisto"];
 
 const ITEM_HEIGHT = 48;
-export default function DetailCard() {
+export default function DetailCard({ chapter }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -79,7 +79,7 @@ export default function DetailCard() {
           fontSize="19px"
           textAlign="center"
         >
-          The Book Of John Doe
+          {chapter?.title}
         </Typography>
         <Divider
           sx={{

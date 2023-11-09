@@ -2,17 +2,36 @@ import DetailCard from "@/components/dashboardComponent/DetailCard";
 import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
+import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import { createChapter, getChapters } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import AddChapter from "./addChapter";
 
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
+  const [allChapters, setAllChapters] = useState([]);
+  const dispatch: any = useDispatch();
+  const router = useRouter();
   const submitChapter = (chapter: string) => {
     console.log("chapterrr", chapter);
+    dispatch(createChapter({ title: chapter }));
   };
+
+  useEffect(() => {
+    dispatch(getChapters())
+      .unwrap()
+      .then((res: any) => {
+        console.log("res", res);
+        setAllChapters(res);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
@@ -45,21 +64,40 @@ const Dashboard = () => {
               width: "100%",
               maxWidth: "1600px",
               height: "100%",
-              padding: "36px 33px 100px",
+              padding: "36px 33px 36px",
               marginLeft: "220px",
             }}
             className={styles.subContainer}
           >
             <HomeSteps />
-            <Box sx={{ marginTop: "48px" }}>
-              className={styles.CardsContainer}
-              <DetailCard />
-              <DetailCard />
-              <DetailCard />
-              <DetailCard />
-              <DetailCard />
-              <DetailCard />
-            </Box>
+            {allChapters ? (
+              <Box
+                className={styles.CardsContainer}
+                sx={{
+                  marginTop: "48px",
+                }}
+              >
+                {allChapters.map((chapter, index) => (
+                  <Box
+                    onClick={() => {
+                      router.push(
+                        `/dashboard/chapters/chapterName?chapterId=${chapter._id}`
+                      );
+                    }}
+                  >
+                    <DetailCard key={index} chapter={chapter} />
+                  </Box>
+                ))}
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  marginTop: "48px",
+                }}
+              >
+                <NoChapters />
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>

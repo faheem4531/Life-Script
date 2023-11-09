@@ -70,6 +70,16 @@ class API {
     return this.instance.put<T>(url, data, config).then(this.handleApiResponse);
   }
 
+  public patch<T = any>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    return this.instance
+      .patch<T>(url, data, config)
+      .then(this.handleApiResponse);
+  }
+
   public delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.delete<T>(url, config).then(this.handleApiResponse);
   }

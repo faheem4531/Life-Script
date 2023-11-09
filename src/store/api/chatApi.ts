@@ -28,10 +28,25 @@ export async function createChapterApi(data: { title: string }) {
   }
 }
 
+export async function updateChapterApi(data: { title: string; id: string }) {
+  try {
+    const updateData = { title: data.title };
+    const res = await api.patch(`/chapters/${data.id}`, updateData);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function getChaptersApi() {
   try {
     const res = await api.get("/chapters");
-    return res.data;
+    return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
