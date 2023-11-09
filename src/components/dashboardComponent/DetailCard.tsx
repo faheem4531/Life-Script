@@ -30,9 +30,9 @@ export default function DetailCard() {
   };
 
   return (
-    <Card sx={{ maxWidth: 512, borderRadius: "6.5px" }}>
+    <Card sx={{ borderRadius: "6.5px" }}>
       <div
-        style={{ backgroundColor: "#197065", padding: "25px 0 25px 17px" }}
+        style={{ backgroundColor: "#197065", padding: "25px 17px 25px 17px" }}
         className={styles.header}
       >
         <IconButton
@@ -87,7 +87,7 @@ export default function DetailCard() {
             backgroundColor: "#000",
             height: "2px",
             margin: "9px auto 0",
-            marginBottom: "40px",
+            marginBottom: "30px",
           }}
         />
         <Typography
@@ -96,7 +96,7 @@ export default function DetailCard() {
           columnGap="10px"
           color="rgba(22, 22, 22, 0.90)"
           fontSize="13px"
-          marginTop="7px"
+          marginTop="5px"
         >
           <Image alt="check" src={Tick} />
           Winner of the National Academy of Sciences Best Book Award in 2012
@@ -107,7 +107,7 @@ export default function DetailCard() {
           columnGap="10px"
           color="rgba(22, 22, 22, 0.90)"
           fontSize="13px"
-          marginTop="7px"
+          marginTop="5px"
         >
           <Image alt="check" src={Tick} />
           The Worst Job Ever
@@ -118,7 +118,7 @@ export default function DetailCard() {
           columnGap="10px"
           color="rgba(22, 22, 22, 0.90)"
           fontSize="13px"
-          marginTop="7px"
+          marginTop="5px"
         >
           <Image alt="check" src={Tick} />
           The Best Job Ever
@@ -129,7 +129,7 @@ export default function DetailCard() {
           columnGap="10px"
           color="rgba(22, 22, 22, 0.90)"
           fontSize="13px"
-          marginTop="7px"
+          marginTop="5px"
         >
           <Image alt="check" src={Tick} />
           Your Best Employee
@@ -140,7 +140,7 @@ export default function DetailCard() {
           columnGap="10px"
           color="rgba(22, 22, 22, 0.90)"
           fontSize="13px"
-          marginTop="7px"
+          marginTop="5px"
         >
           <Image alt="check" src={Tick} />
           The Best Project You've Worked On
@@ -150,7 +150,7 @@ export default function DetailCard() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginTop: "20px",
+            marginTop: "15px",
           }}
         >
           <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">

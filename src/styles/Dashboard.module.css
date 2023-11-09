@@ -11,13 +11,13 @@
   background-size: 100%;
 }
 
-@media (max-width:1500px) {
+@media (max-width: 1500px) {
   .CardsContainer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .CardsContainer {
     display: flex;
     flex-direction: column;

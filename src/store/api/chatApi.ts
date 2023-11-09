@@ -14,3 +14,44 @@ export async function chatApi(data: any) {
     }
   }
 }
+export async function createChapterApi(data: { title: string }) {
+  try {
+    const res = await api.post("/chapters", data);
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getChaptersApi() {
+  try {
+    const res = await api.get("/chapters");
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getChapterbyIdApi(data: { id: string }) {
+  try {
+    const res = await api.get(`/chapters/${data.id}`);
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
