@@ -11,9 +11,10 @@
   background-size: 100%;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1800px) {
   .CardsContainer {
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 }
 

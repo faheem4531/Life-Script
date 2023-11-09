@@ -30,7 +30,7 @@ export default function DetailCard({ chapter }) {
   };
 
   return (
-    <Card sx={{ borderRadius: "6.5px" }}>
+    <Card sx={{ borderRadius: "6.5px", maxHeight: "382px", minHeight: "300px" }}>
       <div
         style={{ backgroundColor: "#197065", padding: "25px 17px 25px 17px" }}
         className={styles.header}
