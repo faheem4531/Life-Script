@@ -1,6 +1,7 @@
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NavBar from "@/components/dashboardComponent/Navbar";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
+import Questions from "@/components/dashboardComponent/Questions";
 import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
@@ -15,10 +16,23 @@ const Dashboard = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <>
-      <Box sx={{ overflowX: "hidden" }}>
-        <NavBar />
-        <Box sx={{ marginTop: "1px", display: "flex" }}>
-          <Box sx={{ width: "220px", backgroundColor: "#197065" }}>
+      <Box sx={{ overflowX: "hidden", bgcolor: "#FFF9F0" }}>
+        <Box
+          sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}
+        >
+          <NavBar />
+        </Box>
+        <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
+          <Box
+            sx={{
+              width: "220px",
+              backgroundColor: "#197065",
+              position: "fixed",
+              bottom: "0",
+              top: "70px",
+              zIndex: "2",
+            }}
+          >
             <SideBar />
           </Box>
           <Box
@@ -27,10 +41,16 @@ const Dashboard = () => {
               maxWidth: "1600px",
               height: "100%",
               padding: "10px 33px 20px",
+              marginLeft: "220px",
             }}
           >
             <AddChapterName />
-            <Box sx={{ backgroundColor: "white" }}>
+            <Box sx={{
+              backgroundColor: "#fff",
+              padding: "55px 46px 250px 37px",
+              marginTop: "26px",
+              borderRadius: "18px"
+            }}>
               <Box sx={{ marginTop: "35px" }}>
                 <ProgressBar />
               </Box>
@@ -38,14 +58,14 @@ const Dashboard = () => {
                 sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
               >
                 <Box>
-                  <Typography sx={{ fontSize: "20px", fontWeight: 700 }}>
+                  <Typography sx={{ fontSize: "20px", fontWeight: 700, color: "rgba(0, 0, 0, 0.87)" }}>
                     Questions
                   </Typography>
                 </Box>
                 <Box display={"flex"} sx={{ gap: 2 }}>
-                  <Box sx={{ mr: 2, mt: 2 }}>
+                  {/* <Box sx={{ mr: "5px", mt: 2 }}>
                     <Image src={arrow} alt="" height={150} />
-                  </Box>
+                  </Box> */}
                   <Box
                     onClick={() => setOpenModal(true)}
                     sx={{ cursor: "pointer" }}
@@ -66,7 +86,8 @@ const Dashboard = () => {
                   </Box>
                 </Box>
               </Box>
-              <NoQuestions />
+              {/* <NoQuestions /> */}
+              <Questions />
             </Box>
           </Box>
         </Box>
