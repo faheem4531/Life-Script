@@ -21,7 +21,7 @@ const Dashboard = () => {
             maxWidth: "1600px",
             height: "100%",
             padding: "36px 33px 100px",
-            marginLeft: "220px"
+            marginLeft: "220px",
           }}
           className={styles.subContainer}
         >
