@@ -1,14 +1,14 @@
 "use client";
+import { verifyEmail } from "@/store/slices/authSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useTranslation } from "react-i18next";
-import { verifyEmail } from "@/store/slices/authSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import Email from "../../../public/EmailVerification.svg";
+import Email from "../../../public/Sign-up.png";
 import Logo from "../../../public/logo.svg";
 
 const CryptoJS = require("crypto-js");
@@ -70,16 +70,17 @@ const EmailVerification = () => {
         alignItems: "center",
         gridTemplateColumns: {
           md: "repeat(2, minmax(0, 1fr))",
-          xs: "repeat(1, minmax(0, 1fr))"
+          xs: "repeat(1, minmax(0, 1fr))",
         },
-        gap: '1rem',
+        gap: "1rem",
         backgroundColor: "#FFF7EA",
         minHeight: "100vh",
         p: "20px",
-        boxSizing: 'border-box',
-        color: "#000"
-      }}>
-      <Box sx={{ margin: 0, display: { md: 'block', xs: 'none' } }}>
+        boxSizing: "border-box",
+        color: "#000",
+      }}
+    >
+      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
         <Image
           src={Email}
           alt="image of login"
@@ -92,8 +93,11 @@ const EmailVerification = () => {
       <Box
         // textAlign={'center'}
         sx={{
-          maxWidth: "460px", margin: "0 auto", minWidth: "280px", width: "100%",
-          marginX: { sx: "0 35px" }
+          maxWidth: "460px",
+          margin: "0 auto",
+          minWidth: "280px",
+          width: "100%",
+          marginX: { sx: "0 35px" },
         }}
       >
         <Box textAlign={"center"}>
