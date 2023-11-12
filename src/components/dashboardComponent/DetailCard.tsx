@@ -20,6 +20,7 @@ const options = ["None", "Atria", "Callisto"];
 
 const ITEM_HEIGHT = 48;
 export default function DetailCard({ chapter }) {
+  const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -30,7 +31,9 @@ export default function DetailCard({ chapter }) {
   };
 
   return (
-    <Card sx={{ borderRadius: "6.5px", maxHeight: "382px", minHeight: "300px" }}>
+    <Card
+      sx={{ borderRadius: "6.5px", maxHeight: "382px", minHeight: "300px" }}
+    >
       <div
         style={{ backgroundColor: "#197065", padding: "25px 17px 25px 17px" }}
         className={styles.header}
@@ -90,61 +93,21 @@ export default function DetailCard({ chapter }) {
             marginBottom: "30px",
           }}
         />
-        <Typography
-          display="flex"
-          alignItems="center"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          fontSize="13px"
-          marginTop="5px"
-        >
-          <Image alt="check" src={Tick} />
-          Winner of the National Academy of Sciences Best Book Award in 2012
-        </Typography>
-        <Typography
-          display="flex"
-          alignItems="center"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          fontSize="13px"
-          marginTop="5px"
-        >
-          <Image alt="check" src={Tick} />
-          The Worst Job Ever
-        </Typography>
-        <Typography
-          display="flex"
-          alignItems="center"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          fontSize="13px"
-          marginTop="5px"
-        >
-          <Image alt="check" src={Tick} />
-          The Best Job Ever
-        </Typography>
-        <Typography
-          display="flex"
-          alignItems="center"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          fontSize="13px"
-          marginTop="5px"
-        >
-          <Image alt="check" src={Tick} />
-          Your Best Employee
-        </Typography>
-        <Typography
-          display="flex"
-          alignItems="center"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          fontSize="13px"
-          marginTop="5px"
-        >
-          <Image alt="check" src={Tick} />
-          The Best Project You've Worked On
-        </Typography>
+        {questions?.slice(0, 5).map((question) => (
+          <Typography
+            key={question._id}
+            display="flex"
+            alignItems="center"
+            columnGap="10px"
+            color="rgba(22, 22, 22, 0.90)"
+            fontSize="13px"
+            marginTop="5px"
+          >
+            <Image alt="check" src={Tick} />
+            {question.text}
+          </Typography>
+        ))}
+
         <Box
           sx={{
             display: "flex",

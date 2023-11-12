@@ -4,13 +4,12 @@ import Tabs from "@mui/material/Tabs";
 import Image from "next/image";
 import * as React from "react";
 import { useState } from "react";
-import SignupImage from "../../../public/EmailVerification.svg";
-import LoginImage from "../../../public/Login.svg";
+import { useTranslation } from "react-i18next";
+import LoginImage from "../../../public/Log-in.png";
+import SignupImage from "../../../public/Sign-up.png";
 import Logo from "../../../public/logo.svg";
 import Login from "./Login";
 import Signup from "./Signup";
-import { useTranslation } from "react-i18next";
-
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -30,7 +29,7 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: '24px 0' }}>
+        <Box sx={{ p: "24px 0" }}>
           <Box>{children}</Box>
         </Box>
       )}
@@ -68,11 +67,11 @@ export default function Register() {
         backgroundColor: "#FFF7EA",
         gridTemplateColumns: {
           md: "repeat(2, minmax(0, 1fr))",
-          xs: "repeat(1, minmax(0, 1fr))"
-        }
+          xs: "repeat(1, minmax(0, 1fr))",
+        },
       }}
     >
-      <Box sx={{ height: "auto", display: { md: 'block', xs: 'none' } }}>
+      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
         {value == 0 ? (
           <Image
             src={LoginImage}
@@ -151,7 +150,7 @@ export default function Register() {
               aria-label="basic tabs example"
             >
               <Tab label={t("Register.Login")} {...a11yProps(0)} />
-              <Tab label={t("Register.Register")}{...a11yProps(1)} />
+              <Tab label={t("Register.Register")} {...a11yProps(1)} />
             </Tabs>
           </Box>
         </Box>

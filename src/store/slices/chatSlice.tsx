@@ -4,12 +4,26 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   chatApi,
   createChapterApi,
+  createQuestionApi,
   getChapterbyIdApi,
   getChaptersApi,
+  getQuestionbyIdApi,
+  getQuestionsApi,
   updateChapterApi,
 } from "../api/chatApi";
-const initialState = {
+
+interface State {
+  chats: any[];
+  chapters: any[];
+  questions: any[];
+  chapter: any;
+}
+
+const initialState: State = {
   chats: [],
+  chapters: [],
+  questions: [],
+  chapter: {},
 };
 
 export const gptChat = createAsyncThunk<UserData, chatWithgpt>(
@@ -48,7 +62,7 @@ export const updateChapter = createAsyncThunk<UserData, any>(
   }
 );
 
-export const getChapters = createAsyncThunk<UserData, void>(
+export const getChapters = createAsyncThunk<any[], void>(
   "chat/get-chapter",
   async () => {
     try {
@@ -62,7 +76,7 @@ export const getChapters = createAsyncThunk<UserData, void>(
 
 export const getChapterbyId = createAsyncThunk<UserData, { id: string }>(
   "chat/get-chapterbyId",
-  async (data: { id: string }) => {
+  async (data: { id: any }) => {
     try {
       const response = await getChapterbyIdApi(data);
       return response;
@@ -72,19 +86,61 @@ export const getChapterbyId = createAsyncThunk<UserData, { id: string }>(
   }
 );
 
-export const authSlice = createSlice({
+export const createQuestion = createAsyncThunk<UserData, any>(
+  "chat/create-question",
+  async (data: { text: string; chapter: string }) => {
+    try {
+      const response = await createQuestionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getQuestions = createAsyncThunk<any[], void>(
+  "chat/get-question",
+  async () => {
+    try {
+      const response = await getQuestionsApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getQuestionbyId = createAsyncThunk<UserData, { id: string }>(
+  "chat/get-questionbyId",
+  async (data: { id: string }) => {
+    try {
+      const response = await getQuestionbyIdApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const chatSlice = createSlice({
   name: "chat",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // builder.addCase(login.fulfilled, (state, action) => {
-    //   state.user = action.payload;
-    // });
+    builder.addCase(getChapters.fulfilled, (state, action) => {
+      state.chats = action.payload;
+      state.chapters = action.payload;
+    });
+    builder.addCase(getChapterbyId.fulfilled, (state, action) => {
+      state.chapter = action.payload;
+    });
   },
 });
 
-export const {} = authSlice.actions;
+export const {} = chatSlice.actions;
 
-export const selectUser = (state: { chat: any }) => state.chat.chats;
+export const selectChat = (state: { chat: any }) => state.chat.chats;
+export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
+export const selectChapter = (state: { chat: any }) => state.chat.chapter;
 
-export default authSlice.reducer;
+export default chatSlice.reducer;

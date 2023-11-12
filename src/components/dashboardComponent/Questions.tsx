@@ -1,19 +1,17 @@
-import { Box, Typography, Button } from "@mui/material";
+import Option from "@/_assets/png/X-menu.png";
+import { Box, Button, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
-import Option from "@/_assets/png/X-menu.png"
-
-
 
 const options = ["None", "Atria", "Callisto"];
 const ITEM_HEIGHT = 48;
 
-export default function Questions() {
-
+export default function Questions({ question, number }) {
+  console.log("qqq", question);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -24,13 +22,21 @@ export default function Questions() {
     setAnchorEl(null);
   };
 
-
   return (
     <Box sx={{ position: "relative" }}>
-      <Box sx={{
-        bgcolor: "#F9F9F9", width: "100%", borderRadius: "8px", borderLeft: "11px solid #186F65", height: "110px",
-        display: "flex", alignItems: "center", justifyContent: "space-between", mt: "20px"
-      }}>
+      <Box
+        sx={{
+          bgcolor: "#F9F9F9",
+          width: "100%",
+          borderRadius: "8px",
+          borderLeft: "11px solid #186F65",
+          height: "110px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          mt: "20px",
+        }}
+      >
         <Typography
           sx={{
             marginLeft: "20px",
@@ -39,12 +45,14 @@ export default function Questions() {
             fontWeight: 400,
           }}
         >
-          1.  My first switch
+          {number}
+          {". "}
+          {question?.text}
         </Typography>
         <Box sx={{ textAlign: "center" }}>
           <Button
             variant="contained"
-            onClick={() => { }}
+            onClick={() => {}}
             type="submit"
             sx={{
               borderRadius: " 0px 8px 8px 0px",
@@ -102,6 +110,5 @@ export default function Questions() {
       </div>
       {/* More option :end */}
     </Box>
-
   );
 }

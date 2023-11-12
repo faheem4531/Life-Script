@@ -29,6 +29,7 @@ export default function AddQuestion({ questionData }) {
       <Box sx={{ justifyContent: "center", textAlign: "center" }}>
         <Button
           variant="contained"
+          disabled={!question}
           onClick={(event: any) => handleSubmit()}
           type="submit"
           sx={{

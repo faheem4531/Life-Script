@@ -1,24 +1,54 @@
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NavBar from "@/components/dashboardComponent/Navbar";
+import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
+import {
+  createQuestion,
+  getChapterbyId,
+  selectChapter,
+} from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [allQuestions, setAllQuestions] = useState([]);
+  const [chapterName, setChapterName] = useState("");
+  const question = useSelector(selectChapter);
+  console.log("qqq", question);
   const router = useRouter();
+  const dispatch: any = useDispatch();
   const { chapterId } = router.query;
 
   const submitQuestion = (question: string) => {
-    console.log("question", question);
+    dispatch(createQuestion({ text: question, chapter: chapterId.toString() }))
+      .unwrap()
+      .then(() => {
+        toast.success("Question added successfully");
+        dispatch(getChapterbyId({ id: chapterId.toString() }));
+      })
+      .catch(() => {
+        toast.error("Failed to add question");
+      });
   };
+
+  useEffect(() => {
+    chapterId && dispatch(getChapterbyId({ id: chapterId.toString() }));
+  }, [chapterId]);
+
+  useEffect(() => {
+    setAllQuestions(question.questions);
+    setChapterName(question.title);
+  }, [question]);
 
   return (
     <>
@@ -56,7 +86,7 @@ const chapterName = () => {
               marginLeft: "220px",
             }}
           >
-            <AddChapterName chapterId={chapterId} />
+            <AddChapterName chapter={chapterName} chapterId={chapterId} />
             <Box
               sx={{
                 backgroundColor: "#fff",
@@ -106,8 +136,17 @@ const chapterName = () => {
                   </Box>
                 </Box>
               </Box>
-              {/* <NoQuestions /> */}
-              <Questions />
+              {allQuestions ? (
+                allQuestions.map((question, index) => (
+                  <Questions
+                    key={question._id}
+                    question={question}
+                    number={index + 1}
+                  />
+                ))
+              ) : (
+                <NoQuestions />
+              )}
             </Box>
           </Box>
         </Box>

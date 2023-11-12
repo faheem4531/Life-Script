@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import Button from "../button/Button";
 import styles from "./Navbar.module.css";
-
 const options = ["None", "Atria", "Callisto"];
 const ITEM_HEIGHT = 48;
 
@@ -19,6 +18,7 @@ const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
+  console.log("pathhh", router.asPath);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -64,31 +64,36 @@ const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
         </Box>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <Button
-          onClick={() => {
-            return newChapter();
-          }}
-          title="Start a new Chapter"
-          border="1px solid #fff"
-          background="transparent"
-          width="180px"
-          padding="8px 0"
-          borderRadius="19px"
-          color="#fff"
-        />
-        <Button
-          onClick={() => {
-            console.log("pushed");
-            router.push("/dashboard/templates");
-          }}
-          title="Get Template"
-          border="1px solid #fff"
-          background="#fff"
-          width="180px"
-          padding="8px 0"
-          borderRadius="19px"
-          color="#197065"
-        />
+        <Box sx={{ cursor: "pointer" }}>
+          <Button
+            onClick={() => {
+              if (router.asPath === "/dashboard/chapters") {
+                return newChapter();
+              }
+            }}
+            title="Start a new Chapter"
+            border="1px solid #fff"
+            background="transparent"
+            width="180px"
+            padding="8px 0"
+            borderRadius="19px"
+            color="#fff"
+          />
+        </Box>
+        <Box sx={{ cursor: "pointer" }}>
+          <Button
+            onClick={() => {
+              router.push("/dashboard/templates");
+            }}
+            title="Get Template"
+            border="1px solid #fff"
+            background="#fff"
+            width="180px"
+            padding="8px 0"
+            borderRadius="19px"
+            color="#197065"
+          />
+        </Box>
         {/* <Image
           src={Noti}
           alt='logo'

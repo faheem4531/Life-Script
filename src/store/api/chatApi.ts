@@ -57,7 +57,7 @@ export async function getChaptersApi() {
   }
 }
 
-export async function getChapterbyIdApi(data: { id: string }) {
+export async function getChapterbyIdApi(data: { id: any }) {
   try {
     const res = await api.get(`/chapters/${data.id}`);
     return res;
@@ -77,6 +77,34 @@ export async function createQuestionApi(data: {
 }) {
   try {
     const res = await api.post("/questions", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getQuestionbyIdApi(data: { id: string }) {
+  try {
+    const res = await api.get(`/questions/${data.id}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getQuestionsApi() {
+  try {
+    const res = await api.get("/questions");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

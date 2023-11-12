@@ -1,32 +1,37 @@
-import { getChapterbyId, updateChapter } from "@/store/slices/chatSlice";
+import { updateChapter } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import BookImage from "../../../public/chapterName.svg";
 import Check from "../../../public/checkIcon.png";
 
-const AddChapterName = ({ chapterId }: { chapterId: any }) => {
+const AddChapterName = ({
+  chapter,
+  chapterId,
+}: {
+  chapter: string;
+  chapterId: any;
+}) => {
   const [chapterName, setChapterName] = useState("");
-  console.log("chapternnn", chapterName);
   const dispatch: any = useDispatch();
 
   const saveChapterName = () => {
-    dispatch(updateChapter({ title: chapterName, id: chapterId }));
+    dispatch(updateChapter({ title: chapterName, id: chapterId }))
+      .then(() => {
+        toast.success("Chapter name updated successfully");
+      })
+      .catch(() => {
+        toast.error("Failed to update chapter name");
+      });
   };
 
   useEffect(() => {
-    dispatch(getChapterbyId({ id: chapterId }))
-      .unwrap()
-      .then((res: any) => {
-        if (res) {
-          setChapterName(res.title);
-        }
-      })
-      .catch(() => {});
-  }, [chapterId]);
+    chapter && setChapterName(chapter);
+  }, [chapter]);
   return (
     <Box
       sx={{

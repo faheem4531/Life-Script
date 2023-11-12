@@ -28,6 +28,7 @@ export default function AddChapter({ chapterData }) {
       <Box sx={{ justifyContent: "center", textAlign: "center" }}>
         <Button
           variant="contained"
+          disabled={!chapter}
           onClick={(event: any) => handleSubmit()}
           type="submit"
           sx={{
