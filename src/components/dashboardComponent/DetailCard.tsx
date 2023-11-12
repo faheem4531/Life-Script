@@ -19,11 +19,11 @@ import styles from "./HomeSteps.module.css";
 const options = ["None", "Atria", "Callisto"];
 
 const ITEM_HEIGHT = 48;
-export default function DetailCard({ chapter }) {
+export default function DetailCard({ chapter }: { chapter?: any }) {
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
