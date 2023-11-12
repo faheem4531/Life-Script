@@ -1,12 +1,12 @@
 import { LoginData } from "@/interface/authInterface";
 import { Box, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import Email from "../../../public/EmailVerification.svg";
+import Email from "../../../public/Sign-up.png";
 import Logo from "../../../public/logo.svg";
 
 const EmailVerificationLink = () => {
@@ -39,25 +39,31 @@ const EmailVerificationLink = () => {
   });
 
   return (
-    <Box sx={{
-      display: "grid",
-      alignItems: "center",
-      gridTemplateColumns: {
-        md: "repeat(2, minmax(0, 1fr))",
-        xs: "repeat(1, minmax(0, 1fr))"
-      },
-      gap: '1rem',
-      backgroundColor: "#FFF7EA",
-      minHeight: "100vh",
-      p: "20px",
-      boxSizing: 'border-box',
-      color: "#000"
-    }}>
-      <Box sx={{ margin: 0, display: { md: 'block', xs: 'none' } }}>
-        <Image src={Email} alt="image of login" style={{ height: "100%", maxHeight: "92vh", width: "100%" }} />
+    <Box
+      sx={{
+        display: "grid",
+        alignItems: "center",
+        gridTemplateColumns: {
+          md: "repeat(2, minmax(0, 1fr))",
+          xs: "repeat(1, minmax(0, 1fr))",
+        },
+        gap: "1rem",
+        backgroundColor: "#FFF7EA",
+        minHeight: "100vh",
+        p: "20px",
+        boxSizing: "border-box",
+        color: "#000",
+      }}
+    >
+      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
+        <Image
+          src={Email}
+          alt="image of login"
+          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
+        />
       </Box>
 
-      <Box >
+      <Box>
         <Box textAlign={"center"}>
           <Image src={Logo} width={184} height={100} alt="Logo Image" />
           <Typography
@@ -68,9 +74,15 @@ const EmailVerificationLink = () => {
         </Box>
         <Box sx={{ marginTop: "20%" }}>
           <Typography
-            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px", textAlign: 'center' }}
+            sx={{
+              marginTop: "23px",
+              color: "#5B5B5B",
+              fontSize: "21px",
+              textAlign: "center",
+            }}
           >
-            {t("VerificationSent.verifcationLink")} {email}. <br /> {t("VerificationSent.clicktoVerify")}
+            {t("VerificationSent.verifcationLink")} {email}. <br />{" "}
+            {t("VerificationSent.clicktoVerify")}
           </Typography>
         </Box>
       </Box>
