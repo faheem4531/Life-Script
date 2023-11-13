@@ -5,6 +5,7 @@ import RichTextEditor from "./richtext";
 
 export default function Answers() {
   return (
+    <Box sx={{ height: '100vh', overflow: 'hidden' }}>
     <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", }}>
       <Box sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}>
         <Box sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}>
@@ -27,7 +28,7 @@ export default function Answers() {
           <Box
             sx={{
               maxWidth: "1000px",
-              margin: "0 auto"
+              margin: "0 auto",
             }}
           >
             
@@ -38,5 +39,7 @@ export default function Answers() {
         </Box>
       </Box>
     </Box>
+    </Box>
+
   );
 }
