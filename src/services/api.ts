@@ -5,8 +5,7 @@ class API {
 
   constructor() {
     this.instance = axios.create({
-      baseURL:
-        "http://lifescript-env.eba-fdhnvpkx.eu-north-1.elasticbeanstalk.com/", // base URL
+      baseURL: "https://api.thelifescript.com/", // base URL
       // "https://d805-72-255-21-37.ngrok-free.app",
     });
 
