@@ -5,7 +5,9 @@ import RichTextEditor from "./richtext";
 
 export default function Answers() {
   return (
-    <Box sx={{ height: '100vh', overflow: 'hidden' }}>
+    <Box sx={{ maxHeight: '100vh', 
+    // overflowY: 'hidden'
+     }}>
     <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", }}>
       <Box sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}>
         <Box sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}>
@@ -24,11 +26,25 @@ export default function Answers() {
             marginLeft: "220px"
           }}
         >
-          <Typography sx={{color:'black', fontSize:'45px',fontWeight:'700'}}>My Adventorus Life {'>'} <span style={{ fontSize: '43px', fontWeight:'400' }}>The best job I’ve ever had</span></Typography>
+          <TextField
+          value={"Enter The Chapter Name."}
+          sx={{
+            width: '100%',
+        '& input': {
+          textAlign: 'center', // Align text in center
+          fontSize:'2rem',
+          fontWeight:'700'
+        },
+            
+            
+          }}
+          
+          />
+          {/* <Typography sx={{color:'black', fontSize:'45px',fontWeight:'700'}}>My Adventorus Life {'>'} <span style={{ fontSize: '43px', fontWeight:'400' }}>The best job I’ve ever had</span></Typography> */}
           <Box
             sx={{
               maxWidth: "100vw",
-              // margin: "0 auto",
+              margin: "0 auto",
             }}
           >
             
