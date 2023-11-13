@@ -4,6 +4,7 @@ import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   createChapter,
   getChapters,
@@ -20,9 +21,17 @@ import AddChapter from "./addChapter";
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [allChapters, setAllChapters] = useState([]);
+  const [deleteChapter, setDeleteChapter] = useState(false);
+  const [deleteChapterId, setDeleteChapterId] = useState("");
   const dispatch: any = useDispatch();
   const chapters = useSelector(selectChat);
   const router = useRouter();
+
+  const handleDeleteChapter = () => {
+    console.log("delete chapter");
+    setDeleteChapter(false);
+  };
+
   const submitChapter = (chapter: string) => {
     dispatch(createChapter({ title: chapter }))
       .then(() => {
@@ -30,6 +39,17 @@ const Dashboard = () => {
         dispatch(getChapters());
       })
       .catch(() => toast.error("Failed to add chapter"));
+  };
+
+  const handleCardClick = (data: { option: string; chapterId: string }) => {
+    if (data?.option === "Delete") {
+      setDeleteChapter(true);
+      setDeleteChapterId(data?.chapterId);
+    } else {
+      router.push(
+        `/dashboard/chapters/chapterName?chapterId=${data?.chapterId}`
+      );
+    }
   };
 
   useEffect(() => {
@@ -80,7 +100,7 @@ const Dashboard = () => {
             className={styles.subContainer}
           >
             <HomeSteps />
-            {allChapters ? (
+            {allChapters?.length > 0 ? (
               <Box
                 className={styles.CardsContainer}
                 sx={{
@@ -88,15 +108,13 @@ const Dashboard = () => {
                 }}
               >
                 {allChapters.map((chapter, index) => (
-                  <Box
-                    onClick={() => {
-                      router.push(
-                        `/dashboard/chapters/chapterName?chapterId=${chapter._id}`
-                      );
+                  <DetailCard
+                    key={index}
+                    chapter={chapter}
+                    deleteFunc={(data) => {
+                      handleCardClick(data);
                     }}
-                  >
-                    <DetailCard key={index} chapter={chapter} />
-                  </Box>
+                  />
                 ))}
               </Box>
             ) : (
@@ -125,6 +143,13 @@ const Dashboard = () => {
             }}
           />
         </CustomizationDialog>
+        <TransitionsDialog
+          open={deleteChapter}
+          heading="Delete Chapter"
+          description="Are you sure you want to delete this chapter"
+          cancel={() => setDeleteChapter(false)}
+          proceed={handleDeleteChapter}
+        />
       </Box>
     </>
   );

@@ -14,16 +14,28 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import * as React from "react";
+import noData from "../../../public/noData.svg";
 import styles from "./HomeSteps.module.css";
 
-const options = ["None", "Atria", "Callisto"];
+const options = ["Delete", "Edit"];
 
 const ITEM_HEIGHT = 48;
-export default function DetailCard({ chapter }: { chapter?: any }) {
+
+interface DetailCardProps {
+  chapter?: any;
+  deleteFunc?: (data: { option: string; chapterId: string }) => void; // Define the callback type here
+}
+export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const handleClickOption = (opt) => {
+    deleteFunc({ option: opt, chapterId: chapter._id });
+    setAnchorEl(null);
+  };
   const handleClick = (event: any) => {
+    event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -67,61 +79,79 @@ export default function DetailCard({ chapter }: { chapter?: any }) {
             <MenuItem
               key={option}
               selected={option === "Pyxis"}
-              onClick={handleClose}
+              onClick={() => handleClickOption(option)}
             >
               {option}
             </MenuItem>
           ))}
         </Menu>
       </div>
-      <CardContent>
-        <Typography
-          variant="body2"
-          color="text "
-          fontWeight="600"
-          fontSize="19px"
-          textAlign="center"
-        >
-          {chapter?.title}
-        </Typography>
-        <Divider
-          sx={{
-            width: "245px",
-            backgroundColor: "#000",
-            height: "2px",
-            margin: "9px auto 0",
-            marginBottom: "30px",
-          }}
-        />
-        {questions?.slice(0, 5).map((question) => (
+      <Box
+        onClick={() => deleteFunc({ option: "edit", chapterId: chapter._id })}
+      >
+        <CardContent>
           <Typography
-            key={question._id}
-            display="flex"
-            alignItems="center"
-            columnGap="10px"
-            color="rgba(22, 22, 22, 0.90)"
-            fontSize="13px"
-            marginTop="5px"
+            variant="body2"
+            color="text "
+            fontWeight="600"
+            fontSize="19px"
+            textAlign="center"
           >
-            <Image alt="check" src={Tick} />
-            {question.text}
+            {chapter?.title}
           </Typography>
-        ))}
+          <Divider
+            sx={{
+              width: "245px",
+              backgroundColor: "#000",
+              height: "2px",
+              margin: "9px auto 0",
+              marginBottom: "30px",
+            }}
+          />
+          <Box sx={{ height: "155px" }}>
+            {questions.length > 0 ? (
+              questions?.slice(0, 5).map((question: any) => (
+                <Typography
+                  key={question._id}
+                  display="flex"
+                  alignItems="center"
+                  columnGap="10px"
+                  color="rgba(22, 22, 22, 0.90)"
+                  fontSize="13px"
+                  marginTop="5px"
+                >
+                  <Image alt="check" src={Tick} />
+                  {question.text}
+                </Typography>
+              ))
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Image alt="no Data" src={noData} height={100} />
+              </Box>
+            )}
+          </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: "15px",
-          }}
-        >
-          <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
-            Last Edited 3 Days Ago
-          </Typography>
-          <CircularWithValueLabel />
-        </Box>
-      </CardContent>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "12px",
+            }}
+          >
+            <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
+              Last Edited 3 Days Ago
+            </Typography>
+            <CircularWithValueLabel />
+          </Box>
+        </CardContent>
+      </Box>
     </Card>
   );
 }

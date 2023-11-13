@@ -24,7 +24,6 @@ const chapterName = () => {
   const [allQuestions, setAllQuestions] = useState([]);
   const [chapterName, setChapterName] = useState("");
   const question = useSelector(selectChapter);
-  console.log("qqq", question);
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId } = router.query;

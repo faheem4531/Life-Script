@@ -45,9 +45,11 @@ export async function updateChapterApi(data: { title: string; id: string }) {
 
 export async function getChaptersApi() {
   try {
-    const res = await api.get("/chapters");
+    const res = await api.get("chapters");
     return res;
   } catch (error: any) {
+    console.log("reeee2", error);
+
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
       throw new Error(errors ? errors[0] : "Failed");

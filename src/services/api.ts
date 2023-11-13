@@ -6,7 +6,10 @@ class API {
   constructor() {
     this.instance = axios.create({
       baseURL: "https://api.thelifescript.com/", // base URL
-      // "https://d805-72-255-21-37.ngrok-free.app",
+      // baseURL: "https://6290-116-58-9-130.ngrok-free.app", //ngrok
+      // headers: {
+      //   "ngrok-skip-browser-warning": true,
+      // },
     });
 
     this.instance.interceptors.request.use(
