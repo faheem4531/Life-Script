@@ -27,8 +27,8 @@ export default function Answers() {
           <Typography sx={{color:'black', fontSize:'45px',fontWeight:'700'}}>My Adventorus Life {'>'} <span style={{ fontSize: '43px', fontWeight:'400' }}>The best job I’ve ever had</span></Typography>
           <Box
             sx={{
-              maxWidth: "1000px",
-              margin: "0 auto",
+              maxWidth: "100vw",
+              // margin: "0 auto",
             }}
           >
             
