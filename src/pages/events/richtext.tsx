@@ -21,26 +21,38 @@ const RichTextEditor = () => {
     dispatch(gptChat({ prompt: editorValue }));
   };
   return (
-    <Box sx={{ minWidth: "50vh" }}>
+    <Box sx={{ minWidth: '50vw', }}>      
       <Rte
         value={editorValue}
         onChange={handleEditorChange}
-        // placeholder="Write something..."
-        controls={[
+        className="mantine-RichTextEditor-toolbarInner"
+                // placeholder="Write something..."
+       
+        styles={{
+         
+          toolbarInner: { justifyContent:'center' },
+          
+        }}
+        controls={[ 
           ["bold", "italic", "underline"],
           ["orderedList", "unorderedList"],
           ["h1", "h2", "h3", "h4", "h5", "h6"],
           ["alignLeft", "alignCenter", "alignRight"],
-          ["image"],
+          ["image",],
         ]}
         style={{
+          
           paddingTop: "5px",
           marginTop: "30px",
-          minHeight: "80vh",
+          minHeight: "70vh",
+          maxHeight:'70vh',
           minWidth: "100vh",
           overflowY: "auto",
+          
         }}
+    
       />
+      
       <Box>
         <Button variant="contained" onClick={callgpt}>
           click

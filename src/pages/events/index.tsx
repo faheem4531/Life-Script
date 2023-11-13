@@ -1,11 +1,11 @@
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
-import { Box } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import RichTextEditor from "./richtext";
 
 export default function Answers() {
   return (
-    <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
+    <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", }}>
       <Box sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}>
         <Box sx={{ position: "fixed", right: "0", left: "0", top: "0", zIndex: "2" }}>
           <NavBar />
@@ -23,12 +23,16 @@ export default function Answers() {
             marginLeft: "220px"
           }}
         >
+          <Typography sx={{color:'black', fontSize:'45px',fontWeight:'700'}}>My Adventorus Life {'>'} <span style={{ fontSize: '43px', fontWeight:'400' }}>The best job I’ve ever had</span></Typography>
           <Box
             sx={{
               maxWidth: "1000px",
               margin: "0 auto"
             }}
           >
+            
+            
+
             <RichTextEditor />
           </Box>
         </Box>
