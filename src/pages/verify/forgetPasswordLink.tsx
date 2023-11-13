@@ -44,7 +44,7 @@ const ForgetPasswordLink = () => {
         display: "grid",
         alignItems: "center",
         gridTemplateColumns: {
-          sm: "repeat(2, minmax(0, 1fr))",
+          md: "repeat(2, minmax(0, 1fr))",
           xs: "repeat(1, minmax(0, 1fr))"
         },
         gap: '1rem',
@@ -54,7 +54,7 @@ const ForgetPasswordLink = () => {
         boxSizing: 'border-box'
       }}
     >
-      <Box sx={{ margin: 0, display: {sm: 'block', xs: 'none'} }}>
+      <Box sx={{ margin: 0, display: { md: 'block', xs: 'none' } }}>
         <Image
           src={Forget}
           alt="login Image"
@@ -62,7 +62,7 @@ const ForgetPasswordLink = () => {
         />
       </Box>
 
-      <Box sx={{ 
+      <Box sx={{
         maxWidth: "500px",
         width: '100%',
         margin: '0 auto'
@@ -73,7 +73,7 @@ const ForgetPasswordLink = () => {
             sx={{ color: "#000000", fontSize: "30px", marginTop: "40px" }}
           >
             {t("ForgetPassswordLink.forgotPassword")}
-            
+
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>

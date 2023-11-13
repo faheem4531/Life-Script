@@ -6,6 +6,7 @@ import { Provider as StoreProvider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import i18n from "../../i18n";
+import "../styles/globals.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

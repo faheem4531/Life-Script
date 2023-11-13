@@ -5,8 +5,7 @@ class API {
 
   constructor() {
     this.instance = axios.create({
-      baseURL:
-        "http://lifescript-env.eba-fdhnvpkx.eu-north-1.elasticbeanstalk.com/", // base URL
+      baseURL: "https://api.thelifescript.com/", // base URL
       // "https://d805-72-255-21-37.ngrok-free.app",
     });
 
@@ -68,6 +67,16 @@ class API {
     config?: AxiosRequestConfig
   ): Promise<T> {
     return this.instance.put<T>(url, data, config).then(this.handleApiResponse);
+  }
+
+  public patch<T = any>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
+    return this.instance
+      .patch<T>(url, data, config)
+      .then(this.handleApiResponse);
   }
 
   public delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {

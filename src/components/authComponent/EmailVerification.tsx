@@ -1,14 +1,14 @@
 "use client";
+import { verifyEmail } from "@/store/slices/authSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useTranslation } from "react-i18next";
-import { verifyEmail } from "@/store/slices/authSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import Email from "../../../public/EmailVerification.svg";
+import Email from "../../../public/Sign-up.png";
 import Logo from "../../../public/logo.svg";
 
 const CryptoJS = require("crypto-js");
@@ -64,21 +64,41 @@ const EmailVerification = () => {
   }, [ciphertext]);
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-      <Box sx={{ margin: 0 }}>
+    <Box
+      sx={{
+        display: "grid",
+        alignItems: "center",
+        gridTemplateColumns: {
+          md: "repeat(2, minmax(0, 1fr))",
+          xs: "repeat(1, minmax(0, 1fr))",
+        },
+        gap: "1rem",
+        backgroundColor: "#FFF7EA",
+        minHeight: "100vh",
+        p: "20px",
+        boxSizing: "border-box",
+        color: "#000",
+      }}
+    >
+      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
         <Image
           src={Email}
           alt="image of login"
-          width={650}
-          height={700}
-          // style={imageStyle}
+          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
         />
 
         {/* </Grid> */}
       </Box>
       {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
-      // textAlign={'center'}
+        // textAlign={'center'}
+        sx={{
+          maxWidth: "460px",
+          margin: "0 auto",
+          minWidth: "280px",
+          width: "100%",
+          marginX: { sx: "0 35px" },
+        }}
       >
         <Box textAlign={"center"}>
           <Image src={Logo} width={184} height={100} alt="Logo Image" />
@@ -109,7 +129,7 @@ const EmailVerification = () => {
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "50px", // Adjust the border radius as needed
                 },
-                width: "580px",
+                width: "100%",
               }}
             />
           </Box>
