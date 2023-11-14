@@ -12,6 +12,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import * as React from "react";
 import noData from "../../../public/noData.svg";
@@ -26,6 +27,7 @@ interface DetailCardProps {
   deleteFunc?: (data: { option: string; chapterId: string }) => void; // Define the callback type here
 }
 export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
+  const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -87,7 +89,11 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
         </Menu>
       </div>
       <Box
-        onClick={() => deleteFunc({ option: "edit", chapterId: chapter._id })}
+        onClick={() => {
+          if (router.asPath == "/dashboard/chapters") {
+            deleteFunc({ option: "edit", chapterId: chapter._id });
+          }
+        }}
       >
         <CardContent>
           <Typography
@@ -109,7 +115,7 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
             }}
           />
           <Box sx={{ height: "155px" }}>
-            {questions.length > 0 ? (
+            {questions?.length > 0 ? (
               questions?.slice(0, 5).map((question: any) => (
                 <Typography
                   key={question._id}
