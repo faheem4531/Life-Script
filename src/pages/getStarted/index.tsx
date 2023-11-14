@@ -1,49 +1,55 @@
-import React from "react";
-import Image from "next/image";
-import Arrow from "../../../public/startArrow.png";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
+import { useEffect } from "react";
+import Arrow from "../../../public/startArrow.png";
 // import Image from '@mui/material/Image';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useRouter } from "next/router";
 
 const getStarted = () => {
+  const router = useRouter();
+  const { userName } = router.query;
+  const isXs = useMediaQuery("(max-width:600px)");
+  // const isSm = useMediaQuery("")
+  const isMd = useMediaQuery("(min-width:601px)");
+  const isLg = useMediaQuery("(min-width:1300px)");
+  const isXl = useMediaQuery("(min-width:1920px)");
 
-const isXs = useMediaQuery("(max-width:600px)");
-// const isSm = useMediaQuery("")
-const isMd = useMediaQuery("(min-width:601px)");
-const isLg = useMediaQuery("(min-width:1300px)");
-const isXl = useMediaQuery("(min-width:1920px)");
+  let imageStyle = {
+    width: "100px", // Default width for xs screens
+    height: "auto", // Default height for xs screens
+  };
+  if (isXs) {
+    imageStyle = {
+      width: "150px", // Customize this for md screens
+      height: "auto",
+    };
+  }
+  if (isMd) {
+    imageStyle = {
+      width: "430px", // Customize this for md screens
+      height: "auto",
+    };
+  }
 
-let imageStyle = {
-  width: '100px', // Default width for xs screens
-  height:'auto' // Default height for xs screens
-};
-if (isXs) {
-  imageStyle = {
-    width: '150px', // Customize this for md screens
-   height:'auto'
-    
-  };
-}
-if (isMd) {
-  imageStyle = {
-    width: '430px', // Customize this for md screens
-    height:'auto'
-   
-  };
-}
+  if (isLg) {
+    imageStyle = {
+      width: "550px", // Customize this for lg screens
+      height: "auto",
+    };
+  }
+  if (isXl) {
+    imageStyle = {
+      width: "672px", // Customize this for lg screens
+      height: "auto",
+    };
+  }
 
-if (isLg) {
-  imageStyle = {
-    width: '550px', // Customize this for lg screens
-   height:'auto'
-  };
-}
-if (isXl) {
-  imageStyle = {
-    width: '672px', // Customize this for lg screens
-   height:'auto'
-  };
-}
+  useEffect(() => {
+    setTimeout(() => {
+      router.push(`/getStarted/getTitle?userName=${userName}`);
+    }, 3000);
+  }, []);
 
   return (
     <div>
@@ -85,26 +91,38 @@ if (isXl) {
               color: "white",
             }}
           >
-            Hi Naseer 👋
+            {userName} 👋
           </Typography>
         </Box>
         <Box
           sx={{
-            paddingLeft: { xs: "140px", sm: "180px", md: "180px", lg: "250px",xl:'260px' },
-            paddingTop: { xs: "140px", sm: "250", md: "250px", lg: "300px",xl:'150px' }
-            , color:'white'
+            paddingLeft: {
+              xs: "140px",
+              sm: "180px",
+              md: "180px",
+              lg: "250px",
+              xl: "260px",
+            },
+            paddingTop: {
+              xs: "140px",
+              sm: "250",
+              md: "250px",
+              lg: "300px",
+              xl: "150px",
+            },
+            color: "white",
           }}
         >
-          <Image 
-          src={Arrow}
-           alt="arrow" 
-           style={imageStyle}
-          //  width={430} 
-          //  height={100} 
-          //  style={{
-          //   width:{xs:'100px',md:'200px',lg:'300px',xl:'400px',
-          // }}}
-           />
+          <Image
+            src={Arrow}
+            alt="arrow"
+            style={imageStyle}
+            //  width={430}
+            //  height={100}
+            //  style={{
+            //   width:{xs:'100px',md:'200px',lg:'300px',xl:'400px',
+            // }}}
+          />
         </Box>
 
         <Box

@@ -12,13 +12,12 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
-
 
 const Signup = ({ signupClick }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +63,7 @@ const Signup = ({ signupClick }) => {
       .unwrap()
       .then(() => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push("/change-password/getStarted");
+        router.push("/getStarted");
       })
       .catch((error: any) => {
         toast.error(error.message);
@@ -105,11 +104,11 @@ const Signup = ({ signupClick }) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: 'column',
-        alignItems: 'center',
+        flexDirection: "column",
+        alignItems: "center",
         margin: "0 auto",
         maxWidth: "460px",
-        width: '100%'
+        width: "100%",
       }}
     >
       <Box width="100%">

@@ -7,12 +7,12 @@ import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
 import Logo from "../../../public/logo.svg";
-import { useTranslation } from "react-i18next";
 
 const ForgetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -132,7 +132,9 @@ const ForgetPassword = () => {
           )}
           {sentFailed && (
             <Box sx={{ mt: 2 }}>
-              <Typography sx={{ color: "red" }}>{t("ForgetPassword.userNotFound")}</Typography>
+              <Typography sx={{ color: "red" }}>
+                {t("ForgetPassword.userNotFound")}
+              </Typography>
             </Box>
           )}
 

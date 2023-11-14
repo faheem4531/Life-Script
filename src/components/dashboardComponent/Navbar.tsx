@@ -9,21 +9,30 @@ import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
+import { useDispatch } from "react-redux";
 import Button from "../button/Button";
 import styles from "./Navbar.module.css";
-const options = ["None", "Atria", "Callisto"];
+const options = ["Logout"];
 const ITEM_HEIGHT = 48;
 
 const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
-  console.log("pathhh", router.asPath);
+  const dispatch: any = useDispatch();
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleClickOption = (option) => {
+    if (option === "Logout") {
+      // dispatch(logout());
+      localStorage.clear();
+      router.push("/");
+    }
   };
 
   return (
@@ -131,7 +140,7 @@ const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
               <MenuItem
                 key={option}
                 selected={option === "Pyxis"}
-                onClick={handleClose}
+                onClick={() => handleClickOption(option)}
               >
                 {option}
               </MenuItem>

@@ -47,9 +47,10 @@ const Login = ({ signinClick }) => {
     console.log("test", e);
     dispatch(googleLogin({ credential: e.access_token }))
       .unwrap()
-      .then(() => {
+      .then((res) => {
+        console.log("responseee", res);
         toast.success(t("login-page.loggedIn"));
-        router.push("/change-password/getStarted");
+        router.push(`/getStarted?userName=${res.name}`);
       })
       .catch((error: any) => {
         toast.error(error.message);
@@ -71,10 +72,11 @@ const Login = ({ signinClick }) => {
       setLoading(true);
       dispatch(login(data))
         .unwrap()
-        .then(() => {
+        .then((res) => {
+          console.log("response2", res);
           toast.success(t("login-page.loggedIn"));
           setLoading(false);
-          router.push("/change-password/getStarted");
+          router.push(`/getStarted?userName=${res.name}`);
         })
         .catch((error: any) => {
           setLoginFailed(true);
@@ -91,11 +93,16 @@ const Login = ({ signinClick }) => {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center", color: "#000" }}>
-      <Box sx={{
-        maxWidth: "460px", margin: "0 auto", minWidth: "280px", width: "100%",
-        marginX: { sx: "0 35px" }
-      }}>
-        <Box >
+      <Box
+        sx={{
+          maxWidth: "460px",
+          margin: "0 auto",
+          minWidth: "280px",
+          width: "100%",
+          marginX: { sx: "0 35px" },
+        }}
+      >
+        <Box>
           <Typography
             sx={{
               // marginRight: "300px",
@@ -238,7 +245,6 @@ const Login = ({ signinClick }) => {
               "&:hover": {
                 backgroundColor: "#186F65",
               },
-
             }}
           >
             {t("login-page.login")}

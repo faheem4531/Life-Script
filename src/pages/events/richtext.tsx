@@ -11,7 +11,7 @@ const Rte = dynamic(() => import("@mantine/rte"), {
 const RichTextEditor = () => {
   const [editorValue, setEditorValue] = useState("");
   const dispatch: any = useDispatch();
-  console.log("vall", editorValue);
+  console.log("vall11", editorValue);
 
   const handleEditorChange = (value) => {
     setEditorValue(value);
@@ -29,10 +29,11 @@ const RichTextEditor = () => {
         // placeholder="Write something..."
 
         styles={{
-          toolbarInner: { justifyContent: "" },
+          toolbarInner: { justifyContent: "center" },
         }}
         controls={[
-          ["bold", "italic", "underline", "blockquote"],
+          ["bold", "italic", "underline"],
+          ["blockquote", "link"],
           ["orderedList", "unorderedList"],
           ["h1", "h2", "h3", "h4", "h5", "h6"],
           ["alignLeft", "alignCenter", "alignRight"],

@@ -10,15 +10,12 @@
     "not-member": "¿Aún no eres miembro?",
     "register-now": "Regístrate ahora",
     "incorrect": "Contraseña o correo electrónico incorrecto",
-    "emailRequired":"correo electronico es requerido",
+    "emailRequired": "correo electronico es requerido",
     "passwordRequired": "se requiere contraseña",
-    "passwordLength":"La contraseña debe tener 8 caracteres",
-    "loggedIn":"Iniciado sesión correctamente",
-    "IncorrectEmail":"Contraseña o correo electrónico incorrecto",
-    "failedSignupGoogle":"No se pudo registrar con Google"
-
-
-
+    "passwordLength": "La contraseña debe tener 8 caracteres",
+    "loggedIn": "Iniciado sesión correctamente",
+    "IncorrectEmail": "Contraseña o correo electrónico incorrecto",
+    "failedSignupGoogle": "No se pudo registrar con Google"
   },
   "signup-page": {
     "email": "Correo electrónico",
@@ -33,16 +30,14 @@
     "incorrect": "Contraseña o correo electrónico incorrecto",
     "alreadyRegisterd": "Ya registrado?",
     "loginNow": "Inicia sesión ahora",
-    "emailRequired":"correo electronico es requerido",
+    "emailRequired": "correo electronico es requerido",
     "passwordRequired": "se requiere contraseña",
-    "passwordLength":"La contraseña debe tener 8 caracteres",
-    "nameRequired":"Se requiere el nombre",
-    "verificationEmailSent":"El mensaje de verificación ha sido enviado",
-    "failedSignup":"No se pudo registrar",
-    "signedUpSuccessfully":"registrado exitosamente",
-    "failedSignupGoogle":"No se pudo registrar con Google"
-
-
+    "passwordLength": "La contraseña debe tener 8 caracteres",
+    "nameRequired": "Se requiere el nombre",
+    "verificationEmailSent": "El mensaje de verificación ha sido enviado",
+    "failedSignup": "No se pudo registrar",
+    "signedUpSuccessfully": "registrado exitosamente",
+    "failedSignupGoogle": "No se pudo registrar con Google"
   },
   "Register": {
     "Login": "Acceso",
@@ -54,45 +49,36 @@
     "email": "Correo electrónico",
     "enter-email": "Ingresa tu dirección de correo electrónico",
     "continue": "Continuar",
-    "emailSentSuccessfully":"Correo electrónico enviado correctamente",
-    "emailRequired":"correo electronico es requerido",
-    "userNotFound":"Usuario no encontrado"
-
-
+    "emailSentSuccessfully": "Correo electrónico enviado correctamente",
+    "emailRequired": "correo electronico es requerido",
+    "userNotFound": "Usuario no encontrado"
   },
   "VerificationSent": {
-    "emailVerification" : "Verificacion de email",
-    "verifcationLink" : "Hemos enviado un enlace de verificación a",
-    "clicktoVerify":"Por favor haga clic en el enlace para verificar."
-
+    "emailVerification": "Verificacion de email",
+    "verifcationLink": "Hemos enviado un enlace de verificación a",
+    "clicktoVerify": "Por favor haga clic en el enlace para verificar."
   },
   "ResetPassword": {
-    "resetPassword":"Restablecer la contraseña",
+    "resetPassword": "Restablecer la contraseña",
     "password": "Contraseña",
-    "confirmPassword":"confirmar Contraseña",
-    "confirm":"Confirmar",
-    "redirect":"Después de hacer clic en Restablecer contraseña. Serás redirigido al",
-    "loginPage":"página de inicio de sesión"
-
+    "confirmPassword": "confirmar Contraseña",
+    "confirm": "Confirmar",
+    "redirect": "Después de hacer clic en Restablecer contraseña. Serás redirigido al",
+    "loginPage": "página de inicio de sesión"
   },
   "Verify": {
-    "emailVerification" : "verificacion de email",
+    "emailVerification": "verificacion de email",
     "email": "Correo electrónico",
-    "emailVerified":"Su correo electrónico ha sido verificado. Haga clic en el botón para",
-    "proceedForward":"seguir adelante.",
-    "letsBegin":"Vamos a empezar.",
+    "emailVerified": "Su correo electrónico ha sido verificado. Haga clic en el botón para continuar",
+    "proceedForward": "seguir adelante.",
+    "letsBegin": "Vamos a empezar.",
     "emailVerifiedSuccessfully": "Correo electrónico verificado exitosamente",
-    "failedVerifyEmail":"No se pudo verificar el correo electrónico"
-
-    
-    },
-    "ForgetPassswordLink":{
-      "forgotPassword": "Has olvidado tu contraseña?",
-      "resetPassword":"El enlace para restablecer contraseña ha sido enviado a",
-      "clickLink":"Por favor haga clic en el enlace para",
-      "reset": "Restablecer su contraseña"
-    }
-   
+    "failedVerifyEmail": "No se pudo verificar el correo electrónico"
+  },
+  "ForgetPassswordLink": {
+    "forgotPassword": "Has olvidado tu contraseña?",
+    "resetPassword": "El enlace para restablecer contraseña ha sido enviado a",
+    "clickLink": "Por favor haga clic en el enlace para",
+    "reset": "Restablecer su contraseña"
+  }
 }
-  
-

@@ -137,7 +137,7 @@ const EmailVerification = () => {
             sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
           >
             {t("Verify.emailVerified")}
-            <br /> {t("Verify.proceedForward")}
+            {/* <br /> {t("Verify.proceedForward")} */}
           </Typography>
 
           <Box

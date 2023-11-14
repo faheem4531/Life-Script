@@ -1,9 +1,11 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React from "react";
 import Image from "next/image";
-import BookImage from "../../../public/getTitleBook.svg";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import BookImage from "../../../public/getTitleBook.svg";
 const getTitle = () => {
+  const router = useRouter();
+  const { userName } = router.query;
   const [text, setText] = useState("");
   const maxLength = 20; // Set the maximum character count to 20
 
@@ -36,7 +38,9 @@ const getTitle = () => {
             sx={{ fontSize: "53px", fontWeight: "400", marginTop: "153px" }}
           >
             Hi{" "}
-            <span style={{ fontSize: "60px", fontWeight: "600" }}>Naseer,</span>
+            <span style={{ fontSize: "60px", fontWeight: "600" }}>
+              {userName},
+            </span>
           </Typography>
           <Typography
             sx={{ fontWeight: "400", fontSize: "53px", marginTop: "32px" }}
@@ -65,7 +69,19 @@ const getTitle = () => {
               </Typography>
             </Box>
           </Box>
-          <Button variant="outlined" sx={{backgroundColor:'#FCE09B',borderColor:'#FCE09B', borderRadius:'31.5px',width:'291px',height:'63px',color:'#186F65'}}>
+          <Button
+            variant="outlined"
+            disabled={!text}
+            onClick={() => router.push("/dashboard/chapters")}
+            sx={{
+              backgroundColor: "#FCE09B",
+              borderColor: "#FCE09B",
+              borderRadius: "31.5px",
+              width: "291px",
+              height: "63px",
+              color: "#186F65",
+            }}
+          >
             Start Writing
           </Button>
         </Box>

@@ -8,7 +8,6 @@ import {
   VerifyEmail,
 } from "@/interface/authInterface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { signOut } from "next-auth/react";
 import {
   changePasswordApi,
   facebookLoginApi,
@@ -148,7 +147,7 @@ export const updatePassword = createAsyncThunk<UserData, UpdatePasswordData>(
 
 export const logout = () => {
   localStorage.clear();
-  signOut();
+  // signOut();
 };
 
 export const authSlice = createSlice({
