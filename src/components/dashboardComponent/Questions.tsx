@@ -10,8 +10,16 @@ import React from "react";
 const options = ["None", "Atria", "Callisto"];
 const ITEM_HEIGHT = 48;
 
-export default function Questions({ question, number }) {
-  console.log("qqq", question);
+interface QuestionsProps {
+  question?: any;
+  number?: number;
+  answerClick?: (chapterName: string) => void; // Define the callback type here
+}
+export default function Questions({
+  question,
+  number,
+  answerClick,
+}: QuestionsProps) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -35,7 +43,9 @@ export default function Questions({ question, number }) {
           alignItems: "center",
           justifyContent: "space-between",
           mt: "20px",
+          cursor: "pointer",
         }}
+        onClick={() => answerClick(question?.text)}
       >
         <Typography
           sx={{

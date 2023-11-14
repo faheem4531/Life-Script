@@ -1,5 +1,5 @@
 import { gptChat } from "@/store/slices/chatSlice";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -21,43 +21,38 @@ const RichTextEditor = () => {
     dispatch(gptChat({ prompt: editorValue }));
   };
   return (
-    <Box sx={{ minWidth: '50vw', }}>      
+    <Box>
       <Rte
         value={editorValue}
         onChange={handleEditorChange}
         className="mantine-RichTextEditor-toolbarInner"
-                // placeholder="Write something..."
-       
+        // placeholder="Write something..."
+
         styles={{
-         
-          toolbarInner: { justifyContent:'center' },
-          
+          toolbarInner: { justifyContent: "" },
         }}
-        controls={[ 
-          ["bold", "italic", "underline"],
+        controls={[
+          ["bold", "italic", "underline", "blockquote"],
           ["orderedList", "unorderedList"],
           ["h1", "h2", "h3", "h4", "h5", "h6"],
           ["alignLeft", "alignCenter", "alignRight"],
-          ["image",],
+          ["image"],
         ]}
         style={{
-          
-          paddingTop: "5px",
+          paddingTop: "0px",
           marginTop: "30px",
           minHeight: "70vh",
-          maxHeight:'70vh',
-          minWidth: "100vh",
+          maxHeight: "70vh",
+          minWidth: "auto",
           overflowY: "auto",
-          
         }}
-    
       />
-      
-      <Box>
+
+      {/* <Box>
         <Button variant="contained" onClick={callgpt}>
           click
         </Button>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

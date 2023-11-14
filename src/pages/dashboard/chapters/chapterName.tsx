@@ -94,7 +94,7 @@ const chapterName = () => {
                 borderRadius: "18px",
               }}
             >
-              <Box sx={{ marginTop: "35px" }}>
+              <Box>
                 <ProgressBar />
               </Box>
               <Box
@@ -141,6 +141,9 @@ const chapterName = () => {
                     key={question._id}
                     question={question}
                     number={index + 1}
+                    answerClick={(text) =>
+                      router.push(`/events?chapterName=${text}`)
+                    }
                   />
                 ))
               ) : (
