@@ -1,7 +1,5 @@
 import DetailCard from "@/components/dashboardComponent/DetailCard";
 import HomeSteps from "@/components/dashboardComponent/HomeSteps";
-import NavBar from "@/components/dashboardComponent/Navbar";
-import SideBar from "@/components/dashboardComponent/Sidebar";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";

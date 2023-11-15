@@ -22,7 +22,7 @@ export default function AddQuestion({ questionData }) {
               borderRadius: "50px",
               backgroundColor: "white",
             },
-            width: "400px",
+            width: { sm: "400px", xs: "250px" },
           }}
         />
       </Box>
@@ -37,7 +37,7 @@ export default function AddQuestion({ questionData }) {
             backgroundColor: "#186F65",
             color: "white",
             width: "200px",
-            marginTop: "50px",
+            marginTop: { sm: "50px", xs: "20px" },
             "&:hover": {
               backgroundColor: "#186F65",
             },
