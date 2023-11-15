@@ -26,6 +26,19 @@
   }
 }
 
+@media (max-width:500px) {
+  .typo {
+    font-size: 10px;
+  }
+
+  .stepContainer {
+    padding: 0;
+  }
+
+  .logo {
+    width: 40px;
+  }
+}
 
 /* styling for Details Card   */
 

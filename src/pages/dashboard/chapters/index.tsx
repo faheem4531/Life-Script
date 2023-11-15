@@ -66,13 +66,12 @@ const Dashboard = () => {
   return (
     <>
       <Layout>
-
         <HomeSteps />
         {allChapters?.length > 0 ? (
           <Box
             className={styles.CardsContainer}
             sx={{
-              marginTop: "48px",
+              marginTop: { sm: "48px", xs: "25px" },
             }}
           >
             {allChapters.map((chapter, index) => (
@@ -88,7 +87,7 @@ const Dashboard = () => {
         ) : (
           <Box
             sx={{
-              marginTop: "48px",
+              marginTop: { sm: "48px", xs: "25px" },
             }}
           >
             <NoChapters />
