@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapter from "./addChapter";
+import Layout from "@/components/Layout/Layout";
 
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
@@ -64,93 +65,59 @@ const Dashboard = () => {
 
   return (
     <>
-      <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
-        <Box
-          sx={{
-            position: "fixed",
-            right: "0",
-            left: "0",
-            top: "0",
-            zIndex: "2",
-          }}
-        >
-          <NavBar newChapter={() => setChapterModal(true)} />
-        </Box>
-        <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
+      <Layout>
+
+        <HomeSteps />
+        {allChapters?.length > 0 ? (
           <Box
+            className={styles.CardsContainer}
             sx={{
-              width: "220px",
-              backgroundColor: "#197065",
-              position: "fixed",
-              bottom: "0",
-              top: "70px",
-              zIndex: "2",
+              marginTop: "48px",
             }}
           >
-            <SideBar />
+            {allChapters.map((chapter, index) => (
+              <DetailCard
+                key={index}
+                chapter={chapter}
+                deleteFunc={(data) => {
+                  handleCardClick(data);
+                }}
+              />
+            ))}
           </Box>
+        ) : (
           <Box
             sx={{
-              width: "100%",
-              maxWidth: "1600px",
-              height: "100%",
-              padding: "36px 33px 100px",
-              marginLeft: "220px",
+              marginTop: "48px",
             }}
-            className={styles.subContainer}
           >
-            <HomeSteps />
-            {allChapters?.length > 0 ? (
-              <Box
-                className={styles.CardsContainer}
-                sx={{
-                  marginTop: "48px",
-                }}
-              >
-                {allChapters.map((chapter, index) => (
-                  <DetailCard
-                    key={index}
-                    chapter={chapter}
-                    deleteFunc={(data) => {
-                      handleCardClick(data);
-                    }}
-                  />
-                ))}
-              </Box>
-            ) : (
-              <Box
-                sx={{
-                  marginTop: "48px",
-                }}
-              >
-                <NoChapters />
-              </Box>
-            )}
+            <NoChapters />
           </Box>
-        </Box>
-        <CustomizationDialog
-          open={chapterModal}
-          title="Add new chapter"
-          handleClose={() => {
+        )}
+      </Layout>
+
+      <CustomizationDialog
+        open={chapterModal}
+        title="Add new chapter"
+        handleClose={() => {
+          setChapterModal(false);
+        }}
+        customStyles={{ backgroundColor: "auto" }}
+      >
+        <AddChapter
+          chapterData={(chapter: string) => {
             setChapterModal(false);
+            submitChapter(chapter);
           }}
-          customStyles={{ backgroundColor: "auto" }}
-        >
-          <AddChapter
-            chapterData={(chapter: string) => {
-              setChapterModal(false);
-              submitChapter(chapter);
-            }}
-          />
-        </CustomizationDialog>
-        <TransitionsDialog
-          open={deleteChapter}
-          heading="Delete Chapter"
-          description="Are you sure you want to delete this chapter"
-          cancel={() => setDeleteChapter(false)}
-          proceed={handleDeleteChapter}
         />
-      </Box>
+      </CustomizationDialog>
+      <TransitionsDialog
+        open={deleteChapter}
+        heading="Delete Chapter"
+        description="Are you sure you want to delete this chapter"
+        cancel={() => setDeleteChapter(false)}
+        proceed={handleDeleteChapter}
+      />
     </>
   );
 };

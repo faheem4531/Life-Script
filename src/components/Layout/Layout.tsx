@@ -5,7 +5,7 @@ import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
 import styles from "./Layout.module.css"
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const [handleSideBar, setHandleSideBar] = useState(false)
 
   return (
@@ -42,13 +42,14 @@ const Layout = () => {
           sx={{
             width: "100%",
             maxWidth: "1600px",
+            color: "#000",
             height: "100%",
             padding: "36px 33px 100px",
             marginLeft: { md: "220px", sm: 0, xs: 0 }
           }}
           onClick={() => setHandleSideBar(false)}
         >
-          {/* <HomeSteps /> */}
+          {children}
         </Box>
       </Box>
 
