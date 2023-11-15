@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
@@ -6,16 +6,7 @@ import { Box } from "@mui/material";
 import styles from "./Layout.module.css"
 
 const Layout = () => {
-  const [handleSideBar, setHandleSideBar] = useState(true)
-
-  function closeSideBar() {
-    setHandleSideBar(false)
-  }
-
-  function showSideBar() {
-    setHandleSideBar(true)
-  }
-
+  const [handleSideBar, setHandleSideBar] = useState(false)
 
   return (
     <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
@@ -28,7 +19,9 @@ const Layout = () => {
           zIndex: "2",
         }}
       >
-        <NavBar />
+        <NavBar
+          sideBarHandle={() => setHandleSideBar(true)}
+        />
       </Box>
       <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
         <Box
@@ -39,9 +32,9 @@ const Layout = () => {
             bottom: "0",
             top: "0px",
             zIndex: "2",
-            display: { md: "block", xs: "none", sm: "none" }
+            // display: { md: "block", xs: "none", sm: "none" }
           }}
-        // className={handleSideBar ? styles.show : styles.hide}
+          className={`${styles.display} ${handleSideBar && styles.displayShow}`}
         >
           <SideBar />
         </Box>
@@ -51,9 +44,9 @@ const Layout = () => {
             maxWidth: "1600px",
             height: "100%",
             padding: "36px 33px 100px",
-            marginLeft: "220px",
+            marginLeft: { md: "220px", sm: 0, xs: 0 }
           }}
-        // className={styles.subContainer}
+          onClick={() => setHandleSideBar(false)}
         >
           {/* <HomeSteps /> */}
         </Box>

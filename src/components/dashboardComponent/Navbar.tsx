@@ -15,7 +15,9 @@ import styles from "./Navbar.module.css";
 const options = ["Logout"];
 const ITEM_HEIGHT = 48;
 
-const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
+
+const NavBar = ({ newChapter, sideBarHandle }: { newChapter?: () => void; sideBarHandle?: () => void }) => {
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -41,13 +43,13 @@ const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: { md: "#197065", sm: "#fff" },
+        backgroundColor: { md: "#197065", sm: "#fff", xs: "#fff" },
         padding: "0 14px",
         height: "70px"
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-        <Box sx={{ display: { xs: "block", sm: "block", md: "none" } }}>
+        <Box sx={{ display: { xs: "block", sm: "block", md: "none" } }} onClick={sideBarHandle}>
           <Image src={NavMenu} alt="logo" />
         </Box>
         <Box
@@ -108,10 +110,10 @@ const NavBar = ({ newChapter }: { newChapter?: () => void }) => {
             />
           </Box>
           {/* <Image
-          src={Noti}
-          alt='logo'
-          className={styles.logo}
-        /> */}
+            src={Noti}
+            alt='logo'
+            className={styles.logo}
+          /> */}
           <Image src={Profile} alt="logo" className={styles.logo} />
           {/* More option :start */}
           <div>
