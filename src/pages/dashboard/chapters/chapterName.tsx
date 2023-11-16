@@ -1,9 +1,8 @@
+import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
-import NavBar from "@/components/dashboardComponent/Navbar";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
-import SideBar from "@/components/dashboardComponent/Sidebar";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
 import {
@@ -56,89 +55,58 @@ const chapterName = () => {
 
   return (
     <>
-      <Box sx={{ overflowX: "hidden", bgcolor: "#FFF9F0" }}>
+      <Layout>
+        <AddChapterName chapter={chapterName} chapterId={chapterId} />
         <Box
           sx={{
-            position: "fixed",
-            right: "0",
-            left: "0",
-            top: "0",
-            zIndex: "2",
+            backgroundColor: "#fff",
+            padding: { sm: "55px 46px 250px 37px", xs: "30px 20px 100px" },
+            marginTop: "26px",
+            borderRadius: { sm: "18px", xs: "5px" },
           }}
         >
-          <NavBar />
-        </Box>
-        <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
-          <Box
-            sx={{
-              width: "220px",
-              backgroundColor: "#197065",
-              position: "fixed",
-              bottom: "0",
-              top: "70px",
-              zIndex: "2",
-            }}
-          >
-            <SideBar />
+          <Box>
+            <ProgressBar />
           </Box>
           <Box
             sx={{
-              width: "100%",
-              maxWidth: "1600px",
-              height: "100%",
-              padding: "10px 33px 20px",
-              marginLeft: "220px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: { xs: "15px" },
             }}
           >
-            <AddChapterName chapter={chapterName} chapterId={chapterId} />
-            <Box
+            <Typography
               sx={{
-                backgroundColor: "#fff",
-                padding: "55px 46px 250px 37px",
-                marginTop: "26px",
-                borderRadius: "18px",
+                fontSize: "20px",
+                fontWeight: 700,
+                color: "rgba(0, 0, 0, 0.87)",
               }}
             >
-              <Box>
-                <ProgressBar />
-              </Box>
-              <Box
-                sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}
-              >
-                <Box>
-                  <Typography
-                    sx={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "rgba(0, 0, 0, 0.87)",
-                    }}
-                  >
-                    Questions
-                  </Typography>
-                </Box>
-                <Box display={"flex"} sx={{ gap: 2 }}>
-                  {/* <Box sx={{ mr: "5px", mt: 2 }}>
+              Questions
+            </Typography>
+            <Box display={"flex"} sx={{ gap: { sm: 2, xs: 1 } }}>
+              {/* <Box sx={{ mr: "5px", mt: 2 }}>
                     <Image src={arrow} alt="" height={150} />
                   </Box> */}
-                  <Box
-                    onClick={() => setOpenModal(true)}
-                    sx={{ cursor: "pointer" }}
-                  >
-                    <Image src={addIcon} alt="addicon" />
-                  </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        mt: 1,
-                        color: "#197065E5",
-                        fontSize: "18px",
-                        fontWeight: 600,
-                      }}
-                    >
-                      Add new question
-                    </Typography>
-                  </Box>
-                </Box>
+              <Box
+                onClick={() => setOpenModal(true)}
+                sx={{ cursor: "pointer" }}
+              >
+                <Image src={addIcon} alt="addicon" />
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    mt: 1,
+                    color: "#197065E5",
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    display: { sm: "block", xs: "none" },
+                  }}
+                >
+                  Add new question
+                </Typography>
               </Box>
               {loading ? (
                 <Box
@@ -168,7 +136,8 @@ const chapterName = () => {
             </Box>
           </Box>
         </Box>
-      </Box>
+      </Layout>
+
       <CustomizationDialog
         open={openModal}
         title="Add new question"

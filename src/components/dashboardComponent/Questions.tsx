@@ -38,38 +38,38 @@ export default function Questions({
           width: "100%",
           borderRadius: "8px",
           borderLeft: "11px solid #186F65",
-          height: "110px",
+          height: { sm: "110px", xs: "90px" },
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          mt: "20px",
+          mt: { sm: "20px", xs: "10px" },
           cursor: "pointer",
         }}
         onClick={() => answerClick(question?.text)}
       >
         <Typography
           sx={{
-            marginLeft: "20px",
+            marginLeft: { sm: "20px", xs: "10px" },
             color: "rgba(22, 22, 22, 0.90)",
-            fontSize: "25px",
+            fontSize: { sm: "25px", xs: "18px" },
             fontWeight: 400,
           }}
         >
-          {number}
+          {number}2
           {". "}
-          {question?.text}
+          {question?.text} My name is faheem aaaaaaaannnnnnddddd
         </Typography>
         <Box sx={{ textAlign: "center" }}>
           <Button
             variant="contained"
-            onClick={() => {}}
+            onClick={() => { }}
             type="submit"
             sx={{
               borderRadius: " 0px 8px 8px 0px",
               backgroundColor: "#186F65",
               color: "rgba(255, 255, 255, 0.90)",
               width: "100px",
-              height: "110px",
+              height: { sm: "110px", xs: "90px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
@@ -81,7 +81,7 @@ export default function Questions({
       </Box>
 
       {/* More option :start */}
-      <div style={{ position: "absolute", right: "-30px", top: "40px" }}>
+      <Box sx={{ position: "absolute", right: { sm: "-30", xs: "-25px" }, top: { sm: "40px", xs: "30px" } }}>
         <IconButton
           aria-label="more"
           id="long-button"
@@ -117,7 +117,7 @@ export default function Questions({
             </MenuItem>
           ))}
         </Menu>
-      </div>
+      </Box>
       {/* More option :end */}
     </Box>
   );

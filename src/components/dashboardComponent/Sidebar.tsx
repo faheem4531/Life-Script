@@ -10,11 +10,15 @@ import ViewBook from "@/_assets/svg/view-book.svg"
 import Tree from "@/_assets/svg/view-book.svg"
 import Faq from "@/_assets/svg/faq.svg"
 import Suport from "@/_assets/svg/support.svg"
+import Logo from "@/_assets/svg/white-logo.svg";
 
 const SideBar = () => {
   return (
     <Box sx={{ color: "#fff" }}>
-      <Box sx={{ padding: "35px 29px 0 11px" }}>
+      <Box sx={{ padding: "13px 20px", height: "70px", }}>
+        <Image src={Logo} alt="logo" className={styles.logo} />
+      </Box>
+      <Box sx={{ padding: "35px 29px 0 11px", borderTop: "1px solid #fff" }}>
         <a className={styles.link}>
           <Image alt='icon' src={OverView} />Overview
         </a>

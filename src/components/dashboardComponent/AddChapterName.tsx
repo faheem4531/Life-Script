@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "../../../public/chapterName.svg";
 import Check from "../../../public/checkIcon.png";
+import styles from "./AddChapterName.module.css"
 
 const AddChapterName = ({
   chapter,
@@ -37,16 +38,16 @@ const AddChapterName = ({
       sx={{
         backgroundColor: "#197065",
         color: "#fff",
-        borderRadius: "24px",
-        padding: "10px 30px",
+        borderRadius: { sm: "24px", xs: "5px" },
+        padding: { sm: "10px 30px", xs: "10px 15px" },
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
       }}
     >
       <Box>
-        <Typography sx={{ fontSize: "24px" }}>Enter</Typography>
-        <Typography sx={{ fontSize: "44px" }}>Chapter Name</Typography>
+        <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>Enter</Typography>
+        <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>Chapter Name</Typography>
         <Box>
           <TextField
             variant="outlined"
@@ -69,16 +70,16 @@ const AddChapterName = ({
             sx={{
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
-                borderRadius: "50px",
+                borderRadius: { sm: "50px", md: "20px" },
                 backgroundColor: "white",
               },
-              width: "390px",
+              width: { sm: "300px", md: "390px" },
             }}
           />
         </Box>
       </Box>
       <Box>
-        <Image height={200} src={BookImage} alt="book image" />
+        <Image src={BookImage} alt="book image" className={styles.bookImage} />
       </Box>
     </Box>
   );

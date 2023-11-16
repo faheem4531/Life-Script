@@ -7,7 +7,7 @@ export default function NoChapters() {
     <Box
       sx={{
         backgroundColor: "white",
-        borderRadius: "24px",
+        borderRadius: { sm: "24px", xs: "5px" },
       }}
     >
       <Box
@@ -16,11 +16,11 @@ export default function NoChapters() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "400px",
+          height: { sm: "400px", xs: "280px" },
         }}
       >
         <Typography
-          sx={{ textAlign: "center", color: "#B2B2B2", fontSize: "32px" }}
+          sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "32px", xs: "22px" } }}
         >
           Start New Chapter
         </Typography>
@@ -35,11 +35,14 @@ export default function NoChapters() {
             src={noData}
             alt="No Data"
             height={120}
-            // width={300}
           />
         </Box>
         <Typography
-          sx={{ textAlign: "center", color: "#B2B2B2", fontSize: "26px" }}
+          sx={{
+            textAlign: "center",
+            color: "#B2B2B2",
+            fontSize: { sm: "26px", xs: "18px" }
+          }}
         >
           {" "}
           No Data found
