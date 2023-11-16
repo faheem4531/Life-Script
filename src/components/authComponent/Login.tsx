@@ -245,6 +245,7 @@ const Login = ({ signinClick }) => {
               "&:hover": {
                 backgroundColor: "#186F65",
               },
+              textTransform:'capitalize'
             }}
           >
             {t("login-page.login")}
@@ -361,7 +362,7 @@ const Login = ({ signinClick }) => {
         >
           {t("login-page.not-member")}
           <a
-            style={{ textDecoration: "underline", cursor: "pointer" }}
+            style={{  textDecoration: "underline", cursor: "pointer" , marginLeft:'8px'}}
             onClick={signinClick}
           >
             {t("login-page.register-now")}

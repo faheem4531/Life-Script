@@ -74,7 +74,7 @@ const ResetPassword = () => {
       dispatch(changePassword(newData))
         .unwrap()
         .then(() => {
-          toast.success("Password changed successfully");
+          toast.success(t("ResetPassword.passwordChangedSuccessfully"));
           router.push("/");
         })
         .catch((error: any) => {
@@ -82,10 +82,10 @@ const ResetPassword = () => {
         });
     },
     validationSchema: Yup.object({
-      password: Yup.string().required("Password is required"),
+      password: Yup.string().required( t("ResetPassword.passwordRequired")),
       confirmPassword: Yup.string()
-        .required("Confirm password is required")
-        .oneOf([Yup.ref("password")], "Passwords does not match"),
+        .required(t("ResetPassword.confirmPasswordRequired"))
+        .oneOf([Yup.ref("password")], t("ResetPassword.passwordDoesn'tMatch")),
     }),
   });
 
@@ -125,6 +125,7 @@ const ResetPassword = () => {
 
                 marginTop: "34px",
                 fontSize: "21px",
+                color:'black'
               }}
             >
               {t("ResetPassword.password")}
@@ -170,6 +171,8 @@ const ResetPassword = () => {
 
                 marginTop: "40px",
                 fontSize: "21px",
+                color:'black'
+
               }}
             >
               {t("ResetPassword.confirmPassword")}

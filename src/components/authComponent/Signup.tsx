@@ -267,6 +267,7 @@ const Signup = ({ signupClick }) => {
               "&:hover": {
                 backgroundColor: "#186F65",
               },
+              textTransform:'capitalize'
             }}
           >
             {t("signup-page.register")}
@@ -383,7 +384,7 @@ const Signup = ({ signupClick }) => {
         >
           {t("signup-page.alreadyRegisterd")}
           <a
-            style={{ textDecoration: "underline", cursor: "pointer" }}
+            style={{ textDecoration: "underline", cursor: "pointer" , marginLeft:'8px'}}
             onClick={signupClick}
           >
             {t("signup-page.loginNow")}
