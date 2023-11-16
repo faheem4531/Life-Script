@@ -4,7 +4,7 @@ import noData from "../../../public/noData.svg";
 
 export default function NoQuestions() {
   return (
-    <>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Typography
         sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "32px", xs: "22px" }, marginTop: { sm: "30px", xs: "25px" } }}
       >
@@ -30,6 +30,6 @@ export default function NoQuestions() {
         {" "}
         No Data found
       </Typography>
-    </>
+    </Box>
   );
 }

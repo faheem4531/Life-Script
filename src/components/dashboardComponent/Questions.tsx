@@ -31,7 +31,7 @@ export default function Questions({
   };
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={{ position: "relative", width: "100%" }}>
       <Box
         sx={{
           bgcolor: "#F9F9F9",
@@ -81,7 +81,7 @@ export default function Questions({
       </Box>
 
       {/* More option :start */}
-      <Box sx={{ position: "absolute", right: { sm: "-30", xs: "-25px" }, top: { sm: "40px", xs: "30px" } }}>
+      <Box sx={{ position: "absolute", right: { sm: "-30", xs: "-25px" }, top: { sm: "50px", xs: "30px" } }}>
         <IconButton
           aria-label="more"
           id="long-button"

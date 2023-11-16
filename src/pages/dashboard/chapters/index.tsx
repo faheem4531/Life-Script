@@ -72,7 +72,7 @@ const Dashboard = () => {
         {loading ? (
           <Box
             sx={{
-              marginTop: "20%",
+              marginTop: "10%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -100,7 +100,7 @@ const Dashboard = () => {
         ) : (
           <Box
             sx={{
-              marginTop: "48px",
+              marginTop: { sm: "48px", xs: "25px" },
             }}
           >
             <NoChapters />
