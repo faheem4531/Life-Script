@@ -158,7 +158,7 @@ const ForgetPassword = () => {
                 "&:hover": {
                   backgroundColor: "#186F65",
                 },
-                textTransform: "none",
+                textTransform: "Capitalize",
               }}
             >
               {t("ForgetPassword.continue")}

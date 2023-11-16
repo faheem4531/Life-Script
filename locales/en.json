@@ -6,7 +6,7 @@
     "enter-password": "Enter your password",
     "forget-password": "Forget password?",
     "login": "Login",
-    "login-with": "Or login with",
+    "login-with": "Or",
     "not-member": "Not a member yet?",
     "register-now": "Register now",
     "incorrect": "Incorrect password or email",
@@ -27,7 +27,7 @@
     "Register": "Register",
     "register": "Register",
     "incorrect": "Incorrect password or email",
-    "or-register-with": "Or Register with",
+    "or-register-with": "Or",
     "alreadyRegisterd": "Already registered?",
     "loginNow": "Login now",
     "emailRequired": "Email is required",
@@ -66,7 +66,11 @@
     "confirmPassword": "Confirm Password",
     "confirm": "Confirm",
     "redirect": "After clicking Reset Password. You will be redirected to the",
-    "loginPage": "login page."
+    "loginPage": "login page.",
+    "passwordRequired": "Password is required",
+    "confrimPasswordRequired": "Confrim Password is required",
+    "passwordChangedSuccessfully":"Password changed successfully",
+    "passwordDoesn'tMatch":"Password does not match"
   },
   "Verify": {
     "emailVerification": "Email Verification",
