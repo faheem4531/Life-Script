@@ -69,11 +69,22 @@ const Dashboard = () => {
     <>
       <Layout>
         <HomeSteps />
-        {allChapters?.length > 0 ? (
+        {loading ? (
+          <Box
+            sx={{
+              marginTop: "20%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : allChapters?.length > 0 ? (
           <Box
             className={styles.CardsContainer}
             sx={{
-              marginTop: { sm: "48px", xs: "25px" },
+              marginTop: "48px",
             }}
           >
             {allChapters.map((chapter, index) => (
@@ -89,47 +100,10 @@ const Dashboard = () => {
         ) : (
           <Box
             sx={{
-              marginTop: { sm: "48px", xs: "25px" },
+              marginTop: "48px",
             }}
           >
-            <HomeSteps />
-            {loading ? (
-              <Box
-                sx={{
-                  marginTop: "20%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CircularProgress />
-              </Box>
-            ) : allChapters?.length > 0 ? (
-              <Box
-                className={styles.CardsContainer}
-                sx={{
-                  marginTop: "48px",
-                }}
-              >
-                {allChapters.map((chapter, index) => (
-                  <DetailCard
-                    key={index}
-                    chapter={chapter}
-                    deleteFunc={(data) => {
-                      handleCardClick(data);
-                    }}
-                  />
-                ))}
-              </Box>
-            ) : (
-              <Box
-                sx={{
-                  marginTop: "48px",
-                }}
-              >
-                <NoChapters />
-              </Box>
-            )}
+            <NoChapters />
           </Box>
         )}
       </Layout>
