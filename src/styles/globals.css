@@ -108,7 +108,7 @@ a {
 
 .ql-editor img {
   width: 400px !important;
-  max-height: 200px;
+  max-height: 400px;
   display: block;
   margin: auto;
   margin-bottom: 5px;
@@ -119,53 +119,21 @@ a {
   display: none !important;
 }
 
-.ql-image {
-  background-image: url("../_assets/svg/imagepicker.svg") !important;
+.rdw-image-wrapper .rdw-option-wrapper {
+  background-image: url("../_assets/svg/imagepicker.svg");
   background-size: contain !important;
+  border: none;
   background-repeat: no-repeat !important;
-  width: 150px !important;
-  height: 40px;
-  border: 0px !important;
+  height: 30px;
+  width: 115px;
 }
 
-.ql-align {
-  height: 40px;
-  width: 40px;
+.rdw-history-wrapper {
+  margin-left: -4px;
 }
 
-.ql-header {
-  height: 40px;
-  width: 40px;
-}
-
-.ql-list {
-  height: 40px;
-  width: 40px;
-}
-
-.ql-bold {
-  height: 40px;
-  width: 40px;
-}
-
-.ql-italic {
-  height: 40px;
-  width: 40px;
-}
-
-.ql-underline {
-  height: 40px;
-  width: 40px;
-}
-
-.ql-blockquote {
-  height: 40px;
-  width: 40px;
-}
-
-.ql-link {
-  height: 40px;
-  width: 40px;
+.rdw-image-wrapper img {
+  display: none;
 }
 
 /* .mantine-1uphpef {

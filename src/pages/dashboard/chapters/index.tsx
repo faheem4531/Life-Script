@@ -10,6 +10,7 @@ import {
 } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +21,7 @@ import Layout from "@/components/Layout/Layout";
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [allChapters, setAllChapters] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [deleteChapter, setDeleteChapter] = useState(false);
   const [deleteChapterId, setDeleteChapterId] = useState("");
   const dispatch: any = useDispatch();
@@ -52,7 +54,9 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    dispatch(getChapters());
+    dispatch(getChapters())
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -65,7 +69,18 @@ const Dashboard = () => {
     <>
       <Layout>
         <HomeSteps />
-        {allChapters?.length > 0 ? (
+        {loading ? (
+          <Box
+            sx={{
+              marginTop: "10%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : allChapters?.length > 0 ? (
           <Box
             className={styles.CardsContainer}
             sx={{

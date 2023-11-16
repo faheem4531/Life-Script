@@ -12,6 +12,7 @@ import {
   selectChapter,
 } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -22,6 +23,7 @@ import Layout from "@/components/Layout/Layout";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
   const [chapterName, setChapterName] = useState("");
   const question = useSelector(selectChapter);
@@ -42,7 +44,10 @@ const chapterName = () => {
   };
 
   useEffect(() => {
-    chapterId && dispatch(getChapterbyId({ id: chapterId.toString() }));
+    chapterId &&
+      dispatch(getChapterbyId({ id: chapterId.toString() }))
+        .then(() => setLoading(false))
+        .catch(() => setLoading(false));
   }, [chapterId]);
 
   useEffect(() => {
@@ -101,9 +106,21 @@ const chapterName = () => {
                   Add new question
                 </Typography>
               </Box>
+            </Box >
+          </Box >
+
+          {loading ? (
+            <Box
+              sx={{
+                marginTop: "8%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
             </Box>
-          </Box>
-          {allQuestions ? (
+          ) : allQuestions?.length > 0 ? (
             allQuestions.map((question, index) => (
               <Questions
                 key={question._id}
@@ -117,8 +134,8 @@ const chapterName = () => {
           ) : (
             <NoQuestions />
           )}
-        </Box>
-      </Layout>
+        </Box >
+      </Layout >
 
 
 
@@ -142,3 +159,11 @@ const chapterName = () => {
 };
 
 export default chapterName;
+
+
+
+
+
+
+
+

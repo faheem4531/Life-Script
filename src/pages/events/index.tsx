@@ -1,13 +1,13 @@
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
-import { Box, TextField } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import RichTextEditor from "./richtext";
-
+import RichText from "./richtext";
 export default function Answers() {
   const router = useRouter();
   const { chapterName } = router.query;
   console.log("textttt", chapterName);
+
   return (
     <Box
       sx={{
@@ -58,21 +58,26 @@ export default function Answers() {
               marginLeft: "220px",
             }}
           >
-            <TextField
-              value={"Q: " + chapterName}
+            <Box
               sx={{
-                bgcolor: "white",
+                borderRadius: "10px",
                 width: "100%",
-                "& input": {
-                  textAlign: "center", // Align text in center
-                  fontSize: "2rem",
-                  fontWeight: "700",
-                },
+                // border: "1px solid black",
+                backgroundColor: "white",
+                maxHeight: "70px",
+                overflowY: "auto",
+                p: 1,
+                display: "flex",
+                justifyContent: "center",
               }}
-            />
+            >
+              <Typography sx={{ fontSize: "38px", fontWeight: "500" }}>
+                {chapterName}
+              </Typography>
+            </Box>
             {/* <Typography sx={{color:'black', fontSize:'45px',fontWeight:'700'}}>My Adventorus Life {'>'} <span style={{ fontSize: '43px', fontWeight:'400' }}>The best job I’ve ever had</span></Typography> */}
             <Box>
-              <RichTextEditor />
+              <RichText />
             </Box>
           </Box>
         </Box>
