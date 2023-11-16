@@ -108,33 +108,34 @@ const chapterName = () => {
                   Add new question
                 </Typography>
               </Box>
-              {loading ? (
-                <Box
-                  sx={{
-                    marginTop: "20%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <CircularProgress />
-                </Box>
-              ) : allQuestions?.length > 0 ? (
-                allQuestions.map((question, index) => (
-                  <Questions
-                    key={question._id}
-                    question={question}
-                    number={index + 1}
-                    answerClick={(text) =>
-                      router.push(`/events?chapterName=${text}`)
-                    }
-                  />
-                ))
-              ) : (
-                <NoQuestions />
-              )}
             </Box>
           </Box>
+
+          {loading ? (
+            <Box
+              sx={{
+                marginTop: "8%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : allQuestions?.length > 0 ? (
+            allQuestions.map((question, index) => (
+              <Questions
+                key={question._id}
+                question={question}
+                number={index + 1}
+                answerClick={(text) =>
+                  router.push(`/events?chapterName=${text}`)
+                }
+              />
+            ))
+          ) : (
+            <NoQuestions />
+          )}
         </Box>
       </Layout>
 

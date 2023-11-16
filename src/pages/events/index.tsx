@@ -1,8 +1,8 @@
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useRouter } from "next/router";
-import RichText from "./richText";
+import RichText from "./richtext";
 export default function Answers() {
   const router = useRouter();
   const { chapterName } = router.query;
@@ -58,7 +58,7 @@ export default function Answers() {
               marginLeft: "220px",
             }}
           >
-            <Box
+            {/* <Box
               sx={{
                 borderRadius: "10px",
                 width: "100%",
@@ -74,10 +74,9 @@ export default function Answers() {
               <Typography sx={{ fontSize: "38px", fontWeight: "500" }}>
                 {chapterName}
               </Typography>
-            </Box>
-            {/* <Typography sx={{color:'black', fontSize:'45px',fontWeight:'700'}}>My Adventorus Life {'>'} <span style={{ fontSize: '43px', fontWeight:'400' }}>The best job I’ve ever had</span></Typography> */}
+            </Box> */}
             <Box>
-              <RichText />
+              <RichText chapterName={chapterName} />
             </Box>
           </Box>
         </Box>

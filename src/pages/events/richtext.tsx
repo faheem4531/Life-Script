@@ -1,20 +1,27 @@
-import { Box } from "@mui/material";
+import { gptChat } from "@/store/slices/chatSlice";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { EditorState, convertToRaw } from "draft-js";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useDispatch } from "react-redux";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
-const MyEditor = () => {
-  const isMounted = useRef(false);
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  //htmlValue={draftToHtml(convertToRaw(editorState.getCurrentContent()))} //use for api call
+const RichText = ({ chapterName }) => {
+  const dispatch: any = useDispatch();
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [gptResponse, setGptResponse] = useState(null);
+  console.log("gptresp", gptResponse);
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+
   useEffect(() => {
     console.log(
       "html",
@@ -22,122 +29,171 @@ const MyEditor = () => {
     );
   }, [editorState]);
 
+  const callchatgpt = () => {
+    dispatch(
+      gptChat({
+        prompt: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      })
+    ).then((res) => setGptResponse(res.payload));
+  };
+
   return (
-    <Box sx={{ marginTop: 1 }}>
-      <Editor
-        defaultEditorState={editorState}
-        onEditorStateChange={setEditorState}
-        wrapperClassName="wrapper-class"
-        editorClassName="editor-class"
-        toolbarClassName="toolbar-class"
-        toolbar={{
-          options: [
-            "inline",
-            "blockType",
-            "fontSize",
-            "fontFamily",
-            "list",
-            "textAlign",
-            "link",
-            "embedded",
-            "emoji",
-            "image",
-            "history",
-          ],
-          inline: {
-            options: ["bold", "italic", "underline"],
-          },
-          blockType: {
+    <Box>
+      <Grid container spacing={1}>
+        <Grid item xs={11}>
+          <Box
+            sx={{
+              borderRadius: "10px",
+              width: "100%", // Width is now 100% for the first box in a 10:2 ratio
+              backgroundColor: "white",
+              maxHeight: "70px",
+              overflowY: "auto",
+              p: 1,
+              display: "flex",
+              justifyContent: "center",
+              height: "70px",
+            }}
+          >
+            <Typography sx={{ fontSize: "38px", fontWeight: "500" }}>
+              {chapterName}
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={1}>
+          <Box>
+            <Button
+              variant="contained"
+              onClick={callchatgpt}
+              sx={{
+                backgroundColor: "#197065",
+                minWidth: "100%", // Width is now 100% for the second box in a 10:2 ratio
+                borderRadius: "10px",
+                height: "70px",
+              }}
+            >
+              Complete
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
+      <Box sx={{ marginTop: 1 }}>
+        <Editor
+          defaultEditorState={editorState}
+          onEditorStateChange={setEditorState}
+          wrapperClassName="wrapper-class"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+          toolbar={{
             options: [
-              "Normal",
-              "H1",
-              "H2",
-              "H3",
-              "H4",
-              "H5",
-              "H6",
-              "Blockquote",
-              "Code",
+              "inline",
+              "blockType",
+              "fontSize",
+              "fontFamily",
+              "list",
+              "textAlign",
+              "link",
+              "embedded",
+              "emoji",
+              "image",
+              "history",
             ],
-          },
-          fontSize: {
-            options: [8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
-          },
-          fontFamily: {
-            options: [
-              "Garamond",
-              "Georgia",
-              "Arial",
-              "Times New Roman",
-              "Verdana",
-              "Merriweather",
-            ],
-          },
-          list: {
-            options: ["unordered", "ordered"],
-          },
-          textAlign: {
-            options: ["left", "center", "right"],
-          },
-          link: {
-            showOpenOptionOnHover: true,
-            defaultTargetOption: "_self",
-            options: ["link"],
-          },
-          embedded: {
-            defaultSize: {
-              height: "auto",
-              width: "auto",
+            inline: {
+              options: ["bold", "italic", "underline"],
             },
-          },
-          image: {
-            urlEnabled: true,
-            uploadEnabled: true,
-            alignmentEnabled: true,
-            previewImage: true,
-            inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
-            uploadCallback: (file) => {
-              return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                  const dataURL = reader.result;
-                  const truncatedDataURL = dataURL; // set the maximum length of the truncated string
-                  resolve({
-                    data: { link: dataURL },
-                    link: { url: truncatedDataURL },
-                  });
-                };
-                reader.onerror = (error) => {
-                  reject(error);
-                };
-              });
+            blockType: {
+              options: [
+                "Normal",
+                "H1",
+                "H2",
+                "H3",
+                "H4",
+                "H5",
+                "H6",
+                "Blockquote",
+                "Code",
+              ],
             },
-            alt: { present: false, mandatory: false },
-            defaultSize: {
-              height: "auto",
-              width: "400px",
+            fontSize: {
+              options: [
+                8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
+              ],
             },
-          },
-          history: {
-            inDropdown: false,
-            className: undefined,
-            component: undefined,
-            dropdownClassName: undefined,
-            options: ["undo", "redo"],
-          },
-        }}
-        editorStyle={{
-          borderRadius: "10px",
-          height: "70vh",
-          backgroundColor: "white",
-          overflowY: "auto",
-          padding: "20px",
-        }}
-        toolbarStyle={{ height: "50px", borderRadius: "10px" }}
-      />
+            fontFamily: {
+              options: [
+                "Garamond",
+                "Georgia",
+                "Arial",
+                "Times New Roman",
+                "Verdana",
+                "Merriweather",
+              ],
+            },
+            list: {
+              options: ["unordered", "ordered"],
+            },
+            textAlign: {
+              options: ["left", "center", "right"],
+            },
+            link: {
+              showOpenOptionOnHover: true,
+              defaultTargetOption: "_self",
+              options: ["link"],
+            },
+            embedded: {
+              defaultSize: {
+                height: "auto",
+                width: "auto",
+              },
+            },
+            image: {
+              urlEnabled: true,
+              uploadEnabled: true,
+              alignmentEnabled: true,
+              previewImage: true,
+              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
+              uploadCallback: (file) => {
+                return new Promise((resolve, reject) => {
+                  const reader = new FileReader();
+                  reader.readAsDataURL(file);
+                  reader.onload = () => {
+                    const dataURL = reader.result;
+                    const truncatedDataURL = dataURL; // set the maximum length of the truncated string
+                    resolve({
+                      data: { link: dataURL },
+                      link: { url: truncatedDataURL },
+                    });
+                  };
+                  reader.onerror = (error) => {
+                    reject(error);
+                  };
+                });
+              },
+              alt: { present: false, mandatory: false },
+              defaultSize: {
+                height: "auto",
+                width: "400px",
+              },
+            },
+            history: {
+              inDropdown: false,
+              className: undefined,
+              component: undefined,
+              dropdownClassName: undefined,
+              options: ["undo", "redo"],
+            },
+          }}
+          editorStyle={{
+            borderRadius: "10px",
+            height: "70vh",
+            backgroundColor: "white",
+            overflowY: "auto",
+            padding: "20px",
+          }}
+          toolbarStyle={{ height: "50px", borderRadius: "10px" }}
+        />
+      </Box>
     </Box>
   );
 };
 
-export default MyEditor;
+export default RichText;
