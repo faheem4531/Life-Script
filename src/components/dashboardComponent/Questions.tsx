@@ -55,9 +55,9 @@ export default function Questions({
             fontWeight: 400,
           }}
         >
-          {number}2
+          {number}
           {". "}
-          {question?.text} My name is faheem aaaaaaaannnnnnddddd
+          {question?.text}
         </Typography>
         <Box sx={{ textAlign: "center" }}>
           <Button
