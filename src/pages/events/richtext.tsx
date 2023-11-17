@@ -146,6 +146,7 @@ const RichText = ({ chapterName }) => {
               "embedded",
               "emoji",
               "image",
+              "colorPicker",
               "history",
             ],
             inline: {
