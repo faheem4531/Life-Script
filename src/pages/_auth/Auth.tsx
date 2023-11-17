@@ -1,17 +1,17 @@
-import Register from "@/components/authComponent/Register";
+import GetTitle from "@/components/authComponent/GetTitle";
 import { Box } from "@mui/material";
 
 export default function AuthPage() {
   return (
     <Box>
-      <Register />
+      {/* <Register /> */}
       {/* <ForgetPassword/> */}
       {/* <ForgetPasswordLink/> */}
       {/* <EmailVerification/> */}
       {/* <EmailVerificationLink/> */}
       {/* <LetsStarted/> */}
       {/* <ResetPassword/> */}
-      {/* <GetTitle/> */}
+      <GetTitle />
     </Box>
   );
 }

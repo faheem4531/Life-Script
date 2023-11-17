@@ -7,11 +7,42 @@
   height: 730px;
 }
 
+.boldText {
+  font-size: 53px;
+}
+
+.greenBlock {
+  position: absolute;
+  top: 15px;
+  left: 22px;
+  width: 128px;
+  height: 120px;
+}
+
+.whiteBlock {
+  position: absolute;
+  bottom: 15px;
+  right: 22px;
+  width: 128px;
+  height: 120px;
+}
+
 @media (min-width:1400px) and (max-width:1800px) {
   .book {
     width: 508px;
     height: 520px;
   }
+
+  .greenBlock {
+    width: 100px;
+    height: 95px;
+  }
+
+  .whiteBlock {
+    width: 100px;
+    height: 95px;
+  }
+
 }
 
 @media (min-width:992px) and (max-width:1400px) {
@@ -27,6 +58,20 @@
     width: 400px;
     height: 450px;
   }
+
+  .greenBlock {
+    top: 10px;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .whiteBlock {
+    bottom: 10px;
+    right: 15px;
+    width: 70px;
+    height: 70px;
+  }
 }
 
 @media (max-width:992px) {
@@ -39,11 +84,59 @@
   }
 
   .bookDiv {
-    margin-right: 80px;
+    margin-right: 0px;
   }
 
   .book {
     width: 300px;
     height: 350px;
+  }
+
+  .greenBlock {
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .whiteBlock {
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (min-width:600px) and (max-width:768px) {
+  .bookDiv {
+    margin-right: 20px;
+  }
+
+  .book {
+    width: 250px;
+    height: 300px;
+  }
+
+}
+
+@media (max-width:600px) {
+  .primaryText {
+    font-size: 28px;
+  }
+
+  .boldText {
+    font-size: 30px;
+  }
+
+  .book {
+    display: none;
+  }
+
+  .greenBlock {
+    display: none;
+  }
+
+  .whiteBlock {
+    display: none;
   }
 }
