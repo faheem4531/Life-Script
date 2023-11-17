@@ -19,6 +19,10 @@ import Logo from "../../../public/logo.svg";
 import { useTranslation } from "react-i18next";
 import { ChangePassword } from "@/interface/authInterface";
 import { toast } from "react-toastify";
+import Carousel from "../../components/authComponent/Carousel";
+import Carousel1 from "../../../public/carousel1.png";
+import Carousel2 from "../../../public/carousel.png";
+import Carousel3 from "../../../public/carousel3.png";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -88,23 +92,32 @@ const ResetPassword = () => {
         .oneOf([Yup.ref("password")], t("ResetPassword.passwordDoesn'tMatch")),
     }),
   });
+const carouselItems = [
+    { path: Carousel1, alt: "Login Image" },
+    { path: Carousel2, alt: "Signup Image" },
+    { path: Carousel3, alt: "Signup Image" },
 
+    // Add more images as needed
+  ];
   return (
+    
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "space-around",
+        display: "grid",
+        alignItems: "center",
+        gridTemplateColumns: {
+          md: "repeat(2, minmax(0, 1fr))",
+          xs: "repeat(1, minmax(0, 1fr))",
+        },
+        gap: "1rem",
         backgroundColor: "#FFF7EA",
-        height: "100vh",
+        height: "100dvh",
         p: "20px",
+        boxSizing: "border-box",
       }}
     >
-      <Box sx={{ margin: 0 }}>
-        <Image
-          src={Forget}
-          alt="login Image"
-          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        />
+      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items={carouselItems} />
       </Box>
 
       <Box>
