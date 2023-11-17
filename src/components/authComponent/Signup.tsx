@@ -61,7 +61,7 @@ const Signup = ({ signupClick }) => {
       .unwrap()
       .then(() => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push("/getStarted");
+        router.push("/");
       })
       .catch((error: any) => {
         toast.error(error.message);
