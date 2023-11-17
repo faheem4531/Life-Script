@@ -1,41 +1,53 @@
 import React from "react";
 import Image from "next/image";
-import bgImage from "../../../public/letsStarted.svg";
 import Arrow from "../../../public/startArrow.png";
 import { Box, Typography } from "@mui/material";
+import Dots from "@/_assets/png/getStarted-dots.png"
+import styles from "./GetTitle.module.css"
 
 const LetsStarted = () => {
   return (
-    <div>
-      <Box
-        sx={{
-          backgroundImage: 'url("/letsStarted.svg")',
-          backgroundSize: "cover", // Adjust as needed
-          backgroundPosition: "center center", // Adjust as needed
-          backgroundRepeat: "no-repeat", // Adjust as needed
-          width: "100%",
-          height: "100vh", // Adjust the height as needed
-          overflow: "hidden",
-          margin: 0,
-          padding: 0,
-          gap: 0,
-        }}
-      >
-        <Box sx={{ marginTop: "200px", marginLeft: "150px" }}>
-          <Typography sx={{ fontSize: "60px", color: "white" }}>
-            Hi Naseer 👋
-          </Typography>
-        </Box>
-        <Box sx={{ marginLeft: "245px", marginTop: "230px" }}>
-          <Image src={Arrow} alt="arrow" />
-        </Box>
-        <Box sx={{ marginLeft: "235px" }}>
-          <Typography sx={{ fontSize: "150px", color: "white" }}>
-            Let Us Help <span style={{ color: "#197065" }}>You...</span>
-          </Typography>
-        </Box>
+    <Box
+      sx={{
+        backgroundImage: 'url("/letsStarted.png")',
+        backgroundSize: "cover",
+        backgroundPosition: { sm: "center center", xs: "left " },
+        backgroundRepeat: "no-repeat",
+        width: "100%",
+        height: "100vh",
+        overflow: "hidden",
+        position: "relative",
+        display: "flex",
+        alignItems: "center"
+      }}
+    >
+      <Box sx={{ marginLeft: { xl: "200px", lg: "150px", md: "100px", sm: "100px", xs: "50px" } }}>
+        <Typography sx={{ fontSize: { lg: "60px", md: "50px", sm: "40px", xs: "30px" } }}>
+          Hi Naseer 👋
+        </Typography>
+        <Image
+          src={Arrow}
+          alt="arrow"
+          className={styles.aero}
+        />
+        <Typography sx={{ fontWeight: 700, fontSize: { xl: "85px", lg: "65px", md: "55px", sm: "40px", xs: "35px" } }}>
+          Let Us Help You...
+        </Typography>
       </Box>
-    </div>
+
+
+
+      <Image
+        src={Dots}
+        alt="arrow"
+        className={styles.topDots}
+      />
+      <Image
+        src={Dots}
+        alt="arrow"
+        className={styles.bottomDots}
+      />
+    </Box>
   );
 };
 
