@@ -9,9 +9,9 @@ export default function AuthPage() {
       {/* <ForgetPasswordLink/> */}
       {/* <EmailVerification/> */}
       {/* <EmailVerificationLink/> */}
-      {/* <LetsStarted/> */}
+      {/* <LetsStarted /> */}
       {/* <ResetPassword/> */}
-      {/* <GetTitle/> */}
+      {/* <GetTitle /> */}
     </Box>
   );
 }
