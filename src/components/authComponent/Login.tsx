@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -17,7 +16,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 
 const Login = ({ signinClick }) => {
@@ -245,7 +243,7 @@ const Login = ({ signinClick }) => {
               "&:hover": {
                 backgroundColor: "#186F65",
               },
-              textTransform:'capitalize'
+              textTransform: "capitalize",
             }}
           >
             {t("login-page.login")}
@@ -322,7 +320,7 @@ const Login = ({ signinClick }) => {
               />
             </Button>
           </Box>
-          <Box>
+          {/* <Box>
             <Button
               variant="contained"
               type="submit"
@@ -350,7 +348,7 @@ const Login = ({ signinClick }) => {
                 />
               }
             ></Button>
-          </Box>
+          </Box> */}
         </Box>
         <Box
           sx={{
@@ -362,7 +360,11 @@ const Login = ({ signinClick }) => {
         >
           {t("login-page.not-member")}
           <a
-            style={{  textDecoration: "underline", cursor: "pointer" , marginLeft:'8px'}}
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              marginLeft: "8px",
+            }}
             onClick={signinClick}
           >
             {t("login-page.register-now")}

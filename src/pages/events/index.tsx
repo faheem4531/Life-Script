@@ -58,26 +58,7 @@ export default function Answers() {
               marginLeft: "220px",
             }}
           >
-            {/* <Box
-              sx={{
-                borderRadius: "10px",
-                width: "100%",
-                // border: "1px solid black",
-                backgroundColor: "white",
-                maxHeight: "70px",
-                overflowY: "auto",
-                p: 1,
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <Typography sx={{ fontSize: "38px", fontWeight: "500" }}>
-                {chapterName}
-              </Typography>
-            </Box> */}
-            <Box>
-              <RichText chapterName={chapterName} />
-            </Box>
+            <RichText chapterName={chapterName} />
           </Box>
         </Box>
       </Box>

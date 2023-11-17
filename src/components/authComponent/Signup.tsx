@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -16,7 +15,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 
 const Signup = ({ signupClick }) => {
@@ -267,7 +265,7 @@ const Signup = ({ signupClick }) => {
               "&:hover": {
                 backgroundColor: "#186F65",
               },
-              textTransform:'capitalize'
+              textTransform: "capitalize",
             }}
           >
             {t("signup-page.register")}
@@ -344,7 +342,7 @@ const Signup = ({ signupClick }) => {
               />
             </Button>
           </Box>
-          <Box>
+          {/* <Box>
             <Button
               variant="contained"
               type="submit"
@@ -372,7 +370,7 @@ const Signup = ({ signupClick }) => {
                 />
               }
             ></Button>
-          </Box>
+          </Box> */}
         </Box>
         <Box
           sx={{
@@ -384,7 +382,11 @@ const Signup = ({ signupClick }) => {
         >
           {t("signup-page.alreadyRegisterd")}
           <a
-            style={{ textDecoration: "underline", cursor: "pointer" , marginLeft:'8px'}}
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              marginLeft: "8px",
+            }}
             onClick={signupClick}
           >
             {t("signup-page.loginNow")}

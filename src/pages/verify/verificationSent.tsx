@@ -79,6 +79,7 @@ const EmailVerificationLink = () => {
               color: "#5B5B5B",
               fontSize: "21px",
               textAlign: "center",
+              fontFamily: "Inter",
             }}
           >
             {t("VerificationSent.verifcationLink")} {email}. <br />{" "}

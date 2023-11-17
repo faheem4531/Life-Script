@@ -1,3 +1,4 @@
+import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { gptChat } from "@/store/slices/chatSlice";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { EditorState, convertToRaw } from "draft-js";
@@ -7,6 +8,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
+import RichTextViewer from "./response";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -17,6 +19,7 @@ const RichText = ({ chapterName }) => {
   const dispatch: any = useDispatch();
   // const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [gptResponse, setGptResponse] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
   console.log("gptresp", gptResponse);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -34,13 +37,16 @@ const RichText = ({ chapterName }) => {
       gptChat({
         prompt: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       })
-    ).then((res) => setGptResponse(res.payload));
+    ).then((res) => {
+      setGptResponse(res.payload);
+      setOpenModal(true);
+    });
   };
 
   return (
     <Box>
       <Grid container spacing={1}>
-        <Grid item xs={11}>
+        <Grid item xs={10}>
           <Box
             sx={{
               borderRadius: "10px",
@@ -59,7 +65,7 @@ const RichText = ({ chapterName }) => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={2}>
           <Box>
             <Button
               variant="contained"
@@ -184,7 +190,7 @@ const RichText = ({ chapterName }) => {
           }}
           editorStyle={{
             borderRadius: "10px",
-            height: "70vh",
+            height: "68vh",
             backgroundColor: "white",
             overflowY: "auto",
             padding: "20px",
@@ -192,6 +198,16 @@ const RichText = ({ chapterName }) => {
           toolbarStyle={{ height: "50px", borderRadius: "10px" }}
         />
       </Box>
+      <CustomizationDialog
+        open={openModal}
+        title="GPT Response"
+        handleClose={() => {
+          setOpenModal(false);
+        }}
+        customStyles={{ backgroundColor: "auto" }}
+      >
+        <RichTextViewer htmlContent={gptResponse} />
+      </CustomizationDialog>
     </Box>
   );
 };

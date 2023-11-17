@@ -60,8 +60,9 @@ const chapterName = () => {
         <Box
           sx={{
             backgroundColor: "#fff",
-            padding: { sm: "55px 46px 250px 37px", xs: "30px 20px 100px" },
+            padding: { sm: "55px 46px 46px 37px", xs: "30px 20px 100px" },
             marginTop: "26px",
+            minHeight: "60vh",
             borderRadius: { sm: "18px", xs: "5px" },
           }}
         >
@@ -85,14 +86,12 @@ const chapterName = () => {
             >
               Questions
             </Typography>
-            <Box display={"flex"} sx={{ gap: { sm: 2, xs: 1 } }}>
-              {/* <Box sx={{ mr: "5px", mt: 2 }}>
-                    <Image src={arrow} alt="" height={150} />
-                  </Box> */}
-              <Box
-                onClick={() => setOpenModal(true)}
-                sx={{ cursor: "pointer" }}
-              >
+            <Box
+              display={"flex"}
+              onClick={() => setOpenModal(true)}
+              sx={{ gap: { sm: 2, xs: 1 }, cursor: "pointer" }}
+            >
+              <Box>
                 <Image src={addIcon} alt="addicon" />
               </Box>
               <Box>

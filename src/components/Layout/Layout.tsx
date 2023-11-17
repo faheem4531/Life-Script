@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
-import styles from "./Layout.module.css"
+import styles from "./Layout.module.css";
 
-const Layout = ({ children }) => {
-  const [handleSideBar, setHandleSideBar] = useState(false)
+const Layout = ({
+  children,
+  addChapter,
+}: {
+  children?: any;
+  addChapter?: () => void;
+}) => {
+  const [handleSideBar, setHandleSideBar] = useState(false);
 
   return (
     <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
@@ -21,6 +27,7 @@ const Layout = ({ children }) => {
       >
         <NavBar
           sideBarHandle={() => setHandleSideBar(true)}
+          newChapter={() => addChapter()}
         />
       </Box>
       <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
@@ -46,16 +53,14 @@ const Layout = ({ children }) => {
             height: "100%",
             minHeight: "95vh",
             padding: { sm: "36px 33px 100px", xs: "30px 16px 20px" },
-            marginLeft: { md: "220px", sm: 0, xs: 0 }
+            marginLeft: { md: "220px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
         >
           {children}
         </Box>
       </Box>
-
-
-    </Box >
+    </Box>
   );
 };
 

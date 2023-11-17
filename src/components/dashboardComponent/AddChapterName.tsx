@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "../../../public/chapterName.svg";
 import Check from "../../../public/checkIcon.png";
-import styles from "./AddChapterName.module.css"
+import styles from "./AddChapterName.module.css";
 
 const AddChapterName = ({
   chapter,
@@ -46,8 +46,12 @@ const AddChapterName = ({
       }}
     >
       <Box>
-        <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>Enter</Typography>
-        <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>Chapter Name</Typography>
+        <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>
+          Update
+        </Typography>
+        <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
+          Chapter Name
+        </Typography>
         <Box>
           <TextField
             variant="outlined"
