@@ -48,7 +48,7 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
       className="container-fontfamily"
       sx={{
         borderRadius: "6.5px",
-        height: "300px",
+        height: "280px",
       }}
     >
       <div
@@ -181,12 +181,12 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
 {/* // Progress Bar code */ }
 function CircularProgressWithLabel(props) {
   return (
-    <Box sx={{ position: "relative", display: "inline-flex" }}>
+    <Box sx={{ position: "relative", display: "inline-flex", width: "30px" }}>
       <CircularProgress color="success" variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
-          left: 0,
+          left: -8,
           bottom: 0,
           right: 0,
           position: "absolute",
@@ -195,7 +195,7 @@ function CircularProgressWithLabel(props) {
           justifyContent: "center",
         }}
       >
-        <Typography variant="caption" component="div" color="#197065">
+        <Typography variant="caption" component="div" color="#197065" sx={{ fontSize: "10px" }}>
           {`${Math.round(props.value)}%`}
         </Typography>
       </Box>
