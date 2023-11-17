@@ -128,7 +128,7 @@ a {
 }
 
 .rdw-image-wrapper .rdw-option-wrapper {
-  background-image: url("../_assets/svg/imagepicker.svg");
+  background-image: url("../_assets/svg/imagepicker.svg") !important;
   background-size: contain !important;
   border: none;
   background-repeat: no-repeat !important;
