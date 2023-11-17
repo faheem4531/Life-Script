@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
-import ProgressBar from "@/components/dashboardComponent/ProgressBar";
+// import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
@@ -66,9 +66,9 @@ const chapterName = () => {
             borderRadius: { sm: "18px", xs: "5px" },
           }}
         >
-          <Box>
+          {/* <Box>
             <ProgressBar />
-          </Box>
+          </Box> */}
           <Box
             sx={{
               display: "flex",

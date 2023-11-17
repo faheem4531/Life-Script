@@ -119,7 +119,7 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
           />
           <Box>
             {questions?.length > 0 ? (
-              questions?.slice(0, 4).map((question: any) => (
+              questions?.slice(0, 3).map((question: any) => (
                 <Typography
                   key={question._id}
                   display="flex"
@@ -129,8 +129,8 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
                   fontSize="13px"
                 >
                   <Image alt="check" src={Tick} />
-                  {question.text.length > 50
-                    ? question.text.slice(0, 47) + "..."
+                  {question.text.length > 45
+                    ? question.text.slice(0, 42) + "..."
                     : question.text}
                 </Typography>
               ))

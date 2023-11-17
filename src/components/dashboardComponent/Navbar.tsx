@@ -123,7 +123,9 @@ const NavBar = ({
           >
             <Button
               onClick={() => {
-                router.push("/dashboard/templates");
+                if (router.asPath === "/dashboard/chapters") {
+                  router.push("/dashboard/templates");
+                }
               }}
               title="Get Template"
               border="1px solid #fff"

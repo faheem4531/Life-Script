@@ -25,9 +25,9 @@ const RichText = ({ chapterName }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const [toneValue, setToneValue] = useState("neutral");
+  const [toneValue, setToneValue] = useState("Neutral");
 
-  const gptTones = ["funny", "angry", "sad", "happy", "neutral"];
+  const gptTones = ["Funny", "Angry", "Sad", "Happy", "Neutral"];
 
   const handleSelectChange = (event) => {
     setToneValue(event.target.value);
@@ -80,7 +80,12 @@ const RichText = ({ chapterName }) => {
               value={toneValue}
               onChange={handleSelectChange}
               displayEmpty
-              sx={{ width: "100%", height: "70px", borderRadius: "10px" }}
+              sx={{
+                width: "100%",
+                height: "70px",
+                borderRadius: "10px",
+                backgroundColor: "white",
+              }}
             >
               {gptTones?.map((tone) => (
                 <MenuItem value={tone}>{tone}</MenuItem>
@@ -114,6 +119,21 @@ const RichText = ({ chapterName }) => {
           wrapperClassName="wrapper-class"
           editorClassName="editor-class"
           toolbarClassName="toolbar-class"
+          editorStyle={{
+            borderRadius: "10px",
+            minHeight: "65vh",
+            maxHeight: "68vh",
+            backgroundColor: "white",
+            overflowY: "auto",
+            padding: "20px",
+          }}
+          toolbarStyle={{
+            minHeight: "50px",
+            borderRadius: "10px",
+            display: "flex",
+            justifyContent: "center", // Center-align toolbar items horizontally
+            alignItems: "center",
+          }}
           toolbar={{
             options: [
               "inline",
@@ -213,15 +233,6 @@ const RichText = ({ chapterName }) => {
               options: ["undo", "redo"],
             },
           }}
-          editorStyle={{
-            borderRadius: "10px",
-            minHeight: "65vh",
-            maxHeight: "68vh",
-            backgroundColor: "white",
-            overflowY: "auto",
-            padding: "20px",
-          }}
-          toolbarStyle={{ height: "50px", borderRadius: "10px" }}
         />
       </Box>
       <CustomizationDialog

@@ -238,7 +238,7 @@ const Login = ({ signinClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "70%",
+              width: "60%",
               marginTop: { xs: "60px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
@@ -292,24 +292,22 @@ const Login = ({ signinClick }) => {
             justifyContent: "center",
           }}
         >
-          <Box>
+          <Box sx={{ width: "60%" }}>
             <Button
               variant="contained"
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center", // Center the content horizontally and vertically
-                borderRadius: "13px",
-                backgroundColor: "white",
+                borderRadius: "48px",
+                backgroundColor: "#fff",
                 color: "black",
-                width: "40px", // Use "width" instead of "maxWidth" for button width
-                height: "40px", // Use "height" instead of "maxHeight" for button height
-                marginTop: "10px",
+                width: "100%",
+                gap: "10px",
+                marginTop: { xs: "60px", sm: "20px" },
                 "&:hover": {
-                  backgroundColor: "white",
+                  backgroundColor: "#186F65",
                 },
+                textTransform: "capitalize",
               }}
             >
               <Image
@@ -318,6 +316,7 @@ const Login = ({ signinClick }) => {
                 width={24}
                 height={24}
               />
+              <Typography>Login with Google</Typography>
             </Button>
           </Box>
           {/* <Box>
