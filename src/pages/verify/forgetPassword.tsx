@@ -13,6 +13,10 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
 import Logo from "../../../public/logo.svg";
+import Carousel from "../../components/authComponent/Carousel";
+import Carousel1 from "../../../public/carousel1.png";
+import Carousel2 from "../../../public/carousel.png";
+import Carousel3 from "../../../public/carousel3.png";
 
 const ForgetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -53,6 +57,13 @@ const ForgetPassword = () => {
       email: Yup.string().email().required(t("ForgetPassword.emailRequired")),
     }),
   });
+  const carouselItems = [
+    { path: Carousel1, alt: 'Login Image' },
+    { path: Carousel2, alt: 'Signup Image' },
+    { path: Carousel3, alt: 'Signup Image' },
+
+    // Add more images as needed
+  ];
 
   return (
     <Grid
@@ -71,12 +82,8 @@ const ForgetPassword = () => {
         color: "#000",
       }}
     >
-      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
-        <Image
-          src={Forget}
-          alt="login Image"
-          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        />
+        <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items= {carouselItems} />
       </Box>
       <Box
         sx={{

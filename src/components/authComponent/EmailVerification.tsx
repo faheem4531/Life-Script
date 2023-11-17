@@ -10,7 +10,10 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Email from "../../../public/Sign-up.png";
 import Logo from "../../../public/logo.svg";
-
+import Carousel from "./Carousel";
+import Carousel1 from "../../../public/carousel1.png";
+import Carousel2 from "../../../public/carousel.png";
+import Carousel3 from "../../../public/carousel3.png";
 const CryptoJS = require("crypto-js");
 
 const EmailVerification = () => {
@@ -62,6 +65,13 @@ const EmailVerification = () => {
       setOtp(decryptedData.otp);
     }
   }, [ciphertext]);
+  const carouselItems = [
+    { path: Carousel1, alt: 'Login Image' },
+    { path: Carousel2, alt: 'Signup Image' },
+    { path: Carousel3, alt: 'Signup Image' },
+
+    // Add more images as needed
+  ];
 
   return (
     <Box
@@ -80,15 +90,18 @@ const EmailVerification = () => {
         color: "#000",
       }}
     >
-      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
-        <Image
+        <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items= {carouselItems} />
+      </Box>
+      {/* <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}> */}
+        {/* <Image
           src={Email}
           alt="image of login"
           style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        />
+        /> */}
 
         {/* </Grid> */}
-      </Box>
+      {/* </Box> */}
       {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
         // textAlign={'center'}

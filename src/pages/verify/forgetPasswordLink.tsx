@@ -8,6 +8,10 @@ import { useState } from "react";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
 import Logo from "../../../public/logo.svg";
+import Carousel from "../../components/authComponent/Carousel";
+import Carousel1 from "../../../public/carousel1.png";
+import Carousel2 from "../../../public/carousel.png";
+import Carousel3 from "../../../public/carousel3.png";
 
 const ForgetPasswordLink = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -37,6 +41,13 @@ const ForgetPasswordLink = () => {
       password: Yup.string().required("Password is required"),
     }),
   });
+  const carouselItems = [
+    { path: Carousel1, alt: "Login Image" },
+    { path: Carousel2, alt: "Signup Image" },
+    { path: Carousel3, alt: "Signup Image" },
+
+    // Add more images as needed
+  ];
 
   return (
     <Box
@@ -45,35 +56,32 @@ const ForgetPasswordLink = () => {
         alignItems: "center",
         gridTemplateColumns: {
           md: "repeat(2, minmax(0, 1fr))",
-          xs: "repeat(1, minmax(0, 1fr))"
+          xs: "repeat(1, minmax(0, 1fr))",
         },
-        gap: '1rem',
+        gap: "1rem",
         backgroundColor: "#FFF7EA",
         height: "100dvh",
         p: "20px",
-        boxSizing: 'border-box'
+        boxSizing: "border-box",
       }}
     >
-      <Box sx={{ margin: 0, display: { md: 'block', xs: 'none' } }}>
-        <Image
-          src={Forget}
-          alt="login Image"
-          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        />
+      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items={carouselItems} />
       </Box>
 
-      <Box sx={{
-        maxWidth: "500px",
-        width: '100%',
-        margin: '0 auto'
-      }}>
+      <Box
+        sx={{
+          maxWidth: "500px",
+          width: "100%",
+          margin: "0 auto",
+        }}
+      >
         <Box textAlign={"center"}>
           <Image src={Logo} width={223} height={165} alt="Logo Image" />
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "40px" }}
           >
             {t("ForgetPassswordLink.forgotPassword")}
-
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
@@ -86,7 +94,8 @@ const ForgetPasswordLink = () => {
               }}
             >
               {t("ForgetPassswordLink.resetPassword")} <br />
-              {email}. {t("ForgetPassswordLink.clickLink")}<br /> {t("ForgetPassswordLink.reset")}
+              {email}. {t("ForgetPassswordLink.clickLink")}
+              <br /> {t("ForgetPassswordLink.reset")}
             </Typography>
           </Box>
         </Box>
