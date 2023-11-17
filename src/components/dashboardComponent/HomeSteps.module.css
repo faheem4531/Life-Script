@@ -50,9 +50,17 @@
 
 /* styling for Details Card   */
 
+.cardContent {
+  height: 72%;
+}
+
 @media (max-width:1400px) {
   .header {
     padding: 20px 0 20px 15px !important;
+  }
+
+  .cardContent {
+    height: 64%;
   }
 }
 
