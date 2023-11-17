@@ -48,7 +48,7 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
       className="container-fontfamily"
       sx={{
         borderRadius: "6.5px",
-        // maxHeight: "482px",
+        height: "300px",
       }}
     >
       <div
@@ -97,8 +97,9 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
             deleteFunc({ option: "edit", chapterId: chapter._id });
           }
         }}
+        sx={{ height: "100%" }}
       >
-        <CardContent>
+        <CardContent sx={{ height: "100%" }}>
           <Typography
             variant="body2"
             color="text "
@@ -117,56 +118,67 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               marginBottom: "10px",
             }}
           />
-          <Box>
-            {questions?.length > 0 ? (
-              questions?.slice(0, 3).map((question: any) => (
-                <Typography
-                  key={question._id}
-                  display="flex"
-                  alignItems="center"
-                  columnGap="0px"
-                  color="rgba(22, 22, 22, 0.90)"
-                  fontSize="13px"
+          <Box sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "space-between"
+          }}
+            className={styles.cardContent}>
+
+            <Box sx={{ width: "100%", height: "200px" }}>
+              {questions?.length > 0 ? (
+                questions?.slice(0, 4).map((question: any) => (
+                  <Typography
+                    key={question._id}
+                    display="flex"
+                    alignItems="center"
+                    columnGap="0px"
+                    color="rgba(22, 22, 22, 0.90)"
+                    fontSize="13px"
+                  >
+                    <Image alt="check" src={Tick} />
+                    {question.text.length > 45
+                      ? question.text.slice(0, 42) + "..."
+                      : question.text}
+                  </Typography>
+                ))
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center", height: "100%",
+                    alignItems: "center"
+                  }}
                 >
-                  <Image alt="check" src={Tick} />
-                  {question.text.length > 45
-                    ? question.text.slice(0, 42) + "..."
-                    : question.text}
-                </Typography>
-              ))
-            ) : (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Image alt="no Data" src={noData} height={100} />
-              </Box>
-            )}
+                  <Image alt="no Data" src={noData} height={100} />
+                </Box>
+              )}
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "auto",
+                // bgcolor: "pink"
+              }}
+            >
+              <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
+                Last Edited 3 Days Ago
+              </Typography>
+              <CircularWithValueLabel />
+            </Box>
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginTop: "5px",
-            }}
-          >
-            <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
-              Last Edited 3 Days Ago
-            </Typography>
-            <CircularWithValueLabel />
-          </Box>
         </CardContent>
       </Box>
     </Card>
   );
 }
 
-// Progress Bar code
+{/* // Progress Bar code */ }
 function CircularProgressWithLabel(props) {
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
