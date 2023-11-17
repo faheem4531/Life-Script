@@ -15,7 +15,10 @@ const Layout = ({
   const [handleSideBar, setHandleSideBar] = useState(false);
 
   return (
-    <Box sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}>
+    <Box
+      sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}
+      className="container-fontfamily"
+    >
       <Box
         sx={{
           position: "fixed",
@@ -52,7 +55,7 @@ const Layout = ({
             color: "#000",
             height: "100%",
             minHeight: "95vh",
-            padding: { sm: "36px 33px 100px", xs: "30px 16px 20px" },
+            padding: { sm: "36px 33px 30px", xs: "30px 16px 20px" },
             marginLeft: { md: "220px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}

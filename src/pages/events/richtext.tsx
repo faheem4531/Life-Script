@@ -1,7 +1,8 @@
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { gptChat } from "@/store/slices/chatSlice";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, MenuItem, Select, Typography } from "@mui/material";
 import { EditorState, convertToRaw } from "draft-js";
+
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
 import dynamic from "next/dynamic";
@@ -24,6 +25,13 @@ const RichText = ({ chapterName }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+  const [toneValue, setToneValue] = useState("neutral");
+
+  const gptTones = ["funny", "angry", "sad", "happy", "neutral"];
+
+  const handleSelectChange = (event) => {
+    setToneValue(event.target.value);
+  };
 
   useEffect(() => {
     console.log(
@@ -36,6 +44,7 @@ const RichText = ({ chapterName }) => {
     dispatch(
       gptChat({
         prompt: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        responseTone: toneValue,
       })
     ).then((res) => {
       setGptResponse(res.payload);
@@ -44,13 +53,13 @@ const RichText = ({ chapterName }) => {
   };
 
   return (
-    <Box>
+    <Box className="rich-editor">
       <Grid container spacing={1}>
-        <Grid item xs={10}>
+        <Grid item xs={8}>
           <Box
             sx={{
               borderRadius: "10px",
-              width: "100%", // Width is now 100% for the first box in a 10:2 ratio
+              width: "100%",
               backgroundColor: "white",
               maxHeight: "70px",
               overflowY: "auto",
@@ -67,21 +76,37 @@ const RichText = ({ chapterName }) => {
         </Grid>
         <Grid item xs={2}>
           <Box>
+            <Select
+              value={toneValue}
+              onChange={handleSelectChange}
+              displayEmpty
+              sx={{ width: "100%", height: "70px", borderRadius: "10px" }}
+            >
+              {gptTones?.map((tone) => (
+                <MenuItem value={tone}>{tone}</MenuItem>
+              ))}
+            </Select>
+          </Box>
+        </Grid>
+        <Grid item xs={2}>
+          <Box>
             <Button
               variant="contained"
               onClick={callchatgpt}
               sx={{
+                textTransform: "capitalize",
                 backgroundColor: "#197065",
-                minWidth: "100%", // Width is now 100% for the second box in a 10:2 ratio
+                minWidth: "100%",
                 borderRadius: "10px",
                 height: "70px",
               }}
             >
-              Complete
+              call gpt
             </Button>
           </Box>
         </Grid>
       </Grid>
+
       <Box sx={{ marginTop: 1 }}>
         <Editor
           defaultEditorState={editorState}
@@ -190,7 +215,8 @@ const RichText = ({ chapterName }) => {
           }}
           editorStyle={{
             borderRadius: "10px",
-            height: "68vh",
+            minHeight: "65vh",
+            maxHeight: "68vh",
             backgroundColor: "white",
             overflowY: "auto",
             padding: "20px",
@@ -204,7 +230,11 @@ const RichText = ({ chapterName }) => {
         handleClose={() => {
           setOpenModal(false);
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        customStyles={{
+          backgroundColor: "auto",
+          padding: "5px",
+          maxWidth: "40vw",
+        }}
       >
         <RichTextViewer htmlContent={gptResponse} />
       </CustomizationDialog>

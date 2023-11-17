@@ -83,6 +83,7 @@ const NavBar = ({
           <Image src={Search} alt="logo" />
           <InputBase
             sx={{
+              fontFamily: "sans-serif",
               backgroundColor: "#fff",
               width: "100%",
               paddingLeft: "5px",

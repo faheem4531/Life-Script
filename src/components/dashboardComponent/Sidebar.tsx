@@ -11,9 +11,11 @@ import {
 import Logo from "@/_assets/svg/white-logo.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
+  const router = useRouter();
   return (
     <Box sx={{ color: "#fff" }}>
       <Box sx={{ padding: "13px 20px", height: "70px" }}>
@@ -29,7 +31,11 @@ const SideBar = () => {
           <Image alt="icon" src={OverView} />
           Overview
         </a>
-        <a className={`${styles.link} ${styles.active}`}>
+        <a
+          className={`${styles.link} ${styles.active}`}
+          onClick={() => router.push("/dashboard/chapters")}
+          style={{ cursor: "pointer" }}
+        >
           <Image alt="icon" src={Home} />
           All Chapters
         </a>

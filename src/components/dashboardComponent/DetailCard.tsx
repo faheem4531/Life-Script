@@ -13,7 +13,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import PropTypes from "prop-types";
 import * as React from "react";
 import noData from "../../../public/noData.svg";
 import styles from "./HomeSteps.module.css";
@@ -46,10 +45,14 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
 
   return (
     <Card
-      sx={{ borderRadius: "6.5px", maxHeight: "382px", minHeight: "300px" }}
+      className="container-fontfamily"
+      sx={{
+        borderRadius: "6.5px",
+        // maxHeight: "482px",
+      }}
     >
       <div
-        style={{ backgroundColor: "#197065", padding: "25px 17px 25px 17px" }}
+        style={{ backgroundColor: "#197065", padding: "10px 17px 10px 17px" }}
         className={styles.header}
       >
         <IconButton
@@ -110,24 +113,25 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               width: "245px",
               backgroundColor: "#000",
               height: "2px",
-              margin: "9px auto 0",
-              marginBottom: "30px",
+              margin: "5px auto 0",
+              marginBottom: "10px",
             }}
           />
-          <Box sx={{ height: "155px" }}>
+          <Box>
             {questions?.length > 0 ? (
-              questions?.slice(0, 5).map((question: any) => (
+              questions?.slice(0, 4).map((question: any) => (
                 <Typography
                   key={question._id}
                   display="flex"
                   alignItems="center"
-                  columnGap="10px"
+                  columnGap="0px"
                   color="rgba(22, 22, 22, 0.90)"
                   fontSize="13px"
-                  marginTop="5px"
                 >
                   <Image alt="check" src={Tick} />
-                  {question.text}
+                  {question.text.length > 50
+                    ? question.text.slice(0, 47) + "..."
+                    : question.text}
                 </Typography>
               ))
             ) : (
@@ -148,7 +152,7 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginTop: "12px",
+              marginTop: "5px",
             }}
           >
             <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
@@ -187,28 +191,6 @@ function CircularProgressWithLabel(props) {
   );
 }
 
-CircularProgressWithLabel.propTypes = {
-  /**
-   * The value of the progress indicator for the determinate variant.
-   * Value between 0 and 100.
-   * @default 0
-   */
-  value: PropTypes.number.isRequired,
-};
-
 function CircularWithValueLabel() {
-  const [progress, setProgress] = React.useState(10);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 0 : prevProgress + 10
-      );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return <CircularProgressWithLabel value={progress} />;
+  return <CircularProgressWithLabel value={90} />;
 }

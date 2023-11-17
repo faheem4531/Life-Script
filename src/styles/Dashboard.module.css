@@ -1,7 +1,7 @@
 .CardsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 50px 30px;
+  gap: 30px 30px;
 }
 
 .subContainer {
@@ -11,7 +11,7 @@
   background-size: 100%;
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1439px) {
   .CardsContainer {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
