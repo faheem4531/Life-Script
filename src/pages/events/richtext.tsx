@@ -27,7 +27,14 @@ const RichText = ({ chapterName }) => {
   );
   const [toneValue, setToneValue] = useState("Neutral");
 
-  const gptTones = ["Funny", "Angry", "Sad", "Happy", "Neutral"];
+  const gptTones = [
+    "Narrative",
+    "Nostalgic",
+    "Humorous",
+    "Emotional",
+    "Inspirational",
+    "Neutral",
+  ];
 
   const handleSelectChange = (event) => {
     setToneValue(event.target.value);
