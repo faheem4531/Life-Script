@@ -1,21 +1,45 @@
-import { LoginData } from "@/interface/authInterface";
-import { Box, Typography } from "@mui/material";
-import { useFormik } from "formik";
+"use client";
+import Carousel from "@/components/authComponent/Carousel";
+import { verifyEmail } from "@/store/slices/authSlice";
+import { Box, TextField, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import * as Yup from "yup";
-import Email from "../../../public/Sign-up.png";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Carousel2 from "../../../public/carousel.png";
+import Carousel1 from "../../../public/carousel1.png";
+import Carousel3 from "../../../public/carousel3.png";
 import Logo from "../../../public/logo.svg";
+const CryptoJS = require("crypto-js");
 
-const EmailVerificationLink = () => {
+const EmailVerification = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const router = useRouter();
-  const { email } = router.query;
+  const [userEmail, setUserEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const dispatch: any = useDispatch();
   const { t } = useTranslation();
 
+  function handleVerifyEmail() {
+    dispatch(verifyEmail({ email: userEmail, otp: otp }))
+      .unwrap()
+      .then(() => {
+        toast.success(t("Verify.emailVerifiedSuccessfully"));
+        router.push("/");
+      })
+      .catch((error: any) => {
+        toast.error(error || t("Verify.failedVerifyEmail"));
+      });
+  }
+
+  function getTokenFromURL(url: any) {
+    var queryString = url.split("?")[1];
+    var params = new URLSearchParams(queryString);
+    return params.get("token");
+  }
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -24,19 +48,29 @@ const EmailVerificationLink = () => {
     setRememberMe(event.target.checked);
   };
 
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: async (data: LoginData) => {
-      console.log("data", data);
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email().required("Email is required"),
-      password: Yup.string().required("Password is required"),
-    }),
-  });
+  const router = useRouter();
+  const currentUrl = router.asPath;
+  const token = getTokenFromURL(currentUrl);
+  const ciphertext = token?.replace(/ /g, "+");
+  console.log("token", token, typeof token);
+
+  useEffect(() => {
+    if (ciphertext) {
+      const bytes = CryptoJS.AES.decrypt(ciphertext, "No_Key_Found");
+      const originalText = bytes.toString(CryptoJS.enc.Utf8);
+      const decryptedData = JSON.parse(originalText);
+
+      setUserEmail(decryptedData.email);
+      setOtp(decryptedData.otp);
+    }
+  }, [ciphertext]);
+  const carouselItems = [
+    { path: Carousel1, alt: "Login Image" },
+    { path: Carousel2, alt: "Signup Image" },
+    { path: Carousel3, alt: "Signup Image" },
+
+    // Add more images as needed
+  ];
 
   return (
     <Box
@@ -55,40 +89,99 @@ const EmailVerificationLink = () => {
         color: "#000",
       }}
     >
-      <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}>
-        <Image
+      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items={carouselItems} />
+      </Box>
+      {/* <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}> */}
+      {/* <Image
           src={Email}
           alt="image of login"
           style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        />
-      </Box>
+        /> */}
 
-      <Box>
+      {/* </Grid> */}
+      {/* </Box> */}
+      {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
+      <Box
+        // textAlign={'center'}
+        sx={{
+          maxWidth: "460px",
+          margin: "0 auto",
+          minWidth: "280px",
+          width: "100%",
+          marginX: { sx: "0 35px" },
+        }}
+      >
         <Box textAlign={"center"}>
           <Image src={Logo} width={184} height={100} alt="Logo Image" />
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-            {t("VerificationSent.emailVerification")}{" "}
+            {t("Verify.emailVerification")}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "20%" }}>
+        <Box sx={{ marginTop: "100px" }}>
+          <Box>
+            <Typography
+              sx={{
+                marginRight: "300px",
+                marginTop: "56px",
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              {t("Verify.email")}
+            </Typography>
+            <TextField
+              variant="outlined"
+              name="email"
+              value={userEmail}
+              disabled
+              sx={{
+                marginTop: "15px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "50px", // Adjust the border radius as needed
+                },
+                width: "100%",
+              }}
+            />
+          </Box>
           <Typography
+            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+          >
+            {t("Verify.emailVerified")}
+            {/* <br /> {t("Verify.proceedForward")} */}
+          </Typography>
+
+          <Box
             sx={{
-              marginTop: "23px",
-              color: "#5B5B5B",
-              fontSize: "21px",
+              justifyContent: "center",
               textAlign: "center",
-              fontFamily: "Inter",
+              marginTop: "130px",
             }}
           >
-            {t("VerificationSent.verifcationLink")} {email}. <br />{" "}
-            {t("VerificationSent.clicktoVerify")}
-          </Typography>
+            <Button
+              variant="contained"
+              disabled={!userEmail}
+              onClick={(event: any) => handleVerifyEmail()}
+              sx={{
+                borderRadius: "48px",
+                backgroundColor: "#186F65",
+                color: "white",
+                width: "310px",
+                marginTop: "20px",
+                "&:hover": {
+                  backgroundColor: "#186F65",
+                },
+                textTransform: "none",
+              }}
+            >
+              {t("Verify.letsBegin")}{" "}
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default EmailVerificationLink;
+export default EmailVerification;
