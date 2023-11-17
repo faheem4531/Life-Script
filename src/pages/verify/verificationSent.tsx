@@ -1,8 +1,7 @@
 "use client";
 import Carousel from "@/components/authComponent/Carousel";
 import { verifyEmail } from "@/store/slices/authSlice";
-import { Box, TextField, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -92,16 +91,6 @@ const EmailVerification = () => {
       <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
         <Carousel items={carouselItems} />
       </Box>
-      {/* <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}> */}
-      {/* <Image
-          src={Email}
-          alt="image of login"
-          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        /> */}
-
-      {/* </Grid> */}
-      {/* </Box> */}
-      {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
         // textAlign={'center'}
         sx={{
@@ -121,7 +110,7 @@ const EmailVerification = () => {
           </Typography>
         </Box>
         <Box sx={{ marginTop: "100px" }}>
-          <Box>
+          {/* <Box>
             <Typography
               sx={{
                 marginRight: "300px",
@@ -144,7 +133,7 @@ const EmailVerification = () => {
                 width: "100%",
               }}
             />
-          </Box>
+          </Box> */}
           <Typography
             sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
           >
@@ -159,7 +148,7 @@ const EmailVerification = () => {
               marginTop: "130px",
             }}
           >
-            <Button
+            {/* <Button
               variant="contained"
               disabled={!userEmail}
               onClick={(event: any) => handleVerifyEmail()}
@@ -176,7 +165,7 @@ const EmailVerification = () => {
               }}
             >
               {t("Verify.letsBegin")}{" "}
-            </Button>
+            </Button> */}
           </Box>
         </Box>
       </Box>
