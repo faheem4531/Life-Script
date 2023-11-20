@@ -1,9 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Nunito:wght@200;300;400;500;600;700;800;900;1000&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -77,6 +76,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  /* font-family: "Inter", sans-serif !important; */
+}
+.container-fontfamily {
+  font-family: "Inter", sans-serif !important;
 }
 
 html,
@@ -115,12 +118,17 @@ a {
   margin-top: 5px;
 }
 
+.rdw-image-imagewrapper img {
+  float: left;
+  max-width: 800px;
+  height: auto;
+}
 .icon-tabler-photo {
   display: none !important;
 }
 
 .rdw-image-wrapper .rdw-option-wrapper {
-  background-image: url("../_assets/svg/imagepicker.svg");
+  background-image: url("https://res.cloudinary.com/dgbjpy7ev/image/upload/v1700233397/lifescript/imagepicker2a8a999ecfcb97d4416a18ce867faeddb0939d92ab9dbfca6223e2a319ece853_hoimxc.svg") !important;
   background-size: contain !important;
   border: none;
   background-repeat: no-repeat !important;

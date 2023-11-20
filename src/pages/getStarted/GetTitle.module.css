@@ -1,0 +1,251 @@
+.bookDiv {
+  margin-right: 100px;
+}
+
+.book {
+  width: 608px;
+  height: 730px;
+}
+
+.boldText {
+  font-size: 53px;
+}
+
+.greenBlock {
+  position: absolute;
+  top: 15px;
+  left: 22px;
+  width: 128px;
+  height: 120px;
+}
+
+.whiteBlock {
+  position: absolute;
+  bottom: 15px;
+  right: 22px;
+  width: 128px;
+  height: 120px;
+}
+
+
+/*   LetsStarted Code here  */
+.topDots {
+  position: absolute;
+  top: 0;
+  right: 250px;
+}
+
+.bottomDots {
+  position: absolute;
+  bottom: 0;
+  left: 100px;
+}
+
+.aero {
+  margin: 100px 0;
+}
+
+@media (min-width:1400px) and (max-width:1800px) {
+  .book {
+    width: 508px;
+    height: 520px;
+  }
+
+  .greenBlock {
+    width: 100px;
+    height: 95px;
+  }
+
+  .whiteBlock {
+    width: 100px;
+    height: 95px;
+  }
+
+  /*   LetsStarted Code here  */
+
+  .topDots {
+    right: 250px;
+    height: 110px;
+    width: 650px;
+  }
+
+  .bottomDots {
+    left: 100px;
+    height: 110px;
+    width: 650px;
+  }
+
+}
+
+@media (min-width:992px) and (max-width:1400px) {
+  .primaryText {
+    font-size: 40px;
+  }
+
+  .boldText {
+    font-size: 45px;
+  }
+
+  .book {
+    width: 400px;
+    height: 450px;
+  }
+
+  .greenBlock {
+    top: 10px;
+    left: 15px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .whiteBlock {
+    bottom: 10px;
+    right: 15px;
+    width: 70px;
+    height: 70px;
+  }
+
+  /*   LetsStarted Code here  */
+
+  .topDots {
+    right: 150px;
+    height: 100px;
+    width: 500px;
+  }
+
+  .bottomDots {
+    left: 80px;
+    height: 100px;
+    width: 500px;
+  }
+
+  .aero {
+    margin: 0px 0;
+    width: 500px;
+  }
+}
+
+@media (max-width:992px) {
+  .primaryText {
+    font-size: 30px;
+  }
+
+  .boldText {
+    font-size: 35px;
+  }
+
+  .bookDiv {
+    margin-right: 0px;
+  }
+
+  .book {
+    width: 300px;
+    height: 350px;
+  }
+
+  .greenBlock {
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .whiteBlock {
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+
+  /*   LetsStarted Code here  */
+
+  .topDots {
+    right: 100px;
+    height: 80px;
+    width: 400px;
+  }
+
+  .bottomDots {
+    left: 60px;
+    height: 80px;
+    width: 400px;
+  }
+
+  .aero {
+    margin: 50px 0;
+    width: 450px;
+    height: 80px;
+  }
+}
+
+@media (min-width:600px) and (max-width:768px) {
+  .bookDiv {
+    margin-right: 20px;
+  }
+
+  .book {
+    width: 250px;
+    height: 300px;
+  }
+
+  /*   LetsStarted Code here  */
+
+  .aero {
+    margin: 60px 0;
+    width: 360px;
+    height: 80px;
+  }
+
+}
+
+@media (max-width:600px) {
+  .primaryText {
+    font-size: 28px;
+  }
+
+  .boldText {
+    font-size: 30px;
+  }
+
+  .book {
+    display: none;
+  }
+
+  .greenBlock {
+    display: none;
+  }
+
+  .whiteBlock {
+    display: none;
+  }
+
+  /*   LetsStarted Code here  */
+
+  .topDots {
+    right: 20px;
+    height: 70px;
+    width: 320px;
+  }
+
+  .bottomDots {
+    left: 30px;
+    height: 70px;
+    width: 320px;
+  }
+
+  .aero {
+    margin: 60px 0;
+    width: 90%;
+    height: 70px;
+  }
+}
+
+
+/*   LetsStarted Code here  */
+@media (min-width:1200px) and (max-width:1550px) {
+  .aero {
+    margin: 45px 0;
+    width: 600px;
+  }
+}

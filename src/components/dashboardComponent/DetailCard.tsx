@@ -13,7 +13,6 @@ import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import PropTypes from "prop-types";
 import * as React from "react";
 import noData from "../../../public/noData.svg";
 import styles from "./HomeSteps.module.css";
@@ -46,10 +45,14 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
 
   return (
     <Card
-      sx={{ borderRadius: "6.5px", maxHeight: "382px", minHeight: "300px" }}
+      className="container-fontfamily"
+      sx={{
+        borderRadius: "6.5px",
+        height: "280px",
+      }}
     >
       <div
-        style={{ backgroundColor: "#197065", padding: "25px 17px 25px 17px" }}
+        style={{ backgroundColor: "#197065", padding: "10px 17px 10px 17px" }}
         className={styles.header}
       >
         <IconButton
@@ -94,8 +97,9 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
             deleteFunc({ option: "edit", chapterId: chapter._id });
           }
         }}
+        sx={{ height: "100%" }}
       >
-        <CardContent>
+        <CardContent sx={{ height: "100%" }}>
           <Typography
             variant="body2"
             color="text "
@@ -110,67 +114,79 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               width: "245px",
               backgroundColor: "#000",
               height: "2px",
-              margin: "9px auto 0",
-              marginBottom: "30px",
+              margin: "5px auto 0",
+              marginBottom: "10px",
             }}
           />
-          <Box sx={{ height: "155px" }}>
-            {questions?.length > 0 ? (
-              questions?.slice(0, 5).map((question: any) => (
-                <Typography
-                  key={question._id}
-                  display="flex"
-                  alignItems="center"
-                  columnGap="10px"
-                  color="rgba(22, 22, 22, 0.90)"
-                  fontSize="13px"
-                  marginTop="5px"
+          <Box sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "space-between"
+          }}
+            className={styles.cardContent}>
+
+            <Box sx={{ width: "100%", height: "200px" }}>
+              {questions?.length > 0 ? (
+                questions?.slice(0, 4).map((question: any) => (
+                  <Typography
+                    key={question._id}
+                    display="flex"
+                    alignItems="center"
+                    columnGap="0px"
+                    color="rgba(22, 22, 22, 0.90)"
+                    fontSize="13px"
+                  >
+                    <Image alt="check" src={Tick} />
+                    {question.text.length > 45
+                      ? question.text.slice(0, 42) + "..."
+                      : question.text}
+                  </Typography>
+                ))
+              ) : (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center", height: "100%",
+                    alignItems: "center"
+                  }}
                 >
-                  <Image alt="check" src={Tick} />
-                  {question.text}
-                </Typography>
-              ))
-            ) : (
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Image alt="no Data" src={noData} height={100} />
-              </Box>
-            )}
+                  <Image alt="no Data" src={noData} height={100} />
+                </Box>
+              )}
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "auto",
+                // bgcolor: "pink"
+              }}
+            >
+              <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
+                Last Edited 3 Days Ago
+              </Typography>
+              <CircularWithValueLabel />
+            </Box>
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginTop: "12px",
-            }}
-          >
-            <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
-              Last Edited 3 Days Ago
-            </Typography>
-            <CircularWithValueLabel />
-          </Box>
         </CardContent>
       </Box>
     </Card>
   );
 }
 
-// Progress Bar code
+{/* // Progress Bar code */ }
 function CircularProgressWithLabel(props) {
   return (
-    <Box sx={{ position: "relative", display: "inline-flex" }}>
+    <Box sx={{ position: "relative", display: "inline-flex", width: "30px" }}>
       <CircularProgress color="success" variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
-          left: 0,
+          left: -8,
           bottom: 0,
           right: 0,
           position: "absolute",
@@ -179,7 +195,7 @@ function CircularProgressWithLabel(props) {
           justifyContent: "center",
         }}
       >
-        <Typography variant="caption" component="div" color="#197065">
+        <Typography variant="caption" component="div" color="#197065" sx={{ fontSize: "10px" }}>
           {`${Math.round(props.value)}%`}
         </Typography>
       </Box>
@@ -187,28 +203,6 @@ function CircularProgressWithLabel(props) {
   );
 }
 
-CircularProgressWithLabel.propTypes = {
-  /**
-   * The value of the progress indicator for the determinate variant.
-   * Value between 0 and 100.
-   * @default 0
-   */
-  value: PropTypes.number.isRequired,
-};
-
 function CircularWithValueLabel() {
-  const [progress, setProgress] = React.useState(10);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 0 : prevProgress + 10
-      );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return <CircularProgressWithLabel value={progress} />;
+  return <CircularProgressWithLabel value={90} />;
 }

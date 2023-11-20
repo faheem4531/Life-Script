@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
-const options = ["None", "Atria", "Callisto"];
+const options = ["Delete"];
 const ITEM_HEIGHT = 48;
 
 interface QuestionsProps {
@@ -31,27 +31,27 @@ export default function Questions({
   };
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={{ position: "relative", width: "100%" }}>
       <Box
         sx={{
           bgcolor: "#F9F9F9",
           width: "100%",
           borderRadius: "8px",
           borderLeft: "11px solid #186F65",
-          height: "110px",
+          height: { sm: "70px", xs: "60px" },
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          mt: "20px",
+          mt: { sm: "15px", xs: "8px" },
           cursor: "pointer",
         }}
         onClick={() => answerClick(question?.text)}
       >
         <Typography
           sx={{
-            marginLeft: "20px",
+            marginLeft: { sm: "20px", xs: "10px" },
             color: "rgba(22, 22, 22, 0.90)",
-            fontSize: "25px",
+            fontSize: { sm: "22px", xs: "16px" },
             fontWeight: 400,
           }}
         >
@@ -69,7 +69,7 @@ export default function Questions({
               backgroundColor: "#186F65",
               color: "rgba(255, 255, 255, 0.90)",
               width: "100px",
-              height: "110px",
+              height: { sm: "70px", xs: "60px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
@@ -81,7 +81,13 @@ export default function Questions({
       </Box>
 
       {/* More option :start */}
-      <div style={{ position: "absolute", right: "-30px", top: "40px" }}>
+      <Box
+        sx={{
+          position: "absolute",
+          right: { sm: "-30", xs: "-25px" },
+          top: { sm: "18px", xs: "10px" },
+        }}
+      >
         <IconButton
           aria-label="more"
           id="long-button"
@@ -117,7 +123,7 @@ export default function Questions({
             </MenuItem>
           ))}
         </Menu>
-      </div>
+      </Box>
       {/* More option :end */}
     </Box>
   );

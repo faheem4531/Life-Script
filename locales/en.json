@@ -69,13 +69,13 @@
     "loginPage": "login page.",
     "passwordRequired": "Password is required",
     "confrimPasswordRequired": "Confrim Password is required",
-    "passwordChangedSuccessfully":"Password changed successfully",
-    "passwordDoesn'tMatch":"Password does not match"
+    "passwordChangedSuccessfully": "Password changed successfully",
+    "passwordDoesn'tMatch": "Password does not match"
   },
   "Verify": {
     "emailVerification": "Email Verification",
     "email": "Email",
-    "emailVerified": "Your email has been verified. Click on the button to proceed forward",
+    "emailVerified": "Verification email has been sent. Check your email to proceed forward",
     "proceedForward": "proceed forward.",
     "letsBegin": "Lets Begin",
     "emailVerifiedSuccessfully": "Email verified successfully",

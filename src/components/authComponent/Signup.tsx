@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -16,7 +15,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 
 const Signup = ({ signupClick }) => {
@@ -63,7 +61,7 @@ const Signup = ({ signupClick }) => {
       .unwrap()
       .then(() => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push("/getStarted");
+        router.push("/");
       })
       .catch((error: any) => {
         toast.error(error.message);
@@ -217,41 +215,6 @@ const Signup = ({ signupClick }) => {
           {formik.touched.password && formik.errors.password && (
             <span style={{ color: "red" }}>{formik.errors.password}</span>
           )}
-          {/* <Box
-            sx={{
-              display: "flex",
-              marginTop: "10px",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={rememberMe}
-                    onChange={handleRememberMeChange}
-                    color="primary"
-                  />
-                }
-                label="Remember Me"
-                sx={{
-                  "& .MuiTypography-root": {
-                    fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                  },
-                }}
-              />
-            </Box>
-            <Box>
-              <Typography
-                sx={{
-                  marginTop: "9px",
-                  fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                }}
-              >
-                Forgot Password?
-              </Typography>
-            </Box>
-          </Box> */}
         </Box>
         <Box sx={{ justifyContent: "center", textAlign: "center" }}>
           <Button
@@ -262,12 +225,12 @@ const Signup = ({ signupClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "70%",
+              width: "60%",
               marginTop: { xs: "40px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
-              textTransform:'capitalize'
+              textTransform: "capitalize",
             }}
           >
             {t("signup-page.register")}
@@ -316,21 +279,19 @@ const Signup = ({ signupClick }) => {
             justifyContent: "center",
           }}
         >
-          <Box>
+          <Box sx={{ width: "60%" }}>
             <Button
               variant="contained"
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center", // Center the content horizontally and vertically
-                borderRadius: "13px",
-                backgroundColor: "white",
+                borderRadius: "48px",
+                backgroundColor: "#fff",
                 color: "black",
-                width: "40px", // Use "width" instead of "maxWidth" for button width
-                height: "40px", // Use "height" instead of "maxHeight" for button height
-                marginTop: "10px",
+                width: "100%",
+                gap: "10px",
+                marginTop: { xs: "40px", sm: "20px" },
+                textTransform: "capitalize",
                 "&:hover": {
                   backgroundColor: "white",
                 },
@@ -342,9 +303,10 @@ const Signup = ({ signupClick }) => {
                 width={24}
                 height={24}
               />
+              <Typography>Signup With Google</Typography>
             </Button>
           </Box>
-          <Box>
+          {/* <Box>
             <Button
               variant="contained"
               type="submit"
@@ -372,7 +334,7 @@ const Signup = ({ signupClick }) => {
                 />
               }
             ></Button>
-          </Box>
+          </Box> */}
         </Box>
         <Box
           sx={{
@@ -384,7 +346,11 @@ const Signup = ({ signupClick }) => {
         >
           {t("signup-page.alreadyRegisterd")}
           <a
-            style={{ textDecoration: "underline", cursor: "pointer" , marginLeft:'8px'}}
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              marginLeft: "8px",
+            }}
             onClick={signupClick}
           >
             {t("signup-page.loginNow")}

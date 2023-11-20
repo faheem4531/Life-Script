@@ -67,13 +67,13 @@
     "loginPage": "página de inicio de sesión",
     "passwordRequired": "se requiere contraseña",
     "confrimPasswordRequired": "Confirmar Se requiere contraseña",
-    "passwordChangedSuccessfully":"Contraseña cambiada con éxito",
-    "passwordDoesn'tMatch":"Las contraseñas no coinciden"
+    "passwordChangedSuccessfully": "Contraseña cambiada con éxito",
+    "passwordDoesn'tMatch": "Las contraseñas no coinciden"
   },
   "Verify": {
     "emailVerification": "verificacion de email",
     "email": "Correo electrónico",
-    "emailVerified": "Su correo electrónico ha sido verificado. Haga clic en el botón para continuar",
+    "emailVerified": "Se ha enviado el correo electrónico de verificación. Revisa tu correo electrónico para continuar",
     "proceedForward": "seguir adelante.",
     "letsBegin": "Vamos a empezar.",
     "emailVerifiedSuccessfully": "Correo electrónico verificado exitosamente",

@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material";
 
 import TemplateCard from "./templateCard";
+import styles from "./HomeSteps.module.css"
+
 
 const ChooseTemplate = () => {
   return (
@@ -8,32 +10,29 @@ const ChooseTemplate = () => {
       sx={{
         backgroundColor: "#197065",
         color: "#fff",
-        borderRadius: "24px",
-        padding: "25px 70px",
+        borderRadius: { sm: "24px", xs: "5px" },
+        height: { xs: "200px", sm: "300px" },
+        padding: { lg: "25px 70px", sm: "15px 30px", xs: "10px 15px" },
       }}
+      className={styles.bgTree}
     >
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ position: "relative" }}>
-          <Box
-            style={{
-              display: "grid",
-              height: "auto",
-              marginTop: "4rem",
-            }}
-          >
-            <Typography sx={{ fontSize: "24px" }}>Choose a</Typography>
-            <Typography sx={{ fontSize: "44px" }}>Template</Typography>
-            <Typography sx={{ fontSize: "13px" }}>
-              Lorem ipsum doler Lorem ipsum doler Lorem ipsum doler Lorem ipsum
-              doler
-            </Typography>
-          </Box>
-        </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: { xs: "100%" } }}>
         <Box>
+          <Typography sx={{ fontSize: { sm: "24px", xs: "22px" } }}>Choose a</Typography>
+          <Typography sx={{ fontSize: { sm: "44px", xs: "34px" } }}>Template</Typography>
+          <Typography sx={{ fontSize: { sm: "13px", xs: "10px" } }}>
+            Lorem ipsum doler Lorem ipsum doler Lorem ipsum doler Lorem ipsum
+            doler
+          </Typography>
+        </Box>
+        <Box sx={{
+          width: { lg: "350px", sm: "250px", xs: "170" },
+          marginLeft: { xs: "15px" },
+        }}>
           <TemplateCard />
         </Box>
       </Box>
-    </Box>
+    </Box >
   );
 };
 

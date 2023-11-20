@@ -26,11 +26,48 @@
   }
 }
 
+@media (max-width:500px) {
+  .typo {
+    font-size: 10px;
+  }
+
+  .stepContainer {
+    padding: 0;
+  }
+
+  .logo {
+    width: 40px;
+  }
+}
+
+/* styles for ChooseTemplate.tsx  */
+.bgTree {
+  background-image: url(../../_assets/png/template-tree-bg.png);
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+}
+
 
 /* styling for Details Card   */
+
+.cardContent {
+  height: 72%;
+}
 
 @media (max-width:1400px) {
   .header {
     padding: 20px 0 20px 15px !important;
+  }
+
+  .cardContent {
+    height: 62%;
+  }
+}
+
+/* styles for TemplateCard.tsx  */
+@media (max-width:600px) {
+  .tick {
+    width: 15px;
+    height: 15px;
   }
 }

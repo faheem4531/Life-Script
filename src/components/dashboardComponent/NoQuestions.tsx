@@ -4,9 +4,9 @@ import noData from "../../../public/noData.svg";
 
 export default function NoQuestions() {
   return (
-    <>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Typography
-        sx={{ textAlign: "center", color: "#B2B2B2", fontSize: "32px" }}
+        sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "32px", xs: "22px" }, marginTop: { sm: "30px", xs: "25px" } }}
       >
         Start New Question
       </Typography>
@@ -21,15 +21,15 @@ export default function NoQuestions() {
           src={noData}
           alt="No Data"
           height={120}
-          // width={300}
+        // width={300}
         />
       </Box>
       <Typography
-        sx={{ textAlign: "center", color: "#B2B2B2", fontSize: "26px" }}
+        sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "26px", xs: "19px" } }}
       >
         {" "}
         No Data found
       </Typography>
-    </>
+    </Box>
   );
 }

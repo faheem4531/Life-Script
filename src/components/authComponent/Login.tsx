@@ -8,7 +8,6 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -17,7 +16,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 
 const Login = ({ signinClick }) => {
@@ -240,12 +238,12 @@ const Login = ({ signinClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "70%",
+              width: "60%",
               marginTop: { xs: "60px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
-              textTransform:'capitalize'
+              textTransform: "capitalize",
             }}
           >
             {t("login-page.login")}
@@ -294,24 +292,22 @@ const Login = ({ signinClick }) => {
             justifyContent: "center",
           }}
         >
-          <Box>
+          <Box sx={{ width: "60%" }}>
             <Button
               variant="contained"
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center", // Center the content horizontally and vertically
-                borderRadius: "13px",
-                backgroundColor: "white",
+                borderRadius: "48px",
+                backgroundColor: "#fff",
                 color: "black",
-                width: "40px", // Use "width" instead of "maxWidth" for button width
-                height: "40px", // Use "height" instead of "maxHeight" for button height
-                marginTop: "10px",
+                width: "100%",
+                gap: "10px",
+                marginTop: { xs: "60px", sm: "20px" },
                 "&:hover": {
-                  backgroundColor: "white",
+                  backgroundColor: "#186F65",
                 },
+                textTransform: "capitalize",
               }}
             >
               <Image
@@ -320,9 +316,10 @@ const Login = ({ signinClick }) => {
                 width={24}
                 height={24}
               />
+              <Typography>Login with Google</Typography>
             </Button>
           </Box>
-          <Box>
+          {/* <Box>
             <Button
               variant="contained"
               type="submit"
@@ -350,7 +347,7 @@ const Login = ({ signinClick }) => {
                 />
               }
             ></Button>
-          </Box>
+          </Box> */}
         </Box>
         <Box
           sx={{
@@ -362,7 +359,11 @@ const Login = ({ signinClick }) => {
         >
           {t("login-page.not-member")}
           <a
-            style={{  textDecoration: "underline", cursor: "pointer" , marginLeft:'8px'}}
+            style={{
+              textDecoration: "underline",
+              cursor: "pointer",
+              marginLeft: "8px",
+            }}
             onClick={signinClick}
           >
             {t("login-page.register-now")}
