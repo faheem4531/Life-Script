@@ -17,6 +17,20 @@
   background-size: 40% 80%;
 }
 
+/* OverView SubComponents  */
+
+.viewBook {
+  background-image: url(../../_assets/png/view-book.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.viewTree {
+  background-image: url(../../_assets/png/view-tree.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
 @media (min-width:1400px) and (max-width:1800px) {
   .welcomeImage {
     width: 260px;

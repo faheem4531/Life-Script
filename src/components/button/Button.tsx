@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const Button = ({ title, border, background, width, padding, borderRadius, color, onClick, image }) => {
+const Button = ({ title, border, background, width, padding, borderRadius, color, onClick, image, fontSize }) => {
   const styles = {
     border: border || "none",
     background: background,
@@ -9,10 +9,10 @@ const Button = ({ title, border, background, width, padding, borderRadius, color
     padding: padding,
     borderRadius: borderRadius,
     color: color,
+    fontSize: fontSize,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    outline: "none",
   }
 
   const styles2 = {
