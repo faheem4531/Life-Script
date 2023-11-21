@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from "./OverviewProfile.module.css"
+import styles from "./Custom.module.css"
 import Image from "next/image"
 import DemoProfile from "@/_assets/png/demo-Profile.png"
 import Platinum from "@/_assets/svg/platinum-token.svg"
