@@ -31,11 +31,12 @@ export default function DetailCard({
   isChapter,
   deleteFunc,
 }: DetailCardProps) {
+  console.log("chapttt", chapter);
   const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const percentage = calculateCompletionPercentage(chapter?.questions);
   const handleClickOption = (opt) => {
     deleteFunc({ option: opt, chapterData: chapter });
     setAnchorEl(null);
@@ -47,6 +48,20 @@ export default function DetailCard({
   const handleClose = () => {
     setAnchorEl(null);
   };
+  function calculateCompletionPercentage(array) {
+    if (array?.length === 0) {
+      return 0;
+    }
+
+    // Count the number of objects with status "Completed"
+    const completedCount = array?.filter(
+      (item) => item.status === "Completed"
+    ).length;
+    // Calculate the percentage
+    const percentage = (completedCount / array?.length) * 100;
+
+    return percentage;
+  }
 
   return (
     <Card
@@ -186,7 +201,7 @@ export default function DetailCard({
                 <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
                   Last Edited 3 Days Ago
                 </Typography>
-                <CircularWithValueLabel />
+                <CircularWithValueLabel percentage={percentage} />
               </Box>
             )}
           </Box>
@@ -228,6 +243,6 @@ function CircularProgressWithLabel(props) {
   );
 }
 
-function CircularWithValueLabel() {
-  return <CircularProgressWithLabel value={90} />;
+function CircularWithValueLabel({ percentage }) {
+  return <CircularProgressWithLabel value={percentage} />;
 }
