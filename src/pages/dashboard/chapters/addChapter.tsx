@@ -1,8 +1,11 @@
 import { Box, Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function AddChapter({ chapterData }) {
+export default function AddChapter({ chapterData, data }) {
   const [chapter, setChapter] = useState("");
+  useEffect(() => {
+    data && setChapter(data);
+  }, [data]);
 
   const handleSubmit = () => {
     chapterData(chapter);

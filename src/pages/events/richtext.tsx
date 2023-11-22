@@ -1,7 +1,12 @@
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { gptChat } from "@/store/slices/chatSlice";
 import { Box, Button, Grid, MenuItem, Select, Typography } from "@mui/material";
-import { EditorState, convertToRaw } from "draft-js";
+import {
+  ContentState,
+  EditorState,
+  convertFromHTML,
+  convertToRaw,
+} from "draft-js";
 
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
@@ -40,6 +45,23 @@ const RichText = ({ questionText }) => {
   const handleSelectChange = (event) => {
     setToneValue(event.target.value);
   };
+
+  useEffect(() => {
+    const htmlString =
+      '<ul>\
+<li style="text-align:center;"><strong>Sameer</strong><em> is a good backend developer</em></li>\
+<li style="text-align:center;">his logic is good</li>\
+</ul>';
+    const contentBlocks = convertFromHTML(htmlString);
+    const contentState = ContentState.createFromBlockArray(
+      contentBlocks.contentBlocks,
+      contentBlocks.entityMap
+    );
+
+    setEditorState(EditorState.createWithContent(contentState));
+
+    console.log("1111", convertToRaw(contentState));
+  }, []);
 
   useEffect(() => {
     console.log(
@@ -123,7 +145,7 @@ const RichText = ({ questionText }) => {
 
       <Box sx={{ marginTop: 1 }}>
         <Editor
-          defaultEditorState={editorState}
+          editorState={editorState}
           onEditorStateChange={setEditorState}
           wrapperClassName="wrapper-class"
           editorClassName="editor-class"

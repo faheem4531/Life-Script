@@ -23,16 +23,21 @@ const ITEM_HEIGHT = 48;
 
 interface DetailCardProps {
   chapter?: any;
-  deleteFunc?: (data: { option: string; chapterId: string }) => void; // Define the callback type here
+  deleteFunc?: (data: { option: string; chapterData: any }) => void; // Define the callback type here
+  isChapter?: boolean;
 }
-export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
+export default function DetailCard({
+  chapter,
+  isChapter,
+  deleteFunc,
+}: DetailCardProps) {
   const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
   const handleClickOption = (opt) => {
-    deleteFunc({ option: opt, chapterId: chapter._id });
+    deleteFunc({ option: opt, chapterData: chapter });
     setAnchorEl(null);
   };
   const handleClick = (event: any) => {
@@ -48,57 +53,56 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
       className="container-fontfamily"
       sx={{
         borderRadius: "6.5px",
-        height: "270px",
+        height: "280px",
       }}
     >
       <div
         style={{ backgroundColor: "#197065", padding: "10px 17px 10px 17px" }}
         className={styles.header}
       >
-        <IconButton
-          aria-label="more"
-          id="long-button"
-          aria-controls={open ? "long-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
-          aria-haspopup="true"
-          onClick={handleClick}
-        >
-          <Image alt="options" src={More} />
-        </IconButton>
-        <Menu
-          id="long-menu"
-          MenuListProps={{
-            "aria-labelledby": "long-button",
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: "20ch",
-            },
-          }}
-        >
-          {options.map((option) => (
-            <MenuItem
-              key={option}
-              selected={option === "Pyxis"}
-              onClick={() => handleClickOption(option)}
-            >
-              {option}
-            </MenuItem>
-          ))}
-        </Menu>
+        <Box sx={{ height: "25px" }}>
+          {isChapter && (
+            <>
+              <IconButton
+                aria-label="more"
+                id="long-button"
+                aria-controls={open ? "long-menu" : undefined}
+                aria-expanded={open ? "true" : undefined}
+                aria-haspopup="true"
+                onClick={handleClick}
+              >
+                <Image alt="options" src={More} />
+              </IconButton>
+              <Menu
+                id="long-menu"
+                MenuListProps={{
+                  "aria-labelledby": "long-button",
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  style: {
+                    maxHeight: ITEM_HEIGHT * 4.5,
+                    width: "20ch",
+                  },
+                }}
+              >
+                {options.map((option) => (
+                  <MenuItem
+                    key={option}
+                    selected={option === "Pyxis"}
+                    onClick={() => handleClickOption(option)}
+                  >
+                    {option}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          )}
+        </Box>
       </div>
-      <Box
-        onClick={() => {
-          if (router.asPath == "/dashboard/chapters") {
-            deleteFunc({ option: "edit", chapterId: chapter._id });
-          }
-        }}
-        sx={{ height: "100%" }}
-      >
+      <Box sx={{ height: "100%" }}>
         <CardContent sx={{ height: "100%" }}>
           <Typography
             variant="body2"
@@ -127,7 +131,18 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
             }}
             className={styles.cardContent}
           >
-            <Box sx={{ width: "100%" }}>
+            <Box
+              onClick={() => {
+                if (router.asPath == "/dashboard/chapters") {
+                  deleteFunc({ option: "details", chapterData: chapter });
+                }
+              }}
+              sx={{
+                width: "100%",
+                height: "120px",
+                cursor: "pointer",
+              }}
+            >
               {questions?.length > 0 ? (
                 questions?.slice(0, 4).map((question: any) => (
                   <Typography
@@ -158,20 +173,22 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               )}
             </Box>
 
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginTop: "auto",
-                // bgcolor: "pink"
-              }}
-            >
-              <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
-                Last Edited 3 Days Ago
-              </Typography>
-              <CircularWithValueLabel />
-            </Box>
+            {isChapter && (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "10px",
+                  // bgcolor: "pink"
+                }}
+              >
+                <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
+                  Last Edited 3 Days Ago
+                </Typography>
+                <CircularWithValueLabel />
+              </Box>
+            )}
           </Box>
         </CardContent>
       </Box>

@@ -56,12 +56,12 @@ const Signup = ({ signupClick }) => {
   });
 
   const handleGoogleLoginSuccess = (e: any) => {
-    console.log("test", e);
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
-      .then(() => {
+      .then((res) => {
+        console.log("resss", res);
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push("/");
+        router.push(`/getStarted?userName=${res.name}`);
       })
       .catch((error: any) => {
         toast.error(error.message);

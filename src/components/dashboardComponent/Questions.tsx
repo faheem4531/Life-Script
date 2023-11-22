@@ -1,33 +1,85 @@
 import Option from "@/_assets/png/X-menu.png";
+import AddQuestion from "@/pages/events/addQuestion";
+import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
 import { Box, Button, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import CustomizationDialog from "../modal/CustomizationDialog";
+import TransitionsDialog from "../modal/TransitionDialog";
 
-const options = ["Delete"];
+const options = ["Delete", "Edit"];
 const ITEM_HEIGHT = 48;
 
 interface QuestionsProps {
   question?: any;
   number?: number;
   answerClick?: (chapterName: string) => void; // Define the callback type here
+  questionChanged?: () => void;
 }
 export default function Questions({
   question,
   number,
+  questionChanged,
   answerClick,
 }: QuestionsProps) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [deleteQuestionModal, setDeleteQuestionModal] = useState(false);
+  const [questionId, setQuestionId] = useState("");
+  const [updateQuestionModal, setUpdateQuestionModal] = useState(false);
   const open = Boolean(anchorEl);
   const router = useRouter();
+  const dispatch: any = useDispatch();
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  console.log("qqqqidd", question);
+  const handleClickOption = (option) => {
+    if (option === "Delete") {
+      setDeleteQuestionModal(true);
+      setAnchorEl(null);
+    } else if (option === "Edit") {
+      setUpdateQuestionModal(true);
+      setAnchorEl(null);
+    } else {
+      setAnchorEl(null);
+    }
+  };
+  const handleDeleteQuestion = () => {
+    dispatch(deleteQuestion({ id: questionId }))
+      .unwrap()
+      .then(() => {
+        toast.success("Question deleted successfully");
+        // dispatch(getChapters());
+        questionChanged();
+      });
+    setDeleteQuestionModal(false);
+  };
+
+  const handleUpdateQuestion = (text) => {
+    dispatch(
+      updateQuestion({
+        text: text,
+        id: question?._id,
+        chapter: question?.chapter,
+        status: "Progress",
+      })
+    )
+      .unwrap()
+      .then(() => {
+        toast.success("Question updated successfully");
+        // dispatch(getChapters());
+        questionChanged();
+      })
+      .catch(() => toast.error("Failed to update question"));
   };
 
   return (
@@ -45,7 +97,6 @@ export default function Questions({
           mt: { sm: "15px", xs: "8px" },
           cursor: "pointer",
         }}
-        onClick={() => answerClick(question?.text)}
       >
         <Typography
           sx={{
@@ -62,20 +113,22 @@ export default function Questions({
         <Box sx={{ textAlign: "center" }}>
           <Button
             variant="contained"
-            onClick={() => {}}
+            onClick={() => answerClick(question?.text)}
+            disabled={question?.status === "Completed"}
             type="submit"
             sx={{
               borderRadius: " 0px 8px 8px 0px",
               backgroundColor: "#186F65",
+              p: "0px 50px",
               color: "rgba(255, 255, 255, 0.90)",
-              width: "100px",
+              width: "105px",
               height: { sm: "70px", xs: "60px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
             }}
           >
-            Start
+            {question?.status === "Completed" ? "Completed" : "Edit"}
           </Button>
         </Box>
       </Box>
@@ -117,14 +170,39 @@ export default function Questions({
             <MenuItem
               key={option}
               selected={option === "Pyxis"}
-              onClick={handleClose}
+              onClick={() => {
+                setQuestionId(question?._id);
+                handleClickOption(option);
+              }}
             >
               {option}
             </MenuItem>
           ))}
         </Menu>
       </Box>
-      {/* More option :end */}
+      <CustomizationDialog
+        open={updateQuestionModal}
+        title="Update question"
+        handleClose={() => {
+          setUpdateQuestionModal(false);
+        }}
+        customStyles={{ backgroundColor: "auto" }}
+      >
+        <AddQuestion
+          questionData={(question: string) => {
+            handleUpdateQuestion(question);
+            setUpdateQuestionModal(false);
+          }}
+          questionText={question?.text}
+        />
+      </CustomizationDialog>
+      <TransitionsDialog
+        open={deleteQuestionModal}
+        heading="Delete Question"
+        description="Are you sure you want to delete this Question"
+        cancel={() => setDeleteQuestionModal(false)}
+        proceed={handleDeleteQuestion}
+      />
     </Box>
   );
 }

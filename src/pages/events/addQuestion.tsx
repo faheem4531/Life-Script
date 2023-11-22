@@ -1,12 +1,23 @@
 import { Box, Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function AddQuestion({ questionData }) {
+interface AddQuestionProps {
+  questionData?: (question: string) => void; // Assuming the return type is void, modify as needed
+  questionText?: string;
+}
+export default function AddQuestion({
+  questionData,
+  questionText,
+}: AddQuestionProps) {
   const [question, setQuestion] = useState("");
 
   const handleSubmit = () => {
     questionData(question);
   };
+
+  useEffect(() => {
+    setQuestion(questionText);
+  }, [questionText]);
   return (
     <Box sx={{ margin: "10px" }}>
       <Box>
