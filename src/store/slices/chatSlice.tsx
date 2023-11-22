@@ -1,6 +1,10 @@
 import { UserData } from "@/interface/authInterface";
 import { chatWithgpt } from "@/interface/chatInterface";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
 import {
   bookTitleApi,
   chatApi,
@@ -15,6 +19,8 @@ import {
   getQuestionbyIdApi,
   getQuestionsApi,
   getTemplatesApi,
+  narrativeFusionApi,
+  saveAnswerApi,
   updateChapterApi,
   updateQuestionApi,
 } from "../api/chatApi";
@@ -58,6 +64,31 @@ export const createChapter = createAsyncThunk<UserData, any>(
     }
   }
 );
+
+export const saveAnswer = createAsyncThunk<UserData, any>(
+  "chat/save-answer",
+  async (data: any) => {
+    try {
+      const response = await saveAnswerApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const narrativeFusion = createAsyncThunk<UserData, any>(
+  "chat/narrative-fusion",
+  async (data: any) => {
+    try {
+      const response = await narrativeFusionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 export const bookTitle = createAsyncThunk<UserData, any>(
   "chat/book-title",
   async (data: { title: string }) => {
@@ -249,5 +280,10 @@ export const selectChat = (state: { chat: any }) => state.chat.chats;
 export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
 export const selectChapter = (state: { chat: any }) => state.chat.chapter;
 export const selectTemplates = (state: { chat: any }) => state.chat.templates;
+export const selectTemplateById = (templateId: string) =>
+  createSelector(selectTemplates, (templates) => {
+    // Find the template in the array based on the provided id
+    return templates.find((template) => template.id === templateId);
+  });
 
 export default chatSlice.reducer;

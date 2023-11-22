@@ -1,39 +1,47 @@
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { gptChat } from "@/store/slices/chatSlice";
-import { Box, Button, Grid, MenuItem, Select, Typography } from "@mui/material";
+import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
 import {
-  ContentState,
+  //ContentState,
   EditorState,
-  convertFromHTML,
+  //convertFromHTML,
   convertToRaw,
 } from "draft-js";
 
+import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
+import {
+  getQuestionbyId,
+  saveAnswer,
+  updateQuestion,
+} from "@/store/slices/chatSlice";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import RichTextViewer from "./response";
-import PIcon from "@/_assets/svg/edit-text-title-icon.svg"
-import Image from "next/image";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
-const RichText = ({ questionText }) => {
+const RichText = ({ questionId }) => {
+  console.log("quest", questionId);
+
+  const router = useRouter();
   const dispatch: any = useDispatch();
-  console.log("questionText333", questionText);
-  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [gptResponse, setGptResponse] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  console.log("gptresp", gptResponse);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const [toneValue, setToneValue] = useState("Neutral");
+  const [questionData, setQuestionData] = useState<any>({});
 
   const gptTones = [
     "Narrative",
@@ -48,22 +56,22 @@ const RichText = ({ questionText }) => {
     setToneValue(event.target.value);
   };
 
-  useEffect(() => {
-    const htmlString =
-      '<ul>\
-<li style="text-align:center;"><strong>Sameer</strong><em> is a good backend developer</em></li>\
-<li style="text-align:center;">his logic is good</li>\
-</ul>';
-    const contentBlocks = convertFromHTML(htmlString);
-    const contentState = ContentState.createFromBlockArray(
-      contentBlocks.contentBlocks,
-      contentBlocks.entityMap
-    );
+  // useEffect(() => {
+  //     const htmlString =
+  //       '<ul>\
+  // <li style="text-align:center;"><strong>Sameer</strong><em> is a good backend developer</em></li>\
+  // <li style="text-align:center;">his logic is good</li>\
+  // </ul>';
+  //     const contentBlocks = convertFromHTML(htmlString);
+  //     const contentState = ContentState.createFromBlockArray(
+  //       contentBlocks.contentBlocks,
+  //       contentBlocks.entityMap
+  //     );
 
-    setEditorState(EditorState.createWithContent(contentState));
+  //     setEditorState(EditorState.createWithContent(contentState));
 
-    console.log("1111", convertToRaw(contentState));
-  }, []);
+  //     console.log("1111", convertToRaw(contentState));
+  //   }, []);
 
   useEffect(() => {
     console.log(
@@ -72,12 +80,20 @@ const RichText = ({ questionText }) => {
     );
   }, [editorState]);
 
+  useEffect(() => {
+    if (questionId) {
+      dispatch(getQuestionbyId({ id: questionId }))
+        .unwrap()
+        .then((res) => setQuestionData(res));
+    }
+  }, [questionId]);
+
   const callchatgpt = () => {
     dispatch(
       gptChat({
         prompt: draftToHtml(convertToRaw(editorState.getCurrentContent())),
         responseTone: toneValue,
-        question: questionText,
+        question: questionId,
       })
     ).then((res) => {
       setGptResponse(res.payload);
@@ -85,9 +101,45 @@ const RichText = ({ questionText }) => {
     });
   };
 
+  const saveUserAnswer = () => {
+    dispatch(
+      saveAnswer({
+        questionId: questionData?._id,
+        chapterId: questionData?.chapter?._id,
+        userTone: toneValue,
+        userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      })
+    ).then(() => toast.success("Answer saved successfully"));
+  };
+
+  const handleCompleteAnswer = () => {
+    saveUserAnswer();
+    dispatch(
+      updateQuestion({
+        text: questionData?.text,
+        id: questionData?._id,
+        chapter: questionData?.chapter?._id,
+        status: "Completed",
+      })
+    )
+      .unwrap()
+      .then(() => {
+        router.push(
+          `/dashboard/chapters/chapterName?chapterId=${questionData?.chapter?._id}`
+        );
+      })
+      .catch(() => toast.error("Failed to mark as complete"));
+  };
+
   return (
     <Box className="rich-editor">
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -95,8 +147,10 @@ const RichText = ({ questionText }) => {
           }}
         >
           <Image alt="icon" src={PIcon} />
-          <Typography sx={{ fontSize: "26px", fontWeight: "600", marginLeft: "20px" }}>
-            {questionText}
+          <Typography
+            sx={{ fontSize: "26px", fontWeight: "600", marginLeft: "20px" }}
+          >
+            {questionData?.text}
           </Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}>
@@ -117,7 +171,7 @@ const RichText = ({ questionText }) => {
             ))}
           </Select>
           <Button
-            // onClick={}
+            onClick={handleCompleteAnswer}
             sx={{
               width: "200px",
               height: "35px",
@@ -133,7 +187,7 @@ const RichText = ({ questionText }) => {
             Mark As Complete
           </Button>
           <Button
-            // onClick={}
+            onClick={saveUserAnswer}
             sx={{
               width: "85px",
               height: "35px",
@@ -274,7 +328,6 @@ const RichText = ({ questionText }) => {
           }}
         />
       </Box>
-
 
       <CustomizationDialog
         open={openModal}

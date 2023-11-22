@@ -13,12 +13,13 @@ import styles from "./AddChapterName.module.css";
 const AddChapterName = ({
   chapter,
   chapterId,
-  title
+  title,
 }: {
   chapter: string;
   chapterId: any;
-  title: string
+  title?: string;
 }) => {
+  console.log("6666", chapter);
   const [chapterName, setChapterName] = useState("");
   const dispatch: any = useDispatch();
 
@@ -36,7 +37,6 @@ const AddChapterName = ({
     chapter && setChapterName(chapter);
   }, [chapter]);
 
-
   return (
     <Box
       sx={{
@@ -49,46 +49,50 @@ const AddChapterName = ({
         justifyContent: "space-between",
       }}
     >
-      {title === "templateView" && <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
-        My Ambitious Life
-      </Typography>}
-      {title != "templateView" && <Box>
-        <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>
-          Update
-        </Typography>
+      {title === "templateView" && (
         <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
-          Chapter Name
+          {chapter}
         </Typography>
+      )}
+      {title != "templateView" && (
         <Box>
-          <TextField
-            variant="outlined"
-            value={chapterName}
-            onChange={(e: any) => setChapterName(e.target.value)}
-            placeholder="My Adventurous Life"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Box sx={{ cursor: "pointer" }}>
-                    <Image
-                      onClick={saveChapterName}
-                      src={Check}
-                      alt="check-icon"
-                    />
-                  </Box>
-                </InputAdornment>
-              ),
-            }}
-            sx={{
-              marginTop: "10px",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: { sm: "50px", md: "20px" },
-                backgroundColor: "white",
-              },
-              width: { sm: "300px", md: "390px" },
-            }}
-          />
+          <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>
+            Update
+          </Typography>
+          <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
+            Chapter Name
+          </Typography>
+          <Box>
+            <TextField
+              variant="outlined"
+              value={chapterName}
+              onChange={(e: any) => setChapterName(e.target.value)}
+              placeholder="My Adventurous Life"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Box sx={{ cursor: "pointer" }}>
+                      <Image
+                        onClick={saveChapterName}
+                        src={Check}
+                        alt="check-icon"
+                      />
+                    </Box>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                marginTop: "10px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: { sm: "50px", md: "20px" },
+                  backgroundColor: "white",
+                },
+                width: { sm: "300px", md: "390px" },
+              }}
+            />
+          </Box>
         </Box>
-      </Box>}
+      )}
       <Box>
         <Image src={BookImage} alt="book image" className={styles.bookImage} />
       </Box>

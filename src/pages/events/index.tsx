@@ -4,8 +4,7 @@ import { useRouter } from "next/router";
 import RichText from "./richtext";
 export default function Answers() {
   const router = useRouter();
-  const { chapterName } = router.query;
-  console.log("textttt", chapterName);
+  const { questionId } = router.query;
 
   return (
     <>
@@ -15,10 +14,10 @@ export default function Answers() {
             bgcolor: "#fff",
             borderRadius: "34px",
             padding: "50px 70px 100px",
-            border: "1px solid #197065"
+            border: "1px solid #197065",
           }}
         >
-          <RichText questionText={chapterName} />
+          <RichText questionId={questionId} />
         </Box>
       </Layout>
     </>

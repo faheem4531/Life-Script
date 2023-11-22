@@ -21,7 +21,7 @@ interface QuestionsProps {
   number?: number;
   answerClick?: (chapterName: string) => void; // Define the callback type here
   questionChanged?: () => void;
-  title: string
+  title?: string;
 }
 export default function Questions({
   question,
@@ -43,7 +43,6 @@ export default function Questions({
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log("qqqqidd", question);
   const handleClickOption = (option) => {
     if (option === "Delete") {
       setDeleteQuestionModal(true);
@@ -97,7 +96,6 @@ export default function Questions({
           alignItems: "center",
           justifyContent: "space-between",
           mt: { sm: "15px", xs: "8px" },
-          cursor: "pointer",
         }}
       >
         <Typography
@@ -112,76 +110,81 @@ export default function Questions({
           {". "}
           {question?.text}
         </Typography>
-        {title != "templateView" && <Box sx={{ textAlign: "center" }}>
-          <Button
-            variant="contained"
-            onClick={() => answerClick(question?.text)}
-            disabled={question?.status === "Completed"}
-            type="submit"
-            sx={{
-              borderRadius: " 0px 8px 8px 0px",
-              backgroundColor: "#186F65",
-              p: "0px 50px",
-              color: "rgba(255, 255, 255, 0.90)",
-              width: "105px",
-              height: { sm: "70px", xs: "60px" },
-              "&:hover": {
+        {title != "templateView" && (
+          <Box sx={{ textAlign: "center" }}>
+            <Button
+              variant="contained"
+              onClick={() => answerClick(question?._id)}
+              disabled={question?.status === "Completed"}
+              type="submit"
+              sx={{
+                cursor: "pointer",
+                borderRadius: " 0px 8px 8px 0px",
                 backgroundColor: "#186F65",
-              },
-            }}
-          >
-            {question?.status === "Completed" ? "Completed" : "Edit"}
-          </Button>
-        </Box>}
+                p: "0px 50px",
+                color: "rgba(255, 255, 255, 0.90)",
+                width: "105px",
+                height: { sm: "70px", xs: "60px" },
+                "&:hover": {
+                  backgroundColor: "#186F65",
+                },
+              }}
+            >
+              {question?.status === "Completed" ? "Completed" : "Edit"}
+            </Button>
+          </Box>
+        )}
       </Box>
 
       {/* More option :start */}
-      {title != "templateView" && <Box
-        sx={{
-          position: "absolute",
-          right: { sm: "-30", xs: "-25px" },
-          top: { sm: "18px", xs: "10px" },
-        }}
-      >
-        <IconButton
-          aria-label="more"
-          id="long-button"
-          aria-controls={open ? "long-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
-          aria-haspopup="true"
-          onClick={handleClick}
-        >
-          <Image alt="options" src={Option} />
-        </IconButton>
-        <Menu
-          id="long-menu"
-          MenuListProps={{
-            "aria-labelledby": "long-button",
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: "10ch",
-            },
+      {title != "templateView" && (
+        <Box
+          sx={{
+            position: "absolute",
+            right: { sm: "-30", xs: "-25px" },
+            top: { sm: "18px", xs: "10px" },
           }}
         >
-          {options.map((option) => (
-            <MenuItem
-              key={option}
-              selected={option === "Pyxis"}
-              onClick={() => {
-                setQuestionId(question?._id);
-                handleClickOption(option);
-              }}
-            >
-              {option}
-            </MenuItem>
-          ))}
-        </Menu>
-      </Box>}
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? "long-menu" : undefined}
+            aria-expanded={open ? "true" : undefined}
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <Image alt="options" src={Option} />
+          </IconButton>
+          <Menu
+            id="long-menu"
+            MenuListProps={{
+              "aria-labelledby": "long-button",
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+              style: {
+                maxHeight: ITEM_HEIGHT * 4.5,
+                width: "10ch",
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem
+                key={option}
+                selected={option === "Pyxis"}
+                onClick={() => {
+                  setQuestionId(question?._id);
+                  handleClickOption(option);
+                }}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </Menu>
+        </Box>
+      )}
       <CustomizationDialog
         open={updateQuestionModal}
         title="Update question"

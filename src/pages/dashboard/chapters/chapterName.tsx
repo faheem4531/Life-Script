@@ -8,6 +8,7 @@ import AddQuestion from "@/pages/events/addQuestion";
 import {
   createQuestion,
   getChapterbyId,
+  narrativeFusion,
   selectChapter,
 } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
@@ -65,6 +66,13 @@ const chapterName = () => {
     setChapterName(question.title);
   }, [question]);
 
+  const handleNarrativeFusion = () => {
+    dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
+      .unwrap()
+      .then(() => toast.success("Narrative fusion completed"))
+      .catch(() => toast.error("Narrative fusion failed"));
+  };
+
   return (
     <>
       <Layout>
@@ -101,7 +109,7 @@ const chapterName = () => {
             <Box
               display={"flex"}
               onClick={() => setOpenModal(true)}
-              sx={{ gap: { sm: 2, xs: 1 }, cursor: "pointer" }}
+              sx={{ gap: { sm: 2, xs: 1 } }}
             >
               <Box>
                 <Image src={addIcon} alt="addicon" />
@@ -143,7 +151,7 @@ const chapterName = () => {
                     number={index + 1}
                     questionChanged={() => setQuestionChanged(!questionChanged)}
                     answerClick={(text) =>
-                      router.push(`/events?chapterName=${text}`)
+                      router.push(`/events?questionId=${text}`)
                     }
                   />
                 ))
@@ -153,7 +161,9 @@ const chapterName = () => {
 
               {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
                 <Box
+                  onClick={handleNarrativeFusion}
                   sx={{
+                    cursor: "pointer",
                     marginTop: 5,
                     display: "flex",
                     justifyContent: "center",

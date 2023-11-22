@@ -148,8 +148,13 @@ export default function DetailCard({
           >
             <Box
               onClick={() => {
-                if (router.asPath == "/dashboard/chapters") {
+                if (router.asPath === "/dashboard/chapters") {
                   deleteFunc({ option: "details", chapterData: chapter });
+                }
+                if (router.asPath === "/dashboard/templates") {
+                  router.push(
+                    `/dashboard/templates/templateView?templateId=${chapter?._id}`
+                  );
                 }
               }}
               sx={{

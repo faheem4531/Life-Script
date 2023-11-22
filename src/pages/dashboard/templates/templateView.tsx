@@ -5,76 +5,68 @@ import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 // import AddQuestion from "@/pages/events/addQuestion";
+import ModalImage from "@/_assets/png/view-template-modal.png";
+import Button from "@/components/button/Button";
 import {
-  createQuestion,
-  getChapterbyId,
-  selectChapter,
+  cloneTemplate,
+  getTemplates,
+  selectTemplates,
 } from "@/store/slices/chatSlice";
 import { Box, ButtonBase, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import ModalImage from "@/_assets/png/view-template-modal.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
-import Button from "@/components/button/Button";
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [templateTitle, setTemplateTitle] = useState("");
   const [allQuestions, setAllQuestions] = useState([]);
-  const [questionChanged, setQuestionChanged] = useState(false);
-  const [chapterName, setChapterName] = useState("");
-  const question = useSelector(selectChapter);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const { chapterId } = router.query;
+  const { templateId } = router.query;
+  const allTemplates = useSelector(selectTemplates);
+  let templateData;
 
-  // const submitQuestion = (question: string) => {
-  //   dispatch(
-  //     createQuestion({
-  //       text: question,
-  //       status: "Progress",
-  //       chapter: chapterId.toString(),
-  //     })
-  //   )
-  //     .unwrap()
-  //     .then(() => {
-  //       toast.success("Question added successfully");
-  //       dispatch(getChapterbyId({ id: chapterId.toString() }));
-  //     })
-  //     .catch(() => {
-  //       toast.error("Failed to add question");
-  //     });
-  // };
-
-  function areAllCompleted(questions) {
-    return questions.every((question) => question.status === "Completed");
-  }
+  const handleChapterClone = () => {
+    setButtonLoading(false);
+    dispatch(cloneTemplate({ id: templateId.toString() }))
+      .then(() => {
+        setOpenModal(true);
+      })
+      .catch(() => setButtonLoading(false));
+  };
 
   useEffect(() => {
-    chapterId &&
-      dispatch(getChapterbyId({ id: chapterId.toString() }))
-        .then(() => setLoading(false))
-        .catch(() => setLoading(false));
-  }, [chapterId, questionChanged]);
+    templateData = allTemplates.find((template) => template._id === templateId);
+    setAllQuestions(templateData?.questions);
+    setTemplateTitle(templateData?.title);
+  }, [allTemplates]);
 
   useEffect(() => {
-    setAllQuestions(question.questions);
-    setChapterName(question.title);
-  }, [question]);
+    dispatch(getTemplates())
+      .unwrap()
+      .then(() => setLoading(false));
+  }, []);
 
   return (
     <>
       <Layout>
-        <AddChapterName chapter={chapterName} chapterId={chapterId} title="templateView" />
+        <AddChapterName
+          chapterId={templateData?._id}
+          chapter={templateTitle}
+          title="templateView"
+        />
         <Box
+          onClick={handleChapterClone}
           sx={{
-            margin: "35px auto",
+            margin: "20px auto",
             display: "flex",
-            justifyContent: "flex-end"
+            justifyContent: "flex-end",
+            cursor: "pointer",
           }}
         >
           <Button
@@ -82,11 +74,12 @@ const chapterName = () => {
             title="Use Template"
             background="#197065"
             borderRadius="55px"
+            border={0}
             fontSize="20px"
             color="#fff"
             width="220px"
             padding="10px 0px"
-            onClick={() => setOpenModal(true)}
+            onClick={() => {}}
           />
         </Box>
         <Box
@@ -132,28 +125,10 @@ const chapterName = () => {
               ) : (
                 <NoQuestions />
               )}
-
-              {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
-                <Box
-                  sx={{
-                    marginTop: 5,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Image
-                    src={fusionIcon}
-                    alt="fusion"
-                    width={300}
-                    height={70}
-                  />
-                </Box>
-              )}
             </>
           )}
         </Box>
       </Layout>
-
 
       {/* Use Template Modal   */}
       <CustomizationDialog
@@ -161,6 +136,7 @@ const chapterName = () => {
         title=""
         handleClose={() => {
           setOpenModal(false);
+          router.push("/dashboard/chapters");
         }}
         customStyles={{ backgroundColor: "auto" }}
       >
@@ -171,7 +147,7 @@ const chapterName = () => {
               fontSize: "40px",
               fontWeight: 700,
               color: "#070707",
-              margin: "40px 0"
+              margin: "40px 0",
             }}
           >
             Thank You!
@@ -179,14 +155,19 @@ const chapterName = () => {
           <Typography
             sx={{
               fontSize: "30px",
-              color: "#070707", width: "400px", margin: "0 120px"
+              color: "#070707",
+              width: "400px",
+              margin: "0 120px",
             }}
           >
             Template has been added to your chapters
           </Typography>
 
           <ButtonBase
-            // onClick={} 
+            onClick={() => {
+              router.push("/dashboard/chapters");
+              setOpenModal(false);
+            }}
             sx={{
               width: "200px",
               height: "50px",
@@ -203,9 +184,7 @@ const chapterName = () => {
           >
             Start editing
           </ButtonBase>
-
         </Box>
-
       </CustomizationDialog>
     </>
   );

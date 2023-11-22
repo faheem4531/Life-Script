@@ -1,12 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import ChooseTemplate from "@/components/dashboardComponent/ChooseTemplate";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
-import {
-  cloneTemplate,
-  getChapters,
-  getTemplates,
-  selectTemplates,
-} from "@/store/slices/chatSlice";
+import { getTemplates, selectTemplates } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
 import { useEffect } from "react";
@@ -18,11 +13,7 @@ const Dashboard = () => {
   console.log("tempppp", templates);
 
   useEffect(() => {
-    dispatch(getTemplates()).then(() => {
-      dispatch(cloneTemplate({ id: "655b729ea7266075e3ce3568" })).then(() =>
-        getChapters()
-      );
-    });
+    dispatch(getTemplates());
   }, []);
 
   return (
