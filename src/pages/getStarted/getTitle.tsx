@@ -1,14 +1,18 @@
+import GreenBlock from "@/_assets/png/getTitle-green-block.png";
+import WhiteBlock from "@/_assets/png/getTitle-white-block.png";
+import { bookTitle } from "@/store/slices/chatSlice";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import BookImage from "../../../public/getTitleBook.svg";
-import styles from "./GetTitle.module.css"
-import GreenBlock from "@/_assets/png/getTitle-green-block.png"
-import WhiteBlock from "@/_assets/png/getTitle-white-block.png"
+import styles from "./GetTitle.module.css";
 
 const getTitle = () => {
   const router = useRouter();
+  const dispatch: any = useDispatch();
   const { userName } = router.query;
   const [text, setText] = useState("");
   const maxLength = 20; // Set the maximum character count to 20
@@ -20,8 +24,18 @@ const getTitle = () => {
     }
   };
 
-  return (
+  const handleTitle = () => {
+    dispatch(bookTitle({ title: text }))
+      .then(() => {
+        toast.success("Book title saved successfully");
+        router.push("/dashboard/chapters");
+      })
+      .catch(() => {
+        toast.error("Failed to save book title");
+      });
+  };
 
+  return (
     <Box
       sx={{
         backgroundImage: { sm: 'url("/GetTitle.svg")' },
@@ -40,17 +54,27 @@ const getTitle = () => {
         justifyContent: "space-around",
         alignItems: "center",
         color: "#000",
-        position: "relative"
+        position: "relative",
       }}
     >
-
-      <Box sx={{ marginLeft: { sm: "30px", xs: "0px" }, padding: { xs: "0 22px", sm: "0" } }}>
+      <Box
+        sx={{
+          marginLeft: { sm: "30px", xs: "0px" },
+          padding: { xs: "0 22px", sm: "0" },
+        }}
+      >
         <Typography
-          sx={{ fontSize: "53px", fontWeight: "400", marginTop: { sm: "120px" } }}
+          sx={{
+            fontSize: "53px",
+            fontWeight: "400",
+            marginTop: { sm: "120px" },
+          }}
           className={styles.primaryText}
         >
           Hi{" "}
-          <span style={{ fontWeight: "600" }} className={styles.boldText}>{userName},</span>
+          <span style={{ fontWeight: "600" }} className={styles.boldText}>
+            {userName},
+          </span>
         </Typography>
         <Typography
           sx={{ fontWeight: "400", fontSize: "53px", marginTop: "32px" }}
@@ -59,45 +83,58 @@ const getTitle = () => {
           What would you like to <br /> call your lifescript?
         </Typography>
         <Box>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }} className={styles.primaryText}>
+          <Box
+            sx={{ display: "flex", flexDirection: "column" }}
+            className={styles.primaryText}
+          >
             <TextField
               variant="standard"
               value={text}
               onChange={handleChange}
               sx={{
-                maxWidth: '540px', minWidth: '120px', marginTop: "30px",
+                maxWidth: "540px",
+                minWidth: "120px",
+                marginTop: "30px",
               }}
               className={styles.primaryText}
               InputProps={{
-                style: { fontSize: '30px' },
+                style: { fontSize: "30px" },
               }}
             />
-            <Typography sx={{ alignSelf: 'flex-end', color: '#969696', fontSize: { md: "30px", sm: "25px", xs: "20px" } }} >
+            <Typography
+              sx={{
+                alignSelf: "flex-end",
+                color: "#969696",
+                fontSize: { md: "30px", sm: "25px", xs: "20px" },
+              }}
+            >
               {text.length}/{maxLength}
             </Typography>
           </Box>
           <Button
-            onClick={() => router.push("/dashboard/chapters")}
-            sx={{ width: "200px", padding: "14px 0", bgcolor: "#FCE09B", borderRadius: "30px", color: "#186F65", fontWeight: 600, fontSize: "18px" }}>
+            onClick={() => handleTitle()}
+            sx={{
+              width: "200px",
+              padding: "14px 0",
+              bgcolor: "#FCE09B",
+              borderRadius: "30px",
+              color: "#186F65",
+              fontWeight: 600,
+              fontSize: "18px",
+            }}
+          >
             Start Writing
           </Button>
         </Box>
       </Box>
       <Box
         sx={{ height: "100%", display: "flex", alignItems: "center" }}
-        className={styles.bookDiv}>
+        className={styles.bookDiv}
+      >
         <Image src={BookImage} alt="book image" className={styles.book} />
       </Box>
-      <Image
-        alt="image"
-        src={GreenBlock}
-        className={styles.greenBlock}
-      />
-      <Image
-        alt="image"
-        src={WhiteBlock}
-        className={styles.whiteBlock}
-      />
+      <Image alt="image" src={GreenBlock} className={styles.greenBlock} />
+      <Image alt="image" src={WhiteBlock} className={styles.whiteBlock} />
     </Box>
   );
 };

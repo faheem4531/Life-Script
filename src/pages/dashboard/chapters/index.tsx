@@ -6,8 +6,10 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   createChapter,
+  deleteSelectedChapter,
   getChapters,
-  selectChat,
+  selectAllChapters,
+  updateChapter,
 } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
@@ -20,36 +22,67 @@ import AddChapter from "./addChapter";
 
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
+  const [updateChapterModal, setUpdateChapterModal] = useState(false);
   const [allChapters, setAllChapters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteChapter, setDeleteChapter] = useState(false);
-  const [deleteChapterId, setDeleteChapterId] = useState("");
+  const [chapterTitle, setChapterTitle] = useState("");
+  const [selectedChapterId, setSelectedChapterId] = useState("");
   const dispatch: any = useDispatch();
-  const chapters = useSelector(selectChat);
+  const chapters = useSelector(selectAllChapters);
   const router = useRouter();
 
   const handleDeleteChapter = () => {
     console.log("delete chapter");
-    setDeleteChapter(false);
+    dispatch(deleteSelectedChapter({ id: selectedChapterId }))
+      .unwrap()
+      .then(() => {
+        toast.success("Chapter deleted successfully");
+        setDeleteChapter(false);
+        dispatch(getChapters());
+      })
+      .catch(() => {
+        toast.error("Failed to delete chapter");
+        setDeleteChapter(false);
+      });
   };
 
   const submitChapter = (chapter: string) => {
-    dispatch(createChapter({ title: chapter }))
+    const actionToDispatch = !updateChapterModal
+      ? createChapter({ title: chapter })
+      : updateChapter({ id: selectedChapterId, title: chapter });
+
+    dispatch(actionToDispatch)
       .unwrap()
       .then(() => {
-        toast.success("Chapter added successfully");
+        const toastMessage = !updateChapterModal
+          ? "Chapter created successfully"
+          : "Chapter updated successfully";
+
+        toast.success(toastMessage);
         dispatch(getChapters());
       })
-      .catch(() => toast.error("Failed to add chapter"));
+      .catch(() => {
+        const toastMessage = !updateChapterModal
+          ? "Failed to add chapter"
+          : "Failed to update chapter";
+
+        toast.error(toastMessage);
+      });
   };
 
-  const handleCardClick = (data: { option: string; chapterId: string }) => {
+  const handleCardClick = (data: { option: string; chapterData: any }) => {
+    console.log("chapterdataa", data?.chapterData);
     if (data?.option === "Delete") {
       setDeleteChapter(true);
-      setDeleteChapterId(data?.chapterId);
+      setSelectedChapterId(data?.chapterData?._id);
+    } else if (data?.option === "Edit") {
+      setChapterTitle(data?.chapterData?.title);
+      setSelectedChapterId(data?.chapterData?._id);
+      setUpdateChapterModal(true);
     } else {
       router.push(
-        `/dashboard/chapters/chapterName?chapterId=${data?.chapterId}`
+        `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}`
       );
     }
   };
@@ -92,6 +125,7 @@ const Dashboard = () => {
               <DetailCard
                 key={index}
                 chapter={chapter}
+                isChapter={true}
                 deleteFunc={(data) => {
                   handleCardClick(data);
                 }}
@@ -110,10 +144,11 @@ const Dashboard = () => {
       </Layout>
 
       <CustomizationDialog
-        open={chapterModal}
-        title="Add new chapter"
+        open={chapterModal || updateChapterModal}
+        title={updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
         handleClose={() => {
           setChapterModal(false);
+          setUpdateChapterModal(false);
         }}
         customStyles={{ backgroundColor: "auto" }}
       >
@@ -121,7 +156,9 @@ const Dashboard = () => {
           chapterData={(chapter: string) => {
             setChapterModal(false);
             submitChapter(chapter);
+            setUpdateChapterModal(false);
           }}
+          data={chapterTitle}
         />
       </CustomizationDialog>
       <TransitionsDialog

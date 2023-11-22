@@ -17,12 +17,14 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
+  const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const question = useSelector(selectChapter);
   const router = useRouter();
@@ -30,7 +32,13 @@ const chapterName = () => {
   const { chapterId } = router.query;
 
   const submitQuestion = (question: string) => {
-    dispatch(createQuestion({ text: question, chapter: chapterId.toString() }))
+    dispatch(
+      createQuestion({
+        text: question,
+        status: "Progress",
+        chapter: chapterId.toString(),
+      })
+    )
       .unwrap()
       .then(() => {
         toast.success("Question added successfully");
@@ -41,12 +49,16 @@ const chapterName = () => {
       });
   };
 
+  function areAllCompleted(questions) {
+    return questions.every((question) => question.status === "Completed");
+  }
+
   useEffect(() => {
     chapterId &&
       dispatch(getChapterbyId({ id: chapterId.toString() }))
         .then(() => setLoading(false))
         .catch(() => setLoading(false));
-  }, [chapterId]);
+  }, [chapterId, questionChanged]);
 
   useEffect(() => {
     setAllQuestions(question.questions);
@@ -60,7 +72,7 @@ const chapterName = () => {
         <Box
           sx={{
             backgroundColor: "#fff",
-            padding: { sm: "55px 46px 46px 37px", xs: "30px 20px 100px" },
+            padding: { sm: "55px 46px 16px 37px", xs: "30px 20px 100px" },
             marginTop: "26px",
             minHeight: "60vh",
             borderRadius: { sm: "18px", xs: "5px" },
@@ -121,19 +133,41 @@ const chapterName = () => {
             >
               <CircularProgress />
             </Box>
-          ) : allQuestions?.length > 0 ? (
-            allQuestions.map((question, index) => (
-              <Questions
-                key={question._id}
-                question={question}
-                number={index + 1}
-                answerClick={(text) =>
-                  router.push(`/events?chapterName=${text}`)
-                }
-              />
-            ))
           ) : (
-            <NoQuestions />
+            <>
+              {allQuestions?.length > 0 ? (
+                allQuestions.map((question, index) => (
+                  <Questions
+                    key={question._id}
+                    question={question}
+                    number={index + 1}
+                    questionChanged={() => setQuestionChanged(!questionChanged)}
+                    answerClick={(text) =>
+                      router.push(`/events?chapterName=${text}`)
+                    }
+                  />
+                ))
+              ) : (
+                <NoQuestions />
+              )}
+
+              {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
+                <Box
+                  sx={{
+                    marginTop: 5,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Image
+                    src={fusionIcon}
+                    alt="fusion"
+                    width={300}
+                    height={70}
+                  />
+                </Box>
+              )}
+            </>
           )}
         </Box>
       </Layout>
