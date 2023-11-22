@@ -15,13 +15,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
 import Button from "@/components/button/Button";
 
 
-const chapterName = () => {
+const TemplateView = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
@@ -193,4 +192,4 @@ const chapterName = () => {
   );
 };
 
-export default chapterName;
+export default TemplateView;

@@ -208,8 +208,8 @@ export default function Questions({
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteQuestionModal}
-        heading="Delete Question"
-        description="Are you sure you want to delete this Question"
+        heading="Delete"
+        description="Are you sure you want to delete this question"
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
       />

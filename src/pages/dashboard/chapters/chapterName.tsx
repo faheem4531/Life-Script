@@ -68,7 +68,7 @@ const chapterName = () => {
   return (
     <>
       <Layout>
-        <AddChapterName chapter={chapterName} chapterId={chapterId} />
+        <AddChapterName title="chapterName" chapter={chapterName} chapterId={chapterId} />
         <Box
           sx={{
             backgroundColor: "#fff",
@@ -140,6 +140,7 @@ const chapterName = () => {
                   <Questions
                     key={question._id}
                     question={question}
+                    title="chapterName"
                     number={index + 1}
                     questionChanged={() => setQuestionChanged(!questionChanged)}
                     answerClick={(text) =>
