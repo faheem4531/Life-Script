@@ -1,10 +1,8 @@
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
-// import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
-// import AddQuestion from "@/pages/events/addQuestion";
 import {
   createQuestion,
   getChapterbyId,
@@ -21,6 +19,8 @@ import { toast } from "react-toastify";
 import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
 import Button from "@/components/button/Button";
+
+
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -31,24 +31,6 @@ const chapterName = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId } = router.query;
-
-  // const submitQuestion = (question: string) => {
-  //   dispatch(
-  //     createQuestion({
-  //       text: question,
-  //       status: "Progress",
-  //       chapter: chapterId.toString(),
-  //     })
-  //   )
-  //     .unwrap()
-  //     .then(() => {
-  //       toast.success("Question added successfully");
-  //       dispatch(getChapterbyId({ id: chapterId.toString() }));
-  //     })
-  //     .catch(() => {
-  //       toast.error("Failed to add question");
-  //     });
-  // };
 
   function areAllCompleted(questions) {
     return questions.every((question) => question.status === "Completed");

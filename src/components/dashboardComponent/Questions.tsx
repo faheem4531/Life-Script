@@ -12,6 +12,8 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
+import Completed from "@/_assets/svg/completed-icon.svg"
+import Edit from "@/_assets/svg/edit-icon.svg"
 
 const options = ["Delete", "Edit"];
 const ITEM_HEIGHT = 48;
@@ -23,6 +25,8 @@ interface QuestionsProps {
   questionChanged?: () => void;
   title: string
 }
+
+
 export default function Questions({
   question,
   number,
@@ -130,6 +134,8 @@ export default function Questions({
               },
             }}
           >
+            <Image alt="icon" src={question?.status === "Completed" ? Completed : Edit} />
+            {" "}
             {question?.status === "Completed" ? "Completed" : "Edit"}
           </Button>
         </Box>}
@@ -182,6 +188,8 @@ export default function Questions({
           ))}
         </Menu>
       </Box>}
+
+
       <CustomizationDialog
         open={updateQuestionModal}
         title="Update question"
