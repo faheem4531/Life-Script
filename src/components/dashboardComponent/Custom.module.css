@@ -1,0 +1,45 @@
+/* Overview Profile  */
+
+.profilePic {
+  outline: 10px solid green;
+  border-radius: 50%;
+  padding: 10px;
+  width: 155px;
+  height: 155px;
+}
+
+
+/* Overview Welcome  */
+.welcomeMain {
+  background-image: url(../../_assets/png/template-tree-bg.png);
+  background-repeat: no-repeat;
+  background-position: left left;
+  background-size: 40% 80%;
+}
+
+/* OverView SubComponents  */
+
+.viewBook {
+  background-image: url(../../_assets/png/view-book.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.viewTree {
+  background-image: url(../../_assets/png/view-tree.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+@media (min-width:1400px) and (max-width:1800px) {
+  .welcomeImage {
+    width: 260px;
+    height: 200px;
+  }
+}
+
+@media (min-width:1200px) and (max-width:1400px) {}
+
+@media (min-width:992px) and (max-width:1200px) {}
+
+@media (max-width:992px) {}

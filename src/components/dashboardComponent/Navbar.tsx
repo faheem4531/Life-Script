@@ -41,6 +41,11 @@ const NavBar = ({
     }
   };
 
+  let buttonsHide
+  if (router.asPath === "/dashboard/overview") {
+    buttonsHide = true
+  }
+
   return (
     <Box
       sx={{
@@ -99,6 +104,7 @@ const NavBar = ({
               cursor: "pointer",
               display: { md: "block", sm: "none", xs: "none" },
             }}
+            className={buttonsHide ? styles.noneDisplay : ""}
           >
             <Button
               onClick={() => {
@@ -120,6 +126,7 @@ const NavBar = ({
               cursor: "pointer",
               display: { md: "block", sm: "none", xs: "none" },
             }}
+            className={buttonsHide ? styles.noneDisplay : ""}
           >
             <Button
               onClick={() => {

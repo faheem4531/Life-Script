@@ -15,6 +15,8 @@ import { useEffect, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import RichTextViewer from "./response";
+import PIcon from "@/_assets/svg/edit-text-title-icon.svg"
+import Image from "next/image";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -85,65 +87,70 @@ const RichText = ({ questionText }) => {
 
   return (
     <Box className="rich-editor">
-      <Grid container spacing={1}>
-        <Grid item xs={8}>
-          <Box
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Image alt="icon" src={PIcon} />
+          <Typography sx={{ fontSize: "26px", fontWeight: "600", marginLeft: "20px" }}>
+            {questionText}
+          </Typography>
+        </Box>
+        <Box sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}>
+          <Select
+            value={toneValue}
+            onChange={handleSelectChange}
+            displayEmpty
             sx={{
-              borderRadius: "10px",
-              width: "100%",
-              backgroundColor: "white",
-              maxHeight: "70px",
-              overflowY: "auto",
-              p: 1,
-              display: "flex",
-              justifyContent: "center",
-              height: "70px",
+              width: "170px",
+              height: "35px",
+              borderRadius: "27px",
+              border: "1px solid #197065",
+              color: "#197065",
             }}
           >
-            <Typography sx={{ fontSize: "38px", fontWeight: "500" }}>
-              {questionText}
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={2}>
-          <Box>
-            <Select
-              value={toneValue}
-              onChange={handleSelectChange}
-              displayEmpty
-              sx={{
-                width: "100%",
-                height: "70px",
-                borderRadius: "10px",
-                backgroundColor: "white",
-              }}
-            >
-              {gptTones?.map((tone) => (
-                <MenuItem value={tone}>{tone}</MenuItem>
-              ))}
-            </Select>
-          </Box>
-        </Grid>
-        <Grid item xs={2}>
-          <Box>
-            <Button
-              variant="contained"
-              onClick={callchatgpt}
-              sx={{
-                textTransform: "capitalize",
+            {gptTones?.map((tone) => (
+              <MenuItem value={tone}>{tone}</MenuItem>
+            ))}
+          </Select>
+          <Button
+            // onClick={}
+            sx={{
+              width: "200px",
+              height: "35px",
+              borderRadius: "27px",
+              border: "1px solid #197065",
+              color: "#197065",
+              bgcolor: "#fff",
+              "&:hover": {
+                backgroundColor: "#fff",
+              },
+            }}
+          >
+            Mark As Complete
+          </Button>
+          <Button
+            // onClick={}
+            sx={{
+              width: "85px",
+              height: "35px",
+              borderRadius: "27px",
+              color: "#FFF",
+              bgcolor: "#197065",
+              "&:hover": {
                 backgroundColor: "#197065",
-                minWidth: "100%",
-                borderRadius: "10px",
-                height: "70px",
-              }}
-            >
-              call gpt
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
+              },
+            }}
+          >
+            Save
+          </Button>
+        </Box>
+      </Box>
 
-      <Box sx={{ marginTop: 1 }}>
+      <Box sx={{ marginTop: "50px" }}>
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}
@@ -267,6 +274,8 @@ const RichText = ({ questionText }) => {
           }}
         />
       </Box>
+
+
       <CustomizationDialog
         open={openModal}
         title="GPT Response"
