@@ -21,10 +21,12 @@ interface QuestionsProps {
   number?: number;
   answerClick?: (chapterName: string) => void; // Define the callback type here
   questionChanged?: () => void;
+  title: string
 }
 export default function Questions({
   question,
   number,
+  title,
   questionChanged,
   answerClick,
 }: QuestionsProps) {
@@ -110,7 +112,7 @@ export default function Questions({
           {". "}
           {question?.text}
         </Typography>
-        <Box sx={{ textAlign: "center" }}>
+        {title != "templateView" && <Box sx={{ textAlign: "center" }}>
           <Button
             variant="contained"
             onClick={() => answerClick(question?.text)}
@@ -130,11 +132,11 @@ export default function Questions({
           >
             {question?.status === "Completed" ? "Completed" : "Edit"}
           </Button>
-        </Box>
+        </Box>}
       </Box>
 
       {/* More option :start */}
-      <Box
+      {title != "templateView" && <Box
         sx={{
           position: "absolute",
           right: { sm: "-30", xs: "-25px" },
@@ -179,7 +181,7 @@ export default function Questions({
             </MenuItem>
           ))}
         </Menu>
-      </Box>
+      </Box>}
       <CustomizationDialog
         open={updateQuestionModal}
         title="Update question"
