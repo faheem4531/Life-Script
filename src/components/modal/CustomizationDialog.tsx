@@ -74,7 +74,7 @@ export default function CustomizationDialog({
             {title}
           </BootstrapDialogTitle>
           <DialogContent
-            dividers
+            // dividers
             style={{ maxHeight: "80vh", overflowY: "auto" }}
           >
             {children}

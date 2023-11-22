@@ -13,9 +13,11 @@ import styles from "./AddChapterName.module.css";
 const AddChapterName = ({
   chapter,
   chapterId,
+  title
 }: {
   chapter: string;
   chapterId: any;
+  title: string
 }) => {
   const [chapterName, setChapterName] = useState("");
   const dispatch: any = useDispatch();
@@ -33,6 +35,8 @@ const AddChapterName = ({
   useEffect(() => {
     chapter && setChapterName(chapter);
   }, [chapter]);
+
+
   return (
     <Box
       sx={{
@@ -45,7 +49,10 @@ const AddChapterName = ({
         justifyContent: "space-between",
       }}
     >
-      <Box>
+      {title === "templateView" && <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
+        My Ambitious Life
+      </Typography>}
+      {title != "templateView" && <Box>
         <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>
           Update
         </Typography>
@@ -81,7 +88,7 @@ const AddChapterName = ({
             }}
           />
         </Box>
-      </Box>
+      </Box>}
       <Box>
         <Image src={BookImage} alt="book image" className={styles.bookImage} />
       </Box>
