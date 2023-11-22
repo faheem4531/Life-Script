@@ -12,10 +12,10 @@ export default function Answers() {
       <Layout>
         <Box
           sx={{
-            width: "100%",
-            height: "100%",
-            pl: "50px",
-            pr: "50px",
+            bgcolor: "#fff",
+            borderRadius: "34px",
+            padding: "50px 70px 100px",
+            border: "1px solid #197065"
           }}
         >
           <RichText questionText={chapterName} />
