@@ -5,13 +5,7 @@ import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
 import styles from "./Layout.module.css";
 
-const Layout = ({
-  children,
-  addChapter,
-}: {
-  children?: any;
-  addChapter?: () => void;
-}) => {
+const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
 
   return (
@@ -28,10 +22,7 @@ const Layout = ({
           zIndex: "2",
         }}
       >
-        <NavBar
-          sideBarHandle={() => setHandleSideBar(true)}
-          newChapter={() => addChapter()}
-        />
+        <NavBar sideBarHandle={() => setHandleSideBar(true)} />
       </Box>
       <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
         <Box

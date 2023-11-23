@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
 import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
@@ -101,7 +102,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Layout addChapter={() => setChapterModal(true)}>
+      <Layout>
         <HomeSteps />
         {loading ? (
           <Box
@@ -121,6 +122,7 @@ const Dashboard = () => {
               marginTop: "48px",
             }}
           >
+            <StartNewChapter addChapterClick={() => setChapterModal(true)} />
             {allChapters.map((chapter, index) => (
               <DetailCard
                 key={index}

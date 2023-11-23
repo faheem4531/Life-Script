@@ -10,18 +10,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
-import Button from "../button/Button";
 import styles from "./Navbar.module.css";
 const options = ["Logout"];
 const ITEM_HEIGHT = 48;
 
-const NavBar = ({
-  newChapter,
-  sideBarHandle,
-}: {
-  newChapter?: () => void;
-  sideBarHandle?: () => void;
-}) => {
+const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -41,9 +34,9 @@ const NavBar = ({
     }
   };
 
-  let buttonsHide
+  let buttonsHide;
   if (router.asPath === "/dashboard/overview") {
-    buttonsHide = true
+    buttonsHide = true;
   }
 
   return (
@@ -81,7 +74,7 @@ const NavBar = ({
             alignItems: "center",
             margin: "0 auto",
             borderRadius: "15px",
-            marginLeft: "85px",
+            marginLeft: "10px",
           }}
           className={styles.searchBox}
         >
@@ -99,50 +92,6 @@ const NavBar = ({
           />
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <Box
-            sx={{
-              cursor: "pointer",
-              display: { md: "block", sm: "none", xs: "none" },
-            }}
-            className={buttonsHide ? styles.noneDisplay : ""}
-          >
-            <Button
-              onClick={() => {
-                if (router.asPath === "/dashboard/chapters") {
-                  return newChapter();
-                }
-              }}
-              title="Start a new Chapter"
-              border="1px solid #fff"
-              background="transparent"
-              width="180px"
-              padding="8px 0"
-              borderRadius="19px"
-              color="#fff"
-            />
-          </Box>
-          <Box
-            sx={{
-              cursor: "pointer",
-              display: { md: "block", sm: "none", xs: "none" },
-            }}
-            className={buttonsHide ? styles.noneDisplay : ""}
-          >
-            <Button
-              onClick={() => {
-                if (router.asPath === "/dashboard/chapters") {
-                  router.push("/dashboard/templates");
-                }
-              }}
-              title="Get Template"
-              border="1px solid #fff"
-              background="#fff"
-              width="180px"
-              padding="8px 0"
-              borderRadius="19px"
-              color="#197065"
-            />
-          </Box>
           {/* <Image
             src={Noti}
             alt='logo'
