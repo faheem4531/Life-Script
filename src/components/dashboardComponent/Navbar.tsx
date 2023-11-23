@@ -74,7 +74,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             alignItems: "center",
             margin: "0 auto",
             borderRadius: "15px",
-            marginLeft: "85px",
+            marginLeft: "10px",
           }}
           className={styles.searchBox}
         >

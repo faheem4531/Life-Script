@@ -102,7 +102,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Layout addChapter={() => setChapterModal(true)}>
+      <Layout>
         <HomeSteps />
         {loading ? (
           <Box
