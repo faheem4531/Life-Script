@@ -47,6 +47,7 @@ const AddChapterName = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        height:'165px'
       }}
     >
       {title === "templateView" && (
