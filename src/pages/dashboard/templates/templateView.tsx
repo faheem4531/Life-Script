@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
+// import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 // import AddQuestion from "@/pages/events/addQuestion";
@@ -17,9 +18,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import addIcon from "../../../../public/bookicon.svg";
-
-const TemplateView = () => {
+import addIcon from "../../../../public/addicon.svg";
+const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [templateTitle, setTemplateTitle] = useState("");
@@ -190,4 +190,4 @@ const TemplateView = () => {
   );
 };
 
-export default TemplateView;
+export default chapterName;
