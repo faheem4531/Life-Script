@@ -1,17 +1,28 @@
 import React from "react";
+import Image from "next/image";
 
-const Button = ({ title, border, background, width, padding, borderRadius, color, onClick }) => {
+const Button = ({ title, border, background, width, padding, borderRadius, color, onClick, image, fontSize }) => {
   const styles = {
-    border: border,
+    border: border || "none",
     background: background,
     width: width,
     padding: padding,
     borderRadius: borderRadius,
-    color: color
+    color: color,
+    fontSize: fontSize,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+
+  const styles2 = {
+    padding: "0 7px 0 0"
   }
 
   return (
-    <button onClick={onClick} style={styles}>{title}</button>
+    <button onClick={onClick} style={styles}>
+      {image != undefined && <Image alt="image" src={image} style={styles2} />}
+      {title}</button>
   )
 }
 

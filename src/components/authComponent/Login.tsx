@@ -46,7 +46,6 @@ const Login = ({ signinClick }) => {
     dispatch(googleLogin({ credential: e.access_token }))
       .unwrap()
       .then((res) => {
-        console.log("responseee", res);
         toast.success(t("login-page.loggedIn"));
         router.push(`/getStarted?userName=${res.name}`);
       })
@@ -71,7 +70,6 @@ const Login = ({ signinClick }) => {
       dispatch(login(data))
         .unwrap()
         .then((res) => {
-          console.log("response2", res);
           toast.success(t("login-page.loggedIn"));
           setLoading(false);
           router.push(`/getStarted?userName=${res.name}`);
@@ -319,35 +317,6 @@ const Login = ({ signinClick }) => {
               <Typography>Login with Google</Typography>
             </Button>
           </Box>
-          {/* <Box>
-            <Button
-              variant="contained"
-              type="submit"
-              onClick={() => signIn("facebook")}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center", // Center the content horizontally and vertically
-                borderRadius: "13px",
-                backgroundColor: "white",
-                color: "black",
-                width: "40px", // Use "width" instead of "maxWidth" for button width
-                height: "40px", // Use "height" instead of "maxHeight" for button height
-                marginTop: "10px",
-                "&:hover": {
-                  backgroundColor: "white",
-                },
-              }}
-              startIcon={
-                <Image
-                  src={fbLogo}
-                  alt="Facebook Logo"
-                  width={24}
-                  height={24}
-                />
-              }
-            ></Button>
-          </Box> */}
         </Box>
         <Box
           sx={{

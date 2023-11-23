@@ -14,9 +14,80 @@ export async function chatApi(data: any) {
     }
   }
 }
+
+export async function narrativeFusionApi(data: any) {
+  try {
+    const res = await api.post("/users/generate-narative-fusion", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function saveAnswerApi(data: any) {
+  try {
+    const res = await api.post("/users/save-answer", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function bookTitleApi(data: { title: string }) {
+  try {
+    const res = await api.post("/book", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getBookTitleApi() {
+  try {
+    const res = await api.get("/book");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function createChapterApi(data: { title: string }) {
   try {
     const res = await api.post("/chapters", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function deleteChapterApi(data: { id: string }) {
+  try {
+    const res = await api.delete(`/chapters/${data?.id}`);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -48,8 +119,34 @@ export async function getChaptersApi() {
     const res = await api.get("chapters");
     return res;
   } catch (error: any) {
-    console.log("reeee2", error);
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
 
+export async function getTemplatesApi() {
+  try {
+    const res = await api.get("/default-chapter");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function cloneTemplateApi(data: { id: string }) {
+  try {
+    const res = await api.get(`/chapters/cloneChapter/${data.id}`);
+    return res;
+  } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
       throw new Error(errors ? errors[0] : "Failed");
@@ -79,6 +176,43 @@ export async function createQuestionApi(data: {
 }) {
   try {
     const res = await api.post("/questions", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function updateQuestionApi(data: {
+  text: string;
+  id: string;
+  chapter: string;
+  status: string;
+}) {
+  try {
+    const res = await api.patch(`/questions/${data.id}`, {
+      text: data.text,
+      chapter: data.chapter,
+      status: data.status,
+    });
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function deleteQuestionApi(data: { id: string }) {
+  try {
+    const res = await api.delete(`/questions/${data?.id}`);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

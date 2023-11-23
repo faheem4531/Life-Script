@@ -1,21 +1,35 @@
 import { UserData } from "@/interface/authInterface";
 import { chatWithgpt } from "@/interface/chatInterface";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
+import {
+  bookTitleApi,
   chatApi,
+  cloneTemplateApi,
   createChapterApi,
   createQuestionApi,
+  deleteChapterApi,
+  deleteQuestionApi,
+  getBookTitleApi,
   getChapterbyIdApi,
   getChaptersApi,
   getQuestionbyIdApi,
   getQuestionsApi,
+  getTemplatesApi,
+  narrativeFusionApi,
+  saveAnswerApi,
   updateChapterApi,
+  updateQuestionApi,
 } from "../api/chatApi";
 
 interface State {
   chats: any[];
   chapters: any[];
   questions: any[];
+  templates: any[];
   chapter: any;
 }
 
@@ -23,6 +37,7 @@ const initialState: State = {
   chats: [],
   chapters: [],
   questions: [],
+  templates: [],
   chapter: {},
 };
 
@@ -50,6 +65,42 @@ export const createChapter = createAsyncThunk<UserData, any>(
   }
 );
 
+export const saveAnswer = createAsyncThunk<UserData, any>(
+  "chat/save-answer",
+  async (data: any) => {
+    try {
+      const response = await saveAnswerApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const narrativeFusion = createAsyncThunk<UserData, any>(
+  "chat/narrative-fusion",
+  async (data: any) => {
+    try {
+      const response = await narrativeFusionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const bookTitle = createAsyncThunk<UserData, any>(
+  "chat/book-title",
+  async (data: { title: string }) => {
+    try {
+      const response = await bookTitleApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 export const updateChapter = createAsyncThunk<UserData, any>(
   "chat/update-chapter",
   async (data: { title: string; id: string }) => {
@@ -62,11 +113,71 @@ export const updateChapter = createAsyncThunk<UserData, any>(
   }
 );
 
+export const deleteSelectedChapter = createAsyncThunk<UserData, any>(
+  "chat/delete-chapter",
+  async (data: { id: string }) => {
+    try {
+      const response = await deleteChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const deleteQuestion = createAsyncThunk<UserData, any>(
+  "chat/delete-question",
+  async (data: { id: string }) => {
+    try {
+      const response = await deleteQuestionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 export const getChapters = createAsyncThunk<any[], void>(
   "chat/get-chapter",
   async () => {
     try {
       const response = await getChaptersApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getBookTitle = createAsyncThunk<any[], void>(
+  "chat/get-bookTitle",
+  async () => {
+    try {
+      const response = await getBookTitleApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getTemplates = createAsyncThunk<any[], void>(
+  "chat/get-templates",
+  async () => {
+    try {
+      const response = await getTemplatesApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const cloneTemplate = createAsyncThunk<UserData, { id: string }>(
+  "chat/get-template",
+  async (data: { id: string }) => {
+    try {
+      const response = await cloneTemplateApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -91,6 +202,29 @@ export const createQuestion = createAsyncThunk<UserData, any>(
   async (data: { text: string; chapter: string }) => {
     try {
       const response = await createQuestionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateQuestion = createAsyncThunk<UserData, any>(
+  "chat/update-question",
+  async (data: {
+    text: string;
+    id: string;
+    chapter: string;
+    status?: string; // Make the status parameter optional
+  }) => {
+    try {
+      // Provide a default value if status is not provided
+      const statusValue = data.status || "Progress";
+
+      const response = await updateQuestionApi({
+        ...data,
+        status: statusValue,
+      });
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -134,6 +268,9 @@ export const chatSlice = createSlice({
     builder.addCase(getChapterbyId.fulfilled, (state, action) => {
       state.chapter = action.payload;
     });
+    builder.addCase(getTemplates.fulfilled, (state, action) => {
+      state.templates = action.payload;
+    });
   },
 });
 
@@ -142,5 +279,11 @@ export const {} = chatSlice.actions;
 export const selectChat = (state: { chat: any }) => state.chat.chats;
 export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
 export const selectChapter = (state: { chat: any }) => state.chat.chapter;
+export const selectTemplates = (state: { chat: any }) => state.chat.templates;
+export const selectTemplateById = (templateId: string) =>
+  createSelector(selectTemplates, (templates) => {
+    // Find the template in the array based on the provided id
+    return templates.find((template) => template.id === templateId);
+  });
 
 export default chatSlice.reducer;
