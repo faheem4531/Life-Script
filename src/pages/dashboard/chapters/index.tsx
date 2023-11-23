@@ -35,6 +35,7 @@ const Dashboard = () => {
 
   const submitChapter = (chapter: string) => {
     dispatch(createChapter({ title: chapter }))
+      .unwrap()
       .then(() => {
         toast.success("Chapter added successfully");
         dispatch(getChapters());

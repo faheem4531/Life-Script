@@ -18,7 +18,7 @@ export default function Answers() {
             pr: "50px",
           }}
         >
-          <RichText chapterName={chapterName} />
+          <RichText questionText={chapterName} />
         </Box>
       </Layout>
     </>

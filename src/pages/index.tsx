@@ -15,6 +15,10 @@ export default function Home() {
       <StoreProvider store={store}>
         <Head>
           <title>LifeScript</title>
+          <meta
+            name="facebook-domain-verification"
+            content="4juom1wbc7mn3on53shgvpk9p7oyua"
+          />
         </Head>
         <AuthPage />
       </StoreProvider>

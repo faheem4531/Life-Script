@@ -16,8 +16,9 @@ const Editor = dynamic(
   { ssr: false }
 );
 
-const RichText = ({ chapterName }) => {
+const RichText = ({ questionText }) => {
   const dispatch: any = useDispatch();
+  console.log("questionText333", questionText);
   // const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [gptResponse, setGptResponse] = useState(null);
   const [openModal, setOpenModal] = useState(false);
@@ -52,6 +53,7 @@ const RichText = ({ chapterName }) => {
       gptChat({
         prompt: draftToHtml(convertToRaw(editorState.getCurrentContent())),
         responseTone: toneValue,
+        question: questionText,
       })
     ).then((res) => {
       setGptResponse(res.payload);
@@ -77,7 +79,7 @@ const RichText = ({ chapterName }) => {
             }}
           >
             <Typography sx={{ fontSize: "38px", fontWeight: "500" }}>
-              {chapterName}
+              {questionText}
             </Typography>
           </Box>
         </Grid>
@@ -151,9 +153,9 @@ const RichText = ({ chapterName }) => {
               "textAlign",
               "link",
               "embedded",
+              "colorPicker",
               "emoji",
               "image",
-              "colorPicker",
               "history",
             ],
             inline: {

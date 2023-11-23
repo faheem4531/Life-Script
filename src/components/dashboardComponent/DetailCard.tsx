@@ -48,7 +48,7 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
       className="container-fontfamily"
       sx={{
         borderRadius: "6.5px",
-        height: "280px",
+        height: "270px",
       }}
     >
       <div
@@ -118,15 +118,16 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               marginBottom: "10px",
             }}
           />
-          <Box sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "space-between"
-          }}
-            className={styles.cardContent}>
-
-            <Box sx={{ width: "100%", height: "200px" }}>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "space-between",
+            }}
+            className={styles.cardContent}
+          >
+            <Box sx={{ width: "100%" }}>
               {questions?.length > 0 ? (
                 questions?.slice(0, 4).map((question: any) => (
                   <Typography
@@ -147,8 +148,9 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
                 <Box
                   sx={{
                     display: "flex",
-                    justifyContent: "center", height: "100%",
-                    alignItems: "center"
+                    justifyContent: "center",
+                    height: "100%",
+                    alignItems: "center",
                   }}
                 >
                   <Image alt="no Data" src={noData} height={100} />
@@ -171,14 +173,15 @@ export default function DetailCard({ chapter, deleteFunc }: DetailCardProps) {
               <CircularWithValueLabel />
             </Box>
           </Box>
-
         </CardContent>
       </Box>
     </Card>
   );
 }
 
-{/* // Progress Bar code */ }
+{
+  /* // Progress Bar code */
+}
 function CircularProgressWithLabel(props) {
   return (
     <Box sx={{ position: "relative", display: "inline-flex", width: "30px" }}>
@@ -195,7 +198,12 @@ function CircularProgressWithLabel(props) {
           justifyContent: "center",
         }}
       >
-        <Typography variant="caption" component="div" color="#197065" sx={{ fontSize: "10px" }}>
+        <Typography
+          variant="caption"
+          component="div"
+          color="#197065"
+          sx={{ fontSize: "10px" }}
+        >
           {`${Math.round(props.value)}%`}
         </Typography>
       </Box>
