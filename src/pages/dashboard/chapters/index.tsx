@@ -165,7 +165,7 @@ const Dashboard = () => {
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteChapter}
-        heading="Delete Chapter"
+        heading="Delete"
         description="Are you sure you want to delete this chapter"
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}

@@ -34,7 +34,7 @@ export default function TransitionsDialog({
       onClose={cancel}
       aria-describedby="alert-dialog-slide-description"
     >
-      <Box sx={{ textAlign: "center", padding: "40px 0 0" }}>
+      <Box sx={{ textAlign: "center", padding: "40px 50px 15px" }}>
         <Image alt="image" src={ModalImage} />
         <Typography
           sx={{
@@ -49,7 +49,7 @@ export default function TransitionsDialog({
         <Typography
           sx={{
             fontSize: "30px",
-            color: "#070707"
+            color: "#070707",
           }}
         >
           {description}

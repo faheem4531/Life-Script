@@ -116,7 +116,7 @@ export default function Questions({
         {title != "templateView" && (
           <Box sx={{ textAlign: "center" }}>
             <Button
-              variant="contained"
+              // variant="contained"
               onClick={() => answerClick(question?._id)}
               disabled={question?.status === "Completed"}
               type="submit"
@@ -132,65 +132,77 @@ export default function Questions({
                 },
               }}
             >
-              <Image
-                alt="icon"
-                src={question?.status === "Completed" ? Completed : Edit}
-              />{" "}
-              {question?.status === "Completed" ? "Completed" : "Edit"}
+              {question.status === "Completed" && <Box sx={{ flexDirection: "column", rowGap: "5px" }}>
+                <Image
+                  alt="icon"
+                  src={Completed}
+                />
+                {"Completed"}
+              </Box>}
+              {question.status !== "Completed" && <Box sx={{ display: "flex", alignItems: "center", columnGap: "5px" }}>
+                <Image
+                  alt="icon"
+                  src={Edit}
+                />{" "}
+                {"Edit"}
+              </Box>}
             </Button>
           </Box>
-        )}
-      </Box>
+        )
+        }
+      </Box >
 
       {/* More option :start */}
-      {title != "templateView" && (
-        <Box
-          sx={{
-            position: "absolute",
-            right: { sm: "-30", xs: "-25px" },
-            top: { sm: "18px", xs: "10px" },
-          }}
-        >
-          <IconButton
-            aria-label="more"
-            id="long-button"
-            aria-controls={open ? "long-menu" : undefined}
-            aria-expanded={open ? "true" : undefined}
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            <Image alt="options" src={Option} />
-          </IconButton>
-          <Menu
-            id="long-menu"
-            MenuListProps={{
-              "aria-labelledby": "long-button",
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: "10ch",
-              },
+      {
+        title != "templateView" && (
+          <Box
+            sx={{
+              position: "absolute",
+              right: { sm: "-30", xs: "-25px" },
+              top: { sm: "18px", xs: "10px" },
             }}
           >
-            {options.map((option) => (
-              <MenuItem
-                key={option}
-                selected={option === "Pyxis"}
-                onClick={() => {
-                  setQuestionId(question?._id);
-                  handleClickOption(option);
-                }}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
-      )}
+            <IconButton
+              aria-label="more"
+              id="long-button"
+              aria-controls={open ? "long-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <Image alt="options" src={Option} />
+            </IconButton>
+            <Menu
+              id="long-menu"
+              MenuListProps={{
+                "aria-labelledby": "long-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "10ch",
+                },
+              }}
+            >
+              {options.map((option) => (
+                <MenuItem
+                  key={option}
+                  selected={option === "Pyxis"}
+                  onClick={() => {
+                    setQuestionId(question?._id);
+                    handleClickOption(option);
+                  }}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        )
+      }
 
       <CustomizationDialog
         open={updateQuestionModal}
@@ -215,6 +227,6 @@ export default function Questions({
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
       />
-    </Box>
+    </Box >
   );
 }
