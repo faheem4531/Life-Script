@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout/Layout";
+import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
 import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
@@ -19,7 +20,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapter from "./addChapter";
-import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
 
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
@@ -122,7 +122,7 @@ const Dashboard = () => {
               marginTop: "48px",
             }}
           >
-            <StartNewChapter />
+            <StartNewChapter addChapterClick={() => setChapterModal(true)} />
             {allChapters.map((chapter, index) => (
               <DetailCard
                 key={index}
