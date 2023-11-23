@@ -125,12 +125,13 @@ export default function DetailCard({
             fontWeight="600"
             fontSize="19px"
             textAlign="center"
+            height="25px"
           >
             {chapter?.title}
           </Typography>
           <Divider
             sx={{
-              width: "245px",
+              width: "230px",
               backgroundColor: "#000",
               height: "2px",
               margin: "5px auto 0",

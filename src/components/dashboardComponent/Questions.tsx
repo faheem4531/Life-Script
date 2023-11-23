@@ -1,4 +1,6 @@
 import Option from "@/_assets/png/X-menu.png";
+import Completed from "@/_assets/svg/completed-icon.svg";
+import Edit from "@/_assets/svg/edit-icon.svg";
 import AddQuestion from "@/pages/events/addQuestion";
 import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
 import { Box, Button, Typography } from "@mui/material";
@@ -23,6 +25,7 @@ interface QuestionsProps {
   questionChanged?: () => void;
   title?: string;
 }
+
 export default function Questions({
   question,
   number,
@@ -114,11 +117,10 @@ export default function Questions({
           <Box sx={{ textAlign: "center" }}>
             <Button
               variant="contained"
-              onClick={() => answerClick(question?._id)}
+              onClick={() => answerClick(question?.text)}
               disabled={question?.status === "Completed"}
               type="submit"
               sx={{
-                cursor: "pointer",
                 borderRadius: " 0px 8px 8px 0px",
                 backgroundColor: "#186F65",
                 p: "0px 50px",
@@ -130,6 +132,10 @@ export default function Questions({
                 },
               }}
             >
+              <Image
+                alt="icon"
+                src={question?.status === "Completed" ? Completed : Edit}
+              />{" "}
               {question?.status === "Completed" ? "Completed" : "Edit"}
             </Button>
           </Box>
@@ -185,6 +191,7 @@ export default function Questions({
           </Menu>
         </Box>
       )}
+
       <CustomizationDialog
         open={updateQuestionModal}
         title="Update question"
@@ -203,8 +210,8 @@ export default function Questions({
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteQuestionModal}
-        heading="Delete Question"
-        description="Are you sure you want to delete this Question"
+        heading="Delete"
+        description="Are you sure you want to delete this question"
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
       />
