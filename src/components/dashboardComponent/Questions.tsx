@@ -117,7 +117,7 @@ export default function Questions({
           <Box sx={{ textAlign: "center" }}>
             <Button
               variant="contained"
-              onClick={() => answerClick(question?.text)}
+              onClick={() => answerClick(question?._id)}
               disabled={question?.status === "Completed"}
               type="submit"
               sx={{
