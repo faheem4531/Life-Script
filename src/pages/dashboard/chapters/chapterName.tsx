@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
@@ -11,7 +12,7 @@ import {
   narrativeFusion,
   selectChapter,
 } from "@/store/slices/chatSlice";
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -20,6 +21,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
+import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
+
+
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -77,10 +81,11 @@ const chapterName = () => {
     <>
       <Layout>
         <AddChapterName title="chapterName" chapter={chapterName} chapterId={chapterId} />
+        <LinearWithValueLabel />
         <Box
           sx={{
             backgroundColor: "#fff",
-            padding: { sm: "55px 46px 16px 37px", xs: "30px 20px 100px" },
+            padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
             marginTop: "26px",
             minHeight: "60vh",
             borderRadius: { sm: "18px", xs: "5px" },
@@ -183,6 +188,7 @@ const chapterName = () => {
         </Box>
       </Layout>
 
+      {/* Modal  */}
       <CustomizationDialog
         open={openModal}
         title="Add new question"
@@ -203,3 +209,43 @@ const chapterName = () => {
 };
 
 export default chapterName;
+
+
+
+
+{/* Linear Progess Bar */ }
+
+function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
+  return (
+    <Box sx={{ display: 'flex', padding: "6px 5px", alignItems: 'center', position: "relative", border: "2px solid #187167", height: "35px", bgcolor: "#F9F9F9", borderRadius: "30px" }}>
+      <Stack sx={{ width: '100%', color: '#197065' }} spacing={2}>
+        <LinearProgress sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
+          variant="determinate" color="inherit"  {...props} />
+      </Stack>
+      <Box sx={{ minWidth: 35, position: "absolute", right: "20px" }}>
+        <Typography variant="body2" color="#197065" fontWeight="500">{`${Math.round(
+          props.value,
+        )}%`}</Typography>
+      </Box>
+    </Box>
+  );
+}
+
+export function LinearWithValueLabel() {
+  // const [progress, setProgress] = React.useState(10);
+
+  // React.useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
+  //   }, 800);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
+
+  return (
+    <Box sx={{ width: '100%', marginTop: "26px" }}>
+      <LinearProgressWithLabel value={75} />
+    </Box>
+  );
+}
