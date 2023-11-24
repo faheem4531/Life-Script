@@ -34,21 +34,26 @@ export default function TransitionsDialog({
       onClose={cancel}
       aria-describedby="alert-dialog-slide-description"
     >
-      <Box sx={{ textAlign: "center", padding: "40px 50px 15px" }}>
-        <Image alt="image" src={ModalImage} />
+      <Box sx={{ textAlign: "center", 
+      padding: "50px 20px 15px"
+     }}>
+        <Image alt="image" src={ModalImage} 
+         width={91}
+         height={60}
+         />
         <Typography
           sx={{
-            fontSize: "40px",
+            fontSize: "30px",
             fontWeight: 700,
             color: "#070707",
-            margin: "40px 0"
+            // margin: "40px 0"
           }}
         >
           {heading}
         </Typography>
         <Typography
           sx={{
-            fontSize: "30px",
+            fontSize: "20px",
             color: "#070707",
           }}
         >

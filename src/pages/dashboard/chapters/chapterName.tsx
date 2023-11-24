@@ -1,8 +1,8 @@
-import * as React from 'react';
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 // import ProgressBar from "@/components/dashboardComponent/ProgressBar";
+import ModalImage from "@/_assets/png/view-template-modal.png";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
@@ -21,9 +21,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
-import LinearProgressBar from '@/components/dashboardComponent/LinearProgressBar';
-import FloatButton from '@/components/button/FloatButton';
-
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -80,7 +77,11 @@ const chapterName = () => {
   return (
     <>
       <Layout>
-        <AddChapterName title="chapterName" chapter={chapterName} chapterId={chapterId} />
+        <AddChapterName
+          title="chapterName"
+          chapter={chapterName}
+          chapterId={chapterId}
+        />
         <LinearProgressBar />
         <Box
           sx={{
@@ -189,23 +190,32 @@ const chapterName = () => {
         <FloatButton />
       </Layout>
 
-
-
       {/* Modal  */}
       <CustomizationDialog
         open={openModal}
-        title="Add new question"
+        title=""
         handleClose={() => {
           setOpenModal(false);
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        customStyles={{
+          backgroundColor: "auto",
+          textAlign: "center",
+          color: "#070707",
+          fontSize: "30px",
+        }}
       >
-        <AddQuestion
-          questionData={(question: string) => {
-            setOpenModal(false);
-            submitQuestion(question);
-          }}
-        />
+        <Box>
+          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        </Box>
+        <Typography sx={{ fontSize: "30px" }}>Add New Question</Typography>
+        <Box sx={{}}>
+          <AddQuestion
+            questionData={(question: string) => {
+              setOpenModal(false);
+              submitQuestion(question);
+            }}
+          />
+        </Box>
       </CustomizationDialog>
     </>
   );
