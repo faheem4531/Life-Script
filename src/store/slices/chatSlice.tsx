@@ -23,6 +23,7 @@ import {
   saveAnswerApi,
   updateChapterApi,
   updateQuestionApi,
+  uploadImageApi,
 } from "../api/chatApi";
 
 interface State {
@@ -58,6 +59,18 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const uploadImage = createAsyncThunk<UserData, any>(
+  "chat/upload-image",
+  async (data) => {
+    try {
+      const response = await uploadImageApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

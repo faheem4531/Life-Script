@@ -1,5 +1,5 @@
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
-import { gptChat } from "@/store/slices/chatSlice";
+import { gptChat, uploadImage } from "@/store/slices/chatSlice";
 import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
 import {
   //ContentState,
@@ -26,7 +26,6 @@ import { toast } from "react-toastify";
 import RichTextViewer from "./response";
 
 import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
-// const WProofreaderSDK = require("@webspellchecker/wproofreader-sdk-js");
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -92,18 +91,15 @@ const RichText = ({ questionId }) => {
   }, [questionId]);
 
   useEffect(() => {
-    // Configure WProofreaderSDK
+    // Configuration
     WProofreaderSDK.configure({
       autoSearch: true,
-      lang: "en_US",
-      serviceId: "Ab3LN4j1whCuJFw", // Replace with your actual serviceId
-      // Additional options here, if needed
+      lang: "auto",
+      serviceId: "Ab3LN4j1whCuJFw",
     });
-
-    // Example: Initialize WProofreaderSDK on a specific container
+    //initialization
     WProofreaderSDK.init({
       container: document.getElementById("rich-text-editor"),
-      // Additional options here, if needed
     });
   }, []);
 
@@ -148,6 +144,25 @@ const RichText = ({ questionId }) => {
         );
       })
       .catch(() => toast.error("Failed to mark as complete"));
+  };
+
+  // const imageUrl =
+  //   "https://www.seiu1000.org/sites/main/files/imagecache/hero/main-images/camera_lense_0.jpeg";
+
+  const uploadCallback = (file, callback) => {
+    return new Promise((resolve, reject) => {
+      const reader = new window.FileReader();
+      console.log(reader);
+      reader.onloadend = async () => {
+        const form_data = new FormData();
+        form_data.append("image", file);
+        const res = await dispatch(uploadImage(form_data));
+        console.log("222", res.payload);
+
+        resolve({ data: { link: res.payload } });
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   return (
@@ -309,28 +324,12 @@ const RichText = ({ questionId }) => {
               },
             },
             image: {
-              urlEnabled: true,
+              // urlEnabled: true,
               uploadEnabled: true,
               alignmentEnabled: true,
               previewImage: true,
               inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
-              uploadCallback: (file) => {
-                return new Promise((resolve, reject) => {
-                  const reader = new FileReader();
-                  reader.readAsDataURL(file);
-                  reader.onload = () => {
-                    const dataURL = reader.result;
-                    const truncatedDataURL = dataURL; // set the maximum length of the truncated string
-                    resolve({
-                      data: { link: dataURL },
-                      link: { url: truncatedDataURL },
-                    });
-                  };
-                  reader.onerror = (error) => {
-                    reject(error);
-                  };
-                });
-              },
+              uploadCallback: uploadCallback,
               alt: { present: false, mandatory: false },
               defaultSize: {
                 height: "auto",
