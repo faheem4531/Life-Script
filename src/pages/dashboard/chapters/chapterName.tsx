@@ -20,6 +20,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
+import Logo from "../../../../public/logo.svg";
+import ModalImage from "@/_assets/png/view-template-modal.png";
+
+
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -184,20 +188,34 @@ const chapterName = () => {
       </Layout>
 
       <CustomizationDialog
-        open={openModal}
-        title="Add new question"
-        handleClose={() => {
-          setOpenModal(false);
-        }}
-        customStyles={{ backgroundColor: "auto" }}
-      >
-        <AddQuestion
-          questionData={(question: string) => {
-            setOpenModal(false);
-            submitQuestion(question);
-          }}
-        />
-      </CustomizationDialog>
+  open={openModal}
+  title=""
+  handleClose={() => {
+    setOpenModal(false);
+  }}
+  customStyles={{ backgroundColor: "auto" , textAlign:'center', color:'#070707', fontSize:'30px',}}
+>
+  <Box>
+    <Image
+    src={ModalImage}
+    width={91}
+    height={60}
+    alt="logo"
+    />
+  </Box>
+  <Typography sx={{fontSize:'30px'}}>
+    Add New Question
+  </Typography>
+  <Box sx={{}}>
+  <AddQuestion 
+    questionData={(question: string) => {
+      setOpenModal(false);
+      submitQuestion(question);
+    }}
+  />
+  </Box>
+</CustomizationDialog>
+
     </>
   );
 };

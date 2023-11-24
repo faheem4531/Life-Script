@@ -5,6 +5,7 @@ import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
+import ModalImage from "@/_assets/png/view-template-modal.png";
 import {
   createChapter,
   deleteSelectedChapter,
@@ -13,14 +14,14 @@ import {
   updateChapter,
 } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapter from "./addChapter";
-
+import Image from "next/image";
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [updateChapterModal, setUpdateChapterModal] = useState(false);
@@ -147,13 +148,19 @@ const Dashboard = () => {
 
       <CustomizationDialog
         open={chapterModal || updateChapterModal}
-        title={updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
+        title={""}
         handleClose={() => {
           setChapterModal(false);
           setUpdateChapterModal(false);
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
+        <Box>
+          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        </Box>
+        <Typography sx={{ fontSize: "30px" }}>
+          {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
+        </Typography>
         <AddChapter
           chapterData={(chapter: string) => {
             setChapterModal(false);
