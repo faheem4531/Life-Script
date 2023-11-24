@@ -3,6 +3,8 @@ import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 // import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import ModalImage from "@/_assets/png/view-template-modal.png";
+import FloatButton from "@/components/button/FloatButton";
+import LinearProgressBar from "@/components/dashboardComponent/LinearProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
