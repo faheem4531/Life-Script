@@ -119,7 +119,7 @@ const chapterName = () => {
               onClick={() => setOpenModal(true)}
               sx={{ gap: { sm: 2, xs: 1 } }}
             >
-              <Box>
+              <Box sx={{cursor:'pointer'}}>
                 <Image src={addIcon} alt="addicon" />
               </Box>
               <Box>
@@ -130,6 +130,7 @@ const chapterName = () => {
                     fontSize: "18px",
                     fontWeight: 600,
                     display: { sm: "block", xs: "none" },
+                    cursor: "pointer"
                   }}
                 >
                   Add new question
@@ -169,9 +170,10 @@ const chapterName = () => {
               )}
 
               {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
-                <Box
+                <Box 
                   onClick={handleNarrativeFusion}
                   sx={{
+                    
                     cursor: "pointer",
                     marginTop: 5,
                     display: "flex",

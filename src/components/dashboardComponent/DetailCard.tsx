@@ -179,6 +179,7 @@ export default function DetailCard({
                     columnGap="0px"
                     color="rgba(22, 22, 22, 0.90)"
                     fontSize="13px"
+                    // sx={{marginTop:'5px'}}
                   >
                     <Image alt="check" src={Tick} />
                     {question.text.length > 45

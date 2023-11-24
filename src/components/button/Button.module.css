@@ -1,6 +1,6 @@
 .floatButton {
   position: fixed;
-  bottom: 110px;
+  bottom: 30px;
   left: 55%;
   transform: translateX(-55%);
   z-index: 1000;
