@@ -1,6 +1,5 @@
 "use client";
-import CustomizationDialog from "@/components/modal/CustomizationDialog";
-import { gptChat, uploadImage } from "@/store/slices/chatSlice";
+import { uploadImage } from "@/store/slices/chatSlice";
 import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
 import {
   //ContentState,
@@ -24,10 +23,8 @@ import { useEffect, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import RichTextViewer from "./response";
 
-import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
-// const { WProofreaderSDK } = require("@webspellchecker/wproofreader-sdk-js");
+// import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -93,31 +90,20 @@ const RichText = ({ questionId }) => {
   }, [questionId]);
 
   useEffect(() => {
-    // Configuration
-    WProofreaderSDK.configure({
-      autoSearch: true,
-      lang: "auto",
-      serviceId: "Ab3LN4j1whCuJFw",
-    });
-
-    // Initialization
-    WProofreaderSDK.init({
-      container: document.getElementById("draftjs-rich-text-editor"),
-    });
+    if (typeof window !== "undefined") {
+      import("@webspellchecker/wproofreader-sdk-js").then(
+        ({ default: WProofreaderSDK }) => {
+          // Assuming the library has a different initialization method
+          WProofreaderSDK.init({
+            container: document.getElementById("draftjs-rich-text-editor"),
+            autoSearch: true,
+            lang: "auto",
+            serviceId: "Ab3LN4j1whCuJFw",
+          });
+        }
+      );
+    }
   }, []);
-
-  const callchatgpt = () => {
-    dispatch(
-      gptChat({
-        prompt: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-        responseTone: toneValue,
-        question: questionId,
-      })
-    ).then((res) => {
-      setGptResponse(res.payload);
-      setOpenModal(true);
-    });
-  };
 
   const saveUserAnswer = () => {
     dispatch(
@@ -344,21 +330,6 @@ const RichText = ({ questionId }) => {
           }}
         />
       </Box>
-
-      <CustomizationDialog
-        open={openModal}
-        title="GPT Response"
-        handleClose={() => {
-          setOpenModal(false);
-        }}
-        customStyles={{
-          backgroundColor: "auto",
-          padding: "5px",
-          maxWidth: "40vw",
-        }}
-      >
-        <RichTextViewer htmlContent={gptResponse} />
-      </CustomizationDialog>
     </Box>
   );
 };
