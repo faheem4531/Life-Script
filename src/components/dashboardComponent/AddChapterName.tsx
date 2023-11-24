@@ -43,7 +43,7 @@ const AddChapterName = ({
         backgroundColor: "#197065",
         color: "#fff",
         borderRadius: { sm: "24px", xs: "5px" },
-        padding: { sm: "10px 30px", xs: "10px 15px" },
+        padding: { sm: "27px 40px", xs: "10px 15px" },
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -56,10 +56,7 @@ const AddChapterName = ({
       )}
       {title != "templateView" && (
         <Box>
-          <Typography sx={{ fontSize: { sm: "24px", xs: "20px" } }}>
-            Update
-          </Typography>
-          <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
+          <Typography sx={{ fontSize: { sm: "44px", xs: "25px" }, fontWeight: 600 }}>
             Chapter Name
           </Typography>
           <Box>

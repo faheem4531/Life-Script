@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
@@ -20,6 +21,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
+import LinearProgressBar from '@/components/dashboardComponent/LinearProgressBar';
+import FloatButton from '@/components/button/FloatButton';
+
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -77,10 +81,11 @@ const chapterName = () => {
     <>
       <Layout>
         <AddChapterName title="chapterName" chapter={chapterName} chapterId={chapterId} />
+        <LinearProgressBar />
         <Box
           sx={{
             backgroundColor: "#fff",
-            padding: { sm: "55px 46px 16px 37px", xs: "30px 20px 100px" },
+            padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
             marginTop: "26px",
             minHeight: "60vh",
             borderRadius: { sm: "18px", xs: "5px" },
@@ -181,8 +186,12 @@ const chapterName = () => {
             </>
           )}
         </Box>
+        <FloatButton />
       </Layout>
 
+
+
+      {/* Modal  */}
       <CustomizationDialog
         open={openModal}
         title="Add new question"
