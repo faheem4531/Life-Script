@@ -29,6 +29,35 @@ export async function narrativeFusionApi(data: any) {
   }
 }
 
+// /users/ceilmop - answers;
+export async function chapterResponseApi(data: { chapterId: string }) {
+  try {
+    const res = await api.post("/users/compile-answers", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function uploadImageApi(data) {
+  try {
+    const res = await api.post("/users/upload-image", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function saveAnswerApi(data: any) {
   try {
     const res = await api.post("/users/save-answer", data);

@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/Layout/Layout";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";

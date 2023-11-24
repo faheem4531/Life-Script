@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
