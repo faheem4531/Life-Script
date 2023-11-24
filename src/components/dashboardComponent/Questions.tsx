@@ -14,6 +14,8 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
+import ModalImage from "@/_assets/png/view-template-modal.png";
+
 
 const options = ["Delete", "Edit"];
 const ITEM_HEIGHT = 48;
@@ -206,12 +208,16 @@ export default function Questions({
 
       <CustomizationDialog
         open={updateQuestionModal}
-        title="Update question"
+        title=""
         handleClose={() => {
           setUpdateQuestionModal(false);
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        customStyles={{ backgroundColor: "auto" ,textAlign:'center'}}
       >
+        <Box>
+          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        </Box>
+        <Typography sx={{ fontSize: "30px" }}>Update Question</Typography>
         <AddQuestion
           questionData={(question: string) => {
             handleUpdateQuestion(question);
