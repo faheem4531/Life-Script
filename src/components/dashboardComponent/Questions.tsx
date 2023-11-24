@@ -1,4 +1,6 @@
+"use client";
 import Option from "@/_assets/png/X-menu.png";
+import ModalImage from "@/_assets/png/view-template-modal.png";
 import Completed from "@/_assets/svg/completed-icon.svg";
 import Edit from "@/_assets/svg/edit-icon.svg";
 import AddQuestion from "@/pages/events/addQuestion";
@@ -14,8 +16,6 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
-import ModalImage from "@/_assets/png/view-template-modal.png";
-
 
 const options = ["Delete", "Edit"];
 const ITEM_HEIGHT = 48;
@@ -134,77 +134,77 @@ export default function Questions({
                 },
               }}
             >
-              {question.status === "Completed" && <Box sx={{ flexDirection: "column", rowGap: "5px" }}>
-                <Image
-                  alt="icon"
-                  src={Completed}
-                />
-                {"Completed"}
-              </Box>}
-              {question.status !== "Completed" && <Box sx={{ display: "flex", alignItems: "center", columnGap: "5px" }}>
-                <Image
-                  alt="icon"
-                  src={Edit}
-                />{" "}
-                {"Edit"}
-              </Box>}
-            </Button>
-          </Box>
-        )
-        }
-      </Box >
-
-      {/* More option :start */}
-      {
-        title != "templateView" && (
-          <Box
-            sx={{
-              position: "absolute",
-              right: { sm: "-30", xs: "-25px" },
-              top: { sm: "18px", xs: "10px" },
-            }}
-          >
-            <IconButton
-              aria-label="more"
-              id="long-button"
-              aria-controls={open ? "long-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              <Image alt="options" src={Option} />
-            </IconButton>
-            <Menu
-              id="long-menu"
-              MenuListProps={{
-                "aria-labelledby": "long-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              PaperProps={{
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: "10ch",
-                },
-              }}
-            >
-              {options.map((option) => (
-                <MenuItem
-                  key={option}
-                  selected={option === "Pyxis"}
-                  onClick={() => {
-                    setQuestionId(question?._id);
-                    handleClickOption(option);
+              {question.status === "Completed" && (
+                <Box sx={{ flexDirection: "column", rowGap: "5px" }}>
+                  <Image alt="icon" src={Completed} />
+                  {"Completed"}
+                </Box>
+              )}
+              {question.status !== "Completed" && (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: "5px",
                   }}
                 >
-                  {option}
-                </MenuItem>
-              ))}
-            </Menu>
+                  <Image alt="icon" src={Edit} /> {"Edit"}
+                </Box>
+              )}
+            </Button>
           </Box>
-        )
-      }
+        )}
+      </Box>
+
+      {/* More option :start */}
+      {title != "templateView" && (
+        <Box
+          sx={{
+            position: "absolute",
+            right: { sm: "-30", xs: "-25px" },
+            top: { sm: "18px", xs: "10px" },
+          }}
+        >
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={open ? "long-menu" : undefined}
+            aria-expanded={open ? "true" : undefined}
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <Image alt="options" src={Option} />
+          </IconButton>
+          <Menu
+            id="long-menu"
+            MenuListProps={{
+              "aria-labelledby": "long-button",
+            }}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+              style: {
+                maxHeight: ITEM_HEIGHT * 4.5,
+                width: "10ch",
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem
+                key={option}
+                selected={option === "Pyxis"}
+                onClick={() => {
+                  setQuestionId(question?._id);
+                  handleClickOption(option);
+                }}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </Menu>
+        </Box>
+      )}
 
       <CustomizationDialog
         open={updateQuestionModal}
@@ -212,7 +212,7 @@ export default function Questions({
         handleClose={() => {
           setUpdateQuestionModal(false);
         }}
-        customStyles={{ backgroundColor: "auto" ,textAlign:'center'}}
+        customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
         <Box>
           <Image src={ModalImage} width={91} height={60} alt="logo" />
@@ -233,6 +233,6 @@ export default function Questions({
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
       />
-    </Box >
+    </Box>
   );
 }

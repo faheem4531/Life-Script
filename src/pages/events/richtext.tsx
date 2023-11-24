@@ -1,3 +1,4 @@
+"use client";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { gptChat, uploadImage } from "@/store/slices/chatSlice";
 import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
@@ -26,6 +27,7 @@ import { toast } from "react-toastify";
 import RichTextViewer from "./response";
 
 import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
+// const { WProofreaderSDK } = require("@webspellchecker/wproofreader-sdk-js");
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -97,9 +99,10 @@ const RichText = ({ questionId }) => {
       lang: "auto",
       serviceId: "Ab3LN4j1whCuJFw",
     });
-    //initialization
+
+    // Initialization
     WProofreaderSDK.init({
-      container: document.getElementById("rich-text-editor"),
+      container: document.getElementById("draftjs-rich-text-editor"),
     });
   }, []);
 
@@ -146,18 +149,13 @@ const RichText = ({ questionId }) => {
       .catch(() => toast.error("Failed to mark as complete"));
   };
 
-  // const imageUrl =
-  //   "https://www.seiu1000.org/sites/main/files/imagecache/hero/main-images/camera_lense_0.jpeg";
-
   const uploadCallback = (file, callback) => {
     return new Promise((resolve, reject) => {
       const reader = new window.FileReader();
-      console.log(reader);
       reader.onloadend = async () => {
         const form_data = new FormData();
         form_data.append("image", file);
         const res = await dispatch(uploadImage(form_data));
-        console.log("222", res.payload);
 
         resolve({ data: { link: res.payload } });
       };
@@ -238,7 +236,7 @@ const RichText = ({ questionId }) => {
         </Box>
       </Box>
 
-      <Box id="rich-text-editor" sx={{ marginTop: "50px" }}>
+      <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}

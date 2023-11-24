@@ -7,6 +7,7 @@ import {
 } from "@reduxjs/toolkit";
 import {
   bookTitleApi,
+  chapterResponseApi,
   chatApi,
   cloneTemplateApi,
   createChapterApi,
@@ -71,6 +72,18 @@ export const uploadImage = createAsyncThunk<UserData, any>(
   async (data) => {
     try {
       const response = await uploadImageApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const chapterResponse = createAsyncThunk<UserData, any>(
+  "chat/chapter-response",
+  async (data: { chapterId: string }) => {
+    try {
+      const response = await chapterResponseApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

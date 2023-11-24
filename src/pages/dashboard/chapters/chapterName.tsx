@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
@@ -8,7 +9,9 @@ import LinearProgressBar from "@/components/dashboardComponent/LinearProgressBar
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import AddQuestion from "@/pages/events/addQuestion";
+import RichTextViewer from "@/pages/events/response";
 import {
+  chapterResponse,
   createQuestion,
   getChapterbyId,
   narrativeFusion,
@@ -21,15 +24,17 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import fusionIcon from "../../../../public/Fusion.png";
 import addIcon from "../../../../public/addicon.svg";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [fusionModal, setFusionModal] = useState(false);
+  const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
+  const [fusionLoading, setFusionLoading] = useState(false);
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -72,8 +77,20 @@ const chapterName = () => {
   const handleNarrativeFusion = () => {
     dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
       .unwrap()
-      .then(() => toast.success("Narrative fusion completed"))
-      .catch(() => toast.error("Narrative fusion failed"));
+      .then(() => {
+        toast.success("Narrative fusion completed");
+        dispatch(chapterResponse({ chapterId: chapterId.toString() }))
+          .unwrap()
+          .then((res) => {
+            console.log("respon111", res);
+            setGptResponse(res.join(""));
+            setFusionModal(true);
+          });
+      })
+      .catch(() => {
+        setFusionLoading(false);
+        toast.error("Narrative fusion failed");
+      });
   };
 
   return (
@@ -168,7 +185,7 @@ const chapterName = () => {
                 <NoQuestions />
               )}
 
-              {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
+              {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
                 <Box
                   onClick={handleNarrativeFusion}
                   sx={{
@@ -185,14 +202,35 @@ const chapterName = () => {
                     height={70}
                   />
                 </Box>
-              )}
+              )} */}
             </>
           )}
         </Box>
-        <FloatButton />
+        <Box
+          onClick={() => {
+            if (areAllCompleted(allQuestions) === true && !fusionLoading) {
+              setFusionLoading(true);
+              handleNarrativeFusion();
+            }
+          }}
+        >
+          <FloatButton />
+        </Box>
       </Layout>
-
-      {/* Modal  */}
+      <CustomizationDialog
+        open={fusionModal}
+        title="GPT Response"
+        handleClose={() => {
+          setFusionModal(false);
+        }}
+        customStyles={{
+          backgroundColor: "auto",
+          padding: "5px",
+          maxWidth: "40vw",
+        }}
+      >
+        <RichTextViewer htmlContent={gptResponse} />
+      </CustomizationDialog>
       <CustomizationDialog
         open={openModal}
         title=""
