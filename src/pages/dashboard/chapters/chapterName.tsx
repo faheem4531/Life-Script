@@ -33,7 +33,7 @@ const chapterName = () => {
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const { chapterId } = router.query;
+  const { chapterId, percentage } = router.query;
 
   const submitQuestion = (question: string) => {
     dispatch(
@@ -84,12 +84,12 @@ const chapterName = () => {
           chapter={chapterName}
           chapterId={chapterId}
         />
-        <LinearProgressBar />
+        <LinearProgressBar percentage={percentage} />
         <Box
           sx={{
             backgroundColor: "#fff",
             padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
-            marginTop: "26px",
+            marginTop: "10px",
             minHeight: "60vh",
             borderRadius: { sm: "18px", xs: "5px" },
           }}

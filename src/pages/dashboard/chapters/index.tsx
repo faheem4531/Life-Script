@@ -73,8 +73,11 @@ const Dashboard = () => {
       });
   };
 
-  const handleCardClick = (data: { option: string; chapterData: any }) => {
-    console.log("chapterdataa", data?.chapterData);
+  const handleCardClick = (data: {
+    option: string;
+    chapterData: any;
+    percentValue: any;
+  }) => {
     if (data?.option === "Delete") {
       setDeleteChapter(true);
       setSelectedChapterId(data?.chapterData?._id);
@@ -84,7 +87,7 @@ const Dashboard = () => {
       setUpdateChapterModal(true);
     } else {
       router.push(
-        `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}`
+        `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}&percentage=${data.percentValue}`
       );
     }
   };

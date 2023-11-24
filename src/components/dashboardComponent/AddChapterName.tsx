@@ -19,7 +19,6 @@ const AddChapterName = ({
   chapterId: any;
   title?: string;
 }) => {
-  console.log("6666", chapter);
   const [chapterName, setChapterName] = useState("");
   const dispatch: any = useDispatch();
 
@@ -56,7 +55,9 @@ const AddChapterName = ({
       )}
       {title != "templateView" && (
         <Box>
-          <Typography sx={{ fontSize: { sm: "44px", xs: "25px" }, fontWeight: 600 }}>
+          <Typography
+            sx={{ fontSize: { sm: "44px", xs: "25px" }, fontWeight: 600 }}
+          >
             Chapter Name
           </Typography>
           <Box>

@@ -25,6 +25,9 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import RichTextViewer from "./response";
 
+import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
+// const WProofreaderSDK = require("@webspellchecker/wproofreader-sdk-js");
+
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
@@ -87,6 +90,22 @@ const RichText = ({ questionId }) => {
         .then((res) => setQuestionData(res));
     }
   }, [questionId]);
+
+  useEffect(() => {
+    // Configure WProofreaderSDK
+    WProofreaderSDK.configure({
+      autoSearch: true,
+      lang: "en_US",
+      serviceId: "Ab3LN4j1whCuJFw", // Replace with your actual serviceId
+      // Additional options here, if needed
+    });
+
+    // Example: Initialize WProofreaderSDK on a specific container
+    WProofreaderSDK.init({
+      container: document.getElementById("rich-text-editor"),
+      // Additional options here, if needed
+    });
+  }, []);
 
   const callchatgpt = () => {
     dispatch(
@@ -204,7 +223,7 @@ const RichText = ({ questionId }) => {
         </Box>
       </Box>
 
-      <Box sx={{ marginTop: "50px" }}>
+      <Box id="rich-text-editor" sx={{ marginTop: "50px" }}>
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}

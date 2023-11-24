@@ -23,7 +23,11 @@ const ITEM_HEIGHT = 48;
 
 interface DetailCardProps {
   chapter?: any;
-  deleteFunc?: (data: { option: string; chapterData: any }) => void; // Define the callback type here
+  deleteFunc?: (data: {
+    option: string;
+    chapterData: any;
+    percentValue: any;
+  }) => void; // Define the callback type here
   isChapter?: boolean;
 }
 export default function DetailCard({
@@ -31,14 +35,13 @@ export default function DetailCard({
   isChapter,
   deleteFunc,
 }: DetailCardProps) {
-  console.log("chapttt", chapter);
   const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const percentage = calculateCompletionPercentage(chapter?.questions);
   const handleClickOption = (opt) => {
-    deleteFunc({ option: opt, chapterData: chapter });
+    deleteFunc({ option: opt, chapterData: chapter, percentValue: percentage });
     setAnchorEl(null);
   };
   const handleClick = (event: any) => {
@@ -53,7 +56,6 @@ export default function DetailCard({
       return 0;
     }
 
-    // Count the number of objects with status "Completed"
     const completedCount = array?.filter(
       (item) => item.status === "Completed"
     ).length;
@@ -150,7 +152,11 @@ export default function DetailCard({
             <Box
               onClick={() => {
                 if (router.asPath === "/dashboard/chapters") {
-                  deleteFunc({ option: "details", chapterData: chapter });
+                  deleteFunc({
+                    option: "details",
+                    chapterData: chapter,
+                    percentValue: percentage,
+                  });
                 }
                 if (router.asPath === "/dashboard/templates") {
                   router.push(
