@@ -1,3 +1,4 @@
+import ModalImage from "@/_assets/png/view-template-modal.png";
 import Layout from "@/components/Layout/Layout";
 import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
@@ -5,7 +6,6 @@ import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
-import ModalImage from "@/_assets/png/view-template-modal.png";
 import {
   createChapter,
   deleteSelectedChapter,
@@ -16,12 +16,12 @@ import {
 import styles from "@/styles/Dashboard.module.css";
 import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapter from "./addChapter";
-import Image from "next/image";
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [updateChapterModal, setUpdateChapterModal] = useState(false);
@@ -137,6 +137,15 @@ const Dashboard = () => {
                 }}
               />
             ))}
+          </Box>
+        ) : allChapters.length < 1 ? (
+          <Box
+            className={styles.CardsContainer}
+            sx={{
+              marginTop: "48px",
+            }}
+          >
+            <StartNewChapter addChapterClick={() => setChapterModal(true)} />
           </Box>
         ) : (
           <Box
