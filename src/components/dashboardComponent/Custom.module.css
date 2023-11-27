@@ -17,6 +17,13 @@
   background-size: 40% 80%;
 }
 
+/* Overview Time Tracker Section  */
+.trackerbg {
+  background-image: url(../../_assets//png//time-tracker-bg.png);
+  background-repeat: no-repeat;
+  background-position: left left;
+}
+
 /* OverView SubComponents  */
 
 .viewBook {

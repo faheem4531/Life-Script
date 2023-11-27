@@ -1,15 +1,23 @@
-import Completed from "@/_assets/svg/completed.svg";
-import Faq from "@/_assets/svg/faq.svg";
-import Home from "@/_assets/svg/home.svg";
-import OverView from "@/_assets/svg/overView.svg";
-import Recent from "@/_assets/svg/recent.svg";
-import Suport from "@/_assets/svg/support.svg";
-import Account from "@/_assets/svg/account.svg";
-import BookCover from "@/_assets/svg/book-cover.svg";
-import {
-  default as Tree,
-  default as ViewBook,
-} from "@/_assets/svg/view-book.svg";
+import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
+import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
+import FaqWhite from "@/_assets/svg/sidebar/faq-white.svg";
+import FaqGreen from "@/_assets/svg/sidebar/faq-green.svg";
+import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
+import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
+import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
+import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
+import ProgressGreen from "@/_assets/svg/sidebar/in-progress-green.svg";
+import ProgressWhite from "@/_assets/svg/sidebar/in-progress-white.svg";
+import SuportGreen from "@/_assets/svg/sidebar/support-green.svg";
+import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
+import AccountGreen from "@/_assets/svg/sidebar/account-green.svg";
+import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
+import BookCoverGreen from "@/_assets/svg/sidebar/book-cover-green.svg";
+import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
+import TreeGreen from "@/_assets/svg/sidebar/tree-green.svg";
+import TreeWhite from "@/_assets/svg/sidebar/tree-white.svg";
+import ViewBookGreen from "@/_assets/svg/sidebar/view-book-green.svg";
+import ViewBookWhite from "@/_assets/svg/sidebar/view-book-white.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
@@ -18,6 +26,10 @@ import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
   const router = useRouter();
+  const currentRoute = router.pathname;
+  console.log(currentRoute, "   faheem,m");
+
+
   return (
     <Box sx={{ color: "#fff" }}>
       <Box sx={{ padding: "13px 20px", height: "70px" }}>
@@ -29,44 +41,46 @@ const SideBar = () => {
           borderTop: "1px solid #fff",
         }}
       >
-        <a className={styles.link}>
-          <Image alt="icon" src={OverView} />
+        <a
+          className={`${styles.link} ${currentRoute === "/dashboard/overview" && styles.active}`}
+          onClick={() => router.push("/dashboard/overview")}
+        >
+          <Image alt="icon" src={currentRoute === "/dashboard/overview" ? OverViewGreen : OverViewWhite} />
           Overview
         </a>
         <a
-          className={`${styles.link} ${styles.active}`}
+          className={`${styles.link} ${currentRoute === "/dashboard/chapters" && styles.active}`}
           onClick={() => router.push("/dashboard/chapters")}
-          style={{ cursor: "pointer" }}
         >
-          <Image alt="icon" src={Home} />
+          <Image alt="icon" src={currentRoute === "/dashboard/chapters" ? HomeGreen : HomeWhite} />
           All Chapters
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={Completed} />
+          <Image alt="icon" src={CompletedWhite} />
           Completed
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={Recent} />
+          <Image alt="icon" src={ProgressWhite} />
           In Progress
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={BookCover} />
+          <Image alt="icon" src={BookCoverWhite} />
           Book Cover
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={Faq} />
+          <Image alt="icon" src={FaqWhite} />
           Table of contents
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={Account} />
+          <Image alt="icon" src={AccountWhite} />
           Account
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={Suport} />
+          <Image alt="icon" src={SuportWhite} />
           Support
         </a>
         <a className={styles.link}>
-          <Image alt="icon" src={Tree} />
+          <Image alt="icon" src={TreeWhite} />
           Gift a Book
         </a>
       </Box>

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import LinearProgress, {
   LinearProgressProps,
@@ -53,6 +55,55 @@ export default function LinearProgressBar({ percentage }: any) {
   return (
     <Box sx={{ width: "100%", marginTop: "10px" }}>
       <LinearProgressWithLabel value={percentage} />
+    </Box>
+  );
+}
+
+
+
+
+
+
+{/*  2nd  Linear Reload bar */ }
+
+function LoadingProgress(
+  props: LinearProgressProps & { value: number }
+) {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        height: "45px",
+        bgcolor: "#F9F9F9",
+        borderRadius: "30px",
+        position: "relative"
+      }}
+    >
+      <Stack sx={{ width: "100%", color: "#197065" }} spacing={2}>
+        <LinearProgress
+          sx={{ height: "45px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
+          variant="determinate"
+          color="inherit"
+          {...props}
+        />
+      </Stack>
+      <Box sx={{ minWidth: 35, position: "absolute", right: "0px", top: "-60px" }}>
+        <Typography
+          variant="body2"
+          color="#197065"
+          fontSize="36px"
+          fontWeight="500"
+        >{`${Math.round(props.value)}%`}</Typography>
+      </Box>
+    </Box>
+  );
+}
+
+export function ReloadingBar({ value }: any) {
+  return (
+    <Box sx={{ width: "100%" }}>
+      <LoadingProgress value={value} />
     </Box>
   );
 }
