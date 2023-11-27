@@ -17,7 +17,7 @@ import {
   narrativeFusion,
   selectChapter,
 } from "@/store/slices/chatSlice";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -25,6 +25,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -39,7 +40,22 @@ const chapterName = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId, percentage } = router.query;
+  const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
 
+  const handleFloatButtonClick = () => {
+    setOpenCustomizationDialog(true);
+  };
+  const handleCancel = () => {
+    // Close the customization dialog
+    setOpenCustomizationDialog(false);
+  };
+
+  const handleDeleteQuestion = () => {
+    // Handle the deletion logic here
+    console.log("Question deleted!");
+    // Close the customization dialog
+    setOpenCustomizationDialog(false);
+  };
   const submitQuestion = (question: string) => {
     dispatch(
       createQuestion({
@@ -136,7 +152,7 @@ const chapterName = () => {
               onClick={() => setOpenModal(true)}
               sx={{ gap: { sm: 2, xs: 1 } }}
             >
-              <Box sx={{cursor:'pointer'}}>
+              <Box sx={{ cursor: "pointer" }}>
                 <Image src={addIcon} alt="addicon" />
               </Box>
               <Box>
@@ -147,7 +163,7 @@ const chapterName = () => {
                     fontSize: "18px",
                     fontWeight: 600,
                     display: { sm: "block", xs: "none" },
-                    cursor: "pointer"
+                    cursor: "pointer",
                   }}
                 >
                   Add new question
@@ -216,9 +232,18 @@ const chapterName = () => {
             }
           }}
         >
-          <FloatButton />
+          <FloatButton onClick={handleFloatButtonClick} />
         </Box>
       </Layout>
+      <TransitionsDialog
+        open={openCustomizationDialog}
+        heading="Narrative Fusion"
+        description="It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"
+        cancel={handleCancel}
+        proceed={handleDeleteQuestion}
+        proceedText="Compile Original Text" // Customize the text for the "Yes" button
+        cancelText="Use Narrative Fusion" // Customize the text for the "No" button
+      />
       <CustomizationDialog
         open={fusionModal}
         title="GPT Response"

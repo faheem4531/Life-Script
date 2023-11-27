@@ -40,110 +40,110 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
     router.push("//dashboard/templates");
   };
   return (
-    <Card
-    className="container-fontfamily"
-    sx={{
-      borderRadius: "6.5px",
-      height: "280px",
-      padding: "11px",
-    }}
-  >
-    {newChapter && (
-      <Box
-        sx={{
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          rowGap: "17px",
-          justifyContent: "center",
-          border: "1.6px dashed #CDCDCD",
-          borderRadius: "4px",
-        }}
-        onClick={() => setNewChapter(false)}
-      >
-        <Image alt="image" src={AddChapterImage} />
-        <Typography
-          sx={{ color: "#197065", fontWeight: 600, fontSize: "14px" }}
-        >
-          Start new chapter
-        </Typography>
-      </Box>
-    )}
-    {!newChapter && (
-      <Box sx={{ height: "100%" }}>
+   <Card
+      className="container-fontfamily"
+      sx={{
+        borderRadius: "6.5px",
+        height: "280px",
+        padding: "11px",
+      }}
+    >
+      {newChapter && (
         <Box
           sx={{
-            height: "49%",
+            height: "100%",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
-            columnGap: "17px",
+            rowGap: "17px",
             justifyContent: "center",
             border: "1.6px dashed #CDCDCD",
             borderRadius: "4px",
-            marginBottom: "2%",
-            cursor: "pointer",
-            "&:hover": {
-              borderColor: "#197065",
-              borderStyle: "dashed",
-              color: "#197065",
-            },
           }}
-          onMouseEnter={handleHoverStartNewChapter}
-          onMouseLeave={handleLeaveStartNewChapter}
-          onClick={addChapterClick}
+          onClick={() => setNewChapter(false)}
         >
-          <Image
-            alt="image"
-            src={hoverStartNewChapter ? AddChapterImage : AddChapterWhite}
-          />
+          <Image alt="image" src={AddChapterImage} />
           <Typography
-            sx={{
-              color: hoverStartNewChapter ? "#197065" : "#CDCDCD",
-              fontWeight: 600,
-              fontSize: "14px",
-            }}
+            sx={{ color: "#197065", fontWeight: 600, fontSize: "14px" }}
           >
             Start new chapter
           </Typography>
         </Box>
-
-        <Box
-          sx={{
-            height: "49%",
-            display: "flex",
-            alignItems: "center",
-            columnGap: "17px",
-            justifyContent: "center",
-            border: "1.6px dashed #CDCDCD",
-            borderRadius: "4px",
-            cursor: "pointer",
-            "&:hover": {
-              borderColor: "#197065",
-              borderStyle: "dashed",
-              color: "#197065",
-            },
-          }}
-          onMouseEnter={handleHoverUseTemplate}
-          onMouseLeave={handleLeaveUseTemplate}
-          onClick={handleTemplateClick}
-        >
-          <Image
-            alt="image"
-            src={hoverUseTemplate ? Template : TemplateWhite}
-          />
-          <Typography
+      )}
+      {!newChapter && (
+        <Box sx={{ height: "100%" }}>
+          <Box
             sx={{
-              color: hoverUseTemplate ? "#197065" : "#CDCDCD",
-              fontWeight: 600,
-              fontSize: "14px",
+              height: "49%",
+              display: "flex",
+              alignItems: "center",
+              columnGap: "17px",
+              justifyContent: "center",
+              border: "1.6px dashed #CDCDCD",
+              borderRadius: "4px",
+              marginBottom: "2%",
+              cursor: "pointer",
+              "&:hover": {
+                borderColor: "#197065",
+                borderStyle: "dashed",
+                color: "#197065",
+              },
             }}
+            onMouseEnter={handleHoverStartNewChapter}
+            onMouseLeave={handleLeaveStartNewChapter}
+            onClick={addChapterClick}
           >
-            Use template
-          </Typography>
+            <Image
+              alt="image"
+              src={hoverStartNewChapter ? AddChapterImage : AddChapterWhite}
+            />
+            <Typography
+              sx={{
+                color: hoverStartNewChapter ? "#197065" : "#CDCDCD",
+                fontWeight: 600,
+                fontSize: "14px",
+              }}
+            >
+              Start new chapter
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              height: "49%",
+              display: "flex",
+              alignItems: "center",
+              columnGap: "17px",
+              justifyContent: "center",
+              border: "1.6px dashed #CDCDCD",
+              borderRadius: "4px",
+              cursor: "pointer",
+              "&:hover": {
+                borderColor: "#197065",
+                borderStyle: "dashed",
+                color: "#197065",
+              },
+            }}
+            onMouseEnter={handleHoverUseTemplate}
+            onMouseLeave={handleLeaveUseTemplate}
+            onClick={handleTemplateClick}
+          >
+            <Image
+              alt="image"
+              src={hoverUseTemplate ? Template : TemplateWhite}
+            />
+            <Typography
+              sx={{
+                color: hoverUseTemplate ? "#197065" : "#CDCDCD",
+                fontWeight: 600,
+                fontSize: "14px",
+              }}
+            >
+              Use template
+            </Typography>
+          </Box>
         </Box>
-      </Box>
-    )}
-  </Card>
+      )}
+    </Card>
   );
 };

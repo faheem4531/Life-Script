@@ -3,6 +3,7 @@ import Option from "@/_assets/png/X-menu.png";
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import Completed from "@/_assets/svg/completed-icon.svg";
 import Edit from "@/_assets/svg/edit-icon.svg";
+import EditGreen from "@/_assets/svg/edit-icon-green.svg";
 import AddQuestion from "@/pages/events/addQuestion";
 import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
 import { Box, Button, Typography } from "@mui/material";
@@ -96,7 +97,7 @@ export default function Questions({
           width: "100%",
           borderRadius: "8px",
           borderLeft: "11px solid #186F65",
-          height: { sm: "70px", xs: "60px" },
+          height: { sm: "60px", xs: "60px" },
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -124,18 +125,18 @@ export default function Questions({
               type="submit"
               sx={{
                 borderRadius: " 0px 8px 8px 0px",
-                backgroundColor: "#186F65",
+                backgroundColor: "#white",
                 p: "0px 50px",
                 color: "rgba(255, 255, 255, 0.90)",
                 width: "105px",
-                height: { sm: "70px", xs: "60px" },
+                height: { sm: "60px", xs: "60px" },
                 "&:hover": {
-                  backgroundColor: "#186F65",
+                  backgroundColor: "#white",
                 },
               }}
             >
               {question.status === "Completed" && (
-                <Box sx={{ flexDirection: "column", rowGap: "5px" }}>
+                <Box sx={{ flexDirection: "column", rowGap: "5px", backgroundColor:'#197065',paddingLeft:'5px',paddingRight:'5px',color:'white'}}>
                   <Image alt="icon" src={Completed} />
                   {"Completed"}
                 </Box>
@@ -146,9 +147,10 @@ export default function Questions({
                     display: "flex",
                     alignItems: "center",
                     columnGap: "5px",
+                    color:'#197065'
                   }}
                 >
-                  <Image alt="icon" src={Edit} /> {"Edit"}
+                  <Image alt="icon" src={EditGreen} /> {"Edit"}
                 </Box>
               )}
             </Button>
