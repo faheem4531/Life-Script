@@ -24,6 +24,7 @@ import {
   saveAnswerApi,
   updateChapterApi,
   updateQuestionApi,
+  uploadAudioApi,
   uploadImageApi,
 } from "../api/chatApi";
 
@@ -72,6 +73,18 @@ export const uploadImage = createAsyncThunk<UserData, any>(
   async (data) => {
     try {
       const response = await uploadImageApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const uploadAudio = createAsyncThunk<UserData, any>(
+  "chat/upload-audio",
+  async (data) => {
+    try {
+      const response = await uploadAudioApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
