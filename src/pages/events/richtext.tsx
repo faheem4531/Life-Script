@@ -13,16 +13,19 @@ import {
   getQuestionbyId,
   saveAnswer,
   updateQuestion,
+  uploadAudio,
 } from "@/store/slices/chatSlice";
+import "core-js/stable";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import "regenerator-runtime/runtime";
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
@@ -33,24 +36,25 @@ const Editor = dynamic(
 
 const RichText = ({ questionId }) => {
   console.log("quest", questionId);
-
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const [gptResponse, setGptResponse] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [audioFile, setAudioFile] = useState(null);
+  const micRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const [toneValue, setToneValue] = useState("Neutral");
+  const [toneValue, setToneValue] = useState("Original (as written)");
   const [questionData, setQuestionData] = useState<any>({});
 
   const gptTones = [
+    "Original (as written)",
     "Narrative",
     "Nostalgic",
     "Humorous",
     "Emotional",
     "Inspirational",
-    "Neutral",
   ];
 
   const handleSelectChange = (event) => {
@@ -103,7 +107,7 @@ const RichText = ({ questionId }) => {
         }
       );
     }
-  }, []);
+  }, []); //to import webspellcheckr
 
   const saveUserAnswer = () => {
     dispatch(
@@ -149,6 +153,45 @@ const RichText = ({ questionId }) => {
     });
   };
 
+  const handleStartRecording = async () => {
+    setIsRecording(true);
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      micRef.current.srcObject = stream;
+
+      const mediaRecorder = new MediaRecorder(stream);
+      let blob;
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          blob = new Blob([e.data], { type: "audio/ogg" });
+          setAudioFile(blob);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        setIsRecording(false);
+        const form_data = new FormData();
+        form_data.append("file", blob);
+        dispatch(uploadAudio(form_data));
+      };
+
+      mediaRecorderRef.current = mediaRecorder;
+      mediaRecorder.start();
+    } catch (error) {
+      console.error("Error accessing microphone:", error);
+    }
+  };
+
+  const handleStopRecording = () => {
+    if (
+      mediaRecorderRef.current &&
+      mediaRecorderRef.current.state === "recording"
+    ) {
+      mediaRecorderRef.current.stop();
+    }
+  };
+
   return (
     <Box className="rich-editor">
       <Box
@@ -172,13 +215,34 @@ const RichText = ({ questionId }) => {
           </Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}>
+          <Button
+            onClick={handleStartRecording}
+            sx={{
+              // width: "200px",
+              p: 2,
+
+              height: "35px",
+              textTransform: "none",
+              borderRadius: "27px",
+              border: "1px solid #197065",
+              color: "#197065",
+              bgcolor: "#fff",
+              "&:hover": {
+                backgroundColor: "#fff",
+              },
+            }}
+          >
+            Speech-to-text
+          </Button>
           <Select
             value={toneValue}
             onChange={handleSelectChange}
             displayEmpty
             sx={{
-              width: "170px",
+              // width: "170px",
+              p: 2,
               height: "35px",
+              textTransform: "none",
               borderRadius: "27px",
               border: "1px solid #197065",
               color: "#197065",
@@ -191,12 +255,14 @@ const RichText = ({ questionId }) => {
           <Button
             onClick={handleCompleteAnswer}
             sx={{
-              width: "200px",
+              // width: "200px",
               height: "35px",
+              p: 2,
               borderRadius: "27px",
               border: "1px solid #197065",
               color: "#197065",
               bgcolor: "#fff",
+              textTransform: "none",
               "&:hover": {
                 backgroundColor: "#fff",
               },
@@ -207,7 +273,9 @@ const RichText = ({ questionId }) => {
           <Button
             onClick={saveUserAnswer}
             sx={{
-              width: "85px",
+              // width: "85px",
+              p: 2,
+              textTransform: "none",
               height: "35px",
               borderRadius: "27px",
               color: "#FFF",
