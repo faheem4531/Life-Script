@@ -42,7 +42,7 @@ export default function TransitionsDialog({
             fontSize: "30px",
             fontWeight: 700,
             color: "#070707",
-            // margin: "40px 0"
+            margin: "40px 0"
           }}
         >
           {heading}
@@ -81,7 +81,7 @@ export default function TransitionsDialog({
           <ButtonBase
             onClick={cancel}
             sx={{
-              width: "234px",
+              width: "200px",
               height: "50px",
               borderRadius: "78px",
               color: "#fff",

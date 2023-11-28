@@ -29,6 +29,7 @@ import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [narrativeModal, setNarrativeModal] = useState(false);
   const [fusionModal, setFusionModal] = useState(false);
   const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -230,6 +231,7 @@ const chapterName = () => {
               setFusionLoading(true);
               handleNarrativeFusion();
             }
+            setNarrativeModal(true)
           }}
         >
           <FloatButton onClick={handleFloatButtonClick} />
@@ -258,6 +260,8 @@ const chapterName = () => {
       >
         <RichTextViewer htmlContent={gptResponse} />
       </CustomizationDialog>
+
+      {/* Add new Question  */}
       <CustomizationDialog
         open={openModal}
         title=""
