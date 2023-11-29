@@ -7,10 +7,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide, { SlideProps } from "@mui/material/Slide";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import ModalImage from "@/_assets/png/view-template-modal.png"
+import ModalImage from "@/_assets/png/view-template-modal.png";
 import Image from "next/image";
 import { Box, ButtonBase, Typography } from "@mui/material";
-
 
 const Transition = React.forwardRef<HTMLDivElement, SlideProps>(
   function Transition(props, ref) {
@@ -24,8 +23,8 @@ export default function TransitionsDialog({
   open,
   cancel,
   proceed,
-  buttonText1,
-  buttonText2
+  proceedText = "Yes",
+  cancelText = "No",
 }) {
   const { t } = useTranslation();
   return (
@@ -36,14 +35,8 @@ export default function TransitionsDialog({
       onClose={cancel}
       aria-describedby="alert-dialog-slide-description"
     >
-      <Box sx={{
-        textAlign: "center",
-        padding: "50px 50px 15px"
-      }}>
-        <Image alt="image" src={ModalImage}
-          width={91}
-          height={60}
-        />
+      <Box sx={{ textAlign: "center", padding: "50px 20px 15px" }}>
+        <Image alt="image" src={ModalImage} width={91} height={60} />
         <Typography
           sx={{
             fontSize: "30px",
@@ -63,15 +56,17 @@ export default function TransitionsDialog({
           {description}
         </Typography>
 
-        <Box sx={{ display: "flex", columnGap: "15px", justifyContent: "center" }}>
+        <Box
+          sx={{ display: "flex", columnGap: "15px", justifyContent: "center" }}
+        >
           <ButtonBase
             onClick={proceed}
             sx={{
-              width: "230px",
+              width: "234px",
               height: "50px",
               borderRadius: "78px",
               color: "#197065",
-              fontSize: "19px",
+              fontSize: "18px",
               bgcolor: "#fff",
               border: "1px solid #197065",
               margin: "40px 0 30px",
@@ -81,16 +76,16 @@ export default function TransitionsDialog({
               },
             }}
           >
-            {buttonText1 ? buttonText1 : "Yes"}
+            {proceedText}
           </ButtonBase>
           <ButtonBase
             onClick={cancel}
             sx={{
-              width: "230px",
+              width: "200px",
               height: "50px",
               borderRadius: "78px",
               color: "#fff",
-              fontSize: "19px",
+              fontSize: "18px",
               bgcolor: "#197065",
               margin: "40px 0 30px",
               "&:hover": {
@@ -99,7 +94,7 @@ export default function TransitionsDialog({
               },
             }}
           >
-            {buttonText2 ? buttonText2 : "No"}
+            {cancelText}
           </ButtonBase>
         </Box>
       </Box>

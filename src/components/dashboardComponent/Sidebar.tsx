@@ -27,7 +27,7 @@ import styles from "./Sidebar.module.css";
 const SideBar = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
-  console.log(currentRoute, "   faheem,m");
+  // console.log(currentRoute, "   faheem,m");
 
 
   return (

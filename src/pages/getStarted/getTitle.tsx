@@ -103,12 +103,13 @@ const getTitle = () => {
             />
             <Typography
               sx={{
-                alignSelf: "flex-end",
+                alignSelf: "flex-start",
                 color: "#969696",
-                fontSize: { md: "30px", sm: "25px", xs: "20px" },
+                fontSize: { xl: "25px", lg: '22px', md: "20px", sm: "18px", xs: "16px" },
+                ml: "15px"
               }}
             >
-              {text.length}/{maxLength}
+              You can change it at any time before printing.
             </Typography>
           </Box>
           <Button
@@ -121,6 +122,7 @@ const getTitle = () => {
               color: "#186F65",
               fontWeight: 600,
               fontSize: "18px",
+              mt: "60px"
             }}
           >
             Start Writing
