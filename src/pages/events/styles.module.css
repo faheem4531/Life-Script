@@ -1,9 +1,12 @@
 .overflowQuestionText {
   font-size: 20px;
   font-weight: 600;
-  margin: 0 10px 0 20px;
+  margin-left: 20px;
   max-height: 72px;
+  max-width: 350px;
   overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .overflowQuestionText::-webkit-scrollbar {

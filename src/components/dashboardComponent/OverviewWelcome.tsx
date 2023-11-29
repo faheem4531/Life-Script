@@ -52,6 +52,7 @@ const WelcomeOverview = () => {
           fontSize="14px"
           padding="10px 18px"
           onClick={() => { }}
+          border={undefined}
         />
       </Box>
 
@@ -61,4 +62,4 @@ const WelcomeOverview = () => {
   )
 }
 
-export default WelcomeOverview
+export default WelcomeOverview;
