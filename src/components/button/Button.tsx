@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import classes from "./Button.module.css"
 
 const Button = ({ title, border, background, width, padding, borderRadius, color, onClick, image, fontSize }) => {
   const styles = {
@@ -20,7 +21,7 @@ const Button = ({ title, border, background, width, padding, borderRadius, color
   }
 
   return (
-    <button onClick={onClick} style={styles}>
+    <button onClick={onClick} style={styles} className={classes.btnMain}>
       {image != undefined && <Image alt="image" src={image} style={styles2} />}
       {title}</button>
   )

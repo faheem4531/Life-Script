@@ -8,18 +8,17 @@ import Gold from "@/_assets/svg/gold-token.svg"
 import Silver from "@/_assets/svg/silver-token.svg"
 import Bronze from "@/_assets/svg/bronze-token.svg"
 
-
 const Profile = () => {
   return (
     <Box sx={{
       bgcolor: "#fff",
-      maxWidth: "435px",
+      maxWidth: { xl: "435px", sm: "380px", xs: "300px" },
       width: "100%",
       borderRadius: "19px",
       border: "1px solid #186F65",
-      padding: "32px 28px 85px"
+      padding: { xl: "32px 28px 85px", lg: "25px 17px 70px" }
     }}>
-      <Box sx={{ textAlign: "center", marginBottom: "55px" }}>
+      <Box sx={{ textAlign: "center", marginBottom: { lg: "55px" } }}>
         <Image alt="profile" src={DemoProfile} className={styles.profilePic} />
         <Typography sx={{
           fontSize: "26px",
@@ -30,7 +29,7 @@ const Profile = () => {
       <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>
         Achievement
       </Typography>
-      <Box sx={{ display: "flex", justifyContent: "space-between", margin: "30px 0 55px" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", margin: "30px 0 55px", columnGap: { xl: "18px", lg: "4px" } }}>
         <Image alt="tag" src={Platinum} />
         <Image alt="tag" src={Gold} />
         <Image alt="tag" src={Silver} />

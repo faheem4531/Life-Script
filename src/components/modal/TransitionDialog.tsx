@@ -24,6 +24,8 @@ export default function TransitionsDialog({
   open,
   cancel,
   proceed,
+  buttonText1,
+  buttonText2
 }) {
   const { t } = useTranslation();
   return (
@@ -34,19 +36,20 @@ export default function TransitionsDialog({
       onClose={cancel}
       aria-describedby="alert-dialog-slide-description"
     >
-      <Box sx={{ textAlign: "center", 
-      padding: "50px 20px 15px"
-     }}>
-        <Image alt="image" src={ModalImage} 
-         width={91}
-         height={60}
-         />
+      <Box sx={{
+        textAlign: "center",
+        padding: "50px 50px 15px"
+      }}>
+        <Image alt="image" src={ModalImage}
+          width={91}
+          height={60}
+        />
         <Typography
           sx={{
             fontSize: "30px",
             fontWeight: 700,
             color: "#070707",
-            // margin: "40px 0"
+            margin: "40px 0"
           }}
         >
           {heading}
@@ -64,11 +67,11 @@ export default function TransitionsDialog({
           <ButtonBase
             onClick={proceed}
             sx={{
-              width: "200px",
+              width: "230px",
               height: "50px",
               borderRadius: "78px",
               color: "#197065",
-              fontSize: "22px",
+              fontSize: "19px",
               bgcolor: "#fff",
               border: "1px solid #197065",
               margin: "40px 0 30px",
@@ -78,16 +81,16 @@ export default function TransitionsDialog({
               },
             }}
           >
-            Yes
+            {buttonText1 ? buttonText1 : "Yes"}
           </ButtonBase>
           <ButtonBase
             onClick={cancel}
             sx={{
-              width: "200px",
+              width: "230px",
               height: "50px",
               borderRadius: "78px",
               color: "#fff",
-              fontSize: "22px",
+              fontSize: "19px",
               bgcolor: "#197065",
               margin: "40px 0 30px",
               "&:hover": {
@@ -96,7 +99,7 @@ export default function TransitionsDialog({
               },
             }}
           >
-            No
+            {buttonText2 ? buttonText2 : "No"}
           </ButtonBase>
         </Box>
       </Box>

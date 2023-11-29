@@ -25,9 +25,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [narrativeModal, setNarrativeModal] = useState(false);
   const [fusionModal, setFusionModal] = useState(false);
   const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -212,11 +214,15 @@ const chapterName = () => {
               setFusionLoading(true);
               handleNarrativeFusion();
             }
+            setNarrativeModal(true)
           }}
         >
           <FloatButton />
         </Box>
       </Layout>
+
+
+      {/* Modals  */}
       <CustomizationDialog
         open={fusionModal}
         title="GPT Response"
@@ -231,6 +237,8 @@ const chapterName = () => {
       >
         <RichTextViewer htmlContent={gptResponse} />
       </CustomizationDialog>
+
+      {/* Add new Question  */}
       <CustomizationDialog
         open={openModal}
         title=""
@@ -257,6 +265,20 @@ const chapterName = () => {
           />
         </Box>
       </CustomizationDialog>
+
+
+      <TransitionsDialog
+        open={narrativeModal}
+        heading="Narrative Fusionete"
+        description="It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"
+        cancel={() => {
+          setNarrativeModal(false)
+          router.push(`/dashboard/narrative/loading`)
+        }}
+        buttonText1="Compile original text"
+        buttonText2="Use narrative fusion"
+        proceed={() => setNarrativeModal(false)}
+      />
     </>
   );
 };

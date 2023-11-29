@@ -17,6 +17,22 @@
   background-size: 40% 80%;
 }
 
+.welcomeImage {
+  position: relative;
+  width: 287px;
+  height: 187px;
+  z-index: 1;
+}
+
+.bgRounded {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 300px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
 /* Overview Time Tracker Section  */
 .trackerbg {
   background-image: url(../../_assets//png//time-tracker-bg.png);
@@ -43,10 +59,49 @@
     width: 260px;
     height: 200px;
   }
+
+  .profilePic {
+    width: 140px;
+    height: 140px;
+  }
+
+  .bgRounded {
+    width: 280px;
+  }
 }
 
-@media (min-width:1200px) and (max-width:1400px) {}
+@media(max-width:1400px) {
+  /* OverView SubComponents  */
 
-@media (min-width:992px) and (max-width:1200px) {}
+  .viewBook {
+    background-size: 30% 90%;
+    background-position: left bottom;
+  }
 
-@media (max-width:992px) {}
+  .viewTree {
+    background-size: 30% 90%;
+    background-position: left bottom;
+  }
+
+  .nextAero {
+    width: 20px;
+  }
+
+  /* Overview Welcome  */
+
+  .welcomeImage {
+    width: 260px;
+    height: 200px;
+  }
+
+  .profilePic {
+    outline: 8px solid green;
+    padding: 7px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .bgRounded {
+    width: 250px;
+  }
+}

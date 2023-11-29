@@ -13,8 +13,9 @@ export default function Answers() {
         <Box
           sx={{
             bgcolor: "#fff",
+            marginTop: "20px",
             borderRadius: "34px",
-            padding: "50px 70px 100px",
+            padding: { xl: "50px 70px 100px", sm: "50px 40px 80px" },
             border: "1px solid #197065",
           }}
         >
