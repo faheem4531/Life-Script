@@ -42,10 +42,9 @@ const chapterName = () => {
   const dispatch: any = useDispatch();
   const { chapterId, percentage } = router.query;
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
+  const [openTooltip, setOpenTooltip] = useState(true)
 
-  const handleFloatButtonClick = () => {
-    setOpenCustomizationDialog(true);
-  };
+
   const handleCancel = () => {
     // Close the customization dialog
     setOpenCustomizationDialog(false);
@@ -108,7 +107,21 @@ const chapterName = () => {
         setFusionLoading(false);
         toast.error("Narrative fusion failed");
       });
-  };
+  
+    };
+
+    const handleFloatButtonClick = () => {
+
+      const isAnyQuestionInProgress = allQuestions.some(
+        (question) => question.status === 'Progress'
+      );
+      if (!isAnyQuestionInProgress) {
+        setOpenTooltip(false)
+        setOpenCustomizationDialog(true);
+      } else {
+        console.log("Cannot open customization dialog because a question is in progress.");
+      }
+    };
 
   return (
     <>
@@ -188,6 +201,8 @@ const chapterName = () => {
             <>
               {allQuestions?.length > 0 ? (
                 allQuestions.map((question, index) => (
+                  <div>
+                    {question.status}
                   <Questions
                     key={question._id}
                     question={question}
@@ -198,6 +213,8 @@ const chapterName = () => {
                       router.push(`/events?questionId=${text}`)
                     }
                   />
+                  </div>
+
                 ))
               ) : (
                 <NoQuestions />
@@ -234,6 +251,19 @@ const chapterName = () => {
             setNarrativeModal(true)
           }}
         >
+          <Box sx={{
+            width: "235.49px",
+            height: "98.311px",
+            p: "10px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "white",
+            border: "2px solid #197065"
+          }}>
+
+          </Box>
+
           <FloatButton onClick={handleFloatButtonClick} />
         </Box>
       </Layout>
@@ -275,10 +305,12 @@ const chapterName = () => {
           fontSize: "30px",
         }}
       >
-        <Box>
+        <Box sx={{
+             cursor: "pointer"
+          }} > 
           <Image src={ModalImage} width={91} height={60} alt="logo" />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>Add New Question</Typography>
+        <Typography sx={{ fontSize: "30px", cursor: "pointer" }}>Add New Question</Typography>
         <Box sx={{}}>
           <AddQuestion
             questionData={(question: string) => {

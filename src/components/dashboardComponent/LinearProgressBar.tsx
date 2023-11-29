@@ -80,7 +80,7 @@ function LoadingProgress(
         position: "relative"
       }}
     >
-      <Stack sx={{ width: "100%", color: "#197065" }} spacing={2}>
+      <Stack sx={{ width: "100%", color: "#197065", borderRadius: "30px"}} spacing={2}>
         <LinearProgress
           sx={{ height: "45px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
           variant="determinate"

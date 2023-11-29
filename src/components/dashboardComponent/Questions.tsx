@@ -102,6 +102,7 @@ export default function Questions({
           alignItems: "center",
           justifyContent: "space-between",
           mt: { sm: "15px", xs: "8px" },
+          overflowX: "hidden",
         }}
       >
         <Typography
@@ -117,7 +118,7 @@ export default function Questions({
           {question?.text}
         </Typography>
         {title != "templateView" && (
-          <Box sx={{ textAlign: "center" }}>
+          <Box sx={{ textAlign: "center", width: "max-content" }}>
             <Button
               // variant="contained"
               onClick={() => answerClick(question?._id)}
@@ -126,19 +127,22 @@ export default function Questions({
               sx={{
                 borderRadius: " 0px 8px 8px 0px",
                 backgroundColor: "#white",
-                p: "0px 50px",
                 color: "rgba(255, 255, 255, 0.90)",
-                width: "105px",
                 height: { sm: "60px", xs: "60px" },
+                p:"0px",
                 "&:hover": {
                   backgroundColor: "#white",
                 },
               }}
             >
               {question.status === "Completed" && (
-                <Box sx={{ flexDirection: "column", rowGap: "5px", backgroundColor:'#197065',paddingLeft:'5px',paddingRight:'5px',color:'white'}}>
-                  <Image alt="icon" src={Completed} />
-                  {"Completed"}
+                <Box sx={{ flexDirection: "column", rowGap: "5px", backgroundColor: '#197065', color: 'white', height: "100%", fontSize :"10px", px: "16px", py: "7px" }}>
+                  <Box>
+                    <Image alt="icon" src={Completed} />
+                  </Box>
+                  <Box>
+                    {"Completed"}
+                  </Box>
                 </Box>
               )}
               {question.status !== "Completed" && (
@@ -147,7 +151,8 @@ export default function Questions({
                     display: "flex",
                     alignItems: "center",
                     columnGap: "5px",
-                    color:'#197065'
+                    color: '#197065',
+                    fontSize :"10px", px: "16px", py: "7px" 
                   }}
                 >
                   <Image alt="icon" src={EditGreen} /> {"Edit"}
