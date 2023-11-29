@@ -2,7 +2,6 @@
 import Option from "@/_assets/png/X-menu.png";
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import Completed from "@/_assets/svg/completed-icon.svg";
-import Edit from "@/_assets/svg/edit-icon.svg";
 import EditGreen from "@/_assets/svg/edit-icon-green.svg";
 import AddQuestion from "@/pages/events/addQuestion";
 import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
@@ -129,20 +128,29 @@ export default function Questions({
                 backgroundColor: "#white",
                 color: "rgba(255, 255, 255, 0.90)",
                 height: { sm: "60px", xs: "60px" },
-                p:"0px",
+                p: "0px",
                 "&:hover": {
                   backgroundColor: "#white",
                 },
               }}
             >
               {question.status === "Completed" && (
-                <Box sx={{ flexDirection: "column", rowGap: "5px", backgroundColor: '#197065', color: 'white', height: "100%", fontSize :"10px", px: "16px", py: "7px" }}>
+                <Box
+                  sx={{
+                    flexDirection: "column",
+                    rowGap: "5px",
+                    backgroundColor: "#197065",
+                    color: "white",
+                    height: "100%",
+                    fontSize: "10px",
+                    px: "16px",
+                    py: "7px",
+                  }}
+                >
                   <Box>
                     <Image alt="icon" src={Completed} />
                   </Box>
-                  <Box>
-                    {"Completed"}
-                  </Box>
+                  <Box>{"Completed"}</Box>
                 </Box>
               )}
               {question.status !== "Completed" && (
@@ -151,8 +159,10 @@ export default function Questions({
                     display: "flex",
                     alignItems: "center",
                     columnGap: "5px",
-                    color: '#197065',
-                    fontSize :"10px", px: "16px", py: "7px" 
+                    color: "#197065",
+                    fontSize: "10px",
+                    px: "16px",
+                    py: "7px",
                   }}
                 >
                   <Image alt="icon" src={EditGreen} /> {"Edit"}

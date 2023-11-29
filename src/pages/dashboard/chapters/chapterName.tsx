@@ -8,6 +8,7 @@ import FloatButton from "@/components/button/FloatButton";
 import LinearProgressBar from "@/components/dashboardComponent/LinearProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import AddQuestion from "@/pages/events/addQuestion";
 import RichTextViewer from "@/pages/events/response";
 import {
@@ -17,7 +18,7 @@ import {
   narrativeFusion,
   selectChapter,
 } from "@/store/slices/chatSlice";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -25,7 +26,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -42,8 +42,7 @@ const chapterName = () => {
   const dispatch: any = useDispatch();
   const { chapterId, percentage } = router.query;
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
-  const [openTooltip, setOpenTooltip] = useState(true)
-
+  const [openTooltip, setOpenTooltip] = useState(true);
 
   const handleCancel = () => {
     // Close the customization dialog
@@ -107,21 +106,21 @@ const chapterName = () => {
         setFusionLoading(false);
         toast.error("Narrative fusion failed");
       });
-  
-    };
+  };
 
-    const handleFloatButtonClick = () => {
-
-      const isAnyQuestionInProgress = allQuestions.some(
-        (question) => question.status === 'Progress'
+  const handleFloatButtonClick = () => {
+    const isAnyQuestionInProgress = allQuestions.some(
+      (question) => question.status === "Progress"
+    );
+    if (!isAnyQuestionInProgress) {
+      setOpenTooltip(false);
+      setOpenCustomizationDialog(true);
+    } else {
+      console.log(
+        "Cannot open customization dialog because a question is in progress."
       );
-      if (!isAnyQuestionInProgress) {
-        setOpenTooltip(false)
-        setOpenCustomizationDialog(true);
-      } else {
-        console.log("Cannot open customization dialog because a question is in progress.");
-      }
-    };
+    }
+  };
 
   return (
     <>
@@ -202,19 +201,19 @@ const chapterName = () => {
               {allQuestions?.length > 0 ? (
                 allQuestions.map((question, index) => (
                   <div>
-                    {question.status}
-                  <Questions
-                    key={question._id}
-                    question={question}
-                    title="chapterName"
-                    number={index + 1}
-                    questionChanged={() => setQuestionChanged(!questionChanged)}
-                    answerClick={(text) =>
-                      router.push(`/events?questionId=${text}`)
-                    }
-                  />
+                    <Questions
+                      key={question._id}
+                      question={question}
+                      title="chapterName"
+                      number={index + 1}
+                      questionChanged={() =>
+                        setQuestionChanged(!questionChanged)
+                      }
+                      answerClick={(text) =>
+                        router.push(`/events?questionId=${text}`)
+                      }
+                    />
                   </div>
-
                 ))
               ) : (
                 <NoQuestions />
@@ -248,21 +247,20 @@ const chapterName = () => {
               setFusionLoading(true);
               handleNarrativeFusion();
             }
-            setNarrativeModal(true)
           }}
         >
-          <Box sx={{
-            width: "235.49px",
-            height: "98.311px",
-            p: "10px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "white",
-            border: "2px solid #197065"
-          }}>
-
-          </Box>
+          {/* <Box
+            sx={{
+              width: "235.49px",
+              height: "98.311px",
+              p: "10px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              background: "white",
+              border: "2px solid #197065",
+            }}
+          ></Box> */}
 
           <FloatButton onClick={handleFloatButtonClick} />
         </Box>
@@ -305,12 +303,16 @@ const chapterName = () => {
           fontSize: "30px",
         }}
       >
-        <Box sx={{
-             cursor: "pointer"
-          }} > 
+        <Box
+          sx={{
+            cursor: "pointer",
+          }}
+        >
           <Image src={ModalImage} width={91} height={60} alt="logo" />
         </Box>
-        <Typography sx={{ fontSize: "30px", cursor: "pointer" }}>Add New Question</Typography>
+        <Typography sx={{ fontSize: "30px", cursor: "pointer" }}>
+          Add New Question
+        </Typography>
         <Box sx={{}}>
           <AddQuestion
             questionData={(question: string) => {
