@@ -5,6 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import { Provider as StoreProvider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "regenerator-runtime/runtime";
 import i18n from "../../i18n";
 import "../styles/globals.css";
 
