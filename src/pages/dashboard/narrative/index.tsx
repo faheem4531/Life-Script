@@ -14,6 +14,7 @@ import { useState } from "react";
 
 const NarrativeResponse = () => {
   const [revertModal, setRevertModal] = useState(false)
+  const [saveResponseModal, setSaveResponseModal] = useState(false)
 
   const text1 = "You don’t need to have a full time ecommerce business to earn a little extra money through your website. You don’t even need to be there all the time. All you need to do is wait for the day your advertisers will pay you."
   const text2 = "However, this is not as easy as it seems. You can’t expect to just make a website and watch the money roll in. You have to exert first the effort to make the site popular and produce a huge traffic flow. Advertisers would only post their banners and ads on sites where they know there are many people who will see them. The more traffic and visitors you have the likely the chance that advertisers will want their ads on your site. You can also have pay-per-click advertising in your site. As each visitor clicks on an ad, the advertiser will pay you for those redirects. Google’s Adsense and Yahoo’s Search marketing are some of those that offer this performance. The more traffic and visitors you have the likely the chance th"
@@ -106,7 +107,7 @@ const NarrativeResponse = () => {
               width="155px"
               fontSize="14px"
               padding="9px 10px"
-              onClick={() => { }}
+              onClick={() => setSaveResponseModal(true)}
               border="none"
             />
           </Box>
@@ -123,6 +124,17 @@ const NarrativeResponse = () => {
         proceed={() => setRevertModal(true)}
         proceedText="Not Yet" // Customize the text for the "Yes" button
         cancelText="Revert Changes" // Customize the text for the "No" button
+      />
+
+      {/* Save changes Modal  */}
+      <TransitionsDialog
+        open={saveResponseModal}
+        heading="Save Response"
+        description="Once saved, you will find the chapter in completed chapters tab."
+        cancel={() => setSaveResponseModal(false)}
+        proceed={() => setSaveResponseModal(true)}
+        proceedText="Not Yet" // Customize the text for the "Yes" button
+        cancelText="Keep Changes" // Customize the text for the "No" button
       />
 
     </>
