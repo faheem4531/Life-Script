@@ -1,5 +1,36 @@
+.nativeMainBg {
+  background-image: url(../../../_assets/png/native-response-bg.png);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
 .loadImage {
   width: 350px;
   height: 350px;
   margin: 70px 0;
+}
+
+.nextIcon {
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+}
+
+.previousIcon {
+  position: absolute;
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%);
+}
+
+@media (max-width:1400px) {
+  .titleIcon {
+    height: 60px;
+    width: 60px;
+  }
+
+  .nativeMainBg {
+    background-size: 45% 80%;
+  }
 }

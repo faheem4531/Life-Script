@@ -10,7 +10,7 @@ const Layout = ({ children }: { children?: any }) => {
 
   return (
     <Box
-      sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}
+      sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", minHeight: "100vh" }}
       className="container-fontfamily"
     >
       <Box
@@ -33,7 +33,6 @@ const Layout = ({ children }: { children?: any }) => {
             bottom: "0",
             top: "0px",
             zIndex: "2",
-            // display: { md: "block", xs: "none", sm: "none" }
           }}
           className={`${styles.display} ${handleSideBar && styles.displayShow}`}
         >

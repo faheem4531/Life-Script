@@ -44,8 +44,10 @@ const chapterName = () => {
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
 
+
   const handleCancel = () => {
     // Close the customization dialog
+    router.push("/dashboard/narrative/loading")
     setOpenCustomizationDialog(false);
   };
 
