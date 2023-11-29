@@ -9,8 +9,12 @@ import SaveIcon from "@/_assets/svg/save-response-white-icon.svg"
 import styles from "./Narrative.module.css"
 import NextIcon from "@/_assets/svg/next-iconX.svg"
 import PreviousIcon from "@/_assets/svg/previous-icon.svg"
+import TransitionsDialog from "@/components/modal/TransitionDialog";
+import { useState } from "react";
 
 const NarrativeResponse = () => {
+  const [revertModal, setRevertModal] = useState(false)
+
   const text1 = "You don’t need to have a full time ecommerce business to earn a little extra money through your website. You don’t even need to be there all the time. All you need to do is wait for the day your advertisers will pay you."
   const text2 = "However, this is not as easy as it seems. You can’t expect to just make a website and watch the money roll in. You have to exert first the effort to make the site popular and produce a huge traffic flow. Advertisers would only post their banners and ads on sites where they know there are many people who will see them. The more traffic and visitors you have the likely the chance that advertisers will want their ads on your site. You can also have pay-per-click advertising in your site. As each visitor clicks on an ad, the advertiser will pay you for those redirects. Google’s Adsense and Yahoo’s Search marketing are some of those that offer this performance. The more traffic and visitors you have the likely the chance th"
 
@@ -47,7 +51,7 @@ const NarrativeResponse = () => {
                 height="30px"
                 fontSize="14px"
                 padding={undefined}
-                onClick={() => { }}
+                onClick={() => setRevertModal(true)}
                 border="1px solid #197065"
               />
             </Box>
@@ -108,6 +112,19 @@ const NarrativeResponse = () => {
           </Box>
         </Box>
       </Layout>
+
+
+      {/* Revert changes Modal  */}
+      <TransitionsDialog
+        open={revertModal}
+        heading="Revert Response"
+        description="This will undo all narrative fusion changes. You will be redirected to the original content compiled chapter for editing."
+        cancel={() => setRevertModal(false)}
+        proceed={() => setRevertModal(true)}
+        proceedText="Not Yet" // Customize the text for the "Yes" button
+        cancelText="Revert Changes" // Customize the text for the "No" button
+      />
+
     </>
   );
 };
