@@ -1,6 +1,7 @@
 "use client";
 import { uploadImage } from "@/store/slices/chatSlice";
 import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
+import styles from "./styles.module.css"
 import {
   //ContentState,
   EditorState,
@@ -162,16 +163,30 @@ const RichText = ({ questionId }) => {
           sx={{
             display: "flex",
             alignItems: "center",
+            marginRight: "10px",
           }}
         >
           <Image alt="icon" src={PIcon} />
-          <Typography
-            sx={{ fontSize: "26px", fontWeight: "600", marginLeft: "20px" }}
+          <div className={styles.overflowQuestionText}>{questionData?.text}</div>
+          {/* <Typography
+            sx={{
+              fontSize: "20px",
+              fontWeight: "600",
+              marginLeft: "20px",
+              maxHeight: "90px",
+              marginRight: "10px",
+              overflowY: "scroll"
+            }}
+            className="scrollText"
           >
             {questionData?.text}
-          </Typography>
+          </Typography> */}
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}>
+        <Box sx={{
+          display: "flex",
+          alignItems: "center",
+          columnGap: "10px"
+        }}>
           <Select
             value={toneValue}
             onChange={handleSelectChange}

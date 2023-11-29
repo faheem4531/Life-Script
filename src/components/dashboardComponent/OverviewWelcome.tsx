@@ -37,7 +37,8 @@ const WelcomeOverview = () => {
           fontWeight: 300,
           lineHeight: "150%",
           marginBottom: "20px",
-          color: "#a8c9c5"
+          color: "#a8c9c5",
+          marginTop: "10px"
         }}>
           “Success is not final, failure is not fatal: It is the courage to continue that counts.”
         </Typography>

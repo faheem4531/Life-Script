@@ -12,7 +12,7 @@ function LinearProgressWithLabel(
     <Box
       sx={{
         display: "flex",
-        padding: "6px 5px",
+        padding: "6px 3px",
         alignItems: "center",
         position: "relative",
         border: "2px solid #187167",
