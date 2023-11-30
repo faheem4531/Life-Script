@@ -17,6 +17,13 @@
   background-size: 40% 80%;
 }
 
+.SelBookCoverHeaderMain{
+  background-image: url(../../_assets/png/template-tree-bg.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  /* background-size: 40% 80%; */
+}
+
 /* Overview Time Tracker Section  */
 .trackerbg {
   background-image: url(../../_assets//png//time-tracker-bg.png);
@@ -38,15 +45,38 @@
   background-position: left;
 }
 
+.SelBookCoverHeaderBook{
+  height: 100%;
+  width: 202px
+}
+
 @media (min-width:1400px) and (max-width:1800px) {
   .welcomeImage {
     width: 260px;
-    height: 200px;
+    height: 200px;  
   }
 }
 
-@media (min-width:1200px) and (max-width:1400px) {}
+@media (min-width:1200px) and (max-width:1400px) {
+  .SelBookCoverHeaderBook{
+    width: 180px
+  }
+}
 
-@media (min-width:992px) and (max-width:1200px) {}
+@media (min-width:992px) and (max-width:1200px) {
+  .SelBookCoverHeaderBook{
+    width: 160px
+  }
+}
 
-@media (max-width:992px) {}
+@media (max-width:992px) {
+  .SelBookCoverHeaderBook{
+    width: 140px
+  }
+}
+
+@media (max-width:600px) {
+  .SelBookCoverHeaderBook{
+    width: 100px
+  }
+}

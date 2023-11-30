@@ -16,12 +16,12 @@ const Button = ({ title, border, background, width, padding, borderRadius, color
   }
 
   const styles2 = {
-    padding: "0 7px 0 0"
+    padding: "0 4px 0 0",
   }
 
   return (
     <button onClick={onClick} style={styles}>
-      {image != undefined && <Image alt="image" src={image} style={styles2} />}
+      {image != undefined && <Image alt="image" src={image}  style={styles2} />}
       {title}</button>
   )
 }

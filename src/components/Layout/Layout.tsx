@@ -45,8 +45,8 @@ const Layout = ({ children }: { children?: any }) => {
             maxWidth: "1600px",
             color: "#000",
             height: "100%",
-            minHeight: "95vh",
-            padding: { sm: "10px 33px 30px", xs: "10px 16px 30px" },
+            minHeight: "calc(100vh - 70px)",
+            padding: { sm: "25px 33px 30px", xs: "25px 16px 30px" },
             marginLeft: { md: "220px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
