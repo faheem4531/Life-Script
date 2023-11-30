@@ -1,7 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function AddChapter({ chapterData, data }) {
+export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
   const [chapter, setChapter] = useState("");
   useEffect(() => {
     data && setChapter(data);
@@ -40,12 +40,13 @@ export default function AddChapter({ chapterData, data }) {
             color: "white",
             width: "200px",
             marginTop: "50px",
+            textTransform: "capitalize",
             "&:hover": {
               backgroundColor: "#186F65",
             },
           }}
         >
-          Submit
+          {btnText}
         </Button>
       </Box>
     </Box>

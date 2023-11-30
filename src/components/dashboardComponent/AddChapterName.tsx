@@ -42,21 +42,47 @@ const AddChapterName = ({
         backgroundColor: "#197065",
         color: "#fff",
         borderRadius: { sm: "24px", xs: "5px" },
-        padding: { sm: "27px 40px", xs: "10px 15px" },
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        height: "165px",
+        overflow: "hidden"
       }}
+      className={styles.welcomeMain}
     >
+      <Box
+        sx={{
+          padding: { sm: "27px 40px", xs: "10px 15px" },
+          position: "relative",
+          zIndex: "1"
+        }}
+      >
       {title === "templateView" && (
-        <Typography sx={{ fontSize: { sm: "44px", xs: "25px" } }}>
+        <Typography
+          sx={{
+            fontSize: {
+              xs: "25px",
+              sm: "28.707px",
+              md: "32px",
+              lg: "39.707px",
+            },
+          }}
+        >
           {chapter}
         </Typography>
       )}
       {title != "templateView" && (
         <Box>
           <Typography
-            sx={{ fontSize: { sm: "44px", xs: "25px" }, fontWeight: 600 }}
+            sx={{
+              fontSize: {
+                xs: "22px",
+                sm: "24.707px",
+                md: "28px",
+                lg: "39.707px",
+              },
+              fontWeight: 600,
+            }}
           >
             Chapter Name
           </Typography>
@@ -91,7 +117,24 @@ const AddChapterName = ({
           </Box>
         </Box>
       )}
-      <Box>
+      </Box>
+      <Box
+        sx={{
+          background:{xs: "transparent", sm:"#17756A"},
+          height: {
+            sm: "400px",
+          },
+          width: {
+            sm: "360px",
+          },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderTopLeftRadius: "50%",
+          borderBottomLeftRadius: "50%",
+
+        }}
+      >
         <Image src={BookImage} alt="book image" className={styles.bookImage} />
       </Box>
     </Box>

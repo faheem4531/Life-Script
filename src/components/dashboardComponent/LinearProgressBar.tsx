@@ -23,7 +23,7 @@ function LinearProgressWithLabel(
     >
       <Stack sx={{ width: "100%", color: "#197065" }} spacing={2}>
         <LinearProgress
-          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
+          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px"}}
           variant="determinate"
           color="inherit"
           {...props}
@@ -32,7 +32,7 @@ function LinearProgressWithLabel(
       <Box sx={{ minWidth: 35, position: "absolute", right: "20px" }}>
         <Typography
           variant="body2"
-          color="#197065"
+          color={Math.round(props.value) === 100 ? "white" : "#197065"}
           fontWeight="500"
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>
@@ -82,10 +82,11 @@ function LoadingProgress(
     >
       <Stack sx={{ width: "100%", color: "#197065", borderRadius: "30px"}} spacing={2}>
         <LinearProgress
-          sx={{ height: "45px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
+          sx={{ height: "45px", bgcolor: "#F9F9F9"}}
           variant="determinate"
           color="inherit"
           {...props}
+          
         />
       </Stack>
       <Box sx={{ minWidth: 35, position: "absolute", right: "0px", top: "-60px" }}>

@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 interface AddQuestionProps {
   questionData?: (question: string) => void; // Assuming the return type is void, modify as needed
   questionText?: string;
+  btnText: string
 }
 export default function AddQuestion({
   questionData,
   questionText,
+  btnText,
 }: AddQuestionProps) {
   const [question, setQuestion] = useState("");
 
@@ -49,12 +51,13 @@ export default function AddQuestion({
             color: "white",
             width: "200px",
             marginTop: { sm: "50px", xs: "20px" },
+            textTransform: "capitalize",
             "&:hover": {
               backgroundColor: "#186F65",
             },
           }}
         >
-          Submit
+          {btnText}
         </Button>
       </Box>
     </Box>

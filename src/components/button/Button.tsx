@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import classes from "./Button.module.css"
 
-const Button = ({ title, border, background, width, height, padding, borderRadius, color, onClick, image, fontSize }) => {
+const Button = ({ title, border, background, width, height = "auto", padding, borderRadius, color, onClick, image, fontSize }) => {
   const styles = {
     border: border || "none",
     background: background,

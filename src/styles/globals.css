@@ -148,3 +148,12 @@ a {
 /* .ql-image:hover {
   background-color: transparent !important;
 } */
+
+.css-1wqgwi1-MuiLinearProgress-bar1 {
+  border-radius: 30px;
+  background: linear-gradient(90deg, #197065 0%, #1F9A8B 100%);
+}
+
+.css-od7rqf-MuiLinearProgress-root::before {
+  opacity: 0;
+}

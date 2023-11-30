@@ -121,7 +121,7 @@ export default function Questions({
             <Button
               // variant="contained"
               onClick={() => answerClick(question?._id)}
-              disabled={question?.status === "Completed"}
+              // disabled={question?.status === "Completed"}
               type="submit"
               sx={{
                 borderRadius: " 0px 8px 8px 0px",
@@ -241,6 +241,7 @@ export default function Questions({
             setUpdateQuestionModal(false);
           }}
           questionText={question?.text}
+          btnText= {"Update Question"}
         />
       </CustomizationDialog>
       <TransitionsDialog

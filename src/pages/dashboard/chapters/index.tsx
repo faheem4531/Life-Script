@@ -6,6 +6,7 @@ import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
+import bgTree from "../../../_assets/svg/bgTree.svg"
 import {
   createChapter,
   deleteSelectedChapter,
@@ -22,6 +23,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapter from "./addChapter";
+
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [updateChapterModal, setUpdateChapterModal] = useState(false);
@@ -107,7 +109,12 @@ const Dashboard = () => {
   return (
     <>
       <Layout>
+        <Box sx={{
+          position: "relative",
+          zIndex: "2"
+        }}>
         <HomeSteps />
+
         {loading ? (
           <Box
             sx={{
@@ -156,6 +163,7 @@ const Dashboard = () => {
             <NoChapters />
           </Box>
         )}
+        </Box>
       </Layout>
 
       <CustomizationDialog
@@ -180,6 +188,7 @@ const Dashboard = () => {
             setUpdateChapterModal(false);
           }}
           data={chapterTitle}
+          btnText={updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
         />
       </CustomizationDialog>
       <TransitionsDialog
@@ -189,6 +198,14 @@ const Dashboard = () => {
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
       />
+      <Box sx={{
+        position: "fixed",
+        bottom:"0px",
+        right: "0px",
+        zIndex: "1"
+      }}>
+      <Image src={bgTree} alt="bgTree"/>
+      </Box>
     </>
   );
 };

@@ -138,8 +138,9 @@ const chapterName = () => {
             backgroundColor: "#fff",
             padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
             marginTop: "10px",
-            minHeight: "60vh",
+            height: "calc(100vh - 340px)",
             borderRadius: { sm: "18px", xs: "5px" },
+            overflowY: "scroll"
           }}
         >
           {/* <Box>
@@ -199,10 +200,12 @@ const chapterName = () => {
               <CircularProgress />
             </Box>
           ) : (
-            <>
+            <Box sx={{
+              bgcolor: 'red'
+            }}>
               {allQuestions?.length > 0 ? (
                 allQuestions.map((question, index) => (
-                  <div>
+                  <Box>
                     <Questions
                       key={question._id}
                       question={question}
@@ -215,7 +218,7 @@ const chapterName = () => {
                         router.push(`/events?questionId=${text}`)
                       }
                     />
-                  </div>
+                  </Box>
                 ))
               ) : (
                 <NoQuestions />
@@ -240,7 +243,7 @@ const chapterName = () => {
                   />
                 </Box>
               )} */}
-            </>
+            </Box>
           )}
         </Box>
         <Box
@@ -321,6 +324,7 @@ const chapterName = () => {
               setOpenModal(false);
               submitQuestion(question);
             }}
+            btnText= {"Add Question"}
           />
         </Box>
       </CustomizationDialog>
