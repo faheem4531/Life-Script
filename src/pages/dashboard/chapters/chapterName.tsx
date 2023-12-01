@@ -37,6 +37,7 @@ const chapterName = () => {
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
+  const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrativeeeeeeeeeeeeeeeeeeee
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -44,10 +45,9 @@ const chapterName = () => {
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
 
-
   const handleCancel = () => {
     // Close the customization dialog
-    router.push("/dashboard/narrative/loading")
+    router.push("/dashboard/narrative/loading");
     setOpenCustomizationDialog(false);
   };
 
@@ -118,113 +118,115 @@ const chapterName = () => {
       setOpenTooltip(false);
       setOpenCustomizationDialog(true);
     } else {
+      setNarrativeRefuse(true);
       console.log(
         "Cannot open customization dialog because a question is in progress."
       );
+      setTimeout(() => {
+        setNarrativeRefuse(false);
+      }, 3000);
     }
   };
 
   return (
     <>
-      <Layout>
-        <AddChapterName
-          title="chapterName"
-          chapter={chapterName}
-          chapterId={chapterId}
-        />
-        <LinearProgressBar percentage={percentage} />
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
-            marginTop: "10px",
-            height: "calc(100vh - 340px)",
-            borderRadius: { sm: "18px", xs: "5px" },
-            overflowY: "scroll"
-          }}
-        >
-          {/* <Box>
-            <ProgressBar />
-          </Box> */}
+      <Box>
+        <Layout>
+          <AddChapterName
+            title="chapterName"
+            chapter={chapterName}
+            chapterId={chapterId}
+          />
+          <LinearProgressBar percentage={percentage} />
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginTop: { xs: "15px" },
+              backgroundColor: "#fff",
+              padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
+              marginTop: "10px",
+              minHeight: "60vh",
+              borderRadius: { sm: "18px", xs: "5px" },
             }}
           >
-            <Typography
-              sx={{
-                fontSize: "20px",
-                fontWeight: 700,
-                color: "rgba(0, 0, 0, 0.87)",
-              }}
-            >
-              Questions
-            </Typography>
-            <Box
-              display={"flex"}
-              onClick={() => setOpenModal(true)}
-              sx={{ gap: { sm: 2, xs: 1 } }}
-            >
-              <Box sx={{ cursor: "pointer" }}>
-                <Image src={addIcon} alt="addicon" />
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    mt: 1,
-                    color: "#197065E5",
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    display: { sm: "block", xs: "none" },
-                    cursor: "pointer",
-                  }}
-                >
-                  Add new question
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-
-          {loading ? (
+            {/* <Box>
+            <ProgressBar />
+          </Box> */}
             <Box
               sx={{
-                marginTop: "8%",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 alignItems: "center",
+                marginTop: { xs: "15px" },
               }}
             >
-              <CircularProgress />
+              <Typography
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  color: "rgba(0, 0, 0, 0.87)",
+                }}
+              >
+                Questions
+              </Typography>
+              <Box
+                display={"flex"}
+                onClick={() => setOpenModal(true)}
+                sx={{ gap: { sm: 2, xs: 1 } }}
+              >
+                <Box sx={{ cursor: "pointer" }}>
+                  <Image src={addIcon} alt="addicon" />
+                </Box>
+                <Box>
+                  <Typography
+                    sx={{
+                      mt: 1,
+                      color: "#197065E5",
+                      fontSize: "18px",
+                      fontWeight: 600,
+                      display: { sm: "block", xs: "none" },
+                      cursor: "pointer",
+                    }}
+                  >
+                    Add new question
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
-          ) : (
-            <Box sx={{
-              bgcolor: 'red'
-            }}>
-              {allQuestions?.length > 0 ? (
-                allQuestions.map((question, index) => (
-                  <Box>
-                    <Questions
-                      key={question._id}
-                      question={question}
-                      title="chapterName"
-                      number={index + 1}
-                      questionChanged={() =>
-                        setQuestionChanged(!questionChanged)
-                      }
-                      answerClick={(text) =>
-                        router.push(`/events?questionId=${text}`)
-                      }
-                    />
-                  </Box>
-                ))
-              ) : (
-                <NoQuestions />
-              )}
 
-              {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
+            {loading ? (
+              <Box
+                sx={{
+                  marginTop: "8%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            ) : (
+              <>
+                {allQuestions?.length > 0 ? (
+                  allQuestions.map((question, index) => (
+                    <div>
+                      <Questions
+                        key={question._id}
+                        question={question}
+                        title="chapterName"
+                        number={index + 1}
+                        questionChanged={() =>
+                          setQuestionChanged(!questionChanged)
+                        }
+                        answerClick={(text) =>
+                          router.push(`/events?questionId=${text}`)
+                        }
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <NoQuestions />
+                )}
+
+                {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
                 <Box
                   onClick={handleNarrativeFusion}
                   sx={{
@@ -243,33 +245,54 @@ const chapterName = () => {
                   />
                 </Box>
               )} */}
-            </Box>
-          )}
-        </Box>
-        <Box
-          onClick={() => {
-            if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-              setFusionLoading(true);
-              handleNarrativeFusion();
-            }
-          }}
-        >
-          {/* <Box
-            sx={{
-              width: "235.49px",
-              height: "98.311px",
-              p: "10px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "white",
-              border: "2px solid #197065",
+              </>
+            )}
+          </Box>
+          <Box
+            onClick={() => {
+              if (areAllCompleted(allQuestions) === true && !fusionLoading) {
+                setFusionLoading(true);
+                handleNarrativeFusion();
+              }
             }}
-          ></Box> */}
+          >
+            <FloatButton onClick={handleFloatButtonClick} />
+            {/* Refuse Narative  */}
 
-          <FloatButton onClick={handleFloatButtonClick} />
-        </Box>
-      </Layout>
+            {narrativeRefuse && (
+              <Box
+                sx={{
+                  backgroundImage: { sm: 'url("/pointer-msg.png")' },
+                  backgroundSize: "100%",
+                  backgroundRepeat: "no-repeat",
+                  width: "360px",
+                  height: "160px",
+                  position: "fixed",
+                  bottom: "30px",
+                  zIndex: "3",
+                  padding: "30px 10px 0 45px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "22px",
+                    fontWeight: 500,
+                    marginBottom: "15px",
+                  }}
+                >
+                  Narrative Fusion
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "12px", fontWeight: 300, lineHeight: "150%" }}
+                >
+                  You cannot use this feature untill all chapters are completed
+                </Typography>
+              </Box>
+            )}
+          </Box>
+        </Layout>
+      </Box>
+
       <TransitionsDialog
         open={openCustomizationDialog}
         heading="Narrative Fusion"
@@ -324,7 +347,7 @@ const chapterName = () => {
               setOpenModal(false);
               submitQuestion(question);
             }}
-            btnText= {"Add Question"}
+            btnText={"Add Question"}
           />
         </Box>
       </CustomizationDialog>
