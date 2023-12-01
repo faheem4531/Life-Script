@@ -17,6 +17,7 @@ import {
   getChapterbyId,
   narrativeFusion,
   selectChapter,
+  simpleChapter,
 } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -41,22 +42,48 @@ const chapterName = () => {
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const { chapterId, percentage } = router.query;
+  const { chapterId } = router.query;
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
+  const percentage = calculateCompletionPercentage(question?.questions);
 
   const handleCancel = () => {
     // Close the customization dialog
-    router.push("/dashboard/narrative/loading");
     setOpenCustomizationDialog(false);
+    router.push(
+      `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${true}`
+    );
+    if (areAllCompleted(allQuestions) === true && !fusionLoading) {
+      setFusionLoading(true);
+      handleNarrativeFusion();
+    }
   };
 
-  const handleDeleteQuestion = () => {
-    // Handle the deletion logic here
-    console.log("Question deleted!");
-    // Close the customization dialog
+  const proceedFusion = () => {
     setOpenCustomizationDialog(false);
+
+    router.push(
+      `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
+    );
+    dispatch(simpleChapter({ chapterId: chapterId.toString() }))
+      .unwrap()
+      .then((res) => console.log("simplechapter", res));
   };
+
+  function calculateCompletionPercentage(array) {
+    if (array?.length === 0) {
+      return 0;
+    }
+
+    const completedCount = array?.filter(
+      (item) => item.status === "Completed"
+    ).length;
+    // Calculate the percentage
+    const percentage = (completedCount / array?.length) * 100;
+
+    return percentage;
+  }
+
   const submitQuestion = (question: string) => {
     dispatch(
       createQuestion({
@@ -99,7 +126,6 @@ const chapterName = () => {
         dispatch(chapterResponse({ chapterId: chapterId.toString() }))
           .unwrap()
           .then((res) => {
-            console.log("respon111", res);
             setGptResponse(res.join(""));
             setFusionModal(true);
           });
@@ -111,7 +137,7 @@ const chapterName = () => {
   };
 
   const handleFloatButtonClick = () => {
-    const isAnyQuestionInProgress = allQuestions.some(
+    const isAnyQuestionInProgress = allQuestions?.some(
       (question) => question.status === "Progress"
     );
     if (!isAnyQuestionInProgress) {
@@ -124,7 +150,7 @@ const chapterName = () => {
       );
       setTimeout(() => {
         setNarrativeRefuse(false);
-      }, 3000);
+      }, 6000);
     }
   };
 
@@ -143,8 +169,9 @@ const chapterName = () => {
               backgroundColor: "#fff",
               padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
               marginTop: "10px",
-              minHeight: "60vh",
+              height: "calc(100vh - 340px)",
               borderRadius: { sm: "18px", xs: "5px" },
+              overflowY: "scroll",
             }}
           >
             {/* <Box>
@@ -204,10 +231,16 @@ const chapterName = () => {
                 <CircularProgress />
               </Box>
             ) : (
-              <>
+              <Box
+                sx={
+                  {
+                    // bgcolor: "red",
+                  }
+                }
+              >
                 {allQuestions?.length > 0 ? (
                   allQuestions.map((question, index) => (
-                    <div>
+                    <Box>
                       <Questions
                         key={question._id}
                         question={question}
@@ -220,7 +253,7 @@ const chapterName = () => {
                           router.push(`/events?questionId=${text}`)
                         }
                       />
-                    </div>
+                    </Box>
                   ))
                 ) : (
                   <NoQuestions />
@@ -245,7 +278,7 @@ const chapterName = () => {
                   />
                 </Box>
               )} */}
-              </>
+              </Box>
             )}
           </Box>
           <Box
@@ -285,7 +318,7 @@ const chapterName = () => {
                 <Typography
                   sx={{ fontSize: "12px", fontWeight: 300, lineHeight: "150%" }}
                 >
-                  You cannot use this feature untill all chapters are completed
+                  You cannot use this feature untill all questions are completed
                 </Typography>
               </Box>
             )}
@@ -298,7 +331,7 @@ const chapterName = () => {
         heading="Narrative Fusion"
         description="It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"
         cancel={handleCancel}
-        proceed={handleDeleteQuestion}
+        proceed={proceedFusion}
         proceedText="Compile Original Text" // Customize the text for the "Yes" button
         cancelText="Use Narrative Fusion" // Customize the text for the "No" button
       />

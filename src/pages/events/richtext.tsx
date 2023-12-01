@@ -1,20 +1,24 @@
 "use client";
 import { uploadImage } from "@/store/slices/chatSlice";
-import { Box, ButtonBase, MenuItem, Select, Typography } from "@mui/material";
-import styles from "./styles.module.css"
+import { Box, ButtonBase, MenuItem, Select } from "@mui/material";
 import {
   //ContentState,
   EditorState,
+  Modifier,
+  convertFromRaw,
   //convertFromHTML,
   convertToRaw,
 } from "draft-js";
+import styles from "./styles.module.css";
 
 import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
+// import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
+import Button from "@/components/button/Button";
 import {
+  getAnswerbyId,
   getQuestionbyId,
   saveAnswer,
   updateQuestion,
-  uploadAudio,
 } from "@/store/slices/chatSlice";
 import "core-js/stable";
 import "draft-js/dist/Draft.css";
@@ -27,8 +31,6 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
-import Button from "@/components/button/Button";
-import speechIcon from "@/_assets/svg/speeect-text-icon.svg"
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
@@ -38,19 +40,14 @@ const Editor = dynamic(
 );
 
 const RichText = ({ questionId }) => {
-  console.log("quest", questionId);
   const router = useRouter();
-  const dispatch: any = useDispatch();
-  const [isRecording, setIsRecording] = useState(false);
-  const [audioFile, setAudioFile] = useState(null);
-  const micRef = useRef(null);
   const mediaRecorderRef = useRef(null);
+  const dispatch: any = useDispatch();
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const [toneValue, setToneValue] = useState("Original (as written)");
   const [questionData, setQuestionData] = useState<any>({});
-
   const gptTones = [
     "Original (as written)",
     "Narrative",
@@ -60,26 +57,95 @@ const RichText = ({ questionId }) => {
     "Inspirational",
   ];
 
+  const [recording, setRecording] = useState(false);
+  const [detecting, setDetecting] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [transcript, setTranscript] = useState("");
+
   const handleSelectChange = (event) => {
     setToneValue(event.target.value);
   };
 
-  // useEffect(() => {
-  //     const htmlString =
-  //       '<ul>\
-  // <li style="text-align:center;"><strong>Sameer</strong><em> is a good backend developer</em></li>\
-  // <li style="text-align:center;">his logic is good</li>\
-  // </ul>';
-  //     const contentBlocks = convertFromHTML(htmlString);
-  //     const contentState = ContentState.createFromBlockArray(
-  //       contentBlocks.contentBlocks,
-  //       contentBlocks.entityMap
-  //     );
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
 
-  //     setEditorState(EditorState.createWithContent(contentState));
+      const socket = new WebSocket("wss://api.deepgram.com/v1/listen", [
+        "token",
+        "4f1dff16a5a14651cabba7f9bed72f79ad40d1f0",
+      ]);
 
-  //     console.log("1111", convertToRaw(contentState));
-  //   }, []);
+      mediaRecorderRef.current = new MediaRecorder(stream);
+
+      mediaRecorderRef.current.addEventListener("dataavailable", (event) => {
+        if (event.data.size > 0 && socket.readyState === 1) {
+          socket.send(event.data);
+        }
+      });
+
+      mediaRecorderRef.current.addEventListener("start", () => {
+        console.log("MediaRecorder started");
+        setRecording(true);
+      });
+
+      mediaRecorderRef.current.addEventListener("stop", () => {
+        console.log("MediaRecorder stopped");
+        setRecording(false);
+        setTranscript("");
+        setDetecting(false);
+        setListening(false);
+      });
+
+      socket.onmessage = (message) => {
+        const received = JSON.parse(message.data);
+        const receivedTranscript =
+          received.channel?.alternatives[0]?.transcript;
+        if (receivedTranscript && received.is_final) {
+          setTranscript(" " + receivedTranscript);
+        }
+      };
+
+      socket.onopen = () => {
+        setDetecting(false);
+        setListening(true);
+        console.log("WebSocket open");
+      };
+
+      socket.onclose = () => {
+        console.log("WebSocket closed");
+      };
+
+      socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
+
+      mediaRecorderRef.current.start(2000);
+    } catch (error) {
+      console.error("Error accessing microphone:", error);
+    }
+  };
+
+  const handleToggleRecording = () => {
+    if (recording) {
+      // Stop recording
+      console.log("stopping...");
+      mediaRecorderRef.current.stop();
+    } else {
+      // Start recording
+      console.log("starting...");
+      startRecording();
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (mediaRecorderRef.current) {
+        mediaRecorderRef.current.stop();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     console.log(
@@ -94,8 +160,59 @@ const RichText = ({ questionId }) => {
         .unwrap()
         .then((res) => setQuestionData(res));
     }
+    dispatch(getAnswerbyId({ id: questionId }))
+      .unwrap()
+      .then((res) => {
+        if (res?.muteableState) {
+          const contentState = convertFromRaw(
+            JSON?.parse(`${res?.muteableState}`)
+          );
+          setEditorState(EditorState.createWithContent(contentState));
+        }
+      });
   }, [questionId]);
+  useEffect(() => {
+    if (transcript) {
+      const contentState = convertFromRaw({
+        blocks: [
+          {
+            text: editorState + transcript,
+            type: "unstyled",
+            key: "abc",
+            depth: 0, // Add depth property
+            inlineStyleRanges: [], // Add inlineStyleRanges property
+            entityRanges: [],
+          },
+        ],
+        entityMap: {},
+      });
 
+      setEditorState(EditorState.createWithContent(contentState));
+    }
+  }, [transcript]);
+
+  useEffect(() => {
+    updateEditorWithTranscript();
+  }, [transcript]);
+
+  const updateEditorWithTranscript = () => {
+    const currentContent = editorState.getCurrentContent();
+    const currentSelection = editorState.getSelection();
+
+    const newContent = Modifier.insertText(
+      currentContent,
+      currentSelection,
+      transcript
+    );
+
+    const newEditorState = EditorState.push(
+      editorState,
+      newContent,
+      "insert-characters"
+    );
+    setEditorState(newEditorState);
+  };
+  //for grammar
   useEffect(() => {
     if (typeof window !== "undefined") {
       import("@webspellchecker/wproofreader-sdk-js").then(
@@ -119,8 +236,13 @@ const RichText = ({ questionId }) => {
         chapterId: questionData?.chapter?._id,
         userTone: toneValue,
         userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        muteableState: JSON.stringify(
+          convertToRaw(editorState.getCurrentContent())
+        ),
       })
-    ).then(() => toast.success("Answer saved successfully"));
+    )
+      .unwrap()
+      .then(() => toast.success("Answer saved successfully"));
   };
 
   const handleCompleteAnswer = () => {
@@ -142,6 +264,7 @@ const RichText = ({ questionId }) => {
       .catch(() => toast.error("Failed to mark as complete"));
   };
 
+  //for uploadin image
   const uploadCallback = (file, callback) => {
     return new Promise((resolve, reject) => {
       const reader = new window.FileReader();
@@ -154,45 +277,6 @@ const RichText = ({ questionId }) => {
       };
       reader.readAsDataURL(file);
     });
-  };
-
-  const handleStartRecording = async () => {
-    setIsRecording(true);
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      micRef.current.srcObject = stream;
-
-      const mediaRecorder = new MediaRecorder(stream);
-      let blob;
-      mediaRecorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          blob = new Blob([e.data], { type: "audio/ogg" });
-          setAudioFile(blob);
-        }
-      };
-
-      mediaRecorder.onstop = () => {
-        setIsRecording(false);
-        const form_data = new FormData();
-        form_data.append("file", blob);
-        dispatch(uploadAudio(form_data));
-      };
-
-      mediaRecorderRef.current = mediaRecorder;
-      mediaRecorder.start();
-    } catch (error) {
-      console.error("Error accessing microphone:", error);
-    }
-  };
-
-  const handleStopRecording = () => {
-    if (
-      mediaRecorderRef.current &&
-      mediaRecorderRef.current.state === "recording"
-    ) {
-      mediaRecorderRef.current.stop();
-    }
   };
 
   return (
@@ -212,25 +296,42 @@ const RichText = ({ questionId }) => {
           }}
         >
           <Image alt="icon" src={PIcon} />
-          <div className={styles.overflowQuestionText}>{questionData?.text}</div>
+          <div className={styles.overflowQuestionText}>
+            {questionData?.text}
+          </div>
         </Box>
-        <Box sx={{
-          display: "flex",
-          alignItems: "center",
-          columnGap: "10px"
-        }}>
-          <Box sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            columnGap: "10px",
+          }}
+        >
+          <Box
+            sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}
+          >
             <Button
-              image={speechIcon}
-              title="Speech-to-text"
+              // image={speechIcon}
+              image={null}
+              title={
+                detecting
+                  ? "Detecting..."
+                  : listening
+                  ? "Stop"
+                  : "Speech-to-text"
+              }
               background="#fff"
               borderRadius="27px"
               color="#197065"
               width="155px"
               fontSize="14px"
               padding="9px 10px"
-              onClick={handleStartRecording}
+              onClick={() => {
+                setDetecting(true);
+                handleToggleRecording();
+              }}
               border="1px solid #197065"
+              height={undefined}
             />
             <Select
               value={toneValue}

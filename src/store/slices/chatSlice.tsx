@@ -10,18 +10,22 @@ import {
   chapterResponseApi,
   chatApi,
   cloneTemplateApi,
+  compiledChapterApi,
   createChapterApi,
   createQuestionApi,
   deleteChapterApi,
   deleteQuestionApi,
+  getAnswerbyIdApi,
   getBookTitleApi,
   getChapterbyIdApi,
   getChaptersApi,
   getQuestionbyIdApi,
   getQuestionsApi,
   getTemplatesApi,
+  isTemplateClonedApi,
   narrativeFusionApi,
   saveAnswerApi,
+  simpleChapterApi,
   updateChapterApi,
   updateQuestionApi,
   uploadAudioApi,
@@ -61,6 +65,30 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const compiledChapter = createAsyncThunk<UserData, any>(
+  "chat/compiled-chapter",
+  async (data: { id: string }) => {
+    try {
+      const response = await compiledChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const simpleChapter = createAsyncThunk<UserData, any>(
+  "chat/simple-chapter",
+  async (data: { chapterId: string }) => {
+    try {
+      const response = await simpleChapterApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -152,6 +180,18 @@ export const updateChapter = createAsyncThunk<UserData, any>(
   }
 );
 
+export const getAnswerbyId = createAsyncThunk<UserData, any>(
+  "chat/get-answer",
+  async (data: { id: string }) => {
+    try {
+      const response = await getAnswerbyIdApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 export const deleteSelectedChapter = createAsyncThunk<UserData, any>(
   "chat/delete-chapter",
   async (data: { id: string }) => {
@@ -217,6 +257,18 @@ export const cloneTemplate = createAsyncThunk<UserData, { id: string }>(
   async (data: { id: string }) => {
     try {
       const response = await cloneTemplateApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const isTemplateCloned = createAsyncThunk<UserData, { id: string }>(
+  "chat/cloned-template",
+  async (data: { id: string }) => {
+    try {
+      const response = await isTemplateClonedApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

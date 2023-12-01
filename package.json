@@ -42,6 +42,7 @@
     "react-redux": "^8.1.3",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.3",
+    "recorder-core": "^1.2.23070100",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.7.2",
     "styled-components": "^6.1.0",

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import LinearProgress, {
   LinearProgressProps,
@@ -23,7 +21,7 @@ function LinearProgressWithLabel(
     >
       <Stack sx={{ width: "100%", color: "#197065" }} spacing={2}>
         <LinearProgress
-          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px"}}
+          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
           variant="determinate"
           color="inherit"
           {...props}
@@ -59,16 +57,11 @@ export default function LinearProgressBar({ percentage }: any) {
   );
 }
 
+{
+  /*  2nd  Linear Reload bar */
+}
 
-
-
-
-
-{/*  2nd  Linear Reload bar */ }
-
-function LoadingProgress(
-  props: LinearProgressProps & { value: number }
-) {
+function LoadingProgress(props: LinearProgressProps & { value: number }) {
   return (
     <Box
       sx={{
@@ -77,19 +70,27 @@ function LoadingProgress(
         height: "45px",
         bgcolor: "#F9F9F9",
         borderRadius: "30px",
-        position: "relative"
+        position: "relative",
       }}
     >
-      <Stack sx={{ width: "100%", color: "#197065", borderRadius: "30px"}} spacing={2}>
+      <Stack
+        sx={{
+          width: "100%",
+          color: "#197065",
+          borderRadius: "30px",
+        }}
+        spacing={2}
+      >
         <LinearProgress
-          sx={{ height: "45px", bgcolor: "#F9F9F9"}}
+          sx={{ height: "45px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
           variant="determinate"
           color="inherit"
           {...props}
-          
         />
       </Stack>
-      <Box sx={{ minWidth: 35, position: "absolute", right: "0px", top: "-60px" }}>
+      <Box
+        sx={{ minWidth: 35, position: "absolute", right: "0px", top: "-60px" }}
+      >
         <Typography
           variant="body2"
           color="#197065"

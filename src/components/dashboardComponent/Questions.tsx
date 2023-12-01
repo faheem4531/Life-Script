@@ -91,7 +91,9 @@ export default function Questions({
   return (
     <Box sx={{ position: "relative", width: "100%" }}>
       <Box
+        onClick={() => answerClick(question?._id)}
         sx={{
+          cursor: "pointer",
           bgcolor: "#F9F9F9",
           width: "100%",
           borderRadius: "8px",
@@ -120,7 +122,6 @@ export default function Questions({
           <Box sx={{ textAlign: "center", width: "max-content" }}>
             <Button
               // variant="contained"
-              onClick={() => answerClick(question?._id)}
               // disabled={question?.status === "Completed"}
               type="submit"
               sx={{
@@ -241,7 +242,7 @@ export default function Questions({
             setUpdateQuestionModal(false);
           }}
           questionText={question?.text}
-          btnText= {"Update Question"}
+          btnText={"Update Question"}
         />
       </CustomizationDialog>
       <TransitionsDialog

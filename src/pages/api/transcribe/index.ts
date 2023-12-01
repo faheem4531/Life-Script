@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     const audioBuffer = fs.readFileSync(audioFilePath);
     const audioStream = new Readable();
     audioStream.push(audioBuffer);
-    audioStream.push(null);
+    // audioStream.push(null);
 
     const deepgramLive = deepgram.transcription.live({
       smartFormat: true,

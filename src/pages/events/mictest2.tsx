@@ -22,14 +22,17 @@ const SpeechToAudio = () => {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       micRef.current.srcObject = stream;
 
-      const mediaRecorder = new MediaRecorder(stream);
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: "audio/webm",
+      });
 
       mediaRecorder.ondataavailable = (e) => {
         if (e.data.size > 0) {
           // Send the current chunk to the server via WebSocket
+          const blob = new Blob([e.data], { type: "audio/ogg" });
           if (socket) {
             console.log("checkremit");
-            socket.emit("audio-chunk", e.data);
+            socket.emit("audio-chunk", blob);
           }
         }
       };
@@ -42,6 +45,7 @@ const SpeechToAudio = () => {
       mediaRecorder.start();
     } catch (error) {
       console.error("Error accessing microphone:", error);
+      setIsRecording(false);
     }
   };
 

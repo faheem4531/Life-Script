@@ -8,9 +8,12 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 // import AddQuestion from "@/pages/events/addQuestion";
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import Button from "@/components/button/Button";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   cloneTemplate,
+  // cloneTemplate,
   getTemplates,
+  isTemplateCloned,
   selectTemplates,
 } from "@/store/slices/chatSlice";
 import { Box, ButtonBase, Typography } from "@mui/material";
@@ -30,15 +33,38 @@ const chapterName = () => {
   const dispatch: any = useDispatch();
   const { templateId } = router.query;
   const allTemplates = useSelector(selectTemplates);
+  const [templateState, setTemplateState] = useState(false);
+  console.log("tempState", templateState);
   let templateData;
 
   const handleChapterClone = () => {
     setButtonLoading(false);
+    dispatch(isTemplateCloned({ id: templateId.toString() }))
+      .unwrap()
+      .then((res) => {
+        console.log("tempresponse", res);
+        if (res == "Template is already cloned") {
+          setTemplateState(true);
+        } else {
+          dispatch(cloneTemplate({ id: templateId.toString() }))
+            .then(() => {
+              setOpenModal(true);
+            })
+            .catch(() => setButtonLoading(false));
+        }
+      });
+  };
+
+  const handleCopyAgain = () => {
     dispatch(cloneTemplate({ id: templateId.toString() }))
       .then(() => {
         setOpenModal(true);
+        setTemplateState(false);
       })
-      .catch(() => setButtonLoading(false));
+      .catch(() => {
+        setButtonLoading(false);
+        setTemplateState(false);
+      });
   };
 
   useEffect(() => {
@@ -81,6 +107,7 @@ const chapterName = () => {
             width="220px"
             padding="10px 0px"
             onClick={() => {}}
+            height={undefined}
           />
         </Box>
         <Box
@@ -187,6 +214,13 @@ const chapterName = () => {
           </ButtonBase>
         </Box>
       </CustomizationDialog>
+      <TransitionsDialog
+        open={templateState}
+        heading="Copy Template"
+        description="This template is already copied, want to copy template again?"
+        cancel={() => setTemplateState(false)}
+        proceed={handleCopyAgain}
+      />
     </>
   );
 };

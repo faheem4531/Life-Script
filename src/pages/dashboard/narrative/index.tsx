@@ -1,49 +1,98 @@
+import EditIcon from "@/_assets/svg/edit-icon-green.svg";
+import NextIcon from "@/_assets/svg/next-iconX.svg";
+import PreviousIcon from "@/_assets/svg/previous-icon.svg";
+import RevertIcon from "@/_assets/svg/revert-response-icon.svg";
+import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
+import Title from "@/_assets/svg/topic-title.svg";
 import Layout from "@/components/Layout/Layout";
 import Button from "@/components/button/Button";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
+import { compiledChapter } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import RevertIcon from "@/_assets/svg/revert-response-icon.svg"
-import Title from "@/_assets/svg/topic-title.svg"
-import EditIcon from "@/_assets/svg/edit-icon-green.svg"
-import SaveIcon from "@/_assets/svg/save-response-white-icon.svg"
-import styles from "./Narrative.module.css"
-import NextIcon from "@/_assets/svg/next-iconX.svg"
-import PreviousIcon from "@/_assets/svg/previous-icon.svg"
-import TransitionsDialog from "@/components/modal/TransitionDialog";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import styles from "./Narrative.module.css";
 
 const NarrativeResponse = () => {
-  const [revertModal, setRevertModal] = useState(false)
-  const [saveResponseModal, setSaveResponseModal] = useState(false)
+  const [revertModal, setRevertModal] = useState(false);
+  const [saveResponseModal, setSaveResponseModal] = useState(false);
+  const router = useRouter();
+  const dispatch: any = useDispatch();
+  const { chapterId, openai } = router.query;
+  console.log("999", typeof openai, openai);
+  const [chapterhtml, setChapterhtml] = useState(``);
+  const [chapterTitle, setChapterTitle] = useState("");
 
-  const text1 = "You don’t need to have a full time ecommerce business to earn a little extra money through your website. You don’t even need to be there all the time. All you need to do is wait for the day your advertisers will pay you."
-  const text2 = "However, this is not as easy as it seems. You can’t expect to just make a website and watch the money roll in. You have to exert first the effort to make the site popular and produce a huge traffic flow. Advertisers would only post their banners and ads on sites where they know there are many people who will see them. The more traffic and visitors you have the likely the chance that advertisers will want their ads on your site. You can also have pay-per-click advertising in your site. As each visitor clicks on an ad, the advertiser will pay you for those redirects. Google’s Adsense and Yahoo’s Search marketing are some of those that offer this performance. The more traffic and visitors you have the likely the chance th"
-
+  useEffect(() => {
+    if (chapterId) {
+      dispatch(compiledChapter({ id: chapterId }))
+        .unwrap()
+        .then((res) => {
+          setChapterTitle(res?.chapter?.title);
+          openai === "true"
+            ? setChapterhtml(res?.openaiChapterText)
+            : setChapterhtml(res?.userText);
+        });
+    }
+  }, [chapterId]);
   return (
     <>
       <Box sx={{ height: "100vh", overflow: "hidden" }}>
         <Layout>
-          <Box sx={{
-            marginTop: { xl: "30px", sm: "20px" },
-            display: "flex",
-            columnGap: { xl: "100px", lg: "40px" },
-            height: "100%"
-          }}
-            className={styles.nativeMainBg}>
-            <Box sx={{
+          <Box
+            sx={{
+              marginTop: { xl: "30px", sm: "20px" },
               display: "flex",
-              flexDirection: "column",
-              alignContent: "space-between", width: "33%"
-            }}>
+              columnGap: { xl: "100px", lg: "40px" },
+              height: "100%",
+            }}
+            className={styles.nativeMainBg}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignContent: "space-between",
+                width: "33%",
+              }}
+            >
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Image alt="image" src={Title} className={styles.titleIcon} />
                 <Box>
-                  <Typography sx={{ fontSize: { xl: "20px", sm: "17px" }, display: "block", color: "#171725", fontWeight: 600 }}>My Adventurous Life</Typography>
-                  <Typography sx={{ fontSize: "12px", color: "#696974", fontWeight: 300, textDecoration: "underline" }}>view only</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: { xl: "20px", sm: "17px" },
+                      display: "block",
+                      color: "#171725",
+                      fontWeight: 600,
+                    }}
+                  >
+                    My Adventurous Life
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "12px",
+                      color: "#696974",
+                      fontWeight: 300,
+                      textDecoration: "underline",
+                    }}
+                  >
+                    view only
+                  </Typography>
                 </Box>
               </Box>
               <Box sx={{ marginTop: "auto" }}>
-                <Typography sx={{ fontSize: { xl: "15px", sm: "13px" }, fontWeight: 300, marginBottom: "8px" }}>Doesn’t like the narrative fusion response?</Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xl: "15px", sm: "13px" },
+                    fontWeight: 300,
+                    marginBottom: "8px",
+                  }}
+                >
+                  Doesn’t like the narrative fusion response?
+                </Typography>
                 <Button
                   image={RevertIcon}
                   title="Revert Response"
@@ -59,29 +108,81 @@ const NarrativeResponse = () => {
                 />
               </Box>
             </Box>
-            <Box sx={{
-              maxWidth: { xl: "445px", sm: "420px" },
-              height: "100%"
-            }}>
-              <Box sx={{
-                padding: { xl: "45px 60px", sm: "40px 45px", },
-                bgcolor: "#fff", position: "relative", height: "75vh"
-              }}>
+            <Box
+              sx={{
+                maxWidth: { xl: "445px", sm: "420px" },
+                height: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  padding: { xl: "45px 60px", sm: "40px 45px" },
+                  bgcolor: "#fff",
+                  position: "relative",
+                  height: "75vh",
+                }}
+              >
                 <Typography
-                  sx={{ textAlign: "center", fontSize: "20px", fontWeight: 600, color: "#171725", marginBottom: "35px" }}>
-                  My Adventurous Life</Typography>
-                <Typography
-                  sx={{ fontSize: "13px", color: "#696974", marginBottom: "25px", lineHeight: "22px" }}>
-                  {text1}{text1}{text1}{text1}</Typography>
+                  sx={{
+                    textAlign: "center",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    color: "#171725",
+                    marginBottom: "35px",
+                  }}
+                >
+                  My Adventurous Life
+                </Typography>
+                {/* <Typography
+                  sx={{
+                    fontSize: "13px",
+                    color: "#696974",
+                    marginBottom: "25px",
+                    lineHeight: "22px",
+                  }}
+                >
+                  {text1}
+                  {text1}
+                  {text1}
+                  {text1}
+                </Typography> */}
+                <Box
+                  dangerouslySetInnerHTML={{
+                    __html: chapterhtml,
+                  }}
+                  sx={{
+                    fontSize: "13px",
+                    color: "#696974",
+                    marginBottom: "25px",
+                    lineHeight: "22px",
+                  }}
+                />
+                {/* dangerouslySetInnerHTML={{ __html: "htmlContent" }}
+                sx={{ whiteSpace: "pre-line" }} */}
                 <Image alt="icon" src={NextIcon} className={styles.nextIcon} />
-                <Image alt="icon" src={PreviousIcon} className={styles.previousIcon} />
+                <Image
+                  alt="icon"
+                  src={PreviousIcon}
+                  className={styles.previousIcon}
+                />
               </Box>
-              <Box sx={{ marginTop: "18px", fontSize: "15px", fontWeight: 500, textAlign: "center" }}>
+              <Box
+                sx={{
+                  marginTop: "18px",
+                  fontSize: "15px",
+                  fontWeight: 500,
+                  textAlign: "center",
+                }}
+              >
                 Page 01 of 40
               </Box>
             </Box>
             <Box
-              sx={{ display: "flex", flexDirection: { sm: "column", lg: "row" }, gap: "10px" }}
+              sx={{
+                display: "flex",
+                flexDirection: { sm: "column", lg: "row" },
+                gap: "10px",
+              }}
             >
               <Button
                 image={EditIcon}
@@ -93,7 +194,7 @@ const NarrativeResponse = () => {
                 width="155px"
                 fontSize="14px"
                 padding="9px 10px"
-                onClick={() => { }}
+                onClick={() => {}}
                 border="1px solid #197065"
               />
               <Button
@@ -111,12 +212,11 @@ const NarrativeResponse = () => {
               />
             </Box>
           </Box>
-        </Layout >
-      </Box >
-
+        </Layout>
+      </Box>
 
       {/* Revert changes Modal  */}
-      < TransitionsDialog
+      <TransitionsDialog
         open={revertModal}
         heading="Revert Response"
         description="This will undo all narrative fusion changes. You will be redirected to the original content compiled chapter for editing."
@@ -127,7 +227,7 @@ const NarrativeResponse = () => {
       />
 
       {/* Save changes Modal  */}
-      < TransitionsDialog
+      <TransitionsDialog
         open={saveResponseModal}
         heading="Save Response"
         description="Once saved, you will find the chapter in completed chapters tab."
@@ -136,7 +236,6 @@ const NarrativeResponse = () => {
         proceedText="Not Yet" // Customize the text for the "Yes" button
         cancelText="Keep Changes" // Customize the text for the "No" button
       />
-
     </>
   );
 };
