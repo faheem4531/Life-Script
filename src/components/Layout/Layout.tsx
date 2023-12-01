@@ -4,14 +4,17 @@ import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
 import styles from "./Layout.module.css";
+import { Router, useRouter } from "next/router";
 
 const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
+  const router = useRouter()
 
   return (
     <Box
       sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", minHeight: "100vh" }}
-      className="container-fontfamily"
+      // className="container-fontfamily"
+      className={router.asPath === "/dashboard/narrative" && styles.nativeMainBg}
     >
       <Box
         sx={{
