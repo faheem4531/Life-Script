@@ -1,9 +1,3 @@
-.nativeMainBg {
-  background-image: url(../../../_assets/png/native-response-bg.png);
-  background-repeat: no-repeat;
-  background-position: right bottom;
-}
-
 .loadImage {
   width: 350px;
   height: 350px;
@@ -30,7 +24,15 @@
     width: 60px;
   }
 
-  .nativeMainBg {
-    background-size: 45% 80%;
+  .nextIcon {
+    right: -70px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .previousIcon {
+    left: -80px;
+    width: 50px;
+    height: 50px;
   }
 }

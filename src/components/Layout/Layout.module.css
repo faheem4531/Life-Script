@@ -2,6 +2,18 @@
   display: block;
 }
 
+.nativeMainBg {
+  background-image: url(../../_assets/png/native-response-bg.png);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+}
+
+@media (max-width:1400px) {
+  .nativeMainBg {
+    background-size: 35% 70%;
+  }
+}
+
 @media screen and (max-width:900px) {
   .display {
     display: none;
