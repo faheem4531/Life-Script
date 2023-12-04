@@ -156,25 +156,26 @@ const chapterName = () => {
 
   return (
     <>
-      <Box>
-        <Layout>
-          <AddChapterName
-            title="chapterName"
-            chapter={chapterName}
-            chapterId={chapterId}
-          />
-          <LinearProgressBar percentage={percentage} />
-          <Box
-            sx={{
-              backgroundColor: "#fff",
-              padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
-              marginTop: "10px",
-              height: "calc(100vh - 340px)",
-              borderRadius: { sm: "18px", xs: "5px" },
-              overflowY: "scroll",
-            }}
-          >
-            {/* <Box>
+    <Box>
+      <Layout>
+        <AddChapterName
+          title="chapterName"
+          chapter={chapterName}
+          chapterId={chapterId}
+        />
+        <LinearProgressBar percentage={percentage} />
+        <Box
+          sx={{
+            backgroundColor: "#fff",
+            padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
+            marginTop: "10px",
+            height: "calc(100vh - 340px)",
+            borderRadius: { sm: "18px", xs: "5px" },
+            display: "flex",
+            flexDirection: "column"
+          }}
+        >
+          {/* <Box>
             <ProgressBar />
           </Box> */}
             <Box
@@ -219,45 +220,43 @@ const chapterName = () => {
               </Box>
             </Box>
 
-            {loading ? (
-              <Box
-                sx={{
-                  marginTop: "8%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CircularProgress />
-              </Box>
-            ) : (
-              <Box
-                sx={
-                  {
-                    // bgcolor: "red",
-                  }
-                }
-              >
-                {allQuestions?.length > 0 ? (
-                  allQuestions.map((question, index) => (
-                    <Box>
-                      <Questions
-                        key={question._id}
-                        question={question}
-                        title="chapterName"
-                        number={index + 1}
-                        questionChanged={() =>
-                          setQuestionChanged(!questionChanged)
-                        }
-                        answerClick={(text) =>
-                          router.push(`/events?questionId=${text}`)
-                        }
-                      />
-                    </Box>
-                  ))
-                ) : (
-                  <NoQuestions />
-                )}
+          {loading ? (
+            <Box
+              sx={{
+                marginTop: "8%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Box sx={{
+              overflowY: "scroll",
+              flex: "1",
+              '&::-webkit-scrollbar': {display: "none"}
+            }}>
+              {allQuestions?.length > 0 ? (
+                allQuestions.map((question, index) => (
+                  <Box>
+                    <Questions
+                      key={question._id}
+                      question={question}
+                      title="chapterName"
+                      number={index + 1}
+                      questionChanged={() =>
+                        setQuestionChanged(!questionChanged)
+                      }
+                      answerClick={(text) =>
+                        router.push(`/events?questionId=${text}`)
+                      }
+                    />
+                  </Box>
+                ))
+              ) : (
+                <NoQuestions />
+              )}
 
                 {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
                 <Box
