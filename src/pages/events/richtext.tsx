@@ -121,7 +121,7 @@ const RichText = ({ questionId }) => {
         console.error("WebSocket error:", error);
       };
 
-      mediaRecorderRef.current.start(1200);
+      mediaRecorderRef.current.start(1800);
     } catch (error) {
       console.error("Error accessing microphone:", error);
     }
