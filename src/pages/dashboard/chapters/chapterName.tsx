@@ -258,37 +258,10 @@ const chapterName = () => {
                 ) : (
                   <NoQuestions />
                 )}
-
-                {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
-                <Box
-                  onClick={handleNarrativeFusion}
-                  sx={{
-                    
-                    cursor: "pointer",
-                    marginTop: 5,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Image
-                    src={fusionIcon}
-                    alt="fusion"
-                    width={300}
-                    height={70}
-                  />
-                </Box>
-              )} */}
               </Box>
             )}
           </Box>
-          <Box
-            onClick={() => {
-              if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-                setFusionLoading(true);
-                handleNarrativeFusion();
-              }
-            }}
-          >
+          <Box>
             <FloatButton onClick={handleFloatButtonClick} />
             {/* Refuse Narative  */}
 
@@ -334,6 +307,7 @@ const chapterName = () => {
         proceed={proceedFusion}
         proceedText="Compile Original Text" // Customize the text for the "Yes" button
         cancelText="Use Narrative Fusion" // Customize the text for the "No" button
+        closeModal={() => setOpenCustomizationDialog(false)}
       />
       <CustomizationDialog
         open={fusionModal}

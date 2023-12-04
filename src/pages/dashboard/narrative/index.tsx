@@ -21,7 +21,6 @@ const NarrativeResponse = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId, openai } = router.query;
-  console.log("999", typeof openai, openai);
   const [chapterhtml, setChapterhtml] = useState(``);
   const [chapterTitle, setChapterTitle] = useState("");
 

@@ -35,6 +35,7 @@ export default function DetailCard({
   isChapter,
   deleteFunc,
 }: DetailCardProps) {
+  console.log("chapterzzzz", chapter);
   const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -119,24 +120,24 @@ export default function DetailCard({
           )}
         </Box>
       </div>
-      <Box sx={{ height: "100%" }}>
-        <CardContent
-          onClick={() => {
-            if (router.asPath === "/dashboard/chapters") {
-              deleteFunc({
-                option: "details",
-                chapterData: chapter,
-                percentValue: percentage,
-              });
-            }
-            if (router.asPath === "/dashboard/templates") {
-              router.push(
-                `/dashboard/templates/templateView?templateId=${chapter?._id}`
-              );
-            }
-          }}
-          sx={{ height: "100%", cursor: "pointer" }}
-        >
+      <Box
+        sx={{ height: "100%", cursor: "pointer" }}
+        onClick={() => {
+          if (router.asPath === "/dashboard/chapters") {
+            deleteFunc({
+              option: "details",
+              chapterData: chapter,
+              percentValue: percentage,
+            });
+          }
+          if (router.asPath === "/dashboard/templates") {
+            router.push(
+              `/dashboard/templates/templateView?templateId=${chapter?._id}`
+            );
+          }
+        }}
+      >
+        <CardContent sx={{ height: "100%" }}>
           <Typography
             variant="body2"
             color="text "

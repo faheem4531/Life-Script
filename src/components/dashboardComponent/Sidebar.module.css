@@ -12,3 +12,20 @@
   background-color: #fff;
   color: #197065;
 }
+
+.subLinks {
+  margin-top: 8px;
+}
+
+.subLink {
+  display: block;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.subLink:hover {
+  background-color: #333;
+}

@@ -38,6 +38,7 @@ interface State {
   questions: any[];
   templates: any[];
   chapter: any;
+  chapterLoading: any;
 }
 
 const initialState: State = {
@@ -46,6 +47,7 @@ const initialState: State = {
   questions: [],
   templates: [],
   chapter: {},
+  chapterLoading: "",
 };
 
 export const gptChat = createAsyncThunk<UserData, chatWithgpt>(
@@ -362,6 +364,9 @@ export const chatSlice = createSlice({
     builder.addCase(getTemplates.fulfilled, (state, action) => {
       state.templates = action.payload;
     });
+    builder.addCase(chapterResponse.fulfilled, (state, action) => {
+      state.chapterLoading = "loaded";
+    });
   },
 });
 
@@ -371,6 +376,8 @@ export const selectChat = (state: { chat: any }) => state.chat.chats;
 export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
 export const selectChapter = (state: { chat: any }) => state.chat.chapter;
 export const selectTemplates = (state: { chat: any }) => state.chat.templates;
+export const isChapterLoaded = (state: { chat: any }) =>
+  state.chat.chapterLoading;
 export const selectTemplateById = (templateId: string) =>
   createSelector(selectTemplates, (templates) => {
     // Find the template in the array based on the provided id

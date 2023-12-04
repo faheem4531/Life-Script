@@ -201,6 +201,7 @@ const Dashboard = () => {
         description="Are you sure you want to delete this chapter"
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
+        closeModal={() => setDeleteChapter(false)}
       />
       <Box
         sx={{

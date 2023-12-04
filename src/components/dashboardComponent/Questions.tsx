@@ -251,6 +251,7 @@ export default function Questions({
         description="Are you sure you want to delete this question"
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
+        closeModal={() => setDeleteQuestionModal(false)}
       />
     </Box>
   );

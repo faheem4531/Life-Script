@@ -1,15 +1,10 @@
-import Button from "@mui/material/Button";
+import ModalImage from "@/_assets/png/view-template-modal.png";
+import { Box, ButtonBase, Typography } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide, { SlideProps } from "@mui/material/Slide";
+import Image from "next/image";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import ModalImage from "@/_assets/png/view-template-modal.png";
-import Image from "next/image";
-import { Box, ButtonBase, Typography } from "@mui/material";
 
 const Transition = React.forwardRef<HTMLDivElement, SlideProps>(
   function Transition(props, ref) {
@@ -23,6 +18,7 @@ export default function TransitionsDialog({
   open,
   cancel,
   proceed,
+  closeModal = () => {},
   proceedText = "Yes",
   cancelText = "No",
 }) {
@@ -32,7 +28,7 @@ export default function TransitionsDialog({
       open={open}
       TransitionComponent={Transition}
       keepMounted
-      onClose={cancel}
+      onClose={() => (closeModal ? closeModal() : cancel())}
       aria-describedby="alert-dialog-slide-description"
     >
       <Box sx={{ textAlign: "center", padding: "50px 20px 15px" }}>
@@ -42,7 +38,7 @@ export default function TransitionsDialog({
             fontSize: "30px",
             fontWeight: 700,
             color: "#070707",
-            margin: "40px 0"
+            margin: "40px 0",
           }}
         >
           {heading}
