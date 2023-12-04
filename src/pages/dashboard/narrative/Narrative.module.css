@@ -9,6 +9,7 @@
   top: 50%;
   right: -100px;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .previousIcon {
@@ -16,6 +17,11 @@
   top: 50%;
   left: -100px;
   transform: translateY(-50%);
+  cursor: pointer;
+}
+.titleIcon{
+  width: 53px;
+  height: 53px;
 }
 
 @media (max-width:1400px) {

@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Narrative.module.css";
+import YourSliderComponent from "./slider";
 
 const NarrativeResponse = () => {
   const [revertModal, setRevertModal] = useState(false);
@@ -23,6 +24,25 @@ const NarrativeResponse = () => {
   const { chapterId, openai } = router.query;
   const [chapterhtml, setChapterhtml] = useState(``);
   const [chapterTitle, setChapterTitle] = useState("");
+  const totalSlides = 2; // Set the total number of slides according to your requirement
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [CurrentSlideCheck, setCurrentSlideCheck] = useState("");
+
+  const handleSlideChange = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlideCheck("next");
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  };
+
+  const previousSlide = () => {
+    setCurrentSlideCheck("prev");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? totalSlides - 1 : prevIndex - 1
+    );
+  };
 
   useEffect(() => {
     if (chapterId) {
@@ -31,21 +51,32 @@ const NarrativeResponse = () => {
         .then((res) => {
           setChapterTitle(res?.chapter?.title);
           openai === "true"
-            ? setChapterhtml(res?.openaiChapterText)
-            : setChapterhtml(res?.userText);
+            ? setChapterhtml(
+                res?.openaiChapterText +
+                  res?.openaiChapterText +
+                  res?.openaiChapterText +
+                  res?.openaiChapterText +
+                  res?.openaiChapterText
+              )
+            : setChapterhtml(res?.userText + res?.userText + res?.userText);
         });
     }
   }, [chapterId]);
+
+  console.log("chapterhtml", chapterhtml);
   return (
     <>
       <Box sx={{ height: "100vh", overflow: "hidden" }}>
         <Layout>
+          <Box position= "relative">
           <Box
             sx={{
-              marginTop: { xl: "30px", sm: "20px" },
-              display: "flex",
-              columnGap: { xl: "100px", lg: "40px" },
+              marginTop: "5px" ,
+              display: {sm:"flex"},
+              // columnGap: { xl: "100px", lg: "40px" },
+              justifyContent: "space-between",
               height: "100%",
+              mb: {xs: "20px", sm:"0px"}
             }}
             className={styles.nativeMainBg}
           >
@@ -53,11 +84,11 @@ const NarrativeResponse = () => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                alignContent: "space-between",
-                width: "33%",
+                // alignContent: "space-between",
+                // width: "33%",
               }}
             >
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: "flex", alignItems: "start" }}>
                 <Image alt="image" src={Title} className={styles.titleIcon} />
                 <Box>
                   <Typography
@@ -66,6 +97,7 @@ const NarrativeResponse = () => {
                       display: "block",
                       color: "#171725",
                       fontWeight: 600,
+                      mt: "2px",
                     }}
                   >
                     My Adventurous Life
@@ -82,105 +114,16 @@ const NarrativeResponse = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Box sx={{ marginTop: "auto" }}>
-                <Typography
-                  sx={{
-                    fontSize: { xl: "15px", sm: "13px" },
-                    fontWeight: 300,
-                    marginBottom: "8px",
-                  }}
-                >
-                  Doesn’t like the narrative fusion response?
-                </Typography>
-                <Button
-                  image={RevertIcon}
-                  title="Revert Response"
-                  background="#fff"
-                  borderRadius="27px"
-                  color="#197065"
-                  width="155px"
-                  height="30px"
-                  fontSize="14px"
-                  padding={undefined}
-                  onClick={() => setRevertModal(true)}
-                  border="1px solid #197065"
-                />
-              </Box>
             </Box>
-            <Box
-              sx={{
-                maxWidth: { xl: "445px", sm: "420px" },
-                height: "100%",
-              }}
-            >
-              <Box
-                sx={{
-                  padding: { xl: "45px 60px", sm: "40px 45px" },
-                  bgcolor: "#fff",
-                  position: "relative",
-                  height: "75vh",
-                }}
-              >
-                <Typography
-                  sx={{
-                    textAlign: "center",
-                    fontSize: "20px",
-                    fontWeight: 600,
-                    color: "#171725",
-                    marginBottom: "35px",
-                  }}
-                >
-                  My Adventurous Life
-                </Typography>
-                {/* <Typography
-                  sx={{
-                    fontSize: "13px",
-                    color: "#696974",
-                    marginBottom: "25px",
-                    lineHeight: "22px",
-                  }}
-                >
-                  {text1}
-                  {text1}
-                  {text1}
-                  {text1}
-                </Typography> */}
-                <Box
-                  dangerouslySetInnerHTML={{
-                    __html: chapterhtml,
-                  }}
-                  sx={{
-                    fontSize: "13px",
-                    color: "#696974",
-                    marginBottom: "25px",
-                    lineHeight: "22px",
-                  }}
-                />
-                {/* dangerouslySetInnerHTML={{ __html: "htmlContent" }}
-                sx={{ whiteSpace: "pre-line" }} */}
-                <Image alt="icon" src={NextIcon} className={styles.nextIcon} />
-                <Image
-                  alt="icon"
-                  src={PreviousIcon}
-                  className={styles.previousIcon}
-                />
-              </Box>
-              <Box
-                sx={{
-                  marginTop: "18px",
-                  fontSize: "15px",
-                  fontWeight: 500,
-                  textAlign: "center",
-                }}
-              >
-                Page 01 of 40
-              </Box>
-            </Box>
+
             <Box
               sx={{
                 display: "flex",
-                flexDirection: { sm: "column", lg: "row" },
+                flexDirection:  "row" ,
+                flexWrap: "wrap",
                 gap: "10px",
+                mt: "5px",
+                justifyContent: "flex-end"
               }}
             >
               <Button
@@ -189,8 +132,8 @@ const NarrativeResponse = () => {
                 background="#fff"
                 borderRadius="27px"
                 color="#197065"
-                height="28px"
-                width="155px"
+                height="27px"
+                width="150px"
                 fontSize="14px"
                 padding="9px 10px"
                 onClick={() => {}}
@@ -202,14 +145,151 @@ const NarrativeResponse = () => {
                 background="#197065"
                 borderRadius="27px"
                 color="#fff"
-                height="28px"
-                width="155px"
+                height="27px"
+                width="150px"
                 fontSize="14px"
                 padding="9px 10px"
                 onClick={() => setSaveResponseModal(true)}
                 border="none"
               />
             </Box>
+          </Box>
+          <Box
+            sx={{
+              maxWidth: "450px",
+              height: "100%",
+              margin:"auto"
+            }}
+          >
+            <Box
+              sx={{
+                position: "relative",
+              }}
+            >
+              <YourSliderComponent
+                currentIndex={currentIndex}
+                totalSlides={totalSlides}
+                handleSlideChange={handleSlideChange}
+                CurrentSlideCheck={CurrentSlideCheck}
+              >
+                <Box
+                  sx={{
+                    padding: { xl: "45px 60px", sm: "40px 45px", xs: "20px 35px"  },
+                    bgcolor: "#fff",
+                    position: "relative",
+                    height: {xs: "60vh", sm:"70vh"},
+                  }}
+                  id="accordian"
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      color: "#171725",
+                      marginBottom: "35px",
+                    }}
+                  >
+                    My Adventurous Life
+                  </Typography>
+
+                  <Box
+                    dangerouslySetInnerHTML={{
+                      __html: chapterhtml,
+                    }}
+                    sx={{
+                      fontSize: "13px",
+                      color: "#696974",
+                      marginBottom: "25px",
+                      lineHeight: "22px",
+                    }}
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    padding: { xl: "45px 60px", sm: "40px 45px" },
+                    bgcolor: "#fff",
+                    position: "relative",
+                    height: "75vh",
+                  }}
+                  id="accordian"
+                >
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      color: "#171725",
+                      marginBottom: "35px",
+                    }}
+                  >
+                    My Adventurous Life
+                  </Typography>
+                  <Box
+                    dangerouslySetInnerHTML={{
+                      __html: chapterhtml,
+                    }}
+                    sx={{
+                      fontSize: "13px",
+                      color: "#696974",
+                      marginBottom: "25px",
+                      lineHeight: "22px",
+                    }}
+                  />
+                </Box>
+              </YourSliderComponent>
+              <Image
+                alt="icon"
+                src={NextIcon}
+                className={styles.nextIcon}
+                onClick={nextSlide}
+              />
+              <Image
+                alt="icon"
+                src={PreviousIcon}
+                className={styles.previousIcon}
+                onClick={previousSlide}
+              />
+            </Box>
+            <Box
+              sx={{
+                marginTop: "18px",
+                fontSize: "15px",
+                fontWeight: 500,
+                textAlign: "center",
+              }}
+            >
+              {/* Page 01 of 40 */}
+              Page {currentIndex + 1} of {totalSlides}
+            </Box>
+          </Box>
+          <Box sx={{ marginTop: "auto", position: "absolute", 
+          left: "0px",
+          bottom: "15px"
+         }}>
+            <Typography
+              sx={{
+                fontSize: { xl: "15px", sm: "13px" },
+                fontWeight: 300,
+                marginBottom: "8px",
+              }}
+            >
+              Doesn’t like the narrative fusion response?
+            </Typography>
+            <Button
+              image={RevertIcon}
+              title="Revert Response"
+              background="#fff"
+              borderRadius="27px"
+              color="#197065"
+              width="170px"
+              height="30px"
+              fontSize="14px"
+              padding={undefined}
+              onClick={() => setRevertModal(true)}
+              border="1px solid #197065"
+            />
+          </Box>
           </Box>
         </Layout>
       </Box>

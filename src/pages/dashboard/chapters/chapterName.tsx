@@ -171,7 +171,8 @@ const chapterName = () => {
               marginTop: "10px",
               height: "calc(100vh - 340px)",
               borderRadius: { sm: "18px", xs: "5px" },
-              overflowY: "scroll",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
             {/* <Box>
@@ -232,11 +233,11 @@ const chapterName = () => {
               </Box>
             ) : (
               <Box
-                sx={
-                  {
-                    // bgcolor: "red",
-                  }
-                }
+                sx={{
+                  overflowY: "scroll",
+                  flex: "1",
+                  "&::-webkit-scrollbar": { display: "none" },
+                }}
               >
                 {allQuestions?.length > 0 ? (
                   allQuestions.map((question, index) => (
@@ -258,6 +259,26 @@ const chapterName = () => {
                 ) : (
                   <NoQuestions />
                 )}
+
+                {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
+                <Box
+                  onClick={handleNarrativeFusion}
+                  sx={{
+                    
+                    cursor: "pointer",
+                    marginTop: 5,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Image
+                    src={fusionIcon}
+                    alt="fusion"
+                    width={300}
+                    height={70}
+                  />
+                </Box>
+              )} */}
               </Box>
             )}
           </Box>
