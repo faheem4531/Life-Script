@@ -122,7 +122,6 @@ const chapterName = () => {
     dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
       .unwrap()
       .then(() => {
-        toast.success("Narrative fusion completed");
         dispatch(chapterResponse({ chapterId: chapterId.toString() }))
           .unwrap()
           .then((res) => {

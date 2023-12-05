@@ -61,6 +61,7 @@ const RichText = ({ questionId }) => {
   const [detecting, setDetecting] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
+  const [seconds, setSeconds] = useState(0);
 
   const handleSelectChange = (event) => {
     setToneValue(event.target.value);
@@ -229,6 +230,19 @@ const RichText = ({ questionId }) => {
     }
   }, []); //to import webspellcheckr
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds + 1);
+    }, 30000);
+    console.log("questionData", questionData);
+    if (questionData && questionData?.chapter?._id) {
+      saveUserAnswer();
+    }
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(interval);
+  }, [seconds]);
+
   const saveUserAnswer = () => {
     dispatch(
       saveAnswer({
@@ -240,9 +254,7 @@ const RichText = ({ questionId }) => {
           convertToRaw(editorState.getCurrentContent())
         ),
       })
-    )
-      .unwrap()
-      .then(() => toast.success("Answer saved successfully"));
+    );
   };
 
   const handleCompleteAnswer = () => {
