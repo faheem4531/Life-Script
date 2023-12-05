@@ -176,6 +176,26 @@ const chapterName = () => {
             }}
           >
             {/* <Box>
+      <Box>
+        <Layout>
+          <AddChapterName
+            title="chapterName"
+            chapter={chapterName}
+            chapterId={chapterId}
+          />
+          <LinearProgressBar percentage={percentage} />
+          <Box
+            sx={{
+              backgroundColor: "#fff",
+              padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
+              marginTop: "10px",
+              height: "calc(100vh - 340px)",
+              borderRadius: { sm: "18px", xs: "5px" },
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            {/* <Box>
             <ProgressBar />
           </Box> */}
             <Box
@@ -282,8 +302,19 @@ const chapterName = () => {
               </Box>
             )}
           </Box>
-          <Box>
-            <FloatButton onClick={handleFloatButtonClick} />
+
+          <Box
+            onClick={() => {
+              if (areAllCompleted(allQuestions) === true && !fusionLoading) {
+                setFusionLoading(true);
+                handleNarrativeFusion();
+              }
+            }}
+          >
+            <FloatButton
+              onClick={handleFloatButtonClick}
+              narrativeRefuse={narrativeRefuse}
+            />
             {/* Refuse Narative  */}
 
             {narrativeRefuse && (
@@ -296,6 +327,8 @@ const chapterName = () => {
                   height: "160px",
                   position: "fixed",
                   bottom: "30px",
+                  left: "35%",
+                  transform: "translate(-35%)",
                   zIndex: "3",
                   padding: "30px 10px 0 45px",
                 }}
