@@ -9,7 +9,6 @@ import Button from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import { compiledChapter } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
-import html2pdf from "html2pdf.js";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -57,43 +56,6 @@ const NarrativeResponse = () => {
         });
     }
   }, [chapterId]);
-
-  const handleConvertToPdf = () => {
-    const pdfOptions = {
-      margin: 10,
-      filename: "converted.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
-
-    // Generate PDF
-    console.log("4444", chapterhtml);
-    const pdfPromise = html2pdf().from(chapterhtml).set(pdfOptions).outputPdf();
-
-    // Handle the generated PDF
-    pdfPromise.then((pdf) => {
-      // Create a blob from the PDF data
-      const blob = new Blob([pdf], { type: "application/pdf" });
-
-      // Create a download link
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "converted.pdf";
-
-      // Append the link to the document and trigger the download
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up
-      document.body.removeChild(link);
-      URL.revokeObjectURL(link.href);
-    });
-  };
-
-  useEffect(() => {
-    chapterhtml && handleConvertToPdf();
-  }, [chapterhtml]);
 
   console.log("chapterhtml", chapterhtml);
   return (
