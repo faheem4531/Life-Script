@@ -72,10 +72,10 @@ const RichText = ({ questionId }) => {
         audio: true,
       });
 
-      const socket = new WebSocket("wss://api.deepgram.com/v1/listen", [
-        "token",
-        "4f1dff16a5a14651cabba7f9bed72f79ad40d1f0",
-      ]);
+      const socket = new WebSocket(
+        "wss://api.deepgram.com/v1/listen?smart_format=true&language=en&model=nova-2",
+        ["token", "4f1dff16a5a14651cabba7f9bed72f79ad40d1f0"]
+      );
 
       mediaRecorderRef.current = new MediaRecorder(stream);
 
@@ -121,7 +121,7 @@ const RichText = ({ questionId }) => {
         console.error("WebSocket error:", error);
       };
 
-      mediaRecorderRef.current.start(2000);
+      mediaRecorderRef.current.start(1800);
     } catch (error) {
       console.error("Error accessing microphone:", error);
     }

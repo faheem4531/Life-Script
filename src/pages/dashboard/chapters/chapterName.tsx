@@ -338,6 +338,7 @@ const chapterName = () => {
         proceed={proceedFusion}
         proceedText="Compile Original Text" // Customize the text for the "Yes" button
         cancelText="Use Narrative Fusion" // Customize the text for the "No" button
+        closeModal={() => setOpenCustomizationDialog(false)}
       />
       <CustomizationDialog
         open={fusionModal}
