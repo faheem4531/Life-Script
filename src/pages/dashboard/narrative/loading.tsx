@@ -1,5 +1,6 @@
 // import styles from "@/styles/Dashboard.module.css";
-import LoadImage from "@/_assets/png/reloading.png";
+import LoadImage from "@/_assets/svg/loading.svg";
+import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Typography } from "@mui/material";
@@ -64,9 +65,11 @@ const Loading = () => {
           </a>
         )}
       </Typography>
-
+      <Box className={styles.loadImageMain}>
+      <Image src={BgLoadImage} alt="BgLoadImage" className={styles.BgloadImage} />
       <Image alt="image" src={LoadImage} className={styles.loadImage} />
-      <Box sx={{ width: "60%" }}>
+      </Box>
+      <Box sx={{ width: {xs: "90%", sm:"80%", lg:"60%"} }}>
         <ReloadingBar value={progress} />
       </Box>
     </Box>

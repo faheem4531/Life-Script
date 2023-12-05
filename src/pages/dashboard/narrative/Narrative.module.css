@@ -1,7 +1,28 @@
-.loadImage {
-  width: 350px;
-  height: 350px;
+.loadImageMain{
+  position: relative;
   margin: 70px 0;
+}
+
+.BgloadImage{
+  width: 370px;
+  animation: rotation 7s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.loadImage {
+  position: absolute;
+  top: 56px;
+  left: 54px;
+  width: 260px;
 }
 
 .nextIcon {
@@ -40,5 +61,18 @@
     left: -80px;
     width: 50px;
     height: 50px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .BgloadImage{
+    width: 280px;
+  }
+  
+  .loadImage {
+    top: 56px;
+    left: 43px;
+    width: 190px;
   }
 }
