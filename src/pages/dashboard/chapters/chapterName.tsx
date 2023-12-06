@@ -302,14 +302,7 @@ const chapterName = () => {
             )}
           </Box>
 
-          <Box
-            onClick={() => {
-              if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-                setFusionLoading(true);
-                handleNarrativeFusion();
-              }
-            }}
-          >
+          <Box>
             <FloatButton
               onClick={handleFloatButtonClick}
               narrativeRefuse={narrativeRefuse}

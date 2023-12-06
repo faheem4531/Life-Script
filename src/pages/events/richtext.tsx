@@ -75,7 +75,7 @@ const RichText = ({ questionId }) => {
 
       const socket = new WebSocket(
         "wss://api.deepgram.com/v1/listen?smart_format=true&language=en&model=nova-2",
-        ["token", "4f1dff16a5a14651cabba7f9bed72f79ad40d1f0"]
+        ["token", process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY]
       );
 
       mediaRecorderRef.current = new MediaRecorder(stream);
@@ -223,7 +223,7 @@ const RichText = ({ questionId }) => {
             container: document.getElementById("draftjs-rich-text-editor"),
             autoSearch: true,
             lang: "auto",
-            serviceId: "Ab3LN4j1whCuJFw",
+            serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
           });
         }
       );

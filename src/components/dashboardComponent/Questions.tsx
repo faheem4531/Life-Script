@@ -123,36 +123,37 @@ export default function Questions({
             // whiteSpace: expanded ? "normal" : "nowrap",
           }}
         >
-          <Box sx={{
-            display: "flex",
-            alignItems: "center"
-          }}>
-          <Typography
+          <Box
             sx={{
-              marginLeft: { sm: "20px", xs: "10px" },
-              color: "rgba(22, 22, 22, 0.90)",
-              fontSize: { sm: "22px", xs: "16px" },
-              fontWeight: 400,
-              width: "58vw",
-              textOverflow: expanded ? "clip" :  "ellipsis",
-              overflow: "hidden",
-              whiteSpace: expanded ? "wrap" : "nowrap",
-              padding: expanded && "10px 0px",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            {number}
-            {". "}
-            {question?.text}
-
-          </Typography>
-          <Button
-            onClick={handleSeeMoreClick}
-            sx={{
-              fontSize: "8px",
-              color: "#197065"
-            }}
+            <Typography
+              sx={{
+                marginLeft: { sm: "20px", xs: "10px" },
+                color: "rgba(22, 22, 22, 0.90)",
+                fontSize: { sm: "22px", xs: "16px" },
+                fontWeight: 400,
+                width: "58vw",
+                textOverflow: expanded ? "clip" : "ellipsis",
+                overflow: "hidden",
+                whiteSpace: expanded ? "wrap" : "nowrap",
+                padding: expanded && "10px 0px",
+              }}
             >
-            {expanded ? "Less" : "See More"}
+              {number}
+              {". "}
+              {question?.text}
+            </Typography>
+            <Button
+              onClick={handleSeeMoreClick}
+              sx={{
+                fontSize: "8px",
+                color: "#197065",
+              }}
+            >
+              {question?.text.length < 86 ? "" : expanded ? "Less" : "See All"}
             </Button>
           </Box>
 
