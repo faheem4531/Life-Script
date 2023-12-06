@@ -30,7 +30,8 @@ const Loading = () => {
           return 100;
         } else {
           if (prevProgress === 99) {
-            return isLoaded ? prevProgress + 1 : prevProgress + 0;
+            console.log("3333", isLoaded);
+            return isLoaded === "loaded" ? prevProgress + 1 : prevProgress + 0;
           } else {
             return prevProgress + 1;
           }
