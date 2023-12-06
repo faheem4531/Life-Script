@@ -65,9 +65,7 @@ const chapterName = () => {
     router.push(
       `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
     );
-    dispatch(simpleChapter({ chapterId: chapterId.toString() }))
-      .unwrap()
-      .then((res) => console.log("simplechapter", res));
+    dispatch(simpleChapter({ chapterId: chapterId.toString() }));
   };
 
   function calculateCompletionPercentage(array) {
@@ -144,9 +142,6 @@ const chapterName = () => {
       setOpenCustomizationDialog(true);
     } else {
       setNarrativeRefuse(true);
-      console.log(
-        "Cannot open customization dialog because a question is in progress."
-      );
       setTimeout(() => {
         setNarrativeRefuse(false);
       }, 6000);

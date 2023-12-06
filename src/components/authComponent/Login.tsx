@@ -42,7 +42,6 @@ const Login = ({ signinClick }) => {
   });
 
   const handleGoogleLoginSuccess = (e: any) => {
-    console.log("test", e);
     dispatch(googleLogin({ credential: e.access_token }))
       .unwrap()
       .then((res) => {
@@ -64,7 +63,6 @@ const Login = ({ signinClick }) => {
       password: "",
     },
     onSubmit: async (data: LoginData) => {
-      console.log("data", data);
       setLoginFailed(false);
       setLoading(true);
       dispatch(login(data))

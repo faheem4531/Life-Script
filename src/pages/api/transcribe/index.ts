@@ -37,7 +37,6 @@ export default async function handler(req, res) {
     deepgramLive.addListener("transcriptReceived", (message) => {
       const data = JSON.parse(message);
       const newTranscript = data.channel.alternatives[0].transcript;
-      console.log("111", newTranscript);
     });
 
     deepgramLive.addListener("error", (error) => {
@@ -56,7 +55,6 @@ export default async function handler(req, res) {
     });
 
     deepgramLive.addListener("close", () => {
-      console.log("Connection closed.");
       res.end(); // Close the response stream
     });
 

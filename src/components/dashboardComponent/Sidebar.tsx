@@ -20,7 +20,6 @@ const SideBar = () => {
   const [childsOpen, setChilsdOpen] = useState(false);
   const router = useRouter();
   const currentRoute = router.pathname;
-  // console.log(currentRoute, "   faheem,m");
 
   return (
     <Box sx={{ color: "#fff" }}>

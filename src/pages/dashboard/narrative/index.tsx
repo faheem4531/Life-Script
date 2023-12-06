@@ -57,7 +57,6 @@ const NarrativeResponse = () => {
     }
   }, [chapterId]);
 
-  console.log("chapterhtml", chapterhtml);
   return (
     <>
       <Box sx={{ height: "100vh", overflow: "hidden" }}>

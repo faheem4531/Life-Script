@@ -37,7 +37,6 @@ const Dashboard = () => {
   const router = useRouter();
 
   const handleDeleteChapter = () => {
-    console.log("delete chapter");
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))
       .unwrap()
       .then(() => {

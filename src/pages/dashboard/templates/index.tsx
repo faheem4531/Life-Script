@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 const Dashboard = () => {
   const dispatch: any = useDispatch();
   const templates = useSelector(selectTemplates);
-  console.log("tempppp", templates);
 
   useEffect(() => {
     dispatch(getTemplates());

@@ -131,11 +131,9 @@ const RichText = ({ questionId }) => {
   const handleToggleRecording = () => {
     if (recording) {
       // Stop recording
-      console.log("stopping...");
       mediaRecorderRef.current.stop();
     } else {
       // Start recording
-      console.log("starting...");
       startRecording();
     }
   };
@@ -234,7 +232,6 @@ const RichText = ({ questionId }) => {
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => prevSeconds + 1);
     }, 30000);
-    console.log("questionData", questionData);
     if (questionData && questionData?.chapter?._id) {
       saveUserAnswer();
     }

@@ -34,7 +34,6 @@ const chapterName = () => {
   const { templateId } = router.query;
   const allTemplates = useSelector(selectTemplates);
   const [templateState, setTemplateState] = useState(false);
-  console.log("tempState", templateState);
   let templateData;
 
   const handleChapterClone = () => {
@@ -42,7 +41,6 @@ const chapterName = () => {
     dispatch(isTemplateCloned({ id: templateId.toString() }))
       .unwrap()
       .then((res) => {
-        console.log("tempresponse", res);
         if (res == "Template is already cloned") {
           setTemplateState(true);
         } else {
