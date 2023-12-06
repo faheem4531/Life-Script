@@ -157,6 +157,20 @@ export async function updateChapterApi(data: { title: string; id: string }) {
   }
 }
 
+export async function getAnswerbyIdApi(data: { id: string }) {
+  try {
+    const res = await api.get(`/user-answer/${data.id}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function getChaptersApi() {
   try {
     const res = await api.get("chapters");
@@ -199,6 +213,33 @@ export async function cloneTemplateApi(data: { id: string }) {
   }
 }
 
+export async function isTemplateClonedApi(data: { id: string }) {
+  try {
+    const res = await api.get(`/chapters/is-cloned/${data.id}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+export async function compiledChapterApi(data: { id: string }) {
+  try {
+    const res = await api.get(`/chapter-compile/${data.id}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function getChapterbyIdApi(data: { id: any }) {
   try {
     const res = await api.get(`/chapters/${data.id}`);
@@ -219,6 +260,22 @@ export async function createQuestionApi(data: {
 }) {
   try {
     const res = await api.post("/questions", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+export async function simpleChapterApi(data: { chapterId: string }) {
+  try {
+    const res = await api.post(
+      "/users/compile-answers-without-narative-fusion",
+      data
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

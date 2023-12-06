@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import classes from "./Button.module.css"
 
-const Button = ({ title, border, background, width, padding, borderRadius, color, onClick, image, fontSize }) => {
+const Button = ({ title, border, background, width, height = "auto", padding, borderRadius, color, onClick, image, fontSize }) => {
   const styles = {
     border: border || "none",
     background: background,
@@ -9,6 +10,7 @@ const Button = ({ title, border, background, width, padding, borderRadius, color
     padding: padding,
     borderRadius: borderRadius,
     color: color,
+    height: height,
     fontSize: fontSize,
     display: 'flex',
     justifyContent: 'center',
@@ -20,8 +22,8 @@ const Button = ({ title, border, background, width, padding, borderRadius, color
   }
 
   return (
-    <button onClick={onClick} style={styles}>
-      {image != undefined && <Image alt="image" src={image}  style={styles2} />}
+    <button onClick={onClick} style={styles} className={classes.btnMain}>
+      {image != undefined && <Image alt="image" src={image} style={styles2} />}
       {title}</button>
   )
 }

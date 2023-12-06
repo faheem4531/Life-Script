@@ -1,19 +1,22 @@
 // import styles from "@/styles/Dashboard.module.css";
-import { useEffect, useState } from "react";
-import React from "react";
-import { Box, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import LoadImage from "@/_assets/svg/loading.svg";
+import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
-import LoadImage from "@/_assets/png/reloading.png"
-import styles from "./Narrative.module.css"
+import { isChapterLoaded } from "@/store/slices/chatSlice";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import styles from "./Narrative.module.css";
 
 const Loading = () => {
   const [progress, setProgress] = useState(10);
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
-  const currentRoute = router.pathname;
+  const isLoaded = useSelector(isChapterLoaded);
+  const { chapterId, openai } = router.query;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,39 +32,47 @@ const Loading = () => {
           return prevProgress + 10;
         }
       });
-    }, 800);
+    }, 1200);
 
     return () => {
       clearInterval(timer);
     };
   }, []);
 
-
   return (
-    <Box sx={{
-      height: "100vh",
-      bgcolor: "#FFF9F0",
-      color: "#197065",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center"
-    }}>
-
+    <Box
+      sx={{
+        height: "100vh",
+        bgcolor: "#FFF9F0",
+        color: "#197065",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Typography sx={{ fontSize: "39px", fontWeight: 200 }}>
         {progress < 50 && "READING CONTENT ...."}
         {progress >= 50 && progress != 100 && "ANALYZING TONES ...."}
         {progress === 100 && showCompletion && "All done!"}
-        {progress === 100 && !showCompletion && (
-          <a style={{ borderBottom: "3px solid #197065" }}
-            onClick={() => router.push("/dashboard/narrative")}
-          >View chapters <ArrowForwardIcon /></a>
+        {progress === 100 && !showCompletion && isLoaded === "loaded" && (
+          <a
+            style={{ borderBottom: "3px solid #197065" }}
+            onClick={() =>
+              router.push(
+                `/dashboard/narrative?chapterId=${chapterId}&openai=${openai}`
+              )
+            }
+          >
+            View chapters <ArrowForwardIcon />
+          </a>
         )}
       </Typography>
-
-
+      <Box className={styles.loadImageMain}>
+      <Image src={BgLoadImage} alt="BgLoadImage" className={styles.BgloadImage} />
       <Image alt="image" src={LoadImage} className={styles.loadImage} />
-      <Box sx={{ width: "60%" }}>
+      </Box>
+      <Box sx={{ width: {xs: "90%", sm:"80%", lg:"60%"} }}>
         <ReloadingBar value={progress} />
       </Box>
     </Box>
@@ -69,5 +80,3 @@ const Loading = () => {
 };
 
 export default Loading;
-
-

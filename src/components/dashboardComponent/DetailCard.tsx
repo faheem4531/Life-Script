@@ -35,6 +35,7 @@ export default function DetailCard({
   isChapter,
   deleteFunc,
 }: DetailCardProps) {
+  console.log("chapterzzzz", chapter);
   const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -119,7 +120,23 @@ export default function DetailCard({
           )}
         </Box>
       </div>
-      <Box sx={{ height: "100%" }}>
+      <Box
+        sx={{ height: "100%", cursor: "pointer" }}
+        onClick={() => {
+          if (router.asPath === "/dashboard/chapters") {
+            deleteFunc({
+              option: "details",
+              chapterData: chapter,
+              percentValue: percentage,
+            });
+          }
+          if (router.asPath === "/dashboard/templates") {
+            router.push(
+              `/dashboard/templates/templateView?templateId=${chapter?._id}`
+            );
+          }
+        }}
+      >
         <CardContent sx={{ height: "100%" }}>
           <Typography
             variant="body2"
@@ -150,24 +167,9 @@ export default function DetailCard({
             className={styles.cardContent}
           >
             <Box
-              onClick={() => {
-                if (router.asPath === "/dashboard/chapters") {
-                  deleteFunc({
-                    option: "details",
-                    chapterData: chapter,
-                    percentValue: percentage,
-                  });
-                }
-                if (router.asPath === "/dashboard/templates") {
-                  router.push(
-                    `/dashboard/templates/templateView?templateId=${chapter?._id}`
-                  );
-                }
-              }}
               sx={{
                 width: "100%",
                 height: "120px",
-                cursor: "pointer",
               }}
             >
               {questions?.length > 0 ? (
@@ -179,6 +181,7 @@ export default function DetailCard({
                     columnGap="0px"
                     color="rgba(22, 22, 22, 0.90)"
                     fontSize="13px"
+                    // sx={{marginTop:'5px'}}
                   >
                     <Image alt="check" src={Tick} />
                     {question.text.length > 45

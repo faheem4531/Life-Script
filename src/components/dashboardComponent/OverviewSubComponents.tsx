@@ -12,15 +12,18 @@ export const ViewBook = () => {
       width: "100%",
       padding: "21px 0",
       borderRadius: "14px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       position: "relative"
     }}
       className={styles.viewBook}
     >
-      <Typography sx={{ fontSize: "28px", fontWeight: 500, textAlign: "center" }}>
+      <Typography sx={{ fontSize: { xl: "28px", sm: "22px" }, fontWeight: 500 }}>
         View Book
       </Typography>
       <Box sx={{ position: "absolute", top: "34px", right: "45px" }}>
-        <Image alt="next" src={NextIcon} />
+        <Image alt="next" src={NextIcon} className={styles.nextAero} />
       </Box>
     </Box>
   )
@@ -35,15 +38,18 @@ export const ViewTree = () => {
       width: "100%",
       padding: "21px 0",
       borderRadius: "14px",
-      position: "relative"
+      position: "relative",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
     }}
       className={styles.viewTree}
     >
-      <Typography sx={{ fontSize: "28px", fontWeight: 500, textAlign: "center" }}>
+      <Typography sx={{ fontSize: { xl: "28px", sm: "22px" }, fontWeight: 500 }}>
         Family Tree
       </Typography>
       <Box sx={{ position: "absolute", top: "34px", right: "45px" }}>
-        <Image alt="next" src={NextIcon} />
+        <Image alt="next" src={NextIcon} className={styles.nextAero} />
       </Box>
     </Box>
   )

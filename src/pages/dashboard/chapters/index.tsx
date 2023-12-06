@@ -21,7 +21,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import bgTree from "../../../_assets/svg/bgTree.svg";
 import AddChapter from "./addChapter";
+
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [updateChapterModal, setUpdateChapterModal] = useState(false);
@@ -87,7 +89,7 @@ const Dashboard = () => {
       setUpdateChapterModal(true);
     } else {
       router.push(
-        `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}&percentage=${data.percentValue}`
+        `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}`
       );
     }
   };
@@ -107,55 +109,63 @@ const Dashboard = () => {
   return (
     <>
       <Layout>
-        <HomeSteps />
-        {loading ? (
-          <Box
-            sx={{
-              marginTop: "10%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress />
-          </Box>
-        ) : allChapters?.length > 0 ? (
-          <Box
-            className={styles.CardsContainer}
-            sx={{
-              marginTop: "48px",
-            }}
-          >
-            <StartNewChapter addChapterClick={() => setChapterModal(true)} />
-            {allChapters.map((chapter, index) => (
-              <DetailCard
-                key={index}
-                chapter={chapter}
-                isChapter={true}
-                deleteFunc={(data) => {
-                  handleCardClick(data);
-                }}
-              />
-            ))}
-          </Box>
-        ) : allChapters.length < 1 ? (
-          <Box
-            className={styles.CardsContainer}
-            sx={{
-              marginTop: "48px",
-            }}
-          >
-            <StartNewChapter addChapterClick={() => setChapterModal(true)} />
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              marginTop: { sm: "48px", xs: "25px" },
-            }}
-          >
-            <NoChapters />
-          </Box>
-        )}
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: "2",
+          }}
+        >
+          <HomeSteps />
+
+          {loading ? (
+            <Box
+              sx={{
+                marginTop: "10%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : allChapters?.length > 0 ? (
+            <Box
+              className={styles.CardsContainer}
+              sx={{
+                marginTop: "48px",
+              }}
+            >
+              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+              {allChapters.map((chapter, index) => (
+                <DetailCard
+                  key={index}
+                  chapter={chapter}
+                  isChapter={true}
+                  deleteFunc={(data) => {
+                    handleCardClick(data);
+                  }}
+                />
+              ))}
+            </Box>
+          ) : allChapters.length < 1 ? (
+            <Box
+              className={styles.CardsContainer}
+              sx={{
+                marginTop: "48px",
+              }}
+            >
+              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                marginTop: { sm: "48px", xs: "25px" },
+              }}
+            >
+              <NoChapters />
+            </Box>
+          )}
+        </Box>
       </Layout>
 
       <CustomizationDialog
@@ -180,6 +190,9 @@ const Dashboard = () => {
             setUpdateChapterModal(false);
           }}
           data={chapterTitle}
+          btnText={
+            updateChapterModal ? "Update Chapter Name" : "Add new chapter"
+          }
         />
       </CustomizationDialog>
       <TransitionsDialog
@@ -188,7 +201,18 @@ const Dashboard = () => {
         description="Are you sure you want to delete this chapter"
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
+        closeModal={() => setDeleteChapter(false)}
       />
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: "0px",
+          right: "0px",
+          zIndex: "1",
+        }}
+      >
+        <Image src={bgTree} alt="bgTree" />
+      </Box>
     </>
   );
 };

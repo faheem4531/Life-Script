@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import React from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import LinearProgress, {
   LinearProgressProps,
@@ -12,7 +10,7 @@ function LinearProgressWithLabel(
     <Box
       sx={{
         display: "flex",
-        padding: "6px 5px",
+        padding: "6px 3px",
         alignItems: "center",
         position: "relative",
         border: "2px solid #187167",
@@ -32,7 +30,7 @@ function LinearProgressWithLabel(
       <Box sx={{ minWidth: 35, position: "absolute", right: "20px" }}>
         <Typography
           variant="body2"
-          color="#197065"
+          color={Math.round(props.value) === 100 ? "white" : "#197065"}
           fontWeight="500"
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>
@@ -59,16 +57,11 @@ export default function LinearProgressBar({ percentage }: any) {
   );
 }
 
+{
+  /*  2nd  Linear Reload bar */
+}
 
-
-
-
-
-{/*  2nd  Linear Reload bar */ }
-
-function LoadingProgress(
-  props: LinearProgressProps & { value: number }
-) {
+function LoadingProgress(props: LinearProgressProps & { value: number }) {
   return (
     <Box
       sx={{
@@ -77,10 +70,17 @@ function LoadingProgress(
         height: "45px",
         bgcolor: "#F9F9F9",
         borderRadius: "30px",
-        position: "relative"
+        position: "relative",
       }}
     >
-      <Stack sx={{ width: "100%", color: "#197065" }} spacing={2}>
+      <Stack
+        sx={{
+          width: "100%",
+          color: "#197065",
+          borderRadius: "30px",
+        }}
+        spacing={2}
+      >
         <LinearProgress
           sx={{ height: "45px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
           variant="determinate"
@@ -88,7 +88,9 @@ function LoadingProgress(
           {...props}
         />
       </Stack>
-      <Box sx={{ minWidth: 35, position: "absolute", right: "0px", top: "-60px" }}>
+      <Box
+        sx={{ minWidth: 35, position: "absolute", right: "0px", top: "-60px" }}
+      >
         <Typography
           variant="body2"
           color="#197065"

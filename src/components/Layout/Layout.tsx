@@ -4,14 +4,17 @@ import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
 import styles from "./Layout.module.css";
+import { Router, useRouter } from "next/router";
 
 const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
+  const router = useRouter()
 
   return (
     <Box
-      sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden" }}
-      className="container-fontfamily"
+      sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", minHeight: "100vh" }}
+      // className="container-fontfamily"
+      className={router.asPath === "/dashboard/narrative" && styles.nativeMainBg}
     >
       <Box
         sx={{
@@ -33,7 +36,6 @@ const Layout = ({ children }: { children?: any }) => {
             bottom: "0",
             top: "0px",
             zIndex: "2",
-            // display: { md: "block", xs: "none", sm: "none" }
           }}
           className={`${styles.display} ${handleSideBar && styles.displayShow}`}
         >
@@ -46,8 +48,8 @@ const Layout = ({ children }: { children?: any }) => {
             color: "#000",
             height: "100%",
             minHeight: "calc(100vh - 70px)",
-            padding: { sm: "25px 33px 30px", xs: "25px 16px 30px" },
-            marginLeft: { md: "220px", sm: 0, xs: 0 },
+            padding: { sm: "10px 33px 30px", xs: "10px 16px 30px" },
+            marginLeft: { lg: "220px", md: "200px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
         >

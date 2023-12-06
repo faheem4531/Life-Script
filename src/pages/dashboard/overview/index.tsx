@@ -9,7 +9,7 @@ import { Box } from "@mui/material"
 const OverView = () => {
   return (
     <Layout>
-      <Box sx={{ display: "flex", columnGap: { xl: "50px", md: "30px", sm: "10" } }}>
+      <Box sx={{ display: "flex", columnGap: { xl: "50px", md: "20px", sm: "10" } }}>
         <Box sx={{ width: "100%" }}>
           <WelcomeOverview />
           <TimeTracker />

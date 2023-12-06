@@ -66,17 +66,13 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  /* font-family: "Inter", sans-serif !important; */
-}
-
-.container-fontfamily {
-  font-family: "Inter", sans-serif !important;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: "Inter", sans-serif;
 }
 
 body {
@@ -148,3 +144,12 @@ a {
 /* .ql-image:hover {
   background-color: transparent !important;
 } */
+
+.css-1wqgwi1-MuiLinearProgress-bar1 {
+  border-radius: 30px;
+  background: linear-gradient(90deg, #197065 0%, #1F9A8B 100%);
+}
+
+.css-od7rqf-MuiLinearProgress-root::before {
+  opacity: 0;
+}
