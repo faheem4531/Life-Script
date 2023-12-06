@@ -1,10 +1,12 @@
 "use client";
-import { uploadImage } from "@/store/slices/chatSlice";
+import { compiledChapter, uploadImage } from "@/store/slices/chatSlice";
 import { Box, ButtonBase } from "@mui/material";
 import {
+  ContentState,
   //ContentState,
   EditorState,
   Modifier,
+  convertFromHTML,
   convertFromRaw,
   //convertFromHTML,
   convertToRaw,
@@ -47,12 +49,15 @@ const RichText = ({ questionId }) => {
     EditorState.createEmpty()
   );
   const [questionData, setQuestionData] = useState<any>({});
+  const [compileChapter, setCompileChapter] = useState();
 
   const [recording, setRecording] = useState(false);
   const [detecting, setDetecting] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [seconds, setSeconds] = useState(0);
+  const { compileChapterId, openai } = router.query;
+  console.log("4444", compileChapterId, openai);
 
   const startRecording = async () => {
     try {
@@ -124,6 +129,23 @@ const RichText = ({ questionId }) => {
       startRecording();
     }
   };
+
+  useEffect(() => {
+    compileChapterId &&
+      dispatch(compiledChapter({ id: compileChapterId }))
+        .unwrap()
+        .then((res) => {
+          setCompileChapter(res?.chapter?.title);
+          const htmlContent =
+            openai === "true" ? res?.openaiChapterText : res?.userText;
+          const blocksFromHTML = convertFromHTML(htmlContent);
+          const initialContentState = ContentState.createFromBlockArray(
+            blocksFromHTML.contentBlocks,
+            blocksFromHTML.entityMap
+          );
+          setEditorState(EditorState.createWithContent(initialContentState));
+        });
+  }, [compileChapterId]);
 
   useEffect(() => {
     return () => {
@@ -292,7 +314,7 @@ const RichText = ({ questionId }) => {
         >
           <Image alt="icon" src={PIcon} />
           <div className={styles.overflowQuestionText}>
-            {questionData?.text}
+            {questionData?.text ? questionData?.text : compileChapter}
           </div>
         </Box>
         <Box
@@ -329,24 +351,26 @@ const RichText = ({ questionId }) => {
               height={undefined}
             />
 
-            <ButtonBase
-              onClick={handleCompleteAnswer}
-              sx={{
-                height: "35px",
-                p: 2,
-                borderRadius: "27px",
-                border: "1px solid #197065",
-                color: "#197065",
-                fontSize: "14px",
-                bgcolor: "#fff",
-                textTransform: "none",
-                "&:hover": {
-                  backgroundColor: "#fff",
-                },
-              }}
-            >
-              Mark As Complete
-            </ButtonBase>
+            {!openai && (
+              <ButtonBase
+                onClick={handleCompleteAnswer}
+                sx={{
+                  height: "35px",
+                  p: 2,
+                  borderRadius: "27px",
+                  border: "1px solid #197065",
+                  color: "#197065",
+                  fontSize: "14px",
+                  bgcolor: "#fff",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#fff",
+                  },
+                }}
+              >
+                Mark As Complete
+              </ButtonBase>
+            )}
             <ButtonBase
               onClick={saveUserAnswer}
               sx={{

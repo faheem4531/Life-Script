@@ -52,7 +52,7 @@ const NarrativeResponse = () => {
           setChapterTitle(res?.chapter?.title);
           openai === "true"
             ? setChapterhtml(res?.openaiChapterText)
-            : setChapterhtml(res?.userText + res?.userText + res?.userText);
+            : setChapterhtml(res?.userText);
         });
     }
   }, [chapterId]);
@@ -129,7 +129,11 @@ const NarrativeResponse = () => {
                   width="150px"
                   fontSize="14px"
                   padding="9px 10px"
-                  onClick={() => {}}
+                  onClick={() =>
+                    router.push(
+                      `/events?compileChapterId=${chapterId}&openai=${openai}`
+                    )
+                  }
                   border="1px solid #197065"
                 />
                 <Button

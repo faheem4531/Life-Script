@@ -5,18 +5,14 @@ import Image from "next/image";
 import * as React from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import LoginImage from "../../../public/Log-in.png";
-import SignupImage from "../../../public/Sign-up.png";
-import Carousel1 from "../../../public/carousel1.png";
 import Carousel2 from "../../../public/carousel.png";
+import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
 
-
 import Logo from "../../../public/logo.svg";
+import Carousel from "./Carousel";
 import Login from "./Login";
 import Signup from "./Signup";
-import Carousel from "./Carousel";
-
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -36,9 +32,11 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ 
-          p: "24px 0"
-           }}>
+        <Box
+          sx={{
+            p: "24px 0",
+          }}
+        >
           <Box>{children}</Box>
         </Box>
       )}
@@ -86,13 +84,12 @@ export default function Register() {
   //   />,
   // ];
   const carouselItems = [
-    { path: Carousel1, alt: 'Login Image' },
-    { path: Carousel2, alt: 'Signup Image' },
-    { path: Carousel3, alt: 'Signup Image' },
+    { path: Carousel1, alt: "Login Image" },
+    { path: Carousel2, alt: "Signup Image" },
+    { path: Carousel3, alt: "Signup Image" },
 
     // Add more images as needed
   ];
-
 
   return (
     <Box
@@ -113,8 +110,8 @@ export default function Register() {
         },
       }}
     >
-        <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items= {carouselItems} />
+      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items={carouselItems} />
       </Box>
       <Box
         sx={{
@@ -168,10 +165,16 @@ export default function Register() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label={t("Register.Login")} {...a11yProps(0)}
-                sx={{ textTransform: 'capitalize' }} />
-              <Tab label={t("Register.Register")} {...a11yProps(1)} 
-              sx={{ textTransform: 'capitalize' }}/>
+              <Tab
+                label={t("Register.Login")}
+                {...a11yProps(0)}
+                sx={{ textTransform: "capitalize" }}
+              />
+              <Tab
+                label={t("Register.Register")}
+                {...a11yProps(1)}
+                sx={{ textTransform: "capitalize" }}
+              />
             </Tabs>
           </Box>
         </Box>
