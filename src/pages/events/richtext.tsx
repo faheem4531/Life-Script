@@ -61,6 +61,7 @@ const RichText = ({ questionId }) => {
   const [detecting, setDetecting] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
+  const [seconds, setSeconds] = useState(0);
 
   const handleSelectChange = (event) => {
     setToneValue(event.target.value);
@@ -74,7 +75,7 @@ const RichText = ({ questionId }) => {
 
       const socket = new WebSocket(
         "wss://api.deepgram.com/v1/listen?smart_format=true&language=en&model=nova-2",
-        ["token", "4f1dff16a5a14651cabba7f9bed72f79ad40d1f0"]
+        ["token", process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY]
       );
 
       mediaRecorderRef.current = new MediaRecorder(stream);
@@ -222,12 +223,25 @@ const RichText = ({ questionId }) => {
             container: document.getElementById("draftjs-rich-text-editor"),
             autoSearch: true,
             lang: "auto",
-            serviceId: "Ab3LN4j1whCuJFw",
+            serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
           });
         }
       );
     }
   }, []); //to import webspellcheckr
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds + 1);
+    }, 30000);
+    console.log("questionData", questionData);
+    if (questionData && questionData?.chapter?._id) {
+      saveUserAnswer();
+    }
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(interval);
+  }, [seconds]);
 
   const saveUserAnswer = () => {
     dispatch(
@@ -240,9 +254,7 @@ const RichText = ({ questionId }) => {
           convertToRaw(editorState.getCurrentContent())
         ),
       })
-    )
-      .unwrap()
-      .then(() => toast.success("Answer saved successfully"));
+    );
   };
 
   const handleCompleteAnswer = () => {

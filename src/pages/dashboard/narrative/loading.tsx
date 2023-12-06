@@ -16,7 +16,6 @@ const Loading = () => {
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
   const isLoaded = useSelector(isChapterLoaded);
-  console.log("3333", isLoaded);
   const { chapterId, openai } = router.query;
 
   useEffect(() => {
@@ -33,7 +32,7 @@ const Loading = () => {
           return prevProgress + 10;
         }
       });
-    }, 800);
+    }, 1200);
 
     return () => {
       clearInterval(timer);

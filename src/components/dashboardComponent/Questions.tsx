@@ -120,40 +120,62 @@ export default function Questions({
             justifyContent: "space-between",
             width: "100%",
             overflowX: "hidden",
-            // whiteSpace: expanded ? "normal" : "nowrap",
           }}
         >
-          <Box sx={{
-            display: "flex",
-            alignItems: "center"
-          }}>
-          <Typography
+          <Box
             sx={{
-              marginLeft: { sm: "20px", xs: "10px" },
-              color: "rgba(22, 22, 22, 0.90)",
-              fontSize: { sm: "22px", xs: "16px" },
-              fontWeight: 400,
-              width: "58vw",
-              textOverflow: expanded ? "clip" :  "ellipsis",
-              overflow: "hidden",
-              whiteSpace: expanded ? "wrap" : "nowrap",
-              padding: expanded && "10px 0px",
+              display: "flex",
+              alignItems: "center",
+              width: "100%",
             }}
           >
-            {number}
-            {". "}
-            {question?.text}
-
-          </Typography>
-          <Button
-            onClick={handleSeeMoreClick}
-            sx={{
-              fontSize: "8px",
-              color: "#197065"
-            }}
+            <Typography
+              sx={{
+                marginLeft: { sm: "20px", xs: "10px" },
+                color: "rgba(22, 22, 22, 0.90)",
+                fontSize: { sm: "22px", xs: "16px" },
+                fontWeight: 400,
+                width: { xs: "48vw", sm: "50vw", md: "53vw", lg: "55vw" },
+                textOverflow: expanded ? "clip" : "ellipsis",
+                overflow: "hidden",
+                // whiteSpace: expanded ? "wrap" : "nowrap",
+                padding: expanded && "10px 0px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}
             >
-            {expanded ? "Less" : "See More"}
-            </Button>
+              <Typography
+                sx={{
+                  marginLeft: { sm: "20px", xs: "10px" },
+                  color: "rgba(22, 22, 22, 0.90)",
+                  fontSize: { sm: "22px", xs: "16px" },
+                  fontWeight: 400,
+                  width: "58vw",
+                  textOverflow: expanded ? "clip" : "ellipsis",
+                  overflow: "hidden",
+                  whiteSpace: expanded ? "wrap" : "nowrap",
+                  padding: expanded && "10px 0px",
+                }}
+              >
+                {number}
+                {". "}
+                {question?.text}
+              </Typography>
+              {question?.text.length > 86 && (
+                <Typography
+                  onClick={handleSeeMoreClick}
+                  sx={{
+                    fontSize: "10px",
+                    color: "#197065",
+                    width: "80px",
+                    mt: "5px",
+                  }}
+                >
+                  {expanded ? "Less" : "See All"}
+                </Typography>
+              )}
+            </Typography>
           </Box>
 
           {title != "templateView" && (

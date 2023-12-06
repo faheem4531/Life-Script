@@ -122,7 +122,6 @@ const chapterName = () => {
     dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
       .unwrap()
       .then(() => {
-        toast.success("Narrative fusion completed");
         dispatch(chapterResponse({ chapterId: chapterId.toString() }))
           .unwrap()
           .then((res) => {
@@ -156,6 +155,26 @@ const chapterName = () => {
 
   return (
     <>
+      <Box>
+        <Layout>
+          <AddChapterName
+            title="chapterName"
+            chapter={chapterName}
+            chapterId={chapterId}
+          />
+          <LinearProgressBar percentage={percentage} />
+          <Box
+            sx={{
+              backgroundColor: "#fff",
+              padding: { sm: "30px 15px 16px 20px", xs: "25px 20px 100px" },
+              marginTop: "10px",
+              height: "calc(100vh - 340px)",
+              borderRadius: { sm: "18px", xs: "5px" },
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            {/* <Box>
       <Box>
         <Layout>
           <AddChapterName
@@ -283,31 +302,27 @@ const chapterName = () => {
             )}
           </Box>
 
-          <Box
-            onClick={() => {
-              if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-                setFusionLoading(true);
-                handleNarrativeFusion();
-              }
-            }}
-          >
-            <FloatButton onClick={handleFloatButtonClick} narrativeRefuse={narrativeRefuse} />
+          <Box>
+            <FloatButton
+              onClick={handleFloatButtonClick}
+              narrativeRefuse={narrativeRefuse}
+            />
             {/* Refuse Narative  */}
 
             {narrativeRefuse && (
               <Box
                 sx={{
-                  backgroundImage: { sm: 'url("/pointer-msg.png")' },
+                  backgroundImage:  'url("/pointer-msg.png")',
                   backgroundSize: "100%",
                   backgroundRepeat: "no-repeat",
-                  width: "360px",
+                  width: {xs: "310px", sm:"360px"},
                   height: "160px",
                   position: "fixed",
                   bottom: "30px",
-                  left: "35%",
-                  transform: "translate(-35%)",
-                  zIndex: "3",
-                  padding: "30px 10px 0 45px",
+                  left: { md: "25%", lg:"30%", xl:"35%"},
+                  transform: { md:"translate(-25%)", lg:"translate(-30%)", xl:"translate(-35%)"},
+                  zIndex: "100000",
+                  padding: {xs: "30px 10px 0 25px",  sm:"30px 10px 0 45px"},
                 }}
               >
                 <Typography
