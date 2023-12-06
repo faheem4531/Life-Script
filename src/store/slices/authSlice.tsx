@@ -1,6 +1,6 @@
 import {
   ChangePassword,
-  ForgetPassword,
+  ForgetPass,
   LoginData,
   SignupData,
   UpdatePasswordData,
@@ -37,7 +37,7 @@ export const changePassword = createAsyncThunk<UserData, ChangePassword>(
   }
 );
 
-export const forgetPassword = createAsyncThunk<UserData, ForgetPassword>(
+export const forgetPassword = createAsyncThunk<UserData, ForgetPass>(
   "user/verify-email",
   async (data) => {
     try {
