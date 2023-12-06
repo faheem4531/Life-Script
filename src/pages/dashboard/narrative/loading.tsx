@@ -16,6 +16,7 @@ const Loading = () => {
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
   const isLoaded = useSelector(isChapterLoaded);
+
   const { chapterId, openai } = router.query;
 
   useEffect(() => {
@@ -30,7 +31,6 @@ const Loading = () => {
           return 100;
         } else {
           if (prevProgress === 99) {
-            console.log("3333", isLoaded);
             return isLoaded === "loaded" ? prevProgress + 1 : prevProgress + 0;
           } else {
             return prevProgress + 1;
@@ -42,7 +42,7 @@ const Loading = () => {
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [isLoaded]);
 
   return (
     <Box

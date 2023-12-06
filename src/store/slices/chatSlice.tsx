@@ -358,6 +358,9 @@ export const chatSlice = createSlice({
       state.chats = action.payload;
       state.chapters = action.payload;
     });
+    builder.addCase(narrativeFusion.pending, (state, action) => {
+      state.chapterLoading = "not-loaded";
+    });
     builder.addCase(getChapterbyId.fulfilled, (state, action) => {
       state.chapter = action.payload;
     });
