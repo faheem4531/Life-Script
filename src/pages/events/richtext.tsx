@@ -1,6 +1,6 @@
 "use client";
 import { uploadImage } from "@/store/slices/chatSlice";
-import { Box, ButtonBase, MenuItem, Select } from "@mui/material";
+import { Box, ButtonBase } from "@mui/material";
 import {
   //ContentState,
   EditorState,
@@ -46,26 +46,13 @@ const RichText = ({ questionId }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const [toneValue, setToneValue] = useState("Original (as written)");
   const [questionData, setQuestionData] = useState<any>({});
-  const gptTones = [
-    "Original (as written)",
-    "Narrative",
-    "Nostalgic",
-    "Humorous",
-    "Emotional",
-    "Inspirational",
-  ];
 
   const [recording, setRecording] = useState(false);
   const [detecting, setDetecting] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [seconds, setSeconds] = useState(0);
-
-  const handleSelectChange = (event) => {
-    setToneValue(event.target.value);
-  };
 
   const startRecording = async () => {
     try {
@@ -245,7 +232,6 @@ const RichText = ({ questionId }) => {
       saveAnswer({
         questionId: questionData?._id,
         chapterId: questionData?.chapter?._id,
-        userTone: toneValue,
         userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
         muteableState: JSON.stringify(
           convertToRaw(editorState.getCurrentContent())
@@ -342,24 +328,7 @@ const RichText = ({ questionId }) => {
               border="1px solid #197065"
               height={undefined}
             />
-            <Select
-              value={toneValue}
-              onChange={handleSelectChange}
-              displayEmpty
-              sx={{
-                p: 0,
-                fontSize: "14px",
-                height: "35px",
-                textTransform: "none",
-                borderRadius: "27px",
-                border: "1px solid #197065",
-                color: "#197065",
-              }}
-            >
-              {gptTones?.map((tone) => (
-                <MenuItem value={tone}>{tone}</MenuItem>
-              ))}
-            </Select>
+
             <ButtonBase
               onClick={handleCompleteAnswer}
               sx={{

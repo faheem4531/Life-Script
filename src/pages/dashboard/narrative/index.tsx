@@ -199,6 +199,9 @@ const NarrativeResponse = () => {
                         color: "#696974",
                         marginBottom: "25px",
                         lineHeight: "22px",
+                        height: "55vh",
+                        overflowY: "auto",
+                        "&::-webkit-scrollbar": { display: "none" },
                       }}
                     />
                   </Box>
@@ -231,6 +234,9 @@ const NarrativeResponse = () => {
                         color: "#696974",
                         marginBottom: "25px",
                         lineHeight: "22px",
+                        height: "55vh",
+                        overflowY: "auto",
+                        "&::-webkit-scrollbar": { display: "none" },
                       }}
                     />
                   </Box>
