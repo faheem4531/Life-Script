@@ -5,12 +5,11 @@ import Completed from "@/_assets/svg/completed-icon.svg";
 import EditGreen from "@/_assets/svg/edit-icon-green.svg";
 import AddQuestion from "@/pages/events/addQuestion";
 import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -24,6 +23,7 @@ interface QuestionsProps {
   question?: any;
   number?: number;
   answerClick?: (chapterName: string) => void; // Define the callback type here
+  templateQuestion?: (id: string) => void;
   questionChanged?: () => void;
   title?: string;
 }
@@ -32,6 +32,7 @@ export default function Questions({
   question,
   number,
   title,
+  templateQuestion,
   questionChanged,
   answerClick,
 }: QuestionsProps) {
@@ -41,7 +42,6 @@ export default function Questions({
   const [updateQuestionModal, setUpdateQuestionModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);
-  const router = useRouter();
   const dispatch: any = useDispatch();
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -108,7 +108,11 @@ export default function Questions({
         }}
       >
         <Box
-          onClick={() => answerClick(question?._id)}
+          onClick={() => {
+            if (title !== "templateView") {
+              answerClick(question?._id);
+            }
+          }}
           sx={{
             cursor: "pointer",
             bgcolor: "#F9F9F9",
@@ -120,13 +124,13 @@ export default function Questions({
             justifyContent: "space-between",
             width: "100%",
             overflowX: "hidden",
-            // whiteSpace: expanded ? "normal" : "nowrap",
           }}
         >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
+              width: "100%",
             }}
           >
             <Typography
@@ -135,26 +139,47 @@ export default function Questions({
                 color: "rgba(22, 22, 22, 0.90)",
                 fontSize: { sm: "22px", xs: "16px" },
                 fontWeight: 400,
-                width: "58vw",
+                width: { xs: "48vw", sm: "50vw", md: "53vw", lg: "55vw" },
                 textOverflow: expanded ? "clip" : "ellipsis",
                 overflow: "hidden",
-                whiteSpace: expanded ? "wrap" : "nowrap",
+                // whiteSpace: expanded ? "wrap" : "nowrap",
                 padding: expanded && "10px 0px",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
               }}
             >
-              {number}
-              {". "}
-              {question?.text}
+              <Typography
+                sx={{
+                  marginLeft: { sm: "20px", xs: "10px" },
+                  color: "rgba(22, 22, 22, 0.90)",
+                  fontSize: { sm: "22px", xs: "16px" },
+                  fontWeight: 400,
+                  width: "58vw",
+                  textOverflow: expanded ? "clip" : "ellipsis",
+                  overflow: "hidden",
+                  whiteSpace: expanded ? "wrap" : "nowrap",
+                  padding: expanded && "10px 0px",
+                }}
+              >
+                {number}
+                {". "}
+                {question?.text}
+              </Typography>
+              {question?.text.length > 80 && (
+                <Typography
+                  onClick={handleSeeMoreClick}
+                  sx={{
+                    fontSize: "10px",
+                    color: "#197065",
+                    width: "80px",
+                    mt: "5px",
+                  }}
+                >
+                  {expanded ? "Less" : "See All"}
+                </Typography>
+              )}
             </Typography>
-            <Button
-              onClick={handleSeeMoreClick}
-              sx={{
-                fontSize: "8px",
-                color: "#197065",
-              }}
-            >
-              {question?.text.length < 86 ? "" : expanded ? "Less" : "See All"}
-            </Button>
           </Box>
 
           {title != "templateView" && (
@@ -214,7 +239,7 @@ export default function Questions({
         </Box>
 
         {/* More option :start */}
-        {title != "templateView" && (
+        {title != "templateView" ? (
           <Box>
             <IconButton
               aria-label="more"
@@ -254,6 +279,13 @@ export default function Questions({
                 </MenuItem>
               ))}
             </Menu>
+          </Box>
+        ) : (
+          <Box sx={{ textAlign: "center", width: "max-content" }}>
+            <Checkbox
+              defaultChecked={true}
+              onChange={() => templateQuestion(question?._id)}
+            />
           </Box>
         )}
       </Box>

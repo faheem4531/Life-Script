@@ -28,6 +28,28 @@ export async function narrativeFusionApi(data: any) {
     }
   }
 }
+// chapter-compile/:id
+
+export async function updateChapterResponseApi(data: {
+  id: string;
+  userText: string;
+  openaiChapterText: string;
+}) {
+  try {
+    const res = await api.put(`chapter-compile/${data.id}`, {
+      userText: data.userText,
+      openaiChapterText: data.openaiChapterText,
+    });
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
 
 // /users/ceilmop - answers;
 export async function chapterResponseApi(data: { chapterId: string }) {
@@ -199,9 +221,11 @@ export async function getTemplatesApi() {
   }
 }
 
-export async function cloneTemplateApi(data: { id: string }) {
+export async function cloneTemplateApi(data: { id: string; ids: any }) {
   try {
-    const res = await api.get(`/chapters/cloneChapter/${data.id}`);
+    const res = await api.get(
+      `/chapters/cloneChapter/${data.id}?questionIds=${data.ids}`
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

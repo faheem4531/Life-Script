@@ -1,4 +1,5 @@
 "use client";
+import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
 import { compiledChapter, uploadImage } from "@/store/slices/chatSlice";
 import { Box, ButtonBase } from "@mui/material";
 import {
@@ -6,20 +7,20 @@ import {
   //ContentState,
   EditorState,
   Modifier,
-  convertFromHTML,
   convertFromRaw,
   //convertFromHTML,
   convertToRaw,
 } from "draft-js";
-import styles from "./styles.module.css";
+import htmlToDraft from "html-to-draftjs";
 
-import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
+import styles from "./styles.module.css";
 // import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
 import Button from "@/components/button/Button";
 import {
   getAnswerbyId,
   getQuestionbyId,
   saveAnswer,
+  updateChapterResponse,
   updateQuestion,
 } from "@/store/slices/chatSlice";
 import "core-js/stable";
@@ -55,9 +56,10 @@ const RichText = ({ questionId }) => {
   const [detecting, setDetecting] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
+  const [userChapter, setUserChapter] = useState("");
+  const [gptChapter, setGptChapter] = useState("");
   const [seconds, setSeconds] = useState(0);
   const { compileChapterId, openai } = router.query;
-  console.log("4444", compileChapterId, openai);
 
   const startRecording = async () => {
     try {
@@ -136,17 +138,22 @@ const RichText = ({ questionId }) => {
         .unwrap()
         .then((res) => {
           setCompileChapter(res?.chapter?.title);
+          setUserChapter(res?.userText);
+          setGptChapter(res?.openaiChapterText);
           const htmlContent =
             openai === "true" ? res?.openaiChapterText : res?.userText;
-          const blocksFromHTML = convertFromHTML(htmlContent);
-          const initialContentState = ContentState.createFromBlockArray(
-            blocksFromHTML.contentBlocks,
-            blocksFromHTML.entityMap
+
+          const blocksFromHtml = htmlToDraft(htmlContent);
+          const { contentBlocks, entityMap } = blocksFromHtml;
+          const contentState = ContentState.createFromBlockArray(
+            contentBlocks,
+            entityMap
           );
-          setEditorState(EditorState.createWithContent(initialContentState));
+          setEditorState(EditorState.createWithContent(contentState));
         });
   }, [compileChapterId]);
 
+  //destroys recorder instance
   useEffect(() => {
     return () => {
       if (mediaRecorderRef.current) {
@@ -155,6 +162,7 @@ const RichText = ({ questionId }) => {
     };
   }, []);
 
+  // consoling editor html
   useEffect(() => {
     console.log(
       "html",
@@ -162,6 +170,7 @@ const RichText = ({ questionId }) => {
     );
   }, [editorState]);
 
+  //getting question
   useEffect(() => {
     if (questionId) {
       dispatch(getQuestionbyId({ id: questionId }))
@@ -179,6 +188,8 @@ const RichText = ({ questionId }) => {
         }
       });
   }, [questionId]);
+
+  //setting transcript in editor
   useEffect(() => {
     if (transcript) {
       const contentState = convertFromRaw({
@@ -197,9 +208,6 @@ const RichText = ({ questionId }) => {
 
       setEditorState(EditorState.createWithContent(contentState));
     }
-  }, [transcript]);
-
-  useEffect(() => {
     updateEditorWithTranscript();
   }, [transcript]);
 
@@ -237,31 +245,49 @@ const RichText = ({ questionId }) => {
     }
   }, []); //to import webspellcheckr
 
+  //autosave answer
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds + 1);
-    }, 30000);
-    if (questionData && questionData?.chapter?._id) {
-      saveUserAnswer();
-    }
+    if (!openai) {
+      const interval = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 30000);
+      if (questionData && questionData?.chapter?._id) {
+        saveUserAnswer();
+      }
 
-    // Cleanup the interval on component unmount
-    return () => clearInterval(interval);
+      // Cleanup the interval on component unmount
+      return () => clearInterval(interval);
+    }
   }, [seconds]);
 
+  //save answer and chapter
   const saveUserAnswer = () => {
-    dispatch(
-      saveAnswer({
-        questionId: questionData?._id,
-        chapterId: questionData?.chapter?._id,
-        userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-        muteableState: JSON.stringify(
-          convertToRaw(editorState.getCurrentContent())
-        ),
-      })
-    );
+    if (!openai) {
+      dispatch(
+        saveAnswer({
+          questionId: questionData?._id,
+          chapterId: questionData?.chapter?._id,
+          userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+          muteableState: JSON.stringify(
+            convertToRaw(editorState.getCurrentContent())
+          ),
+        })
+      );
+    } else {
+      const newData = draftToHtml(
+        convertToRaw(editorState.getCurrentContent())
+      );
+      dispatch(
+        updateChapterResponse({
+          id: compileChapterId,
+          userText: openai === "false" ? newData : userChapter,
+          openaiChapterText: openai === "true" ? newData : gptChapter,
+        })
+      );
+    }
   };
 
+  //answer completed
   const handleCompleteAnswer = () => {
     saveUserAnswer();
     dispatch(
@@ -480,7 +506,7 @@ const RichText = ({ questionId }) => {
             image: {
               // urlEnabled: true,
               uploadEnabled: true,
-              alignmentEnabled: true,
+              alignmentEnabled: false,
               previewImage: true,
               inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
               uploadCallback: uploadCallback,

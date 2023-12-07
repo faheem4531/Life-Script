@@ -38,7 +38,7 @@ const chapterName = () => {
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
-  const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrativeeeeeeeeeeeeeeeeeeee
+  const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -169,29 +169,6 @@ const chapterName = () => {
               flexDirection: "column",
             }}
           >
-            {/* <Box>
-      <Box>
-        <Layout>
-          <AddChapterName
-            title="chapterName"
-            chapter={chapterName}
-            chapterId={chapterId}
-          />
-          <LinearProgressBar percentage={percentage} />
-          <Box
-            sx={{
-              backgroundColor: "#fff",
-              padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
-              marginTop: "10px",
-              height: "calc(100vh - 340px)",
-              borderRadius: { sm: "18px", xs: "5px" },
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            {/* <Box>
-            <ProgressBar />
-          </Box> */}
             <Box
               sx={{
                 display: "flex",

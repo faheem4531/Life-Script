@@ -28,6 +28,8 @@ const chapterName = () => {
   const [loading, setLoading] = useState(true);
   const [templateTitle, setTemplateTitle] = useState("");
   const [allQuestions, setAllQuestions] = useState([]);
+  const [tempQuestionIds, setTempQuestionIds] = useState([]);
+  console.log("4446666", tempQuestionIds);
   const [buttonLoading, setButtonLoading] = useState(false);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -44,7 +46,10 @@ const chapterName = () => {
         if (res == "Template is already cloned") {
           setTemplateState(true);
         } else {
-          dispatch(cloneTemplate({ id: templateId.toString() }))
+          dispatch(
+            cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds })
+          )
+            .unwrap()
             .then(() => {
               setOpenModal(true);
             })
@@ -53,8 +58,20 @@ const chapterName = () => {
       });
   };
 
+  const toggleIdInArray = (id) => {
+    const index = tempQuestionIds.indexOf(id);
+
+    if (index !== -1) {
+      const updatedIds = [...tempQuestionIds];
+      updatedIds.splice(index, 1);
+      setTempQuestionIds(updatedIds);
+    } else {
+      setTempQuestionIds([...tempQuestionIds, id]);
+    }
+  };
+
   const handleCopyAgain = () => {
-    dispatch(cloneTemplate({ id: templateId.toString() }))
+    dispatch(cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds }))
       .then(() => {
         setOpenModal(true);
         setTemplateState(false);
@@ -68,6 +85,8 @@ const chapterName = () => {
   useEffect(() => {
     templateData = allTemplates.find((template) => template._id === templateId);
     setAllQuestions(templateData?.questions);
+    const ids = templateData?.questions?.map((obj) => obj._id);
+    setTempQuestionIds(ids);
     setTemplateTitle(templateData?.title);
   }, [allTemplates]);
 
@@ -76,6 +95,8 @@ const chapterName = () => {
       .unwrap()
       .then(() => setLoading(false));
   }, []);
+
+  console.log("tempQuestionIds", tempQuestionIds?.length);
 
   return (
     <>
@@ -86,12 +107,11 @@ const chapterName = () => {
           title="templateView"
         />
         <Box
-          onClick={handleChapterClone}
           sx={{
-            margin: "20px auto",
             display: "flex",
             justifyContent: "flex-end",
-            cursor: "pointer",
+            margin: "10px auto",
+            opacity: tempQuestionIds?.length ? "1" : "0.6",
           }}
         >
           <Button
@@ -103,8 +123,10 @@ const chapterName = () => {
             fontSize="20px"
             color="#fff"
             width="220px"
-            padding="10px 0px"
-            onClick={() => {}}
+            padding="5px 0px"
+            onClick={() => {
+              tempQuestionIds?.length && handleChapterClone();
+            }}
             height={undefined}
           />
         </Box>
@@ -146,6 +168,7 @@ const chapterName = () => {
                     question={question}
                     number={index + 1}
                     title="templateView"
+                    templateQuestion={(id) => toggleIdInArray(id)}
                   />
                 ))
               ) : (

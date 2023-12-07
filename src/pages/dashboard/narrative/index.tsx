@@ -1,13 +1,16 @@
 import EditIcon from "@/_assets/svg/edit-icon-green.svg";
-import NextIcon from "@/_assets/svg/next-iconX.svg";
-import PreviousIcon from "@/_assets/svg/previous-icon.svg";
+// import NextIcon from "@/_assets/svg/next-iconX.svg";
+// import PreviousIcon from "@/_assets/svg/previous-icon.svg";
 import RevertIcon from "@/_assets/svg/revert-response-icon.svg";
 import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
 import Title from "@/_assets/svg/topic-title.svg";
 import Layout from "@/components/Layout/Layout";
 import Button from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
-import { compiledChapter } from "@/store/slices/chatSlice";
+import {
+  compiledChapter,
+  updateChapterResponse,
+} from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -22,11 +25,13 @@ const NarrativeResponse = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId, openai } = router.query;
-  const [chapterhtml, setChapterhtml] = useState(``);
   const [chapterTitle, setChapterTitle] = useState("");
   const totalSlides = 2; // Set the total number of slides according to your requirement
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [CurrentSlideCheck, setCurrentSlideCheck] = useState("");
+  const [userChapter, setUserChapter] = useState("");
+  const [gptChapter, setGptChapter] = useState("");
+  const [responseType, setResponseType] = useState(true);
 
   const handleSlideChange = (index: number) => {
     setCurrentIndex(index);
@@ -44,15 +49,31 @@ const NarrativeResponse = () => {
     );
   };
 
+  const handleSaveResponse = () => {
+    setSaveResponseModal(false);
+    dispatch(
+      updateChapterResponse({
+        id: chapterId,
+        userText: userChapter,
+        openaiChapterText: gptChapter,
+      })
+    )
+      .unwrap()
+      .then(() => router.push("/dashboard/chapters"));
+  };
+
+  useEffect(() => {
+    openai && setResponseType(openai === "false" ? false : true);
+  }, [openai]);
+
   useEffect(() => {
     if (chapterId) {
       dispatch(compiledChapter({ id: chapterId }))
         .unwrap()
         .then((res) => {
           setChapterTitle(res?.chapter?.title);
-          openai === "true"
-            ? setChapterhtml(res?.openaiChapterText)
-            : setChapterhtml(res?.userText);
+          setUserChapter(res?.userText);
+          setGptChapter(res?.openaiChapterText);
         });
     }
   }, [chapterId]);
@@ -131,7 +152,7 @@ const NarrativeResponse = () => {
                   padding="9px 10px"
                   onClick={() =>
                     router.push(
-                      `/events?compileChapterId=${chapterId}&openai=${openai}`
+                      `/events?compileChapterId=${chapterId}&openai=${responseType}`
                     )
                   }
                   border="1px solid #197065"
@@ -171,46 +192,6 @@ const NarrativeResponse = () => {
                 >
                   <Box
                     sx={{
-                      padding: {
-                        xl: "45px 60px",
-                        sm: "40px 45px",
-                        xs: "20px 35px",
-                      },
-                      bgcolor: "#fff",
-                      position: "relative",
-                      height: { xs: "60vh", sm: "70vh" },
-                    }}
-                    id="accordian"
-                  >
-                    <Typography
-                      sx={{
-                        textAlign: "center",
-                        fontSize: "20px",
-                        fontWeight: 600,
-                        color: "#171725",
-                        marginBottom: "35px",
-                      }}
-                    >
-                      {chapterTitle}
-                    </Typography>
-
-                    <Box
-                      dangerouslySetInnerHTML={{
-                        __html: chapterhtml,
-                      }}
-                      sx={{
-                        fontSize: "13px",
-                        color: "#696974",
-                        marginBottom: "25px",
-                        lineHeight: "22px",
-                        height: "55vh",
-                        overflowY: "auto",
-                        "&::-webkit-scrollbar": { display: "none" },
-                      }}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
                       padding: { xl: "45px 60px", sm: "40px 45px" },
                       bgcolor: "#fff",
                       position: "relative",
@@ -231,7 +212,7 @@ const NarrativeResponse = () => {
                     </Typography>
                     <Box
                       dangerouslySetInnerHTML={{
-                        __html: chapterhtml,
+                        __html: responseType ? gptChapter : userChapter,
                       }}
                       sx={{
                         fontSize: "13px",
@@ -245,7 +226,7 @@ const NarrativeResponse = () => {
                     />
                   </Box>
                 </YourSliderComponent>
-                <Image
+                {/* <Image
                   alt="icon"
                   src={NextIcon}
                   className={styles.nextIcon}
@@ -256,9 +237,9 @@ const NarrativeResponse = () => {
                   src={PreviousIcon}
                   className={styles.previousIcon}
                   onClick={previousSlide}
-                />
+                /> */}
               </Box>
-              <Box
+              {/* <Box
                 sx={{
                   marginTop: "18px",
                   fontSize: "15px",
@@ -266,41 +247,44 @@ const NarrativeResponse = () => {
                   textAlign: "center",
                 }}
               >
-                {/* Page 01 of 40 */}
                 Page {currentIndex + 1} of {totalSlides}
-              </Box>
+              </Box> */}
             </Box>
-            <Box
-              sx={{
-                marginTop: "auto",
-                position: "absolute",
-                left: "0px",
-                bottom: "15px",
-              }}
-            >
-              <Typography
+            {openai === "true" && responseType && (
+              <Box
                 sx={{
-                  fontSize: { xl: "15px", sm: "13px" },
-                  fontWeight: 300,
-                  marginBottom: "8px",
+                  marginTop: "auto",
+                  position: "absolute",
+                  left: "0px",
+                  bottom: "15px",
                 }}
               >
-                Doesn’t like the narrative fusion response?
-              </Typography>
-              <Button
-                image={RevertIcon}
-                title="Revert Response"
-                background="#fff"
-                borderRadius="27px"
-                color="#197065"
-                width="170px"
-                height="30px"
-                fontSize="14px"
-                padding={undefined}
-                onClick={() => setRevertModal(true)}
-                border="1px solid #197065"
-              />
-            </Box>
+                <Typography
+                  sx={{
+                    fontSize: { xl: "15px", sm: "13px" },
+                    fontWeight: 300,
+                    marginBottom: "8px",
+                  }}
+                >
+                  Doesn’t like the narrative fusion response?
+                </Typography>
+                <Button
+                  image={RevertIcon}
+                  title="Revert Response"
+                  background="#fff"
+                  borderRadius="27px"
+                  color="#197065"
+                  width="170px"
+                  height="30px"
+                  fontSize="14px"
+                  padding={undefined}
+                  onClick={() => {
+                    setRevertModal(true);
+                  }}
+                  border="1px solid #197065"
+                />
+              </Box>
+            )}
           </Box>
         </Layout>
       </Box>
@@ -310,8 +294,11 @@ const NarrativeResponse = () => {
         open={revertModal}
         heading="Revert Response"
         description="This will undo all narrative fusion changes. You will be redirected to the original content compiled chapter for editing."
-        cancel={() => setRevertModal(false)}
-        proceed={() => setRevertModal(true)}
+        cancel={() => {
+          setRevertModal(false);
+          setResponseType(false);
+        }}
+        proceed={() => setRevertModal(false)}
         proceedText="Not Yet" // Customize the text for the "Yes" button
         cancelText="Revert Changes" // Customize the text for the "No" button
       />
@@ -321,8 +308,8 @@ const NarrativeResponse = () => {
         open={saveResponseModal}
         heading="Save Response"
         description="Once saved, you will find the chapter in completed chapters tab."
-        cancel={() => setSaveResponseModal(false)}
-        proceed={() => setSaveResponseModal(true)}
+        cancel={handleSaveResponse}
+        proceed={() => setSaveResponseModal(false)}
         proceedText="Not Yet" // Customize the text for the "Yes" button
         cancelText="Keep Changes" // Customize the text for the "No" button
       />
