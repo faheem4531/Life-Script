@@ -1,7 +1,9 @@
 "use client";
-import { uploadImage } from "@/store/slices/chatSlice";
-import { Box, ButtonBase, MenuItem, Select } from "@mui/material";
+import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
+import { compiledChapter, uploadImage } from "@/store/slices/chatSlice";
+import { Box, ButtonBase } from "@mui/material";
 import {
+  ContentState,
   //ContentState,
   EditorState,
   Modifier,
@@ -9,15 +11,16 @@ import {
   //convertFromHTML,
   convertToRaw,
 } from "draft-js";
-import styles from "./styles.module.css";
+import htmlToDraft from "html-to-draftjs";
 
-import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
+import styles from "./styles.module.css";
 // import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
 import Button from "@/components/button/Button";
 import {
   getAnswerbyId,
   getQuestionbyId,
   saveAnswer,
+  updateChapterResponse,
   updateQuestion,
 } from "@/store/slices/chatSlice";
 import "core-js/stable";
@@ -46,26 +49,17 @@ const RichText = ({ questionId }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const [toneValue, setToneValue] = useState("Original (as written)");
   const [questionData, setQuestionData] = useState<any>({});
-  const gptTones = [
-    "Original (as written)",
-    "Narrative",
-    "Nostalgic",
-    "Humorous",
-    "Emotional",
-    "Inspirational",
-  ];
+  const [compileChapter, setCompileChapter] = useState();
 
   const [recording, setRecording] = useState(false);
   const [detecting, setDetecting] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
+  const [userChapter, setUserChapter] = useState("");
+  const [gptChapter, setGptChapter] = useState("");
   const [seconds, setSeconds] = useState(0);
-
-  const handleSelectChange = (event) => {
-    setToneValue(event.target.value);
-  };
+  const { compileChapterId, openai } = router.query;
 
   const startRecording = async () => {
     try {
@@ -131,15 +125,35 @@ const RichText = ({ questionId }) => {
   const handleToggleRecording = () => {
     if (recording) {
       // Stop recording
-      console.log("stopping...");
       mediaRecorderRef.current.stop();
     } else {
       // Start recording
-      console.log("starting...");
       startRecording();
     }
   };
 
+  useEffect(() => {
+    compileChapterId &&
+      dispatch(compiledChapter({ id: compileChapterId }))
+        .unwrap()
+        .then((res) => {
+          setCompileChapter(res?.chapter?.title);
+          setUserChapter(res?.userText);
+          setGptChapter(res?.openaiChapterText);
+          const htmlContent =
+            openai === "true" ? res?.openaiChapterText : res?.userText;
+
+          const blocksFromHtml = htmlToDraft(htmlContent);
+          const { contentBlocks, entityMap } = blocksFromHtml;
+          const contentState = ContentState.createFromBlockArray(
+            contentBlocks,
+            entityMap
+          );
+          setEditorState(EditorState.createWithContent(contentState));
+        });
+  }, [compileChapterId]);
+
+  //destroys recorder instance
   useEffect(() => {
     return () => {
       if (mediaRecorderRef.current) {
@@ -148,6 +162,7 @@ const RichText = ({ questionId }) => {
     };
   }, []);
 
+  // consoling editor html
   useEffect(() => {
     console.log(
       "html",
@@ -155,6 +170,7 @@ const RichText = ({ questionId }) => {
     );
   }, [editorState]);
 
+  //getting question
   useEffect(() => {
     if (questionId) {
       dispatch(getQuestionbyId({ id: questionId }))
@@ -172,6 +188,8 @@ const RichText = ({ questionId }) => {
         }
       });
   }, [questionId]);
+
+  //setting transcript in editor
   useEffect(() => {
     if (transcript) {
       const contentState = convertFromRaw({
@@ -190,9 +208,6 @@ const RichText = ({ questionId }) => {
 
       setEditorState(EditorState.createWithContent(contentState));
     }
-  }, [transcript]);
-
-  useEffect(() => {
     updateEditorWithTranscript();
   }, [transcript]);
 
@@ -230,33 +245,49 @@ const RichText = ({ questionId }) => {
     }
   }, []); //to import webspellcheckr
 
+  //autosave answer
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds + 1);
-    }, 30000);
-    console.log("questionData", questionData);
-    if (questionData && questionData?.chapter?._id) {
-      saveUserAnswer();
-    }
+    if (!openai) {
+      const interval = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 30000);
+      if (questionData && questionData?.chapter?._id) {
+        saveUserAnswer();
+      }
 
-    // Cleanup the interval on component unmount
-    return () => clearInterval(interval);
+      // Cleanup the interval on component unmount
+      return () => clearInterval(interval);
+    }
   }, [seconds]);
 
+  //save answer and chapter
   const saveUserAnswer = () => {
-    dispatch(
-      saveAnswer({
-        questionId: questionData?._id,
-        chapterId: questionData?.chapter?._id,
-        userTone: toneValue,
-        userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-        muteableState: JSON.stringify(
-          convertToRaw(editorState.getCurrentContent())
-        ),
-      })
-    );
+    if (!openai) {
+      dispatch(
+        saveAnswer({
+          questionId: questionData?._id,
+          chapterId: questionData?.chapter?._id,
+          userText: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+          muteableState: JSON.stringify(
+            convertToRaw(editorState.getCurrentContent())
+          ),
+        })
+      );
+    } else {
+      const newData = draftToHtml(
+        convertToRaw(editorState.getCurrentContent())
+      );
+      dispatch(
+        updateChapterResponse({
+          id: compileChapterId,
+          userText: openai === "false" ? newData : userChapter,
+          openaiChapterText: openai === "true" ? newData : gptChapter,
+        })
+      );
+    }
   };
 
+  //answer completed
   const handleCompleteAnswer = () => {
     saveUserAnswer();
     dispatch(
@@ -309,7 +340,7 @@ const RichText = ({ questionId }) => {
         >
           <Image alt="icon" src={PIcon} />
           <div className={styles.overflowQuestionText}>
-            {questionData?.text}
+            {questionData?.text ? questionData?.text : compileChapter}
           </div>
         </Box>
         <Box
@@ -345,42 +376,27 @@ const RichText = ({ questionId }) => {
               border="1px solid #197065"
               height={undefined}
             />
-            <Select
-              value={toneValue}
-              onChange={handleSelectChange}
-              displayEmpty
-              sx={{
-                p: 0,
-                fontSize: "14px",
-                height: "35px",
-                textTransform: "none",
-                borderRadius: "27px",
-                border: "1px solid #197065",
-                color: "#197065",
-              }}
-            >
-              {gptTones?.map((tone) => (
-                <MenuItem value={tone}>{tone}</MenuItem>
-              ))}
-            </Select>
-            <ButtonBase
-              onClick={handleCompleteAnswer}
-              sx={{
-                height: "35px",
-                p: 2,
-                borderRadius: "27px",
-                border: "1px solid #197065",
-                color: "#197065",
-                fontSize: "14px",
-                bgcolor: "#fff",
-                textTransform: "none",
-                "&:hover": {
-                  backgroundColor: "#fff",
-                },
-              }}
-            >
-              Mark As Complete
-            </ButtonBase>
+
+            {!openai && (
+              <ButtonBase
+                onClick={handleCompleteAnswer}
+                sx={{
+                  height: "35px",
+                  p: 2,
+                  borderRadius: "27px",
+                  border: "1px solid #197065",
+                  color: "#197065",
+                  fontSize: "14px",
+                  bgcolor: "#fff",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#fff",
+                  },
+                }}
+              >
+                Mark As Complete
+              </ButtonBase>
+            )}
             <ButtonBase
               onClick={saveUserAnswer}
               sx={{
@@ -490,7 +506,7 @@ const RichText = ({ questionId }) => {
             image: {
               // urlEnabled: true,
               uploadEnabled: true,
-              alignmentEnabled: true,
+              alignmentEnabled: false,
               previewImage: true,
               inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
               uploadCallback: uploadCallback,

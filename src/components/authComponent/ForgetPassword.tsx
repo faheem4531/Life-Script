@@ -1,12 +1,12 @@
+import { ForgetPass } from "@/interface/authInterface";
+import { forgetPassword } from "@/store/slices/authSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useTranslation } from "react-i18next";
-import { ForgetPassword } from "@/interface/authInterface";
-import { forgetPassword } from "@/store/slices/authSlice";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
@@ -33,7 +33,7 @@ const ForgetPassword = () => {
       email: "",
       type: "password",
     },
-    onSubmit: async (data: ForgetPassword) => {
+    onSubmit: async (data: ForgetPass) => {
       console.log("data", data);
       dispatch(forgetPassword(data))
         .unwrap()

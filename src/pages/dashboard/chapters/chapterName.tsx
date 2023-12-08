@@ -38,7 +38,7 @@ const chapterName = () => {
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
-  const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrativeeeeeeeeeeeeeeeeeeee
+  const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -65,9 +65,7 @@ const chapterName = () => {
     router.push(
       `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
     );
-    dispatch(simpleChapter({ chapterId: chapterId.toString() }))
-      .unwrap()
-      .then((res) => console.log("simplechapter", res));
+    dispatch(simpleChapter({ chapterId: chapterId.toString() }));
   };
 
   function calculateCompletionPercentage(array) {
@@ -144,9 +142,6 @@ const chapterName = () => {
       setOpenCustomizationDialog(true);
     } else {
       setNarrativeRefuse(true);
-      console.log(
-        "Cannot open customization dialog because a question is in progress."
-      );
       setTimeout(() => {
         setNarrativeRefuse(false);
       }, 6000);
@@ -166,26 +161,6 @@ const chapterName = () => {
           <Box
             sx={{
               backgroundColor: "#fff",
-              padding: { sm: "30px 15px 16px 20px", xs: "25px 20px 100px" },
-              marginTop: "10px",
-              height: "calc(100vh - 340px)",
-              borderRadius: { sm: "18px", xs: "5px" },
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            {/* <Box>
-      <Box>
-        <Layout>
-          <AddChapterName
-            title="chapterName"
-            chapter={chapterName}
-            chapterId={chapterId}
-          />
-          <LinearProgressBar percentage={percentage} />
-          <Box
-            sx={{
-              backgroundColor: "#fff",
               padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
               marginTop: "10px",
               height: "calc(100vh - 340px)",
@@ -194,9 +169,6 @@ const chapterName = () => {
               flexDirection: "column",
             }}
           >
-            {/* <Box>
-            <ProgressBar />
-          </Box> */}
             <Box
               sx={{
                 display: "flex",
@@ -312,17 +284,17 @@ const chapterName = () => {
             {narrativeRefuse && (
               <Box
                 sx={{
-                  backgroundImage:  'url("/pointer-msg.png")',
+                  backgroundImage: { sm: 'url("/pointer-msg.png")' },
                   backgroundSize: "100%",
                   backgroundRepeat: "no-repeat",
-                  width: {xs: "310px", sm:"360px"},
+                  width: "360px",
                   height: "160px",
                   position: "fixed",
                   bottom: "30px",
-                  left: { md: "25%", lg:"30%", xl:"35%"},
-                  transform: { md:"translate(-25%)", lg:"translate(-30%)", xl:"translate(-35%)"},
-                  zIndex: "100000",
-                  padding: {xs: "30px 10px 0 25px",  sm:"30px 10px 0 45px"},
+                  left: "35%",
+                  transform: "translate(-35%)",
+                  zIndex: "3",
+                  padding: "30px 10px 0 45px",
                 }}
               >
                 <Typography

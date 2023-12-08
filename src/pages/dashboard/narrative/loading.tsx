@@ -1,6 +1,6 @@
 // import styles from "@/styles/Dashboard.module.css";
-import LoadImage from "@/_assets/svg/loading.svg";
 import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
+import LoadImage from "@/_assets/svg/loading.svg";
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
 import { isChapterLoaded } from "@/store/slices/chatSlice";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -16,6 +16,7 @@ const Loading = () => {
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
   const isLoaded = useSelector(isChapterLoaded);
+
   const { chapterId, openai } = router.query;
 
   useEffect(() => {
@@ -29,15 +30,19 @@ const Loading = () => {
           }, 10000);
           return 100;
         } else {
-          return prevProgress + 10;
+          if (prevProgress === 99) {
+            return isLoaded === "loaded" ? prevProgress + 1 : prevProgress + 0;
+          } else {
+            return prevProgress + 1;
+          }
         }
       });
-    }, 1200);
+    }, 140);
 
     return () => {
       clearInterval(timer);
     };
-  }, []);
+  }, [isLoaded]);
 
   return (
     <Box
@@ -69,10 +74,14 @@ const Loading = () => {
         )}
       </Typography>
       <Box className={styles.loadImageMain}>
-      <Image src={BgLoadImage} alt="BgLoadImage" className={styles.BgloadImage} />
-      <Image alt="image" src={LoadImage} className={styles.loadImage} />
+        <Image
+          src={BgLoadImage}
+          alt="BgLoadImage"
+          className={styles.BgloadImage}
+        />
+        <Image alt="image" src={LoadImage} className={styles.loadImage} />
       </Box>
-      <Box sx={{ width: {xs: "90%", sm:"80%", lg:"60%"} }}>
+      <Box sx={{ width: { xs: "90%", sm: "80%", lg: "60%" } }}>
         <ReloadingBar value={progress} />
       </Box>
     </Box>

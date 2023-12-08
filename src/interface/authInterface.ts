@@ -26,7 +26,7 @@ export interface VerifyEmail {
   otp: string;
 }
 
-export interface ForgetPassword {
+export interface ForgetPass {
   email: string;
   type: string;
 }

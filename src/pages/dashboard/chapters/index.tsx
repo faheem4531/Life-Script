@@ -37,7 +37,6 @@ const Dashboard = () => {
   const router = useRouter();
 
   const handleDeleteChapter = () => {
-    console.log("delete chapter");
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))
       .unwrap()
       .then(() => {
@@ -102,7 +101,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (chapters) {
-      setAllChapters(chapters);
+      const inProgressChapters = chapters.filter((chapter) => chapter.narrativeFusion !== true);
+      setAllChapters(inProgressChapters);
     }
   }, [chapters]);
 

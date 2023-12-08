@@ -1,6 +1,6 @@
 import {
   ChangePassword,
-  ForgetPassword,
+  ForgetPass,
   LoginData,
   SignupData,
   UpdatePasswordData,
@@ -156,7 +156,7 @@ export async function verifyEmailApi(data: VerifyEmail) {
   }
 }
 
-export async function forgetPasswordApi(data: ForgetPassword) {
+export async function forgetPasswordApi(data: ForgetPass) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/forget-password", data);

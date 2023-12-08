@@ -27,6 +27,7 @@ import {
   saveAnswerApi,
   simpleChapterApi,
   updateChapterApi,
+  updateChapterResponseApi,
   updateQuestionApi,
   uploadAudioApi,
   uploadImageApi,
@@ -67,6 +68,18 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateChapterResponse = createAsyncThunk<UserData, any>(
+  "chat/update-chapter-response",
+  async (data: { id: string; userText: string; openaiChapterText: string }) => {
+    try {
+      const response = await updateChapterResponseApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -254,9 +267,9 @@ export const getTemplates = createAsyncThunk<any[], void>(
   }
 );
 
-export const cloneTemplate = createAsyncThunk<UserData, { id: string }>(
+export const cloneTemplate = createAsyncThunk<UserData, any>(
   "chat/get-template",
-  async (data: { id: string }) => {
+  async (data: { id: string; ids: any }) => {
     try {
       const response = await cloneTemplateApi(data);
       return response;
@@ -358,6 +371,9 @@ export const chatSlice = createSlice({
       state.chats = action.payload;
       state.chapters = action.payload;
     });
+    builder.addCase(narrativeFusion.pending, (state, action) => {
+      state.chapterLoading = "not-loaded";
+    });
     builder.addCase(getChapterbyId.fulfilled, (state, action) => {
       state.chapter = action.payload;
     });
@@ -365,6 +381,9 @@ export const chatSlice = createSlice({
       state.templates = action.payload;
     });
     builder.addCase(chapterResponse.fulfilled, (state, action) => {
+      state.chapterLoading = "loaded";
+    });
+    builder.addCase(simpleChapter.fulfilled, (state, action) => {
       state.chapterLoading = "loaded";
     });
   },

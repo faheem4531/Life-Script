@@ -5,12 +5,11 @@ import Completed from "@/_assets/svg/completed-icon.svg";
 import EditGreen from "@/_assets/svg/edit-icon-green.svg";
 import AddQuestion from "@/pages/events/addQuestion";
 import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -24,6 +23,7 @@ interface QuestionsProps {
   question?: any;
   number?: number;
   answerClick?: (chapterName: string) => void; // Define the callback type here
+  templateQuestion?: (id: string) => void;
   questionChanged?: () => void;
   title?: string;
 }
@@ -32,6 +32,7 @@ export default function Questions({
   question,
   number,
   title,
+  templateQuestion,
   questionChanged,
   answerClick,
 }: QuestionsProps) {
@@ -41,7 +42,6 @@ export default function Questions({
   const [updateQuestionModal, setUpdateQuestionModal] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);
-  const router = useRouter();
   const dispatch: any = useDispatch();
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -108,7 +108,11 @@ export default function Questions({
         }}
       >
         <Box
-          onClick={() => answerClick(question?._id)}
+          onClick={() => {
+            if (title !== "templateView") {
+              answerClick(question?._id);
+            }
+          }}
           sx={{
             cursor: "pointer",
             bgcolor: "#F9F9F9",
@@ -162,7 +166,7 @@ export default function Questions({
                 {". "}
                 {question?.text}
               </Typography>
-              {question?.text.length > 86 && (
+              {question?.text.length > 80 && (
                 <Typography
                   onClick={handleSeeMoreClick}
                   sx={{
@@ -235,7 +239,7 @@ export default function Questions({
         </Box>
 
         {/* More option :start */}
-        {title != "templateView" && (
+        {title != "templateView" ? (
           <Box>
             <IconButton
               aria-label="more"
@@ -275,6 +279,13 @@ export default function Questions({
                 </MenuItem>
               ))}
             </Menu>
+          </Box>
+        ) : (
+          <Box sx={{ textAlign: "center", width: "max-content" }}>
+            <Checkbox
+              defaultChecked={true}
+              onChange={() => templateQuestion(question?._id)}
+            />
           </Box>
         )}
       </Box>

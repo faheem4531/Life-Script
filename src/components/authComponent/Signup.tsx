@@ -46,9 +46,7 @@ const Signup = ({ signupClick }) => {
     setRememberMe(event.target.checked);
   };
 
-  const responseFacebook = (response: any) => {
-    console.log(response);
-  };
+  const responseFacebook = (response: any) => {};
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
@@ -59,7 +57,6 @@ const Signup = ({ signupClick }) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
       .then((res) => {
-        console.log("resss", res);
         toast.success(t("signup-page.signedUpSuccessfully"));
         router.push(`/getStarted?userName=${res.name}`);
       })

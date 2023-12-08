@@ -3,18 +3,24 @@ import { useState } from "react";
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
+import { useRouter } from "next/router";
 import styles from "./Layout.module.css";
-import { Router, useRouter } from "next/router";
 
 const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <Box
-      sx={{ backgroundColor: "#FFF9F0", overflowX: "hidden", minHeight: "100vh" }}
+      sx={{
+        backgroundColor: "#FFF9F0",
+        overflowX: "hidden",
+        minHeight: "100vh",
+      }}
       // className="container-fontfamily"
-      className={router.asPath === "/dashboard/narrative" && styles.nativeMainBg}
+      className={
+        router.asPath === "/dashboard/narrative" && styles.nativeMainBg
+      }
     >
       <Box
         sx={{
@@ -22,7 +28,7 @@ const Layout = ({ children }: { children?: any }) => {
           right: "0",
           left: { md: "220px", sm: 0, xs: 0 },
           top: "0",
-          zIndex: "2",
+          zIndex: "3",
         }}
       >
         <NavBar sideBarHandle={() => setHandleSideBar(true)} />
