@@ -55,10 +55,11 @@ const SideBar = () => {
         <Box>
           <a
             className={`${styles.link} ${
-              currentRoute === "/dashboard/chapters" && styles.active
+              currentRoute === "/dashboard/chapters" ? styles.active : 
+              currentRoute === "/dashboard/chapters/completedChapter" && styles.active
             }`}
             onClick={() => {
-              router.push("/dashboard/chapters");
+              // router.push("/dashboard/chapters");
               setChilsdOpen(!childsOpen);
             }}
           >
@@ -94,11 +95,16 @@ const SideBar = () => {
                 </a>
               </Box>
               <Box sx={{ marginLeft: "20px" }}>
-                <a className={styles.link}>
+                <a className={`${styles.link} ${
+                    currentRoute === "/dashboard/chapters/completedChapter" && styles.active
+                  }`}
+                  onClick={() => {
+                    router.push("/dashboard/chapters/completedChapter");
+                  }}>
                   <Image
                     alt="icon"
                     src={
-                      currentRoute === "/dashboard/chapters"
+                      currentRoute === "/dashboard/chapters/completedChapter"
                         ? CompletedGreen
                         : CompletedWhite
                     }

@@ -22,7 +22,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import addIcon from "../../../../public/addicon.svg";
+import UseTemplate from "@/_assets/svg/useTemplate.svg";
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ const chapterName = () => {
   const [allQuestions, setAllQuestions] = useState([]);
   const [tempQuestionIds, setTempQuestionIds] = useState([]);
   console.log("4446666", tempQuestionIds);
-  const [buttonLoading, setButtonLoading] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(true);
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { templateId } = router.query;
@@ -52,9 +52,15 @@ const chapterName = () => {
             .unwrap()
             .then(() => {
               setOpenModal(true);
+              setButtonLoading(true);
             })
-            .catch(() => setButtonLoading(false));
+            .catch(() => {
+              setButtonLoading(true);
+            });
         }
+      })
+      .catch(() => {
+        setButtonLoading(true);
       });
   };
 
@@ -111,11 +117,11 @@ const chapterName = () => {
             display: "flex",
             justifyContent: "flex-end",
             margin: "10px auto",
-            opacity: tempQuestionIds?.length ? "1" : "0.6",
+            opacity: tempQuestionIds?.length && buttonLoading ? "1" : "0.6" ,
           }}
         >
           <Button
-            image={addIcon}
+            image={UseTemplate}
             title="Use Template"
             background="#197065"
             borderRadius="55px"
@@ -125,7 +131,7 @@ const chapterName = () => {
             width="220px"
             padding="5px 0px"
             onClick={() => {
-              tempQuestionIds?.length && handleChapterClone();
+              tempQuestionIds?.length && buttonLoading && handleChapterClone();
             }}
             height={undefined}
           />
@@ -239,7 +245,14 @@ const chapterName = () => {
         open={templateState}
         heading="Copy Template"
         description="This template is already copied, want to copy template again?"
-        cancel={() => setTemplateState(false)}
+        cancel={() => {
+          setTemplateState(false);
+          setButtonLoading(true);
+        }}
+        closeModal={()=>{
+          setTemplateState(false);
+          setButtonLoading(true);
+        }}
         proceed={handleCopyAgain}
       />
     </>

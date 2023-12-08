@@ -11,7 +11,7 @@ import {
   compiledChapter,
   updateChapterResponse,
 } from "@/store/slices/chatSlice";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -32,6 +32,7 @@ const NarrativeResponse = () => {
   const [userChapter, setUserChapter] = useState("");
   const [gptChapter, setGptChapter] = useState("");
   const [responseType, setResponseType] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const handleSlideChange = (index: number) => {
     setCurrentIndex(index);
@@ -59,10 +60,13 @@ const NarrativeResponse = () => {
       })
     )
       .unwrap()
-      .then(() => router.push("/dashboard/chapters"));
+      .then(() => {
+        setLoading(false);
+        router.push("/dashboard/chapters")});
   };
 
   useEffect(() => {
+    setLoading(false)
     openai && setResponseType(openai === "false" ? false : true);
   }, [openai]);
 
@@ -74,6 +78,8 @@ const NarrativeResponse = () => {
           setChapterTitle(res?.chapter?.title);
           setUserChapter(res?.userText);
           setGptChapter(res?.openaiChapterText);
+          setLoading(false)
+
         });
     }
   }, [chapterId]);
@@ -82,6 +88,20 @@ const NarrativeResponse = () => {
     <>
       <Box sx={{ height: "100vh", overflow: "hidden" }}>
         <Layout>
+        {loading ? (
+              <Box
+                sx={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "55%",
+                  transform: "translate(-50%, -55%)",
+                  zIndex: 6
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            ) 
+            : (
           <Box position="relative">
             <Box
               sx={{
@@ -286,6 +306,8 @@ const NarrativeResponse = () => {
               </Box>
             )}
           </Box>
+            )
+            }
         </Layout>
       </Box>
 
