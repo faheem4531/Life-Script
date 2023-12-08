@@ -283,7 +283,9 @@ const RichText = ({ questionId }) => {
           userText: openai === "false" ? newData : userChapter,
           openaiChapterText: openai === "true" ? newData : gptChapter,
         })
-      );
+      )
+        .unwrap()
+        .then(() => router.push("/dashboard/chapters/completedChapter"));
     }
   };
 
