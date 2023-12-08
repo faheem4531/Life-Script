@@ -44,6 +44,8 @@ const Editor = dynamic(
 
 const RichText = ({ questionId }) => {
   const router = useRouter();
+  let htmlToDraftJs;
+
   const mediaRecorderRef = useRef(null);
   const dispatch: any = useDispatch();
   const [editorState, setEditorState] = useState(() =>
@@ -244,6 +246,13 @@ const RichText = ({ questionId }) => {
       );
     }
   }, []); //to import webspellcheckr
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Import html-to-draftjs only in a browser environment
+      htmlToDraftJs = require("html-to-draftjs");
+    }
+  }, []);
 
   //autosave answer
   useEffect(() => {
