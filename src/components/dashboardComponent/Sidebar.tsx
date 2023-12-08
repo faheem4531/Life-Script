@@ -1,9 +1,11 @@
 import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
 import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
+import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
 import FaqWhite from "@/_assets/svg/sidebar/faq-white.svg";
 import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
 import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
+import ProgressGreen from "@/_assets/svg/sidebar/in-progress-green.svg";
 import ProgressWhite from "@/_assets/svg/sidebar/in-progress-white.svg";
 import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
 import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
@@ -53,10 +55,11 @@ const SideBar = () => {
         <Box>
           <a
             className={`${styles.link} ${
-              currentRoute === "/dashboard/chapters" && styles.active
+              currentRoute === "/dashboard/chapters" ? styles.active : 
+              currentRoute === "/dashboard/chapters/completedChapter" && styles.active
             }`}
             onClick={() => {
-              router.push("/dashboard/chapters");
+              // router.push("/dashboard/chapters");
               setChilsdOpen(!childsOpen);
             }}
           >
@@ -80,20 +83,33 @@ const SideBar = () => {
                   }}
                 >
                   {/* Add your icon and text for the first new option */}
-                  <Image alt="icon" src={FaqWhite} />
-                  All
-                </a>
-              </Box>
-              <Box sx={{ marginLeft: "20px" }}>
-                <a className={styles.link}>
-                  <Image alt="icon" src={CompletedWhite} />
-                  Completed
-                </a>
-              </Box>
-              <Box sx={{ marginLeft: "20px" }}>
-                <a className={styles.link}>
-                  <Image alt="icon" src={ProgressWhite} />
+                  <Image
+                    alt="icon"
+                    src={
+                      currentRoute === "/dashboard/chapters"
+                        ? ProgressGreen
+                        : ProgressWhite
+                    }
+                  />
                   In Progress
+                </a>
+              </Box>
+              <Box sx={{ marginLeft: "20px" }}>
+                <a className={`${styles.link} ${
+                    currentRoute === "/dashboard/chapters/completedChapter" && styles.active
+                  }`}
+                  onClick={() => {
+                    router.push("/dashboard/chapters/completedChapter");
+                  }}>
+                  <Image
+                    alt="icon"
+                    src={
+                      currentRoute === "/dashboard/chapters/completedChapter"
+                        ? CompletedGreen
+                        : CompletedWhite
+                    }
+                  />
+                  Completed
                 </a>
               </Box>
             </Box>

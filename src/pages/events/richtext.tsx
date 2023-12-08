@@ -351,7 +351,12 @@ const RichText = ({ questionId }) => {
           }}
         >
           <Box
-            sx={{ display: "flex", alignItems: "center", columnGap: "10px" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              flexWrap: { xs: "wrap", lg: "nowrap" },
+            }}
           >
             <Button
               // image={speechIcon}
@@ -392,6 +397,7 @@ const RichText = ({ questionId }) => {
                   "&:hover": {
                     backgroundColor: "#fff",
                   },
+                  width: "150px",
                 }}
               >
                 Mark As Complete

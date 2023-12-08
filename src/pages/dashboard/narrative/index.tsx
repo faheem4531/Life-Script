@@ -11,7 +11,7 @@ import {
   compiledChapter,
   updateChapterResponse,
 } from "@/store/slices/chatSlice";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -32,6 +32,7 @@ const NarrativeResponse = () => {
   const [userChapter, setUserChapter] = useState("");
   const [gptChapter, setGptChapter] = useState("");
   const [responseType, setResponseType] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const handleSlideChange = (index: number) => {
     setCurrentIndex(index);
@@ -59,10 +60,14 @@ const NarrativeResponse = () => {
       })
     )
       .unwrap()
-      .then(() => router.push("/dashboard/chapters"));
+      .then(() => {
+        setLoading(false);
+        router.push("/dashboard/chapters");
+      });
   };
 
   useEffect(() => {
+    setLoading(false);
     openai && setResponseType(openai === "false" ? false : true);
   }, [openai]);
 
@@ -74,6 +79,7 @@ const NarrativeResponse = () => {
           setChapterTitle(res?.chapter?.title);
           setUserChapter(res?.userText);
           setGptChapter(res?.openaiChapterText);
+          setLoading(false);
         });
     }
   }, [chapterId]);
@@ -82,151 +88,168 @@ const NarrativeResponse = () => {
     <>
       <Box sx={{ height: "100vh", overflow: "hidden" }}>
         <Layout>
-          <Box position="relative">
+          {loading ? (
             <Box
               sx={{
-                marginTop: "5px",
-                display: { sm: "flex" },
-                // columnGap: { xl: "100px", lg: "40px" },
-                justifyContent: "space-between",
-                height: "100%",
-                mb: { xs: "20px", sm: "0px" },
+                position: "fixed",
+                top: "50%",
+                left: "55%",
+                transform: "translate(-50%, -55%)",
+                zIndex: 6,
               }}
-              className={styles.nativeMainBg}
             >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Box position="relative">
               <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  // alignContent: "space-between",
-                  // width: "33%",
+                  marginTop: "5px",
+                  display: { sm: "flex" },
+                  // columnGap: { xl: "100px", lg: "40px" },
+                  justifyContent: "space-between",
+                  height: "100%",
+                  mb: { xs: "20px", sm: "0px" },
                 }}
+                className={styles.nativeMainBg}
               >
-                <Box sx={{ display: "flex", alignItems: "start" }}>
-                  <Image alt="image" src={Title} className={styles.titleIcon} />
-                  <Box>
-                    <Typography
-                      sx={{
-                        fontSize: { xl: "20px", sm: "17px" },
-                        display: "block",
-                        color: "#171725",
-                        fontWeight: 600,
-                        mt: "2px",
-                      }}
-                    >
-                      {chapterTitle}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: "12px",
-                        color: "#696974",
-                        fontWeight: 300,
-                        textDecoration: "underline",
-                      }}
-                    >
-                      view only
-                    </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    // alignContent: "space-between",
+                    // width: "33%",
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "start" }}>
+                    <Image
+                      alt="image"
+                      src={Title}
+                      className={styles.titleIcon}
+                    />
+                    <Box>
+                      <Typography
+                        sx={{
+                          fontSize: { xl: "20px", sm: "17px" },
+                          display: "block",
+                          color: "#171725",
+                          fontWeight: 600,
+                          mt: "2px",
+                        }}
+                      >
+                        {chapterTitle}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "12px",
+                          color: "#696974",
+                          fontWeight: 300,
+                          textDecoration: "underline",
+                        }}
+                      >
+                        view only
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
 
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  gap: "10px",
-                  mt: "5px",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <Button
-                  image={EditIcon}
-                  title="Edit Response"
-                  background="#fff"
-                  borderRadius="27px"
-                  color="#197065"
-                  height="27px"
-                  width="150px"
-                  fontSize="14px"
-                  padding="9px 10px"
-                  onClick={() =>
-                    router.push(
-                      `/events?compileChapterId=${chapterId}&openai=${responseType}`
-                    )
-                  }
-                  border="1px solid #197065"
-                />
-                <Button
-                  image={SaveIcon}
-                  title="Save Response"
-                  background="#197065"
-                  borderRadius="27px"
-                  color="#fff"
-                  height="27px"
-                  width="150px"
-                  fontSize="14px"
-                  padding="9px 10px"
-                  onClick={() => setSaveResponseModal(true)}
-                  border="none"
-                />
-              </Box>
-            </Box>
-            <Box
-              sx={{
-                maxWidth: "450px",
-                height: "100%",
-                margin: "auto",
-              }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                }}
-              >
-                <YourSliderComponent
-                  currentIndex={currentIndex}
-                  totalSlides={totalSlides}
-                  handleSlideChange={handleSlideChange}
-                  CurrentSlideCheck={CurrentSlideCheck}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    gap: "10px",
+                    mt: "5px",
+                    justifyContent: "flex-end",
+                  }}
                 >
-                  <Box
-                    sx={{
-                      padding: { xl: "45px 60px", sm: "40px 45px" },
-                      bgcolor: "#fff",
-                      position: "relative",
-                      height: "75vh",
-                    }}
-                    id="accordian"
+                  <Button
+                    image={EditIcon}
+                    title="Edit Response"
+                    background="#fff"
+                    borderRadius="27px"
+                    color="#197065"
+                    height="27px"
+                    width="150px"
+                    fontSize="14px"
+                    padding="9px 10px"
+                    onClick={() =>
+                      router.push(
+                        `/events?compileChapterId=${chapterId}&openai=${responseType}`
+                      )
+                    }
+                    border="1px solid #197065"
+                  />
+                  <Button
+                    image={SaveIcon}
+                    title="Save Response"
+                    background="#197065"
+                    borderRadius="27px"
+                    color="#fff"
+                    height="27px"
+                    width="150px"
+                    fontSize="14px"
+                    padding="9px 10px"
+                    onClick={() => setSaveResponseModal(true)}
+                    border="none"
+                  />
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  maxWidth: "450px",
+                  height: "100%",
+                  margin: "auto",
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "relative",
+                  }}
+                >
+                  <YourSliderComponent
+                    currentIndex={currentIndex}
+                    totalSlides={totalSlides}
+                    handleSlideChange={handleSlideChange}
+                    CurrentSlideCheck={CurrentSlideCheck}
                   >
-                    <Typography
-                      sx={{
-                        textAlign: "center",
-                        fontSize: "20px",
-                        fontWeight: 600,
-                        color: "#171725",
-                        marginBottom: "35px",
-                      }}
-                    >
-                      {chapterTitle}
-                    </Typography>
                     <Box
-                      dangerouslySetInnerHTML={{
-                        __html: responseType ? gptChapter : userChapter,
-                      }}
                       sx={{
-                        fontSize: "13px",
-                        color: "#696974",
-                        marginBottom: "25px",
-                        lineHeight: "22px",
-                        height: "55vh",
-                        overflowY: "auto",
-                        "&::-webkit-scrollbar": { display: "none" },
+                        padding: { xl: "45px 60px", sm: "40px 45px" },
+                        bgcolor: "#fff",
+                        position: "relative",
+                        height: "75vh",
                       }}
-                    />
-                  </Box>
-                </YourSliderComponent>
-                {/* <Image
+                      id="accordian"
+                    >
+                      <Typography
+                        sx={{
+                          textAlign: "center",
+                          fontSize: "20px",
+                          fontWeight: 600,
+                          color: "#171725",
+                          marginBottom: "35px",
+                        }}
+                      >
+                        {chapterTitle}
+                      </Typography>
+                      <Box
+                        dangerouslySetInnerHTML={{
+                          __html: responseType ? gptChapter : userChapter,
+                        }}
+                        sx={{
+                          fontSize: "13px",
+                          color: "#696974",
+                          marginBottom: "25px",
+                          lineHeight: "22px",
+                          height: "55vh",
+                          overflowY: "auto",
+                          "&::-webkit-scrollbar": { display: "none" },
+                        }}
+                      />
+                    </Box>
+                  </YourSliderComponent>
+                  {/* <Image
                   alt="icon"
                   src={NextIcon}
                   className={styles.nextIcon}
@@ -238,8 +261,8 @@ const NarrativeResponse = () => {
                   className={styles.previousIcon}
                   onClick={previousSlide}
                 /> */}
-              </Box>
-              {/* <Box
+                </Box>
+                {/* <Box
                 sx={{
                   marginTop: "18px",
                   fontSize: "15px",
@@ -249,43 +272,44 @@ const NarrativeResponse = () => {
               >
                 Page {currentIndex + 1} of {totalSlides}
               </Box> */}
-            </Box>
-            {openai === "true" && responseType && (
-              <Box
-                sx={{
-                  marginTop: "auto",
-                  position: "absolute",
-                  left: "0px",
-                  bottom: "15px",
-                }}
-              >
-                <Typography
+              </Box>
+              {openai === "true" && responseType && (
+                <Box
                   sx={{
-                    fontSize: { xl: "15px", sm: "13px" },
-                    fontWeight: 300,
-                    marginBottom: "8px",
+                    marginTop: "auto",
+                    position: "absolute",
+                    left: "0px",
+                    bottom: "15px",
                   }}
                 >
-                  Doesn’t like the narrative fusion response?
-                </Typography>
-                <Button
-                  image={RevertIcon}
-                  title="Revert Response"
-                  background="#fff"
-                  borderRadius="27px"
-                  color="#197065"
-                  width="170px"
-                  height="30px"
-                  fontSize="14px"
-                  padding={undefined}
-                  onClick={() => {
-                    setRevertModal(true);
-                  }}
-                  border="1px solid #197065"
-                />
-              </Box>
-            )}
-          </Box>
+                  <Typography
+                    sx={{
+                      fontSize: { xl: "15px", sm: "13px" },
+                      fontWeight: 300,
+                      marginBottom: "8px",
+                    }}
+                  >
+                    Doesn’t like the narrative fusion response?
+                  </Typography>
+                  <Button
+                    image={RevertIcon}
+                    title="Revert Response"
+                    background="#fff"
+                    borderRadius="27px"
+                    color="#197065"
+                    width="170px"
+                    height="30px"
+                    fontSize="14px"
+                    padding={undefined}
+                    onClick={() => {
+                      setRevertModal(true);
+                    }}
+                    border="1px solid #197065"
+                  />
+                </Box>
+              )}
+            </Box>
+          )}
         </Layout>
       </Box>
 
