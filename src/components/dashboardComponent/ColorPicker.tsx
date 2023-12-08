@@ -1,12 +1,12 @@
-import { Box, TextField, Typography } from '@mui/material';
-import React, { useState, useRef, useEffect } from 'react';
-import { BlockPicker, ColorResult } from 'react-color';
+import { Box, TextField, Typography } from "@mui/material";
+import React, { useState, useRef, useEffect, ChangeEvent } from "react";
+import { BlockPicker, ColorResult } from "react-color";
 
-const ColorPickerComponent: React.FC = () => {
+const ColorPickerComponent = ({setSelectedColor, selectedColor}) => {
   const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
-  const [selectedColor, setSelectedColor] = useState<string>('#ffffff');
-  const colorPickerRef = useRef<HTMLDivElement>(null);
 
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleColorChange = (color: ColorResult) => {
     setSelectedColor(color.hex);
@@ -16,50 +16,45 @@ const ColorPickerComponent: React.FC = () => {
     setDisplayColorPicker(!displayColorPicker);
   };
 
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputColor = event.target.value;
+    setSelectedColor(inputColor);
+  };
+
   return (
     <div>
-        <Box>
-              <Typography
-                sx={{
-                  // marginRight: "300px",
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                }}
-              >
-                Colour Palette*
-              </Typography>
-              <TextField
-                variant="outlined"
-                placeholder={"Colour Palette*"}
-                name="text"
-                value={selectedColor}
-                onClick={handleInputClick}
-                // onBlur={formik.handleBlur}
-                // onChange={formik.handleChange}
-                sx={{
-                  marginTop: "10px",
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "50px",
-                    backgroundColor: "white",
-                  },
-                  width: "100%",
-                  // width: "460px",
-                }}
-              />
-            </Box>
+      <Box>
+        <Typography
+          sx={{
+            fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+          }}
+        >
+          Colour Palette*
+        </Typography>
+        <TextField
+          variant="outlined"
+          placeholder={"Colour Palette*"}
+          name="text"
+          ref={inputRef}
+          type="text"
+          value={selectedColor}
+          onClick={handleInputClick}
+          onChange={handleInputChange}
+          sx={{
+            marginTop: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "50px",
+              backgroundColor: "white",
+            },
+            width: "100%",
+          }}
+        />
+      </Box>
       {displayColorPicker && (
-        <div ref={colorPickerRef} style={{ position: 'absolute', zIndex: 2 }}>
+        <div ref={colorPickerRef} style={{ position: "absolute", zIndex: 2 }}>
           <BlockPicker color={selectedColor} onChange={handleColorChange} />
         </div>
       )}
-      {/* <div
-        style={{
-          width: '100px',
-          height: '100px',
-          backgroundColor: selectedColor,
-          marginTop: '20px',
-        }}
-      >
-      </div> */}
     </div>
   );
 };
