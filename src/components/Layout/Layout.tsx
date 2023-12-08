@@ -28,7 +28,7 @@ const Layout = ({ children }: { children?: any }) => {
           right: "0",
           left: { md: "220px", sm: 0, xs: 0 },
           top: "0",
-          zIndex: "2",
+          zIndex: "3",
         }}
       >
         <NavBar sideBarHandle={() => setHandleSideBar(true)} />
@@ -41,7 +41,7 @@ const Layout = ({ children }: { children?: any }) => {
             position: "fixed",
             bottom: "0",
             top: "0px",
-            zIndex: "3",
+            zIndex: "2",
           }}
           className={`${styles.display} ${handleSideBar && styles.displayShow}`}
         >
