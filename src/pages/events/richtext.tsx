@@ -351,7 +351,7 @@ const RichText = ({ questionId }) => {
           }}
         >
           <Box
-            sx={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap",  }}
+            sx={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: {xs: "wrap", lg:"nowrap"},  }}
           >
             <Button
               // image={speechIcon}
