@@ -121,6 +121,7 @@ export default function DetailCard({
         </Box>
       </div>
       <Box
+      className={router.asPath === "/dashboard/chapters/completedChapter" && styles.CardBg}
         sx={{ height: "100%", cursor: "pointer" }}
         onClick={() => {
           if (router.asPath === "/dashboard/chapters") {
@@ -207,8 +208,8 @@ export default function DetailCard({
                 </Box>
               )}
             </Box>
-
-            {isChapter && (
+{router.asPath === "/dashboard/chapters/completedChapter"? "" : ""}
+            {isChapter && router.asPath === "/dashboard/chapters/completedChapter"? "" : (
               <Box
                 sx={{
                   display: "flex",

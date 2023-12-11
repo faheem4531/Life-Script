@@ -47,8 +47,13 @@
   background-size: 80% 100%;
 }
 
-
 /* styling for Details Card   */
+
+.CardBg{
+  background-image: url(../../_assets/svg/GreenTick.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .cardContent {
   height: 72%;
