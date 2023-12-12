@@ -164,3 +164,7 @@ a {
 .css-od7rqf-MuiLinearProgress-root::before {
   opacity: 0;
 }
+
+.css-10d9dml-MuiTabs-indicator{
+  display: none;
+}

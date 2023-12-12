@@ -2,7 +2,6 @@ import ModalImage from "@/_assets/png/view-template-modal.png";
 import Layout from "@/components/Layout/Layout";
 import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
-import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
@@ -23,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import bgTree from "../../../_assets/svg/bgTree.svg";
 import AddChapter from "./addChapter";
+import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 
 const CompletedChapters = () => {
   const [chapterModal, setChapterModal] = useState(false);
@@ -115,7 +115,7 @@ const CompletedChapters = () => {
             zIndex: "2",
           }}
         >
-          <HomeSteps />
+         <CompletedChapterHeader/>
 
           {loading ? (
             <Box
