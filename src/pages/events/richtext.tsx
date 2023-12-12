@@ -1,6 +1,6 @@
 "use client";
 import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
-import { compiledChapter, uploadImage } from "@/store/slices/chatSlice";
+import { compiledChapter, uploadImage } from "@/store/slices/chatSlice"; //uploadImage
 import { Box, ButtonBase } from "@mui/material";
 import {
   ContentState,
@@ -23,6 +23,7 @@ import {
   updateChapterResponse,
   updateQuestion,
 } from "@/store/slices/chatSlice";
+import axios from "axios";
 import "core-js/stable";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
@@ -252,13 +253,6 @@ const RichText = ({ questionId }) => {
     }
   }, []); //to import webspellcheckr
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     // Import html-to-draftjs only in a browser environment
-  //     htmlToDraftJs = require("html-to-draftjs");
-  //   }
-  // }, []);
-
   //autosave answer
   useEffect(() => {
     if (!openai) {
@@ -330,6 +324,55 @@ const RichText = ({ questionId }) => {
       reader.onloadend = async () => {
         const form_data = new FormData();
         form_data.append("image", file);
+        // const res = await dispatch(uploadImage(form_data));
+        const form_data2 = new FormData();
+        form_data2.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
+        form_data2.append("file", file);
+        const simple = await axios.post(
+          "https://api-service.vanceai.com/web_api/v1/upload",
+          form_data2
+        );
+        const jconfig = {
+          job: "repair",
+          name: "repair_sd",
+          kind: "api",
+          dist: "sd_SR",
+          config: {
+            module: "crease_repair",
+            module_params: {
+              model_name: "CreaseRepairStable",
+            },
+          },
+        };
+        const form_data3 = new FormData();
+        form_data3.append("uid", simple?.data?.data?.uid);
+        form_data3.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
+        form_data3.append("jconfig", JSON.stringify(jconfig));
+
+        const transform = await axios.post(
+          "https://api-service.vanceai.com/web_api/v1/transform",
+          form_data3
+        );
+
+        console.log("pppppp", transform?.data?.data?.trans_id);
+
+        const download = await axios.post(
+          `https://api-service.vanceai.com/web_api/v1/download?api_token=71b1bfcdf31b746dd8444631a9f563e5&trans_id=${transform?.data?.data?.trans_id}`
+        );
+        console.log(
+          "4444444",
+          form_data3,
+          "5555",
+          simple,
+          "666666",
+          transform,
+          "77777",
+          download
+        );
+
+        const form_data7 = new FormData();
+        form_data7.append("image", download.data);
+
         const res = await dispatch(uploadImage(form_data));
 
         resolve({ data: { link: res.payload } });
@@ -530,7 +573,7 @@ const RichText = ({ questionId }) => {
               uploadEnabled: true,
               alignmentEnabled: false,
               previewImage: true,
-              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
+              inputAccept: "image/gif,image/jpeg,image/jpg,image/png",
               uploadCallback: uploadCallback,
               alt: { present: false, mandatory: false },
               defaultSize: {

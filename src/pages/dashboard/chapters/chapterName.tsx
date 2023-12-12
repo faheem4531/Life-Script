@@ -11,15 +11,15 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import AddQuestion from "@/pages/events/addQuestion";
 import RichTextViewer from "@/pages/events/response";
+import socket from "@/services/socketManager";
 import {
   chapterResponse,
   createQuestion,
   getChapterbyId,
   narrativeFusion,
   selectChapter,
-  simpleChapter,
 } from "@/store/slices/chatSlice";
-import { Box, Typography } from "@mui/material";
+import { Box, ButtonBase, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -30,8 +30,8 @@ import addIcon from "../../../../public/addicon.svg";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [narrativeModal, setNarrativeModal] = useState(false);
   const [fusionModal, setFusionModal] = useState(false);
+  const [gptSocket, setgptSocket] = useState(false);
   const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
@@ -40,6 +40,8 @@ const chapterName = () => {
   const [fusionLoading, setFusionLoading] = useState(false);
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
+  const [socketResponse, setSocketResponse] = useState([]);
+  console.log("99999", socketResponse);
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId } = router.query;
@@ -50,22 +52,24 @@ const chapterName = () => {
   const handleCancel = () => {
     // Close the customization dialog
     setOpenCustomizationDialog(false);
-    router.push(
-      `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${true}`
-    );
+
+    // router.push(
+    //   `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${true}`
+    // );
     if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-      setFusionLoading(true);
-      handleNarrativeFusion();
+      // setFusionLoading(true);
+      // handleNarrativeFusion();
+      gptSocketCall();
     }
   };
 
   const proceedFusion = () => {
     setOpenCustomizationDialog(false);
 
-    router.push(
-      `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
-    );
-    dispatch(simpleChapter({ chapterId: chapterId.toString() }));
+    // router.push(
+    //   `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
+    // );
+    // dispatch(simpleChapter({ chapterId: chapterId.toString() }));
   };
 
   function calculateCompletionPercentage(array) {
@@ -103,6 +107,23 @@ const chapterName = () => {
   function areAllCompleted(questions) {
     return questions.every((question) => question.status === "Completed");
   }
+
+  //gpt through socket
+  const gptSocketCall = () => {
+    // Join the room when the component mounts
+    socket.emit("chatgpt", {
+      token: localStorage.getItem("token"),
+      chapterId: chapterId.toString(),
+      language: "en",
+    });
+    setgptSocket(true);
+
+    // Listen for incoming messages from the server
+    socket.on("result", (message) => {
+      console.log("2222receive", message);
+      setSocketResponse(message);
+    });
+  };
 
   useEffect(() => {
     chapterId &&
@@ -317,6 +338,61 @@ const chapterName = () => {
         </Layout>
       </Box>
 
+      <CustomizationDialog
+        open={gptSocket}
+        title=""
+        handleClose={() => {
+          setgptSocket(false);
+        }}
+        customStyles={{ backgroundColor: "auto" }}
+      >
+        <Box sx={{ textAlign: "center" }}>
+          <Image alt="image" src={ModalImage} />
+          <Typography
+            sx={{
+              fontSize: "40px",
+              fontWeight: 700,
+              color: "#070707",
+              margin: "40px 0",
+            }}
+          >
+            Thank You!
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "30px",
+              color: "#070707",
+              width: "400px",
+              margin: "0 120px",
+            }}
+          >
+            Your chapter is being written. You will get it shortly
+          </Typography>
+
+          <ButtonBase
+            onClick={() => {
+              router.push("/dashboard/chapters/completedChapter");
+              setgptSocket(false);
+            }}
+            sx={{
+              width: "200px",
+              height: "50px",
+              borderRadius: "78px",
+              color: "#fff",
+              fontSize: "22px",
+              bgcolor: "#197065",
+              margin: "40px 0 30px",
+              "&:hover": {
+                color: "#fff",
+                bgcolor: "#197065",
+              },
+            }}
+          >
+            Okay
+          </ButtonBase>
+        </Box>
+      </CustomizationDialog>
+
       <TransitionsDialog
         open={openCustomizationDialog}
         heading="Narrative Fusion"
@@ -327,6 +403,7 @@ const chapterName = () => {
         cancelText="Use Narrative Fusion" // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
+
       <CustomizationDialog
         open={fusionModal}
         title="GPT Response"
