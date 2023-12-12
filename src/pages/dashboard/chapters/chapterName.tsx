@@ -18,6 +18,7 @@ import {
   getChapterbyId,
   narrativeFusion,
   selectChapter,
+  simpleChapter,
 } from "@/store/slices/chatSlice";
 import { Box, ButtonBase, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -66,10 +67,10 @@ const chapterName = () => {
   const proceedFusion = () => {
     setOpenCustomizationDialog(false);
 
-    // router.push(
-    //   `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
-    // );
-    // dispatch(simpleChapter({ chapterId: chapterId.toString() }));
+    router.push(
+      `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
+    );
+    dispatch(simpleChapter({ chapterId: chapterId.toString() }));
   };
 
   function calculateCompletionPercentage(array) {
