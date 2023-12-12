@@ -11,7 +11,7 @@ import {
   //convertFromHTML,
   convertToRaw,
 } from "draft-js";
-import htmlToDraft from "html-to-draftjs";
+// import htmlToDraft from "html-to-draftjs";
 
 import styles from "./styles.module.css";
 // import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
@@ -135,7 +135,11 @@ const RichText = ({ questionId }) => {
   };
 
   useEffect(() => {
-    compileChapterId &&
+    if (compileChapterId) {
+      let htmlToDraft = null;
+      if (typeof window === "object") {
+        htmlToDraft = require("html-to-draftjs").default;
+      }
       dispatch(compiledChapter({ id: compileChapterId }))
         .unwrap()
         .then((res) => {
@@ -153,6 +157,7 @@ const RichText = ({ questionId }) => {
           );
           setEditorState(EditorState.createWithContent(contentState));
         });
+    }
   }, [compileChapterId]);
 
   //destroys recorder instance
