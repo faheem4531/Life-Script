@@ -1,9 +1,12 @@
+"use client"
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TabItem from "./TabItem";
+import Items from "./Items";
+
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -20,26 +23,111 @@ const tabsStyling = {
         position: "relative",
         color: "black",
         mb: "18px",
+        overflow: "visible",
         "&.Mui-selected": {
           color: "#197065",
           borderColor: " #197065",
           position: "relative",
           fontWeight: 600,
-        },
 
         "&:after": {
-          content: '""',
-          width: "10px",
-          height: "10px",
-          borderBottom: "0.917px solid #197065",
-          borderLeft: "0.917px solid #197065",
-          position: "absolute",
-          right: " -7.774px",
-          bottom: "29.221px",
-          transform: "rotate(-135deg)",
-          zIndex: "456789",
+            content: '""',
+            width: "10px",
+            height: "10px",
+            borderBottom: "0.917px solid #197065",
+            borderLeft: "0.917px solid #197065",
+            position: "absolute",
+            right: " -9.5px",
+            top: "50%",
+            transform: "rotate(-135deg) translateX(51%)",
+            zIndex: "1",
+            bgcolor: "white"
+          },
+          "&:before": {
+            content: '"✅"',
+            // content: '"✅"',
+            width: "15px",
+            height: "15px",
+            position: "absolute",
+            borderRadius: "50%",
+            border: "1.5px solid gray",
+            top: "14px",
+            zIndex: "1",
+            overflow: "hidden",
+          },
         },
+
 }
+
+const subPremiumList = [
+  {
+      label: "Auto Proofreading",
+  },
+  {
+      label: "Auto Editing",
+  },
+  {
+      label: "Family Tree",
+  },
+  {
+      label: "Formatting Features",
+  },
+  {
+      label: "Speech-to-text Translation",
+  },
+  {
+      label: "Narrative Fusion",
+  },
+  {
+      label: "AI Photo Enhancement",
+  },
+  {
+      label: "Premium Book Cover",
+  },
+  {
+      label: "Free Shipping",
+  },
+
+]
+const subBasicList = [
+  {
+      label: "Auto Proofreading",
+  },
+  {
+      label: "Auto Editing",
+  },
+  {
+      label: "Family Tree",
+  },
+  {
+      label: "Free Shipping",
+  },
+]
+
+const subStandardList = [
+  {
+      label: "Auto Proofreading",
+  },
+  {
+      label: "Auto Editing",
+  },
+  {
+      label: "Family Tree",
+  },
+  {
+      label: "Formatting Features",
+  },
+  {
+      label: "Speech-to-text Translation",
+  },
+  {
+      label: "Narrative Fusion",
+  },
+  {
+      label: "Free Shipping",
+  },
+
+]
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -53,8 +141,8 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box>
+          {children}
         </Box>
       )}
     </div>
@@ -83,26 +171,8 @@ export default function VerticalTabs() {
 
   return (
     <Box
-      sx={{
-        bgcolor: "white",
-        borderRadius: " 16.148px",
-        p: "26px 48px",
-      }}
     >
-      <Typography
-        sx={{
-          color: "#081131",
-          fontSize: " 16.498px",
-          fontWeight: 600,
-          letterSpacing: "0.458px",
-          mb: "65px",
-          textAlign: "center",
-        }}
-      >
-        Choose a subscription plan below before Aug30th,2023 to unlock this
-        special offer.
-      </Typography>
-      <Box sx={{ flexGrow: 1, display: "flex", gap: "10px" }}>
+      <Box sx={{ flexGrow: 1, display: "flex", gap: "10px" ,}}>
         <Box
           sx={{
             flex: "1",
@@ -114,16 +184,24 @@ export default function VerticalTabs() {
             value={value}
             onChange={handleChange}
             aria-label="Vertical tabs example"
+            sx={{
+                overflow: "visible",
+            }}
           >
+         
             <Tab
               label={
-                <TabItem/>
+                <TabItem title="Basic" description="Lorem ipsum dolor sit amet consectetur." realPrice="Free" free="Free" />
               }
               {...a11yProps(0)}
             sx={tabsStyling}
             />
-            <Tab label="Item Two" {...a11yProps(1)}  sx={tabsStyling} />
-            <Tab label="Item Three" {...a11yProps(2)}  sx={tabsStyling} />
+            <Tab label={
+                <TabItem title="Standard" description="Lorem ipsum dolor sit amet consectetur." realPrice="$ 1,250" disconnectedPrice="$ 875" percentOff="30"/>
+              } {...a11yProps(1)}  sx={tabsStyling} />
+            <Tab label={
+                <TabItem title="Premium" description="Lorem ipsum dolor sit amet consectetur." realPrice="$ 2,500" disconnectedPrice="$ 1,750" percentOff="30"/>
+            } {...a11yProps(2)}  sx={tabsStyling} />
           </Tabs>
         </Box>
 
@@ -133,13 +211,13 @@ export default function VerticalTabs() {
           }}
         >
           <TabPanel value={value} index={0}>
-            Item One
+            <Items subList={subBasicList} description="Lorem ipsum dolor sit amet consectetur." title="Basic Plan Offerings" />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Two
+          <Items subList={subStandardList} description="Lorem ipsum dolor sit amet consectetur." title="Standard Plan Offerings" />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Item Three
+          <Items subList={subPremiumList} description="Lorem ipsum dolor sit amet consectetur." title="Premium Plan Offerings" />
           </TabPanel>
         </Box>
       </Box>

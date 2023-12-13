@@ -20,6 +20,7 @@
     "@mui/styled-engine-sc": "^6.0.0-alpha.3",
     "@react-oauth/google": "^0.11.1",
     "@reduxjs/toolkit": "^1.9.7",
+    "@stripe/react-stripe-js": "^2.4.0",
     "@webspellchecker/wproofreader-sdk-js": "^1.0.2",
     "axios": "^1.6.0",
     "cross-fetch": "^4.0.0",
