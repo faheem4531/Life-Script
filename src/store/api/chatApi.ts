@@ -136,6 +136,38 @@ export async function getBookTitleApi() {
   }
 }
 
+export async function getChapterNotificationsApi() {
+  try {
+    const res = await api.get("/notification");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+export async function readNotificationApi(data: {
+  id: string;
+  isRead: boolean;
+}) {
+  try {
+    const res = await api.patch(`/notification/${data.id}`, {
+      isRead: data.isRead,
+    });
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function createChapterApi(data: { title: string }) {
   try {
     const res = await api.post("/chapters", data);

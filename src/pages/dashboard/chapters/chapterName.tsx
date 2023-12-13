@@ -13,10 +13,8 @@ import AddQuestion from "@/pages/events/addQuestion";
 import RichTextViewer from "@/pages/events/response";
 import socket from "@/services/socketManager";
 import {
-  chapterResponse,
   createQuestion,
   getChapterbyId,
-  narrativeFusion,
   selectChapter,
   simpleChapter,
 } from "@/store/slices/chatSlice";
@@ -41,8 +39,6 @@ const chapterName = () => {
   const [fusionLoading, setFusionLoading] = useState(false);
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
-  const [socketResponse, setSocketResponse] = useState([]);
-  console.log("99999", socketResponse);
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId } = router.query;
@@ -118,12 +114,6 @@ const chapterName = () => {
       language: "en",
     });
     setgptSocket(true);
-
-    // Listen for incoming messages from the server
-    socket.on("result", (message) => {
-      console.log("2222receive", message);
-      setSocketResponse(message);
-    });
   };
 
   useEffect(() => {
@@ -138,22 +128,22 @@ const chapterName = () => {
     setChapterName(question.title);
   }, [question]);
 
-  const handleNarrativeFusion = () => {
-    dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
-      .unwrap()
-      .then(() => {
-        dispatch(chapterResponse({ chapterId: chapterId.toString() }))
-          .unwrap()
-          .then((res) => {
-            setGptResponse(res.join(""));
-            setFusionModal(true);
-          });
-      })
-      .catch(() => {
-        setFusionLoading(false);
-        toast.error("Narrative fusion failed");
-      });
-  };
+  // const handleNarrativeFusion = () => {
+  //   dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
+  //     .unwrap()
+  //     .then(() => {
+  //       dispatch(chapterResponse({ chapterId: chapterId.toString() }))
+  //         .unwrap()
+  //         .then((res) => {
+  //           setGptResponse(res.join(""));
+  //           setFusionModal(true);
+  //         });
+  //     })
+  //     .catch(() => {
+  //       setFusionLoading(false);
+  //       toast.error("Narrative fusion failed");
+  //     });
+  // };
 
   const handleFloatButtonClick = () => {
     const isAnyQuestionInProgress = allQuestions?.some(
@@ -372,7 +362,7 @@ const chapterName = () => {
 
           <ButtonBase
             onClick={() => {
-              router.push("/dashboard/chapters/completedChapter");
+              router.push("/dashboard/chapters");
               setgptSocket(false);
             }}
             sx={{

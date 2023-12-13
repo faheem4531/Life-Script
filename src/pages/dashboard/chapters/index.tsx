@@ -94,14 +94,18 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    dispatch(getChapters()).unwrap()
+    dispatch(getChapters())
+      .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, []);
 
   useEffect(() => {
     if (chapters) {
-      const inProgressChapters = chapters.filter((chapter) => chapter.status !== true);
+      const inProgressChapters = chapters.filter(
+        (chapter) =>
+          chapter.status !== true && chapter.compilingStatus === false
+      );
       setAllChapters(inProgressChapters);
     }
   }, [chapters]);

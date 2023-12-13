@@ -4,11 +4,13 @@ import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
   const router = useRouter();
+  const dispatch: any = useDispatch();
 
   return (
     <Box

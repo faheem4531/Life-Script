@@ -23,7 +23,6 @@ import {
   updateChapterResponse,
   updateQuestion,
 } from "@/store/slices/chatSlice";
-import axios from "axios";
 import "core-js/stable";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
@@ -325,53 +324,48 @@ const RichText = ({ questionId }) => {
         const form_data = new FormData();
         form_data.append("image", file);
         // const res = await dispatch(uploadImage(form_data));
-        const form_data2 = new FormData();
-        form_data2.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
-        form_data2.append("file", file);
-        const simple = await axios.post(
-          "https://api-service.vanceai.com/web_api/v1/upload",
-          form_data2
-        );
-        const jconfig = {
-          job: "repair",
-          name: "repair_sd",
-          kind: "api",
-          dist: "sd_SR",
-          config: {
-            module: "crease_repair",
-            module_params: {
-              model_name: "CreaseRepairStable",
-            },
-          },
-        };
-        const form_data3 = new FormData();
-        form_data3.append("uid", simple?.data?.data?.uid);
-        form_data3.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
-        form_data3.append("jconfig", JSON.stringify(jconfig));
+        // const form_data2 = new FormData();
+        // form_data2.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
+        // form_data2.append("file", file);
+        // const simple = await axios.post(
+        //   "https://api-service.vanceai.com/web_api/v1/upload",
+        //   form_data2
+        // );
+        // const jconfig = {
+        //   name: "matting",
+        //   config: {
+        //     module: "matting",
+        //     module_params: {
+        //       model_name: "MattingStable",
+        //       rescale: 532,
+        //     },
+        //     out_params: {
+        //       compress: {
+        //         quality: 100,
+        //       },
+        //       dpi: 300,
+        //       format: "jpg",
+        //     },
+        //   },
+        // };
+        // const form_data3 = new FormData();
+        // form_data3.append("uid", simple?.data?.data?.uid);
+        // form_data3.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
+        // form_data3.append("jconfig", JSON.stringify(jconfig));
 
-        const transform = await axios.post(
-          "https://api-service.vanceai.com/web_api/v1/transform",
-          form_data3
-        );
+        // const transform = await axios.post(
+        //   "https://api-service.vanceai.com/web_api/v1/transform",
+        //   form_data3
+        // );
 
-        console.log("pppppp", transform?.data?.data?.trans_id);
+        // console.log("pppppp", transform?.data?.data?.trans_id);
 
-        const download = await axios.post(
-          `https://api-service.vanceai.com/web_api/v1/download?api_token=71b1bfcdf31b746dd8444631a9f563e5&trans_id=${transform?.data?.data?.trans_id}`
-        );
-        console.log(
-          "4444444",
-          form_data3,
-          "5555",
-          simple,
-          "666666",
-          transform,
-          "77777",
-          download
-        );
+        // const download = await axios.post(
+        //   `https://api-service.vanceai.com/web_api/v1/download?api_token=71b1bfcdf31b746dd8444631a9f563e5&trans_id=${transform?.data?.data?.trans_id}`
+        // );
 
-        const form_data7 = new FormData();
-        form_data7.append("image", download.data);
+        // const form_data7 = new FormData();
+        // form_data7.append("image", download.data);
 
         const res = await dispatch(uploadImage(form_data));
 

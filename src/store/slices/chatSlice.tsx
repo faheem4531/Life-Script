@@ -17,6 +17,7 @@ import {
   deleteQuestionApi,
   getAnswerbyIdApi,
   getBookTitleApi,
+  getChapterNotificationsApi,
   getChapterbyIdApi,
   getChaptersApi,
   getQuestionbyIdApi,
@@ -24,6 +25,7 @@ import {
   getTemplatesApi,
   isTemplateClonedApi,
   narrativeFusionApi,
+  readNotificationApi,
   saveAnswerApi,
   simpleChapterApi,
   updateChapterApi,
@@ -38,6 +40,7 @@ interface State {
   chapters: any[];
   questions: any[];
   templates: any[];
+  notifications: any[];
   chapter: any;
   chapterLoading: any;
 }
@@ -47,6 +50,7 @@ const initialState: State = {
   chapters: [],
   questions: [],
   templates: [],
+  notifications: [],
   chapter: {},
   chapterLoading: "",
 };
@@ -68,6 +72,18 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getChapterNotifications = createAsyncThunk<any[], void>(
+  "chat/chapter-notifications",
+  async () => {
+    try {
+      const response = await getChapterNotificationsApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -200,6 +216,18 @@ export const getAnswerbyId = createAsyncThunk<UserData, any>(
   async (data: { id: string }) => {
     try {
       const response = await getAnswerbyIdApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const readNotification = createAsyncThunk<UserData, any>(
+  "chat/read-notification",
+  async (data: { id: string; isRead: boolean }) => {
+    try {
+      const response = await readNotificationApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -371,6 +399,9 @@ export const chatSlice = createSlice({
       state.chats = action.payload;
       state.chapters = action.payload;
     });
+    builder.addCase(getChapterNotifications.fulfilled, (state, action) => {
+      state.notifications = action.payload;
+    });
     builder.addCase(narrativeFusion.pending, (state, action) => {
       state.chapterLoading = "not-loaded";
     });
@@ -392,6 +423,8 @@ export const chatSlice = createSlice({
 export const {} = chatSlice.actions;
 
 export const selectChat = (state: { chat: any }) => state.chat.chats;
+export const selectChapterNotification = (state: { chat: any }) =>
+  state.chat.notifications;
 export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
 export const selectChapter = (state: { chat: any }) => state.chat.chapter;
 export const selectTemplates = (state: { chat: any }) => state.chat.templates;

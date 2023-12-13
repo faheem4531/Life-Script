@@ -1,29 +1,63 @@
 import NavMenu from "@/_assets/svg/nav-menu.svg";
 import More from "@/_assets/svg/nav-menue.svg";
-import Profile from "@/_assets/svg/profile.svg";
 import Search from "@/_assets/svg/searchbar.svg";
+import {
+  getChapterNotifications,
+  readNotification,
+  selectChapterNotification,
+} from "@/store/slices/chatSlice";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Box, InputBase } from "@mui/material";
+import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.css";
+
 const options = ["Logout"];
 const ITEM_HEIGHT = 48;
 
 const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [notificationAnchorEl, setNotificationAnchorEl] = useState(null);
+  const allNotifications = useSelector(selectChapterNotification);
+  const [moreAnchorEl, setMoreAnchorEl] = useState(null);
+  const [notifications, setNotifications] = useState([]);
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
+
+  useEffect(() => {
+    allNotifications && setNotifications(allNotifications);
+  }, [allNotifications]);
+
+  const handleNotificationNavigate = (notification) => {
+    dispatch(readNotification({ id: notification?._id, isRead: true }))
+      .unwrap()
+      .then(() => {
+        dispatch(getChapterNotifications());
+        router.push(
+          `/dashboard/narrative?chapterId=${notification?.chapter}&openai=true`
+        );
+      });
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const handleNotificationClick = (event) => {
+    setNotificationAnchorEl(event.currentTarget);
+  };
+
+  const handleNotificationClose = () => {
+    setNotificationAnchorEl(null);
+  };
+
+  const handleMoreClick = (event) => {
+    setMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleMoreClose = () => {
+    setMoreAnchorEl(null);
   };
 
   const handleClickOption = (option) => {
@@ -32,6 +66,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
       localStorage.clear();
       router.push("/");
     }
+    handleMoreClose();
   };
 
   let buttonsHide;
@@ -92,50 +127,79 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
           />
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          {/* <Image
-            src={Noti}
-            alt='logo'
-            className={styles.logo}
-          /> */}
-          <Image src={Profile} alt="logo" className={styles.logo} />
+          {/* Notification Icon */}
+          <IconButton
+            aria-label="notifications"
+            color="inherit"
+            onClick={handleNotificationClick}
+          >
+            <Badge badgeContent={notifications?.length} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+
+          {/* Notification List */}
+          <Menu
+            anchorEl={notificationAnchorEl}
+            open={Boolean(notificationAnchorEl)}
+            onClose={handleNotificationClose}
+            PaperProps={{
+              style: {
+                maxHeight: ITEM_HEIGHT * 3.5,
+                width: "auto",
+                overflowY: "auto",
+              },
+            }}
+          >
+            {notifications.map((notification, index) => (
+              <MenuItem
+                key={index}
+                onClick={() => handleNotificationNavigate(notification)}
+              >
+                {notification.title} is ready to view
+              </MenuItem>
+            ))}
+            {notifications.length === 0 && (
+              <MenuItem>No Notifications</MenuItem>
+            )}
+          </Menu>
+
           {/* More option :start */}
-          <div>
-            <IconButton
-              aria-label="more"
-              id="long-button"
-              aria-controls={open ? "long-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              <Image alt="options" src={More} />
-            </IconButton>
-            <Menu
-              id="long-menu"
-              MenuListProps={{
-                "aria-labelledby": "long-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              PaperProps={{
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: "20ch",
-                },
-              }}
-            >
-              {options.map((option) => (
-                <MenuItem
-                  key={option}
-                  selected={option === "Pyxis"}
-                  onClick={() => handleClickOption(option)}
-                >
-                  {option}
-                </MenuItem>
-              ))}
-            </Menu>
-          </div>
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-controls={moreAnchorEl ? "long-menu" : undefined}
+            aria-expanded={moreAnchorEl ? "true" : undefined}
+            aria-haspopup="true"
+            onClick={handleMoreClick}
+          >
+            <Image alt="options" src={More} />
+          </IconButton>
+          <Menu
+            id="long-menu"
+            MenuListProps={{
+              "aria-labelledby": "long-button",
+            }}
+            anchorEl={moreAnchorEl}
+            open={Boolean(moreAnchorEl)}
+            onClose={handleMoreClose}
+            PaperProps={{
+              style: {
+                maxHeight: ITEM_HEIGHT * 4.5,
+                width: "20ch",
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem
+                key={option}
+                selected={option === "Pyxis"}
+                onClick={() => handleClickOption(option)}
+              >
+                {option}
+              </MenuItem>
+            ))}
+          </Menu>
           {/* More option :end */}
         </Box>
       </Box>

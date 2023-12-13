@@ -29,7 +29,6 @@ const chapterName = () => {
   const [templateTitle, setTemplateTitle] = useState("");
   const [allQuestions, setAllQuestions] = useState([]);
   const [tempQuestionIds, setTempQuestionIds] = useState([]);
-  console.log("4446666", tempQuestionIds);
   const [buttonLoading, setButtonLoading] = useState(true);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -101,8 +100,6 @@ const chapterName = () => {
       .unwrap()
       .then(() => setLoading(false));
   }, []);
-
-  console.log("tempQuestionIds", tempQuestionIds?.length);
 
   return (
     <>

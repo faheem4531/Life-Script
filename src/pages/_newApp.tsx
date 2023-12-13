@@ -1,0 +1,52 @@
+import socket from "@/services/socketManager";
+import { getChapterNotifications } from "@/store/slices/chatSlice";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { I18nextProvider } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "regenerator-runtime/runtime";
+import i18n from "../../i18n";
+
+export default function NewApp({ children }) {
+  const router = useRouter();
+  const dispatch: any = useDispatch();
+  const currentPath = usePathname();
+
+  useEffect(() => {
+    dispatch(getChapterNotifications());
+  }, []);
+
+  useEffect(() => {
+    const userLoggedIn = localStorage.getItem("token");
+
+    if (!userLoggedIn) {
+      router.push("/_auth/Auth");
+    } else if (currentPath == "/") {
+      router.push("/dashboard/chapters");
+    }
+  }, [router, currentPath]);
+
+  useEffect(() => {
+    socket.on("result", (message) => {
+      dispatch(getChapterNotifications());
+    });
+    socket.on("chapterCompilingStatus", (message) => {});
+    socket.on("error", (message) => {});
+  }, []);
+
+  return (
+    <>
+      <I18nextProvider i18n={i18n}>
+        <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
+          {/* <Component {...children} /> */}
+          {children}
+        </GoogleOAuthProvider>
+        <ToastContainer />
+      </I18nextProvider>
+    </>
+  );
+}
