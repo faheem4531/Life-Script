@@ -11,6 +11,8 @@ import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
 import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
 import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
 import TreeWhite from "@/_assets/svg/sidebar/tree-white.svg";
+import SubsWhite from "@/_assets/svg/subWhite.svg";
+import Subs from "@/_assets/svg/subs.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
@@ -119,6 +121,24 @@ const SideBar = () => {
           <a className={styles.link}>
             <Image alt="icon" src={BookCoverWhite} />
             Book Cover
+          </a>
+        </Box>
+        <Box>
+          <a
+            className={`${styles.link} ${
+              currentRoute === "/dashboard/SubscribePlans" ? styles.active : currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment" &&  styles.active
+            }`}
+            onClick={() => router.push("/dashboard/SubscribePlans")}
+          >
+            <Image
+              alt="icon"
+              src={
+                currentRoute === "/dashboard/SubscribePlans" || currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment"
+                  ? Subs
+                  : SubsWhite
+              }
+            />
+            Subscription Plan
           </a>
         </Box>
         <Box>

@@ -10,7 +10,7 @@ import {
   subStandardList,
 } from "../../utils/subscriptionLists";
 import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
-import PaymentForm from "./paymentForm";
+import PaymentForm from "./components/paymentForm";
 
 const stripePromise = loadStripe(
   "pk_test_51KyFHhGeGlEJDOmcCqL8AVqDcShNxk8mTWBBvKDkMqR102d6epu3RY7Zzny8NBbn0D9O3EPm0n7GcgucKBseRue6001dM1qnAu"
