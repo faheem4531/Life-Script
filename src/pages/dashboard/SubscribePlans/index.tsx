@@ -46,13 +46,13 @@ const SubscribePlan = () => {
           flexWrap: "wrap"
         }}>
           <SubscriptionCard subList={subBasicList} mainTitle="Basic Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="Free" offerTitle="Basic Plan Offerings" onClick={()=>{
-            router.push("/dashboard/CreditCard?Subscription=BasicPlan")
+            router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan")
           }}/>
           <SubscriptionCard subList={subStandardList} mainTitle="Standard Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="$875" offerTitle="Standard Plan Offerings" onClick={()=>{
-            router.push("/dashboard/CreditCard?Subscription=StandardPlan")
+            router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=StandardPlan")
           }}/>
           <SubscriptionCard subList={subPremiumList} mainTitle="Premium Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="$875" offerTitle="Premium Plan Offerings" onClick={()=>{
-            router.push("/dashboard/CreditCard?Subscription=PremiumPlan")
+            router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan")
           }}/>
         </Box>
       </Layout>

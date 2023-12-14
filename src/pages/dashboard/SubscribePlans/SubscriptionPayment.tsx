@@ -2,14 +2,15 @@ import Layout from "@/components/Layout/Layout";
 import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
+import SubscriptionCard from "./components/SubscriptionCard";
 import {
   subPremiumList,
   subBasicList,
   subStandardList,
 } from "../../utils/subscriptionLists";
 import { useRouter } from "next/router";
-import PaymentForm from "./paymentForm";
+import PaymentForm from "./components/paymentForm";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 
 const CreditCard = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const CreditCard = () => {
   return (
     <Box>
       <Layout>
-        <CompletedChapterHeader />
+        <SubscriptionHeader title="Subscription Plan" description="" />
 
         <Box
           sx={{
