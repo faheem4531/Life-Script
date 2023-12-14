@@ -28,6 +28,7 @@ import {
   readNotificationApi,
   saveAnswerApi,
   simpleChapterApi,
+  stripPaymentApi,
   updateChapterApi,
   updateChapterResponseApi,
   updateQuestionApi,
@@ -72,6 +73,18 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const stripePayment = createAsyncThunk<UserData, any>(
+  "chat/stripe-payment",
+  async (data: any) => {
+    try {
+      const response = await stripPaymentApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -168,6 +168,20 @@ export async function readNotificationApi(data: {
   }
 }
 
+export async function stripPaymentApi(data: any) {
+  try {
+    const res = await api.post("users/stripe/payment", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function createChapterApi(data: { title: string }) {
   try {
     const res = await api.post("/chapters", data);

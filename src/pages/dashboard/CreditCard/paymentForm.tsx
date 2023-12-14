@@ -1,20 +1,20 @@
-import React, { useMemo } from "react";
-import { useEffect, useState } from "react";
-import { Box, FormLabel, Input, TextField, Typography, Autocomplete, Button } from "@mui/material";
+import CountrySelect from "@/components/dashboardComponent/AutoComplete";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
+import { stripePayment } from "@/store/slices/chatSlice";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import {
-  useStripe,
-  useElements,
-  CardNumberElement,
   CardCvcElement,
   CardExpiryElement,
-  CardElement,
-  Elements,
+  CardNumberElement,
+  useElements,
+  useStripe,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CountrySelect from "@/components/dashboardComponent/AutoComplete";
-const stripePromise = loadStripe(
-  "pk_test_51KyFHhGeGlEJDOmcCqL8AVqDcShNxk8mTWBBvKDkMqR102d6epu3RY7Zzny8NBbn0D9O3EPm0n7GcgucKBseRue6001dM1qnAu"
-);
+import { useMemo, useState } from "react";
+import { useDispatch } from "react-redux";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
+
 const useOptions = () => {
   const fontSize = "16px";
   const options = useMemo(
@@ -41,14 +41,151 @@ const useOptions = () => {
 };
 
 const PaymentForm = () => {
+  const dispatch: any = useDispatch();
   const options = useOptions();
-  let [isError, setIsError] = React.useState(true);
+  const [isError, setIsError] = useState(false);
+  const [cardHolderName, setCardHolderName] = useState("");
+  const [confirmationStripe, setConfirmationStripe] = useState(false);
+  const [country, setCountry] = useState("");
+  console.log("holderName", cardHolderName, "country", country);
+  const [loading, setLoading] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const handleSubmit = async (event) => {
+    setConfirmationStripe(false);
+    event.preventDefault();
+    setLoading(true);
+    if (!stripe || !elements) {
+      return;
+    }
+    const card = elements.getElement(CardNumberElement);
+    const result = await stripe.createToken(card);
+    console.log("result", result);
+    if (result.error) {
+      console.log("error", result.error.message);
+      setLoading(false);
+      setIsError(true);
+    } else {
+      console.log("token", result.token);
+      dispatch(
+        stripePayment({
+          country: country,
+          amount: 1000,
+          token: result.token,
+          packageName: "PremiumPlan",
+          cardHolderName: cardHolderName,
+        })
+      )
+        .unwrap()
+        .then(async (res) => {
+          console.log("44444", res);
+          if (res.status !== "succeeded") {
+            const result1 = await stripe.confirmCardPayment(res.client_secret, {
+              payment_method: {
+                card: card,
+              },
+            });
+            console.log("result111", result1);
+          }
+        });
+    }
+  };
 
   return (
-    <Box>
+    <>
       <Box>
-        <Elements stripe={stripePromise}>
-          <Box mb="20px">
+        <Box mb="20px">
+          <Typography
+            sx={{
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
+            Card Number
+          </Typography>
+          <Box
+            sx={{
+              width: "100%",
+              marginTop: "10px",
+              borderRadius: "50px",
+              backgroundColor: "white",
+              p: "12px 35px",
+              border: "1px solid #186F65",
+            }}
+          >
+            <CardNumberElement
+              options={options}
+              onChange={(event) => {
+                console.log("CardNumberElement [change]", event);
+                setIsError(!event.complete || !!event.error);
+              }}
+            />
+          </Box>
+        </Box>
+
+        <Box mb="20px">
+          <Typography
+            sx={{
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
+            Cardholder Name
+          </Typography>
+          <TextField
+            variant="outlined"
+            onChange={(event: any) => setCardHolderName(event.target.value)}
+            placeholder={"Cardholder Name"}
+            name="title"
+            sx={{
+              marginTop: "10px",
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "50px",
+                backgroundColor: "white",
+                border: "1px solid #186F65",
+                height: "46px",
+              },
+              width: "100%",
+            }}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            alignItems: "center",
+            width: "100%",
+            mb: "20px",
+          }}
+        >
+          <Box flex={1}>
+            <Typography
+              sx={{
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              Expiration Date
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                marginTop: "10px",
+                borderRadius: "50px",
+                backgroundColor: "white",
+                p: "12px 35px",
+                border: "1px solid #186F65",
+              }}
+            >
+              <CardExpiryElement
+                options={options}
+                onChange={(event) => {
+                  console.log("CardExpiryElement [change]", event);
+                  setIsError(!event.complete || !!event.error);
+                }}
+              />
+            </Box>
+          </Box>
+          <Box flex={1}>
             <Typography
               sx={{
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
@@ -66,171 +203,53 @@ const PaymentForm = () => {
                 border: "1px solid #186F65",
               }}
             >
-              <CardNumberElement
+              <CardCvcElement
                 options={options}
-                onReady={() => {
-                  console.log("CardNumberElement [ready]");
-                }}
                 onChange={(event) => {
-                  console.log("CardNumberElement [change]", event);
-                  if (event.complete && !event.error) {
-                    setIsError(false);
-                  } else {
-                    setIsError(true);
-                  }
-                }}
-                onBlur={() => {
-                  console.log("CardNumberElement [blur]");
-                }}
-                onFocus={() => {
-                  console.log("CardNumberElement [focus]");
+                  console.log("CardCvcElement [change]", event);
+                  setIsError(!event.complete || !!event.error);
                 }}
               />
             </Box>
           </Box>
+        </Box>
 
-          <Box mb="20px">
-            <Typography
-              sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Cardholder Name
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder={"Cardholder Name"}
-              name="title"
-              sx={{
-                marginTop: "10px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                  border: "1px solid #186F65",
-                  height: "46px",
-                },
+        <CountrySelect countryName={(value) => setCountry(value.label)} />
 
-                ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
-                  border: "0px",
-                },
-                width: "100%",
-              }}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              gap: "20px",
-              alignItems: "center",
-              width: "100%",
-              mb:"20px"
-            }}
-          >
-            <Box flex={1}>
-              <Typography
-                sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                }}
-              >
-                Expiration Date
-              </Typography>
-              <Box
-                sx={{
-                  width: "100%",
-                  marginTop: "10px",
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                  p: "12px 35px",
-                  border: "1px solid #186F65",
-                }}
-              >
-                <CardExpiryElement
-                  options={options}
-                  onReady={() => {
-                    console.log("CardNumberElement [ready]");
-                  }}
-                  // onChange={(event) => {
-                  //   console.log("CardNumberElement [change]", event);
-                  //   setCardExpiry(event);
-                  //   if (event.complete && !event.error) {
-                  //     props.setIsError(false);
-                  //   } else {
-                  //     props.setIsError(true);
-                  //   }
-                  // }}
-                  onBlur={() => {
-                    console.log("CardNumberElement [blur]");
-                  }}
-                  onFocus={() => {
-                    console.log("CardNumberElement [focus]");
-                  }}
-                />
-              </Box>
-            </Box>
-            <Box flex={1}>
-              <Typography
-                sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                }}
-              >
-                CVC
-              </Typography>
-              <Box
-                sx={{
-                  width: "100%",
-                  marginTop: "10px",
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                  p: "12px 35px",
-                  border: "1px solid #186F65",
-                }}
-              >
-                <CardCvcElement
-                  options={options}
-                  onReady={() => {
-                    console.log("CardNumberElement [ready]");
-                  }}
-                  onChange={(event) => {
-                    console.log("CardNumberElement [change]", event);
-                    if (event.complete && !event.error) {
-                    } else {
-                    }
-                  }}
-                  onBlur={() => {
-                    console.log("CardNumberElement [blur]");
-                  }}
-                  onFocus={() => {
-                    console.log("CardNumberElement [focus]");
-                  }}
-                />
-              </Box>
-            </Box>
-          </Box>
-
-          <CountrySelect/>
-
-          <Button
-            sx={{
-              height: {sx: "25px", md: "30px", lg:"45px"},
-              borderRadius: "26.267px",
-              border: " 0.71px solid #197065",
-              p: { xs: '8px 20px', lg:"10.358px 26.989px"},
-              fontSize: {xs: "12px"},
-              color: "white",
-              textTransform: "capitalize",
-              width: "100%",
+        <Button
+          onClick={() => setConfirmationStripe(true)}
+          disabled={loading || isError || !cardHolderName || !country}
+          sx={{
+            height: { sx: "25px", md: "30px", lg: "45px" },
+            borderRadius: "26.267px",
+            border: " 0.71px solid #197065",
+            p: { xs: "8px 20px", lg: "10.358px 26.989px" },
+            fontSize: { xs: "12px" },
+            color: "white",
+            textTransform: "capitalize",
+            width: "100%",
+            bgcolor: "#197065",
+            "&:hover": {
               bgcolor: "#197065",
-              "&:hover": {
-                bgcolor: "#197065",
-              }
-            }}
-          >
-            Choose Plan
-      </Button>
-        </Elements>
+            },
+          }}
+        >
+          {loading ? "Processing..." : "Choose Plan"}
+        </Button>
       </Box>
-    </Box>
+      <TransitionsDialog
+        open={confirmationStripe}
+        heading="Premium Plan"
+        description="An amount of $1,750 will be deducted from your selected bank account. Do you really want to proceed?"
+        cancel={() => {
+          setConfirmationStripe(false);
+        }}
+        closeModal={() => {
+          setConfirmationStripe(false);
+        }}
+        proceed={handleSubmit}
+      />
+    </>
   );
 };
 

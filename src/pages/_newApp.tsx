@@ -41,7 +41,7 @@ export default function NewApp({ children }) {
   return (
     <>
       <I18nextProvider i18n={i18n}>
-        <GoogleOAuthProvider clientId="662321024353-770la0v8g3rb6ibu3vuammlcgieha740.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}>
           {/* <Component {...children} /> */}
           {children}
         </GoogleOAuthProvider>

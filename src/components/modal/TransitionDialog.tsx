@@ -31,7 +31,12 @@ export default function TransitionsDialog({
       onClose={() => (closeModal ? closeModal() : cancel())}
       aria-describedby="alert-dialog-slide-description"
     >
-      <Box sx={{ textAlign: "center", padding: "50px 20px 15px" }}>
+      <Box
+        sx={{
+          textAlign: "center",
+          padding: "50px 20px 15px",
+        }}
+      >
         <Image alt="image" src={ModalImage} width={91} height={60} />
         <Typography
           sx={{

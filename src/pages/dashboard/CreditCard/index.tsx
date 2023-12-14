@@ -1,19 +1,24 @@
 import Layout from "@/components/Layout/Layout";
 import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 import { Box, Typography } from "@mui/material";
-import React from "react";
-import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useRouter } from "next/router";
 import {
-  subPremiumList,
   subBasicList,
+  subPremiumList,
   subStandardList,
 } from "../../utils/subscriptionLists";
-import { useRouter } from "next/router";
+import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./paymentForm";
+
+const stripePromise = loadStripe(
+  "pk_test_51KyFHhGeGlEJDOmcCqL8AVqDcShNxk8mTWBBvKDkMqR102d6epu3RY7Zzny8NBbn0D9O3EPm0n7GcgucKBseRue6001dM1qnAu"
+);
 
 const CreditCard = () => {
   const router = useRouter();
-  const  {Subscription}  = router.query;
+  const { Subscription } = router.query;
 
   return (
     <Box>
@@ -47,36 +52,57 @@ const CreditCard = () => {
               display: "flex",
               gap: "50px",
               mt: "25px",
-              flexDirection : {xs: "column", md: "row"}
+              flexDirection: { xs: "column", md: "row" },
             }}
           >
             <Box flex={1}>
-                {Subscription === "BasicPlan" && 
-              <SubscriptionCard
-                subList={subBasicList}
-                mainTitle="Basic Plan"
-                mainDescription="Lorem ipsum dolor sit amet consectetur."
-                price="Free"
-                offerTitle="Basic Plan Offerings"
-                btnCheck={false}
-              />}
-                 {Subscription === "StandardPlan" && 
-              <SubscriptionCard subList={subStandardList} mainTitle="Standard Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="$875" offerTitle="Standard Plan Offerings" btnCheck={false}/>}
-                 {Subscription === "PremiumPlan" && 
-              <SubscriptionCard subList={subPremiumList} mainTitle="Premium Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="$875" offerTitle="Premium Plan Offerings" btnCheck={false}/> }
-              {/* 
-          */}
+              {Subscription === "BasicPlan" && (
+                <SubscriptionCard
+                  subList={subBasicList}
+                  mainTitle="Basic Plan"
+                  mainDescription="Lorem ipsum dolor sit amet consectetur."
+                  price="Free"
+                  offerTitle="Basic Plan Offerings"
+                  btnCheck={false}
+                />
+              )}
+              {Subscription === "StandardPlan" && (
+                <SubscriptionCard
+                  subList={subStandardList}
+                  mainTitle="Standard Plan"
+                  mainDescription="Lorem ipsum dolor sit amet consectetur."
+                  price="$875"
+                  offerTitle="Standard Plan Offerings"
+                  btnCheck={false}
+                />
+              )}
+              {Subscription === "PremiumPlan" && (
+                <SubscriptionCard
+                  subList={subPremiumList}
+                  mainTitle="Premium Plan"
+                  mainDescription="Lorem ipsum dolor sit amet consectetur."
+                  price="$875"
+                  offerTitle="Premium Plan Offerings"
+                  btnCheck={false}
+                />
+              )}
+              {/*
+               */}
             </Box>
             <Box flex={1}>
-              <Box sx={{
-                bgcolor: "#F8F6F9",
-                borderRadius: "5px",
-                width: "100%",
-                height: "100%",
-                p: "28px 35px"
-              }}>
+              <Box
+                sx={{
+                  bgcolor: "#F8F6F9",
+                  borderRadius: "5px",
+                  width: "100%",
+                  height: "100%",
+                  p: "28px 35px",
+                }}
+              >
                 <Box>
-                    <PaymentForm/>
+                  <Elements stripe={stripePromise}>
+                    <PaymentForm />
+                  </Elements>
                 </Box>
               </Box>
             </Box>
