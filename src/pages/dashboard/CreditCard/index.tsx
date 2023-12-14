@@ -47,6 +47,7 @@ const CreditCard = () => {
               display: "flex",
               gap: "50px",
               mt: "25px",
+              flexDirection : {xs: "column", md: "row"}
             }}
           >
             <Box flex={1}>
