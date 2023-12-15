@@ -41,7 +41,7 @@ const tabsStyling = {
             top: "50%",
             transform: "rotate(-135deg) translateX(51%)",
             zIndex: "1",
-            bgcolor: "white"
+            bgcolor: "white",
           },
           "&:before": {
             content: '"✅"',

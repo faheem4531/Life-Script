@@ -8,7 +8,7 @@
   background-image: url(../_assets/png/dashboard-bg.png);
   background-repeat: no-repeat;
   position: right;
-  background-size: 100%;
+  background-size: cover;
 }
 
 @media (max-width: 1400px) {

@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.css";
+import Step1 from "@/_assets/svg/smallBook.svg";
 
 const options = ["Logout"];
 const ITEM_HEIGHT = 48;
@@ -139,6 +140,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
           </IconButton>
 
           {/* Notification List */}
+
           <Menu
             anchorEl={notificationAnchorEl}
             open={Boolean(notificationAnchorEl)}
@@ -146,24 +148,93 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             PaperProps={{
               style: {
                 maxHeight: ITEM_HEIGHT * 3.5,
-                width: "auto",
+                width: "260px",
                 overflowY: "auto",
+                background: "transparent",
+                boxShadow: "0px",
               },
             }}
           >
-            {notifications.map((notification, index) => (
+            <Box
+              sx={{
+                position: "relative",
+                "&:after": {
+                  content: '""',
+                  width: "10px",
+                  height: "10px",
+                  borderBottom: "0.917px solid #197065",
+                  borderLeft: "0.917px solid #197065",
+                  position: "absolute",
+                  right: " 50.5px",
+                  top: "-5px",
+                  transform: "rotate(135deg)",
+                  zIndex: "1",
+                  bgcolor: "white",
+                },
+                bgcolor: "white"
+              }}
+            >
+              {notifications.map((notification, index) => (
               <MenuItem
                 key={index}
                 onClick={() => handleNotificationNavigate(notification)}
+                sx={{
+                  bgcolor: "white",
+                  borderBottom: "1.5px solid gray",
+                  "&:hover": {
+                    background: "white"
+                  }
+                }}
               >
-                {notification.title} is ready to view
+                <Box sx={{
+                  display: "flex",
+                  alignItems: "start",
+                  gap: "10px",
+                }}>
+                  <Box>
+                    <Image alt="icon" src={Step1} style={{
+                      width: "18px"
+                    }} />
+                  </Box>
+                  <Box  sx={{
+                    whiteSpace: "wrap",
+                    fontSize: "12px",
+                    mt: "5px"
+                  }}>Your chapter {notification.title} is fused.
+             Click to view</Box>
+                </Box>
+
               </MenuItem>
             ))}
-            {notifications.length === 0 && (
-              <MenuItem>No Notifications</MenuItem>
-            )}
-          </Menu>
+              {notifications.length === 0 && (
+              <MenuItem sx={{
+                bgcolor: "white",
+                borderBottom: "1.5px solid gray",
+                "&:hover": {
+                  background: "white"
+                }
+              }}>
+               <Box sx={{
+                  display: "flex",
+                  alignItems: "start",
+                  gap: "10px",
+                }}>
+                  <Box>
+                    <Image alt="icon" src={Step1} style={{
+                      width: "18px"
+                    }} />
+                  </Box>
+                  <Box sx={{
+                    whiteSpace: "wrap",
+                    fontSize: "12px",
+                    mt: "5px"
+                  }}>No Notifications. </Box>
 
+                </Box>
+              </MenuItem>
+             )}
+            </Box>
+          </Menu>
           {/* More option :start */}
           <IconButton
             aria-label="more"

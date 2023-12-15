@@ -75,7 +75,7 @@ console.log("currentPath", currentPath);
                 textOrientation: "mixed",
               }}
             >
-              <Box>MY ADVENTUROUS LIFE | John Doe</Box>
+              <Box>{title.length == 0 ? "My Adventurous Life" : title} | {subtitle.length == 0 ? "John Doe" : subtitle}</Box>
               <Box>
                 <Image src={logo} alt="" />
               </Box>

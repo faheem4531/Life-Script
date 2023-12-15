@@ -6,6 +6,7 @@ import { Box, Typography } from "@mui/material";
 import SubscriptionCard from "./components/SubscriptionCard";
 import {subPremiumList, subBasicList, subStandardList} from "../../utils/subscriptionLists"
 import { useRouter } from "next/router";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 
 const SubscribePlan = () => {
   const router = useRouter()
@@ -13,7 +14,7 @@ const SubscribePlan = () => {
   return (
     <Box>
       <Layout>
-        <CompletedChapterHeader />
+      <SubscriptionHeader title="Subscription Plan" description="Choose a subscription plan below before Aug30th,2023 to unlock this special offer." />
 
         {/* <Box
       sx={{

@@ -44,7 +44,7 @@
 .bgTree {
   background-image: url(../../_assets/png/template-tree-bg.png);
   background-repeat: no-repeat;
-  background-size: 80% 100%;
+  /* background-size: 80% 100%; */
 }
 
 /* styling for Details Card   */
@@ -70,9 +70,7 @@
 }
 
 /* styles for TemplateCard.tsx  */
-@media (max-width:600px) {
   .tick {
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 11px;
   }
-}
