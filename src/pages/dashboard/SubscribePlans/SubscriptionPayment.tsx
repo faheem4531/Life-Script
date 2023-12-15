@@ -11,6 +11,7 @@ import {
 } from "../../utils/subscriptionLists";
 import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./components/paymentForm";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 
 const stripePromise = loadStripe(
   "pk_test_51KyFHhGeGlEJDOmcCqL8AVqDcShNxk8mTWBBvKDkMqR102d6epu3RY7Zzny8NBbn0D9O3EPm0n7GcgucKBseRue6001dM1qnAu"
@@ -23,7 +24,7 @@ const CreditCard = () => {
   return (
     <Box>
       <Layout>
-        <CompletedChapterHeader />
+      <SubscriptionHeader title="Subscription Plan" description="" />
 
         <Box
           sx={{

@@ -151,8 +151,12 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                 width: "260px",
                 overflowY: "auto",
                 background: "transparent",
-                boxShadow: "0px",
+                boxShadow: "none",
+                padding: "0px !important",
               },
+            }}
+            sx={{
+              boxShadow: "none"
             }}
           >
             <Box
@@ -171,7 +175,8 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   zIndex: "1",
                   bgcolor: "white",
                 },
-                bgcolor: "white"
+                bgcolor: "white",
+                boxShadow: "none"
               }}
             >
               {notifications.map((notification, index) => (
@@ -179,11 +184,13 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                 key={index}
                 onClick={() => handleNotificationNavigate(notification)}
                 sx={{
-                  bgcolor: "white",
                   borderBottom: "1.5px solid gray",
+                  p: "0px",
                   "&:hover": {
-                    background: "white"
-                  }
+                    background: "white",
+                    boxShadow: "none"
+                  },
+                  boxShadow: "none"
                 }}
               >
                 <Box sx={{
