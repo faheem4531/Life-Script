@@ -156,7 +156,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
               },
             }}
             sx={{
-              boxShadow: "none"
+              boxShadow: "none",
             }}
           >
             <Box
@@ -176,70 +176,89 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   bgcolor: "white",
                 },
                 bgcolor: "white",
-                boxShadow: "none"
+                boxShadow: "none",
               }}
             >
               {notifications.map((notification, index) => (
-              <MenuItem
-                key={index}
-                onClick={() => handleNotificationNavigate(notification)}
-                sx={{
-                  borderBottom: "1.5px solid gray",
-                  p: "0px",
-                  "&:hover": {
-                    background: "white",
-                    boxShadow: "none"
-                  },
-                  boxShadow: "none"
-                }}
-              >
-                <Box sx={{
-                  display: "flex",
-                  alignItems: "start",
-                  gap: "10px",
-                }}>
-                  <Box>
-                    <Image alt="icon" src={Step1} style={{
-                      width: "18px"
-                    }} />
+                <MenuItem
+                  key={index}
+                  onClick={() => handleNotificationNavigate(notification)}
+                  sx={{
+                    borderBottom: "1.5px solid gray",
+                    p: "0px",
+                    "&:hover": {
+                      background: "white",
+                      boxShadow: "none",
+                    },
+                    boxShadow: "none",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "start",
+                      gap: "10px",
+                    }}
+                  >
+                    <Box>
+                      <Image
+                        alt="icon"
+                        src={Step1}
+                        style={{
+                          width: "18px",
+                        }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        whiteSpace: "wrap",
+                        fontSize: "12px",
+                        mt: "5px",
+                      }}
+                    >
+                      Your chapter {notification.title} is fused. Click to view
+                    </Box>
                   </Box>
-                  <Box  sx={{
-                    whiteSpace: "wrap",
-                    fontSize: "12px",
-                    mt: "5px"
-                  }}>Your chapter {notification.title} is fused.
-             Click to view</Box>
-                </Box>
-
-              </MenuItem>
-            ))}
+                </MenuItem>
+              ))}
               {notifications.length === 0 && (
-              <MenuItem sx={{
-                bgcolor: "white",
-                borderBottom: "1.5px solid gray",
-                "&:hover": {
-                  background: "white"
-                }
-              }}>
-               <Box sx={{
-                  display: "flex",
-                  alignItems: "start",
-                  gap: "10px",
-                }}>
-                  <Box>
-                    <Image alt="icon" src={Step1} style={{
-                      width: "18px"
-                    }} />
+                <MenuItem
+                  sx={{
+                    bgcolor: "white",
+                    borderBottom: "1.5px solid gray",
+                    "&:hover": {
+                      background: "white",
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "start",
+                      gap: "10px",
+                    }}
+                  >
+                    <Box>
+                      <Image
+                        alt="icon"
+                        src={Step1}
+                        style={{
+                          width: "18px",
+                        }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        whiteSpace: "wrap",
+                        fontSize: "12px",
+                        mt: "5px",
+                      }}
+                    >
+                      No Notifications.{" "}
+                    </Box>
                   </Box>
-                  <Box sx={{
-                    whiteSpace: "wrap",
-                    fontSize: "12px",
-                    mt: "5px"
-                  }}>No Notifications. </Box>
-
-                </Box>
-              </MenuItem>
-             )}
+                </MenuItem>
+              )}
             </Box>
           </Menu>
           {/* More option :start */}
