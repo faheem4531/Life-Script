@@ -1,4 +1,3 @@
-import CountrySelect from "@/components/dashboardComponent/AutoComplete";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import { stripePayment } from "@/store/slices/chatSlice";
 import { Box, Button, TextField, Typography } from "@mui/material";
@@ -46,8 +45,6 @@ const PaymentForm = () => {
   const [isError, setIsError] = useState(false);
   const [cardHolderName, setCardHolderName] = useState("");
   const [confirmationStripe, setConfirmationStripe] = useState(false);
-  const [country, setCountry] = useState("");
-  console.log("holderName", cardHolderName, "country", country);
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -70,7 +67,7 @@ const PaymentForm = () => {
       console.log("token", result.token);
       dispatch(
         stripePayment({
-          country: country,
+          country: "USA",
           amount: 1000,
           token: result.token,
           packageName: "PremiumPlan",
@@ -88,154 +85,172 @@ const PaymentForm = () => {
             });
             console.log("result111", result1);
           }
-        });
+        })
+        .catch(() => setLoading(false));
     }
   };
 
   return (
     <>
-      <Box>
-        <Box mb="20px">
-          <Typography
-            sx={{
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-            }}
-          >
-            Card Number
-          </Typography>
-          <Box
-            sx={{
-              width: "100%",
-              marginTop: "10px",
-              borderRadius: "50px",
-              backgroundColor: "white",
-              p: "12px 35px",
-              border: "1px solid #186F65",
-            }}
-          >
-            <CardNumberElement
-              options={options}
-              onChange={(event) => {
-                console.log("CardNumberElement [change]", event);
-                setIsError(!event.complete || !!event.error);
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          height: "100%",
+          flexDirection: "column",
+        }}
+      >
+        <Box>
+          <Box mb="20px">
+            <Typography
+              sx={{
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              Card Number
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                marginTop: "10px",
+                borderRadius: "50px",
+                backgroundColor: "white",
+                p: "12px 35px",
+                border: "1px solid #186F65",
+              }}
+            >
+              <CardNumberElement
+                options={options}
+                onChange={(event) => {
+                  console.log("CardNumberElement [change]", event);
+                  setIsError(!event.complete || !!event.error);
+                }}
+              />
+            </Box>
+          </Box>
+
+          <Box mb="20px">
+            <Typography
+              sx={{
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              Cardholder Name
+            </Typography>
+            <TextField
+              variant="outlined"
+              onChange={(event: any) => setCardHolderName(event.target.value)}
+              placeholder={"Cardholder Name"}
+              name="title"
+              sx={{
+                marginTop: "10px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                  border: "1px solid #186F65",
+                  height: "46px",
+                },
+                width: "100%",
               }}
             />
           </Box>
-        </Box>
 
-        <Box mb="20px">
-          <Typography
+          <Box
             sx={{
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              display: "flex",
+              gap: "20px",
+              alignItems: "center",
+              width: "100%",
+              mb: "20px",
             }}
           >
-            Cardholder Name
-          </Typography>
-          <TextField
-            variant="outlined"
-            onChange={(event: any) => setCardHolderName(event.target.value)}
-            placeholder={"Cardholder Name"}
-            name="title"
-            sx={{
-              marginTop: "10px",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "50px",
-                backgroundColor: "white",
-                border: "1px solid #186F65",
-                height: "46px",
-              },
-              width: "100%",
-            }}
-          />
+            <Box flex={1}>
+              <Typography
+                sx={{
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                }}
+              >
+                Expiration Date
+              </Typography>
+              <Box
+                sx={{
+                  width: "100%",
+                  marginTop: "10px",
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                  p: "12px 35px",
+                  border: "1px solid #186F65",
+                }}
+              >
+                <CardExpiryElement
+                  options={options}
+                  onChange={(event) => {
+                    console.log("CardExpiryElement [change]", event);
+                    setIsError(!event.complete || !!event.error);
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box flex={1}>
+              <Typography
+                sx={{
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                }}
+              >
+                CVC
+              </Typography>
+              <Box
+                sx={{
+                  width: "100%",
+                  marginTop: "10px",
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                  p: "12px 35px",
+                  border: "1px solid #186F65",
+                }}
+              >
+                <CardCvcElement
+                  options={options}
+                  onChange={(event) => {
+                    console.log("CardCvcElement [change]", event);
+                    setIsError(!event.complete || !!event.error);
+                  }}
+                />
+              </Box>
+            </Box>
+          </Box>
         </Box>
-
         <Box
           sx={{
-            display: "flex",
-            gap: "20px",
-            alignItems: "center",
-            width: "100%",
-            mb: "20px",
+            marginTop: "50px",
+            opacity: loading || isError || !cardHolderName ? 0.6 : 1,
           }}
         >
-          <Box flex={1}>
-            <Typography
-              sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Expiration Date
-            </Typography>
-            <Box
-              sx={{
-                width: "100%",
-                marginTop: "10px",
-                borderRadius: "50px",
-                backgroundColor: "white",
-                p: "12px 35px",
-                border: "1px solid #186F65",
-              }}
-            >
-              <CardExpiryElement
-                options={options}
-                onChange={(event) => {
-                  console.log("CardExpiryElement [change]", event);
-                  setIsError(!event.complete || !!event.error);
-                }}
-              />
-            </Box>
-          </Box>
-          <Box flex={1}>
-            <Typography
-              sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              CVC
-            </Typography>
-            <Box
-              sx={{
-                width: "100%",
-                marginTop: "10px",
-                borderRadius: "50px",
-                backgroundColor: "white",
-                p: "12px 35px",
-                border: "1px solid #186F65",
-              }}
-            >
-              <CardCvcElement
-                options={options}
-                onChange={(event) => {
-                  console.log("CardCvcElement [change]", event);
-                  setIsError(!event.complete || !!event.error);
-                }}
-              />
-            </Box>
-          </Box>
-        </Box>
-
-        <CountrySelect countryName={(value) => setCountry(value.label)} />
-
-        <Button
-          onClick={() => setConfirmationStripe(true)}
-          disabled={loading || isError || !cardHolderName || !country}
-          sx={{
-            height: { sx: "25px", md: "30px", lg: "45px" },
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-            fontSize: { xs: "12px" },
-            color: "white",
-            textTransform: "capitalize",
-            width: "100%",
-            bgcolor: "#197065",
-            "&:hover": {
+          <Button
+            onClick={() => {
+              if (!loading && !isError && cardHolderName) {
+                setConfirmationStripe(true);
+              }
+            }}
+            // disabled={loading || isError || !cardHolderName}
+            sx={{
+              height: { sx: "25px", md: "30px", lg: "45px" },
+              borderRadius: "26.267px",
+              border: " 0.71px solid #197065",
+              p: { xs: "8px 20px", lg: "10.358px 26.989px" },
+              fontSize: { xs: "12px" },
+              color: "white",
+              textTransform: "capitalize",
+              width: "100%",
               bgcolor: "#197065",
-            },
-          }}
-        >
-          {loading ? "Processing..." : "Choose Plan"}
-        </Button>
+              "&:hover": {
+                bgcolor: "#197065",
+              },
+            }}
+          >
+            {loading ? "Processing..." : "Choose Plan"}
+          </Button>
+        </Box>
       </Box>
       <TransitionsDialog
         open={confirmationStripe}

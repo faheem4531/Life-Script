@@ -7,6 +7,7 @@ import ModalImage from "@/_assets/png/view-template-modal.png";
 import FloatButton from "@/components/button/FloatButton";
 import LinearProgressBar from "@/components/dashboardComponent/LinearProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
+import Tooltip from "@/components/dashboardComponent/Tooltip";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import AddQuestion from "@/pages/events/addQuestion";
@@ -294,36 +295,10 @@ const chapterName = () => {
             {/* Refuse Narative  */}
 
             {narrativeRefuse && (
-              <Box
-                sx={{
-                  backgroundImage: { sm: 'url("/pointer-msg.png")' },
-                  backgroundSize: "100%",
-                  backgroundRepeat: "no-repeat",
-                  width: "360px",
-                  height: "160px",
-                  position: "fixed",
-                  bottom: "30px",
-                  left: "35%",
-                  transform: "translate(-35%)",
-                  zIndex: "3",
-                  padding: "30px 10px 0 45px",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontSize: "22px",
-                    fontWeight: 500,
-                    marginBottom: "15px",
-                  }}
-                >
-                  Narrative Fusion
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "12px", fontWeight: 300, lineHeight: "150%" }}
-                >
-                  You cannot use this feature untill all questions are completed
-                </Typography>
-              </Box>
+              <Tooltip
+                title="Narrative Fusion"
+                text="You cannot use this feature untill all questions are completed"
+              />
             )}
           </Box>
         </Layout>
