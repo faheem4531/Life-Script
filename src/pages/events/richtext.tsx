@@ -15,6 +15,9 @@ import {
 
 import styles from "./styles.module.css";
 // import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
+import MicListing from "@/_assets/svg/mic-listing.svg";
+import MicOff from "@/_assets/svg/mic-off.svg";
+import MicRegular from "@/_assets/svg/mic-regular.svg";
 import Button from "@/components/button/Button";
 import {
   getAnswerbyId,
@@ -412,11 +415,10 @@ const RichText = ({ questionId }) => {
             }}
           >
             <Button
-              // image={speechIcon}
-              image={null}
+              image={detecting ? MicRegular : listening ? MicListing : MicOff}
               title={
                 detecting
-                  ? "Detecting..."
+                  ? `Detecting...`
                   : listening
                   ? "Stop"
                   : "Speech-to-text"
