@@ -59,9 +59,7 @@ const PaymentForm = () => {
     }
     const card = elements.getElement(CardNumberElement);
     const result = await stripe.createToken(card);
-    console.log("result", result);
     if (result.error) {
-      console.log("error", result.error.message);
       setLoading(false);
       setIsError(true);
     } else {
@@ -77,14 +75,12 @@ const PaymentForm = () => {
       )
         .unwrap()
         .then(async (res) => {
-          console.log("44444", res);
           if (res.status !== "succeeded") {
             const result1 = await stripe.confirmCardPayment(res.client_secret, {
               payment_method: {
                 card: card,
               },
             });
-            console.log("result111", result1);
           }
         })
         .catch(() => setLoading(false));

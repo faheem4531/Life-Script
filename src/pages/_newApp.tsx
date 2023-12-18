@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import i18n from "../../i18n";
@@ -34,6 +34,10 @@ export default function NewApp({ children }) {
     socket.on("result", (message) => {
       dispatch(getChapterNotifications());
     });
+    socket.on("error", (message) => {
+      toast.error(message);
+      console.log("socket failed");
+    })
     socket.on("chapterCompilingStatus", (message) => {});
     socket.on("error", (message) => {});
   }, []);

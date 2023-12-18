@@ -453,6 +453,7 @@ const RichText = ({ questionId }) => {
             {!openai && (
               <ButtonBase
                 onClick={handleCompleteAnswer}
+                disabled={draftToHtml(convertToRaw(editorState.getCurrentContent())).length < 9}
                 sx={{
                   height: "35px",
                   p: 2,

@@ -109,6 +109,7 @@ export const getChapterNotifications = createAsyncThunk<any[], void>(
   }
 );
 
+
 export const updateChapterResponse = createAsyncThunk<UserData, any>(
   "chat/update-chapter-response",
   async (data: { id: string; userText: string; openaiChapterText: string }) => {
@@ -196,7 +197,7 @@ export const saveAnswer = createAsyncThunk<UserData, any>(
 export const bookCover = createAsyncThunk<UserData, any>(
   "chat/book-cover",
   async (data: { 
-    CoverNumber: string,   
+    coverNumber: string,   
     title: string,
     subTitle: string,
     byLine: string,

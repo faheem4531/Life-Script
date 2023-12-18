@@ -16,6 +16,7 @@ const EditBookCover = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { CoverNumber } = router.query;
+  console.log('yyyyy',CoverNumber);
   const [title, setTitle] = useState("");
   const coverData = useSelector(selectCoverData);
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -41,11 +42,12 @@ const EditBookCover = () => {
     setByline(event.target.value);
   };
 
+
   const handleSaveCover = () => {
     setButtonLoading(true);
     dispatch( coverId ? updateBookCover({
       id:coverId,
-      coverNumber: CoverNumber,
+      CoverNumber: CoverNumber,
       title: title,
       subTitle: subtitle,
       byLine: byline,

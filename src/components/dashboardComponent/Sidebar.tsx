@@ -31,7 +31,7 @@ const SideBar = () => {
   const currentRoute = router.pathname;
 
   useEffect(() => {
-    dispatch(getBookCover()).unwrap().then((res) => {setCoverNumber(res.coverNumber); console.log("4444",res)} ).catch(()=>setCoverNumber(null))
+    dispatch(getBookCover()).unwrap().then((res) => {setCoverNumber("2"); console.log("4444",res)} ).catch(()=>setCoverNumber(null))
   },[])
 
   return (
@@ -143,7 +143,7 @@ const SideBar = () => {
             }`}
             onClick={() => {
               if(coverNumber){
-                router.push(`/dashboard/BookCover/EditBookCover?BookCoverCheck=${coverNumber}`);
+                router.push(`/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber}`);
               }
               else{router.push("/dashboard/BookCover/SelectBookCover");}
             }}

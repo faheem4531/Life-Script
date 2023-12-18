@@ -31,7 +31,7 @@ export async function narrativeFusionApi(data: any) {
 
 export async function bookCoverApi(data: {    
   title: string,
-  CoverNumber: string,
+  coverNumber: string,
   subTitle: string,
   byLine: string,
   color:string,
@@ -67,6 +67,7 @@ export async function updateBookCoverApi(data: {
       image: data.image,
       coverNumber: data.CoverNumber,
     };
+    console.log('3333',payload);
     const res = await api.patch(`/book-cover/${data.id}`, payload);
     return res;
   } catch (error: any) {
@@ -78,6 +79,7 @@ export async function updateBookCoverApi(data: {
     }
   }
 }
+
 
 export async function getBookCoverApi() {
   try {
