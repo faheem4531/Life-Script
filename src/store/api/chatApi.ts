@@ -28,7 +28,70 @@ export async function narrativeFusionApi(data: any) {
     }
   }
 }
-// chapter-compile/:id
+
+export async function bookCoverApi(data: {    
+  title: string,
+  CoverNumber: string,
+  subTitle: string,
+  byLine: string,
+  color:string,
+  image:string
+}) {
+  try {
+    const res = await api.post("/book-cover", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+export async function updateBookCoverApi(data: {   
+  id: string, 
+  CoverNumber: string,
+  title: string,
+  subTitle: string,
+  byLine: string,
+  color:string,
+  image:string
+}) {
+  try {
+    const payload = {
+      title: data.title,
+      subTitle: data.subTitle,
+      byLine: data.byLine,
+      color: data.color,
+      image: data.image,
+      coverNumber: data.CoverNumber,
+    };
+    const res = await api.patch(`/book-cover/${data.id}`, payload);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getBookCoverApi() {
+  try {
+    const res = await api.get("/book-cover");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
 
 export async function updateChapterResponseApi(data: {
   id: string;

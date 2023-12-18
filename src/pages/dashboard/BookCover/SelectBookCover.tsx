@@ -23,22 +23,22 @@ const SelectBookCover = () => {
             <Box
               onClick={() =>
                 router.push(
-                  `/dashboard/BookCover/EditBookCover?BookCoverCheck=${true}`
+                  `/dashboard/BookCover/EditBookCover?CoverNumber=1`
                 )
               }
             >
-              <SelectBookCoverCard landScape={true} />
+              <SelectBookCoverCard landScape="1" />
             </Box>
           </Box>
           <Box flex={"auto"}>
             <Box
               onClick={() =>
                 router.push(
-                  `/dashboard/BookCover/EditBookCover?BookCoverCheck=${false}`
+                  `/dashboard/BookCover/EditBookCover?CoverNumber=2`
                 )
               }
             >
-              <SelectBookCoverCard landScape={false} />
+              <SelectBookCoverCard landScape="2" />
             </Box>
           </Box>
         </Box>

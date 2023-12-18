@@ -38,6 +38,7 @@ const chapterName = () => {
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
@@ -48,16 +49,23 @@ const chapterName = () => {
   const percentage = calculateCompletionPercentage(question?.questions);
 
   const handleCancel = () => {
-    // Close the customization dialog
-    setOpenCustomizationDialog(false);
+    if (buyPremium) {
+      router.push("/dashboard/SubscribePlans");
+      setOpenCustomizationDialog(false);
+    } else {
+      if (areAllCompleted(allQuestions) === true && !fusionLoading) {
+        const jwt = require("jsonwebtoken");
+        const token = localStorage.getItem("token");
+        const decodedToken = jwt.decode(token);
+        const accessRole = decodedToken.accessRole;
 
-    // router.push(
-    //   `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${true}`
-    // );
-    if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-      // setFusionLoading(true);
-      // handleNarrativeFusion();
-      gptSocketCall();
+        console.log("accessTokenRole:", accessRole);
+        if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
+          gptSocketCall();
+        } else {
+          setBuyPremium(true);
+        }
+      }
     }
   };
 
@@ -263,26 +271,6 @@ const chapterName = () => {
                 ) : (
                   <NoQuestions />
                 )}
-
-                {/* {allQuestions?.length > 0 && areAllCompleted(allQuestions) && (
-                <Box
-                  onClick={handleNarrativeFusion}
-                  sx={{
-                    
-                    cursor: "pointer",
-                    marginTop: 5,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Image
-                    src={fusionIcon}
-                    alt="fusion"
-                    width={300}
-                    height={70}
-                  />
-                </Box>
-              )} */}
               </Box>
             )}
           </Box>
@@ -362,11 +350,11 @@ const chapterName = () => {
       <TransitionsDialog
         open={openCustomizationDialog}
         heading="Narrative Fusion"
-        description="It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"
+        description={buyPremium ? "This feature is only for Premium and Standard users":"It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"}
         cancel={handleCancel}
         proceed={proceedFusion}
         proceedText="Compile Original Text" // Customize the text for the "Yes" button
-        cancelText="Use Narrative Fusion" // Customize the text for the "No" button
+        cancelText={buyPremium ? "Buy Premium" : "Use Narrative Fusion"} // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
 
@@ -419,6 +407,7 @@ const chapterName = () => {
           />
         </Box>
       </CustomizationDialog>
+
     </>
   );
 };

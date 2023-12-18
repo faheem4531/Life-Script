@@ -37,6 +37,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
@@ -59,6 +60,7 @@ const RichText = ({ questionId }) => {
 
   const [recording, setRecording] = useState(false);
   const [detecting, setDetecting] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [userChapter, setUserChapter] = useState("");
@@ -134,6 +136,19 @@ const RichText = ({ questionId }) => {
     } else {
       // Start recording
       startRecording();
+    }
+  };
+
+  const handleSpeechtoText = () => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    const decodedToken = jwt.decode(token);
+    const accessRole = decodedToken.accessRole;
+    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
+      setDetecting(true);
+      handleToggleRecording();
+    } else {
+      setBuyPremium(true);
     }
   };
 
@@ -379,6 +394,7 @@ const RichText = ({ questionId }) => {
   };
 
   return (
+    <>
     <Box className="rich-editor">
       <Box
         sx={{
@@ -429,10 +445,7 @@ const RichText = ({ questionId }) => {
               width="155px"
               fontSize="14px"
               padding="9px 10px"
-              onClick={() => {
-                setDetecting(true);
-                handleToggleRecording();
-              }}
+              onClick={handleSpeechtoText}
               border="1px solid #197065"
               height={undefined}
             />
@@ -588,6 +601,20 @@ const RichText = ({ questionId }) => {
         />
       </Box>
     </Box>
+
+    <TransitionsDialog
+        open={buyPremium}
+        heading="Buy Premium"
+        description="Speech to Text is  only available for Standard and Premium users. Want to buy now?"
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={()=>router.push("/dashboard/SubscribePlans")}
+      />
+    </>
   );
 };
 

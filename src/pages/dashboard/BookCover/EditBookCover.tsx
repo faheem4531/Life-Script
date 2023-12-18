@@ -3,23 +3,31 @@ import ColorPickerComponent from "@/components/dashboardComponent/ColorPicker";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import FileIcon from "@/_assets/svg/fileIcon.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { uploadImage, bookCover, getBookCover, selectCoverData, updateBookCover } from "@/store/slices/chatSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const EditBookCover = () => {
   const router = useRouter();
-  const {BookCoverCheck} = router.query;  
+  const dispatch: any = useDispatch();
+  const { CoverNumber } = router.query;
   const [title, setTitle] = useState("");
+  const coverData = useSelector(selectCoverData);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const [subtitle, setSubtitle] = useState("");
+  const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
+  const [coverId, setCoverId] = useState("");
+
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
   const [droppedImage, setDroppedImage] = useState<string | ArrayBuffer | null>(
     null
   );
-  
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -33,6 +41,38 @@ const EditBookCover = () => {
     setByline(event.target.value);
   };
 
+  const handleSaveCover = () => {
+    setButtonLoading(true);
+    dispatch( coverId ? updateBookCover({
+      id:coverId,
+      coverNumber: CoverNumber,
+      title: title,
+      subTitle: subtitle,
+      byLine: byline,
+      color: selectedColor,
+      image: imageLink,
+    }) : 
+      bookCover({
+        coverNumber: CoverNumber,
+        title: title,
+        subTitle: subtitle,
+        byLine: byline,
+        color: selectedColor,
+        image: imageLink,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        router.push(
+          `/dashboard/BookCover/ViewBookCover?CoverNumber=${CoverNumber}`
+        );
+      })
+      .catch(() => {
+        toast.error("Failed to save data");
+        setButtonLoading(false);
+      });
+  };
+
   const onDrop = (acceptedFiles: File[]) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -42,9 +82,45 @@ const EditBookCover = () => {
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    // accept: 'image/*', // Accepts any image file type
+    accept: {
+      "image/jpeg": [],
+      "image/png": [],
+    },
+    onDrop: (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      const formData = new FormData();
+      formData.append("image", file);
+
+      // Make API request
+      uploadImageonCloud(formData);
+    },
   });
+
+  const uploadImageonCloud = (formData) => {
+    dispatch(uploadImage(formData))
+      .unwrap()
+      .then((res) => {
+        toast.success("image uploaded successfully");
+        console.log("3333", res);
+        setImageLink(res);
+        setDroppedImage(res);
+      })
+      .catch(() => toast.error("Failed to upload image"));
+  };
+
+  useEffect(() => {
+    dispatch(getBookCover());
+  },[]);
+  useEffect(() => {
+    if(coverData){
+      setByline(coverData?.byLine);
+      setTitle(coverData?.title);
+      setSubtitle(coverData?.subTitle);
+      setImageLink(coverData?.image);
+      setSelectedColor(coverData?.color);
+      setCoverId(coverData?._id)
+    }
+  },[coverData])
 
   return (
     <div>
@@ -59,7 +135,13 @@ const EditBookCover = () => {
               mt: "20px",
             }}
           >
-            <Box flex={"1"} display="flex" flexDirection="column" gap="24px" minWidth={"300px"}>
+            <Box
+              flex={"1"}
+              display="flex"
+              flexDirection="column"
+              gap="24px"
+              minWidth={"300px"}
+            >
               <Box>
                 <Typography
                   sx={{
@@ -70,6 +152,7 @@ const EditBookCover = () => {
                 </Typography>
                 <TextField
                   variant="outlined"
+                  value={title}
                   placeholder={"Title*"}
                   name="title"
                   onChange={handleTitleChange}
@@ -94,6 +177,7 @@ const EditBookCover = () => {
                 <TextField
                   variant="outlined"
                   placeholder={"Subtitle*"}
+                  value={subtitle}
                   name="Subtitle"
                   onChange={handleSubtitleChange}
                   sx={{
@@ -117,6 +201,7 @@ const EditBookCover = () => {
                 <TextField
                   variant="outlined"
                   placeholder={"Byline"}
+                  value={byline}
                   name="Byline"
                   onChange={handleBylineChange}
                   sx={{
@@ -189,52 +274,67 @@ const EditBookCover = () => {
                 </div>
               </Box>
             </Box>
-            <Box flex={"1"}>              
+            <Box flex={"1"}>
               <SelectBookCoverCard
-                landScape={BookCoverCheck == "true" ? true : false}
+                landScape={CoverNumber.toString()}
                 title={title}
                 subtitle={subtitle}
                 Byline={byline}
                 ColourPalette={selectedColor}
-                droppedImage={droppedImage}
+                droppedImage={imageLink || droppedImage}
               />
 
-              <Box display="flex" gap="30px" mt="30px" justifyContent="flex-end">
+              <Box
+                display="flex"
+                gap="30px"
+                mt="30px"
+                justifyContent="flex-end"
+              >
                 <Button
                   sx={{
-                    height: {sx: "25px", md: "30px", lg:"45px"},
+                    height: { sx: "25px", md: "30px", lg: "45px" },
                     borderRadius: "26.267px",
                     border: " 0.71px solid #197065",
-                    p: { xs: '8px 20px', lg:"10.358px 26.989px"},
-                    fontSize: {xs: "12px", md: '14px' ,lg:"18.752px"},
+                    p: { xs: "8px 20px", lg: "10.358px 26.989px" },
+                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
                     color: "#197065",
                     textTransform: "capitalize",
                   }}
-                  onClick={()=>{
-                    router.push("/dashboard/BookCover/SelectBookCover")
+                  onClick={() => {
+                    router.push("/dashboard/BookCover/SelectBookCover");
                   }}
                 >
                   Change Cover
                 </Button>
                 <Button
                   sx={{
-                    height: {sx: "25px", md: "30px", lg:"45px"},
+                    height: { sx: "25px", md: "30px", lg: "45px" },
                     borderRadius: "26.267px",
                     border: " 0.71px solid #197065",
-                    p: { xs: '8px 20px', lg:"10.358px 26.989px"},
-                    fontSize: {xs: "12px", md: '14px' ,lg:"18.752px"},
+                    p: { xs: "8px 20px", lg: "10.358px 26.989px" },
+                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
                     color: "white",
+                    opacity:
+                      title && subtitle && byline && selectedColor && imageLink
+                        ? "1"
+                        : "0.5",
                     textTransform: "capitalize",
                     bgcolor: "#197065",
                     "&:hover": {
                       bgcolor: "#197065",
-                    }
+                    },
                   }}
                   onClick={() => {
-                    router.push(`/dashboard/BookCover/ViewBookCover?BookCoverCheck=${BookCoverCheck}`)
+                    title &&
+                      subtitle &&
+                      byline &&
+                      selectedColor &&
+                      imageLink &&
+                      !buttonLoading &&
+                      handleSaveCover();
                   }}
                 >
-                  Save Cover
+                  {buttonLoading ? "Saving..." :coverId ? "Update Cover" : "Save Cover"}
                 </Button>
               </Box>
             </Box>

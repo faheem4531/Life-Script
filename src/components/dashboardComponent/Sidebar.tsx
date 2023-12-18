@@ -18,13 +18,21 @@ import Logo from "@/_assets/svg/white-logo.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Sidebar.module.css";
+import { getBookCover, getTemplates } from "@/store/slices/chatSlice";
+import { useDispatch } from "react-redux";
 
 const SideBar = () => {
   const [childsOpen, setChilsdOpen] = useState(false);
+  const [coverNumber, setCoverNumber] = useState(null);
   const router = useRouter();
+  const dispatch:any = useDispatch();
   const currentRoute = router.pathname;
+
+  useEffect(() => {
+    dispatch(getBookCover()).unwrap().then((res) => {setCoverNumber(res.coverNumber); console.log("4444",res)} ).catch(()=>setCoverNumber(null))
+  },[])
 
   return (
     <Box sx={{ color: "#fff" }}>
@@ -133,7 +141,12 @@ const SideBar = () => {
                 : currentRoute === "/dashboard/BookCover/EditBookCover" &&
                   styles.active
             }`}
-            onClick={() => router.push("/dashboard/BookCover/SelectBookCover")}
+            onClick={() => {
+              if(coverNumber){
+                router.push(`/dashboard/BookCover/EditBookCover?BookCoverCheck=${coverNumber}`);
+              }
+              else{router.push("/dashboard/BookCover/SelectBookCover");}
+            }}
           >
             <Image
               alt="icon"

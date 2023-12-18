@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 
 interface SelectBookCoverCardProps {
-  landScape?: boolean;
+  landScape?: string;
   title?: string;
   subtitle?: string;
   Byline?: string;
@@ -24,6 +24,8 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> =  ({
   ColourPalette = "#197065",
   droppedImage,
 }) => {
+
+  console.log("333",landScape);
 
 const currentPath = usePathname()
 console.log("currentPath", currentPath);
@@ -96,7 +98,7 @@ console.log("currentPath", currentPath);
               sx={{
                 width: "100%",
                 height: "100%",
-                border: landScape ? "" : "1.942px solid white",
+                border: landScape === "1" ? "" : "1.942px solid white",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -114,37 +116,37 @@ console.log("currentPath", currentPath);
                 </Box>
 
                 <Box
-                  mt={landScape && "12px"}
+                  mt={landScape === "1" && "12px"}
                   display="flex"
-                  flexDirection={landScape ? "column" : "column-reverse"}
+                  flexDirection={landScape === "1" ? "column" : "column-reverse"}
                 >
                   <Box
                     sx={{
                       fontSize: { sm: "16px", md: "18px", lg: "22.275px" },
                       fontWeight: 600,
-                      width: landScape ? "70%" : "100%",
+                      width: landScape === "1" ? "70%" : "100%",
                       margin: "auto",
-                      pb: !landScape && "20px",
+                      pb: landScape === "2" && "20px",
                     }}
                   >
                     {title.length == 0 ? "My Adventurous Life" : title}
                     <Box
                       sx={{
                         borderBottom: "2.5px solid white",
-                        width: landScape ? "82%" : "58%",
+                        width: landScape === "1" ? "82%" : "58%",
                         margin: "auto",
-                        pt: !landScape && "20px",
+                        pt: landScape === "2" && "20px",
                       }}
                     ></Box>
                   </Box>
 
                   <Box
                     sx={{
-                      width: landScape
+                      width: landScape === "1"
                         ? { xs: "80%", md: "200px", lg: "212.377px" }
                         : "91.274px",
-                      height: landScape ? "104.868px" : "149.534px",
-                      margin: landScape ? "45px auto 17px" : "25px auto",
+                      height: landScape === "1" ? "104.868px" : "149.534px",
+                      margin: landScape === "1" ? "45px auto 17px" : "25px auto",
                     }}
                   >
                     {droppedImage ? (
