@@ -121,7 +121,10 @@ export default function DetailCard({
         </Box>
       </div>
       <Box
-      className={router.asPath === "/dashboard/chapters/completedChapter" && styles.CardBg}
+        className={
+          router.asPath === "/dashboard/chapters/completedChapter" &&
+          styles.CardBg
+        }
         sx={{ height: "100%", cursor: "pointer" }}
         onClick={() => {
           if (router.asPath === "/dashboard/chapters") {
@@ -136,7 +139,7 @@ export default function DetailCard({
               `/dashboard/templates/templateView?templateId=${chapter?._id}`
             );
           }
-          if(router.asPath === "/dashboard/chapters/completedChapter") {
+          if (router.asPath === "/dashboard/chapters/completedChapter") {
             router.push(
               `/dashboard/narrative?chapterId=${chapter?._id}&openai=${chapter?.narrativeFusion}`
             );
@@ -208,8 +211,11 @@ export default function DetailCard({
                 </Box>
               )}
             </Box>
-{router.asPath === "/dashboard/chapters/completedChapter"? "" : ""}
-            {isChapter && router.asPath === "/dashboard/chapters/completedChapter"? "" : (
+            {router.asPath === "/dashboard/chapters/completedChapter" ? "" : ""}
+            {isChapter &&
+            router.asPath === "/dashboard/chapters/completedChapter" ? (
+              ""
+            ) : (
               <Box
                 sx={{
                   display: "flex",
@@ -255,7 +261,7 @@ function CircularProgressWithLabel(props) {
           variant="caption"
           component="div"
           color="#197065"
-          sx={{ fontSize: "10px" }}
+          sx={{ fontSize: "8px" }}
         >
           {`${Math.round(props.value)}%`}
         </Typography>
