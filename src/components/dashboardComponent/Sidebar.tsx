@@ -1,3 +1,4 @@
+import BookCoverGreen from "@/_assets/svg/bookCoverWhite.svg";
 import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
 import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
@@ -57,8 +58,10 @@ const SideBar = () => {
         <Box>
           <a
             className={`${styles.link} ${
-              currentRoute === "/dashboard/chapters" ? styles.active : 
-              currentRoute === "/dashboard/chapters/completedChapter" && styles.active
+              currentRoute === "/dashboard/chapters"
+                ? styles.active
+                : currentRoute === "/dashboard/chapters/completedChapter" &&
+                  styles.active
             }`}
             onClick={() => {
               // router.push("/dashboard/chapters");
@@ -97,12 +100,15 @@ const SideBar = () => {
                 </a>
               </Box>
               <Box sx={{ marginLeft: "20px" }}>
-                <a className={`${styles.link} ${
-                    currentRoute === "/dashboard/chapters/completedChapter" && styles.active
+                <a
+                  className={`${styles.link} ${
+                    currentRoute === "/dashboard/chapters/completedChapter" &&
+                    styles.active
                   }`}
                   onClick={() => {
                     router.push("/dashboard/chapters/completedChapter");
-                  }}>
+                  }}
+                >
                   <Image
                     alt="icon"
                     src={
@@ -118,22 +124,46 @@ const SideBar = () => {
           )}
         </Box>
         <Box>
-          <a className={styles.link}>
-            <Image alt="icon" src={BookCoverWhite} />
+          <a
+            className={`${styles.link} ${
+              currentRoute === "/dashboard/BookCover/SelectBookCover"
+                ? styles.active
+                : currentRoute === "/dashboard/BookCover/ViewBookCover"
+                ? styles.active
+                : currentRoute === "/dashboard/BookCover/EditBookCover" &&
+                  styles.active
+            }`}
+            onClick={() => router.push("/dashboard/BookCover/SelectBookCover")}
+          >
+            <Image
+              alt="icon"
+              src={
+                currentRoute === "/dashboard/BookCover/SelectBookCover" ||
+                currentRoute === "/dashboard/BookCover/EditBookCover" ||
+                currentRoute === "/dashboard/BookCover/ViewBookCover"
+                  ? BookCoverGreen
+                  : BookCoverWhite
+              }
+            />
             Book Cover
           </a>
         </Box>
         <Box>
           <a
             className={`${styles.link} ${
-              currentRoute === "/dashboard/SubscribePlans" ? styles.active : currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment" &&  styles.active
+              currentRoute === "/dashboard/SubscribePlans"
+                ? styles.active
+                : currentRoute ===
+                    "/dashboard/SubscribePlans/SubscriptionPayment" &&
+                  styles.active
             }`}
             onClick={() => router.push("/dashboard/SubscribePlans")}
           >
             <Image
               alt="icon"
               src={
-                currentRoute === "/dashboard/SubscribePlans" || currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment"
+                currentRoute === "/dashboard/SubscribePlans" ||
+                currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment"
                   ? Subs
                   : SubsWhite
               }
