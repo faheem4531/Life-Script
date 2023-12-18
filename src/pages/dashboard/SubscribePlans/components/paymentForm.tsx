@@ -9,6 +9,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -268,4 +269,6 @@ const PaymentForm = () => {
   );
 };
 
-export default PaymentForm;
+export default dynamic(() => Promise.resolve(PaymentForm), {
+  ssr: false
+})
