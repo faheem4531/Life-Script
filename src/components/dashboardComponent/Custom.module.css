@@ -1,20 +1,24 @@
 /* Overview Profile  */
 
 .profilePic {
-  outline: 10px solid green;
+  outline: 8px solid #197065;
   border-radius: 50%;
-  padding: 10px;
-  width: 155px;
-  height: 155px;
+  padding: 8px;
+  width: 109px;
+  height: 109px;
 }
 
-.SelBookCoverHeaderMain{
+.profileAchivements {
+  width: 56px;
+  height: 56px;
+}
+
+.SelBookCoverHeaderMain {
   background-image: url(../../_assets/svg/smallBgTree.svg);
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: contain;
 }
-
 
 /* Overview Welcome  */
 .welcomeMain {
@@ -36,6 +40,7 @@
   right: 0;
   top: 0;
   width: 300px;
+  /* height: 230px; */
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -47,48 +52,60 @@
   background-position: left left;
 }
 
+.ClockImage {
+  width: 292.262px;
+  height: 209.87px;
+}
+
 /* OverView SubComponents  */
 
 .viewBook {
   background-image: url(../../_assets/png/view-book.png);
   background-repeat: no-repeat;
   background-position: left;
+  background-size: contain;
 }
 
 .viewTree {
   background-image: url(../../_assets/png/view-tree.png);
   background-repeat: no-repeat;
   background-position: left;
+  background-size: contain;
 }
 
-.SelBookCoverHeaderBook{
+.SelBookCoverHeaderBook {
   height: 145px;
-  width: 202px
+  width: 202px;
 }
 
-@media (min-width:1400px) and (max-width:1800px) {
+.nextAero {
+  width: 13px;
+  height: 19.603px;
+}
+
+@media (min-width: 1400px) and (max-width: 1800px) {
   .welcomeImage {
-    width: 260px;
-    height: 200px;  
+    width: 287px;
+    height: 187px;
   }
 }
 
-@media (min-width:1200px) and (max-width:1400px) {
-  .SelBookCoverHeaderBook{
-    width: 180px
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .SelBookCoverHeaderBook {
+    width: 180px;
   }
 
   .profilePic {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
   }
 
   .bgRounded {
-    width: 280px;
+    width: 260px;
   }
 }
 
-@media(max-width:1400px) {
+@media (max-width: 1400px) {
   /* OverView SubComponents  */
 
   .viewBook {
@@ -101,34 +118,32 @@
     background-position: left bottom;
   }
 
-  .nextAero {
-    width: 20px;
-  }
-
   /* Overview Welcome  */
 
   .welcomeImage {
     width: 260px;
-    height: 200px;
+    height: 160px;
   }
 
   .profilePic {
-    outline: 8px solid green;
     padding: 7px;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
   }
 
   .bgRounded {
-    width: 250px;
+    width: 220px;
   }
 }
-
 
 @media (max-width: 1100px) {
   .SelBookCoverHeaderBook {
     width: 180px;
     height: 145px;
+  }
+  .ClockImage {
+    width: 200.262px;
+    height: 175.87px;
   }
 }
 
@@ -136,5 +151,8 @@
   .SelBookCoverHeaderBook {
     width: 140px;
     height: 120px;
+  }
+  .bgRounded {
+    width: 180px;
   }
 }

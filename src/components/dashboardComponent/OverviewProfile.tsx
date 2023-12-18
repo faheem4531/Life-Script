@@ -1,96 +1,129 @@
-import { Box, Typography } from "@mui/material"
+import DemoProfile from "@/_assets/png/demo-Profile.png";
+import Bronze from "@/_assets/svg/bronze-token.svg";
+import Gold from "@/_assets/svg/gold-token.svg";
+import Platinum from "@/_assets/svg/platinum-token.svg";
+import Silver from "@/_assets/svg/silver-token.svg";
+import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import styles from "./Custom.module.css"
-import Image from "next/image"
-import DemoProfile from "@/_assets/png/demo-Profile.png"
-import Platinum from "@/_assets/svg/platinum-token.svg"
-import Gold from "@/_assets/svg/gold-token.svg"
-import Silver from "@/_assets/svg/silver-token.svg"
-import Bronze from "@/_assets/svg/bronze-token.svg"
+import Image from "next/image";
+import styles from "./Custom.module.css";
 
 const Profile = () => {
   return (
-    <Box sx={{
-      bgcolor: "#fff",
-      maxWidth: { xl: "435px", sm: "380px", xs: "300px" },
-      width: "100%",
-      borderRadius: "19px",
-      border: "1px solid #186F65",
-      padding: { xl: "32px 28px 85px", lg: "25px 17px 70px" }
-    }}>
-      <Box sx={{ textAlign: "center", marginBottom: { lg: "55px" } }}>
-        <Image alt="profile" src={DemoProfile} className={styles.profilePic} />
-        <Typography sx={{
-          fontSize: "26px",
-          fontWeight: 700,
-          marginTop: "23px"
-        }}>Haseeb Khawaja</Typography>
+    <Box
+      sx={{
+        bgcolor: "#fff",
+        maxWidth: { lg: "326.25px", xs: "100%" },
+        width: "100%",
+        borderRadius: "19px",
+        border: "1px solid #186F65",
+        padding: { xs: "32px 28px 44px" },
+      }}
+    >
+      <Box
+        sx={{
+          maxWidth: {
+            lg: "326.25px",
+            sm: "70%",
+            xs: "100%",
+          },
+          margin: "auto",
+        }}
+      >
+        <Box sx={{ textAlign: "center", marginBottom: { xs: "30px" } }}>
+          <Image
+            alt="profile"
+            src={DemoProfile}
+            className={styles.profilePic}
+          />
+          <Typography
+            sx={{
+              fontSize: "20px",
+              fontWeight: 700,
+              marginTop: "17px",
+            }}
+          >
+            Haseeb Khawaja
+          </Typography>
+        </Box>
+        <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
+          Achievement
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "30px 0 40px",
+            columnGap: { xl: "18px", lg: "4px" },
+          }}
+        >
+          <Image
+            alt="tag"
+            src={Platinum}
+            className={styles.profileAchivements}
+          />
+          <Image alt="tag" src={Gold} className={styles.profileAchivements} />
+          <Image alt="tag" src={Silver} className={styles.profileAchivements} />
+          <Image alt="tag" src={Bronze} className={styles.profileAchivements} />
+        </Box>
+        <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
+          Recent Chapters
+        </Typography>
+        <Box sx={{ marginTop: "20px" }}>
+          <RecentChapters />
+          <RecentChapters />
+          <RecentChapters />
+          <RecentChapters />
+        </Box>
+        <Typography
+          sx={{
+            fontSize: "11.869px",
+            color: "#9B9B9B",
+            marginTop: "22px",
+            textAlign: "center",
+          }}
+        >
+          View more
+        </Typography>
       </Box>
-      <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>
-        Achievement
-      </Typography>
-      <Box sx={{ display: "flex", justifyContent: "space-between", margin: "30px 0 55px", columnGap: { xl: "18px", lg: "4px" } }}>
-        <Image alt="tag" src={Platinum} />
-        <Image alt="tag" src={Gold} />
-        <Image alt="tag" src={Silver} />
-        <Image alt="tag" src={Bronze} />
-      </Box>
-      <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>
-        Recent Chapters
-      </Typography>
-      <Box sx={{ marginTop: "30px" }}>
-        <RecentChapters />
-        <RecentChapters />
-        <RecentChapters />
-        <RecentChapters />
-      </Box>
-      <Typography sx={{ fontSize: "15px", color: "#9B9B9B", marginTop: "30px", textAlign: "center" }}>
-        View more
-      </Typography>
     </Box>
-  )
-}
+  );
+};
 
-
-export default Profile
-
-
-
+export default Profile;
 
 export const RecentChapters = () => {
   return (
-    <Box sx={{
-      bgcolor: "#F9F9F9",
-      borderRadius: "8px",
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      borderLeft: "10px solid #186F65",
-      padding: "13px 13px 13px 20px",
-      marginBlock: "15px"
-    }}>
-      <Typography sx={{ fontSize: "14px" }}>
-        The Book Of Early
-      </Typography>
+    <Box
+      sx={{
+        bgcolor: "#F9F9F9",
+        borderRadius: "8px",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        borderLeft: "10px solid #186F65",
+        padding: "8px 13px 8px 20px",
+        marginBlock: "11px",
+      }}
+    >
+      <Typography sx={{ fontSize: "10px" }}>The Book Of Early</Typography>
       <CircularWithValueLabel />
     </Box>
-  )
-}
-
-
+  );
+};
 
 {
   /* // Progress Bar code */
 }
 function CircularProgressWithLabel(props) {
   return (
-    <Box sx={{ position: "relative", display: "inline-flex", width: "30px" }}>
+    <Box sx={{ position: "relative", display: "inline-flex", width: "22px" }}>
       <CircularProgress color="success" variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
-          left: -8,
+          left: -15,
           bottom: 0,
           right: 0,
           position: "absolute",
@@ -103,7 +136,7 @@ function CircularProgressWithLabel(props) {
           variant="caption"
           component="div"
           color="#197065"
-          sx={{ fontSize: "10px" }}
+          sx={{ fontSize: "6.5px" }}
         >
           {`${Math.round(props.value)}%`}
         </Typography>
