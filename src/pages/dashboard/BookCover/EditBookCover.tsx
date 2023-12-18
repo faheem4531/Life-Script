@@ -276,7 +276,7 @@ const EditBookCover = () => {
             </Box>
             <Box flex={"1"}>
               <SelectBookCoverCard
-                landScape={CoverNumber.toString()}
+                landScape={CoverNumber?.toString()}
                 title={title}
                 subtitle={subtitle}
                 Byline={byline}

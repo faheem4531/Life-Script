@@ -91,7 +91,7 @@ const ViewBookCover = () => {
             </Box>
             <Box>
               <SelectBookCoverCard
-                landScape={CoverNumber.toString()}
+                landScape={CoverNumber?.toString()}
                 title={title}
                 subtitle={subtitle}
                 Byline={byline}
