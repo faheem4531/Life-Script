@@ -8,7 +8,7 @@ import {
   subBasicList,
   subPremiumList,
   subStandardList,
-} from "../../utils/subscriptionLists";
+} from "../../../utils/subscriptionLists";
 import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./components/paymentForm";
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";

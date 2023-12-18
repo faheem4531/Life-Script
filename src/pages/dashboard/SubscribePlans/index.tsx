@@ -4,7 +4,7 @@ import VerticalTabs from "./components/VerticalTabs";
 import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 import { Box, Typography } from "@mui/material";
 import SubscriptionCard from "./components/SubscriptionCard";
-import {subPremiumList, subBasicList, subStandardList} from "../../utils/subscriptionLists"
+import {subPremiumList, subBasicList, subStandardList} from "../../../utils/subscriptionLists"
 import { useRouter } from "next/router";
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 
