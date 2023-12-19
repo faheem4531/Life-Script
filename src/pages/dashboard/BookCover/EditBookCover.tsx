@@ -103,7 +103,6 @@ const EditBookCover = () => {
       .unwrap()
       .then((res) => {
         toast.success("image uploaded successfully");
-        console.log("3333", res);
         setImageLink(res);
         setDroppedImage(res);
       })

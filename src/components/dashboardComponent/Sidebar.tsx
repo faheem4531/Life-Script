@@ -27,12 +27,18 @@ const SideBar = () => {
   const [childsOpen, setChilsdOpen] = useState(false);
   const [coverNumber, setCoverNumber] = useState(null);
   const router = useRouter();
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const currentRoute = router.pathname;
 
   useEffect(() => {
-    dispatch(getBookCover()).unwrap().then((res) => {setCoverNumber("2"); console.log("4444",res)} ).catch(()=>setCoverNumber(null))
-  },[])
+    dispatch(getBookCover())
+      .unwrap()
+      .then((res) => {
+        setCoverNumber(res.coverNumber);
+        console.log("4444", res);
+      })
+      .catch(() => setCoverNumber(null));
+  }, []);
 
   return (
     <Box sx={{ color: "#fff" }}>
@@ -142,10 +148,13 @@ const SideBar = () => {
                   styles.active
             }`}
             onClick={() => {
-              if(coverNumber){
-                router.push(`/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber}`);
+              if (coverNumber) {
+                router.push(
+                  `/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber}`
+                );
+              } else {
+                router.push("/dashboard/BookCover/SelectBookCover");
               }
-              else{router.push("/dashboard/BookCover/SelectBookCover");}
             }}
           >
             <Image

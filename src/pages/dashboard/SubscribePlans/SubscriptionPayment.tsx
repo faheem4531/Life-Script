@@ -17,7 +17,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const CreditCard = () => {
   const router = useRouter();
-  const { Subscription } = router.query;
+  const { Subscription, price } = router.query;
 
   return (
     <Box>
@@ -60,7 +60,7 @@ const CreditCard = () => {
                   subList={subBasicList}
                   mainTitle="Basic Plan"
                   mainDescription="Lorem ipsum dolor sit amet consectetur."
-                  price="Free"
+                  price={Number(price)}
                   offerTitle="Basic Plan Offerings"
                   btnCheck={false}
                 />
@@ -70,7 +70,7 @@ const CreditCard = () => {
                   subList={subStandardList}
                   mainTitle="Standard Plan"
                   mainDescription="Lorem ipsum dolor sit amet consectetur."
-                  price="$875"
+                  price={Number(price)}
                   offerTitle="Standard Plan Offerings"
                   btnCheck={false}
                 />
@@ -80,7 +80,7 @@ const CreditCard = () => {
                   subList={subPremiumList}
                   mainTitle="Premium Plan"
                   mainDescription="Lorem ipsum dolor sit amet consectetur."
-                  price="$875"
+                  price={Number(price)}
                   offerTitle="Premium Plan Offerings"
                   btnCheck={false}
                 />
@@ -100,7 +100,7 @@ const CreditCard = () => {
               >
                 <Box>
                   <Elements stripe={stripePromise}>
-                    <PaymentForm packageName={Subscription}/>
+                    <PaymentForm packageName={Subscription} price={price}/>
                   </Elements>
                 </Box>
               </Box>

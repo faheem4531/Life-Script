@@ -39,6 +39,7 @@ const chapterName = () => {
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
@@ -48,20 +49,40 @@ const chapterName = () => {
   const [openTooltip, setOpenTooltip] = useState(true);
   const percentage = calculateCompletionPercentage(question?.questions);
 
+  function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
+    const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+    // const sevenDaysInMilliseconds = 20000 * 60;
+    const inputDate = new Date(timeString);
+    const timeDifference = new Date().getTime() - inputDate.getTime();
+    return timeDifference < sevenDaysInMilliseconds;
+  }
+  
+
+  //check free trail expiration
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    const decodedToken = jwt.decode(token);
+    const accessRole = decodedToken.accessRole;
+    const createdAt = decodedToken.created_at;
+    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan"){
+      setIsPremium(true);
+    }else{
+      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt.toString());
+      setIsPremium(isfreeTrial);
+    }
+  },[])
+
   const handleCancel = () => {
     if (buyPremium) {
       router.push("/dashboard/SubscribePlans");
       setOpenCustomizationDialog(false);
     } else {
       if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-        const jwt = require("jsonwebtoken");
-        const token = localStorage.getItem("token");
-        const decodedToken = jwt.decode(token);
-        const accessRole = decodedToken.accessRole;
 
-        console.log("accessTokenRole:", accessRole);
-        if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
+        if (isPremium) {
           gptSocketCall();
+          setOpenCustomizationDialog(false);
         } else {
           setBuyPremium(true);
         }

@@ -57,7 +57,7 @@ const RichText = ({ questionId }) => {
   );
   const [questionData, setQuestionData] = useState<any>({});
   const [compileChapter, setCompileChapter] = useState();
-
+  const [isPremium, setIsPremium] = useState(false);
   const [recording, setRecording] = useState(false);
   const [detecting, setDetecting] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
@@ -140,17 +140,37 @@ const RichText = ({ questionId }) => {
   };
 
   const handleSpeechtoText = () => {
-    const jwt = require("jsonwebtoken");
-    const token = localStorage.getItem("token");
-    const decodedToken = jwt.decode(token);
-    const accessRole = decodedToken.accessRole;
-    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
+    if (isPremium) {
       setDetecting(true);
       handleToggleRecording();
     } else {
       setBuyPremium(true);
     }
   };
+
+  function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
+    const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+    const inputDate = new Date(timeString);
+    const timeDifference = new Date().getTime() - inputDate.getTime();
+    return timeDifference < sevenDaysInMilliseconds;
+  }
+  
+
+  //check free trail expiration
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    const decodedToken = jwt.decode(token);
+    const accessRole = decodedToken.accessRole;
+    console.log("444444",accessRole);
+    const createdAt = decodedToken.created_at;
+    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan"){
+      setIsPremium(true);
+    }else{
+      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt.toString());
+      setIsPremium(isfreeTrial);
+    }
+  },[])
 
   useEffect(() => {
     if (compileChapterId) {

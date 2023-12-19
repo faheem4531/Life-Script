@@ -11,6 +11,7 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { stripeDone } from "@/store/slices/authSlice";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
@@ -44,7 +45,7 @@ const useOptions = () => {
   return options;
 };
 
-const PaymentForm = ({packageName}) => {
+const PaymentForm = ({packageName, price}) => {
   const dispatch: any = useDispatch();
   const options = useOptions();
   const [isError, setIsError] = useState(false);
@@ -92,9 +93,11 @@ const PaymentForm = ({packageName}) => {
             );
             if (secureResult?.paymentIntent?.status === "succeeded") {
               setStripeSucceed(true);
+              dispatch(stripeDone(null));
             }else{setStripeFailed(true)}
           } else {
             setStripeSucceed(true);
+            dispatch(stripeDone(null));
           }
         })
         .catch(() => {

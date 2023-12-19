@@ -19,6 +19,7 @@ import {
   signupApi,
   updatePasswordApi,
   verifyEmailApi,
+  stripeDoneApi,
 } from "../api/authApi";
 
 const initialState = {
@@ -66,6 +67,18 @@ export const login = createAsyncThunk<UserData, LoginData>(
   async (data) => {
     try {
       const response = await loginApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const stripeDone = createAsyncThunk<UserData, LoginData>(
+  "auth/stripe-done",
+  async () => {
+    try {
+      const response = await stripeDoneApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);

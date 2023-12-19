@@ -7,10 +7,11 @@ interface SubscriptionCardProps {
   subList: { label: string }[];
   mainTitle: string;
   mainDescription: string;
-  price: string;
+  price: number;
   offerTitle: string;
-  onClick?: () => void;
+  onClick?: any;
   btnCheck?: boolean;
+  buttonDisable? : boolean
 }
 
 const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
@@ -18,8 +19,9 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
   mainTitle,
   mainDescription,
   price,
+  buttonDisable,
   offerTitle,
-  onClick = () => {},
+  onClick,
   btnCheck = true,
 }) => {
   return (
@@ -70,7 +72,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             color: "#197065",
           }}
         >
-          {price}
+          ${price}
         </Box>
 
         <Box
@@ -155,7 +157,8 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
               bgcolor: "#197065",
             },
           }}
-          onClick={onClick}
+          disabled={buttonDisable}
+          onClick={() => onClick(price)}
         >
           Choose Plan
         </Button>
