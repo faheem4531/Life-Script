@@ -1,6 +1,7 @@
 import NavMenu from "@/_assets/svg/nav-menu.svg";
 import More from "@/_assets/svg/nav-menue.svg";
 import Search from "@/_assets/svg/searchbar.svg";
+import Step1 from "@/_assets/svg/smallBook.svg";
 import {
   getChapterNotifications,
   readNotification,
@@ -17,7 +18,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.css";
-import Step1 from "@/_assets/svg/smallBook.svg";
 
 const options = ["Logout"];
 const ITEM_HEIGHT = 48;
@@ -185,7 +185,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   onClick={() => handleNotificationNavigate(notification)}
                   sx={{
                     borderBottom: "1.5px solid gray",
-                    p: "0px",
+                    p: "10px",
                     "&:hover": {
                       background: "white",
                       boxShadow: "none",
