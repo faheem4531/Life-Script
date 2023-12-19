@@ -185,7 +185,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   onClick={() => handleNotificationNavigate(notification)}
                   sx={{
                     borderBottom: "1.5px solid gray",
-                    p: "10px",
+                    p: "10px 15px",
                     "&:hover": {
                       background: "white",
                       boxShadow: "none",
