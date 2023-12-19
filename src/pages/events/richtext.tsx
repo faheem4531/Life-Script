@@ -428,7 +428,7 @@ const RichText = ({ questionId }) => {
               color="#197065"
               width="155px"
               fontSize="14px"
-              padding="9px 10px"
+              padding="4.5px 10px"
               onClick={() => {
                 setDetecting(true);
                 handleToggleRecording();
@@ -442,7 +442,7 @@ const RichText = ({ questionId }) => {
                 onClick={handleCompleteAnswer}
                 sx={{
                   height: "35px",
-                  p: 2,
+                  p: "9px 10px",
                   borderRadius: "27px",
                   border: "1px solid #197065",
                   color: "#197065",
