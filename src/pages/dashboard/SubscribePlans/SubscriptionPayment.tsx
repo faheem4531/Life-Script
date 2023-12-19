@@ -13,9 +13,7 @@ import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./components/paymentForm";
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 
-const stripePromise = loadStripe(
-  "pk_test_51KyFHhGeGlEJDOmcCqL8AVqDcShNxk8mTWBBvKDkMqR102d6epu3RY7Zzny8NBbn0D9O3EPm0n7GcgucKBseRue6001dM1qnAu"
-);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const CreditCard = () => {
   const router = useRouter();
@@ -67,7 +65,7 @@ const CreditCard = () => {
                   btnCheck={false}
                 />
               )}
-              {Subscription === "StandardPlan" && (
+              {Subscription === "GoldPlan" && (
                 <SubscriptionCard
                   subList={subStandardList}
                   mainTitle="Standard Plan"
@@ -102,7 +100,7 @@ const CreditCard = () => {
               >
                 <Box>
                   <Elements stripe={stripePromise}>
-                    <PaymentForm />
+                    <PaymentForm packageName={Subscription}/>
                   </Elements>
                 </Box>
               </Box>

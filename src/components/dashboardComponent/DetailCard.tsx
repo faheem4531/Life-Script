@@ -35,7 +35,6 @@ export default function DetailCard({
   isChapter,
   deleteFunc,
 }: DetailCardProps) {
-  console.log("chapterzzzz", chapter);
   const router = useRouter();
   const questions = chapter?.questions;
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -64,6 +63,19 @@ export default function DetailCard({
     const percentage = (completedCount / array?.length) * 100;
 
     return percentage;
+  }
+
+  function getUpdatedTimeDifference(timestamp: string): string {
+    const currentTime: Date = new Date();
+    const updatedTime: Date = new Date(timestamp);
+    const timeDifferenceInMilliseconds: number = currentTime.getTime() - updatedTime.getTime();
+    const timeDifferenceInDays: number = Math.floor(timeDifferenceInMilliseconds / (24 * 60 * 60 * 1000));
+  
+    if (timeDifferenceInDays === 0) {
+      return 'Last edited Today';
+    } else {
+      return `Last edited ${timeDifferenceInDays} day${timeDifferenceInDays !== 1 ? 's' : ''} ago`;
+    }
   }
 
   return (
@@ -226,7 +238,7 @@ export default function DetailCard({
                 }}
               >
                 <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
-                  Last Edited 3 Days Ago
+                  {getUpdatedTimeDifference(chapter?.updated_at)}
                 </Typography>
                 <CircularWithValueLabel percentage={percentage} />
               </Box>

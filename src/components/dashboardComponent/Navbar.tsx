@@ -185,7 +185,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   onClick={() => handleNotificationNavigate(notification)}
                   sx={{
                     borderBottom: "1.5px solid gray",
-                    p: "0px",
+                    p: "10px 20px",
                     "&:hover": {
                       background: "white",
                       boxShadow: "none",
@@ -216,7 +216,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                         mt: "5px",
                       }}
                     >
-                      Your chapter {notification.title} is fused. Click to view
+                      Chapter <span style={{fontWeight: 'bold', textTransform: "capitalize"}}>{notification.title}</span> is fused and ready to to view
                     </Box>
                   </Box>
                 </MenuItem>

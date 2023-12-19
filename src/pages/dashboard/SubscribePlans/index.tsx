@@ -50,7 +50,7 @@ const SubscribePlan = () => {
             router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan")
           }}/>
           <SubscriptionCard subList={subStandardList} mainTitle="Standard Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="$875" offerTitle="Standard Plan Offerings" onClick={()=>{
-            router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=StandardPlan")
+            router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=GoldPlan")
           }}/>
           <SubscriptionCard subList={subPremiumList} mainTitle="Premium Plan" mainDescription="Lorem ipsum dolor sit amet consectetur." price="$875" offerTitle="Premium Plan Offerings" onClick={()=>{
             router.push("/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan")

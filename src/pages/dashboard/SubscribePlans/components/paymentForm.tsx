@@ -1,6 +1,9 @@
+import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import { stripePayment } from "@/store/slices/chatSlice";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import ModalImage from "@/_assets/png/view-template-modal.png";
+import Image from "next/image";
+import { Box, Button, ButtonBase, TextField, Typography } from "@mui/material";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -9,7 +12,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -40,14 +43,17 @@ const useOptions = () => {
   return options;
 };
 
-const PaymentForm = () => {
+const PaymentForm = ({packageName}) => {
   const dispatch: any = useDispatch();
   const options = useOptions();
   const [isError, setIsError] = useState(false);
   const [cardHolderName, setCardHolderName] = useState("");
   const [confirmationStripe, setConfirmationStripe] = useState(false);
+  const [stripeSucceed, setStripeSucceed] = useState(false);
+  const [stripeFailed, setStripeFailed] = useState(false);
   const [loading, setLoading] = useState(false);
   const stripe = useStripe();
+  const router = useRouter();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
@@ -63,29 +69,40 @@ const PaymentForm = () => {
       setLoading(false);
       setIsError(true);
     } else {
-      console.log("token", result.token);
       dispatch(
         stripePayment({
           country: "USA",
           amount: 1000,
           token: result.token,
-          packageName: "PremiumPlan",
+          packageName: packageName,
           cardHolderName: cardHolderName,
         })
       )
         .unwrap()
         .then(async (res) => {
           if (res.status !== "succeeded") {
-            const result1 = await stripe.confirmCardPayment(res.client_secret, {
-              payment_method: {
-                card: card,
-              },
-            });
+            const secureResult = await stripe.confirmCardPayment(
+              res.client_secret,
+              {
+                payment_method: {
+                  card: card,
+                },
+              }
+            );
+            if (secureResult?.paymentIntent?.status === "succeeded") {
+              setStripeSucceed(true);
+            }else{setStripeFailed(true)}
+          } else {
+            setStripeSucceed(true);
           }
         })
-        .catch(() => setLoading(false));
+        .catch(() => {
+          setLoading(false);
+          setStripeFailed(true);
+        });
     }
   };
+
 
   return (
     <>
@@ -261,10 +278,69 @@ const PaymentForm = () => {
         }}
         proceed={handleSubmit}
       />
+      <CustomizationDialog
+        open={stripeSucceed || stripeFailed}
+        title=""
+        handleClose={() => {
+          setStripeSucceed(false);
+          setStripeFailed(false);
+          stripeFailed
+            ? router.push("/dashboard/SubscribePlans")
+            : router.push("/dashboard/chapters");
+        }}
+        customStyles={{ backgroundColor: "auto" }}
+      >
+        <Box sx={{ textAlign: "center" }}>
+          <Image alt="image" src={ModalImage} />
+          <Typography
+            sx={{
+              fontSize: "40px",
+              fontWeight: 700,
+              color: "#070707",
+              margin: "40px 0",
+            }}
+          >
+            Thank You!
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "30px",
+              color: "#070707",
+              width: "400px",
+              margin: "0 120px",
+            }}
+          >
+            {stripeFailed ? "Stripe Failed to proceed your Payment" : "Your Package has been Upgraded"}
+          </Typography>
+
+          <ButtonBase
+            onClick={() => {
+              stripeFailed
+            ? router.push("/dashboard/SubscribePlans")
+            : router.push("/dashboard/chapters");
+              setStripeSucceed(false);
+              setStripeFailed(false);
+            }}
+            sx={{
+              width: "200px",
+              height: "50px",
+              borderRadius: "78px",
+              color: "#fff",
+              fontSize: "22px",
+              bgcolor: "#197065",
+              margin: "40px 0 30px",
+              "&:hover": {
+                color: "#fff",
+                bgcolor: "#197065",
+              },
+            }}
+          >
+            {stripeFailed ? "Try Later" : "Start Using"}
+          </ButtonBase>
+        </Box>
+      </CustomizationDialog>
     </>
   );
 };
 
-export default dynamic(() => Promise.resolve(PaymentForm), {
-  ssr: false
-})
+export default PaymentForm;
