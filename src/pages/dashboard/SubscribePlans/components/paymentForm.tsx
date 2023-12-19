@@ -15,6 +15,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
+import dynamic from "next/dynamic";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
@@ -343,4 +344,6 @@ const PaymentForm = ({packageName}) => {
   );
 };
 
-export default PaymentForm;
+export default dynamic(() => Promise.resolve(PaymentForm), {
+  ssr: false
+})
