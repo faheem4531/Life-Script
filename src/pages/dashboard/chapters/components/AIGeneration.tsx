@@ -1,5 +1,5 @@
 import { Box, ButtonBase, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Question = {
   id: number;
@@ -8,20 +8,28 @@ type Question = {
 
 interface QuestionComponentProps {
   questions: Question[];
-  handleNextQuestion: () => void;
-  Procced: () => void;
+  handleNextQuestion: any;
+  Proceed: any;
+  endQuestion:any;
 }
 
 const QuestionComponent = ({
   questions,
   handleNextQuestion,
-  Procced,
+  Proceed,
+  endQuestion,
 }: QuestionComponentProps) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [remainingQuestions, setRemainingQuestions] = useState(0);
+
+  useEffect(() =>{
+    questions?.length > 0 && setRemainingQuestions(questions?.length - 1);
+  },[questions])
 
   const handleNext = () => {
+    setRemainingQuestions(remainingQuestions - 1);
     setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
-    handleNextQuestion();
+    handleNextQuestion(questions[currentQuestionIndex].id);
   };
 
   return (
@@ -32,15 +40,15 @@ const QuestionComponent = ({
       <Box>
       <Box sx={{width: "550px", margin: 'auto'}}>
       <Typography sx={{ fontSize: "22px" }}>
-        {questions[currentQuestionIndex].title}
+        {questions[currentQuestionIndex]?.title}
       </Typography>
       </Box>
       <Typography sx={{ fontSize: "14px" }}>
-        Remaining AI Questions: <span style={{fontWeight: 'bold'}}>{questions.length}</span>
+        Remaining AI Questions: <span style={{fontWeight: 'bold'}}>{remainingQuestions}</span>
       </Typography>
       <Box sx={{ display: "flex", gap: "15px", justifyContent: "center" }}>
         <ButtonBase
-          onClick={Procced}
+          onClick={()=>Proceed(questions[currentQuestionIndex].id)}
           sx={{
             width: "234px",
             height: "50px",
@@ -58,15 +66,10 @@ const QuestionComponent = ({
         >
           Add
         </ButtonBase>
-        <Box
-          sx={{
-            opacity:
-              questions.length === currentQuestionIndex + 1 ? "0.6" : "1",
-          }}
-        >
+        <Box>
           <ButtonBase
             onClick={
-              questions.length === currentQuestionIndex + 1 ? null : handleNext
+              questions.length === currentQuestionIndex + 1 ? endQuestion(questions[currentQuestionIndex].id) : handleNext
             }
             sx={{
               width: "200px",
@@ -82,7 +85,7 @@ const QuestionComponent = ({
               },
             }}
           >
-            Regenarate
+            {questions.length === currentQuestionIndex + 1 ? "Close" : "Regenarate"}
           </ButtonBase>
         </Box>
       </Box>

@@ -18,6 +18,7 @@ import {
   getChapterbyId,
   selectChapter,
   simpleChapter,
+  openaiQuestion,
 } from "@/store/slices/chatSlice";
 import { Box, ButtonBase, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -36,7 +37,7 @@ const chapterName = () => {
   const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
-  const [aiQuestions, setaiQuestions] = useState([])
+  const [aiQuestions, setaiQuestions] = useState([]);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
@@ -59,7 +60,6 @@ const chapterName = () => {
     const timeDifference = new Date().getTime() - inputDate.getTime();
     return timeDifference < sevenDaysInMilliseconds;
   }
-  
 
   //check free trail expiration
   useEffect(() => {
@@ -68,13 +68,15 @@ const chapterName = () => {
     const decodedToken = jwt.decode(token);
     const accessRole = decodedToken.accessRole;
     const createdAt = decodedToken.created_at;
-    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan"){
+    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
       setIsPremium(true);
-    }else{
-      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt.toString());
+    } else {
+      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
+        createdAt.toString()
+      );
       setIsPremium(isfreeTrial);
     }
-  },[])
+  }, []);
 
   const handleCancel = () => {
     if (buyPremium) {
@@ -82,7 +84,6 @@ const chapterName = () => {
       setOpenCustomizationDialog(false);
     } else {
       if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-
         if (isPremium) {
           gptSocketCall();
           setOpenCustomizationDialog(false);
@@ -177,14 +178,43 @@ const chapterName = () => {
     }
   };
 
-  const questions = [
-    { id: 1, text: "What is your favorite color?" },
-    { id: 2, text: "What is your favorite food?" },
-    // Add more questions as needed
-  ];
-
-  const handleNextQuestion = () => {
+  const handleAddQuestion = (questionId) => {
+    setAiGeneration(false);
+    dispatch(
+      openaiQuestion({
+        chapterId: chapterId.toString(),
+        flag: "true",
+        id: questionId,
+      })
+    )
+      .unwrap()
+      .then(() => {
+        dispatch(getChapterbyId({ id: chapterId.toString() }));
+      });
     console.log("Moving to the next question");
+  };
+
+  const handleSkip = (questionId) => {
+    dispatch(
+      openaiQuestion({
+        chapterId: chapterId.toString(),
+        flag: "false",
+        id: questionId,
+      })
+    )
+  };
+  const handleEndQuestions = (questionId) => {
+    setAiGeneration(false);
+    dispatch(
+      openaiQuestion({
+        chapterId: chapterId.toString(),
+        flag: "false",
+        id: questionId,
+      })
+    ).unwrap()
+    .then(() => {
+      dispatch(getChapterbyId({ id: chapterId.toString() }));
+    });
   };
   return (
     <>
@@ -461,6 +491,7 @@ const chapterName = () => {
         title=""
         handleClose={() => {
           setAiGeneration(false);
+          dispatch(getChapterbyId({ id: chapterId.toString() }));
         }}
         customStyles={{
           backgroundColor: "auto",
@@ -478,8 +509,9 @@ const chapterName = () => {
         </Box>
         <QuestionComponent
           questions={aiQuestions}
-          handleNextQuestion={handleNextQuestion}
-          Procced={null}
+          handleNextQuestion={handleSkip}
+          Proceed={handleAddQuestion}
+          endQuestion={handleEndQuestions}
         />
       </CustomizationDialog>
     </>

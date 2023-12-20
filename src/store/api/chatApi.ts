@@ -31,7 +31,7 @@ export async function narrativeFusionApi(data: any) {
 
 export async function openaiQuestionApi(data: {
   chapterId: string;
-  flag: boolean;
+  flag: string;
   id: string;
 }) {
   try {

@@ -102,11 +102,11 @@ export const openaiQuestion = createAsyncThunk<UserData, any>(
   "chat/openai-question",
   async (data: {
     chapterId: string;
-    flag: boolean;
+    flag: string;
     id: string;
   }) => {
     try {
-      const response = await openaiQuestion(data);
+      const response = await openaiQuestionApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
