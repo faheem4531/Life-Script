@@ -1,10 +1,9 @@
-import { Box } from "@mui/material";
-import React from "react";
 import CoverImg from "@/_assets/png/selectBookCover.png";
 import logo from "@/_assets/svg/SmallLogoWhite.svg";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
+import React from "react";
 
 interface SelectBookCoverCardProps {
   landScape?: string;
@@ -15,8 +14,7 @@ interface SelectBookCoverCardProps {
   ColourPalette?: string;
 }
 
-
-const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> =  ({
+const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   landScape,
   title = "My Adventurous Life",
   subtitle = "John Doe",
@@ -24,18 +22,20 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> =  ({
   ColourPalette = "#197065",
   droppedImage,
 }) => {
+  console.log("333", landScape);
 
-  console.log("333",landScape);
+  const currentPath = usePathname();
+  console.log("currentPath", currentPath);
 
-const currentPath = usePathname()
-console.log("currentPath", currentPath);
+  const viewBookCheck = currentPath == "/dashboard/BookCover/ViewBookCover";
 
   return (
     <Box
       sx={{
         position: "relative",
         "&:hover .hoverBox": {
-          display: currentPath == "/dashboard/BookCover/SelectBookCover" && "flex",
+          display:
+            currentPath == "/dashboard/BookCover/SelectBookCover" && "flex",
           cursor: "pointer",
         },
       }}
@@ -54,9 +54,23 @@ console.log("currentPath", currentPath);
           sx={{
             display: "flex",
             justifyContent: "center",
-            gap: { xs: "15px", sm: "20px", md: "25px", lg: "30px", xl: "43px" },
+            gap: !viewBookCheck
+              ? { xs: "15px", sm: "20px", md: "25px", lg: "30px", xl: "43px" }
+              : "2px",
           }}
         >
+          {viewBookCheck && (
+            <Box
+              sx={{
+                width: { xs: "80%", sm: "260px", md: "240px", lg: "287.611px" },
+                height: "414.319px",
+                bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
+                color: "white",
+                textAlign: "center",
+                p: "10px",
+              }}
+            ></Box>
+          )}
           <Box
             sx={{
               bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
@@ -77,7 +91,10 @@ console.log("currentPath", currentPath);
                 textOrientation: "mixed",
               }}
             >
-              <Box>{title.length == 0 ? "My Adventurous Life" : title} | {subtitle.length == 0 ? "John Doe" : subtitle}</Box>
+              <Box>
+                {title.length == 0 ? "My Adventurous Life" : title} |{" "}
+                {subtitle.length == 0 ? "John Doe" : subtitle}
+              </Box>
               <Box>
                 <Image src={logo} alt="" />
               </Box>
@@ -118,7 +135,9 @@ console.log("currentPath", currentPath);
                 <Box
                   mt={landScape === "1" && "12px"}
                   display="flex"
-                  flexDirection={landScape === "1" ? "column" : "column-reverse"}
+                  flexDirection={
+                    landScape === "1" ? "column" : "column-reverse"
+                  }
                 >
                   <Box
                     sx={{
@@ -142,11 +161,13 @@ console.log("currentPath", currentPath);
 
                   <Box
                     sx={{
-                      width: landScape === "1"
-                        ? { xs: "80%", md: "200px", lg: "212.377px" }
-                        : "91.274px",
+                      width:
+                        landScape === "1"
+                          ? { xs: "80%", md: "200px", lg: "212.377px" }
+                          : "91.274px",
                       height: landScape === "1" ? "104.868px" : "149.534px",
-                      margin: landScape === "1" ? "45px auto 17px" : "25px auto",
+                      margin:
+                        landScape === "1" ? "45px auto 17px" : "25px auto",
                     }}
                   >
                     {droppedImage ? (
