@@ -28,6 +28,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
+import suggestionIcon from "../../../_assets/svg/suggestion.svg"
 import QuestionComponent from "./components/AIGeneration";
 
 const chapterName = () => {
@@ -201,7 +202,7 @@ const chapterName = () => {
         flag: "false",
         id: questionId,
       })
-    )
+    );
   };
   const handleEndQuestions = (questionId) => {
     setAiGeneration(false);
@@ -211,10 +212,11 @@ const chapterName = () => {
         flag: "false",
         id: questionId,
       })
-    ).unwrap()
-    .then(() => {
-      dispatch(getChapterbyId({ id: chapterId.toString() }));
-    });
+    )
+      .unwrap()
+      .then(() => {
+        dispatch(getChapterbyId({ id: chapterId.toString() }));
+      });
   };
   return (
     <>
@@ -255,54 +257,66 @@ const chapterName = () => {
                 Questions
               </Typography>
               <Box display={"flex"} sx={{ gap: { sm: 2, xs: 1 } }}>
-                <Box sx={{ cursor: "pointer" }}>
-                  <Image src={addIcon} alt="addicon" />
-                </Box>
+              {aiQuestions?.length > 0 && (
                 <Box
                   sx={{
+                    bgcolor: "#197065",
+                    p: "0px 30px",
                     display: "flex",
-                    gap: "5px",
-                    mt: 1,
-                    color: "#197065E5",
-                    cursor: "pointer",
+                    alignItems: "center",
+                    height: "50px",
+                    borderRadius: "41.25px",
+                    gap: "15px"
                   }}
                 >
-                  <Typography
-                    sx={{
-                      display: {
-                        sm: "block",
-                        xs: "none",
-                        fontSize: "18px",
-                        fontWeight: 600,
-                      },
-                    }}
-                    onClick={() => setOpenModal(true)}
-                  >
-                    Add new question
-                  </Typography>
-                  {aiQuestions?.length > 0 && (
-                    <>
-                      <Typography
-                        sx={{
-                          fontSize: "18px",
-                          fontWeight: 600,
-                        }}
-                      >
-                        Or
-                      </Typography>
-                      <Typography
-                        sx={{
-                          display: { sm: "block", xs: "none" },
-                          fontSize: "18px",
-                          fontWeight: 600,
-                        }}
-                        onClick={() => setAiGeneration(true)}
-                      >
-                        AI question
-                      </Typography>
-                    </>
-                  )}
+                  <Box sx={{ cursor: "pointer", mb: "-4px" }}>
+                    <Image src={suggestionIcon} alt="suggestionIcon" />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        color: "#ffff",
+                        fontSize: "20.5px",
+                        fontWeight: 400,
+                        display: { sm: "block", xs: "none" },
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setAiGeneration(true)}
+                    >
+                      Suggestion
+                    </Typography>
+                  </Box>
                 </Box>
+                )}
+                <Box
+                  onClick={() => setOpenModal(true)}
+                  sx={{
+                    bgcolor: "#197065",
+                    p: "0px 30px",
+                    display: "flex",
+                    alignItems: "center",
+                    height: "50px",
+                    borderRadius: "41.25px",
+                  }}
+                >
+                  <Box sx={{ cursor: "pointer", mb: "-5px" }}>
+                    <Image src={addIcon} alt="addicon" />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        color: "#ffff",
+                        fontSize: "20.5px",
+                        fontWeight: 400,
+                        display: { sm: "block", xs: "none" },
+                        cursor: "pointer",
+                      }}
+                    >
+                      Add Question
+                    </Typography>
+                  </Box>
+                </Box>
+
               </Box>
             </Box>
 

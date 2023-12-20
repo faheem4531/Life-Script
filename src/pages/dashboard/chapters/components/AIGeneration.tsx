@@ -20,6 +20,7 @@ const QuestionComponent = ({
   endQuestion,
 }: QuestionComponentProps) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  console.log('88888',currentQuestionIndex, '777',questions?.length);
   const [remainingQuestions, setRemainingQuestions] = useState(0);
 
   useEffect(() =>{
@@ -28,9 +29,13 @@ const QuestionComponent = ({
 
   const handleNext = () => {
     setRemainingQuestions(remainingQuestions - 1);
-    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
     handleNextQuestion(questions[currentQuestionIndex].id);
   };
+
+  const handleEnd = () => {
+    endQuestion(questions[currentQuestionIndex].id)
+  }
 
   return (
     <div>
@@ -69,7 +74,7 @@ const QuestionComponent = ({
         <Box>
           <ButtonBase
             onClick={
-              questions.length === currentQuestionIndex + 1 ? endQuestion(questions[currentQuestionIndex].id) : handleNext
+              questions.length === currentQuestionIndex + 1 ? handleEnd : handleNext
             }
             sx={{
               width: "200px",
