@@ -42,8 +42,7 @@ if (token) {
   const decodedToken = jwt.decode(token);
   const accessRole = decodedToken.accessRole;
   const createdAt = decodedToken.created_at;
-  const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt.toString());
-  console.log("3333", accessRole);
+  const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt?.toString());
   if (
     accessRole !== "PremiumPlan" &&
     accessRole !== "BasicPlan" &&
