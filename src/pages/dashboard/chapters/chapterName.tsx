@@ -27,6 +27,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
+import QuestionComponent from "./components/AIGeneration";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -190,6 +191,15 @@ const chapterName = () => {
     }
   };
 
+  const questions = [
+    { id: 1, text: "What is your favorite color?" },
+    { id: 2, text: "What is your favorite food?" },
+    // Add more questions as needed
+  ];
+
+  const handleNextQuestion = () => {
+    console.log("Moving to the next question");
+  };
   return (
     <>
       <Box>
@@ -228,26 +238,49 @@ const chapterName = () => {
               >
                 Questions
               </Typography>
-              <Box
-                display={"flex"}
-                onClick={() => setOpenModal(true)}
-                sx={{ gap: { sm: 2, xs: 1 } }}
-              >
+              <Box display={"flex"} sx={{ gap: { sm: 2, xs: 1 } }}>
                 <Box sx={{ cursor: "pointer" }}>
                   <Image src={addIcon} alt="addicon" />
                 </Box>
-                <Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "5px",
+                    mt: 1,
+                    color: "#197065E5",
+                    cursor: "pointer",
+                  }}
+                >
                   <Typography
                     sx={{
-                      mt: 1,
-                      color: "#197065E5",
-                      fontSize: "18px",
-                      fontWeight: 600,
-                      display: { sm: "block", xs: "none" },
-                      cursor: "pointer",
+                      display: {
+                        sm: "block",
+                        xs: "none",
+                        fontSize: "18px",
+                        fontWeight: 600,
+                      },
                     }}
+                    onClick={() => setOpenModal(true)}
                   >
                     Add new question
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "18px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Or
+                  </Typography>
+                  <Typography
+                    sx={{
+                      display: { sm: "block", xs: "none" },
+                      fontSize: "18px",
+                      fontWeight: 600,
+                    }}
+                    onClick={() => setAiGeneration(true)}
+                  >
+                    AI question
                   </Typography>
                 </Box>
               </Box>
@@ -429,6 +462,32 @@ const chapterName = () => {
         </Box>
       </CustomizationDialog>
 
+      <CustomizationDialog
+        open={aiGeneration}
+        title=""
+        handleClose={() => {
+          setAiGeneration(false);
+        }}
+        customStyles={{
+          backgroundColor: "auto",
+          textAlign: "center",
+          color: "#070707",
+          fontSize: "30px",
+        }}
+      >
+        <Box
+          sx={{
+            cursor: "pointer",
+          }}
+        >
+          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        </Box>
+        <QuestionComponent
+          questions={questions}
+          handleNextQuestion={handleNextQuestion}
+          Procced={null}
+        />
+      </CustomizationDialog>
     </>
   );
 };

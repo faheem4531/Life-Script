@@ -1,4 +1,8 @@
-@media (max-width:1400px) {
+.logo {
+  width: 54px;
+}
+
+@media (max-width: 1400px) {
   .typo {
     font-size: 16px;
   }
@@ -8,11 +12,11 @@
   }
 
   .logo {
-    width: 70px;
+    width: 54px;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .typo {
     font-size: 12px;
   }
@@ -22,11 +26,11 @@
   }
 
   .logo {
-    width: 50px;
+    width: 45px;
   }
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .typo {
     font-size: 10px;
   }
@@ -49,7 +53,7 @@
 
 /* styling for Details Card   */
 
-.CardBg{
+.CardBg {
   background-image: url(../../_assets/svg/GreenTick.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,7 +63,7 @@
   height: 72%;
 }
 
-@media (max-width:1400px) {
+@media (max-width: 1400px) {
   .header {
     padding: 20px 0 20px 15px !important;
   }
@@ -70,7 +74,7 @@
 }
 
 /* styles for TemplateCard.tsx  */
-  .tick {
-    width: 13px;
-    height: 11px;
-  }
+.tick {
+  width: 13px;
+  height: 11px;
+}

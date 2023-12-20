@@ -475,7 +475,7 @@ const RichText = ({ questionId }) => {
                 disabled={draftToHtml(convertToRaw(editorState.getCurrentContent())).length < 9}
                 sx={{
                   height: "35px",
-                  p: 2,
+                  p: "9px 10px",
                   borderRadius: "27px",
                   border: "1px solid #197065",
                   color: "#197065",

@@ -15,6 +15,8 @@ import TreeWhite from "@/_assets/svg/sidebar/tree-white.svg";
 import SubsWhite from "@/_assets/svg/subWhite.svg";
 import Subs from "@/_assets/svg/subs.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -29,6 +31,17 @@ const SideBar = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const currentRoute = router.pathname;
+  const childsOpenCheck = () => {
+    if (currentRoute === "/dashboard/chapters") {
+      setChilsdOpen(true);
+    } else if (currentRoute === "/dashboard/chapters/completedChapter") {
+      setChilsdOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    childsOpenCheck();
+  }, []);
 
   useEffect(() => {
     dispatch(getBookCover())
@@ -78,17 +91,34 @@ const SideBar = () => {
                   styles.active
             }`}
             onClick={() => {
-              // router.push("/dashboard/chapters");
               setChilsdOpen(!childsOpen);
             }}
           >
             <Image
               alt="icon"
               src={
-                currentRoute === "/dashboard/chapters" ? HomeGreen : HomeWhite
+                currentRoute === "/dashboard/chapters" ||
+                currentRoute === "/dashboard/chapters/completedChapter"
+                  ? HomeGreen
+                  : HomeWhite
               }
             />
             All Chapters
+            {childsOpen ? (
+              <KeyboardArrowUpIcon
+                sx={{
+                  width: "24px",
+                  ml: "5px",
+                }}
+              />
+            ) : (
+              <KeyboardArrowDownIcon
+                sx={{
+                  width: "24px",
+                  ml: "5px",
+                }}
+              />
+            )}
           </a>
           {childsOpen && (
             <Box>
