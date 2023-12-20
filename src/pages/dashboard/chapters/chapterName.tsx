@@ -19,6 +19,7 @@ import {
   selectChapter,
   simpleChapter,
   openaiQuestion,
+  getOpenaiQuestion,
 } from "@/store/slices/chatSlice";
 import { Box, ButtonBase, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -28,7 +29,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
-import suggestionIcon from "../../../_assets/svg/suggestion.svg"
+import suggestionIcon from "../../../_assets/svg/suggestion.svg";
 import QuestionComponent from "./components/AIGeneration";
 
 const chapterName = () => {
@@ -45,11 +46,16 @@ const chapterName = () => {
   const [aiGeneration, setAiGeneration] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
+  const [emailQuestion, setEmailQuestion] = useState({
+    questionTitle: "",
+    questionId: "",
+  });
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
   const dispatch: any = useDispatch();
-  const { chapterId } = router.query;
+  const { chapterId, openAiQuestionId } = router.query;
+  const [mailQuestionModal, setMailQuestionModal] = useState(false);
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
   const percentage = calculateCompletionPercentage(question?.questions);
@@ -78,6 +84,27 @@ const chapterName = () => {
       setIsPremium(isfreeTrial);
     }
   }, []);
+
+  //check open ai mail
+  useEffect(() => {
+    if (openAiQuestionId && chapterId) {
+      dispatch(
+        getOpenaiQuestion({
+          chapterId: chapterId,
+          questionId: openAiQuestionId,
+        })
+      )
+        .unwrap()
+        .then((res) => {
+          setEmailQuestion({
+            ...emailQuestion,
+            questionTitle: res.title,
+            questionId: res.id,
+          });
+          setMailQuestionModal(true);
+        });
+    }
+  }, [openAiQuestionId]);
 
   const handleCancel = () => {
     if (buyPremium) {
@@ -181,6 +208,7 @@ const chapterName = () => {
 
   const handleAddQuestion = (questionId) => {
     setAiGeneration(false);
+    setMailQuestionModal(false);
     dispatch(
       openaiQuestion({
         chapterId: chapterId.toString(),
@@ -191,8 +219,11 @@ const chapterName = () => {
       .unwrap()
       .then(() => {
         dispatch(getChapterbyId({ id: chapterId.toString() }));
+        if (emailQuestion?.questionTitle) {
+          setEmailQuestion({ questionTitle: "", questionId: "" });
+          router.push(`/dashboard/chapters/chapterName?chapterId=${chapterId}`);
+        }
       });
-    console.log("Moving to the next question");
   };
 
   const handleSkip = (questionId) => {
@@ -202,7 +233,15 @@ const chapterName = () => {
         flag: "false",
         id: questionId,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        if (emailQuestion?.questionTitle) {
+          setEmailQuestion({ questionTitle: "", questionId: "" });
+          dispatch(getChapterbyId({ id: chapterId.toString() }));
+          router.push(`/dashboard/chapters/chapterName?chapterId=${chapterId}`);
+        }
+      });
   };
   const handleEndQuestions = (questionId) => {
     setAiGeneration(false);
@@ -257,36 +296,36 @@ const chapterName = () => {
                 Questions
               </Typography>
               <Box display={"flex"} sx={{ gap: { sm: 2, xs: 1 } }}>
-              {aiQuestions?.length > 0 && (
-                <Box
-                  sx={{
-                    bgcolor: "#197065",
-                    p: "0px 30px",
-                    display: "flex",
-                    alignItems: "center",
-                    height: "50px",
-                    borderRadius: "41.25px",
-                    gap: "15px"
-                  }}
-                >
-                  <Box sx={{ cursor: "pointer", mb: "-4px" }}>
-                    <Image src={suggestionIcon} alt="suggestionIcon" />
+                {aiQuestions?.length > 0 && (
+                  <Box
+                    sx={{
+                      bgcolor: "#197065",
+                      p: "0px 30px",
+                      display: "flex",
+                      alignItems: "center",
+                      height: "50px",
+                      borderRadius: "41.25px",
+                      gap: "15px",
+                    }}
+                  >
+                    <Box sx={{ cursor: "pointer", mb: "-4px" }}>
+                      <Image src={suggestionIcon} alt="suggestionIcon" />
+                    </Box>
+                    <Box>
+                      <Typography
+                        sx={{
+                          color: "#ffff",
+                          fontSize: "20.5px",
+                          fontWeight: 400,
+                          display: { sm: "block", xs: "none" },
+                          cursor: "pointer",
+                        }}
+                        onClick={() => setAiGeneration(true)}
+                      >
+                        Suggestion
+                      </Typography>
+                    </Box>
                   </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        color: "#ffff",
-                        fontSize: "20.5px",
-                        fontWeight: 400,
-                        display: { sm: "block", xs: "none" },
-                        cursor: "pointer",
-                      }}
-                      onClick={() => setAiGeneration(true)}
-                    >
-                      Suggestion
-                    </Typography>
-                  </Box>
-                </Box>
                 )}
                 <Box
                   onClick={() => setOpenModal(true)}
@@ -316,7 +355,6 @@ const chapterName = () => {
                     </Typography>
                   </Box>
                 </Box>
-
               </Box>
             </Box>
 
@@ -528,6 +566,22 @@ const chapterName = () => {
           endQuestion={handleEndQuestions}
         />
       </CustomizationDialog>
+      <TransitionsDialog
+        open={mailQuestionModal}
+        heading="AI generated Question"
+        proceedText="Add to Chapter"
+        cancelText="Skip"
+        description={emailQuestion.questionTitle}
+        cancel={() => {
+          handleSkip(emailQuestion.questionId);
+          setMailQuestionModal(false);
+        }}
+        closeModal={() => {
+          handleSkip(emailQuestion.questionId);
+          setMailQuestionModal(false);
+        }}
+        proceed={() => handleAddQuestion(emailQuestion.questionId)}
+      />
     </>
   );
 };

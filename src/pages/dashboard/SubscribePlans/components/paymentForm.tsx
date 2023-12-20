@@ -306,7 +306,7 @@ const PaymentForm = ({packageName, price}) => {
               margin: "40px 0",
             }}
           >
-            Thank You!
+            {stripeFailed ? "Sorry" : "Thank You!"}
           </Typography>
           <Typography
             sx={{

@@ -38,6 +38,7 @@ import {
   bookCoverApi,
   updateBookCoverApi,
   openaiQuestionApi,
+  getOpenaiQuestionApi,
 } from "../api/chatApi";
 
 interface State {
@@ -107,6 +108,21 @@ export const openaiQuestion = createAsyncThunk<UserData, any>(
   }) => {
     try {
       const response = await openaiQuestionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getOpenaiQuestion = createAsyncThunk<UserData, any>(
+  "chat/openai-question",
+  async (data: {
+    chapterId: string;
+    questionId: string;
+  }) => {
+    try {
+      const response = await getOpenaiQuestionApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

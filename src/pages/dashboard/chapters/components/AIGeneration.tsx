@@ -28,10 +28,13 @@ const QuestionComponent = ({
   },[questions])
 
   const handleNext = () => {
-    setRemainingQuestions(remainingQuestions - 1);
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    handleNextQuestion(questions[currentQuestionIndex].id);
+    if (remainingQuestions > 0) {
+      setRemainingQuestions(remainingQuestions - 1);
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      handleNextQuestion(questions[currentQuestionIndex].id);
+    }
   };
+  
 
   const handleEnd = () => {
     endQuestion(questions[currentQuestionIndex].id)
@@ -45,7 +48,7 @@ const QuestionComponent = ({
       <Box>
       <Box sx={{width: "550px", margin: 'auto'}}>
       <Typography sx={{ fontSize: "22px" }}>
-        {questions[currentQuestionIndex]?.title}
+      {questions && questions[currentQuestionIndex]?.title}
       </Typography>
       </Box>
       <Typography sx={{ fontSize: "14px" }}>
