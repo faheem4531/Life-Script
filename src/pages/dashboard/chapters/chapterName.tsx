@@ -72,16 +72,18 @@ const chapterName = () => {
   useEffect(() => {
     const jwt = require("jsonwebtoken");
     const token = localStorage.getItem("token");
-    const decodedToken = jwt.decode(token);
-    const accessRole = decodedToken.accessRole;
-    const createdAt = decodedToken.created_at;
-    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
-      setIsPremium(true);
-    } else {
-      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
-        createdAt?.toString()
-      );
-      setIsPremium(isfreeTrial);
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      const createdAt = decodedToken.created_at;
+      if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
+        setIsPremium(true);
+      } else {
+        const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
+          createdAt?.toString()
+        );
+        setIsPremium(isfreeTrial);
+      }
     }
   }, []);
 
