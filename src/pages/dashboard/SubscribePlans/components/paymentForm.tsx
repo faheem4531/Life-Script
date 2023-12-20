@@ -59,6 +59,7 @@ const PaymentForm = ({packageName, price}) => {
   const elements = useElements();
 
   const handleSubmit = async (event) => {
+    const subscriptionPrice = Number(price);
     setConfirmationStripe(false);
     event.preventDefault();
     setLoading(true);
@@ -70,11 +71,12 @@ const PaymentForm = ({packageName, price}) => {
     if (result.error) {
       setLoading(false);
       setIsError(true);
-    } else {
+    } 
+    else {
       dispatch(
         stripePayment({
           country: "USA",
-          amount: 1000,
+          amount: subscriptionPrice,
           token: result.token,
           packageName: packageName,
           cardHolderName: cardHolderName,
@@ -93,11 +95,11 @@ const PaymentForm = ({packageName, price}) => {
             );
             if (secureResult?.paymentIntent?.status === "succeeded") {
               setStripeSucceed(true);
-              dispatch(stripeDone(null));
+              dispatch(stripeDone());
             }else{setStripeFailed(true)}
           } else {
             setStripeSucceed(true);
-            dispatch(stripeDone(null));
+            dispatch(stripeDone());
           }
         })
         .catch(() => {
@@ -273,7 +275,7 @@ const PaymentForm = ({packageName, price}) => {
       <TransitionsDialog
         open={confirmationStripe}
         heading="Premium Plan"
-        description="An amount of $1,750 will be deducted from your selected bank account. Do you really want to proceed?"
+        description={`An amount of $${price} will be deducted from your selected bank account. Do you really want to proceed?`}
         cancel={() => {
           setConfirmationStripe(false);
         }}

@@ -162,7 +162,6 @@ const RichText = ({ questionId }) => {
     const token = localStorage.getItem("token");
     const decodedToken = jwt.decode(token);
     const accessRole = decodedToken.accessRole;
-    console.log("444444",accessRole);
     const createdAt = decodedToken.created_at;
     if (accessRole === "PremiumPlan" || accessRole === "BasicPlan"){
       setIsPremium(true);

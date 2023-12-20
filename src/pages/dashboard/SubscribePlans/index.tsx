@@ -30,14 +30,13 @@ const SubscribePlan = () => {
     const token = localStorage.getItem("token");
     const decodedToken = jwt.decode(token);
     const accessRole = decodedToken.accessRole;
-    accessRole === "PremiumPlan" || accessRole === "BasicPlan";
     if (accessRole === "PremiumPlan") {
       setDisableButton({
         standard: true,
         basic: true,
         premium: true,
       });
-    } else if (accessRole === "StandardPlan") {
+    } else if (accessRole === "GoldPlan") {
       setDisableButton({
         ...disableButton,
         basic: true,

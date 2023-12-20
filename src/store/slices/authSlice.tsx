@@ -74,7 +74,7 @@ export const login = createAsyncThunk<UserData, LoginData>(
   }
 );
 
-export const stripeDone = createAsyncThunk<UserData, LoginData>(
+export const stripeDone = createAsyncThunk<any[], void>(
   "auth/stripe-done",
   async () => {
     try {
