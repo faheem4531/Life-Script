@@ -47,7 +47,7 @@ const ChaptersList = ({
           },
         }}
       >
-        {listItems.map((item) => (
+        {listItems?.map((item) => (
           <Box
             key={item.id}
             sx={{
