@@ -463,7 +463,7 @@ const RichText = ({ questionId }) => {
               color="#197065"
               width="155px"
               fontSize="14px"
-              padding="9px 10px"
+              padding="4.5px 10px"
               onClick={handleSpeechtoText}
               border="1px solid #197065"
               height={undefined}

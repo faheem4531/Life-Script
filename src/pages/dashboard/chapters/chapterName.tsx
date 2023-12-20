@@ -39,6 +39,7 @@ const chapterName = () => {
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
+  const [aiGeneration, setAiGeneration] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
