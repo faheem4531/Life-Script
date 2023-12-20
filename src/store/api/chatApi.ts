@@ -29,6 +29,27 @@ export async function narrativeFusionApi(data: any) {
   }
 }
 
+export async function openaiQuestionApi(data: {
+  chapterId: string;
+  flag: boolean;
+  id: string;
+}) {
+  try {
+    const res = await api.post(`questions/pushQuestion/${data.chapterId}`, {
+      flag: data.flag,
+      id: data.id,
+    });
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function bookCoverApi(data: {    
   title: string,
   coverNumber: string,

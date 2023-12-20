@@ -36,7 +36,8 @@ import {
   getBookCoverApi,
   uploadImageApi,
   bookCoverApi,
-  updateBookCoverApi
+  updateBookCoverApi,
+  openaiQuestionApi,
 } from "../api/chatApi";
 
 interface State {
@@ -90,6 +91,22 @@ export const stripePayment = createAsyncThunk<UserData, any>(
   async (data: any) => {
     try {
       const response = await stripPaymentApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const openaiQuestion = createAsyncThunk<UserData, any>(
+  "chat/openai-question",
+  async (data: {
+    chapterId: string;
+    flag: boolean;
+    id: string;
+  }) => {
+    try {
+      const response = await openaiQuestion(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -36,6 +36,7 @@ const chapterName = () => {
   const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
+  const [aiQuestions, setaiQuestions] = useState([])
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
@@ -156,26 +157,10 @@ const chapterName = () => {
   }, [chapterId, questionChanged]);
 
   useEffect(() => {
-    setAllQuestions(question.questions);
-    setChapterName(question.title);
+    setAllQuestions(question?.questions);
+    setaiQuestions(question?.openAiQuestion);
+    setChapterName(question?.title);
   }, [question]);
-
-  // const handleNarrativeFusion = () => {
-  //   dispatch(narrativeFusion({ chapterId: chapterId, language: "en" }))
-  //     .unwrap()
-  //     .then(() => {
-  //       dispatch(chapterResponse({ chapterId: chapterId.toString() }))
-  //         .unwrap()
-  //         .then((res) => {
-  //           setGptResponse(res.join(""));
-  //           setFusionModal(true);
-  //         });
-  //     })
-  //     .catch(() => {
-  //       setFusionLoading(false);
-  //       toast.error("Narrative fusion failed");
-  //     });
-  // };
 
   const handleFloatButtonClick = () => {
     const isAnyQuestionInProgress = allQuestions?.some(
@@ -265,24 +250,28 @@ const chapterName = () => {
                   >
                     Add new question
                   </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: "18px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    Or
-                  </Typography>
-                  <Typography
-                    sx={{
-                      display: { sm: "block", xs: "none" },
-                      fontSize: "18px",
-                      fontWeight: 600,
-                    }}
-                    onClick={() => setAiGeneration(true)}
-                  >
-                    AI question
-                  </Typography>
+                  {aiQuestions?.length > 0 && (
+                    <>
+                      <Typography
+                        sx={{
+                          fontSize: "18px",
+                          fontWeight: 600,
+                        }}
+                      >
+                        Or
+                      </Typography>
+                      <Typography
+                        sx={{
+                          display: { sm: "block", xs: "none" },
+                          fontSize: "18px",
+                          fontWeight: 600,
+                        }}
+                        onClick={() => setAiGeneration(true)}
+                      >
+                        AI question
+                      </Typography>
+                    </>
+                  )}
                 </Box>
               </Box>
             </Box>
@@ -405,7 +394,11 @@ const chapterName = () => {
       <TransitionsDialog
         open={openCustomizationDialog}
         heading="Narrative Fusion"
-        description={buyPremium ? "This feature is only for Premium and Standard users":"It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"}
+        description={
+          buyPremium
+            ? "This feature is only for Premium and Standard users"
+            : "It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"
+        }
         cancel={handleCancel}
         proceed={proceedFusion}
         proceedText="Compile Original Text" // Customize the text for the "Yes" button
@@ -484,7 +477,7 @@ const chapterName = () => {
           <Image src={ModalImage} width={91} height={60} alt="logo" />
         </Box>
         <QuestionComponent
-          questions={questions}
+          questions={aiQuestions}
           handleNextQuestion={handleNextQuestion}
           Procced={null}
         />

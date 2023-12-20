@@ -3,7 +3,7 @@ import { useState } from "react";
 
 type Question = {
   id: number;
-  text: string;
+  title: string;
 };
 
 interface QuestionComponentProps {
@@ -29,11 +29,14 @@ const QuestionComponent = ({
       <Typography sx={{ fontSize: "30px", mb: "20px", fontWeight: 500 }}>
         AI Generated Question
       </Typography>
+      <Box>
+      <Box sx={{width: "550px", margin: 'auto'}}>
       <Typography sx={{ fontSize: "22px" }}>
-        {questions[currentQuestionIndex].text}
+        {questions[currentQuestionIndex].title}
       </Typography>
+      </Box>
       <Typography sx={{ fontSize: "14px" }}>
-        Question {currentQuestionIndex + 1} of {questions.length}
+        Remaining AI Questions: <span style={{fontWeight: 'bold'}}>{questions.length}</span>
       </Typography>
       <Box sx={{ display: "flex", gap: "15px", justifyContent: "center" }}>
         <ButtonBase
@@ -82,6 +85,7 @@ const QuestionComponent = ({
             Regenarate
           </ButtonBase>
         </Box>
+      </Box>
       </Box>
     </div>
   );
