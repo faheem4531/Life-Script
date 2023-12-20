@@ -79,7 +79,7 @@ const chapterName = () => {
       setIsPremium(true);
     } else {
       const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
-        createdAt.toString()
+        createdAt?.toString()
       );
       setIsPremium(isfreeTrial);
     }
@@ -128,7 +128,7 @@ const chapterName = () => {
     router.push(
       `/dashboard/narrative/loading?chapterId=${chapterId}&openai=${false}`
     );
-    dispatch(simpleChapter({ chapterId: chapterId.toString() }));
+    dispatch(simpleChapter({ chapterId: chapterId?.toString() }));
   };
 
   function calculateCompletionPercentage(array) {
@@ -150,13 +150,13 @@ const chapterName = () => {
       createQuestion({
         text: question,
         status: "Progress",
-        chapter: chapterId.toString(),
+        chapter: chapterId?.toString(),
       })
     )
       .unwrap()
       .then(() => {
         toast.success("Question added successfully");
-        dispatch(getChapterbyId({ id: chapterId.toString() }));
+        dispatch(getChapterbyId({ id: chapterId?.toString() }));
       })
       .catch(() => {
         toast.error("Failed to add question");
@@ -172,7 +172,7 @@ const chapterName = () => {
     // Join the room when the component mounts
     socket.emit("chatgpt", {
       token: localStorage.getItem("token"),
-      chapterId: chapterId.toString(),
+      chapterId: chapterId?.toString(),
       language: "en",
     });
     setgptSocket(true);
@@ -180,7 +180,7 @@ const chapterName = () => {
 
   useEffect(() => {
     chapterId &&
-      dispatch(getChapterbyId({ id: chapterId.toString() }))
+      dispatch(getChapterbyId({ id: chapterId?.toString() }))
         .then(() => setLoading(false))
         .catch(() => setLoading(false));
   }, [chapterId, questionChanged]);
@@ -211,14 +211,14 @@ const chapterName = () => {
     setMailQuestionModal(false);
     dispatch(
       openaiQuestion({
-        chapterId: chapterId.toString(),
+        chapterId: chapterId?.toString(),
         flag: "true",
         id: questionId,
       })
     )
       .unwrap()
       .then(() => {
-        dispatch(getChapterbyId({ id: chapterId.toString() }));
+        dispatch(getChapterbyId({ id: chapterId?.toString() }));
         if (emailQuestion?.questionTitle) {
           setEmailQuestion({ questionTitle: "", questionId: "" });
           router.push(`/dashboard/chapters/chapterName?chapterId=${chapterId}`);
@@ -229,7 +229,7 @@ const chapterName = () => {
   const handleSkip = (questionId) => {
     dispatch(
       openaiQuestion({
-        chapterId: chapterId.toString(),
+        chapterId: chapterId?.toString(),
         flag: "false",
         id: questionId,
       })
@@ -238,7 +238,7 @@ const chapterName = () => {
       .then(() => {
         if (emailQuestion?.questionTitle) {
           setEmailQuestion({ questionTitle: "", questionId: "" });
-          dispatch(getChapterbyId({ id: chapterId.toString() }));
+          dispatch(getChapterbyId({ id: chapterId?.toString() }));
           router.push(`/dashboard/chapters/chapterName?chapterId=${chapterId}`);
         }
       });
@@ -247,14 +247,14 @@ const chapterName = () => {
     setAiGeneration(false);
     dispatch(
       openaiQuestion({
-        chapterId: chapterId.toString(),
+        chapterId: chapterId?.toString(),
         flag: "false",
         id: questionId,
       })
     )
       .unwrap()
       .then(() => {
-        dispatch(getChapterbyId({ id: chapterId.toString() }));
+        dispatch(getChapterbyId({ id: chapterId?.toString() }));
       });
   };
   return (
@@ -543,7 +543,7 @@ const chapterName = () => {
         title=""
         handleClose={() => {
           setAiGeneration(false);
-          dispatch(getChapterbyId({ id: chapterId.toString() }));
+          dispatch(getChapterbyId({ id: chapterId?.toString() }));
         }}
         customStyles={{
           backgroundColor: "auto",
