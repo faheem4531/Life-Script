@@ -1,10 +1,12 @@
-import Welcome from "@/_assets/png/overview-welcome-card.png";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import styles from "./Custom.module.css";
-import Tick from "@/_assets/svg/Tick.svg";
 
-const SubscriptionHeader = ({title, description}) => {
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const SubscriptionHeader = ({ title, description }: Props) => {
   return (
     <Box
       sx={{

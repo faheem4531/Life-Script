@@ -283,19 +283,53 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             PaperProps={{
               style: {
                 maxHeight: ITEM_HEIGHT * 4.5,
-                width: "20ch",
+                width: "260px",
+                background: "transparent",
+                boxShadow: "none",
+                borderRadius: "5px",
               },
             }}
           >
-            {options.map((option) => (
-              <MenuItem
-                key={option}
-                selected={option === "Pyxis"}
-                onClick={() => handleClickOption(option)}
-              >
-                {option}
-              </MenuItem>
-            ))}
+            <Box
+              sx={{
+                position: "relative",
+                "&:after": {
+                  content: '""',
+                  width: "10px",
+                  height: "10px",
+                  borderBottom: "0.917px solid #197065",
+                  borderLeft: "0.917px solid #197065",
+                  position: "absolute",
+                  right: " 10.5px",
+                  top: "-5px",
+                  transform: "rotate(135deg)",
+                  zIndex: "1",
+                  bgcolor: "white",
+                },
+                bgcolor: "white",
+                boxShadow: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {options.map((option) => (
+                <MenuItem
+                  key={option}
+                  selected={option === "Pyxis"}
+                  onClick={() => handleClickOption(option)}
+                  sx={{
+                    borderBottom: "1.5px solid gray",
+                    p: "10px 15px",
+                    "&:hover": {
+                      background: "white",
+                      boxShadow: "none",
+                    },
+                    boxShadow: "none",
+                  }}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </Box>
           </Menu>
           {/* More option :end */}
         </Box>

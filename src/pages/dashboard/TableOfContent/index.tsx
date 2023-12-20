@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout/Layout";
-import ChooseTemplate from "@/components/dashboardComponent/ChooseTemplate";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import styles from "@/styles/Dashboard.module.css";
 import { Box, Typography } from "@mui/material";
@@ -32,7 +32,7 @@ const TableOfContent = () => {
     <div>
       <Layout>
         <Box className={styles.subContainer}>
-          <ChooseTemplate />
+          <SubscriptionHeader title="Table of Content" />
           <Box
             sx={{
               display: "flex",
@@ -48,18 +48,18 @@ const TableOfContent = () => {
                 p: "0px 30px",
                 display: "flex",
                 alignItems: "center",
-                height: "60px",
+                height: "50px",
                 borderRadius: "41.25px",
               }}
             >
-              <Box sx={{ cursor: "pointer" }}>
+              <Box sx={{ cursor: "pointer", mb: "-5px" }}>
                 <Image src={addIcon} alt="addicon" />
               </Box>
               <Box>
                 <Typography
                   sx={{
                     color: "#ffff",
-                    fontSize: "22.5px",
+                    fontSize: "20.5px",
                     fontWeight: 400,
                     display: { sm: "block", xs: "none" },
                     cursor: "pointer",
