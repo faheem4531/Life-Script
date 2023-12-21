@@ -71,6 +71,7 @@ const PaymentForm = ({packageName, price}) => {
     if (result.error) {
       setLoading(false);
       setIsError(true);
+      setStripeFailed(true);
     } 
     else {
       dispatch(
