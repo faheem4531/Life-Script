@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { store } from "../store/store";
-import { toast } from "react-toastify";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -32,28 +31,30 @@ export default function App({ Component, pageProps }: AppProps) {
     const timeDifference = new Date().getTime() - inputDate.getTime();
     return timeDifference < sevenDaysInMilliseconds;
   }
-  
 
   //check free trail expiration
   useEffect(() => {
     const jwt = require("jsonwebtoken");
-    const token = localStorage.getItem("token");
-if (token) {
-  const decodedToken = jwt.decode(token);
-  const accessRole = decodedToken.accessRole;
-  const createdAt = decodedToken.created_at;
-  const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt?.toString());
-  if (
-    accessRole !== "PremiumPlan" &&
-    accessRole !== "BasicPlan" &&
-    accessRole !== "StandardPlan" &&
-    !isfreeTrial
-  ) {
-    router.push("/dashboard/SubscribePlans");
-  }
-}
-  },[router, currentPath])
-  
+    const token = localStorage?.getItem("token");
+    if (token) {
+      const decodedToken = jwt?.decode(token);
+      const accessRole = decodedToken?.accessRole;
+      const createdAt = decodedToken?.created_at;
+      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
+        createdAt?.toString()
+      );
+      console.log("3333", isfreeTrial);
+      if (
+        accessRole !== "PremiumPlan" &&
+        accessRole !== "BasicPlan" &&
+        accessRole !== "StandardPlan" &&
+        !isfreeTrial
+      ) {
+        router.push("/dashboard/SubscribePlans");
+      }
+    }
+  }, [router, currentPath]);
+
   return (
     <StoreProvider store={store}>
       <NewApp>

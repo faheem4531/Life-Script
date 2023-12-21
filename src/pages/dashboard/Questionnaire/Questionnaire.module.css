@@ -1,0 +1,26 @@
+.QuestionnaireMain {
+  display: flex;
+}
+
+.QuestionnaireSideBar {
+  width: 140px;
+  height: 100vh;
+  background: url("../../../_assets//svg//QuestionnaireMainBg.svg");
+  background-position: left top;
+}
+
+.QuestionnaireLandingMain {
+  height: 100vh;
+  width: 100%;
+  background: url("../../../_assets//svg//QuestionnaireMainBg.svg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.QuestionnaireTabsMain {
+  flex: 1;
+  background: url("../../../_assets//svg//bgTree.svg") no-repeat white;
+  background-position: right bottom;
+  padding: 76px 105px;
+}

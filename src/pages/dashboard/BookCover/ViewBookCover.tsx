@@ -1,17 +1,17 @@
 import Layout from "@/components/Layout/Layout";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
+import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
 import { Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const ViewBookCover = () => {
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const router = useRouter();
   const coverData = useSelector(selectCoverData);
-  const {CoverNumber} = router.query;  
+  const { CoverNumber } = router.query;
   const [title, setTitle] = useState("");
   const [buttonLoading, setButtonLoading] = useState(false);
   const [subtitle, setSubtitle] = useState("");
@@ -22,16 +22,16 @@ const ViewBookCover = () => {
 
   useEffect(() => {
     dispatch(getBookCover());
-  },[]);
+  }, []);
   useEffect(() => {
-    if(coverData){
+    if (coverData) {
       setByline(coverData.byLine);
       setTitle(coverData.title);
       setSubtitle(coverData.subTitle);
       setImageLink(coverData.image);
       setSelectedColor(coverData.color);
     }
-  },[coverData])
+  }, [coverData]);
   return (
     <div>
       <Layout>

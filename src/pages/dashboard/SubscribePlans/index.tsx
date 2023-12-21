@@ -1,16 +1,14 @@
 import Layout from "@/components/Layout/Layout";
-import React, { useEffect, useState } from "react";
-import VerticalTabs from "./components/VerticalTabs";
-import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
-import { Box, Typography } from "@mui/material";
-import SubscriptionCard from "./components/SubscriptionCard";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
+import { Box } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
-  subPremiumList,
   subBasicList,
+  subPremiumList,
   subStandardList,
 } from "../../../utils/subscriptionLists";
-import { useRouter } from "next/router";
-import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
+import SubscriptionCard from "./components/SubscriptionCard";
 
 const SubscribePlan = () => {
   const router = useRouter();
@@ -28,8 +26,8 @@ const SubscribePlan = () => {
   useEffect(() => {
     const jwt = require("jsonwebtoken");
     const token = localStorage.getItem("token");
-    const decodedToken = jwt.decode(token);
-    const accessRole = decodedToken.accessRole;
+    const decodedToken = jwt?.decode(token);
+    const accessRole = decodedToken?.accessRole;
     if (accessRole === "PremiumPlan") {
       setDisableButton({
         standard: true,
@@ -109,9 +107,10 @@ const SubscribePlan = () => {
             buttonDisable={disableButton.basic}
             offerTitle="Basic Plan Offerings"
             onClick={(pkgPrice) => {
-              typeof window !== 'undefined' && router.push(
-                `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
-              );
+              typeof window !== "undefined" &&
+                router.push(
+                  `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
+                );
             }}
           />
           <SubscriptionCard
@@ -122,9 +121,10 @@ const SubscribePlan = () => {
             buttonDisable={disableButton.standard}
             offerTitle="Standard Plan Offerings"
             onClick={(pkgPrice) => {
-              typeof window !== 'undefined' && router.push(
-                `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=GoldPlan&price=${pkgPrice}`
-              );
+              typeof window !== "undefined" &&
+                router.push(
+                  `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=GoldPlan&price=${pkgPrice}`
+                );
             }}
           />
           <SubscriptionCard
@@ -135,9 +135,10 @@ const SubscribePlan = () => {
             buttonDisable={disableButton.premium}
             offerTitle="Premium Plan Offerings"
             onClick={(pkgPrice) => {
-              typeof window !== 'undefined' && router.push(
-                `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan&price=${pkgPrice}`
-              );
+              typeof window !== "undefined" &&
+                router.push(
+                  `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan&price=${pkgPrice}`
+                );
             }}
           />
         </Box>
