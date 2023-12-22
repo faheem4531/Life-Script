@@ -59,15 +59,12 @@ export default function TabOne({ onClick }) {
           <RadioGroup value={selectedValue} onChange={handleChange}>
             <FormControlLabel
               value="MySelf"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={selectedValue === "MySelf"}
+              control={<Radio   sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -83,15 +80,12 @@ export default function TabOne({ onClick }) {
             />
             <FormControlLabel
               value="BelovedOne"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={selectedValue === "BelovedOne"}
+              control={<Radio    sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -107,15 +101,12 @@ export default function TabOne({ onClick }) {
             />
             <FormControlLabel
               value="SomeOne"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={selectedValue === "SomeOne"}
+              control={<Radio   sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{

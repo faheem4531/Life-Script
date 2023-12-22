@@ -8,7 +8,16 @@ import TabThree from "./qaTabThree";
 import TabTwo from "./qaTabTwo";
 
 const Questionnaire = () => {
-  const [qaTab, setQaTab] = useState(1);
+  const [qaTab, setQaTab] = useState(3);
+  const [userData, setUserData] = useState({
+    name: '',
+    questionAskType: '',
+    bookUseFor: '',
+    personalizedQuestion: '',
+    gender: 'Male',
+    martialStatus: '',
+    dateOfBirth: '',
+  });
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Box className={styles.QuestionnaireMain}>

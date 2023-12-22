@@ -64,15 +64,12 @@ export default function TabThree({ onClick }) {
           <RadioGroup value={personalQuestion} onChange={handlePersonalInfo}>
             <FormControlLabel
               value="ChronologicalOrder"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={personalQuestion === "ChronologicalOrder"}
+              control={<Radio   sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -89,15 +86,12 @@ export default function TabThree({ onClick }) {
             />
             <FormControlLabel
               value="RandomOrder"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={personalQuestion === "RandomOrder"}
+              control={<Radio    sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -130,15 +124,12 @@ export default function TabThree({ onClick }) {
           >
             <FormControlLabel
               value="ONEDAY"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={questionFrequency === "ONEDAY"}
+              control={<Radio   sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -154,15 +145,12 @@ export default function TabThree({ onClick }) {
             />
             <FormControlLabel
               value="TWODAYS"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={questionFrequency === "TWODAYS"}
+              control={<Radio    sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -178,15 +166,12 @@ export default function TabThree({ onClick }) {
             />
             <FormControlLabel
               value="FIVEDAYS"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={questionFrequency === "FIVEDAYS"}
+              control={<Radio    sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
@@ -202,15 +187,12 @@ export default function TabThree({ onClick }) {
             />
             <FormControlLabel
               value="SEVENDAYS"
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
+              checked={questionFrequency === "SEVENDAYS"}
+              control={<Radio    sx={{
+                '&.Mui-checked .MuiSvgIcon-root': {
+                  fill: 'rgba(25, 112, 101, 1)',
+                },
+              }} />}
               label={
                 <Typography
                   sx={{
