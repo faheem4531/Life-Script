@@ -10,8 +10,8 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Image from "next/image";
 import { useState } from "react";
-import backButton from "../../../../src/_assets/svg/back.svg";
-import nextButton from "../../../../src/_assets/svg/next.svg";
+import backArrow from "../../../_assets/svg/left.svg";
+import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
 export default function TabTwo({ onClick }) {
   const [maritalStatus, setMaritalStatus] = useState("Single");
@@ -189,14 +189,42 @@ export default function TabTwo({ onClick }) {
           right: "120px",
           display: "flex",
           justifyContent: "flex-end",
+          alignItems: "center",
           gap: 2,
         }}
       >
-        <Button onClick={onClick}>
-          <Image src={backButton} alt="Next" />
+        <Button
+          onClick={onClick}
+          sx={{
+            width: "176px",
+            borderRadius: "26.267px",
+            border: " 0.71px solid #197065",
+            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+            color: "#197065",
+            textTransform: "capitalize",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <Image src={backArrow} alt="backArrow" /> Back
         </Button>
-        <Button>
-          <Image src={nextButton} alt="Next" />
+        <Button
+          onClick={onClick}
+          sx={{
+            width: "176px",
+            borderRadius: "26.267px",
+            border: " 0.71px solid #197065",
+            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+            color: "white",
+            textTransform: "capitalize",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            bgcolor: "#197065",
+          }}
+        >
+          Next <Image src={NextArrow} alt="NextArrow" />
         </Button>
       </Box>
     </>

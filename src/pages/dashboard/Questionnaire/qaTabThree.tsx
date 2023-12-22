@@ -1,21 +1,28 @@
-import { Box, Button, FormControlLabel, RadioGroup, Typography } from "@mui/material";
-import Image from "next/image";
-import backButton from "../../../../src/_assets/svg/back.svg";
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
 import Radio from "@mui/material/Radio";
-import nextButton from "../../../../src/_assets/svg/next.svg"
+import Image from "next/image";
 import { useState } from "react";
+import backArrow from "../../../_assets/svg/left.svg";
+import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
-export default function TabThree({onClick}) {
-    const [personalQuestion, setPersonalQuestion] = useState("ChronologicalOrder");
-    const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
-    console.log("4444441",personalQuestion, "444442",questionFrequency);
-  
-    const handlePersonalInfo = (event) => {
-      setPersonalQuestion(event.target.value);
-    };
-    const handleQuestionFrequency = (event) => {
-        setQuestionFrequency(event.target.value);
-      };
+export default function TabThree({ onClick }) {
+  const [personalQuestion, setPersonalQuestion] =
+    useState("ChronologicalOrder");
+  const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
+  console.log("4444441", personalQuestion, "444442", questionFrequency);
+
+  const handlePersonalInfo = (event) => {
+    setPersonalQuestion(event.target.value);
+  };
+  const handleQuestionFrequency = (event) => {
+    setQuestionFrequency(event.target.value);
+  };
   return (
     <>
       <Box
@@ -53,30 +60,53 @@ export default function TabThree({onClick}) {
         >
           Details for personalized questions
         </Typography>
-        <Box sx={{ mt:3, display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
           <RadioGroup value={personalQuestion} onChange={handlePersonalInfo}>
             <FormControlLabel
               value="ChronologicalOrder"
-              control={<Radio   sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
-                <Typography sx={{ ml: 2, fontSize: "24px", fontWeight: 400, color: "rgba(0, 0, 0, 0.6)" }}>
-                  Chronological order (starting from early childhood till current age)
+                <Typography
+                  sx={{
+                    ml: 2,
+                    fontSize: "24px",
+                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
+                  Chronological order (starting from early childhood till
+                  current age)
                 </Typography>
               }
             />
             <FormControlLabel
               value="RandomOrder"
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
-                <Typography sx={{ ml: 2, fontSize: "24px", fontWeight: 400, color: "rgba(0, 0, 0, 0.6)" }}>
+                <Typography
+                  sx={{
+                    ml: 2,
+                    fontSize: "24px",
+                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
                   Random order
                 </Typography>
               }
@@ -93,56 +123,103 @@ export default function TabThree({onClick}) {
         >
           What should be the frequency of the questions?
         </Typography>
-        <Box sx={{ mt:3, display: "flex", flexDirection: "column", gap: 2 }}>
-          <RadioGroup value={questionFrequency} onChange={handleQuestionFrequency}>
+        <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
+          <RadioGroup
+            value={questionFrequency}
+            onChange={handleQuestionFrequency}
+          >
             <FormControlLabel
               value="ONEDAY"
-              control={<Radio   sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
-                <Typography sx={{ ml: 2, fontSize: "24px", fontWeight: 400, color: "rgba(0, 0, 0, 0.6)" }}>
+                <Typography
+                  sx={{
+                    ml: 2,
+                    fontSize: "24px",
+                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
                   Once in a day
                 </Typography>
               }
             />
             <FormControlLabel
               value="TWODAYS"
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
-                <Typography sx={{ ml: 2, fontSize: "24px", fontWeight: 400, color: "rgba(0, 0, 0, 0.6)" }}>
+                <Typography
+                  sx={{
+                    ml: 2,
+                    fontSize: "24px",
+                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
                   Once in 2 days
                 </Typography>
               }
             />
             <FormControlLabel
               value="FIVEDAYS"
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
-                <Typography sx={{ ml: 2, fontSize: "24px", fontWeight: 400, color: "rgba(0, 0, 0, 0.6)" }}>
+                <Typography
+                  sx={{
+                    ml: 2,
+                    fontSize: "24px",
+                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
                   Once in 5 days
                 </Typography>
               }
             />
             <FormControlLabel
               value="SEVENDAYS"
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
-                <Typography sx={{ ml: 2, fontSize: "24px", fontWeight: 400, color: "rgba(0, 0, 0, 0.6)" }}>
+                <Typography
+                  sx={{
+                    ml: 2,
+                    fontSize: "24px",
+                    fontWeight: 400,
+                    color: "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
                   Once in a week
                 </Typography>
               }
@@ -157,13 +234,43 @@ export default function TabThree({onClick}) {
           right: "120px",
           display: "flex",
           justifyContent: "flex-end",
+          alignItems: "center",
           gap: 2,
         }}
       >
-        <Button onClick={onClick}>
-        <Image src={backButton} alt="Next" />
+        <Button
+          onClick={onClick}
+          sx={{
+            width: "176px",
+            borderRadius: "26.267px",
+            border: " 0.71px solid #197065",
+            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+            color: "#197065",
+            textTransform: "capitalize",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
+        >
+          <Image src={backArrow} alt="backArrow" /> Back
         </Button>
-        <Button><Image src={nextButton} alt="Next" /></Button>
+        <Button
+          onClick={onClick}
+          sx={{
+            width: "176px",
+            borderRadius: "26.267px",
+            border: " 0.71px solid #197065",
+            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+            color: "white",
+            textTransform: "capitalize",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            bgcolor: "#197065",
+          }}
+        >
+          Take me in <Image src={NextArrow} alt="NextArrow" />
+        </Button>
       </Box>
     </>
   );
