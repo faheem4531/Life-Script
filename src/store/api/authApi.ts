@@ -147,6 +147,21 @@ export async function updatePasswordApi(data: UpdatePasswordData) {
   }
 }
 
+export async function updateUserProfileApi(data: any) {
+  try {
+    const userId = localStorage.getItem("userId"); 
+    const res = await api.put(`users/${userId}`, data);
+    return res.data.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function signupApi(data: SignupData) {
   localStorage.clear();
   try {

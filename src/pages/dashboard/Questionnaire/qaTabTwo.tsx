@@ -5,19 +5,45 @@ import {
   MenuItem,
   Select,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DatePicker } from "@mui/x-date-pickers";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
-export default function TabTwo({ onClick }) {
+export default function TabTwo({ onClickBack, onClickNext, data }) {
   const [maritalStatus, setMaritalStatus] = useState("Single");
   const [gender, setGender] = useState("Male");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState("");
+  const [showTooltip, setShowTooltip] = useState(false);
   const [name, setName] = useState("");
+  
+  useEffect(() => {
+    if(data?.name){
+        setGender(data.gender);
+        setMaritalStatus(data.martialStatus);
+        setSelectedDate(data.dateOfBirth);
+        setName(data.name);
+    }
+  },[data])
+
+  const handleButtonClick = () => {
+    setShowTooltip(false);
+    if (!name || !maritalStatus || !gender || !selectedDate) {
+      setShowTooltip(true);
+    } else {
+      // Continue with your button click logic
+      onClickNext({
+        name: name,
+        maritalStatus: maritalStatus,
+        gender: gender,
+        dob: selectedDate
+      });
+    }
+  };
 
   return (
     <>
@@ -194,7 +220,7 @@ export default function TabTwo({ onClick }) {
         }}
       >
         <Button
-          onClick={onClick}
+          onClick={onClickBack}
           sx={{
             width: "176px",
             borderRadius: "26.267px",
@@ -209,8 +235,13 @@ export default function TabTwo({ onClick }) {
         >
           <Image src={backArrow} alt="backArrow" /> Back
         </Button>
+        <Tooltip
+        open={showTooltip}
+        onClose={()=>setShowTooltip(false)}
+        title="Please fill in all fields before proceeding."
+      >
         <Button
-          onClick={onClick}
+          onClick={handleButtonClick}
           sx={{
             width: "176px",
             borderRadius: "26.267px",
@@ -222,10 +253,15 @@ export default function TabTwo({ onClick }) {
             alignItems: "center",
             gap: "8px",
             bgcolor: "#197065",
+            ":hover":{
+                bgcolor: "#197065",
+            }
           }}
         >
           Next <Image src={NextArrow} alt="NextArrow" />
         </Button>
+      </Tooltip>
+        
       </Box>
     </>
   );

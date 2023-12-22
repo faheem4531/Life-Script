@@ -20,6 +20,7 @@ import {
   updatePasswordApi,
   verifyEmailApi,
   stripeDoneApi,
+  updateUserProfileApi
 } from "../api/authApi";
 
 const initialState = {
@@ -31,6 +32,18 @@ export const changePassword = createAsyncThunk<UserData, ChangePassword>(
   async (data) => {
     try {
       const response = await changePasswordApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk<UserData, any>(
+  "user/user-profile",
+  async (data) => {
+    try {
+      const response = await updateUserProfileApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

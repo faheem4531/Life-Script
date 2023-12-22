@@ -7,12 +7,16 @@ import {
 } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
-export default function TabOne({ onClick }) {
-  const [selectedValue, setSelectedValue] = useState("MySelf");
+export default function TabOne({ onClick, data }) {
+  const [selectedValue, setSelectedValue] = useState();
   console.log("333344", selectedValue);
+
+  useEffect(() => {
+    setSelectedValue(data || "MySelf");
+  },[data])
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -135,7 +139,7 @@ export default function TabOne({ onClick }) {
         }}
       >
         <Button
-          onClick={onClick}
+          onClick={()=>onClick(selectedValue)}
           sx={{
             width: "176px",
             borderRadius: "26.267px",
@@ -147,6 +151,9 @@ export default function TabOne({ onClick }) {
             alignItems: "center",
             gap: "8px",
             bgcolor: "#197065",
+            ":hover":{
+                bgcolor: "#197065",
+            }
           }}
         >
           Next <Image src={NextArrow} alt="NextArrow" />

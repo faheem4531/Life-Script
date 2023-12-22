@@ -7,15 +7,21 @@ import {
 } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
-export default function TabThree({ onClick }) {
+export default function TabThree({ onClickBack, onClickNext, data }) {
   const [personalQuestion, setPersonalQuestion] =
     useState("ChronologicalOrder");
   const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
-  console.log("4444441", personalQuestion, "444442", questionFrequency);
+
+  useEffect(() => {
+    if(data?.personalizedQuestion){
+        setPersonalQuestion(data.personalizedQuestion);
+        setQuestionFrequency(data.questionAskType);
+    }
+  },[data])
 
   const handlePersonalInfo = (event) => {
     setPersonalQuestion(event.target.value);
@@ -65,11 +71,15 @@ export default function TabThree({ onClick }) {
             <FormControlLabel
               value="ChronologicalOrder"
               checked={personalQuestion === "ChronologicalOrder"}
-              control={<Radio   sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
                 <Typography
                   sx={{
@@ -87,11 +97,15 @@ export default function TabThree({ onClick }) {
             <FormControlLabel
               value="RandomOrder"
               checked={personalQuestion === "RandomOrder"}
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
                 <Typography
                   sx={{
@@ -125,11 +139,15 @@ export default function TabThree({ onClick }) {
             <FormControlLabel
               value="ONEDAY"
               checked={questionFrequency === "ONEDAY"}
-              control={<Radio   sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
                 <Typography
                   sx={{
@@ -146,11 +164,15 @@ export default function TabThree({ onClick }) {
             <FormControlLabel
               value="TWODAYS"
               checked={questionFrequency === "TWODAYS"}
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
                 <Typography
                   sx={{
@@ -167,11 +189,15 @@ export default function TabThree({ onClick }) {
             <FormControlLabel
               value="FIVEDAYS"
               checked={questionFrequency === "FIVEDAYS"}
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
                 <Typography
                   sx={{
@@ -188,11 +214,15 @@ export default function TabThree({ onClick }) {
             <FormControlLabel
               value="SEVENDAYS"
               checked={questionFrequency === "SEVENDAYS"}
-              control={<Radio    sx={{
-                '&.Mui-checked .MuiSvgIcon-root': {
-                  fill: 'rgba(25, 112, 101, 1)',
-                },
-              }} />}
+              control={
+                <Radio
+                  sx={{
+                    "&.Mui-checked .MuiSvgIcon-root": {
+                      fill: "rgba(25, 112, 101, 1)",
+                    },
+                  }}
+                />
+              }
               label={
                 <Typography
                   sx={{
@@ -221,7 +251,7 @@ export default function TabThree({ onClick }) {
         }}
       >
         <Button
-          onClick={onClick}
+          onClick={onClickBack}
           sx={{
             width: "176px",
             borderRadius: "26.267px",
@@ -237,7 +267,7 @@ export default function TabThree({ onClick }) {
           <Image src={backArrow} alt="backArrow" /> Back
         </Button>
         <Button
-          onClick={onClick}
+          onClick={()=>onClickNext({personal: personalQuestion, frequency: questionFrequency})}
           sx={{
             width: "176px",
             borderRadius: "26.267px",
@@ -249,6 +279,9 @@ export default function TabThree({ onClick }) {
             alignItems: "center",
             gap: "8px",
             bgcolor: "#197065",
+            ":hover":{
+                bgcolor: "#197065",
+            }
           }}
         >
           Take me in <Image src={NextArrow} alt="NextArrow" />
