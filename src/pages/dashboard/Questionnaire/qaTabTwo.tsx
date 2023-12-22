@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -8,8 +7,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Image from "next/image";
+import { useState } from "react";
 import backButton from "../../../../src/_assets/svg/back.svg";
 import nextButton from "../../../../src/_assets/svg/next.svg";
 
@@ -58,30 +58,50 @@ export default function TabTwo({ onClick }) {
         </Typography>
       </Box>
       <Box sx={{ p: 2 }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           {/* First row with two text fields */}
-          <Grid container item xs={12} spacing={2}>
-            <Grid item xs={6}>
+          <Grid container item xs={12} gap={10}>
+            <Grid item xs={5.5} mt={"10px"}>
               <Box>
+                <Typography
+                  sx={{
+                    fontSize: "20.142px",
+                    fontWeight: 500,
+                    lineHeight: "20px",
+                    color: "#171725",
+                  }}
+                >
+                  Full Name
+                </Typography>
                 <TextField
                   variant="outlined"
                   placeholder="Full Name"
                   name="email"
                   value={name}
-                    onChange={(e) => setName(e.target.value) }
+                  onChange={(e) => setName(e.target.value)}
                   sx={{
                     marginTop: "10px",
                     "& .MuiOutlinedInput-root": {
                       borderRadius: "50px",
                       backgroundColor: "white",
                     },
-                    width: { sm: "450px", xs: "250px" },
+                    width: "100%",
                   }}
                 />
               </Box>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5.5} mt={"10px"}>
               <Box>
+                <Typography
+                  sx={{
+                    fontSize: "20.142px",
+                    fontWeight: 500,
+                    lineHeight: "20px",
+                    color: "#171725",
+                  }}
+                >
+                  Marital Status
+                </Typography>
                 <Select
                   placeholder="Marital Status"
                   value={maritalStatus}
@@ -90,7 +110,7 @@ export default function TabTwo({ onClick }) {
                     marginTop: "10px",
                     borderRadius: "50px",
                     backgroundColor: "white",
-                    width: { sm: "450px", xs: "250px" },
+                    width: "100%",
                   }}
                 >
                   <MenuItem value="Single">Single</MenuItem>
@@ -101,9 +121,19 @@ export default function TabTwo({ onClick }) {
           </Grid>
 
           {/* Second row with two text fields */}
-          <Grid container item xs={12} spacing={2}>
-            <Grid item xs={6}>
+          <Grid container item xs={12} spacing={2} gap={10}>
+            <Grid item xs={5.5} mt={"10px"}>
               <Box>
+                <Typography
+                  sx={{
+                    fontSize: "20.142px",
+                    fontWeight: 500,
+                    lineHeight: "20px",
+                    color: "#171725",
+                  }}
+                >
+                  Gender
+                </Typography>
                 <Select
                   placeholder="Gender"
                   value={gender}
@@ -111,7 +141,7 @@ export default function TabTwo({ onClick }) {
                   sx={{
                     marginTop: "10px",
                     backgroundColor: "white",
-                    width: { sm: "450px", xs: "250px" },
+                    width: "100%",
                     borderRadius: "50px",
                   }}
                 >
@@ -121,21 +151,33 @@ export default function TabTwo({ onClick }) {
                 </Select>
               </Box>
             </Grid>
-            <Grid item xs={6}>
-              <DatePicker
-                value={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                sx={{
-                  marginTop: "10px",
-                  backgroundColor: "white",
-                  width: { sm: "450px", xs: "250px" },
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderRadius: '50px',
+            <Grid item xs={5.5} mt={"10px"}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: "20.142px",
+                    fontWeight: 500,
+                    lineHeight: "20px",
+                    color: "#171725",
+                  }}
+                >
+                  Date of Birth
+                </Typography>
+                <DatePicker
+                  value={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  sx={{
+                    marginTop: "10px",
+                    backgroundColor: "white",
+                    width: "100%",
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderRadius: "50px",
+                      },
                     },
-                  },
-                }}
-              />
+                  }}
+                />
+              </Box>
             </Grid>
           </Grid>
         </Grid>
@@ -151,9 +193,11 @@ export default function TabTwo({ onClick }) {
         }}
       >
         <Button onClick={onClick}>
-        <Image src={backButton} alt="Next" />
+          <Image src={backButton} alt="Next" />
         </Button>
-        <Button><Image src={nextButton} alt="Next" /></Button>
+        <Button>
+          <Image src={nextButton} alt="Next" />
+        </Button>
       </Box>
     </>
   );

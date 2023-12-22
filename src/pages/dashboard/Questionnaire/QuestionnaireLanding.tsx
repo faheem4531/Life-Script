@@ -1,14 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { useState } from "react";
 import styles from "./Questionnaire.module.css";
 import TabOne from "./qaTabOne";
-import TabTwo from "./qaTabTwo";
 import TabThree from "./qaTabThree";
-import { useState } from "react";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import TabTwo from "./qaTabTwo";
 
 const Questionnaire = () => {
-  const [qaTab, setQaTab] = useState(2);
+  const [qaTab, setQaTab] = useState(1);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Box className={styles.QuestionnaireMain}>
