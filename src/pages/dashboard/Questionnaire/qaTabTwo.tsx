@@ -17,9 +17,10 @@ import NextArrow from "../../../_assets/svg/rightArrow.svg";
 export default function TabTwo({ onClickBack, onClickNext, data }) {
   const [maritalStatus, setMaritalStatus] = useState("Single");
   const [gender, setGender] = useState("Male");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState();
   const [showTooltip, setShowTooltip] = useState(false);
   const [name, setName] = useState("");
+  const maxDate = new Date();
   
   useEffect(() => {
     if(data?.name){
@@ -173,7 +174,7 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
                 >
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Special">Special</MenuItem>
+                  <MenuItem value="Other">Special</MenuItem>
                 </Select>
               </Box>
             </Grid>

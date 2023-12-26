@@ -3,6 +3,8 @@ import { Provider as StoreProvider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import "../styles/globals.css";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import NewApp from "./_newApp";
 
 import { usePathname } from "next/navigation";
@@ -43,7 +45,6 @@ export default function App({ Component, pageProps }: AppProps) {
       const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
         createdAt?.toString()
       );
-      console.log("3333", isfreeTrial);
       if (
         accessRole !== "PremiumPlan" &&
         accessRole !== "BasicPlan" &&
@@ -57,9 +58,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <StoreProvider store={store}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
       <NewApp>
         <Component {...pageProps} />
       </NewApp>
+      </LocalizationProvider>
     </StoreProvider>
   );
 }

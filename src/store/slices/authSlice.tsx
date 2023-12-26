@@ -20,11 +20,12 @@ import {
   updatePasswordApi,
   verifyEmailApi,
   stripeDoneApi,
-  updateUserProfileApi
+  updateUserProfileApi,
+  getUserProfileApi
 } from "../api/authApi";
 
 const initialState = {
-  user: {} as UserData,
+  user: {} as any,
 };
 
 export const changePassword = createAsyncThunk<UserData, ChangePassword>(
@@ -44,6 +45,19 @@ export const updateUserProfile = createAsyncThunk<UserData, any>(
   async (data) => {
     try {
       const response = await updateUserProfileApi(data);
+      
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getUserProfile = createAsyncThunk<any[], void >(
+  "user/get-user-profile",
+  async () => {
+    try {
+      const response = await getUserProfileApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -184,12 +198,15 @@ export const authSlice = createSlice({
     builder.addCase(login.fulfilled, (state, action) => {
       state.user = action.payload;
     });
+    builder.addCase(getUserProfile.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
   },
 });
 
 export const {} = authSlice.actions;
 
-export const selectUser = (state: { auth: { user: UserData } }) =>
+export const selectUser = (state: { auth: { user: any } }) =>
   state.auth.user;
 //   export const selectUser = (state: { auth: AuthState }) => state.auth.user;
 

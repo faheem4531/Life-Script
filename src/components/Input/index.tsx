@@ -9,6 +9,7 @@ interface InputWithLabelProps {
   border?: string;
   height?: string;
   color?: string;
+  value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 }
@@ -18,6 +19,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
   placeholder,
   borderRadius,
   bgColor,
+  value,
   border = "1px solid #186F65",
   height = "56px",
   color,
@@ -41,6 +43,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
         name={placeholder}
         onChange={onChange}
         disabled={disabled}
+        value={value}
         sx={{
           "& .MuiOutlinedInput-root": {
             borderRadius: borderRadius,

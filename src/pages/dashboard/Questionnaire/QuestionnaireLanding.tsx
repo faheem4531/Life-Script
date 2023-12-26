@@ -1,6 +1,4 @@
 import { Box } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./Questionnaire.module.css";
@@ -23,7 +21,7 @@ const Questionnaire = () => {
     martialStatus: "",
     dateOfBirth: "",
   });
-  const handleTabOneClick = (val) => {
+    const handleTabOneClick = (val) => {
     setUserData({
       ...userData,
       bookUseFor: val,
@@ -55,17 +53,17 @@ const Questionnaire = () => {
         personalizedQuestion: val.personal,
         gender: userData?.gender,
         martialStatus: userData?.martialStatus,
-        dateOfBirth: userData?.dateOfBirth.toString().substring(0, 15),
+        dateOfBirth: userData?.dateOfBirth,
       })
     )
       .unwrap()
       .then(() => {
         const username = localStorage.getItem("username");
         router.push(`/getStarted/getTitle?userName=${username}`);
-      });
+      })
+      .catch(() => {});
   };
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Box className={styles.QuestionnaireMain}>
         <Box className={styles.QuestionnaireSideBar}></Box>
         <Box className={styles.QuestionnaireTabsMain}>
@@ -86,7 +84,6 @@ const Questionnaire = () => {
           )}
         </Box>
       </Box>
-    </LocalizationProvider>
   );
 };
 
