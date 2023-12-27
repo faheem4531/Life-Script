@@ -59,7 +59,7 @@ const ProfileSetting = () => {
       gendetr: gender,
     };
     const updateData = filterEmptyProperties(fullData);
-    dispatch(updateUserProfile(updateData))
+    dispatch(updateUserProfile(fullData))
       .unwrap()
       .then(() => toast.success("Profile updated successfully"))
       .catch(() => toast.error("Failed to update profile"));

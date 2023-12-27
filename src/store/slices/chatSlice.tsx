@@ -39,7 +39,10 @@ import {
   updateBookCoverApi,
   openaiQuestionApi,
   getOpenaiQuestionApi,
+  createtocApi,
+  getTocApi,
 } from "../api/chatApi";
+import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
 interface State {
   chats: any[];
@@ -50,6 +53,7 @@ interface State {
   coverData: any[];
   chapter: any;
   chapterLoading: any;
+  tocData: any;
 }
 
 const initialState: State = {
@@ -60,6 +64,7 @@ const initialState: State = {
   notifications: [],
   coverData: [],
   chapter: {},
+  tocData: {},
   chapterLoading: "",
 };
 
@@ -141,6 +146,31 @@ export const getChapterNotifications = createAsyncThunk<any[], void>(
     }
   }
 );
+
+export const getToc = createAsyncThunk<any[], void>(
+  "chat/get-toc",
+  async () => {
+    try {
+      const response = await getTocApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const createToc = createAsyncThunk<UserData, any>(
+  "chat/create-toc",
+  async (data: any) => {
+    try {
+      const response = await createtocApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 
 
 export const updateChapterResponse = createAsyncThunk<UserData, any>(
@@ -505,6 +535,9 @@ export const chatSlice = createSlice({
     builder.addCase(getChapterNotifications.fulfilled, (state, action) => {
       state.notifications = action.payload;
     });
+    builder.addCase(getToc.fulfilled, (state, action) => {
+      state.tocData = action.payload;
+    });
     builder.addCase(getBookCover.fulfilled, (state, action) => {
       state.coverData = action.payload;
     });
@@ -533,6 +566,7 @@ export const selectCoverData = (state: { chat: any }) => state.chat.coverData;
 export const selectChapterNotification = (state: { chat: any }) =>
   state.chat.notifications;
 export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
+export const selectTocData = (state: {chat: any}) => state.chat.tocData;
 export const selectChapter = (state: { chat: any }) => state.chat.chapter;
 export const selectTemplates = (state: { chat: any }) => state.chat.templates;
 export const isChapterLoaded = (state: { chat: any }) =>

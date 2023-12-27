@@ -4,8 +4,13 @@ import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCov
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
 import { Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
 import { useDispatch, useSelector } from "react-redux";
+import { renderToString } from "react-dom/server";
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 const ViewBookCover = () => {
   const dispatch: any = useDispatch();
@@ -17,12 +22,14 @@ const ViewBookCover = () => {
   const [subtitle, setSubtitle] = useState("");
   const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
+  const elementRef = useRef(null);
 
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
 
   useEffect(() => {
     dispatch(getBookCover());
   }, []);
+
   useEffect(() => {
     if (coverData) {
       setByline(coverData.byLine);
@@ -32,6 +39,26 @@ const ViewBookCover = () => {
       setSelectedColor(coverData.color);
     }
   }, [coverData]);
+  
+  const generatePDF = () => {
+    htmlToImage.toPng(document.getElementById('bookcoverpdf'), { quality: 1 })
+      .then((dataUrl) => 
+      {
+        const pdf = new jsPDF('l', 'in', [14.5, 10]);
+        const imgProps = pdf.getImageProperties(dataUrl);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        // pdf.internal.pageSize.width = imgProps.width;
+        // pdf.internal.pageSize.height = imgProps.height;
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight); // Corrected parameter
+        console.log("pdfwidth2",pdf.internal.pageSize.getWidth(), "22", pdf.internal.pageSize.getHeight());
+
+        pdf.save("download.pdf");
+      });
+  };
+  
+
+
   return (
     <div>
       <Layout>
@@ -62,7 +89,7 @@ const ViewBookCover = () => {
                   color: "#197065",
                   textTransform: "capitalize",
                 }}
-                onClick={() => {}}
+                onClick={generatePDF}
               >
                 Print Book
               </Button>
@@ -89,7 +116,7 @@ const ViewBookCover = () => {
                 Edit Cover
               </Button>
             </Box>
-            <Box>
+            <Box ref={elementRef} id={"bookcoverpdf"}>
               <SelectBookCoverCard
                 landScape={CoverNumber?.toString()}
                 title={title}

@@ -22,7 +22,6 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   ColourPalette = "#197065",
   droppedImage,
 }) => {
-  console.log("333", landScape);
 
   const currentPath = usePathname();
   console.log("currentPath", currentPath);

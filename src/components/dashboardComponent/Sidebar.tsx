@@ -224,7 +224,7 @@ const SideBar = () => {
           </a>
         </Box>
         <Box>
-          <a className={styles.link}>
+          <a className={styles.link} onClick={() => router.push("/dashboard/TableOfContent")}>
             <Image alt="icon" src={FaqWhite} />
             Table of contents
           </a>

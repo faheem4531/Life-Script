@@ -1,14 +1,16 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { createToc, getToc, selectTocData } from "@/store/slices/chatSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const DraggableList = () => {
-  const [items, setItems] = useState([
-    { id: "1", content: "Item 1" },
-    { id: "2", content: "Item 2" },
-    { id: "3", content: "Item 3" },
-    // Add more items here...
-  ]);
+const DraggableList = ({ data }) => {
+  const dispatch: any = useDispatch();
+  const [items, setItems] = useState([]);
+  console.log("items", items);
+  useEffect(() => {
+    data && setItems(data);
+  }, [data]);
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -16,6 +18,15 @@ const DraggableList = () => {
     const updatedItems = Array.from(items);
     const [reorderedItem] = updatedItems.splice(result.source.index, 1);
     updatedItems.splice(result.destination.index, 0, reorderedItem);
+    const updatedItemsWithIndex = updatedItems.map((item, index) => ({
+      ...item,
+      index: index + 1,
+    }));
+
+    dispatch(createToc({ tableOfContent: updatedItemsWithIndex }))
+      .unwrap()
+      .then(() => dispatch(getToc()))
+      .catch(() => {});
 
     setItems(updatedItems);
   };
@@ -26,7 +37,11 @@ const DraggableList = () => {
         {(provided) => (
           <ul {...provided.droppableProps} ref={provided.innerRef}>
             {items.map((item, index) => (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
+              <Draggable
+                key={item.chapterId}
+                draggableId={item.chapterId}
+                index={index}
+              >
                 {(provided) => (
                   <Box
                     ref={provided.innerRef}
@@ -56,7 +71,7 @@ const DraggableList = () => {
                             fontWeight: 600,
                           }}
                         >
-                          {index + 1}
+                          {item?.index}
                         </Typography>
                         <Typography
                           sx={{
@@ -64,7 +79,7 @@ const DraggableList = () => {
                             lineHeight: "14.539px",
                           }}
                         >
-                          My First Chapter.
+                          {item?.title}
                         </Typography>
                       </Box>
                     </Box>
