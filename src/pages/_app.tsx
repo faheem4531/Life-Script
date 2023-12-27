@@ -51,7 +51,8 @@ export default function App({ Component, pageProps }: AppProps) {
         accessRole !== "StandardPlan" &&
         !isfreeTrial &&
         currentPath !== "/verify/verificationSent" &&
-        currentPath !== "/verify"
+        currentPath !== "/verify" &&
+        currentPath !=="/_auth/Auth"
       ) {
         router.push("/dashboard/SubscribePlans");
       }
