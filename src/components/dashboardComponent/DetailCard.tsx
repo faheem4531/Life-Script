@@ -225,7 +225,7 @@ export default function DetailCard({
             </Box>
             {router.asPath === "/dashboard/chapters/completedChapter" ? "" : ""}
             {isChapter &&
-            router.asPath === "/dashboard/chapters/completedChapter" ? (
+            router.asPath === "/dashboard/chapters/completedChapter" || router.asPath === "/dashboard/templates"  ? (
               ""
             ) : (
               <Box

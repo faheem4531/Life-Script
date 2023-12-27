@@ -15,6 +15,7 @@ import { store } from "../store/store";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
+  console.log('path', currentPath);
   const [chapterCompleted, setChapterCompleted] = useState(false);
 
   //verify auth
@@ -28,13 +29,12 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router, currentPath]);
 
   function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
-    const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+    const sevenDaysInMilliseconds = 17 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
     const inputDate = new Date(timeString);
     const timeDifference = new Date().getTime() - inputDate.getTime();
     return timeDifference < sevenDaysInMilliseconds;
   }
 
-  //check free trail expiration
   useEffect(() => {
     const jwt = require("jsonwebtoken");
     const token = localStorage?.getItem("token");
@@ -49,7 +49,9 @@ export default function App({ Component, pageProps }: AppProps) {
         accessRole !== "PremiumPlan" &&
         accessRole !== "BasicPlan" &&
         accessRole !== "StandardPlan" &&
-        !isfreeTrial
+        !isfreeTrial &&
+        currentPath !== "/verify/verificationSent" &&
+        currentPath !== "/verify"
       ) {
         router.push("/dashboard/SubscribePlans");
       }

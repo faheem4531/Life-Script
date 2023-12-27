@@ -4,6 +4,7 @@ import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
 import FaqWhite from "@/_assets/svg/sidebar/faq-white.svg";
+import FaqGreen from "@/_assets/svg/sidebar/faq-green.svg";
 import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
 import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
 import ProgressGreen from "@/_assets/svg/sidebar/in-progress-green.svg";
@@ -224,8 +225,10 @@ const SideBar = () => {
           </a>
         </Box>
         <Box>
-          <a className={styles.link} onClick={() => router.push("/dashboard/TableOfContent")}>
-            <Image alt="icon" src={FaqWhite} />
+          <a className={`${styles.link} ${
+              currentRoute === "/dashboard/TableOfContent" && styles.active
+            }`} onClick={() => router.push("/dashboard/TableOfContent")}>
+            <Image alt="icon" src={currentRoute === "/dashboard/TableOfContent" ? FaqGreen : FaqWhite} />
             Table of contents
           </a>
         </Box>
