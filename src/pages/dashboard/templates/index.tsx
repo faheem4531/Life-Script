@@ -18,9 +18,15 @@ const Dashboard = () => {
   return (
     <Layout>
       <Box className={styles.subContainer}>
-        <ChooseTemplate />
         <Box
-          sx={{ marginTop: { sm: "48px", xs: "30px" } }}
+          sx={{
+            display: { sm: "block", xs: "none" },
+          }}
+        >
+          <ChooseTemplate />
+        </Box>
+        <Box
+          sx={{ marginTop: { md: "48px", sm: "20px" } }}
           className={styles.CardsContainer}
         >
           {templates?.map((template, index) => (

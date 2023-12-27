@@ -3,6 +3,7 @@ import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
 import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
+import FaqGreen from "@/_assets/svg/sidebar/faq-green.svg";
 import FaqWhite from "@/_assets/svg/sidebar/faq-white.svg";
 import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
 import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
@@ -15,15 +16,15 @@ import TreeWhite from "@/_assets/svg/sidebar/tree-white.svg";
 import SubsWhite from "@/_assets/svg/subWhite.svg";
 import Subs from "@/_assets/svg/subs.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
+import { getBookCover } from "@/store/slices/chatSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import styles from "./Sidebar.module.css";
-import { getBookCover, getTemplates } from "@/store/slices/chatSlice";
 import { useDispatch } from "react-redux";
+import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
   const [childsOpen, setChilsdOpen] = useState(false);
@@ -224,8 +225,20 @@ const SideBar = () => {
           </a>
         </Box>
         <Box>
-          <a className={styles.link} onClick={() => router.push("/dashboard/TableOfContent")}>
-            <Image alt="icon" src={FaqWhite} />
+          <a
+            className={`${styles.link} ${
+              currentRoute === "/dashboard/TableOfContent" && styles.active
+            }`}
+            onClick={() => router.push("/dashboard/TableOfContent")}
+          >
+            <Image
+              alt="icon"
+              src={
+                currentRoute === "/dashboard/TableOfContent"
+                  ? FaqGreen
+                  : FaqWhite
+              }
+            />
             Table of contents
           </a>
         </Box>

@@ -119,7 +119,13 @@ const Dashboard = () => {
             zIndex: "2",
           }}
         >
-          <HomeSteps />
+          <Box
+            sx={{
+              display: { sm: "block", xs: "none" },
+            }}
+          >
+            <HomeSteps />
+          </Box>
 
           {loading ? (
             <Box
@@ -136,10 +142,11 @@ const Dashboard = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: { md: "48px", sm: "20px" },
               }}
             >
               <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+
               {allChapters.map((chapter, index) => (
                 <DetailCard
                   key={index}

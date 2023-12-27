@@ -1,6 +1,6 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import Layout from "@/components/Layout/Layout";
-import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
+import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
@@ -22,7 +22,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import bgTree from "../../../_assets/svg/bgTree.svg";
 import AddChapter from "./addChapter";
-import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 
 const CompletedChapters = () => {
   const [chapterModal, setChapterModal] = useState(false);
@@ -94,14 +93,17 @@ const CompletedChapters = () => {
   };
 
   useEffect(() => {
-    dispatch(getChapters()).unwrap()
+    dispatch(getChapters())
+      .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, []);
 
   useEffect(() => {
     if (chapters) {
-      const inProgressChapters = chapters.filter((chapter) => chapter.status === true);
+      const inProgressChapters = chapters.filter(
+        (chapter) => chapter.status === true
+      );
       setAllChapters(inProgressChapters);
     }
   }, [chapters]);
@@ -115,7 +117,13 @@ const CompletedChapters = () => {
             zIndex: "2",
           }}
         >
-         <CompletedChapterHeader/>
+          <Box
+            sx={{
+              display: { sm: "block", xs: "none" },
+            }}
+          >
+            <CompletedChapterHeader />
+          </Box>
 
           {loading ? (
             <Box
@@ -132,12 +140,11 @@ const CompletedChapters = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: { md: "48px", sm: "20px" },
               }}
             >
               {/* <StartNewChapter addChapterClick={() => setChapterModal(true)} /> */}
               {allChapters.map((chapter, index) => (
-
                 <DetailCard
                   key={index}
                   chapter={chapter}
@@ -148,7 +155,7 @@ const CompletedChapters = () => {
                 />
               ))}
             </Box>
-          ): (
+          ) : (
             <Box
               sx={{
                 marginTop: { sm: "48px", xs: "25px" },

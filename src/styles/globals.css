@@ -179,3 +179,7 @@ a {
 .css-zc2y38-MuiCircularProgress-root {
   color: #197065 !important;
 }
+
+.css-2rbg70-MuiPaper-root-MuiDialog-paper {
+  border-radius: 22px;
+}

@@ -16,12 +16,18 @@ import socket from "@/services/socketManager";
 import {
   createQuestion,
   getChapterbyId,
+  getOpenaiQuestion,
+  openaiQuestion,
   selectChapter,
   simpleChapter,
-  openaiQuestion,
-  getOpenaiQuestion,
 } from "@/store/slices/chatSlice";
-import { Box, ButtonBase, Typography } from "@mui/material";
+import {
+  Box,
+  ButtonBase,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -29,6 +35,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import addIcon from "../../../../public/addicon.svg";
+import Check from "../../../../public/checkIcon.png";
 import suggestionIcon from "../../../_assets/svg/suggestion.svg";
 import QuestionComponent from "./components/AIGeneration";
 
@@ -263,16 +270,60 @@ const chapterName = () => {
     <>
       <Box>
         <Layout>
-          <AddChapterName
-            title="chapterName"
-            chapter={chapterName}
-            chapterId={chapterId}
-          />
-          <LinearProgressBar percentage={percentage} />
+          <Box
+            sx={{
+              display: { sm: "block", xs: "none" },
+            }}
+          >
+            <AddChapterName
+              title="chapterName"
+              chapter={chapterName}
+              chapterId={chapterId}
+            />
+            <LinearProgressBar percentage={percentage} />
+          </Box>
+          <Box
+            sx={{
+              display: { sm: "none", xs: "flex" },
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              variant="outlined"
+              value={chapterName}
+              onChange={(e: any) => setChapterName(e.target.value)}
+              placeholder="My Adventurous Life"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Box sx={{ cursor: "pointer" }}>
+                      <Image
+                        // onClick={saveChapterName}
+                        src={Check}
+                        alt="check-icon"
+                      />
+                    </Box>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{
+                marginTop: "10px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                },
+                width: { sm: "300px", lg: "390px" },
+              }}
+            />
+          </Box>
           <Box
             sx={{
               backgroundColor: "#fff",
-              padding: { sm: "30px 46px 16px 37px", xs: "25px 20px 100px" },
+              padding: {
+                md: "30px 46px 16px 37px",
+                sm: "0px 30px 10px 30px",
+                xs: "10px 20px 100px",
+              },
               marginTop: "10px",
               height: "calc(100vh - 340px)",
               borderRadius: { sm: "18px", xs: "5px" },
@@ -293,69 +344,96 @@ const chapterName = () => {
                   fontSize: "20px",
                   fontWeight: 700,
                   color: "rgba(0, 0, 0, 0.87)",
+                  display: {
+                    sm: "block",
+                    xs: "none",
+                  },
                 }}
               >
                 Questions
               </Typography>
-              <Box display={"flex"} sx={{ gap: { sm: 2, xs: 1 } }}>
+              <Box
+                sx={{
+                  gap: { sm: 4, xs: 2 },
+                  display: "flex",
+                  justifyContent: { xs: "space-between", sm: "end" },
+                  width: "100%",
+                  flexWrap: "wrap",
+                }}
+              >
                 {aiQuestions?.length > 0 && (
                   <Box
                     sx={{
-                      bgcolor: "#197065",
-                      p: "0px 30px",
                       display: "flex",
                       alignItems: "center",
-                      height: "50px",
-                      borderRadius: "41.25px",
-                      gap: "15px",
+                      gap: "10px",
                     }}
                   >
-                    <Box sx={{ cursor: "pointer", mb: "-4px" }}>
-                      <Image src={suggestionIcon} alt="suggestionIcon" />
-                    </Box>
-                    <Box>
-                      <Typography
-                        sx={{
-                          color: "#ffff",
-                          fontSize: "20.5px",
-                          fontWeight: 400,
-                          display: { sm: "block", xs: "none" },
-                          cursor: "pointer",
+                    <Box
+                      sx={{
+                        cursor: "pointer",
+                        mb: "-4px",
+                        width: { sm: "33.778px", xs: "30.147px" },
+                      }}
+                    >
+                      <Image
+                        src={suggestionIcon}
+                        alt="suggestionIcon"
+                        style={{
+                          width: "100%",
+                          height: "100%",
                         }}
-                        onClick={() => setAiGeneration(true)}
-                      >
-                        Suggestion
-                      </Typography>
+                      />
                     </Box>
+                    <Typography
+                      sx={{
+                        color: "rgba(25, 112, 101, 0.90)",
+                        fontSize: { sm: "16.6px", xs: "14.827px" },
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
+                      onClick={() => setAiGeneration(true)}
+                    >
+                      Suggestion
+                    </Typography>
                   </Box>
                 )}
                 <Box
                   onClick={() => setOpenModal(true)}
                   sx={{
-                    bgcolor: "#197065",
-                    p: "0px 30px",
                     display: "flex",
                     alignItems: "center",
                     height: "50px",
                     borderRadius: "41.25px",
+                    gap: "10px",
                   }}
                 >
-                  <Box sx={{ cursor: "pointer", mb: "-5px" }}>
-                    <Image src={addIcon} alt="addicon" />
-                  </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        color: "#ffff",
-                        fontSize: "20.5px",
-                        fontWeight: 400,
-                        display: { sm: "block", xs: "none" },
-                        cursor: "pointer",
+                  <Box
+                    sx={{
+                      cursor: "pointer",
+                      mb: "-5px",
+                      width: { sm: "33.778px", xs: "30.147px" },
+                    }}
+                  >
+                    <Image
+                      src={addIcon}
+                      alt="addicon"
+                      style={{
+                        width: "100%",
+                        height: "100%",
                       }}
-                    >
-                      Add Question
-                    </Typography>
+                    />
                   </Box>
+                  <Typography
+                    sx={{
+                      color: "rgba(25, 112, 101, 0.90)",
+                      fontSize: { sm: "16.6px", xs: "14.827px" },
+                      fontWeight: 700,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Add Question
+                  </Typography>
                 </Box>
               </Box>
             </Box>

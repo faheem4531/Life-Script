@@ -40,17 +40,17 @@ export default function TransitionsDialog({
         <Image alt="image" src={ModalImage} width={91} height={60} />
         <Typography
           sx={{
-            fontSize: "30px",
+            fontSize: { md: "30px", sm: "21.679px", xs: "15.508px" },
             fontWeight: 700,
             color: "#070707",
-            margin: "40px 0",
+            margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
           }}
         >
           {heading}
         </Typography>
         <Typography
           sx={{
-            fontSize: "20px",
+            fontSize: { md: "22.5px", sm: "16.259px", xs: "11.631px" },
             color: "#070707",
           }}
         >
@@ -63,7 +63,7 @@ export default function TransitionsDialog({
           <ButtonBase
             onClick={proceed}
             sx={{
-              width: "234px",
+              width: "200px",
               height: "50px",
               borderRadius: "78px",
               color: "#197065",

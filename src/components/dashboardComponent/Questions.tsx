@@ -105,6 +105,8 @@ export default function Questions({
           gap: "10px",
           width: "100%",
           mt: { sm: "15px", xs: "8px" },
+          bgcolor: title == "templateView" && "#F9F9F9",
+          borderRadius: title == "templateView" && "8px",
         }}
       >
         <Box
@@ -135,9 +137,9 @@ export default function Questions({
           >
             <Typography
               sx={{
-                marginLeft: { sm: "20px", xs: "10px" },
+                marginLeft: { sm: "15px", xs: "10px" },
                 color: "rgba(22, 22, 22, 0.90)",
-                fontSize: { sm: "22px", xs: "16px" },
+                fontSize: { sm: "22px", xs: "15px" },
                 fontWeight: 400,
                 width: { xs: "48vw", sm: "50vw", md: "53vw", lg: "55vw" },
                 textOverflow: expanded ? "clip" : "ellipsis",
@@ -151,9 +153,8 @@ export default function Questions({
             >
               <Typography
                 sx={{
-                  marginLeft: { sm: "20px", xs: "10px" },
                   color: "rgba(22, 22, 22, 0.90)",
-                  fontSize: { sm: "22px", xs: "16px" },
+                  fontSize: { md: "19.379px", sm: "18.501px", xs: "15px" },
                   fontWeight: 400,
                   width: "58vw",
                   textOverflow: expanded ? "clip" : "ellipsis",
@@ -281,7 +282,12 @@ export default function Questions({
             </Menu>
           </Box>
         ) : (
-          <Box sx={{ textAlign: "center", width: "max-content" }}>
+          <Box
+            sx={{
+              textAlign: "center",
+              mr: { md: "20px", sm: "15px", xs: "10px" },
+            }}
+          >
             <Checkbox
               defaultChecked={true}
               onChange={() => templateQuestion(question?._id)}

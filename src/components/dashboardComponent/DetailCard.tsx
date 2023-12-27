@@ -1,7 +1,7 @@
 "use client";
 
-import More from "@/_assets/png/options.png";
 import Tick from "@/_assets/svg/checked.svg";
+import More from "@/_assets/svg/threeDot.svg";
 import { Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -68,185 +68,279 @@ export default function DetailCard({
   function getUpdatedTimeDifference(timestamp: string): string {
     const currentTime: Date = new Date();
     const updatedTime: Date = new Date(timestamp);
-    const timeDifferenceInMilliseconds: number = currentTime.getTime() - updatedTime.getTime();
-    const timeDifferenceInDays: number = Math.floor(timeDifferenceInMilliseconds / (24 * 60 * 60 * 1000));
-  
+    const timeDifferenceInMilliseconds: number =
+      currentTime.getTime() - updatedTime.getTime();
+    const timeDifferenceInDays: number = Math.floor(
+      timeDifferenceInMilliseconds / (24 * 60 * 60 * 1000)
+    );
+
     if (timeDifferenceInDays === 0) {
-      return 'Last edited Today';
+      return "Last edited Today";
     } else {
-      return `Last edited ${timeDifferenceInDays} day${timeDifferenceInDays !== 1 ? 's' : ''} ago`;
+      return `Last edited ${timeDifferenceInDays} day${
+        timeDifferenceInDays !== 1 ? "s" : ""
+      } ago`;
     }
   }
 
   return (
-    <Card
-      className="container-fontfamily"
-      sx={{
-        borderRadius: "6.5px",
-        height: "280px",
-      }}
+    <Box
+      bgcolor={"white"}
+      borderRadius={"8px"}
+      boxShadow={"4.715px 4.042px 11.519px 0px rgba(0, 0, 0, 0.14)"}
     >
-      <div
-        style={{ backgroundColor: "#197065", padding: "10px 17px 10px 17px" }}
-        className={styles.header}
-      >
-        <Box sx={{ height: "25px" }}>
-          {isChapter && (
-            <>
-              <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? "long-menu" : undefined}
-                aria-expanded={open ? "true" : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
-              >
-                <Image alt="options" src={More} />
-              </IconButton>
-              <Menu
-                id="long-menu"
-                MenuListProps={{
-                  "aria-labelledby": "long-button",
-                }}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  style: {
-                    maxHeight: ITEM_HEIGHT * 4.5,
-                    width: "20ch",
-                  },
-                }}
-              >
-                {options.map((option) => (
-                  <MenuItem
-                    key={option}
-                    selected={option === "Pyxis"}
-                    onClick={() => handleClickOption(option)}
-                  >
-                    {option}
-                  </MenuItem>
-                ))}
-              </Menu>
-            </>
-          )}
-        </Box>
-      </div>
       <Box
-        className={
-          router.asPath === "/dashboard/chapters/completedChapter" &&
-          styles.CardBg
-        }
-        sx={{ height: "100%", cursor: "pointer" }}
-        onClick={() => {
-          if (router.asPath === "/dashboard/chapters") {
-            deleteFunc({
-              option: "details",
-              chapterData: chapter,
-              percentValue: percentage,
-            });
-          }
-          if (router.asPath === "/dashboard/templates") {
-            router.push(
-              `/dashboard/templates/templateView?templateId=${chapter?._id}`
-            );
-          }
-          if (router.asPath === "/dashboard/chapters/completedChapter") {
-            router.push(
-              `/dashboard/narrative?chapterId=${chapter?._id}&openai=${chapter?.narrativeFusion}`
-            );
-          }
+        sx={{
+          boxShadow: {
+            md: "4px 4px white",
+            sm: "3px 3px white",
+            xs: "2.5px 2.5px white",
+          },
+          borderRadius: "6.5px",
+          padding: " 0px 3px 3px 0px",
+          borderRight: "1.5px solid #EEEEEE",
+          borderBottom: "1.5px solid #EEEEEE",
         }}
       >
-        <CardContent sx={{ height: "100%" }}>
-          <Typography
-            variant="body2"
-            color="text "
-            fontWeight="600"
-            fontSize="19px"
-            textAlign="center"
-            height="25px"
-          >
-            {chapter?.title}
-          </Typography>
-          <Divider
+        <Box
+          sx={{
+            boxShadow: {
+              md: "4px 4px white",
+              sm: "3px 3px white",
+              xs: "2.5px 2.5px white",
+            },
+            borderRadius: "6.5px",
+            borderRight: "1.5px solid #EEEEEE",
+            borderBottom: "1.5px solid #EEEEEE",
+          }}
+        >
+          <Card
+            className="container-fontfamily"
             sx={{
-              width: "230px",
-              backgroundColor: "#000",
-              height: "2px",
-              margin: "5px auto 0",
-              marginBottom: "10px",
+              borderRadius: "6.5px",
+              height: { md: "280px", sm: "257px", xs: "129px" },
+              boxShadow: "none",
             }}
-          />
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignContent: "space-between",
-            }}
-            className={styles.cardContent}
           >
             <Box
               sx={{
-                width: "100%",
-                height: "120px",
+                backgroundColor: "#197065",
+                height: { xs: "22px", sm: "39px", md: "43px" },
+                display: "flex",
+                alignItems: "center",
+                pl: { md: "13px", xs: "11px" },
               }}
             >
-              {questions?.length > 0 ? (
-                questions?.slice(0, 4).map((question: any) => (
-                  <Typography
-                    key={question._id}
-                    display="flex"
-                    alignItems="center"
-                    columnGap="0px"
-                    color="rgba(22, 22, 22, 0.90)"
-                    fontSize="13px"
-                    // sx={{marginTop:'5px'}}
-                  >
-                    <Image alt="check" src={Tick} />
-                    {question.text.length > 45
-                      ? question.text.slice(0, 42) + "..."
-                      : question.text}
-                  </Typography>
-                ))
-              ) : (
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    height: "100%",
-                    alignItems: "center",
-                  }}
-                >
-                  <Image alt="no Data" src={noData} height={100} />
-                </Box>
-              )}
+              <Box>
+                {isChapter && (
+                  <>
+                    <IconButton
+                      aria-label="more"
+                      id="long-button"
+                      aria-controls={open ? "long-menu" : undefined}
+                      aria-expanded={open ? "true" : undefined}
+                      aria-haspopup="true"
+                      onClick={handleClick}
+                    >
+                      <Image alt="options" src={More} />
+                    </IconButton>
+                    <Menu
+                      id="long-menu"
+                      MenuListProps={{
+                        "aria-labelledby": "long-button",
+                      }}
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      PaperProps={{
+                        style: {
+                          maxHeight: ITEM_HEIGHT * 4.5,
+                          width: "20ch",
+                        },
+                      }}
+                    >
+                      {options.map((option) => (
+                        <MenuItem
+                          key={option}
+                          selected={option === "Pyxis"}
+                          onClick={() => handleClickOption(option)}
+                        >
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </>
+                )}
+              </Box>
             </Box>
-            {router.asPath === "/dashboard/chapters/completedChapter" ? "" : ""}
-            {isChapter &&
-            router.asPath === "/dashboard/chapters/completedChapter" ? (
-              ""
-            ) : (
-              <Box
+            <Box
+              className={
+                router.asPath === "/dashboard/chapters/completedChapter" &&
+                styles.CardBg
+              }
+              sx={{ height: "100%", cursor: "pointer" }}
+              onClick={() => {
+                if (router.asPath === "/dashboard/chapters") {
+                  deleteFunc({
+                    option: "details",
+                    chapterData: chapter,
+                    percentValue: percentage,
+                  });
+                }
+                if (router.asPath === "/dashboard/templates") {
+                  router.push(
+                    `/dashboard/templates/templateView?templateId=${chapter?._id}`
+                  );
+                }
+                if (router.asPath === "/dashboard/chapters/completedChapter") {
+                  router.push(
+                    `/dashboard/narrative?chapterId=${chapter?._id}&openai=${chapter?.narrativeFusion}`
+                  );
+                }
+              }}
+            >
+              <CardContent
                 sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginTop: "10px",
-                  // bgcolor: "pink"
+                  height: "100%",
+                  padding: { md: "12px", sm: "10px", xs: "8px" },
                 }}
               >
-                <Typography color="rgba(22, 22, 22, 0.90)" fontSize="11px">
-                  {getUpdatedTimeDifference(chapter?.updated_at)}
+                <Typography
+                  variant="body2"
+                  color="text "
+                  sx={{
+                    fontSize: { md: "14px", sm: "13.241px", xs: "10.493px" },
+                    textAlign: "center",
+                    fontWeight: 600,
+                  }}
+                >
+                  {chapter?.title}
                 </Typography>
-                <CircularWithValueLabel percentage={percentage} />
-              </Box>
-            )}
-          </Box>
-        </CardContent>
+                <Divider
+                  sx={{
+                    width: { md: "230px", sm: "164.046px", xs: "130px" },
+                    backgroundColor: "#000",
+                    height: "1.166px",
+                    margin: { md: "5px auto 0", xs: "2.5px auto 0" },
+                    marginBottom: { md: "10px", xs: "5px" },
+                  }}
+                />
+                <Box
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignContent: "space-between",
+                  }}
+                  className={styles.cardContent}
+                >
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: { md: "120px", sm: "100px", xs: "100px" },
+                    }}
+                  >
+                    {questions?.length > 0 ? (
+                      questions?.slice(0, 4).map((question: any) => (
+                        <Typography
+                          key={question._id}
+                          display="flex"
+                          alignItems="center"
+                          columnGap="5px"
+                          color="rgba(22, 22, 22, 0.90)"
+                          sx={{
+                            fontSize: {
+                              md: "13px",
+                              sm: "8.803px",
+                              xs: "5.532px",
+                            },
+                            display: "flex",
+                            alignItems: "flex-start",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              width: {
+                                md: "21.701px",
+                                sm: "19.491px",
+                                xs: "12.467px",
+                              },
+                              height: {
+                                md: "18.547px",
+                                sm: "16.658px",
+                                xs: "10.467px",
+                              },
+                              flexShrink: "0",
+                            }}
+                          >
+                            <Image
+                              alt="check"
+                              src={Tick}
+                              style={{
+                                width: "100%",
+                                height: "100%",
+                              }}
+                            />
+                          </Box>
+                          {question.text.length > 45
+                            ? question.text.slice(0, 42) + "..."
+                            : question.text}
+                        </Typography>
+                      ))
+                    ) : (
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          height: "75%",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Image
+                          alt="no Data"
+                          src={noData}
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                          }}
+                        />
+                      </Box>
+                    )}
+                  </Box>
+                  {router.asPath === "/dashboard/chapters/completedChapter"
+                    ? ""
+                    : ""}
+                  {isChapter &&
+                  router.asPath === "/dashboard/chapters/completedChapter" ? (
+                    ""
+                  ) : (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        marginTop: { md: "10px" },
+                        // bgcolor: "pink"
+                      }}
+                    >
+                      <Typography
+                        color="rgba(22, 22, 22, 0.90)"
+                        sx={{
+                          fontSize: { md: "11px", sm: "7px", xs: "5.5px" },
+                        }}
+                      >
+                        {getUpdatedTimeDifference(chapter?.updated_at)}
+                      </Typography>
+                      <CircularWithValueLabel percentage={percentage} />
+                    </Box>
+                  )}
+                </Box>
+              </CardContent>
+            </Box>
+          </Card>
+        </Box>
       </Box>
-    </Card>
+    </Box>
   );
 }
 
@@ -255,12 +349,18 @@ export default function DetailCard({
 }
 function CircularProgressWithLabel(props) {
   return (
-    <Box sx={{ position: "relative", display: "inline-flex", width: "30px" }}>
+    <Box
+      sx={{
+        position: "relative",
+        display: "inline-flex",
+        width: { md: "30px", sm: "26.015px", xs: "20px" },
+      }}
+    >
       <CircularProgress color="success" variant="determinate" {...props} />
       <Box
         sx={{
-          top: 0,
-          left: -8,
+          top: { md: 0, sm: "1px", xs: "0px" },
+          left: { md: -8, sm: "-14px", xs: "-19px" },
           bottom: 0,
           right: 0,
           position: "absolute",
@@ -273,7 +373,7 @@ function CircularProgressWithLabel(props) {
           variant="caption"
           component="div"
           color="#197065"
-          sx={{ fontSize: "8px" }}
+          sx={{ fontSize: { md: "8px", sm: "7.804px", xs: "5px" } }}
         >
           {`${Math.round(props.value)}%`}
         </Typography>

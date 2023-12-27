@@ -35,19 +35,47 @@ const Layout = ({ children }: { children?: any }) => {
       >
         <NavBar sideBarHandle={() => setHandleSideBar(true)} />
       </Box>
-      <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
+      <Box
+        sx={{
+          marginTop: "1px",
+          display: "flex",
+          mt: "70px",
+        }}
+      >
         <Box
           sx={{
-            width: "220px",
-            backgroundColor: "#197065",
+            bgcolor: "rgba(0, 0, 0, 0.76)",
+            width: handleSideBar && "100%",
+            height: "100vh",
             position: "fixed",
-            bottom: "0",
             top: "0px",
-            zIndex: "2",
+            left: "0px",
+            zIndex: "12",
           }}
           className={`${styles.display} ${handleSideBar && styles.displayShow}`}
+          onClick={() => setHandleSideBar(false)}
         >
-          <SideBar />
+          <Box
+            sx={{
+              width: "220px",
+              backgroundColor: "#197065",
+              position: "fixed",
+              bottom: "0",
+              top: "0px",
+              zIndex: "2",
+            }}
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+            className={`${styles.display} ${
+              handleSideBar && styles.displayShow
+            }`}
+          >
+            <SideBar
+              handleSideCheck={handleSideBar}
+              menuClick={() => setHandleSideBar(false)}
+            />
+          </Box>
         </Box>
         <Box
           sx={{

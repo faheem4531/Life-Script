@@ -1,8 +1,7 @@
-import Welcome from "@/_assets/png/overview-welcome-card.png";
+import Tick from "@/_assets/svg/Tick.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./Custom.module.css";
-import Tick from "@/_assets/svg/Tick.svg";
 
 const CompletedChapterHeader = () => {
   return (
@@ -14,7 +13,7 @@ const CompletedChapterHeader = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        maxWidth: "1149px",
+        maxWidth: "1600px",
         width: "100%",
         height: { xs: "auto", sm: "150px", md: "165px" },
         gap: "30px",
