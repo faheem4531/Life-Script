@@ -25,7 +25,7 @@ const getTitle = () => {
   };
 
   const handleTitle = () => {
-    dispatch(bookTitle({ title: text }))
+    dispatch(bookTitle({ title: text })).unwrap()
       .then(() => {
         toast.success("Book title saved successfully");
         router.push("/dashboard/chapters");

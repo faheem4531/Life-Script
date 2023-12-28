@@ -9,6 +9,7 @@ import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
 import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
 import ProgressGreen from "@/_assets/svg/sidebar/in-progress-green.svg";
 import ProgressWhite from "@/_assets/svg/sidebar/in-progress-white.svg";
+import MenuIcon from "@/_assets/svg/sidebar/menuIcon.svg";
 import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
 import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
 import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
@@ -26,7 +27,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Sidebar.module.css";
 
-const SideBar = () => {
+const SideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(false);
   const [coverNumber, setCoverNumber] = useState(null);
   const router = useRouter();
@@ -56,9 +57,24 @@ const SideBar = () => {
 
   return (
     <Box sx={{ color: "#fff" }}>
-      <Box sx={{ padding: "13px 20px", height: "70px" }}>
-        <Image src={Logo} alt="logo" className={styles.logo} />
-      </Box>
+      {!handleSideCheck && (
+        <Box sx={{ padding: "13px 20px", height: "70px" }}>
+          <Image src={Logo} alt="logo" className={styles.logo} />
+        </Box>
+      )}
+      {handleSideCheck && (
+        <Box
+          sx={{
+            height: "48px",
+            display: "flex",
+            alignItems: "center",
+            ml: "8px",
+          }}
+          onClick={menuClick}
+        >
+          <Image src={MenuIcon} alt="MenuIcon" />
+        </Box>
+      )}
       <Box
         sx={{
           padding: "35px 29px 0 11px",
@@ -74,6 +90,7 @@ const SideBar = () => {
           >
             <Image
               alt="icon"
+              className={styles.sidebarIcon}
               src={
                 currentRoute === "/dashboard/overview"
                   ? OverViewGreen
@@ -97,6 +114,7 @@ const SideBar = () => {
           >
             <Image
               alt="icon"
+              className={styles.sidebarIcon}
               src={
                 currentRoute === "/dashboard/chapters" ||
                 currentRoute === "/dashboard/chapters/completedChapter"
@@ -108,14 +126,14 @@ const SideBar = () => {
             {childsOpen ? (
               <KeyboardArrowUpIcon
                 sx={{
-                  width: "24px",
+                  width: { xs: "15px", md: "24px" },
                   ml: "5px",
                 }}
               />
             ) : (
               <KeyboardArrowDownIcon
                 sx={{
-                  width: "24px",
+                  width: { xs: "15px", md: "24px" },
                   ml: "5px",
                 }}
               />
@@ -135,6 +153,7 @@ const SideBar = () => {
                   {/* Add your icon and text for the first new option */}
                   <Image
                     alt="icon"
+                    className={styles.sidebarIcon}
                     src={
                       currentRoute === "/dashboard/chapters"
                         ? ProgressGreen
@@ -156,6 +175,7 @@ const SideBar = () => {
                 >
                   <Image
                     alt="icon"
+                    className={styles.sidebarIcon}
                     src={
                       currentRoute === "/dashboard/chapters/completedChapter"
                         ? CompletedGreen
@@ -190,6 +210,7 @@ const SideBar = () => {
           >
             <Image
               alt="icon"
+              className={styles.sidebarIcon}
               src={
                 currentRoute === "/dashboard/BookCover/SelectBookCover" ||
                 currentRoute === "/dashboard/BookCover/EditBookCover" ||
@@ -214,6 +235,7 @@ const SideBar = () => {
           >
             <Image
               alt="icon"
+              className={styles.sidebarIcon}
               src={
                 currentRoute === "/dashboard/SubscribePlans" ||
                 currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment"
@@ -244,19 +266,27 @@ const SideBar = () => {
         </Box>
         <Box>
           <a className={styles.link}>
-            <Image alt="icon" src={AccountWhite} />
+            <Image
+              alt="icon"
+              src={AccountWhite}
+              className={styles.sidebarIcon}
+            />
             Account
           </a>
         </Box>
         <Box>
           <a className={styles.link}>
-            <Image alt="icon" src={SuportWhite} />
+            <Image
+              alt="icon"
+              src={SuportWhite}
+              className={styles.sidebarIcon}
+            />
             Support
           </a>
         </Box>
         <Box>
           <a className={styles.link}>
-            <Image alt="icon" src={TreeWhite} />
+            <Image alt="icon" src={TreeWhite} className={styles.sidebarIcon} />
             Gift a Book
           </a>
         </Box>
