@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
         currentPath !== "/verify" &&
         currentPath !=="/_auth/Auth"
       ) {
-        router.push("/dashboard/SubscribePlans");
+        currentPath !== "/dashboard/SubscribePlans" && router.push("/dashboard/SubscribePlans");
       }
     }
   }, [router, currentPath]);
