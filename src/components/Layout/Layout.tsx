@@ -84,7 +84,7 @@ const Layout = ({ children }: { children?: any }) => {
             color: "#000",
             height: "100%",
             minHeight: "calc(100vh - 70px)",
-            padding: { sm: "10px 33px 30px", xs: "10px 16px 30px" },
+            padding: { sm: "10px 33px 30px" },
             marginLeft: { lg: "220px", md: "200px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}

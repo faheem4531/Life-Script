@@ -49,6 +49,7 @@ export default function Questions({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleClickOption = (option) => {
     if (option === "Delete") {
       setDeleteQuestionModal(true);
@@ -141,7 +142,7 @@ export default function Questions({
                 color: "rgba(22, 22, 22, 0.90)",
                 fontSize: { sm: "22px", xs: "15px" },
                 fontWeight: 400,
-                width: { xs: "48vw", sm: "50vw", md: "53vw", lg: "55vw" },
+                width: { xs: "48vw", sm: "55vw", md: "52vw", lg: "64vw" },
                 textOverflow: expanded ? "clip" : "ellipsis",
                 overflow: "hidden",
                 // whiteSpace: expanded ? "wrap" : "nowrap",
@@ -154,9 +155,9 @@ export default function Questions({
               <Typography
                 sx={{
                   color: "rgba(22, 22, 22, 0.90)",
-                  fontSize: { md: "19.379px", sm: "18.501px", xs: "15px" },
+                  fontSize: "13px",
                   fontWeight: 400,
-                  width: "58vw",
+                  width: "100vw",
                   textOverflow: expanded ? "clip" : "ellipsis",
                   overflow: "hidden",
                   whiteSpace: expanded ? "wrap" : "nowrap",
@@ -167,7 +168,7 @@ export default function Questions({
                 {". "}
                 {question?.text}
               </Typography>
-              {question?.text.length > 80 && (
+              {question?.text.length > 150 && (
                 <Typography
                   onClick={handleSeeMoreClick}
                   sx={{

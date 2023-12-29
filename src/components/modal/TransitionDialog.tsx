@@ -37,7 +37,22 @@ export default function TransitionsDialog({
           padding: "50px 20px 15px",
         }}
       >
-        <Image alt="image" src={ModalImage} width={91} height={60} />
+        <Box
+          sx={{
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
+          }}
+        >
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </Box>
         <Typography
           sx={{
             fontSize: { md: "30px", sm: "21.679px", xs: "15.508px" },
@@ -63,11 +78,11 @@ export default function TransitionsDialog({
           <ButtonBase
             onClick={proceed}
             sx={{
-              width: "200px",
-              height: "50px",
+              width: { md: "234px", sm: "153px", xs: "103px" },
+              height: { md: "50px", sm: "32px", xs: "20px" },
               borderRadius: "78px",
               color: "#197065",
-              fontSize: "18px",
+              fontSize: { md: "18px", sm: "13.627px", xs: "8.542px" },
               bgcolor: "#fff",
               border: "1px solid #197065",
               margin: "40px 0 30px",
@@ -82,11 +97,11 @@ export default function TransitionsDialog({
           <ButtonBase
             onClick={cancel}
             sx={{
-              width: "200px",
-              height: "50px",
+              width: { md: "234px", sm: "153px", xs: "103px" },
+              height: { md: "50px", sm: "32px", xs: "20px" },
               borderRadius: "78px",
               color: "#fff",
-              fontSize: "18px",
+              fontSize: { md: "18px", sm: "13.627px", xs: "8.542px" },
               bgcolor: "#197065",
               margin: "40px 0 30px",
               "&:hover": {

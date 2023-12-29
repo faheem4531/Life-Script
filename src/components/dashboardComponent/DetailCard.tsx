@@ -29,11 +29,13 @@ interface DetailCardProps {
     percentValue: any;
   }) => void; // Define the callback type here
   isChapter?: boolean;
+  percentageCheck?: boolean;
 }
 export default function DetailCard({
   chapter,
   isChapter,
   deleteFunc,
+  percentageCheck = true,
 }: DetailCardProps) {
   const router = useRouter();
   const questions = chapter?.questions;
@@ -97,7 +99,7 @@ export default function DetailCard({
             xs: "2.5px 2.5px white",
           },
           borderRadius: "6.5px",
-          padding: " 0px 3px 3px 0px",
+          padding: " 0px 4px 4px 0px",
           borderRight: "1.5px solid #EEEEEE",
           borderBottom: "1.5px solid #EEEEEE",
         }}
@@ -314,24 +316,28 @@ export default function DetailCard({
                   router.asPath === "/dashboard/chapters/completedChapter" ? (
                     ""
                   ) : (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        marginTop: { md: "10px" },
-                        // bgcolor: "pink"
-                      }}
-                    >
-                      <Typography
-                        color="rgba(22, 22, 22, 0.90)"
-                        sx={{
-                          fontSize: { md: "11px", sm: "7px", xs: "5.5px" },
-                        }}
-                      >
-                        {getUpdatedTimeDifference(chapter?.updated_at)}
-                      </Typography>
-                      <CircularWithValueLabel percentage={percentage} />
+                    <Box>
+                      {percentageCheck && (
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            marginTop: { md: "10px" },
+                            // bgcolor: "pink"
+                          }}
+                        >
+                          <Typography
+                            color="rgba(22, 22, 22, 0.90)"
+                            sx={{
+                              fontSize: { md: "11px", sm: "7px", xs: "5.5px" },
+                            }}
+                          >
+                            {getUpdatedTimeDifference(chapter?.updated_at)}
+                          </Typography>
+                          <CircularWithValueLabel percentage={percentage} />
+                        </Box>
+                      )}
                     </Box>
                   )}
                 </Box>

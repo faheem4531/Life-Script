@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Slider from "react-slick";
 import Image from "next/image";
-import "slick-carousel/slick/slick.css";
+import { useState } from "react";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const Carousel = ({ items }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -16,11 +16,11 @@ const Carousel = ({ items }) => {
     autoplay: true,
     autoplaySpeed: 3000,
     afterChange: (index) => setActiveSlide(index),
-    
+    nextArrow: null, // Remove next arrow
+    prevArrow: null, // Remove previous arrow
   };
 
   return (
-    
     <div style={{ position: "relative" }}>
       <Slider {...settings}>
         {items.map((item, index) => (
@@ -38,7 +38,6 @@ const Carousel = ({ items }) => {
           </div>
         ))}
       </Slider>
-    
     </div>
   );
 };

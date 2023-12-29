@@ -30,7 +30,11 @@ const Dashboard = () => {
           className={styles.CardsContainer}
         >
           {templates?.map((template, index) => (
-            <DetailCard key={index + 1} chapter={template} />
+            <DetailCard
+              key={index + 1}
+              chapter={template}
+              percentageCheck={false}
+            />
           ))}
         </Box>
       </Box>

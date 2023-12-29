@@ -8,7 +8,6 @@ import {
   readNotification,
   selectChapterNotification,
 } from "@/store/slices/chatSlice";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Box, InputBase } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
@@ -18,6 +17,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import BellIcon from "../../_assets/svg/bellIcon.svg";
 import styles from "./Navbar.module.css";
 
 const options = ["Logout"];
@@ -149,9 +149,13 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             aria-label="notifications"
             color="inherit"
             onClick={handleNotificationClick}
+            style={{
+              marginRight: "-5px",
+            }}
           >
             <Badge badgeContent={notifications?.length} color="error">
-              <NotificationsIcon />
+              {/* <NotificationsIcon /> */}
+              <Image src={BellIcon} alt="BellIcon" />
             </Badge>
           </IconButton>
 
@@ -185,7 +189,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   borderBottom: "0.917px solid #197065",
                   borderLeft: "0.917px solid #197065",
                   position: "absolute",
-                  right: " 50.5px",
+                  right: " 54.5px",
                   top: "-5px",
                   transform: "rotate(135deg)",
                   zIndex: "1",
@@ -294,6 +298,9 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             aria-expanded={moreAnchorEl ? "true" : undefined}
             aria-haspopup="true"
             onClick={handleMoreClick}
+            style={{
+              marginLeft: "-5px",
+            }}
           >
             <Image alt="options" src={More} />
           </IconButton>

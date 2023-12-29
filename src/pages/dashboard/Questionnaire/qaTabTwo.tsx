@@ -13,23 +13,30 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
+import QaTabBars from "./qaTabBars";
 
-export default function TabTwo({ onClickBack, onClickNext, data }) {
+export default function TabTwo({
+  onClickBack,
+  onClickNext,
+  data,
+  userName,
+  setQaTab,
+}) {
   const [maritalStatus, setMaritalStatus] = useState("Single");
   const [gender, setGender] = useState("Male");
   const [selectedDate, setSelectedDate] = useState();
   const [showTooltip, setShowTooltip] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(userName);
   const maxDate = new Date();
-  
+
   useEffect(() => {
-    if(data?.name){
-        setGender(data.gender);
-        setMaritalStatus(data.martialStatus);
-        setSelectedDate(data.dateOfBirth);
-        setName(data.name);
+    if (data?.name) {
+      setGender(data.gender);
+      setMaritalStatus(data.martialStatus);
+      setSelectedDate(data.dateOfBirth);
+      setName(data.name);
     }
-  },[data])
+  }, [data]);
 
   const handleButtonClick = () => {
     setShowTooltip(false);
@@ -41,7 +48,7 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
         name: name,
         maritalStatus: maritalStatus,
         gender: gender,
-        dob: selectedDate
+        dob: selectedDate,
       });
     }
   };
@@ -74,11 +81,13 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
           Tell us about yourself
         </Typography>
       </Box>
-      <Box sx={{ mt: 6 }}>
+      <QaTabBars tabProp={2} />
+      <Box sx={{ mt: 4 }}>
         <Typography
           sx={{
             fontSize: "33.75px",
             fontWeight: 700,
+            color: "black",
           }}
         >
           Tell us about yourself
@@ -87,7 +96,7 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
       <Box sx={{ p: 2 }}>
         <Grid container spacing={4}>
           {/* First row with two text fields */}
-          <Grid container item xs={12} gap={10}>
+          <Grid container item xs={12} gap={9}>
             <Grid item xs={5.5} mt={"10px"}>
               <Box>
                 <Typography
@@ -148,8 +157,8 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
           </Grid>
 
           {/* Second row with two text fields */}
-          <Grid container item xs={12} spacing={2} gap={10}>
-            <Grid item xs={5.5} mt={"10px"}>
+          <Grid container item xs={12} spacing={2} columnGap={10}>
+            <Grid item xs={5.5} mt={"10px"} mr={"-10px"}>
               <Box>
                 <Typography
                   sx={{
@@ -196,6 +205,7 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
                   sx={{
                     marginTop: "10px",
                     backgroundColor: "white",
+                    borderRadius: "50px",
                     width: "100%",
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": {
@@ -206,63 +216,89 @@ export default function TabTwo({ onClickBack, onClickNext, data }) {
                 />
               </Box>
             </Grid>
+            <Grid item xs={5.5} mt={"20px"}>
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: "20.142px",
+                    fontWeight: 500,
+                    lineHeight: "20px",
+                    color: "#171725",
+                  }}
+                >
+                  Language Preference
+                </Typography>
+                <Select
+                  placeholder="language preference"
+                  value={maritalStatus}
+                  onChange={(e) => setMaritalStatus(e.target.value)}
+                  sx={{
+                    marginTop: "10px",
+                    borderRadius: "50px",
+                    backgroundColor: "white",
+                    width: "100%",
+                  }}
+                >
+                  <MenuItem value="English">English</MenuItem>
+                  <MenuItem value="Spanish">Spanish</MenuItem>
+                </Select>
+              </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  gap: 2,
+                }}
+              >
+                <Button
+                  onClick={onClickBack}
+                  sx={{
+                    width: "176px",
+                    borderRadius: "26.267px",
+                    border: " 0.71px solid #197065",
+                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+                    color: "#197065",
+                    textTransform: "capitalize",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <Image src={backArrow} alt="backArrow" /> Back
+                </Button>
+                <Tooltip
+                  open={showTooltip}
+                  onClose={() => setShowTooltip(false)}
+                  title="Please fill in all fields before proceeding."
+                >
+                  <Button
+                    onClick={handleButtonClick}
+                    sx={{
+                      width: "176px",
+                      borderRadius: "26.267px",
+                      border: " 0.71px solid #197065",
+                      fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+                      color: "white",
+                      textTransform: "capitalize",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      bgcolor: "#197065",
+                      ":hover": {
+                        bgcolor: "#197065",
+                      },
+                    }}
+                  >
+                    Next <Image src={NextArrow} alt="NextArrow" />
+                  </Button>
+                </Tooltip>
+              </Box>
+            </Grid>
           </Grid>
         </Grid>
-      </Box>
-      <Box
-        sx={{
-          position: "fixed",
-          bottom: "80px",
-          right: "120px",
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          gap: 2,
-        }}
-      >
-        <Button
-          onClick={onClickBack}
-          sx={{
-            width: "176px",
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-            color: "#197065",
-            textTransform: "capitalize",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
-          <Image src={backArrow} alt="backArrow" /> Back
-        </Button>
-        <Tooltip
-        open={showTooltip}
-        onClose={()=>setShowTooltip(false)}
-        title="Please fill in all fields before proceeding."
-      >
-        <Button
-          onClick={handleButtonClick}
-          sx={{
-            width: "176px",
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-            color: "white",
-            textTransform: "capitalize",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            bgcolor: "#197065",
-            ":hover":{
-                bgcolor: "#197065",
-            }
-          }}
-        >
-          Next <Image src={NextArrow} alt="NextArrow" />
-        </Button>
-      </Tooltip>
-        
       </Box>
     </>
   );

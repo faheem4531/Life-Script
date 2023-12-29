@@ -53,7 +53,7 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
             xs: "2.5px 2.5px white",
           },
           borderRadius: "6.5px",
-          padding: " 0px 3px 3px 0px",
+          padding: " 0px 4px 4px 0px",
           borderRight: "1.5px solid #EEEEEE",
           borderBottom: "1.5px solid #EEEEEE",
         }}

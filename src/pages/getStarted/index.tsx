@@ -22,11 +22,13 @@ const getStarted = () => {
           }, 2000);
         } else {
           setTimeout(() => {
-            router.push('/dashboard/Questionnaire');
+            router.push(`/dashboard/Questionnaire?userName=${userName}`);
           }, 2000);
         }
       })
-      .catch(() => router.push('/dashboard/Questionnaire'));
+      .catch(() =>
+        router.push(`/dashboard/Questionnaire?userName=${userName}`)
+      );
   }, []);
 
   return (

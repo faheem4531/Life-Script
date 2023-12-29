@@ -45,6 +45,7 @@ const chapterName = () => {
   const [gptSocket, setgptSocket] = useState(false);
   const [gptResponse, setGptResponse] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [allQuestionsLoading, setAllQuestionsLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
   const [aiQuestions, setaiQuestions] = useState([]);
   const [questionChanged, setQuestionChanged] = useState(false);
@@ -155,6 +156,7 @@ const chapterName = () => {
   }
 
   const submitQuestion = (question: string) => {
+    setAllQuestionsLoading(true);
     dispatch(
       createQuestion({
         text: question,
@@ -166,9 +168,11 @@ const chapterName = () => {
       .then(() => {
         toast.success("Question added successfully");
         dispatch(getChapterbyId({ id: chapterId?.toString() }));
+        setAllQuestionsLoading(false);
       })
       .catch(() => {
         toast.error("Failed to add question");
+        setAllQuestionsLoading(false);
       });
   };
 
@@ -190,8 +194,14 @@ const chapterName = () => {
   useEffect(() => {
     chapterId &&
       dispatch(getChapterbyId({ id: chapterId?.toString() }))
-        .then(() => setLoading(false))
-        .catch(() => setLoading(false));
+        .then(() => {
+          setLoading(false);
+          setAllQuestionsLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+          setAllQuestionsLoading(false);
+        });
   }, [chapterId, questionChanged]);
 
   useEffect(() => {
@@ -320,12 +330,15 @@ const chapterName = () => {
             sx={{
               backgroundColor: "#fff",
               padding: {
-                md: "30px 46px 16px 37px",
+                md: "0px 46px 16px 37px",
                 sm: "0px 30px 10px 30px",
-                xs: "10px 20px 100px",
+                xs: "10px 10px 100px",
               },
               marginTop: "10px",
-              height: "calc(100vh - 340px)",
+              height: {
+                sm: "calc(100vh - 340px)",
+                xs: "calc(100vh - 170px)",
+              },
               borderRadius: { sm: "18px", xs: "5px" },
               display: "flex",
               flexDirection: "column",
@@ -366,7 +379,18 @@ const chapterName = () => {
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "10px",
+                      gap: { sm: "10px", xs: "5px" },
+                      width: "176px",
+                      borderRadius: "26.267px",
+                      border: " 0.71px solid #197065",
+                      fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+                      color: "white",
+                      textTransform: "capitalize",
+                      bgcolor: "#197065",
+                      ":hover": {
+                        bgcolor: "#197065",
+                      },
+                      p: "3px 4px",
                     }}
                   >
                     <Box
@@ -387,9 +411,9 @@ const chapterName = () => {
                     </Box>
                     <Typography
                       sx={{
-                        color: "rgba(25, 112, 101, 0.90)",
+                        // color: "rgba(25, 112, 101, 0.90)",
                         fontSize: { sm: "16.6px", xs: "14.827px" },
-                        fontWeight: 700,
+                        fontWeight: 500,
                         cursor: "pointer",
                       }}
                       onClick={() => setAiGeneration(true)}
@@ -403,9 +427,18 @@ const chapterName = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    height: "50px",
-                    borderRadius: "41.25px",
-                    gap: "10px",
+                    gap: { sm: "10px", xs: "5px" },
+                    width: "176px",
+                    borderRadius: "26.267px",
+                    border: " 0.71px solid #197065",
+                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+                    color: "white",
+                    textTransform: "capitalize",
+                    bgcolor: "#197065",
+                    p: "3px 4px",
+                    ":hover": {
+                      bgcolor: "#197065",
+                    },
                   }}
                 >
                   <Box
@@ -426,9 +459,9 @@ const chapterName = () => {
                   </Box>
                   <Typography
                     sx={{
-                      color: "rgba(25, 112, 101, 0.90)",
+                      // color: "rgba(25, 112, 101, 0.90)",
                       fontSize: { sm: "16.6px", xs: "14.827px" },
-                      fontWeight: 700,
+                      fontWeight: 500,
                       cursor: "pointer",
                     }}
                   >
@@ -455,27 +488,43 @@ const chapterName = () => {
                   overflowY: "scroll",
                   flex: "1",
                   "&::-webkit-scrollbar": { display: "none" },
+                  pb: "100px",
                 }}
               >
-                {allQuestions?.length > 0 ? (
-                  allQuestions.map((question, index) => (
-                    <Box>
-                      <Questions
-                        key={question._id}
-                        question={question}
-                        title="chapterName"
-                        number={index + 1}
-                        questionChanged={() =>
-                          setQuestionChanged(!questionChanged)
-                        }
-                        answerClick={(text) =>
-                          router.push(`/events?questionId=${text}`)
-                        }
-                      />
-                    </Box>
-                  ))
+                {allQuestionsLoading ? (
+                  <Box
+                    sx={{
+                      marginTop: "8%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <CircularProgress />
+                  </Box>
                 ) : (
-                  <NoQuestions />
+                  <Box>
+                    {allQuestions?.length > 0 ? (
+                      allQuestions.map((question, index) => (
+                        <Box>
+                          <Questions
+                            key={question._id}
+                            question={question}
+                            title="chapterName"
+                            number={index + 1}
+                            questionChanged={() =>
+                              setQuestionChanged(!questionChanged)
+                            }
+                            answerClick={(text) =>
+                              router.push(`/events?questionId=${text}`)
+                            }
+                          />
+                        </Box>
+                      ))
+                    ) : (
+                      <NoQuestions />
+                    )}
+                  </Box>
                 )}
               </Box>
             )}

@@ -1,11 +1,10 @@
-import RightArrow from "@/_assets/svg/rightArrow.svg";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "./Questionnaire.module.css";
 
 const QuestionnaireLanding = () => {
   const router = useRouter();
+  const { userName } = router.query;
   return (
     <Box className={styles.QuestionnaireLandingMain}>
       <Box
@@ -42,7 +41,7 @@ const QuestionnaireLanding = () => {
               mt: "20px",
             }}
           >
-            Hi Joana, Thank you for embarking on this journey!
+            Hi {userName}, Thank you for embarking on this journey!
           </Typography>
 
           <Typography
@@ -69,7 +68,9 @@ const QuestionnaireLanding = () => {
             cursor: "pointer",
           }}
           onClick={() => {
-            router.push("/dashboard/Questionnaire/QuestionnaireLanding");
+            router.push(
+              `/dashboard/Questionnaire/QuestionnaireLanding?userName=${userName}`
+            );
           }}
         >
           <Typography
@@ -83,7 +84,16 @@ const QuestionnaireLanding = () => {
           >
             Next
           </Typography>
-          <Image src={RightArrow} alt="RightArrow" />
+          {/* <Image src={NextArrow} alt="NextArrow" /> */}
+          <span
+            style={{
+              fontSize: "20px",
+              fontWeight: 600,
+              color: "rgba(255, 255, 255, 0.60)",
+            }}
+          >
+            &#8594;
+          </span>
         </Box>
       </Box>
     </Box>

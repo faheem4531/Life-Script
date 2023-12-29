@@ -20,7 +20,13 @@
 
 .QuestionnaireTabsMain {
   flex: 1;
-  background: url("../../../_assets//svg//bgTree.svg") no-repeat white;
+  background: url("../../../_assets//svg//bgTree.svg") no-repeat #fff9f0;
   background-position: right bottom;
-  padding: 76px 105px;
+  padding: 20px 30px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.QuestionnaireTabsMain ::-webkit-scrollbar {
+  display: none;
 }

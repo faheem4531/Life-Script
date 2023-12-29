@@ -183,3 +183,8 @@ a {
 .css-2rbg70-MuiPaper-root-MuiDialog-paper {
   border-radius: 22px;
 }
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
