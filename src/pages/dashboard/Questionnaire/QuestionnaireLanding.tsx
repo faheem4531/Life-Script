@@ -1,17 +1,19 @@
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
+import { updateUserProfile } from "@/store/slices/authSlice";
 import { Box } from "@mui/material";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Questionnaire.module.css";
 import TabOne from "./qaTabOne";
 import TabThree from "./qaTabThree";
 import TabTwo from "./qaTabTwo";
-import { useDispatch } from "react-redux";
-import { updateUserProfile } from "@/store/slices/authSlice";
 
 const Questionnaire = () => {
   const dispatch: any = useDispatch();
   const [qaTab, setQaTab] = useState(1);
   const router = useRouter();
+  const { userName } = router.query;
   const [userData, setUserData] = useState({
     name: "",
     questionAskType: "",
@@ -21,7 +23,7 @@ const Questionnaire = () => {
     martialStatus: "",
     dateOfBirth: "",
   });
-    const handleTabOneClick = (val) => {
+  const handleTabOneClick = (val) => {
     setUserData({
       ...userData,
       bookUseFor: val,
@@ -64,26 +66,48 @@ const Questionnaire = () => {
       .catch(() => {});
   };
   return (
-      <Box className={styles.QuestionnaireMain}>
-        <Box className={styles.QuestionnaireSideBar}></Box>
-        <Box className={styles.QuestionnaireTabsMain}>
+    <Box className={styles.QuestionnaireMain}>
+      <Box className={styles.QuestionnaireSideBar}></Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+        className={styles.QuestionnaireTabsMain}
+      >
+        <SubscriptionHeader title="Questionnaire" description="" />
+        <Box
+          sx={{
+            p: "10px 20px",
+            flex: 1,
+            overflowY: "auto",
+          }}
+        >
           {qaTab === 1 ? (
-            <TabOne onClick={handleTabOneClick} data={userData?.bookUseFor} />
+            <TabOne
+              onClick={handleTabOneClick}
+              data={userData?.bookUseFor}
+              setQaTab={setQaTab}
+            />
           ) : qaTab === 2 ? (
             <TabTwo
               onClickBack={() => setQaTab(1)}
               onClickNext={handleTabTwoClick}
               data={userData}
+              userName={userName}
+              setQaTab={setQaTab}
             />
           ) : (
             <TabThree
               onClickBack={() => setQaTab(2)}
               onClickNext={handleTabThreeClick}
               data={userData}
+              setQaTab={setQaTab}
             />
           )}
         </Box>
       </Box>
+    </Box>
   );
 };
 

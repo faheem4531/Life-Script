@@ -10,18 +10,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
+import QaTabBars from "./qaTabBars";
 
-export default function TabThree({ onClickBack, onClickNext, data }) {
+export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
   const [personalQuestion, setPersonalQuestion] =
     useState("ChronologicalOrder");
   const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
 
   useEffect(() => {
-    if(data?.personalizedQuestion){
-        setPersonalQuestion(data.personalizedQuestion);
-        setQuestionFrequency(data.questionAskType);
+    if (data?.personalizedQuestion) {
+      setPersonalQuestion(data.personalizedQuestion);
+      setQuestionFrequency(data.questionAskType);
     }
-  },[data])
+  }, [data]);
 
   const handlePersonalInfo = (event) => {
     setPersonalQuestion(event.target.value);
@@ -57,11 +58,13 @@ export default function TabThree({ onClickBack, onClickNext, data }) {
           Details for personalized questions
         </Typography>
       </Box>
+      <QaTabBars tabProp={3} />
       <Box sx={{ mt: 6 }}>
         <Typography
           sx={{
             fontSize: "33.75px",
             fontWeight: 700,
+            color: "black",
           }}
         >
           Details for personalized questions
@@ -122,16 +125,17 @@ export default function TabThree({ onClickBack, onClickNext, data }) {
           </RadioGroup>
         </Box>
       </Box>
-      <Box sx={{ mt: 6 }}>
+      <Box sx={{ mt: 4 }}>
         <Typography
           sx={{
             fontSize: "33.75px",
             fontWeight: 700,
+            color: "black",
           }}
         >
           What should be the frequency of the questions?
         </Typography>
-        <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 2 }}>
           <RadioGroup
             value={questionFrequency}
             onChange={handleQuestionFrequency}
@@ -241,9 +245,6 @@ export default function TabThree({ onClickBack, onClickNext, data }) {
       </Box>
       <Box
         sx={{
-          position: "fixed",
-          bottom: "80px",
-          right: "120px",
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "center",
@@ -267,7 +268,12 @@ export default function TabThree({ onClickBack, onClickNext, data }) {
           <Image src={backArrow} alt="backArrow" /> Back
         </Button>
         <Button
-          onClick={()=>onClickNext({personal: personalQuestion, frequency: questionFrequency})}
+          onClick={() =>
+            onClickNext({
+              personal: personalQuestion,
+              frequency: questionFrequency,
+            })
+          }
           sx={{
             width: "176px",
             borderRadius: "26.267px",
@@ -279,9 +285,9 @@ export default function TabThree({ onClickBack, onClickNext, data }) {
             alignItems: "center",
             gap: "8px",
             bgcolor: "#197065",
-            ":hover":{
-                bgcolor: "#197065",
-            }
+            ":hover": {
+              bgcolor: "#197065",
+            },
           }}
         >
           Take me in <Image src={NextArrow} alt="NextArrow" />

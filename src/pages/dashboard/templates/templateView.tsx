@@ -104,16 +104,24 @@ const chapterName = () => {
   return (
     <>
       <Layout>
-        <AddChapterName
-          chapterId={templateData?._id}
-          chapter={templateTitle}
-          title="templateView"
-        />
+        <Box
+          sx={{
+            display: { sm: "block", xs: "none" },
+          }}
+        >
+          <AddChapterName
+            chapterId={templateData?._id}
+            chapter={templateTitle}
+            title="templateView"
+          />
+        </Box>
+
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
-            margin: "10px auto",
+            justifyContent: { sm: "flex-end", xs: "center" },
+            marginBottom: "10px",
+            mt: { sm: "10px", xs: "0px" },
             opacity: tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
           }}
         >
@@ -123,10 +131,10 @@ const chapterName = () => {
             background="#197065"
             borderRadius="55px"
             border={0}
-            fontSize="20px"
+            fontSize="17px"
             color="#fff"
             width="220px"
-            padding="5px 0px"
+            padding="8px 0px"
             onClick={() => {
               tempQuestionIds?.length && buttonLoading && handleChapterClone();
             }}
@@ -136,16 +144,17 @@ const chapterName = () => {
         <Box
           sx={{
             backgroundColor: "#fff",
-            padding: "35px",
-            minHeight: "60vh",
+            padding: { md: "35px", sm: "35px 21px", xs: "15px 10px" },
+            minHeight: { md: "60vh", xs: "calc(100vh - 175px)" },
             borderRadius: { sm: "18px", xs: "5px" },
           }}
         >
           <Typography
             sx={{
-              fontSize: "20px",
+              fontSize: { md: "19.379px", sm: "18.501px" },
               fontWeight: 700,
               color: "rgba(0, 0, 0, 0.87)",
+              display: { sm: "block", xs: "none" },
             }}
           >
             Questions
@@ -190,26 +199,40 @@ const chapterName = () => {
           setOpenModal(false);
           router.push("/dashboard/chapters");
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        customStyles={{ backgroundColor: "auto", borderRadius: "22px" }}
       >
         <Box sx={{ textAlign: "center" }}>
-          <Image alt="image" src={ModalImage} />
+          <Box
+            sx={{
+              width: { md: "91.555px", sm: "66.161px", xs: "47px" },
+              margin: "auto",
+            }}
+          >
+            <Image
+              alt="image"
+              src={ModalImage}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </Box>
           <Typography
             sx={{
-              fontSize: "40px",
+              fontSize: { md: "30px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
               color: "#070707",
-              margin: "40px 0",
+              margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
             Thank You!
           </Typography>
           <Typography
             sx={{
-              fontSize: "30px",
+              fontSize: { md: "22.5px", sm: "16.259px", xs: "11.631px" },
               color: "#070707",
-              width: "400px",
-              margin: "0 120px",
+              width: { md: "400px", sm: "300px", xs: "191px" },
+              margin: { md: "0 120px", sm: "0px 55px", xs: "0px 25px" },
             }}
           >
             Template has been added to your chapters
@@ -221,16 +244,19 @@ const chapterName = () => {
               setOpenModal(false);
             }}
             sx={{
-              width: "200px",
-              height: "50px",
               borderRadius: "78px",
               color: "#fff",
-              fontSize: "22px",
+              fontSize: { md: "18.75px", sm: "13.549px", xs: "9.693px" },
               bgcolor: "#197065",
-              margin: "40px 0 30px",
+              margin: { md: "40px 0 30px", sm: "22px 0", xs: "16px 0" },
               "&:hover": {
                 color: "#fff",
                 bgcolor: "#197065",
+              },
+              p: {
+                md: "10.357px 35.98px 10.723px 37.385px",
+                sm: "7.484px 25.491px 8.092px 27.015px",
+                xs: "5.354px 18.463px 4.949px 19.325px",
               },
             }}
           >

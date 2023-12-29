@@ -119,7 +119,13 @@ const Dashboard = () => {
             zIndex: "2",
           }}
         >
-          <HomeSteps />
+          <Box
+            sx={{
+              display: { sm: "block", xs: "none" },
+            }}
+          >
+            <HomeSteps />
+          </Box>
 
           {loading ? (
             <Box
@@ -136,10 +142,11 @@ const Dashboard = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: { md: "48px", sm: "20px" },
               }}
             >
               <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+
               {allChapters.map((chapter, index) => (
                 <DetailCard
                   key={index}
@@ -181,8 +188,21 @@ const Dashboard = () => {
         }}
         customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
-        <Box>
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        <Box
+          sx={{
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
+          }}
+        >
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
         <Typography sx={{ fontSize: "30px" }}>
           {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}

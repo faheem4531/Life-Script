@@ -1,13 +1,13 @@
-import NavMenu from "@/_assets/svg/nav-menu.svg";
 import More from "@/_assets/svg/nav-menue.svg";
 import Search from "@/_assets/svg/searchbar.svg";
+import NavMenu from "@/_assets/svg/sidebar/menuIcon.svg";
 import Step1 from "@/_assets/svg/smallBook.svg";
+import Logo from "@/_assets/svg/white-logo.svg";
 import {
   getChapterNotifications,
   readNotification,
   selectChapterNotification,
 } from "@/store/slices/chatSlice";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Box, InputBase } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import BellIcon from "../../_assets/svg/bellIcon.svg";
 import styles from "./Navbar.module.css";
 
 const options = ["Logout"];
@@ -81,9 +82,9 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: { md: "#197065", sm: "#fff", xs: "#fff" },
-        padding: "0 14px",
-        height: "70px",
+        backgroundColor: "#197065",
+        padding: { xs: "0px 8px", md: "0 14px" },
+        height: { xs: "48px", md: "70px" },
       }}
     >
       <Box
@@ -95,7 +96,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         }}
       >
         <Box
-          sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+          sx={{ display: { xs: "block", md: "none" } }}
           onClick={sideBarHandle}
         >
           <Image src={NavMenu} alt="logo" />
@@ -106,7 +107,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             padding: "0 20px 0 6px",
             border: "1px solid #197065",
             width: "300px",
-            display: "flex",
+            display: { xs: "none", md: "flex" },
             alignItems: "center",
             margin: "0 auto",
             borderRadius: "15px",
@@ -127,15 +128,34 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             placeholder="Search"
           />
         </Box>
+        <Box
+          sx={{
+            display: { xs: "block", md: "none" },
+          }}
+        >
+          <Image
+            src={Logo}
+            alt="logo"
+            style={{
+              width: "103px",
+              height: "36.117px",
+              marginRight: "-30px",
+            }}
+          />
+        </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
           {/* Notification Icon */}
           <IconButton
             aria-label="notifications"
             color="inherit"
             onClick={handleNotificationClick}
+            style={{
+              marginRight: "-5px",
+            }}
           >
             <Badge badgeContent={notifications?.length} color="error">
-              <NotificationsIcon />
+              {/* <NotificationsIcon /> */}
+              <Image src={BellIcon} alt="BellIcon" />
             </Badge>
           </IconButton>
 
@@ -169,7 +189,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                   borderBottom: "0.917px solid #197065",
                   borderLeft: "0.917px solid #197065",
                   position: "absolute",
-                  right: " 50.5px",
+                  right: " 54.5px",
                   top: "-5px",
                   transform: "rotate(135deg)",
                   zIndex: "1",
@@ -216,7 +236,16 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                         mt: "5px",
                       }}
                     >
-                      Chapter <span style={{fontWeight: 'bold', textTransform: "capitalize"}}>{notification.title}</span> is fused and ready to to view
+                      Chapter{" "}
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {notification.title}
+                      </span>{" "}
+                      is fused and ready to to view
                     </Box>
                   </Box>
                 </MenuItem>
@@ -269,6 +298,9 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             aria-expanded={moreAnchorEl ? "true" : undefined}
             aria-haspopup="true"
             onClick={handleMoreClick}
+            style={{
+              marginLeft: "-5px",
+            }}
           >
             <Image alt="options" src={More} />
           </IconButton>

@@ -4,11 +4,9 @@ import { Divider, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Image from "next/image";
-import styles from "./HomeSteps.module.css"
-
+import styles from "./HomeSteps.module.css";
 
 export default function TemplateCard() {
-
   return (
     <Card sx={{ borderRadius: "6.5px" }}>
       <CardContent sx={{ padding: { xs: "5px 8px 35px" } }}>
@@ -19,7 +17,7 @@ export default function TemplateCard() {
           textAlign="center"
           sx={{
             fontSize: "9.383px",
-            marginTop: "15px"
+            marginTop: "15px",
           }}
         >
           The Book Of John Doe
@@ -63,27 +61,7 @@ export default function TemplateCard() {
           <Image alt="check" src={Tick} className={styles.tick} />
           The Best Job Ever
         </Typography>
-        <Typography
-          display="flex"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          marginTop="5px"
-          sx={{ columnGap: { sm: "10px", xs: "3px" }, fontSize: "6.239px" }}
-        >
-          <Image alt="check" src={Tick} className={styles.tick} />
-          Your Best Employee
-        </Typography>
-        <Typography
-          display="flex"
-          columnGap="10px"
-          color="rgba(22, 22, 22, 0.90)"
-          marginTop="5px"
-          sx={{ columnGap: { sm: "10px", xs: "3px" }, fontSize: "6.239px" }}
-        >
-          <Image alt="check" src={Tick} className={styles.tick} />
-          The best project you’ve worked on
-        </Typography>
       </CardContent>
-    </Card >
+    </Card>
   );
 }

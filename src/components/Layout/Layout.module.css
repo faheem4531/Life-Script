@@ -8,8 +8,12 @@
   background-position: right bottom;
   background-size: auto;
 }
+.displayBg {
+  background-color: aqua;
+  width: 100vw;
+}
 
-@media screen and (max-width:900px) {
+@media screen and (max-width: 900px) {
   .display {
     display: none;
   }

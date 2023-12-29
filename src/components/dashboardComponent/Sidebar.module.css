@@ -29,3 +29,14 @@
 .subLink:hover {
   background-color: #333;
 }
+
+@media (max-width: 900px) {
+  .link {
+    font-size: 13px;
+    column-gap: 5px;
+  }
+
+  .sidebarIcon {
+    width: 16px;
+  }
+}

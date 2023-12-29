@@ -49,6 +49,7 @@ export default function Questions({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleClickOption = (option) => {
     if (option === "Delete") {
       setDeleteQuestionModal(true);
@@ -105,6 +106,8 @@ export default function Questions({
           gap: "10px",
           width: "100%",
           mt: { sm: "15px", xs: "8px" },
+          bgcolor: title == "templateView" && "#F9F9F9",
+          borderRadius: title == "templateView" && "8px",
         }}
       >
         <Box
@@ -135,11 +138,11 @@ export default function Questions({
           >
             <Typography
               sx={{
-                marginLeft: { sm: "20px", xs: "10px" },
+                marginLeft: { sm: "15px", xs: "10px" },
                 color: "rgba(22, 22, 22, 0.90)",
-                fontSize: { sm: "22px", xs: "16px" },
+                fontSize: { sm: "22px", xs: "15px" },
                 fontWeight: 400,
-                width: { xs: "48vw", sm: "50vw", md: "53vw", lg: "55vw" },
+                width: { xs: "48vw", sm: "55vw", md: "52vw", lg: "64vw" },
                 textOverflow: expanded ? "clip" : "ellipsis",
                 overflow: "hidden",
                 // whiteSpace: expanded ? "wrap" : "nowrap",
@@ -151,11 +154,10 @@ export default function Questions({
             >
               <Typography
                 sx={{
-                  marginLeft: { sm: "20px", xs: "10px" },
                   color: "rgba(22, 22, 22, 0.90)",
-                  fontSize: { sm: "22px", xs: "16px" },
+                  fontSize: "13px",
                   fontWeight: 400,
-                  width: "58vw",
+                  width: "100vw",
                   textOverflow: expanded ? "clip" : "ellipsis",
                   overflow: "hidden",
                   whiteSpace: expanded ? "wrap" : "nowrap",
@@ -166,7 +168,7 @@ export default function Questions({
                 {". "}
                 {question?.text}
               </Typography>
-              {question?.text.length > 80 && (
+              {question?.text.length > 150 && (
                 <Typography
                   onClick={handleSeeMoreClick}
                   sx={{
@@ -281,7 +283,12 @@ export default function Questions({
             </Menu>
           </Box>
         ) : (
-          <Box sx={{ textAlign: "center", width: "max-content" }}>
+          <Box
+            sx={{
+              textAlign: "center",
+              mr: { md: "20px", sm: "15px", xs: "10px" },
+            }}
+          >
             <Checkbox
               defaultChecked={true}
               onChange={() => templateQuestion(question?._id)}

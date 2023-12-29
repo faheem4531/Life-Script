@@ -28,7 +28,7 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
           }}
         />
       </Box>
-      <Box sx={{ justifyContent: "center", textAlign: "center" }}>
+      <Box sx={{ justifyContent: "center", textAlign: "center", mt: "20px" }}>
         <Button
           variant="contained"
           disabled={!chapter}
@@ -38,8 +38,9 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
             borderRadius: "48px",
             backgroundColor: "#186F65",
             color: "white",
-            width: "200px",
-            marginTop: "50px",
+            fontSize: { md: "18px", sm: "13.627px", xs: "8.542px" },
+            width: { md: "234px", sm: "153px", xs: "103px" },
+            height: { md: "43px", sm: "32px", xs: "20px" },
             textTransform: "capitalize",
             "&:hover": {
               backgroundColor: "#186F65",

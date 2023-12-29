@@ -57,14 +57,14 @@ export default function CustomizationDialog({
   customStyles,
 }) {
   return (
-    <Box>
+    <Box sx={{ bgcolor: "white", maxWidth: "80vw" }}>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
         // fullWidth={fullWidth}
         maxWidth={"xl"}
-        style={{ overflowY: "hidden" }}
+        style={{ overflowY: "hidden", borderRadius: "22px" }}
       >
         <div className="bg-black" style={customStyles}>
           <BootstrapDialogTitle

@@ -1,7 +1,7 @@
 .CardsContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px 30px;
+  gap: 25px;
 }
 
 .subContainer {
@@ -13,14 +13,29 @@
 
 @media (max-width: 1400px) {
   .CardsContainer {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
   }
 }
+@media (max-width: 1200px) {
+  .CardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 15px;
+  }
+}
+@media (max-width: 900px) {
+  .CardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 20px;
+  }
+}
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .CardsContainer {
     grid-template-columns: repeat(1, 1fr);
-    gap: 20px 0px;
+    align-items: center;
+    gap: 20px;
   }
 }

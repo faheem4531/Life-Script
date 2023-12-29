@@ -23,7 +23,7 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "35px 0",
+          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -53,7 +53,7 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "35px 0",
+          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -61,7 +61,7 @@ const HomeSteps = () => {
           sx={{
             fontSize: "14px",
             position: "absolute",
-            bottom: "0px",
+            bottom: "10px",
             left: "-30px",
             width: "200px",
           }}
@@ -83,7 +83,7 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "35px 0",
+          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -92,7 +92,7 @@ const HomeSteps = () => {
             fontSize: "14px",
             position: "absolute",
             top: "0px",
-            left: { sm: "-80", xs: "-45px" },
+            left: { md: "-70px", sm: "-60px", xs: "-55px" },
             width: "250px",
           }}
           className={styles.typo}
@@ -113,7 +113,7 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "35px 0",
+          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -121,7 +121,7 @@ const HomeSteps = () => {
           sx={{
             fontSize: "14px",
             position: "absolute",
-            bottom: "0px",
+            bottom: "10px",
             left: "-40px",
             width: "200px",
           }}
