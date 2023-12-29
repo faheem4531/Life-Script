@@ -22,9 +22,10 @@ export default function TabTwo({
   userName,
   setQaTab,
 }) {
-  const [maritalStatus, setMaritalStatus] = useState("Single");
-  const [gender, setGender] = useState("Male");
-  const [selectedDate, setSelectedDate] = useState();
+  const [maritalStatus, setMaritalStatus] = useState("Marital Status");
+  const [gender, setGender] = useState("Gender");
+  const [langPre, setLangPre] = useState("Language Preference");
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [showTooltip, setShowTooltip] = useState(false);
   const [name, setName] = useState(userName);
   const maxDate = new Date();
@@ -35,12 +36,19 @@ export default function TabTwo({
       setMaritalStatus(data.martialStatus);
       setSelectedDate(data.dateOfBirth);
       setName(data.name);
+      setLangPre(data.LanguagePreferences);
     }
   }, [data]);
 
   const handleButtonClick = () => {
     setShowTooltip(false);
-    if (!name || !maritalStatus || !gender || !selectedDate) {
+    if (
+      !name ||
+      maritalStatus === "Marital Status" ||
+      gender === "Gender" ||
+      !selectedDate ||
+      langPre === "Language Preference"
+    ) {
       setShowTooltip(true);
     } else {
       // Continue with your button click logic
@@ -49,6 +57,7 @@ export default function TabTwo({
         maritalStatus: maritalStatus,
         gender: gender,
         dob: selectedDate,
+        lp: langPre,
       });
     }
   };
@@ -149,6 +158,9 @@ export default function TabTwo({
                     width: "100%",
                   }}
                 >
+                  <MenuItem value="Marital Status" disabled>
+                    Marital Status
+                  </MenuItem>
                   <MenuItem value="Single">Single</MenuItem>
                   <MenuItem value="Married">Married</MenuItem>
                 </Select>
@@ -181,6 +193,9 @@ export default function TabTwo({
                     borderRadius: "50px",
                   }}
                 >
+                  <MenuItem value="Gender" disabled>
+                    Gender
+                  </MenuItem>
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
                   <MenuItem value="Other">Special</MenuItem>
@@ -202,6 +217,7 @@ export default function TabTwo({
                 <DatePicker
                   value={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
+                  maxDate={maxDate}
                   sx={{
                     marginTop: "10px",
                     backgroundColor: "white",
@@ -230,8 +246,8 @@ export default function TabTwo({
                 </Typography>
                 <Select
                   placeholder="language preference"
-                  value={maritalStatus}
-                  onChange={(e) => setMaritalStatus(e.target.value)}
+                  value={langPre}
+                  onChange={(e) => setLangPre(e.target.value)}
                   sx={{
                     marginTop: "10px",
                     borderRadius: "50px",
@@ -239,6 +255,9 @@ export default function TabTwo({
                     width: "100%",
                   }}
                 >
+                  <MenuItem value="Language Preference" disabled>
+                    Language Preference
+                  </MenuItem>
                   <MenuItem value="English">English</MenuItem>
                   <MenuItem value="Spanish">Spanish</MenuItem>
                 </Select>

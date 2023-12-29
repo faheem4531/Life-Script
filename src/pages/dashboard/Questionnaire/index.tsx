@@ -1,5 +1,7 @@
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import Profile from "../../../_assets/svg/profile.svg";
 import styles from "./Questionnaire.module.css";
 
 const QuestionnaireLanding = () => {
@@ -18,11 +20,19 @@ const QuestionnaireLanding = () => {
           sx={{
             width: "343px",
             height: "343px",
-            bgcolor: "#F6DB97",
             borderRadius: "50%",
             margin: "0px auto 20px",
           }}
-        ></Box>
+        >
+          <Image
+            src={Profile}
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </Box>
         <Typography
           sx={{
             fontSize: "44px",

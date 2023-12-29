@@ -22,6 +22,7 @@ const Questionnaire = () => {
     gender: "",
     martialStatus: "",
     dateOfBirth: "",
+    LanguagePreferences: "",
   });
   const handleTabOneClick = (val) => {
     setUserData({
@@ -37,6 +38,7 @@ const Questionnaire = () => {
       gender: val.gender,
       martialStatus: val.maritalStatus,
       dateOfBirth: val.dob,
+      LanguagePreferences: val.lp,
     });
     setQaTab(3);
   };
@@ -56,6 +58,7 @@ const Questionnaire = () => {
         gender: userData?.gender,
         martialStatus: userData?.martialStatus,
         dateOfBirth: userData?.dateOfBirth,
+        LanguagePreferences: userData?.LanguagePreferences,
       })
     )
       .unwrap()
