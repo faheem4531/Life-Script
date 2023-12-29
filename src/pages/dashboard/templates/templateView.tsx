@@ -26,6 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [copyTemLoading, setCopyTemLoading] = useState(true);
   const [templateTitle, setTemplateTitle] = useState("");
   const [allQuestions, setAllQuestions] = useState([]);
   const [tempQuestionIds, setTempQuestionIds] = useState([]);
@@ -39,26 +40,33 @@ const chapterName = () => {
 
   const handleChapterClone = () => {
     setButtonLoading(false);
+    setCopyTemLoading(true);
+
     dispatch(isTemplateCloned({ id: templateId.toString() }))
       .unwrap()
       .then((res) => {
         if (res == "Template is already cloned") {
           setTemplateState(true);
+          setCopyTemLoading(true);
         } else {
           dispatch(
             cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds })
           )
             .unwrap()
             .then(() => {
+              setCopyTemLoading(false);
               setOpenModal(true);
               setButtonLoading(true);
             })
             .catch(() => {
               setButtonLoading(true);
+              setCopyTemLoading(false);
+              setCopyTemLoading(false);
             });
         }
       })
       .catch(() => {
+        setCopyTemLoading(false);
         setButtonLoading(true);
       });
   };
@@ -78,10 +86,12 @@ const chapterName = () => {
   const handleCopyAgain = () => {
     dispatch(cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds }))
       .then(() => {
+        setCopyTemLoading(false);
         setOpenModal(true);
         setTemplateState(false);
       })
       .catch(() => {
+        setCopyTemLoading(false);
         setButtonLoading(false);
         setTemplateState(false);
       });
@@ -98,7 +108,10 @@ const chapterName = () => {
   useEffect(() => {
     dispatch(getTemplates())
       .unwrap()
-      .then(() => setLoading(false));
+      .then(() => {
+        setLoading(false);
+        setCopyTemLoading(false);
+      });
   }, []);
 
   return (
@@ -141,54 +154,67 @@ const chapterName = () => {
             height={undefined}
           />
         </Box>
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            padding: { md: "35px", sm: "35px 21px", xs: "15px 10px" },
-            minHeight: { md: "60vh", xs: "calc(100vh - 175px)" },
-            borderRadius: { sm: "18px", xs: "5px" },
-          }}
-        >
-          <Typography
+        {copyTemLoading ? (
+          <Box
             sx={{
-              fontSize: { md: "19.379px", sm: "18.501px" },
-              fontWeight: 700,
-              color: "rgba(0, 0, 0, 0.87)",
-              display: { sm: "block", xs: "none" },
+              marginTop: "8%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            Questions
-          </Typography>
-
-          {loading ? (
-            <Box
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              backgroundColor: "#fff",
+              padding: { md: "35px", sm: "35px 21px", xs: "15px 10px" },
+              minHeight: { md: "60vh", xs: "calc(100vh - 175px)" },
+              borderRadius: { sm: "18px", xs: "5px" },
+            }}
+          >
+            <Typography
               sx={{
-                marginTop: "8%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                fontSize: { md: "19.379px", sm: "18.501px" },
+                fontWeight: 700,
+                color: "rgba(0, 0, 0, 0.87)",
+                display: { sm: "block", xs: "none" },
               }}
             >
-              <CircularProgress />
-            </Box>
-          ) : (
-            <>
-              {allQuestions?.length > 0 ? (
-                allQuestions.map((question, index) => (
-                  <Questions
-                    key={question._id}
-                    question={question}
-                    number={index + 1}
-                    title="templateView"
-                    templateQuestion={(id) => toggleIdInArray(id)}
-                  />
-                ))
-              ) : (
-                <NoQuestions />
-              )}
-            </>
-          )}
-        </Box>
+              Questions
+            </Typography>
+
+            {loading ? (
+              <Box
+                sx={{
+                  marginTop: "8%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            ) : (
+              <>
+                {allQuestions?.length > 0 ? (
+                  allQuestions.map((question, index) => (
+                    <Questions
+                      key={question._id}
+                      question={question}
+                      number={index + 1}
+                      title="templateView"
+                      templateQuestion={(id) => toggleIdInArray(id)}
+                    />
+                  ))
+                ) : (
+                  <NoQuestions />
+                )}
+              </>
+            )}
+          </Box>
+        )}
       </Layout>
 
       {/* Use Template Modal   */}
@@ -271,10 +297,12 @@ const chapterName = () => {
         cancel={() => {
           setTemplateState(false);
           setButtonLoading(true);
+          setCopyTemLoading(false);
         }}
         closeModal={() => {
           setTemplateState(false);
           setButtonLoading(true);
+          setCopyTemLoading(false);
         }}
         proceed={handleCopyAgain}
       />
