@@ -86,7 +86,7 @@ const NarrativeResponse = () => {
 
   return (
     <>
-      <Box sx={{ height: "100vh", overflow: "hidden" }}>
+      <Box sx={{ height: "100vh" }}>
         <Layout>
           {loading ? (
             <Box
@@ -101,12 +101,15 @@ const NarrativeResponse = () => {
               <CircularProgress />
             </Box>
           ) : (
-            <Box position="relative">
+            <Box
+              sx={{
+                position: "relative",
+                p: { xs: "15px", sm: "0px" },
+              }}
+            >
               <Box
                 sx={{
-                  marginTop: "5px",
                   display: { sm: "flex" },
-                  // columnGap: { xl: "100px", lg: "40px" },
                   justifyContent: "space-between",
                   height: "100%",
                   mb: { xs: "20px", sm: "0px" },
@@ -117,8 +120,6 @@ const NarrativeResponse = () => {
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    // alignContent: "space-between",
-                    // width: "33%",
                   }}
                 >
                   <Box sx={{ display: "flex", alignItems: "start" }}>
@@ -130,7 +131,7 @@ const NarrativeResponse = () => {
                     <Box>
                       <Typography
                         sx={{
-                          fontSize: { xl: "20px", sm: "17px" },
+                          fontSize: { md: "20px", sm: "17px", xs: "14.945px" },
                           display: "block",
                           color: "#171725",
                           fontWeight: 600,
@@ -157,8 +158,7 @@ const NarrativeResponse = () => {
                   sx={{
                     display: "flex",
                     flexDirection: "row",
-                    flexWrap: "wrap",
-                    gap: "10px",
+                    gap: { sm: "10px", xs: "5px" },
                     mt: "5px",
                     justifyContent: "flex-end",
                   }}
@@ -197,9 +197,10 @@ const NarrativeResponse = () => {
               </Box>
               <Box
                 sx={{
-                  maxWidth: "450px",
+                  maxWidth: "632px",
                   height: "100%",
                   margin: "auto",
+                  width: "90%",
                 }}
               >
                 <Box
@@ -215,20 +216,24 @@ const NarrativeResponse = () => {
                   >
                     <Box
                       sx={{
-                        padding: { xl: "45px 60px", sm: "40px 45px" },
+                        padding: {
+                          xl: "45px 60px",
+                          sm: "30px 35px",
+                          xs: "15px 20px",
+                        },
                         bgcolor: "#fff",
                         position: "relative",
-                        height: "75vh",
+                        height: "calc(100vh - 240px)",
                       }}
                       id="accordian"
                     >
                       <Typography
                         sx={{
                           textAlign: "center",
-                          fontSize: "20px",
+                          fontSize: { sm: "20px", xs: "14px" },
                           fontWeight: 600,
                           color: "#171725",
-                          marginBottom: "35px",
+                          marginBottom: { sm: "35px", xs: "20px" },
                         }}
                       >
                         {chapterTitle}
@@ -238,11 +243,9 @@ const NarrativeResponse = () => {
                           __html: responseType ? gptChapter : userChapter,
                         }}
                         sx={{
-                          fontSize: "13px",
+                          fontSize: { sm: "13px", xs: "9.3px" },
                           color: "#696974",
                           marginBottom: "25px",
-                          lineHeight: "22px",
-                          height: "55vh",
                           overflowY: "auto",
                           "&::-webkit-scrollbar": { display: "none" },
                         }}
@@ -275,37 +278,39 @@ const NarrativeResponse = () => {
               </Box>
               {openai === "true" && responseType && (
                 <Box
-                  sx={{
-                    marginTop: "auto",
-                    position: "absolute",
-                    left: "0px",
-                    bottom: "15px",
-                  }}
+                  sx={{ mt: "10px", textAlign: { md: "left", xs: "center" } }}
                 >
                   <Typography
                     sx={{
-                      fontSize: { xl: "15px", sm: "13px" },
+                      fontSize: { xl: "15px", sm: "15.001px", xs: "8.906px" },
                       fontWeight: 300,
                       marginBottom: "8px",
                     }}
                   >
                     Doesn’t like the narrative fusion response?
                   </Typography>
-                  <Button
-                    image={RevertIcon}
-                    title="Revert Response"
-                    background="#fff"
-                    borderRadius="27px"
-                    color="#197065"
-                    width="170px"
-                    height="30px"
-                    fontSize="14px"
-                    padding={undefined}
-                    onClick={() => {
-                      setRevertModal(true);
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: { md: "flex-start", xs: "center" },
                     }}
-                    border="1px solid #197065"
-                  />
+                  >
+                    <Button
+                      image={RevertIcon}
+                      title="Revert Response"
+                      background="#fff"
+                      borderRadius="27px"
+                      color="#197065"
+                      width="170px"
+                      height="30px"
+                      fontSize="14px"
+                      padding={undefined}
+                      onClick={() => {
+                        setRevertModal(true);
+                      }}
+                      border="1px solid #197065"
+                    />
+                  </Box>
                 </Box>
               )}
             </Box>

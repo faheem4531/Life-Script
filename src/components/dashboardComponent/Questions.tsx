@@ -105,7 +105,7 @@ export default function Questions({
           alignItems: "center",
           gap: "10px",
           width: "100%",
-          mt: { sm: "15px", xs: "8px" },
+          mb: { sm: "15px", xs: "8px" },
           bgcolor: title == "templateView" && "#F9F9F9",
           borderRadius: title == "templateView" && "8px",
         }}
@@ -121,7 +121,7 @@ export default function Questions({
             bgcolor: "#F9F9F9",
             borderRadius: "8px",
             borderLeft: "11px solid #186F65",
-            height: expanded ? "auto" : { sm: "60px", xs: "60px" },
+            height: expanded ? "auto" : { sm: "50px", xs: "50px" },
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -168,7 +168,7 @@ export default function Questions({
                 {". "}
                 {question?.text}
               </Typography>
-              {question?.text.length > 150 && (
+              {question?.text.length > 125 && (
                 <Typography
                   onClick={handleSeeMoreClick}
                   sx={{
@@ -194,7 +194,7 @@ export default function Questions({
                   borderRadius: " 0px 8px 8px 0px",
                   backgroundColor: "#white",
                   color: "rgba(255, 255, 255, 0.90)",
-                  height: { sm: "60px", xs: "60px" },
+                  height: { sm: "50px", xs: "50px" },
                   p: "0px",
                   "&:hover": {
                     backgroundColor: "#white",

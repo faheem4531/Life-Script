@@ -18,8 +18,8 @@ const QuestionnaireLanding = () => {
       >
         <Box
           sx={{
-            width: "343px",
-            height: "343px",
+            width: { md: "343px", sm: "200px", xs: "120px" },
+            height: { md: "343px", sm: "200px", xs: "120px" },
             borderRadius: "50%",
             margin: "0px auto 20px",
           }}
@@ -35,9 +35,8 @@ const QuestionnaireLanding = () => {
         </Box>
         <Typography
           sx={{
-            fontSize: "44px",
+            fontSize: { md: "44px", sm: "36px", xs: "26px" },
             fontWeight: 700,
-            lineHeight: "54px",
           }}
         >
           Hello, I am Alice
@@ -45,7 +44,7 @@ const QuestionnaireLanding = () => {
         <Box>
           <Typography
             sx={{
-              fontSize: "24px",
+              fontSize: { md: "24px", sm: "18px", xs: "14px" },
               fontWeight: 700,
               color: "rgba(255, 255, 255, 0.60)",
               mt: "20px",
@@ -56,7 +55,7 @@ const QuestionnaireLanding = () => {
 
           <Typography
             sx={{
-              fontSize: "24px",
+              fontSize: { md: "24px", sm: "18px", xs: "14px" },
               fontWeight: 700,
               color: "rgba(255, 255, 255, 0.60)",
               mt: "20px",
@@ -73,7 +72,7 @@ const QuestionnaireLanding = () => {
             alignItems: "center",
             mt: "30px",
             justifyContent: "space-between",
-            width: "80px",
+            width: { md: "80px", sm: "65px", xs: "60px" },
             margin: "auto",
             cursor: "pointer",
           }}
@@ -85,9 +84,8 @@ const QuestionnaireLanding = () => {
         >
           <Typography
             sx={{
-              fontSize: "22px",
+              fontSize: { md: "22px", sm: "16px", xs: "15px" },
               fontWeight: 600,
-              lineHeight: "54px",
               color: "rgba(255, 255, 255, 0.60)",
               textDecoration: "underline",
             }}

@@ -12,30 +12,34 @@ export default function Answers() {
   return (
     <>
       <Layout>
-        <Box>
-          <Button
-            onClick={() => {
-              router.back();
-            }}
-            sx={{
-              borderRadius: "26.267px",
-              border: " 0.71px solid #197065",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Image src={backArrow} alt="backArrow" />
-          </Button>
-        </Box>
         <Box
           sx={{
             bgcolor: "#fff",
-            marginTop: "20px",
+            m: { sm: "0px", xs: "15px" },
             borderRadius: "34px",
-            padding: { xl: "50px 70px 100px", sm: "50px 40px 80px" },
+            padding: {
+              xl: "30px 70px 100px",
+              sm: "20px 40px 80px",
+              xs: "20px 20px 50px",
+            },
             border: "1px solid #197065",
           }}
         >
+          <Box mb={2}>
+            <Button
+              onClick={() => {
+                router.back();
+              }}
+              sx={{
+                borderRadius: "26.267px",
+                border: " 0.71px solid #197065",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Image src={backArrow} alt="backArrow" />
+            </Button>
+          </Box>
           <RichText questionId={questionId} />
         </Box>
       </Layout>

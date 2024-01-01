@@ -1,5 +1,4 @@
 import More from "@/_assets/svg/nav-menue.svg";
-import Search from "@/_assets/svg/searchbar.svg";
 import NavMenu from "@/_assets/svg/sidebar/menuIcon.svg";
 import Step1 from "@/_assets/svg/smallBook.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
@@ -8,7 +7,7 @@ import {
   readNotification,
   selectChapterNotification,
 } from "@/store/slices/chatSlice";
-import { Box, InputBase } from "@mui/material";
+import { Box } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -18,7 +17,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BellIcon from "../../_assets/svg/bellIcon.svg";
-import styles from "./Navbar.module.css";
 
 const options = ["Logout"];
 const ITEM_HEIGHT = 48;
@@ -91,7 +89,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: { xs: "space-between", md: "end" },
           width: "100%",
         }}
       >
@@ -100,33 +98,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
           onClick={sideBarHandle}
         >
           <Image src={NavMenu} alt="logo" />
-        </Box>
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            padding: "0 20px 0 6px",
-            border: "1px solid #197065",
-            width: "300px",
-            display: { xs: "none", md: "flex" },
-            alignItems: "center",
-            margin: "0 auto",
-            borderRadius: "15px",
-            marginLeft: "10px",
-          }}
-          className={styles.searchBox}
-        >
-          <Image src={Search} alt="logo" />
-          <InputBase
-            sx={{
-              fontFamily: "sans-serif",
-              backgroundColor: "#fff",
-              width: "100%",
-              paddingLeft: "5px",
-              opacity: ".6",
-              fontSize: "16px",
-            }}
-            placeholder="Search"
-          />
         </Box>
         <Box
           sx={{

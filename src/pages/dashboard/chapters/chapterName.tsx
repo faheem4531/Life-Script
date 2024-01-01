@@ -34,9 +34,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import addIcon from "../../../../public/addicon.svg";
 import Check from "../../../../public/checkIcon.png";
-import suggestionIcon from "../../../_assets/svg/suggestion.svg";
+import addIcon from "../../../_assets/svg/AddIcon.svg";
+import suggestionIcon from "../../../_assets/svg/suggestionsIcon.svg";
 import QuestionComponent from "./components/AIGeneration";
 
 const chapterName = () => {
@@ -372,6 +372,7 @@ const chapterName = () => {
                   justifyContent: { xs: "space-between", sm: "end" },
                   width: "100%",
                   flexWrap: "wrap",
+                  pb: "10px",
                 }}
               >
                 {aiQuestions?.length > 0 && (
@@ -379,30 +380,94 @@ const chapterName = () => {
                     sx={{
                       display: "flex",
                       alignItems: "center",
+                      justifyContent: "center",
                       gap: { sm: "10px", xs: "5px" },
                       width: "176px",
                       borderRadius: "26.267px",
                       border: " 0.71px solid #197065",
                       fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                      color: "white",
+                      color: "#197065",
                       textTransform: "capitalize",
-                      bgcolor: "#197065",
-                      ":hover": {
-                        bgcolor: "#197065",
-                      },
-                      p: "3px 4px",
+                      p: "4px 4px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: { sm: "10px", xs: "5px" },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          cursor: "pointer",
+                          mb: "-4px",
+                          width: { sm: "27.778px", xs: "25.147px" },
+                        }}
+                      >
+                        <Image
+                          src={suggestionIcon}
+                          alt="suggestionIcon"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                          }}
+                        />
+                      </Box>
+                      <Typography
+                        sx={{
+                          // color: "rgba(25, 112, 101, 0.90)",
+                          fontSize: {
+                            md: "16.6px",
+                            sm: "15.6px",
+                            xs: "14.827px",
+                          },
+                          fontWeight: 500,
+                          cursor: "pointer",
+                        }}
+                        onClick={() => setAiGeneration(true)}
+                      >
+                        Suggestion
+                      </Typography>
+                    </Box>
+                  </Box>
+                )}
+                <Box
+                  onClick={() => setOpenModal(true)}
+                  sx={{
+                    width: "180px",
+                    borderRadius: "26.267px",
+                    border: " 0.71px solid #197065",
+                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+                    color: "#197065",
+                    textTransform: "capitalize",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    p: "4px 4px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: { sm: "10px", xs: "5px" },
                     }}
                   >
                     <Box
                       sx={{
                         cursor: "pointer",
-                        mb: "-4px",
-                        width: { sm: "33.778px", xs: "30.147px" },
+                        mb: "-5px",
+                        width: { sm: "27.778px", xs: "25.147px" },
                       }}
                     >
                       <Image
-                        src={suggestionIcon}
-                        alt="suggestionIcon"
+                        src={addIcon}
+                        alt="addicon"
                         style={{
                           width: "100%",
                           height: "100%",
@@ -412,61 +477,18 @@ const chapterName = () => {
                     <Typography
                       sx={{
                         // color: "rgba(25, 112, 101, 0.90)",
-                        fontSize: { sm: "16.6px", xs: "14.827px" },
+                        fontSize: {
+                          md: "16.6px",
+                          sm: "15.6px",
+                          xs: "14.827px",
+                        },
                         fontWeight: 500,
                         cursor: "pointer",
                       }}
-                      onClick={() => setAiGeneration(true)}
                     >
-                      Suggestion
+                      Add Question
                     </Typography>
                   </Box>
-                )}
-                <Box
-                  onClick={() => setOpenModal(true)}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: { sm: "10px", xs: "5px" },
-                    width: "176px",
-                    borderRadius: "26.267px",
-                    border: " 0.71px solid #197065",
-                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                    color: "white",
-                    textTransform: "capitalize",
-                    bgcolor: "#197065",
-                    p: "3px 4px",
-                    ":hover": {
-                      bgcolor: "#197065",
-                    },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      cursor: "pointer",
-                      mb: "-5px",
-                      width: { sm: "33.778px", xs: "30.147px" },
-                    }}
-                  >
-                    <Image
-                      src={addIcon}
-                      alt="addicon"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    />
-                  </Box>
-                  <Typography
-                    sx={{
-                      // color: "rgba(25, 112, 101, 0.90)",
-                      fontSize: { sm: "16.6px", xs: "14.827px" },
-                      fontWeight: 500,
-                      cursor: "pointer",
-                    }}
-                  >
-                    Add Question
-                  </Typography>
                 </Box>
               </Box>
             </Box>
@@ -538,10 +560,19 @@ const chapterName = () => {
             {/* Refuse Narative  */}
 
             {narrativeRefuse && (
-              <Tooltip
-                title="Narrative Fusion"
-                text="You cannot use this feature untill all questions are completed"
-              />
+              <Box
+                sx={{
+                  display: {
+                    md: "block",
+                    xs: "none",
+                  },
+                }}
+              >
+                <Tooltip
+                  title="Narrative Fusion"
+                  text="You cannot use this feature untill all questions are completed"
+                />
+              </Box>
             )}
           </Box>
         </Layout>

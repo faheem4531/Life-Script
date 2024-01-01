@@ -70,7 +70,12 @@ const Questionnaire = () => {
   };
   return (
     <Box className={styles.QuestionnaireMain}>
-      <Box className={styles.QuestionnaireSideBar}></Box>
+      <Box
+        sx={{
+          display: { md: "block", xs: "none" },
+        }}
+        className={styles.QuestionnaireSideBar}
+      ></Box>
       <Box
         sx={{
           display: "flex",
@@ -81,7 +86,7 @@ const Questionnaire = () => {
         <SubscriptionHeader title="Questionnaire" description="" />
         <Box
           sx={{
-            p: "10px 20px",
+            p: { md: "10px 20px", xs: "10px 0px" },
             flex: 1,
             overflowY: "auto",
           }}

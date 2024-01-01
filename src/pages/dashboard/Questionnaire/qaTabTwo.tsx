@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Grid,
   MenuItem,
   Select,
   TextField,
@@ -74,7 +73,7 @@ export default function TabTwo({
       >
         <Typography
           sx={{
-            fontSize: "44px",
+            fontSize: { md: "44px", sm: "36px", xs: "26px" },
             fontWeight: 700,
           }}
         >
@@ -82,7 +81,7 @@ export default function TabTwo({
         </Typography>
         <Typography
           sx={{
-            fontSize: "16px",
+            fontSize: { md: "16px", sm: "14px", xs: "12px" },
             fontWeight: 700,
             color: "rgba(78, 81, 109, 0.70)",
           }}
@@ -94,7 +93,7 @@ export default function TabTwo({
       <Box sx={{ mt: 4 }}>
         <Typography
           sx={{
-            fontSize: "33.75px",
+            fontSize: { md: "33px", sm: "25px", xs: "20px" },
             fontWeight: 700,
             color: "black",
           }}
@@ -103,221 +102,221 @@ export default function TabTwo({
         </Typography>
       </Box>
       <Box sx={{ p: 2 }}>
-        <Grid container spacing={4}>
-          {/* First row with two text fields */}
-          <Grid container item xs={12} gap={9}>
-            <Grid item xs={5.5} mt={"10px"}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20.142px",
-                    fontWeight: 500,
-                    lineHeight: "20px",
-                    color: "#171725",
-                  }}
-                >
-                  Full Name
-                </Typography>
-                <TextField
-                  variant="outlined"
-                  placeholder="Full Name"
-                  name="email"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  sx={{
-                    marginTop: "10px",
-                    "& .MuiOutlinedInput-root": {
-                      borderRadius: "50px",
-                      backgroundColor: "white",
-                    },
-                    width: "100%",
-                  }}
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={5.5} mt={"10px"}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20.142px",
-                    fontWeight: 500,
-                    lineHeight: "20px",
-                    color: "#171725",
-                  }}
-                >
-                  Marital Status
-                </Typography>
-                <Select
-                  placeholder="Marital Status"
-                  value={maritalStatus}
-                  onChange={(e) => setMaritalStatus(e.target.value)}
-                  sx={{
-                    marginTop: "10px",
-                    borderRadius: "50px",
-                    backgroundColor: "white",
-                    width: "100%",
-                  }}
-                >
-                  <MenuItem value="Marital Status" disabled>
-                    Marital Status
-                  </MenuItem>
-                  <MenuItem value="Single">Single</MenuItem>
-                  <MenuItem value="Married">Married</MenuItem>
-                </Select>
-              </Box>
-            </Grid>
-          </Grid>
-
+        <Box
+          sx={{
+            display: "flex",
+            gap: { md: "40px", sm: "30px", xs: "15px" },
+            marginBottom: "20px",
+            flexDirection: { sm: "row", xs: "column" },
+          }}
+        >
+          <Box flex={1}>
+            <Typography
+              sx={{
+                fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
+                fontWeight: 500,
+                color: "#171725",
+              }}
+            >
+              Full Name
+            </Typography>
+            <TextField
+              variant="outlined"
+              placeholder="Full Name"
+              name="email"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              sx={{
+                width: "100%",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "50px",
+                  backgroundColor: "white",
+                },
+              }}
+            />
+          </Box>
+          <Box flex={1}>
+            <Typography
+              sx={{
+                fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
+                fontWeight: 500,
+                color: "#171725",
+              }}
+            >
+              Marital Status
+            </Typography>
+            <Select
+              placeholder="Marital Status"
+              value={maritalStatus}
+              onChange={(e) => setMaritalStatus(e.target.value)}
+              sx={{
+                width: "100%",
+                borderRadius: "50px",
+                backgroundColor: "white",
+              }}
+            >
+              <MenuItem value="Marital Status" disabled>
+                Marital Status
+              </MenuItem>
+              <MenuItem value="Single">Single</MenuItem>
+              <MenuItem value="Married">Married</MenuItem>
+            </Select>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: { md: "40px", sm: "30px", xs: "15px" },
+            marginBottom: "20px",
+            flexDirection: { sm: "row", xs: "column" },
+          }}
+        >
           {/* Second row with two text fields */}
-          <Grid container item xs={12} spacing={2} columnGap={10}>
-            <Grid item xs={5.5} mt={"10px"} mr={"-10px"}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20.142px",
-                    fontWeight: 500,
-                    lineHeight: "20px",
-                    color: "#171725",
-                  }}
-                >
-                  Gender
-                </Typography>
-                <Select
-                  placeholder="Gender"
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  sx={{
-                    marginTop: "10px",
-                    backgroundColor: "white",
-                    width: "100%",
+          <Box flex={1}>
+            <Typography
+              sx={{
+                fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
+                fontWeight: 500,
+                color: "#171725",
+              }}
+            >
+              Gender
+            </Typography>
+            <Select
+              placeholder="Gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              sx={{
+                width: "100%",
+                borderRadius: "50px",
+                backgroundColor: "white",
+              }}
+            >
+              <MenuItem value="Gender" disabled>
+                Gender
+              </MenuItem>
+              <MenuItem value="Male">Male</MenuItem>
+              <MenuItem value="Female">Female</MenuItem>
+              <MenuItem value="Other">Special</MenuItem>
+            </Select>
+          </Box>
+          <Box flex={1}>
+            <Typography
+              sx={{
+                fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
+                fontWeight: 500,
+                color: "#171725",
+              }}
+            >
+              Date of Birth
+            </Typography>
+            <DatePicker
+              value={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              maxDate={maxDate}
+              sx={{
+                width: "100%",
+                backgroundColor: "white",
+                borderRadius: "50px",
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
                     borderRadius: "50px",
-                  }}
-                >
-                  <MenuItem value="Gender" disabled>
-                    Gender
-                  </MenuItem>
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Special</MenuItem>
-                </Select>
-              </Box>
-            </Grid>
-            <Grid item xs={5.5} mt={"10px"}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20.142px",
-                    fontWeight: 500,
-                    lineHeight: "20px",
-                    color: "#171725",
-                  }}
-                >
-                  Date of Birth
-                </Typography>
-                <DatePicker
-                  value={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
-                  maxDate={maxDate}
-                  sx={{
-                    marginTop: "10px",
-                    backgroundColor: "white",
-                    borderRadius: "50px",
-                    width: "100%",
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderRadius: "50px",
-                      },
-                    },
-                  }}
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={5.5} mt={"20px"}>
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: "20.142px",
-                    fontWeight: 500,
-                    lineHeight: "20px",
-                    color: "#171725",
-                  }}
-                >
-                  Language Preference
-                </Typography>
-                <Select
-                  placeholder="language preference"
-                  value={langPre}
-                  onChange={(e) => setLangPre(e.target.value)}
-                  sx={{
-                    marginTop: "10px",
-                    borderRadius: "50px",
-                    backgroundColor: "white",
-                    width: "100%",
-                  }}
-                >
-                  <MenuItem value="Language Preference" disabled>
-                    Language Preference
-                  </MenuItem>
-                  <MenuItem value="English">English</MenuItem>
-                  <MenuItem value="Spanish">Spanish</MenuItem>
-                </Select>
-              </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                  gap: 2,
-                }}
-              >
-                <Button
-                  onClick={onClickBack}
-                  sx={{
-                    width: "176px",
-                    borderRadius: "26.267px",
-                    border: " 0.71px solid #197065",
-                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                    color: "#197065",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <Image src={backArrow} alt="backArrow" /> Back
-                </Button>
-                <Tooltip
-                  open={showTooltip}
-                  onClose={() => setShowTooltip(false)}
-                  title="Please fill in all fields before proceeding."
-                >
-                  <Button
-                    onClick={handleButtonClick}
-                    sx={{
-                      width: "176px",
-                      borderRadius: "26.267px",
-                      border: " 0.71px solid #197065",
-                      fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                      color: "white",
-                      textTransform: "capitalize",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      bgcolor: "#197065",
-                      ":hover": {
-                        bgcolor: "#197065",
-                      },
-                    }}
-                  >
-                    Next <Image src={NextArrow} alt="NextArrow" />
-                  </Button>
-                </Tooltip>
-              </Box>
-            </Grid>
-          </Grid>
-        </Grid>
+                  },
+                },
+              }}
+            />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: { md: "40px", sm: "30px", xs: "15px" },
+            marginBottom: "20px",
+            flexDirection: { sm: "row", xs: "column" },
+          }}
+        >
+          {/* Second row with two text fields */}
+          <Box flex={1}>
+            <Typography
+              sx={{
+                fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
+                fontWeight: 500,
+                color: "#171725",
+              }}
+            >
+              Language Preference
+            </Typography>
+            <Select
+              placeholder="Language Preference"
+              value={langPre}
+              onChange={(e) => setLangPre(e.target.value)}
+              sx={{
+                width: "100%",
+                borderRadius: "50px",
+                backgroundColor: "white",
+              }}
+            >
+              <MenuItem value="Language Preference" disabled>
+                Language Preference
+              </MenuItem>
+              <MenuItem value="English">English</MenuItem>
+              <MenuItem value="Spanish">Spanish</MenuItem>
+            </Select>
+          </Box>
+          <Box flex={1}></Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            gap: 2,
+            mt: 2,
+          }}
+        >
+          <Button
+            onClick={onClickBack}
+            sx={{
+              width: "176px",
+              borderRadius: "26.267px",
+              border: " 0.71px solid #197065",
+              fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+              color: "#197065",
+              textTransform: "capitalize",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <Image src={backArrow} alt="backArrow" /> Back
+          </Button>
+          <Tooltip
+            open={showTooltip}
+            onClose={() => setShowTooltip(false)}
+            title="Please fill in all fields before proceeding."
+          >
+            <Button
+              onClick={handleButtonClick}
+              sx={{
+                width: "176px",
+                borderRadius: "26.267px",
+                border: " 0.71px solid #197065",
+                fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+                color: "white",
+                textTransform: "capitalize",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                bgcolor: "#197065",
+                ":hover": {
+                  bgcolor: "#197065",
+                },
+              }}
+            >
+              Next <Image src={NextArrow} alt="NextArrow" />
+            </Button>
+          </Tooltip>
+        </Box>
       </Box>
     </>
   );

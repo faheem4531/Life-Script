@@ -19,6 +19,7 @@ import MicListing from "@/_assets/svg/mic-listing.svg";
 import MicOff from "@/_assets/svg/mic-off.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
 import Button from "@/components/button/Button";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   getAnswerbyId,
   getQuestionbyId,
@@ -37,7 +38,6 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
@@ -154,7 +154,6 @@ const RichText = ({ questionId }) => {
     const timeDifference = new Date().getTime() - inputDate.getTime();
     return timeDifference < sevenDaysInMilliseconds;
   }
-  
 
   //check free trail expiration
   useEffect(() => {
@@ -163,13 +162,15 @@ const RichText = ({ questionId }) => {
     const decodedToken = jwt.decode(token);
     const accessRole = decodedToken.accessRole;
     const createdAt = decodedToken.created_at;
-    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan"){
+    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
       setIsPremium(true);
-    }else{
-      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(createdAt.toString());
+    } else {
+      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
+        createdAt.toString()
+      );
       setIsPremium(isfreeTrial);
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     if (compileChapterId) {
@@ -414,215 +415,220 @@ const RichText = ({ questionId }) => {
 
   return (
     <>
-    <Box className="rich-editor">
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <Box className="rich-editor">
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
-            marginRight: "10px",
-          }}
-        >
-          <Image alt="icon" src={PIcon} />
-          <div className={styles.overflowQuestionText}>
-            {questionData?.text ? questionData?.text : compileChapter}
-          </div>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            columnGap: "10px",
+            alignItems: { md: "center" },
+            justifyContent: "space-between",
+            flexDirection: { md: "row", xs: "column" },
+            rowGap: "30px",
           }}
         >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "10px",
-              flexWrap: { xs: "wrap", lg: "nowrap" },
+              marginRight: "10px",
             }}
           >
-            <Button
-              image={detecting ? MicRegular : listening ? MicListing : MicOff}
-              title={
-                detecting
-                  ? `Detecting...`
-                  : listening
-                  ? "Stop"
-                  : "Speech-to-text"
-              }
-              background="#fff"
-              borderRadius="27px"
-              color="#197065"
-              width="155px"
-              fontSize="14px"
-              padding="4.5px 10px"
-              onClick={handleSpeechtoText}
-              border="1px solid #197065"
-              height={undefined}
-            />
-
-            {!openai && (
-              <ButtonBase
-                onClick={handleCompleteAnswer}
-                disabled={draftToHtml(convertToRaw(editorState.getCurrentContent())).length < 9}
-                sx={{
-                  height: "35px",
-                  p: "9px 10px",
-                  borderRadius: "27px",
-                  border: "1px solid #197065",
-                  color: "#197065",
-                  fontSize: "14px",
-                  bgcolor: "#fff",
-                  textTransform: "none",
-                  "&:hover": {
-                    backgroundColor: "#fff",
-                  },
-                  width: "150px",
-                }}
-              >
-                Mark As Complete
-              </ButtonBase>
-            )}
-            <ButtonBase
-              onClick={saveUserAnswer}
+            <Image alt="icon" src={PIcon} />
+            <div className={styles.overflowQuestionText}>
+              {questionData?.text ? questionData?.text : compileChapter}
+            </div>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              columnGap: "10px",
+            }}
+          >
+            <Box
               sx={{
-                // width: "85px",
-                p: 2,
-                textTransform: "none",
-                height: "35px",
-                fontSize: "14px",
-                borderRadius: "27px",
-                color: "#FFF",
-                bgcolor: "#197065",
-                "&:hover": {
-                  backgroundColor: "#197065",
-                },
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                flexWrap: { xs: "wrap", lg: "nowrap" },
               }}
             >
-              Save
-            </ButtonBase>
+              <Button
+                image={detecting ? MicRegular : listening ? MicListing : MicOff}
+                title={
+                  detecting
+                    ? `Detecting...`
+                    : listening
+                    ? "Stop"
+                    : "Speech-to-text"
+                }
+                background="#fff"
+                borderRadius="27px"
+                color="#197065"
+                width="155px"
+                fontSize="14px"
+                padding="4.5px 10px"
+                onClick={handleSpeechtoText}
+                border="1px solid #197065"
+                height={undefined}
+              />
+
+              {!openai && (
+                <ButtonBase
+                  onClick={handleCompleteAnswer}
+                  disabled={
+                    draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                      .length < 9
+                  }
+                  sx={{
+                    height: "35px",
+                    p: "9px 10px",
+                    borderRadius: "27px",
+                    border: "1px solid #197065",
+                    color: "#197065",
+                    fontSize: "14px",
+                    bgcolor: "#fff",
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "#fff",
+                    },
+                    width: "150px",
+                  }}
+                >
+                  Mark As Complete
+                </ButtonBase>
+              )}
+              <ButtonBase
+                onClick={saveUserAnswer}
+                sx={{
+                  // width: "85px",
+                  p: 2,
+                  textTransform: "none",
+                  height: "35px",
+                  fontSize: "14px",
+                  borderRadius: "27px",
+                  color: "#FFF",
+                  bgcolor: "#197065",
+                  "&:hover": {
+                    backgroundColor: "#197065",
+                  },
+                }}
+              >
+                Save
+              </ButtonBase>
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
-        <Editor
-          editorState={editorState}
-          onEditorStateChange={setEditorState}
-          wrapperClassName="wrapper-class"
-          editorClassName="editor-class"
-          toolbarClassName="toolbar-class"
-          editorStyle={{
-            borderRadius: "10px",
-            minHeight: "65vh",
-            maxHeight: "68vh",
-            backgroundColor: "white",
-            overflowY: "auto",
-            padding: "20px",
-          }}
-          toolbarStyle={{
-            minHeight: "50px",
-            borderRadius: "10px",
-            display: "flex",
-            justifyContent: "center", // Center-align toolbar items horizontally
-            alignItems: "center",
-          }}
-          toolbar={{
-            options: [
-              "inline",
-              "blockType",
-              "fontSize",
-              "fontFamily",
-              "list",
-              "textAlign",
-              "link",
-              "embedded",
-              "colorPicker",
-              "emoji",
-              "image",
-              "history",
-            ],
-            inline: {
-              options: ["bold", "italic", "underline"],
-            },
-            blockType: {
+        <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={setEditorState}
+            wrapperClassName="wrapper-class"
+            editorClassName="editor-class"
+            toolbarClassName="toolbar-class"
+            editorStyle={{
+              borderRadius: "10px",
+              minHeight: "65vh",
+              maxHeight: "68vh",
+              backgroundColor: "white",
+              overflowY: "auto",
+              padding: "20px",
+            }}
+            toolbarStyle={{
+              minHeight: "50px",
+              borderRadius: "10px",
+              display: "flex",
+              justifyContent: "center", // Center-align toolbar items horizontally
+              alignItems: "center",
+            }}
+            toolbar={{
               options: [
-                "Normal",
-                "H1",
-                "H2",
-                "H3",
-                "H4",
-                "H5",
-                "H6",
-                "Blockquote",
-                "Code",
+                "inline",
+                "blockType",
+                "fontSize",
+                "fontFamily",
+                "list",
+                "textAlign",
+                "link",
+                "embedded",
+                "colorPicker",
+                "emoji",
+                "image",
+                "history",
               ],
-            },
-            fontSize: {
-              options: [
-                8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
-              ],
-            },
-            fontFamily: {
-              options: [
-                "Garamond",
-                "Georgia",
-                "Arial",
-                "Times New Roman",
-                "Verdana",
-                "Merriweather",
-              ],
-            },
-            list: {
-              options: ["unordered", "ordered"],
-            },
-            textAlign: {
-              options: ["left", "center", "right"],
-            },
-            link: {
-              showOpenOptionOnHover: true,
-              defaultTargetOption: "_self",
-              options: ["link"],
-            },
-            embedded: {
-              defaultSize: {
-                height: "auto",
-                width: "auto",
+              inline: {
+                options: ["bold", "italic", "underline"],
               },
-            },
-            image: {
-              // urlEnabled: true,
-              uploadEnabled: true,
-              alignmentEnabled: false,
-              previewImage: true,
-              inputAccept: "image/gif,image/jpeg,image/jpg,image/png",
-              uploadCallback: uploadCallback,
-              alt: { present: false, mandatory: false },
-              defaultSize: {
-                height: "auto",
-                width: "400px",
+              blockType: {
+                options: [
+                  "Normal",
+                  "H1",
+                  "H2",
+                  "H3",
+                  "H4",
+                  "H5",
+                  "H6",
+                  "Blockquote",
+                  "Code",
+                ],
               },
-            },
-            history: {
-              inDropdown: false,
-              className: undefined,
-              component: undefined,
-              dropdownClassName: undefined,
-              options: ["undo", "redo"],
-            },
-          }}
-        />
+              fontSize: {
+                options: [
+                  8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
+                ],
+              },
+              fontFamily: {
+                options: [
+                  "Garamond",
+                  "Georgia",
+                  "Arial",
+                  "Times New Roman",
+                  "Verdana",
+                  "Merriweather",
+                ],
+              },
+              list: {
+                options: ["unordered", "ordered"],
+              },
+              textAlign: {
+                options: ["left", "center", "right"],
+              },
+              link: {
+                showOpenOptionOnHover: true,
+                defaultTargetOption: "_self",
+                options: ["link"],
+              },
+              embedded: {
+                defaultSize: {
+                  height: "auto",
+                  width: "auto",
+                },
+              },
+              image: {
+                // urlEnabled: true,
+                uploadEnabled: true,
+                alignmentEnabled: false,
+                previewImage: true,
+                inputAccept: "image/gif,image/jpeg,image/jpg,image/png",
+                uploadCallback: uploadCallback,
+                alt: { present: false, mandatory: false },
+                defaultSize: {
+                  height: "auto",
+                  width: "400px",
+                },
+              },
+              history: {
+                inDropdown: false,
+                className: undefined,
+                component: undefined,
+                dropdownClassName: undefined,
+                options: ["undo", "redo"],
+              },
+            }}
+          />
+        </Box>
       </Box>
-    </Box>
 
-    <TransitionsDialog
+      <TransitionsDialog
         open={buyPremium}
         heading="Buy Premium"
         description="Speech to Text is  only available for Standard and Premium users. Want to buy now?"
@@ -632,7 +638,7 @@ const RichText = ({ questionId }) => {
         closeModal={() => {
           setBuyPremium(false);
         }}
-        proceed={()=>router.push("/dashboard/SubscribePlans")}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
       />
     </>
   );

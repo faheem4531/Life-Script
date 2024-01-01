@@ -41,7 +41,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
         >
           <Typography
             sx={{
-              fontSize: "44px",
+              fontSize: { md: "44px", sm: "36px", xs: "26px" },
               fontWeight: 700,
             }}
           >
@@ -49,7 +49,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
           </Typography>
           <Typography
             sx={{
-              fontSize: "16px",
+              fontSize: { md: "16px", sm: "14px", xs: "12px" },
               fontWeight: 700,
               color: "rgba(78, 81, 109, 0.70)",
             }}
@@ -58,17 +58,24 @@ export default function TabOne({ onClick, data, setQaTab }) {
           </Typography>
         </Box>
         <QaTabBars tabProp={1} />
-        <Box sx={{ mt: 6 }}>
+        <Box sx={{ mt: { md: 6, sm: 4, xs: 2 } }}>
           <Typography
             sx={{
-              fontSize: "33.75px",
+              fontSize: { md: "33px", sm: "25px", xs: "20px" },
               fontWeight: 700,
               color: "black",
             }}
           >
             Who will use lifescript?
           </Typography>
-          <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box
+            sx={{
+              mt: { md: 3, sm: 2, xs: 1 },
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
+          >
             <RadioGroup value={selectedValue} onChange={handleChange}>
               <FormControlLabel
                 value="MySelf"
@@ -85,8 +92,8 @@ export default function TabOne({ onClick, data, setQaTab }) {
                 label={
                   <Typography
                     sx={{
-                      ml: 2,
-                      fontSize: "24px",
+                      ml: { md: 2, sm: 1, xs: 0.5 },
+                      fontSize: { md: "24px", sm: "20px", xs: "16px" },
                       fontWeight: 400,
                       color: "rgba(0, 0, 0, 0.6)",
                     }}
@@ -110,8 +117,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                 label={
                   <Typography
                     sx={{
-                      ml: 2,
-                      fontSize: "24px",
+                      ml: { md: 2, sm: 1, xs: 0.5 },
                       fontWeight: 400,
                       color: "rgba(0, 0, 0, 0.6)",
                     }}
@@ -135,8 +141,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                 label={
                   <Typography
                     sx={{
-                      ml: 2,
-                      fontSize: "24px",
+                      fontSize: { md: "24px", sm: "20px", xs: "16px" },
                       fontWeight: 400,
                       color: "rgba(0, 0, 0, 0.6)",
                     }}
