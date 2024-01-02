@@ -140,7 +140,7 @@ const CompletedChapters = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: { md: "48px", sm: "20px" },
+                marginTop: { sm: "18px" },
               }}
             >
               {/* <StartNewChapter addChapterClick={() => setChapterModal(true)} /> */}

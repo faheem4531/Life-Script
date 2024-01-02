@@ -80,6 +80,7 @@ const Questionnaire = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
+          p: { md: "20px 30px", sm: "15px 20px", xs: "10px" },
         }}
         className={styles.QuestionnaireTabsMain}
       >

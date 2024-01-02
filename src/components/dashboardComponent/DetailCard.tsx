@@ -120,14 +120,14 @@ export default function DetailCard({
             className="container-fontfamily"
             sx={{
               borderRadius: "6.5px",
-              height: { md: "280px", sm: "257px", xs: "129px" },
+              height: { sm: "240px", xs: "129px" },
               boxShadow: "none",
             }}
           >
             <Box
               sx={{
                 backgroundColor: "#197065",
-                height: { xs: "22px", sm: "39px", md: "43px" },
+                height: { xs: "22px", sm: "32px", md: "36px" },
                 display: "flex",
                 alignItems: "center",
                 pl: { md: "13px", xs: "11px" },
@@ -250,6 +250,7 @@ export default function DetailCard({
                           alignItems="center"
                           columnGap="5px"
                           color="rgba(22, 22, 22, 0.90)"
+                          mb="2px"
                           sx={{
                             fontSize: {
                               md: "13px",

@@ -42,7 +42,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
       >
         <Typography
           sx={{
-            fontSize: "44px",
+            fontSize: { md: "44px", sm: "36px", xs: "26px" },
             fontWeight: 700,
           }}
         >
@@ -50,7 +50,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
         </Typography>
         <Typography
           sx={{
-            fontSize: "16px",
+            fontSize: { md: "16px", sm: "14px", xs: "12px" },
             fontWeight: 700,
             color: "rgba(78, 81, 109, 0.70)",
           }}
@@ -62,7 +62,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
       <Box sx={{ mt: 6 }}>
         <Typography
           sx={{
-            fontSize: "33.75px",
+            fontSize: { md: "33px", sm: "25px", xs: "20px" },
             fontWeight: 700,
             color: "black",
           }}
@@ -87,7 +87,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                 <Typography
                   sx={{
                     ml: 2,
-                    fontSize: "24px",
+                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     fontWeight: 400,
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
@@ -113,7 +113,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                 <Typography
                   sx={{
                     ml: 2,
-                    fontSize: "24px",
+                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     fontWeight: 400,
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
@@ -128,7 +128,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
       <Box sx={{ mt: 4 }}>
         <Typography
           sx={{
-            fontSize: "33.75px",
+            fontSize: { md: "33px", sm: "25px", xs: "20px" },
             fontWeight: 700,
             color: "black",
           }}
@@ -156,7 +156,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                 <Typography
                   sx={{
                     ml: 2,
-                    fontSize: "24px",
+                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     fontWeight: 400,
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
@@ -181,7 +181,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                 <Typography
                   sx={{
                     ml: 2,
-                    fontSize: "24px",
+                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     fontWeight: 400,
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
@@ -206,7 +206,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                 <Typography
                   sx={{
                     ml: 2,
-                    fontSize: "24px",
+                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     fontWeight: 400,
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
@@ -231,7 +231,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                 <Typography
                   sx={{
                     ml: 2,
-                    fontSize: "24px",
+                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     fontWeight: 400,
                     color: "rgba(0, 0, 0, 0.6)",
                   }}

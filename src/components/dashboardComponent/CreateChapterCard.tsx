@@ -74,7 +74,7 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
             className="container-fontfamily"
             sx={{
               borderRadius: "6.5px",
-              height: { md: "280px", sm: "257px", xs: "129px" },
+              height: { sm: "240px", xs: "129px" },
               padding: "8px",
               boxShadow: "none",
             }}

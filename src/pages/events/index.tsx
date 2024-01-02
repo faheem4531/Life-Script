@@ -1,9 +1,7 @@
 "use client";
 import Layout from "@/components/Layout/Layout";
-import { Box, Button } from "@mui/material";
-import Image from "next/image";
+import { Box } from "@mui/material";
 import { useRouter } from "next/router";
-import backArrow from "../../_assets/svg/left.svg";
 import RichText from "./richtext";
 export default function Answers() {
   const router = useRouter();
@@ -25,21 +23,6 @@ export default function Answers() {
             border: "1px solid #197065",
           }}
         >
-          <Box mb={2}>
-            <Button
-              onClick={() => {
-                router.back();
-              }}
-              sx={{
-                borderRadius: "26.267px",
-                border: " 0.71px solid #197065",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Image src={backArrow} alt="backArrow" />
-            </Button>
-          </Box>
           <RichText questionId={questionId} />
         </Box>
       </Layout>

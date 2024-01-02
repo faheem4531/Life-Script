@@ -1,5 +1,7 @@
 .QuestionnaireMain {
   display: flex;
+  background: url("../../../_assets//svg//bgTree.svg") no-repeat #fff9f0;
+  background-position: right bottom;
 }
 
 .QuestionnaireSideBar {
@@ -23,11 +25,10 @@
 
 .QuestionnaireTabsMain {
   flex: 1;
-  background: url("../../../_assets//svg//bgTree.svg") no-repeat #fff9f0;
-  background-position: right bottom;
-  padding: 20px 30px;
   height: 100vh;
   overflow-y: auto;
+  max-width: 1149px;
+  width: 100%;
 }
 
 .QuestionnaireTabsMain ::-webkit-scrollbar {

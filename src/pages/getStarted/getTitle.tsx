@@ -25,7 +25,8 @@ const getTitle = () => {
   };
 
   const handleTitle = () => {
-    dispatch(bookTitle({ title: text })).unwrap()
+    dispatch(bookTitle({ title: text }))
+      .unwrap()
       .then(() => {
         toast.success("Book title saved successfully");
         router.push("/dashboard/chapters");
@@ -105,8 +106,14 @@ const getTitle = () => {
               sx={{
                 alignSelf: "flex-start",
                 color: "#969696",
-                fontSize: { xl: "25px", lg: '22px', md: "20px", sm: "18px", xs: "16px" },
-                ml: "15px"
+                fontSize: {
+                  xl: "25px",
+                  lg: "22px",
+                  md: "20px",
+                  sm: "18px",
+                  xs: "16px",
+                },
+                ml: "15px",
               }}
             >
               You can change it at any time before printing.
@@ -115,14 +122,19 @@ const getTitle = () => {
           <Button
             onClick={() => handleTitle()}
             sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: { sm: "10px", xs: "5px" },
               width: "200px",
-              padding: "14px 0",
-              bgcolor: "#FCE09B",
-              borderRadius: "30px",
-              color: "#186F65",
-              fontWeight: 600,
-              fontSize: "18px",
-              mt: "60px"
+              borderRadius: "26.267px",
+              border: " 0.71px solid #197065",
+              fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
+              color: "#197065",
+              textTransform: "capitalize",
+              p: "5px 4px",
+              cursor: "pointer",
+              mt: "50px",
             }}
           >
             Start Writing

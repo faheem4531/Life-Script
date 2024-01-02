@@ -1,5 +1,4 @@
 "use client";
-import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
 import { compiledChapter, uploadImage } from "@/store/slices/chatSlice"; //uploadImage
 import { Box, ButtonBase } from "@mui/material";
 import {
@@ -38,6 +37,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
+import backArrow from "../../_assets/svg/left.svg";
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
@@ -419,9 +419,9 @@ const RichText = ({ questionId }) => {
         <Box
           sx={{
             display: "flex",
-            alignItems: { md: "center" },
+            // alignItems: { md: "center" },
             justifyContent: "space-between",
-            flexDirection: { md: "row", xs: "column" },
+            flexDirection: { xs: "column" },
             rowGap: "30px",
           }}
         >
@@ -432,7 +432,25 @@ const RichText = ({ questionId }) => {
               marginRight: "10px",
             }}
           >
-            <Image alt="icon" src={PIcon} />
+            {/* <Image alt="icon" src={PIcon} /> */}
+
+            <Box
+              onClick={() => {
+                router.back();
+              }}
+              sx={{
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "53.679px",
+                height: "53.679px",
+                bgcolor: "#b5b5be66",
+                flexShrink: "0",
+              }}
+            >
+              <Image src={backArrow} alt="backArrow" />
+            </Box>
             <div className={styles.overflowQuestionText}>
               {questionData?.text ? questionData?.text : compileChapter}
             </div>
@@ -497,24 +515,6 @@ const RichText = ({ questionId }) => {
                   Mark As Complete
                 </ButtonBase>
               )}
-              <ButtonBase
-                onClick={saveUserAnswer}
-                sx={{
-                  // width: "85px",
-                  p: 2,
-                  textTransform: "none",
-                  height: "35px",
-                  fontSize: "14px",
-                  borderRadius: "27px",
-                  color: "#FFF",
-                  bgcolor: "#197065",
-                  "&:hover": {
-                    backgroundColor: "#197065",
-                  },
-                }}
-              >
-                Save
-              </ButtonBase>
             </Box>
           </Box>
         </Box>

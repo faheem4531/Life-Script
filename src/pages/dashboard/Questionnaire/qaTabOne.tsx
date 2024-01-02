@@ -120,6 +120,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                       ml: { md: 2, sm: 1, xs: 0.5 },
                       fontWeight: 400,
                       color: "rgba(0, 0, 0, 0.6)",
+                      fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     }}
                   >
                     I am gifting life story to a loved one
@@ -141,6 +142,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                 label={
                   <Typography
                     sx={{
+                      ml: { md: 2, sm: 1, xs: 0.5 },
                       fontSize: { md: "24px", sm: "20px", xs: "16px" },
                       fontWeight: 400,
                       color: "rgba(0, 0, 0, 0.6)",

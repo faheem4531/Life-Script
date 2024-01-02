@@ -388,9 +388,10 @@ const chapterName = () => {
                       fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
                       color: "#197065",
                       textTransform: "capitalize",
-                      p: "4px 4px",
+                      p: "2.5px 4px",
                       cursor: "pointer",
                     }}
+                    onClick={() => setAiGeneration(true)}
                   >
                     <Box
                       sx={{
@@ -404,7 +405,7 @@ const chapterName = () => {
                         sx={{
                           cursor: "pointer",
                           mb: "-4px",
-                          width: { sm: "27.778px", xs: "25.147px" },
+                          width: { sm: "22.778px", xs: "20.147px" },
                         }}
                       >
                         <Image
@@ -427,7 +428,6 @@ const chapterName = () => {
                           fontWeight: 500,
                           cursor: "pointer",
                         }}
-                        onClick={() => setAiGeneration(true)}
                       >
                         Suggestion
                       </Typography>
@@ -462,7 +462,7 @@ const chapterName = () => {
                       sx={{
                         cursor: "pointer",
                         mb: "-5px",
-                        width: { sm: "27.778px", xs: "25.147px" },
+                        width: { sm: "21.778px", xs: "20.147px" },
                       }}
                     >
                       <Image
