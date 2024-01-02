@@ -1,5 +1,6 @@
 import BookCoverGreen from "@/_assets/svg/bookCoverWhite.svg";
 import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
+import AccountGreen from "@/_assets/svg/sidebar/account-green.svg";
 import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
@@ -265,10 +266,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </a>
         </Box>
         <Box>
-          <a className={styles.link}>
+          <a className={`${styles.link} ${
+              currentRoute === "/dashboard/profileSetting" && styles.active
+            }`}
+          onClick={() => router.push("/dashboard/profileSetting")}
+          >
             <Image
               alt="icon"
-              src={AccountWhite}
+              src={currentRoute === "/dashboard/profileSetting" ? AccountGreen : AccountWhite}
               className={styles.sidebarIcon}
             />
             Account

@@ -32,14 +32,15 @@ const ViewBookCover = () => {
     subtitle,
     name,
     imgUrl,
-    color
+    color, 
+    spine = 41,
     ) => {
 
     const logo = "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
-    const pdfWidth = 380;
     const pdfHeight = 255;
     const pageWidth = 169.5;
-    const tail = 41;
+    const tail = spine;
+    const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
       format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
@@ -51,52 +52,56 @@ const ViewBookCover = () => {
     const writter = name?.toUpperCase();
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
-    // Section 1: Blue background
+    // Section 1:
     pdf.setFillColor(bgcolor);
     pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
 
-    // Section 2: Yellow background
+    // Section 2:
     pdf.setFillColor(255, 255, 255);
     pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(bgcolor);
-    pdf.rect(170.5, 0, 39, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(170.5, 0, tail-2, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(255, 255, 255);
     pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
 
     let y = 5; // Initial y-coordinate
+    const fontSize = tail < 12 ? tail - 3 : 10;
+    const textCenter = pageWidth + ((tail - (tail - fontSize)/2)/2);
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
-      pdf.setFontSize(10);
+      pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(char, 190, y, { angle: 270 });
+      pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(fontSize);
     pdf.setTextColor(255, 255, 255);
-    pdf.text("  |  ", 190, y, { angle: 270 });
+    pdf.text("  |  ", textCenter, y, { angle: 270 });
 
     y = y + 6;
 
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
-      pdf.setFontSize(10);
+      pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(char, 190, y, { angle: 270 });
+      pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
-    pdf.addImage(imageUrl, "JPEG", 180, 225, 20, 20);
+    const logoSize = tail < 22 ? tail - 3 : 20;
+    const tailcenter = pageWidth + ((tail - logoSize)/2);
+    pdf.addImage(imageUrl, "JPEG", tailcenter, 225, logoSize, logoSize);
 
-    // Section 3: Blue background
+    // Section 3:
     pdf.setFillColor(bgcolor);
-    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
-    const centerX = pageWidth + tail + pageWidth / 2; // Convert inches to millimeters
+    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+    const centerX = pageWidth + tail + pageWidth / 2;
 
     // 1st Text: "A good book" with font size 16px
     pdf.setFontSize(16);
     pdf.setTextColor(255, 255, 255);
-    pdf.text(text1, centerX, 50.8, { align: "center" }); // Convert inches to millimeters
+    pdf.text(text1, centerX, 50.8, { align: "center" }); 
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
     pdf.setFontSize(22);
@@ -126,14 +131,15 @@ const ViewBookCover = () => {
     subtitle,
     name,
     imgUrl,
-    color) => {
-    const pdfWidth = 380;
-    const pdfHeight = 255;
-    const pageWidth = 169.5;
-    const tail = 41;
+    color,
+    spine = 41,) => {
+      const pdfHeight = 255;
+      const pageWidth = 169.5;
+      const tail = spine;
+      const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
-      format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
+      format: [pdfWidth, pdfHeight],
       orientation: "landscape",
     });
 
@@ -144,27 +150,29 @@ const ViewBookCover = () => {
     const imageUrl = imgUrl;
     // Section 1: Blue background
     pdf.setFillColor(bgColor);
-    pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(0, 0, pageWidth, pdfHeight, "F");
 
     // Section 2: Yellow background
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(pageWidth, 0, 1, pdfHeight, "F");
     pdf.setFillColor(bgColor);
-    pdf.rect(170.5, 0, 39, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(170.5, 0, tail - 2, pdfHeight, "F");
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(209.5, 0, 1, pdfHeight, "F");
 
     let y = 5; // Initial y-coordinate
+    const fontSize = tail < 12 ? tail - 3 : 10;
+    const textCenter = pageWidth + ((tail - (tail - fontSize)/2)/2);
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
-      pdf.setFontSize(10);
+      pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(char, 190, y, { angle: 270 });
+      pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(fontSize);
     pdf.setTextColor(255, 255, 255);
     pdf.text("  |  ", 190, y, { angle: 270 });
 
@@ -172,27 +180,29 @@ const ViewBookCover = () => {
 
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
-      pdf.setFontSize(10);
+      pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
-      pdf.text(char, 190, y, { angle: 270 });
+      pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
-    pdf.addImage(imageUrl, "JPEG", 180, 225, 20, 20);
+    const logoSize = tail < 22 ? tail - 3 : 20;
+    const tailcenter = pageWidth + ((tail - logoSize)/2);
+    pdf.addImage(imageUrl, "JPEG", tailcenter, 225, logoSize, logoSize);
 
     // Section 3
     pdf.setFillColor(bgColor);
-    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
-    const centerX = pageWidth + tail + pageWidth / 2; // Convert inches to millimeters
+    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F"); 
+    const centerX = pageWidth + tail + pageWidth / 2;
 
     // 1st Text: "A good book" with font size 16px
     pdf.setFontSize(16);
     pdf.setTextColor(255, 255, 255);
-    pdf.text(text1, centerX, 35, { align: "center" }); // Convert inches to millimeters
+    pdf.text(text1, centerX, 35, { align: "center" });
 
-    const imgWidth = 100; // Convert inches to millimeters
-    const imgHeight = 120; // Convert inches to millimeters
-    const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-    const yPos = 50; // Convert inches to millimeters
+    const imgWidth = 100;
+    const imgHeight = 120;
+    const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2;
+    const yPos = 50; 
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
@@ -201,11 +211,12 @@ const ViewBookCover = () => {
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 190, {
       align: "center",
-    }); // Convert inches to millimeters
+    });
 
     pdf.setDrawColor(255, 255, 255);
     pdf.setLineWidth(1);
-    pdf.line(265, 200, 325, 200,);
+    const lineStart = pageWidth + tail + 50;
+    pdf.line(lineStart, 200, pdfWidth -50, 200,);
 
     pdf.setFont("helvetica", "normal");
     pdf.setTextColor(255, 255, 255);
@@ -261,8 +272,8 @@ const ViewBookCover = () => {
                 }}
                 onClick={() =>
                   CoverNumber.toString() === "2"
-                    ? generatePDFTwo(byline, title, subtitle, imageLink, selectedColor)
-                    : generatePDFOne(byline, title, subtitle, imageLink, selectedColor)
+                    ? generatePDFTwo(byline, title, subtitle, imageLink, selectedColor, 12)
+                    : generatePDFOne(byline, title, subtitle, imageLink, selectedColor, 9)
                 }
               >
                 Print Book

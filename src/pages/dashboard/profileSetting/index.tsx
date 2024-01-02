@@ -14,7 +14,11 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useDropzone } from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getUserProfile, selectUser, updateUserProfile } from "@/store/slices/authSlice";
+import {
+  getUserProfile,
+  selectUser,
+  updateUserProfile,
+} from "@/store/slices/authSlice";
 import { uploadImage } from "@/store/slices/chatSlice";
 
 import InputWithLabel from "@/components/Input";
@@ -39,13 +43,13 @@ const ProfileSetting = () => {
 
   function filterEmptyProperties(data) {
     const filteredData = {};
-  
+
     for (const key in data) {
-      if (data[key] !== null && data[key] !== undefined && data[key] !== '') {
+      if (data[key] !== null && data[key] !== undefined && data[key] !== "") {
         filteredData[key] = data[key];
       }
     }
-  
+
     return filteredData;
   }
 
@@ -110,8 +114,9 @@ const ProfileSetting = () => {
       formData.append("image", file);
 
       // Make API request
-     dispatch(uploadImage(formData)).unwrap().then((res) => setUserImage(res));
-
+      dispatch(uploadImage(formData))
+        .unwrap()
+        .then((res) => setUserImage(res));
     },
   });
 
@@ -121,15 +126,16 @@ const ProfileSetting = () => {
 
   useEffect(() => {
     if (userData?._id) {
-      console.log("55555", userData);
       setSelectedDate(new Date(userData?.dateOfBirth.toString()));
       setGender(userData?.gender);
       setFullName(userData?.name);
       setUserEmail(userData?.email);
-      const [countryValue, userPhone] = userData?.phone?.split(':');
-      setUserPhone(userPhone);
-      setCountryValue(countryValue);
-      setUserImage(userData?.profileImage);
+      if (userData?.phone) {
+        const [countryValue, userPhone] = userData?.phone?.split(":");
+        setUserPhone(userPhone);
+        setCountryValue(countryValue);
+      }
+      userData?.profileImage && setUserImage(userData?.profileImage);
     }
   }, [userData]);
 
@@ -247,7 +253,7 @@ const ProfileSetting = () => {
                 color="#474E60"
                 label="Full Name"
                 value={fullName}
-                onChange={(e)=>setFullName(e.target.value)}
+                onChange={(e) => setFullName(e.target.value)}
                 placeholder="Full Name"
                 borderRadius="47.202px"
                 bgColor="#F6F9FB"
@@ -283,7 +289,10 @@ const ProfileSetting = () => {
               </Typography>
               <DatePicker
                 value={selectedDate}
-                onChange={(date) => {setSelectedDate(date); console.log("date", date)}}
+                onChange={(date) => {
+                  setSelectedDate(date);
+                  console.log("date", date);
+                }}
                 sx={{
                   backgroundColor: "#F6F9FB",
                   width: "100%",
@@ -343,7 +352,10 @@ const ProfileSetting = () => {
                     pl: "20px",
                   }}
                 >
-                  <CountrySelect onSelect={(val) => setCountryValue(val)} value={countryValue} />
+                  <CountrySelect
+                    onSelect={(val) => setCountryValue(val)}
+                    value={countryValue}
+                  />
                   <TextField
                     variant="outlined"
                     placeholder={"Phone"}
@@ -351,7 +363,9 @@ const ProfileSetting = () => {
                     value={userPhone}
                     type="number" // Set input type to "number"
                     inputProps={{ min: 0, max: 9 }}
-                    onChange={(e) => setUserPhone(e.target.value.replace(/[^0-9]/g, ''))}
+                    onChange={(e) =>
+                      setUserPhone(e.target.value.replace(/[^0-9]/g, ""))
+                    }
                     sx={{
                       "& .MuiOutlinedInput-root": {
                         borderRadius: "50px",
