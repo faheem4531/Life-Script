@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
+import logo from "@/_assets/svg/SmallLogoWhite.svg";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
 import { Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
@@ -9,8 +10,8 @@ import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { useDispatch, useSelector } from "react-redux";
 import { renderToString } from "react-dom/server";
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import * as htmlToImage from "html-to-image";
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 
 const ViewBookCover = () => {
   const dispatch: any = useDispatch();
@@ -26,6 +27,194 @@ const ViewBookCover = () => {
 
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
 
+  const generatePDFOne = async (
+    title,
+    subtitle,
+    name,
+    imgUrl,
+    color
+    ) => {
+
+    const logo = "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
+    const pdfWidth = 380;
+    const pdfHeight = 255;
+    const pageWidth = 169.5;
+    const tail = 41;
+    const pdf = new jsPDF({
+      unit: "mm", // Set the unit to millimeters
+      format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
+      orientation: "landscape",
+    });
+
+    const text2 = subtitle?.toUpperCase();
+    const text1 = title?.toUpperCase();
+    const writter = name?.toUpperCase();
+    const bgcolor = color?.toString();
+    const imageUrl = imgUrl;
+    // Section 1: Blue background
+    pdf.setFillColor(bgcolor);
+    pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
+
+    // Section 2: Yellow background
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.setFillColor(bgcolor);
+    pdf.rect(170.5, 0, 39, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+
+    let y = 5; // Initial y-coordinate
+
+    for (let i = 0; i < text2.length; i++) {
+      const char = text2[i];
+      pdf.setFontSize(10);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text(char, 190, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+
+    pdf.setFontSize(10);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text("  |  ", 190, y, { angle: 270 });
+
+    y = y + 6;
+
+    for (let i = 0; i < writter.length; i++) {
+      const char = writter[i];
+      pdf.setFontSize(10);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text(char, 190, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+    pdf.addImage(imageUrl, "JPEG", 180, 225, 20, 20);
+
+    // Section 3: Blue background
+    pdf.setFillColor(bgcolor);
+    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
+    const centerX = pageWidth + tail + pageWidth / 2; // Convert inches to millimeters
+
+    // 1st Text: "A good book" with font size 16px
+    pdf.setFontSize(16);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text(text1, centerX, 50.8, { align: "center" }); // Convert inches to millimeters
+
+    // 2nd Text: "New Book" font size 22px, bold, and underlined
+    pdf.setFontSize(22);
+    pdf.setFont("helvetica", "bold");
+    pdf.setTextColor(255, 255, 255);
+    pdf.text(text2, centerX, 66.04, {
+      align: "center",
+    }); // Convert inches to millimeters
+
+    const imgWidth = 140; // Convert inches to millimeters
+    const imgHeight = 80; // Convert inches to millimeters
+    const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+    const yPos = 87; // Convert inches to millimeters
+    pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
+
+    // 4th Text: "- good book -" font size 16px
+    pdf.setFont("helvetica", "normal");
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(16);
+    pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
+
+    pdf.save("my_document.pdf");
+  };
+
+  const generatePDFTwo = async (
+    title,
+    subtitle,
+    name,
+    imgUrl,
+    color) => {
+    const pdfWidth = 380;
+    const pdfHeight = 255;
+    const pageWidth = 169.5;
+    const tail = 41;
+    const pdf = new jsPDF({
+      unit: "mm", // Set the unit to millimeters
+      format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
+      orientation: "landscape",
+    });
+
+    const text2 = subtitle?.toUpperCase();
+    const text1 = title?.toUpperCase();
+    const writter = name?.toUpperCase();
+    const bgColor = color.toString();
+    const imageUrl = imgUrl;
+    // Section 1: Blue background
+    pdf.setFillColor(bgColor);
+    pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
+
+    // Section 2: Yellow background
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.setFillColor(bgColor);
+    pdf.rect(170.5, 0, 39, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+
+    let y = 5; // Initial y-coordinate
+
+    for (let i = 0; i < text2.length; i++) {
+      const char = text2[i];
+      pdf.setFontSize(10);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text(char, 190, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+
+    pdf.setFontSize(10);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text("  |  ", 190, y, { angle: 270 });
+
+    y = y + 6;
+
+    for (let i = 0; i < writter.length; i++) {
+      const char = writter[i];
+      pdf.setFontSize(10);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text(char, 190, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+    pdf.addImage(imageUrl, "JPEG", 180, 225, 20, 20);
+
+    // Section 3
+    pdf.setFillColor(bgColor);
+    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
+    const centerX = pageWidth + tail + pageWidth / 2; // Convert inches to millimeters
+
+    // 1st Text: "A good book" with font size 16px
+    pdf.setFontSize(16);
+    pdf.setTextColor(255, 255, 255);
+    pdf.text(text1, centerX, 35, { align: "center" }); // Convert inches to millimeters
+
+    const imgWidth = 100; // Convert inches to millimeters
+    const imgHeight = 120; // Convert inches to millimeters
+    const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+    const yPos = 50; // Convert inches to millimeters
+    pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
+
+    // 2nd Text: "New Book" font size 22px, bold, and underlined
+    pdf.setFontSize(22);
+    pdf.setFont("helvetica", "bold");
+    pdf.setTextColor(255, 255, 255);
+    pdf.text(text2, centerX, 190, {
+      align: "center",
+    }); // Convert inches to millimeters
+
+    pdf.setDrawColor(255, 255, 255);
+    pdf.setLineWidth(1);
+    pdf.line(265, 200, 325, 200,);
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setTextColor(255, 255, 255);
+    pdf.setFontSize(16);
+    pdf.text(`-   ${writter}   -`, centerX, 215, { align: "center" }); // Convert inches to millimeters
+
+    pdf.save("my_document.pdf");
+  };
+
   useEffect(() => {
     dispatch(getBookCover());
   }, []);
@@ -39,25 +228,6 @@ const ViewBookCover = () => {
       setSelectedColor(coverData.color);
     }
   }, [coverData]);
-  
-  const generatePDF = () => {
-    htmlToImage.toPng(document.getElementById('bookcoverpdf'), { quality: 1 })
-      .then((dataUrl) => 
-      {
-        const pdf = new jsPDF('l', 'in', [14.5, 10]);
-        const imgProps = pdf.getImageProperties(dataUrl);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        // pdf.internal.pageSize.width = imgProps.width;
-        // pdf.internal.pageSize.height = imgProps.height;
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        pdf.addImage(dataUrl, 'PNG', 0, 0, pdfWidth, pdfHeight); // Corrected parameter
-        console.log("pdfwidth2",pdf.internal.pageSize.getWidth(), "22", pdf.internal.pageSize.getHeight());
-
-        pdf.save("download.pdf");
-      });
-  };
-  
-
 
   return (
     <div>
@@ -89,7 +259,11 @@ const ViewBookCover = () => {
                   color: "#197065",
                   textTransform: "capitalize",
                 }}
-                onClick={generatePDF}
+                onClick={() =>
+                  CoverNumber.toString() === "2"
+                    ? generatePDFTwo(byline, title, subtitle, imageLink, selectedColor)
+                    : generatePDFOne(byline, title, subtitle, imageLink, selectedColor)
+                }
               >
                 Print Book
               </Button>

@@ -22,7 +22,7 @@ const ChaptersList = ({
     },[]);
 
     useEffect(() => {
-      if (tocData?.tableOfContent.length > 0) {
+      if (tocData?.tableOfContent?.length > 0) {
         setChapterIndexing(tocData?.tableOfContent);
         setIndexing(tocData?.tableOfContent.length + 1);
       }
