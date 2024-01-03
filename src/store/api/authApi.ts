@@ -13,6 +13,7 @@ export async function loginApi(data: LoginData) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/login", data);
+    console.log("res login", res);
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);

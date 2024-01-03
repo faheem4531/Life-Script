@@ -15,17 +15,44 @@ import { store } from "../store/store";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
+  const [chapterCompleted, setChapterCompleted] = useState(false);
 
   //verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
-    if (!userLoggedIn && userLoggedIn === "undefined" && currentPath !== "/verify/verificationSent" && currentPath!== "/verify") {
-      router.push("/_auth/Auth");
+    if (!userLoggedIn && userLoggedIn !== "undefined" && currentPath !== "/verify/verificationSent" && currentPath!== "/verify") {
+      router.push("/");
     } else if (currentPath == "/") {
       router.push("/dashboard/chapters");
     }
   }, [router, currentPath]);
 
+
+  // useEffect(() => {
+  //   const jwt = require("jsonwebtoken");
+  //   const token = localStorage?.getItem("token");
+  //   if (token) {
+  //     const decodedToken = jwt?.decode(token);
+  //     const accessRole = decodedToken?.accessRole;
+  //     const createdAt = decodedToken?.created_at;
+  //   console.log("dateee",createdAt);
+  //     const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
+  //       createdAt?.toString()
+  //     );
+  //     console.log("isFree", isfreeTrial);
+  //     if (
+  //       accessRole !== "PremiumPlan" &&
+  //       accessRole !== "BasicPlan" &&
+  //       accessRole !== "StandardPlan" &&
+  //       !isfreeTrial &&
+  //       currentPath !== "/verify/verificationSent" &&
+  //       currentPath !== "/verify" &&
+  //       currentPath !=="/_auth/Auth"
+  //     ) {
+  //       currentPath !== "/dashboard/SubscribePlans" && router.push("/dashboard/SubscribePlans");
+  //     }
+  //   }
+  // }, [router, currentPath]);
 
   return (
     <StoreProvider store={store}>

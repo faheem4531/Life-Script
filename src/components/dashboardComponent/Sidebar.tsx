@@ -46,15 +46,15 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     childsOpenCheck();
   }, []);
 
-  useEffect(() => {
-    dispatch(getBookCover())
-      .unwrap()
-      .then((res) => {
-        setCoverNumber(res.coverNumber);
-        console.log("4444", res);
-      })
-      .catch(() => setCoverNumber(null));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getBookCover())
+  //     .unwrap()
+  //     .then((res) => {
+  //       setCoverNumber(res.coverNumber);
+  //       console.log("4444", res);
+  //     })
+  //     .catch(() => setCoverNumber(null));
+  // }, []);
 
   return (
     <Box sx={{ color: "#fff" }}>
@@ -200,13 +200,21 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   styles.active
             }`}
             onClick={() => {
-              if (coverNumber) {
-                router.push(
-                  `/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber}`
+              dispatch(getBookCover())
+                .unwrap()
+                .then((res) => {
+                  setCoverNumber(res.coverNumber);
+                  if (res.coverNumber) {
+                    router.push(
+                      `/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber}`
+                    );
+                  } else {
+                    router.push("/dashboard/BookCover/SelectBookCover");
+                  }
+                })
+                .catch(() =>
+                  router.push("/dashboard/BookCover/SelectBookCover")
                 );
-              } else {
-                router.push("/dashboard/BookCover/SelectBookCover");
-              }
             }}
           >
             <Image
@@ -266,14 +274,19 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </a>
         </Box>
         <Box>
-          <a className={`${styles.link} ${
+          <a
+            className={`${styles.link} ${
               currentRoute === "/dashboard/profileSetting" && styles.active
             }`}
-          onClick={() => router.push("/dashboard/profileSetting")}
+            onClick={() => router.push("/dashboard/profileSetting")}
           >
             <Image
               alt="icon"
-              src={currentRoute === "/dashboard/profileSetting" ? AccountGreen : AccountWhite}
+              src={
+                currentRoute === "/dashboard/profileSetting"
+                  ? AccountGreen
+                  : AccountWhite
+              }
               className={styles.sidebarIcon}
             />
             Account

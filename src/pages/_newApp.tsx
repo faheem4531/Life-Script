@@ -20,15 +20,6 @@ export default function NewApp({ children }) {
     dispatch(getChapterNotifications());
   }, []);
 
-  useEffect(() => {
-    const userLoggedIn = localStorage.getItem("token");
-
-    if (!userLoggedIn) {
-      router.push("/_auth/Auth");
-    } else if (currentPath == "/") {
-      router.push("/dashboard/chapters");
-    }
-  }, [router, currentPath]);
 
   useEffect(() => {
     socket.on("result", (message) => {
