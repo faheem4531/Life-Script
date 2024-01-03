@@ -1,4 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 class API {
   private instance: AxiosInstance;
@@ -41,15 +43,20 @@ class API {
   }
 
   private responseErrorInterceptor(error: any) {
-    // if (error.response) {
-    //   toast.error(error.response.data.message);
-    // } else if (error.request) {
-    //   toast.error("No response received from the server");
-    // } else {
-    //   toast.error("Error occurred while making the request");
-    // }
+    console.log("error api",error.response.status);
+    const router = useRouter();
+    if (error.response.status === 401) {
+      toast.error(error.response.data.message);
+      // localStorage.clear();
+      // router.push("/");
+    } else if (error.response.status === 402) {
+      toast.error(error.response.data.message);
+      router.push("/");
+    }
+  
     return Promise.reject(error);
   }
+  
 
   public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.get<T>(url, config).then(this.handleApiResponse);

@@ -15,49 +15,17 @@ import { store } from "../store/store";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
-  console.log('path', currentPath);
-  const [chapterCompleted, setChapterCompleted] = useState(false);
 
   //verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
-    if (!userLoggedIn) {
+    if (!userLoggedIn && userLoggedIn === "undefined" && currentPath !== "/verify/verificationSent" && currentPath!== "/verify") {
       router.push("/_auth/Auth");
     } else if (currentPath == "/") {
       router.push("/dashboard/chapters");
     }
   }, [router, currentPath]);
 
-  function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
-    const sevenDaysInMilliseconds = 17 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
-    const inputDate = new Date(timeString);
-    const timeDifference = new Date().getTime() - inputDate.getTime();
-    return timeDifference < sevenDaysInMilliseconds;
-  }
-
-  useEffect(() => {
-    const jwt = require("jsonwebtoken");
-    const token = localStorage?.getItem("token");
-    if (token) {
-      const decodedToken = jwt?.decode(token);
-      const accessRole = decodedToken?.accessRole;
-      const createdAt = decodedToken?.created_at;
-      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
-        createdAt?.toString()
-      );
-      if (
-        accessRole !== "PremiumPlan" &&
-        accessRole !== "BasicPlan" &&
-        accessRole !== "StandardPlan" &&
-        !isfreeTrial &&
-        currentPath !== "/verify/verificationSent" &&
-        currentPath !== "/verify" &&
-        currentPath !=="/_auth/Auth"
-      ) {
-        currentPath !== "/dashboard/SubscribePlans" && router.push("/dashboard/SubscribePlans");
-      }
-    }
-  }, [router, currentPath]);
 
   return (
     <StoreProvider store={store}>
