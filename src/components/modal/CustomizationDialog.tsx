@@ -66,7 +66,7 @@ export default function CustomizationDialog({
         maxWidth={"xl"}
         style={{ overflowY: "hidden", borderRadius: "22px" }}
       >
-        <div className="bg-black" style={customStyles}>
+        <Box className="bg-black" sx={customStyles}>
           <BootstrapDialogTitle
             // id="customized-dialog-title"
             onClose={handleClose}
@@ -79,7 +79,7 @@ export default function CustomizationDialog({
           >
             {children}
           </DialogContent>
-        </div>
+        </Box>
       </BootstrapDialog>
     </Box>
   );

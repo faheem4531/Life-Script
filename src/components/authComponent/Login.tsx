@@ -302,7 +302,7 @@ const Login = ({ signinClick }) => {
                 gap: "10px",
                 marginTop: { xs: "60px", sm: "20px" },
                 "&:hover": {
-                  backgroundColor: "#186F65",
+                  backgroundColor: "white",
                 },
                 textTransform: "capitalize",
               }}

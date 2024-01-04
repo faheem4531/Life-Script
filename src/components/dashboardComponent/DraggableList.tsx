@@ -1,8 +1,8 @@
+import { createToc, getToc } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { createToc, getToc, selectTocData } from "@/store/slices/chatSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const DraggableList = ({ data }) => {
   const dispatch: any = useDispatch();
@@ -51,7 +51,7 @@ const DraggableList = ({ data }) => {
                     <Box
                       sx={{
                         width: "100%",
-                        p: "18px 29px",
+                        p: "15px 29px",
                         bgcolor: "#F9F9F9",
                         borderRadius: "6.091px",
                         borderLeft: "8.25px solid #186F65",
@@ -67,7 +67,7 @@ const DraggableList = ({ data }) => {
                       >
                         <Typography
                           sx={{
-                            fontSize: "18.825px",
+                            fontSize: "14.825px",
                             fontWeight: 600,
                           }}
                         >
@@ -75,7 +75,7 @@ const DraggableList = ({ data }) => {
                         </Typography>
                         <Typography
                           sx={{
-                            fontSize: "19.379px",
+                            fontSize: "14.379px",
                             lineHeight: "14.539px",
                           }}
                         >

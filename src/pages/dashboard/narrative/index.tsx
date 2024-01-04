@@ -5,7 +5,7 @@ import RevertIcon from "@/_assets/svg/revert-response-icon.svg";
 import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
 import Title from "@/_assets/svg/topic-title.svg";
 import Layout from "@/components/Layout/Layout";
-import Button from "@/components/button/Button";
+import { default as GlobelBtn } from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   compiledChapter,
@@ -160,39 +160,43 @@ const NarrativeResponse = () => {
                     flexDirection: "row",
                     gap: { sm: "10px", xs: "5px" },
                     mt: "5px",
-                    justifyContent: "flex-end",
+                    justifyContent: { sm: "flex-end", xs: "flex-start" },
+                    flexWrap: "wrap",
                   }}
                 >
-                  <Button
-                    image={EditIcon}
-                    title="Edit Response"
-                    background="#fff"
-                    borderRadius="27px"
-                    color="#197065"
-                    height="27px"
-                    width="150px"
-                    fontSize="14px"
-                    padding="9px 10px"
-                    onClick={() =>
-                      router.push(
-                        `/events?compileChapterId=${chapterId}&openai=${responseType}`
-                      )
-                    }
-                    border="1px solid #197065"
-                  />
-                  <Button
-                    image={SaveIcon}
-                    title="Save Response"
-                    background="#197065"
-                    borderRadius="27px"
-                    color="#fff"
-                    height="27px"
-                    width="150px"
-                    fontSize="14px"
-                    padding="9px 10px"
-                    onClick={() => setSaveResponseModal(true)}
-                    border="none"
-                  />
+                  <Box>
+                    <GlobelBtn
+                      bgColor="#ffff"
+                      btnText="Edit Response"
+                      borderRadius="27px"
+                      color="#197065"
+                      onClick={() =>
+                        router.push(
+                          `/events?compileChapterId=${chapterId}&openai=${responseType}`
+                        )
+                      }
+                      width={{ xs: "170px" }}
+                      image={EditIcon}
+                      border="1px solid #197065"
+                      fontSize={{ xs: "12px" }}
+                      p="4px 20px"
+                    />
+                  </Box>
+
+                  <Box>
+                    <GlobelBtn
+                      bgColor="#197065"
+                      btnText="Save Response"
+                      borderRadius="27px"
+                      color="#fff"
+                      onClick={() => setSaveResponseModal(true)}
+                      width={{ xs: "170px" }}
+                      image={SaveIcon}
+                      border="1px solid #197065"
+                      fontSize={{ xs: "12px" }}
+                      p="4px 20px"
+                    />
+                  </Box>
                 </Box>
               </Box>
               <Box
@@ -295,7 +299,7 @@ const NarrativeResponse = () => {
                       justifyContent: { md: "flex-start", xs: "center" },
                     }}
                   >
-                    <Button
+                    {/* <Button
                       image={RevertIcon}
                       title="Revert Response"
                       background="#fff"
@@ -309,7 +313,21 @@ const NarrativeResponse = () => {
                         setRevertModal(true);
                       }}
                       border="1px solid #197065"
-                    />
+                    /> */}
+                    <Box>
+                      <GlobelBtn
+                        bgColor="#fff"
+                        btnText="Revert Response"
+                        borderRadius="27px"
+                        color="#197065"
+                        onClick={() => setRevertModal(true)}
+                        width={{ xs: "170px" }}
+                        image={RevertIcon}
+                        border="1px solid #197065"
+                        fontSize={{ xs: "12px" }}
+                        p="4px 20px"
+                      />
+                    </Box>
                   </Box>
                 </Box>
               )}

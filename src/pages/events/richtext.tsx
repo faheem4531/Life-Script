@@ -1,6 +1,6 @@
 "use client";
 import { compiledChapter, uploadImage } from "@/store/slices/chatSlice"; //uploadImage
-import { Box, ButtonBase } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   ContentState,
   //ContentState,
@@ -17,7 +17,7 @@ import styles from "./styles.module.css";
 import MicListing from "@/_assets/svg/mic-listing.svg";
 import MicOff from "@/_assets/svg/mic-off.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
-import Button from "@/components/button/Button";
+import { default as GlobelBtn } from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   getAnswerbyId,
@@ -470,7 +470,7 @@ const RichText = ({ questionId }) => {
                 flexWrap: { xs: "wrap", lg: "nowrap" },
               }}
             >
-              <Button
+              {/* <Button
                 image={detecting ? MicRegular : listening ? MicListing : MicOff}
                 title={
                   detecting
@@ -488,32 +488,29 @@ const RichText = ({ questionId }) => {
                 onClick={handleSpeechtoText}
                 border="1px solid #197065"
                 height={undefined}
+              /> */}
+
+              <GlobelBtn
+                image={detecting ? MicRegular : listening ? MicListing : MicOff}
+                btnText={
+                  detecting
+                    ? `Detecting...`
+                    : listening
+                    ? "Stop"
+                    : "Speech-to-text"
+                }
+                onClick={handleSpeechtoText}
               />
 
               {!openai && (
-                <ButtonBase
+                <GlobelBtn
                   onClick={handleCompleteAnswer}
                   disabled={
                     draftToHtml(convertToRaw(editorState.getCurrentContent()))
                       .length < 9
                   }
-                  sx={{
-                    height: "35px",
-                    p: "9px 10px",
-                    borderRadius: "27px",
-                    border: "1px solid #197065",
-                    color: "#197065",
-                    fontSize: "14px",
-                    bgcolor: "#fff",
-                    textTransform: "none",
-                    "&:hover": {
-                      backgroundColor: "#fff",
-                    },
-                    width: "150px",
-                  }}
-                >
-                  Mark As Complete
-                </ButtonBase>
+                  btnText="Mark As Complete"
+                />
               )}
             </Box>
           </Box>

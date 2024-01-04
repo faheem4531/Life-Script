@@ -15,6 +15,7 @@ export default function NewApp({ children }) {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const currentPath = usePathname();
+  const publicRoutes = ["/_auth/Auth", "/verify/forgetPassword"];
 
   useEffect(() => {
     dispatch(getChapterNotifications());

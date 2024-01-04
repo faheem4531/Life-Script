@@ -1,6 +1,6 @@
 import BookCoverGreen from "@/_assets/svg/bookCoverWhite.svg";
-import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
 import AccountGreen from "@/_assets/svg/sidebar/account-green.svg";
+import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
 import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
@@ -14,9 +14,9 @@ import MenuIcon from "@/_assets/svg/sidebar/menuIcon.svg";
 import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
 import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
 import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
-import TreeWhite from "@/_assets/svg/sidebar/tree-white.svg";
 import SubsWhite from "@/_assets/svg/subWhite.svg";
 import Subs from "@/_assets/svg/subs.svg";
+import SuportGreen from "@/_assets/svg/supportIcon.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
 import { getBookCover } from "@/store/slices/chatSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -35,7 +35,11 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
   const dispatch: any = useDispatch();
   const currentRoute = router.pathname;
   const childsOpenCheck = () => {
-    if (currentRoute === "/dashboard/chapters") {
+    if (
+      currentRoute === "/dashboard/chapters" ||
+      currentRoute === "/dashboard/chapters/chapterName" ||
+      currentRoute === "/events"
+    ) {
       setChilsdOpen(true);
     } else if (currentRoute === "/dashboard/chapters/completedChapter") {
       setChilsdOpen(true);
@@ -104,7 +108,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
         <Box>
           <a
             className={`${styles.link} ${
-              currentRoute === "/dashboard/chapters"
+              currentRoute === "/dashboard/chapters" ||
+              currentRoute === "/dashboard/chapters/chapterName" ||
+              currentRoute === "/events"
                 ? styles.active
                 : currentRoute === "/dashboard/chapters/completedChapter" &&
                   styles.active
@@ -118,7 +124,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               className={styles.sidebarIcon}
               src={
                 currentRoute === "/dashboard/chapters" ||
-                currentRoute === "/dashboard/chapters/completedChapter"
+                currentRoute === "/dashboard/chapters/completedChapter" ||
+                currentRoute === "/dashboard/chapters/chapterName" ||
+                currentRoute === "/events"
                   ? HomeGreen
                   : HomeWhite
               }
@@ -145,7 +153,11 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               <Box sx={{ marginLeft: "20px" }}>
                 <a
                   className={`${styles.link} ${
-                    currentRoute === "/dashboard/chapters" && styles.active
+                    currentRoute === "/dashboard/chapters" ||
+                    currentRoute === "/dashboard/chapters/chapterName" ||
+                    currentRoute === "/events"
+                      ? styles.active
+                      : ""
                   }`}
                   onClick={() => {
                     router.push("/dashboard/chapters");
@@ -156,7 +168,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                     alt="icon"
                     className={styles.sidebarIcon}
                     src={
-                      currentRoute === "/dashboard/chapters"
+                      currentRoute === "/dashboard/chapters" ||
+                      currentRoute === "/dashboard/chapters/chapterName" ||
+                      currentRoute === "/events"
                         ? ProgressGreen
                         : ProgressWhite
                     }
@@ -293,19 +307,22 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </a>
         </Box>
         <Box>
-          <a className={styles.link}>
+          <a
+            className={`${styles.link} ${
+              currentRoute === "/dashboard/Support" && styles.active
+            }`}
+            onClick={() => router.push("/dashboard/Support")}
+          >
             <Image
               alt="icon"
-              src={SuportWhite}
+              src={
+                currentRoute === "/dashboard/Support"
+                  ? SuportGreen
+                  : SuportWhite
+              }
               className={styles.sidebarIcon}
             />
             Support
-          </a>
-        </Box>
-        <Box>
-          <a className={styles.link}>
-            <Image alt="icon" src={TreeWhite} className={styles.sidebarIcon} />
-            Gift a Book
           </a>
         </Box>
       </Box>

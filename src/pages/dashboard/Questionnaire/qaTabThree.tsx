@@ -1,12 +1,6 @@
-import {
-  Box,
-  Button,
-  FormControlLabel,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
+import GlobelBtn from "@/components/button/Button";
+import { Box, FormControlLabel, RadioGroup, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
@@ -251,47 +245,29 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
           gap: 2,
         }}
       >
-        <Button
-          onClick={onClickBack}
-          sx={{
-            width: "176px",
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-            color: "#197065",
-            textTransform: "capitalize",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
-          <Image src={backArrow} alt="backArrow" /> Back
-        </Button>
-        <Button
-          onClick={() =>
-            onClickNext({
-              personal: personalQuestion,
-              frequency: questionFrequency,
-            })
-          }
-          sx={{
-            width: "176px",
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-            color: "white",
-            textTransform: "capitalize",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            bgcolor: "#197065",
-            ":hover": {
-              bgcolor: "#197065",
-            },
-          }}
-        >
-          Take me in <Image src={NextArrow} alt="NextArrow" />
-        </Button>
+        <Box>
+          <GlobelBtn
+            btnText="Back"
+            onClick={onClickBack}
+            image={backArrow}
+            width={"176px"}
+          />
+        </Box>
+        <Box>
+          <GlobelBtn
+            bgColor="#186F65"
+            color="white"
+            btnText="Take me in"
+            onClick={() =>
+              onClickNext({
+                personal: personalQuestion,
+                frequency: questionFrequency,
+              })
+            }
+            image2={NextArrow}
+            width={"176px"}
+          />
+        </Box>
       </Box>
     </>
   );

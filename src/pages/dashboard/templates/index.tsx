@@ -26,7 +26,7 @@ const Dashboard = () => {
           <ChooseTemplate />
         </Box>
         <Box
-          sx={{ marginTop: { md: "48px", sm: "20px" } }}
+          sx={{ marginTop: { xs: "18px" }, p: "0px 10px" }}
           className={styles.CardsContainer}
         >
           {templates?.map((template, index) => (

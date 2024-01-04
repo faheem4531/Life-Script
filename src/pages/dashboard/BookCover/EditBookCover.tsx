@@ -1,14 +1,21 @@
+import FileIcon from "@/_assets/svg/fileIcon.svg";
 import Layout from "@/components/Layout/Layout";
+import GlobelBtn from "@/components/button/Button";
 import ColorPickerComponent from "@/components/dashboardComponent/ColorPicker";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
-import FileIcon from "@/_assets/svg/fileIcon.svg";
+import {
+  bookCover,
+  getBookCover,
+  selectCoverData,
+  updateBookCover,
+  uploadImage,
+} from "@/store/slices/chatSlice";
+import { Box, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { uploadImage, bookCover, getBookCover, selectCoverData, updateBookCover } from "@/store/slices/chatSlice";
+import React, { useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -41,26 +48,27 @@ const EditBookCover = () => {
     setByline(event.target.value);
   };
 
-
   const handleSaveCover = () => {
     setButtonLoading(true);
-    dispatch( coverId ? updateBookCover({
-      id:coverId,
-      CoverNumber: CoverNumber,
-      title: title,
-      subTitle: subtitle,
-      byLine: byline,
-      color: selectedColor,
-      image: imageLink,
-    }) : 
-      bookCover({
-        coverNumber: CoverNumber,
-        title: title,
-        subTitle: subtitle,
-        byLine: byline,
-        color: selectedColor,
-        image: imageLink,
-      })
+    dispatch(
+      coverId
+        ? updateBookCover({
+            id: coverId,
+            CoverNumber: CoverNumber,
+            title: title,
+            subTitle: subtitle,
+            byLine: byline,
+            color: selectedColor,
+            image: imageLink,
+          })
+        : bookCover({
+            coverNumber: CoverNumber,
+            title: title,
+            subTitle: subtitle,
+            byLine: byline,
+            color: selectedColor,
+            image: imageLink,
+          })
     )
       .unwrap()
       .then(() => {
@@ -110,17 +118,17 @@ const EditBookCover = () => {
 
   useEffect(() => {
     dispatch(getBookCover());
-  },[]);
+  }, []);
   useEffect(() => {
-    if(coverData){
+    if (coverData) {
       setByline(coverData?.byLine);
       setTitle(coverData?.title);
       setSubtitle(coverData?.subTitle);
       setImageLink(coverData?.image);
       setSelectedColor(coverData?.color);
-      setCoverId(coverData?._id)
+      setCoverId(coverData?._id);
     }
-  },[coverData])
+  }, [coverData]);
 
   return (
     <div>
@@ -258,18 +266,22 @@ const EditBookCover = () => {
                     >
                       or
                     </Typography>
-                    <Button
+                    <Box
                       sx={{
-                        height: "25px",
-                        borderRadius: "26.267px",
-                        border: " 0.71px solid #197065",
-                        p: " 6.744px 11.714px",
-                        fontSize: "10.649px",
-                        color: "#197065",
+                        display: "flex",
+                        justifyContent: "center",
                       }}
                     >
-                      Browse Files
-                    </Button>
+                      <GlobelBtn
+                        btnText="Browse Files"
+                        bgColor="#fff"
+                        borderRadius="23px"
+                        color="#197065"
+                        fontSize={{ sm: "10.6px", xs: "8.542px" }}
+                        border="1px solid #197065"
+                        p="5px 20px"
+                      />
+                    </Box>
                   </Box>
                 </div>
               </Box>
@@ -290,52 +302,51 @@ const EditBookCover = () => {
                 mt="30px"
                 justifyContent="flex-end"
               >
-                <Button
+                <Box>
+                  <GlobelBtn
+                    btnText="Change Cover"
+                    bgColor="transparent"
+                    borderRadius="23px"
+                    color="#197065"
+                    fontSize={{ xs: "12px", md: "16px" }}
+                    onClick={() => {
+                      router.push("/dashboard/BookCover/SelectBookCover");
+                    }}
+                    width={"180px"}
+                  />
+                </Box>
+                <Box
                   sx={{
-                    height: { sx: "25px", md: "30px", lg: "45px" },
-                    borderRadius: "26.267px",
-                    border: " 0.71px solid #197065",
-                    p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                    color: "#197065",
-                    textTransform: "capitalize",
-                  }}
-                  onClick={() => {
-                    router.push("/dashboard/BookCover/SelectBookCover");
-                  }}
-                >
-                  Change Cover
-                </Button>
-                <Button
-                  sx={{
-                    height: { sx: "25px", md: "30px", lg: "45px" },
-                    borderRadius: "26.267px",
-                    border: " 0.71px solid #197065",
-                    p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                    color: "white",
                     opacity:
                       title && subtitle && byline && selectedColor && imageLink
                         ? "1"
                         : "0.5",
-                    textTransform: "capitalize",
-                    bgcolor: "#197065",
-                    "&:hover": {
-                      bgcolor: "#197065",
-                    },
-                  }}
-                  onClick={() => {
-                    title &&
-                      subtitle &&
-                      byline &&
-                      selectedColor &&
-                      imageLink &&
-                      !buttonLoading &&
-                      handleSaveCover();
                   }}
                 >
-                  {buttonLoading ? "Saving..." :coverId ? "Update Cover" : "Save Cover"}
-                </Button>
+                  <GlobelBtn
+                    btnText={
+                      buttonLoading
+                        ? "Saving..."
+                        : coverId
+                        ? "Update Cover"
+                        : "Save Cover"
+                    }
+                    bgColor="#197065"
+                    borderRadius="23px"
+                    color="#fff"
+                    fontSize={{ xs: "12px", md: "16px" }}
+                    onClick={() => {
+                      title &&
+                        subtitle &&
+                        byline &&
+                        selectedColor &&
+                        imageLink &&
+                        !buttonLoading &&
+                        handleSaveCover();
+                    }}
+                    width={"180px"}
+                  />
+                </Box>
               </Box>
             </Box>
           </Box>

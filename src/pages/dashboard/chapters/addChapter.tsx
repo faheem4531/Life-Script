@@ -1,4 +1,5 @@
-import { Box, Button, TextField } from "@mui/material";
+import GlobelBtn from "@/components/button/Button";
+import { Box, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
@@ -23,32 +24,30 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
             "& .MuiOutlinedInput-root": {
               borderRadius: "50px",
               backgroundColor: "white",
+              height: { md: "50px", sm: "45px", xs: "40px" },
             },
-            width: "400px",
+            width: { sm: "400px", xs: "100%" },
           }}
         />
       </Box>
-      <Box sx={{ justifyContent: "center", textAlign: "center", mt: "20px" }}>
-        <Button
-          variant="contained"
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          textAlign: "center",
+          mt: "20px",
+          opacity: chapter ? "1" : "0.4",
+        }}
+      >
+        <GlobelBtn
           disabled={!chapter}
+          btnText={btnText}
+          bgColor="#197065"
+          color="#fff"
+          // width={{ md: "234px", sm: "153px", xs: "103px" }}
+          // border="1px solid #197065"
           onClick={(event: any) => handleSubmit()}
-          type="submit"
-          sx={{
-            borderRadius: "48px",
-            backgroundColor: "#186F65",
-            color: "white",
-            fontSize: { md: "18px", sm: "13.627px", xs: "8.542px" },
-            width: { md: "234px", sm: "153px", xs: "103px" },
-            height: { md: "43px", sm: "32px", xs: "20px" },
-            textTransform: "capitalize",
-            "&:hover": {
-              backgroundColor: "#186F65",
-            },
-          }}
-        >
-          {btnText}
-        </Button>
+        />
       </Box>
     </Box>
   );

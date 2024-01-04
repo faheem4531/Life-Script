@@ -1,17 +1,13 @@
 import Layout from "@/components/Layout/Layout";
+import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
-import logo from "@/_assets/svg/SmallLogoWhite.svg";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
-import { Box, Button } from "@mui/material";
-import { useRouter } from "next/router";
-import { useEffect, useState, useRef } from "react";
+import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { renderToString } from "react-dom/server";
-import * as htmlToImage from "html-to-image";
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 
 const ViewBookCover = () => {
   const dispatch: any = useDispatch();
@@ -32,11 +28,11 @@ const ViewBookCover = () => {
     subtitle,
     name,
     imgUrl,
-    color, 
-    spine = 41,
-    ) => {
-
-    const logo = "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
+    color,
+    spine = 41
+  ) => {
+    const logo =
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
     const pdfHeight = 255;
     const pageWidth = 169.5;
     const tail = spine;
@@ -60,13 +56,13 @@ const ViewBookCover = () => {
     pdf.setFillColor(255, 255, 255);
     pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(bgcolor);
-    pdf.rect(170.5, 0, tail-2, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(170.5, 0, tail - 2, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(255, 255, 255);
     pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
 
     let y = 5; // Initial y-coordinate
     const fontSize = tail < 12 ? tail - 3 : 10;
-    const textCenter = pageWidth + ((tail - (tail - fontSize)/2)/2);
+    const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
@@ -90,7 +86,7 @@ const ViewBookCover = () => {
       y = y + 3; // Move to the next line for each character
     }
     const logoSize = tail < 22 ? tail - 3 : 20;
-    const tailcenter = pageWidth + ((tail - logoSize)/2);
+    const tailcenter = pageWidth + (tail - logoSize) / 2;
     pdf.addImage(imageUrl, "JPEG", tailcenter, 225, logoSize, logoSize);
 
     // Section 3:
@@ -101,7 +97,7 @@ const ViewBookCover = () => {
     // 1st Text: "A good book" with font size 16px
     pdf.setFontSize(16);
     pdf.setTextColor(255, 255, 255);
-    pdf.text(text1, centerX, 50.8, { align: "center" }); 
+    pdf.text(text1, centerX, 50.8, { align: "center" });
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
     pdf.setFontSize(22);
@@ -132,11 +128,12 @@ const ViewBookCover = () => {
     name,
     imgUrl,
     color,
-    spine = 41,) => {
-      const pdfHeight = 255;
-      const pageWidth = 169.5;
-      const tail = spine;
-      const pdfWidth = pageWidth + pageWidth + spine;
+    spine = 41
+  ) => {
+    const pdfHeight = 255;
+    const pageWidth = 169.5;
+    const tail = spine;
+    const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
       format: [pdfWidth, pdfHeight],
@@ -162,7 +159,7 @@ const ViewBookCover = () => {
 
     let y = 5; // Initial y-coordinate
     const fontSize = tail < 12 ? tail - 3 : 10;
-    const textCenter = pageWidth + ((tail - (tail - fontSize)/2)/2);
+    const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
@@ -186,12 +183,12 @@ const ViewBookCover = () => {
       y = y + 3; // Move to the next line for each character
     }
     const logoSize = tail < 22 ? tail - 3 : 20;
-    const tailcenter = pageWidth + ((tail - logoSize)/2);
+    const tailcenter = pageWidth + (tail - logoSize) / 2;
     pdf.addImage(imageUrl, "JPEG", tailcenter, 225, logoSize, logoSize);
 
     // Section 3
     pdf.setFillColor(bgColor);
-    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F"); 
+    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
     const centerX = pageWidth + tail + pageWidth / 2;
 
     // 1st Text: "A good book" with font size 16px
@@ -202,7 +199,7 @@ const ViewBookCover = () => {
     const imgWidth = 100;
     const imgHeight = 120;
     const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2;
-    const yPos = 50; 
+    const yPos = 50;
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
@@ -216,7 +213,7 @@ const ViewBookCover = () => {
     pdf.setDrawColor(255, 255, 255);
     pdf.setLineWidth(1);
     const lineStart = pageWidth + tail + 50;
-    pdf.line(lineStart, 200, pdfWidth -50, 200,);
+    pdf.line(lineStart, 200, pdfWidth - 50, 200);
 
     pdf.setFont("helvetica", "normal");
     pdf.setTextColor(255, 255, 255);
@@ -260,46 +257,49 @@ const ViewBookCover = () => {
               mb="20px"
               justifyContent="flex-end"
             >
-              <Button
-                sx={{
-                  height: { sx: "25px", md: "30px", lg: "45px" },
-                  borderRadius: "26.267px",
-                  border: " 0.71px solid #197065",
-                  p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-                  fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                  color: "#197065",
-                  textTransform: "capitalize",
-                }}
-                onClick={() =>
-                  CoverNumber.toString() === "2"
-                    ? generatePDFTwo(byline, title, subtitle, imageLink, selectedColor, 12)
-                    : generatePDFOne(byline, title, subtitle, imageLink, selectedColor, 9)
-                }
-              >
-                Print Book
-              </Button>
-              <Button
-                sx={{
-                  height: { sx: "25px", md: "30px", lg: "45px" },
-                  borderRadius: "26.267px",
-                  border: " 0.71px solid #197065",
-                  p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-                  fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                  color: "white",
-                  textTransform: "capitalize",
-                  bgcolor: "#197065",
-                  "&:hover": {
-                    bgcolor: "#197065",
-                  },
-                }}
-                onClick={() => {
-                  router.push(
-                    `/dashboard/BookCover/EditBookCover?CoverNumber=${CoverNumber}`
-                  );
-                }}
-              >
-                Edit Cover
-              </Button>
+              <Box>
+                <GlobelBtn
+                  btnText="Print Book"
+                  fontSize={{ xs: "12px", md: "16px" }}
+                  border="1px solid #197065"
+                  onClick={() =>
+                    CoverNumber.toString() === "2"
+                      ? generatePDFTwo(
+                          byline,
+                          title,
+                          subtitle,
+                          imageLink,
+                          selectedColor,
+                          12
+                        )
+                      : generatePDFOne(
+                          byline,
+                          title,
+                          subtitle,
+                          imageLink,
+                          selectedColor,
+                          9
+                        )
+                  }
+                  width={"180px"}
+                />
+              </Box>
+              <Box>
+                <GlobelBtn
+                  btnText={"Edit Cover"}
+                  bgColor="#197065"
+                  borderRadius="23px"
+                  color="#fff"
+                  fontSize={{ xs: "12px", md: "16px" }}
+                  border="1px solid #197065"
+                  width={"180px"}
+                  onClick={() => {
+                    router.push(
+                      `/dashboard/BookCover/EditBookCover?CoverNumber=${CoverNumber}`
+                    );
+                  }}
+                />
+              </Box>
             </Box>
             <Box ref={elementRef} id={"bookcoverpdf"}>
               <SelectBookCoverCard

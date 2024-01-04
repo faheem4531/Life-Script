@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout/Layout";
-import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 import { Box, Typography } from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -11,7 +11,6 @@ import {
 } from "../../../utils/subscriptionLists";
 import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./components/paymentForm";
-import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
@@ -22,7 +21,7 @@ const CreditCard = () => {
   return (
     <Box>
       <Layout>
-      <SubscriptionHeader title="Subscription Plan" description="" />
+        <SubscriptionHeader title="Subscription Plan" description="" />
 
         <Box
           sx={{
@@ -100,7 +99,7 @@ const CreditCard = () => {
               >
                 <Box>
                   <Elements stripe={stripePromise}>
-                    <PaymentForm packageName={Subscription} price={price}/>
+                    <PaymentForm packageName={Subscription} price={price} />
                   </Elements>
                 </Box>
               </Box>

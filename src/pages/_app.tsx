@@ -1,15 +1,15 @@
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import type { AppProps } from "next/app";
 import { Provider as StoreProvider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import "../styles/globals.css";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import NewApp from "./_newApp";
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { store } from "../store/store";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -56,9 +56,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider store={store}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <NewApp>
-        <Component {...pageProps} />
-      </NewApp>
+        <NewApp>
+          <Component {...pageProps} />
+        </NewApp>
       </LocalizationProvider>
     </StoreProvider>
   );

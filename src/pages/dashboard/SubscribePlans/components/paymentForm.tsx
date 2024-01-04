@@ -1,9 +1,10 @@
+import ModalImage from "@/_assets/png/view-template-modal.png";
+import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
+import { stripeDone } from "@/store/slices/authSlice";
 import { stripePayment } from "@/store/slices/chatSlice";
-import ModalImage from "@/_assets/png/view-template-modal.png";
-import Image from "next/image";
-import { Box, Button, ButtonBase, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -11,12 +12,12 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { stripeDone } from "@/store/slices/authSlice";
 import { loadStripe } from "@stripe/stripe-js";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
-import dynamic from "next/dynamic";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
@@ -45,7 +46,7 @@ const useOptions = () => {
   return options;
 };
 
-const PaymentForm = ({packageName, price}) => {
+const PaymentForm = ({ packageName, price }) => {
   const dispatch: any = useDispatch();
   const options = useOptions();
   const [isError, setIsError] = useState(false);
@@ -72,8 +73,7 @@ const PaymentForm = ({packageName, price}) => {
       setLoading(false);
       setIsError(true);
       setStripeFailed(true);
-    } 
-    else {
+    } else {
       dispatch(
         stripePayment({
           country: "USA",
@@ -107,7 +107,6 @@ const PaymentForm = ({packageName, price}) => {
         });
     }
   };
-
 
   return (
     <>
@@ -245,30 +244,20 @@ const PaymentForm = ({packageName, price}) => {
             opacity: loading || isError || !cardHolderName ? 0.6 : 1,
           }}
         >
-          <Button
-            onClick={() => {
-              if (!loading && !isError && cardHolderName) {
-                setConfirmationStripe(true);
-              }
-            }}
-            // disabled={loading || isError || !cardHolderName}
-            sx={{
-              height: { sx: "25px", md: "30px", lg: "45px" },
-              borderRadius: "26.267px",
-              border: " 0.71px solid #197065",
-              p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-              fontSize: { xs: "12px" },
-              color: "white",
-              textTransform: "capitalize",
-              width: "100%",
-              bgcolor: "#197065",
-              "&:hover": {
-                bgcolor: "#197065",
-              },
-            }}
-          >
-            {loading ? "Processing..." : "Choose Plan"}
-          </Button>
+          <Box>
+            <GlobelBtn
+              bgColor="#197065"
+              color="white"
+              btnText={loading ? "Processing..." : "Choose Plan"}
+              onClick={() => {
+                if (!loading && !isError && cardHolderName) {
+                  setConfirmationStripe(true);
+                }
+              }}
+              p={"10px 20px"}
+              width={"100%"}
+            />
+          </Box>
         </Box>
       </Box>
       <TransitionsDialog
@@ -295,53 +284,66 @@ const PaymentForm = ({packageName, price}) => {
         }}
         customStyles={{ backgroundColor: "auto" }}
       >
-        <Box sx={{ textAlign: "center" }}>
-          <Image alt="image" src={ModalImage} />
+        <Box sx={{ textAlign: "center", p: "20px" }}>
+          <Box
+            sx={{
+              width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+              height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+              margin: "auto",
+            }}
+          >
+            <Image
+              alt="image"
+              src={ModalImage}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </Box>
           <Typography
             sx={{
-              fontSize: "40px",
+              fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
               color: "#070707",
-              margin: "40px 0",
+              margin: "15px 0",
             }}
           >
             {stripeFailed ? "Sorry" : "Thank You!"}
           </Typography>
           <Typography
             sx={{
-              fontSize: "30px",
+              fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
               color: "#070707",
-              width: "400px",
-              margin: "0 120px",
+              width: { md: "400px", sm: "300px", xs: "180px" },
+              margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
-            {stripeFailed ? "Stripe Failed to proceed your Payment" : "Your Package has been Upgraded"}
+            {stripeFailed
+              ? "Stripe Failed to proceed your Payment"
+              : "Your Package has been Upgraded"}
           </Typography>
 
-          <ButtonBase
-            onClick={() => {
-              stripeFailed
-            ? router.push("/dashboard/SubscribePlans")
-            : router.push("/dashboard/chapters");
-              setStripeSucceed(false);
-              setStripeFailed(false);
-            }}
+          <Box
             sx={{
-              width: "200px",
-              height: "50px",
-              borderRadius: "78px",
-              color: "#fff",
-              fontSize: "22px",
-              bgcolor: "#197065",
-              margin: "40px 0 30px",
-              "&:hover": {
-                color: "#fff",
-                bgcolor: "#197065",
-              },
+              display: "flex",
+              justifyContent: "center",
+              mt: "20px",
             }}
           >
-            {stripeFailed ? "Try Later" : "Start Using"}
-          </ButtonBase>
+            <GlobelBtn
+              bgColor="#197065"
+              color="white"
+              btnText={stripeFailed ? "Try Later" : "Start Using"}
+              onClick={() => {
+                stripeFailed
+                  ? router.push("/dashboard/SubscribePlans")
+                  : router.push("/dashboard/chapters");
+                setStripeSucceed(false);
+                setStripeFailed(false);
+              }}
+            />
+          </Box>
         </Box>
       </CustomizationDialog>
     </>
@@ -349,5 +351,5 @@ const PaymentForm = ({packageName, price}) => {
 };
 
 export default dynamic(() => Promise.resolve(PaymentForm), {
-  ssr: false
-})
+  ssr: false,
+});

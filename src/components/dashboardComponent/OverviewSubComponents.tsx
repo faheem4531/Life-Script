@@ -1,8 +1,9 @@
 import NextIcon from "@/_assets/svg/next-icon.svg";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import GlobelBtn from "../button/Button";
 import styles from "./Custom.module.css";
+import { useRouter } from "next/router";
 
 export const ViewBook = () => {
   const router = useRouter();
@@ -118,23 +119,15 @@ export const PrintBook = () => {
           vestibulum ante facilisis. Ultrices tincidunt elit
         </Typography>
       </Box>
-      <Button
-        sx={{
-          color: "#fff",
-          bgcolor: "#197065",
-          borderRadius: "34px",
-          width: { xl: "250px", sm: "180px" },
-          fontSize: { xl: "17px", sm: "14px" },
-          height: { xl: "70px", sm: "50px" },
-          "&:hover": {
-            backgroundColor: "#197069",
-            color: "#fff",
-          },
-          textTransform: "capitalize",
-        }}
-      >
-        Print my book
-      </Button>
+      <Box>
+        <GlobelBtn
+          bgColor="#186F65"
+          color="white"
+          btnText="Continue"
+          // onClick={}
+          width={{ xl: "250px", sm: "180px" }}
+        />
+      </Box>
     </Box>
   );
 };

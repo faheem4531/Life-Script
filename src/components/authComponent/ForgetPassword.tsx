@@ -1,7 +1,6 @@
 import { ForgetPass } from "@/interface/authInterface";
 import { forgetPassword } from "@/store/slices/authSlice";
 import { Box, TextField, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -12,6 +11,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
 import Logo from "../../../public/logo.svg";
+import GlobelBtn from "../button/Button";
 
 const ForgetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -118,7 +118,7 @@ const ForgetPassword = () => {
               marginTop: "80px",
             }}
           >
-            <Button
+            {/* <Button
               variant="contained"
               onClick={(event) => formik.handleSubmit()}
               type="submit"
@@ -136,7 +136,14 @@ const ForgetPassword = () => {
               }}
             >
               Continue
-            </Button>
+            </Button> */}
+
+            <GlobelBtn
+              bgColor="#186F65"
+              color="white"
+              btnText="Continue"
+              onClick={(event) => formik.handleSubmit()}
+            />
           </Box>
         </Box>
       </Box>
