@@ -75,7 +75,11 @@ export default function CustomizationDialog({
           </BootstrapDialogTitle>
           <DialogContent
             // dividers
-            style={{ maxHeight: "80vh", overflowY: "auto" }}
+            sx={{
+              maxHeight: "100vh",
+              overflowY: "auto",
+              "&::-webkit-scrollbar": { display: "none" },
+            }}
           >
             {children}
           </DialogContent>
