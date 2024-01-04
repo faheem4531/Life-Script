@@ -9,7 +9,7 @@ import NewApp from "./_newApp";
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { store } from "../store/store";
 
 export default function App({ Component, pageProps }: AppProps) {

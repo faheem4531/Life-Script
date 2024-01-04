@@ -121,7 +121,7 @@ const getTitle = () => {
             </Typography>
           </Box>
           <Box mt="50px">
-            <GlobelBtn onClick={() => handleTitle()} btnText="Start Writing" />
+            <GlobelBtn disabled={!text} onClick={() => handleTitle()} btnText="Start Writing" />
           </Box>
         </Box>
       </Box>
