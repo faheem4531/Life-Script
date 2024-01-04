@@ -1,4 +1,5 @@
 import api from "@/services/api";
+import axios from "axios";
 import Error from "next/error";
 
 export async function chatApi(data: any) {
@@ -238,37 +239,15 @@ export async function saveAnswerApi(data: any) {
   }
 }
 
-export async function bookTitleApi(data: { title: string }) {
-  try {
-    const res = await api.post("/book", data);
-    return res;
-  } catch (error: any) {
-    if (typeof error?.response?.data?.message === "object") {
-      const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed");
-    } else {
-      throw new Error(error.response?.data?.message);
-    }
-  }
-}
-
-export async function getBookTitleApi() {
-  try {
-    const res = await api.get("/book");
-    return res;
-  } catch (error: any) {
-    if (typeof error?.response?.data?.message === "object") {
-      const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed");
-    } else {
-      throw new Error(error.response?.data?.message);
-    }
-  }
-}
-
 export async function getChapterNotificationsApi() {
   try {
-    const res = await api.get("/notification");
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const res = await axios.get("https://api.thelifescript.com/notification", {headers});
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -300,8 +279,54 @@ export async function readNotificationApi(data: {
 
 export async function stripPaymentApi(data: any) {
   try {
-    const res = await api.post("users/stripe/payment", data);
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const res = await axios.post("https://api.thelifescript.com/users/stripe/payment", data, {headers});
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function bookTitleApi(data: { title: string }) {
+  try {
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const res = await axios.post("https://api.thelifescript.com/book", data, {headers});
     return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getBookTitleApi() {
+  try {
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const res = await axios.get("https://api.thelifescript.com/book", {headers});
+    return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;

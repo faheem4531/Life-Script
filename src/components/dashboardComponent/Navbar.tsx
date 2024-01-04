@@ -170,7 +170,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                 boxShadow: "none",
               }}
             >
-              {notifications.map((notification, index) => (
+              {notifications?.length > 0 && notifications?.map((notification, index) => (
                 <MenuItem
                   key={index}
                   onClick={() => handleNotificationNavigate(notification)}

@@ -166,12 +166,10 @@ const chapterName = () => {
     )
       .unwrap()
       .then(() => {
-        toast.success("Question added successfully");
         dispatch(getChapterbyId({ id: chapterId?.toString() }));
         setAllQuestionsLoading(false);
       })
       .catch(() => {
-        toast.error("Failed to add question");
         setAllQuestionsLoading(false);
       });
   };

@@ -7,6 +7,7 @@ import {
   VerifyEmail,
 } from "@/interface/authInterface";
 import api from "@/services/api";
+import axios from "axios";
 import Error from "next/error";
 
 export async function loginApi(data: LoginData) {
@@ -150,14 +151,20 @@ export async function updatePasswordApi(data: UpdatePasswordData) {
 
 export async function updateUserProfileApi(data: any) {
   try {
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
     const userId = localStorage.getItem("userId"); 
-    const res = await api.put(`users/${userId}`, data);
+    const res = await axios.put(`https://api.thelifescript.com/users/${userId}`, data, {headers});
     return res;
   } catch (error: any) {
     
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed to log in");
+      throw new Error(errors ? errors[0] : "Failed");
     } else {
       throw new Error(error.response?.data?.message);
     }

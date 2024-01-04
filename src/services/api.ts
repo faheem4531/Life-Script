@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 
 class API {
@@ -9,7 +8,7 @@ class API {
     this.instance = axios.create({
       baseURL: "https://api.thelifescript.com/", // base URL
       // baseURL: "http://localhost:8000/",
-      // baseURL: "https://24c7-116-58-9-130.ngrok-free.app", //ngrok
+      // baseURL: "https://e1b0-116-58-9-130.ngrok-free.app", //ngrok
       // headers: {
       //   "ngrok-skip-browser-warning": true,
       // },
@@ -43,20 +42,29 @@ class API {
   }
 
   private responseErrorInterceptor(error: any) {
-    console.log("error api",error.response.status);
-    const router = useRouter();
+    console.log("error api", error.response.status);
+    // const router = useRouter();
     if (error.response.status === 401) {
       toast.error(error.response.data.message);
-      // localStorage.clear();
-      // router.push("/");
+      localStorage.clear();
+      const baseLink = window.location.origin;
+      if (window.location.href !== baseLink) {
+        window.location.href = baseLink;
+      }
     } else if (error.response.status === 402) {
-      toast.error(error.response.data.message);
-      router.push("/");
+      const baseLink = window.location.origin;
+      if (window.location.href !== `${baseLink}/dashboard/SubscribePlans`) {
+        toast.error(error.response.data.message);
+      }
+      console.log("location", window.location.href);
+      console.log("baseLink", typeof window.location.origin);
+      if (window.location.href !== `${baseLink}/dashboard/SubscribePlans`) {
+        window.location.href = `${baseLink}/dashboard/SubscribePlans`;
+      }
     }
-  
+
     return Promise.reject(error);
   }
-  
 
   public get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
     return this.instance.get<T>(url, config).then(this.handleApiResponse);

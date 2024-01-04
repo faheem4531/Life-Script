@@ -14,20 +14,24 @@ const getStarted = () => {
   const { userName } = router.query;
 
   useEffect(() => {
-    dispatch(getBookTitle())
+    dispatch(getBookTitle()).unwrap()
       .then((res) => {
-        if (res.payload.length > 0) {
+        console.log("111",res);
+        if (res?.length > 0) {
           setTimeout(() => {
             router.push("/dashboard/chapters");
-          }, 2000);
+          }, 3000);
         } else {
           setTimeout(() => {
             router.push(`/dashboard/Questionnaire?userName=${userName}`);
-          }, 2000);
+          }, 3000);
         }
       })
       .catch(() =>
+      setTimeout(() =>{
+        console.log("fail");
         router.push(`/dashboard/Questionnaire?userName=${userName}`)
+      }, 3000)
       );
   }, []);
 

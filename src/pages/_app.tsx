@@ -16,16 +16,15 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
   const [chapterCompleted, setChapterCompleted] = useState(false);
-
   //verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
-    if (!userLoggedIn && userLoggedIn !== "undefined" && currentPath !== "/verify/verificationSent" && currentPath!== "/verify") {
+    if (!userLoggedIn && userLoggedIn !== "undefined" && currentPath !== "/verify/verificationSent" && currentPath!== "/verify" && currentPath!== "/verify/forgetPassword" ) {
       router.push("/");
     } else if (currentPath == "/") {
       router.push("/dashboard/chapters");
     }
-  }, [router, currentPath]);
+  }, [currentPath]);
 
 
   // useEffect(() => {
@@ -35,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
   //     const decodedToken = jwt?.decode(token);
   //     const accessRole = decodedToken?.accessRole;
   //     const createdAt = decodedToken?.created_at;
-  //   console.log("dateee",createdAt);
+  //   console.log("dateee",creat);
   //     const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
   //       createdAt?.toString()
   //     );

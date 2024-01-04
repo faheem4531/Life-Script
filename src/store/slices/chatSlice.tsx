@@ -135,7 +135,7 @@ export const getOpenaiQuestion = createAsyncThunk<UserData, any>(
   }
 );
 
-export const getChapterNotifications = createAsyncThunk<any[], void>(
+export const getChapterNotifications = createAsyncThunk<any, void>(
   "chat/chapter-notifications",
   async () => {
     try {
@@ -320,17 +320,18 @@ export const narrativeFusion = createAsyncThunk<UserData, any>(
   }
 );
 
-export const bookTitle = createAsyncThunk<UserData, any>(
+export const bookTitle = createAsyncThunk<UserData, { title: string }>(
   "chat/book-title",
   async (data: { title: string }) => {
     try {
       const response = await bookTitleApi(data);
-      return response;
+      return response.data; // Assuming your API response has a 'data' property
     } catch (error: any) {
       throw new Error(error.props);
     }
   }
 );
+
 
 export const updateChapter = createAsyncThunk<UserData, any>(
   "chat/update-chapter",
@@ -404,7 +405,7 @@ export const getChapters = createAsyncThunk<any[], void>(
   }
 );
 
-export const getBookTitle = createAsyncThunk<any[], void>(
+export const getBookTitle = createAsyncThunk<any, void>(
   "chat/get-bookTitle",
   async () => {
     try {

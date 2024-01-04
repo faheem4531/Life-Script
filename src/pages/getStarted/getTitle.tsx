@@ -15,7 +15,7 @@ const getTitle = () => {
   const dispatch: any = useDispatch();
   const { userName } = router.query;
   const [text, setText] = useState("");
-  const maxLength = 20; // Set the maximum character count to 20
+  const maxLength = 30; // Set the maximum character count to 20
 
   const handleChange = (event) => {
     const inputText = event.target.value;
@@ -120,6 +120,7 @@ const getTitle = () => {
             </Typography>
           </Box>
           <Button
+          disabled={text.length < 1}
             onClick={() => handleTitle()}
             sx={{
               display: "flex",

@@ -46,7 +46,7 @@ const Login = ({ signinClick }) => {
       .unwrap()
       .then((res) => {
         toast.success(t("login-page.loggedIn"));
-        router.push(`/getStarted?userName=${res.name}`);
+        router.push(`/getStarted?userName=${res?.name}`);
       })
       .catch((error: any) => {
         toast.error(error.message);
@@ -56,6 +56,7 @@ const Login = ({ signinClick }) => {
   const handleGoogleLoginFailure = () => {
     toast.error(t("login-page.failedSignupGoogle"));
   };
+
 
   const formik = useFormik({
     initialValues: {
@@ -69,8 +70,8 @@ const Login = ({ signinClick }) => {
         .unwrap()
         .then((res) => {
           toast.success(t("login-page.loggedIn"));
-          setLoading(false);
-          router.push(`/getStarted?userName=${res.name}`);
+          // setLoading(false);
+          router.push(`/getStarted?userName=${res?.name}`);
         })
         .catch((error: any) => {
           setLoginFailed(true);

@@ -85,9 +85,9 @@ const PaymentForm = ({packageName, price}) => {
       )
         .unwrap()
         .then(async (res) => {
-          if (res.status !== "succeeded") {
+          if (res?.status !== "succeeded") {
             const secureResult = await stripe.confirmCardPayment(
-              res.client_secret,
+              res?.client_secret,
               {
                 payment_method: {
                   card: card,
@@ -96,14 +96,12 @@ const PaymentForm = ({packageName, price}) => {
             );
             if (secureResult?.paymentIntent?.status === "succeeded") {
               setStripeSucceed(true);
-              dispatch(stripeDone());
-            }else{setStripeFailed(true)}
+            }else{setStripeFailed(true);}
           } else {
             setStripeSucceed(true);
-            dispatch(stripeDone());
           }
         })
-        .catch(() => {
+        .catch((error) => {
           setLoading(false);
           setStripeFailed(true);
         });

@@ -40,7 +40,7 @@ export const changePassword = createAsyncThunk<UserData, ChangePassword>(
   }
 );
 
-export const updateUserProfile = createAsyncThunk<UserData, any>(
+export const updateUserProfile = createAsyncThunk<any, any>(
   "user/user-profile",
   async (data) => {
     try {

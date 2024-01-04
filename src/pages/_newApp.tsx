@@ -22,6 +22,7 @@ export default function NewApp({ children }) {
 
 
   useEffect(() => {
+    const userId = localStorage.getItem("userId");
     socket.on("result", (message) => {
       dispatch(getChapterNotifications());
     });
@@ -29,8 +30,12 @@ export default function NewApp({ children }) {
       toast.error(message);
       console.log("socket failed");
     })
-    socket.on("chapterCompilingStatus", (message) => {});
     socket.on("error", (message) => {});
+
+    socket.emit('joinRoom', userId);
+    socket.on("stripeWebhookData", (token) => {
+      localStorage.setItem("token", token);
+    })
   }, []);
 
   return (
