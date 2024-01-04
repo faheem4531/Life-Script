@@ -155,7 +155,7 @@ export default function Questions({
               <Typography
                 sx={{
                   color: "rgba(22, 22, 22, 0.90)",
-                  fontSize: "13px",
+                  fontSize: "14px",
                   fontWeight: 400,
                   width: "100vw",
                   textOverflow: expanded ? "clip" : "ellipsis",
@@ -308,7 +308,9 @@ export default function Questions({
         <Box>
           <Image src={ModalImage} width={91} height={60} alt="logo" />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>Update Question</Typography>
+        <Typography sx={{ fontSize: { md: "24px", sm: "22px", xs: "18px" } }}>
+          Update Question
+        </Typography>
         <AddQuestion
           questionData={(question: string) => {
             handleUpdateQuestion(question);

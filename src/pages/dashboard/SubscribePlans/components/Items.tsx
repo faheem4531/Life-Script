@@ -1,7 +1,7 @@
-import { Box, Typography, Button } from "@mui/material";
-import Image from "next/image";
-import React from "react";
 import SmallTick from "@/_assets/svg/smallTick.svg";
+import GlobelBtn from "@/components/button/Button";
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 
 const Items = ({ subList, title, description }) => {
   return (
@@ -61,27 +61,17 @@ const Items = ({ subList, title, description }) => {
           );
         })}
       </Box>
-      <Button
-        sx={{
-          height: { sx: "25px", md: "30px", lg: "45px" },
-          borderRadius: "26.267px",
-          border: " 0.71px solid #197065",
-          p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-          fontSize: { xs: "12px" },
-          color: "white",
-          textTransform: "capitalize",
-          width: "100%",
-          bgcolor: "#197065",
-          "&:hover": {
-            bgcolor: "#197065",
-          },
-        }}
-        onClick={() => {
-          // router.push(`/dashboard/BookCover/ViewBookCover?BookCoverCheck=${BookCoverCheck}`)
-        }}
-      >
-        Choose Plan
-      </Button>
+
+      <Box>
+        <GlobelBtn
+          bgColor="#186F65"
+          color="white"
+          btnText="Choose Plaedn"
+          onClick={() => {
+            // router.push(`/dashboard/BookCover/ViewBookCover?BookCoverCheck=${BookCoverCheck}`)
+          }}
+        />
+      </Box>
     </Box>
   );
 };

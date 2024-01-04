@@ -49,15 +49,16 @@ const SelectBookCoverHeader = () => {
         >
           <Button
             image={Star}
-            title="AI Generated Cover"
-            background="radial-gradient(ellipse at 49% 86%, rgba(44, 166, 152, .3) 0%, rgba(24, 111, 101, .6) 60%)"
+            btnText="AI Generated Cover"
+            bgColor="radial-gradient(ellipse at 49% 86%, rgba(44, 166, 152, .3) 0%, rgba(24, 111, 101, .6) 60%)"
             borderRadius="33.922px"
             border="2.5px solid #D9D9D9"
             color="white"
-            padding="10px 18px"
-            onClick={() => {}}
-            width="183px"
-            fontSize={"13px"}
+            // onClick={() => {}}
+            width="203px"
+            fontSize={{
+              xs: "12px",
+            }}
           />
         </Box>
       </Box>

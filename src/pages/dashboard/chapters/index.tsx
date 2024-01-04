@@ -117,6 +117,7 @@ const Dashboard = () => {
           sx={{
             position: "relative",
             zIndex: "2",
+            p: { md: "0px 0px", xs: "0px 10px" },
           }}
         >
           <Box
@@ -162,7 +163,7 @@ const Dashboard = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: "18px",
               }}
             >
               <StartNewChapter addChapterClick={() => setChapterModal(true)} />
@@ -170,7 +171,7 @@ const Dashboard = () => {
           ) : (
             <Box
               sx={{
-                marginTop: { sm: "48px", xs: "25px" },
+                marginTop: { xs: "18px" },
               }}
             >
               <NoChapters />
@@ -204,7 +205,9 @@ const Dashboard = () => {
             }}
           />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>
+        <Typography
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
+        >
           {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
         </Typography>
         <AddChapter

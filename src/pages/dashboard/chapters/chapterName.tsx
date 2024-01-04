@@ -4,6 +4,7 @@ import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 // import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import ModalImage from "@/_assets/png/view-template-modal.png";
+import GlobelBtn from "@/components/button/Button";
 import FloatButton from "@/components/button/FloatButton";
 import LinearProgressBar from "@/components/dashboardComponent/LinearProgressBar";
 import Questions from "@/components/dashboardComponent/Questions";
@@ -21,13 +22,7 @@ import {
   selectChapter,
   simpleChapter,
 } from "@/store/slices/chatSlice";
-import {
-  Box,
-  ButtonBase,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, InputAdornment, TextField, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -376,119 +371,20 @@ const chapterName = () => {
                 }}
               >
                 {aiQuestions?.length > 0 && (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: { sm: "10px", xs: "5px" },
-                      width: "176px",
-                      borderRadius: "26.267px",
-                      border: " 0.71px solid #197065",
-                      fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                      color: "#197065",
-                      textTransform: "capitalize",
-                      p: "2.5px 4px",
-                      cursor: "pointer",
-                    }}
+                  <GlobelBtn
+                    image={suggestionIcon}
+                    btnText="Suggestion"
                     onClick={() => setAiGeneration(true)}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: { sm: "10px", xs: "5px" },
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          cursor: "pointer",
-                          mb: "-4px",
-                          width: { sm: "22.778px", xs: "20.147px" },
-                        }}
-                      >
-                        <Image
-                          src={suggestionIcon}
-                          alt="suggestionIcon"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                          }}
-                        />
-                      </Box>
-                      <Typography
-                        sx={{
-                          // color: "rgba(25, 112, 101, 0.90)",
-                          fontSize: {
-                            md: "16.6px",
-                            sm: "15.6px",
-                            xs: "14.827px",
-                          },
-                          fontWeight: 500,
-                          cursor: "pointer",
-                        }}
-                      >
-                        Suggestion
-                      </Typography>
-                    </Box>
-                  </Box>
+                    width={"180px"}
+                  />
                 )}
-                <Box
-                  onClick={() => setOpenModal(true)}
-                  sx={{
-                    width: "180px",
-                    borderRadius: "26.267px",
-                    border: " 0.71px solid #197065",
-                    fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                    color: "#197065",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
-                    p: "4px 4px",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: { sm: "10px", xs: "5px" },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        cursor: "pointer",
-                        mb: "-5px",
-                        width: { sm: "21.778px", xs: "20.147px" },
-                      }}
-                    >
-                      <Image
-                        src={addIcon}
-                        alt="addicon"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </Box>
-                    <Typography
-                      sx={{
-                        // color: "rgba(25, 112, 101, 0.90)",
-                        fontSize: {
-                          md: "16.6px",
-                          sm: "15.6px",
-                          xs: "14.827px",
-                        },
-                        fontWeight: 500,
-                        cursor: "pointer",
-                      }}
-                    >
-                      Add Question
-                    </Typography>
-                  </Box>
+                <Box>
+                  <GlobelBtn
+                    image={addIcon}
+                    btnText="Add Question"
+                    onClick={() => setOpenModal(true)}
+                    width={"180px"}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -586,50 +482,63 @@ const chapterName = () => {
         }}
         customStyles={{ backgroundColor: "auto" }}
       >
-        <Box sx={{ textAlign: "center" }}>
-          <Image alt="image" src={ModalImage} />
+        <Box sx={{ textAlign: "center", p: "20px" }}>
+          <Box
+            sx={{
+              width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+              height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+              margin: "auto",
+            }}
+          >
+            <Image
+              alt="image"
+              src={ModalImage}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </Box>
           <Typography
             sx={{
-              fontSize: "40px",
+              fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
               color: "#070707",
-              margin: "40px 0",
+              margin: "15px 0",
             }}
           >
             Thank You!
           </Typography>
           <Typography
             sx={{
-              fontSize: "30px",
+              fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
               color: "#070707",
-              width: "400px",
-              margin: "0 120px",
+              // width: "400px",
             }}
           >
             Your chapter is being written. You will get it shortly
           </Typography>
-
-          <ButtonBase
-            onClick={() => {
-              router.push("/dashboard/chapters");
-              setgptSocket(false);
-            }}
+          <Box
             sx={{
-              width: "200px",
-              height: "50px",
-              borderRadius: "78px",
-              color: "#fff",
-              fontSize: "22px",
-              bgcolor: "#197065",
-              margin: "40px 0 30px",
-              "&:hover": {
-                color: "#fff",
-                bgcolor: "#197065",
-              },
+              display: "flex",
+              justifyContent: "center",
+              mt: "20px",
             }}
           >
-            Okay
-          </ButtonBase>
+            <GlobelBtn
+              btnText={"Okay"}
+              bgColor="#197065"
+              borderRadius="23px"
+              color="#fff"
+              // width={{ md: "234px", sm: "153px", xs: "103px" }}
+              // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
+              border="1px solid #197065"
+              onClick={() => {
+                router.push("/dashboard/chapters");
+                setgptSocket(false);
+              }}
+            />
+          </Box>
         </Box>
       </CustomizationDialog>
 
@@ -657,7 +566,7 @@ const chapterName = () => {
         customStyles={{
           backgroundColor: "auto",
           padding: "5px",
-          maxWidth: "40vw",
+          width: { md: "50vw", sm: "60vw", xs: "70vw" },
         }}
       >
         <RichTextViewer htmlContent={gptResponse} />
@@ -679,12 +588,26 @@ const chapterName = () => {
       >
         <Box
           sx={{
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
+          }}
+        >
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </Box>
+        <Typography
+          sx={{
+            fontSize: { md: "24px", sm: "22px", xs: "18px" },
             cursor: "pointer",
           }}
         >
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
-        </Box>
-        <Typography sx={{ fontSize: "30px", cursor: "pointer" }}>
           Add New Question
         </Typography>
         <Box sx={{}}>
@@ -714,10 +637,19 @@ const chapterName = () => {
       >
         <Box
           sx={{
-            cursor: "pointer",
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
           }}
         >
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
         <QuestionComponent
           questions={aiQuestions}

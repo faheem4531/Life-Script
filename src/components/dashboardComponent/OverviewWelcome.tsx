@@ -53,15 +53,15 @@ const WelcomeOverview = () => {
         </Typography>
         <Button
           image={ContineWriting}
-          title="| Continue Writing"
-          background="#fff"
+          btnText="| Continue Writing"
+          bgColor="#fff"
           borderRadius="23px"
           color="#186F65"
           width="180px"
-          fontSize="14px"
-          padding="7px 18px"
+          fontSize={{ xs: "12px" }}
           onClick={() => {}}
-          border={undefined}
+          border="0px"
+          // onClick={() => {}}
         />
       </Box>
 

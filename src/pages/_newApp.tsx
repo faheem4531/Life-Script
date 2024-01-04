@@ -15,6 +15,7 @@ export default function NewApp({ children }) {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const currentPath = usePathname();
+  const publicRoutes = ["/_auth/Auth", "/verify/forgetPassword"];
 
   useEffect(() => {
     dispatch(getChapterNotifications());
@@ -23,7 +24,7 @@ export default function NewApp({ children }) {
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
 
-    if (!userLoggedIn) {
+    if (!userLoggedIn && !publicRoutes.includes(currentPath)) {
       router.push("/_auth/Auth");
     } else if (currentPath == "/") {
       router.push("/dashboard/chapters");
@@ -37,7 +38,7 @@ export default function NewApp({ children }) {
     socket.on("error", (message) => {
       toast.error(message);
       console.log("socket failed");
-    })
+    });
     socket.on("chapterCompilingStatus", (message) => {});
     socket.on("error", (message) => {});
   }, []);

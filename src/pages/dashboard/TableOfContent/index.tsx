@@ -1,21 +1,16 @@
 import Layout from "@/components/Layout/Layout";
-import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
-import CustomizationDialog from "@/components/modal/CustomizationDialog";
-import styles from "@/styles/Dashboard.module.css";
-import { Box, Typography } from "@mui/material";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import addIcon from "../../../../public/addicon.svg";
-import ChaptersList from "./components/ChapterList";
-import {
-  createToc,
-  getToc,
-  selectTocData,
-  getChapters,
-} from "@/store/slices/chatSlice";
-import { useDispatch, useSelector } from "react-redux";
+import GlobelBtn from "@/components/button/Button";
 import DraggableList from "@/components/dashboardComponent/DraggableList";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
+import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
+import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import { getChapters, getToc, selectTocData } from "@/store/slices/chatSlice";
+import styles from "@/styles/Dashboard.module.css";
+import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import addIcon from "../../../_assets/svg/AddIcon.svg";
+import ChaptersList from "./components/ChapterList";
 
 const TableOfContent = () => {
   const dispatch: any = useDispatch();
@@ -53,62 +48,61 @@ const TableOfContent = () => {
       <Layout>
         <Box className={styles.subContainer}>
           <SubscriptionHeader title="Table of Content" />
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "end",
-              alignItems: "center",
-              marginTop: { xs: "15px" },
-            }}
-          >
-            <Box
-              onClick={() => setOpenModal(true)}
-              sx={{
-                bgcolor: "#197065",
-                p: "0px 30px",
-                display: "flex",
-                alignItems: "center",
-                height: "50px",
-                borderRadius: "41.25px",
-              }}
-            >
-              <Box sx={{ cursor: "pointer", mb: "-5px" }}>
-                <Image src={addIcon} alt="addicon" />
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    color: "#ffff",
-                    fontSize: "20.5px",
-                    fontWeight: 400,
-                    display: { sm: "block", xs: "none" },
-                    cursor: "pointer",
-                  }}
-                >
-                  Add Chapters
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
 
           <Box
             sx={{
               backgroundColor: "#fff",
-              padding: { sm: "30px 40px 16px 29px", xs: "25px 20px 100px" },
+              padding: {
+                md: "5px 46px 16px 37px",
+                sm: "5px 30px 10px 30px",
+                xs: "10px 10px 100px",
+              },
               marginTop: "10px",
-              height: "calc(100vh - 357px)",
+              height: "calc(100vh - 280px)",
               borderRadius: { sm: "18px", xs: "5px" },
             }}
           >
-            <Typography
+            <Box
               sx={{
-                fontSize: "19.379px",
-                fontWeight: 700,
-                mb: "35px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: { xs: "15px" },
               }}
             >
-              Chapters
-            </Typography>
+              <Typography
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  color: "rgba(0, 0, 0, 0.87)",
+                  display: {
+                    sm: "block",
+                    xs: "none",
+                  },
+                }}
+              >
+                Chapters
+              </Typography>
+              <Box
+                sx={{
+                  gap: { sm: 4, xs: 2 },
+                  display: "flex",
+                  justifyContent: { xs: "space-between", sm: "end" },
+                  width: "100%",
+                  flexWrap: "wrap",
+                  pb: "10px",
+                }}
+              >
+                <Box>
+                  <GlobelBtn
+                    image={addIcon}
+                    btnText=" Add Chapters"
+                    onClick={() => setOpenModal(true)}
+                    width={"180px"}
+                  />
+                </Box>
+              </Box>
+            </Box>
 
             <Box
               sx={{
@@ -156,7 +150,7 @@ const TableOfContent = () => {
           backgroundColor: "auto",
           width: "80vw",
           height: "90vh",
-          padding: "20px 48px",
+          padding: { md: "20px 48px" },
         }}
       >
         <ChaptersList

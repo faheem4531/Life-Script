@@ -158,7 +158,8 @@ const CompletedChapters = () => {
           ) : (
             <Box
               sx={{
-                marginTop: { sm: "48px", xs: "25px" },
+                marginTop: { xs: "18px" },
+                p: { md: "0px", xs: "0px 10px" },
               }}
             >
               <NoChapters />
@@ -176,10 +177,25 @@ const CompletedChapters = () => {
         }}
         customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
-        <Box>
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        <Box
+          sx={{
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
+          }}
+        >
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>
+        <Typography
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
+        >
           {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
         </Typography>
         <AddChapter

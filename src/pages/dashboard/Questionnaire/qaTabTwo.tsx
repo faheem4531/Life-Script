@@ -1,6 +1,6 @@
+import GlobelBtn from "@/components/button/Button";
 import {
   Box,
-  Button,
   MenuItem,
   Select,
   TextField,
@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
@@ -275,7 +274,6 @@ export default function TabTwo({
           </Box>
         </Box>
       </Box>
-
       <Box
         sx={{
           display: "flex",
@@ -285,47 +283,29 @@ export default function TabTwo({
           mt: 2,
         }}
       >
-        <Button
-          onClick={onClickBack}
-          sx={{
-            width: "176px",
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-            color: "#197065",
-            textTransform: "capitalize",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-          }}
-        >
-          <Image src={backArrow} alt="backArrow" /> Back
-        </Button>
+        <Box>
+          <GlobelBtn
+            btnText="Back"
+            onClick={onClickBack}
+            image={backArrow}
+            width={"176px"}
+          />
+        </Box>
         <Tooltip
           open={showTooltip}
           onClose={() => setShowTooltip(false)}
           title="Please fill in all fields before proceeding."
         >
-          <Button
-            onClick={handleButtonClick}
-            sx={{
-              width: "176px",
-              borderRadius: "26.267px",
-              border: " 0.71px solid #197065",
-              fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-              color: "white",
-              textTransform: "capitalize",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              bgcolor: "#197065",
-              ":hover": {
-                bgcolor: "#197065",
-              },
-            }}
-          >
-            Next <Image src={NextArrow} alt="NextArrow" />
-          </Button>
+          <Box>
+            <GlobelBtn
+              bgColor="#186F65"
+              color="white"
+              btnText="Next"
+              onClick={handleButtonClick}
+              image2={NextArrow}
+              width={"176px"}
+            />
+          </Box>
         </Tooltip>
       </Box>
     </Box>

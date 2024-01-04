@@ -8,7 +8,7 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 // import AddQuestion from "@/pages/events/addQuestion";
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import UseTemplate from "@/_assets/svg/useTemplate.svg";
-import Button from "@/components/button/Button";
+import { default as GlobelBtn } from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   cloneTemplate,
@@ -17,7 +17,7 @@ import {
   isTemplateCloned,
   selectTemplates,
 } from "@/store/slices/chatSlice";
-import { Box, ButtonBase, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -129,31 +129,6 @@ const chapterName = () => {
           />
         </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: { sm: "flex-end", xs: "center" },
-            marginBottom: "10px",
-            mt: { sm: "10px", xs: "0px" },
-            opacity: tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
-          }}
-        >
-          <Button
-            image={UseTemplate}
-            title="Use Template"
-            background="#197065"
-            borderRadius="55px"
-            border={0}
-            fontSize="17px"
-            color="#fff"
-            width="220px"
-            padding="8px 0px"
-            onClick={() => {
-              tempQuestionIds?.length && buttonLoading && handleChapterClone();
-            }}
-            height={undefined}
-          />
-        </Box>
         {copyTemLoading ? (
           <Box
             sx={{
@@ -169,21 +144,49 @@ const chapterName = () => {
           <Box
             sx={{
               backgroundColor: "#fff",
-              padding: { md: "35px", sm: "35px 21px", xs: "15px 10px" },
+              padding: {
+                md: "5px 46px 16px 37px",
+                sm: "5px 30px 10px 30px",
+                xs: "10px 10px 100px",
+              },
               minHeight: { md: "60vh", xs: "calc(100vh - 175px)" },
               borderRadius: { sm: "18px", xs: "5px" },
+              marginTop: { xs: "15px" },
             }}
           >
-            <Typography
+            <Box
               sx={{
-                fontSize: { md: "19.379px", sm: "18.501px" },
-                fontWeight: 700,
-                color: "rgba(0, 0, 0, 0.87)",
-                display: { sm: "block", xs: "none" },
+                display: "flex",
+                justifyContent: { sm: "space-between", xs: "center" },
+                alignItems: "center",
+                marginBottom: "10px",
+                mt: { sm: "10px", xs: "0px" },
+                opacity: tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
               }}
             >
-              Questions
-            </Typography>
+              <Typography
+                sx={{
+                  fontSize: { md: "19.379px", sm: "18.501px" },
+                  fontWeight: 700,
+                  color: "rgba(0, 0, 0, 0.87)",
+                  display: { sm: "block", xs: "none" },
+                }}
+              >
+                Questions
+              </Typography>
+              <Box>
+                <GlobelBtn
+                  image={UseTemplate}
+                  btnText="Use Template"
+                  onClick={() => {
+                    tempQuestionIds?.length &&
+                      buttonLoading &&
+                      handleChapterClone();
+                  }}
+                  width={"220px"}
+                />
+              </Box>
+            </Box>
 
             {loading ? (
               <Box
@@ -245,7 +248,7 @@ const chapterName = () => {
           </Box>
           <Typography
             sx={{
-              fontSize: { md: "30px", sm: "21.679px", xs: "15.508px" },
+              fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
               color: "#070707",
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
@@ -255,39 +258,32 @@ const chapterName = () => {
           </Typography>
           <Typography
             sx={{
-              fontSize: { md: "22.5px", sm: "16.259px", xs: "11.631px" },
+              fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
               color: "#070707",
-              width: { md: "400px", sm: "300px", xs: "191px" },
-              margin: { md: "0 120px", sm: "0px 55px", xs: "0px 25px" },
+              width: { md: "400px", sm: "300px", xs: "180px" },
+              margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
             Template has been added to your chapters
           </Typography>
-
-          <ButtonBase
-            onClick={() => {
-              router.push("/dashboard/chapters");
-              setOpenModal(false);
-            }}
+          <Box
             sx={{
-              borderRadius: "78px",
-              color: "#fff",
-              fontSize: { md: "18.75px", sm: "13.549px", xs: "9.693px" },
-              bgcolor: "#197065",
               margin: { md: "40px 0 30px", sm: "22px 0", xs: "16px 0" },
-              "&:hover": {
-                color: "#fff",
-                bgcolor: "#197065",
-              },
-              p: {
-                md: "10.357px 35.98px 10.723px 37.385px",
-                sm: "7.484px 25.491px 8.092px 27.015px",
-                xs: "5.354px 18.463px 4.949px 19.325px",
-              },
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            Start editing
-          </ButtonBase>
+            <GlobelBtn
+              btnText="Start editing"
+              bgColor="#197065"
+              color="white"
+              onClick={() => {
+                router.push("/dashboard/chapters");
+                setOpenModal(false);
+              }}
+              width={{ md: "234px", sm: "153px", xs: "103px" }}
+            />
+          </Box>
         </Box>
       </CustomizationDialog>
       <TransitionsDialog

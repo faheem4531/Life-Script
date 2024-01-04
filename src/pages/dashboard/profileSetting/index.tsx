@@ -1,16 +1,15 @@
 import ProfileAvatar from "@/_assets/svg/ui-user-profile.svg";
 import Layout from "@/components/Layout/Layout";
-import { DatePicker } from "@mui/x-date-pickers";
 import ProfileHeader from "@/components/dashboardComponent/subscriptionHeader";
 import {
   Box,
-  Button,
   FormControl,
   MenuItem,
   TextField,
   Typography,
 } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { DatePicker } from "@mui/x-date-pickers";
 import { useDropzone } from "react-dropzone";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,10 +21,11 @@ import {
 import { uploadImage } from "@/store/slices/chatSlice";
 
 import InputWithLabel from "@/components/Input";
+import GlobelBtn from "@/components/button/Button";
 import CountrySelect from "@/components/dashboardComponent/AutoComplete";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const ProfileSetting = () => {
@@ -225,19 +225,7 @@ const ProfileSetting = () => {
                     )}
                   </Box>
                   <Box {...getRootProps()}>
-                    <Button
-                      sx={{
-                        height: { sx: "25px", md: "30px", lg: "45px" },
-                        borderRadius: "26.267px",
-                        border: " 0.71px solid #197065",
-                        p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-                        fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-                        color: "#197065",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      Change Profile
-                    </Button>
+                    <GlobelBtn btnText="Change Profile" />
                   </Box>
                 </Box>
               </div>
@@ -386,29 +374,19 @@ const ProfileSetting = () => {
           sx={{
             display: "flex",
             justifyContent: "end",
+            mt: "24px",
           }}
         >
-          <Button
-            sx={{
-              height: { sx: "25px", md: "30px", lg: "45px" },
-              borderRadius: "26.267px",
-              border: " 0.71px solid #197065",
-              p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-              fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-              color: "white",
-              textTransform: "capitalize",
-              bgcolor: "#197065",
-              mt: "24px",
-              "&:hover": {
-                bgcolor: "#197065",
-              },
-            }}
-            onClick={() => {
-              setProfile(true);
-            }}
-          >
-            Save Changes
-          </Button>
+          <Box>
+            <GlobelBtn
+              bgColor="#197065"
+              color="white"
+              btnText="Save Changes"
+              onClick={() => {
+                setProfile(true);
+              }}
+            />
+          </Box>
         </Box>
 
         <TransitionsDialog

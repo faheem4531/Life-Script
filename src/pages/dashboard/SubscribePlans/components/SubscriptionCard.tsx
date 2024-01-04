@@ -1,6 +1,7 @@
-import { Box, Button } from "@mui/material";
-import Image from "next/image";
 import SmallTick from "@/_assets/svg/smallTick.svg";
+import GlobelBtn from "@/components/button/Button";
+import { Box } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 
 interface SubscriptionCardProps {
@@ -11,7 +12,7 @@ interface SubscriptionCardProps {
   offerTitle: string;
   onClick?: any;
   btnCheck?: boolean;
-  buttonDisable? : boolean
+  buttonDisable?: boolean;
 }
 
 const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
@@ -142,26 +143,15 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
       </Box>
 
       {btnCheck && (
-        <Button
-          sx={{
-            height: { sx: "25px", md: "30px", lg: "45px" },
-            borderRadius: "26.267px",
-            border: " 0.71px solid #197065",
-            p: { xs: "8px 20px", lg: "10.358px 26.989px" },
-            fontSize: { xs: "12px" },
-            color: "white",
-            textTransform: "capitalize",
-            width: "100%",
-            bgcolor: "#197065",
-            "&:hover": {
-              bgcolor: "#197065",
-            },
-          }}
-          disabled={buttonDisable}
-          onClick={() => onClick(price)}
-        >
-          Choose Plan
-        </Button>
+        <Box>
+          <GlobelBtn
+            bgColor="#197065"
+            color="white"
+            btnText="Choose Plan"
+            onClick={() => onClick(price)}
+            width={"100%"}
+          />
+        </Box>
       )}
     </Box>
   );

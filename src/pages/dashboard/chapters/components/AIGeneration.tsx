@@ -1,4 +1,5 @@
-import { Box, ButtonBase, Typography } from "@mui/material";
+import GlobelBtn from "@/components/button/Button";
+import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 type Question = {
@@ -39,13 +40,23 @@ const QuestionComponent = ({
   };
 
   return (
-    <div>
-      <Typography sx={{ fontSize: "30px", mb: "20px", fontWeight: 500 }}>
+    <Box
+      sx={{
+        padding: "20px",
+      }}
+    >
+      <Typography
+        sx={{
+          fontSize: { md: "24px", sm: "22px", xs: "18px" },
+          mb: "20px",
+          fontWeight: 500,
+        }}
+      >
         AI Generated Question
       </Typography>
       <Box>
-        <Box sx={{ width: "550px", margin: "auto" }}>
-          <Typography sx={{ fontSize: "22px" }}>
+        <Box sx={{ margin: "auto" }}>
+          <Typography sx={{ fontSize: { md: "18px", sm: "16px", xs: "14px" } }}>
             {questions && questions[currentQuestionIndex]?.title}
           </Typography>
         </Box>
@@ -53,55 +64,50 @@ const QuestionComponent = ({
           Remaining AI Questions:{" "}
           <span style={{ fontWeight: "bold" }}>{remainingQuestions}</span>
         </Typography>
-        <Box sx={{ display: "flex", gap: "15px", justifyContent: "center" }}>
-          <ButtonBase
-            onClick={() => Proceed(questions[currentQuestionIndex].id)}
-            sx={{
-              width: { md: "234px", sm: "153px", xs: "103px" },
-              height: { md: "50px", sm: "32px", xs: "20px" },
-              borderRadius: "78px",
-              color: "#197065",
-              fontSize: "18px",
-              bgcolor: "#fff",
-              border: "1px solid #197065",
-              margin: "40px 0 30px",
-              "&:hover": {
-                color: "##197065",
-                bgcolor: "#fff",
-              },
-            }}
-          >
-            Add
-          </ButtonBase>
-          <Box>
-            <ButtonBase
+        <Box
+          sx={{
+            display: "flex",
+            gap: "15px",
+            justifyContent: "center",
+            mt: "20px",
+            flexWrap: "wrap",
+          }}
+        >
+          <Box flex={1}>
+            <GlobelBtn
+              btnText={"Add"}
+              bgColor="#fff"
+              borderRadius="23px"
+              color="#197065"
+              width="100%"
+              fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
+              border="1px solid #197065"
+              onClick={() => Proceed(questions[currentQuestionIndex].id)}
+            />
+          </Box>
+          <Box flex={1}>
+            <GlobelBtn
+              btnText={
+                questions?.length === currentQuestionIndex + 1
+                  ? "Close"
+                  : "Regenarate"
+              }
+              bgColor="#197065"
+              borderRadius="23px"
+              color="#fff"
+              width="100%"
+              fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
+              border="1px solid #197065"
               onClick={
                 questions?.length === currentQuestionIndex + 1
                   ? handleEnd
                   : handleNext
               }
-              sx={{
-                width: { md: "234px", sm: "153px", xs: "103px" },
-                height: { md: "50px", sm: "32px", xs: "20px" },
-                borderRadius: "78px",
-                color: "#fff",
-                fontSize: "18px",
-                bgcolor: "#197065",
-                margin: "40px 0 30px",
-                "&:hover": {
-                  color: "#fff",
-                  bgcolor: "#197065",
-                },
-              }}
-            >
-              {questions?.length === currentQuestionIndex + 1
-                ? "Close"
-                : "Regenarate"}
-            </ButtonBase>
+            />
           </Box>
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 

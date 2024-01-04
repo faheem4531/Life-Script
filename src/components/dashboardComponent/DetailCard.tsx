@@ -239,7 +239,7 @@ export default function DetailCard({
                   <Box
                     sx={{
                       width: "100%",
-                      height: { md: "120px", sm: "100px", xs: "100px" },
+                      height: { sm: "100px", xs: "100px" },
                     }}
                   >
                     {questions?.length > 0 ? (

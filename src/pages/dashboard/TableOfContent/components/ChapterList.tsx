@@ -1,96 +1,91 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
-import { Box, ButtonBase, Typography } from "@mui/material"; // Import necessary MUI components
+import { Box, Typography } from "@mui/material"; // Import necessary MUI components
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import GlobelBtn from "@/components/button/Button";
 import { createToc, getToc, selectTocData } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
-const ChaptersList = ({
-  listItems,
-  selectedItems,
-  handleItemClick,
-}) => {
-    const [chapterIndexing, setChapterIndexing] = useState([]);
-    const [indexing, setIndexing] = useState(1);
-    console.log("indexing",indexing);
-    const tocData = useSelector(selectTocData);
-    const [loading, setLoading] = useState(false);
-    const dispatch:any = useDispatch();
+const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
+  const [chapterIndexing, setChapterIndexing] = useState([]);
+  const [indexing, setIndexing] = useState(1);
+  console.log("indexing", indexing);
+  const tocData = useSelector(selectTocData);
+  const [loading, setLoading] = useState(false);
+  const dispatch: any = useDispatch();
 
-    useEffect(() => {
-        dispatch(getToc())
-    },[]);
+  useEffect(() => {
+    dispatch(getToc());
+  }, []);
 
-    useEffect(() => {
-      if (tocData?.tableOfContent?.length > 0) {
-        setChapterIndexing(tocData?.tableOfContent);
-        setIndexing(tocData?.tableOfContent.length + 1);
-      }
-    }, [tocData]);
+  useEffect(() => {
+    if (tocData?.tableOfContent?.length > 0) {
+      setChapterIndexing(tocData?.tableOfContent);
+      setIndexing(tocData?.tableOfContent.length + 1);
+    }
+  }, [tocData]);
 
-    const selectChapter = (chapter) => {
-      const newObject = {
-        chapterId: chapter?.chapterId,
-        title: chapter?.title,
-        index: indexing,
-      };
+  const selectChapter = (chapter) => {
+    const newObject = {
+      chapterId: chapter?.chapterId,
+      title: chapter?.title,
+      index: indexing,
+    };
 
-      // Check if newObject already exists in chapterIndexing
-      const existingIndex = chapterIndexing.findIndex(
-        (item) => item.chapterId === newObject.chapterId
+    // Check if newObject already exists in chapterIndexing
+    const existingIndex = chapterIndexing.findIndex(
+      (item) => item.chapterId === newObject.chapterId
+    );
+
+    if (existingIndex !== -1) {
+      // If newObject already exists, remove it
+      setChapterIndexing((prevIndexing) =>
+        prevIndexing.filter((item, index) => index !== existingIndex)
       );
 
-      if (existingIndex !== -1) {
-        // If newObject already exists, remove it
-        setChapterIndexing((prevIndexing) =>
-          prevIndexing.filter((item, index) => index !== existingIndex)
-        );
-
-        // Decrement the index of chapters with index greater than the removed chapter
-        setChapterIndexing((prevIndexing) =>
-          prevIndexing.map((item, index) => {
-            return {
-              ...item,
-              index: index + 1,
-            };
-            return item;
-          })
-        );
-
-        setIndexing(indexing - 1);
-      } else {
-        // If newObject doesn't exist, add it
-        setChapterIndexing((prevIndexing) => [...prevIndexing, newObject]);
-        setIndexing(indexing + 1);
-      }
-    };
-      
-    
-    const getIndexingIfExists = (chapterId) => {
-        // Find the object with the matching chapterId in chapterIndexing
-        const matchingObject = chapterIndexing?.find(
-          (item) => item.chapterId === chapterId
-        );
-      
-        if (matchingObject) {
-          // If the object exists, return the indexing value
-          return matchingObject.index;
-        } else {
-          // If the object doesn't exist, return 0
-          return 0;
-        }
-      };
-
-    const handleChapterIndexing = () => {
-      setLoading(true);
-      dispatch(createToc({ tableOfContent: chapterIndexing }))
-        .unwrap()
-        .then(() => {
-          handleItemClick();
-          dispatch(getToc());
+      // Decrement the index of chapters with index greater than the removed chapter
+      setChapterIndexing((prevIndexing) =>
+        prevIndexing.map((item, index) => {
+          return {
+            ...item,
+            index: index + 1,
+          };
         })
-        .catch(() => setLoading(false));
-    }; 
+      );
+
+      setIndexing(indexing - 1);
+    } else {
+      // If newObject doesn't exist, add it
+      setChapterIndexing((prevIndexing) => [...prevIndexing, newObject]);
+      setIndexing(indexing + 1);
+    }
+  };
+
+  const getIndexingIfExists = (chapterId) => {
+    // Find the object with the matching chapterId in chapterIndexing
+    const matchingObject = chapterIndexing?.find(
+      (item) => item.chapterId === chapterId
+    );
+
+    if (matchingObject) {
+      // If the object exists, return the indexing value
+      return matchingObject.index;
+    } else {
+      // If the object doesn't exist, return 0
+      return 0;
+    }
+  };
+
+  const handleChapterIndexing = () => {
+    setLoading(true);
+    dispatch(createToc({ tableOfContent: chapterIndexing }))
+      .unwrap()
+      .then(() => {
+        handleItemClick();
+        dispatch(getToc());
+      })
+      .catch(() => setLoading(false));
+  };
 
   return (
     <Box
@@ -98,25 +93,32 @@ const ChaptersList = ({
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
-        height: "78vh",
+        height: "77vh",
       }}
     >
       <Box>
         <Box
           sx={{
-            width: "74px",
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
             margin: "auto",
           }}
         >
-          {/* Assuming ModalImage is imported and provided as a prop */}
-          <Image alt="image" src={ModalImage} width={74} />
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
         <Typography
           sx={{
-            fontSize: "36px",
+            fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
             fontWeight: 500,
             color: "#070707",
-            margin: "24px 0",
+            margin: { md: "24px 0", sm: "20px 0px", xs: "15px 0px" },
           }}
         >
           Chapters
@@ -137,8 +139,12 @@ const ChaptersList = ({
             key={item.id}
             sx={{
               width: "100%",
-              bgcolor: getIndexingIfExists(item.chapterId) !== 0 ? "#197065" : "#F9F9F9",
-              color: getIndexingIfExists(item.chapterId) !== 0 ? "white" : "black",
+              bgcolor:
+                getIndexingIfExists(item.chapterId) !== 0
+                  ? "#197065"
+                  : "#F9F9F9",
+              color:
+                getIndexingIfExists(item.chapterId) !== 0 ? "white" : "black",
               borderRadius: "6.091px",
               mb: "10px",
               borderLeft: "8.25px solid #186F65",
@@ -150,7 +156,7 @@ const ChaptersList = ({
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: "10px",
-                p: "12px 29px",
+                p: { md: "10px 25px", sm: "8px 20px", xs: "5px 8px" },
                 borderRadius: "6.091px",
                 cursor: "pointer",
               }}
@@ -158,7 +164,7 @@ const ChaptersList = ({
             >
               <Typography
                 sx={{
-                  fontSize: "19.379px",
+                  fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
                 }}
               >
                 {item.title}
@@ -185,24 +191,15 @@ const ChaptersList = ({
         ))}
       </Box>
 
-      <ButtonBase
-      onClick={!loading && handleChapterIndexing}
-        sx={{
-          width: "150px",
-          height: "36px",
-          borderRadius: "47.865px",
-          color: "#fff",
-          fontSize: "15px",
-          bgcolor: "#197065",
-          margin: "24px auto 0px",
-          "&:hover": {
-            color: "#fff",
-            bgcolor: "#197065",
-          },
-        }}
-      >
-        {loading ? "Adding..." : `Add (${chapterIndexing?.length})`}
-      </ButtonBase>
+      <Box m={"24px auto 0px"}>
+        <GlobelBtn
+          bgColor="#197065"
+          color="white"
+          btnText={loading ? "Adding..." : `Add (${chapterIndexing?.length})`}
+          onClick={!loading && handleChapterIndexing}
+          width={"100%"}
+        />
+      </Box>
     </Box>
   );
 };

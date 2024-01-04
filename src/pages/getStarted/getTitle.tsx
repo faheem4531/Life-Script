@@ -1,7 +1,8 @@
 import GreenBlock from "@/_assets/png/getTitle-green-block.png";
 import WhiteBlock from "@/_assets/png/getTitle-white-block.png";
+import GlobelBtn from "@/components/button/Button";
 import { bookTitle } from "@/store/slices/chatSlice";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -119,26 +120,9 @@ const getTitle = () => {
               You can change it at any time before printing.
             </Typography>
           </Box>
-          <Button
-            onClick={() => handleTitle()}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: { sm: "10px", xs: "5px" },
-              width: "200px",
-              borderRadius: "26.267px",
-              border: " 0.71px solid #197065",
-              fontSize: { xs: "12px", md: "14px", lg: "18.752px" },
-              color: "#197065",
-              textTransform: "capitalize",
-              p: "5px 4px",
-              cursor: "pointer",
-              mt: "50px",
-            }}
-          >
-            Start Writing
-          </Button>
+          <Box mt="50px">
+            <GlobelBtn onClick={() => handleTitle()} btnText="Start Writing" />
+          </Box>
         </Box>
       </Box>
       <Box
