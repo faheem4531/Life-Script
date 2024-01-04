@@ -16,15 +16,13 @@ const Home = () => {
     childrens: [
       {
         id: 1,
-        name: "BBBB BBB",
+        name: "M. Haseeb Khwaja",
         born: 1831,
-        died: 1884,
         location: "Petersburg, VA",
         childrens: [
           {
             id: 1,
             name: "M. Haseeb Khwaja",
-            born: 1781,
             died: 1871,
             location: "Ireland/Petersburg, VA",
             spouse: "Lilly",
@@ -85,7 +83,7 @@ const Home = () => {
           },
           {
             id: 1,
-            name: "cccc cccc",
+            name: "M. Ali Haseeb Khwaja",
             born: 1795,
             died: 1871,
             location: "Ireland/Petersburg, VA",

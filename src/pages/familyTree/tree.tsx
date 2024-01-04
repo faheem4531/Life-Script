@@ -73,11 +73,12 @@ const FamilyTree = ({ familyTreeData }) => {
     const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
 
     const treeNodes = tree(nodes);
-    console.log("nodes", treeNodes.links());
+    const descendants = treeNodes.descendants().slice(1);
+    const links = treeNodes.links().filter(link => link.source.depth > 0);
 
     const link = g
       .selectAll(".link")
-      .data(treeNodes.links())
+      .data(links) //treeNodes.links()
       .enter()
       .append("path")
       .attr("class", `${styles.link}`)
@@ -85,7 +86,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const node = g
       .selectAll(".node")
-      .data(treeNodes.descendants())
+      .data(descendants) //treeNodes.descendants()
       .enter()
       .append("g")
       .attr("class", `${styles.node}`)
@@ -94,6 +95,107 @@ const FamilyTree = ({ familyTreeData }) => {
       node.each(function (d) {
         renderNode(d3.select(this), d);
       });
+  }
+
+  const renderNode = (personNode, d) => {
+    const renderRect = (x, y, height, className) => {
+      personNode.append("rect")
+        .attr("class", className)
+        .attr("x", x)
+        .attr("y", y)
+        .attr("width", 200)
+        .attr("height", height)
+        .on("click", () => console.log("Clicked on:", d.data.name || d.data.spouse));
+    };
+  
+    const renderText = (x, y, text) => {
+      personNode.append('text')
+        .attr('class', `${styles.name}`)
+        .attr('x', x)
+        .attr('y', y)
+        .text(text);
+    };
+  
+    const renderImage = (x, y) => {
+      personNode.append("image")
+        .attr("xlink:href", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrV7sCjuWDaPNa7VE7LStsRFLL6T4dZDChza0HbaEQHsqXwL4hq-ceFBdvKScb_f31gA&usqp=CAU")
+        .attr("width", 60)
+        .attr("height", 60)
+        .attr("x", x)
+        .attr("y", y)
+        .attr('class', `${styles.circularImage}`);
+    };
+  
+    const renderForeignObject = (x, y, onClick, icon) => {
+      personNode.append("foreignObject")
+        .attr("width", 15)
+        .attr("height", 15)
+        .attr("x", x)
+        .attr("y", y)
+        .on("click", () => console.log("Clicked on:", d.data.spouse))
+        .html(() => ReactDOMServer.renderToString(icon));
+    };
+  
+    const renderLine = (x1, y1, x2, y2) => {
+      personNode.append("line")
+        .attr("class", `${styles.connectionLine}`)
+        .attr("x1", x1)
+        .attr("y1", y1)
+        .attr("x2", x2)
+        .attr("y2", y2)
+        .style("stroke", "black")
+        .style("stroke-width", 2);
+    };
+  
+    if (d.data.spouse) {
+      renderRect(10, -105, 100, `${styles.nameRect}`);
+      renderText(16, -85, d.data.name || '');
+      renderRect(10, 5, 100, `${styles.spouseRect}`);
+      renderText(70, 25, d.data.spouse || '');
+      renderImage(20, -90);
+  
+      const iconPositions = [
+        { x: 20, y: -40, icon: <DeleteIcon style={{ fill: "black", cursor: "pointer" }} /> },
+        { x: 40, y: -40, icon: <AddIcon style={{ fill: "black", cursor: "pointer" }} /> },
+        { x: 60, y: -40, icon: <EditIcon style={{ fill: "black", cursor: "pointer" }} /> },
+      ];
+  
+      iconPositions.forEach(({ x, y, icon }) => {
+        renderForeignObject(x, y, () => console.log("Clicked on:", d.data.spouse), icon);
+      });
+  
+      const personBottomCenterX = 10 + 200 / 2;
+      const personBottomCenterY = -105 + 100;
+      const spouseTopCenterX = 10 + 200 / 2;
+      const spouseTopCenterY = 5;
+  
+      renderLine(personBottomCenterX, personBottomCenterY, spouseTopCenterX, spouseTopCenterY);
+    } else {
+      const born = d.data.born;
+      const died = d.data.died;
+      const age = born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+      renderRect(10, -50, 100, `${styles.nameRect}`);
+      renderImage(15, -45);
+      renderText(85, -20, d.data.name || '');
+      renderText(85, 5, age || '');
+      renderText(85, 30, d.data.location || '')
+
+      const iconPositions = [
+        { x: 20, y: 20, icon: <EditIcon style={{ fill: "black", cursor: "pointer", }} /> },
+        { x: 50, y: 20, icon: <AddIcon style={{ fill: "black", cursor: "pointer" }} /> },
+      ];
+  
+      iconPositions.forEach(({ x, y, icon }) => {
+        renderForeignObject(x, y, () => console.log("Clicked on:", d.data.spouse), icon);
+      });
+    }
+  };
+
+  return <svg ref={svgRef}></svg>;
+};
+
+export default FamilyTree;
+
 
     //   node.each(function (d) {
         // // Add a condition to check if the rectangle should be rendered
@@ -237,158 +339,4 @@ const FamilyTree = ({ familyTreeData }) => {
         //         .html(() => ReactDOMServer.renderToString(<EditIcon style={{ fill: "black", cursor: "pointer" }} />));
         // }
     // });
-  }
 
-  const renderNode = (personNode, d) => {
-    const renderRect = (x, y, height, className) => {
-      personNode.append("rect")
-        .attr("class", className)
-        .attr("x", x)
-        .attr("y", y)
-        .attr("width", 200)
-        .attr("height", height)
-        .on("click", () => console.log("Clicked on:", d.data.name || d.data.spouse));
-    };
-  
-    const renderText = (x, y, text) => {
-      personNode.append('text')
-        .attr('class', `${styles.name}`)
-        .attr('x', x)
-        .attr('y', y)
-        .text(text);
-    };
-  
-    const renderImage = (x, y) => {
-      personNode.append("image")
-        .attr("xlink:href", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrV7sCjuWDaPNa7VE7LStsRFLL6T4dZDChza0HbaEQHsqXwL4hq-ceFBdvKScb_f31gA&usqp=CAU")
-        .attr("width", 50)
-        .attr("height", 50)
-        .attr("x", x)
-        .attr("y", y);
-    };
-  
-    const renderForeignObject = (x, y, onClick, icon) => {
-      personNode.append("foreignObject")
-        .attr("width", 15)
-        .attr("height", 15)
-        .attr("x", x)
-        .attr("y", y)
-        .on("click", () => console.log("Clicked on:", d.data.spouse))
-        .html(() => ReactDOMServer.renderToString(icon));
-    };
-  
-    const renderLine = (x1, y1, x2, y2) => {
-      personNode.append("line")
-        .attr("class", `${styles.connectionLine}`)
-        .attr("x1", x1)
-        .attr("y1", y1)
-        .attr("x2", x2)
-        .attr("y2", y2)
-        .style("stroke", "black")
-        .style("stroke-width", 2);
-    };
-  
-    if (d.data.spouse) {
-      renderRect(10, -105, 100, `${styles.nameRect}`);
-      renderText(16, -85, d.data.name || '');
-      renderRect(10, 5, 100, `${styles.spouseRect}`);
-      renderText(70, 25, d.data.spouse || '');
-      renderImage(20, -90);
-  
-      const iconPositions = [
-        { x: 20, y: -40, icon: <DeleteIcon style={{ fill: "black", cursor: "pointer" }} /> },
-        { x: 40, y: -40, icon: <AddIcon style={{ fill: "black", cursor: "pointer" }} /> },
-        { x: 60, y: -40, icon: <EditIcon style={{ fill: "black", cursor: "pointer" }} /> },
-      ];
-  
-      iconPositions.forEach(({ x, y, icon }) => {
-        renderForeignObject(x, y, () => console.log("Clicked on:", d.data.spouse), icon);
-      });
-  
-      const personBottomCenterX = 10 + 200 / 2;
-      const personBottomCenterY = -105 + 100;
-      const spouseTopCenterX = 10 + 200 / 2;
-      const spouseTopCenterY = 5;
-  
-      renderLine(personBottomCenterX, personBottomCenterY, spouseTopCenterX, spouseTopCenterY);
-    } else {
-      renderRect(10, -50, 100, `${styles.nameRect}`);
-      renderText(16, -30, d.data.name || '');
-      renderImage(20, -30);
-  
-      const iconPositions = [
-        { x: 20, y: 30, icon: <DeleteIcon style={{ fill: "black", cursor: "pointer" }} /> },
-        { x: 40, y: 30, icon: <AddIcon style={{ fill: "black", cursor: "pointer" }} /> },
-        { x: 60, y: 30, icon: <EditIcon style={{ fill: "black", cursor: "pointer" }} /> },
-      ];
-  
-      iconPositions.forEach(({ x, y, icon }) => {
-        renderForeignObject(x, y, () => console.log("Clicked on:", d.data.spouse), icon);
-      });
-    }
-  };
-
-  return <svg ref={svgRef}></svg>;
-};
-
-export default FamilyTree;
-
-/*
-
-      node.each(function (d) {
-        const personNode = d3.select(this);
-        const iconSize = 20;
-        const squareSize = 200; // Adjust the size of the square container
-    
-        // Create a group to wrap the square container
-        const squareGroup = personNode
-            .append("g")
-            .attr("transform", "translate(10, -100)"); // Adjust the position of the group
-    
-        // Create a square container
-        squareGroup
-            .append("rect")
-            .attr("width", squareSize)
-            .attr("height", squareSize)
-            .style("color", "blue"); // Adjust the fill color as needed
-    
-        // Create an image element for the avatar inside the square
-        squareGroup
-            .append("image")
-            .attr(
-                "xlink:href",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrV7sCjuWDaPNa7VE7LStsRFLL6T4dZDChza0HbaEQHsqXwL4hq-ceFBdvKScb_f31gA&usqp=CAU"
-            ) // Use a placeholder if no avatar is set
-            .attr("width", 50)
-            .attr("height", 50)
-            .attr("x", 10) // Center the image horizontally
-            .attr("y", -90); // Center the image vertically
-    
-        // Edit icon
-        squareGroup
-            .append("foreignObject")
-            .attr("width", iconSize)
-            .attr("height", iconSize)
-            .attr("x", squareSize + 10) // Adjust the spacing between icons
-            .style("color", "black")
-            .html(() => ReactDOMServer.renderToString(<EditIcon />));
-    
-        // Add icon
-        squareGroup
-            .append("foreignObject")
-            .attr("width", iconSize)
-            .attr("height", iconSize)
-            .attr("x", squareSize + 10 + iconSize + 5) // Adjust the spacing between icons
-            .style("color", "black")
-            .html(() => ReactDOMServer.renderToString(<AddIcon />));
-    
-        // Delete icon
-        squareGroup
-            .append("foreignObject")
-            .attr("width", iconSize)
-            .attr("height", iconSize)
-            .attr("x", squareSize + 10 + (iconSize + 5) * 2) // Adjust the spacing between icons
-            .style("color", "black")
-            .html(() => ReactDOMServer.renderToString(<DeleteIcon />));
-    });
-*/

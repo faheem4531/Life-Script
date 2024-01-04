@@ -1,11 +1,15 @@
 import NextIcon from "@/_assets/svg/next-icon.svg";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styles from "./Custom.module.css";
 
 export const ViewBook = () => {
+  const router = useRouter();
   return (
+    <>
     <Box
+    onClick={()=>router.push("/familyTree")}
       sx={{
         bgcolor: "#197065",
         color: "#fff",
@@ -16,6 +20,7 @@ export const ViewBook = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
+        cursor: "pointer",
       }}
       className={styles.viewBook}
     >
@@ -40,6 +45,7 @@ export const ViewBook = () => {
         <Image alt="next" src={NextIcon} className={styles.nextAero} />
       </Box>
     </Box>
+    </>
   );
 };
 

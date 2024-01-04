@@ -19,8 +19,9 @@
 }
 
 .name {
-  font-weight: bold;
+  /* font-weight: bold; */
   fill: white !important;
+  font-size: 12px
 }
 
 .about {
@@ -49,4 +50,8 @@
 .spuseRect {
   fill: brown;
   stroke: #999;
+}
+.circularImage {
+  border-radius: 50%;
+  overflow: hidden;
 }
