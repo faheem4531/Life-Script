@@ -18,9 +18,16 @@ const SelectRelationModal = ({
         }}
         customStyles={{
           width: { md: "500px", sm: "400px", xs: "100%" },
+          p: { md: "20px", sm: "15px", xs: "10px" },
         }}
       >
-        <Box>
+        <Box
+          sx={{
+            height: "50vh",
+            overflowY: "auto",
+            "&::-webkit-scrollbar": { display: "none" },
+          }}
+        >
           {relations.map((item, index) => {
             return (
               <Box
