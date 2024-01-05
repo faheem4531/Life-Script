@@ -117,7 +117,7 @@ const Dashboard = () => {
           sx={{
             position: "relative",
             zIndex: "2",
-            p: { md: "0px 0px", xs: "0px 10px" },
+            p: { md: "0px", xs: "0px 30px" },
           }}
         >
           <Box
