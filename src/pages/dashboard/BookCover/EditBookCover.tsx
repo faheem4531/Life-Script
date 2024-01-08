@@ -31,10 +31,12 @@ const EditBookCover = () => {
   const [byline, setByline] = useState("");
   const [coverId, setCoverId] = useState("");
 
-  const [selectedColor, setSelectedColor] = useState<string>("#197065");
+  const [selectedColor, setSelectedColor] = useState("#197065");
   const [droppedImage, setDroppedImage] = useState<string | ArrayBuffer | null>(
     null
   );
+
+  console.log("selectedColor", selectedColor);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -47,6 +49,10 @@ const EditBookCover = () => {
   const handleBylineChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setByline(event.target.value);
   };
+
+  useEffect(() => {
+    !selectedColor && setSelectedColor("#197065");
+  }, [selectedColor]);
 
   const handleSaveCover = () => {
     setButtonLoading(true);

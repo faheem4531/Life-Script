@@ -30,6 +30,7 @@ import styles from "./Sidebar.module.css";
 
 const SideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(false);
+  const [overViewChildsOpen, setOverViewChilsdOpen] = useState(false);
   const [coverNumber, setCoverNumber] = useState(null);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -43,6 +44,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
       setChilsdOpen(true);
     } else if (currentRoute === "/dashboard/chapters/completedChapter") {
       setChilsdOpen(true);
+    } else if (currentRoute === "/dashboard/BookView") {
+      setOverViewChilsdOpen(true);
     }
   };
 
@@ -89,21 +92,69 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
         <Box>
           <a
             className={`${styles.link} ${
-              currentRoute === "/dashboard/overview" && styles.active
+              currentRoute === "/dashboard/overview" ||
+              currentRoute === "/dashboard/BookView"
+                ? styles.active
+                : ""
             }`}
-            onClick={() => router.push("/dashboard/overview")}
+            onClick={() => {
+              router.push("/dashboard/overview");
+              setOverViewChilsdOpen(!overViewChildsOpen);
+            }}
           >
             <Image
               alt="icon"
               className={styles.sidebarIcon}
               src={
-                currentRoute === "/dashboard/overview"
+                currentRoute === "/dashboard/overview" ||
+                currentRoute === "/dashboard/BookView"
                   ? OverViewGreen
                   : OverViewWhite
               }
             />
             Overview
+            {overViewChildsOpen ? (
+              <KeyboardArrowUpIcon
+                sx={{
+                  width: { xs: "15px", md: "24px" },
+                  ml: "5px",
+                }}
+              />
+            ) : (
+              <KeyboardArrowDownIcon
+                sx={{
+                  width: { xs: "15px", md: "24px" },
+                  ml: "5px",
+                }}
+              />
+            )}
           </a>
+          {overViewChildsOpen && (
+            <Box>
+              <Box sx={{ marginLeft: "20px" }}>
+                <a
+                  className={`${styles.link} ${
+                    currentRoute === "/dashboard/BookView" ? styles.active : ""
+                  }`}
+                  onClick={() => {
+                    router.push("/dashboard/BookView");
+                  }}
+                >
+                  {/* Add your icon and text for the first new option */}
+                  <Image
+                    alt="icon"
+                    className={styles.sidebarIcon}
+                    src={
+                      currentRoute === "/dashboard/BookView"
+                        ? ProgressGreen
+                        : ProgressWhite
+                    }
+                  />
+                  Book View
+                </a>
+              </Box>
+            </Box>
+          )}
         </Box>
         <Box>
           <a

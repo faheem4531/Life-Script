@@ -64,9 +64,14 @@ const WelcomeOverview = () => {
           // onClick={() => {}}
         />
       </Box>
-
-      <Image alt="Welcome" src={Welcome} className={styles.welcomeImage} />
-      <Image alt="Welcome" src={BgRounded} className={styles.bgRounded} />
+      <Box
+        sx={{
+          display: { sm: "block", xs: "none" },
+        }}
+      >
+        <Image alt="Welcome" src={Welcome} className={styles.welcomeImage} />
+        <Image alt="Welcome" src={BgRounded} className={styles.bgRounded} />
+      </Box>
     </Box>
   );
 };

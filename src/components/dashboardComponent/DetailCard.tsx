@@ -209,7 +209,7 @@ export default function DetailCard({
               >
                 <Typography
                   variant="body2"
-                  color="text "
+                  color="black"
                   sx={{
                     fontSize: { md: "14px", sm: "13.241px", xs: "10.493px" },
                     textAlign: "center",
@@ -240,22 +240,22 @@ export default function DetailCard({
                     sx={{
                       width: "100%",
                       height: { sm: "100px", xs: "100px" },
+                      overflowY: "auto",
+                      "&::-webkit-scrollbar": { display: "none" },
                     }}
                   >
                     {questions?.length > 0 ? (
                       questions?.slice(0, 4).map((question: any) => (
                         <Typography
                           key={question._id}
-                          display="flex"
-                          alignItems="center"
-                          columnGap="5px"
-                          color="rgba(22, 22, 22, 0.90)"
-                          mb="2px"
                           sx={{
+                            mb: { sm: "2px", xs: "1px" },
+                            color: "rgba(22, 22, 22, 0.90)",
+                            columnGap: { sm: "5px", xs: "3px" },
                             fontSize: {
                               md: "13px",
                               sm: "8.803px",
-                              xs: "5.532px",
+                              xs: "7.332px",
                             },
                             display: "flex",
                             alignItems: "flex-start",

@@ -17,6 +17,7 @@ const OverView = () => {
           display: "flex",
           flexDirection: { lg: "row", xs: "column" },
           gap: { xl: "50px", xs: "20px" },
+          p: { sm: "0px", xs: "10px" },
         }}
       >
         <Box sx={{ width: "100%" }}>
