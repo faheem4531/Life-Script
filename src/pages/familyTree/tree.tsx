@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
+import SelectRelationModal from "@/components/modal/SelectRelationModal";
+import { updatePartner } from "@/store/slices/chatSlice";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import { Box } from "@mui/material";
 import * as d3 from "d3";
 import { zoom } from "d3";
-import styles from "./FamilyTree.module.css";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from "@mui/icons-material/Add";
+import { useEffect, useRef, useState } from "react";
 import ReactDOMServer from "react-dom/server";
-import SelectRelationModal from "@/components/modal/SelectRelationModal";
-import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
 import { useDispatch } from "react-redux";
-import { updatePartner } from "@/store/slices/chatSlice";
+import styles from "./FamilyTree.module.css";
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -303,13 +303,31 @@ const FamilyTree = ({ familyTreeData }) => {
         {
           x: 20,
           y: -35,
-          icon: <EditIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20 }} />,
+          icon: (
+            <EditIcon
+              style={{
+                fill: "black",
+                cursor: "pointer",
+                maxWidth: 20,
+                maxHeight: 20,
+              }}
+            />
+          ),
           type: "edit",
         },
         {
           x: 50,
           y: -35,
-          icon: <AddIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20  }} />,
+          icon: (
+            <AddIcon
+              style={{
+                fill: "black",
+                cursor: "pointer",
+                maxWidth: 20,
+                maxHeight: 20,
+              }}
+            />
+          ),
           type: "add",
         },
       ];
@@ -329,7 +347,16 @@ const FamilyTree = ({ familyTreeData }) => {
         {
           x: 20,
           y: 75,
-          icon: <EditIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20  }} />,
+          icon: (
+            <EditIcon
+              style={{
+                fill: "black",
+                cursor: "pointer",
+                maxWidth: 20,
+                maxHeight: 20,
+              }}
+            />
+          ),
           type: "editspouse",
         },
       ];
@@ -372,13 +399,31 @@ const FamilyTree = ({ familyTreeData }) => {
         {
           x: 20,
           y: 20,
-          icon: <EditIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20  }} />,
+          icon: (
+            <EditIcon
+              style={{
+                fill: "black",
+                cursor: "pointer",
+                maxWidth: 20,
+                maxHeight: 20,
+              }}
+            />
+          ),
           type: "edit",
         },
         {
           x: 50,
           y: 20,
-          icon: <AddIcon style={{ fill: "black", cursor: "pointer", maxWidth: 25, maxHeight: 20  }} />,
+          icon: (
+            <AddIcon
+              style={{
+                fill: "black",
+                cursor: "pointer",
+                maxWidth: 25,
+                maxHeight: 20,
+              }}
+            />
+          ),
           type: "add",
         },
       ];
@@ -398,7 +443,24 @@ const FamilyTree = ({ familyTreeData }) => {
 
   return (
     <>
-      <svg ref={svgRef}></svg>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "0%",
+          left: "0%",
+          // background: "red",
+          transform: {
+            md: "translate(-0%, -25%)",
+            sm: "translate(-5%, -25%)",
+            xs: "translate(-8%, -30%)",
+          },
+        }}
+      >
+        <svg
+          ref={svgRef}
+          // style={{ maxWidth: "1000px", maxHeight: "600px" }}
+        ></svg>
+      </Box>
 
       <SelectRelationModal
         relations={relations}

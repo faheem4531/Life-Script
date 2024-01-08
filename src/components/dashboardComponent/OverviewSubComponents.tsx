@@ -1,56 +1,59 @@
 import NextIcon from "@/_assets/svg/next-icon.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 import GlobelBtn from "../button/Button";
 import styles from "./Custom.module.css";
-import { useRouter } from "next/router";
 
 export const ViewBook = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   return (
     <>
-    <Box
-    onClick={()=>router.push("/familyTree")}
-      sx={{
-        bgcolor: "#197065",
-        color: "#fff",
-        width: "100%",
-        padding: "16px 0",
-        borderRadius: "14px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "relative",
-        cursor: "pointer",
-      }}
-      className={styles.viewBook}
-    >
-      <Typography
-        sx={{
-          fontSize: { xl: "21px", sm: "18px", xs: "12px" },
-          fontWeight: 500,
-        }}
-      >
-        View Book
-      </Typography>
       <Box
+        onClick={() => router.push("/familyTree")}
         sx={{
-          position: "absolute",
-          top: "50%",
-          right: { xs: "10%" },
-          transform: "translateY(-50%)",
-          height: "19.603px",
-          width: "13px",
+          bgcolor: "#197065",
+          color: "#fff",
+          width: "100%",
+          padding: "16px 0",
+          borderRadius: "14px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+          cursor: "pointer",
         }}
+        className={styles.viewBook}
       >
-        <Image alt="next" src={NextIcon} className={styles.nextAero} />
+        <Typography
+          sx={{
+            fontSize: { xl: "21px", sm: "18px", xs: "12px" },
+            fontWeight: 500,
+          }}
+        >
+          {t("overView.ViewBtn")}
+        </Typography>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            right: { xs: "10%" },
+            transform: "translateY(-50%)",
+            height: "19.603px",
+            width: "13px",
+          }}
+        >
+          <Image alt="next" src={NextIcon} className={styles.nextAero} />
+        </Box>
       </Box>
-    </Box>
     </>
   );
 };
 
 export const ViewTree = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -72,7 +75,7 @@ export const ViewTree = () => {
           fontWeight: 500,
         }}
       >
-        Family Tree
+        {t("overView.famliyTreeBtn")}
       </Typography>
       <Box
         sx={{
@@ -91,6 +94,7 @@ export const ViewTree = () => {
 };
 
 export const PrintBook = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -110,7 +114,7 @@ export const PrintBook = () => {
         <Typography
           sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
         >
-          Every Life is Special
+          {t("overView.EverySpecial")}
         </Typography>
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
@@ -123,7 +127,7 @@ export const PrintBook = () => {
         <GlobelBtn
           bgColor="#186F65"
           color="white"
-          btnText="Continue"
+          btnText={`${t("overView.continue")}`}
           // onClick={}
           width={{ xl: "250px", sm: "180px" }}
         />

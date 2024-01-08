@@ -86,5 +86,17 @@
     "resetPassword": "Reset Password link has been sent to",
     "clickLink": "Please click on the link to",
     "reset": "reset your password"
+  },
+  "overView": {
+    "headerWelcome": "Welcome back ...",
+    "headerdescription": "“Success is not final, failure is not fatal: It is the courage to continue that counts.”",
+    "headerBtnText": "Continue Writing",
+    "ViewBtn": "View Book",
+    "famliyTreeBtn": "Family Tree",
+    "EverySpecial": "Every Life is Special",
+    "continue": "Continue",
+    "achivement": "Achivement",
+    "RecentCh": "Recent Chapters",
+    "viewMore": "View More"
   }
 }

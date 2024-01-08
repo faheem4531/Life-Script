@@ -3,10 +3,12 @@ import Welcome from "@/_assets/png/overview-welcome-card.png";
 import ContineWriting from "@/_assets/svg/continue-writing.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import Button from "../button/Button";
 import styles from "./Custom.module.css";
 
 const WelcomeOverview = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -27,7 +29,9 @@ const WelcomeOverview = () => {
       className={styles.welcomeMain}
     >
       <Box>
-        <Typography sx={{ fontSize: "18.75px" }}> Welcome back ...</Typography>
+        <Typography sx={{ fontSize: "18.75px" }}>
+          {t("overView.headerWelcome")}
+        </Typography>
         <Typography
           sx={{
             fontSize: { xl: "33px", sm: "28px" },
@@ -48,20 +52,17 @@ const WelcomeOverview = () => {
             marginTop: "10px",
           }}
         >
-          “Success is not final, failure is not fatal: It is the courage to
-          continue that counts.”
+          {t("overView.headerdescription")}
         </Typography>
         <Button
           image={ContineWriting}
-          btnText="| Continue Writing"
+          btnText={`| ${t("overView.headerBtnText")}`}
+          // btnText="| Continue Writing"
           bgColor="#fff"
           borderRadius="23px"
           color="#186F65"
-          width="180px"
           fontSize={{ xs: "12px" }}
-          onClick={() => {}}
           border="0px"
-          // onClick={() => {}}
         />
       </Box>
       <Box
