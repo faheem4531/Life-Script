@@ -44,7 +44,10 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
       setChilsdOpen(true);
     } else if (currentRoute === "/dashboard/chapters/completedChapter") {
       setChilsdOpen(true);
-    } else if (currentRoute === "/dashboard/BookView") {
+    } else if (
+      currentRoute === "/dashboard/BookView" ||
+      currentRoute === "/dashboard/overview"
+    ) {
       setOverViewChilsdOpen(true);
     }
   };

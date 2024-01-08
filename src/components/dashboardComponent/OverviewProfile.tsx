@@ -6,9 +6,11 @@ import Silver from "@/_assets/svg/silver-token.svg";
 import { Box, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import styles from "./Custom.module.css";
 
 const Profile = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -47,7 +49,7 @@ const Profile = () => {
           </Typography>
         </Box>
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
-          Achievement
+          {t("overView.achivement")}
         </Typography>
         <Box
           sx={{
@@ -67,7 +69,7 @@ const Profile = () => {
           <Image alt="tag" src={Bronze} className={styles.profileAchivements} />
         </Box>
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
-          Recent Chapters
+          {t("overView.RecentCh")}
         </Typography>
         <Box sx={{ marginTop: "20px" }}>
           <RecentChapters />
@@ -83,7 +85,7 @@ const Profile = () => {
             textAlign: "center",
           }}
         >
-          View more
+          {t("overView.viewMore")}
         </Typography>
       </Box>
     </Box>

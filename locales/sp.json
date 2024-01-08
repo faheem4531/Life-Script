@@ -84,5 +84,17 @@
     "resetPassword": "El enlace para restablecer contraseña ha sido enviado a",
     "clickLink": "Por favor haga clic en el enlace para",
     "reset": "Restablecer su contraseña"
+  },
+  "overView": {
+    "headerWelcome": "Bienvenido de vuelta ...",
+    "headerdescription": "“El éxito no es definitivo, el fracaso no es fatal: es el coraje para continuar lo que cuenta.”",
+    "headerBtnText": "Continuar escribiendo",
+    "ViewBtn": "Ver libro",
+    "famliyTreeBtn": "Árbol genealógico",
+    "EverySpecial": "Cada vida es especial",
+    "continue": "Continuar",
+    "achivement": "Logro",
+    "RecentCh": "Capítulos recientes",
+    "viewMore": "Ver más"
   }
 }
