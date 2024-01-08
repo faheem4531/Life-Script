@@ -15,7 +15,6 @@ import { store } from "../store/store";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
-  const [chapterCompleted, setChapterCompleted] = useState(false);
   //verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");

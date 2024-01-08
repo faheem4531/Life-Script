@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControlLabel,
   Radio,
   RadioGroup,
@@ -12,20 +13,63 @@ import { useEffect, useState } from "react";
 import CameraIcon from "../../_assets/svg/cameraIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
 import CustomizationDialog from "./CustomizationDialog";
-
+import { useDropzone } from "react-dropzone";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { uploadImage } from "@/store/slices/chatSlice";
+import GlobelBtn from "../button/Button";
 const FamilyTreeDataModal = ({
   familyModal,
   setFamilyModal,
+  nodeData,
   selectedRelation,
+  onSubmit,
 }) => {
   //   const [familyModal, setFamilyModal] = useState(false);
-  const [selectedValue, setSelectedValue] = useState();
+  const dispatch: any = useDispatch();
+  const [selectedValueGender, setSelectedValueGender] = useState();
+  const [selectedValueLiving, setSelectedValueLiving] = useState("");
   const [inputValueName, setInputValueName] = useState("");
   const [inputValueLocation, setInputValueLocation] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [dateOfDeath, setDateOfDeath] = useState(null);
+  const [imageLink, setImageLink] = useState(null);
+  const [droppedImage, setDroppedImage] = useState<string | ArrayBuffer | null>(
+    null
+  );
   const maxDate = new Date();
+
+  useEffect(() => {
+    if (nodeData) {
+      setSelectedValueGender(nodeData?.isSpouse ? nodeData?.spouseGender || "" : nodeData?.gender || "");
+      setInputValueName(nodeData?.isSpouse ? nodeData?.spouseName
+        || "" : nodeData?.name || "");
+      setInputValueLocation(nodeData?.isSpouse ? nodeData?.spouseLocation
+        || "" : nodeData?.location || "");
+      setDateOfBirth(nodeData?.isSpouse ? new Date(nodeData?.spouseBorn)
+        || "" : new Date(nodeData?.born) || "");
+      setSelectedValueLiving(nodeData.spouseDied || nodeData.died ? "Deceased" : "Living");
+      setShowDatePicker(nodeData.spouseDied || nodeData.died ? true : false);
+      setDateOfDeath(nodeData?.isSpouse ? new Date(nodeData?.spouseDied)
+        || "" : new Date(nodeData?.died) || "");
+      setImageLink(nodeData?.isSpouse ? nodeData?.spouseImage
+        || "" : nodeData?.image || "");
+    }
+  }, [nodeData]);
+
+  const handleSubmit = () => {
+    onSubmit({
+      relationType: selectedRelation || false, 
+      isSpouse: nodeData?.isSpouse,
+      name: inputValueName,
+      gender: selectedValueGender,
+      born: dateOfBirth,
+      died: dateOfDeath,
+      image: imageLink,
+      location: inputValueLocation,
+    });
+  };
 
   const handleInputChangeName = (event) => {
     if (event.target.value.length <= 20) {
@@ -40,11 +84,11 @@ const FamilyTreeDataModal = ({
   };
 
   useEffect(() => {
-    // setSelectedValue( || "MySelf");
+    // setSelectedValueGender( || "MySelf");
   }, []);
 
   const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+    setSelectedValueGender(event.target.value);
   };
 
   const handleDateOfBirthChange = (date) => {
@@ -65,17 +109,44 @@ const FamilyTreeDataModal = ({
   };
 
   const handleLivingStatusChange = (event) => {
-    setSelectedValue(event.target.value);
+    setSelectedValueLiving(event.target.value);
     setShowDatePicker(event.target.value === "Deceased");
     if (event.target.value === "Living") {
       setDateOfDeath(null);
     }
   };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/jpeg": [],
+      "image/png": [],
+    },
+    onDrop: (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      const formData = new FormData();
+      formData.append("image", file);
+
+      // Make API request
+      uploadImageonCloud(formData);
+    },
+  });
+
+  const uploadImageonCloud = (formData) => {
+    dispatch(uploadImage(formData))
+      .unwrap()
+      .then((res) => {
+        toast.success("image uploaded successfully");
+        setImageLink(res);
+        setDroppedImage(res);
+      })
+      .catch(() => toast.error("Failed to upload image"));
+  };
+
   return (
     <div>
       <CustomizationDialog
         open={familyModal}
-        title={`Add ${selectedRelation} of Haseeb`}
+        title={selectedRelation ? `Add ${selectedRelation}` : "Update Info"}
         // title="Add father of Haseeb"
         handleClose={() => {
           setFamilyModal(false);
@@ -100,15 +171,30 @@ const FamilyTreeDataModal = ({
               border: "1px solid #186F65",
               position: "relative",
             }}
+            {...getRootProps()}
           >
-            <Image
-              src={Profile}
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
+            {imageLink ? (
+              <img
+                // src={Profile}
+                src={imageLink || Profile}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                }}
+              />
+            ) : (
+              <Image
+                src={Profile}
+                alt=""
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                }}
+              />
+            )}
             <Box
               sx={{
                 width: { md: "23px", sm: "18px", xs: "16px" },
@@ -134,7 +220,7 @@ const FamilyTreeDataModal = ({
             </Box>
           </Box>
 
-          <RadioGroup value={selectedValue} onChange={handleChange}>
+          <RadioGroup value={selectedValueGender} onChange={handleChange}>
             <Typography
               sx={{
                 mt: "20px",
@@ -152,7 +238,7 @@ const FamilyTreeDataModal = ({
               <Box>
                 <FormControlLabel
                   value="Male"
-                  checked={selectedValue === "Male"}
+                  checked={selectedValueGender === "Male"}
                   control={
                     <Radio
                       sx={{
@@ -179,7 +265,7 @@ const FamilyTreeDataModal = ({
               <Box>
                 <FormControlLabel
                   value="Female"
-                  checked={selectedValue === "Female"}
+                  checked={selectedValueGender === "Female"}
                   control={
                     <Radio
                       sx={{
@@ -206,7 +292,7 @@ const FamilyTreeDataModal = ({
               <Box>
                 <FormControlLabel
                   value="Unknown"
-                  checked={selectedValue === "Unknown"}
+                  checked={selectedValueGender === "Unknown"}
                   control={
                     <Radio
                       sx={{
@@ -247,7 +333,7 @@ const FamilyTreeDataModal = ({
               Full Name
             </Typography>
             <TextField
-              placeholder="Enter text (20 characters limit)"
+              placeholder="* Enter text (20 characters limit)"
               value={inputValueName}
               onChange={handleInputChangeName}
               inputProps={{ maxLength: 20 }}
@@ -346,7 +432,10 @@ const FamilyTreeDataModal = ({
             />
           </Box>
 
-          <RadioGroup value={selectedValue} onChange={handleLivingStatusChange}>
+          <RadioGroup
+            value={selectedValueLiving}
+            onChange={handleLivingStatusChange}
+          >
             <Typography
               sx={{
                 mt: "20px",
@@ -364,7 +453,7 @@ const FamilyTreeDataModal = ({
               <Box>
                 <FormControlLabel
                   value="Living"
-                  checked={selectedValue === "Living"}
+                  checked={selectedValueLiving === "Living"}
                   control={
                     <Radio
                       sx={{
@@ -391,7 +480,7 @@ const FamilyTreeDataModal = ({
               <Box>
                 <FormControlLabel
                   value="Deceased"
-                  checked={selectedValue === "Deceased"}
+                  checked={selectedValueLiving === "Deceased"}
                   control={
                     <Radio
                       sx={{
@@ -455,6 +544,17 @@ const FamilyTreeDataModal = ({
               />
             </Box>
           )}
+
+          <Box mt={"20px"}>
+            <GlobelBtn
+              btnText="Submit"
+              color="white"
+              bgColor="#197065"
+              onClick={handleSubmit}
+              disabled={!inputValueName}
+              width="100%"
+            />
+          </Box>
         </Box>
       </CustomizationDialog>
     </div>
