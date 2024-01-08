@@ -1,8 +1,17 @@
 // pages/index.js
+// import { DatePicker } from "@mui/lab";
+import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
+import SelectRelationModal from "@/components/modal/SelectRelationModal";
+import { Box } from "@mui/material";
+import { useState } from "react";
 import FamilyTree from "./tree";
 
 const Home = () => {
-  // Replace this with your actual family tree data
+  const [familyModal, setFamilyModal] = useState(false);
+  const [familyRelationModal, setFamilyRelationModal] = useState(false);
+  const [selectedRelation, setSelectedRelation] = useState("");
+  console.log("selectedRelation", selectedRelation);
+
   const familyTreeData = {
     id: 1,
     name: "AAAA AAAA",
@@ -154,10 +163,44 @@ const Home = () => {
     ],
   };
 
+  const relations = [
+    "Father",
+    "Mother",
+    "Brother",
+    "Sister",
+    "Partner",
+    "Son",
+    "Daughter",
+  ];
+
   return (
-    <div>
+    <Box>
+      <Box
+        onClick={() => {
+          setFamilyRelationModal(true);
+        }}
+        sx={{
+          color: "white",
+        }}
+      >
+        Relation
+      </Box>
       <FamilyTree familyTreeData={familyTreeData} />
-    </div>
+      <FamilyTreeDataModal
+        familyModal={familyModal}
+        setFamilyModal={setFamilyModal}
+        selectedRelation={selectedRelation}
+      />
+      <SelectRelationModal
+        relations={relations}
+        familyRelationModal={familyRelationModal}
+        setFamilyRelationModal={setFamilyRelationModal}
+        setFamilyModal={setFamilyModal}
+        onClick={(item) => {
+          setSelectedRelation(item);
+        }}
+      />
+    </Box>
   );
 };
 

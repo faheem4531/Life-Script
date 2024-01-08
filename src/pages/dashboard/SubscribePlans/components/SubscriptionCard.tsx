@@ -41,11 +41,11 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
       <Box>
         <Box
           sx={{
-            fontSize: "30.5px",
+            fontSize: { md: "30.5px", sm: "24px", xs: "20px" },
             letterSpacing: "0.458px",
             fontWeight: "700",
             textTransform: "capitalize",
-            mb: "17px",
+            mb: { md: "17px", sm: "13px", xs: "8px" },
           }}
         >
           {mainTitle}
@@ -53,11 +53,11 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
 
         <Box
           sx={{
-            fontSize: "10.999px",
+            fontSize: { md: "10.999px", xs: "8.5px" },
             letterSpacing: "0.458px",
             fontWeight: "600",
             textTransform: "capitalize",
-            mb: "17px",
+            mb: { md: "17px", sm: "13px", xs: "8px" },
           }}
         >
           {mainDescription}
@@ -65,11 +65,11 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
 
         <Box
           sx={{
-            fontSize: "30.5px",
+            fontSize: { md: "30.5px", sm: "24px", xs: "20px" },
             letterSpacing: "0.458px",
             fontWeight: "700",
             textTransform: "capitalize",
-            mb: "17px",
+            mb: { md: "17px", sm: "13px", xs: "8px" },
             color: "#197065",
           }}
         >
@@ -81,13 +81,13 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             width: "100%",
             height: "2px",
             bgcolor: "#CCCCCC",
-            mb: "17px",
+            mb: { md: "17px", sm: "13px", xs: "8px" },
           }}
         ></Box>
 
         <Box
           sx={{
-            fontSize: "16.498px",
+            fontSize: { md: "16.498px", sm: "14px", xs: "12px" },
             letterSpacing: "0.458px",
             fontWeight: "700",
             textTransform: "capitalize",
@@ -99,7 +99,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
 
         <Box
           sx={{
-            fontSize: "12.832px",
+            fontSize: { md: "12.832px", sm: "10px", xs: "9px" },
             letterSpacing: "0.458px",
             fontWeight: "600",
             textTransform: "capitalize",
@@ -126,9 +126,9 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",
-                    fontSize: "12.832px",
+                    fontSize: { md: "12.832px", sm: "10px", xs: "9px" },
                     color: "#081131",
-                    mb: "18px",
+                    mb: { md: "18px", sm: "13px", xs: "8px" },
                   }}
                 >
                   <Box>

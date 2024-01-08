@@ -62,12 +62,17 @@ const SubscribePlan = () => {
   return (
     <Box>
       <Layout>
-        <SubscriptionHeader
-          title="Subscription Plan"
-          description="Choose a subscription plan below before Aug30th,2023 to unlock this special offer."
-        />
+        <Box
+          sx={{
+            p: { xs: "15px 10px", sm: "0px" },
+          }}
+        >
+          <SubscriptionHeader
+            title="Subscription Plan"
+            description="Choose a subscription plan below before Aug30th,2023 to unlock this special offer."
+          />
 
-        {/* <Box
+          {/* <Box
       sx={{
         bgcolor: "white",
         borderRadius: " 16.148px",
@@ -91,56 +96,58 @@ const SubscribePlan = () => {
       </Typography>
             <VerticalTabs/>
 </Box> */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: { xs: "15px", md: "20px", lg: "40px" },
-            mt: "20px",
-            flexWrap: "wrap",
-          }}
-        >
-          <SubscriptionCard
-            subList={subBasicList}
-            mainTitle="Basic Plan"
-            mainDescription="Lorem ipsum dolor sit amet consectetur."
-            price={planPrices.basic}
-            buttonDisable={disableButton.basic}
-            offerTitle="Basic Plan Offerings"
-            onClick={(pkgPrice) => {
-              typeof window !== "undefined" &&
-                router.push(
-                  `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
-                );
+          <Box
+            sx={{
+              display: "flex",
+              gap: { xs: "15px", md: "20px", lg: "40px" },
+              mt: "20px",
+              flexWrap: "wrap",
+              justifyContent: { sm: "start", xs: "center" },
             }}
-          />
-          <SubscriptionCard
-            subList={subStandardList}
-            mainTitle="Standard Plan"
-            mainDescription="Lorem ipsum dolor sit amet consectetur."
-            price={planPrices?.standard}
-            buttonDisable={disableButton.standard}
-            offerTitle="Standard Plan Offerings"
-            onClick={(pkgPrice) => {
-              typeof window !== "undefined" &&
-                router.push(
-                  `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=GoldPlan&price=${pkgPrice}`
-                );
-            }}
-          />
-          <SubscriptionCard
-            subList={subPremiumList}
-            mainTitle="Premium Plan"
-            mainDescription="Lorem ipsum dolor sit amet consectetur."
-            price={planPrices?.premium}
-            buttonDisable={disableButton.premium}
-            offerTitle="Premium Plan Offerings"
-            onClick={(pkgPrice) => {
-              typeof window !== "undefined" &&
-                router.push(
-                  `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan&price=${pkgPrice}`
-                );
-            }}
-          />
+          >
+            <SubscriptionCard
+              subList={subBasicList}
+              mainTitle="Basic Plan"
+              mainDescription="Lorem ipsum dolor sit amet consectetur."
+              price={planPrices.basic}
+              buttonDisable={disableButton.basic}
+              offerTitle="Basic Plan Offerings"
+              onClick={(pkgPrice) => {
+                typeof window !== "undefined" &&
+                  router.push(
+                    `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
+                  );
+              }}
+            />
+            <SubscriptionCard
+              subList={subStandardList}
+              mainTitle="Standard Plan"
+              mainDescription="Lorem ipsum dolor sit amet consectetur."
+              price={planPrices?.standard}
+              buttonDisable={disableButton.standard}
+              offerTitle="Standard Plan Offerings"
+              onClick={(pkgPrice) => {
+                typeof window !== "undefined" &&
+                  router.push(
+                    `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=GoldPlan&price=${pkgPrice}`
+                  );
+              }}
+            />
+            <SubscriptionCard
+              subList={subPremiumList}
+              mainTitle="Premium Plan"
+              mainDescription="Lorem ipsum dolor sit amet consectetur."
+              price={planPrices?.premium}
+              buttonDisable={disableButton.premium}
+              offerTitle="Premium Plan Offerings"
+              onClick={(pkgPrice) => {
+                typeof window !== "undefined" &&
+                  router.push(
+                    `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan&price=${pkgPrice}`
+                  );
+              }}
+            />
+          </Box>
         </Box>
       </Layout>
     </Box>

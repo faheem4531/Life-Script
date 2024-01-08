@@ -28,7 +28,7 @@ const Layout = ({ children }: { children?: any }) => {
         sx={{
           position: "fixed",
           right: "0",
-          left: { md: "220px", sm: 0, xs: 0 },
+          left: { lg: "220px", sm: 0, xs: 0 },
           top: "0",
           zIndex: "3",
         }}
@@ -39,7 +39,7 @@ const Layout = ({ children }: { children?: any }) => {
         sx={{
           marginTop: "1px",
           display: "flex",
-          mt: "70px",
+          mt: { xs: "50px", lg: "70px" },
         }}
       >
         <Box
@@ -85,7 +85,7 @@ const Layout = ({ children }: { children?: any }) => {
             height: "100%",
             minHeight: "calc(100vh - 70px)",
             padding: { sm: "10px 33px 30px" },
-            marginLeft: { lg: "220px", md: "200px", sm: 0, xs: 0 },
+            marginLeft: { lg: "220px", md: "0px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
         >

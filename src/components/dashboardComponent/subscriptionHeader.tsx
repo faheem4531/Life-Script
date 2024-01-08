@@ -1,12 +1,20 @@
 import { Box, Typography } from "@mui/material";
+import GlobelBtn from "../button/Button";
 import styles from "./Custom.module.css";
 
 interface Props {
   title?: string;
   description?: string;
+  btnCheck?: boolean;
+  onClick?: any;
 }
 
-const SubscriptionHeader = ({ title, description }: Props) => {
+const SubscriptionHeader = ({
+  title,
+  description,
+  btnCheck,
+  onClick,
+}: Props) => {
   return (
     <Box
       sx={{
@@ -47,6 +55,19 @@ const SubscriptionHeader = ({ title, description }: Props) => {
         >
           {description}
         </Typography>
+      </Box>
+      <Box
+        sx={{
+          mr: { md: "40px", sm: "20px", xs: "15px" },
+          display: btnCheck ? "block" : "none",
+        }}
+      >
+        <GlobelBtn
+          btnText="Edit"
+          border="1px solid white"
+          color="white"
+          onClick={onClick}
+        />
       </Box>
     </Box>
   );

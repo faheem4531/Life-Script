@@ -82,26 +82,26 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         alignItems: "center",
         backgroundColor: "#197065",
         padding: { xs: "0px 8px", md: "0 14px" },
-        height: { xs: "48px", md: "70px" },
+        height: { xs: "48px", lg: "70px" },
       }}
     >
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: { xs: "space-between", md: "end" },
+          justifyContent: { xs: "space-between", lg: "end" },
           width: "100%",
         }}
       >
         <Box
-          sx={{ display: { xs: "block", md: "none" } }}
+          sx={{ display: { xs: "block", lg: "none" } }}
           onClick={sideBarHandle}
         >
           <Image src={NavMenu} alt="logo" />
         </Box>
         <Box
           sx={{
-            display: { xs: "block", md: "none" },
+            display: { xs: "block", lg: "none" },
           }}
         >
           <Image
@@ -126,7 +126,20 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
           >
             <Badge badgeContent={notifications?.length} color="error">
               {/* <NotificationsIcon /> */}
-              <Image src={BellIcon} alt="BellIcon" />
+              <Box
+                sx={{
+                  width: "20px",
+                }}
+              >
+                <Image
+                  src={BellIcon}
+                  alt="BellIcon"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Box>
             </Badge>
           </IconButton>
 
@@ -170,57 +183,58 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                 boxShadow: "none",
               }}
             >
-              {notifications?.length > 0 && notifications?.map((notification, index) => (
-                <MenuItem
-                  key={index}
-                  onClick={() => handleNotificationNavigate(notification)}
-                  sx={{
-                    borderBottom: "1.5px solid gray",
-                    p: "10px 20px",
-                    "&:hover": {
-                      background: "white",
-                      boxShadow: "none",
-                    },
-                    boxShadow: "none",
-                  }}
-                >
-                  <Box
+              {notifications?.length > 0 &&
+                notifications?.map((notification, index) => (
+                  <MenuItem
+                    key={index}
+                    onClick={() => handleNotificationNavigate(notification)}
                     sx={{
-                      display: "flex",
-                      alignItems: "start",
-                      gap: "10px",
+                      borderBottom: "1.5px solid gray",
+                      p: "10px 20px",
+                      "&:hover": {
+                        background: "white",
+                        boxShadow: "none",
+                      },
+                      boxShadow: "none",
                     }}
                   >
-                    <Box>
-                      <Image
-                        alt="icon"
-                        src={Step1}
-                        style={{
-                          width: "18px",
-                        }}
-                      />
-                    </Box>
                     <Box
                       sx={{
-                        whiteSpace: "wrap",
-                        fontSize: "12px",
-                        mt: "5px",
+                        display: "flex",
+                        alignItems: "start",
+                        gap: "10px",
                       }}
                     >
-                      Chapter{" "}
-                      <span
-                        style={{
-                          fontWeight: "bold",
-                          textTransform: "capitalize",
+                      <Box>
+                        <Image
+                          alt="icon"
+                          src={Step1}
+                          style={{
+                            width: "18px",
+                          }}
+                        />
+                      </Box>
+                      <Box
+                        sx={{
+                          whiteSpace: "wrap",
+                          fontSize: "12px",
+                          mt: "5px",
                         }}
                       >
-                        {notification.title}
-                      </span>{" "}
-                      is fused and ready to to view
+                        Chapter{" "}
+                        <span
+                          style={{
+                            fontWeight: "bold",
+                            textTransform: "capitalize",
+                          }}
+                        >
+                          {notification.title}
+                        </span>{" "}
+                        is fused and ready to to view
+                      </Box>
                     </Box>
-                  </Box>
-                </MenuItem>
-              ))}
+                  </MenuItem>
+                ))}
               {notifications.length === 0 && (
                 <MenuItem
                   sx={{
@@ -273,7 +287,20 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
               marginLeft: "-5px",
             }}
           >
-            <Image alt="options" src={More} />
+            <Box
+              sx={{
+                width: "20px",
+              }}
+            >
+              <Image
+                src={More}
+                alt="options"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </Box>
           </IconButton>
           <Menu
             id="long-menu"

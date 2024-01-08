@@ -240,6 +240,8 @@ export default function DetailCard({
                     sx={{
                       width: "100%",
                       height: { sm: "100px", xs: "100px" },
+                      overflowY: "auto",
+                      "&::-webkit-scrollbar": { display: "none" },
                     }}
                   >
                     {questions?.length > 0 ? (
