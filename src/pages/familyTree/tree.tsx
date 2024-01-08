@@ -32,6 +32,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const handleAddedPerson = (data) => {
     console.log("addedData", data);
+    setSelectedNode(null);
+    setUpdatedNode({});
     const { relationType, ...newData } = data;
 
     if (relationType === "Mother") {
@@ -57,7 +59,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const addPartner = (data) => {
     let partnerData;
-    if (data.isSpouse && data.isSpouse === true) {
+    console.log("77777",data?.isSpouse);
+    if (!data.isSpouse || data.isSpouse === true) {
       partnerData = {
         nodeId: selectedNode?.data?._id,
         spouseName: data.name,
@@ -81,7 +84,10 @@ const FamilyTree = ({ familyTreeData }) => {
 
     dispatch(updatePartner(partnerData))
       .unwrap()
-      .then(() => setUpdatedNode({}));
+      .then(() => {
+        setUpdatedNode({});
+        setNodeData(null);
+      });
   };
 
   const addMother = (data) => {};
@@ -97,6 +103,8 @@ const FamilyTree = ({ familyTreeData }) => {
   const addDaughter = (data) => {};
 
   const handleIconClick = (name, iconType, d) => {
+    setUpdatedNode({});
+    setNodeData(null);
     if (iconType === "editspouse") {
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
@@ -279,24 +287,25 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(14, -100, d.data.image || profileIcon);
       renderText(76, -75, d.data.name || "", `${styles.name}`);
       //age
-      const born = d.data.born.slice(0, 4);
-      const died = d.data.died.slice(0, 4);
+      const born = d.data.born?.slice(0, 4);
+      const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known" ;
       renderText(76, -50, age || "", `${styles.dateLocation}`);
       renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`);
       renderImage(14, 10, d.data.spouseImage || profileIcon);
       renderText(76, 35, d.data.spouseName || "", `${styles.name}`);
-      const spouseBorn = d.data.spouseBorn.slice(0, 4);
-      const spouseDied = d.data.spouseDied.slice(0, 4);
-      const spouseAge =
+      const spouseBorn = d.data.spouseBorn?.slice(0, 4);
+      const spouseDied = d.data.spouseDied?.slice(0, 4);
+      let spouseAge =
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
           ? "b. " + spouseBorn
-          : "d. " + spouseDied;
+          : spouseDied ? "d. " + spouseDied
+          : "b. Not Known";
       renderText(76, 60, spouseAge || "", `${styles.dateLocation}`);
       renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
@@ -385,10 +394,10 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseTopCenterY
       );
     } else {
-      const born = d.data.born.slice(0, 4);
-      const died = d.data.died.slice(0, 4);
+      const born = d.data.born?.slice(0, 4);
+      const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known"; 
       renderRect(10, -50, 100, `${styles.nameRect}`);
       renderImage(14, -45, d.data.image || profileIcon);
       renderText(76, -20, d.data.name || "", `${styles.name}`);

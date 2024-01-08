@@ -628,9 +628,9 @@ const Home = () => {
               zIndex: "1",
             }}
           >
-            <SubscriptionHeader title="Family Tree" description="" />
+            {/* <SubscriptionHeader title="Family Tree" description="" /> */}
           </Box>
-          <FamilyTree familyTreeData={familyTreeData2} />
+          <FamilyTree familyTreeData={familyTreeData} />
         </Box>
       </FamilyTreeLayout>
     </Box>

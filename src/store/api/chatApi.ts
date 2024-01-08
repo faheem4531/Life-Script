@@ -163,7 +163,7 @@ export async function getBookCoverApi() {
 
 export async function getTreeDataApi() {
   try {
-    const res = await api.get("family-tree");
+    const res = await api.get("family-module");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -192,7 +192,7 @@ export async function updatePartnerApi(data: {
 }) {
   try {
     const{nodeId, ...newData} = data;
-    const res = await api.patch(`family-tree/${data.nodeId}/update-couple`, newData);
+    const res = await api.patch(`family-module/${data.nodeId}/update-couple`, newData);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

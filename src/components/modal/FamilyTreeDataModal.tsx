@@ -40,6 +40,8 @@ const FamilyTreeDataModal = ({
   );
   const maxDate = new Date();
 
+  console.log("qwerty22", nodeData);
+
   useEffect(() => {
     if (nodeData) {
       setSelectedValueGender(nodeData?.isSpouse ? nodeData?.spouseGender || "" : nodeData?.gender || "");
@@ -65,7 +67,7 @@ const FamilyTreeDataModal = ({
       name: inputValueName,
       gender: selectedValueGender,
       born: dateOfBirth,
-      died: dateOfDeath,
+      died: showDatePicker ? dateOfDeath : null,
       image: imageLink,
       location: inputValueLocation,
     });
