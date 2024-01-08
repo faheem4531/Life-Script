@@ -140,7 +140,11 @@ const ProfileSetting = () => {
   }, [userData]);
 
   return (
-    <div>
+    <Box
+      sx={{
+        p: { sm: "0px", xs: "10px" },
+      }}
+    >
       <Layout>
         <ProfileHeader title="Profile Settings" description="" />
         <Box
@@ -150,7 +154,7 @@ const ProfileSetting = () => {
             borderRadius: "14.994px",
             bgcolor: "#FFF",
             border: " 1.669px solid #E2E7F0",
-            p: "26px 30px",
+            p: { md: "26px 30px", sm: "20px 20px", xs: "16px" },
             mt: "26px",
             flexWrap: "wrap",
           }}
@@ -267,30 +271,41 @@ const ProfileSetting = () => {
                 gap: "20px",
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                  color: "#474E60",
-                }}
-              >
-                Date of Birth
-              </Typography>
-              <DatePicker
-                value={selectedDate}
-                onChange={(date) => {
-                  setSelectedDate(date);
-                  console.log("date", date);
-                }}
-                sx={{
-                  backgroundColor: "#F6F9FB",
-                  width: "100%",
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                    color: "#474E60",
+                  }}
+                >
+                  Date of Birth
+                </Typography>
+                <DatePicker
+                  value={selectedDate}
+                  onChange={(date) => {
+                    setSelectedDate(date);
+                    console.log("date", date);
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
                       borderRadius: "50px",
+                      backgroundColor: "#F6F9FB",
+                      border: "0px",
+                      // height: height,
+                      pl: "15px",
                     },
-                  },
-                }}
-              />
+                    ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
+                      border: "0px",
+                    },
+                    width: "100%",
+                    "&:hover": {
+                      border: "none",
+                      outline: "none",
+                    },
+                  }}
+                />
+              </Box>
+
               <FormControl fullWidth>
                 <Typography
                   sx={{
@@ -306,7 +321,6 @@ const ProfileSetting = () => {
                   value={gender}
                   onChange={handleChangeGender}
                   sx={{
-                    marginTop: "10px",
                     borderRadius: "50px",
                     backgroundColor: "#F6F9FB",
                     border: "0px",
@@ -404,7 +418,7 @@ const ProfileSetting = () => {
           cancelText="Don’t Save"
         />
       </Layout>
-    </div>
+    </Box>
   );
 };
 

@@ -1,12 +1,10 @@
-
-import React, { useState, useEffect } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import { red } from '@mui/material/colors';
-import { TextField, Toolbar, Typography } from '@mui/material';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { TextField } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -15,7 +13,7 @@ export default function PDFViewer(pdfUrl) {
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
   const [pageWidth, setPageWidth] = useState(0);
-  const [goToPageNumber, setGoToPageNumber] = useState('');
+  const [goToPageNumber, setGoToPageNumber] = useState("0");
 
   function onPageLoadSuccess() {
     setPageWidth(900);
@@ -33,9 +31,9 @@ export default function PDFViewer(pdfUrl) {
   }, [numPages]);
 
   const options = {
-    cMapUrl: 'cmaps/',
+    cMapUrl: "cmaps/",
     cMapPacked: true,
-    standardFontDataUrl: 'standard_fonts/',
+    standardFontDataUrl: "standard_fonts/",
   };
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
@@ -52,9 +50,13 @@ export default function PDFViewer(pdfUrl) {
 
   function goToPage() {
     const newPageNumber = parseInt(goToPageNumber);
-    if (!Number.isNaN(newPageNumber) && newPageNumber > 0 && newPageNumber <= numPages) {
+    if (
+      !Number.isNaN(newPageNumber) &&
+      newPageNumber > 0 &&
+      newPageNumber <= numPages
+    ) {
       setPageNumber(newPageNumber);
-      setGoToPageNumber(''); // Clear input field
+      setGoToPageNumber(""); // Clear input field
     } else {
       // Handle invalid page number input (e.g., display an error message)
     }
@@ -62,29 +64,19 @@ export default function PDFViewer(pdfUrl) {
 
   return (
     <>
-
-      <Box hidden={false} sx={{ height: 'calc(100vh)', bgcolor: "skyblue", overflow: "hidden" }}>
+      <Box
+        hidden={false}
+        // sx={{ height: "calc(100vh)", bgcolor: "skyblue", overflow: "hidden" }}
+      >
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
-          height="80%"
           position="relative"
         >
-            <Toolbar>
-            <Typography variant="h6" sx={{ flexGrow: 1 }}>PDF Viewer</Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <TextField
-                label="Go to page"
-                type="number"
-                value={goToPageNumber}
-                onChange={(e) => setGoToPageNumber(e.target.value)}
-              />
-              <Button variant="contained" onClick={goToPage}>Go</Button>
-            </Box>
-          </Toolbar>
           <Box
             position="absolute"
+            top={"50px"}
             left="0"
             display="flex"
             alignItems="center"
@@ -102,6 +94,7 @@ export default function PDFViewer(pdfUrl) {
           <Box
             position="absolute"
             right="0"
+            top={"50px"}
             display="flex"
             alignItems="center"
           >
@@ -117,7 +110,7 @@ export default function PDFViewer(pdfUrl) {
 
           <Document
             file={{
-                url: pdfUrl?.pdfUrl
+              url: pdfUrl?.pdfUrl,
             }}
             onLoadSuccess={onDocumentLoadSuccess}
             options={options}
@@ -132,8 +125,18 @@ export default function PDFViewer(pdfUrl) {
             />
           </Document>
         </Box>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <TextField
+            label="Go to page"
+            type="number"
+            value={goToPageNumber}
+            onChange={(e) => setGoToPageNumber(e.target.value)}
+          />
+          <Button variant="contained" onClick={goToPage}>
+            Go
+          </Button>
+        </Box>
       </Box>
     </>
   );
 }
-

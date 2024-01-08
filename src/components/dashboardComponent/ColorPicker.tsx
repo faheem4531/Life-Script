@@ -1,8 +1,8 @@
 import { Box, TextField, Typography } from "@mui/material";
-import React, { useState, useRef, useEffect, ChangeEvent } from "react";
-import { BlockPicker, ColorResult } from "react-color";
+import { ChangeEvent, useRef, useState } from "react";
+import { ColorResult, SketchPicker } from "react-color";
 
-const ColorPickerComponent = ({setSelectedColor, selectedColor}) => {
+const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
   const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
 
   const colorPickerRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ const ColorPickerComponent = ({setSelectedColor, selectedColor}) => {
       </Box>
       {displayColorPicker && (
         <div ref={colorPickerRef} style={{ position: "absolute", zIndex: 2 }}>
-          <BlockPicker color={selectedColor} onChange={handleColorChange} />
+          <SketchPicker color={selectedColor} onChange={handleColorChange} />
         </div>
       )}
     </div>

@@ -93,6 +93,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+  background-color: white;
 }
 
 a {
@@ -188,3 +189,7 @@ a {
 .slick-next {
   display: none !important;
 }
+
+/* .react-pdf__Page__canvas {
+  height: 600px !important;
+} */
