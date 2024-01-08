@@ -3,12 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { red } from '@mui/material/colors';
+import { TextField, Toolbar, Typography } from '@mui/material';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -17,6 +15,7 @@ export default function PDFViewer(pdfUrl) {
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
   const [pageWidth, setPageWidth] = useState(0);
+  const [goToPageNumber, setGoToPageNumber] = useState('');
 
   function onPageLoadSuccess() {
     setPageWidth(900);
@@ -51,13 +50,18 @@ export default function PDFViewer(pdfUrl) {
     setPageNumber((prevPageNumber) => prevPageNumber - 1);
   }
 
+  function goToPage() {
+    const newPageNumber = parseInt(goToPageNumber);
+    if (!Number.isNaN(newPageNumber) && newPageNumber > 0 && newPageNumber <= numPages) {
+      setPageNumber(newPageNumber);
+      setGoToPageNumber(''); // Clear input field
+    } else {
+      // Handle invalid page number input (e.g., display an error message)
+    }
+  }
+
   return (
     <>
-          {/* <Box ml="auto" display="flex" alignItems="center">
-            <Typography variant="body2" color="textSecondary">
-              {pageNumber} / {numPages}
-            </Typography>
-          </Box> */}
 
       <Box hidden={false} sx={{ height: 'calc(100vh)', bgcolor: "skyblue", overflow: "hidden" }}>
         <Box
@@ -67,6 +71,18 @@ export default function PDFViewer(pdfUrl) {
           height="80%"
           position="relative"
         >
+            <Toolbar>
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>PDF Viewer</Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <TextField
+                label="Go to page"
+                type="number"
+                value={goToPageNumber}
+                onChange={(e) => setGoToPageNumber(e.target.value)}
+              />
+              <Button variant="contained" onClick={goToPage}>Go</Button>
+            </Box>
+          </Toolbar>
           <Box
             position="absolute"
             left="0"
