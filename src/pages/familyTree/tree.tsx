@@ -60,7 +60,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const addPartner = (data) => {
     let partnerData;
     console.log("77777",data?.isSpouse);
-    if (!data.isSpouse || data.isSpouse === true) {
+    if (data.isSpouse === true) {
       partnerData = {
         nodeId: selectedNode?.data?._id,
         spouseName: data.name,
