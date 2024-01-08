@@ -1,4 +1,5 @@
 // pages/index.js
+import { useEffect, useState } from "react";
 import FamilyTree from "./tree";
 import { useDispatch } from "react-redux";
 import { getTreeData, selectTreeData } from "@/store/slices/chatSlice";
@@ -7,8 +8,23 @@ import SelectRelationModal from "@/components/modal/SelectRelationModal";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  // Replace this with your actual family tree data
-  const familyTreeData = {
+  const dispatch: any = useDispatch();
+  const treeData = useSelector(selectTreeData);
+  const [familyTreeData, setFamilyTreeData] = useState({});
+  console.log("333333", familyTreeData);
+
+  useEffect(() => {
+    dispatch(getTreeData())
+      .unwrap()
+      .then((res) => console.log("ressss", res))
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    setFamilyTreeData(treeData);
+  }, [treeData]);
+
+  const familyTreeData1 = {
     id: 1,
     name: "AAAA AAAA",
     born: "1788",
@@ -161,9 +177,444 @@ const Home = () => {
     ],
   };
 
+  const familyTreeData2 = {
+    name: "",
+    userId: "65966deb60c31331dc4e85b5",
+    spouseName: "",
+    died: "",
+    spouseDied: "",
+    born: "",
+    gender: "",
+    root: "root",
+    location: "",
+    image: "",
+    spouseImage: "",
+    spouseBorn: "",
+    spouseLocation: "",
+    spouseGender: "",
+    _id: "659a939a9bab2758d1864d82",
+    childrens: [
+      {
+        died: "2023-12-31T19:00:00.000Z",
+        spouseDie: "2023-12-31T19:00:00.000Z",
+        name: "ANGELANGELANGELANGEL",
+        born: "1997-01-04T08:52:14.601Z",
+        location: "qasoori",
+        image:
+          "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+        spouseImage:
+          "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+        spouseName: "lilly",
+        spouseBorn: "1997-01-04T08:52:14.601Z",
+        spouseDied: "1997-01-04T08:52:14.601Z",
+        spouseLocation: "qasoor",
+        spouseGender: "Female",
+        gender: "Male",
+        childrens: [
+          {
+            died: "2023-12-31T19:00:00.000Z",
+            spouseDie: "2023-12-31T19:00:00.000Z",
+            name: "ANGELANGELANGELANGEL",
+            born: "1997-01-04T08:52:14.601Z",
+            location: "qasoori",
+            image:
+              "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+            spouseImage:
+              "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+            spouseName: "lilly",
+            spouseBorn: "1997-01-04T08:52:14.601Z",
+            spouseDied: "1997-01-04T08:52:14.601Z",
+            spouseLocation: "qasoor",
+            spouseGender: "Female",
+            gender: "Male",
+            childrens: [
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                location: "qasoori",
+                image:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseName: "lilly",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                gender: "Male",
+                childrens: [],
+                _id: "659a939a9bab2758d1864d85",
+              },
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                location: "qasoori",
+                image:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                spouseName: "lilly",
+                gender: "Male",
+                childrens: [],
+                _id: "659a939a9bab2758d1864d85",
+              },
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                location: "qasoori",
+                spouseName: "lilly",
+                image:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                gender: "Male",
+                childrens: [],
+                _id: "659a939a9bab2758d1864d85",
+              },
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                location: "qasoori",
+                spouseName: "lilly",
+                image:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                gender: "Male",
+                childrens: [],
+                _id: "659a939a9bab2758d1864d85",
+              },
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                location: "qasoori",
+                spouseName: "lilly",
+                image:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                gender: "Male",
+                childrens: [
+                  {
+                    died: "2023-12-31T19:00:00.000Z",
+                    spouseDie: "2023-12-31T19:00:00.000Z",
+                    name: "ANGELANGELANGELANGEL",
+                    born: "1997-01-04T08:52:14.601Z",
+                    location: "qasoori",
+                    image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                    spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                    spouseBorn: "1997-01-04T08:52:14.601Z",
+                    spouseDied: "1997-01-04T08:52:14.601Z",
+                    spouseLocation: "qasoor",
+                    spouseGender: "Female",
+                    gender: "Male",
+                    childrens: [],
+                    _id: "659a939a9bab2758d1864d85"
+                },
+                {
+                  died: "2023-12-31T19:00:00.000Z",
+                  spouseDie: "2023-12-31T19:00:00.000Z",
+                  name: "ANGELANGELANGELANGEL",
+                  spouseName: "lilly",
+                  born: "1997-01-04T08:52:14.601Z",
+                  location: "qasoori",
+                  image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                  spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                  spouseBorn: "1997-01-04T08:52:14.601Z",
+                  spouseDied: "1997-01-04T08:52:14.601Z",
+                  spouseLocation: "qasoor",
+                  spouseGender: "Female",
+                  gender: "Male",
+                  childrens: [
+                    {
+                      died: "2023-12-31T19:00:00.000Z",
+                      spouseDie: "2023-12-31T19:00:00.000Z",
+                      name: "ANGELANGELANGELANGEL",
+                      born: "1997-01-04T08:52:14.601Z",
+                      location: "qasoori",
+                      image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                      spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                      spouseBorn: "1997-01-04T08:52:14.601Z",
+                      spouseDied: "1997-01-04T08:52:14.601Z",
+                      spouseLocation: "qasoor",
+                      spouseGender: "Female",
+                      gender: "Male",
+                      childrens: [],
+                      _id: "659a939a9bab2758d1864d85"
+                  },
+                  {
+                    died: "2023-12-31T19:00:00.000Z",
+                    spouseDie: "2023-12-31T19:00:00.000Z",
+                    name: "ANGELANGELANGELANGEL",
+                    born: "1997-01-04T08:52:14.601Z",
+                    location: "qasoori",
+                    image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                    spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                    spouseBorn: "1997-01-04T08:52:14.601Z",
+                    spouseDied: "1997-01-04T08:52:14.601Z",
+                    spouseLocation: "qasoor",
+                    spouseGender: "Female",
+                    gender: "Male",
+                    childrens: [],
+                    _id: "659a939a9bab2758d1864d85"
+                },
+                {
+                  died: "2023-12-31T19:00:00.000Z",
+                  spouseDie: "2023-12-31T19:00:00.000Z",
+                  name: "ANGELANGELANGELANGEL",
+                  born: "1997-01-04T08:52:14.601Z",
+                  location: "qasoori",
+                  image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                  spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                  spouseBorn: "1997-01-04T08:52:14.601Z",
+                  spouseDied: "1997-01-04T08:52:14.601Z",
+                  spouseLocation: "qasoor",
+                  spouseGender: "Female",
+                  gender: "Male",
+                  childrens: [],
+                  _id: "659a939a9bab2758d1864d85",
+                  spuseName: "kj",
+              },
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                spuseName: "kj",
+                location: "qasoori",
+                image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                gender: "Male",
+                childrens: [],
+                _id: "659a939a9bab2758d1864d85"
+            },
+            {
+              died: "2023-12-31T19:00:00.000Z",
+              spuseName: "kj",
+              spouseDie: "2023-12-31T19:00:00.000Z",
+              name: "ANGELANGELANGELANGEL",
+              born: "1997-01-04T08:52:14.601Z",
+              location: "qasoori",
+              image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+              spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+              spouseBorn: "1997-01-04T08:52:14.601Z",
+              spouseDied: "1997-01-04T08:52:14.601Z",
+              spouseLocation: "qasoor",
+              spouseGender: "Female",
+              gender: "Male",
+              childrens: [],
+              _id: "659a939a9bab2758d1864d85"
+          }
+                  ],
+                  _id: "659a939a9bab2758d1864d85"
+              }
+                ],
+                _id: "659a939a9bab2758d1864d85",
+              },
+              {
+                died: "2023-12-31T19:00:00.000Z",
+                spouseDie: "2023-12-31T19:00:00.000Z",
+                name: "ANGELANGELANGELANGEL",
+                born: "1997-01-04T08:52:14.601Z",
+                location: "qasoori",
+                image:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseImage:
+                  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                spouseBorn: "1997-01-04T08:52:14.601Z",
+                spouseDied: "1997-01-04T08:52:14.601Z",
+                spouseLocation: "qasoor",
+                spouseGender: "Female",
+                gender: "Male",
+                childrens: [
+                  {
+                    died: "2023-12-31T19:00:00.000Z",
+                    spouseDie: "2023-12-31T19:00:00.000Z",
+                    name: "ANGELANGELANGELANGEL",
+                    born: "1997-01-04T08:52:14.601Z",
+                    location: "qasoori",
+                    image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                    spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                    spouseBorn: "1997-01-04T08:52:14.601Z",
+                    spouseDied: "1997-01-04T08:52:14.601Z",
+                    spouseLocation: "qasoor",
+                    spouseGender: "Female",
+                    gender: "Male",
+                    childrens: [],
+                    _id: "659a939a9bab2758d1864d85"
+                },
+                {
+                  died: "2023-12-31T19:00:00.000Z",
+                  spouseDie: "2023-12-31T19:00:00.000Z",
+                  name: "ANGELANGELANGELANGEL",
+                  born: "1997-01-04T08:52:14.601Z",
+                  location: "qasoori",
+                  image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                  spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+                  spouseBorn: "1997-01-04T08:52:14.601Z",
+                  spouseDied: "1997-01-04T08:52:14.601Z",
+                  spouseLocation: "qasoor",
+                  spouseGender: "Female",
+                  gender: "Male",
+                  childrens: [],
+                  _id: "659a939a9bab2758d1864d85"
+              }
+                ],
+                _id: "659a939a9bab2758d1864d85",
+              },
+            ],
+            _id: "659a939a9bab2758d1864d84",
+          },
+        ],
+        _id: "659a939a9bab2758d1864d812",
+      },
+      {
+        died: "2023-12-31T19:00:00.000Z",
+        spouseDie: "2023-12-31T19:00:00.000Z",
+        name: "ANGELANGELANGELANGEL",
+        born: "1997-01-04T08:52:14.601Z",
+        location: "qasoori",
+        image:
+          "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+        spouseImage:
+          "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+        spouseName: "lilly",
+        spouseBorn: "1997-01-04T08:52:14.601Z",
+        spouseDied: "1997-01-04T08:52:14.601Z",
+        spouseLocation: "qasoor",
+        spouseGender: "Female",
+        gender: "Male",
+        childrens: [
+          {
+            died: "2023-12-31T19:00:00.000Z",
+            spouseDie: "2023-12-31T19:00:00.000Z",
+            name: "ANGELANGELANGELANGEL",
+            born: "1997-01-04T08:52:14.601Z",
+            location: "qasoori",
+            image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+            spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+            spouseBorn: "1997-01-04T08:52:14.601Z",
+            spouseDied: "1997-01-04T08:52:14.601Z",
+            spouseLocation: "qasoor",
+            spouseGender: "Female",
+            gender: "Male",
+            childrens: [],
+            _id: "659a939a9bab2758d1864d85"
+        },
+        {
+          died: "2023-12-31T19:00:00.000Z",
+          spouseDie: "2023-12-31T19:00:00.000Z",
+          name: "ANGELANGELANGELANGEL",
+          born: "1997-01-04T08:52:14.601Z",
+          location: "qasoori",
+          image: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+          spouseImage: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+          spouseBorn: "1997-01-04T08:52:14.601Z",
+          spouseDied: "1997-01-04T08:52:14.601Z",
+          spouseLocation: "qasoor",
+          spouseGender: "Female",
+          gender: "Male",
+          childrens: [],
+          _id: "659a939a9bab2758d1864d85"
+      }
+        ],
+        _id: "659a939a9bab2758d1864d85",
+      },
+    ],
+  };
+
+  const familyTreeData3 = {
+    name: "",
+    userId: "65966deb60c31331dc4e85b5",
+    spouseName: "",
+    died: "",
+    spouseDied: "",
+    born: "",
+    gender: "",
+    root: "root",
+    location: "",
+    image: "",
+    spouseImage: "",
+    spouseBorn: "",
+    spouseLocation: "",
+    spouseGender: "",
+    _id: "659a939a9bab2758d1864d82",
+    childrens: [
+      {
+        died: "2023-12-31T19:00:00.000Z",
+        spouseDie: "2023-12-31T19:00:00.000Z",
+        name: "ANGELANGELANGELANGEL",
+        born: "1997-01-04T08:52:14.601Z",
+        location: "qasoori",
+        image:
+          "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+        spouseImage:
+          "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+        spouseName: "lilly",
+        spouseBorn: "1997-01-04T08:52:14.601Z",
+        spouseDied: "1997-01-04T08:52:14.601Z",
+        spouseLocation: "qasoor",
+        spouseGender: "Female",
+        gender: "Male",
+        childrens: [
+          {
+            died: "2023-12-31T19:00:00.000Z",
+            spouseDie: "2023-12-31T19:00:00.000Z",
+            name: "ANGELANGELANGELANGEL",
+            born: "1997-01-04T08:52:14.601Z",
+            location: "qasoori",
+            image:
+              "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+            spouseImage:
+              "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704452239/thelifescript/q9ig8gmhg4yvvpzimqqa.jpg",
+            spouseName: "lilly",
+            spouseBorn: "1997-01-04T08:52:14.601Z",
+            spouseDied: "1997-01-04T08:52:14.601Z",
+            spouseLocation: "qasoor",
+            spouseGender: "Female",
+            gender: "Male",
+            childrens: [],
+            _id: "659a939a9bab2758d1864d85",
+          },
+        ],
+        _id: "659a939a9bab2758d1864d85",
+      }
+    ]
+  }
+
   return (
     <div>
-      <FamilyTree familyTreeData={familyTreeData} />
+      <FamilyTree familyTreeData={familyTreeData2} />
     </div>
   );
 };
