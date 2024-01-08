@@ -1,36 +1,154 @@
-//
-// .title { font-size: larger; text-align: center; }
-// .name { font-weight: bold; }
-// .about { fill: #777; font-size: smaller; }
-// .lifespan { fill: #2c5; }
-// .link { fill: none; stroke: #000; shape-rendering: crispEdges; }
-// .node { fill: blue; }
-// .nameRect { fill: #ddd; stroke: #999; }
-//
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 import { zoom } from "d3";
 import styles from "./FamilyTree.module.css";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AddIcon from '@mui/icons-material/Add';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 import ReactDOMServer from "react-dom/server";
+import SelectRelationModal from "@/components/modal/SelectRelationModal";
+import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
+import { useDispatch } from "react-redux";
+import { updatePartner } from "@/store/slices/chatSlice";
+
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
+  const dispatch: any = useDispatch();
+  const [familyModal, setFamilyModal] = useState(false);
+  const [familyRelationModal, setFamilyRelationModal] = useState(false);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [updatedNode, setUpdatedNode] = useState({});
+  const [nodeData, setNodeData] = useState(null);
+  const [selectedRelation, setSelectedRelation] = useState();
+  const [relations, setRelations] = useState([
+    "Brother",
+    "Sister",
+    "Daughter",
+    "Son",
+  ]);
+  const [personData, setPersonData] = useState({});
+  const profileIcon =
+    "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
+
+  const handleAddedPerson = (data) => {
+    console.log("addedData", data);
+    const { relationType, ...newData } = data;
+
+    if (relationType === "Mother") {
+      addMother(newData);
+    } else if (relationType === "Father") {
+      addFather(newData);
+    } else if (relationType === "Brother") {
+      addBrother(newData);
+    } else if (relationType === "Sister") {
+      addSister(newData);
+    } else if (relationType === "Daughter") {
+      addDaughter(newData);
+    } else if (relationType === "Son") {
+      addSon(newData);
+    } else if (relationType === "Partner") {
+      addPartner(newData);
+    } else {
+      addPartner(newData);
+    }
+
+    setFamilyModal(false);
+  };
+
+  const addPartner = (data) => {
+    let partnerData;
+    if (data.isSpouse && data.isSpouse === true) {
+      partnerData = {
+        nodeId: selectedNode?.data?._id,
+        spouseName: data.name,
+        spouseBorn: data.born,
+        spouseDied: data.died,
+        spouseGender: data.gender,
+        spouseImage: data.image,
+        spouseLocation: data.location,
+      };
+    } else {
+      partnerData = {
+        nodeId: selectedNode?.data?._id,
+        name: data.name,
+        born: data.born,
+        died: data.died,
+        gender: data.gender,
+        image: data.image,
+        location: data.location,
+      };
+    }
+
+    dispatch(updatePartner(partnerData))
+      .unwrap()
+      .then(() => setUpdatedNode({}));
+  };
+
+  const addMother = (data) => {};
+
+  const addFather = (data) => {};
+
+  const addBrother = (data) => {};
+
+  const addSister = (data) => {};
+
+  const addSon = (data) => {};
+
+  const addDaughter = (data) => {};
+
+  const handleIconClick = (name, iconType, d) => {
+    if (iconType === "editspouse") {
+      handleEditSpouse(name, d);
+    } else if (iconType === "add") {
+      handleAdd(name, d);
+    } else if (iconType === "edit") {
+      handleEdit(name, d);
+    }
+  };
+
+  const handleEditSpouse = (name, d) => {
+    // Implement your logic for handling edit
+    setUpdatedNode({ isSpouse: true, ...d?.data });
+    setSelectedNode(d);
+    setFamilyModal(true);
+    console.log(`spouseEdit clicked for ${name}`, "345", d);
+  };
+
+  const handleEdit = (name, d) => {
+    // Implement your logic for handling edit
+    setUpdatedNode({ isSpouse: false, ...d?.data });
+    setSelectedNode(d);
+    setFamilyModal(true);
+    console.log(`Edit clicked for ${name}`);
+  };
+
+  const handleAdd = (name, d) => {
+    const isSpouse = d?.data?.name ? false : true;
+    setSelectedNode({ isSpouse: isSpouse, ...d });
+    !d?.parent?.data?.name && setRelations((prev) => [...prev, "Father"]);
+    !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Mother"]);
+    !d?.data?.spouseName && setRelations((prev) => [...prev, "Partner"]);
+    setFamilyRelationModal(true);
+    console.log(`Add clicked for ${name}`);
+  };
 
   useEffect(() => {
     if (!familyTreeData) {
       console.error("Family tree data is missing.");
       return;
-    }else{
-        drawTree();
+    } else {
+      d3.select(svgRef.current).selectAll("*").remove();
+      drawTree();
     }
   }, [familyTreeData]);
 
   const drawTree = () => {
-    const margin = { top: 10, right: 640, bottom: 10, left: 10 };
-    const fullWidth = 2000;
-    const fullHeight = 1100;
+    const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
+    const treeHeight = totalNodes?.height;
+    const rightMargin = 2400 - (treeHeight - 1) * 200;
+    const margin = { top: 10, right: rightMargin, bottom: 10, left: 10 };
+    const fullWidth = 3000;
+    const fullHeight = 1650;
     const width = fullWidth - margin.left - margin.right;
     const height = fullHeight - margin.top - margin.bottom;
 
@@ -64,7 +182,7 @@ const FamilyTree = ({ familyTreeData }) => {
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
     const elbow = (d, i) => {
-      const yOffset = d.target.data.spouse ? -55 : 0;
+      const yOffset = d.target.data.spouseName ? -55 : 0;
       return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${
         d.target.x + yOffset
       }H${d.target.y + 10}`;
@@ -74,7 +192,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const treeNodes = tree(nodes);
     const descendants = treeNodes.descendants().slice(1);
-    const links = treeNodes.links().filter(link => link.source.depth > 0);
+    const links = treeNodes.links().filter((link) => link.source.depth > 0);
 
     const link = g
       .selectAll(".link")
@@ -92,52 +210,61 @@ const FamilyTree = ({ familyTreeData }) => {
       .attr("class", `${styles.node}`)
       .attr("transform", (d) => `translate(${d.y},${d.x})`);
 
-      node.each(function (d) {
-        renderNode(d3.select(this), d);
-      });
-  }
+    node.each(function (d) {
+      renderNode(d3.select(this), d);
+    });
+  };
 
   const renderNode = (personNode, d) => {
     const renderRect = (x, y, height, className) => {
-      personNode.append("rect")
+      personNode
+        .append("rect")
         .attr("class", className)
         .attr("x", x)
+        .attr("rx", 10)
         .attr("y", y)
         .attr("width", 200)
         .attr("height", height)
-        .on("click", () => console.log("Clicked on:", d.data.name || d.data.spouse));
+        .on("click", () =>
+          console.log("Clicked on:", d.data.name || d.data.spouseName)
+        );
     };
-  
-    const renderText = (x, y, text) => {
-      personNode.append('text')
-        .attr('class', `${styles.name}`)
-        .attr('x', x)
-        .attr('y', y)
+
+    const renderText = (x, y, text, className) => {
+      personNode
+        .append("text")
+        .attr("class", className)
+        .attr("x", x)
+        .attr("y", y)
         .text(text);
     };
-  
-    const renderImage = (x, y) => {
-      personNode.append("image")
-        .attr("xlink:href", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrV7sCjuWDaPNa7VE7LStsRFLL6T4dZDChza0HbaEQHsqXwL4hq-ceFBdvKScb_f31gA&usqp=CAU")
+
+    const renderImage = (x, y, image) => {
+      personNode
+        .append("image")
+        .attr("xlink:href", image)
         .attr("width", 60)
         .attr("height", 60)
         .attr("x", x)
+        .attr("rx", 10)
         .attr("y", y)
-        .attr('class', `${styles.circularImage}`);
+        .attr("class", `${styles.circularImage}`);
     };
-  
-    const renderForeignObject = (x, y, onClick, icon) => {
-      personNode.append("foreignObject")
-        .attr("width", 15)
-        .attr("height", 15)
+
+    const renderForeignObject = (x, y, onClick, icon, d, iconType) => {
+      personNode
+        .append("foreignObject")
+        .attr("width", 20)
+        .attr("height", 20)
         .attr("x", x)
         .attr("y", y)
-        .on("click", () => console.log("Clicked on:", d.data.spouse))
+        .on("click", () => onClick(d, iconType)) // Pass the data and iconType to the onClick callback
         .html(() => ReactDOMServer.renderToString(icon));
     };
-  
+
     const renderLine = (x1, y1, x2, y2) => {
-      personNode.append("line")
+      personNode
+        .append("line")
         .attr("class", `${styles.connectionLine}`)
         .attr("x1", x1)
         .attr("y1", y1)
@@ -146,197 +273,152 @@ const FamilyTree = ({ familyTreeData }) => {
         .style("stroke", "black")
         .style("stroke-width", 2);
     };
-  
-    if (d.data.spouse) {
+
+    if (d.data.spouseName) {
       renderRect(10, -105, 100, `${styles.nameRect}`);
-      renderText(16, -85, d.data.name || '');
+      renderImage(14, -100, d.data.image || profileIcon);
+      renderText(76, -75, d.data.name || "", `${styles.name}`);
+      //age
+      const born = d.data.born.slice(0, 4);
+      const died = d.data.died.slice(0, 4);
+      const age =
+        born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+      renderText(76, -50, age || "", `${styles.dateLocation}`);
+      renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
+      //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`);
-      renderText(70, 25, d.data.spouse || '');
-      renderImage(20, -90);
-  
+      renderImage(14, 10, d.data.spouseImage || profileIcon);
+      renderText(76, 35, d.data.spouseName || "", `${styles.name}`);
+      const spouseBorn = d.data.spouseBorn.slice(0, 4);
+      const spouseDied = d.data.spouseDied.slice(0, 4);
+      const spouseAge =
+        spouseBorn && spouseDied
+          ? spouseBorn + " - " + spouseDied
+          : spouseBorn
+          ? "b. " + spouseBorn
+          : "d. " + spouseDied;
+      renderText(76, 60, spouseAge || "", `${styles.dateLocation}`);
+      renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
-        { x: 20, y: -40, icon: <DeleteIcon style={{ fill: "black", cursor: "pointer" }} /> },
-        { x: 40, y: -40, icon: <AddIcon style={{ fill: "black", cursor: "pointer" }} /> },
-        { x: 60, y: -40, icon: <EditIcon style={{ fill: "black", cursor: "pointer" }} /> },
+        {
+          x: 20,
+          y: -35,
+          icon: <EditIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20 }} />,
+          type: "edit",
+        },
+        {
+          x: 50,
+          y: -35,
+          icon: <AddIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20  }} />,
+          type: "add",
+        },
       ];
-  
-      iconPositions.forEach(({ x, y, icon }) => {
-        renderForeignObject(x, y, () => console.log("Clicked on:", d.data.spouse), icon);
+
+      iconPositions.forEach(({ x, y, icon, type }) => {
+        renderForeignObject(
+          x,
+          y,
+          (data, iconType) => handleIconClick(data.data.name, iconType, d),
+          icon,
+          d,
+          type
+        );
       });
-  
+
+      const iconPosition2 = [
+        {
+          x: 20,
+          y: 75,
+          icon: <EditIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20  }} />,
+          type: "editspouse",
+        },
+      ];
+
+      iconPosition2.forEach(({ x, y, icon, type }) => {
+        renderForeignObject(
+          x,
+          y,
+          (data, iconType) =>
+            handleIconClick(data.data.spouseName, iconType, d),
+          icon,
+          d,
+          type
+        );
+      });
+
       const personBottomCenterX = 10 + 200 / 2;
       const personBottomCenterY = -105 + 100;
       const spouseTopCenterX = 10 + 200 / 2;
       const spouseTopCenterY = 5;
-  
-      renderLine(personBottomCenterX, personBottomCenterY, spouseTopCenterX, spouseTopCenterY);
+
+      renderLine(
+        personBottomCenterX,
+        personBottomCenterY,
+        spouseTopCenterX,
+        spouseTopCenterY
+      );
     } else {
-      const born = d.data.born;
-      const died = d.data.died;
-      const age = born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+      const born = d.data.born.slice(0, 4);
+      const died = d.data.died.slice(0, 4);
+      const age =
+        born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
       renderRect(10, -50, 100, `${styles.nameRect}`);
-      renderImage(15, -45);
-      renderText(85, -20, d.data.name || '');
-      renderText(85, 5, age || '');
-      renderText(85, 30, d.data.location || '')
+      renderImage(14, -45, d.data.image || profileIcon);
+      renderText(76, -20, d.data.name || "", `${styles.name}`);
+      renderText(76, 5, age || "", `${styles.dateLocation}`);
+      renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
 
       const iconPositions = [
-        { x: 20, y: 20, icon: <EditIcon style={{ fill: "black", cursor: "pointer", }} /> },
-        { x: 50, y: 20, icon: <AddIcon style={{ fill: "black", cursor: "pointer" }} /> },
+        {
+          x: 20,
+          y: 20,
+          icon: <EditIcon style={{ fill: "black", cursor: "pointer", maxWidth: 20, maxHeight: 20  }} />,
+          type: "edit",
+        },
+        {
+          x: 50,
+          y: 20,
+          icon: <AddIcon style={{ fill: "black", cursor: "pointer", maxWidth: 25, maxHeight: 20  }} />,
+          type: "add",
+        },
       ];
-  
-      iconPositions.forEach(({ x, y, icon }) => {
-        renderForeignObject(x, y, () => console.log("Clicked on:", d.data.spouse), icon);
+
+      iconPositions.forEach(({ x, y, icon, type }) => {
+        renderForeignObject(
+          x,
+          y,
+          (data, iconType) => handleIconClick(data.data.name, iconType, data),
+          icon,
+          d,
+          type
+        );
       });
     }
   };
 
-  return <svg ref={svgRef}></svg>;
+  return (
+    <>
+      <svg ref={svgRef}></svg>
+
+      <SelectRelationModal
+        relations={relations}
+        familyRelationModal={familyRelationModal}
+        setFamilyRelationModal={setFamilyRelationModal}
+        setFamilyModal={setFamilyModal}
+        onClick={(item) => {
+          setSelectedRelation(item);
+        }}
+      />
+
+      <FamilyTreeDataModal
+        nodeData={updatedNode}
+        familyModal={familyModal}
+        setFamilyModal={setFamilyModal}
+        selectedRelation={selectedRelation}
+        onSubmit={handleAddedPerson}
+      />
+    </>
+  );
 };
 
 export default FamilyTree;
-
-
-    //   node.each(function (d) {
-        // // Add a condition to check if the rectangle should be rendered
-        // if (d.data.spouse) {
-        //     // Render the first rectangle (for the person)
-        //     const personNode = d3.select(this);
-    
-        //     personNode.append("rect")
-        //         .attr("class", `${styles.nameRect}`)
-        //         .attr("x", 10)
-        //         .attr("y", -105)
-        //         .attr("width", 200)
-        //         .attr("height", 100)
-        //         .on("click", () => console.log("Clicked on:", d.data.name));
-    
-        //     // Render the text for the person
-        //     personNode.append('text')
-        //         .attr('class', `${styles.name}`)
-        //         .attr('x', 16)
-        //         .attr('y', -85)
-        //         .text((d) => d.data.name || '');
-    
-        //     // Render the second rectangle (for the spouse)
-        //     personNode.append("rect")
-        //         .attr("class", `${styles.spouseRect}`)
-        //         .attr("x", 10)
-        //         .attr("y", 5)
-        //         .attr("width", 200)
-        //         .attr("height", 100)
-        //         .on("click", () => console.log("Clicked on:", d.data.spouse));
-    
-        //     // Render the text for the spouse
-        //     personNode.append('text')
-        //         .attr('class', `${styles.name}`)
-        //         .attr('x', 70)
-        //         .attr('y', 25)
-        //         .text((d) => d.data.spouse || '');
-
-        //     personNode.append("image")
-        //     .attr(
-        //         "xlink:href",
-        //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrV7sCjuWDaPNa7VE7LStsRFLL6T4dZDChza0HbaEQHsqXwL4hq-ceFBdvKScb_f31gA&usqp=CAU"
-        //     ) // Use a placeholder if no avatar is set
-        //     .attr("width", 50)
-        //     .attr("height", 50)
-        //     .attr("x", 20) // Center the image horizontally
-        //     .attr("y", -90); // Center the image vertically
-    
-        //     personNode.append("foreignObject")
-        //     .attr("width", 15)
-        //     .attr("height", 15)
-        //     .attr("x", 20) // Adjust the spacing between icons
-        //     .attr("y", -40)
-        //     .on("click", () => console.log("Clicked on:", d.data.spouse))
-        //     .html(() => ReactDOMServer.renderToString(<DeleteIcon style={{ fill: "black", cursor: "pointer" }} />));
-
-        //     personNode.append("foreignObject")
-        //     .attr("width", 15)
-        //     .attr("height", 15)
-        //     .attr("x", 40) // Adjust the spacing between icons
-        //     .attr("y", -40)
-        //     .on("click", () => console.log("Clicked on:", d.data.spouse))
-        //     .html(() => ReactDOMServer.renderToString(<AddIcon style={{ fill: "black", cursor: "pointer" }} />));
-
-        //     personNode.append("foreignObject")
-        //     .attr("width", 15)
-        //     .attr("height", 15)
-        //     .attr("x", 60) // Adjust the spacing between icons
-        //     .attr("y", -40)
-        //     .on("click", () => console.log("Clicked on:", d.data.spouse))
-        //     .html(() => ReactDOMServer.renderToString(<EditIcon style={{ fill: "black", cursor: "pointer" }} />));
-        //     // Calculate the starting point (bottom center) of the line
-        //     const personBottomCenterX = 10 + 200 / 2;
-        //     const personBottomCenterY = -105 + 100;
-    
-        //     // Calculate the ending point (top center) of the line
-        //     const spouseTopCenterX = 10 + 200 / 2;
-        //     const spouseTopCenterY = 5;
-    
-        //     // Connect the two rectangles with a line
-        //     personNode.append("line")
-        //         .attr("class", `${styles.connectionLine}`)
-        //         .attr("x1", personBottomCenterX)
-        //         .attr("y1", personBottomCenterY)
-        //         .attr("x2", spouseTopCenterX)
-        //         .attr("y2", spouseTopCenterY)
-        //         .style("stroke", "black")
-        //         .style("stroke-width", 2);
-    
-        // } else {
-        //     // Render a single rectangle (for the person)
-        //     const personNode = d3.select(this);
-    
-        //     personNode.append("rect")
-        //         .attr("class", `${styles.nameRect}`)
-        //         .attr("x", 10)
-        //         .attr("y", -50)
-        //         .attr("width", 200)
-        //         .attr("height", 100)
-        //         .on("click", () => console.log("Clicked on:", d.data.name));
-    
-        //     // Render the text for the person
-        //     personNode.append('text')
-        //         .attr('class', `${styles.name}`)
-        //         .attr('x', 16)
-        //         .attr('y', -30)
-        //         .text((d) => d.data.name || '');
-
-        //         personNode.append("image")
-        //         .attr(
-        //             "xlink:href",
-        //             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXrV7sCjuWDaPNa7VE7LStsRFLL6T4dZDChza0HbaEQHsqXwL4hq-ceFBdvKScb_f31gA&usqp=CAU"
-        //         ) // Use a placeholder if no avatar is set
-        //         .attr("width", 50)
-        //         .attr("height", 50)
-        //         .attr("x", 20) // Center the image horizontally
-        //         .attr("y", -30); // Center the image vertically
-        
-        //         personNode.append("foreignObject")
-        //         .attr("width", 15)
-        //         .attr("height", 15)
-        //         .attr("x", 20) // Adjust the spacing between icons
-        //         .attr("y", 30)
-        //         .on("click", () => console.log("Clicked on:", d.data.spouse))
-        //         .html(() => ReactDOMServer.renderToString(<DeleteIcon style={{ fill: "black", cursor: "pointer" }} />));
-    
-        //         personNode.append("foreignObject")
-        //         .attr("width", 15)
-        //         .attr("height", 15)
-        //         .attr("x", 40) // Adjust the spacing between icons
-        //         .attr("y", 30)
-        //         .on("click", () => console.log("Clicked on:", d.data.spouse))
-        //         .html(() => ReactDOMServer.renderToString(<AddIcon style={{ fill: "black", cursor: "pointer" }} />));
-    
-        //         personNode.append("foreignObject")
-        //         .attr("width", 15)
-        //         .attr("height", 15)
-        //         .attr("x", 60) // Adjust the spacing between icons
-        //         .attr("y", 30)
-        //         .on("click", () => console.log("Clicked on:", d.data.spouse))
-        //         .html(() => ReactDOMServer.renderToString(<EditIcon style={{ fill: "black", cursor: "pointer" }} />));
-        // }
-    // });
-

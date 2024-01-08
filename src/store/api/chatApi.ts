@@ -161,6 +161,49 @@ export async function getBookCoverApi() {
   }
 }
 
+export async function getTreeDataApi() {
+  try {
+    const res = await api.get("family-tree");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function updatePartnerApi(data: {
+  spouseDied?: string;
+  spouseBorn?: string;
+  spouseLocation?: string;
+  spouseName?: string;
+  spouseGender?: string;
+  spouseImage?: string;
+  died?: string;
+  born?: string;
+  location?: string;
+  name?: string;
+  gender?: string;
+  image?: string;
+  nodeId?: string;
+}) {
+  try {
+    const{nodeId, ...newData} = data;
+    const res = await api.patch(`family-tree/${data.nodeId}/update-couple`, newData);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function updateChapterResponseApi(data: {
   id: string;
   userText: string;
@@ -186,6 +229,20 @@ export async function updateChapterResponseApi(data: {
 export async function chapterResponseApi(data: { chapterId: string }) {
   try {
     const res = await api.post("/users/compile-answers", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function customerSupportApi(data: { subject: string, description: string }) {
+  try {
+    const res = await api.post("/users/support", data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -248,7 +305,7 @@ export async function getChapterNotificationsApi() {
       'Content-Type': 'application/json',
     };
     const res = await axios.get("https://api.thelifescript.com/notification", {headers});
-    return res;
+    return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;

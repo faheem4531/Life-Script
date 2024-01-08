@@ -19,9 +19,13 @@
 }
 
 .name {
-  /* font-weight: bold; */
-  fill: white !important;
-  font-size: 12px
+  fill: black !important;
+  font-size: 10px
+}
+
+.dateLocation {
+  fill: black !important;
+  font-size: 7px
 }
 
 .about {
@@ -36,7 +40,7 @@
 .link {
   fill: none;
   stroke: #000;
-  shape-rendering: crispEdges;
+  shape-rendering: auto;
 }
 
 .node {
@@ -44,12 +48,16 @@
 }
 
 .nameRect {
-  fill: #ddd;
-  stroke: #999;
+  fill: white;
+  stroke: #6495ED; /* Border color */
+  stroke-width: 2; /* Border width */
+  border-radius: 10;
 }
-.spuseRect {
-  fill: brown;
-  stroke: #999;
+.spouseRect {
+  fill: white;
+  stroke: pink;
+  stroke-width: 2; /* Border width */
+  border-radius: 10;
 }
 .circularImage {
   border-radius: 50%;
