@@ -1,6 +1,6 @@
 import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
 import SelectRelationModal from "@/components/modal/SelectRelationModal";
-import { updatePartner, addChildren } from "@/store/slices/chatSlice";
+import { updatePartner, addChildren, addParent } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box } from "@mui/material";
@@ -19,6 +19,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const [selectedNode, setSelectedNode] = useState(null);
   const [updatedNode, setUpdatedNode] = useState({});
   const [nodeData, setNodeData] = useState(null);
+  console.log("nodeData", selectedNode);
   const [selectedRelation, setSelectedRelation] = useState();
   const [relations, setRelations] = useState([
     "Sibling",
@@ -34,10 +35,8 @@ const FamilyTree = ({ familyTreeData }) => {
     setUpdatedNode({});
     const { relationType, ...newData } = data;
 
-    if (relationType === "Mother") {
-      addMother(newData);
-    } else if (relationType === "Father") {
-      addFather(newData);
+    if (relationType === "Parent") {
+      addParents(newData);
     } else if (relationType === "Child") {
       addChild(newData);
     } else if (relationType === "Partner") {
@@ -52,17 +51,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const addPartner = (data) => {
     let partnerData;
-    if (true) {
-      partnerData = {
-        nodeId: selectedNode?.data?._id,
-        spouseName: data.name,
-        spouseBorn: data.born,
-        spouseDied: data.died,
-        spouseGender: data.gender,
-        spouseImage: data.image,
-        spouseLocation: data.location,
-      };
-    } else {
+    console.log("datyyy",data);
+    if (data?.isSpouse === false) {
       partnerData = {
         nodeId: selectedNode?.data?._id,
         name: data.name,
@@ -71,6 +61,16 @@ const FamilyTree = ({ familyTreeData }) => {
         gender: data.gender,
         image: data.image,
         location: data.location,
+      };
+    } else {
+      partnerData = {
+        nodeId: selectedNode?.data?._id,
+        spouseName: data.name,
+        spouseBorn: data.born,
+        spouseDied: data.died,
+        spouseGender: data.gender,
+        spouseImage: data.image,
+        spouseLocation: data.location,
       };
     }
 
@@ -82,9 +82,26 @@ const FamilyTree = ({ familyTreeData }) => {
       });
   };
 
-  const addMother = (data) => {};
 
-  const addFather = (data) => {};
+
+  const addParents = (data) => {
+    console.log("in the father");
+    let parentData = {
+      name: data.name,
+      born: data.born,
+      died: data.died,
+      gender: data.gender,
+      image: data.image,
+      location: data.location,
+    };
+
+    dispatch(addParent(parentData))
+    .unwrap()
+    .then(() => {
+      setUpdatedNode({});
+      setNodeData(null);
+    });
+  };
 
   const addChild = (data) => {
     let childData = {};
@@ -119,11 +136,28 @@ const FamilyTree = ({ familyTreeData }) => {
 
   };
 
-  const addSibling = (data) => {};
+  const addSibling = (data) => {    
+    let childData = {
+      nodeId: selectedNode?.parent?.data?._id,
+      name: data.name,
+      born: data.born,
+      died: data.died,
+      gender: data.gender,
+      image: data.image,
+      location: data.location,
+    };
+
+    dispatch(addChildren(childData))
+    .unwrap()
+    .then(() => {
+      setUpdatedNode({});
+      setNodeData(null);
+    });
+
+  };
 
   const handleIconClick = (name, iconType, d) => {
     setUpdatedNode({});
-    setNodeData(null);
     setRelations([
       "Sibling",
       "Child"
@@ -156,8 +190,7 @@ const FamilyTree = ({ familyTreeData }) => {
     setNodeData(null);
     const isSpouse = d?.data?.name ? false : true;
     setSelectedNode({ isSpouse: isSpouse, ...d });
-    !d?.parent?.data?.name && setRelations((prev) => [...prev, "Father"]);
-    !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Mother"]);
+    !d?.parent?.data?.name && !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Parent"]);
     !d?.data?.spouseName && setRelations((prev) => [...prev, "Partner"]);
     setFamilyRelationModal(true);
   };
@@ -498,10 +531,11 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyRelationModal={setFamilyRelationModal}
         setFamilyModal={setFamilyModal}
         onClick={(item) => {
-          setUpdatedNode({});
-          setNodeData(null);
           setFamilyRelationModal(false);
           setSelectedRelation(item);
+          if(item === "Partner"){
+            setUpdatedNode({ isSpouse: true });
+          }
         }}
       />
 

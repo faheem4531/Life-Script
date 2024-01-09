@@ -46,7 +46,8 @@ import {
   getTocApi,
   getTreeDataApi,
   addChildApi,
-  getHourApi
+  getHourApi,
+  addParentApi
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -394,6 +395,31 @@ export const addChildren = createAsyncThunk<any, any>(
   }
 );
 
+export const addParent = createAsyncThunk<any, any>(
+  "chat/add-parent",
+  async (data: {
+    spouseDied?: string;
+    spouseBorn?: string;
+    spouseLocation?: string;
+    spouseName?: string;
+    spouseGender?: string;
+    spouseImage?: string;
+    died?: string;
+    born?: string;
+    location?: string;
+    name?: string;
+    gender?: string;
+    image?: string;
+  }) => {
+    try {
+      const response = await addParentApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 export const getBookCover = createAsyncThunk<any[], void>(
   "chat/getBook-cover",
   async () => {
@@ -677,6 +703,9 @@ export const chatSlice = createSlice({
       state.treeData = action.payload;
     });
     builder.addCase(addChildren.fulfilled, (state, action) => {
+      state.treeData = action.payload;
+    });
+    builder.addCase(addParent.fulfilled, (state, action) => {
       state.treeData = action.payload;
     });
   },

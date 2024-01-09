@@ -39,7 +39,6 @@ const FamilyTreeDataModal = ({
     null
   );
   const maxDate = new Date();
-  console.log("1234",nodeData?.spouseBorn);
 
   console.log("qwerty22", nodeData);
 

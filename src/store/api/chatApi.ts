@@ -233,6 +233,33 @@ export async function addChildApi(data: {
   }
 }
 
+export async function addParentApi(data: {
+  spouseDied?: string;
+  spouseBorn?: string;
+  spouseLocation?: string;
+  spouseName?: string;
+  spouseGender?: string;
+  spouseImage?: string;
+  died?: string;
+  born?: string;
+  location?: string;
+  name?: string;
+  gender?: string;
+  image?: string;
+}) {
+  try {
+    const res = await api.post("family-module/add-father", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function updateChapterResponseApi(data: {
   id: string;
   userText: string;
