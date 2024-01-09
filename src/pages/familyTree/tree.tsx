@@ -82,8 +82,6 @@ const FamilyTree = ({ familyTreeData }) => {
       });
   };
 
-
-
   const addParents = (data) => {
     console.log("in the father");
     let parentData = {
