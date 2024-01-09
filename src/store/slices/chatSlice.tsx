@@ -6,6 +6,7 @@ import {
   createSlice,
 } from "@reduxjs/toolkit";
 import {
+  getAnswersApi,
   updatePartnerApi,
   customerSupportApi,
   bookTitleApi,
@@ -43,7 +44,9 @@ import {
   getOpenaiQuestionApi,
   createtocApi,
   getTocApi,
-  getTreeDataApi
+  getTreeDataApi,
+  addChildApi,
+  getHourApi
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -53,6 +56,7 @@ interface State {
   questions: any[];
   templates: any[];
   notifications: any[];
+  answers: any[];
   coverData: any[];
   chapter: any;
   chapterLoading: any;
@@ -67,6 +71,7 @@ const initialState: State = {
   templates: [],
   notifications: [],
   coverData: [],
+  answers: [],
   chapter: {},
   tocData: {},
   treeData: {},
@@ -145,6 +150,30 @@ export const getOpenaiQuestion = createAsyncThunk<UserData, any>(
   }) => {
     try {
       const response = await getOpenaiQuestionApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getAnswers = createAsyncThunk<any[], void>(
+  "chat/get-answers",
+  async () => {
+    try {
+      const response = await getAnswersApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getHours = createAsyncThunk<any[], void>(
+  "chat/get-hours",
+  async () => {
+    try {
+      const response = await getHourApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -332,6 +361,32 @@ export const updatePartner = createAsyncThunk<any, any>(
   }) => {
     try {
       const response = await updatePartnerApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const addChildren = createAsyncThunk<any, any>(
+  "chat/add-children",
+  async (data: {
+    spouseDied?: string;
+    spouseBorn?: string;
+    spouseLocation?: string;
+    spouseName?: string;
+    spouseGender?: string;
+    spouseImage?: string;
+    died?: string;
+    born?: string;
+    location?: string;
+    name?: string;
+    gender?: string;
+    image?: string;
+    nodeId?: string;
+  }) => {
+    try {
+      const response = await addChildApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -612,10 +667,16 @@ export const chatSlice = createSlice({
     builder.addCase(simpleChapter.fulfilled, (state, action) => {
       state.chapterLoading = "loaded";
     });
+    builder.addCase(getAnswers.fulfilled, (state, action) => {
+      state.answers = action.payload;
+    });
     builder.addCase(getTreeData.fulfilled, (state, action) => {
       state.treeData = action.payload;
     });
     builder.addCase(updatePartner.fulfilled, (state, action) => {
+      state.treeData = action.payload;
+    });
+    builder.addCase(addChildren.fulfilled, (state, action) => {
       state.treeData = action.payload;
     });
   },
@@ -624,6 +685,7 @@ export const chatSlice = createSlice({
 export const {} = chatSlice.actions;
 
 export const selectChat = (state: { chat: any }) => state.chat.chats;
+export const selectAnswers = (state: {chat: any}) => state.chat.answers;
 export const selectTreeData = (state: {chat: any}) => state.chat.treeData;
 export const selectCoverData = (state: { chat: any }) => state.chat.coverData;
 export const selectChapterNotification = (state: { chat: any }) =>

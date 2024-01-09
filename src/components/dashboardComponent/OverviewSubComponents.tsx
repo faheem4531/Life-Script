@@ -12,7 +12,7 @@ export const ViewBook = () => {
   return (
     <>
       <Box
-        onClick={() => router.push("/familyTree")}
+        onClick={() => router.push("/dashboard/BookView")}
         sx={{
           bgcolor: "#197065",
           color: "#fff",
@@ -54,10 +54,13 @@ export const ViewBook = () => {
 
 export const ViewTree = () => {
   const { t } = useTranslation();
+  const router = useRouter();
   return (
     <Box
+    onClick={() => router.push("/familyTree")}
       sx={{
         bgcolor: "#197065",
+        cursor: "pointer",
         color: "#fff",
         width: "100%",
         padding: "16px 0",

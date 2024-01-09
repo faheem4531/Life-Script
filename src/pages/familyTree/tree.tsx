@@ -1,6 +1,6 @@
 import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
 import SelectRelationModal from "@/components/modal/SelectRelationModal";
-import { updatePartner } from "@/store/slices/chatSlice";
+import { updatePartner, addChildren } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box } from "@mui/material";
@@ -21,17 +21,15 @@ const FamilyTree = ({ familyTreeData }) => {
   const [nodeData, setNodeData] = useState(null);
   const [selectedRelation, setSelectedRelation] = useState();
   const [relations, setRelations] = useState([
-    "Brother",
-    "Sister",
-    "Daughter",
-    "Son",
+    "Sibling",
+    "Child"
   ]);
   const [personData, setPersonData] = useState({});
   const profileIcon =
     "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
   const handleAddedPerson = (data) => {
-    console.log("addedData", data);
+    setFamilyModal(false);
     setSelectedNode(null);
     setUpdatedNode({});
     const { relationType, ...newData } = data;
@@ -40,27 +38,21 @@ const FamilyTree = ({ familyTreeData }) => {
       addMother(newData);
     } else if (relationType === "Father") {
       addFather(newData);
-    } else if (relationType === "Brother") {
-      addBrother(newData);
-    } else if (relationType === "Sister") {
-      addSister(newData);
-    } else if (relationType === "Daughter") {
-      addDaughter(newData);
-    } else if (relationType === "Son") {
-      addSon(newData);
+    } else if (relationType === "Child") {
+      addChild(newData);
     } else if (relationType === "Partner") {
       addPartner(newData);
+    } else if(relationType === "Sibling"){
+      addSibling(newData);
     } else {
       addPartner(newData);
     }
 
-    setFamilyModal(false);
   };
 
   const addPartner = (data) => {
     let partnerData;
-    console.log("77777",data?.isSpouse);
-    if (data.isSpouse === true) {
+    if (true) {
       partnerData = {
         nodeId: selectedNode?.data?._id,
         spouseName: data.name,
@@ -94,17 +86,48 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const addFather = (data) => {};
 
-  const addBrother = (data) => {};
+  const addChild = (data) => {
+    let childData = {};
+    if (data?.isSpouse === true) {
+      childData = {
+        nodeId: selectedNode?.data?._id,
+        spouseName: data.name,
+        spouseBorn: data.born,
+        spouseDied: data.died,
+        spouseGender: data.gender,
+        spouseImage: data.image,
+        spouseLocation: data.location,
+      };
+    } else {
+      childData = {
+        nodeId: selectedNode?.data?._id,
+        name: data.name,
+        born: data.born,
+        died: data.died,
+        gender: data.gender,
+        image: data.image,
+        location: data.location,
+      };
+    }
 
-  const addSister = (data) => {};
+    dispatch(addChildren(childData))
+    .unwrap()
+    .then(() => {
+      setUpdatedNode({});
+      setNodeData(null);
+    });
 
-  const addSon = (data) => {};
+  };
 
-  const addDaughter = (data) => {};
+  const addSibling = (data) => {};
 
   const handleIconClick = (name, iconType, d) => {
     setUpdatedNode({});
     setNodeData(null);
+    setRelations([
+      "Sibling",
+      "Child"
+    ])
     if (iconType === "editspouse") {
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
@@ -119,7 +142,6 @@ const FamilyTree = ({ familyTreeData }) => {
     setUpdatedNode({ isSpouse: true, ...d?.data });
     setSelectedNode(d);
     setFamilyModal(true);
-    console.log(`spouseEdit clicked for ${name}`, "345", d);
   };
 
   const handleEdit = (name, d) => {
@@ -127,22 +149,21 @@ const FamilyTree = ({ familyTreeData }) => {
     setUpdatedNode({ isSpouse: false, ...d?.data });
     setSelectedNode(d);
     setFamilyModal(true);
-    console.log(`Edit clicked for ${name}`);
   };
 
   const handleAdd = (name, d) => {
+    setUpdatedNode({});
+    setNodeData(null);
     const isSpouse = d?.data?.name ? false : true;
     setSelectedNode({ isSpouse: isSpouse, ...d });
     !d?.parent?.data?.name && setRelations((prev) => [...prev, "Father"]);
     !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Mother"]);
     !d?.data?.spouseName && setRelations((prev) => [...prev, "Partner"]);
     setFamilyRelationModal(true);
-    console.log(`Add clicked for ${name}`);
   };
 
   useEffect(() => {
     if (!familyTreeData) {
-      console.error("Family tree data is missing.");
       return;
     } else {
       d3.select(svgRef.current).selectAll("*").remove();
@@ -477,6 +498,9 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyRelationModal={setFamilyRelationModal}
         setFamilyModal={setFamilyModal}
         onClick={(item) => {
+          setUpdatedNode({});
+          setNodeData(null);
+          setFamilyRelationModal(false);
           setSelectedRelation(item);
         }}
       />

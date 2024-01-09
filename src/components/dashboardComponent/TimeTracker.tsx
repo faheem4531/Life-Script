@@ -3,7 +3,109 @@ import Image from "next/image";
 import ClockImage from "../../_assets/svg/clockMain.svg";
 import styles from "./Custom.module.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAnswers,
+  getChapters,
+  selectAllChapters,
+  selectAnswers,
+  getHours,
+} from "@/store/slices/chatSlice";
+import { useEffect, useState } from "react";
+import { getAnswerbyIdApi } from "@/store/api/chatApi";
+
 const TimeTracker = () => {
+  const dispatch: any = useDispatch();
+  const allChapters = useSelector(selectAllChapters);
+  const allAnswers = useSelector(selectAnswers);
+  const [wordsCount, setWordsCount] = useState(0);
+  const [hoursCount, setHoursCount] = useState("");
+  const [chapterCount, setChapterCount] = useState(0);
+  const [questionCount, setQuestionCount] = useState(0);
+
+  const countQuestions = () => {
+    let totalQuestions = 0;
+
+    allChapters.forEach((chapter) => {
+      totalQuestions += chapter.questions.length;
+    });
+    setQuestionCount(totalQuestions);
+  };
+
+  const countWords = (array) => {
+    let totalWords = 0;
+
+    array.forEach((obj) => {
+      const answerHTML = obj.userText;
+
+      // Remove HTML tags and extract text content
+      const textContent = answerHTML.replace(/<[^>]*>/g, "");
+
+      // Remove escape characters and decode HTML entities
+      const decodedText = decodeURIComponent(
+        textContent.replace(/&nbsp;|&#160;/g, " ")
+      );
+
+      // Split the text into words using whitespace as the delimiter
+      const words = decodedText.split(/\s+/);
+
+      // Filter out empty strings from the array
+      const nonEmptyWords = words.filter((word) => word.length > 0);
+
+      // Count the number of words for the current object
+      const wordCount = nonEmptyWords.length;
+
+      // Add the word count to the total
+      totalWords += wordCount;
+      setWordsCount(totalWords);
+    });
+  };
+
+  function formatTime(seconds) {
+    if (isNaN(seconds)) {
+      return "Invalid input";
+    }
+
+    if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      return `${minutes} m`;
+    } else {
+      const hours = Math.floor(seconds / 3600);
+      return `${hours} h`;
+    }
+  }
+
+  // Example usage:
+  const secondsString1 = "1800"; // 30 minutes
+  const secondsString2 = "7200"; // 2 hours
+
+  console.log(formatTime(secondsString1)); // Output: 30 mins
+  console.log(formatTime(secondsString2)); // Output: 2 hrs
+
+  useEffect(() => {
+    dispatch(getChapters());
+    dispatch(getAnswers());
+    dispatch(getHours())
+      .unwrap()
+      .then((res) => setHoursCount(formatTime(Number(res))));
+  }, []);
+
+  useEffect(() => {
+    if (allChapters.length > 0) {
+      setChapterCount(allChapters.length);
+      countQuestions();
+    }
+  }, [allChapters]);
+
+  useEffect(() => {
+    if (allAnswers.length > 0) {
+      const modifeiedAnswers = allAnswers.map((answer) => {
+        return { userText: answer.userText };
+      });
+      countWords(modifeiedAnswers);
+    }
+  }, [allAnswers]);
+
   return (
     <Box
       sx={{
@@ -68,7 +170,7 @@ const TimeTracker = () => {
                 marginBottom: "-7px",
               }}
             >
-              300
+              {wordsCount}
             </Typography>
             <Typography
               sx={{
@@ -113,7 +215,7 @@ const TimeTracker = () => {
                 marginBottom: "-7px",
               }}
             >
-              60
+              {questionCount}
             </Typography>
             <Typography
               sx={{
@@ -160,7 +262,7 @@ const TimeTracker = () => {
                 marginBottom: "-7px",
               }}
             >
-              20
+              {chapterCount}
             </Typography>
             <Typography
               sx={{
@@ -189,18 +291,25 @@ const TimeTracker = () => {
             width: "100%",
           }}
         />
-        <Typography
+        <Box
           sx={{
-            fontSize: { lg: "30.86px", md: "26px", sm: "22px", xs: "18px" },
-            fontWeight: 700,
             position: "absolute",
-            right: { lg: "7px", md: "14px", sm: "19px", xs: "24px" },
-            bottom: { lg: "35px", md: "45px", xs: "45px" },
-            color: "white",
+            right: {  xs: "0px" },
+            bottom: { lg: "40px", md: "50px", xs: "50px" },
+            width:"100px",
+            textAlign: "center"
           }}
         >
-          12hrs
-        </Typography>
+          <Typography
+            sx={{
+              fontSize: { lg: "27px", md: "23px", sm: "20px", xs: "16px" },
+              fontWeight: 700,
+              color: "white",
+            }}
+          >
+            {hoursCount}
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );

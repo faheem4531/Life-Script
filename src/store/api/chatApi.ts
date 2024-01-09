@@ -204,6 +204,35 @@ export async function updatePartnerApi(data: {
   }
 }
 
+export async function addChildApi(data: {
+  spouseDied?: string;
+  spouseBorn?: string;
+  spouseLocation?: string;
+  spouseName?: string;
+  spouseGender?: string;
+  spouseImage?: string;
+  died?: string;
+  born?: string;
+  location?: string;
+  name?: string;
+  gender?: string;
+  image?: string;
+  nodeId?: string;
+}) {
+  try {
+    const{nodeId, ...newData} = data;
+    const res = await api.post(`family-module/${data.nodeId}/add-child`, newData);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function updateChapterResponseApi(data: {
   id: string;
   userText: string;
@@ -440,6 +469,34 @@ export async function updateChapterApi(data: { title: string; id: string }) {
 export async function getAnswerbyIdApi(data: { id: string }) {
   try {
     const res = await api.get(`/user-answer/${data.id}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getHourApi() {
+  try {
+    const res = await api.get("/user-answer/anserCount");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getAnswersApi() {
+  try {
+    const res = await api.get("/user-answer");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

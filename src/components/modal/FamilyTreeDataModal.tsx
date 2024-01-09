@@ -67,8 +67,8 @@ const FamilyTreeDataModal = ({
 
   const handleSubmit = () => {
     onSubmit({
-      relationType: nodeData?.isSpouse, 
-      isSpouse: nodeData?.isSpouse,
+      relationType: selectedRelation, 
+      isSpouse: nodeData?.isSpouse || false,
       name: inputValueName,
       gender: selectedValueGender,
       born: dateOfBirth,
