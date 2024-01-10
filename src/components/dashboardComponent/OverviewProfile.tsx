@@ -1,16 +1,67 @@
-import DemoProfile from "@/_assets/png/demo-Profile.png";
+import DemoProfile from "@/_assets/svg/profile.svg";
 import Bronze from "@/_assets/svg/bronze-token.svg";
 import Gold from "@/_assets/svg/gold-token.svg";
+import Grey from "@/_assets/svg/Silver Token.svg";
 import Platinum from "@/_assets/svg/platinum-token.svg";
 import Silver from "@/_assets/svg/silver-token.svg";
-import { Box, Typography } from "@mui/material";
+import { Box, Tooltip, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import styles from "./Custom.module.css";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfile, selectUser } from "@/store/slices/authSlice";
 
 const Profile = () => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const dispatch: any = useDispatch();
+  const allChapters = useSelector(selectAllChapters);
+  const userData = useSelector(selectUser);
+  const [userImage, setUserImage] = useState("");
+  const [progressChapters, setProgressChapters] = useState([]);
+  const [userName, setUserName] = useState("");
+
+  function calculateCompletionPercentage(array) {
+    if (array?.length === 0) {
+      return 0;
+    }
+
+    const completedCount = array?.filter(
+      (item) => item.status === "Completed"
+    ).length;
+    // Calculate the percentage
+    const percentage = (completedCount / array?.length) * 100;
+
+    return percentage;
+  }
+
+  useEffect(() => {
+    const name = localStorage.getItem("username");
+    setUserName(name);
+    dispatch(getChapters());
+    dispatch(getUserProfile());
+  }, []);
+
+  useEffect(() => {
+    if (allChapters.length > 0) {
+      const inProgressChapters = allChapters.filter(
+        (chapter) =>
+          chapter.status !== true && chapter.compilingStatus === false
+      );
+      setProgressChapters(inProgressChapters);
+    }
+  }, [allChapters]);
+
+  useEffect(() => {
+    if (userData) {
+      setUserImage(userData?.profileImage);
+    }
+  }, [userData]);
   return (
     <Box
       sx={{
@@ -33,11 +84,15 @@ const Profile = () => {
         }}
       >
         <Box sx={{ textAlign: "center", marginBottom: { xs: "30px" } }}>
-          <Image
-            alt="profile"
-            src={DemoProfile}
-            className={styles.profilePic}
-          />
+          {!userImage ? (
+            <Image
+              alt="profile"
+              src={DemoProfile}
+              className={styles.profilePic}
+            />
+          ) : (
+            <img alt="profile" src={userImage} className={styles.profilePic} />
+          )}
           <Typography
             sx={{
               fontSize: "20px",
@@ -45,7 +100,7 @@ const Profile = () => {
               marginTop: "17px",
             }}
           >
-            Haseeb Khawaja
+            {userName}
           </Typography>
         </Box>
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
@@ -59,34 +114,69 @@ const Profile = () => {
             columnGap: { xl: "18px", lg: "4px" },
           }}
         >
-          <Image
-            alt="tag"
-            src={Platinum}
-            className={styles.profileAchivements}
-          />
-          <Image alt="tag" src={Gold} className={styles.profileAchivements} />
-          <Image alt="tag" src={Silver} className={styles.profileAchivements} />
-          <Image alt="tag" src={Bronze} className={styles.profileAchivements} />
+          <Box sx={{cursor: "pointer"}}>
+            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+              <Image
+                alt="tag"
+                src={true ? Grey : Bronze}
+                className={styles.profileAchivements}
+              />
+            </Tooltip>
+          </Box>
+          <Box sx={{cursor: "pointer"}}>
+            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+              <Image
+                alt="tag"
+                src={true ? Grey : Silver}
+                className={styles.profileAchivements}
+              />
+            </Tooltip>
+          </Box>
+          <Box sx={{cursor: "pointer"}}>
+            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+              <Image
+                alt="tag"
+                src={true ? Grey : Gold}
+                className={styles.profileAchivements}
+              />
+            </Tooltip>
+          </Box>
+          <Box sx={{cursor: "pointer"}}>
+            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+              <Image
+                alt="tag"
+                src={true ? Grey : Platinum}
+                className={styles.profileAchivements}
+              />
+            </Tooltip>
+          </Box>
         </Box>
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
           {t("overView.RecentCh")}
         </Typography>
         <Box sx={{ marginTop: "20px" }}>
-          <RecentChapters />
-          <RecentChapters />
-          <RecentChapters />
-          <RecentChapters />
+          {progressChapters?.slice(0, 4).map((chapter) => (
+            <RecentChapters
+              title={chapter?.title}
+              id={chapter?._id}
+              percentage={calculateCompletionPercentage(chapter?.questions)}
+            />
+          ))}
         </Box>
-        <Typography
-          sx={{
-            fontSize: "11.869px",
-            color: "#9B9B9B",
-            marginTop: "22px",
-            textAlign: "center",
-          }}
-        >
-          {t("overView.viewMore")}
-        </Typography>
+        <Box onClick={() => router.push("/dashboard/chapters")}>
+          <Typography
+            sx={{
+              cursor: "pointer",
+              fontSize: "11.869px",
+              color: "#9B9B9B",
+              marginTop: "22px",
+              textAlign: "center",
+            }}
+          >
+            {/* {t("overView.viewMore")} */}
+            {progressChapters?.length > 3 ? t("overView.viewMore") : "Add More"}
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );
@@ -94,10 +184,15 @@ const Profile = () => {
 
 export default Profile;
 
-export const RecentChapters = () => {
+export const RecentChapters = ({ title, percentage, id }) => {
+  const router = useRouter();
   return (
     <Box
+      onClick={() =>
+        router.push(`/dashboard/chapters/chapterName?chapterId=${id}`)
+      }
       sx={{
+        cursor: "pointer",
         bgcolor: "#F9F9F9",
         borderRadius: "8px",
         width: "100%",
@@ -109,8 +204,8 @@ export const RecentChapters = () => {
         marginBlock: "11px",
       }}
     >
-      <Typography sx={{ fontSize: "10px" }}>The Book Of Early</Typography>
-      <CircularWithValueLabel />
+      <Typography sx={{ fontSize: "10px" }}>{title}</Typography>
+      <CircularWithValueLabel percentage={percentage} />
     </Box>
   );
 };
@@ -120,7 +215,7 @@ export const RecentChapters = () => {
 }
 function CircularProgressWithLabel(props) {
   return (
-    <Box sx={{ position: "relative", display: "inline-flex", width: "22px" }}>
+    <Box sx={{ position: "relative", display: "inline-flex", width: "24px" }}>
       <CircularProgress color="success" variant="determinate" {...props} />
       <Box
         sx={{
@@ -138,7 +233,7 @@ function CircularProgressWithLabel(props) {
           variant="caption"
           component="div"
           color="#197065"
-          sx={{ fontSize: "6.5px" }}
+          sx={{ fontSize: "6px" }}
         >
           {`${Math.round(props.value)}%`}
         </Typography>
@@ -147,6 +242,6 @@ function CircularProgressWithLabel(props) {
   );
 }
 
-function CircularWithValueLabel() {
-  return <CircularProgressWithLabel value={75} />;
+function CircularWithValueLabel({ percentage }) {
+  return <CircularProgressWithLabel value={percentage} />;
 }

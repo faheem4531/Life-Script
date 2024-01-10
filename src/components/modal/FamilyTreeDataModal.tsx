@@ -40,32 +40,38 @@ const FamilyTreeDataModal = ({
   );
   const maxDate = new Date();
 
+  console.log("qwerty22", nodeData);
+
   useEffect(() => {
-    if (nodeData) {
-      setSelectedValueGender(nodeData?.isSpouse ? nodeData?.spouseGender || "" : nodeData?.gender || "");
-      setInputValueName(nodeData?.isSpouse ? nodeData?.spouseName
-        || "" : nodeData?.name || "");
-      setInputValueLocation(nodeData?.isSpouse ? nodeData?.spouseLocation
-        || "" : nodeData?.location || "");
-      setDateOfBirth(nodeData?.isSpouse ? new Date(nodeData?.spouseBorn)
-        || "" : new Date(nodeData?.born) || "");
-      setSelectedValueLiving(nodeData.spouseDied || nodeData.died ? "Deceased" : "Living");
-      setShowDatePicker(nodeData.spouseDied || nodeData.died ? true : false);
-      setDateOfDeath(nodeData?.isSpouse ? new Date(nodeData?.spouseDied)
-        || "" : new Date(nodeData?.died) || "");
-      setImageLink(nodeData?.isSpouse ? nodeData?.spouseImage
-        || "" : nodeData?.image || "");
+    if(nodeData?.isSpouse === true){
+      setSelectedValueGender(nodeData?.spouseGender || "");
+      setInputValueName(nodeData?.spouseName || "");
+      setInputValueLocation(nodeData?.spouseLocation || "");
+      setDateOfBirth(nodeData?.spouseBorn !== null ? new Date(nodeData?.spouseBorn) : null);
+      setSelectedValueLiving(nodeData?.spouseDied ? "Deceased" : "Living" );
+      setShowDatePicker(nodeData.spouseDied ? true : false);
+      setDateOfDeath(nodeData?.spouseDied !== null ? new Date(nodeData?.spouseDied) : null);
+      setImageLink(nodeData?.spouseImage || "");
+    }else if(nodeData?.isSpouse === false){
+      setSelectedValueGender(nodeData?.gender || "");
+      setInputValueName(nodeData?.name || "");
+      setInputValueLocation(nodeData?.location || "");
+      setDateOfBirth(nodeData?.born !== null ? new Date(nodeData?.born) : null);
+      setSelectedValueLiving(nodeData?.died ? "Deceased" : "Living" );
+      setShowDatePicker(nodeData.died ? true : false);
+      setDateOfDeath(nodeData?.died !== null ? new Date(nodeData?.died) : null);
+      setImageLink(nodeData?.image || "");
     }
   }, [nodeData]);
 
   const handleSubmit = () => {
     onSubmit({
-      relationType: selectedRelation || false, 
-      isSpouse: nodeData?.isSpouse,
+      relationType: selectedRelation, 
+      isSpouse: nodeData?.isSpouse || false,
       name: inputValueName,
       gender: selectedValueGender,
       born: dateOfBirth,
-      died: dateOfDeath,
+      died: showDatePicker ? dateOfDeath : null,
       image: imageLink,
       location: inputValueLocation,
     });

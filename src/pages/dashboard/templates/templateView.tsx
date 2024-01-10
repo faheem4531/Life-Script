@@ -84,6 +84,7 @@ const chapterName = () => {
   };
 
   const handleCopyAgain = () => {
+    setTemplateState(false);
     dispatch(cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds }))
       .then(() => {
         setCopyTemLoading(false);

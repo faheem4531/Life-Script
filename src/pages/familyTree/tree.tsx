@@ -1,6 +1,6 @@
 import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
 import SelectRelationModal from "@/components/modal/SelectRelationModal";
-import { updatePartner } from "@/store/slices/chatSlice";
+import { updatePartner, addChildren, addParent } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box } from "@mui/material";
@@ -19,45 +19,50 @@ const FamilyTree = ({ familyTreeData }) => {
   const [selectedNode, setSelectedNode] = useState(null);
   const [updatedNode, setUpdatedNode] = useState({});
   const [nodeData, setNodeData] = useState(null);
+  console.log("nodeData", selectedNode);
   const [selectedRelation, setSelectedRelation] = useState();
   const [relations, setRelations] = useState([
-    "Brother",
-    "Sister",
-    "Daughter",
-    "Son",
+    "Sibling",
+    "Child"
   ]);
   const [personData, setPersonData] = useState({});
   const profileIcon =
     "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
   const handleAddedPerson = (data) => {
-    console.log("addedData", data);
+    setFamilyModal(false);
+    setSelectedNode(null);
+    setUpdatedNode({});
     const { relationType, ...newData } = data;
 
-    if (relationType === "Mother") {
-      addMother(newData);
-    } else if (relationType === "Father") {
-      addFather(newData);
-    } else if (relationType === "Brother") {
-      addBrother(newData);
-    } else if (relationType === "Sister") {
-      addSister(newData);
-    } else if (relationType === "Daughter") {
-      addDaughter(newData);
-    } else if (relationType === "Son") {
-      addSon(newData);
+    if (relationType === "Parent") {
+      addParents(newData);
+    } else if (relationType === "Child") {
+      addChild(newData);
     } else if (relationType === "Partner") {
       addPartner(newData);
+    } else if(relationType === "Sibling"){
+      addSibling(newData);
     } else {
       addPartner(newData);
     }
 
-    setFamilyModal(false);
   };
 
   const addPartner = (data) => {
     let partnerData;
-    if (data.isSpouse && data.isSpouse === true) {
+    console.log("datyyy",data);
+    if (data?.isSpouse === false) {
+      partnerData = {
+        nodeId: selectedNode?.data?._id,
+        name: data.name,
+        born: data.born,
+        died: data.died,
+        gender: data.gender,
+        image: data.image,
+        location: data.location,
+      };
+    } else {
       partnerData = {
         nodeId: selectedNode?.data?._id,
         spouseName: data.name,
@@ -67,8 +72,49 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseImage: data.image,
         spouseLocation: data.location,
       };
+    }
+
+    dispatch(updatePartner(partnerData))
+      .unwrap()
+      .then(() => {
+        setUpdatedNode({});
+        setNodeData(null);
+      });
+  };
+
+  const addParents = (data) => {
+    console.log("in the father");
+    let parentData = {
+      name: data.name,
+      born: data.born,
+      died: data.died,
+      gender: data.gender,
+      image: data.image,
+      location: data.location,
+    };
+
+    dispatch(addParent(parentData))
+    .unwrap()
+    .then(() => {
+      setUpdatedNode({});
+      setNodeData(null);
+    });
+  };
+
+  const addChild = (data) => {
+    let childData = {};
+    if (data?.isSpouse === true) {
+      childData = {
+        nodeId: selectedNode?.data?._id,
+        spouseName: data.name,
+        spouseBorn: data.born,
+        spouseDied: data.died,
+        spouseGender: data.gender,
+        spouseImage: data.image,
+        spouseLocation: data.location,
+      };
     } else {
-      partnerData = {
+      childData = {
         nodeId: selectedNode?.data?._id,
         name: data.name,
         born: data.born,
@@ -79,24 +125,41 @@ const FamilyTree = ({ familyTreeData }) => {
       };
     }
 
-    dispatch(updatePartner(partnerData))
-      .unwrap()
-      .then(() => setUpdatedNode({}));
+    dispatch(addChildren(childData))
+    .unwrap()
+    .then(() => {
+      setUpdatedNode({});
+      setNodeData(null);
+    });
+
   };
 
-  const addMother = (data) => {};
+  const addSibling = (data) => {    
+    let childData = {
+      nodeId: selectedNode?.parent?.data?._id,
+      name: data.name,
+      born: data.born,
+      died: data.died,
+      gender: data.gender,
+      image: data.image,
+      location: data.location,
+    };
 
-  const addFather = (data) => {};
+    dispatch(addChildren(childData))
+    .unwrap()
+    .then(() => {
+      setUpdatedNode({});
+      setNodeData(null);
+    });
 
-  const addBrother = (data) => {};
-
-  const addSister = (data) => {};
-
-  const addSon = (data) => {};
-
-  const addDaughter = (data) => {};
+  };
 
   const handleIconClick = (name, iconType, d) => {
+    setUpdatedNode({});
+    setRelations([
+      "Sibling",
+      "Child"
+    ])
     if (iconType === "editspouse") {
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
@@ -111,7 +174,6 @@ const FamilyTree = ({ familyTreeData }) => {
     setUpdatedNode({ isSpouse: true, ...d?.data });
     setSelectedNode(d);
     setFamilyModal(true);
-    console.log(`spouseEdit clicked for ${name}`, "345", d);
   };
 
   const handleEdit = (name, d) => {
@@ -119,22 +181,20 @@ const FamilyTree = ({ familyTreeData }) => {
     setUpdatedNode({ isSpouse: false, ...d?.data });
     setSelectedNode(d);
     setFamilyModal(true);
-    console.log(`Edit clicked for ${name}`);
   };
 
   const handleAdd = (name, d) => {
+    setUpdatedNode({});
+    setNodeData(null);
     const isSpouse = d?.data?.name ? false : true;
     setSelectedNode({ isSpouse: isSpouse, ...d });
-    !d?.parent?.data?.name && setRelations((prev) => [...prev, "Father"]);
-    !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Mother"]);
+    !d?.parent?.data?.name && !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Parent"]);
     !d?.data?.spouseName && setRelations((prev) => [...prev, "Partner"]);
     setFamilyRelationModal(true);
-    console.log(`Add clicked for ${name}`);
   };
 
   useEffect(() => {
     if (!familyTreeData) {
-      console.error("Family tree data is missing.");
       return;
     } else {
       d3.select(svgRef.current).selectAll("*").remove();
@@ -279,24 +339,25 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(14, -100, d.data.image || profileIcon);
       renderText(76, -75, d.data.name || "", `${styles.name}`);
       //age
-      const born = d.data.born.slice(0, 4);
-      const died = d.data.died.slice(0, 4);
+      const born = d.data.born?.slice(0, 4);
+      const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known" ;
       renderText(76, -50, age || "", `${styles.dateLocation}`);
       renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`);
       renderImage(14, 10, d.data.spouseImage || profileIcon);
       renderText(76, 35, d.data.spouseName || "", `${styles.name}`);
-      const spouseBorn = d.data.spouseBorn.slice(0, 4);
-      const spouseDied = d.data.spouseDied.slice(0, 4);
-      const spouseAge =
+      const spouseBorn = d.data.spouseBorn?.slice(0, 4);
+      const spouseDied = d.data.spouseDied?.slice(0, 4);
+      let spouseAge =
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
           ? "b. " + spouseBorn
-          : "d. " + spouseDied;
+          : spouseDied ? "d. " + spouseDied
+          : "b. Not Known";
       renderText(76, 60, spouseAge || "", `${styles.dateLocation}`);
       renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
@@ -385,10 +446,10 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseTopCenterY
       );
     } else {
-      const born = d.data.born.slice(0, 4);
-      const died = d.data.died.slice(0, 4);
+      const born = d.data.born?.slice(0, 4);
+      const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : "d. " + died;
+        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known"; 
       renderRect(10, -50, 100, `${styles.nameRect}`);
       renderImage(14, -45, d.data.image || profileIcon);
       renderText(76, -20, d.data.name || "", `${styles.name}`);
@@ -468,7 +529,11 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyRelationModal={setFamilyRelationModal}
         setFamilyModal={setFamilyModal}
         onClick={(item) => {
+          setFamilyRelationModal(false);
           setSelectedRelation(item);
+          if(item === "Partner"){
+            setUpdatedNode({ isSpouse: true });
+          }
         }}
       />
 
