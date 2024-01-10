@@ -5,16 +5,40 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CameraIcon from "../../_assets/svg/cameraIcon.svg";
 import FemaleProfile from "../../_assets/svg/femaleProfileIcon.svg";
 import MaleProfile from "../../_assets/svg/maleProfileIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
 import styles from "./Sidebar.module.css";
+import * as d3 from "d3";
+import { selectTreeData } from "@/store/slices/chatSlice";
+import { useSelector } from "react-redux";
 
 const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(true);
   const router = useRouter();
+
+  const familyTreeData = useSelector(selectTreeData);
+  const[allNodes, setAllNodes] = useState([]);
+  console.log("8888888",allNodes, "66", allNodes[0]?.Node?.data , "7777",familyTreeData);
+  const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
+
+  useEffect(() => {
+    if(familyTreeData){
+      const tree = d3
+      .tree()
+      .separation((a, b) => {
+        return a.children && a.children === b.children ? 1 : 0.5;
+      })
+      .size([1200, 2200]);
+      const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
+      const treeNodes = tree(nodes);
+      const descendants = treeNodes.descendants().slice(1);
+      setAllNodes([...descendants]);
+    }
+  },[familyTreeData])
+
   return (
     <Box sx={{ color: "#fff", backgroundColor: "#197065" }}>
       {!handleSideCheck && (
