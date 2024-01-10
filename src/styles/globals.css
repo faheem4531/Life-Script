@@ -193,3 +193,14 @@ a {
 /* .react-pdf__Page__canvas {
   height: 600px !important;
 } */
+
+.pdfNumberInput::-webkit-outer-spin-button,
+.pdfNumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.pdfNumberInput[type="number"] {
+  -moz-appearance: textfield;
+}

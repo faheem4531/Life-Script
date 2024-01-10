@@ -3,7 +3,9 @@ import logo from "@/_assets/svg/SmallLogoWhite.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import React from "react";
+import GlobelBtn from "../button/Button";
 
 interface SelectBookCoverCardProps {
   landScape?: string;
@@ -22,8 +24,8 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   ColourPalette = "#197065",
   droppedImage,
 }) => {
-
   const currentPath = usePathname();
+  const router = useRouter();
   console.log("currentPath", currentPath);
 
   const viewBookCheck = currentPath == "/dashboard/BookCover/ViewBookCover";
@@ -49,6 +51,27 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
           p: "53px 20px",
         }}
       >
+        {currentPath === "/dashboard/BookView" && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "center",
+              pb: "20px",
+              mt: "-27px",
+              mr: "25px",
+            }}
+          >
+            <Box>
+              <GlobelBtn
+                btnText="Edit"
+                onClick={() => {
+                  router.push("/dashboard/BookCover/SelectBookCover");
+                }}
+              />
+            </Box>
+          </Box>
+        )}
         <Box
           sx={{
             display: "flex",

@@ -55,7 +55,7 @@ const FamilyTreeLayout = ({ children }: { children?: any }) => {
         >
           <Box
             sx={{
-              width: "220px",
+              width: "260px",
               position: "fixed",
               bottom: "0",
               top: "0px",
@@ -82,7 +82,7 @@ const FamilyTreeLayout = ({ children }: { children?: any }) => {
             height: "100%",
             minHeight: "calc(100vh - 70px)",
             padding: { sm: "10px 33px 30px" },
-            marginLeft: { lg: "220px", md: "0px", sm: 0, xs: 0 },
+            marginLeft: { lg: "260px", md: "0px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
         >

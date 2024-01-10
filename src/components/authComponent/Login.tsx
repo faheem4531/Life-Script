@@ -57,7 +57,6 @@ const Login = ({ signinClick }) => {
     toast.error(t("login-page.failedSignupGoogle"));
   };
 
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -218,7 +217,7 @@ const Login = ({ signinClick }) => {
                 sx={{
                   // marginTop: "9px",
                   // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                  fontSize: "14px",
+                  fontSize: { xs: 12, sm: 14, md: 16 },
                 }}
               >
                 {t("login-page.forget-password")}
@@ -300,7 +299,7 @@ const Login = ({ signinClick }) => {
                 color: "black",
                 width: "100%",
                 gap: "10px",
-                marginTop: { xs: "60px", sm: "20px" },
+                marginTop: { xs: "20px" },
                 "&:hover": {
                   backgroundColor: "white",
                 },

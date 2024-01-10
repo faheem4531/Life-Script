@@ -1,8 +1,8 @@
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { TextField } from "@mui/material";
+import NextIcon from "@/_assets/svg/next-iconX.svg";
+import PreviousIcon from "@/_assets/svg/previous-icon.svg";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -13,7 +13,7 @@ export default function PDFViewer(pdfUrl) {
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
   const [pageWidth, setPageWidth] = useState(0);
-  const [goToPageNumber, setGoToPageNumber] = useState("0");
+  const [goToPageNumber, setGoToPageNumber] = useState("1");
 
   function onPageLoadSuccess() {
     setPageWidth(900);
@@ -64,77 +64,108 @@ export default function PDFViewer(pdfUrl) {
 
   return (
     <>
-      <Box
-        hidden={false}
-        // sx={{ height: "calc(100vh)", bgcolor: "skyblue", overflow: "hidden" }}
-      >
+      <Box hidden={false} sx={{ height: "calc(100vh)", position: "relative" }}>
+        <Box
+          position="absolute"
+          top={"30%"}
+          left="20px"
+          display="flex"
+          alignItems="center"
+        >
+          <Button
+            onClick={goToPreviousPage}
+            disabled={pageNumber <= 1}
+            color="primary"
+          >
+            <Image alt="icon" src={PreviousIcon} onClick={goToPreviousPage} />
+          </Button>
+        </Box>
+
+        <Box
+          position="absolute"
+          right="20px"
+          top={"30%"}
+          display="flex"
+          alignItems="center"
+        >
+          <Button
+            onClick={goToNextPage}
+            color="primary"
+            disabled={pageNumber >= numPages}
+          >
+            <Image alt="icon" src={NextIcon} onClick={goToNextPage} />
+          </Button>
+        </Box>
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
-          position="relative"
+          sx={{
+            height: "500px",
+            overflowY: "scroll",
+          }}
         >
           <Box
-            position="absolute"
-            top={"50px"}
-            left="0"
-            display="flex"
-            alignItems="center"
-          >
-            <Button
-              onClick={goToPreviousPage}
-              disabled={pageNumber <= 1}
-              color="primary"
-            >
-              <ChevronLeftIcon />
-              Previous
-            </Button>
-          </Box>
-
-          <Box
-            position="absolute"
-            right="0"
-            top={"50px"}
-            display="flex"
-            alignItems="center"
-          >
-            <Button
-              onClick={goToNextPage}
-              disabled={pageNumber >= numPages}
-              color="primary"
-            >
-              Next
-              <ChevronRightIcon />
-            </Button>
-          </Box>
-
-          <Document
-            file={{
-              url: pdfUrl?.pdfUrl,
+            sx={{
+              boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             }}
-            onLoadSuccess={onDocumentLoadSuccess}
-            options={options}
-            renderMode="canvas"
           >
-            <Page
-              pageNumber={pageNumber}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              onLoadSuccess={onPageLoadSuccess}
-              width={Math.max(pageWidth * 0.8, 390)}
-            />
-          </Document>
+            <Document
+              file={{
+                url: pdfUrl?.pdfUrl,
+                size: 300,
+              }}
+              onLoadSuccess={onDocumentLoadSuccess}
+              options={options}
+              renderMode="canvas"
+            >
+              <Page
+                pageNumber={pageNumber}
+                renderAnnotationLayer={false}
+                renderTextLayer={false}
+                onLoadSuccess={onPageLoadSuccess}
+                width={Math.max(pageWidth * 0.8, 390)}
+              />
+            </Document>
+          </Box>
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <TextField
-            label="Go to page"
-            type="number"
-            value={goToPageNumber}
-            onChange={(e) => setGoToPageNumber(e.target.value)}
-          />
-          <Button variant="contained" onClick={goToPage}>
-            Go
-          </Button>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mt: "20px",
+          }}
+        >
+          <Box>
+            Page{" "}
+            <input
+              type="number"
+              style={{
+                background: "transparent",
+                border: "1.5px solid gray",
+                outline: "0px",
+                color: "black",
+                width: "30px",
+                textAlign: "center",
+                fontSize: "18px",
+              }}
+              value={goToPageNumber}
+              onChange={(e) => {
+                goToPage();
+                setGoToPageNumber(e.target.value);
+              }}
+              className="pdfNumberInput"
+            />{" "}
+            of 40
+            {/* <GlobelBtn
+              btnText="Go"
+              color="white"
+              bgColor="#17645A"
+              p="10px 20px"
+              onClick={goToPage}
+            /> */}
+          </Box>
         </Box>
       </Box>
     </>

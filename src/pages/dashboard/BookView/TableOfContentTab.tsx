@@ -1,7 +1,6 @@
 import GlobelBtn from "@/components/button/Button";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
-import QaTabBars from "../Questionnaire/qaTabBars";
 import TOCMain from "../TableOfContent/components/TOCMain";
 
 const TableOfContentTab = ({ setSelectedTab }) => {
@@ -11,45 +10,19 @@ const TableOfContentTab = ({ setSelectedTab }) => {
   return (
     <Box>
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          flexWrap: "wrap",
-          gap: 2,
-          pr: "20px",
+        onClick={(e) => {
+          handleClick(e);
         }}
       >
-        <Box flex={1}>
-          <Box
-            sx={{
-              color: "black",
-              gap: "8px",
-              mt: "20px",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: { md: "40px", sm: "36px", xs: "26px" },
-                fontWeight: 700,
-              }}
-            >
-              Table Of Content
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              mb: {
-                md: "20px",
-                sm: "15px",
-                xs: "10px",
-              },
-            }}
-          >
-            <QaTabBars tabProp={1} />
-          </Box>
-        </Box>
-        <Box>
+        <TOCMain />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            py: "15px",
+            mr: "50px",
+          }}
+        >
           <GlobelBtn
             bgColor="#186F65"
             color="white"
@@ -60,13 +33,6 @@ const TableOfContentTab = ({ setSelectedTab }) => {
             }}
           />
         </Box>
-      </Box>
-      <Box
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        <TOCMain />
       </Box>
     </Box>
   );

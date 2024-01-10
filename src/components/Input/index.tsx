@@ -12,6 +12,7 @@ interface InputWithLabelProps {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  type?: string;
 }
 
 const InputWithLabel: React.FC<InputWithLabelProps> = ({
@@ -25,13 +26,14 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
   color,
   onChange = () => {},
   disabled = false,
+  type,
 }) => {
   return (
     <Box>
       <Typography
         sx={{
           fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-          color: color,
+          color: "black",
           ml: "5px",
         }}
       >
@@ -44,6 +46,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
         onChange={onChange}
         disabled={disabled}
         value={value}
+        type={type}
         sx={{
           "& .MuiOutlinedInput-root": {
             borderRadius: borderRadius,

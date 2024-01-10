@@ -5,12 +5,15 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { getChapters, getToc, selectTocData } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import addIcon from "../../../../_assets/svg/AddIcon.svg";
 import ChaptersList from "./ChapterList";
 
 const TOCMain = () => {
+  const router = useRouter();
+  const currentUrl = router.asPath;
   const dispatch: any = useDispatch();
   const tocData = useSelector(selectTocData);
   const [openModal, setOpenModal] = useState(false);
@@ -55,7 +58,10 @@ const TOCMain = () => {
             },
             marginTop: "10px",
             height: "calc(100vh - 280px)",
-            borderRadius: { sm: "18px", xs: "5px" },
+            borderRadius: {
+              sm: "18px",
+              xs: "5px",
+            },
           }}
         >
           <Box
@@ -90,12 +96,23 @@ const TOCMain = () => {
               }}
             >
               <Box>
-                <GlobelBtn
-                  image={addIcon}
-                  btnText=" Add Chapters"
-                  onClick={() => setOpenModal(true)}
-                  width={"180px"}
-                />
+                {currentUrl === "/dashboard/BookView" ? (
+                  <GlobelBtn
+                    btnText="Edit Chapters"
+                    image={addIcon}
+                    onClick={() => {
+                      currentUrl === "/dashboard/BookView" &&
+                        router.push("/dashboard/TableOfContent");
+                    }}
+                  />
+                ) : (
+                  <GlobelBtn
+                    image={addIcon}
+                    btnText=" Add Chapters"
+                    onClick={() => setOpenModal(true)}
+                    width={"180px"}
+                  />
+                )}
               </Box>
             </Box>
           </Box>
