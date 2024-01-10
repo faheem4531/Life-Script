@@ -73,7 +73,7 @@ const SelectBookCoverHeader = () => {
             sm: "260px",
             lg: "360px",
           },
-          display: "flex",
+          display: { sm: "flex", xs: "none" },
           justifyContent: "center",
           alignItems: "center",
           borderTopLeftRadius: "50%",

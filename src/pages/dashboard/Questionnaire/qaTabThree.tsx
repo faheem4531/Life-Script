@@ -243,15 +243,15 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
           justifyContent: "flex-end",
           alignItems: "center",
           gap: 2,
+          flexWrap: "wrap",
+          mt: {
+            sm: "0px",
+            xs: "20px",
+          },
         }}
       >
         <Box>
-          <GlobelBtn
-            btnText="Back"
-            onClick={onClickBack}
-            image={backArrow}
-            width={"176px"}
-          />
+          <GlobelBtn btnText="Back" onClick={onClickBack} image={backArrow} />
         </Box>
         <Box>
           <GlobelBtn
@@ -265,7 +265,6 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
               })
             }
             image2={NextArrow}
-            width={"176px"}
           />
         </Box>
       </Box>

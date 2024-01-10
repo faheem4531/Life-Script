@@ -39,15 +39,21 @@ const EditBookCover = () => {
   console.log("selectedColor", selectedColor);
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
+    if (event.target.value.length <= 25) {
+      setTitle(event.target.value);
+    }
   };
 
   const handleSubtitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSubtitle(event.target.value);
+    if (event.target.value.length <= 25) {
+      setSubtitle(event.target.value);
+    }
   };
 
   const handleBylineChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setByline(event.target.value);
+    if (event.target.value.length <= 25) {
+      setByline(event.target.value);
+    }
   };
 
   useEffect(() => {
@@ -139,7 +145,15 @@ const EditBookCover = () => {
   return (
     <div>
       <Layout>
-        <Box pb="25px">
+        <Box
+          pb="25px"
+          sx={{
+            p: {
+              sm: "0px",
+              xs: "10px 20px",
+            },
+          }}
+        >
           <SelectBookCoverHeader />
           <Box
             sx={{

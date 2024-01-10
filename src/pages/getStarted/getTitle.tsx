@@ -48,7 +48,7 @@ const getTitle = () => {
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         width: "100%",
-        height: "100vh",
+        height: { sm: "100vh", xs: "100%" },
         margin: 0,
         padding: 0,
         gap: 0,
@@ -57,29 +57,32 @@ const getTitle = () => {
         alignItems: "center",
         color: "#000",
         position: "relative",
+        overflowY: "auto",
+        "&::-webkit-scrollbar": { display: "none" },
       }}
     >
       <Box
         sx={{
-          marginLeft: { sm: "30px", xs: "0px" },
-          padding: { xs: "0 22px", sm: "0" },
+          marginLeft: { sm: "30px", xs: "20px" },
+          padding: { xs: "20px 15px", sm: "0" },
         }}
       >
         <Typography
           sx={{
-            fontSize: "53px",
+            fontSize: { md: "53px", sm: "40px", xs: "30px" },
             fontWeight: "400",
             marginTop: { sm: "120px" },
           }}
           className={styles.primaryText}
         >
-          Hi{" "}
-          <span style={{ fontWeight: "600" }} className={styles.boldText}>
-            {userName},
-          </span>
+          Hi <span style={{ fontWeight: "600" }}>{userName},</span>
         </Typography>
         <Typography
-          sx={{ fontWeight: "400", fontSize: "53px", marginTop: "32px" }}
+          sx={{
+            fontWeight: "400",
+            fontSize: { md: "53px", sm: "40px", xs: "30px" },
+            marginTop: "32px",
+          }}
           className={styles.primaryText}
         >
           What would you like to <br /> call your lifescript?
@@ -121,7 +124,12 @@ const getTitle = () => {
             </Typography>
           </Box>
           <Box mt="50px">
-            <GlobelBtn disabled={!text} onClick={() => handleTitle()} btnText="Start Writing" />
+            <GlobelBtn
+              disabled={!text}
+              onClick={() => handleTitle()}
+              btnText="Start Writing"
+              width={"200px"}
+            />
           </Box>
         </Box>
       </Box>
