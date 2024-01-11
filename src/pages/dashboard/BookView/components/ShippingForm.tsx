@@ -1,7 +1,18 @@
 import InputWithLabel from "@/components/Input";
-import { Box } from "@mui/material";
+import { getLuluBalance } from "@/store/slices/authSlice";
+import { Box, Typography } from "@mui/material";
+import { useEffect } from "react";
+import CountrySelect from "@/components/dashboardComponent/AutoComplete";
+
+import { useDispatch, useSelector } from "react-redux";
 
 const ShippingForm = () => {
+  const dispatch:any = useDispatch();
+
+  useEffect(() =>{
+    dispatch(getLuluBalance()).unwrap().then((res) => console.log("response2", res))
+  },[])
+
   return (
     <Box
       sx={{
@@ -52,17 +63,25 @@ const ShippingForm = () => {
             border="1px solid #186F65"
           />
         </Box>
+
         <Box flex={1} width={"100%"}>
-          <InputWithLabel
-            color="#474E60"
-            label="Country Code"
-            value={null}
-            placeholder="Country Code"
-            borderRadius="47.202px"
-            bgColor="white"
-            border="1px solid #186F65"
-            type="number"
-          />
+        <Typography
+        sx={{
+          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+          color: "black",
+          ml: "5px",
+        }}
+      >
+        Country Code
+      </Typography>
+        <Box  sx={{
+          height: "56px",
+          border: "1px solid #186F65",
+          bgcolor: "white",
+          borderRadius: "47.202px"
+        }}>
+          <CountrySelect onSelect={undefined} stripe={true} backgroundColor="transparent" />
+        </Box>
         </Box>
       </Box>
       <InputWithLabel
