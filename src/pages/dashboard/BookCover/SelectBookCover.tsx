@@ -10,41 +10,54 @@ const SelectBookCover = () => {
   return (
     <div>
       <Layout>
-        <SelectBookCoverHeader />
         <Box
           sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "20px",
-            mt: "20px",
+            p: {
+              sm: "0px",
+              xs: "10px 20px",
+            },
           }}
         >
-          <Box flex={"auto"}>
-            <Box
-              onClick={() =>
-                router.push(`/dashboard/BookCover/EditBookCover?CoverNumber=1`)
-              }
-            >
-              <SelectBookCoverCard landScape="1" />
+          <SelectBookCoverHeader />
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "20px",
+              mt: "20px",
+            }}
+          >
+            <Box flex={"auto"}>
+              <Box
+                onClick={() =>
+                  router.push(
+                    `/dashboard/BookCover/EditBookCover?CoverNumber=1`
+                  )
+                }
+              >
+                <SelectBookCoverCard landScape="1" />
+              </Box>
+            </Box>
+            <Box flex={"auto"}>
+              <Box
+                onClick={() =>
+                  router.push(
+                    `/dashboard/BookCover/EditBookCover?CoverNumber=2`
+                  )
+                }
+              >
+                <SelectBookCoverCard landScape="2" />
+              </Box>
             </Box>
           </Box>
-          <Box flex={"auto"}>
-            <Box
-              onClick={() =>
-                router.push(`/dashboard/BookCover/EditBookCover?CoverNumber=2`)
-              }
-            >
-              <SelectBookCoverCard landScape="2" />
-            </Box>
+          <Box display="flex" justifyContent="flex-end" mt="40px">
+            <GlobelBtn
+              btnText="View more"
+              fontSize={{ xs: "12px", md: "16px" }}
+              border="1px solid #197065"
+              width={"180px"}
+            />
           </Box>
-        </Box>
-        <Box display="flex" justifyContent="flex-end" mt="40px">
-          <GlobelBtn
-            btnText="View more"
-            fontSize={{ xs: "12px", md: "16px" }}
-            border="1px solid #197065"
-            width={"180px"}
-          />
         </Box>
       </Layout>
     </div>

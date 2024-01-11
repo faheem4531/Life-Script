@@ -240,76 +240,93 @@ const ViewBookCover = () => {
   return (
     <div>
       <Layout>
-        <SelectBookCoverHeader />
         <Box
           sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "20px",
-            mt: "20px",
+            p: { md: "0px", xs: "10px 20px" },
           }}
         >
-          <Box flex={"auto"}>
-            <Box
-              display="flex"
-              gap="30px"
-              mt="10px"
-              mb="20px"
-              justifyContent="flex-end"
-            >
-              <Box>
-                <GlobelBtn
-                  btnText="View Pdf"
-                  fontSize={{ xs: "12px", md: "16px" }}
-                  border="1px solid #197065"
-                  onClick={() =>
-                    CoverNumber.toString() === "2"
-                      ? generatePDFTwo(
-                          byline,
-                          title,
-                          subtitle,
-                          imageLink,
-                          selectedColor,
-                          12
-                        )
-                      : generatePDFOne(
-                          byline,
-                          title,
-                          subtitle,
-                          imageLink,
-                          selectedColor,
-                          9
-                        )
-                  }
-                  width={"180px"}
-                />
-              </Box>
-              <Box>
-                <GlobelBtn
-                  btnText={"Edit Cover"}
-                  bgColor="#197065"
-                  borderRadius="23px"
-                  color="#fff"
-                  fontSize={{ xs: "12px", md: "16px" }}
-                  border="1px solid #197065"
-                  width={"180px"}
-                  onClick={() => {
-                    router.push(
-                      `/dashboard/BookCover/EditBookCover?CoverNumber=${CoverNumber}`
-                    );
-                  }}
-                />
-              </Box>
-            </Box>
-            <Box ref={elementRef} id={"bookcoverpdf"}>
-              <SelectBookCoverCard
-                landScape={CoverNumber?.toString()}
-                title={title}
-                subtitle={subtitle}
-                Byline={byline}
-                droppedImage={imageLink}
-                ColourPalette={selectedColor}
+          <SelectBookCoverHeader />
+          <Box
+            display="flex"
+            columnGap="30px"
+            rowGap="10px"
+            mt="10px"
+            mb="20px"
+            justifyContent="flex-end"
+            flexWrap="wrap"
+          >
+            <Box>
+              <GlobelBtn
+                btnText="Print Book"
+                fontSize={{ xs: "12px", md: "16px" }}
+                border="1px solid #197065"
+                onClick={() =>
+                  CoverNumber.toString() === "2"
+                    ? generatePDFTwo(
+                        byline,
+                        title,
+                        subtitle,
+                        imageLink,
+                        selectedColor,
+                        12
+                      )
+                    : generatePDFOne(
+                        byline,
+                        title,
+                        subtitle,
+                        imageLink,
+                        selectedColor,
+                        9
+                      )
+                }
+                width={"180px"}
               />
+            </Box>
+            <Box>
+              <GlobelBtn
+                btnText={"Edit Cover"}
+                bgColor="#197065"
+                borderRadius="23px"
+                color="#fff"
+                fontSize={{ xs: "12px", md: "16px" }}
+                border="1px solid #197065"
+                width={"180px"}
+                onClick={() => {
+                  router.push(
+                    `/dashboard/BookCover/EditBookCover?CoverNumber=${CoverNumber}`
+                  );
+                }}
+              />
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "20px",
+              mt: "20px",
+              overflowX: "scroll",
+            }}
+          >
+            <Box flex={"auto"}>
+              <Box
+                ref={elementRef}
+                id={"bookcoverpdf"}
+                sx={{
+                  width: "100%",
+                  overflowX: "auto",
+                  "&::-webkit-scrollbar": { display: "none" },
+                }}
+              >
+                <SelectBookCoverCard
+                  landScape={CoverNumber?.toString()}
+                  title={title}
+                  subtitle={subtitle}
+                  Byline={byline}
+                  droppedImage={imageLink}
+                  ColourPalette={selectedColor}
+                />
+              </Box>
             </Box>
           </Box>
         </Box>

@@ -14,8 +14,14 @@ const TableOfContent = () => {
     <div>
       <Layout>
         <Box className={styles.subContainer}>
-          <SubscriptionHeader title="Table of Content" />
-          <TOCMain />
+          <Box
+            sx={{
+              p: { sm: "0px", xs: "20px 15px" },
+            }}
+          >
+            <SubscriptionHeader title="Table of Content" />
+            <TOCMain />
+          </Box>
         </Box>
       </Layout>
     </div>

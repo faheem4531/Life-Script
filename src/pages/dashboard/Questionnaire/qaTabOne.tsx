@@ -166,7 +166,6 @@ export default function TabOne({ onClick, data, setQaTab }) {
           btnText="Next"
           onClick={() => onClick(selectedValue)}
           image2={NextArrow}
-          width={"176px"}
         />
       </Box>
     </Box>

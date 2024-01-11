@@ -281,15 +281,11 @@ export default function TabTwo({
           alignItems: "center",
           gap: 2,
           mt: 2,
+          flexWrap: "wrap",
         }}
       >
         <Box>
-          <GlobelBtn
-            btnText="Back"
-            onClick={onClickBack}
-            image={backArrow}
-            width={"176px"}
-          />
+          <GlobelBtn btnText="Back" onClick={onClickBack} image={backArrow} />
         </Box>
         <Tooltip
           open={showTooltip}
@@ -303,7 +299,6 @@ export default function TabTwo({
               btnText="Next"
               onClick={handleButtonClick}
               image2={NextArrow}
-              width={"176px"}
             />
           </Box>
         </Tooltip>

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "../../../public/chapterName.svg";
-import Check from "../../../public/checkIcon.png";
+import Check from "../../_assets/svg/bgTickIcon.svg";
 import styles from "./AddChapterName.module.css";
 
 const AddChapterName = ({
@@ -47,7 +47,7 @@ const AddChapterName = ({
         justifyContent: "space-between",
         height: "165px",
         overflow: "hidden",
-        width: "100%"
+        width: "100%",
       }}
       className={styles.welcomeMain}
     >
@@ -55,73 +55,76 @@ const AddChapterName = ({
         sx={{
           padding: { sm: "27px 20px", xs: "10px 15px" },
           position: "relative",
-          zIndex: "1"
+          zIndex: "1",
         }}
       >
-      {title === "templateView" && (
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "25px",
-              sm: "28.707px",
-              md: "32px",
-              lg: "39.707px",
-            },
-          }}
-        >
-          {chapter}
-        </Typography>
-      )}
-      {title != "templateView" && (
-        <Box>
+        {title === "templateView" && (
           <Typography
             sx={{
               fontSize: {
-                xs: "22px",
-                sm: "24.707px",
-                md: "28px",
+                xs: "25px",
+                sm: "28.707px",
+                md: "32px",
                 lg: "39.707px",
               },
-              fontWeight: 600,
             }}
           >
-            Chapter Name
+            {chapter}
           </Typography>
+        )}
+        {title != "templateView" && (
           <Box>
-            <TextField
-              variant="outlined"
-              value={chapterName}
-              onChange={(e: any) => setChapterName(e.target.value)}
-              placeholder="My Adventurous Life"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Box sx={{ cursor: "pointer" }}>
-                      <Image
-                        onClick={saveChapterName}
-                        src={Check}
-                        alt="check-icon"
-                      />
-                    </Box>
-                  </InputAdornment>
-                ),
-              }}
+            <Typography
               sx={{
-                marginTop: "10px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: { sm: "50px", md: "20px" },
-                  backgroundColor: "white",
+                fontSize: {
+                  xs: "22px",
+                  sm: "24.707px",
+                  md: "28px",
+                  lg: "39.707px",
                 },
-                width: { sm: "300px", lg: "390px" },
+                fontWeight: 600,
               }}
-            />
+            >
+              Chapter Name
+            </Typography>
+            <Box>
+              <TextField
+                variant="outlined"
+                value={chapterName}
+                onChange={(e: any) => setChapterName(e.target.value)}
+                placeholder="My Adventurous Life"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Box sx={{ cursor: "pointer", mb: "-6px" }}>
+                        <Image
+                          onClick={saveChapterName}
+                          src={Check}
+                          alt="check-icon"
+                          style={{
+                            width: "22.259px",
+                          }}
+                        />
+                      </Box>
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  marginTop: "10px",
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: { sm: "50px", md: "20px" },
+                    backgroundColor: "white",
+                  },
+                  width: { sm: "300px", lg: "390px" },
+                }}
+              />
+            </Box>
           </Box>
-        </Box>
-      )}
+        )}
       </Box>
       <Box
         sx={{
-          background:{xs: "transparent", sm:"#17756A"},
+          background: { xs: "transparent", sm: "#17756A" },
           height: {
             sm: "400px",
           },
@@ -135,7 +138,6 @@ const AddChapterName = ({
           alignItems: "center",
           borderTopLeftRadius: "50%",
           borderBottomLeftRadius: "50%",
-
         }}
       >
         <Image src={BookImage} alt="book image" className={styles.bookImage} />

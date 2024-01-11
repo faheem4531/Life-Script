@@ -406,7 +406,7 @@ const ProfileSetting = () => {
         <TransitionsDialog
           open={profile}
           heading="Save Changes"
-          description="Do you want to save the changes"
+          description="Do you want to save the changes?"
           cancel={() => {
             setProfile(false);
           }}

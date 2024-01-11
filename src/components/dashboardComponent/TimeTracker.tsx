@@ -3,16 +3,15 @@ import Image from "next/image";
 import ClockImage from "../../_assets/svg/clockMain.svg";
 import styles from "./Custom.module.css";
 
-import { useDispatch, useSelector } from "react-redux";
 import {
   getAnswers,
   getChapters,
+  getHours,
   selectAllChapters,
   selectAnswers,
-  getHours,
 } from "@/store/slices/chatSlice";
 import { useEffect, useState } from "react";
-import { getAnswerbyIdApi } from "@/store/api/chatApi";
+import { useDispatch, useSelector } from "react-redux";
 
 const TimeTracker = ({onChange}) => {
   const dispatch: any = useDispatch();
@@ -172,7 +171,7 @@ const TimeTracker = ({onChange}) => {
               sx={{
                 fontSize: { lg: "36px", md: "28px", sm: "26px", xs: "22px" },
                 fontWeight: 500,
-                fontFamily: "Rubik",
+
                 marginBottom: "-7px",
               }}
             >
@@ -182,7 +181,7 @@ const TimeTracker = ({onChange}) => {
               sx={{
                 fontSize: { lg: "11px", md: "10px", sm: "8px", xs: "7px" },
                 fontWeight: 300,
-                fontFamily: "Rubik",
+
                 color: "#000",
               }}
             >
@@ -217,7 +216,7 @@ const TimeTracker = ({onChange}) => {
               sx={{
                 fontSize: { lg: "26px", md: "20px", sm: "18px", xs: "15px" },
                 fontWeight: 500,
-                fontFamily: "Rubik",
+
                 marginBottom: "-7px",
               }}
             >
@@ -227,7 +226,7 @@ const TimeTracker = ({onChange}) => {
               sx={{
                 fontSize: { lg: "11px", md: "10px", sm: "8px", xs: "7px" },
                 fontWeight: 300,
-                fontFamily: "Rubik",
+
                 color: "#000",
               }}
             >
@@ -264,7 +263,7 @@ const TimeTracker = ({onChange}) => {
               sx={{
                 fontSize: { lg: "24px", md: "20px", sm: "18px", xs: "15px" },
                 fontWeight: 500,
-                fontFamily: "Rubik",
+
                 marginBottom: "-7px",
               }}
             >
@@ -274,7 +273,7 @@ const TimeTracker = ({onChange}) => {
               sx={{
                 fontSize: { lg: "11px", md: "10px", sm: "8px", xs: "7px" },
                 fontWeight: 300,
-                fontFamily: "Rubik",
+
                 color: "#000",
               }}
             >
@@ -300,10 +299,10 @@ const TimeTracker = ({onChange}) => {
         <Box
           sx={{
             position: "absolute",
-            right: {  xs: "0px" },
+            right: { xs: "0px" },
             bottom: { lg: "40px", md: "50px", xs: "50px" },
-            width:"100px",
-            textAlign: "center"
+            width: "100px",
+            textAlign: "center",
           }}
         >
           <Typography

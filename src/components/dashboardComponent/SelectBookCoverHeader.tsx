@@ -1,8 +1,6 @@
 import Welcome from "@/_assets/png/overview-welcome-card.png";
-import Star from "@/_assets/svg/stars.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import Button from "../button/Button";
 import styles from "./Custom.module.css";
 
 const SelectBookCoverHeader = () => {
@@ -41,26 +39,6 @@ const SelectBookCoverHeader = () => {
         >
           Select Book Cover
         </Typography>
-        <Box
-          sx={{
-            height: "43px",
-            mt: { xs: "20px", md: "0px" },
-          }}
-        >
-          <Button
-            image={Star}
-            btnText="AI Generated Cover"
-            bgColor="radial-gradient(ellipse at 49% 86%, rgba(44, 166, 152, .3) 0%, rgba(24, 111, 101, .6) 60%)"
-            borderRadius="33.922px"
-            border="2.5px solid #D9D9D9"
-            color="white"
-            // onClick={() => {}}
-            width="203px"
-            fontSize={{
-              xs: "12px",
-            }}
-          />
-        </Box>
       </Box>
       <Box
         sx={{
@@ -73,7 +51,7 @@ const SelectBookCoverHeader = () => {
             sm: "260px",
             lg: "360px",
           },
-          display: "flex",
+          display: { sm: "flex", xs: "none" },
           justifyContent: "center",
           alignItems: "center",
           borderTopLeftRadius: "50%",

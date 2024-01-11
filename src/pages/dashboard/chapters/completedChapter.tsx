@@ -115,6 +115,7 @@ const CompletedChapters = () => {
           sx={{
             position: "relative",
             zIndex: "2",
+            p: { md: "0px", xs: "10px 30px" },
           }}
         >
           <Box
@@ -213,7 +214,7 @@ const CompletedChapters = () => {
       <TransitionsDialog
         open={deleteChapter}
         heading="Delete"
-        description="Are you sure you want to delete this chapter"
+        description="Are you sure you want to delete this chapter?"
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}

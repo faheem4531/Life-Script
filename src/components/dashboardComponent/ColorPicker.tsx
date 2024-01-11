@@ -1,5 +1,5 @@
 import { Box, TextField, Typography } from "@mui/material";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { ColorResult, SketchPicker } from "react-color";
 
 const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
@@ -21,8 +21,26 @@ const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
     setSelectedColor(inputColor);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      colorPickerRef.current &&
+      !colorPickerRef.current.contains(event.target as Node) &&
+      inputRef.current &&
+      !inputRef.current.contains(event.target as Node)
+    ) {
+      setDisplayColorPicker(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <Box position={"relative"}>
       <Box>
         <Typography
           sx={{
@@ -51,11 +69,14 @@ const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
         />
       </Box>
       {displayColorPicker && (
-        <div ref={colorPickerRef} style={{ position: "absolute", zIndex: 2 }}>
+        <div
+          ref={colorPickerRef}
+          style={{ position: "absolute", zIndex: 2, top: "0px", right: "0px" }}
+        >
           <SketchPicker color={selectedColor} onChange={handleColorChange} />
         </div>
       )}
-    </div>
+    </Box>
   );
 };
 

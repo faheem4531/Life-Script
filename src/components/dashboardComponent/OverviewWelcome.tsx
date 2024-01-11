@@ -3,11 +3,11 @@ import Welcome from "@/_assets/png/overview-welcome-card.png";
 import ContineWriting from "@/_assets/svg/continue-writing.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Button from "../button/Button";
 import styles from "./Custom.module.css";
-import { useEffect, useState } from "react";
 
 const WelcomeOverview = () => {
   const { t } = useTranslation();
@@ -15,10 +15,10 @@ const WelcomeOverview = () => {
 
   const [userName, setUserName] = useState("");
 
-  useEffect(() =>{
+  useEffect(() => {
     const name = localStorage.getItem("username");
     setUserName(name);
-  },[])
+  }, []);
 
   return (
     <Box
@@ -66,9 +66,9 @@ const WelcomeOverview = () => {
           {t("overView.headerdescription")}
         </Typography>
         <Button
-        onClick={() => router.push("/dashboard/chapters")}
+          onClick={() => router.push("/dashboard/chapters")}
           image={ContineWriting}
-          btnText={`| ${t("overView.headerBtnText")}`}
+          btnText={`${t("overView.headerBtnText")}`}
           // btnText="| Continue Writing"
           bgColor="#fff"
           borderRadius="23px"

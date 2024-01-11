@@ -204,3 +204,20 @@ a {
 .pdfNumberInput[type="number"] {
   -moz-appearance: textfield;
 }
+
+.rdw-image-modal-btn:disabled,
+.rdw-embedded-modal-btn:disabled,
+.rdw-link-modal-btn:disabled {
+  background: #197065 !important;
+  color: white !important;
+  border-radius: 30px !important;
+}
+
+.rdw-image-modal-btn,
+.rdw-embedded-modal-btn,
+.rdw-link-modal-btn {
+  background: transparent !important;
+  color: #197065 !important;
+  border-radius: 30px !important;
+  border: 1px solid #197065 !important;
+}

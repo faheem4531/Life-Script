@@ -225,7 +225,7 @@ const Dashboard = () => {
       <TransitionsDialog
         open={deleteChapter}
         heading="Delete"
-        description="Are you sure you want to delete this chapter"
+        description="Are you sure you want to delete this chapter?"
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}

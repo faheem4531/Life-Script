@@ -27,7 +27,6 @@
   height: 120px;
 }
 
-
 /*   LetsStarted Code here  */
 .topDots {
   position: absolute;
@@ -45,7 +44,7 @@
   margin: 100px 0;
 }
 
-@media (min-width:1400px) and (max-width:1800px) {
+@media (min-width: 1400px) and (max-width: 1800px) {
   .book {
     width: 508px;
     height: 520px;
@@ -74,12 +73,11 @@
     height: 110px;
     width: 650px;
   }
-
 }
 
-@media (min-width:992px) and (max-width:1400px) {
+@media (min-width: 992px) and (max-width: 1400px) {
   .primaryText {
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .boldText {
@@ -125,9 +123,9 @@
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 900px) {
   .primaryText {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .boldText {
@@ -157,7 +155,6 @@
     height: 50px;
   }
 
-
   /*   LetsStarted Code here  */
 
   .topDots {
@@ -179,7 +176,7 @@
   }
 }
 
-@media (min-width:600px) and (max-width:768px) {
+@media (min-width: 600px) and (max-width: 768px) {
   .bookDiv {
     margin-right: 20px;
   }
@@ -196,12 +193,11 @@
     width: 360px;
     height: 80px;
   }
-
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .primaryText {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .boldText {
@@ -241,9 +237,8 @@
   }
 }
 
-
 /*   LetsStarted Code here  */
-@media (min-width:1200px) and (max-width:1550px) {
+@media (min-width: 1200px) and (max-width: 1550px) {
   .aero {
     margin: 45px 0;
     width: 600px;
