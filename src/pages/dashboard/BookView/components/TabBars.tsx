@@ -11,7 +11,7 @@ const TabBars = ({ tabs }) => {
         justifyContent: "space-between",
       }}
     >
-      {tabs.map((tab, index) => (
+      {tabs?.map((tab, index) => (
         <Grid
           key={index}
           item
