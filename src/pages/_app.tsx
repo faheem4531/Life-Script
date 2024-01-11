@@ -35,6 +35,9 @@ export default function App({ Component, pageProps }: AppProps) {
         router.push("/dashboard/chapters");
       }, 1000);
       // router.push("/dashboard/chapters");
+    } else {
+      setLoading(false);
+      // router.push("/dashboard/chapters");
     }
   }, [currentPath]);
 
