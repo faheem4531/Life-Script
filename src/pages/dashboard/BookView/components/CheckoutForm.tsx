@@ -13,6 +13,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { useDispatch } from "react-redux";
 import { stripePayment } from "@/store/slices/chatSlice";
+import dynamic from "next/dynamic";
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -301,4 +302,6 @@ const CheckoutForm = ({quantity}) => {
   );
 };
 
-export default CheckoutForm;
+export default dynamic(() => Promise.resolve(CheckoutForm), {
+  ssr: false,
+});
