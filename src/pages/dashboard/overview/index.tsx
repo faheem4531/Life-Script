@@ -8,8 +8,15 @@ import {
 import WelcomeOverview from "@/components/dashboardComponent/OverviewWelcome";
 import TimeTracker from "@/components/dashboardComponent/TimeTracker";
 import { Box } from "@mui/material";
+import { useState } from "react";
 
 const OverView = () => {
+  const [achievements, setAchievements] = useState({
+    words: 0,
+    questions: 0,
+    chapters: 0,
+  })
+
   return (
     <Layout>
       <Box
@@ -22,14 +29,18 @@ const OverView = () => {
       >
         <Box sx={{ width: "100%" }}>
           <WelcomeOverview />
-          <TimeTracker />
+          <TimeTracker
+            onChange={(obj) =>
+              setAchievements(obj)
+            }
+          />
           <Box sx={{ margin: "20px 0", display: "flex", gap: "17px" }}>
             <ViewBook />
             <ViewTree />
           </Box>
           <PrintBook />
         </Box>
-        <Profile />
+        <Profile data={achievements} />
       </Box>
     </Layout>
   );

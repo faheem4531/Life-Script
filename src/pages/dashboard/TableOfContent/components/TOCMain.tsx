@@ -24,16 +24,18 @@ const TOCMain = () => {
 
   useEffect(() => {
     dispatch(getChapters())
-      .unwrap()
-      .then((res) => {
-        const updatedListItems = res.map((chapter, index) => ({
+    .unwrap()
+    .then((res) => {
+      const updatedListItems = res
+        .filter(chapter => chapter.startDefaultChapter === false)
+        .map((chapter, index) => ({
           id: index + 1,
           title: chapter.title,
           chapterId: chapter._id,
         }));
-
-        setListItems(updatedListItems);
-      });
+      setListItems(updatedListItems);
+    });
+  
   }, []);
 
   useEffect(() => {

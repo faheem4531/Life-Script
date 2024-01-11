@@ -21,7 +21,8 @@ import {
   verifyEmailApi,
   stripeDoneApi,
   updateUserProfileApi,
-  getUserProfileApi
+  getUserProfileApi,
+  getLuluBalanceApi
 } from "../api/authApi";
 
 const initialState = {
@@ -58,6 +59,18 @@ export const getUserProfile = createAsyncThunk<any[], void >(
   async () => {
     try {
       const response = await getUserProfileApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getLuluBalance = createAsyncThunk<any[], void >(
+  "user/get-lulu-balance",
+  async () => {
+    try {
+      const response = await getLuluBalanceApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);

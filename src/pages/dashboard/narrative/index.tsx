@@ -62,7 +62,7 @@ const NarrativeResponse = () => {
       .unwrap()
       .then(() => {
         setLoading(false);
-        router.push("/dashboard/chapters");
+        router.push("/dashboard/chapters/completedChapter");
       });
   };
 
@@ -336,6 +336,7 @@ const NarrativeResponse = () => {
         cancel={() => {
           setRevertModal(false);
           setResponseType(false);
+          dispatch(updateChapterResponse({id:chapterId, userText: userChapter, openaiChapterText: ""}))
         }}
         proceed={() => setRevertModal(false)}
         proceedText="Not Yet" // Customize the text for the "Yes" button

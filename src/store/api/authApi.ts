@@ -159,6 +159,7 @@ export async function updateUserProfileApi(data: any) {
     };
     const userId = localStorage.getItem("userId"); 
     const res = await axios.put(`https://api.thelifescript.com/users/${userId}`, data, {headers});
+    res?.data?.name && localStorage.setItem("username", res?.data?.name);
     return res;
   } catch (error: any) {
     
@@ -176,6 +177,21 @@ export async function getUserProfileApi() {
     const userId = localStorage.getItem("userId");
 
     const res = await api.get(`users/${userId}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getLuluBalanceApi() {
+  try {
+
+    const res = await api.get("chapter-compile/lulu-stripe/balance");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

@@ -4,6 +4,10 @@ import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import CheckoutForm from "./components/CheckoutForm";
 import ShippingCard from "./components/ShippingCard";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const Checkout = ({ setSelectedTab, setCount, count }) => {
   return (
@@ -46,7 +50,9 @@ const Checkout = ({ setSelectedTab, setCount, count }) => {
               flex: 1,
             }}
           >
-            <CheckoutForm />
+            <Elements stripe={stripePromise}>
+              <CheckoutForm quantity={count} />
+            </Elements>
           </Box>
         )}
         <Box

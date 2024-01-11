@@ -40,7 +40,6 @@ const FamilyTreeDataModal = ({
   );
   const maxDate = new Date();
 
-  console.log("qwerty22", nodeData);
 
   useEffect(() => {
     if(nodeData?.isSpouse === true){

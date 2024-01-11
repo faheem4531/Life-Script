@@ -27,17 +27,17 @@ const Loading = () => {
           setShowCompletion(false);
           setTimeout(() => {
             setShowCompletion(false);
-          }, 10000);
+          }, 1000);
           return 100;
         } else {
           if (prevProgress === 99) {
             return isLoaded === "loaded" ? prevProgress + 1 : prevProgress + 0;
           } else {
-            return prevProgress + 1;
+            return prevProgress + 10;
           }
         }
       });
-    }, 140);
+    }, 200);
 
     return () => {
       clearInterval(timer);
@@ -57,9 +57,7 @@ const Loading = () => {
       }}
     >
       <Typography sx={{ fontSize: "39px", fontWeight: 200 }}>
-        {progress < 50 && "READING CONTENT ...."}
-        {progress >= 50 && progress != 100 && "ANALYZING TONES ...."}
-        {progress === 100 && showCompletion && "All done!"}
+        {progress < 100 && "READING CONTENT ...."}
         {progress === 100 && !showCompletion && isLoaded === "loaded" && (
           <a
             style={{ borderBottom: "3px solid #197065" }}

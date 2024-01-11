@@ -1,20 +1,77 @@
 import MenuIcon from "@/_assets/svg/sidebar/menuIcon.svg";
+import DemoProfile from "@/_assets/svg/profile.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CameraIcon from "../../_assets/svg/cameraIcon.svg";
-import FemaleProfile from "../../_assets/svg/femaleProfileIcon.svg";
-import MaleProfile from "../../_assets/svg/maleProfileIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
 import styles from "./Sidebar.module.css";
+import * as d3 from "d3";
+import { selectTreeData } from "@/store/slices/chatSlice";
+import { useSelector } from "react-redux";
 
 const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(true);
-  const router = useRouter();
+
+  const familyTreeData = useSelector(selectTreeData);
+  const [allNodes, setAllNodes] = useState([]);
+  const [selectedNode, setSelectedNode] = useState({
+    name: "",
+    born: "",
+    died: "",
+    image: "",
+    myself: false,
+  });
+
+  useEffect(() => {
+    if (familyTreeData) {
+      const tree = d3
+        .tree()
+        .separation((a, b) => {
+          return a.children && a.children === b.children ? 1 : 0.5;
+        })
+        .size([1200, 2200]);
+      const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
+      const treeNodes = tree(nodes);
+      const descendants = treeNodes.descendants().slice(1);
+
+      let allNodes = [];
+
+      // Iterate through descendants and create two objects for each entry
+      descendants?.forEach((node) => {
+        if (node?.data?.name) {
+          const firstObject = {
+            name: node?.data?.name,
+            born: node?.data?.born?.slice(0, 4),
+            died: node?.data?.died?.slice(0, 4),
+            image: node?.data?.image,
+            myself: node?.data?.myself,
+          };
+          // Push the first object into the allNodes array
+          firstObject?.myself === true ? setSelectedNode(firstObject) : allNodes.push(firstObject);
+        }
+
+        if (node?.data?.spouseName) {
+          const secondObject = {
+            name: node?.data?.spouseName,
+            born: node?.data?.spouseBorn?.slice(0, 4),
+            died: node?.data?.spouseDied?.slice(0, 4),
+            image: node?.data?.spouseImage,
+            myself: node?.data?.myself,
+          };
+          // Push the second object into the allNodes array
+          allNodes.push(secondObject);
+        }
+      });
+
+      // Assuming setAllNodes is your state updater function
+      setAllNodes(allNodes);
+    }
+  }, [familyTreeData]);
+
   return (
     <Box sx={{ color: "#fff", backgroundColor: "#197065" }}>
       {!handleSideCheck && (
@@ -54,7 +111,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
               borderBottom: "1px solid #ECECEC",
             }}
           >
-            Khawaja Family Tree
+            {selectedNode?.name} Family Tree
           </Typography>
           <Box
             sx={{
@@ -75,7 +132,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
                 margin: "auto",
               }}
             >
-              <Image
+              {/* <Image
                 src={Profile}
                 alt=""
                 style={{
@@ -83,7 +140,28 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
                   height: "100%",
                   borderRadius: "50%",
                 }}
-              />
+              /> */}
+              {!selectedNode?.image ? (
+                <Image
+                  src={Profile}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "50%",
+                  }}
+                />
+              ) : (
+                <img
+                  alt="profile"
+                  src={selectedNode?.image}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "50%",
+                  }}
+                />
+              )}
               <Box
                 sx={{
                   width: { md: "14px", sm: "12px", xs: "10px" },
@@ -115,7 +193,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
                 mt: "10px",
               }}
             >
-              Haseeb Khawaja
+              {selectedNode?.name}
             </Typography>
             <Typography
               sx={{
@@ -124,7 +202,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
                 mt: "2px",
               }}
             >
-              Year of Birth 1990
+              Year of Birth {selectedNode?.born || "N/A"}
             </Typography>
           </Box>
         </Box>
@@ -177,62 +255,60 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
               </Box>
               {childsOpen && (
                 <Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      p: "10px 5px",
-                    }}
-                  >
-                    <Image src={MaleProfile} alt="profile" />
-                    <Box>
-                      <Typography
+                  {allNodes.length > 0 &&
+                    allNodes.map((node, index) => (
+                      <Box
+                        key={index}
                         sx={{
-                          fontSize: { md: "9.832px", xs: "8px" },
-                          color: "black",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                          p: "10px 5px",
                         }}
                       >
-                        Haseeb Khawaja
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: { md: "7.079px", xs: "6px" },
-                          color: "#BDBDBD",
-                        }}
-                      >
-                        Year of Birth 1990
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      p: "10px 5px",
-                    }}
-                  >
-                    <Image src={FemaleProfile} alt="profile" />
-                    <Box>
-                      <Typography
-                        sx={{
-                          fontSize: { md: "9.832px", xs: "8px" },
-                          color: "black",
-                        }}
-                      >
-                        Haseeb Khawaja
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: { md: "7.079px", xs: "6px" },
-                          color: "#BDBDBD",
-                        }}
-                      >
-                        Year of Birth 1990
-                      </Typography>
-                    </Box>
-                  </Box>
+                        {/* <Image src={node.gender === "male" ? MaleProfile : FemaleProfile} alt="profile" /> */}
+                        {!node?.image ? (
+                          <Image
+                            alt="profile"
+                            src={DemoProfile}
+                            className={styles.profilePic}
+                          />
+                        ) : (
+                          <img
+                            alt="profile"
+                            src={node?.image}
+                            width={33}
+                            height={32}
+                          />
+                        )}
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: { md: "9.832px", xs: "8px" },
+                              color: "black",
+                            }}
+                          >
+                            {node.name}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: { md: "7.079px", xs: "6px" },
+                              color: "#BDBDBD",
+                            }}
+                          >
+                            Year of Birth: <strong>{node.born || "N/A"}</strong>
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: { md: "7.079px", xs: "6px" },
+                              color: "#BDBDBD",
+                            }}
+                          >
+                            Year of Death: <strong>{node.died || "N/A"}</strong>
+                          </Typography>
+                        </Box>
+                      </Box>
+                    ))}
                 </Box>
               )}
             </button>

@@ -2,7 +2,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
-export default function CountrySelect({ onSelect, value = null }) {
+export default function CountrySelect({ onSelect, value = null, stripe = false, backgroundColor="#F6F9FB" }) {
   const [selectedCountry, setSelectedCountry] = useState(value);
 
   useEffect(() => {
@@ -16,12 +16,10 @@ export default function CountrySelect({ onSelect, value = null }) {
     }
   };
 
-  console.log("selectedCountry", selectedCountry);
-
   return (
     <Box
       sx={{
-        width: "180px",
+        width: stripe ? "100%" : "180px",
         mb: "5px",
       }}
     >
@@ -55,7 +53,7 @@ export default function CountrySelect({ onSelect, value = null }) {
             sx={{
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
-                backgroundColor: "#F6F9FB",
+                backgroundColor: backgroundColor,
                 height: "46px",
                 pt: "1.8px",
               },
@@ -64,7 +62,7 @@ export default function CountrySelect({ onSelect, value = null }) {
               },
               width: "100%",
               borderRadius: "50px",
-              backgroundColor: "#F6F9FB",
+              backgroundColor: backgroundColor,
               border: "0px",
               px: "15px",
             }}

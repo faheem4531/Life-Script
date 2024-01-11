@@ -8,6 +8,7 @@ import { Box, TextField, Tooltip, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const SupportScreen = () => {
   const dispatch: any = useDispatch();
@@ -17,13 +18,14 @@ const SupportScreen = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleComplaint = () => {
-    setShowModal(true);
-    setShowTooltip(false);
-    if (!subject || !description) {
-      setShowTooltip(true);
-    } else {
-      dispatch(customerSupport({ subject: subject, description: description }));
-    }
+    dispatch(customerSupport({ subject: subject, description: description }))
+      .unwrap()
+      .then(() => {
+        setShowModal(true);
+        setDescription("");
+        setSubject("");
+      })
+      .catch(() => toast.error("Failed to create your ticket"));
   };
 
   return (
@@ -146,37 +148,15 @@ const SupportScreen = () => {
                   mt: "20px",
                 }}
               >
-                <Tooltip
-                  open={showTooltip}
-                  onClose={() => setShowTooltip(false)}
-                  title="Please fill in all fields before proceeding."
-                >
-                  <Box>
-                    <GlobelBtn
-                      btnText="Submit"
-                      width="200px"
-                      onClick={handleComplaint}
-                    />
-                  </Box>
-                </Tooltip>
+                <Box>
+                  <GlobelBtn
+                    btnText="Submit"
+                    width="200px"
+                    onClick={handleComplaint}
+                    disabled={!subject || !description}
+                  />
+                </Box>
               </Box>
-              {/* <Tooltip
-              open={showTooltip}
-              onClose={() => setShowTooltip(false)}
-              title="Please fill in all fields before proceeding."
-            >
-              <Box
-                sx={{
-                  mt: "20px",
-                }}
-              >
-                <GlobelBtn
-                  btnText="Support"
-                  width="200px"
-                  onClick={handleComplaint}
-                />
-              </Box>
-            </Tooltip> */}
             </Box>
           </Box>
         </Box>
@@ -223,7 +203,8 @@ const SupportScreen = () => {
               // width: "400px",
             }}
           >
-            Your complaint has submited.
+            Your support ticket has been created. Our team will get back to you
+            soon.
           </Typography>
           <Box
             sx={{

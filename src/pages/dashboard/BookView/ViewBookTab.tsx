@@ -6,7 +6,7 @@ import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
 const ReviewInterior = ({ setSelectedTab }) => {
   const pdfUrl =
-    "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703831627/thelifescript/dyz9gggtcx4aju0dhn8k.pdf";
+    "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704890211/thelifescript/u86gcwjhqe8baou9zpnl.pdf";
   return (
     <Box>
       <Box
@@ -15,7 +15,7 @@ const ReviewInterior = ({ setSelectedTab }) => {
           bgcolor: "white",
           borderRadius: "7.348px",
           border: "0.367px solid #197065",
-          height: "700px",
+          height: "1100px",
         }}
       >
         <Box>

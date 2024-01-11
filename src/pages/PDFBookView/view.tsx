@@ -40,25 +40,9 @@ export default function PDFViewer(pdfUrl) {
     setNumPages(nextNumPages);
   }
 
-  function goToNextPage() {
-    setPageNumber((prevPageNumber) => prevPageNumber + 1);
-  }
-
-  function goToPreviousPage() {
-    setPageNumber((prevPageNumber) => prevPageNumber - 1);
-  }
-
-  function goToPage() {
-    const newPageNumber = parseInt(goToPageNumber);
-    if (
-      !Number.isNaN(newPageNumber) &&
-      newPageNumber > 0 &&
-      newPageNumber <= numPages
-    ) {
-      setPageNumber(newPageNumber);
-      setGoToPageNumber(""); // Clear input field
-    } else {
-      // Handle invalid page number input (e.g., display an error message)
+  function goToPage(number) {
+    if(number <= numPages){
+      setPageNumber(number);
     }
   }
 
@@ -73,11 +57,12 @@ export default function PDFViewer(pdfUrl) {
           alignItems="center"
         >
           <Button
-            onClick={goToPreviousPage}
+            onClick={() => setPageNumber(pageNumber - 1)}
             disabled={pageNumber <= 1}
             color="primary"
+            sx={{opacity: pageNumber <= 1 ? 0.2 : 1}}
           >
-            <Image alt="icon" src={PreviousIcon} onClick={goToPreviousPage} />
+            <Image alt="icon" src={PreviousIcon} />
           </Button>
         </Box>
 
@@ -89,11 +74,12 @@ export default function PDFViewer(pdfUrl) {
           alignItems="center"
         >
           <Button
-            onClick={goToNextPage}
+            onClick={() => setPageNumber(pageNumber + 1)}
             color="primary"
             disabled={pageNumber >= numPages}
+            sx={{opacity: pageNumber >= numPages ? 0.2 : 1}}
           >
-            <Image alt="icon" src={NextIcon} onClick={goToNextPage} />
+            <Image alt="icon" src={NextIcon} />
           </Button>
         </Box>
         <Box
@@ -101,8 +87,8 @@ export default function PDFViewer(pdfUrl) {
           justifyContent="center"
           alignItems="center"
           sx={{
-            height: "500px",
-            overflowY: "scroll",
+            // height: "500px",
+            // overflowY: "scroll",
           }}
         >
           <Box
@@ -150,21 +136,13 @@ export default function PDFViewer(pdfUrl) {
                 textAlign: "center",
                 fontSize: "18px",
               }}
-              value={goToPageNumber}
+              value={pageNumber}
               onChange={(e) => {
-                goToPage();
-                setGoToPageNumber(e.target.value);
+                goToPage(Number(e.target.value));
               }}
               className="pdfNumberInput"
             />{" "}
-            of 40
-            {/* <GlobelBtn
-              btnText="Go"
-              color="white"
-              bgColor="#17645A"
-              p="10px 20px"
-              onClick={goToPage}
-            /> */}
+            of {numPages}
           </Box>
         </Box>
       </Box>

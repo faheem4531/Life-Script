@@ -11,13 +11,9 @@ const Home = () => {
   const dispatch: any = useDispatch();
   const treeData = useSelector(selectTreeData);
   const [familyTreeData, setFamilyTreeData] = useState({});
-  console.log("333333", familyTreeData);
 
   useEffect(() => {
     dispatch(getTreeData())
-      .unwrap()
-      .then((res) => console.log("ressss", res))
-      .catch(() => {});
   }, []);
 
   useEffect(() => {

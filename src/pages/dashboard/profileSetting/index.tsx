@@ -146,7 +146,7 @@ const ProfileSetting = () => {
       }}
     >
       <Layout>
-        <ProfileHeader title="Profile Settings" description="" />
+        <ProfileHeader title="Account Settings" description="" />
         <Box
           sx={{
             display: "flex",
