@@ -18,9 +18,9 @@ interface SelectBookCoverCardProps {
 
 const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   landScape,
-  title = "My Adventurous Life",
-  subtitle = "John Doe",
-  Byline = "Volume 01",
+  title = "Book Title",
+  subtitle = "Author",
+  Byline = "",
   ColourPalette = "#197065",
   droppedImage,
 }) => {
@@ -154,7 +154,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                     p: "0px 15px",
                   }}
                 >
-                  {Byline.length == 0 ? "Volume 01" : Byline}
+                  {Byline.length == 0 ? "" : Byline}
                 </Box>
 
                 <Box
@@ -175,7 +175,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                       p: "0px 15px",
                     }}
                   >
-                    {title.length == 0 ? "My Adventurous Life" : title}
+                    {title.length == 0 ? "Book Title" : title}
                     <Box
                       sx={{
                         borderBottom: "2.5px solid white",
@@ -234,7 +234,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                   }}
                 >
                   <span>-</span>
-                  {subtitle.length == 0 ? "John Doe" : subtitle}
+                  {subtitle.length == 0 ? "Author" : subtitle}
                   <span>-</span>
                 </Box>
               </Box>

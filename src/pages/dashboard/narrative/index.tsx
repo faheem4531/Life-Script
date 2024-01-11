@@ -217,7 +217,7 @@ const NarrativeResponse = () => {
                         },
                         bgcolor: "#fff",
                         position: "relative",
-                        height: "calc(100vh - 240px)",
+                        height: "calc(100vh - 145px)",
                         overflowY: "auto",
                         "&::-webkit-scrollbar": { display: "none" },
                       }}

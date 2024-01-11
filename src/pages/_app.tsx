@@ -7,6 +7,7 @@ import "regenerator-runtime/runtime";
 import "../styles/globals.css";
 import NewApp from "./_newApp";
 
+import { Box, CircularProgress } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -15,16 +16,27 @@ import { store } from "../store/store";
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
+  const [loading, setLoading] = useState(true);
   //verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
-    if (!userLoggedIn && userLoggedIn !== "undefined" && currentPath !== "/verify/verificationSent" && currentPath!== "/verify" && currentPath!== "/verify/forgetPassword" ) {
+    if (
+      !userLoggedIn &&
+      userLoggedIn !== "undefined" &&
+      currentPath !== "/verify/verificationSent" &&
+      currentPath !== "/verify" &&
+      currentPath !== "/verify/forgetPassword"
+    ) {
       router.push("/");
+      setLoading(false);
     } else if (currentPath == "/") {
-      router.push("/dashboard/chapters");
+      setTimeout(() => {
+        setLoading(false);
+        router.push("/dashboard/chapters");
+      }, 1000);
+      // router.push("/dashboard/chapters");
     }
   }, [currentPath]);
-
 
   // useEffect(() => {
   //   const jwt = require("jsonwebtoken");
@@ -55,9 +67,23 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider store={store}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <NewApp>
-          <Component {...pageProps} />
-        </NewApp>
+        {loading ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              width: "100vw",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <NewApp>
+            <Component {...pageProps} />
+          </NewApp>
+        )}
       </LocalizationProvider>
     </StoreProvider>
   );
