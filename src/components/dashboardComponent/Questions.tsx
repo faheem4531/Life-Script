@@ -323,7 +323,7 @@ export default function Questions({
       <TransitionsDialog
         open={deleteQuestionModal}
         heading="Delete"
-        description="Are you sure you want to delete this question"
+        description="Are you sure you want to delete this question?"
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
         closeModal={() => setDeleteQuestionModal(false)}

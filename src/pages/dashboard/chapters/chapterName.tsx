@@ -28,7 +28,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import Check from "../../../../public/checkIcon.png";
 import addIcon from "../../../_assets/svg/AddIcon.svg";
 import suggestionIcon from "../../../_assets/svg/suggestionsIcon.svg";
@@ -546,7 +545,7 @@ const chapterName = () => {
         description={
           buyPremium
             ? "This feature is only for Premium and Standard users"
-            : "It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text"
+            : "It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text'?"
         }
         cancel={handleCancel}
         proceed={proceedFusion}

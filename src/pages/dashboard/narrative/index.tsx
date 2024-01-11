@@ -122,7 +122,7 @@ const NarrativeResponse = () => {
                     flexDirection: "column",
                   }}
                 >
-                  <Box sx={{ display: "flex", alignItems: "start" }}>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Image
                       alt="image"
                       src={Title}
@@ -135,20 +135,10 @@ const NarrativeResponse = () => {
                           display: "block",
                           color: "#171725",
                           fontWeight: 600,
-                          mt: "2px",
+                          // mt: "2px",
                         }}
                       >
                         {chapterTitle}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: "12px",
-                          color: "#696974",
-                          fontWeight: 300,
-                          textDecoration: "underline",
-                        }}
-                      >
-                        view only
                       </Typography>
                     </Box>
                   </Box>
@@ -228,6 +218,8 @@ const NarrativeResponse = () => {
                         bgcolor: "#fff",
                         position: "relative",
                         height: "calc(100vh - 240px)",
+                        overflowY: "auto",
+                        "&::-webkit-scrollbar": { display: "none" },
                       }}
                       id="accordian"
                     >

@@ -49,6 +49,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
           width: "100%",
           height: "100%",
           p: "53px 20px",
+          overflowX: "auto",
         }}
       >
         {currentPath === "/dashboard/BookView" && (
@@ -84,7 +85,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
           {viewBookCheck && (
             <Box
               sx={{
-                width: { xs: "80%", sm: "260px", md: "240px", lg: "287.611px" },
+                width: { xs: "260px", md: "240px", lg: "287.611px" },
                 height: "414.319px",
                 bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
                 color: "white",
@@ -125,7 +126,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
 
           <Box
             sx={{
-              width: { xs: "80%", sm: "260px", md: "240px", lg: "287.611px" },
+              width: { xs: "240px", md: "240px", lg: "287.611px" },
               height: "414.319px",
               bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
               color: "white",
@@ -137,7 +138,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
               sx={{
                 width: "100%",
                 height: "100%",
-                border: landScape === "1" ? "" : "1.942px solid white",
+                border: "1.942px solid white",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -149,6 +150,8 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                     fontSize: { sm: "12px", md: "13px", lg: "15.559px" },
                     fontWeight: 300,
                     letterSpacing: "2.956px",
+                    wordBreak: "break-all",
+                    p: "0px 15px",
                   }}
                 >
                   {Byline.length == 0 ? "Volume 01" : Byline}
@@ -168,6 +171,8 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                       width: landScape === "1" ? "70%" : "100%",
                       margin: "auto",
                       pb: landScape === "2" && "20px",
+                      wordBreak: "break-all",
+                      p: "0px 15px",
                     }}
                   >
                     {title.length == 0 ? "My Adventurous Life" : title}
@@ -225,6 +230,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "10px",
+                    wordBreak: "break-all",
                   }}
                 >
                   <span>-</span>

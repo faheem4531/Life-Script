@@ -176,7 +176,7 @@ const EditBookCover = () => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Title*
+                  Book Title*
                 </Typography>
                 <TextField
                   variant="outlined"
@@ -200,7 +200,7 @@ const EditBookCover = () => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Subtitle*
+                  Author*
                 </Typography>
                 <TextField
                   variant="outlined"
@@ -306,7 +306,12 @@ const EditBookCover = () => {
                 </div>
               </Box>
             </Box>
-            <Box flex={"1"}>
+            <Box
+              sx={{
+                flex: "1",
+                overflowX: "auto",
+              }}
+            >
               <SelectBookCoverCard
                 landScape={CoverNumber?.toString()}
                 title={title}
@@ -318,9 +323,11 @@ const EditBookCover = () => {
 
               <Box
                 display="flex"
-                gap="30px"
+                columnGap="30px"
+                rowGap="10px"
                 mt="30px"
                 justifyContent="flex-end"
+                flexWrap="wrap"
               >
                 <Box>
                   <GlobelBtn
