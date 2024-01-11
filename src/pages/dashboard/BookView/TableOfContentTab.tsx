@@ -8,6 +8,7 @@ const TableOfContentTab = ({ setSelectedTab }) => {
     event.stopPropagation();
   };
   return (
+    
     <Box>
       <Box
         onClick={(e) => {

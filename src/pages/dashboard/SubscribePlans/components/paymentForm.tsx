@@ -19,7 +19,6 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const useOptions = () => {
   const fontSize = "16px";

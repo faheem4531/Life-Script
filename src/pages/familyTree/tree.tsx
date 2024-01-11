@@ -11,7 +11,7 @@ import ReactDOMServer from "react-dom/server";
 import { useDispatch } from "react-redux";
 import styles from "./FamilyTree.module.css";
 
-const FamilyTree = ({ familyTreeData }) => {
+const FamilyTree = ({ familyTreeData, onSelect }) => {
   const svgRef = useRef();
   const dispatch: any = useDispatch();
   const [familyModal, setFamilyModal] = useState(false);
@@ -51,7 +51,6 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const addPartner = (data) => {
     let partnerData;
-    console.log("datyyy",data);
     if (data?.isSpouse === false) {
       partnerData = {
         nodeId: selectedNode?.data?._id,
@@ -83,7 +82,6 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const addParents = (data) => {
-    console.log("in the father");
     let parentData = {
       name: data.name,
       born: data.born,
@@ -276,7 +274,7 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const renderNode = (personNode, d) => {
-    const renderRect = (x, y, height, className) => {
+    const renderRect = (x, y, height, className, isSpouse) => {
       personNode
         .append("rect")
         .attr("class", className)
@@ -285,9 +283,14 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("y", y)
         .attr("width", 200)
         .attr("height", height)
-        .on("click", () =>
-          console.log("Clicked on:", d.data.name || d.data.spouseName)
-        );
+        .on("click", () =>{
+          console.log("Clicked on rect:", d.data?.image, "33rr", className);
+          onSelect({
+            name: isSpouse ? d?.data?.spouseName : d?.data?.name,
+            birth: isSpouse ? d?.data?.spouseBorn : d?.data?.born,
+            image: isSpouse ? d?.data?.spouseImage : d?.data?.image,
+          });
+        });
     };
 
     const renderText = (x, y, text, className) => {
@@ -335,7 +338,7 @@ const FamilyTree = ({ familyTreeData }) => {
     };
 
     if (d.data.spouseName) {
-      renderRect(10, -105, 100, `${styles.nameRect}`);
+      renderRect(10, -105, 100, `${styles.nameRect}`, true);
       renderImage(14, -100, d.data.image || profileIcon);
       renderText(76, -75, d.data.name || "", `${styles.name}`);
       //age
@@ -346,7 +349,7 @@ const FamilyTree = ({ familyTreeData }) => {
       renderText(76, -50, age || "", `${styles.dateLocation}`);
       renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
-      renderRect(10, 5, 100, `${styles.spouseRect}`);
+      renderRect(10, 5, 100, `${styles.spouseRect}`, true);
       renderImage(14, 10, d.data.spouseImage || profileIcon);
       renderText(76, 35, d.data.spouseName || "", `${styles.name}`);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
@@ -450,7 +453,7 @@ const FamilyTree = ({ familyTreeData }) => {
       const died = d.data.died?.slice(0, 4);
       const age =
         born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known"; 
-      renderRect(10, -50, 100, `${styles.nameRect}`);
+      renderRect(10, -50, 100, `${styles.nameRect}`, true);
       renderImage(14, -45, d.data.image || profileIcon);
       renderText(76, -20, d.data.name || "", `${styles.name}`);
       renderText(76, 5, age || "", `${styles.dateLocation}`);

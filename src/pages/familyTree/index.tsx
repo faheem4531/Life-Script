@@ -11,7 +11,8 @@ const Home = () => {
   const dispatch: any = useDispatch();
   const treeData = useSelector(selectTreeData);
   const [familyTreeData, setFamilyTreeData] = useState({});
-  console.log("333333", familyTreeData);
+  const[selectedNode, setSelectedNode] = useState();
+  console.log("eeertre",selectedNode)
 
   useEffect(() => {
     dispatch(getTreeData())
@@ -616,7 +617,7 @@ const Home = () => {
 
   return (
     <Box>
-      <FamilyTreeLayout>
+      <FamilyTreeLayout selectedNode = {selectedNode}>
         <Box
           sx={{
             p: { sm: "0", xs: "10px" },
@@ -630,7 +631,7 @@ const Home = () => {
           >
             {/* <SubscriptionHeader title="Family Tree" description="" /> */}
           </Box>
-          <FamilyTree familyTreeData={familyTreeData} />
+          <FamilyTree familyTreeData={familyTreeData} onSelect = {(node) => {setSelectedNode(node)}} />
         </Box>
       </FamilyTreeLayout>
     </Box>

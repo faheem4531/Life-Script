@@ -159,6 +159,7 @@ export async function updateUserProfileApi(data: any) {
     };
     const userId = localStorage.getItem("userId"); 
     const res = await axios.put(`https://api.thelifescript.com/users/${userId}`, data, {headers});
+    res?.data?.name && localStorage.setItem("username", res?.data?.name);
     return res;
   } catch (error: any) {
     
