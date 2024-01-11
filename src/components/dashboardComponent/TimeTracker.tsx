@@ -14,7 +14,7 @@ import {
 import { useEffect, useState } from "react";
 import { getAnswerbyIdApi } from "@/store/api/chatApi";
 
-const TimeTracker = () => {
+const TimeTracker = ({onChange}) => {
   const dispatch: any = useDispatch();
   const allChapters = useSelector(selectAllChapters);
   const allAnswers = useSelector(selectAnswers);
@@ -75,12 +75,6 @@ const TimeTracker = () => {
     }
   }
 
-  // Example usage:
-  const secondsString1 = "1800"; // 30 minutes
-  const secondsString2 = "7200"; // 2 hours
-
-  console.log(formatTime(secondsString1)); // Output: 30 mins
-  console.log(formatTime(secondsString2)); // Output: 2 hrs
 
   useEffect(() => {
     dispatch(getChapters());
@@ -89,6 +83,18 @@ const TimeTracker = () => {
       .unwrap()
       .then((res) => setHoursCount(formatTime(Number(res))));
   }, []);
+
+  useEffect(() => {
+    let completedChapters = 0;
+    if (allChapters?.length > 0) {
+      const inProgressChapters = allChapters.filter((chapter) => chapter.status === true);
+    
+      inProgressChapters.forEach((chapter) => {
+        completedChapters++;
+      });
+        }
+    onChange({words: wordsCount, chapters: completedChapters, questions: questionCount})
+  }, [wordsCount, chapterCount, questionCount]);
 
   useEffect(() => {
     if (allChapters.length > 0) {

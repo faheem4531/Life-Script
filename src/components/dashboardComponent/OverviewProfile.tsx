@@ -16,7 +16,7 @@ import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
 
-const Profile = () => {
+const Profile = ({data}) => {
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -115,37 +115,37 @@ const Profile = () => {
           }}
         >
           <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+            <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
               <Image
                 alt="tag"
-                src={true ? Grey : Bronze}
+                src={data?.words < 499 ? Grey : Bronze}
                 className={styles.profileAchivements}
               />
             </Tooltip>
           </Box>
           <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+            <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
               <Image
                 alt="tag"
-                src={true ? Grey : Silver}
+                src={data?.chapters < 5 ? Grey : Silver}
                 className={styles.profileAchivements}
               />
             </Tooltip>
           </Box>
           <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+            <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
               <Image
                 alt="tag"
-                src={true ? Grey : Gold}
+                src={data?.questions < 100 ? Grey : Gold}
                 className={styles.profileAchivements}
               />
             </Tooltip>
           </Box>
           <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={true ? "This achievement is not opened yet" : ""}>
+            <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
               <Image
                 alt="tag"
-                src={true ? Grey : Platinum}
+                src={data?.words < 5000 ? Grey : Platinum}
                 className={styles.profileAchivements}
               />
             </Tooltip>

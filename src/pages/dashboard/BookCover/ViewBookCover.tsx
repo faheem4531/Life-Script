@@ -259,7 +259,7 @@ const ViewBookCover = () => {
             >
               <Box>
                 <GlobelBtn
-                  btnText="Print Book"
+                  btnText="View Pdf"
                   fontSize={{ xs: "12px", md: "16px" }}
                   border="1px solid #197065"
                   onClick={() =>

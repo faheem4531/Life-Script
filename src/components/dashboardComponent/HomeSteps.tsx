@@ -97,7 +97,7 @@ const HomeSteps = () => {
           }}
           className={styles.typo}
         >
-          3. Select stories tone and fuse
+          3. Use Narrative Fusion
         </Typography>
         <Image alt="icon" src={Step3} className={styles.logo} />
       </Box>

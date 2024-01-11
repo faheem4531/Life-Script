@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import FamilyTreeSideBar from "../dashboardComponent/FamilyTreeSideBar";
 import styles from "./Layout.module.css";
 
-const FamilyTreeLayout = ({ children, selectedNode }: { children?: any, selectedNode?: any}) => {
+const FamilyTreeLayout = ({ children,}: { children?: any}) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
   const router = useRouter();
 
@@ -71,7 +71,6 @@ const FamilyTreeLayout = ({ children, selectedNode }: { children?: any, selected
             <FamilyTreeSideBar
               handleSideCheck={handleSideBar}
               menuClick={() => setHandleSideBar(false)}
-              selectedNode = {selectedNode}
             />
           </Box>
         </Box>

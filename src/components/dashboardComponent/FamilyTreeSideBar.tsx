@@ -5,24 +5,26 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import CameraIcon from "../../_assets/svg/cameraIcon.svg";
-import FemaleProfile from "../../_assets/svg/femaleProfileIcon.svg";
-import MaleProfile from "../../_assets/svg/maleProfileIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
 import styles from "./Sidebar.module.css";
 import * as d3 from "d3";
 import { selectTreeData } from "@/store/slices/chatSlice";
 import { useSelector } from "react-redux";
 
-const FamilyTreeSideBar = ({ menuClick, handleSideCheck, selectedNode }) => {
+const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(true);
-  const router = useRouter();
 
   const familyTreeData = useSelector(selectTreeData);
   const [allNodes, setAllNodes] = useState([]);
-  const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
+  const [selectedNode, setSelectedNode] = useState({
+    name: "",
+    born: "",
+    died: "",
+    image: "",
+    myself: false,
+  });
 
   useEffect(() => {
     if (familyTreeData) {
@@ -46,9 +48,10 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck, selectedNode }) => {
             born: node?.data?.born?.slice(0, 4),
             died: node?.data?.died?.slice(0, 4),
             image: node?.data?.image,
+            myself: node?.data?.myself,
           };
           // Push the first object into the allNodes array
-          allNodes.push(firstObject);
+          firstObject?.myself === true ? setSelectedNode(firstObject) : allNodes.push(firstObject);
         }
 
         if (node?.data?.spouseName) {
@@ -57,6 +60,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck, selectedNode }) => {
             born: node?.data?.spouseBorn?.slice(0, 4),
             died: node?.data?.spouseDied?.slice(0, 4),
             image: node?.data?.spouseImage,
+            myself: node?.data?.myself,
           };
           // Push the second object into the allNodes array
           allNodes.push(secondObject);
@@ -198,7 +202,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck, selectedNode }) => {
                 mt: "2px",
               }}
             >
-              Year of Birth {selectedNode?.birth || "N/A"}
+              Year of Birth {selectedNode?.born || "N/A"}
             </Typography>
           </Box>
         </Box>

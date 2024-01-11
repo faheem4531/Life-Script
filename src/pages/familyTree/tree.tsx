@@ -11,7 +11,7 @@ import ReactDOMServer from "react-dom/server";
 import { useDispatch } from "react-redux";
 import styles from "./FamilyTree.module.css";
 
-const FamilyTree = ({ familyTreeData, onSelect }) => {
+const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
   const dispatch: any = useDispatch();
   const [familyModal, setFamilyModal] = useState(false);
@@ -19,7 +19,6 @@ const FamilyTree = ({ familyTreeData, onSelect }) => {
   const [selectedNode, setSelectedNode] = useState(null);
   const [updatedNode, setUpdatedNode] = useState({});
   const [nodeData, setNodeData] = useState(null);
-  console.log("nodeData", selectedNode);
   const [selectedRelation, setSelectedRelation] = useState();
   const [relations, setRelations] = useState([
     "Sibling",
@@ -285,11 +284,6 @@ const FamilyTree = ({ familyTreeData, onSelect }) => {
         .attr("height", height)
         .on("click", () =>{
           console.log("Clicked on rect:", d.data?.image, "33rr", className);
-          onSelect({
-            name: isSpouse ? d?.data?.spouseName : d?.data?.name,
-            birth: isSpouse ? d?.data?.spouseBorn : d?.data?.born,
-            image: isSpouse ? d?.data?.spouseImage : d?.data?.image,
-          });
         });
     };
 

@@ -8,7 +8,7 @@ class API {
     this.instance = axios.create({
       baseURL: "https://api.thelifescript.com/", // base URL
       // baseURL: "http://localhost:8000/",
-      // baseURL: "https://e1b0-116-58-9-130.ngrok-free.app", //ngrok
+      // baseURL: "https://28f3-116-58-9-130.ngrok-free.app", //ngrok
       // headers: {
       //   "ngrok-skip-browser-warning": true,
       // },

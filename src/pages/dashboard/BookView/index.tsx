@@ -12,7 +12,7 @@ import TabBars from "./components/TabBars";
 
 const BookView = () => {
   const router = useRouter();
-  const [selectedTab, setSelectedTab] = useState(3);
+  const [selectedTab, setSelectedTab] = useState(1);
   const [count, setCount] = useState(1);
 
   const handleTabChange = () => {

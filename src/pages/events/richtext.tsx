@@ -336,22 +336,37 @@ const RichText = ({ questionId }) => {
 
   //answer completed
   const handleCompleteAnswer = () => {
-    saveUserAnswer();
-    dispatch(
-      updateQuestion({
-        text: questionData?.text,
-        id: questionData?._id,
-        chapter: questionData?.chapter?._id,
-        status: "Completed",
-      })
-    )
-      .unwrap()
-      .then(() => {
-        router.push(
-          `/dashboard/chapters/chapterName?chapterId=${questionData?.chapter?._id}`
-        );
-      })
-      .catch(() => toast.error("Failed to mark as complete"));
+    if (!compileChapterId) {
+      saveUserAnswer();
+      dispatch(
+        updateQuestion({
+          text: questionData?.text,
+          id: questionData?._id,
+          chapter: questionData?.chapter?._id,
+          status: "Completed",
+        })
+      )
+        .unwrap()
+        .then(() => {
+          router.push(
+            `/dashboard/chapters/chapterName?chapterId=${questionData?.chapter?._id}`
+          );
+        })
+        .catch(() => toast.error("Failed to mark as complete"));
+    } else {
+
+      const editedChapter = {
+        id: compileChapterId,
+        userText:openai === "true" ? userChapter : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        openaiChapterText: openai === "false" ? gptChapter : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      }
+      dispatch(
+        updateChapterResponse(editedChapter)
+      )
+        .unwrap()
+        .then(() => router.push("/dashboard/chapters/completedChapter"))
+        .catch(() => toast.error("Failed to save your chapter"));
+    }
   };
 
   //for uploadin image
@@ -502,7 +517,7 @@ const RichText = ({ questionId }) => {
                 onClick={handleSpeechtoText}
               />
 
-              {!openai && (
+              {true && (
                 <GlobelBtn
                   onClick={handleCompleteAnswer}
                   disabled={
@@ -546,7 +561,6 @@ const RichText = ({ questionId }) => {
                 "list",
                 "textAlign",
                 "link",
-                "embedded",
                 "colorPicker",
                 "emoji",
                 "image",
@@ -593,12 +607,6 @@ const RichText = ({ questionId }) => {
                 showOpenOptionOnHover: true,
                 defaultTargetOption: "_self",
                 options: ["link"],
-              },
-              embedded: {
-                defaultSize: {
-                  height: "auto",
-                  width: "auto",
-                },
               },
               image: {
                 // urlEnabled: true,
