@@ -25,6 +25,7 @@ const SelectBookCover = () => {
               flexWrap: "wrap",
               gap: "20px",
               mt: "20px",
+              overflowX: "auto",
             }}
           >
             <Box flex={"auto"}>

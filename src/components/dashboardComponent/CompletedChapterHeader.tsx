@@ -1,9 +1,11 @@
 import Tick from "@/_assets/svg/Tick.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import styles from "./Custom.module.css";
 
 const CompletedChapterHeader = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -37,7 +39,7 @@ const CompletedChapterHeader = () => {
             fontWeight: 700,
           }}
         >
-          Completed
+          {t("completedCh.com")}
         </Typography>
       </Box>
       <Box>

@@ -161,6 +161,7 @@ const EditBookCover = () => {
               flexWrap: "wrap",
               gap: { xs: "40px", md: "50px", lg: "70px" },
               mt: "20px",
+              overflowX: "auto",
             }}
           >
             <Box
@@ -309,7 +310,6 @@ const EditBookCover = () => {
             <Box
               sx={{
                 flex: "1",
-                overflowX: "auto",
               }}
             >
               <SelectBookCoverCard

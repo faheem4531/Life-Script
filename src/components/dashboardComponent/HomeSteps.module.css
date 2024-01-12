@@ -2,11 +2,11 @@
   width: 54px;
 }
 
-@media (max-width: 1400px) {
-  .typo {
-    font-size: 16px;
-  }
+.typo {
+  font-size: 12px;
+}
 
+@media (max-width: 1400px) {
   .stepContainer {
     padding: 20px 0;
   }
@@ -14,7 +14,7 @@
 
 @media (max-width: 900px) {
   .typo {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .stepContainer {

@@ -13,7 +13,7 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const TimeTracker = ({onChange}) => {
+const TimeTracker = ({ onChange }) => {
   const dispatch: any = useDispatch();
   const allChapters = useSelector(selectAllChapters);
   const allAnswers = useSelector(selectAnswers);
@@ -74,7 +74,6 @@ const TimeTracker = ({onChange}) => {
     }
   }
 
-
   useEffect(() => {
     dispatch(getChapters());
     dispatch(getAnswers());
@@ -86,13 +85,19 @@ const TimeTracker = ({onChange}) => {
   useEffect(() => {
     let completedChapters = 0;
     if (allChapters?.length > 0) {
-      const inProgressChapters = allChapters.filter((chapter) => chapter.status === true);
-    
+      const inProgressChapters = allChapters.filter(
+        (chapter) => chapter.status === true
+      );
+
       inProgressChapters.forEach((chapter) => {
         completedChapters++;
       });
-        }
-    onChange({words: wordsCount, chapters: completedChapters, questions: questionCount})
+    }
+    onChange({
+      words: wordsCount,
+      chapters: completedChapters,
+      questions: questionCount,
+    });
   }, [wordsCount, chapterCount, questionCount]);
 
   useEffect(() => {
@@ -123,7 +128,7 @@ const TimeTracker = ({onChange}) => {
         position: "relative",
         width: "100%",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: { md: "space-between", xs: "center" },
         alignItems: "center",
         flexWrap: "wrap",
         pr: "30px",
@@ -286,7 +291,7 @@ const TimeTracker = ({onChange}) => {
         sx={{
           position: "relative",
           ml: "20px",
-          width: "280px",
+          width: "260px",
         }}
       >
         <Image

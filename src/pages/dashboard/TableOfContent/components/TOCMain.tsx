@@ -24,18 +24,17 @@ const TOCMain = () => {
 
   useEffect(() => {
     dispatch(getChapters())
-    .unwrap()
-    .then((res) => {
-      const updatedListItems = res
-        .filter(chapter => chapter.startDefaultChapter === false)
-        .map((chapter, index) => ({
-          id: index + 1,
-          title: chapter.title,
-          chapterId: chapter._id,
-        }));
-      setListItems(updatedListItems);
-    });
-  
+      .unwrap()
+      .then((res) => {
+        const updatedListItems = res
+          .filter((chapter) => chapter.startDefaultChapter === false)
+          .map((chapter, index) => ({
+            id: index + 1,
+            title: chapter.title,
+            chapterId: chapter._id,
+          }));
+        setListItems(updatedListItems);
+      });
   }, []);
 
   useEffect(() => {
@@ -56,10 +55,10 @@ const TOCMain = () => {
             padding: {
               md: "5px 46px 16px 37px",
               sm: "5px 30px 10px 30px",
-              xs: "10px 10px 100px",
+              xs: "10px 10px 85px",
             },
             marginTop: "10px",
-            height: "calc(100vh - 280px)",
+            height: { sm: "calc(100vh - 280px)", xs: "calc(100vh - 160px)" },
             borderRadius: {
               sm: "18px",
               xs: "5px",
@@ -124,13 +123,22 @@ const TOCMain = () => {
               display: "flex",
               flexDirection: "column",
               gap: "11px",
-              height: "80%",
+              height: { sm: "80%", xs: "100%" },
               overflowY: "auto",
               "&::-webkit-scrollbar": { display: "none" },
             }}
           >
             {selectedItems?.length > 0 ? (
-              <DraggableList data={selectedItems} />
+              <Box>
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+                <DraggableList data={selectedItems} />
+              </Box>
             ) : (
               <Box
                 sx={{

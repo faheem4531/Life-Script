@@ -1,4 +1,16 @@
 {
+  "sideBar": {
+    "Overview": "Resumen",
+    "AllCh": "Todos los Capítulos",
+    "InPro": "En Progreso",
+    "Com": "Completados",
+    "bookCover": "Portada del Libro",
+    "SubPlan": "Plan de Suscripción",
+    "toc": "Tabla de Contenidos",
+    "FamilyTree": "Árbol Genealógico",
+    "account": "Cuenta",
+    "Support": "Soporte"
+  },
   "login-page": {
     "email": "Correo electrónico",
     "enter-email": "Ingresa tu dirección de correo electrónico",
@@ -96,5 +108,18 @@
     "achivement": "Logro",
     "RecentCh": "Capítulos recientes",
     "viewMore": "Ver más"
+  },
+  "ChapterSteps": {
+    "step1": "Comenzar capítulo",
+    "step2": "Responder preguntas",
+    "step3": "Utilice la fusión narrativa",
+    "step4": "Vista previa y finalizar"
+  },
+  "StartNewChapter": {
+    "StartNewChapter": "Iniciar nuevo capítulo",
+    "useTem": "Usar plantilla"
+  },
+  "completedCh": {
+    "com": "Completados"
   }
 }

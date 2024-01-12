@@ -232,14 +232,14 @@ export default function DetailCard({
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    alignContent: "space-between",
+                    justifyContent: "space-between",
                   }}
                   className={styles.cardContent}
                 >
                   <Box
                     sx={{
                       width: "100%",
-                      height: { sm: "100px", xs: "100px" },
+                      height: { sm: "100px", xs: "100%" },
                       overflowY: "auto",
                       "&::-webkit-scrollbar": { display: "none" },
                     }}
@@ -325,7 +325,7 @@ export default function DetailCard({
                             justifyContent: "space-between",
                             alignItems: "center",
                             marginTop: { md: "10px" },
-                            // bgcolor: "pink"
+                            height: { xs: "20px", sm: "100%" },
                           }}
                         >
                           <Typography

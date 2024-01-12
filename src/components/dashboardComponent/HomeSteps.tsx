@@ -4,9 +4,11 @@ import Step3 from "@/_assets/svg/step3.svg";
 import Step4 from "@/_assets/svg/step4.svg";
 import { Box, Divider, Typography } from "@mui/material";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import styles from "./HomeSteps.module.css";
 
 const HomeSteps = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -29,15 +31,16 @@ const HomeSteps = () => {
       >
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
             top: "0px",
-            left: { sm: "-30", xs: "-20px" },
-            width: "200px",
+            left: { sm: "-40", xs: "-20px" },
+            width: "150px",
           }}
           className={styles.typo}
         >
-          1. Begin chapter
+          1.
+          {t("ChapterSteps.step1")}
         </Typography>
         <Image alt="icon" src={Step1} className={styles.logo} />
       </Box>
@@ -59,15 +62,16 @@ const HomeSteps = () => {
       >
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
             bottom: "10px",
-            left: "-30px",
-            width: "200px",
+            left: "-48px",
+            width: "150px",
+            textAlign: "center",
           }}
           className={styles.typo}
         >
-          2. Answer questions
+          2. {t("ChapterSteps.step2")}
         </Typography>
         <Image alt="icon" src={Step2} className={styles.logo} />
       </Box>
@@ -89,15 +93,16 @@ const HomeSteps = () => {
       >
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
             top: "0px",
-            left: { md: "-70px", sm: "-60px", xs: "-55px" },
-            width: "250px",
+            left: { md: "-60px", sm: "-60px", xs: "-55px" },
+            width: "180px",
+            textAlign: "center",
           }}
           className={styles.typo}
         >
-          3. Use Narrative Fusion
+          3. {t("ChapterSteps.step3")}
         </Typography>
         <Image alt="icon" src={Step3} className={styles.logo} />
       </Box>
@@ -119,7 +124,7 @@ const HomeSteps = () => {
       >
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
             bottom: "10px",
             left: "-40px",
@@ -127,7 +132,7 @@ const HomeSteps = () => {
           }}
           className={styles.typo}
         >
-          4. Preview and Finish
+          4. {t("ChapterSteps.step4")}
         </Typography>
         <Image alt="icon" src={Step4} className={styles.logo} />
       </Box>

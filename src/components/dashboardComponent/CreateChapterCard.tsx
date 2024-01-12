@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface ChapterProps {
   addChapterClick?: () => void;
@@ -19,6 +20,7 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
   const [newChapter, setNewChapter] = useState(true);
   const [hoverStartNewChapter, setHoverStartNewChapter] = useState(false);
   const [hoverUseTemplate, setHoverUseTemplate] = useState(false);
+  const { t } = useTranslation();
 
   const handleHoverStartNewChapter = () => {
     setHoverStartNewChapter(true);
@@ -112,7 +114,8 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
                     fontSize: { md: "14px", sm: "13.4px", xs: " 10.34px" },
                   }}
                 >
-                  Start new chapter
+                  {/* Start new chapter */}
+                  {t("StartNewChapter.StartNewChapter")}
                 </Typography>
               </Box>
             )}
@@ -160,7 +163,7 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
                       fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
                     }}
                   >
-                    Start new chapter
+                    {t("StartNewChapter.StartNewChapter")}
                   </Typography>
                 </Box>
 
@@ -203,7 +206,7 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
                       fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
                     }}
                   >
-                    Use template
+                    {t("StartNewChapter.useTem")}
                   </Typography>
                 </Box>
               </Box>

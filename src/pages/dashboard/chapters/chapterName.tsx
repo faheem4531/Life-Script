@@ -30,6 +30,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Check from "../../../../public/checkIcon.png";
 import addIcon from "../../../_assets/svg/AddIcon.svg";
+import backArrow from "../../../_assets/svg/left.svg";
 import suggestionIcon from "../../../_assets/svg/suggestionsIcon.svg";
 import QuestionComponent from "./components/AIGeneration";
 
@@ -290,6 +291,27 @@ const chapterName = () => {
               justifyContent: "center",
             }}
           >
+            <Box
+              onClick={() => {
+                router.back();
+              }}
+              sx={{
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "45.679px",
+                height: "45.679px",
+                // bgcolor: "#b5b5be66",
+                flexShrink: "0",
+                border: "1px solid #17645A",
+                position: "absolute",
+                left: "8px",
+                top: "63px",
+              }}
+            >
+              <Image src={backArrow} alt="backArrow" />
+            </Box>
             <TextField
               variant="outlined"
               value={chapterName}
@@ -324,12 +346,12 @@ const chapterName = () => {
               padding: {
                 md: "0px 46px 16px 37px",
                 sm: "0px 30px 10px 30px",
-                xs: "10px 10px 100px",
+                xs: "10px 10px 10px",
               },
               marginTop: "10px",
               height: {
                 sm: "calc(100vh - 340px)",
-                xs: "calc(100vh - 170px)",
+                xs: "calc(100vh - 150px)",
               },
               borderRadius: { sm: "18px", xs: "5px" },
               display: "flex",

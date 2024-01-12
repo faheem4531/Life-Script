@@ -1,6 +1,6 @@
+import { uploadImage } from "@/store/slices/chatSlice";
 import {
   Box,
-  Button,
   FormControlLabel,
   Radio,
   RadioGroup,
@@ -10,14 +10,13 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import CameraIcon from "../../_assets/svg/cameraIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
-import CustomizationDialog from "./CustomizationDialog";
-import { useDropzone } from "react-dropzone";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { uploadImage } from "@/store/slices/chatSlice";
 import GlobelBtn from "../button/Button";
+import CustomizationDialog from "./CustomizationDialog";
 const FamilyTreeDataModal = ({
   familyModal,
   setFamilyModal,
@@ -40,23 +39,26 @@ const FamilyTreeDataModal = ({
   );
   const maxDate = new Date();
 
-
   useEffect(() => {
-    if(nodeData?.isSpouse === true){
+    if (nodeData?.isSpouse === true) {
       setSelectedValueGender(nodeData?.spouseGender || "");
       setInputValueName(nodeData?.spouseName || "");
       setInputValueLocation(nodeData?.spouseLocation || "");
-      setDateOfBirth(nodeData?.spouseBorn !== null ? new Date(nodeData?.spouseBorn) : null);
-      setSelectedValueLiving(nodeData?.spouseDied ? "Deceased" : "Living" );
+      setDateOfBirth(
+        nodeData?.spouseBorn !== null ? new Date(nodeData?.spouseBorn) : null
+      );
+      setSelectedValueLiving(nodeData?.spouseDied ? "Deceased" : "Living");
       setShowDatePicker(nodeData.spouseDied ? true : false);
-      setDateOfDeath(nodeData?.spouseDied !== null ? new Date(nodeData?.spouseDied) : null);
+      setDateOfDeath(
+        nodeData?.spouseDied !== null ? new Date(nodeData?.spouseDied) : null
+      );
       setImageLink(nodeData?.spouseImage || "");
-    }else if(nodeData?.isSpouse === false){
+    } else if (nodeData?.isSpouse === false) {
       setSelectedValueGender(nodeData?.gender || "");
       setInputValueName(nodeData?.name || "");
       setInputValueLocation(nodeData?.location || "");
       setDateOfBirth(nodeData?.born !== null ? new Date(nodeData?.born) : null);
-      setSelectedValueLiving(nodeData?.died ? "Deceased" : "Living" );
+      setSelectedValueLiving(nodeData?.died ? "Deceased" : "Living");
       setShowDatePicker(nodeData.died ? true : false);
       setDateOfDeath(nodeData?.died !== null ? new Date(nodeData?.died) : null);
       setImageLink(nodeData?.image || "");
@@ -65,7 +67,7 @@ const FamilyTreeDataModal = ({
 
   const handleSubmit = () => {
     onSubmit({
-      relationType: selectedRelation, 
+      relationType: selectedRelation,
       isSpouse: nodeData?.isSpouse || false,
       name: inputValueName,
       gender: selectedValueGender,
@@ -170,58 +172,72 @@ const FamilyTreeDataModal = ({
         >
           <Box
             sx={{
-              width: { md: "100px", sm: "90px", xs: "80px" },
-              height: { md: "100px", sm: "90px", xs: "80px" },
-              borderRadius: "50%",
-              border: "1px solid #186F65",
-              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "20px",
+              flexWrap: "wrap",
             }}
-            {...getRootProps()}
           >
-            {imageLink ? (
-              <img
-                // src={Profile}
-                src={imageLink || Profile}
-                alt=""
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "50%",
-                }}
-              />
-            ) : (
-              <Image
-                src={Profile}
-                alt=""
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "50%",
-                }}
-              />
-            )}
             <Box
               sx={{
-                width: { md: "23px", sm: "18px", xs: "16px" },
-                height: { md: "23px", sm: "18px", xs: "16px" },
-                bgcolor: "#B6B6B6",
-                position: "absolute",
-                right: "-2px",
-                bottom: "10px",
+                width: { md: "100px", sm: "90px", xs: "80px" },
+                height: { md: "100px", sm: "90px", xs: "80px" },
                 borderRadius: "50%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                border: "1px solid #186F65",
+                position: "relative",
+                flexShrink: "0",
               }}
+              {...getRootProps()}
             >
-              <Image
-                src={CameraIcon}
-                alt=""
-                style={{
-                  width: "16px",
-                  height: "16px",
+              {imageLink ? (
+                <img
+                  // src={Profile}
+                  src={imageLink || Profile}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "50%",
+                  }}
+                />
+              ) : (
+                <Image
+                  src={Profile}
+                  alt=""
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "50%",
+                  }}
+                />
+              )}
+              <Box
+                sx={{
+                  width: { md: "23px", sm: "18px", xs: "16px" },
+                  height: { md: "23px", sm: "18px", xs: "16px" },
+                  bgcolor: "#B6B6B6",
+                  position: "absolute",
+                  right: "-2px",
+                  bottom: "10px",
+                  borderRadius: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              />
+              >
+                <Image
+                  src={CameraIcon}
+                  alt=""
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box {...getRootProps()}>
+              <GlobelBtn btnText="Change Profile" />
             </Box>
           </Box>
 
@@ -238,6 +254,7 @@ const FamilyTreeDataModal = ({
             <Box
               sx={{
                 display: "flex",
+                flexWrap: "wrap",
               }}
             >
               <Box>
@@ -416,7 +433,7 @@ const FamilyTreeDataModal = ({
               value={dateOfBirth}
               onChange={handleDateOfBirthChange}
               maxDate={maxDate}
-              shouldDisableDate={(date) => !isDateOfBirthValid(date)}
+              // shouldDisableDate={(date) => !isDateOfBirthValid(date)}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "17px",
@@ -528,7 +545,7 @@ const FamilyTreeDataModal = ({
                 value={dateOfDeath}
                 minDate={dateOfBirth}
                 onChange={handleDateOfDeathChange}
-                shouldDisableDate={(date) => !isDateOfDeathValid(date)}
+                // shouldDisableDate={(date) => !isDateOfDeathValid(date)}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     borderRadius: "17px",

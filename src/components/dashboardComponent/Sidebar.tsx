@@ -25,6 +25,7 @@ import { Box } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import FamilyTree from "../../_assets/svg/sidebar/family-tree.svg";
 import styles from "./Sidebar.module.css";
@@ -34,6 +35,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
   const [coverNumber, setCoverNumber] = useState(null);
   const router = useRouter();
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
   const currentRoute = router.pathname;
   const childsOpenCheck = () => {
     if (
@@ -108,7 +110,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   : OverViewWhite
               }
             />
-            Overview
+            {t("sideBar.Overview")}
           </a>
         </Box>
         <Box>
@@ -137,7 +139,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   : HomeWhite
               }
             />
-            All Chapters
+            {t("sideBar.AllCh")}
             {childsOpen ? (
               <KeyboardArrowUpIcon
                 sx={{
@@ -181,7 +183,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                         : ProgressWhite
                     }
                   />
-                  In Progress
+                  {t("sideBar.InPro")}
                 </a>
               </Box>
               <Box sx={{ marginLeft: "20px" }}>
@@ -203,7 +205,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                         : CompletedWhite
                     }
                   />
-                  Completed
+                  {t("sideBar.Com")}
                 </a>
               </Box>
             </Box>
@@ -248,7 +250,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   : BookCoverWhite
               }
             />
-            Book Cover
+            {t("sideBar.bookCover")}
           </a>
         </Box>
         <Box>
@@ -272,7 +274,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   : SubsWhite
               }
             />
-            Subscription Plan
+            {t("sideBar.SubPlan")}
           </a>
         </Box>
         <Box>
@@ -290,7 +292,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   : FaqWhite
               }
             />
-            Table of contents
+            {t("sideBar.toc")}
           </a>
         </Box>
         <Box>
@@ -304,7 +306,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               alt="icon"
               src={currentRoute === "familyTree" ? FamilyTree : FamilyTree}
             />
-            Family Tree
+            {t("sideBar.FamilyTree")}
           </a>
         </Box>
         <Box>
@@ -323,7 +325,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               }
               className={styles.sidebarIcon}
             />
-            Account
+            {t("sideBar.account")}
           </a>
         </Box>
         <Box>
@@ -342,7 +344,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               }
               className={styles.sidebarIcon}
             />
-            Support
+            {t("sideBar.Support")}
           </a>
         </Box>
       </Box>

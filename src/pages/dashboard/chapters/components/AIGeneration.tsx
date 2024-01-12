@@ -52,7 +52,7 @@ const QuestionComponent = ({
           fontWeight: 500,
         }}
       >
-        AI Generated Question
+        Suggested Question
       </Typography>
       <Box>
         <Box sx={{ margin: "auto" }}>
@@ -61,7 +61,7 @@ const QuestionComponent = ({
           </Typography>
         </Box>
         <Typography sx={{ fontSize: "14px" }}>
-          Remaining AI Questions:{" "}
+          Remaining Questions:{" "}
           <span style={{ fontWeight: "bold" }}>{remainingQuestions}</span>
         </Typography>
         <Box
@@ -80,7 +80,6 @@ const QuestionComponent = ({
               borderRadius="23px"
               color="#197065"
               width="100%"
-              fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
               border="1px solid #197065"
               onClick={() => Proceed(questions[currentQuestionIndex].id)}
             />
@@ -90,13 +89,12 @@ const QuestionComponent = ({
               btnText={
                 questions?.length === currentQuestionIndex + 1
                   ? "Close"
-                  : "Regenarate"
+                  : "Skip"
               }
               bgColor="#197065"
               borderRadius="23px"
               color="#fff"
               width="100%"
-              fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
               border="1px solid #197065"
               onClick={
                 questions?.length === currentQuestionIndex + 1

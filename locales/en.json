@@ -1,4 +1,16 @@
 {
+  "sideBar": {
+    "Overview": "Overview",
+    "AllCh": "All Chapters",
+    "InPro": "In Progress",
+    "Com": "Completed",
+    "bookCover": "Book Cover",
+    "SubPlan": "Subscription Plan",
+    "toc": "Table of contents",
+    "FamilyTree": "Family Tree",
+    "account": "Account",
+    "Support": "Support"
+  },
   "login-page": {
     "email": "Email",
     "enter-email": "Enter your email address",
@@ -98,5 +110,18 @@
     "achivement": "Achievement",
     "RecentCh": "Recent Chapters",
     "viewMore": "View More"
+  },
+  "ChapterSteps": {
+    "step1": "Begin chapter",
+    "step2": "Answer questions",
+    "step3": "Use Narrative Fusion",
+    "step4": "Preview and Finish"
+  },
+  "StartNewChapter": {
+    "StartNewChapter": "Start new chapter",
+    "useTem": "Use template"
+  },
+  "completedCh": {
+    "com": "Completed"
   }
 }
