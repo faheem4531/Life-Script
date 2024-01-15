@@ -209,6 +209,7 @@ const Dashboard = () => {
           sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
         >
           {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
+          {/* udfgh */}
         </Typography>
         <AddChapter
           chapterData={(chapter: string) => {
