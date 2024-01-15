@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import HalfBook from "../../../../_assets/png/halfBook.png";
 
-const ShippingCard = ({ setCount, count, QuantityCheck = false }) => {
+const ShippingCard = ({ setCount, count, QuantityCheck = false, amount = 39 }) => {
   return (
     <Box
       sx={{
@@ -80,7 +80,7 @@ const ShippingCard = ({ setCount, count, QuantityCheck = false }) => {
           }}
         >
           <Typography>Price</Typography>
-          <Typography>{count * 39 - 39} $</Typography>
+          <Typography>{count * 39 - amount} $</Typography>
         </Box>
         {!QuantityCheck && (
           <Box

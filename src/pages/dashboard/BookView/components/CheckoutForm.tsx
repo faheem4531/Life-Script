@@ -40,7 +40,7 @@ const useOptions = () => {
   return options;
 };
 
-const CheckoutForm = ({quantity}) => {
+const CheckoutForm = ({quantity,remainingPayment}) => {
   const [success, setSuccess] = useState(false);
   const options = useOptions();
   const [isError, setIsError] = useState(false);
@@ -130,7 +130,7 @@ const CheckoutForm = ({quantity}) => {
               color: "#171725",
             }}
           >
-            {(quantity - 1) * 39}
+            {remainingPayment}
           </Typography>
           <Box mb="20px">
             <Typography

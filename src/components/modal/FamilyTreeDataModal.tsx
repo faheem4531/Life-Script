@@ -416,7 +416,7 @@ const FamilyTreeDataModal = ({
               value={dateOfBirth}
               onChange={handleDateOfBirthChange}
               maxDate={maxDate}
-              shouldDisableDate={(date) => !isDateOfBirthValid(date)}
+              // shouldDisableDate={(date) => !isDateOfBirthValid(date)}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "17px",
@@ -528,7 +528,7 @@ const FamilyTreeDataModal = ({
                 value={dateOfDeath}
                 minDate={dateOfBirth}
                 onChange={handleDateOfDeathChange}
-                shouldDisableDate={(date) => !isDateOfDeathValid(date)}
+                // shouldDisableDate={(date) => !isDateOfDeathValid(date)}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     borderRadius: "17px",

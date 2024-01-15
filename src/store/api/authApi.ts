@@ -188,10 +188,75 @@ export async function getUserProfileApi() {
   }
 }
 
+export async function stripPaymentLuluApi(data: any) {
+  try {
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const res = await axios.post("https://api.thelifescript.com/chapter-compile/payment/stripe-lulu", data, {headers});
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function getLuluBalanceApi() {
   try {
 
     const res = await api.get("chapter-compile/lulu-stripe/balance");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getLuluShippingApi() {
+  try {
+
+    const res = await api.get("lulu-shipping");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function createLuluShippingApi(data: any) {
+  try {
+
+    const res = await api.post("lulu-shipping",data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function updateLuluShippingApi({data, id}) {
+  try {
+
+    const res = await api.post(`lulu-shipping/${id}`,data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

@@ -1,17 +1,31 @@
 import InputWithLabel from "@/components/Input";
 import { getLuluBalance } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CountrySelect from "@/components/dashboardComponent/AutoComplete";
 
 import { useDispatch, useSelector } from "react-redux";
 
-const ShippingForm = () => {
-  const dispatch:any = useDispatch();
+const ShippingForm = ({onChange, data}) => {
+  const dispatch: any = useDispatch();
+  const [shippingData, setShippingData] = useState({
+    email: "",
+    city: "",
+    country_code: "",
+    name: "",
+    phone_number: "",
+    postcode: "",
+    state_code: "",
+    street1: "",
+  });
 
-  useEffect(() =>{
-    dispatch(getLuluBalance()).unwrap().then((res) => console.log("response2", res))
-  },[])
+  useEffect(() => {
+    onChange(shippingData);
+  },[shippingData])
+
+  useEffect(() => {
+    data && setShippingData(shippingData);
+  },[data]);
 
   return (
     <Box
@@ -28,7 +42,13 @@ const ShippingForm = () => {
       <InputWithLabel
         color="#474E60"
         label="Name"
-        value={null}
+        value={shippingData?.name}
+        onChange={(e) =>
+          setShippingData((prevData) => ({
+            ...prevData,
+            name: e.target.value,
+          }))
+        }
         placeholder="Name"
         borderRadius="47.202px"
         bgColor="white"
@@ -37,7 +57,13 @@ const ShippingForm = () => {
       <InputWithLabel
         color="#474E60"
         label="Email"
-        value={null}
+        value={shippingData?.email}
+        onChange={(e) =>
+          setShippingData((prevData) => ({
+            ...prevData,
+            email: e.target.value,
+          }))
+        }
         placeholder="Email"
         borderRadius="47.202px"
         bgColor="white"
@@ -56,7 +82,13 @@ const ShippingForm = () => {
           <InputWithLabel
             color="#474E60"
             label="City"
-            value={null}
+            value={shippingData?.city}
+            onChange={(e) =>
+              setShippingData((prevData) => ({
+                ...prevData,
+                city: e.target.value,
+              }))
+            }
             placeholder="City"
             borderRadius="47.202px"
             bgColor="white"
@@ -65,30 +97,48 @@ const ShippingForm = () => {
         </Box>
 
         <Box flex={1} width={"100%"}>
-        <Typography
-        sx={{
-          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-          color: "black",
-          ml: "5px",
-        }}
-      >
-        Country Code
-      </Typography>
-        <Box  sx={{
-          height: "56px",
-          border: "1px solid #186F65",
-          bgcolor: "white",
-          borderRadius: "47.202px"
-        }}>
-          <CountrySelect onSelect={undefined} stripe={true} backgroundColor="transparent" />
-        </Box>
+          <Typography
+            sx={{
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              color: "black",
+              ml: "5px",
+            }}
+          >
+            Country Code
+          </Typography>
+          <Box
+            sx={{
+              height: "56px",
+              border: "1px solid #186F65",
+              bgcolor: "white",
+              borderRadius: "47.202px",
+            }}
+          >
+            <CountrySelect
+              value={shippingData?.country_code}
+              stripe={true}
+              backgroundColor="transparent"
+              onSelect={(val) => {
+                setShippingData((prevData) => ({
+                  ...prevData,
+                  country_code: val,
+                }));
+              }}
+            />
+          </Box>
         </Box>
       </Box>
       <InputWithLabel
         color="#474E60"
         label="Phone Number"
         placeholder="Phone Number"
-        value={null}
+        value={shippingData?.phone_number}
+        onChange={(e) =>
+          setShippingData((prevData) => ({
+            ...prevData,
+            phone_number: e.target.value,
+          }))
+        }
         borderRadius="47.202px"
         bgColor="white"
         border="1px solid #186F65"
@@ -109,18 +159,31 @@ const ShippingForm = () => {
           <InputWithLabel
             color="#474E60"
             label="State Code"
-            value={null}
+            value={shippingData?.state_code}
+            onChange={(e) =>
+              setShippingData((prevData) => ({
+                ...prevData,
+                state_code: e.target.value,
+              }))
+            }
             placeholder="State Code"
             borderRadius="47.202px"
             bgColor="white"
             border="1px solid #186F65"
+            type="number"
           />
         </Box>
         <Box flex={1} width={"100%"}>
           <InputWithLabel
             color="#474E60"
             label="Post Code"
-            value={null}
+            value={shippingData?.postcode}
+            onChange={(e) =>
+              setShippingData((prevData) => ({
+                ...prevData,
+                postcode: e.target.value,
+              }))
+            }
             placeholder="Post Code"
             borderRadius="47.202px"
             bgColor="white"
@@ -132,7 +195,13 @@ const ShippingForm = () => {
       <InputWithLabel
         color="#474E60"
         label="Street"
-        value={null}
+        value={shippingData?.street1}
+        onChange={(e) =>
+          setShippingData((prevData) => ({
+            ...prevData,
+            street1: e.target.value,
+          }))
+        }
         placeholder="Street"
         borderRadius="47.202px"
         bgColor="white"
