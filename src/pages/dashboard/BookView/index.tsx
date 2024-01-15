@@ -14,6 +14,9 @@ const BookView = () => {
   const router = useRouter();
   const [selectedTab, setSelectedTab] = useState(3);
   const [count, setCount] = useState(1);
+  const [remainingPayment, setRemainingPayment] = useState(0);
+
+  console.log("rembalance22",remainingPayment);
 
   const handleTabChange = () => {
     if (selectedTab === 0) {
@@ -30,7 +33,6 @@ const BookView = () => {
     { label: "5. Checkout", active: selectedTab === 4 },
   ];
 
-  console.log("selectedTab", selectedTab);
 
   return (
     <Box>
@@ -79,6 +81,7 @@ const BookView = () => {
                 setSelectedTab={setSelectedTab}
                 count={count}
                 setCount={setCount}
+                setRemainingPaymenmt={setRemainingPayment}
               />
             )}
             {selectedTab === 4 && (
@@ -86,6 +89,7 @@ const BookView = () => {
                 setSelectedTab={setSelectedTab}
                 count={count}
                 setCount={setCount}
+                remainingPayment = {remainingPayment}
               />
             )}
           </Box>

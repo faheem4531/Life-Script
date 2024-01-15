@@ -1,11 +1,54 @@
 import GlobelBtn from "@/components/button/Button";
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import ShippingCard from "./components/ShippingCard";
 import ShippingForm from "./components/ShippingForm";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getLuluBalance, selectLuluBalance } from "@/store/slices/authSlice";
 
-const Shipping = ({ setSelectedTab, setCount, count }) => {
+const Shipping = ({ setSelectedTab, setCount, count, setRemainingPaymenmt }) => {
+  
+  const dispatch:any = useDispatch();
+  const [shippingData, setShippingData] = useState({
+    email: "",
+    city: "",
+    country_code: "",
+    name: "",
+    phone_number: "",
+    postcode: "",
+    state_code: "",
+    street1: "",
+  });
+
+  const [tooltip, setTooltip] = useState(false);
+  const luluBalance = useSelector(selectLuluBalance);
+  console.log("lulubalance", luluBalance);
+  useEffect(() => {
+    dispatch(getLuluBalance())
+  }, []);
+
+  useEffect(() => {
+    setRemainingPaymenmt((count * 39) - luluBalance?.amount)
+  },[count])
+
+  const handleNext = () => {
+    const isAnyFieldEmpty = Object.values(shippingData).some(value => value === "");
+
+    if (isAnyFieldEmpty) {
+      setTooltip(true);
+    } else {
+      // All fields are filled, proceed with setSelectedTab(4)
+      setSelectedTab(4);
+    }
+    setSelectedTab(4);
+  };
+
+  useEffect(() => {
+    setTooltip(false);
+  },[shippingData])
+
   return (
     <Box
       sx={{
@@ -23,7 +66,7 @@ const Shipping = ({ setSelectedTab, setCount, count }) => {
           minWidth: "300px",
         }}
       >
-        <ShippingForm />
+        <ShippingForm onChange={(obj) => setShippingData(obj)} data={shippingData} />
       </Box>
       <Box
         sx={{
@@ -45,6 +88,7 @@ const Shipping = ({ setSelectedTab, setCount, count }) => {
             setCount={setCount}
             count={count}
             QuantityCheck={true}
+            amount={luluBalance?.amount}
           />
           <Box
             sx={{
@@ -65,16 +109,21 @@ const Shipping = ({ setSelectedTab, setCount, count }) => {
               />
             </Box>
             <Box>
-              <GlobelBtn
-                bgColor="#186F65"
-                color="white"
-                btnText="Next"
-                image2={NextArrow}
-                border="0px"
-                onClick={() => {
-                  setSelectedTab(4);
-                }}
-              />
+              <Tooltip
+                title="Please fill in all fields"
+                open={tooltip}
+                onClose={() => setTooltip(false)}
+              >
+                <Box>
+                  <GlobelBtn
+                    bgColor="#186F65"
+                    color="white"
+                    btnText="Next"
+                    border="0px"
+                    onClick={handleNext}
+                  />
+                </Box>
+              </Tooltip>
             </Box>
           </Box>
         </Box>

@@ -9,7 +9,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
-const Checkout = ({ setSelectedTab, setCount, count }) => {
+const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   return (
     <Box
       sx={{
@@ -44,14 +44,14 @@ const Checkout = ({ setSelectedTab, setCount, count }) => {
         </Typography>
       </Box>
       <Box display={"flex"}>
-        {count !== 1 && (
+        {remainingPayment > 0 && (
           <Box
             sx={{
               flex: 1,
             }}
           >
             <Elements stripe={stripePromise}>
-              <CheckoutForm quantity={count} />
+              <CheckoutForm quantity={count} remainingPayment={remainingPayment} />
             </Elements>
           </Box>
         )}

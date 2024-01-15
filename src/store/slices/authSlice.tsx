@@ -22,11 +22,21 @@ import {
   stripeDoneApi,
   updateUserProfileApi,
   getUserProfileApi,
-  getLuluBalanceApi
+  getLuluBalanceApi,
+  getLuluShippingApi,
+  createLuluShippingApi,
+  updateLuluShippingApi,
+  stripPaymentLuluApi
 } from "../api/authApi";
 
-const initialState = {
-  user: {} as any,
+interface State {
+  luluBalance: any
+  user: any
+}
+
+const initialState: State = {
+  luluBalance: {},
+  user: {}
 };
 
 export const changePassword = createAsyncThunk<UserData, ChangePassword>(
@@ -54,11 +64,61 @@ export const updateUserProfile = createAsyncThunk<any, any>(
   }
 );
 
+
+
 export const getUserProfile = createAsyncThunk<any[], void >(
   "user/get-user-profile",
   async () => {
     try {
       const response = await getUserProfileApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getLuluShipping = createAsyncThunk<any[], void>(
+  "auth/shipping",
+  async () => {
+    try {
+      const response = await getLuluShippingApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const createLuluShipping = createAsyncThunk<UserData, LoginData>(
+  "auth/create-shipping",
+  async (data) => {
+    try {
+      const response = await createLuluShippingApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateLuluShipping = createAsyncThunk<UserData, any>(
+  "auth/update-shipping",
+  async (data) => {
+    try {
+      const response = await updateLuluShippingApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const stripPaymentLulu = createAsyncThunk<UserData, any>(
+  "auth/payment-lulu-shipping",
+  async (data) => {
+    try {
+      const response = await stripPaymentLulu(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -214,6 +274,9 @@ export const authSlice = createSlice({
     builder.addCase(getUserProfile.fulfilled, (state, action) => {
       state.user = action.payload;
     });
+    builder.addCase(getLuluBalance.fulfilled, (state, action) => {
+      state.luluBalance = action.payload;
+    });
   },
 });
 
@@ -222,5 +285,8 @@ export const {} = authSlice.actions;
 export const selectUser = (state: { auth: { user: any } }) =>
   state.auth.user;
 //   export const selectUser = (state: { auth: AuthState }) => state.auth.user;
+export const selectLuluBalance = (state: { auth: {
+  luluBalance: any;user: any
+} }) => state.auth.luluBalance;
 
 export default authSlice.reducer;
