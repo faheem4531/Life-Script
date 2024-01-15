@@ -27,6 +27,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Check from "../../../../public/checkIcon.png";
 import addIcon from "../../../_assets/svg/AddIcon.svg";
@@ -62,6 +63,7 @@ const chapterName = () => {
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
   const percentage = calculateCompletionPercentage(question?.questions);
+  const { t } = useTranslation();
 
   function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
     const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
@@ -377,7 +379,7 @@ const chapterName = () => {
                   },
                 }}
               >
-                Questions
+                {t("ChName.Questions")}
               </Typography>
               <Box
                 sx={{
@@ -392,17 +394,17 @@ const chapterName = () => {
                 {aiQuestions?.length > 0 && (
                   <GlobelBtn
                     image={suggestionIcon}
-                    btnText="Suggestion"
+                    btnText={`${t("ChName.Suggestion")}`}
                     onClick={() => setAiGeneration(true)}
-                    width={"180px"}
+                    // width={"180px"}
                   />
                 )}
                 <Box>
                   <GlobelBtn
                     image={addIcon}
-                    btnText="Add Question"
+                    btnText={`${t("ChName.AddQuestions")}`}
                     onClick={() => setOpenModal(true)}
-                    width={"180px"}
+                    // width={"180px"}
                   />
                 </Box>
               </Box>
@@ -484,8 +486,8 @@ const chapterName = () => {
                 }}
               >
                 <Tooltip
-                  title="Narrative Fusion"
-                  text="You cannot use this feature untill all questions are completed"
+                  title={`${t("ChName.tooltip")}`}
+                  text={`${t("ChName.description")}`}
                 />
               </Box>
             )}

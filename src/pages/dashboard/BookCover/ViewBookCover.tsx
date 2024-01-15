@@ -7,9 +7,11 @@ import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const ViewBookCover = () => {
+  const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const router = useRouter();
   const coverData = useSelector(selectCoverData);
@@ -245,7 +247,7 @@ const ViewBookCover = () => {
             p: { md: "0px", xs: "10px 20px" },
           }}
         >
-          <SelectBookCoverHeader />
+          <SelectBookCoverHeader discription={`${t("BookCover.BookCover")}`} />
           <Box
             display="flex"
             columnGap="30px"
@@ -257,7 +259,7 @@ const ViewBookCover = () => {
           >
             <Box>
               <GlobelBtn
-                btnText="View pdf"
+                btnText={`${t("BookCoverCard.viewPdf")}`}
                 fontSize={{ xs: "12px", md: "16px" }}
                 border="1px solid #197065"
                 onClick={() =>
@@ -284,7 +286,7 @@ const ViewBookCover = () => {
             </Box>
             <Box>
               <GlobelBtn
-                btnText={"Edit Cover"}
+                btnText={`${t("BookCoverCard.editCover")}`}
                 bgColor="#197065"
                 borderRadius="23px"
                 color="#fff"

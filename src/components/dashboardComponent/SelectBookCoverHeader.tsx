@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./Custom.module.css";
 
-const SelectBookCoverHeader = () => {
+const SelectBookCoverHeader = ({ discription }) => {
   return (
     <Box
       sx={{
@@ -37,7 +37,7 @@ const SelectBookCoverHeader = () => {
             fontWeight: 700,
           }}
         >
-          Select Book Cover
+          {discription}
         </Typography>
       </Box>
       <Box

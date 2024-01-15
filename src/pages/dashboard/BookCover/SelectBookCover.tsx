@@ -4,9 +4,11 @@ import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCover
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const SelectBookCover = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   return (
     <div>
       <Layout>
@@ -18,7 +20,9 @@ const SelectBookCover = () => {
             },
           }}
         >
-          <SelectBookCoverHeader />
+          <SelectBookCoverHeader
+            discription={`${t("BookCover.SelectBookCover")}`}
+          />
           <Box
             sx={{
               display: "flex",

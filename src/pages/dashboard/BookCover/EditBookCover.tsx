@@ -16,12 +16,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const EditBookCover = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
   const { CoverNumber } = router.query;
   const [title, setTitle] = useState("");
   const coverData = useSelector(selectCoverData);
@@ -154,7 +156,9 @@ const EditBookCover = () => {
             },
           }}
         >
-          <SelectBookCoverHeader />
+          <SelectBookCoverHeader
+            discription={`${t("BookCover.EditBookCover")}`}
+          />
           <Box
             sx={{
               display: "flex",
@@ -177,13 +181,13 @@ const EditBookCover = () => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Book Title*
+                  {`${t("BookCoverCard.title")}`}*
                 </Typography>
                 <TextField
                   variant="outlined"
                   value={title}
-                  placeholder={"Title*"}
-                  name="title"
+                  placeholder={`${t("BookCoverCard.title")}`}
+                  name={`${t("BookCoverCard.title")}`}
                   onChange={handleTitleChange}
                   sx={{
                     marginTop: "10px",
@@ -201,13 +205,13 @@ const EditBookCover = () => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Author*
+                  {`${t("BookCoverCard.author")}`}*
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder={"Subtitle*"}
+                  placeholder={`${t("BookCoverCard.author")}`}
                   value={subtitle}
-                  name="Subtitle"
+                  name={`${t("BookCoverCard.author")}`}
                   onChange={handleSubtitleChange}
                   sx={{
                     marginTop: "10px",
@@ -225,13 +229,13 @@ const EditBookCover = () => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Byline
+                  {`${t("BookCoverCard.byLine")}`}
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder={"Byline"}
+                  placeholder={`${t("BookCoverCard.byLine")}`}
                   value={byline}
-                  name="Byline"
+                  name={`${t("BookCoverCard.byLine")}`}
                   onChange={handleBylineChange}
                   sx={{
                     marginTop: "10px",
@@ -277,7 +281,7 @@ const EditBookCover = () => {
                         color: "#D3D3D3",
                       }}
                     >
-                      Drag & Drop files here
+                      {t("BookCoverCard.dragOrDrop")}
                     </Typography>
                     <Typography
                       sx={{
@@ -285,7 +289,7 @@ const EditBookCover = () => {
                         color: "#D3D3D3",
                       }}
                     >
-                      or
+                      {t("BookCoverCard.or")}
                     </Typography>
                     <Box
                       sx={{
@@ -294,7 +298,7 @@ const EditBookCover = () => {
                       }}
                     >
                       <GlobelBtn
-                        btnText="Browse Files"
+                        btnText={`${t("BookCoverCard.browserFile")}`}
                         bgColor="#fff"
                         borderRadius="23px"
                         color="#197065"
@@ -331,7 +335,7 @@ const EditBookCover = () => {
               >
                 <Box>
                   <GlobelBtn
-                    btnText="Change Cover"
+                    btnText={`${t("BookCoverCard.changeCover")}`}
                     bgColor="transparent"
                     borderRadius="23px"
                     color="#197065"
@@ -353,10 +357,10 @@ const EditBookCover = () => {
                   <GlobelBtn
                     btnText={
                       buttonLoading
-                        ? "Saving..."
+                        ? `${t("BookCoverCard.Saving")}`
                         : coverId
-                        ? "Update Cover"
-                        : "Save Cover"
+                        ? `${t("BookCoverCard.UpdateCover")}`
+                        : `${t("BookCoverCard.saveCover")}`
                     }
                     bgColor="#197065"
                     borderRadius="23px"

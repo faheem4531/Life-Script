@@ -1,8 +1,10 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { ColorResult, SketchPicker } from "react-color";
+import { useTranslation } from "react-i18next";
 
 const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
+  const { t } = useTranslation();
   const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
 
   const colorPickerRef = useRef<HTMLDivElement>(null);
@@ -47,11 +49,11 @@ const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
             fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
           }}
         >
-          Colour Palette*
+          {t("BookCoverCard.colour")}*
         </Typography>
         <TextField
           variant="outlined"
-          placeholder={"Colour Palette*"}
+          placeholder={`${t("BookCoverCard.colour")}*`}
           name="text"
           ref={inputRef}
           type="text"

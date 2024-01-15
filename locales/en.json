@@ -117,11 +117,49 @@
     "step3": "Use Narrative Fusion",
     "step4": "Preview and Finish"
   },
+  "ChName": {
+    "ChName": "Chapter Name",
+    "Questions": "Questions",
+    "AddQuestions": "Add Question",
+    "Suggestion": "Suggestion",
+    "edit": "Edit",
+    "completed": "Completed",
+    "Del": "Delete",
+    "tooltip": "Narrative Fusion",
+    "description": "You cannot use this feature untill all questions are completed"
+  },
+  "richText": {
+    "detecte": "Detecting...",
+    "stop": "Stop",
+    "STT": "Speech-to-text",
+    "MAC": "Mark As Complete"
+  },
   "StartNewChapter": {
     "StartNewChapter": "Start new chapter",
     "useTem": "Use template"
   },
   "completedCh": {
     "com": "Completed"
+  },
+  "BookCover": {
+    "SelectBookCover": "Select Book Cover",
+    "EditBookCover": "Edit Book Cover",
+    "BookCover": "Book Cover"
+  },
+  "BookCoverCard": {
+    "title": "Book Title",
+    "author": "Author",
+    "byLine": "Byline",
+    "UseThisCover": "Use This Cover",
+    "colour": "Colour Palette",
+    "dragOrDrop": "Drag & Drop files here",
+    "or": "or",
+    "browserFile": "Browse Files",
+    "changeCover": "Change Cover",
+    "saveCover": "Save Cover",
+    "Saving": "Saving...",
+    "UpdateCover": "Update Cover",
+    "viewPdf": "View PDF",
+    "editCover": "Edit Cover"
   }
 }

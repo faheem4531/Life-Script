@@ -115,11 +115,43 @@
     "step3": "Utilice la fusión narrativa",
     "step4": "Vista previa y finalizar"
   },
+  "ChName": {
+    "ChName": "Nombre del Capítulo",
+    "Questions": "Preguntas",
+    "AddQuestions": "Agregar Pregunta",
+    "Suggestion": "Sugerencia",
+    "edit": "Editar",
+    "completed": "Completado",
+    "Del": "Eliminar",
+    "tooltip": "Fusión Narrativa",
+    "description": "No puedes usar esta función hasta que todas las preguntas estén completadas"
+  },
   "StartNewChapter": {
     "StartNewChapter": "Iniciar nuevo capítulo",
     "useTem": "Usar plantilla"
   },
   "completedCh": {
     "com": "Completados"
+  },
+  "BookCover": {
+    "SelectBookCover": "Seleccionar Portada del Libro",
+    "EditBookCover": "Editar Portada del Libro",
+    "BookCover": "Portada del Libro"
+  },
+  "BookCoverCard": {
+    "title": "Título del Libro",
+    "author": "Autor",
+    "byLine": "Línea del Autor",
+    "UseThisCover": "Usar Esta Portada",
+    "colour": "Paleta de Colores",
+    "dragOrDrop": "Arrastra y suelta archivos aquí",
+    "or": "o",
+    "browserFile": "Examinar Archivos",
+    "changeCover": "Cambiar Portada",
+    "saveCover": "Guardar Portada",
+    "Saving": "Guardando...",
+    "UpdateCover": "Actualizar Portada",
+    "viewPdf": "Ver PDF",
+    "editCover": "Editar Portada"
   }
 }

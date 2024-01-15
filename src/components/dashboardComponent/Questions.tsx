@@ -11,12 +11,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
 
-const options = ["Delete", "Edit"];
 const ITEM_HEIGHT = 48;
 
 interface QuestionsProps {
@@ -36,6 +36,7 @@ export default function Questions({
   questionChanged,
   answerClick,
 }: QuestionsProps) {
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
   const [deleteQuestionModal, setDeleteQuestionModal] = useState(false);
   const [questionId, setQuestionId] = useState("");
@@ -96,6 +97,8 @@ export default function Questions({
     // Expand the text
     setExpanded(!expanded);
   };
+
+  const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
 
   return (
     <Box sx={{ position: "relative" }}>
@@ -217,7 +220,7 @@ export default function Questions({
                     <Box>
                       <Image alt="icon" src={Completed} />
                     </Box>
-                    <Box>{"Completed"}</Box>
+                    <Box>{t("ChName.completed")}</Box>
                   </Box>
                 )}
                 {question.status !== "Completed" && (
@@ -232,7 +235,7 @@ export default function Questions({
                       py: "7px",
                     }}
                   >
-                    <Image alt="icon" src={EditGreen} /> {"Edit"}
+                    <Image alt="icon" src={EditGreen} /> {t("ChName.edit")}
                   </Box>
                 )}
               </Button>

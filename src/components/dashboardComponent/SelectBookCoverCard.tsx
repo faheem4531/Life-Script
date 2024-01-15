@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import GlobelBtn from "../button/Button";
 
 interface SelectBookCoverCardProps {
@@ -18,15 +19,15 @@ interface SelectBookCoverCardProps {
 
 const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   landScape,
-  title = "Book Title",
-  subtitle = "Author",
+  title = "",
+  subtitle = "",
   Byline = "",
   ColourPalette = "#197065",
   droppedImage,
 }) => {
   const currentPath = usePathname();
   const router = useRouter();
-  console.log("currentPath", currentPath);
+  const { t } = useTranslation();
 
   const viewBookCheck = currentPath == "/dashboard/BookCover/ViewBookCover";
 
@@ -115,8 +116,17 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
               }}
             >
               <Box>
-                {title.length == 0 ? "My Adventurous Life" : title} |{" "}
-                {subtitle.length == 0 ? "John Doe" : subtitle}
+                {title.length == 0 ? (
+                  <span> {t("BookCoverCard.title")}</span>
+                ) : (
+                  title
+                )}{" "}
+                |{" "}
+                {subtitle.length == 0 ? (
+                  <span> {t("BookCoverCard.author")}</span>
+                ) : (
+                  subtitle
+                )}
               </Box>
               <Box>
                 <Image src={logo} alt="" />
@@ -175,7 +185,11 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                       p: "0px 15px",
                     }}
                   >
-                    {title.length == 0 ? "Book Title" : title}
+                    {title.length == 0 ? (
+                      <span> {t("BookCoverCard.title")}</span>
+                    ) : (
+                      title
+                    )}
                     <Box
                       sx={{
                         borderBottom: "2.5px solid white",
@@ -234,7 +248,11 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                   }}
                 >
                   <span>-</span>
-                  {subtitle.length == 0 ? "Author" : subtitle}
+                  {subtitle.length == 0 ? (
+                    <span>{t("BookCoverCard.author")}</span>
+                  ) : (
+                    subtitle
+                  )}
                   <span>-</span>
                 </Box>
               </Box>
@@ -269,7 +287,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
             textAlign: "center",
           }}
         >
-          Use this cover
+          {t("BookCoverCard.UseThisCover")}
         </Box>
       </Box>
     </Box>

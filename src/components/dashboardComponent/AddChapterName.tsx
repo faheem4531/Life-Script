@@ -4,6 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "../../../public/chapterName.svg";
@@ -21,6 +22,7 @@ const AddChapterName = ({
 }) => {
   const [chapterName, setChapterName] = useState("");
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
 
   const saveChapterName = () => {
     dispatch(updateChapter({ title: chapterName, id: chapterId }))
@@ -85,7 +87,7 @@ const AddChapterName = ({
                 fontWeight: 600,
               }}
             >
-              Chapter Name
+              {t("ChName.ChName")}
             </Typography>
             <Box>
               <TextField
