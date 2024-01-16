@@ -19,6 +19,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import bgTree from "../../../_assets/svg/bgTree.svg";
@@ -35,6 +36,7 @@ const Dashboard = () => {
   const dispatch: any = useDispatch();
   const chapters = useSelector(selectAllChapters);
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleDeleteChapter = () => {
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))
@@ -208,7 +210,9 @@ const Dashboard = () => {
         <Typography
           sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
         >
-          {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
+          {updateChapterModal
+            ? `${t("ChModals.updateChName")}`
+            : `${t("ChModals.addNewCh")}`}
         </Typography>
         <AddChapter
           chapterData={(chapter: string) => {
@@ -218,14 +222,16 @@ const Dashboard = () => {
           }}
           data={chapterTitle}
           btnText={
-            updateChapterModal ? "Update Chapter Name" : "Add new chapter"
+            updateChapterModal
+              ? `${t("ChModals.updateChName")}`
+              : `${t("ChModals.addNewCh")}`
           }
         />
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteChapter}
-        heading="Delete"
-        description="Are you sure you want to delete this chapter?"
+        heading={`${t("ChModals.Del")}`}
+        description={`${t("ChModals.DelDescri")}`}
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}

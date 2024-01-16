@@ -4,9 +4,10 @@ import GlobelBtn from "@/components/button/Button";
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { customerSupport } from "@/store/slices/chatSlice";
-import { Box, TextField, Tooltip, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -16,6 +17,7 @@ const SupportScreen = () => {
   const [description, setDescription] = useState("");
   const [showTooltip, setShowTooltip] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
 
   const handleComplaint = () => {
     dispatch(customerSupport({ subject: subject, description: description }))
@@ -36,7 +38,10 @@ const SupportScreen = () => {
             p: { sm: "0px", xs: "10px 10px" },
           }}
         >
-          <SubscriptionHeader title="Support" description="" />
+          <SubscriptionHeader
+            title={`${t("support.supHeading")}`}
+            description=""
+          />
           <Box
             sx={{
               display: "flex",
@@ -74,12 +79,12 @@ const SupportScreen = () => {
                     ml: "5px",
                   }}
                 >
-                  Add Subject
+                  {t("support.AddSub")}
                 </Typography>
                 <TextField
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
-                  placeholder="Write Subject here..."
+                  placeholder={`${t("support.WriteSubHere")}`}
                   multiline
                   rows={1}
                   maxRows={1}
@@ -116,12 +121,12 @@ const SupportScreen = () => {
                     ml: "5px",
                   }}
                 >
-                  Add Description
+                  {t("support.AddDes")}
                 </Typography>
                 <TextField
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Write Description here..."
+                  placeholder={`${t("support.WriteDes")}`}
                   multiline
                   rows={8}
                   maxRows={8}
@@ -150,7 +155,7 @@ const SupportScreen = () => {
               >
                 <Box>
                   <GlobelBtn
-                    btnText="Submit"
+                    btnText={`${t("support.subBtn")}`}
                     width="200px"
                     onClick={handleComplaint}
                     disabled={!subject || !description}
@@ -194,7 +199,7 @@ const SupportScreen = () => {
               margin: "15px 0",
             }}
           >
-            Thank You!
+            {t("support.Ty")}
           </Typography>
           <Typography
             sx={{
@@ -203,8 +208,7 @@ const SupportScreen = () => {
               // width: "400px",
             }}
           >
-            Your support ticket has been created. Our team will get back to you
-            soon.
+            {t("support.TyDes")}
           </Typography>
           <Box
             sx={{
@@ -214,7 +218,7 @@ const SupportScreen = () => {
             }}
           >
             <GlobelBtn
-              btnText={"Okay"}
+              btnText={`${t("support.ok")}`}
               bgColor="#197065"
               borderRadius="23px"
               color="#fff"

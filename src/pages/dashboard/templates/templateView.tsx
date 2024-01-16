@@ -22,6 +22,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -36,6 +37,7 @@ const chapterName = () => {
   const { templateId } = router.query;
   const allTemplates = useSelector(selectTemplates);
   const [templateState, setTemplateState] = useState(false);
+  const { t } = useTranslation();
   let templateData;
 
   const handleChapterClone = () => {
@@ -173,12 +175,12 @@ const chapterName = () => {
                   display: { sm: "block", xs: "none" },
                 }}
               >
-                Questions
+                {t("template.temp")}
               </Typography>
               <Box>
                 <GlobelBtn
                   image={UseTemplate}
-                  btnText="Use Template"
+                  btnText={`${t("template.useTemBtn")}`}
                   onClick={() => {
                     tempQuestionIds?.length &&
                       buttonLoading &&
@@ -255,7 +257,7 @@ const chapterName = () => {
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
-            Thank You!
+            {t("template.temModal.thankYou")}
           </Typography>
           <Typography
             sx={{
@@ -265,7 +267,7 @@ const chapterName = () => {
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
-            Template has been added to your chapters
+            {t("template.temModal.TYDescription")}
           </Typography>
           <Box
             sx={{
@@ -275,7 +277,7 @@ const chapterName = () => {
             }}
           >
             <GlobelBtn
-              btnText="Start editing"
+              btnText={`${t("template.temModal.SEBtn")}`}
               bgColor="#197065"
               color="white"
               onClick={() => {
@@ -289,8 +291,8 @@ const chapterName = () => {
       </CustomizationDialog>
       <TransitionsDialog
         open={templateState}
-        heading="Copy Template"
-        description="This template is already copied, want to copy template again?"
+        heading={`${t("template.temModal.copyTem")}`}
+        description={`${t("template.temModal.copyTemDes")}`}
         cancel={() => {
           setTemplateState(false);
           setButtonLoading(true);

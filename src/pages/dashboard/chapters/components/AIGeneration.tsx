@@ -1,6 +1,7 @@
 import GlobelBtn from "@/components/button/Button";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Question = {
   id: number;
@@ -22,6 +23,7 @@ const QuestionComponent = ({
 }: QuestionComponentProps) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [remainingQuestions, setRemainingQuestions] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     questions?.length > 0 && setRemainingQuestions(questions?.length - 1);
@@ -52,7 +54,7 @@ const QuestionComponent = ({
           fontWeight: 500,
         }}
       >
-        Suggested Question
+        {t("ChName.SugQues")}
       </Typography>
       <Box>
         <Box sx={{ margin: "auto" }}>
@@ -61,7 +63,7 @@ const QuestionComponent = ({
           </Typography>
         </Box>
         <Typography sx={{ fontSize: "14px" }}>
-          Remaining Questions:{" "}
+          {t("ChName.SugQuesRemain")}
           <span style={{ fontWeight: "bold" }}>{remainingQuestions}</span>
         </Typography>
         <Box
@@ -75,7 +77,7 @@ const QuestionComponent = ({
         >
           <Box flex={1}>
             <GlobelBtn
-              btnText={"Add"}
+              btnText={`${t("ChName.SugQuesAddBtn")}`}
               bgColor="#fff"
               borderRadius="23px"
               color="#197065"
@@ -88,8 +90,8 @@ const QuestionComponent = ({
             <GlobelBtn
               btnText={
                 questions?.length === currentQuestionIndex + 1
-                  ? "Close"
-                  : "Skip"
+                  ? `${t("ChName.SugQuesCloseBtn")}`
+                  : `${t("ChName.SugQuesSkipBtn")}`
               }
               bgColor="#197065"
               borderRadius="23px"

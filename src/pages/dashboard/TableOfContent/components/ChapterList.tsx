@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import GlobelBtn from "@/components/button/Button";
 import { createToc, getToc, selectTocData } from "@/store/slices/chatSlice";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
   const [chapterIndexing, setChapterIndexing] = useState([]);
@@ -13,6 +14,7 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
   const tocData = useSelector(selectTocData);
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getToc());
@@ -121,7 +123,7 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
             margin: { md: "24px 0", sm: "20px 0px", xs: "15px 0px" },
           }}
         >
-          Chapters
+          {t("TOC.ch")}
         </Typography>
       </Box>
 
@@ -195,7 +197,11 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
         <GlobelBtn
           bgColor="#197065"
           color="white"
-          btnText={loading ? "Adding..." : `Add (${chapterIndexing?.length})`}
+          btnText={
+            loading
+              ? `${t("TOC.addBtn")}`
+              : `${t("TOC.adding")} (${chapterIndexing?.length})`
+          }
           onClick={!loading && handleChapterIndexing}
           width={"100%"}
         />

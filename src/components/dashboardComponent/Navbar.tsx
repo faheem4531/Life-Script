@@ -15,10 +15,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import BellIcon from "../../_assets/svg/bellIcon.svg";
 
-const options = ["Logout"];
 const ITEM_HEIGHT = 48;
 
 const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
@@ -28,6 +28,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
   const [notifications, setNotifications] = useState([]);
   const router = useRouter();
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     allNotifications && setNotifications(allNotifications);
@@ -73,6 +74,8 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
   if (router.asPath === "/dashboard/overview") {
     buttonsHide = true;
   }
+
+  const options = [`${t("navBar.logout")}`];
 
   return (
     <Box
@@ -221,7 +224,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                           mt: "5px",
                         }}
                       >
-                        Chapter{" "}
+                        {t("navBar.notif1")}{" "}
                         <span
                           style={{
                             fontWeight: "bold",
@@ -230,7 +233,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                         >
                           {notification.title}
                         </span>{" "}
-                        is fused and ready to to view
+                        {t("navBar.notif2")}
                       </Box>
                     </Box>
                   </MenuItem>
@@ -268,7 +271,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                         mt: "5px",
                       }}
                     >
-                      No Notifications.{" "}
+                      {t("navBar.emptyNotif")}{" "}
                     </Box>
                   </Box>
                 </MenuItem>

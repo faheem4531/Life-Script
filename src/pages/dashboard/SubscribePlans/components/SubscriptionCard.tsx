@@ -3,6 +3,7 @@ import GlobelBtn from "@/components/button/Button";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 interface SubscriptionCardProps {
   subList: { label: string }[];
@@ -25,6 +26,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
   onClick,
   btnCheck = true,
 }) => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -147,7 +149,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           <GlobelBtn
             bgColor="#197065"
             color="white"
-            btnText="Choose Plan"
+            btnText={`${t("SubsPlan.cardBtn")}`}
             onClick={() => onClick(price)}
             width={"100%"}
           />

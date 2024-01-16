@@ -15,6 +15,7 @@ import { Box, CircularProgress, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import styles from "./Narrative.module.css";
 import YourSliderComponent from "./slider";
@@ -33,6 +34,7 @@ const NarrativeResponse = () => {
   const [gptChapter, setGptChapter] = useState("");
   const [responseType, setResponseType] = useState(true);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const handleSlideChange = (index: number) => {
     setCurrentIndex(index);
@@ -157,7 +159,7 @@ const NarrativeResponse = () => {
                   <Box>
                     <GlobelBtn
                       bgColor="#ffff"
-                      btnText="Edit Response"
+                      btnText={`${t("narrative.editRes")}`}
                       borderRadius="27px"
                       color="#197065"
                       onClick={() =>
@@ -165,7 +167,6 @@ const NarrativeResponse = () => {
                           `/events?compileChapterId=${chapterId}&openai=${responseType}`
                         )
                       }
-                      width={{ xs: "170px" }}
                       image={EditIcon}
                       border="1px solid #197065"
                       fontSize={{ xs: "12px" }}
@@ -176,11 +177,10 @@ const NarrativeResponse = () => {
                   <Box>
                     <GlobelBtn
                       bgColor="#197065"
-                      btnText="Save Response"
+                      btnText={`${t("narrative.saveRes")}`}
                       borderRadius="27px"
                       color="#fff"
                       onClick={() => setSaveResponseModal(true)}
-                      width={{ xs: "170px" }}
                       image={SaveIcon}
                       border="1px solid #197065"
                       fontSize={{ xs: "12px" }}
@@ -283,7 +283,7 @@ const NarrativeResponse = () => {
                       marginBottom: "8px",
                     }}
                   >
-                    Doesn’t like the narrative fusion response?
+                    {t("narrative.dontLike")}
                   </Typography>
                   <Box
                     sx={{
@@ -309,14 +309,12 @@ const NarrativeResponse = () => {
                     <Box>
                       <GlobelBtn
                         bgColor="#fff"
-                        btnText="Revert Response"
+                        btnText={`${t("narrative.RevertRes")}`}
                         borderRadius="27px"
                         color="#197065"
                         onClick={() => setRevertModal(true)}
-                        width={{ xs: "170px" }}
                         image={RevertIcon}
                         border="1px solid #197065"
-                        fontSize={{ xs: "12px" }}
                         p="4px 20px"
                       />
                     </Box>
@@ -331,27 +329,33 @@ const NarrativeResponse = () => {
       {/* Revert changes Modal  */}
       <TransitionsDialog
         open={revertModal}
-        heading="Revert Response"
-        description="This will undo all narrative fusion changes. You will be redirected to the original content compiled chapter for editing."
+        heading={`${t("narrative.RevertRes")}`}
+        description={`${t("narrative.RevertResDes")}`}
         cancel={() => {
           setRevertModal(false);
           setResponseType(false);
-          dispatch(updateChapterResponse({id:chapterId, userText: userChapter, openaiChapterText: ""}))
+          dispatch(
+            updateChapterResponse({
+              id: chapterId,
+              userText: userChapter,
+              openaiChapterText: "",
+            })
+          );
         }}
         proceed={() => setRevertModal(false)}
-        proceedText="Not Yet" // Customize the text for the "Yes" button
-        cancelText="Revert Changes" // Customize the text for the "No" button
+        proceedText={`${t("narrative.RevertResProcBtn")}`} // Customize the text for the "Yes" button
+        cancelText={`${t("narrative.RevertResCancelBtn")}`} // Customize the text for the "No" button
       />
 
       {/* Save changes Modal  */}
       <TransitionsDialog
         open={saveResponseModal}
-        heading="Save Response"
-        description="Once saved, you will find the chapter in completed chapters tab."
+        heading={`${t("narrative.saveRes")}`}
+        description={`${t("narrative.saveResDes")}`}
         cancel={handleSaveResponse}
         proceed={() => setSaveResponseModal(false)}
-        proceedText="Not Yet" // Customize the text for the "Yes" button
-        cancelText="Keep Changes" // Customize the text for the "No" button
+        proceedText={`${t("narrative.saveResProcBtn")}`} // Customize the text for the "Yes" button
+        cancelText={`${t("narrative.saveResCancelBtn")}`} // Customize the text for the "No" button
       />
     </>
   );

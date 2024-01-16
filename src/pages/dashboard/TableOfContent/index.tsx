@@ -3,12 +3,14 @@ import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHead
 import { selectTocData } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import TOCMain from "./components/TOCMain";
 
 const TableOfContent = () => {
   const dispatch: any = useDispatch();
   const tocData = useSelector(selectTocData);
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -19,7 +21,7 @@ const TableOfContent = () => {
               p: { sm: "0px", xs: "20px 15px" },
             }}
           >
-            <SubscriptionHeader title="Table of Content" />
+            <SubscriptionHeader title={`${t("TOC.TOCHeader")}`} />
             <TOCMain />
           </Box>
         </Box>

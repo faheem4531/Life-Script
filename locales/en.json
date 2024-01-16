@@ -11,6 +11,7 @@
     "account": "Account",
     "Support": "Support"
   },
+
   "login-page": {
     "email": "Email",
     "enter-email": "Enter your email address",
@@ -29,6 +30,7 @@
     "failedSignupGoogle": "Failed to sign up with Google",
     "IncorrectEmail": "Incorrect password or email"
   },
+
   "signup-page": {
     "email": "Email",
     "enter-email": "Enter your email address",
@@ -53,10 +55,12 @@
     "signedUpSuccessfully": "Signed up successfully",
     "failedSignupGoogle": "Failed to sign up with Google"
   },
+
   "Register": {
     "Login": "Login",
     "Register": "Register"
   },
+
   "ForgetPassword": {
     "forgotPassword?": "Forgot Password?",
     "enterEmail": "Please enter email associated with the LifeScript account to send password link.",
@@ -67,11 +71,13 @@
     "emailRequired": "Email is required",
     "userNotFound": "User not found"
   },
+
   "VerificationSent": {
     "emailVerification": "Email Verification",
     "verifcationLink": "We've sent a verification link to",
     "clicktoVerify": "Kindly click on the link to verify."
   },
+
   "ResetPassword": {
     "resetPassword": "Reset Password",
     "password": "Password",
@@ -84,6 +90,7 @@
     "passwordChangedSuccessfully": "Password changed successfully",
     "passwordDoesn'tMatch": "Password does not match"
   },
+
   "Verify": {
     "emailVerification": "Email Verification",
     "email": "Email",
@@ -93,11 +100,27 @@
     "emailVerifiedSuccessfully": "Email verified successfully",
     "failedVerifyEmail": "Failed to verify email"
   },
+
   "ForgetPassswordLink": {
     "forgotPassword": "Forgot Password?",
     "resetPassword": "Reset Password link has been sent to",
     "clickLink": "Please click on the link to",
     "reset": "reset your password"
+  },
+
+  "getTitle": {
+    "hi": "Hi",
+    "getQues": "What would you like to call your lifescript?",
+    "inputBottom": "You can change it at any time before printing.",
+    "getBtn": "Start Writing",
+    "LetUsHelpYou": " Let Us Help You..."
+  },
+
+  "navBar": {
+    "notif1": "Chapter",
+    "notif2": "is fused and ready to to view",
+    "emptyNotif": "No Notifications.",
+    "logout": "Logout"
   },
   "overView": {
     "headerWelcome": "Welcome back ...",
@@ -111,12 +134,14 @@
     "RecentCh": "Recent Chapters",
     "viewMore": "View More"
   },
+
   "ChapterSteps": {
     "step1": "Begin chapter",
     "step2": "Answer questions",
     "step3": "Use Narrative Fusion",
     "step4": "Preview and Finish"
   },
+
   "ChName": {
     "ChName": "Chapter Name",
     "Questions": "Questions",
@@ -126,26 +151,89 @@
     "completed": "Completed",
     "Del": "Delete",
     "tooltip": "Narrative Fusion",
-    "description": "You cannot use this feature untill all questions are completed"
+    "description": "You cannot use this feature untill all questions are completed",
+    "UQ": "Update Question",
+    "DelText": "Delete",
+    "DelDescri": "Are you sure you want to delete this question?",
+    "thankYou": "Thank You!",
+    "TYDescription": "Your chapter is being written. You will get it shortly",
+    "ok": "Okay",
+    "NF": "Narrative Fusion",
+    "NFdescPremium": "This feature is only for Premium and Standard users",
+    "NFDes": "It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text'?",
+    "NFOriginBtn": "Compile Original Text",
+    "NFBuyPrBtn": "Buy Premium",
+    "NFuseBtn": "Use Narrative Fusion",
+    "GPTRes": "GPT Response",
+    "AddNewQues": "Add New Question",
+    "AddQuesBtn": "Add Question",
+    "AIGenQues": "AI generated Question",
+    "AIAddToChBtn": "Add to Chapter",
+    "AISkipBtn": "Skip",
+    "SugQues": "Suggested Question",
+    "SugQuesRemain": "Remaining Questions:",
+    "SugQuesAddBtn": "Add",
+    "SugQuesSkipBtn": "Skip",
+    "SugQuesCloseBtn": "Close"
   },
+
+  "ChModals": {
+    "addNewCh": "Add new chapter",
+    "addNewChBtn": "Add new chapter",
+    "updateChName": "Update Chapter Name",
+    "Del": "Delete",
+    "DelDescri": "Are you sure you want to delete this chapter?"
+  },
+
+  "modals": {
+    "yes": "Yes",
+    "no": "No"
+  },
+
   "richText": {
     "detecte": "Detecting...",
     "stop": "Stop",
     "STT": "Speech-to-text",
-    "MAC": "Mark As Complete"
+    "MAC": "Mark As Complete",
+    "ByPreHeading": "Buy Premium",
+    "PreDes": "Speech to Text is  only available for Standard and Premium users. Want to buy now?"
   },
-  "StartNewChapter": {
-    "StartNewChapter": "Start new chapter",
-    "useTem": "Use template"
+
+  "StartNewTem": {
+    "StartNewTem": "Start new chapter",
+    "useTem": "Use template",
+    "useTemDescrip": "",
+    "chTitle": "The Book Of John Doe",
+    "chQues1": "Winner of the National Academy of Sciences Best Book Award in 2012",
+    "chQues2": "The Worst Job Ever",
+    "chQues3": "The Best Job Ever"
   },
+
   "completedCh": {
     "com": "Completed"
   },
+
+  "template": {
+    "choose": "Choose a",
+    "temp": "Template",
+    "Questions": "Questions",
+    "useTemBtn": "Use Template",
+    "temModal": {
+      "thankYou": "Thank You!",
+      "TYDescription": "Template has been added to your chapters.",
+      "SEBtn": "Start editing",
+      "copyTem": "Copy Template",
+      "copyTemDes": "This template is already copied, want to copy template again?"
+    }
+  },
+
   "BookCover": {
     "SelectBookCover": "Select Book Cover",
     "EditBookCover": "Edit Book Cover",
-    "BookCover": "Book Cover"
+    "BookCover": "Book Cover",
+    "viewMore": "View More"
   },
+
   "BookCoverCard": {
     "title": "Book Title",
     "author": "Author",
@@ -161,5 +249,101 @@
     "UpdateCover": "Update Cover",
     "viewPdf": "View PDF",
     "editCover": "Edit Cover"
+  },
+
+  "SubsPlan": {
+    "SubsHeaderTitle": "Subscription Plan",
+    "SubsHeaderDes": "Choose a subscription plan below before Aug30th,2023 to unlock this special offer.",
+    "cardBtn": "Choose Plan",
+    "cardProBtn": "Processing...",
+    "SubsCardBasic": {
+      "SubsCardHeading": "Basic Plan",
+      "SubsCardHeadingDes": "",
+      "SubsCardHeadingOffer": "Basic Plan Offerings",
+      "SubsCardHeadingOfferDes": "Basic Plan Offerings"
+    },
+    "SubsCardStand": {
+      "SubsCardHeading": "Standard Plan",
+      "SubsCardHeadingDes": "",
+      "SubsCardHeadingOffer": "Standard Plan Offerings",
+      "SubsCardHeadingOfferDes": ""
+    },
+    "SubsCardPrem": {
+      "SubsCardHeading": "Premium Plan",
+      "SubsCardHeadingDes": "",
+      "SubsCardHeadingOffer": "Premium Plan Offerings",
+      "SubsCardHeadingOfferDes": ""
+    },
+    "CardNum": "Card Number",
+    "CardholderName": "Cardholder Name",
+    "ExpDate": "Expiration Date",
+    "cvc": "CVC",
+    "premPlan": "Premium Plan",
+    "premPlanDes1": "An amount of ",
+    "premPlanDes2": " will be deducted from your selected bank account. Do you really want to proceed?",
+    "Sorry": "Sorry",
+    "SorryDes": "Stripe Failed to proceed your Payment",
+    "TY": "Thank You!",
+    "TYDes": "Your Package has been Upgraded",
+    "sorryBtn": "Try Later",
+    "TYBtn": "Start Using"
+  },
+
+  "TOC": {
+    "TOCHeader": "Table of Content",
+    "ch": "Chapters",
+    "addChBtn": "Add Chapters",
+    "editChBtn": "Edit Chapters",
+    "addBtn": "Add",
+    "adding": "Adding..."
+  },
+
+  "profileSetting": {
+    "AccountSettings": "Account Settings",
+    "SetProImg": "Set Profile Image",
+    "DOB": "Date of Birth",
+    "fullName": "Full Name",
+    "Email": "Email",
+    "Gender": "Gender",
+    "Phone": "Phone",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "save": "Save Changes",
+    "saveDes": "Do you want to save the changes?",
+    "SaveChBtn": "Save Changes",
+    "DelBtn": "Don’t Save",
+    "changeProBtn": "Change Profile"
+  },
+
+  "support": {
+    "supHeading": "Support",
+    "AddSub": "Add Subject",
+    "WriteSubHere": "Write Subject Here...",
+    "AddDes": "Add Description",
+    "WriteDes": "Write Description Here...",
+    "subBtn": "Submit",
+    "Ty": "Thank You!",
+    "TyDes": " Your support ticket has been created. Our team will get back to you soon.",
+    "ok": "Okay"
+  },
+
+  "narrativeLoading": {
+    "ReadingContent": "READING CONTENT ....",
+    "viewCh": "View chapters"
+  },
+
+  "narrative": {
+    "editRes": "Edit Response",
+    "saveRes": "Save Response",
+    "saveResDes": "Once saved, you will find the chapter in completed chapters tab.",
+    "saveResProcBtn": "Not Yet",
+    "saveResCancelBtn": "Keep Changes",
+
+    "RevertRes": "Revert Response",
+    "RevertResDes": "This will undo all narrative fusion changes. You will be redirected to the original content compiled chapter for editing.",
+    "dontLike": "Doesn’t like the narrative fusion response?",
+    "RevertResProcBtn": "Not Yet",
+    "RevertResCancelBtn": "Revert Changes"
   }
 }

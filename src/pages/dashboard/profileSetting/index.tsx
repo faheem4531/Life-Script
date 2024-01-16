@@ -26,6 +26,7 @@ import CountrySelect from "@/components/dashboardComponent/AutoComplete";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 const ProfileSetting = () => {
@@ -40,6 +41,7 @@ const ProfileSetting = () => {
   const [userPhone, setUserPhone] = useState("");
   const [countryValue, setCountryValue] = useState("92");
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
 
   function filterEmptyProperties(data) {
     const filteredData = {};
@@ -146,7 +148,10 @@ const ProfileSetting = () => {
       }}
     >
       <Layout>
-        <ProfileHeader title="Account Settings" description="" />
+        <ProfileHeader
+          title={`${t("profileSetting.AccountSettings")}`}
+          description=""
+        />
         <Box
           sx={{
             display: "flex",
@@ -176,7 +181,7 @@ const ProfileSetting = () => {
                   color: "#474E60",
                 }}
               >
-                Set Profile Image
+                {t("profileSetting.SetProImg")}
               </Typography>
               <div style={{ cursor: "pointer" }}>
                 <input {...getInputProps()} />
@@ -229,7 +234,9 @@ const ProfileSetting = () => {
                     )}
                   </Box>
                   <Box {...getRootProps()}>
-                    <GlobelBtn btnText="Change Profile" />
+                    <GlobelBtn
+                      btnText={`${t("profileSetting.changeProBtn")}`}
+                    />
                   </Box>
                 </Box>
               </div>
@@ -243,20 +250,20 @@ const ProfileSetting = () => {
             >
               <InputWithLabel
                 color="#474E60"
-                label="Full Name"
+                label={`${t("profileSetting.fullName")}`}
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                placeholder="Full Name"
+                placeholder={`${t("profileSetting.fullName")}`}
                 borderRadius="47.202px"
                 bgColor="#F6F9FB"
                 border="0px"
               />
               <InputWithLabel
                 color="#474E60"
-                label="Email"
+                label={`${t("profileSetting.Email")}`}
                 value={userEmail}
                 disabled={true}
-                placeholder="Email"
+                placeholder={`${t("profileSetting.Email")}`}
                 borderRadius="47.202px"
                 bgColor="#F6F9FB"
                 border="0px"
@@ -278,7 +285,7 @@ const ProfileSetting = () => {
                     color: "#474E60",
                   }}
                 >
-                  Date of Birth
+                  {`${t("profileSetting.DOB")}`}
                 </Typography>
                 <DatePicker
                   value={selectedDate}
@@ -313,7 +320,7 @@ const ProfileSetting = () => {
                     color: "#474E60",
                   }}
                 >
-                  Gender
+                  {`${t("profileSetting.Gender")}`}
                 </Typography>
                 <Select
                   labelId="demo-simple-select-label"
@@ -331,9 +338,13 @@ const ProfileSetting = () => {
                     },
                   }}
                 >
-                  <MenuItem value={"Male"}>Male</MenuItem>
-                  <MenuItem value={"Female"}>Female</MenuItem>
-                  <MenuItem value={"Other"}>Other</MenuItem>
+                  <MenuItem value={"Male"}>{t("profileSetting.male")}</MenuItem>
+                  <MenuItem value={"Female"}>
+                    {t("profileSetting.female")}
+                  </MenuItem>
+                  <MenuItem value={"Other"}>
+                    {t("profileSetting.other")}
+                  </MenuItem>
                 </Select>
               </FormControl>
               <Box>
@@ -343,7 +354,7 @@ const ProfileSetting = () => {
                     color: "#474E60",
                   }}
                 >
-                  Phone
+                  {t("profileSetting.Phone")}
                 </Typography>
                 <Box
                   sx={{
@@ -360,7 +371,7 @@ const ProfileSetting = () => {
                   />
                   <TextField
                     variant="outlined"
-                    placeholder={"Phone"}
+                    placeholder={`${t("profileSetting.Phone")}`}
                     name="Phone"
                     value={userPhone}
                     type="number" // Set input type to "number"
@@ -395,7 +406,7 @@ const ProfileSetting = () => {
             <GlobelBtn
               bgColor="#197065"
               color="white"
-              btnText="Save Changes"
+              btnText={`${t("profileSetting.save")}`}
               onClick={() => {
                 setProfile(true);
               }}
@@ -405,8 +416,8 @@ const ProfileSetting = () => {
 
         <TransitionsDialog
           open={profile}
-          heading="Save Changes"
-          description="Do you want to save the changes?"
+          heading={`${t("profileSetting.save")}`}
+          description={`${t("profileSetting.saveDes")}`}
           cancel={() => {
             setProfile(false);
           }}
@@ -414,8 +425,8 @@ const ProfileSetting = () => {
             setProfile(false);
           }}
           proceed={handleUpdateProfile}
-          proceedText="Save Changes"
-          cancelText="Don’t Save"
+          proceedText={`${t("profileSetting.SaveChBtn")}`}
+          cancelText={`${t("profileSetting.DelBtn")}`}
         />
       </Layout>
     </Box>

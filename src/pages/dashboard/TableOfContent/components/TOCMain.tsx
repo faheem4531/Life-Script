@@ -7,6 +7,7 @@ import styles from "@/styles/Dashboard.module.css";
 import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import addIcon from "../../../../_assets/svg/AddIcon.svg";
 import ChaptersList from "./ChapterList";
@@ -21,6 +22,7 @@ const TOCMain = () => {
   const [listItems, setListItems] = useState<
     Array<{ id: number; name: string; chapterId: string }>
   >([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getChapters())
@@ -84,7 +86,7 @@ const TOCMain = () => {
                 },
               }}
             >
-              Chapters
+              {t("TOC.ch")}
             </Typography>
             <Box
               sx={{
@@ -99,7 +101,7 @@ const TOCMain = () => {
               <Box>
                 {currentUrl === "/dashboard/BookView" ? (
                   <GlobelBtn
-                    btnText="Edit Chapters"
+                    btnText={`${t("TOC.editChBtn")}`}
                     image={addIcon}
                     onClick={() => {
                       currentUrl === "/dashboard/BookView" &&
@@ -109,9 +111,8 @@ const TOCMain = () => {
                 ) : (
                   <GlobelBtn
                     image={addIcon}
-                    btnText=" Add Chapters"
+                    btnText={`${t("TOC.addChBtn")}`}
                     onClick={() => setOpenModal(true)}
-                    width={"180px"}
                   />
                 )}
               </Box>
@@ -129,16 +130,7 @@ const TOCMain = () => {
             }}
           >
             {selectedItems?.length > 0 ? (
-              <Box>
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-                <DraggableList data={selectedItems} />
-              </Box>
+              <DraggableList data={selectedItems} />
             ) : (
               <Box
                 sx={{

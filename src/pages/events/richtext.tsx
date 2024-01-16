@@ -34,6 +34,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
@@ -67,6 +68,7 @@ const RichText = ({ questionId }) => {
   const [gptChapter, setGptChapter] = useState("");
   const [seconds, setSeconds] = useState(0);
   const { compileChapterId, openai } = router.query;
+  const { t } = useTranslation();
 
   const startRecording = async () => {
     try {
@@ -354,15 +356,18 @@ const RichText = ({ questionId }) => {
         })
         .catch(() => toast.error("Failed to mark as complete"));
     } else {
-
       const editedChapter = {
         id: compileChapterId,
-        userText:openai === "true" ? userChapter : draftToHtml(convertToRaw(editorState.getCurrentContent())),
-        openaiChapterText: openai === "false" ? gptChapter : draftToHtml(convertToRaw(editorState.getCurrentContent())),
-      }
-      dispatch(
-        updateChapterResponse(editedChapter)
-      )
+        userText:
+          openai === "true"
+            ? userChapter
+            : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        openaiChapterText:
+          openai === "false"
+            ? gptChapter
+            : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      };
+      dispatch(updateChapterResponse(editedChapter))
         .unwrap()
         .then(() => router.push("/dashboard/chapters/completedChapter"))
         .catch(() => toast.error("Failed to save your chapter"));
@@ -509,10 +514,10 @@ const RichText = ({ questionId }) => {
                 image={detecting ? MicRegular : listening ? MicListing : MicOff}
                 btnText={
                   detecting
-                    ? `Detecting...`
+                    ? `${t("richText.detecte")}`
                     : listening
-                    ? "Stop"
-                    : "Speech-to-text"
+                    ? `${t("richText.stop")}`
+                    : `${t("richText.STT")}`
                 }
                 onClick={handleSpeechtoText}
               />
@@ -524,7 +529,7 @@ const RichText = ({ questionId }) => {
                     draftToHtml(convertToRaw(editorState.getCurrentContent()))
                       .length < 9
                   }
-                  btnText="Mark As Complete"
+                  btnText={`${t("richText.MAC")}`}
                 />
               )}
             </Box>
@@ -635,8 +640,8 @@ const RichText = ({ questionId }) => {
 
       <TransitionsDialog
         open={buyPremium}
-        heading="Buy Premium"
-        description="Speech to Text is  only available for Standard and Premium users. Want to buy now?"
+        heading={`${t("richText.ByPreHeading")}`}
+        description={`${t("richText.PreDes")}`}
         cancel={() => {
           setBuyPremium(false);
         }}

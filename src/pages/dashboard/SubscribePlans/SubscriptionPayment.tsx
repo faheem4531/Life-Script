@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 import {
   subBasicList,
   subPremiumList,
@@ -15,13 +16,17 @@ import PaymentForm from "./components/paymentForm";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const CreditCard = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const { Subscription, price } = router.query;
 
   return (
     <Box>
       <Layout>
-        <SubscriptionHeader title="Subscription Plan" description="" />
+        <SubscriptionHeader
+          title={`${t("SubsPlan.SubsHeaderTitle")}`}
+          description=""
+        />
 
         <Box
           sx={{
@@ -42,8 +47,7 @@ const CreditCard = () => {
               textAlign: "center",
             }}
           >
-            Choose a subscription plan below before Aug30th,2023 to unlock this
-            special offer.
+            {t("SubsPlan.SubsHeaderDes")}
           </Typography>
           <Box
             sx={{
@@ -57,30 +61,32 @@ const CreditCard = () => {
               {Subscription === "BasicPlan" && (
                 <SubscriptionCard
                   subList={subBasicList}
-                  mainTitle="Basic Plan"
+                  mainTitle={`${t("SubsPlan.SubsCardBasic.SubsCardHeading")}`}
                   mainDescription="Lorem ipsum dolor sit amet consectetur."
+                  offerTitle={`${t(
+                    "SubsPlan.SubsCardBasic.SubsCardHeadingOffer"
+                  )}`}
                   price={Number(price)}
-                  offerTitle="Basic Plan Offerings"
                   btnCheck={false}
                 />
               )}
               {Subscription === "GoldPlan" && (
                 <SubscriptionCard
                   subList={subStandardList}
-                  mainTitle="Standard Plan"
+                  mainTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
                   mainDescription="Lorem ipsum dolor sit amet consectetur."
+                  offerTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
                   price={Number(price)}
-                  offerTitle="Standard Plan Offerings"
                   btnCheck={false}
                 />
               )}
               {Subscription === "PremiumPlan" && (
                 <SubscriptionCard
                   subList={subPremiumList}
-                  mainTitle="Premium Plan"
+                  mainTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
                   mainDescription="Lorem ipsum dolor sit amet consectetur."
+                  offerTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
                   price={Number(price)}
-                  offerTitle="Premium Plan Offerings"
                   btnCheck={false}
                 />
               )}

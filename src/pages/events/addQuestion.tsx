@@ -1,6 +1,7 @@
 import GlobelBtn from "@/components/button/Button";
 import { Box, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface AddQuestionProps {
   questionData?: (question: string) => void; // Assuming the return type is void, modify as needed
@@ -13,6 +14,7 @@ export default function AddQuestion({
   btnText,
 }: AddQuestionProps) {
   const [question, setQuestion] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     questionData(question);
@@ -26,7 +28,7 @@ export default function AddQuestion({
       <Box>
         <TextField
           variant="outlined"
-          placeholder="Add Question"
+          placeholder={`${t("ChName.AddQuesBtn")}`}
           name="email"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
@@ -58,7 +60,6 @@ export default function AddQuestion({
             borderRadius="23px"
             color="#fff"
             // width={{ md: "234px", sm: "153px", xs: "103px" }}
-            fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
             border="1px solid #197065"
             onClick={(event: any) => handleSubmit()}
           />

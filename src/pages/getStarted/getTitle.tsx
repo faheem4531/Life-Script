@@ -1,11 +1,12 @@
 import GreenBlock from "@/_assets/png/getTitle-green-block.png";
 import WhiteBlock from "@/_assets/png/getTitle-white-block.png";
 import GlobelBtn from "@/components/button/Button";
-import { bookTitle, getBookTitle } from "@/store/slices/chatSlice";
+import { bookTitle } from "@/store/slices/chatSlice";
 import { Box, CircularProgress, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "../../../public/getTitleBook.svg";
@@ -18,6 +19,7 @@ const getTitle = () => {
   const [text, setText] = useState("");
   const maxLength = 30; // Set the maximum character count to 20
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleChange = (event) => {
     const inputText = event.target.value;
@@ -40,31 +42,31 @@ const getTitle = () => {
     console.log("text", text);
   };
 
-  useEffect(() => {
-    setLoading(true);
-    dispatch(getBookTitle())
-      .unwrap()
-      .then((res) => {
-        console.log("111", res);
-        if (res?.length > 0) {
-          setTimeout(() => {
-            router.push("/dashboard/chapters");
-            setLoading(false);
-          }, 3000);
-        } else {
-          setTimeout(() => {
-            setLoading(false);
-          }, 1000);
-        }
-      })
-      .catch(() =>
-        setTimeout(() => {
-          console.log("fail");
-          router.push(`/dashboard/Questionnaire?userName=${userName}`);
-          setLoading(false);
-        }, 3000)
-      );
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   dispatch(getBookTitle())
+  //     .unwrap()
+  //     .then((res) => {
+  //       console.log("111", res);
+  //       if (res?.length > 0) {
+  //         setTimeout(() => {
+  //           router.push("/dashboard/chapters");
+  //           setLoading(false);
+  //         }, 3000);
+  //       } else {
+  //         setTimeout(() => {
+  //           setLoading(false);
+  //         }, 1000);
+  //       }
+  //     })
+  //     .catch(() =>
+  //       setTimeout(() => {
+  //         console.log("fail");
+  //         router.push(`/dashboard/Questionnaire?userName=${userName}`);
+  //         setLoading(false);
+  //       }, 3000)
+  //     );
+  // }, []);
 
   return (
     <Box>
@@ -118,17 +120,19 @@ const getTitle = () => {
               }}
               className={styles.primaryText}
             >
-              Hi <span style={{ fontWeight: "600" }}>{userName},</span>
+              {t("getTitle.hi")}{" "}
+              <span style={{ fontWeight: "600" }}>{userName},</span>
             </Typography>
             <Typography
               sx={{
                 fontWeight: "400",
                 fontSize: { md: "53px", sm: "40px", xs: "30px" },
                 marginTop: "32px",
+                width: "70%",
               }}
               className={styles.primaryText}
             >
-              What would you like to <br /> call your lifescript?
+              {t("getTitle.getQues")}
             </Typography>
             <Box>
               <Box
@@ -163,14 +167,14 @@ const getTitle = () => {
                     ml: "15px",
                   }}
                 >
-                  You can change it at any time before printing.
+                  {t("getTitle.inputBottom")}
                 </Typography>
               </Box>
               <Box mt="50px">
                 <GlobelBtn
                   disabled={!text}
                   onClick={() => handleTitle()}
-                  btnText="Start Writing"
+                  btnText={`${t("getTitle.getBtn")}`}
                   width={"200px"}
                 />
               </Box>

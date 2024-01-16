@@ -2,7 +2,6 @@ import ModalImage from "@/_assets/png/view-template-modal.png";
 import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
-import { stripeDone } from "@/store/slices/authSlice";
 import { stripePayment } from "@/store/slices/chatSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import {
@@ -12,13 +11,12 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -57,6 +55,7 @@ const PaymentForm = ({ packageName, price }) => {
   const stripe = useStripe();
   const router = useRouter();
   const elements = useElements();
+  const { t } = useTranslation();
 
   const handleSubmit = async (event) => {
     const subscriptionPrice = Number(price);
@@ -95,7 +94,9 @@ const PaymentForm = ({ packageName, price }) => {
             );
             if (secureResult?.paymentIntent?.status === "succeeded") {
               setStripeSucceed(true);
-            }else{setStripeFailed(true);}
+            } else {
+              setStripeFailed(true);
+            }
           } else {
             setStripeSucceed(true);
           }
@@ -124,7 +125,7 @@ const PaymentForm = ({ packageName, price }) => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Card Number
+              {t("SubsPlan.CardNum")}
             </Typography>
             <Box
               sx={{
@@ -152,12 +153,12 @@ const PaymentForm = ({ packageName, price }) => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Cardholder Name
+              {t("SubsPlan.CardholderName")}
             </Typography>
             <TextField
               variant="outlined"
               onChange={(event: any) => setCardHolderName(event.target.value)}
-              placeholder={"Cardholder Name"}
+              placeholder={`${t("SubsPlan.CardholderName")}`}
               name="title"
               sx={{
                 marginTop: "10px",
@@ -187,7 +188,7 @@ const PaymentForm = ({ packageName, price }) => {
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
-                Expiration Date
+                {t("SubsPlan.ExpDate")}
               </Typography>
               <Box
                 sx={{
@@ -214,7 +215,7 @@ const PaymentForm = ({ packageName, price }) => {
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
-                CVC
+                {t("SubsPlan.cvc")}
               </Typography>
               <Box
                 sx={{
@@ -247,7 +248,11 @@ const PaymentForm = ({ packageName, price }) => {
             <GlobelBtn
               bgColor="#197065"
               color="white"
-              btnText={loading ? "Processing..." : "Choose Plan"}
+              btnText={
+                loading
+                  ? `${t("SubsPlan.cardProBtn")}`
+                  : `${t("SubsPlan.cardBtn")}`
+              }
               onClick={() => {
                 if (!loading && !isError && cardHolderName) {
                   setConfirmationStripe(true);
@@ -261,8 +266,10 @@ const PaymentForm = ({ packageName, price }) => {
       </Box>
       <TransitionsDialog
         open={confirmationStripe}
-        heading="Premium Plan"
-        description={`An amount of $${price} will be deducted from your selected bank account. Do you really want to proceed?`}
+        heading={`${t("SubsPlan.premPlan")}`}
+        description={`${t("SubsPlan.premPlanDes1")} $${price} ${t(
+          "SubsPlan.premPlanDes2"
+        )}`}
         cancel={() => {
           setConfirmationStripe(false);
         }}
@@ -308,7 +315,7 @@ const PaymentForm = ({ packageName, price }) => {
               margin: "15px 0",
             }}
           >
-            {stripeFailed ? "Sorry" : "Thank You!"}
+            {stripeFailed ? `${t("SubsPlan.Sorry")}` : `${t("SubsPlan.TY")}`}
           </Typography>
           <Typography
             sx={{
@@ -319,8 +326,8 @@ const PaymentForm = ({ packageName, price }) => {
             }}
           >
             {stripeFailed
-              ? "Stripe Failed to proceed your Payment"
-              : "Your Package has been Upgraded"}
+              ? `${t("SubsPlan.SorryDes")}`
+              : `${t("SubsPlan.TYDes")}`}
           </Typography>
 
           <Box
@@ -333,7 +340,11 @@ const PaymentForm = ({ packageName, price }) => {
             <GlobelBtn
               bgColor="#197065"
               color="white"
-              btnText={stripeFailed ? "Try Later" : "Start Using"}
+              btnText={
+                stripeFailed
+                  ? `${t("SubsPlan.sorryBtn")}`
+                  : `${t("SubsPlan.TYBtn")}`
+              }
               onClick={() => {
                 stripeFailed
                   ? router.push("/dashboard/SubscribePlans")

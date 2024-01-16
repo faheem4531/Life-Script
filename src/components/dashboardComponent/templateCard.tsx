@@ -4,9 +4,11 @@ import { Divider, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import styles from "./HomeSteps.module.css";
 
 export default function TemplateCard() {
+  const { t } = useTranslation();
   return (
     <Card sx={{ borderRadius: "6.5px" }}>
       <CardContent sx={{ padding: { xs: "5px 8px 35px" } }}>
@@ -20,7 +22,7 @@ export default function TemplateCard() {
             marginTop: "15px",
           }}
         >
-          The Book Of John Doe
+          {t("StartNewTem.chTitle")}
         </Typography>
         <Divider
           sx={{
@@ -39,7 +41,7 @@ export default function TemplateCard() {
           sx={{ columnGap: { sm: "10px", xs: "3px" }, fontSize: "6.239px" }}
         >
           <Image alt="check" src={Tick} className={styles.tick} />
-          Winner of the National Academy of Sciences Best Book Award in 2012
+          {t("StartNewTem.chQues1")}
         </Typography>
         <Typography
           display="flex"
@@ -49,7 +51,7 @@ export default function TemplateCard() {
           sx={{ columnGap: { sm: "10px", xs: "3px" }, fontSize: "6.239px" }}
         >
           <Image alt="check" src={Tick} className={styles.tick} />
-          The Worst Job Ever
+          {t("StartNewTem.chQues2")}
         </Typography>
         <Typography
           display="flex"
@@ -59,7 +61,7 @@ export default function TemplateCard() {
           sx={{ columnGap: { sm: "10px", xs: "3px" }, fontSize: "6.239px" }}
         >
           <Image alt="check" src={Tick} className={styles.tick} />
-          The Best Job Ever
+          {t("StartNewTem.chQues3")}
         </Typography>
       </CardContent>
     </Card>

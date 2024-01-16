@@ -52,10 +52,10 @@ export default function Questions({
   };
 
   const handleClickOption = (option) => {
-    if (option === "Delete") {
+    if (option === `${t("ChName.Del")}`) {
       setDeleteQuestionModal(true);
       setAnchorEl(null);
-    } else if (option === "Edit") {
+    } else if (option === `${t("ChName.edit")}`) {
       setUpdateQuestionModal(true);
       setAnchorEl(null);
     } else {
@@ -312,7 +312,7 @@ export default function Questions({
           <Image src={ModalImage} width={91} height={60} alt="logo" />
         </Box>
         <Typography sx={{ fontSize: { md: "24px", sm: "22px", xs: "18px" } }}>
-          Update Question
+          {t("ChName.UQ")}
         </Typography>
         <AddQuestion
           questionData={(question: string) => {
@@ -320,13 +320,13 @@ export default function Questions({
             setUpdateQuestionModal(false);
           }}
           questionText={question?.text}
-          btnText={"Update Question"}
+          btnText={`${t("ChName.UQ")}`}
         />
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteQuestionModal}
-        heading="Delete"
-        description="Are you sure you want to delete this question?"
+        heading={`${t("ChName.DelText")}`}
+        description={`${t("ChName.DelDescri")}`}
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
         closeModal={() => setDeleteQuestionModal(false)}

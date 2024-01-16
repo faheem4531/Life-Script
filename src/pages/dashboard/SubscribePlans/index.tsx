@@ -3,6 +3,7 @@ import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHead
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   subBasicList,
   subPremiumList,
@@ -11,6 +12,7 @@ import {
 import SubscriptionCard from "./components/SubscriptionCard";
 
 const SubscribePlan = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const [planPrices, setPlanPrices] = useState({
     basic: 100,
@@ -68,8 +70,8 @@ const SubscribePlan = () => {
           }}
         >
           <SubscriptionHeader
-            title="Subscription Plan"
-            description="Choose a subscription plan below before Aug30th,2023 to unlock this special offer."
+            title={`${t("SubsPlan.SubsHeaderTitle")}`}
+            description={`${t("SubsPlan.SubsHeaderDes")}`}
           />
 
           {/* <Box
@@ -107,11 +109,11 @@ const SubscribePlan = () => {
           >
             <SubscriptionCard
               subList={subBasicList}
-              mainTitle="Basic Plan"
+              mainTitle={`${t("SubsPlan.SubsCardBasic.SubsCardHeading")}`}
               mainDescription="Lorem ipsum dolor sit amet consectetur."
+              offerTitle={`${t("SubsPlan.SubsCardBasic.SubsCardHeadingOffer")}`}
               price={planPrices.basic}
               buttonDisable={disableButton.basic}
-              offerTitle="Basic Plan Offerings"
               onClick={(pkgPrice) => {
                 typeof window !== "undefined" &&
                   router.push(
@@ -121,11 +123,11 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subStandardList}
-              mainTitle="Standard Plan"
+              mainTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
               mainDescription="Lorem ipsum dolor sit amet consectetur."
+              offerTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
               price={planPrices?.standard}
               buttonDisable={disableButton.standard}
-              offerTitle="Standard Plan Offerings"
               onClick={(pkgPrice) => {
                 typeof window !== "undefined" &&
                   router.push(
@@ -135,11 +137,11 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subPremiumList}
-              mainTitle="Premium Plan"
+              mainTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
               mainDescription="Lorem ipsum dolor sit amet consectetur."
+              offerTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
               price={planPrices?.premium}
               buttonDisable={disableButton.premium}
-              offerTitle="Premium Plan Offerings"
               onClick={(pkgPrice) => {
                 typeof window !== "undefined" &&
                   router.push(

@@ -8,6 +8,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import styles from "./Narrative.module.css";
 
@@ -16,6 +17,7 @@ const Loading = () => {
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
   const isLoaded = useSelector(isChapterLoaded);
+  const { t } = useTranslation();
 
   const { chapterId, openai } = router.query;
 
@@ -57,7 +59,7 @@ const Loading = () => {
       }}
     >
       <Typography sx={{ fontSize: "39px", fontWeight: 200 }}>
-        {progress < 100 && "READING CONTENT ...."}
+        {progress < 100 && `${t("narrativeLoading.ReadingContent")}`}
         {progress === 100 && !showCompletion && isLoaded === "loaded" && (
           <a
             style={{ borderBottom: "3px solid #197065" }}
@@ -67,7 +69,8 @@ const Loading = () => {
               )
             }
           >
-            View chapters <ArrowForwardIcon />
+            {t("narrativeLoading.viewCh")}
+            <ArrowForwardIcon />
           </a>
         )}
       </Typography>

@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import Arrow from "../../../public/startArrow.png";
 import styles from "./GetTitle.module.css";
@@ -12,11 +13,13 @@ const getStarted = () => {
   const dispatch: any = useDispatch();
   const router = useRouter();
   const { userName } = router.query;
+  const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(getBookTitle()).unwrap()
+    dispatch(getBookTitle())
+      .unwrap()
       .then((res) => {
-        console.log("111",res);
+        console.log("111", res);
         if (res?.length > 0) {
           setTimeout(() => {
             router.push("/dashboard/chapters");
@@ -28,10 +31,10 @@ const getStarted = () => {
         }
       })
       .catch(() =>
-      setTimeout(() =>{
-        console.log("fail");
-        router.push(`/dashboard/Questionnaire?userName=${userName}`)
-      }, 3000)
+        setTimeout(() => {
+          console.log("fail");
+          router.push(`/dashboard/Questionnaire?userName=${userName}`);
+        }, 3000)
       );
   }, []);
 
@@ -64,7 +67,7 @@ const getStarted = () => {
         <Typography
           sx={{ fontSize: { lg: "60px", md: "50px", sm: "40px", xs: "30px" } }}
         >
-          Hi {userName} 👋
+          {t("getTitle.hi")} {userName} 👋
         </Typography>
         <Image src={Arrow} alt="arrow" className={styles.aero} />
         <Typography
@@ -79,7 +82,7 @@ const getStarted = () => {
             },
           }}
         >
-          Let Us Help You...
+          {t("getTitle.LetUsHelpYou")}
         </Typography>
       </Box>
 

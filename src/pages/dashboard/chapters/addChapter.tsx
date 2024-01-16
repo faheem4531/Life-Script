@@ -1,8 +1,10 @@
 import GlobelBtn from "@/components/button/Button";
 import { Box, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
+  const { t } = useTranslation();
   const [chapter, setChapter] = useState("");
   useEffect(() => {
     data && setChapter(data);
@@ -11,12 +13,13 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
   const handleSubmit = () => {
     chapterData(chapter);
   };
+
   return (
     <Box sx={{ margin: "10px" }}>
       <Box>
         <TextField
           variant="outlined"
-          placeholder="Add Chapter"
+          placeholder={`${t("ChModals.addNewCh")}`}
           value={chapter}
           onChange={(e) => setChapter(e.target.value)}
           sx={{

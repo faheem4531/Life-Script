@@ -528,7 +528,7 @@ const chapterName = () => {
               margin: "15px 0",
             }}
           >
-            Thank You!
+            {t("ChName.thankYou")}
           </Typography>
           <Typography
             sx={{
@@ -537,7 +537,7 @@ const chapterName = () => {
               // width: "400px",
             }}
           >
-            Your chapter is being written. You will get it shortly
+            {t("ChName.TYDescription")}
           </Typography>
           <Box
             sx={{
@@ -547,12 +547,10 @@ const chapterName = () => {
             }}
           >
             <GlobelBtn
-              btnText={"Okay"}
+              btnText={`${t("ChName.ok")}`}
               bgColor="#197065"
               borderRadius="23px"
               color="#fff"
-              // width={{ md: "234px", sm: "153px", xs: "103px" }}
-              // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
               border="1px solid #197065"
               onClick={() => {
                 router.push("/dashboard/chapters");
@@ -565,22 +563,22 @@ const chapterName = () => {
 
       <TransitionsDialog
         open={openCustomizationDialog}
-        heading="Narrative Fusion"
+        heading={`${t("ChName.NF")}`}
         description={
-          buyPremium
-            ? "This feature is only for Premium and Standard users"
-            : "It's a one time chapter usage feature, If you want to keep you real text, proceed with 'Compile original Text'?"
+          buyPremium ? `${t("ChName.NFdescPremium")}` : `${t("ChName.NFDes")}`
         }
         cancel={handleCancel}
         proceed={proceedFusion}
-        proceedText="Compile Original Text" // Customize the text for the "Yes" button
-        cancelText={buyPremium ? "Buy Premium" : "Use Narrative Fusion"} // Customize the text for the "No" button
+        proceedText={`${t("ChName.NFOriginBtn")}`} // Customize the text for the "Yes" button
+        cancelText={
+          buyPremium ? `${t("ChName.NFBuyPrBtn")}` : `${t("ChName.NFuseBtn")}`
+        } // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
 
       <CustomizationDialog
         open={fusionModal}
-        title="GPT Response"
+        title={`${t("ChName.GPTRes")}`}
         handleClose={() => {
           setFusionModal(false);
         }}
@@ -629,7 +627,7 @@ const chapterName = () => {
             cursor: "pointer",
           }}
         >
-          Add New Question
+          {t("ChName.AddNewQues")}
         </Typography>
         <Box sx={{}}>
           <AddQuestion
@@ -637,7 +635,7 @@ const chapterName = () => {
               setOpenModal(false);
               submitQuestion(question);
             }}
-            btnText={"Add Question"}
+            btnText={`${t("ChName.AddQuesBtn")}`}
           />
         </Box>
       </CustomizationDialog>
@@ -681,9 +679,9 @@ const chapterName = () => {
       </CustomizationDialog>
       <TransitionsDialog
         open={mailQuestionModal}
-        heading="AI generated Question"
-        proceedText="Add to Chapter"
-        cancelText="Skip"
+        heading={`${t("ChName.AIGenQues")}`}
+        proceedText={`${t("ChName.AIAddToChBtn")}`}
+        cancelText={`${t("ChName.AISkipBtn")}`}
         description={emailQuestion.questionTitle}
         cancel={() => {
           handleSkip(emailQuestion.questionId);
