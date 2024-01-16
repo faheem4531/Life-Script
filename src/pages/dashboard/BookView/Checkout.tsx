@@ -8,25 +8,35 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLuluBalance, luluCall, selectLuluBalance, selectLuluPaymentStatus } from "@/store/slices/authSlice";
+import { useRouter } from "next/router";
+import {
+  getLuluBalance,
+  luluCall,
+  selectLuluBalance,
+  selectLuluPaymentStatus,
+} from "@/store/slices/authSlice";
+import { toast } from "react-toastify";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
-
   const [isChecked, setIsChecked] = useState(false);
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const luluBalance = useSelector(selectLuluBalance);
+  const router = useRouter();
 
   const handleFinish = () => {
-    if(isChecked === true && luluBalance.amount >= count*39){
-      dispatch(luluCall({quantity:count}));
+    if (isChecked === true && luluBalance.amount >= count * 39) {
+      dispatch(luluCall({ quantity: count }))
+        .unwrap()
+        .then(() => router.push("/dashboard/overview"))
+        .catch(() => {toast.error("Failed to call Lulu api"); router.push("/dashboard/overview");});
     }
-  }
+  };
 
   useEffect(() => {
     dispatch(getLuluBalance());
-  },[])
+  }, []);
 
   return (
     <Box
@@ -37,29 +47,30 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
       }}
     >
       <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'start',
-        mb: '40px',
-      }}
-    >
-      <Box mt="-7px">
-        <Checkbox
-          color="success"
-          checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
-        />
-      </Box>
-      <Typography
         sx={{
-          fontSize: { md: '18.752px', sm: '16px', xs: '14px' },
-          width: '70%',
+          display: "flex",
+          alignItems: "start",
+          mb: "40px",
         }}
       >
-        I acknowledge that I have input all the information on my behalf and has
-        reviewed the interior and book cover. I want to print the book as it is.
-      </Typography>
-    </Box>
+        <Box mt="-7px">
+          <Checkbox
+            color="success"
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+        </Box>
+        <Typography
+          sx={{
+            fontSize: { md: "18.752px", sm: "16px", xs: "14px" },
+            width: "70%",
+          }}
+        >
+          I acknowledge that I have input all the information on my behalf and
+          has reviewed the interior and book cover. I want to print the book as
+          it is.
+        </Typography>
+      </Box>
       <Box display={"flex"}>
         {remainingPayment > 0 && (
           <Box
@@ -68,7 +79,10 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             }}
           >
             <Elements stripe={stripePromise}>
-              <CheckoutForm quantity={count} remainingPayment={remainingPayment} />
+              <CheckoutForm
+                quantity={count}
+                remainingPayment={remainingPayment}
+              />
             </Elements>
           </Box>
         )}
