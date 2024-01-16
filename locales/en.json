@@ -208,6 +208,10 @@
     "chQues2": "The Worst Job Ever",
     "chQues3": "The Best Job Ever"
   },
+  "StartNewChapter": {
+    "StartNewChapter": "Start New Chapter",
+    "useTem": "Use template"
+  },
 
   "completedCh": {
     "com": "Completed"
