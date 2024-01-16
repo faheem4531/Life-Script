@@ -2,8 +2,9 @@ import InputWithLabel from "@/components/Input";
 import GlobelBtn from "@/components/button/Button";
 import { Box, TextField, Typography } from "@mui/material";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TickBg from "../../../../_assets/svg/bgTickIcon.svg";
+import CrossBg from "../../../../_assets/svg/cancel.svg";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -11,9 +12,16 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { useDispatch } from "react-redux";
-import { stripePayment } from "@/store/slices/chatSlice";
+import { useDispatch, useSelector } from "react-redux";
 import dynamic from "next/dynamic";
+import {
+  getLuluBalance,
+  selectLuluBalance,
+  selectLuluPaymentStatus,
+  stripPaymentLulu,
+  updateLuluPaymentStatus,
+} from "@/store/slices/authSlice";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -40,8 +48,7 @@ const useOptions = () => {
   return options;
 };
 
-const CheckoutForm = ({quantity,remainingPayment}) => {
-  const [success, setSuccess] = useState(false);
+const CheckoutForm = ({ quantity, remainingPayment }) => {
   const options = useOptions();
   const [isError, setIsError] = useState(false);
   const [cardHolderName, setCardHolderName] = useState("");
@@ -52,6 +59,18 @@ const CheckoutForm = ({quantity,remainingPayment}) => {
   const dispatch: any = useDispatch();
   const stripe = useStripe();
   const elements = useElements();
+  const luluPaymentStatus = useSelector(selectLuluPaymentStatus);
+
+  useEffect(() => {
+    if (luluPaymentStatus === "success") {
+      setStripeSucceed(true);
+    }
+  }, [luluPaymentStatus]);
+
+  useEffect(() => {
+      dispatch(updateLuluPaymentStatus(" "));
+      setStripeSucceed(false);
+  }, []);
 
   const handleSubmit = async (event) => {
     setConfirmationStripe(false);
@@ -62,48 +81,87 @@ const CheckoutForm = ({quantity,remainingPayment}) => {
     }
     const card = elements.getElement(CardNumberElement);
     const result = await stripe.createToken(card);
-    console.log("resulttt", result);
-    // if (result.error) {
-    //   setLoading(false);
-    //   setIsError(true);
-    //   setStripeFailed(true);
-    // } else {
-    //   dispatch(
-    //     stripePayment({
-    //       country: "USA",
-    //       amount: subscriptionPrice,
-    //       token: result.token,
-    //       packageName: "addbook",
-    //       cardHolderName: cardHolderName,
-    //     })
-    //   )
-    //     .unwrap()
-    //     .then(async (res) => {
-    //       if (res?.status !== "succeeded") {
-    //         const secureResult = await stripe.confirmCardPayment(
-    //           res?.client_secret,
-    //           {
-    //             payment_method: {
-    //               card: card,
-    //             },
-    //           }
-    //         );
-    //         if (secureResult?.paymentIntent?.status === "succeeded") {
-    //           setStripeSucceed(true);
-    //         }else{setStripeFailed(true);}
-    //       } else {
-    //         setStripeSucceed(true);
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       setLoading(false);
-    //       setStripeFailed(true);
-    //     });
-    // }
+    if (result.error) {
+      setLoading(false);
+      setIsError(true);
+      setStripeFailed(true);
+    } else {
+      dispatch(
+        stripPaymentLulu({
+          country: "USA",
+          amount: remainingPayment,
+          token: result.token,
+          quantity: quantity,
+          cardHolderName: cardHolderName,
+        })
+      )
+        .unwrap()
+        .then(async (res) => {
+          if (res?.status !== "succeeded") {
+            const secureResult = await stripe.confirmCardPayment(
+              res?.client_secret,
+              {
+                payment_method: {
+                  card: card,
+                },
+              }
+            );
+            if (secureResult?.paymentIntent?.status === "succeeded") {
+            } else {
+              setStripeFailed(true);
+            }
+          }
+        })
+        .catch((error) => {
+          setLoading(false);
+          setStripeFailed(true);
+        });
+    }
   };
   return (
     <>
-      {!success ? (
+      {stripeFailed ? (
+        <Box
+          sx={{
+            bgcolor: "#F8F6F9",
+            borderRadius: "6px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "90%",
+          }}
+        >
+          <Box>
+            <Box
+              sx={{
+                width: "144px",
+                height: "144px",
+                margin: "auto",
+              }}
+            >
+              <Image
+                src={CrossBg}
+                alt="Success Icon"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "24.7px",
+                color: "black",
+                width: "70%",
+                m: "50px auto 0px auto",
+                textAlign: "center",
+              }}
+            >
+              Payment for Lulu api Failed
+            </Typography>
+          </Box>
+        </Box>
+      ) : !stripeSucceed ? (
         <Box
           sx={{
             bgcolor: "#F8F6F9",
@@ -153,7 +211,6 @@ const CheckoutForm = ({quantity,remainingPayment}) => {
               <CardNumberElement
                 options={options}
                 onChange={(event) => {
-                  console.log("CardNumberElement [change]", event);
                   setIsError(!event.complete || !!event.error);
                 }}
               />
@@ -214,7 +271,6 @@ const CheckoutForm = ({quantity,remainingPayment}) => {
                 <CardExpiryElement
                   options={options}
                   onChange={(event) => {
-                    console.log("CardExpiryElement [change]", event);
                     setIsError(!event.complete || !!event.error);
                   }}
                 />
@@ -241,19 +297,25 @@ const CheckoutForm = ({quantity,remainingPayment}) => {
                 <CardCvcElement
                   options={options}
                   onChange={(event) => {
-                    console.log("CardCvcElement [change]", event);
                     setIsError(!event.complete || !!event.error);
                   }}
                 />
               </Box>
             </Box>
           </Box>
+          <Box
+            sx={{ opacity: loading || isError || !cardHolderName ? 0.6 : 1 }}
+          ></Box>
           <GlobelBtn
             btnText="Proceed to pay"
             bgColor=" #197065"
             color="white"
             p="10px 0px"
-            onClick={handleSubmit}
+            onClick={() => {
+              if (!loading && !isError && cardHolderName) {
+                setConfirmationStripe(true);
+              }
+            }}
           />
         </Box>
       ) : (
@@ -298,6 +360,19 @@ const CheckoutForm = ({quantity,remainingPayment}) => {
           </Box>
         </Box>
       )}
+
+      <TransitionsDialog
+        open={confirmationStripe}
+        heading="Lulu Api Payment"
+        description={`An amount of $${remainingPayment} will be deducted from your selected bank account. Do you really want to proceed?`}
+        cancel={() => {
+          setConfirmationStripe(false);
+        }}
+        closeModal={() => {
+          setConfirmationStripe(false);
+        }}
+        proceed={handleSubmit}
+      />
     </>
   );
 };

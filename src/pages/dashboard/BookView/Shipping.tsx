@@ -6,11 +6,21 @@ import ShippingCard from "./components/ShippingCard";
 import ShippingForm from "./components/ShippingForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLuluBalance, selectLuluBalance } from "@/store/slices/authSlice";
+import {
+  createLuluShipping,
+  getLuluBalance,
+  selectLuluBalance,
+  updateLuluShipping,
+} from "@/store/slices/authSlice";
 
-const Shipping = ({ setSelectedTab, setCount, count, setRemainingPaymenmt }) => {
-  
-  const dispatch:any = useDispatch();
+const Shipping = ({
+  setSelectedTab,
+  setCount,
+  count,
+  setRemainingPaymenmt,
+}) => {
+  const dispatch: any = useDispatch();
+  const [shippingDataId, setShippingDataId] = useState(null);
   const [shippingData, setShippingData] = useState({
     email: "",
     city: "",
@@ -24,30 +34,39 @@ const Shipping = ({ setSelectedTab, setCount, count, setRemainingPaymenmt }) => 
 
   const [tooltip, setTooltip] = useState(false);
   const luluBalance = useSelector(selectLuluBalance);
-  console.log("lulubalance", luluBalance);
   useEffect(() => {
-    dispatch(getLuluBalance())
+    dispatch(getLuluBalance());
   }, []);
 
   useEffect(() => {
-    setRemainingPaymenmt((count * 39) - luluBalance?.amount)
-  },[count])
+    setRemainingPaymenmt(count * 39 - luluBalance?.amount);
+  }, [count]);
 
   const handleNext = () => {
-    const isAnyFieldEmpty = Object.values(shippingData).some(value => value === "");
+    const isAnyFieldEmpty = Object.values(shippingData).some(
+      (value) => value === ""
+    );
 
     if (isAnyFieldEmpty) {
       setTooltip(true);
     } else {
-      // All fields are filled, proceed with setSelectedTab(4)
-      setSelectedTab(4);
+      shippingDataId
+        ? dispatch(updateLuluShipping(shippingData))
+            .unwrap()
+            .then((res) => {
+              setSelectedTab(4);
+            })
+        : dispatch(createLuluShipping(shippingData))
+            .unwrap()
+            .then((res) => {
+              setSelectedTab(4);
+            });
     }
-    setSelectedTab(4);
   };
 
   useEffect(() => {
     setTooltip(false);
-  },[shippingData])
+  }, [shippingData]);
 
   return (
     <Box
@@ -66,7 +85,11 @@ const Shipping = ({ setSelectedTab, setCount, count, setRemainingPaymenmt }) => 
           minWidth: "300px",
         }}
       >
-        <ShippingForm onChange={(obj) => setShippingData(obj)} data={shippingData} />
+        <ShippingForm
+          onChange={(obj) => setShippingData(obj)}
+          data={shippingData}
+          setShippingDataId={setShippingDataId}
+        />
       </Box>
       <Box
         sx={{
