@@ -238,6 +238,21 @@ export async function getLuluShippingApi() {
   }
 }
 
+export async function luluCallApi(data) {
+  try {
+
+    const res = await api.post("chapter-compile/payment/stripe-lulu", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function createLuluShippingApi(data: any) {
   try {
 
@@ -253,10 +268,10 @@ export async function createLuluShippingApi(data: any) {
   }
 }
 
-export async function updateLuluShippingApi({data, id}) {
+export async function updateLuluShippingApi(data) {
   try {
 
-    const res = await api.post(`lulu-shipping/${id}`,data);
+    const res = await api.patch(`lulu-shipping`,data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

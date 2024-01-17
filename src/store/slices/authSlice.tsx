@@ -26,17 +26,22 @@ import {
   getLuluShippingApi,
   createLuluShippingApi,
   updateLuluShippingApi,
-  stripPaymentLuluApi
+  stripPaymentLuluApi,
+  luluCallApi
 } from "../api/authApi";
 
 interface State {
-  luluBalance: any
-  user: any
+  luluBalance: any;
+  luluData: any;
+  user: any;
+  luluPaymentStatus: string
 }
 
 const initialState: State = {
   luluBalance: {},
-  user: {}
+  user: {},
+  luluData: {},
+  luluPaymentStatus: '',
 };
 
 export const changePassword = createAsyncThunk<UserData, ChangePassword>(
@@ -51,12 +56,11 @@ export const changePassword = createAsyncThunk<UserData, ChangePassword>(
   }
 );
 
-export const updateUserProfile = createAsyncThunk<any, any>(
-  "user/user-profile",
-  async (data) => {
+export const luluCall = createAsyncThunk<any, any>(
+  "user/lulu-call",
+  async (data: any) => {
     try {
-      const response = await updateUserProfileApi(data);
-      
+      const response = await luluCallApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -64,9 +68,27 @@ export const updateUserProfile = createAsyncThunk<any, any>(
   }
 );
 
+export const updateUserProfile = createAsyncThunk<any, any>(
+  "user/user-profile",
+  async (data) => {
+    try {
+      const response = await updateUserProfileApi(data);
 
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
 
-export const getUserProfile = createAsyncThunk<any[], void >(
+export const updateLuluPaymentStatus = createAsyncThunk<string, string>(
+  "auth/update-lulu-payment-status",
+  async (status: string) => {
+    return status;
+  }
+);
+
+export const getUserProfile = createAsyncThunk<any[], void>(
   "user/get-user-profile",
   async () => {
     try {
@@ -90,7 +112,7 @@ export const getLuluShipping = createAsyncThunk<any[], void>(
   }
 );
 
-export const createLuluShipping = createAsyncThunk<UserData, LoginData>(
+export const createLuluShipping = createAsyncThunk<UserData, any>(
   "auth/create-shipping",
   async (data) => {
     try {
@@ -118,7 +140,7 @@ export const stripPaymentLulu = createAsyncThunk<UserData, any>(
   "auth/payment-lulu-shipping",
   async (data) => {
     try {
-      const response = await stripPaymentLulu(data);
+      const response = await stripPaymentLuluApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -126,7 +148,7 @@ export const stripPaymentLulu = createAsyncThunk<UserData, any>(
   }
 );
 
-export const getLuluBalance = createAsyncThunk<any[], void >(
+export const getLuluBalance = createAsyncThunk<any[], void>(
   "user/get-lulu-balance",
   async () => {
     try {
@@ -277,16 +299,24 @@ export const authSlice = createSlice({
     builder.addCase(getLuluBalance.fulfilled, (state, action) => {
       state.luluBalance = action.payload;
     });
+    builder.addCase(getLuluShipping.fulfilled, (state, action) => {
+      state.luluData = action.payload;
+    });
+    builder.addCase(updateLuluPaymentStatus.fulfilled, (state, action) => {
+      state.luluPaymentStatus = action.payload;
+    });
   },
 });
 
 export const {} = authSlice.actions;
 
-export const selectUser = (state: { auth: { user: any } }) =>
-  state.auth.user;
-//   export const selectUser = (state: { auth: AuthState }) => state.auth.user;
-export const selectLuluBalance = (state: { auth: {
-  luluBalance: any;user: any
-} }) => state.auth.luluBalance;
+export const selectUser = (state: { auth: any }) => state.auth.user;
+
+export const selectLuluBalance = (state: { auth: any }) =>
+  state.auth.luluBalance;
+
+export const selectLuluData = (state: { auth: any }) => state.auth.luluData;
+
+export const selectLuluPaymentStatus = (state: { auth: any }) => state.auth.luluPaymentStatus;
 
 export default authSlice.reducer;

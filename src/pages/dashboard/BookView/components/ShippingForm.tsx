@@ -1,13 +1,14 @@
 import InputWithLabel from "@/components/Input";
-import { getLuluBalance } from "@/store/slices/authSlice";
+import { getLuluBalance, getLuluShipping, selectLuluData } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CountrySelect from "@/components/dashboardComponent/AutoComplete";
 
 import { useDispatch, useSelector } from "react-redux";
 
-const ShippingForm = ({onChange, data}) => {
+const ShippingForm = ({onChange, data, setShippingDataId}) => {
   const dispatch: any = useDispatch();
+  const luluData = useSelector(selectLuluData);
   const [shippingData, setShippingData] = useState({
     email: "",
     city: "",
@@ -26,6 +27,27 @@ const ShippingForm = ({onChange, data}) => {
   useEffect(() => {
     data && setShippingData(shippingData);
   },[data]);
+
+  useEffect(() => {
+    dispatch(getLuluShipping());
+  },[]);
+
+  useEffect(() => {
+    if(luluData){
+      setShippingData((prevData) => ({
+        ...prevData,
+        email: luluData?.email,
+        name: luluData?.name,
+        country_code: luluData?.country_code,
+        city: luluData?.city,
+        phone_number: luluData?.phone_number,
+        postcode: luluData?.postcode,
+        state_code: luluData?.state_code,
+        street1: luluData?.street1,
+      }));
+      setShippingDataId(luluData?._id);
+    }
+  },[luluData])
 
   return (
     <Box

@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import i18n from "../../i18n";
+import { updateLuluPaymentStatus } from "@/store/slices/authSlice";
 
 export default function NewApp({ children }) {
   const router = useRouter();
@@ -27,15 +28,22 @@ export default function NewApp({ children }) {
     socket.on("result", (message) => {
       dispatch(getChapterNotifications());
     });
+
     socket.on("error", (message) => {
       toast.error(message);
       console.log("socket failed");
     })
+
     socket.on("error", (message) => {});
 
     socket.emit('joinRoom', userId);
     socket.on("stripeWebhookData", (token) => {
       localStorage.setItem("token", token);
+    })
+
+    socket.on("stripeLuluWebhookData", (msg) => {
+      console.log("msgggg",msg);
+      dispatch(updateLuluPaymentStatus(msg));
     })
   }, []);
 
