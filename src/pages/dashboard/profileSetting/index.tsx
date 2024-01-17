@@ -155,7 +155,7 @@ const ProfileSetting = () => {
               <Typography
                 sx={{
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                  color: "#474E60",
+                  color: "black",
                 }}
               >
                 {t("profileSetting.SetProImg")}
@@ -172,6 +172,7 @@ const ProfileSetting = () => {
                     justifyContent: "space-between",
                     flexWrap: "wrap",
                     gap: "15px",
+                    height: "158px",
                   }}
                 >
                   <Box
@@ -223,6 +224,7 @@ const ProfileSetting = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
+                mt: "20px",
               }}
             >
               <InputWithLabel
@@ -259,7 +261,7 @@ const ProfileSetting = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "black",
                   }}
                 >
                   {`${t("profileSetting.DOB")}`}
@@ -294,7 +296,7 @@ const ProfileSetting = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "black",
                   }}
                 >
                   {`${t("profileSetting.Gender")}`}
@@ -328,7 +330,7 @@ const ProfileSetting = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "black",
                   }}
                 >
                   {t("profileSetting.Phone")}

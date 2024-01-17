@@ -23,6 +23,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import backArrow from "../../../_assets/svg/left.svg";
 import Loading from "./components/loading";
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -170,13 +171,30 @@ const chapterName = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: { sm: "space-between", xs: "center" },
+                justifyContent: "space-between",
                 alignItems: "center",
                 marginBottom: "10px",
                 mt: { sm: "10px", xs: "0px" },
                 opacity: tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
               }}
             >
+              <Box
+                onClick={() => {
+                  router.back();
+                }}
+                sx={{
+                  borderRadius: "50%",
+                  display: { xs: "flex", sm: "none" },
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "45.679px",
+                  height: "45.679px",
+                  flexShrink: "0",
+                  border: "1px solid #17645A",
+                }}
+              >
+                <Image src={backArrow} alt="backArrow" />
+              </Box>
               <Typography
                 sx={{
                   fontSize: { md: "19.379px", sm: "18.501px" },
