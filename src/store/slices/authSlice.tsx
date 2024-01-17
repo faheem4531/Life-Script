@@ -27,7 +27,8 @@ import {
   createLuluShippingApi,
   updateLuluShippingApi,
   stripPaymentLuluApi,
-  luluCallApi
+  luluCallApi,
+  getBookInteriorApi
 } from "../api/authApi";
 
 interface State {
@@ -93,6 +94,18 @@ export const getUserProfile = createAsyncThunk<any[], void>(
   async () => {
     try {
       const response = await getUserProfileApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getBookInterior = createAsyncThunk<any[], void>(
+  "user/get-book-interior",
+  async () => {
+    try {
+      const response = await getBookInteriorApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);

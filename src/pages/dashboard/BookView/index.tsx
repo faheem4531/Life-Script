@@ -15,6 +15,10 @@ const BookView = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [count, setCount] = useState(1);
   const [remainingPayment, setRemainingPayment] = useState(0);
+  const [bookInterior, setBookInterior] = useState({
+    link: "",
+    pages: 0,
+  })
 
 
   const handleTabChange = () => {
@@ -67,13 +71,19 @@ const BookView = () => {
           </Box>
           <Box mt="15px">
             {selectedTab === 0 && (
-              <TableOfContentTab setSelectedTab={setSelectedTab} />
+              <TableOfContentTab setSelectedTab={setSelectedTab} bookData={(obj) => {
+                setBookInterior(prevState => ({
+                  ...prevState,
+                  link: obj.link,
+                  pages: obj.pages,
+                }))
+              }} />
             )}
             {selectedTab === 1 && (
-              <BookCoverTab setSelectedTab={setSelectedTab} />
+              <BookCoverTab setSelectedTab={setSelectedTab} pages = {bookInterior?.pages} />
             )}
             {selectedTab === 2 && (
-              <ReviewInterior setSelectedTab={setSelectedTab} />
+              <ReviewInterior setSelectedTab={setSelectedTab} interior = {bookInterior?.link}/>
             )}
             {selectedTab === 3 && (
               <Shipping

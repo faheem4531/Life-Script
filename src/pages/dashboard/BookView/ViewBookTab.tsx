@@ -4,9 +4,10 @@ import { Box } from "@mui/material";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
-const ReviewInterior = ({ setSelectedTab }) => {
-  const pdfUrl =
-    "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704890211/thelifescript/u86gcwjhqe8baou9zpnl.pdf";
+const ReviewInterior = ({ setSelectedTab, interior }) => {
+  // const pdfUrl =
+  //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704890211/thelifescript/u86gcwjhqe8baou9zpnl.pdf";
+  const pdfUrl = interior;
   return (
     <Box>
       <Box

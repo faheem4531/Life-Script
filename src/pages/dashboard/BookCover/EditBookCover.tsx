@@ -38,8 +38,6 @@ const EditBookCover = () => {
     null
   );
 
-  console.log("selectedColor", selectedColor);
-
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length <= 25) {
       setTitle(event.target.value);

@@ -188,6 +188,20 @@ export async function getUserProfileApi() {
   }
 }
 
+export async function getBookInteriorApi() {
+  try {
+    const res = await api.get("chapter-compile/generate-pdf");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function stripPaymentLuluApi(data: any) {
   try {
     const token = localStorage.getItem('token');
