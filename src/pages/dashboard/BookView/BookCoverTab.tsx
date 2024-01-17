@@ -12,7 +12,6 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
   const dispatch:any = useDispatch();
   const [spineSize, setSpineSize] = useState(null);
-  console.log("spineSize", spineSize);
   const coverData = useSelector(selectCoverData);
   console.log("coverData", coverData);
   const handleClick = (event: any) => {
@@ -243,7 +242,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   };
 
   const generateAndUploadPDF = async () => {
-    const pdfContent = await generatePDFOne(coverData.title, coverData.subTitle, coverData.byLine, coverData.image, coverData.color, spineSize);
+    const pdfContent = coverData?.coverNumber === "1" ? await generatePDFOne(coverData.byLine, coverData.title, coverData.subTitle, coverData.image, coverData.color, spineSize) : await generatePDFTwo(coverData.byLine, coverData.title, coverData.subTitle, coverData.image, coverData.color, spineSize);
   
     // Convert data URI to Blob
     const pdfBlob = await fetch(pdfContent).then((res) => res.blob());
