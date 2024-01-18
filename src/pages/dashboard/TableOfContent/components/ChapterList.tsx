@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
   const [chapterIndexing, setChapterIndexing] = useState([]);
   const [indexing, setIndexing] = useState(1);
-  console.log("indexing", indexing);
   const tocData = useSelector(selectTocData);
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
@@ -198,7 +197,7 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
           bgColor="#197065"
           color="white"
           btnText={
-            loading
+            !loading
               ? `${t("TOC.addBtn")}`
               : `${t("TOC.adding")} (${chapterIndexing?.length})`
           }

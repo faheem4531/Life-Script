@@ -33,6 +33,7 @@ const Dashboard = () => {
   const [StarterChapters, setStarterChapters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteChapter, setDeleteChapter] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [chapterTitle, setChapterTitle] = useState("");
   const [selectedChapterId, setSelectedChapterId] = useState("");
   const dispatch: any = useDispatch();
@@ -83,8 +84,6 @@ const Dashboard = () => {
     chapterData: any;
     percentValue: any;
   }) => {
-    console.log("datad", data);
-    console.log("datadd", data?.chapterData?.startDefaultChapter);
     if (data?.option === "Delete") {
       if (!data?.chapterData?.startDefaultChapter) {
         setStarterCh(true);
@@ -109,6 +108,7 @@ const Dashboard = () => {
       .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
+
   }, []);
 
   useEffect(() => {
@@ -270,6 +270,18 @@ const Dashboard = () => {
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}
+      />
+      <TransitionsDialog
+        open={buyPremium}
+        heading="Buy Premium"
+        description="Only 5 chapters can be added in free trial. Buy premium to add more"
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
       />
       <Box
         sx={{

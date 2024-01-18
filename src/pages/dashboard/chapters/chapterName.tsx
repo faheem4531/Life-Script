@@ -48,8 +48,6 @@ const chapterName = () => {
   const [chapterName, setChapterName] = useState("");
   const [fusionLoading, setFusionLoading] = useState(false);
   const [aiGeneration, setAiGeneration] = useState(false);
-  const [buyPremium, setBuyPremium] = useState(false);
-  const [isPremium, setIsPremium] = useState(false);
   const [emailQuestion, setEmailQuestion] = useState({
     questionTitle: "",
     questionId: "",
@@ -73,25 +71,6 @@ const chapterName = () => {
     return timeDifference < sevenDaysInMilliseconds;
   }
 
-  //check free trail expiration
-  useEffect(() => {
-    const jwt = require("jsonwebtoken");
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decodedToken = jwt.decode(token);
-      const accessRole = decodedToken.accessRole;
-      const createdAt = decodedToken.created_at;
-      if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
-        setIsPremium(true);
-      } else {
-        const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
-          createdAt?.toString()
-        );
-        setIsPremium(isfreeTrial);
-      }
-    }
-  }, []);
-
   //check open ai mail
   useEffect(() => {
     if (openAiQuestionId && chapterId) {
@@ -114,18 +93,9 @@ const chapterName = () => {
   }, [openAiQuestionId]);
 
   const handleCancel = () => {
-    if (buyPremium) {
-      router.push("/dashboard/SubscribePlans");
+    if (areAllCompleted(allQuestions) === true && !fusionLoading) {
+      gptSocketCall();
       setOpenCustomizationDialog(false);
-    } else {
-      if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-        if (isPremium) {
-          gptSocketCall();
-          setOpenCustomizationDialog(false);
-        } else {
-          setBuyPremium(true);
-        }
-      }
     }
   };
 
@@ -564,18 +534,13 @@ const chapterName = () => {
       <TransitionsDialog
         open={openCustomizationDialog}
         heading={`${t("ChName.NF")}`}
-        description={
-          buyPremium ? `${t("ChName.NFdescPremium")}` : `${t("ChName.NFDes")}`
-        }
+        description={`${t("ChName.NFDes")}`}
         cancel={handleCancel}
         proceed={proceedFusion}
         proceedText={`${t("ChName.NFOriginBtn")}`} // Customize the text for the "Yes" button
-        cancelText={
-          buyPremium ? `${t("ChName.NFBuyPrBtn")}` : `${t("ChName.NFuseBtn")}`
-        } // Customize the text for the "No" button
+        cancelText={`${t("ChName.NFuseBtn")}`} // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
-
       <CustomizationDialog
         open={fusionModal}
         title={`${t("ChName.GPTRes")}`}

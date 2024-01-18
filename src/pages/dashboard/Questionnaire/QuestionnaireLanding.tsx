@@ -60,7 +60,7 @@ const Questionnaire = () => {
         gender: userData?.gender,
         martialStatus: userData?.martialStatus,
         dateOfBirth: userData?.dateOfBirth,
-        LanguagePreferences: userData?.LanguagePreferences,
+        language: userData?.LanguagePreferences,
       })
     )
       .unwrap()

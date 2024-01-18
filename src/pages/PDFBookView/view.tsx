@@ -102,6 +102,7 @@ export default function PDFViewer(pdfUrl) {
                 size: 300,
               }}
               onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={(error) => console.error("PDF loading error:", error)}
               options={options}
               renderMode="canvas"
             >

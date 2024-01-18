@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import Arrow from "../../../public/startArrow.png";
 import styles from "./GetTitle.module.css";
+import i18n from "../../../i18n";
 
 const getStarted = () => {
   const dispatch: any = useDispatch();
@@ -16,11 +17,13 @@ const getStarted = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    const languageStored = localStorage.getItem("language");
+    const language = languageStored === "Spanish" ? "sp" : "en";
+    i18n.changeLanguage(language);
     dispatch(getBookTitle())
       .unwrap()
       .then((res) => {
-        console.log("111", res);
-        if (res?.length > 0) {
+        if (res?.length > 0 && res[0].title !== "") {
           setTimeout(() => {
             router.push("/dashboard/chapters");
           }, 3000);

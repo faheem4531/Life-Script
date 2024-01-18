@@ -17,6 +17,7 @@ export async function loginApi(data: LoginData) {
     console.log("res login", res);
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
+    localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
 
@@ -58,6 +59,7 @@ export async function googleLoginApi(data: { credential: string }) {
     localStorage.setItem("token", res.token);
     localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("username", res.data.name);
+    localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
 

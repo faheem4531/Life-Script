@@ -10,6 +10,7 @@ import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { useEffect, useState } from "react";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import ModalImage from "@/_assets/png/view-template-modal.png";
+import TransitionsDialog from "../modal/TransitionDialog";
 
 export const ViewBook = () => {
 
@@ -17,6 +18,21 @@ export const ViewBook = () => {
   const chapters = useSelector(selectAllChapters);
   const [viewReady, setViewReady] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      console.log("roleee", accessRole);
+      if (accessRole !== "FreePlan") {
+        setIsPremium(true);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getChapters());
@@ -38,10 +54,12 @@ export const ViewBook = () => {
     <>
       <Box
         onClick={() => {
-          if(viewReady){
-          router.push("/dashboard/BookView");
-          }else{
+          if(!viewReady){
             setOpenModal(true);
+          }else if(!isPremium){
+            setBuyPremium(true);
+          }else{
+            router.push("/dashboard/BookView");
           }
         }}
         sx={{
@@ -144,6 +162,19 @@ export const ViewBook = () => {
           </Box>
         </Box>
       </CustomizationDialog>
+
+      <TransitionsDialog
+        open={buyPremium}
+        heading="Buy Premium"
+        description="This feature is not avaiable in Free trial."
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
+      />
     </>
   );
 };
