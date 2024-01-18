@@ -119,7 +119,6 @@ const Dashboard = () => {
       .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
-
   }, []);
 
   useEffect(() => {

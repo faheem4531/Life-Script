@@ -459,7 +459,7 @@ const chapterName = () => {
 
           <Box>
             <FloatButton
-              onClick={handleFloatButtonClick}
+              onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
               narrativeRefuse={narrativeRefuse}
             />
             {/* Refuse Narative  */}
