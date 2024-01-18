@@ -78,7 +78,7 @@ const QuestionnaireLanding = () => {
           }}
           onClick={() => {
             router.push(
-              `/dashboard/Questionnaire/QuestionnaireLanding?userName=${userName}`
+              `/dashboard/Questionnaire/QuestionnaireLanding`
             );
           }}
         >

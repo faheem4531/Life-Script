@@ -36,7 +36,7 @@ const ViewBookCover = () => {
     const logo =
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
     const pdfHeight = 255;
-    const pageWidth = 169.5;
+    const pageWidth = 170;
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({

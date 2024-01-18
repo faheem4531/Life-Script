@@ -60,7 +60,7 @@ const chapterName = () => {
   const [mailQuestionModal, setMailQuestionModal] = useState(false);
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
-  const [StarterChapter, setStarterChapter] = useState(true);
+  const [StarterChapter, setStarterChapter] = useState(false);
   const percentage = calculateCompletionPercentage(question?.questions);
   const { t } = useTranslation();
 
@@ -249,8 +249,6 @@ const chapterName = () => {
       question?.startDefaultChapter === true
     ) {
       setStarterChapter(true);
-    } else {
-      setStarterChapter(false);
     }
   }, [question]);
 
@@ -459,7 +457,20 @@ const chapterName = () => {
 
           <Box>
             <FloatButton
-              onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
+              // onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
+              onClick={() => {
+                if(StarterChapter && allQuestions?.some(
+                  (question) => question.status === "Progress"
+                )){
+                  setNarrativeRefuse(true);
+                }else if(StarterChapter && !allQuestions?.some(
+                  (question) => question.status === "Progress"
+                )){
+                  proceedFusion();
+                } else{
+                  handleFloatButtonClick();
+                }
+              }}
               narrativeRefuse={narrativeRefuse}
             />
             {/* Refuse Narative  */}

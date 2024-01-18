@@ -5,10 +5,9 @@ import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
 const ReviewInterior = ({ setSelectedTab, interior }) => {
-  const pdfUrl =
-  "https://lifescript-media.s3.eu-north-1.amazonaws.com/aa1f70b8-5ce7-4934-86c6-ea76303f9819.pdf";
-  console.log("interior2",interior);
-  // const pdfUrl = interior;
+  // const pdfUrl =
+  // "https://lifescript-media.s3.eu-north-1.amazonaws.com/36453ad9-3feb-47e1-acd9-ee754be5a7e9.pdf";
+  const pdfUrl = interior;
   return (
     <Box>
       <Box

@@ -13,7 +13,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const dispatch:any = useDispatch();
   const [spineSize, setSpineSize] = useState(null);
   const coverData = useSelector(selectCoverData);
-  console.log("coverData", coverData);
+  console.log("spineSize", spineSize);
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
@@ -48,7 +48,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const logo =
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
     const pdfHeight = 255;
-    const pageWidth = 169.5;
+    const pageWidth = 170; //prev was 169.5
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
@@ -70,12 +70,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.setFillColor(255, 255, 255);
     pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(bgcolor);
-    pdf.rect(170.5, 0, tail - 2, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(210, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? tail - 3 : 10;
+    const fontSize = tail < 12 ? 8 : 10; //prev was minus 3
     const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
@@ -147,7 +147,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     spine = 41
   ) => {
     const pdfHeight = 255;
-    const pageWidth = 169.5;
+    const pageWidth = 170; //prev was 169.5
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
@@ -174,7 +174,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.rect(209.5, 0, 1, pdfHeight, "F");
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? tail - 3 : 10;
+    const fontSize = tail < 12 ? 8 : 10; //prev was minus 3
     const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
