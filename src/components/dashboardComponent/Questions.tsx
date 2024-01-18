@@ -26,6 +26,7 @@ interface QuestionsProps {
   templateQuestion?: (id: string) => void;
   questionChanged?: () => void;
   title?: string;
+  StarterChapter?: boolean;
 }
 
 export default function Questions({
@@ -35,6 +36,7 @@ export default function Questions({
   templateQuestion,
   questionChanged,
   answerClick,
+  StarterChapter,
 }: QuestionsProps) {
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -245,46 +247,50 @@ export default function Questions({
 
         {/* More option :start */}
         {title != "templateView" ? (
-          <Box>
-            <IconButton
-              aria-label="more"
-              id="long-button"
-              aria-controls={open ? "long-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              <Image alt="options" src={Option} />
-            </IconButton>
-            <Menu
-              id="long-menu"
-              MenuListProps={{
-                "aria-labelledby": "long-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              PaperProps={{
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: "10ch",
-                },
-              }}
-            >
-              {options.map((option) => (
-                <MenuItem
-                  key={option}
-                  selected={option === "Pyxis"}
-                  onClick={() => {
-                    setQuestionId(question?._id);
-                    handleClickOption(option);
+          <>
+            {!StarterChapter && (
+              <Box>
+                <IconButton
+                  aria-label="more"
+                  id="long-button"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <Image alt="options" src={Option} />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "long-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                      maxHeight: ITEM_HEIGHT * 4.5,
+                      width: "10ch",
+                    },
                   }}
                 >
-                  {option}
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+                  {options.map((option) => (
+                    <MenuItem
+                      key={option}
+                      selected={option === "Pyxis"}
+                      onClick={() => {
+                        setQuestionId(question?._id);
+                        handleClickOption(option);
+                      }}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            )}
+          </>
         ) : (
           <Box
             sx={{
