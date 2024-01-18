@@ -16,11 +16,13 @@ const AddChapterName = ({
   chapterId,
   title,
   subTitle,
+  StarterChapter,
 }: {
   chapter: string;
   chapterId: any;
   title?: string;
   subTitle?: string;
+  StarterChapter?: boolean;
 }) => {
   const [chapterName, setChapterName] = useState("");
   const dispatch: any = useDispatch();
@@ -112,6 +114,7 @@ const AddChapterName = ({
                 variant="outlined"
                 value={chapterName}
                 onChange={(e: any) => setChapterName(e.target.value)}
+                disabled={StarterChapter}
                 placeholder="My Adventurous Life"
                 InputProps={{
                   endAdornment: (

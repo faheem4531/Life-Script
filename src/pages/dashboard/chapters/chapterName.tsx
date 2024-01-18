@@ -60,6 +60,7 @@ const chapterName = () => {
   const [mailQuestionModal, setMailQuestionModal] = useState(false);
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
+  const [StarterChapter, setStarterChapter] = useState(true);
   const percentage = calculateCompletionPercentage(question?.questions);
   const { t } = useTranslation();
 
@@ -241,6 +242,18 @@ const chapterName = () => {
         dispatch(getChapterbyId({ id: chapterId?.toString() }));
       });
   };
+
+  useEffect(() => {
+    if (
+      question?.introductionChapter === true ||
+      question?.startDefaultChapter === true
+    ) {
+      setStarterChapter(true);
+    } else {
+      setStarterChapter(false);
+    }
+  }, [question]);
+
   return (
     <>
       <Box>
@@ -254,6 +267,7 @@ const chapterName = () => {
               title="chapterName"
               chapter={chapterName}
               chapterId={chapterId}
+              StarterChapter={StarterChapter}
             />
             <LinearProgressBar percentage={percentage} />
           </Box>
@@ -289,6 +303,7 @@ const chapterName = () => {
               value={chapterName}
               onChange={(e: any) => setChapterName(e.target.value)}
               placeholder="My Adventurous Life"
+              disabled={StarterChapter}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -365,16 +380,18 @@ const chapterName = () => {
                   <GlobelBtn
                     image={suggestionIcon}
                     btnText={`${t("ChName.Suggestion")}`}
-                    onClick={() => setAiGeneration(true)}
+                    onClick={() => !StarterChapter && setAiGeneration(true)}
                     // width={"180px"}
+                    disabled={StarterChapter}
                   />
                 )}
                 <Box>
                   <GlobelBtn
                     image={addIcon}
                     btnText={`${t("ChName.AddQuestions")}`}
-                    onClick={() => setOpenModal(true)}
+                    onClick={() => !StarterChapter && setOpenModal(true)}
                     // width={"180px"}
+                    disabled={StarterChapter}
                   />
                 </Box>
               </Box>
@@ -427,6 +444,7 @@ const chapterName = () => {
                             answerClick={(text) =>
                               router.push(`/events?questionId=${text}`)
                             }
+                            StarterChapter={StarterChapter}
                           />
                         </Box>
                       ))
