@@ -28,10 +28,8 @@ import AddChapter from "./addChapter";
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
   const [starterCh, setStarterCh] = useState(false);
-  const [starterCh, setStarterCh] = useState(false);
   const [updateChapterModal, setUpdateChapterModal] = useState(false);
   const [allChapters, setAllChapters] = useState([]);
-  const [StarterChapters, setStarterChapters] = useState([]);
   const [StarterChapters, setStarterChapters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteChapter, setDeleteChapter] = useState(false);

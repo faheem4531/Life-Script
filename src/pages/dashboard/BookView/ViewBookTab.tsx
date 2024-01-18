@@ -6,7 +6,7 @@ import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
 const ReviewInterior = ({ setSelectedTab, interior }) => {
   const pdfUrl =
-  "https://lifescript-media.s3.eu-north-1.amazonaws.com/82482b3f-42dd-4f63-82f2-78b1a5fd9e72-aqibbook.pdf";
+  "https://lifescript-media.s3.eu-north-1.amazonaws.com/aa1f70b8-5ce7-4934-86c6-ea76303f9819.pdf";
   console.log("interior2",interior);
   // const pdfUrl = interior;
   return (
