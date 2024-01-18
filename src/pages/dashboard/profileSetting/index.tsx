@@ -73,29 +73,6 @@ const ProfileSetting = () => {
   const handleChangeGender = (event: SelectChangeEvent) => {
     setGender(event.target.value as string);
   };
-  function formatDate(inputDate: string): string {
-    console.log("wwww", inputDate, "eeee", typeof inputDate);
-    const months: { [key: string]: string } = {
-      Jan: "01",
-      Feb: "02",
-      Mar: "03",
-      Apr: "04",
-      May: "05",
-      Jun: "06",
-      Jul: "07",
-      Aug: "08",
-      Sep: "09",
-      Oct: "10",
-      Nov: "11",
-      Dec: "12",
-    };
-
-    const parts = inputDate.split(" ");
-    const day = parts[2];
-    const month = months[parts[1]];
-    const year = parts[3];
-    return `${day}-${month}-${year}`;
-  }
 
   const onDrop = (acceptedFiles: File[]) => {
     const reader = new FileReader();
@@ -178,7 +155,7 @@ const ProfileSetting = () => {
               <Typography
                 sx={{
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                  color: "#474E60",
+                  color: "black",
                 }}
               >
                 {t("profileSetting.SetProImg")}
@@ -195,6 +172,7 @@ const ProfileSetting = () => {
                     justifyContent: "space-between",
                     flexWrap: "wrap",
                     gap: "15px",
+                    height: "158px",
                   }}
                 >
                   <Box
@@ -246,6 +224,7 @@ const ProfileSetting = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
+                mt: "20px",
               }}
             >
               <InputWithLabel
@@ -282,7 +261,7 @@ const ProfileSetting = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "black",
                   }}
                 >
                   {`${t("profileSetting.DOB")}`}
@@ -317,7 +296,7 @@ const ProfileSetting = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "black",
                   }}
                 >
                   {`${t("profileSetting.Gender")}`}
@@ -351,7 +330,7 @@ const ProfileSetting = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "black",
                   }}
                 >
                   {t("profileSetting.Phone")}

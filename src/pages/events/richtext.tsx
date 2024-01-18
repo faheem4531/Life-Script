@@ -490,25 +490,6 @@ const RichText = ({ questionId }) => {
                 flexWrap: { xs: "wrap", lg: "nowrap" },
               }}
             >
-              {/* <Button
-                image={detecting ? MicRegular : listening ? MicListing : MicOff}
-                title={
-                  detecting
-                    ? `Detecting...`
-                    : listening
-                    ? "Stop"
-                    : "Speech-to-text"
-                }
-                background="#fff"
-                borderRadius="27px"
-                color="#197065"
-                width="155px"
-                fontSize="14px"
-                padding="4.5px 10px"
-                onClick={handleSpeechtoText}
-                border="1px solid #197065"
-                height={undefined}
-              /> */}
 
               <GlobelBtn
                 image={detecting ? MicRegular : listening ? MicListing : MicOff}

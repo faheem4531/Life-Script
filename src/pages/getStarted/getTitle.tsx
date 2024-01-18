@@ -47,8 +47,7 @@ const getTitle = () => {
     dispatch(getBookTitle())
       .unwrap()
       .then((res) => {
-        console.log("111", res);
-        if (res?.length > 0) {
+        if (res.length > 0 && res[0].title !== "") {
           setTimeout(() => {
             router.push("/dashboard/chapters");
             setLoading(false);

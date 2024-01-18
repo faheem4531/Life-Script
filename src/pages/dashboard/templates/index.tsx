@@ -4,11 +4,13 @@ import DetailCard from "@/components/dashboardComponent/DetailCard";
 import { getTemplates, selectTemplates } from "@/store/slices/chatSlice";
 import styles from "@/styles/Dashboard.module.css";
 import { Box } from "@mui/material";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const router = useRouter();
   const dispatch: any = useDispatch();
   const templates = useSelector(selectTemplates);
   const { t } = useTranslation();
@@ -32,6 +34,7 @@ const Dashboard = () => {
             subTitle={`${t("template.ch")}`}
           />
         </Box>
+
         <Box
           sx={{ marginTop: { xs: "18px" }, p: { md: "0px", xs: "10px 30px" } }}
           className={styles.CardsContainer}

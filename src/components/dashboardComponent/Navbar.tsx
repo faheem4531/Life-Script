@@ -62,7 +62,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
   };
 
   const handleClickOption = (option) => {
-    if (option === "Logout") {
+    if (option.id === 1) {
       // dispatch(logout());
       localStorage.clear();
       router.push("/");
@@ -75,7 +75,8 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
     buttonsHide = true;
   }
 
-  const options = [`${t("navBar.logout")}`];
+  // const options = [`${t("navBar.logout")}`];
+  const options = [{id:1, title: `${t("navBar.logout")}`}];
 
   return (
     <Box
@@ -346,8 +347,8 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             >
               {options.map((option) => (
                 <MenuItem
-                  key={option}
-                  selected={option === "Pyxis"}
+                  key={option.id}
+                  selected={option.title === "Pyxis"}
                   onClick={() => handleClickOption(option)}
                   sx={{
                     borderBottom: "1.5px solid gray",
@@ -359,7 +360,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                     boxShadow: "none",
                   }}
                 >
-                  {option}
+                  {option.title}
                 </MenuItem>
               ))}
             </Box>

@@ -24,7 +24,7 @@ export default function TabTwo({
   const [maritalStatus, setMaritalStatus] = useState("");
   const [gender, setGender] = useState("");
   const [langPre, setLangPre] = useState("");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
   const [showTooltip, setShowTooltip] = useState(false);
   const [name, setName] = useState(userName);
   const maxDate = new Date();

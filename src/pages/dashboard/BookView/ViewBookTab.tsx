@@ -4,9 +4,11 @@ import { Box } from "@mui/material";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 
-const ReviewInterior = ({ setSelectedTab }) => {
+const ReviewInterior = ({ setSelectedTab, interior }) => {
   const pdfUrl =
-    "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704890211/thelifescript/u86gcwjhqe8baou9zpnl.pdf";
+  "https://lifescript-media.s3.eu-north-1.amazonaws.com/82482b3f-42dd-4f63-82f2-78b1a5fd9e72-aqibbook.pdf";
+  console.log("interior2",interior);
+  // const pdfUrl = interior;
   return (
     <Box>
       <Box

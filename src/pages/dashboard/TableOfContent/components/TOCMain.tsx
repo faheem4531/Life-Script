@@ -29,7 +29,7 @@ const TOCMain = () => {
       .unwrap()
       .then((res) => {
         const updatedListItems = res
-          .filter((chapter) => chapter.startDefaultChapter === false)
+          .filter((chapter) => chapter.startDefaultChapter === false && chapter.status === true && chapter.introductionChapter === false)
           .map((chapter, index) => ({
             id: index + 1,
             title: chapter.title,

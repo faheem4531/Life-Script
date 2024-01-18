@@ -17,6 +17,7 @@ export async function loginApi(data: LoginData) {
     console.log("res login", res);
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
+    localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
 
@@ -58,6 +59,7 @@ export async function googleLoginApi(data: { credential: string }) {
     localStorage.setItem("token", res.token);
     localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("username", res.data.name);
+    localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
 
@@ -177,6 +179,20 @@ export async function getUserProfileApi() {
     const userId = localStorage.getItem("userId");
 
     const res = await api.get(`users/${userId}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getBookInteriorApi() {
+  try {
+    const res = await api.get("chapter-compile/generate-pdf");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
