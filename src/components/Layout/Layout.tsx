@@ -80,7 +80,7 @@ const Layout = ({ children }: { children?: any }) => {
         <Box
           sx={{
             width: "100%",
-            maxWidth: "1600px",
+            // maxWidth: "1600px",
             color: "#000",
             height: "100%",
             minHeight: "calc(100vh - 70px)",

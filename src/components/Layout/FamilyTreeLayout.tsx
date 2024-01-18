@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import NavBar from "@/components/dashboardComponent/Navbar";
 import { Box } from "@mui/material";
@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import FamilyTreeSideBar from "../dashboardComponent/FamilyTreeSideBar";
 import styles from "./Layout.module.css";
 
-const FamilyTreeLayout = ({ children,}: { children?: any}) => {
+const FamilyTreeLayout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
   const router = useRouter();
 
@@ -77,7 +77,7 @@ const FamilyTreeLayout = ({ children,}: { children?: any}) => {
         <Box
           sx={{
             width: "100%",
-            maxWidth: "1600px",
+            // maxWidth: "1600px",
             color: "#000",
             height: "100%",
             minHeight: "calc(100vh - 70px)",

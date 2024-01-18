@@ -15,7 +15,7 @@ const CompletedChapterHeader = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        maxWidth: "1600px",
+        // maxWidth: "1600px",
         width: "100%",
         height: { xs: "auto", sm: "150px", md: "165px" },
         gap: "30px",
