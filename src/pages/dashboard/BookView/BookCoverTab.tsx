@@ -61,13 +61,13 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       orientation: "landscape",
     });
 
-    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
-    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
-    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+    // const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
+    // pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
+    // pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
 
-    const fontPathBold = "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
-    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
-    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+    // const fontPathBold = "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
+    // pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
+    // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
