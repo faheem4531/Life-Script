@@ -1,20 +1,19 @@
+import ModalImage from "@/_assets/png/view-template-modal.png";
 import NextIcon from "@/_assets/svg/next-icon.svg";
+import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
-import GlobelBtn from "../button/Button";
-import styles from "./Custom.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import GlobelBtn from "../button/Button";
 import CustomizationDialog from "../modal/CustomizationDialog";
-import ModalImage from "@/_assets/png/view-template-modal.png";
 import TransitionsDialog from "../modal/TransitionDialog";
+import styles from "./Custom.module.css";
 
 export const ViewBook = () => {
-
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const chapters = useSelector(selectAllChapters);
   const [viewReady, setViewReady] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -36,17 +35,17 @@ export const ViewBook = () => {
 
   useEffect(() => {
     dispatch(getChapters());
-  },[]);
+  }, []);
 
   useEffect(() => {
-    if(chapters.length > 0){
+    if (chapters.length > 0) {
       const inProgressChapters = chapters.filter(
         (chapter) =>
           chapter.status !== true && chapter.compilingStatus === false
       );
       inProgressChapters.length > 0 ? setViewReady(false) : setViewReady(true);
     }
-  },[chapters])
+  }, [chapters]);
 
   const router = useRouter();
   const { t } = useTranslation();
@@ -54,13 +53,13 @@ export const ViewBook = () => {
     <>
       <Box
         onClick={() => {
-          if(!viewReady){
-            setOpenModal(true);
-          }else if(!isPremium){
-            setBuyPremium(true);
-          }else{
-            router.push("/dashboard/BookView");
-          }
+          // if(!viewReady){
+          //   setOpenModal(true);
+          // }else if(!isPremium){
+          //   setBuyPremium(true);
+          // }else{
+          router.push("/dashboard/BookView");
+          // }
         }}
         sx={{
           bgcolor: "#197065",
@@ -140,7 +139,7 @@ export const ViewBook = () => {
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
-            Complete all chapters before View Book 
+            Complete all chapters before View Book
           </Typography>
           <Box
             sx={{
@@ -184,7 +183,7 @@ export const ViewTree = () => {
   const router = useRouter();
   return (
     <Box
-    onClick={() => router.push("/familyTree")}
+      onClick={() => router.push("/familyTree")}
       sx={{
         bgcolor: "#197065",
         cursor: "pointer",
