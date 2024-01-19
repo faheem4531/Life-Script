@@ -31,12 +31,11 @@ const ViewBookCover = () => {
     name,
     imgUrl,
     color,
-    spine = 41
+    spine = 6
   ) => {
-    const logo =
-      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
+    const logo = "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
-    const pageWidth = 170;
+    const pageWidth = 170; //prev was 169.5
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
@@ -44,6 +43,15 @@ const ViewBookCover = () => {
       format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
       orientation: "landscape",
     });
+
+    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
+    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
+    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+
+    const fontPathBold =
+      "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
+    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
+    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -56,15 +64,17 @@ const ViewBookCover = () => {
 
     // Section 2:
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // spine first border
     pdf.setFillColor(bgcolor);
-    pdf.rect(170.5, 0, tail - 2, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    const spineBorder2 = pageWidth + spine - 1;
+    pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? tail - 3 : 10;
-    const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
+    const fontSize = 10; //prev was minus 3
+    // const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
+    const textCenter = pageWidth + tail / 2 - 1.3;
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
@@ -76,7 +86,7 @@ const ViewBookCover = () => {
 
     pdf.setFontSize(fontSize);
     pdf.setTextColor(255, 255, 255);
-    pdf.text("  |  ", textCenter, y, { angle: 270 });
+    pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
 
     y = y + 6;
 
@@ -89,7 +99,7 @@ const ViewBookCover = () => {
     }
     const logoSize = tail < 22 ? tail - 3 : 20;
     const tailcenter = pageWidth + (tail - logoSize) / 2;
-    pdf.addImage(imageUrl, "JPEG", tailcenter, 225, logoSize, logoSize);
+    pdf.addImage(logo, "pnf", tailcenter, 225, logoSize, logoSize);
 
     // Section 3:
     pdf.setFillColor(bgcolor);
@@ -103,7 +113,7 @@ const ViewBookCover = () => {
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
     pdf.setFontSize(22);
-    pdf.setFont("helvetica", "bold");
+    pdf.setFont("Helvetica-Bold");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 66.04, {
       align: "center",
@@ -116,12 +126,12 @@ const ViewBookCover = () => {
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 4th Text: "- good book -" font size 16px
-    pdf.setFont("helvetica", "normal");
+    pdf.setFont("Helvetica");
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
 
-    pdf.save("my_document.pdf");
+    pdf.save("my_document2.pdf");
   };
 
   const generatePDFTwo = async (
@@ -130,10 +140,11 @@ const ViewBookCover = () => {
     name,
     imgUrl,
     color,
-    spine = 41
+    spine = 6
   ) => {
+    const logo = "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
-    const pageWidth = 169.5;
+    const pageWidth = 170; //prev was 169.5
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
@@ -142,26 +153,37 @@ const ViewBookCover = () => {
       orientation: "landscape",
     });
 
+    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
+    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
+    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+
+    const fontPathBold =
+      "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
+    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
+    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
     const writter = name?.toUpperCase();
-    const bgColor = color.toString();
+    const bgColor = color?.toString();
     const imageUrl = imgUrl;
     // Section 1: Blue background
     pdf.setFillColor(bgColor);
     pdf.rect(0, 0, pageWidth, pdfHeight, "F");
 
-    // Section 2: Yellow background
+    // Section 2:
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(pageWidth, 0, 1, pdfHeight, "F");
+    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // spine first border
     pdf.setFillColor(bgColor);
-    pdf.rect(170.5, 0, tail - 2, pdfHeight, "F");
+    pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(209.5, 0, 1, pdfHeight, "F");
+    const spineBorder2 = pageWidth + spine - 1;
+    pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? tail - 3 : 10;
-    const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
+    const fontSize = 10; //prev was minus 3
+    // const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
+    const textCenter = pageWidth + tail / 2 - 1.3;
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
@@ -173,7 +195,7 @@ const ViewBookCover = () => {
 
     pdf.setFontSize(fontSize);
     pdf.setTextColor(255, 255, 255);
-    pdf.text("  |  ", 190, y, { angle: 270 });
+    pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
 
     y = y + 6;
 
@@ -186,7 +208,7 @@ const ViewBookCover = () => {
     }
     const logoSize = tail < 22 ? tail - 3 : 20;
     const tailcenter = pageWidth + (tail - logoSize) / 2;
-    pdf.addImage(imageUrl, "JPEG", tailcenter, 225, logoSize, logoSize);
+    pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
 
     // Section 3
     pdf.setFillColor(bgColor);
@@ -206,7 +228,7 @@ const ViewBookCover = () => {
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
     pdf.setFontSize(22);
-    pdf.setFont("helvetica", "bold");
+    pdf.setFont("Helvetica-Bold");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 190, {
       align: "center",
@@ -217,7 +239,7 @@ const ViewBookCover = () => {
     const lineStart = pageWidth + tail + 50;
     pdf.line(lineStart, 200, pdfWidth - 50, 200);
 
-    pdf.setFont("helvetica", "normal");
+    pdf.setFont("Helvetica"); //helvetica
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 215, { align: "center" }); // Convert inches to millimeters
@@ -269,16 +291,14 @@ const ViewBookCover = () => {
                         title,
                         subtitle,
                         imageLink,
-                        selectedColor,
-                        12
+                        selectedColor
                       )
                     : generatePDFOne(
                         byline,
                         title,
                         subtitle,
                         imageLink,
-                        selectedColor,
-                        9
+                        selectedColor
                       )
                 }
                 width={"180px"}

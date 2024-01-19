@@ -26,7 +26,6 @@ export const ViewBook = () => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      console.log("roleee", accessRole);
       if (accessRole !== "FreePlan") {
         setIsPremium(true);
       }
@@ -41,7 +40,7 @@ export const ViewBook = () => {
     if (chapters.length > 0) {
       const inProgressChapters = chapters.filter(
         (chapter) =>
-          chapter.status !== true && chapter.compilingStatus === false
+          chapter.status !== true
       );
       inProgressChapters.length > 0 ? setViewReady(false) : setViewReady(true);
     }
@@ -53,13 +52,13 @@ export const ViewBook = () => {
     <>
       <Box
         onClick={() => {
-          // if(!viewReady){
-          //   setOpenModal(true);
-          // }else if(!isPremium){
-          //   setBuyPremium(true);
-          // }else{
+          if(!viewReady){
+            setOpenModal(true);
+          }else if(!isPremium){
+            setBuyPremium(true);
+          }else{
           router.push("/dashboard/BookView");
-          // }
+          }
         }}
         sx={{
           bgcolor: "#197065",

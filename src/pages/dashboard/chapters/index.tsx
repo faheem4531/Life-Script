@@ -38,6 +38,7 @@ const Dashboard = () => {
   const chapters = useSelector(selectAllChapters);
   const router = useRouter();
   const { t } = useTranslation();
+  console.log("allChapters1111",allChapters);
 
   const handleDeleteChapter = () => {
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))

@@ -185,7 +185,8 @@ const chapterName = () => {
     const isAnyQuestionInProgress = allQuestions?.some(
       (question) => question.status === "Progress"
     );
-    if (!isAnyQuestionInProgress) {
+
+    if(!question?.status && !question?.compilingStatus){if (!isAnyQuestionInProgress) {
       setOpenTooltip(false);
       setOpenCustomizationDialog(true);
     } else {
@@ -193,7 +194,7 @@ const chapterName = () => {
       setTimeout(() => {
         setNarrativeRefuse(false);
       }, 6000);
-    }
+    }}
   };
 
   const handleAddQuestion = (questionId) => {
