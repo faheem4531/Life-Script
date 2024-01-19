@@ -3,6 +3,7 @@ import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCover
 import {
   getBookCover,
   selectCoverData,
+  updateBook,
   uploadImage,
 } from "@/store/slices/chatSlice";
 import { Box } from "@mui/material";
@@ -18,22 +19,21 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const [subtitle, setSubtitle] = useState("");
   const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
-
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
 
   const dispatch: any = useDispatch();
   const [spineSize, setSpineSize] = useState(null);
   const coverData = useSelector(selectCoverData);
-  console.log("coverData", coverData);
+  const [loading, setLoading] = useState(false);
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
-  console.log("coverData", coverData.coverNumber);
+  console.log("coverData", coverData);
 
   const onClickHandler = async () => {
+    setLoading(true);
     try {
       await generateAndUploadPDF();
-      setSelectedTab(2);
     } catch (error) {
       // Handle errors if needed
       console.error("Error generating or uploading PDF:", error);
@@ -51,7 +51,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const logo =
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1703775146/thelifescript/Vector2665ca7b6e91b2c78eb3976317d845f1e3fec5b46b8aa10f2de595ccfef0d2bb_xzgh3l.png";
     const pdfHeight = 255;
-    const pageWidth = 169.5;
+    const pageWidth = 170; //prev was 169.5
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
@@ -59,6 +59,14 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
       orientation: "landscape",
     });
+
+    // const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
+    // pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
+    // pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+
+    // const fontPathBold = "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
+    // pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
+    // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -73,12 +81,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.setFillColor(255, 255, 255);
     pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(bgcolor);
-    pdf.rect(170.5, 0, tail - 2, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // Convert inches to millimeters
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(209.5, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
+    pdf.rect(210, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? tail - 3 : 10;
+    const fontSize = tail < 12 ? 8 : 10; //prev was minus 3
     const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
@@ -150,7 +158,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     spine = 41
   ) => {
     const pdfHeight = 255;
-    const pageWidth = 169.5;
+    const pageWidth = 170; //prev was 169.5
     const tail = spine;
     const pdfWidth = pageWidth + pageWidth + spine;
     const pdf = new jsPDF({
@@ -177,7 +185,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.rect(209.5, 0, 1, pdfHeight, "F");
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? tail - 3 : 10;
+    const fontSize = tail < 12 ? 8 : 10; //prev was minus 3
     const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
@@ -276,6 +284,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       .unwrap()
       .then((pdfUrl) => {
         console.log("Uploaded PDF URL:", pdfUrl);
+        dispatch(updateBook({ coverPdf: pdfUrl }))
+          .unwrap()
+          .then(() => {
+            setLoading(false);
+            setSelectedTab(2);
+          });
       });
   };
 
@@ -410,7 +424,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
               <GlobelBtn
                 bgColor="#186F65"
                 color="white"
-                btnText="Next"
+                btnText={loading ? "Saving..." : "Next"}
                 image2={NextArrow}
                 border="0px"
                 onClick={onClickHandler}

@@ -228,7 +228,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   setCoverNumber(res.coverNumber);
                   if (res.coverNumber) {
                     router.push(
-                      `/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber}`
+                      `/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber || 1}`
                     );
                   } else {
                     router.push("/dashboard/BookCover/SelectBookCover");

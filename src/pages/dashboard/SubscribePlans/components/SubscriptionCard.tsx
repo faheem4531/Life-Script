@@ -14,6 +14,7 @@ interface SubscriptionCardProps {
   onClick?: any;
   btnCheck?: boolean;
   buttonDisable?: boolean;
+  plan?: boolean;
 }
 
 const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
@@ -25,8 +26,10 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
   offerTitle,
   onClick,
   btnCheck = true,
+  plan,
 }) => {
   const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -151,6 +154,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
             color="white"
             btnText={`${t("SubsPlan.cardBtn")}`}
             onClick={() => onClick(price)}
+            disabled={plan}
             width={"100%"}
           />
         </Box>

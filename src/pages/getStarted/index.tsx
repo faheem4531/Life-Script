@@ -29,14 +29,14 @@ const getStarted = () => {
           }, 3000);
         } else {
           setTimeout(() => {
-            router.push(`/dashboard/Questionnaire?userName=${userName}`);
+            router.push(`/dashboard/Questionnaire`);
           }, 3000);
         }
       })
       .catch(() =>
         setTimeout(() => {
           console.log("fail");
-          router.push(`/dashboard/Questionnaire?userName=${userName}`);
+          router.push(`/dashboard/Questionnaire`);
         }, 3000)
       );
   }, []);

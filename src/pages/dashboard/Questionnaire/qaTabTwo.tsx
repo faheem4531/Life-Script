@@ -26,7 +26,7 @@ export default function TabTwo({
   const [langPre, setLangPre] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [name, setName] = useState(userName);
+  const [name, setName] = useState("");
   const maxDate = new Date();
 
   useEffect(() => {
@@ -38,6 +38,11 @@ export default function TabTwo({
       setLangPre(data.LanguagePreferences);
     }
   }, [data]);
+
+  useEffect(() => {
+    const userName = localStorage.getItem("username");
+    setName(userName.toString());
+  },[])
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);

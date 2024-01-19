@@ -66,7 +66,7 @@ const Questionnaire = () => {
       .unwrap()
       .then(() => {
         const username = localStorage.getItem("username");
-        router.push(`/getStarted/getTitle?userName=${username}`);
+        router.push(`/getStarted/getTitle`);
       })
       .catch(() => {});
   };
@@ -90,7 +90,7 @@ const Questionnaire = () => {
       .catch(() =>
         setTimeout(() => {
           console.log("fail");
-          router.push(`/dashboard/Questionnaire?userName=${userName}`);
+          router.push(`/dashboard/Questionnaire`);
           setLoading(false);
         }, 3000)
       );

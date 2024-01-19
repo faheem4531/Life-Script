@@ -11,12 +11,20 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import TransitionsDialog from "../modal/TransitionDialog";
 
 interface ChapterProps {
   addChapterClick?: () => void;
+  chapters?: any;
+  isPremium?: boolean;
 }
-export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
+export const StartNewChapter = ({
+  addChapterClick,
+  chapters,
+  isPremium,
+}: ChapterProps) => {
   const router = useRouter();
+  const [buyPremium, setBuyPremium] = useState(false);
   const [newChapter, setNewChapter] = useState(true);
   const [hoverStartNewChapter, setHoverStartNewChapter] = useState(false);
   const [hoverUseTemplate, setHoverUseTemplate] = useState(false);
@@ -39,8 +47,16 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
   };
 
   const handleTemplateClick = () => {
-    router.push("/dashboard/templates");
+    if (!isPremium && chapters?.length > 4) {
+      setBuyPremium(true);
+    } else {
+      setBuyPremium(false);
+      router.push("/dashboard/templates");
+    }
   };
+
+  console.log("chapters", chapters);
+
   return (
     <Box
       bgcolor={"white"}
@@ -214,6 +230,18 @@ export const StartNewChapter = ({ addChapterClick }: ChapterProps) => {
           </Card>
         </Box>
       </Box>
+      <TransitionsDialog
+        open={buyPremium}
+        heading="Buy Premium"
+        description="Only 5 chapters can be added in free trial. Buy premium to add more"
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
+      />
     </Box>
   );
 };

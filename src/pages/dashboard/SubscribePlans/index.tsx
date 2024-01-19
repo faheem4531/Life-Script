@@ -14,6 +14,7 @@ import SubscriptionCard from "./components/SubscriptionCard";
 const SubscribePlan = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const [planCheck, setPlanCheck] = useState("FreePlan");
   const [planPrices, setPlanPrices] = useState({
     basic: 100,
     standard: 150,
@@ -58,6 +59,20 @@ const SubscribePlan = () => {
       });
     } else {
       //do nothing
+    }
+  }, []);
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      console.log("acccedfgdj", accessRole);
+
+      if (accessRole) {
+        setPlanCheck(accessRole);
+      }
     }
   }, []);
 
@@ -120,6 +135,7 @@ const SubscribePlan = () => {
                     `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
                   );
               }}
+              plan={planCheck !== "FreePlan"}
             />
             <SubscriptionCard
               subList={subStandardList}
@@ -134,6 +150,7 @@ const SubscribePlan = () => {
                     `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=GoldPlan&price=${pkgPrice}`
                   );
               }}
+              plan={planCheck !== "FreePlan" && planCheck !== "BasicPlan"}
             />
             <SubscriptionCard
               subList={subPremiumList}
@@ -148,6 +165,11 @@ const SubscribePlan = () => {
                     `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=PremiumPlan&price=${pkgPrice}`
                   );
               }}
+              plan={
+                planCheck !== "FreePlan" &&
+                planCheck !== "BasicPlan" &&
+                planCheck !== "GoldPlan"
+              }
             />
           </Box>
         </Box>

@@ -47,7 +47,10 @@ import {
   getTreeDataApi,
   addChildApi,
   getHourApi,
-  addParentApi
+  addParentApi,
+  updateBookApi,
+  getaiQuestionsApi,
+  luluPrintingApi
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -96,6 +99,18 @@ export const createChapter = createAsyncThunk<UserData, any>(
   async (data: { title: string }) => {
     try {
       const response = await createChapterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const luluPrinting = createAsyncThunk<UserData, any>(
+  "chat/lulu-printing",
+  async (data: any) => {
+    try {
+      const response = await luluPrintingApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -163,6 +178,18 @@ export const getAnswers = createAsyncThunk<any[], void>(
   async () => {
     try {
       const response = await getAnswersApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getaiQuestions = createAsyncThunk<any, any>(
+  "chat/get-aiquestions",
+  async (data: {chapterId: string}) => {
+    try {
+      const response = await getaiQuestionsApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -336,6 +363,18 @@ export const updateBookCover = createAsyncThunk<UserData, any>(
   }) => {
     try {
       const response = await updateBookCoverApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateBook = createAsyncThunk<UserData, any>(
+  "chat/-book-update",
+  async (data: any) => {
+    try {
+      const response = await updateBookApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

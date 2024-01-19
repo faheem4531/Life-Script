@@ -155,6 +155,7 @@ const CompletedChapters = () => {
                   deleteFunc={(data) => {
                     handleCardClick(data);
                   }}
+                  starterCh={true}
                 />
               ))}
             </Box>

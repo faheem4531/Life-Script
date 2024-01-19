@@ -53,13 +53,13 @@ export const ViewBook = () => {
     <>
       <Box
         onClick={() => {
-          // if(!viewReady){
-          //   setOpenModal(true);
-          // }else if(!isPremium){
-          //   setBuyPremium(true);
-          // }else{
-          router.push("/dashboard/BookView");
-          // }
+          if (!viewReady) {
+            setOpenModal(true);
+          } else if (!isPremium) {
+            setBuyPremium(true);
+          } else {
+            router.push("/dashboard/BookView");
+          }
         }}
         sx={{
           bgcolor: "#197065",

@@ -27,12 +27,11 @@ import AddChapter from "./addChapter";
 
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
-  const [starterCh, setStarterCh] = useState(false);
   const [updateChapterModal, setUpdateChapterModal] = useState(false);
   const [allChapters, setAllChapters] = useState([]);
-  const [StarterChapters, setStarterChapters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteChapter, setDeleteChapter] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
   const [chapterTitle, setChapterTitle] = useState("");
   const [selectedChapterId, setSelectedChapterId] = useState("");
@@ -84,21 +83,15 @@ const Dashboard = () => {
     chapterData: any;
     percentValue: any;
   }) => {
-    console.log("datad", data);
-    console.log("datadd", data?.chapterData?.startDefaultChapter);
+    console.log("data.option", data.option);
     if (data?.option === "Delete") {
-      if (!data?.chapterData?.startDefaultChapter) {
-        setStarterCh(true);
-        setDeleteChapter(true);
-        setSelectedChapterId(data?.chapterData?._id);
-      }
+      setSelectedChapterId(data?.chapterData?._id);
+      setDeleteChapter(true);
     } else if (data?.option === "Edit") {
-      setStarterCh(false);
       setChapterTitle(data?.chapterData?.title);
       setSelectedChapterId(data?.chapterData?._id);
       setUpdateChapterModal(true);
     } else {
-      setStarterCh(false);
       router.push(
         `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}`
       );
@@ -116,29 +109,28 @@ const Dashboard = () => {
     if (chapters) {
       const inProgressChapters = chapters.filter(
         (chapter) =>
-          chapter.status !== true &&
-          chapter.compilingStatus === false &&
-          chapter.startDefaultChapter === false
+          chapter.status !== true && chapter.compilingStatus === false
       );
 
-      const StarterChapter = chapters.filter((item) => {
-        return (
-          (item.status !== true &&
-            item.compilingStatus === false &&
-            item.startDefaultChapter === true) ||
-          item.introductionChapter === true
-        );
-      });
-
-      if (StarterChapter) {
-        setStarterCh(true);
-      } else setStarterCh(false);
-      setStarterChapters(StarterChapter);
       setAllChapters(inProgressChapters);
     }
   }, [chapters]);
 
-  console.log("StarterChapters", StarterChapters);
+  console.log("allChapters", allChapters);
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      console.log("acccedfgdj", accessRole);
+
+      if (accessRole !== "FreePlan") {
+        setIsPremium(true);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -176,18 +168,17 @@ const Dashboard = () => {
                 marginTop: { sm: "18px" },
               }}
             >
-              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
-              {StarterChapters.map((chapter, index) => (
-                <DetailCard
-                  key={index}
-                  chapter={chapter}
-                  isChapter={true}
-                  deleteFunc={(data) => {
-                    handleCardClick(data);
-                  }}
-                  starterCh={starterCh}
-                />
-              ))}
+              <StartNewChapter
+                addChapterClick={() => {
+                  if (!isPremium && chapters.length > 4) {
+                    setBuyPremium(true);
+                  } else {
+                    setChapterModal(true);
+                  }
+                }}
+                chapters={chapters}
+                isPremium={isPremium}
+              />
 
               {allChapters.map((chapter, index) => (
                 <DetailCard
@@ -197,6 +188,9 @@ const Dashboard = () => {
                   deleteFunc={(data) => {
                     handleCardClick(data);
                   }}
+                  starterCh={
+                    chapter?.introductionChapter || chapter?.startDefaultChapter
+                  }
                 />
               ))}
             </Box>
@@ -207,7 +201,16 @@ const Dashboard = () => {
                 marginTop: "18px",
               }}
             >
-              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+              <StartNewChapter
+                addChapterClick={() => {
+                  if (!isPremium && chapters.length > 4) {
+                    setBuyPremium(true);
+                  } else {
+                    setChapterModal(true);
+                  }
+                }}
+                chapters={chapters}
+              />
             </Box>
           ) : (
             <Box

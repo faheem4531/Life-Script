@@ -18,6 +18,7 @@ import {
   createQuestion,
   getChapterbyId,
   getOpenaiQuestion,
+  getaiQuestions,
   openaiQuestion,
   selectChapter,
   simpleChapter,
@@ -60,7 +61,7 @@ const chapterName = () => {
   const [mailQuestionModal, setMailQuestionModal] = useState(false);
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
   const [openTooltip, setOpenTooltip] = useState(true);
-  const [StarterChapter, setStarterChapter] = useState(true);
+  const [StarterChapter, setStarterChapter] = useState(false);
   const percentage = calculateCompletionPercentage(question?.questions);
   const { t } = useTranslation();
 
@@ -133,7 +134,7 @@ const chapterName = () => {
       })
     )
       .unwrap()
-      .then(() => {
+      .then((res) => {
         dispatch(getChapterbyId({ id: chapterId?.toString() }));
         setAllQuestionsLoading(false);
       })
@@ -174,6 +175,10 @@ const chapterName = () => {
     setAllQuestions(question?.questions);
     setaiQuestions(question?.openAiQuestion);
     setChapterName(question?.title);
+
+    if(question?.questions?.length > 1){
+      dispatch(getaiQuestions({chapterId: chapterId.toString()}))
+    }
   }, [question]);
 
   const handleFloatButtonClick = () => {
@@ -459,7 +464,26 @@ const chapterName = () => {
 
           <Box>
             <FloatButton
-              onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
+              // onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
+              onClick={() => {
+                if (
+                  StarterChapter &&
+                  allQuestions?.some(
+                    (question) => question.status === "Progress"
+                  )
+                ) {
+                  setNarrativeRefuse(true);
+                } else if (
+                  StarterChapter &&
+                  !allQuestions?.some(
+                    (question) => question.status === "Progress"
+                  )
+                ) {
+                  proceedFusion();
+                } else {
+                  handleFloatButtonClick();
+                }
+              }}
               narrativeRefuse={narrativeRefuse}
             />
             {/* Refuse Narative  */}

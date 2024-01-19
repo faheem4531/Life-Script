@@ -1,6 +1,7 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import { getBookInterior } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -40,22 +41,21 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
             btnText={loading ? "Loading..." : "Next"}
             image2={NextArrow}
             onClick={() => {
-              // if (!loading) {
-              //   setLoading(true);
-              //   dispatch(getBookInterior())
-              //     .unwrap()
-              //     .then((res) => {
-              //       console.log("interiorr", res);
-              //       bookData({ link: res.bookPdf, pages: res.totalPages });
-              //       setSelectedTab(1);
-              //       setLoading(false);
-              //     })
-              //     .catch((error) => {
-              //       setLoading(false);
-              //       console.log("errorrr", error);
-              //       setOpenModal(true);
-              //     });
-              // }
+              if (!loading) {
+                setLoading(true);
+                dispatch(getBookInterior())
+                  .unwrap()
+                  .then((res) => {
+                    bookData({ link: res.bookPdf, pages: res.totalPages });
+                    setSelectedTab(1);
+                    setLoading(false);
+                  })
+                  .catch((error) => {
+                    setLoading(false);
+                    console.log("errorrr", error);
+                    setOpenModal(true);
+                  });
+              }
               setSelectedTab(1);
             }}
           />

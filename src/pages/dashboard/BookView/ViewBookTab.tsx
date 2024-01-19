@@ -8,7 +8,6 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
   // const pdfUrl =
   // "https://lifescript-media.s3.eu-north-1.amazonaws.com/36453ad9-3feb-47e1-acd9-ee754be5a7e9.pdf";
   const pdfUrl = interior;
-
   return (
     <Box>
       <Box

@@ -16,21 +16,23 @@ import {
   selectLuluPaymentStatus,
 } from "@/store/slices/authSlice";
 import { toast } from "react-toastify";
+import { luluPrinting } from "@/store/slices/chatSlice";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   const [isChecked, setIsChecked] = useState(false);
   const dispatch: any = useDispatch();
-  const luluBalance = useSelector(selectLuluBalance);
-  const router = useRouter();
+
 
   const handleFinish = () => {
-    if (isChecked === true && luluBalance.amount >= count * 39) {
-      dispatch(luluCall({ quantity: count }))
+    if (isChecked === true) {
+      dispatch(luluPrinting({ quantity: count }))
         .unwrap()
-        .then(() => router.push("/dashboard/overview"))
-        .catch(() => {toast.error("Failed to call Lulu api"); router.push("/dashboard/overview");});
+        .then(() => {})
+        .catch(() => {toast.error("Failed to call Lulu api");});
+
+        //router.push("/dashboard/overview"
     }
   };
 

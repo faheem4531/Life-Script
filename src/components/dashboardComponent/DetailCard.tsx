@@ -45,8 +45,7 @@ export default function DetailCard({
   const open = Boolean(anchorEl);
   const percentage = calculateCompletionPercentage(chapter?.questions);
   const handleClickOption = (opt) => {
-    deleteFunc({ option: opt, chapterData: chapter, percentValue: percentage });
-    console.log("opt", opt);
+    deleteFunc({ option: opt === 1 ? "Delete" : "Edit", chapterData: chapter, percentValue: percentage });
     setAnchorEl(null);
   };
   const handleClick = (event: any) => {
@@ -90,7 +89,9 @@ export default function DetailCard({
   }
   // const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
 
-  const options = ["Delete", "Edit"];
+  // const options = ["Delete", "Edit"];
+
+  const options = [{id: 1, title: "Delete"}, {id:2, title: "Edit"}];
 
   return (
     <Box
@@ -170,12 +171,12 @@ export default function DetailCard({
                     >
                       {options.map((option) => (
                         <MenuItem
-                          key={option}
-                          selected={option === "Pyxis"}
+                          key={option.id}
+                          selected={option.title === "Pyxis"}
                           disabled={starterCh && starterCh}
-                          onClick={() => handleClickOption(option)}
+                          onClick={() => handleClickOption(option.id)}
                         >
-                          {option}
+                          {option.title}
                         </MenuItem>
                       ))}
                     </Menu>

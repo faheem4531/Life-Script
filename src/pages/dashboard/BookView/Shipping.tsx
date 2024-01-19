@@ -39,7 +39,7 @@ const Shipping = ({
   }, []);
 
   useEffect(() => {
-    setRemainingPaymenmt(count * 39 - luluBalance?.amount);
+    count && setRemainingPaymenmt(count * 39 - luluBalance?.amount);
   }, [count]);
 
   const handleNext = () => {
