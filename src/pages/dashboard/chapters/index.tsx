@@ -82,10 +82,10 @@ const Dashboard = () => {
     chapterData: any;
     percentValue: any;
   }) => {
-    console.log("data.option",data.option);
+    console.log("data.option", data.option);
     if (data?.option === "Delete") {
-        setSelectedChapterId(data?.chapterData?._id);
-        setDeleteChapter(true);
+      setSelectedChapterId(data?.chapterData?._id);
+      setDeleteChapter(true);
     } else if (data?.option === "Edit") {
       setChapterTitle(data?.chapterData?.title);
       setSelectedChapterId(data?.chapterData?._id);
@@ -108,13 +108,14 @@ const Dashboard = () => {
     if (chapters) {
       const inProgressChapters = chapters.filter(
         (chapter) =>
-          chapter.status !== true
+          chapter.status !== true && chapter.compilingStatus === false
       );
 
       setAllChapters(inProgressChapters);
     }
   }, [chapters]);
 
+  console.log("allChapters", allChapters);
 
   return (
     <>
@@ -152,7 +153,14 @@ const Dashboard = () => {
                 marginTop: { sm: "18px" },
               }}
             >
-              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+              <StartNewChapter
+                addChapterClick={() => {
+                  chapters.length > 4
+                    ? setBuyPremium(true)
+                    : setChapterModal(true);
+                }}
+                chapters={chapters}
+              />
 
               {allChapters.map((chapter, index) => (
                 <DetailCard
@@ -162,7 +170,9 @@ const Dashboard = () => {
                   deleteFunc={(data) => {
                     handleCardClick(data);
                   }}
-                  starterCh={chapter?.introductionChapter || chapter?.startDefaultChapter}
+                  starterCh={
+                    chapter?.introductionChapter || chapter?.startDefaultChapter
+                  }
                 />
               ))}
             </Box>

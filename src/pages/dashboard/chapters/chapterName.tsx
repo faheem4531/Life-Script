@@ -249,6 +249,8 @@ const chapterName = () => {
       question?.startDefaultChapter === true
     ) {
       setStarterChapter(true);
+    } else {
+      setStarterChapter(false);
     }
   }, [question]);
 
@@ -459,15 +461,21 @@ const chapterName = () => {
             <FloatButton
               // onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
               onClick={() => {
-                if(StarterChapter && allQuestions?.some(
-                  (question) => question.status === "Progress"
-                )){
+                if (
+                  StarterChapter &&
+                  allQuestions?.some(
+                    (question) => question.status === "Progress"
+                  )
+                ) {
                   setNarrativeRefuse(true);
-                }else if(StarterChapter && !allQuestions?.some(
-                  (question) => question.status === "Progress"
-                )){
+                } else if (
+                  StarterChapter &&
+                  !allQuestions?.some(
+                    (question) => question.status === "Progress"
+                  )
+                ) {
                   proceedFusion();
-                } else{
+                } else {
                   handleFloatButtonClick();
                 }
               }}
