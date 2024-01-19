@@ -23,8 +23,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   const [isChecked, setIsChecked] = useState(false);
   const dispatch: any = useDispatch();
-  const luluBalance = useSelector(selectLuluBalance);
-  const router = useRouter();
+
 
   const handleFinish = () => {
     if (isChecked === true) {
