@@ -5,7 +5,8 @@ import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBookCover, selectCoverData, uploadImage } from "@/store/slices/chatSlice";
+import { getBookCover, selectCoverData, updateBook, uploadImage } from "@/store/slices/chatSlice";
+// import fontnormal from "../../../_assets/fonts/Helvetica-Bold.ttf"
 import jsPDF from "jspdf";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
@@ -57,6 +58,14 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       orientation: "landscape",
     });
 
+    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
+    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
+    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+
+    const fontPathBold = "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
+    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
+    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
     const writter = name?.toUpperCase();
@@ -75,7 +84,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.rect(210, 0, 1, pdfHeight, "F"); // Convert inches to millimeters
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? 8 : 10; //prev was minus 3
+    const fontSize =  tail < 12 ? 8 :10; //prev was minus 3
     const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
@@ -174,7 +183,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.rect(209.5, 0, 1, pdfHeight, "F");
 
     let y = 5; // Initial y-coordinate
-    const fontSize = tail < 12 ? 8 : 10; //prev was minus 3
+    const fontSize =  tail < 12 ? 8 :10; //prev was minus 3
     const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
 
     for (let i = 0; i < text2.length; i++) {
@@ -256,6 +265,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       .unwrap()
       .then((pdfUrl) => {
         console.log("Uploaded PDF URL:", pdfUrl);
+        dispatch(updateBook({coverPdf: pdfUrl}));
       });
   };
   

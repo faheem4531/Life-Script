@@ -18,6 +18,7 @@ import {
   createQuestion,
   getChapterbyId,
   getOpenaiQuestion,
+  getaiQuestions,
   openaiQuestion,
   selectChapter,
   simpleChapter,
@@ -133,7 +134,7 @@ const chapterName = () => {
       })
     )
       .unwrap()
-      .then(() => {
+      .then((res) => {
         dispatch(getChapterbyId({ id: chapterId?.toString() }));
         setAllQuestionsLoading(false);
       })
@@ -174,6 +175,10 @@ const chapterName = () => {
     setAllQuestions(question?.questions);
     setaiQuestions(question?.openAiQuestion);
     setChapterName(question?.title);
+
+    if(question?.questions?.length > 1){
+      dispatch(getaiQuestions({chapterId: chapterId.toString()}))
+    }
   }, [question]);
 
   const handleFloatButtonClick = () => {

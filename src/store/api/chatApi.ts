@@ -161,6 +161,34 @@ export async function getBookCoverApi() {
   }
 }
 
+export async function updateBookApi(data:any) {
+  try {
+    const res = await api.patch("book", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getaiQuestionsApi(data:{chapterId: string}) {
+  try {
+    const res = await api.get(`questions/suggestionQuestion/${data.chapterId}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function getTreeDataApi() {
   try {
     const res = await api.get("family-module");
@@ -174,6 +202,8 @@ export async function getTreeDataApi() {
     }
   }
 }
+
+
 
 export async function updatePartnerApi(data: {
   spouseDied?: string;
@@ -285,6 +315,20 @@ export async function updateChapterResponseApi(data: {
 export async function chapterResponseApi(data: { chapterId: string }) {
   try {
     const res = await api.post("/users/compile-answers", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function luluPrintingApi(data: any) {
+  try {
+    const res = await api.post("/chapter-compile/printBook", data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
