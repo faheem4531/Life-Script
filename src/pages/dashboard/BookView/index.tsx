@@ -20,7 +20,6 @@ const BookView = () => {
     pages: 0,
   })
 
-
   const handleTabChange = () => {
     if (selectedTab === 0) {
       router.push("/dashboard/TableOfContent");

@@ -25,16 +25,16 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const dispatch: any = useDispatch();
   const [spineSize, setSpineSize] = useState(null);
   const coverData = useSelector(selectCoverData);
-  console.log("spineSize", spineSize);
+  const [loading, setLoading] = useState(false);
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
-  console.log("coverData", coverData.coverNumber);
+  console.log("coverData", coverData);
 
   const onClickHandler = async () => {
+    setLoading(true);
     try {
       await generateAndUploadPDF();
-      setSelectedTab(2);
     } catch (error) {
       // Handle errors if needed
       console.error("Error generating or uploading PDF:", error);
@@ -285,7 +285,10 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       .unwrap()
       .then((pdfUrl) => {
         console.log("Uploaded PDF URL:", pdfUrl);
-        dispatch(updateBook({coverPdf: pdfUrl}));
+        dispatch(updateBook({coverPdf: pdfUrl})).unwrap().then(() => {
+          setLoading(false);
+          setSelectedTab(2);
+        });
       });
   };
 
@@ -420,7 +423,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
               <GlobelBtn
                 bgColor="#186F65"
                 color="white"
-                btnText="Next"
+                btnText={loading ? "Saving..." : "Next"}
                 image2={NextArrow}
                 border="0px"
                 onClick={onClickHandler}

@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import TOCMain from "../TableOfContent/components/TOCMain";
+import { getBookInterior } from "@/store/slices/authSlice";
 
 const TableOfContentTab = ({ setSelectedTab, bookData }) => {
   const dispatch: any = useDispatch();
@@ -40,22 +41,21 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
             btnText={loading ? "Loading..." : "Next"}
             image2={NextArrow}
             onClick={() => {
-              // if (!loading) {
-              //   setLoading(true);
-              //   dispatch(getBookInterior())
-              //     .unwrap()
-              //     .then((res) => {
-              //       console.log("interiorr", res);
-              //       bookData({ link: res.bookPdf, pages: res.totalPages });
-              //       setSelectedTab(1);
-              //       setLoading(false);
-              //     })
-              //     .catch((error) => {
-              //       setLoading(false);
-              //       console.log("errorrr", error);
-              //       setOpenModal(true);
-              //     });
-              // }
+              if (!loading) {
+                setLoading(true);
+                dispatch(getBookInterior())
+                  .unwrap()
+                  .then((res) => {
+                    bookData({ link: res.bookPdf, pages: res.totalPages });
+                    setSelectedTab(1);
+                    setLoading(false);
+                  })
+                  .catch((error) => {
+                    setLoading(false);
+                    console.log("errorrr", error);
+                    setOpenModal(true);
+                  });
+              }
               setSelectedTab(1);
             }}
           />
