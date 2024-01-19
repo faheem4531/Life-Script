@@ -3,6 +3,7 @@ import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCover
 import {
   getBookCover,
   selectCoverData,
+  updateBook,
   uploadImage,
 } from "@/store/slices/chatSlice";
 import { Box } from "@mui/material";
