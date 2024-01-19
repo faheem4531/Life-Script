@@ -26,7 +26,6 @@ export const ViewBook = () => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      console.log("roleee", accessRole);
       if (accessRole !== "FreePlan") {
         setIsPremium(true);
       }
@@ -40,8 +39,7 @@ export const ViewBook = () => {
   useEffect(() => {
     if (chapters.length > 0) {
       const inProgressChapters = chapters.filter(
-        (chapter) =>
-          chapter.status !== true && chapter.compilingStatus === false
+        (chapter) => chapter.status !== true
       );
       inProgressChapters.length > 0 ? setViewReady(false) : setViewReady(true);
     }
