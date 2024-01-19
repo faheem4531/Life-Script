@@ -105,7 +105,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               alt="icon"
               className={styles.sidebarIcon}
               src={
-                currentRoute === "/dashboard/overview"
+                currentRoute === "/dashboard/overview" ||
+                currentRoute === "/dashboard/BookView"
                   ? OverViewGreen
                   : OverViewWhite
               }
@@ -228,7 +229,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                   setCoverNumber(res.coverNumber);
                   if (res.coverNumber) {
                     router.push(
-                      `/dashboard/BookCover/ViewBookCover?CoverNumber=${coverNumber || 1}`
+                      `/dashboard/BookCover/ViewBookCover?CoverNumber=${
+                        coverNumber || 1
+                      }`
                     );
                   } else {
                     router.push("/dashboard/BookCover/SelectBookCover");
