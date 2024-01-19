@@ -1,14 +1,13 @@
-import GlobelBtn from "@/components/button/Button";
-import { Box, Typography } from "@mui/material";
-import NextArrow from "../../../_assets/svg/rightArrow.svg";
-import TOCMain from "../TableOfContent/components/TOCMain";
-import { useDispatch } from "react-redux";
-import { getBookInterior } from "@/store/slices/authSlice";
 import ModalImage from "@/_assets/png/view-template-modal.png";
-import { useState } from "react";
+import GlobelBtn from "@/components/button/Button";
+import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import CustomizationDialog from "@/components/modal/CustomizationDialog";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import NextArrow from "../../../_assets/svg/rightArrow.svg";
+import TOCMain from "../TableOfContent/components/TOCMain";
 
 const TableOfContentTab = ({ setSelectedTab, bookData }) => {
   const dispatch: any = useDispatch();
@@ -41,22 +40,23 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
             btnText={loading ? "Loading..." : "Next"}
             image2={NextArrow}
             onClick={() => {
-              if (!loading) {
-                setLoading(true);
-                dispatch(getBookInterior())
-                  .unwrap()
-                  .then((res) => {
-                    console.log("interiorr", res);
-                    bookData({ link: res.bookPdf, pages: res.totalPages });
-                    setSelectedTab(1);
-                    setLoading(false);
-                  })
-                  .catch((error) => {
-                    setLoading(false);
-                    console.log("errorrr", error);
-                    setOpenModal(true);
-                  });
-              }
+              // if (!loading) {
+              //   setLoading(true);
+              //   dispatch(getBookInterior())
+              //     .unwrap()
+              //     .then((res) => {
+              //       console.log("interiorr", res);
+              //       bookData({ link: res.bookPdf, pages: res.totalPages });
+              //       setSelectedTab(1);
+              //       setLoading(false);
+              //     })
+              //     .catch((error) => {
+              //       setLoading(false);
+              //       console.log("errorrr", error);
+              //       setOpenModal(true);
+              //     });
+              // }
+              setSelectedTab(1);
             }}
           />
         </Box>
