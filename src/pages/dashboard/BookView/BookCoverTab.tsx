@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
-import { font } from "./font";
+import { font } from "../../../styles/font";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
   const [title, setTitle] = useState("");

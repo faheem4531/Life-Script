@@ -3,7 +3,7 @@ import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
-import { font } from "../BookView/font";
+import { font } from "../../../styles/font";
 import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/router";
