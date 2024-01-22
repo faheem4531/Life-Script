@@ -3,6 +3,7 @@ import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
+import { font } from "../BookView/font";
 import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/router";
@@ -44,14 +45,11 @@ const ViewBookCover = () => {
       orientation: "landscape",
     });
 
-    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
-    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
-    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+    pdf.addFileToVFS("WorkSans-normal.ttf", font);
 
-    const fontPathBold =
-      "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
-    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
-    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
+  
+    // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -78,12 +76,14 @@ const ViewBookCover = () => {
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
+      pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
+    pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
     pdf.setTextColor(255, 255, 255);
     pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
@@ -92,6 +92,7 @@ const ViewBookCover = () => {
 
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
+      pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
@@ -108,12 +109,13 @@ const ViewBookCover = () => {
 
     // 1st Text: "A good book" with font size 16px
     pdf.setFontSize(16);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text1, centerX, 50.8, { align: "center" });
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
-    pdf.setFontSize(22);
-    pdf.setFont("Helvetica-Bold");
+    pdf.setFontSize(30);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 66.04, {
       align: "center",
@@ -126,7 +128,7 @@ const ViewBookCover = () => {
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 4th Text: "- good book -" font size 16px
-    pdf.setFont("Helvetica");
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
@@ -153,14 +155,9 @@ const ViewBookCover = () => {
       orientation: "landscape",
     });
 
-    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
-    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
-    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+    pdf.addFileToVFS("WorkSans-normal.ttf", font);
 
-    const fontPathBold =
-      "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
-    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
-    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -187,12 +184,14 @@ const ViewBookCover = () => {
 
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
+      pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
+    pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
     pdf.setTextColor(255, 255, 255);
     pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
@@ -201,6 +200,7 @@ const ViewBookCover = () => {
 
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
+      pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
@@ -216,6 +216,7 @@ const ViewBookCover = () => {
     const centerX = pageWidth + tail + pageWidth / 2;
 
     // 1st Text: "A good book" with font size 16px
+    pdf.setFont("WorkSans");
     pdf.setFontSize(16);
     pdf.setTextColor(255, 255, 255);
     pdf.text(text1, centerX, 35, { align: "center" });
@@ -227,8 +228,8 @@ const ViewBookCover = () => {
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
-    pdf.setFontSize(22);
-    pdf.setFont("Helvetica-Bold");
+    pdf.setFontSize(30);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 190, {
       align: "center",
@@ -239,7 +240,7 @@ const ViewBookCover = () => {
     const lineStart = pageWidth + tail + 50;
     pdf.line(lineStart, 200, pdfWidth - 50, 200);
 
-    pdf.setFont("Helvetica"); //helvetica
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 215, { align: "center" }); // Convert inches to millimeters

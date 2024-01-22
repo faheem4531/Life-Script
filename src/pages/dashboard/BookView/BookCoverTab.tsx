@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
+import { font } from "./font";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
   const [title, setTitle] = useState("");
@@ -48,26 +49,24 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     color,
     spine = 6
   ) => {
+
     const logo =
       "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
-    const tail = spine;
-    const pdfWidth = pageWidth + pageWidth + spine;
+    const tail =  spine <6 ? 6 : spine;
+    const pdfWidth = pageWidth + pageWidth + tail;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
       format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
       orientation: "landscape",
     });
 
-    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
-    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
-    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+    pdf.addFileToVFS("WorkSans-normal.ttf", font);
 
-    const fontPathBold =
-      "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
-    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
-    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
+
+    // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -84,7 +83,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.setFillColor(bgcolor);
     pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
     pdf.setFillColor(255, 255, 255);
-    const spineBorder2 = pageWidth + spine - 1;
+    const spineBorder2 = pageWidth + tail - 1;
     pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
 
     let y = 5; // Initial y-coordinate
@@ -94,12 +93,14 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
       pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
     pdf.setFontSize(fontSize);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
 
@@ -108,6 +109,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
       pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
@@ -123,12 +125,13 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     // 1st Text: "A good book" with font size 16px
     pdf.setFontSize(16);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text1, centerX, 50.8, { align: "center" });
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
-    pdf.setFontSize(22);
-    pdf.setFont("Helvetica-Bold");
+    pdf.setFontSize(30);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 66.04, {
       align: "center",
@@ -141,7 +144,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 4th Text: "- good book -" font size 16px
-    pdf.setFont("Helvetica");
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
@@ -157,28 +160,23 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     name,
     imgUrl,
     color,
-    spine = 41
+    spine = 6
   ) => {
     const logo =
       "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
-    const tail = spine;
-    const pdfWidth = pageWidth + pageWidth + spine;
+    const tail = spine <6 ? 6 : spine;
+    const pdfWidth = pageWidth + pageWidth + tail;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
       format: [pdfWidth, pdfHeight],
       orientation: "landscape",
     });
 
-    const fontPath = "src/pages/dashboard/BookView/fonts/Helvetica.ttf"; // Replace with correct path
-    pdf.addFileToVFS(fontPath, "Helvetica"); // Add font to jsPDF's virtual file system
-    pdf.addFont("Helvetica.ttf", "Helvetica", "normal"); // Register the font
+    pdf.addFileToVFS("WorkSans-normal.ttf", font);
 
-    const fontPathBold =
-      "src/pages/dashboard/BookView/fonts/Helvetica-Bold.ttf"; // Repeat for bold font
-    pdf.addFileToVFS(fontPathBold, "Helvetica-Bold");
-    pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -195,7 +193,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.setFillColor(bgColor);
     pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
     pdf.setFillColor(255, 255, 255);
-    const spineBorder2 = pageWidth + spine - 1;
+    const spineBorder2 = pageWidth + tail - 1;
     pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
 
     let y = 5; // Initial y-coordinate
@@ -206,12 +204,14 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
       pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
     pdf.setFontSize(fontSize);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
 
@@ -220,6 +220,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
       pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
       pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
@@ -235,6 +236,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     // 1st Text: "A good book" with font size 16px
     pdf.setFontSize(16);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text1, centerX, 35, { align: "center" });
 
@@ -245,8 +247,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
 
     // 2nd Text: "New Book" font size 22px, bold, and underlined
-    pdf.setFontSize(22);
-    pdf.setFont("Helvetica-Bold");
+    pdf.setFontSize(30);
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.text(text2, centerX, 190, {
       align: "center",
@@ -257,7 +259,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const lineStart = pageWidth + tail + 50;
     pdf.line(lineStart, 200, pdfWidth - 50, 200);
 
-    pdf.setFont("Helvetica"); //helvetica
+    pdf.setFont("WorkSans"); //helvetica
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 215, { align: "center" }); // Convert inches to millimeters
