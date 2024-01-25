@@ -29,7 +29,6 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
-  console.log("coverData", coverData);
 
   const onClickHandler = async () => {
     setLoading(true);
@@ -65,8 +64,6 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.addFileToVFS("WorkSans-normal.ttf", font);
 
     pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
-
-    // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -259,7 +256,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const lineStart = pageWidth + tail + 50;
     pdf.line(lineStart, 200, pdfWidth - 50, 200);
 
-    pdf.setFont("WorkSans"); //helvetica
+    pdf.setFont("WorkSans");
     pdf.setTextColor(255, 255, 255);
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 215, { align: "center" }); // Convert inches to millimeters

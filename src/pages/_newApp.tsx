@@ -22,9 +22,7 @@ export default function NewApp({ children }) {
     dispatch(getChapterNotifications());
   }, []);
 
-
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
     socket.on("result", (message) => {
       dispatch(getChapterNotifications());
     });
@@ -32,19 +30,17 @@ export default function NewApp({ children }) {
     socket.on("error", (message) => {
       toast.error(message);
       console.log("socket failed");
-    })
+    });
 
     socket.on("error", (message) => {});
 
-    socket.emit('joinRoom', userId);
-    socket.on("stripeWebhookData", (token) => {
-      localStorage.setItem("token", token);
-    })
+      socket.on("stripeWebhookData", (token) => {
+        localStorage.setItem("token", token);
+      });
 
     socket.on("stripeLuluWebhookData", (msg) => {
-      console.log("msgggg",msg);
       dispatch(updateLuluPaymentStatus(msg));
-    })
+    });
   }, []);
 
   return (

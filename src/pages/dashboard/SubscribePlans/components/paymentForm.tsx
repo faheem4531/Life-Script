@@ -250,8 +250,8 @@ const PaymentForm = ({ packageName, price }) => {
               color="white"
               btnText={
                 loading
-                  ? `${t("SubsPlan.cardProBtn")}`
-                  : `${t("SubsPlan.cardBtn")}`
+                  ? "Loading..."
+                  : "Buy Plan"
               }
               onClick={() => {
                 if (!loading && !isError && cardHolderName) {

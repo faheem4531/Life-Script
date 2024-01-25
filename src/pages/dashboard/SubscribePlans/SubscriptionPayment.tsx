@@ -47,7 +47,7 @@ const CreditCard = () => {
               textAlign: "center",
             }}
           >
-            {t("SubsPlan.SubsHeaderDes")}
+            Each package includes 1 year access to Lifescript with 1 high-quality full-color printed book.
           </Typography>
           <Box
             sx={{

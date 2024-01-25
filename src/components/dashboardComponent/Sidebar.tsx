@@ -29,9 +29,12 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import FamilyTree from "../../_assets/svg/sidebar/family-tree.svg";
 import styles from "./Sidebar.module.css";
+import TransitionsDialog from "../modal/TransitionDialog";
 
 const SideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [coverNumber, setCoverNumber] = useState(null);
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -53,305 +56,333 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     childsOpenCheck();
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(getBookCover())
-  //     .unwrap()
-  //     .then((res) => {
-  //       setCoverNumber(res.coverNumber);
-  //       console.log("4444", res);
-  //     })
-  //     .catch(() => setCoverNumber(null));
-  // }, []);
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      if (accessRole === "PremiumPlan" || accessRole === "StandardPlan") {
+        setIsPremium(true);
+      } else {
+        setIsPremium(false);
+      }
+    }
+  }, []);
 
   return (
-    <Box sx={{ color: "#fff" }}>
-      {!handleSideCheck && (
-        <Box sx={{ padding: "13px 20px", height: "70px" }}>
-          <Image src={Logo} alt="logo" className={styles.logo} />
-        </Box>
-      )}
-      {handleSideCheck && (
+    <>
+      <Box sx={{ color: "#fff" }}>
+        {!handleSideCheck && (
+          <Box sx={{ padding: "13px 20px", height: "70px" }}>
+            <Image src={Logo} alt="logo" className={styles.logo} />
+          </Box>
+        )}
+        {handleSideCheck && (
+          <Box
+            sx={{
+              height: "48px",
+              display: "flex",
+              alignItems: "center",
+              ml: "8px",
+            }}
+            onClick={menuClick}
+          >
+            <Image src={MenuIcon} alt="MenuIcon" />
+          </Box>
+        )}
         <Box
           sx={{
-            height: "48px",
-            display: "flex",
-            alignItems: "center",
-            ml: "8px",
+            padding: "35px 29px 0 11px",
+            borderTop: "1px solid #fff",
           }}
-          onClick={menuClick}
         >
-          <Image src={MenuIcon} alt="MenuIcon" />
-        </Box>
-      )}
-      <Box
-        sx={{
-          padding: "35px 29px 0 11px",
-          borderTop: "1px solid #fff",
-        }}
-      >
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/overview" ||
-              currentRoute === "/dashboard/BookView"
-                ? styles.active
-                : ""
-            }`}
-            onClick={() => {
-              router.push("/dashboard/overview");
-            }}
-          >
-            <Image
-              alt="icon"
-              className={styles.sidebarIcon}
-              src={
+          <Box>
+            <a
+              className={`${styles.link} ${
                 currentRoute === "/dashboard/overview" ||
                 currentRoute === "/dashboard/BookView"
-                  ? OverViewGreen
-                  : OverViewWhite
-              }
-            />
-            {t("sideBar.Overview")}
-          </a>
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/chapters" ||
-              currentRoute === "/dashboard/chapters/chapterName" ||
-              currentRoute === "/events"
-                ? styles.active
-                : currentRoute === "/dashboard/chapters/completedChapter" &&
-                  styles.active
-            }`}
-            onClick={() => {
-              setChilsdOpen(!childsOpen);
-            }}
-          >
-            <Image
-              alt="icon"
-              className={styles.sidebarIcon}
-              src={
+                  ? styles.active
+                  : ""
+              }`}
+              onClick={() => {
+                router.push("/dashboard/overview");
+              }}
+            >
+              <Image
+                alt="icon"
+                className={styles.sidebarIcon}
+                src={
+                  currentRoute === "/dashboard/overview" ||
+                  currentRoute === "/dashboard/BookView"
+                    ? OverViewGreen
+                    : OverViewWhite
+                }
+              />
+              {t("sideBar.Overview")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
                 currentRoute === "/dashboard/chapters" ||
-                currentRoute === "/dashboard/chapters/completedChapter" ||
                 currentRoute === "/dashboard/chapters/chapterName" ||
                 currentRoute === "/events"
-                  ? HomeGreen
-                  : HomeWhite
-              }
-            />
-            {t("sideBar.AllCh")}
-            {childsOpen ? (
-              <KeyboardArrowUpIcon
-                sx={{
-                  width: { xs: "15px", md: "24px" },
-                  ml: "5px",
-                }}
+                  ? styles.active
+                  : currentRoute === "/dashboard/chapters/completedChapter" &&
+                    styles.active
+              }`}
+              onClick={() => {
+                setChilsdOpen(!childsOpen);
+              }}
+            >
+              <Image
+                alt="icon"
+                className={styles.sidebarIcon}
+                src={
+                  currentRoute === "/dashboard/chapters" ||
+                  currentRoute === "/dashboard/chapters/completedChapter" ||
+                  currentRoute === "/dashboard/chapters/chapterName" ||
+                  currentRoute === "/events"
+                    ? HomeGreen
+                    : HomeWhite
+                }
               />
-            ) : (
-              <KeyboardArrowDownIcon
-                sx={{
-                  width: { xs: "15px", md: "24px" },
-                  ml: "5px",
-                }}
-              />
-            )}
-          </a>
-          {childsOpen && (
-            <Box>
-              <Box sx={{ marginLeft: "20px" }}>
-                <a
-                  className={`${styles.link} ${
-                    currentRoute === "/dashboard/chapters" ||
-                    currentRoute === "/dashboard/chapters/chapterName" ||
-                    currentRoute === "/events"
-                      ? styles.active
-                      : ""
-                  }`}
-                  onClick={() => {
-                    router.push("/dashboard/chapters");
+              {t("sideBar.AllCh")}
+              {childsOpen ? (
+                <KeyboardArrowUpIcon
+                  sx={{
+                    width: { xs: "15px", md: "24px" },
+                    ml: "5px",
                   }}
-                >
-                  {/* Add your icon and text for the first new option */}
-                  <Image
-                    alt="icon"
-                    className={styles.sidebarIcon}
-                    src={
+                />
+              ) : (
+                <KeyboardArrowDownIcon
+                  sx={{
+                    width: { xs: "15px", md: "24px" },
+                    ml: "5px",
+                  }}
+                />
+              )}
+            </a>
+            {childsOpen && (
+              <Box>
+                <Box sx={{ marginLeft: "20px" }}>
+                  <a
+                    className={`${styles.link} ${
                       currentRoute === "/dashboard/chapters" ||
                       currentRoute === "/dashboard/chapters/chapterName" ||
                       currentRoute === "/events"
-                        ? ProgressGreen
-                        : ProgressWhite
-                    }
-                  />
-                  {t("sideBar.InPro")}
-                </a>
+                        ? styles.active
+                        : ""
+                    }`}
+                    onClick={() => {
+                      router.push("/dashboard/chapters");
+                    }}
+                  >
+                    {/* Add your icon and text for the first new option */}
+                    <Image
+                      alt="icon"
+                      className={styles.sidebarIcon}
+                      src={
+                        currentRoute === "/dashboard/chapters" ||
+                        currentRoute === "/dashboard/chapters/chapterName" ||
+                        currentRoute === "/events"
+                          ? ProgressGreen
+                          : ProgressWhite
+                      }
+                    />
+                    {t("sideBar.InPro")}
+                  </a>
+                </Box>
+                <Box sx={{ marginLeft: "20px" }}>
+                  <a
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/chapters/completedChapter" &&
+                      styles.active
+                    }`}
+                    onClick={() => {
+                      router.push("/dashboard/chapters/completedChapter");
+                    }}
+                  >
+                    <Image
+                      alt="icon"
+                      className={styles.sidebarIcon}
+                      src={
+                        currentRoute === "/dashboard/chapters/completedChapter"
+                          ? CompletedGreen
+                          : CompletedWhite
+                      }
+                    />
+                    {t("sideBar.Com")}
+                  </a>
+                </Box>
               </Box>
-              <Box sx={{ marginLeft: "20px" }}>
-                <a
-                  className={`${styles.link} ${
-                    currentRoute === "/dashboard/chapters/completedChapter" &&
+            )}
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/BookCover/SelectBookCover"
+                  ? styles.active
+                  : currentRoute === "/dashboard/BookCover/ViewBookCover"
+                  ? styles.active
+                  : currentRoute === "/dashboard/BookCover/EditBookCover" &&
                     styles.active
-                  }`}
-                  onClick={() => {
-                    router.push("/dashboard/chapters/completedChapter");
-                  }}
-                >
-                  <Image
-                    alt="icon"
-                    className={styles.sidebarIcon}
-                    src={
-                      currentRoute === "/dashboard/chapters/completedChapter"
-                        ? CompletedGreen
-                        : CompletedWhite
+              }`}
+              onClick={() => {
+                dispatch(getBookCover())
+                  .unwrap()
+                  .then((res) => {
+                    setCoverNumber(res.coverNumber);
+                    if (res.coverNumber) {
+                      router.push(
+                        `/dashboard/BookCover/ViewBookCover?CoverNumber=${
+                          res.coverNumber
+                        }`
+                      );
+                    } else {
+                      router.push("/dashboard/BookCover/SelectBookCover");
                     }
-                  />
-                  {t("sideBar.Com")}
-                </a>
-              </Box>
-            </Box>
-          )}
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/BookCover/SelectBookCover"
-                ? styles.active
-                : currentRoute === "/dashboard/BookCover/ViewBookCover"
-                ? styles.active
-                : currentRoute === "/dashboard/BookCover/EditBookCover" &&
-                  styles.active
-            }`}
-            onClick={() => {
-              dispatch(getBookCover())
-                .unwrap()
-                .then((res) => {
-                  setCoverNumber(res.coverNumber);
-                  if (res.coverNumber) {
-                    router.push(
-                      `/dashboard/BookCover/ViewBookCover?CoverNumber=${
-                        coverNumber || 1
-                      }`
-                    );
-                  } else {
-                    router.push("/dashboard/BookCover/SelectBookCover");
-                  }
-                })
-                .catch(() =>
-                  router.push("/dashboard/BookCover/SelectBookCover")
-                );
-            }}
-          >
-            <Image
-              alt="icon"
-              className={styles.sidebarIcon}
-              src={
-                currentRoute === "/dashboard/BookCover/SelectBookCover" ||
-                currentRoute === "/dashboard/BookCover/EditBookCover" ||
-                currentRoute === "/dashboard/BookCover/ViewBookCover"
-                  ? BookCoverGreen
-                  : BookCoverWhite
-              }
-            />
-            {t("sideBar.bookCover")}
-          </a>
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/SubscribePlans"
-                ? styles.active
-                : currentRoute ===
-                    "/dashboard/SubscribePlans/SubscriptionPayment" &&
-                  styles.active
-            }`}
-            onClick={() => router.push("/dashboard/SubscribePlans")}
-          >
-            <Image
-              alt="icon"
-              className={styles.sidebarIcon}
-              src={
-                currentRoute === "/dashboard/SubscribePlans" ||
-                currentRoute === "/dashboard/SubscribePlans/SubscriptionPayment"
-                  ? Subs
-                  : SubsWhite
-              }
-            />
-            {t("sideBar.SubPlan")}
-          </a>
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/TableOfContent" && styles.active
-            }`}
-            onClick={() => router.push("/dashboard/TableOfContent")}
-          >
-            <Image
-              alt="icon"
-              src={
-                currentRoute === "/dashboard/TableOfContent"
-                  ? FaqGreen
-                  : FaqWhite
-              }
-            />
-            {t("sideBar.toc")}
-          </a>
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/familyTree" && styles.active
-            }`}
-            onClick={() => router.push("/familyTree")}
-          >
-            <Image
-              alt="icon"
-              src={currentRoute === "familyTree" ? FamilyTree : FamilyTree}
-            />
-            {t("sideBar.FamilyTree")}
-          </a>
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/profileSetting" && styles.active
-            }`}
-            onClick={() => router.push("/dashboard/profileSetting")}
-          >
-            <Image
-              alt="icon"
-              src={
-                currentRoute === "/dashboard/profileSetting"
-                  ? AccountGreen
-                  : AccountWhite
-              }
-              className={styles.sidebarIcon}
-            />
-            {t("sideBar.account")}
-          </a>
-        </Box>
-        <Box>
-          <a
-            className={`${styles.link} ${
-              currentRoute === "/dashboard/Support" && styles.active
-            }`}
-            onClick={() => router.push("/dashboard/Support")}
-          >
-            <Image
-              alt="icon"
-              src={
-                currentRoute === "/dashboard/Support"
-                  ? SuportGreen
-                  : SuportWhite
-              }
-              className={styles.sidebarIcon}
-            />
-            {t("sideBar.Support")}
-          </a>
+                  })
+                  .catch(() =>
+                    router.push("/dashboard/BookCover/SelectBookCover")
+                  );
+              }}
+            >
+              <Image
+                alt="icon"
+                className={styles.sidebarIcon}
+                src={
+                  currentRoute === "/dashboard/BookCover/SelectBookCover" ||
+                  currentRoute === "/dashboard/BookCover/EditBookCover" ||
+                  currentRoute === "/dashboard/BookCover/ViewBookCover"
+                    ? BookCoverGreen
+                    : BookCoverWhite
+                }
+              />
+              {t("sideBar.bookCover")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/SubscribePlans"
+                  ? styles.active
+                  : currentRoute ===
+                      "/dashboard/SubscribePlans/SubscriptionPayment" &&
+                    styles.active
+              }`}
+              onClick={() => router.push("/dashboard/SubscribePlans")}
+            >
+              <Image
+                alt="icon"
+                className={styles.sidebarIcon}
+                src={
+                  currentRoute === "/dashboard/SubscribePlans" ||
+                  currentRoute ===
+                    "/dashboard/SubscribePlans/SubscriptionPayment"
+                    ? Subs
+                    : SubsWhite
+                }
+              />
+              {t("sideBar.SubPlan")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/TableOfContent" && styles.active
+              }`}
+              onClick={() => router.push("/dashboard/TableOfContent")}
+            >
+              <Image
+                alt="icon"
+                src={
+                  currentRoute === "/dashboard/TableOfContent"
+                    ? FaqGreen
+                    : FaqWhite
+                }
+              />
+              {t("sideBar.toc")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/familyTree" && styles.active
+              }`}
+              onClick={() => {
+                if (isPremium) {
+                  router.push("/familyTree");
+                } else {
+                  setBuyPremium(true);
+                }
+              }}
+            >
+              <Image
+                alt="icon"
+                src={currentRoute === "familyTree" ? FamilyTree : FamilyTree}
+              />
+              {t("sideBar.FamilyTree")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/profileSetting" && styles.active
+              }`}
+              onClick={() => router.push("/dashboard/profileSetting")}
+            >
+              <Image
+                alt="icon"
+                src={
+                  currentRoute === "/dashboard/profileSetting"
+                    ? AccountGreen
+                    : AccountWhite
+                }
+                className={styles.sidebarIcon}
+              />
+              {t("sideBar.account")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/Support" && styles.active
+              }`}
+              onClick={() => router.push("/dashboard/Support")}
+            >
+              <Image
+                alt="icon"
+                src={
+                  currentRoute === "/dashboard/Support"
+                    ? SuportGreen
+                    : SuportWhite
+                }
+                className={styles.sidebarIcon}
+              />
+              {t("sideBar.Support")}
+            </a>
+          </Box>
         </Box>
       </Box>
-    </Box>
+      <TransitionsDialog
+        open={buyPremium}
+        heading={`${t("richText.ByPreHeading")}`}
+        description={`${t("richText.PreDes")}`}
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => {
+          setBuyPremium(false);
+          router.push("/dashboard/SubscribePlans");
+        }}
+      />
+    </>
   );
 };
 

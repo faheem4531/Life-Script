@@ -150,27 +150,17 @@ const RichText = ({ questionId }) => {
     }
   };
 
-  function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
-    const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
-    const inputDate = new Date(timeString);
-    const timeDifference = new Date().getTime() - inputDate.getTime();
-    return timeDifference < sevenDaysInMilliseconds;
-  }
-
-  //check free trail expiration
   useEffect(() => {
     const jwt = require("jsonwebtoken");
     const token = localStorage.getItem("token");
-    const decodedToken = jwt.decode(token);
-    const accessRole = decodedToken.accessRole;
-    const createdAt = decodedToken.created_at;
-    if (accessRole === "PremiumPlan" || accessRole === "BasicPlan") {
-      setIsPremium(true);
-    } else {
-      const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
-        createdAt.toString()
-      );
-      setIsPremium(isfreeTrial);
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      if (accessRole === "PremiumPlan" || accessRole === "StandardPlan") {
+        setIsPremium(true);
+      }else{
+        setIsPremium(false);
+      }
     }
   }, []);
 
@@ -210,12 +200,12 @@ const RichText = ({ questionId }) => {
   }, []);
 
   // consoling editor html
-  useEffect(() => {
-    console.log(
-      "html",
-      draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    );
-  }, [editorState]);
+  // useEffect(() => {
+  //   console.log(
+  //     "html",
+  //     draftToHtml(convertToRaw(editorState.getCurrentContent()))
+  //   );
+  // }, [editorState]);
 
   //getting question
   useEffect(() => {
@@ -297,7 +287,7 @@ const RichText = ({ questionId }) => {
     if (!openai) {
       const interval = setInterval(() => {
         setSeconds((prevSeconds) => prevSeconds + 1);
-      }, 30000);
+      }, 1500);
       if (questionData && questionData?.chapter?._id) {
         saveUserAnswer();
       }

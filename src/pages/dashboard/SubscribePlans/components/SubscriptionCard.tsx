@@ -102,7 +102,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           {offerTitle}
         </Box>
 
-        <Box
+        {/* <Box
           sx={{
             fontSize: { md: "12.832px", sm: "10px", xs: "9px" },
             letterSpacing: "0.458px",
@@ -113,7 +113,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           }}
         >
           Lorem ipsum dolor sit amet consectetur.
-        </Box>
+        </Box> */}
 
         <Box
           sx={{

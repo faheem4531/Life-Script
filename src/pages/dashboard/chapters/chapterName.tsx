@@ -38,16 +38,16 @@ import QuestionComponent from "./components/AIGeneration";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [fusionModal, setFusionModal] = useState(false);
   const [gptSocket, setgptSocket] = useState(false);
-  const [gptResponse, setGptResponse] = useState(null);
+  const [isPremium, setIsPremium] = useState(false);
+  console.log("ispremium", isPremium);
+  const [buyPremium ,setBuyPremium] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allQuestionsLoading, setAllQuestionsLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
   const [aiQuestions, setaiQuestions] = useState([]);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
-  const [fusionLoading, setFusionLoading] = useState(false);
   const [aiGeneration, setAiGeneration] = useState(false);
   const [emailQuestion, setEmailQuestion] = useState({
     questionTitle: "",
@@ -60,7 +60,6 @@ const chapterName = () => {
   const { chapterId, openAiQuestionId } = router.query;
   const [mailQuestionModal, setMailQuestionModal] = useState(false);
   const [openCustomizationDialog, setOpenCustomizationDialog] = useState(false);
-  const [openTooltip, setOpenTooltip] = useState(true);
   const [StarterChapter, setStarterChapter] = useState(false);
   const percentage = calculateCompletionPercentage(question?.questions);
   const { t } = useTranslation();
@@ -95,9 +94,14 @@ const chapterName = () => {
   }, [openAiQuestionId]);
 
   const handleCancel = () => {
-    if (areAllCompleted(allQuestions) === true && !fusionLoading) {
-      gptSocketCall();
+    if(!isPremium){
+      setBuyPremium(true);
       setOpenCustomizationDialog(false);
+    }else{
+      if (areAllCompleted(allQuestions) === true) {
+        gptSocketCall();
+        setOpenCustomizationDialog(false);
+      }
     }
   };
 
@@ -176,8 +180,8 @@ const chapterName = () => {
     setaiQuestions(question?.openAiQuestion);
     setChapterName(question?.title);
 
-    if(question?.questions?.length > 1){
-      dispatch(getaiQuestions({chapterId: chapterId.toString()}))
+    if (question?.questions?.length > 1) {
+      dispatch(getaiQuestions({ chapterId: chapterId.toString() }));
     }
   }, [question]);
 
@@ -186,15 +190,16 @@ const chapterName = () => {
       (question) => question.status === "Progress"
     );
 
-    if(!question?.status && !question?.compilingStatus){if (!isAnyQuestionInProgress) {
-      setOpenTooltip(false);
-      setOpenCustomizationDialog(true);
-    } else {
-      setNarrativeRefuse(true);
-      setTimeout(() => {
-        setNarrativeRefuse(false);
-      }, 6000);
-    }}
+    if (!question?.status && !question?.compilingStatus) {
+      if (!isAnyQuestionInProgress) {
+        setOpenCustomizationDialog(true);
+      } else {
+        setNarrativeRefuse(true);
+        setTimeout(() => {
+          setNarrativeRefuse(false);
+        }, 6000);
+      }
+    }
   };
 
   const handleAddQuestion = (questionId) => {
@@ -259,6 +264,20 @@ const chapterName = () => {
       setStarterChapter(false);
     }
   }, [question]);
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+        setIsPremium(true);
+      } else {
+        setIsPremium(false);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -465,7 +484,6 @@ const chapterName = () => {
 
           <Box>
             <FloatButton
-              // onClick={StarterChapter ? proceedFusion : handleFloatButtonClick}
               onClick={() => {
                 if (
                   StarterChapter &&
@@ -584,20 +602,6 @@ const chapterName = () => {
         cancelText={`${t("ChName.NFuseBtn")}`} // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
-      <CustomizationDialog
-        open={fusionModal}
-        title={`${t("ChName.GPTRes")}`}
-        handleClose={() => {
-          setFusionModal(false);
-        }}
-        customStyles={{
-          backgroundColor: "auto",
-          padding: "5px",
-          width: { md: "50vw", sm: "60vw", xs: "70vw" },
-        }}
-      >
-        <RichTextViewer htmlContent={gptResponse} />
-      </CustomizationDialog>
 
       {/* Add new Question  */}
       <CustomizationDialog
@@ -700,6 +704,18 @@ const chapterName = () => {
           setMailQuestionModal(false);
         }}
         proceed={() => handleAddQuestion(emailQuestion.questionId)}
+      />
+      <TransitionsDialog
+        open={buyPremium}
+        heading={`${t("richText.ByPreHeading")}`}
+        description={`${t("richText.PreDes")}`}
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
       />
     </>
   );

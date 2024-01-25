@@ -16,9 +16,9 @@ const SubscribePlan = () => {
   const router = useRouter();
   const [planCheck, setPlanCheck] = useState("FreePlan");
   const [planPrices, setPlanPrices] = useState({
-    basic: 100,
-    standard: 150,
-    premium: 200,
+    basic: 139,
+    standard: 179,
+    premium: 239,
   });
   const [disableButton, setDisableButton] = useState({
     basic: false,
@@ -86,33 +86,8 @@ const SubscribePlan = () => {
         >
           <SubscriptionHeader
             title={`${t("SubsPlan.SubsHeaderTitle")}`}
-            description={`${t("SubsPlan.SubsHeaderDes")}`}
+            description="Each package includes 1 year access to Lifescript with 1 high-quality full-color printed book."
           />
-
-          {/* <Box
-      sx={{
-        bgcolor: "white",
-        borderRadius: " 16.148px",
-        p: { xs: "15px 20px", lg:"26px 48px"},
-        mt: "28px",
-        height: "100%"
-      }}
-    >
-      <Typography
-        sx={{
-          color: "#081131",
-          fontSize: " 16.498px",
-          fontWeight: 600,
-          letterSpacing: "0.458px",
-          mb: "65px",
-          textAlign: "center",
-        }}
-      >
-        Choose a subscription plan below before Aug30th,2023 to unlock this
-        special offer.
-      </Typography>
-            <VerticalTabs/>
-</Box> */}
           <Box
             sx={{
               display: "flex",
@@ -124,9 +99,9 @@ const SubscribePlan = () => {
           >
             <SubscriptionCard
               subList={subBasicList}
-              mainTitle={`${t("SubsPlan.SubsCardBasic.SubsCardHeading")}`}
-              mainDescription="Lorem ipsum dolor sit amet consectetur."
-              offerTitle={`${t("SubsPlan.SubsCardBasic.SubsCardHeadingOffer")}`}
+              mainTitle="Basic Package"
+              mainDescription="Access to basic features of lifescript."
+              offerTitle="Basic Plan Offerings"
               price={planPrices.basic}
               buttonDisable={disableButton.basic}
               onClick={(pkgPrice) => {
@@ -139,9 +114,9 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subStandardList}
-              mainTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
-              mainDescription="Lorem ipsum dolor sit amet consectetur."
-              offerTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
+              mainTitle="Standard Package"
+              mainDescription="Access to smart generative features of lifescript."
+              offerTitle="Standard Plan Offerings"
               price={planPrices?.standard}
               buttonDisable={disableButton.standard}
               onClick={(pkgPrice) => {
@@ -154,9 +129,9 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subPremiumList}
-              mainTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
-              mainDescription="Lorem ipsum dolor sit amet consectetur."
-              offerTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
+              mainTitle="Premium Package"
+              mainDescription="Access to premium features of lifescript."
+              offerTitle="Premium Plan Offerings"
               price={planPrices?.premium}
               buttonDisable={disableButton.premium}
               onClick={(pkgPrice) => {

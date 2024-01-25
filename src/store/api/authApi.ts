@@ -7,6 +7,7 @@ import {
   VerifyEmail,
 } from "@/interface/authInterface";
 import api from "@/services/api";
+import socket from "@/services/socketManager";
 import axios from "axios";
 import Error from "next/error";
 
@@ -62,6 +63,7 @@ export async function googleLoginApi(data: { credential: string }) {
     localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    socket.emit("joinRoom", res.data._id);
 
     return res.data;
   } catch (error: any) {

@@ -39,7 +39,6 @@ const Dashboard = () => {
   const chapters = useSelector(selectAllChapters);
   const router = useRouter();
   const { t } = useTranslation();
-  console.log("allChapters1111",allChapters);
 
   const handleDeleteChapter = () => {
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))
@@ -125,7 +124,6 @@ const Dashboard = () => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      console.log("acccedfgdj", accessRole);
 
       if (accessRole !== "FreePlan") {
         setIsPremium(true);

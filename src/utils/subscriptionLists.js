@@ -1,67 +1,61 @@
-export const subPremiumList = [
+export const subBasicList = [
     {
-      label: "Auto Proofreading",
+      label: "Spelling and grammar assistance",
     },
     {
-      label: "Auto Editing",
+      label: "Automatic Photo Improvement",
     },
     {
-      label: "Family Tree",
-    },
-    {
-      label: "Formatting Features",
-    },
-    {
-      label: "Speech-to-text Translation",
-    },
-    {
-      label: "Narrative Fusion",
-    },
-    {
-      label: "AI Photo Enhancement",
-    },
-    {
-      label: "Premium Book Cover",
-    },
-    {
-      label: "Free Shipping",
+      label: "Text Formatting Features",
     },
   ];
-  export  const subBasicList = [
+  export  const subStandardList = [
     {
-      label: "Auto Proofreading",
+      label: "Spelling and grammar assistance",
     },
     {
-      label: "Auto Editing",
+      label: "Automatic Photo Improvement",
     },
     {
-      label: "Family Tree",
+      label: "Text Formatting Features",
     },
     {
-      label: "Free Shipping",
+      label: "Narrative fusion",
+    },
+    {
+      label: "Voice-to-text ",
+    },
+    {
+      label: "Family Tree ",
     },
   ];
 
-  export  const subStandardList = [
+  export  const subPremiumList = [
     {
-      label: "Auto Proofreading",
+      label: "Spelling and grammar assistance",
     },
     {
-      label: "Auto Editing",
+      label: "Automatic Photo Improvement",
+    },
+    {
+      label: "Text Formatting Features",
+    },
+    {
+      label: "Narrative fusion",
+    },
+    {
+      label: "Voice-to-text",
     },
     {
       label: "Family Tree",
     },
     {
-      label: "Formatting Features",
+      label: "Premium Book Covers",
     },
     {
-      label: "Speech-to-text Translation",
+      label: "Priority Customer Support",
     },
     {
-      label: "Narrative Fusion",
-    },
-    {
-      label: "Free Shipping",
+      label: "Exclusive access to new features",
     },
   ];
