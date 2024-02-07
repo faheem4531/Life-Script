@@ -349,13 +349,11 @@ const ProfileSetting = () => {
                     onSelect={(val) => setCountryValue(val)}
                     value={countryValue}
                   />
-                  <Box sx={{mb:'6px'}}>
                   <TextField
                     variant="outlined"
                     placeholder={`${t("profileSetting.Phone")}`}
                     name="Phone"
                     value={userPhone}
-                    type="number" // Set input type to "number"
                     inputProps={{ min: 0, max: 9 }}
                     onChange={(e) =>
                       setUserPhone(e.target.value.replace(/[^0-9]/g, ""))
@@ -371,7 +369,6 @@ const ProfileSetting = () => {
                       width: "100%",
                     }}
                   />
-                  </Box>
                 </Box>
               </Box>
             </Box>
