@@ -342,12 +342,15 @@ const ProfileSetting = () => {
                     borderRadius: "50px",
                     backgroundColor: "#F6F9FB",
                     pl: "20px",
+                    pr:"20px"
                   }}
                 >
+                  <Box sx={{mb:'0px'}}>
                   <CountrySelect
                     onSelect={(val) => setCountryValue(val)}
                     value={countryValue}
                   />
+                  </Box>
                   <TextField
                     variant="outlined"
                     placeholder={`${t("profileSetting.Phone")}`}
