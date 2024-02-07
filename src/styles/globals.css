@@ -119,10 +119,20 @@ a {
 
 .rdw-image-imagewrapper img {
   float: left;
-  max-width: 800px;
   height: auto !important;
   width: 400px !important;
 }
+.rdw-image-modal-upload-option-label{
+  word-break: break-all !important;
+}
+/* .rdw-image-modal-upload-option-label:after{
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  z-index: 99;
+  color: black;
+  content: "Click Add";
+} */
 
 .icon-tabler-photo {
   display: none !important;

@@ -287,7 +287,7 @@ const RichText = ({ questionId }) => {
     if (!openai) {
       const interval = setInterval(() => {
         setSeconds((prevSeconds) => prevSeconds + 1);
-      }, 1500);
+      }, 15000);
       if (questionData && questionData?.chapter?._id) {
         saveUserAnswer();
       }
@@ -365,7 +365,7 @@ const RichText = ({ questionId }) => {
   };
 
   //for uploadin image
-  const uploadCallback = (file, callback) => {
+  const uploadCallback = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new window.FileReader();
       reader.onloadend = async () => {
@@ -416,12 +416,14 @@ const RichText = ({ questionId }) => {
         // form_data7.append("image", download.data);
 
         const res = await dispatch(uploadImage(form_data));
+        console.log('111resimhg', res.payload);
 
         resolve({ data: { link: res.payload } });
       };
       reader.readAsDataURL(file);
     });
   };
+  
 
   return (
     <>
@@ -585,11 +587,11 @@ const RichText = ({ questionId }) => {
                 options: ["link"],
               },
               image: {
-                // urlEnabled: true,
+                urlEnabled: true,
                 uploadEnabled: true,
                 alignmentEnabled: false,
-                previewImage: true,
-                inputAccept: "image/gif,image/jpeg,image/jpg,image/png",
+                previewImage: false,
+                inputAccept: "image/jpeg,image/jpg,image/png",
                 uploadCallback: uploadCallback,
                 alt: { present: false, mandatory: false },
                 defaultSize: {
