@@ -345,12 +345,11 @@ const ProfileSetting = () => {
                     pr:"20px"
                   }}
                 >
-                  <Box sx={{mb:'0px'}}>
                   <CountrySelect
                     onSelect={(val) => setCountryValue(val)}
                     value={countryValue}
                   />
-                  </Box>
+                  <Box sx={{mb:'6px'}}>
                   <TextField
                     variant="outlined"
                     placeholder={`${t("profileSetting.Phone")}`}
@@ -372,6 +371,7 @@ const ProfileSetting = () => {
                       width: "100%",
                     }}
                   />
+                  </Box>
                 </Box>
               </Box>
             </Box>
