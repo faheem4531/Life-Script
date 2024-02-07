@@ -63,6 +63,8 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
               "& .MuiOutlinedInput-root": {
                 backgroundColor: backgroundColor,
                 height: stripe ? "46px" : "56px",
+                paddingTop: stripe ? "0px" : "6px",
+                mb: stripe ? "0px" : "6px",
                 borderRadius: stripe ? "0px" : "50px",
                 pt: !stripe ? "0px" : "1.8px",
               },
