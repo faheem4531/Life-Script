@@ -2,6 +2,10 @@
   position: relative;
   margin: 70px 0;
 }
+.loadImageTemp {
+  position: relative;
+  margin: 10px 0;
+}
 
 .BgloadImage {
   width: 275px;

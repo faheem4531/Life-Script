@@ -42,7 +42,8 @@ const Profile = ({data}) => {
 
   useEffect(() => {
     const name = localStorage.getItem("username");
-    setUserName(name);
+    const firstName = name ? name.split(' ')[0] : ''; // Get the part before the first space
+    setUserName(firstName);
     dispatch(getChapters());
     dispatch(getUserProfile());
   }, []);

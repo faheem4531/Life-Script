@@ -13,10 +13,12 @@ interface Props {
   fontSize?: any;
   p?: any;
   disabled?: boolean;
+  isLulu?: boolean;
   image2?: any;
 }
 
 const GlobelBtn = ({
+  isLulu,
   onClick,
   bgColor,
   btnText,
@@ -45,7 +47,7 @@ const GlobelBtn = ({
         width: width,
         minWidth: "140px",
         borderRadius: borderRadius,
-        border: border,
+        border: !isLulu ? border : null,
         color: color,
         textTransform: "capitalize",
         p: p,

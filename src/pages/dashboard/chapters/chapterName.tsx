@@ -482,7 +482,7 @@ const chapterName = () => {
             )}
           </Box>
 
-          <Box>
+          {allQuestions?.length > 0 && (<Box>
             <FloatButton
               onClick={() => {
                 if (
@@ -522,7 +522,7 @@ const chapterName = () => {
                 />
               </Box>
             )}
-          </Box>
+          </Box>)}
         </Layout>
       </Box>
 

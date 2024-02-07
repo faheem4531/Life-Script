@@ -223,6 +223,45 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           <Box>
             <a
               className={`${styles.link} ${
+                currentRoute === "/dashboard/TableOfContent" && styles.active
+              }`}
+              onClick={() => router.push("/dashboard/TableOfContent")}
+            >
+              <Image
+                alt="icon"
+                src={
+                  currentRoute === "/dashboard/TableOfContent"
+                    ? FaqGreen
+                    : FaqWhite
+                }
+              />
+              {t("sideBar.toc")}
+            </a>
+          </Box>
+          <Box>
+            <a
+              className={`${styles.link} ${
+                currentRoute === "/familyTree" && styles.active
+              }`}
+              onClick={() => {
+                if (isPremium) {
+                  router.push("/familyTree");
+                } else {
+                  setBuyPremium(true);
+                }
+              }}
+            >
+              <Image
+                alt="icon"
+                src={currentRoute === "familyTree" ? FamilyTree : FamilyTree}
+              />
+              {t("sideBar.FamilyTree")}
+            </a>
+          </Box>
+
+          <Box>
+            <a
+              className={`${styles.link} ${
                 currentRoute === "/dashboard/BookCover/SelectBookCover"
                   ? styles.active
                   : currentRoute === "/dashboard/BookCover/ViewBookCover"
@@ -287,44 +326,6 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 }
               />
               {t("sideBar.SubPlan")}
-            </a>
-          </Box>
-          <Box>
-            <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/TableOfContent" && styles.active
-              }`}
-              onClick={() => router.push("/dashboard/TableOfContent")}
-            >
-              <Image
-                alt="icon"
-                src={
-                  currentRoute === "/dashboard/TableOfContent"
-                    ? FaqGreen
-                    : FaqWhite
-                }
-              />
-              {t("sideBar.toc")}
-            </a>
-          </Box>
-          <Box>
-            <a
-              className={`${styles.link} ${
-                currentRoute === "/familyTree" && styles.active
-              }`}
-              onClick={() => {
-                if (isPremium) {
-                  router.push("/familyTree");
-                } else {
-                  setBuyPremium(true);
-                }
-              }}
-            >
-              <Image
-                alt="icon"
-                src={currentRoute === "familyTree" ? FamilyTree : FamilyTree}
-              />
-              {t("sideBar.FamilyTree")}
             </a>
           </Box>
           <Box>

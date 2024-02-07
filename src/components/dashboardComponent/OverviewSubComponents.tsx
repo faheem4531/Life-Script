@@ -1,6 +1,7 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import NextIcon from "@/_assets/svg/next-icon.svg";
 import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
+import { selectLuluPaymentStatus } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -179,6 +180,11 @@ export const ViewBook = () => {
 export const ViewTree = () => {
   const { t } = useTranslation();
   const router = useRouter();
+  const [luluStatus, setLuluStatus] = useState("");
+  useEffect(() => {
+    const lulu = localStorage.getItem('luluStatus');
+    setLuluStatus(lulu);
+  },[])
   return (
     <Box
       onClick={() => router.push("/familyTree")}
@@ -222,6 +228,8 @@ export const ViewTree = () => {
 
 export const PrintBook = () => {
   const { t } = useTranslation();
+  const [luluStatus, setLuluStatus] = useState("");
+  console.log("111luluuu", luluStatus);
   return (
     <Box
       sx={{
@@ -241,7 +249,7 @@ export const PrintBook = () => {
         <Typography
           sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
         >
-          {t("overView.EverySpecial")}
+          Print Status of Lifescript
         </Typography>
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
@@ -252,9 +260,10 @@ export const PrintBook = () => {
       </Box>
       <Box>
         <GlobelBtn
-          bgColor="#186F65"
+          isLulu={true}
+          bgColor={luluStatus ? "#186F65" : "#A9A9A9"}
           color="white"
-          btnText={`${t("overView.continue")}`}
+          btnText={luluStatus ? luluStatus : "Printing Status"}
           // onClick={}
           width={{ xl: "250px", sm: "180px" }}
         />

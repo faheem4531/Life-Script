@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-const Dashboard = () => {
+const Template = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const templates = useSelector(selectTemplates);
@@ -52,4 +52,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Template;

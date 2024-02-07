@@ -317,6 +317,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(updateLuluPaymentStatus.fulfilled, (state, action) => {
       state.luluPaymentStatus = action.payload;
+      localStorage.setItem('luluStatus',action.payload);
     });
   },
 });

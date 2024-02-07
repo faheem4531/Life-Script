@@ -232,12 +232,13 @@ export default function Questions({
                       alignItems: "center",
                       columnGap: "5px",
                       color: "#197065",
-                      fontSize: "10px",
+                      fontSize: "12px",
                       px: "16px",
                       py: "7px",
+                      textTransform: "capitalize",
                     }}
                   >
-                    <Image alt="icon" src={EditGreen} /> {t("ChName.edit")}
+                    <Image alt="icon" src={EditGreen} /> Answer
                   </Box>
                 )}
               </Button>

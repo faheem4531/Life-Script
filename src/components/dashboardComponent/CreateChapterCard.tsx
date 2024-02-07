@@ -179,7 +179,7 @@ export const StartNewChapter = ({
                       fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
                     }}
                   >
-                    {t("StartNewChapter.StartNewChapter")}
+                    Start from Scratch
                   </Typography>
                 </Box>
 

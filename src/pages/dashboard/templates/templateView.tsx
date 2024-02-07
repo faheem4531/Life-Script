@@ -27,6 +27,7 @@ import backArrow from "../../../_assets/svg/left.svg";
 import Loading from "./components/loading";
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [completionModal, setCompletionModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [copyTemLoading, setCopyTemLoading] = useState(true);
   const [templateTitle, setTemplateTitle] = useState("");
@@ -38,22 +39,21 @@ const chapterName = () => {
   const { templateId } = router.query;
   const allTemplates = useSelector(selectTemplates);
   const [templateState, setTemplateState] = useState(false);
-  const [isLoaded, setIsloaded] = useState(true);
+  const [isLoaded, setIsloaded] = useState(false);
   const { t } = useTranslation();
   let templateData;
 
   const handleChapterClone = () => {
     setButtonLoading(false);
     setCopyTemLoading(true);
-
     dispatch(isTemplateCloned({ id: templateId.toString() }))
       .unwrap()
       .then((res) => {
         if (res == "Template is already cloned") {
           setTemplateState(true);
-          setIsloaded(true);
           setCopyTemLoading(false);
         } else {
+          setIsloaded(true);
           dispatch(
             cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds })
           )
@@ -62,7 +62,6 @@ const chapterName = () => {
               setCopyTemLoading(false);
               setOpenModal(true);
               setButtonLoading(true);
-              setIsloaded(false);
             })
             .catch(() => {
               setButtonLoading(true);
@@ -93,18 +92,17 @@ const chapterName = () => {
 
   const handleCopyAgain = () => {
     setTemplateState(false);
+    setIsloaded(true);
     dispatch(cloneTemplate({ id: templateId.toString(), ids: tempQuestionIds }))
       .then(() => {
         setCopyTemLoading(false);
         setOpenModal(true);
         setTemplateState(false);
-        setIsloaded(false);
       })
       .catch(() => {
         setCopyTemLoading(false);
         setButtonLoading(false);
         setTemplateState(false);
-        setIsloaded(false);
       });
   };
 
@@ -141,7 +139,7 @@ const chapterName = () => {
           />
         </Box>
 
-        {copyTemLoading ? (
+        {false ? (
           <Box
             sx={{
               marginTop: "8%",
@@ -153,7 +151,10 @@ const chapterName = () => {
             <CircularProgress />
           </Box>
         ) : isLoaded ? (
-          <Loading isLoaded={isLoaded} progressCheck={openModal} />
+          <Loading progressCompleted ={openModal} completed ={()=>{
+            setCompletionModal(true);
+            setIsloaded(false);
+          }} />
         ) : (
           <Box
             sx={{
@@ -254,10 +255,10 @@ const chapterName = () => {
 
       {/* Use Template Modal   */}
       <CustomizationDialog
-        open={openModal}
+        open={completionModal}
         title=""
         handleClose={() => {
-          setOpenModal(false);
+          setCompletionModal(false);
           router.push("/dashboard/chapters");
         }}
         customStyles={{ backgroundColor: "auto", borderRadius: "22px" }}
@@ -311,7 +312,7 @@ const chapterName = () => {
               color="white"
               onClick={() => {
                 router.push("/dashboard/chapters");
-                setOpenModal(false);
+                setCompletionModal(false);
               }}
               width={{ md: "234px", sm: "153px", xs: "103px" }}
             />

@@ -9,18 +9,10 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "../../narrative/Narrative.module.css";
 
-const Loading = ({ isLoaded, progressCheck }) => {
+const Loading = ({progressCompleted, completed}) => {
   const [progress, setProgress] = useState(10);
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
-
-  //   const isLoaded = useSelector(isChapterLoaded);
-
-  const { t } = useTranslation();
-
-  const { chapterId, openai } = router.query;
-
-  console.log("progressCheck", progressCheck);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,24 +25,26 @@ const Loading = ({ isLoaded, progressCheck }) => {
           }, 1000);
           return 100;
         } else {
-          if (prevProgress === 99) {
-            return isLoaded ? prevProgress + 1 : prevProgress + 0;
-          } else {
-            return prevProgress + 10;
-          }
+          return prevProgress + 1;
         }
       });
-    }, 5000);
+    }, 200);
 
     return () => {
       clearInterval(timer);
     };
-  }, [isLoaded]);
+  }, []);
+
+  useEffect(()=>{
+    if(progress === 100 && progressCompleted){
+      completed();
+    }
+  },[progress, progressCompleted]);
 
   return (
     <Box
       sx={{
-        height: "100vh",
+        // height: "100vh",
         bgcolor: "#FFF9F0",
         color: "#197065",
         display: "flex",
@@ -59,12 +53,12 @@ const Loading = ({ isLoaded, progressCheck }) => {
         alignItems: "center",
       }}
     >
-      <Typography sx={{ fontSize: "34px", fontWeight: 200 }}>
-        {progress < 40 && "Copying Template"}
-        {progress < 80 && progress >= 40 && "Suggesting Questions"}
-        {progress >= 100 && "Finalizing"}
+      <Typography sx={{ fontSize: "34px", fontWeight: 200, mt:'20px' }}>
+        {progress < 50 && "Copying Template"}
+        {progress <= 90 && progress >= 50 && "Suggesting Questions"}
+        {progress > 90  && "Finalizing"}
       </Typography>
-      <Box className={styles.loadImageMain}>
+      <Box className={styles.loadImageTemp}>
         <Image
           src={BgLoadImage}
           alt="BgLoadImage"
