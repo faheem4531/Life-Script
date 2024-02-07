@@ -16,6 +16,12 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
     }
   };
 
+  const filterOptions = (options, { inputValue }) => {
+    return options.filter((option) => {
+      return option.phone.includes(inputValue); // Change to phone property
+    });
+  };
+
   return (
     <Box
       sx={{
@@ -29,6 +35,8 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
         value={selectedCountry}
         onChange={handleCountryChange}
         autoHighlight
+        filterOptions={filterOptions} // Apply custom filter
+        // getOptionLabel={(option) => option.phone}
         renderOption={(props, option) => (
           <Box
             component="li"
