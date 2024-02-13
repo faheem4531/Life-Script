@@ -24,7 +24,8 @@ const LiveChat: React.FC = () => {
     const extendedWindow: any = window as unknown as ExtendedWindow;
 
     extendedWindow.__lc = extendedWindow.__lc || {};
-    extendedWindow.__lc.license = 17181108;
+    extendedWindow.__lc.license = 17181294;
+    //17181294
     (function (n, t, c) {
       function i(n: any) {
         return e._h ? e._h.apply(null, n) : e._q.push(n);
