@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import i18n from "../../i18n";
 import { updateLuluPaymentStatus } from "@/store/slices/authSlice";
+import LiveChat from "@/components/homepageComponent/LiveChat";
 
 export default function NewApp({ children }) {
   const router = useRouter();
@@ -34,9 +35,9 @@ export default function NewApp({ children }) {
 
     socket.on("error", (message) => {});
 
-      socket.on("stripeWebhookData", (token) => {
-        localStorage.setItem("token", token);
-      });
+    socket.on("stripeWebhookData", (token) => {
+      localStorage.setItem("token", token);
+    });
 
     socket.on("stripeLuluWebhookData", (msg) => {
       dispatch(updateLuluPaymentStatus(msg));
@@ -48,6 +49,7 @@ export default function NewApp({ children }) {
       <I18nextProvider i18n={i18n}>
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}>
           {/* <Component {...children} /> */}
+          <LiveChat />
           {children}
         </GoogleOAuthProvider>
         <ToastContainer />
