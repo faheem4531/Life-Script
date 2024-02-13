@@ -41,32 +41,6 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [currentPath]);
 
-  // useEffect(() => {
-  //   const jwt = require("jsonwebtoken");
-  //   const token = localStorage?.getItem("token");
-  //   if (token) {
-  //     const decodedToken = jwt?.decode(token);
-  //     const accessRole = decodedToken?.accessRole;
-  //     const createdAt = decodedToken?.created_at;
-  //   console.log("dateee",creat);
-  //     const isfreeTrial = isNotOlderThan7DaysFromCurrentDate(
-  //       createdAt?.toString()
-  //     );
-  //     console.log("isFree", isfreeTrial);
-  //     if (
-  //       accessRole !== "PremiumPlan" &&
-  //       accessRole !== "BasicPlan" &&
-  //       accessRole !== "StandardPlan" &&
-  //       !isfreeTrial &&
-  //       currentPath !== "/verify/verificationSent" &&
-  //       currentPath !== "/verify" &&
-  //       currentPath !=="/_auth/Auth"
-  //     ) {
-  //       currentPath !== "/dashboard/SubscribePlans" && router.push("/dashboard/SubscribePlans");
-  //     }
-  //   }
-  // }, [router, currentPath]);
-
   return (
     <StoreProvider store={store}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -83,9 +57,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <CircularProgress />
           </Box>
         ) : (
-          <NewApp>
-            <Component {...pageProps} />
-          </NewApp>
+            <NewApp>
+              <Component {...pageProps} />
+            </NewApp>
         )}
       </LocalizationProvider>
     </StoreProvider>
