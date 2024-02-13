@@ -175,6 +175,59 @@ const data = {
   ],
 };
 
+const data2 = {
+  name: "f",
+  partner: "pf",
+  userParents: [
+    {
+      name: '',
+      partnerName: '',
+      userParents: [
+        {
+          name: '',
+          partnerName: '',
+          userParents: [],
+          partnerParents: [
+            {
+              name: '',
+            }
+          ]
+        }
+      ],
+      partnerParents: [
+        {
+          name: '',
+          partnerName: '',
+          userParents: [],
+          partnerParents: []
+        }
+      ]
+    }
+  ],
+  partnerParents: [
+    {
+      name: '',
+      partnerName: '',
+      userParents: [
+        {
+          name: '',
+          partnerName: '',
+          userParents: [],
+          partnerParents: []
+        }
+      ],
+      partnerParents: [
+        {
+          name: '',
+          partnerName: '',
+          userParents: [],
+          partnerParents: []
+        }
+      ]
+    }
+  ],
+}
+
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import { zoom } from "d3";
