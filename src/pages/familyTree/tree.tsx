@@ -13,7 +13,7 @@ import styles from "./FamilyTree.module.css";
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
-  const dispatch: any = useDispatch();
+    const dispatch: any = useDispatch();
   const [familyModal, setFamilyModal] = useState(false);
   const [familyRelationModal, setFamilyRelationModal] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -28,7 +28,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const profileIcon =
     "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
-  const handleAddedPerson = (data) => {
+      const handleAddedPerson = (data) => {
     setFamilyModal(false);
     setSelectedNode(null);
     setUpdatedNode({});
@@ -91,11 +91,11 @@ const FamilyTree = ({ familyTreeData }) => {
     };
 
     dispatch(addParent(parentData))
-    .unwrap()
-    .then(() => {
-      setUpdatedNode({});
-      setNodeData(null);
-    });
+      .unwrap()
+      .then(() => {
+        setUpdatedNode({});
+        setNodeData(null);
+      });
   };
 
   const addChild = (data) => {
@@ -123,15 +123,15 @@ const FamilyTree = ({ familyTreeData }) => {
     }
 
     dispatch(addChildren(childData))
-    .unwrap()
-    .then(() => {
-      setUpdatedNode({});
-      setNodeData(null);
-    });
+      .unwrap()
+      .then(() => {
+        setUpdatedNode({});
+        setNodeData(null);
+      });
 
   };
 
-  const addSibling = (data) => {    
+  const addSibling = (data) => {
     let childData = {
       nodeId: selectedNode?.parent?.data?._id,
       name: data.name,
@@ -143,11 +143,11 @@ const FamilyTree = ({ familyTreeData }) => {
     };
 
     dispatch(addChildren(childData))
-    .unwrap()
-    .then(() => {
-      setUpdatedNode({});
-      setNodeData(null);
-    });
+      .unwrap()
+      .then(() => {
+        setUpdatedNode({});
+        setNodeData(null);
+      });
 
   };
 
@@ -446,7 +446,7 @@ const FamilyTree = ({ familyTreeData }) => {
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known"; 
+        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, true);
       renderImage(14, -45, d.data.image || profileIcon);
       renderText(76, -20, d.data.name || "", `${styles.name}`);
@@ -519,7 +519,7 @@ const FamilyTree = ({ familyTreeData }) => {
           // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
-
+      
       <SelectRelationModal
         relations={relations}
         familyRelationModal={familyRelationModal}
@@ -528,7 +528,7 @@ const FamilyTree = ({ familyTreeData }) => {
         onClick={(item) => {
           setFamilyRelationModal(false);
           setSelectedRelation(item);
-          if(item === "Partner"){
+          if (item === "Partner") {
             setUpdatedNode({ isSpouse: true });
           }
         }}

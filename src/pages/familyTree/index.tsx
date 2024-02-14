@@ -101,7 +101,7 @@ const Home = () => {
           >
             {/* <SubscriptionHeader title="Family Tree" description="" /> */}
           </Box>
-          <FamilyTree familyTreeData={familyTreeData3} />
+          <FamilyTree familyTreeData={familyTreeData} />
         </Box>
       </FamilyTreeLayout>
     </Box>

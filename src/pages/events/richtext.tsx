@@ -10,10 +10,8 @@ import {
   //convertFromHTML,
   convertToRaw,
 } from "draft-js";
-// import htmlToDraft from "html-to-draftjs";
 
 import styles from "./styles.module.css";
-// import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
 import MicListing from "@/_assets/svg/mic-listing.svg";
 import MicOff from "@/_assets/svg/mic-off.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
@@ -40,7 +38,6 @@ import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
 import backArrow from "../../_assets/svg/left.svg";
 
-// import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -371,52 +368,8 @@ const RichText = ({ questionId }) => {
       reader.onloadend = async () => {
         const form_data = new FormData();
         form_data.append("image", file);
-        // const res = await dispatch(uploadImage(form_data));
-        // const form_data2 = new FormData();
-        // form_data2.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
-        // form_data2.append("file", file);
-        // const simple = await axios.post(
-        //   "https://api-service.vanceai.com/web_api/v1/upload",
-        //   form_data2
-        // );
-        // const jconfig = {
-        //   name: "matting",
-        //   config: {
-        //     module: "matting",
-        //     module_params: {
-        //       model_name: "MattingStable",
-        //       rescale: 532,
-        //     },
-        //     out_params: {
-        //       compress: {
-        //         quality: 100,
-        //       },
-        //       dpi: 300,
-        //       format: "jpg",
-        //     },
-        //   },
-        // };
-        // const form_data3 = new FormData();
-        // form_data3.append("uid", simple?.data?.data?.uid);
-        // form_data3.append("api_token", "71b1bfcdf31b746dd8444631a9f563e5");
-        // form_data3.append("jconfig", JSON.stringify(jconfig));
-
-        // const transform = await axios.post(
-        //   "https://api-service.vanceai.com/web_api/v1/transform",
-        //   form_data3
-        // );
-
-        // console.log("pppppp", transform?.data?.data?.trans_id);
-
-        // const download = await axios.post(
-        //   `https://api-service.vanceai.com/web_api/v1/download?api_token=71b1bfcdf31b746dd8444631a9f563e5&trans_id=${transform?.data?.data?.trans_id}`
-        // );
-
-        // const form_data7 = new FormData();
-        // form_data7.append("image", download.data);
 
         const res = await dispatch(uploadImage(form_data));
-        console.log('111resimhg', res.payload);
 
         resolve({ data: { link: res.payload } });
       };
