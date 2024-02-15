@@ -62,7 +62,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      if (accessRole === "PremiumPlan" || accessRole === "StandardPlan") {
+      console.log("111acccrole", accessRole);
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
         setIsPremium(true);
       } else {
         setIsPremium(false);
@@ -371,7 +372,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
       <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
-        description={`${t("richText.PreDes")}`}
+        description="Family Tree is only available for Standard and Premium users. Want to buy now?"
         cancel={() => {
           setBuyPremium(false);
         }}

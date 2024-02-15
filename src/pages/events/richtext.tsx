@@ -153,7 +153,7 @@ const RichText = ({ questionId }) => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      if (accessRole === "PremiumPlan" || accessRole === "StandardPlan") {
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
         setIsPremium(true);
       }else{
         setIsPremium(false);
