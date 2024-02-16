@@ -240,13 +240,13 @@ const chapterName = () => {
         id: questionId,
       })
     )
-      .unwrap()
-      .then(() => {
-        dispatch(getChapterbyId({ id: chapterId?.toString() }));
-        if (emailQuestion?.questionTitle) {
-          setEmailQuestion({ questionTitle: "", questionId: "" });
-          router.push(`/dashboard/chapters/chapterName?chapterId=${chapterId}`);
-        }
+      .then(({payload}) => {
+        dispatch(getChapterbyId({ id: chapterId?.toString() })).then(()=> {
+          if (emailQuestion?.questionTitle) {
+            setEmailQuestion({ questionTitle: "", questionId: "" });
+            router.push(`/events?questionId=${payload._id}`);
+          }
+        })
       });
   };
 
