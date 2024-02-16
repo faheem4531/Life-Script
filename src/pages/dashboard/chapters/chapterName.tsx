@@ -17,6 +17,7 @@ import socket from "@/services/socketManager";
 import {
   createQuestion,
   getChapterbyId,
+  getChapters,
   getOpenaiQuestion,
   getaiQuestions,
   openaiQuestion,
@@ -40,12 +41,13 @@ const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [gptSocket, setgptSocket] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
-  console.log("ispremium", isPremium);
+  // console.log("ispremium", isPremium);
   const [buyPremium ,setBuyPremium] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allQuestionsLoading, setAllQuestionsLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
   const [aiQuestions, setaiQuestions] = useState([]);
+  const [showFusion, setShowFusion] = useState(false)
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [aiGeneration, setAiGeneration] = useState(false);
@@ -53,6 +55,7 @@ const chapterName = () => {
     questionTitle: "",
     questionId: "",
   });
+  
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
@@ -173,12 +176,37 @@ const chapterName = () => {
           setLoading(false);
           setAllQuestionsLoading(false);
         });
+        
+
+        dispatch(getChapters()).then(({payload})=> {
+          const [chapter] = payload.filter((chapter) => chapter._id === chapterId?.toString());
+
+          if (chapter !== undefined && (chapter.introductionChapter || chapter.startDefaultChapter)) {
+            setShowFusion(true);
+          }
+          
+          // console.log("JKJE", chatpter);
+          
+        })
+        // const fff = chapters.filter((chapter)=> chapter._id === chapterId?.toString() )
+        // console.log("KKK", fff, chapters);
+
   }, [chapterId, questionChanged]);
+
+  // useEffect(()=> {
+  //   // setShowFusion()
+
+  // }, [chapters])
 
   useEffect(() => {
     setAllQuestions(question?.questions);
     setaiQuestions(question?.openAiQuestion);
     setChapterName(question?.title);
+
+    
+    // if (startDefaultChapter && introductionChapter) {}
+    // setShowFusion(startDefaultChapter && introductionChapter)
+
 
     if (question?.questions?.length > 1) {
       dispatch(getaiQuestions({ chapterId: chapterId.toString() }));
@@ -278,7 +306,9 @@ const chapterName = () => {
       }
     }
   }, []);
+  // console.log("HHHHHHHHH", allQuestions);
 
+  
   return (
     <>
       <Box>
@@ -482,7 +512,7 @@ const chapterName = () => {
             )}
           </Box>
 
-          {allQuestions?.length > 0 && (<Box>
+          {allQuestions?.length > 0 && !showFusion  && (<Box>
             <FloatButton
               onClick={() => {
                 if (

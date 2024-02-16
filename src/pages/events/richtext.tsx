@@ -1,5 +1,5 @@
 "use client";
-import { compiledChapter, uploadImage } from "@/store/slices/chatSlice"; //uploadImage
+import { compiledChapter, getChapters, simpleChapter, uploadImage } from "@/store/slices/chatSlice"; //uploadImage
 import { Box } from "@mui/material";
 import {
   ContentState,
@@ -325,6 +325,15 @@ const RichText = ({ questionId }) => {
 
   //answer completed
   const handleCompleteAnswer = () => {
+
+    dispatch(getChapters()).then(({payload})=> {
+      const [chapter] = payload.filter((chapter) =>  chapter.introductionChapter  || chapter.startDefaultChapter);
+      if (chapter.introductionChapter || chapter.startDefaultChapter) {
+        dispatch(simpleChapter({ chapterId: chapter?._id }));
+      }
+    })
+
+
     if (!compileChapterId) {
       saveUserAnswer();
       dispatch(
