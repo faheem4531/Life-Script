@@ -1,34 +1,37 @@
 import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
 import SelectRelationModal from "@/components/modal/SelectRelationModal";
-import { updatePartner, addChildren, addParent } from "@/store/slices/chatSlice";
+import {
+  updatePartner,
+  addChildren,
+  addParent,
+} from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import { Box } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import * as d3 from "d3";
 import { zoom } from "d3";
 import { useEffect, useRef, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useDispatch } from "react-redux";
 import styles from "./FamilyTree.module.css";
+import {saveSvgAsPng} from 'save-svg-as-png'
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
-    const dispatch: any = useDispatch();
+  const dispatch: any = useDispatch();
   const [familyModal, setFamilyModal] = useState(false);
   const [familyRelationModal, setFamilyRelationModal] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
   const [updatedNode, setUpdatedNode] = useState({});
   const [nodeData, setNodeData] = useState(null);
-  const [selectedRelation, setSelectedRelation] = useState();
-  const [relations, setRelations] = useState([
-    "Sibling",
-    "Child"
-  ]);
+  const [selectedRelation, setSelectedRelation] = useState(undefined);
+  const [relations, setRelations] = useState(["Sibling", "Child"]);
   const [personData, setPersonData] = useState({});
   const profileIcon =
     "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
-      const handleAddedPerson = (data) => {
+  const handleAddedPerson = (data) => {
     setFamilyModal(false);
     setSelectedNode(null);
     setUpdatedNode({});
@@ -40,12 +43,11 @@ const FamilyTree = ({ familyTreeData }) => {
       addChild(newData);
     } else if (relationType === "Partner") {
       addPartner(newData);
-    } else if(relationType === "Sibling"){
+    } else if (relationType === "Sibling") {
       addSibling(newData);
     } else {
       addPartner(newData);
     }
-
   };
 
   const addPartner = (data) => {
@@ -128,7 +130,6 @@ const FamilyTree = ({ familyTreeData }) => {
         setUpdatedNode({});
         setNodeData(null);
       });
-
   };
 
   const addSibling = (data) => {
@@ -148,18 +149,16 @@ const FamilyTree = ({ familyTreeData }) => {
         setUpdatedNode({});
         setNodeData(null);
       });
-
   };
 
   const handleIconClick = (name, iconType, d) => {
     setUpdatedNode({});
-    setRelations([
-      "Sibling",
-      "Child"
-    ])
+    setRelations(["Sibling", "Child"]);
     if (iconType === "editspouse") {
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
+      console.log("Reached");
+
       handleAdd(name, d);
     } else if (iconType === "edit") {
       handleEdit(name, d);
@@ -175,7 +174,9 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const handleEdit = (name, d) => {
     // Implement your logic for handling edit
+    setSelectedRelation(undefined);
     setUpdatedNode({ isSpouse: false, ...d?.data });
+
     setSelectedNode(d);
     setFamilyModal(true);
   };
@@ -185,7 +186,9 @@ const FamilyTree = ({ familyTreeData }) => {
     setNodeData(null);
     const isSpouse = d?.data?.name ? false : true;
     setSelectedNode({ isSpouse: isSpouse, ...d });
-    !d?.parent?.data?.name && !d?.parent?.data?.spouseName && setRelations((prev) => [...prev, "Parent"]);
+    !d?.parent?.data?.name &&
+      !d?.parent?.data?.spouseName &&
+      setRelations((prev) => [...prev, "Parent"]);
     !d?.data?.spouseName && setRelations((prev) => [...prev, "Partner"]);
     setFamilyRelationModal(true);
   };
@@ -195,6 +198,31 @@ const FamilyTree = ({ familyTreeData }) => {
       return;
     } else {
       d3.select(svgRef.current).selectAll("*").remove();
+      d3.select("#download").on("click", function () {
+        // Get the d3js SVG element and save using saveSvgAsPng.js
+
+        const gElement = d3.select(svgRef.current).select('g');
+
+        if (!gElement.empty()) {
+          const currentTransform = gElement.attr('transform');
+
+          const withoutScale = currentTransform.replace(/scale\([^)]*\)/, '').replace(/translate\([^)]*\)/, 'translate(10, 10)');
+
+
+
+    
+          gElement.attr('transform', withoutScale);
+        }
+        const image = document.getElementsByTagName('svg')[1]
+        console.log(
+          "HI", image
+        );
+        
+        saveSvgAsPng(document.getElementsByTagName('svg')[1], "familytree.png", {
+          scale: 1,
+          backgroundColor: "#FFFFFF",
+        });
+      });
       drawTree();
     }
   }, [familyTreeData]);
@@ -282,7 +310,7 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("y", y)
         .attr("width", 200)
         .attr("height", height)
-        .on("click", () =>{
+        .on("click", () => {
           console.log("Clicked on rect:", d.data?.image, "33rr", className);
         });
     };
@@ -339,7 +367,13 @@ const FamilyTree = ({ familyTreeData }) => {
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known" ;
+        born && died
+          ? born + " - " + died
+          : born
+          ? "b. " + born
+          : died
+          ? "d. " + died
+          : "b. Not Known";
       renderText(76, -50, age || "", `${styles.dateLocation}`);
       renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
@@ -353,7 +387,8 @@ const FamilyTree = ({ familyTreeData }) => {
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
           ? "b. " + spouseBorn
-          : spouseDied ? "d. " + spouseDied
+          : spouseDied
+          ? "d. " + spouseDied
           : "b. Not Known";
       renderText(76, 60, spouseAge || "", `${styles.dateLocation}`);
       renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
@@ -446,7 +481,13 @@ const FamilyTree = ({ familyTreeData }) => {
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
       const age =
-        born && died ? born + " - " + died : born ? "b. " + born : died ? "d. " + died : "b. Not Known";
+        born && died
+          ? born + " - " + died
+          : born
+          ? "b. " + born
+          : died
+          ? "d. " + died
+          : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, true);
       renderImage(14, -45, d.data.image || profileIcon);
       renderText(76, -20, d.data.name || "", `${styles.name}`);
@@ -515,11 +556,12 @@ const FamilyTree = ({ familyTreeData }) => {
         }}
       >
         <svg
+          style={{ position: "absolute", top: "100px" }}
           ref={svgRef}
           // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
-      
+
       <SelectRelationModal
         relations={relations}
         familyRelationModal={familyRelationModal}
@@ -527,12 +569,17 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyModal={setFamilyModal}
         onClick={(item) => {
           setFamilyRelationModal(false);
+
           setSelectedRelation(item);
           if (item === "Partner") {
             setUpdatedNode({ isSpouse: true });
           }
         }}
       />
+      <IconButton id="download" aria-label="download">
+  <CloudDownloadIcon fontSize="large"/>
+</IconButton>
+      {/* <Button id="download">Download as PNG</Button> */}
 
       <FamilyTreeDataModal
         nodeData={updatedNode}

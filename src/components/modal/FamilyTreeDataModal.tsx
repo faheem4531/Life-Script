@@ -40,7 +40,16 @@ const FamilyTreeDataModal = ({
   const maxDate = new Date();
 
   useEffect(() => {
-    if (nodeData?.isSpouse === true) {
+    if (selectedRelation) {
+      setSelectedValueGender(undefined);
+      setInputValueName("");
+      setInputValueLocation("");
+      setDateOfBirth(null);
+      setSelectedValueLiving("Living");
+      setShowDatePicker(false);
+      setDateOfDeath(null);
+      setImageLink("");
+    } else if (nodeData?.isSpouse === true) {
       setSelectedValueGender(nodeData?.spouseGender || "");
       setInputValueName(nodeData?.spouseName || "");
       setInputValueLocation(nodeData?.spouseLocation || "");
