@@ -3,7 +3,7 @@ import DemoProfile from "@/_assets/svg/profile.svg";
 import Logo from "@/_assets/svg/white-logo.svg";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import CameraIcon from "../../_assets/svg/cameraIcon.svg";
@@ -12,6 +12,9 @@ import styles from "./Sidebar.module.css";
 import * as d3 from "d3";
 import { selectTreeData } from "@/store/slices/chatSlice";
 import { useSelector } from "react-redux";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import Link from "next/link";
 
 const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(true);
@@ -51,7 +54,9 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
             myself: node?.data?.myself,
           };
           // Push the first object into the allNodes array
-          firstObject?.myself === true ? setSelectedNode(firstObject) : allNodes.push(firstObject);
+          firstObject?.myself === true
+            ? setSelectedNode(firstObject)
+            : allNodes.push(firstObject);
         }
 
         if (node?.data?.spouseName) {
@@ -92,6 +97,7 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
           <Image src={MenuIcon} alt="MenuIcon" />
         </Box>
       )}
+
       <Box
         sx={{
           borderTop: "1px solid #fff",
@@ -103,16 +109,24 @@ const FamilyTreeSideBar = ({ menuClick, handleSideCheck }) => {
         }}
       >
         <Box>
-          <Typography
-            sx={{
-              fontSize: { md: "14.865px", xs: "12px" },
-              color: "black",
-              p: { md: "20px 15px", sm: "15px 15px", xs: "10px 15px" },
-              borderBottom: "1px solid #ECECEC",
-            }}
-          >
-            {selectedNode?.name} Family Tree
-          </Typography>
+          <Box display='flex' alignItems='center'>
+            <Link href="/dashboard/chapters">
+              <IconButton color="primary" aria-label="back">
+                <ArrowBackIcon />
+              </IconButton>
+            </Link>
+            <Typography
+              sx={{
+                fontSize: { md: "14.865px", xs: "12px" },
+                color: "black",
+                p: { md: "20px 15px", sm: "15px 15px", xs: "10px 15px" },
+                borderBottom: "1px solid #ECECEC",
+              }}
+            >
+              {selectedNode?.name} Family Tree
+            </Typography>
+          </Box>
+
           <Box
             sx={{
               fontSize: { md: "14.865px", xs: "12px" },

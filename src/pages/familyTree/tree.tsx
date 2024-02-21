@@ -17,6 +17,8 @@ import styles from "./FamilyTree.module.css";
 import { saveSvgAsPng } from "save-svg-as-png";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import LogoSvg from "@/_assets/svg/logo.svg";
+import FamilyTreeSVG from "@/_assets/svg/family-tree-svg.svg";
+
 import CircularProgress from "@mui/material/CircularProgress";
 
 const FamilyTree = ({ familyTreeData }) => {
@@ -203,49 +205,68 @@ const FamilyTree = ({ familyTreeData }) => {
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
         setLoading(true);
-        // Get the d3js SVG element and save using saveSvgAsPng.js
 
-        const gElement = d3.select(svgRef.current).select("g");
-
-        if (!gElement.empty()) {
-          const currentTransform = gElement.attr("transform");
-          const withoutScale = currentTransform
-            .replace(/scale\([^)]*\)/, "")
-            .replace(/translate\([^)]*\)/, "translate(10, 10)");
-          gElement.attr("transform", withoutScale);
-        }
-
-        const { src, height, width } = LogoSvg;
+        const { src, height } = LogoSvg;
+        const { src: srcFamily, width: widthFamily } = FamilyTreeSVG;
         const mainSvg = d3.select(svgRef.current);
         const familyTreeGroup = mainSvg
           .append("g")
-          .attr("id", "familyTreeGroup");
+          .attr("id", "familyTreeGroup")
+          .attr("transform", "scale(2)");
+        const familyTreeGroupFamily = mainSvg
+          .append("g")
+          .attr("id", "familyTreeGroupFamily")
+          .attr("transform", `translate(0, ${50}) scale(0.2)`);
 
         d3.xml(src).then((data) => {
-          const externalSvgContent = d3.select(data).select("svg").html();
-          familyTreeGroup.html(externalSvgContent);
+          const externalSvgContent = d3.select(data).select("svg");
 
-          const name =
-            typeof window !== "undefined"
-              ? localStorage.getItem("username")
-              : null;
+          // Add the transformation to the <g> element
+          // externalSvgContent.select("g").attr("transform", "scale(2)");
 
-          // Add dynamic text below the logo
-          familyTreeGroup
-            .append("text")
-            .attr("x", 0) // Adjust the x-coordinate as needed
-            .attr("y", height + 20) // Adjust the y-coordinate as needed
-            .attr("text-anchor", "start") // Adjust text-anchor as needed (start, middle, end)
-            .attr("fill", "black") // Adjust the text color
-            .style("font-size", "20px")
-            .text(`Family Tree Of: ${name}`);
+          familyTreeGroup.html(externalSvgContent.html());
 
-          saveSvgAsPng(mainSvg.node(), "familytree.png", {
-            scale: 1,
-            backgroundColor: "#FFFFFF",
-          }).then(() => {
-            setLoading(false);
-            familyTreeGroup.remove();
+          d3.xml(srcFamily).then((dataFamily) => {
+            const externalSvgContentFamily = d3
+              .select(dataFamily)
+              .select("svg");
+            familyTreeGroupFamily.html(externalSvgContentFamily.html());
+            const name =
+              typeof window !== "undefined"
+                ? localStorage.getItem("username")
+                : null;
+            // Add a separation between the two external SVGs
+            const separation = 20;
+            const newY = height + 100 + separation;
+
+            // Append the second external SVG below the first one
+            familyTreeGroupFamily
+              .append("g")
+              .attr("id", "secondExternalSvg")
+              .attr("transform", `translate(0, ${newY}) scale(0.2)`);
+            // .html(familyTreeGroupFamily.html());
+
+            // Add dynamic text below the second logo
+            familyTreeGroupFamily
+              .append("text")
+              .attr("x", widthFamily + 180 ) // Adjust the x-coordinate as needed
+              .attr("y", newY + height) // Adjust the y-coordinate as needed
+              .attr("text-anchor", "start") // Adjust text-anchor as needed (start, middle, end)
+              .attr("fill", "black") // Adjust the text color
+              .style("font-size", "140px")
+              .style("font-weight", "140px")
+              .style("color", "#1D2D20")
+              .text(`${name} Family Tree`);
+
+            saveSvgAsPng(mainSvg.node(), "familytree.png", {
+              scale: 1,
+              backgroundColor: "#FFFFFF",
+            }).then(() => {
+              setLoading(false);
+              familyTreeGroup.remove();
+              familyTreeGroupFamily.remove();
+
+            });
           });
         });
       });
