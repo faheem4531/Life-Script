@@ -7,15 +7,17 @@ import {
 } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import { Box, Button, IconButton } from "@mui/material";
+import { Backdrop, Box, Button, IconButton } from "@mui/material";
 import * as d3 from "d3";
 import { zoom } from "d3";
 import { useEffect, useRef, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useDispatch } from "react-redux";
 import styles from "./FamilyTree.module.css";
-import {saveSvgAsPng} from 'save-svg-as-png'
-import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import { saveSvgAsPng } from "save-svg-as-png";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import LogoSvg from "@/_assets/svg/logo.svg";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -23,6 +25,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const [familyModal, setFamilyModal] = useState(false);
   const [familyRelationModal, setFamilyRelationModal] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [updatedNode, setUpdatedNode] = useState({});
   const [nodeData, setNodeData] = useState(null);
   const [selectedRelation, setSelectedRelation] = useState(undefined);
@@ -199,28 +202,51 @@ const FamilyTree = ({ familyTreeData }) => {
     } else {
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
+        setLoading(true);
         // Get the d3js SVG element and save using saveSvgAsPng.js
 
-        const gElement = d3.select(svgRef.current).select('g');
+        const gElement = d3.select(svgRef.current).select("g");
 
         if (!gElement.empty()) {
-          const currentTransform = gElement.attr('transform');
-
-          const withoutScale = currentTransform.replace(/scale\([^)]*\)/, '').replace(/translate\([^)]*\)/, 'translate(10, 10)');
-
-
-
-    
-          gElement.attr('transform', withoutScale);
+          const currentTransform = gElement.attr("transform");
+          const withoutScale = currentTransform
+            .replace(/scale\([^)]*\)/, "")
+            .replace(/translate\([^)]*\)/, "translate(10, 10)");
+          gElement.attr("transform", withoutScale);
         }
-        const image = document.getElementsByTagName('svg')[1]
-        console.log(
-          "HI", image
-        );
-        
-        saveSvgAsPng(document.getElementsByTagName('svg')[1], "familytree.png", {
-          scale: 1,
-          backgroundColor: "#FFFFFF",
+
+        const { src, height, width } = LogoSvg;
+        const mainSvg = d3.select(svgRef.current);
+        const familyTreeGroup = mainSvg
+          .append("g")
+          .attr("id", "familyTreeGroup");
+
+        d3.xml(src).then((data) => {
+          const externalSvgContent = d3.select(data).select("svg").html();
+          familyTreeGroup.html(externalSvgContent);
+
+          const name =
+            typeof window !== "undefined"
+              ? localStorage.getItem("username")
+              : null;
+
+          // Add dynamic text below the logo
+          familyTreeGroup
+            .append("text")
+            .attr("x", 0) // Adjust the x-coordinate as needed
+            .attr("y", height + 20) // Adjust the y-coordinate as needed
+            .attr("text-anchor", "start") // Adjust text-anchor as needed (start, middle, end)
+            .attr("fill", "black") // Adjust the text color
+            .style("font-size", "20px")
+            .text(`Family Tree Of: ${name}`);
+
+          saveSvgAsPng(mainSvg.node(), "familytree.png", {
+            scale: 1,
+            backgroundColor: "#FFFFFF",
+          }).then(() => {
+            setLoading(false);
+            familyTreeGroup.remove();
+          });
         });
       });
       drawTree();
@@ -542,6 +568,14 @@ const FamilyTree = ({ familyTreeData }) => {
 
   return (
     <>
+      <Box>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      </Box>
       <Box
         sx={{
           position: "absolute",
@@ -556,7 +590,8 @@ const FamilyTree = ({ familyTreeData }) => {
         }}
       >
         <svg
-          style={{ position: "absolute", top: "100px" }}
+          id="familyTree"
+          style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
           // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
@@ -577,8 +612,8 @@ const FamilyTree = ({ familyTreeData }) => {
         }}
       />
       <IconButton id="download" aria-label="download">
-  <CloudDownloadIcon fontSize="large"/>
-</IconButton>
+        <CloudDownloadIcon fontSize="large" />
+      </IconButton>
       {/* <Button id="download">Download as PNG</Button> */}
 
       <FamilyTreeDataModal
