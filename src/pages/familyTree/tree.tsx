@@ -216,13 +216,10 @@ const FamilyTree = ({ familyTreeData }) => {
         const familyTreeGroupFamily = mainSvg
           .append("g")
           .attr("id", "familyTreeGroupFamily")
-          .attr("transform", `translate(0, ${50}) scale(0.2)`);
+          .attr("transform", `translate(0, ${60}) scale(0.2)`);
 
         d3.xml(src).then((data) => {
           const externalSvgContent = d3.select(data).select("svg");
-
-          // Add the transformation to the <g> element
-          // externalSvgContent.select("g").attr("transform", "scale(2)");
 
           familyTreeGroup.html(externalSvgContent.html());
 
@@ -243,8 +240,6 @@ const FamilyTree = ({ familyTreeData }) => {
             familyTreeGroupFamily
               .append("g")
               .attr("id", "secondExternalSvg")
-              .attr("transform", `translate(0, ${newY}) scale(0.2)`);
-            // .html(familyTreeGroupFamily.html());
 
             // Add dynamic text below the second logo
             familyTreeGroupFamily
