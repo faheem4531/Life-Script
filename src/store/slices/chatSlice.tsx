@@ -50,7 +50,7 @@ import {
   addParentApi,
   updateBookApi,
   getaiQuestionsApi,
-  luluPrintingApi
+  luluPrintingApi,
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -65,7 +65,7 @@ interface State {
   chapter: any;
   chapterLoading: any;
   tocData: any;
-  treeData: any
+  treeData: any;
 }
 
 const initialState: State = {
@@ -120,7 +120,7 @@ export const luluPrinting = createAsyncThunk<UserData, any>(
 
 export const customerSupport = createAsyncThunk<UserData, any>(
   "chat/create-chapter",
-  async (data: { subject: string, description }) => {
+  async (data: { subject: string; description }) => {
     try {
       const response = await customerSupportApi(data);
       return response;
@@ -144,11 +144,7 @@ export const stripePayment = createAsyncThunk<UserData, any>(
 
 export const openaiQuestion = createAsyncThunk<UserData, any>(
   "chat/openai-question",
-  async (data: {
-    chapterId: string;
-    flag: string;
-    id: string;
-  }) => {
+  async (data: { chapterId: string; flag: string; id: string }) => {
     try {
       const response = await openaiQuestionApi(data);
       return response;
@@ -160,10 +156,7 @@ export const openaiQuestion = createAsyncThunk<UserData, any>(
 
 export const getOpenaiQuestion = createAsyncThunk<UserData, any>(
   "chat/openai-question",
-  async (data: {
-    chapterId: string;
-    questionId: string;
-  }) => {
+  async (data: { chapterId: string; questionId: string }) => {
     try {
       const response = await getOpenaiQuestionApi(data);
       return response;
@@ -187,7 +180,7 @@ export const getAnswers = createAsyncThunk<any[], void>(
 
 export const getaiQuestions = createAsyncThunk<any, any>(
   "chat/get-aiquestions",
-  async (data: {chapterId: string}) => {
+  async (data: { chapterId: string }) => {
     try {
       const response = await getaiQuestionsApi(data);
       return response;
@@ -244,8 +237,6 @@ export const createToc = createAsyncThunk<UserData, any>(
     }
   }
 );
-
-
 
 export const updateChapterResponse = createAsyncThunk<UserData, any>(
   "chat/update-chapter-response",
@@ -333,13 +324,13 @@ export const saveAnswer = createAsyncThunk<UserData, any>(
 
 export const bookCover = createAsyncThunk<UserData, any>(
   "chat/book-cover",
-  async (data: { 
-    coverNumber: string,   
-    title: string,
-    subTitle: string,
-    byLine: string,
-    color:string,
-    image:string
+  async (data: {
+    coverNumber: string;
+    title: string;
+    subTitle: string;
+    byLine: string;
+    color: string;
+    image: string;
   }) => {
     try {
       const response = await bookCoverApi(data);
@@ -352,14 +343,14 @@ export const bookCover = createAsyncThunk<UserData, any>(
 
 export const updateBookCover = createAsyncThunk<UserData, any>(
   "chat/book-cover-update",
-  async (data: {   
-    id: string, 
-    CoverNumber: string,
-    title: string,
-    subTitle: string,
-    byLine: string,
-    color:string,
-    image:string
+  async (data: {
+    id: string;
+    CoverNumber: string;
+    title: string;
+    subTitle: string;
+    byLine: string;
+    color: string;
+    image: string;
   }) => {
     try {
       const response = await updateBookCoverApi(data);
@@ -506,7 +497,6 @@ export const bookTitle = createAsyncThunk<UserData, { title: string }>(
     }
   }
 );
-
 
 export const updateChapter = createAsyncThunk<UserData, any>(
   "chat/update-chapter",
@@ -702,7 +692,11 @@ export const getQuestionbyId = createAsyncThunk<UserData, { id: string }>(
 export const chatSlice = createSlice({
   name: "chat",
   initialState,
-  reducers: {},
+  reducers: {
+    resetChatState: (state) => {
+      return initialState;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getChapters.fulfilled, (state, action) => {
       state.chats = action.payload;
@@ -750,16 +744,16 @@ export const chatSlice = createSlice({
   },
 });
 
-export const {} = chatSlice.actions;
+export const {resetChatState} = chatSlice.actions;
 
 export const selectChat = (state: { chat: any }) => state.chat.chats;
-export const selectAnswers = (state: {chat: any}) => state.chat.answers;
-export const selectTreeData = (state: {chat: any}) => state.chat.treeData;
+export const selectAnswers = (state: { chat: any }) => state.chat.answers;
+export const selectTreeData = (state: { chat: any }) => state.chat.treeData;
 export const selectCoverData = (state: { chat: any }) => state.chat.coverData;
 export const selectChapterNotification = (state: { chat: any }) =>
   state.chat.notifications;
 export const selectAllChapters = (state: { chat: any }) => state.chat.chapters;
-export const selectTocData = (state: {chat: any}) => state.chat.tocData;
+export const selectTocData = (state: { chat: any }) => state.chat.tocData;
 export const selectChapter = (state: { chat: any }) => state.chat.chapter;
 export const selectTemplates = (state: { chat: any }) => state.chat.templates;
 export const isChapterLoaded = (state: { chat: any }) =>

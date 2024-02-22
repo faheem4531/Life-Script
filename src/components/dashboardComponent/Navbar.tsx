@@ -5,6 +5,7 @@ import Logo from "@/_assets/svg/white-logo.svg";
 import {
   getChapterNotifications,
   readNotification,
+  resetChatState,
   selectChapterNotification,
 } from "@/store/slices/chatSlice";
 import { Box } from "@mui/material";
@@ -63,7 +64,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
 
   const handleClickOption = (option) => {
     if (option.id === 1) {
-      // dispatch(logout());
+      dispatch(resetChatState());
       localStorage.clear();
       router.push("/");
     }

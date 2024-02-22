@@ -76,11 +76,16 @@ const Questionnaire = () => {
     dispatch(getUserProfile())
       .unwrap()
       .then((res) => {
-        if (res.personalizedQuestion?.length > 0) {
+        if (
+          res.personalizedQuestion?.length > 0 &&
+          res.personalizedQuestion !== "ChronologicalOrder"
+        ) {
           setTimeout(() => {
             router.push("/dashboard/chapters");
             setLoading(false);
           }, 3000);
+        } else if (res.personalizedQuestion === "ChronologicalOrder") {
+          setLoading(false);
         } else {
           setTimeout(() => {
             setLoading(false);
