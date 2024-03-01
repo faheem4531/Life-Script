@@ -19,6 +19,7 @@ import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Img from "@/_assets/book-cover";
 
 const EditBookCover = () => {
   const router = useRouter();
@@ -38,14 +39,107 @@ const EditBookCover = () => {
     null
   );
 
+  const [initialStates, setInitialStates] = useState<{
+    [key: string]: string[];
+  }>({});
+
+  useEffect(() => {
+    // Fetch initial content of specified elements and store in state
+    // const headingText = document.getElementById("heading-text");
+    // const authorText = document.getElementById("author-text");
+    // const otherText = document.getElementById("other-text");
+
+    const statesToFetch = [
+      { id: "heading-text" },
+      { id: "author-text" },
+      // { id: "other-text", key: "otherText" },
+      // Add more elements if needed
+    ];
+
+    statesToFetch.forEach(({ id }) => {
+      const element = document.getElementById(id);
+
+      if (element) {
+        const spans = element.getElementsByTagName("tspan");
+        const initialContent: string[] = [];
+
+        for (let i = 0; i < spans.length; i++) {
+          initialContent.push(spans[i].textContent || "");
+        }
+
+        setInitialStates((prev) => ({
+          ...prev,
+          [id]: initialContent,
+        }));
+      }
+    });
+  }, []); // Run this effect only once when the component mounts
+
+  function appendTitleToSVG(title: string, elmId: string) {
+    const headingText = document.getElementById(elmId);
+
+    if (headingText) {
+      // Clear existing content
+      headingText.innerHTML = "";
+
+      if (title.trim() === "") {
+        // If the title is empty, show predefined text spans
+        const defaultTexts = initialStates[elmId];
+
+        defaultTexts.forEach((defaultText) => {
+          const defaultTspan = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "tspan"
+          );
+          if (!(CoverNumber === "2" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "heading-text")) {
+            defaultTspan.setAttribute("x", "50%");
+            defaultTspan.setAttribute("dy", "1.2em");
+          }
+          defaultTspan.appendChild(document.createTextNode(`${defaultText}`));
+          headingText.appendChild(defaultTspan);
+        });
+      } else {
+        const words = title.split(" ");
+        let currentTspan: SVGTSpanElement | null = null;
+
+        words.forEach((word) => {
+          if (
+            !currentTspan ||
+            currentTspan.innerHTML.length + word.length > 12
+          ) {
+            // Create a new tspan if not exists or the current one is full
+            currentTspan = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "tspan"
+            );
+            if (!(CoverNumber === "2" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "heading-text")) {
+              console.log("Reached");
+              
+              currentTspan.setAttribute("x", "50%");
+              currentTspan.setAttribute("dy", "1.2em");
+            }
+            headingText.appendChild(currentTspan);
+          }
+
+          // Append the word to the current tspan
+          currentTspan?.appendChild(document.createTextNode(`${word} `));
+        });
+      }
+    }
+  }
+
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("Initials", initialStates);
+
     if (event.target.value.length <= 25) {
+      appendTitleToSVG(event.target.value, "heading-text");
       setTitle(event.target.value);
     }
   };
 
   const handleSubtitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length <= 25) {
+      appendTitleToSVG(event.target.value, "author-text");
       setSubtitle(event.target.value);
     }
   };
@@ -95,11 +189,26 @@ const EditBookCover = () => {
   };
 
   const onDrop = (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    const formData = new FormData();
+      formData.append("image", file);
+
+      // Make API request
+      uploadImageonCloud(formData);
+
     const reader = new FileReader();
     reader.onload = () => {
       setDroppedImage(reader.result);
+      const base64Data = reader.result as string;
+      const coverImageElement = document.getElementById(
+        "coverImage"
+      ) as HTMLImageElement;
+      if (coverImageElement) {
+        coverImageElement.setAttribute("xlink:href", base64Data);
+      }
     };
-    reader.readAsDataURL(acceptedFiles[0]);
+
+    reader.readAsDataURL(file);
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -107,14 +216,7 @@ const EditBookCover = () => {
       "image/jpeg": [],
       "image/png": [],
     },
-    onDrop: (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      const formData = new FormData();
-      formData.append("image", file);
-
-      // Make API request
-      uploadImageonCloud(formData);
-    },
+    onDrop,
   });
 
   const uploadImageonCloud = (formData) => {
@@ -141,6 +243,14 @@ const EditBookCover = () => {
       setCoverId(coverData?._id);
     }
   }, [coverData]);
+
+  const getCoverImage = (coverNumber: number) => {
+    const imgArray = [];
+    for (let i = 1; i <= coverNumber; i++) {
+      imgArray.push(Img[`Cover${i}`]);
+    }
+    return imgArray[coverNumber - 1];
+  };
 
   return (
     <div>
@@ -221,7 +331,7 @@ const EditBookCover = () => {
                   }}
                 />
               </Box>
-              <Box>
+              {/* <Box>
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
@@ -244,7 +354,7 @@ const EditBookCover = () => {
                     width: "100%",
                   }}
                 />
-              </Box>
+              </Box> */}
               <ColorPickerComponent
                 setSelectedColor={setSelectedColor}
                 selectedColor={selectedColor}
@@ -314,14 +424,22 @@ const EditBookCover = () => {
                 flex: "1",
               }}
             >
-              <SelectBookCoverCard
-                landScape={CoverNumber?.toString()}
-                title={title}
-                subtitle={subtitle}
-                Byline={byline}
-                ColourPalette={selectedColor}
-                droppedImage={imageLink || droppedImage}
-              />
+              <Box
+                sx={{
+                  position: "relative",
+                  backgroundColor: "white",
+                  borderRadius: "6.077px",
+                  border: "0.304px solid rgb(25, 112, 101)",
+                  width: "100%",
+                  height: "100%",
+                  padding: "53px 20px 0px",
+                  overflowX: "auto",
+                }}
+              >
+                {getCoverImage(
+                  parseInt(typeof CoverNumber === "string" && CoverNumber)
+                )({ sx: { fontSize: "450px" } })}
+              </Box>
 
               <Box
                 display="flex"
