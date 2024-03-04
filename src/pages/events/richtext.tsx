@@ -1,5 +1,10 @@
 "use client";
-import { compiledChapter, getChapters, simpleChapter, uploadImage } from "@/store/slices/chatSlice"; //uploadImage
+import {
+  compiledChapter,
+  getChapters,
+  simpleChapter,
+  uploadImage,
+} from "@/store/slices/chatSlice"; //uploadImage
 import { Box } from "@mui/material";
 import {
   ContentState,
@@ -37,7 +42,6 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
 import backArrow from "../../_assets/svg/left.svg";
-
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -155,7 +159,7 @@ const RichText = ({ questionId }) => {
       const accessRole = decodedToken.accessRole;
       if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
         setIsPremium(true);
-      }else{
+      } else {
         setIsPremium(false);
       }
     }
@@ -325,14 +329,34 @@ const RichText = ({ questionId }) => {
 
   //answer completed
   const handleCompleteAnswer = () => {
+    dispatch(getChapters()).then(({ payload }) => {
+      // const [chapter] = payload.filter(
+      //   (chapter) => chapter.introductionChapter || chapter.startDefaultChapter
+      // );
 
-    dispatch(getChapters()).then(({payload})=> {
-      const [chapter] = payload.filter((chapter) =>  chapter.introductionChapter  || chapter.startDefaultChapter);
-      if (chapter.introductionChapter || chapter.startDefaultChapter) {
-        dispatch(simpleChapter({ chapterId: chapter?._id }));
+      // console.log("chapter????????", chapter);
+      // if (chapter.introductionChapter || chapter.startDefaultChapter) {
+      //   console.log("into completed", chapter);
+      //   console.log("into completed", chapter.startDefaultChapter);
+      //   dispatch(simpleChapter({ chapterId: chapter?._id }));
+      // }
+
+      const introductionChapter = payload.filter(
+        (chapter) => chapter.introductionChapter
+      );
+
+      if (introductionChapter[0]?.introductionChapter) {
+        dispatch(simpleChapter({ chapterId: introductionChapter[0]?._id }));
       }
-    })
 
+      const dedicationChapter = payload.filter(
+        (chapter) => chapter.startDefaultChapter
+      );
+
+      if (dedicationChapter[0]?.startDefaultChapter) {
+        dispatch(simpleChapter({ chapterId: dedicationChapter[0]?._id }));
+      }
+    });
 
     if (!compileChapterId) {
       saveUserAnswer();
@@ -385,7 +409,6 @@ const RichText = ({ questionId }) => {
       reader.readAsDataURL(file);
     });
   };
-  
 
   return (
     <>
@@ -444,7 +467,6 @@ const RichText = ({ questionId }) => {
                 flexWrap: { xs: "wrap", lg: "nowrap" },
               }}
             >
-
               <GlobelBtn
                 image={detecting ? MicRegular : listening ? MicListing : MicOff}
                 btnText={
