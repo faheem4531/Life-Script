@@ -94,6 +94,8 @@ const EditBookCover = () => {
           if (
             !(CoverNumber === "2" && elmId === "author-text") &&
             !(CoverNumber === "6" && elmId === "author-text") &&
+            !(CoverNumber === "5" && elmId === "heading-text") &&
+            !(CoverNumber === "5" && elmId === "author-text") &&
             !(CoverNumber === "6" && elmId === "heading-text")
           ) {
             defaultTspan.setAttribute("x", "50%");
@@ -119,6 +121,8 @@ const EditBookCover = () => {
             if (
               !(CoverNumber === "2" && elmId === "author-text") &&
               !(CoverNumber === "6" && elmId === "author-text") &&
+              !(CoverNumber === "5" && elmId === "heading-text") &&
+              !(CoverNumber === "5" && elmId === "author-text") &&
               !(CoverNumber === "6" && elmId === "heading-text")
             ) {
               console.log("Reached");
