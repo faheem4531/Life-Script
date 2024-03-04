@@ -91,7 +91,11 @@ const EditBookCover = () => {
             "http://www.w3.org/2000/svg",
             "tspan"
           );
-          if (!(CoverNumber === "2" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "heading-text")) {
+          if (
+            !(CoverNumber === "2" && elmId === "author-text") &&
+            !(CoverNumber === "6" && elmId === "author-text") &&
+            !(CoverNumber === "6" && elmId === "heading-text")
+          ) {
             defaultTspan.setAttribute("x", "50%");
             defaultTspan.setAttribute("dy", "1.2em");
           }
@@ -112,9 +116,13 @@ const EditBookCover = () => {
               "http://www.w3.org/2000/svg",
               "tspan"
             );
-            if (!(CoverNumber === "2" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "author-text") && !(CoverNumber === "6" && elmId === "heading-text")) {
+            if (
+              !(CoverNumber === "2" && elmId === "author-text") &&
+              !(CoverNumber === "6" && elmId === "author-text") &&
+              !(CoverNumber === "6" && elmId === "heading-text")
+            ) {
               console.log("Reached");
-              
+
               currentTspan.setAttribute("x", "50%");
               currentTspan.setAttribute("dy", "1.2em");
             }
@@ -191,10 +199,10 @@ const EditBookCover = () => {
   const onDrop = (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     const formData = new FormData();
-      formData.append("image", file);
+    formData.append("image", file);
 
-      // Make API request
-      uploadImageonCloud(formData);
+    // Make API request
+    uploadImageonCloud(formData);
 
     const reader = new FileReader();
     reader.onload = () => {
@@ -355,10 +363,10 @@ const EditBookCover = () => {
                   }}
                 />
               </Box> */}
-              <ColorPickerComponent
+              {/* <ColorPickerComponent
                 setSelectedColor={setSelectedColor}
                 selectedColor={selectedColor}
-              />
+              /> */}
               <Box
                 sx={{
                   bgcolor: "white",
