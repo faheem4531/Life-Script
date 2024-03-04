@@ -10,16 +10,16 @@ function Cover1(props: SvgIconProps) {
       viewBox="0 0 1772 2480"
       fill="none"
       style={{
-        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))"
+        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
       }}
     >
       <g clip-path="url(#clip0_2029_343)">
         <rect width="1772" height="2480" fill="#F8F8F0" />
         <text
-        
           id="author-text"
           x="50%"
-          y="30%"
+          // y="30%"
+          y="28%"
           fontWeight="bolder"
           dominantBaseline="middle"
           textAnchor="middle"
@@ -34,10 +34,9 @@ function Cover1(props: SvgIconProps) {
         </text>
         <rect x="-5" y="888" width="1782" height="1701" fill="url(#pattern0)" />
         <text
-
           id="heading-text"
           x="50%"
-          y="10%"
+          y="9%"
           fontWeight="bolder"
           dominantBaseline="middle"
           textAnchor="middle"
