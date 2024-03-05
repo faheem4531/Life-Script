@@ -20,6 +20,8 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Img from "@/_assets/book-cover";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 const EditBookCover = () => {
   const router = useRouter();
@@ -33,15 +35,26 @@ const EditBookCover = () => {
   const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
   const [coverId, setCoverId] = useState("");
+  const [cropper, setCropper] = useState<any>(null);
 
   const [selectedColor, setSelectedColor] = useState("#197065");
-  const [droppedImage, setDroppedImage] = useState<string | ArrayBuffer | null>(
-    null
-  );
+  const [droppedImage, setDroppedImage] = useState<
+    string | ArrayBuffer | null | any
+  >(null);
+
+  const [croppedImage, setCroppedImage] = useState<string | null>(null);
 
   const [initialStates, setInitialStates] = useState<{
     [key: string]: string[];
   }>({});
+
+  const onCrop = () => {
+    console.log("ONcROP", cropper);
+    if (cropper) {
+      const croppedDataUrl = cropper.getCroppedCanvas().toDataURL();
+      setCroppedImage(croppedDataUrl);
+    }
+  };
 
   useEffect(() => {
     // Fetch initial content of specified elements and store in state
@@ -167,6 +180,7 @@ const EditBookCover = () => {
   }, [selectedColor]);
 
   const handleSaveCover = () => {
+    console.log("uploadImage", droppedImage);
     setButtonLoading(true);
     dispatch(
       coverId
@@ -204,6 +218,8 @@ const EditBookCover = () => {
     const file = acceptedFiles[0];
     const formData = new FormData();
     formData.append("image", file);
+
+    // onCrop();
 
     // Make API request
     uploadImageonCloud(formData);
@@ -385,6 +401,13 @@ const EditBookCover = () => {
               >
                 <div {...getRootProps()} style={{ cursor: "pointer" }}>
                   <input {...getInputProps()} />
+                  <Cropper
+                    ref={(cropper) => setCropper(cropper)}
+                    src={droppedImage}
+                    style={{ height: 300, width: "100%" }}
+                    onInitialized={(instance) => setCropper(instance)}
+                    // Add other cropper options as needed
+                  />
                   <Box
                     sx={{
                       border: "2px dashed #D3D3D3",
