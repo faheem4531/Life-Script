@@ -14,12 +14,14 @@ import {
 import { Box, TextField, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Img from "@/_assets/book-cover";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 const EditBookCover = () => {
   const router = useRouter();
@@ -33,15 +35,67 @@ const EditBookCover = () => {
   const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
   const [coverId, setCoverId] = useState("");
+  const [cropper, setCropper] = useState(null);
+
+  const cropperRef = useRef(null);
 
   const [selectedColor, setSelectedColor] = useState("#197065");
-  const [droppedImage, setDroppedImage] = useState<string | ArrayBuffer | null>(
-    null
-  );
+  // const [droppedImage, setDroppedImage] = useState<
+  //   string | ArrayBuffer | null | any
+  // >(
+  //   "https://lifescript-media.s3.eu-north-1.amazonaws.com/20076d44-6b75-4b04-846b-57cfd458b646-familytree.png"
+  // );
+
+  const [droppedImage, setDroppedImage] = useState<
+    string | ArrayBuffer | null | any
+  >(null);
+
+  const [croppedImage, setCroppedImage] = useState<string | null>(null);
 
   const [initialStates, setInitialStates] = useState<{
     [key: string]: string[];
   }>({});
+
+  const onCrop = () => {
+    console.log("into cropper");
+    if (cropperRef.current) {
+      const croppedCanvas: any = cropperRef.current.cropper.getCroppedCanvas();
+      console.log("cropperCna", croppedCanvas);
+      const croppedImageBase64 = croppedCanvas.toDataURL();
+      console.log("croppedImageBase64", croppedImageBase64);
+
+      const coverImageElement = document.getElementById(
+        "coverImage"
+      ) as HTMLImageElement;
+      if (coverImageElement) {
+        coverImageElement.setAttribute("xlink:href", croppedImageBase64);
+      }
+
+      return croppedImageBase64;
+
+      // Apply aspect ratio to the cropped image
+      // const aspectRatio = 16 / 9; // Replace this with your desired aspect ratio
+      // const canvas = document.createElement("canvas");
+      // const context = canvas.getContext("2d");
+
+      // canvas.width = croppedCanvas.width;
+      // canvas.height = croppedCanvas.width / aspectRatio;
+
+      // context?.drawImage(croppedCanvas, 0, 0, canvas.width, canvas.height);
+
+      // const croppedImageBase64 = canvas.toDataURL();
+      // console.log("croppedImageBase64", croppedImageBase64);
+
+      // const coverImageElement = document.getElementById(
+      //   "coverImage"
+      // ) as HTMLImageElement;
+      // if (coverImageElement) {
+      //   coverImageElement.setAttribute("xlink:href", croppedImageBase64);
+      // }
+
+      // return croppedImageBase64;
+    }
+  };
 
   useEffect(() => {
     // Fetch initial content of specified elements and store in state
@@ -167,6 +221,7 @@ const EditBookCover = () => {
   }, [selectedColor]);
 
   const handleSaveCover = () => {
+    console.log("uploadImage", droppedImage);
     setButtonLoading(true);
     dispatch(
       coverId
@@ -205,7 +260,6 @@ const EditBookCover = () => {
     const formData = new FormData();
     formData.append("image", file);
 
-    // Make API request
     uploadImageonCloud(formData);
 
     const reader = new FileReader();
@@ -221,6 +275,8 @@ const EditBookCover = () => {
     };
 
     reader.readAsDataURL(file);
+
+    // Make API request
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -232,10 +288,12 @@ const EditBookCover = () => {
   });
 
   const uploadImageonCloud = (formData) => {
+    console.log("formData", formData);
     dispatch(uploadImage(formData))
       .unwrap()
       .then((res) => {
         toast.success("image uploaded successfully");
+        console.log("resssssssss", res);
         setImageLink(res);
         setDroppedImage(res);
       })
@@ -262,6 +320,11 @@ const EditBookCover = () => {
       imgArray.push(Img[`Cover${i}`]);
     }
     return imgArray[coverNumber - 1];
+  };
+
+  const coverAspectRatio = () => {
+    if (CoverNumber === "1") return 1782 / 2719;
+    else return 1772 / 2480;
   };
 
   return (
@@ -383,8 +446,22 @@ const EditBookCover = () => {
                   borderRadius: "7.099px",
                 }}
               >
+                {droppedImage && (
+                  <Cropper
+                    ref={cropperRef}
+                    src={droppedImage}
+                    style={{ height: 300, width: "100%" }}
+                    aspectRatio={coverAspectRatio()}
+                    guides={false}
+                    // onInitialized={(instance) => setCropper(instance)}
+                    crop={onCrop}
+                    autoCropArea={1}
+                    // Add other cropper options as needed
+                  />
+                )}
                 <div {...getRootProps()} style={{ cursor: "pointer" }}>
                   <input {...getInputProps()} />
+
                   <Box
                     sx={{
                       border: "2px dashed #D3D3D3",
@@ -393,7 +470,7 @@ const EditBookCover = () => {
                     }}
                   >
                     <Box>
-                      <Image src={FileIcon} alt="" />
+                      <Image src={croppedImage || FileIcon} alt="" />
                     </Box>
                     <Typography
                       sx={{
