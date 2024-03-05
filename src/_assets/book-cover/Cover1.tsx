@@ -19,7 +19,7 @@ function Cover1(props: SvgIconProps) {
           id="author-text"
           x="50%"
           // y="30%"
-          y="28%"
+          y="27%"
           fontWeight="bolder"
           dominantBaseline="middle"
           textAnchor="middle"
@@ -36,7 +36,7 @@ function Cover1(props: SvgIconProps) {
         <text
           id="heading-text"
           x="50%"
-          y="9%"
+          y="8%"
           fontWeight="bolder"
           dominantBaseline="middle"
           textAnchor="middle"
