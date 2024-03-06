@@ -38,6 +38,7 @@ import {
   uploadAudioApi,
   getBookCoverApi,
   uploadImageApi,
+  uploadImageApiFamilyTree,
   bookCoverApi,
   updateBookCoverApi,
   openaiQuestionApi,
@@ -279,6 +280,18 @@ export const uploadImage = createAsyncThunk<UserData, any>(
   async (data) => {
     try {
       const response = await uploadImageApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const uploadImageFamilyTree = createAsyncThunk<UserData, any>(
+  "chat/upload-image",
+  async (data) => {
+    try {
+      const response = await uploadImageApiFamilyTree(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -744,7 +757,7 @@ export const chatSlice = createSlice({
   },
 });
 
-export const {resetChatState} = chatSlice.actions;
+export const { resetChatState } = chatSlice.actions;
 
 export const selectChat = (state: { chat: any }) => state.chat.chats;
 export const selectAnswers = (state: { chat: any }) => state.chat.answers;

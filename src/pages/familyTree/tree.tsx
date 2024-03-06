@@ -4,6 +4,8 @@ import {
   updatePartner,
   addChildren,
   addParent,
+  uploadImage,
+  uploadImageFamilyTree,
 } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
@@ -14,10 +16,11 @@ import { useEffect, useRef, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useDispatch } from "react-redux";
 import styles from "./FamilyTree.module.css";
-import { saveSvgAsPng } from "save-svg-as-png";
+import { saveSvgAsPng, svgAsPngUri, svgAsDataUri } from "save-svg-as-png";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import LogoSvg from "@/_assets/svg/logo.svg";
 import FamilyTreeSVG from "@/_assets/svg/family-tree-svg.svg";
+import { toast } from "react-toastify";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -237,14 +240,12 @@ const FamilyTree = ({ familyTreeData }) => {
             const newY = height + 100 + separation;
 
             // Append the second external SVG below the first one
-            familyTreeGroupFamily
-              .append("g")
-              .attr("id", "secondExternalSvg")
+            familyTreeGroupFamily.append("g").attr("id", "secondExternalSvg");
 
             // Add dynamic text below the second logo
             familyTreeGroupFamily
               .append("text")
-              .attr("x", widthFamily + 180 ) // Adjust the x-coordinate as needed
+              .attr("x", widthFamily + 180) // Adjust the x-coordinate as needed
               .attr("y", newY + height) // Adjust the y-coordinate as needed
               .attr("text-anchor", "start") // Adjust text-anchor as needed (start, middle, end)
               .attr("fill", "black") // Adjust the text color
@@ -256,11 +257,27 @@ const FamilyTree = ({ familyTreeData }) => {
             saveSvgAsPng(mainSvg.node(), "familytree.png", {
               scale: 1,
               backgroundColor: "#FFFFFF",
-            }).then(() => {
+            }).then((data) => {
+              console.log("data", data);
+              // uploadImageonCloud(data);
               setLoading(false);
               familyTreeGroup.remove();
               familyTreeGroupFamily.remove();
+            });
 
+            svgAsPngUri(mainSvg.node(), "familytree.png", {
+              scale: 1,
+              backgroundColor: "#FFFFFF",
+            }).then((uri) => {
+              console.log("data", uri);
+
+              fetch(uri)
+                .then((response) => response.blob())
+                .then((imgBlob) => {
+                  const formData = new FormData();
+                  formData.append("image", imgBlob);
+                  uploadImageonCloud(formData);
+                });
             });
           });
         });
@@ -268,6 +285,17 @@ const FamilyTree = ({ familyTreeData }) => {
       drawTree();
     }
   }, [familyTreeData]);
+
+  const uploadImageonCloud = (formData) => {
+    console.log("formData", formData);
+    dispatch(uploadImageFamilyTree(formData))
+      .unwrap()
+      .then((res) => {
+        toast.success("image uploaded successfully");
+        console.log("resssssssss", res);
+      })
+      .catch(() => toast.error("Failed to upload image"));
+  };
 
   const drawTree = () => {
     const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);

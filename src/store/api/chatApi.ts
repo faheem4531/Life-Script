@@ -84,7 +84,9 @@ export async function getOpenaiQuestionApi(data: {
   questionId: string;
 }) {
   try {
-    const res = await api.get(`questions/openAiQuestion/${data.chapterId}/${data.questionId}`);
+    const res = await api.get(
+      `questions/openAiQuestion/${data.chapterId}/${data.questionId}`
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -96,13 +98,13 @@ export async function getOpenaiQuestionApi(data: {
   }
 }
 
-export async function bookCoverApi(data: {    
-  title: string,
-  coverNumber: string,
-  subTitle: string,
-  byLine: string,
-  color:string,
-  image:string
+export async function bookCoverApi(data: {
+  title: string;
+  coverNumber: string;
+  subTitle: string;
+  byLine: string;
+  color: string;
+  image: string;
 }) {
   try {
     const res = await api.post("/book-cover", data);
@@ -116,14 +118,14 @@ export async function bookCoverApi(data: {
     }
   }
 }
-export async function updateBookCoverApi(data: {   
-  id: string, 
-  CoverNumber: string,
-  title: string,
-  subTitle: string,
-  byLine: string,
-  color:string,
-  image:string
+export async function updateBookCoverApi(data: {
+  id: string;
+  CoverNumber: string;
+  title: string;
+  subTitle: string;
+  byLine: string;
+  color: string;
+  image: string;
 }) {
   try {
     const payload = {
@@ -146,7 +148,6 @@ export async function updateBookCoverApi(data: {
   }
 }
 
-
 export async function getBookCoverApi() {
   try {
     const res = await api.get("/book-cover");
@@ -161,7 +162,7 @@ export async function getBookCoverApi() {
   }
 }
 
-export async function updateBookApi(data:any) {
+export async function updateBookApi(data: any) {
   try {
     const res = await api.patch("book", data);
     return res;
@@ -175,7 +176,7 @@ export async function updateBookApi(data:any) {
   }
 }
 
-export async function getaiQuestionsApi(data:{chapterId: string}) {
+export async function getaiQuestionsApi(data: { chapterId: string }) {
   try {
     const res = await api.get(`questions/suggestionQuestion/${data.chapterId}`);
     return res;
@@ -203,8 +204,6 @@ export async function getTreeDataApi() {
   }
 }
 
-
-
 export async function updatePartnerApi(data: {
   spouseDied?: string;
   spouseBorn?: string;
@@ -221,8 +220,11 @@ export async function updatePartnerApi(data: {
   nodeId?: string;
 }) {
   try {
-    const{nodeId, ...newData} = data;
-    const res = await api.patch(`family-module/${data.nodeId}/update-couple`, newData);
+    const { nodeId, ...newData } = data;
+    const res = await api.patch(
+      `family-module/${data.nodeId}/update-couple`,
+      newData
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -250,8 +252,11 @@ export async function addChildApi(data: {
   nodeId?: string;
 }) {
   try {
-    const{nodeId, ...newData} = data;
-    const res = await api.post(`family-module/${data.nodeId}/add-child`, newData);
+    const { nodeId, ...newData } = data;
+    const res = await api.post(
+      `family-module/${data.nodeId}/add-child`,
+      newData
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -340,7 +345,10 @@ export async function luluPrintingApi(data: any) {
   }
 }
 
-export async function customerSupportApi(data: { subject: string, description: string }) {
+export async function customerSupportApi(data: {
+  subject: string;
+  description: string;
+}) {
   try {
     const res = await api.post("/users/support", data);
     return res;
@@ -357,6 +365,20 @@ export async function customerSupportApi(data: { subject: string, description: s
 export async function uploadImageApi(data) {
   try {
     const res = await api.post("/users/upload-image", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function uploadImageApiFamilyTree(data) {
+  try {
+    const res = await api.post("/users/upload-image/familyTree", data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -398,13 +420,15 @@ export async function saveAnswerApi(data: any) {
 
 export async function getChapterNotificationsApi() {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    const res = await axios.get("https://api.thelifescript.com/notification", {headers});
+    const res = await axios.get("https://api.thelifescript.com/notification", {
+      headers,
+    });
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -436,13 +460,17 @@ export async function readNotificationApi(data: {
 
 export async function stripPaymentApi(data: any) {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    const res = await axios.post("https://api.thelifescript.com/users/stripe/payment", data, {headers});
+    const res = await axios.post(
+      "https://api.thelifescript.com/users/stripe/payment",
+      data,
+      { headers }
+    );
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -456,13 +484,15 @@ export async function stripPaymentApi(data: any) {
 
 export async function bookTitleApi(data: { title: string }) {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    const res = await axios.post("https://api.thelifescript.com/book", data, {headers});
+    const res = await axios.post("https://api.thelifescript.com/book", data, {
+      headers,
+    });
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -476,13 +506,15 @@ export async function bookTitleApi(data: { title: string }) {
 
 export async function getBookTitleApi() {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    const res = await axios.get("https://api.thelifescript.com/book", {headers});
+    const res = await axios.get("https://api.thelifescript.com/book", {
+      headers,
+    });
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
