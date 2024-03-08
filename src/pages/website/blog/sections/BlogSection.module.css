@@ -1,0 +1,35 @@
+.introBlog {
+  background-image: url(../../../../__webAssets/pngs/bg-blog.png);
+  background-repeat: no-repeat;
+  background-size: 100% 200px;
+  object-fit: cover;
+}
+
+.lineBox {
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  right: -20px;
+  bottom: -10px;
+}
+
+.blogImg {
+  max-width: 1050px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.readMore {
+  color: #e1683b;
+  cursor: pointer;
+  margin-left: 7px;
+}
+
+/* BlogDetails  */
+.bgImg {
+  position: relative;
+  width: 100vw;
+  z-index: -10;
+}

@@ -1,6 +1,7 @@
 "use client";
 import { Inter } from "next/font/google";
 import Head from "next/head";
+import BlogDetailPage from "./website/blog/blogDetails"
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 import AuthPage from "./_auth/Auth";
@@ -18,9 +19,10 @@ export default function Home() {
           content="4juom1wbc7mn3on53shgvpk9p7oyua"
         />
       </Head>
-      <FeaturesPage />
+      {/* <FeaturesPage /> */}
       {/* <HomePage /> */}
-
+      {/* <BlogPage /> */}
+      <BlogDetailPage />
     </>
   );
 }

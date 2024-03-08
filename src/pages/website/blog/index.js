@@ -1,20 +1,16 @@
 'use client'
 
 import { Box } from "@mui/material";
-import FeaturesIntroduction from "../__webComponents/Introduction/Introduction";
-import FeaturesItems from "./sections/Features";
 import Footer from "@/pages/website/__webComponents/footer/Footer";
 import ContactFooter from "@/pages/website/__webComponents/footer/ContactFooter";
+import IntroductionBlog from "./sections/Introduction";
+import Blogs from "./sections/Blog";
 
-const FeaturesPage = () => {
+const BlogPage = () => {
   return (
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-      <FeaturesIntroduction
-        heading="We take care of "
-        keyWorld="everything"
-        subHeading="Crafting your narrative in a book is now faster and simpler than ever."
-      />
-      <FeaturesItems />
+      <IntroductionBlog />
+      <Blogs />
       <ContactFooter
         title="Still confused? Ask away!"
         subTitle="Contact us Now!!!"
@@ -28,4 +24,4 @@ const FeaturesPage = () => {
   )
 }
 
-export default FeaturesPage;
+export default BlogPage;
