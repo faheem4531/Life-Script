@@ -1,0 +1,29 @@
+.logo {
+  width: 280px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.underLine {
+  background-image: url('../../__webAssets/svgs/under-line.svg');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 67px 50%;
+  animation: slideIn 1s ease-in-out infinite alternate;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .logo {
+    width: 220px;
+    height: 35px;
+  }
+}

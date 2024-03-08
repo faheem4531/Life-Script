@@ -1,0 +1,71 @@
+/* Experience  */
+
+.summary {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.close {
+  color: #000;
+  opacity: 0.2;
+}
+
+.open {
+  color: #3e4f3c;
+}
+
+.gif {
+  width: 613px;
+  height: 380px;
+}
+
+.bandage {
+  position: absolute;
+  right: -50px;
+  top: -50px;
+}
+
+/* ContactFooter  */
+.contactFooterBox {
+  background-image: url(../__webAssets/pngs/bg-footer.png);
+  background-size: 100% 120%;
+}
+
+/* Pricing Cards  */
+.midCard {
+  background-color: #f4f4f4;
+  color: #30422e;
+  transition: all 0.3s ease;
+}
+
+.sideCard {
+  background-color: #30422e;
+  color: #f4f4f4;
+  transition: all 0.3s ease;
+}
+
+/* Introduction  */
+
+.features {
+  background-image: url(../__webAssets/pngs/bg-feature.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  object-fit: cover;
+}
+
+.lineBox {
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  right: -20px;
+  bottom: -10px;
+}
+
+/* Got Questions  */
+.gotQsBg {
+  background-image: url(../__webAssets/pngs/bg-gift-tag.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
