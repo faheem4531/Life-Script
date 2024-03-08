@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import Button from "@/__webComponents/button/Button";
+import Button from "@/pages/website/__webComponents/button/Button";
 import Pen from "@/__webAssets/svgs/writing-pen.svg"
 import Book from "@/__webAssets/pngs/hero-book.png"
 import Image from "next/image";

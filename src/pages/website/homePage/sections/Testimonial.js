@@ -1,4 +1,4 @@
-import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading"
+import PrimaryHeading from "@/pages/website/__webComponents/headings/PrimaryHeading"
 import { Box, Typography, colors } from "@mui/material";
 import styles from "./HomeSections.module.css"
 import Marquee from "react-fast-marquee";

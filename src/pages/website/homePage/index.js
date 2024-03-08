@@ -1,20 +1,20 @@
 'use client'
 
-import NavBar from "@/__webComponents/navBar/NavBar";
+import NavBar from "@/pages/website/__webComponents/navBar/NavBar";
 import { Box } from "@mui/material";
-import Working from "@/__webComponents/working/Working";
+import Working from "@/pages/website/__webComponents/working/Working";
 import Introduction from "./sections/Introduction";
 import Suggestion from "./sections/Suggestion";
 import StoryTelling from "./sections/StoryTelling";
 import Reviews from "./sections/Reviews";
-import Experience from "@/__webComponents/experience/Experience";
+import Experience from "@/pages/website/__webComponents/experience/Experience";
 import GifTab from "./sections/GifTab";
-import Pricing from "@/__webComponents/pricing/Pricing";
-import Footer from "@/__webComponents/footer/Footer";
+import Pricing from "@/pages/website/__webComponents/pricing/Pricing";
+import Footer from "@/pages/website/__webComponents/footer/Footer";
 import Testimonial from "./sections/Testimonial";
-import ContactFooter from "@/__webComponents/footer/ContactFooter";
+import ContactFooter from "@/pages/website/__webComponents/footer/ContactFooter";
 import OurBooks from "./sections/OurBooks";
-import GotQuestions from "@/__webComponents/questions/GotQuestions";
+import GotQuestions from "@/pages/website/__webComponents/questions/GotQuestions";
 
 import Shape from "@/__webAssets/svgs/input-shape.svg"
 import Logo from "@/__webAssets/svgs/logo.svg"
@@ -46,8 +46,7 @@ const HomePage = () => {
   ]
 
   return (
-    <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }
-    }>
+    <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <NavBar logo={Logo} color="#3E4F3C" />
       <Introduction />
       <Working data={pointsArray} heading=" How it works" />

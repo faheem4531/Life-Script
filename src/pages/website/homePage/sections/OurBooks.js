@@ -1,6 +1,6 @@
 "use client";
 
-import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading"
+import PrimaryHeading from "@/pages/website/__webComponents/headings/PrimaryHeading"
 import { Box } from "@mui/material"
 import Image from "next/image"
 import styles from "./HomeSections.module.css"

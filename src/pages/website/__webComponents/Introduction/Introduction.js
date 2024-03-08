@@ -1,10 +1,9 @@
 'use client'
 
-import NavBar from "@/__webComponents/navBar/NavBar";
+import NavBar from "@/pages/website/__webComponents/navBar/NavBar";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "../ComponentsStyles.module.css"
-import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 import Logo from "@/__webAssets/svgs/logo-footer.svg"
 import Line from "@/__webAssets/pngs/under-line-long.png"
 

@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import styles from "./Working.module.css"
+import styles from "../ComponentsStyles.module.css"
 import Image from "next/image";
 
 const Points = ({ no = false, icon, title, discription }) => {

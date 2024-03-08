@@ -27,7 +27,7 @@
 
 /* ContactFooter  */
 .contactFooterBox {
-  background-image: url(../__webAssets/pngs/bg-footer.png);
+  background-image: url(../../../__webAssets/pngs/bg-footer.png);
   background-size: 100% 120%;
 }
 
@@ -47,7 +47,7 @@
 /* Introduction  */
 
 .features {
-  background-image: url(../__webAssets/pngs/bg-feature.png);
+  background-image: url(../../../__webAssets/pngs/bg-feature.png);
   background-repeat: no-repeat;
   background-size: 100%;
   object-fit: cover;
@@ -65,7 +65,19 @@
 
 /* Got Questions  */
 .gotQsBg {
-  background-image: url(../__webAssets/pngs/bg-gift-tag.png);
+  background-image: url(../../../__webAssets/pngs/bg-gift-tag.png);
   background-repeat: no-repeat;
   background-position: bottom right;
+}
+
+/* Working  */
+.workingBox {
+  background-image: url(../../../__webAssets/pngs/bg-top-bottom.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.check {
+  width: 40px;
+  height: 40px;
 }

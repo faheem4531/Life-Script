@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import FlowerLine from "@/__webAssets/pngs/full-style.png"
 import Image from "next/image";
 import styles from "./HomeSections.module.css"
-import Content from "@/__webComponents/headings/Content";
+import Content from "@/pages/website/__webComponents/headings/Content";
 import Heroimage from "@/__webAssets/pngs/suggestion-hero.png"
 import ListPoints from "@/__webAssets/pngs/curved-list.png"
 

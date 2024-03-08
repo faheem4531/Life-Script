@@ -3,7 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./HomeSections.module.css"
-import Button from "@/__webComponents/button/Button";
+import Button from "@/pages/website/__webComponents/button/Button";
 import Hurt from "@/__webAssets/pngs/bg-gift-tag.png"
 import Link from "next/link";
 

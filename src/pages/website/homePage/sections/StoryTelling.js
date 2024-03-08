@@ -2,13 +2,13 @@ import FlowerLine from "@/__webAssets/pngs/full-style.png"
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./HomeSections.module.css"
-import Content from "@/__webComponents/headings/Content";
-import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
+import Content from "@/pages/website/__webComponents/headings/Content";
+import PrimaryHeading from "@/pages/website/__webComponents/headings/PrimaryHeading";
 import StoryImage1 from "@/__webAssets/pngs/story-1.png"
 import StoryImage2 from "@/__webAssets/pngs/story-2.png"
 import StoryImage3 from "@/__webAssets/pngs/story-3.png"
 import StoryImage4 from "@/__webAssets/pngs/story-4.png"
-import Button from "@/__webComponents/button/Button";
+import Button from "@/pages/website/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
 
 const StoryTelling = () => {

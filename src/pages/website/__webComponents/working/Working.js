@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import PrimaryHeading from "../headings/PrimaryHeading";
-import styles from "./Working.module.css"
+import styles from "../ComponentsStyles.module.css"
 import Points from "./Points";
 
 const Working = ({ data, heading, subHeading = false }) => {
