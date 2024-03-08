@@ -7,7 +7,7 @@ import BlogDetailPage from "./website/blog/blogDetails"
 import AuthPage from "./_auth/Auth";
 import HomePage from './website/homePage';
 import FeaturesPage from './website/features';
-import AboutUs from "./website/aboutUs"
+import PricingPage from "./website/pricing"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +25,7 @@ export default function Home() {
       {/* <HomePage /> */}
       {/* <BlogPage /> */}
       {/* <BlogDetailPage /> */}
-  <AboutUs/>
+      <PricingPage />
     </>
   );
 }
