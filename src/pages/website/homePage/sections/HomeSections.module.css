@@ -139,6 +139,12 @@
   height: 300px;
 }
 
+.bgStorytelling {
+  background-image: url(../../../../__webAssets/pngs/bg-story-telling.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* GifTab  */
 
 .gifTabBox {
@@ -155,14 +161,6 @@
 
 .bandage{
   display: none;
-}
-
-/* Story telling  */
-.bgStorytelling {
-  background-image: url(../../../../__webAssets/pngs/bg-story-telling.png);
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: contain;
 }
 
 /* Textimonial  */
@@ -325,6 +323,16 @@
   right: 120px;
 }
 
+/* StoryTelling  */
+.stroyImages {
+  width: 400px;
+  height: 260px;
+}
+
+.bgStorytelling {
+  background-image: none;
+}
+
 }
 
 @media screen and (max-width: 899px) {
@@ -353,6 +361,11 @@ display: none;}
     width:160px;
     right: 120px;
     bottom: 26px;
+  }
+
+  /* storyTelling  */
+  .bgStorytelling {
+    background-image: none;
   }
 }
 
@@ -391,4 +404,10 @@ display: none;}
     left: -60px;
     transform: rotate(95deg);
   }
+
+  /* StoryTelling  */
+.stroyImages {
+  width: 100%;
+  /* height: 240px; */
+}
   }
