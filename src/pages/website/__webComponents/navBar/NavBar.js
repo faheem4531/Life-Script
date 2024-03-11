@@ -39,7 +39,7 @@ const NavBar = ({ color, logo }) => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: { lg: '64px 106px 0', md: "50px 60px 0 ", sm: "30px 50px 0", xs: "30px 16px 0" },
+      padding: { lg: '64px 106px 0', md: "50px 60px 0 ", sm: "40px 50px 0", xs: "30px 16px 0" },
       position: "relative", bgcolor: ""
     }}>
       {!mobileState && <Image src={logo} alt="Logo" className={styles.logo} />}

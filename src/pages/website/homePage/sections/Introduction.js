@@ -38,17 +38,17 @@ const Introduction = () => {
   }, []);
 
   return (
-    <Box sx={{ padding: "90px 0 0 75px", position: "relative" }}>
-      <Box sx={{ width: '55%', zIndex: "20" }}>
+    <Box sx={{ padding: { md: "90px 0 0 75px", sm: "100px 0 0 50px", xs: "40px 16px 40px" }, position: "relative" }}>
+      <Box sx={{ width: { md: '55%', sm: "100%", xs: "100%" }, zIndex: "20" }}>
         <Typography
-          sx={{ fontSize: '60px', lineHeight: '70px', fontFamily: "Besley !important", minWidth: "770px" }}
+          sx={{ fontSize: { md: '60px', sm: "53px", xs: "32px" }, lineHeight: { sm: '70px', xs: "37px" }, fontFamily: "Besley !important", minWidth: "770px" }}
         >The Best Way To <span className="multiple-text" style={color}></span> <br /> An Autobiography Book  </Typography>
         <Typography
-          sx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 500, margin: '90px 0 30px', width: '70%' }}
+          sx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 500, margin: { sm: '90px 0 30px', xs: "32px 0 25px" }, width: { sm: '70%', xs: "100%" } }}
         >An easy-to-use platform enabling people to preserve their memories, rediscover their roots, and
           create a deeper connection with themselves and their families.
         </Typography>
-        <Box sx={{ width: "230px", height: "55px" }}>
+        <Box sx={{ width: { sm: "230px", xs: "100%" }, height: "55px" }}>
           <Button
             title='Start Writing for Free'
             width="100%"

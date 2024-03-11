@@ -289,3 +289,10 @@
   }
 }
 }
+
+@media screen and (max-width: 899px) {
+/* Introduction sec*/
+.bookImg, .image1 , .image2, .image3, .image4 {
+display: none;}
+
+}
