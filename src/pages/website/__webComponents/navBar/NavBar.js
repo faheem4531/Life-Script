@@ -43,7 +43,6 @@ const NavBar = ({ color, logo }) => {
       position: "relative", bgcolor: ""
     }}>
       {!mobileState && <Image src={logo} alt="Logo" className={styles.logo} />}
-      {/* <Box className={styles.menuContainer}> */}
 
       <Image src={Menu} alt="icon" onClick={handleMenu} className={styles.menu} />
 
@@ -58,35 +57,35 @@ const NavBar = ({ color, logo }) => {
         className={`${mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide}`}
       >
         <Link href="/">
-          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: "18px" }}
+          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" } }}
             className={`link ${pathname === '/' ? styles.underLine : ''}`}
           >Home</Typography>
         </Link>
         <Link href="/website/features">
-          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: "18px" }}
+          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" } }}
             className={`link ${pathname === '/website/features' ? styles.underLine : ''}`}
           >Features</Typography>
         </Link>
         <Link href="/website/blog">
-          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: "18px" }}
+          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" } }}
             className={`link ${pathname === '/website/blog' || pathname === '/blog/blogDetails' ? styles.underLine : ''}`}
 
           >Blog</Typography>
         </Link>
         <Link href="/website/aboutUs">
-          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: "18px" }}
+          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" } }}
             className={`link ${pathname === '/website/aboutUs' ? styles.underLine : ''}`}
 
           >About Us</Typography>
         </Link>
         <Link href="/website/pricing">
-          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: "18px" }}
+          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" } }}
             className={`link ${pathname === '/website/pricing' ? styles.underLine : ''}`}
 
           >Pricing</Typography>
         </Link>
         <Link href="/website/faqs">
-          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: "18px" }}
+          <Typography sx={{ padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" }, fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" } }}
             className={`link ${pathname === '/website/faqs' ? styles.underLine : ''}`}
 
           >FAQ &apos; s</Typography>
@@ -104,7 +103,6 @@ const NavBar = ({ color, logo }) => {
           </Link>
         </Box>
       </Box>
-      {/* </Box> */}
 
     </Box>
   )

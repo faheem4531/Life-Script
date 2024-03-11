@@ -48,12 +48,14 @@ const Introduction = () => {
         >An easy-to-use platform enabling people to preserve their memories, rediscover their roots, and
           create a deeper connection with themselves and their families.
         </Typography>
-        <Button
-          title='Start Writing for Free'
-          width='230px'
-          height='55px'
-          img1={Pen}
-        />
+        <Box sx={{ width: "230px", height: "55px" }}>
+          <Button
+            title='Start Writing for Free'
+            width="100%"
+            height="100%"
+            img1={Pen}
+          />
+        </Box>
         <Typography
           sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 150px' }}
         >No credit card required

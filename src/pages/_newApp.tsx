@@ -49,7 +49,7 @@ export default function NewApp({ children }) {
       <I18nextProvider i18n={i18n}>
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}>
           {/* <Component {...children} /> */}
-          {/* <LiveChat /> */}
+          <LiveChat />
           {children}
         </GoogleOAuthProvider>
         <ToastContainer />

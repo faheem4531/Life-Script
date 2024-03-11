@@ -4,13 +4,16 @@
   bottom: -300px;
   right: 0;
   z-index: 10;
+  width: 870px;
+  height: 380px;
 }
 
 .image1 {
   position: absolute;
   right: 320px;
   top: 150px;
-  /* z-index: -1; */
+  /* width: 190px; */
+  /* height: 242px; */
   animation: image1 4s -2s;
 }
 
@@ -18,6 +21,8 @@
   position: absolute;
   right: 190px;
   top: 80px;
+  /* width: 200px; */
+  /* height: 225px; */
   z-index: 1;
   animation: image2 4s -2s;
 }
@@ -26,6 +31,8 @@
   position: absolute;
   right: 0;
   top: 75px;
+  /* width: 180px; */
+  /* height: 280px; */
   animation: image3 4s -2s;
 }
 
@@ -34,6 +41,8 @@
   right: 130px;
   top: 260px;
   z-index: 2;
+  /* width: 260px; */
+  /* height: 200px; */
   animation: image4 4s -2s;
 }
 
@@ -194,4 +203,45 @@
     width: 550px;
     height: 800px;
   }
+}
+
+@media screen and (min-width: 899px) and (max-width: 1200px) {
+/* Introduction */
+.bookImg {
+  bottom: -250px;
+  width: 550px;
+  height: 240px;
+}
+
+.image1 {
+  right: 210px;
+  top: initial;
+  bottom: 0px;
+  width: 170px;
+  height: 200px;
+}
+
+.image2 {
+  right: 110px;
+  top: initial;
+  bottom: 60px;
+  width: 150px;
+  height: 170px;
+  z-index: 1;
+}
+
+.image3 {
+  top: initial;   
+  bottom: 0px;
+  width: 170px;
+  height: 200px;
+}
+
+.image4 {
+  right: 100px;
+  bottom: -80px;
+  top: initial;
+ width: 200px;
+  height: 180px;
+}
 }
