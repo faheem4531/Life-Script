@@ -11,7 +11,9 @@
   background-size: 67px 50%;
   animation: slideIn 1s ease-in-out infinite alternate;
 }
-
+.menu{
+  display: none;
+}
 @keyframes slideIn {
   0% {
     transform: translateY(0);
@@ -25,5 +27,67 @@
   .logo {
     width: 220px;
     height: 35px;
+  }
+}
+
+@media screen and (max-width: 1200px) and  (min-width: 900px) {
+  .logo {
+    width: 170px !important;
+    height: 25px !;
+  }
+  .underLine {
+    background-size: 45px 50%;
+  }
+}
+ 
+
+@media screen and (max-width: 899px) {
+  .logo {
+    width: 130px;
+    height: 20px;
+  }
+  .menu{
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+  }
+
+  .menuItems{
+    font-size: 30px !important;
+    width: 100vw;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .menuItems *>{
+    margin-top: 30px;
+  }
+
+  .hide{
+    display: none;
+  }
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .logo {
+    width: 130px;
+    height: 20px;
+  }
+
+
+  .menu{
+    width: 18px;
+    height: 16px;
+    right: 16px;
   }
 }

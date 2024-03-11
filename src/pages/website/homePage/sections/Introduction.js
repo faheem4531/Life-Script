@@ -39,7 +39,7 @@ const Introduction = () => {
 
   return (
     <Box sx={{ padding: "90px 0 0 75px", position: "relative" }}>
-      <Box sx={{ width: '55%' }}>
+      <Box sx={{ width: '55%', zIndex: "20" }}>
         <Typography
           sx={{ fontSize: '60px', lineHeight: '70px', fontFamily: "Besley !important", minWidth: "770px" }}
         >An Autobiography Book <br /> The Best Way To <span className="multiple-text" style={color}></span> </Typography>
