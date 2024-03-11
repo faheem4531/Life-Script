@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const currentPath = usePathname();
   const [loading, setLoading] = useState(true);
-  //verify auth
+  // verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
     if (
@@ -25,9 +25,16 @@ export default function App({ Component, pageProps }: AppProps) {
       userLoggedIn !== "undefined" &&
       currentPath !== "/verify/verificationSent" &&
       currentPath !== "/verify" &&
-      currentPath !== "/verify/forgetPassword"
+      currentPath !== "/verify/forgetPassword" &&
+      currentPath !== "website/pricing" &&
+      currentPath !== "website/homePage" &&
+      currentPath !== "website/blog" &&
+      currentPath !== "website/aboutUs" &&
+      currentPath !== "website/gifting"
+
+
     ) {
-      router.push("/");
+      // router.push("/");
       setLoading(false);
     } else if (currentPath == "/") {
       setTimeout(() => {
@@ -57,9 +64,9 @@ export default function App({ Component, pageProps }: AppProps) {
             <CircularProgress />
           </Box>
         ) : (
-            <NewApp>
-              <Component {...pageProps} />
-            </NewApp>
+          <NewApp>
+            <Component {...pageProps} />
+          </NewApp>
         )}
       </LocalizationProvider>
     </StoreProvider>

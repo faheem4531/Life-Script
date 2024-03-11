@@ -22,10 +22,11 @@ export default function Home() {
         />
       </Head>
       {/* <FeaturesPage /> */}
-      {/* <HomePage /> */}
+      <HomePage />
+      {/* <AuthPage /> */}
       {/* <BlogPage /> */}
       {/* <BlogDetailPage /> */}
-      <GiftingPage />
+      {/* <GiftingPage /> */}
     </>
   );
 }

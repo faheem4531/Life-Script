@@ -57,7 +57,7 @@ function MapCard({ title, date, image, details }) {
       </Box>
       <Image src={image} alt="img" className={styles.blogImg} />
       <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>{details}
-        <Link href="/blog/blogDetails">
+        <Link href="/website/blog/blogDetails">
           <span className={styles.readMore}>Read more <Image src={More} alt="more" /></span>
         </Link>
       </Typography>

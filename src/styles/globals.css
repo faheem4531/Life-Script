@@ -233,3 +233,7 @@ a {
   border-radius: 30px !important;
   border: 1px solid #197065 !important;
 }
+
+button{
+  cursor: pointer;
+}

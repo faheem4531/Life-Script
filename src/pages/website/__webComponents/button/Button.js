@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, fontSize, borderRadius, }) => {
+const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, fontSize, borderRadius }) => {
 
   const styles = {
     borderRadius: borderRadius || '2px',

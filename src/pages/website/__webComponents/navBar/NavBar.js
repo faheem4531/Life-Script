@@ -8,11 +8,27 @@ import NextIcon from '@/__webAssets/svgs/next.svg'
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
 
-const NavBar = ({ color, logo }) => {
 
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+
+const NavBar = ({ color, logo }) => {
+  const router = useRouter();
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const pathname = usePathname();
 
-  console.log(pathname, "   path");
+  useEffect(() => {
+    const userLoggedInStorage = localStorage.getItem("token");
+    setUserLoggedIn(!!userLoggedInStorage && userLoggedInStorage !== "undefined");
+  }, []);
+
+  const handleButtonClick = () => {
+    if (userLoggedIn) {
+      router.push("/dashboard/chapters");
+    } else {
+      router.push("/_auth/Auth");
+    }
+  };
 
   return (
     <Box sx={{
@@ -35,45 +51,46 @@ const NavBar = ({ color, logo }) => {
             className={`link ${pathname === '/' ? styles.underLine : ''}`}
           >Home</Typography>
         </Link>
-        <Link href="/features">
+        <Link href="/website/features">
           <Typography sx={{ padding: ' 0 20px 10px' }}
-            className={`link ${pathname === '/features' ? styles.underLine : ''}`}
+            className={`link ${pathname === '/website/features' ? styles.underLine : ''}`}
           >Features</Typography>
         </Link>
-        <Link href="/blog">
+        <Link href="/website/blog">
           <Typography sx={{ padding: ' 0 20px 10px' }}
-            className={`link ${pathname === '/blog' || pathname === '/blog/blogDetails' ? styles.underLine : ''}`}
+            className={`link ${pathname === '/website/blog' || pathname === '/blog/blogDetails' ? styles.underLine : ''}`}
 
           >Blog</Typography>
         </Link>
-        <Link href="/aboutUs">
+        <Link href="/website/aboutUs">
           <Typography sx={{ padding: ' 0 20px 10px' }}
-            className={`link ${pathname === '/aboutUs' ? styles.underLine : ''}`}
+            className={`link ${pathname === '/website/aboutUs' ? styles.underLine : ''}`}
 
           >About Us</Typography>
         </Link>
-        <Link href="/pricing">
+        <Link href="/website/pricing">
           <Typography sx={{ padding: ' 0 20px 10px' }}
-            className={`link ${pathname === '/pricing' ? styles.underLine : ''}`}
+            className={`link ${pathname === '/website/pricing' ? styles.underLine : ''}`}
 
           >Pricing</Typography>
         </Link>
-        <Link href="/faqs">
+        <Link href="/website/faqs">
           <Typography sx={{ padding: ' 0 20px 10px' }}
-            className={`link ${pathname === '/faqs' ? styles.underLine : ''}`}
+            className={`link ${pathname === '/website/faqs' ? styles.underLine : ''}`}
 
           >FAQ &apos; s</Typography>
         </Link>
 
         <Box sx={{ paddingBottom: '10px' }}>
-          <a href="https://www.thelifescript.com/">
+          <Link href="/_auth/Auth">
             <Button
               title='Sign Up'
               width='140px'
               height='45px'
               img2={NextIcon}
+              onClick={handleButtonClick}
             />
-          </a>
+          </Link>
         </Box>
       </Box>
     </Box>
