@@ -9,14 +9,17 @@ import CustomizedAccordions from "./Accordion";
 const Experience = () => {
 
   return (
-    <Box sx={{ margin: '220px 0  120px' }}
+    <Box sx={{ margin: { lg: '220px 0  120px', md: "170px 0 100px" } }}
     >
       <Box sx={{ textAlign: "center" }}>
         <PrimaryHeading lineHeight="60px" showStyle={false} heading=" Experience the LifeScript Advantage" />
         <Image src={FlowerLine} alt="logo" />
       </Box>
 
-      <Box sx={{ margin: "220px 60px 240px 130px", display: "flex", justifyContent: "center", columnGap: "140px", alignItems: "center" }}>
+      <Box sx={{
+        margin: { lg: "220px 60px 240px 130px", md: "100px 40px 150px 70px" }, display: "flex", justifyContent: "center",
+        columnGap: { lg: "140px", md: "70px" }, alignItems: "center"
+      }}>
         <CustomizedAccordions />
       </Box>
     </Box >

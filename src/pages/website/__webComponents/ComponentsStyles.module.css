@@ -82,7 +82,13 @@
   height: 40px;
 }
 
+@media screen and  (max-width: 1200px) and (min-width:899px) {
+  .gif {
+    width: 450px;
+    height: 350px;
+  }
 
+}
 @media screen and  (max-width: 899px) {
 /* Working  */
 .workingBox {
