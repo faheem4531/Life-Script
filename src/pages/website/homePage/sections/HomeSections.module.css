@@ -244,4 +244,48 @@
  width: 200px;
   height: 180px;
 }
+
+@keyframes image1 {
+  0% {
+    right: 100px;
+    bottom: -200px;
+  }
+
+  100% {
+    right: 210px;
+    bottom: 0;
+  }
+}
+
+@keyframes image2 {
+  0% {
+    right: 80px;
+    bottom: -300px;
+  }
+  100% {
+    bottom: 60px;
+    right: 110px;
+  }
+
+}
+
+@keyframes image3 {
+  0% {
+    right: 50px;
+    bottom: -300px;
+  }
+  100% {
+    bottom: 0px;
+    right: 0px;
+  }
+}
+
+@keyframes image4 {
+  0% {
+    bottom: -300px;
+  }
+  100% {
+  bottom: -80px;
+  }
+}
 }

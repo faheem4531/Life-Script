@@ -42,7 +42,7 @@ const Introduction = () => {
       <Box sx={{ width: '55%', zIndex: "20" }}>
         <Typography
           sx={{ fontSize: '60px', lineHeight: '70px', fontFamily: "Besley !important", minWidth: "770px" }}
-        >An Autobiography Book <br /> The Best Way To <span className="multiple-text" style={color}></span> </Typography>
+        >The Best Way To <span className="multiple-text" style={color}></span> <br /> An Autobiography Book  </Typography>
         <Typography
           sx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 500, margin: '90px 0 30px', width: '70%' }}
         >An easy-to-use platform enabling people to preserve their memories, rediscover their roots, and
