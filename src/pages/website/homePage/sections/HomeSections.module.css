@@ -146,10 +146,15 @@
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
 .bgHurt {
   position: absolute;
   right: 150px;
   bottom: 10px;
+}
+
+.bandage{
+  display: none;
 }
 
 /* Story telling  */
@@ -219,6 +224,7 @@
   height: 590px;
 }
 }
+
 @media screen and (min-width: 899px) and (max-width: 1200px) {
 /* Introduction sec*/
 .bookImg {
@@ -307,6 +313,18 @@
   .fullStyle {
     max-width: 750px;
   }
+
+  /* GifTab  */
+
+.gifTabBox {
+  background-size: 100% 200px;
+}
+.bgHurt {
+  height: 120px;
+  width:200px;
+  right: 120px;
+}
+
 }
 
 @media screen and (max-width: 899px) {
@@ -325,6 +343,17 @@ display: none;}
   max-width: 600px;
 }
 
+  /* GifTab  */
+
+  .gifTabBox {
+    background-size: 100% 150px;
+  }
+  .bgHurt {
+    height: 80px;
+    width:160px;
+    right: 120px;
+    bottom: 26px;
+  }
 }
 
 
@@ -339,5 +368,27 @@ display: none;}
     bottom: -30px;
     max-width: 305px;
     height: 40px;
+  }
+
+  /* GifTab  */
+
+  .gifTabBox {
+    background-image: none;
+    background-color: #fff;
+  }
+
+  .bgHurt {
+    height: 110px;
+    width:215px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .bandage{
+    display: block;
+    position: absolute;
+    top: -55px;
+    left: -60px;
+    transform: rotate(95deg);
   }
   }

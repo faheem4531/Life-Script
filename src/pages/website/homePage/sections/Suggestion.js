@@ -28,7 +28,7 @@ const Suggestion = () => {
   ]
 
   return (
-    <Box sx={{ margin: { md: "100px 0 220px" } }}>
+    <Box sx={{ margin: { md: "100px 0 220px", xs: " 0 0 100px" } }}>
       {/* heading  */}
       <Box sx={{
         textAlign: "center",
