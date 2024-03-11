@@ -57,7 +57,7 @@ const Introduction = () => {
           />
         </Box>
         <Typography
-          sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 150px' }}
+          sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: { lg: '10px 0 150px', md: "10px 0 70px", sm: "10px 0 40px" } }}
         >No credit card required
         </Typography>
       </Box>
