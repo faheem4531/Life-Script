@@ -6,13 +6,21 @@ import Points from "./Points";
 const Working = ({ data, heading, subHeading = false }) => {
 
   return (
-    <Box sx={{ padding: '200px 25px 220px' }}
+    <Box sx={{ padding: { lg: '200px 25px 220px', md: "150px 20px 200px", sm: "150px 30px 200px", xs: "170px 16px" }, height: "" }}
       className={styles.workingBox}
     >
       <PrimaryHeading showStyle={true} heading={heading} color="#F3ECDA" />
       {subHeading && <Typography sx={{ fontSize: "32px", fontWeight: 500, margin: "64px 0 -80px", textAlign: "center", color: "#F3ECDA" }}>{subHeading}</Typography>}
 
-      <Box sx={{ marginTop: "150px", display: "flex", columnGap: "17px", justifyContent: "center" }}>
+      <Box sx={{
+        marginTop: { lg: "150px", md: "120px", sm: "90px", xs: "60px" },
+        display: "flex",
+        flexDirection: { md: "row", sm: "column", xs: "column" },
+        columnGap: { lg: "17px", md: "10px" },
+        justifyContent: "center",
+        alignItems: "center",
+        rowGap: "20px"
+      }}>
 
         {data.map((item, index) => <Points
           key={index}

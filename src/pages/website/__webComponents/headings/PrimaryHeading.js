@@ -3,11 +3,12 @@ import LeftStyle from "@/__webAssets/pngs/left-style.png"
 import RightStyle from "@/__webAssets/pngs/right-style.png"
 import Image from "next/image";
 import Line from "@/__webAssets/pngs/under-line-long.png"
+import styles from "../ComponentsStyles.module.css"
 
-const PrimaryHeading = ({ heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle }) => {
+const PrimaryHeading = ({ heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle, lineWidth }) => {
 
   const styleLine = {
-    width: "140px",
+    width: "140px" || lineWidth,
   }
 
   return (
@@ -17,14 +18,14 @@ const PrimaryHeading = ({ heading, showStyle, color, lineHeight, left = LeftStyl
       justifyContent: 'center'
     }}
     >
-      {showStyle && <Image src={left} alt="logo" />}
-      <Box color={color} lineHeight={lineHeight} sx={{ fontSize: "52px", fontWeight: 500, margin: "0 18px", position: "relative", fontFamily: "Besley !important" }}>
+      {showStyle && <Image src={left} alt="logo" className={styles.headingStyles} />}
+      <Box color={color} lineHeight={lineHeight} sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, margin: { sm: "0 18px", xs: "0" }, position: "relative", fontFamily: "Besley !important" }}>
         {heading}
-        <Box sx={{ position: "absolute", top: "25px", right: "0" }}>
-          <Image src={Line} style={styleLine} alt="mark" />
+        <Box sx={{ position: "absolute", top: { sm: "25px", xs: "15px" }, right: "0" }}>
+          <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
         </Box>
       </Box>
-      {showStyle && <Image src={right} alt="logo" />}
+      {showStyle && <Image src={right} alt="logo" className={styles.headingStyles} />}
 
     </Box >
   )
