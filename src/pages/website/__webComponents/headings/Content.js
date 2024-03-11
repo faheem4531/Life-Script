@@ -1,12 +1,13 @@
 import { Box, Typography } from "@mui/material";
+import styles from "../ComponentsStyles.module.css"
 
 export function Content({ heading, subHeading, marginB, subWidth, width, align, subFonts }) {
   return (
-    <Box maxWidth={width || "500px"} marginBottom={marginB} textAlign={align} >
-      <Typography sx={{ fontSize: "32px", fontWeight: 500, marginBottom: "20px", fontFamily: "Besley !important" }}>
+    <Box sx={{ margin: { lg: "0 0 25px", sm: "0 0 20px", xs: "0 0 30px" } }} maxWidth={width || "500px"} marginBottom={marginB} textAlign={align}>
+      <Typography sx={{ fontSize: { md: "32px", sm: "28px", sx: "24px", xs: "24px" }, fontWeight: 500, marginBottom: { lg: "20px", md: "10px", xs: "14px" }, fontFamily: "Besley !important" }}>
         {heading}
       </Typography>
-      <Typography sx={{ fontFamily: "myfamily" }} fontSize={subFonts || "16px"} maxWidth={subWidth}>
+      <Typography sx={{ maxWidth: { lg: "420px" } }} fontSize={subFonts || "16px"} maxWidth={subWidth}>
         {subHeading}
       </Typography>
     </Box>
