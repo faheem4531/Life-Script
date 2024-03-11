@@ -58,9 +58,11 @@ const HomePage = () => {
       />
       <StoryTelling />
       <Reviews />
-      <Experience />
-      <OurBooks />
+      <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
+        <Experience />
+      </Box>
       <Pricing />
+      <OurBooks />
       <Testimonial />
       <GotQuestions />
       <ContactFooter
