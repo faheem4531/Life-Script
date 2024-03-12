@@ -118,4 +118,10 @@
     width: 78px;
     height: 27px;
   }
+
+  /* ContactFooter  */
+.contactFooterBox {
+  background-size:cover;
+  background-repeat: no-repeat;
+}
   }
