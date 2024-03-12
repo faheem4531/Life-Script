@@ -72,7 +72,7 @@ const FeaturesItems = () => {
   ]
 
   return (
-    <Box sx={{ maxWidth: "1200px", margin: { lg: "200px auto 0", md: "150px auto 0", sm: "120px auto 0" } }}>
+    <Box sx={{ maxWidth: "1200px", margin: { lg: "200px auto 0", md: "150px auto 0", sm: "120px auto 100px", xs: "100px 20px 150px" } }}>
 
       <Typography sx={{
         fontSize: { md: "52px", sm: "44px", xs: "32px" },
@@ -80,15 +80,21 @@ const FeaturesItems = () => {
         marginBottom: "20px",
         fontFamily: "Besley !important",
         padding: { lg: "0 10%", md: "0 5%", sm: "50px 50px 0" },
-        textAlign: "center"
+        textAlign: { sm: "center" }
       }}>
-        Features That Shape Your Storytelling Experience Fun and Easy
+        Features That Shape Your Storytelling <br /> Experience Fun and Easy
       </Typography>
-      <Typography sx={{ fontSize: "16px", padding: { md: "0 20%", sm: "0 7%" }, textAlign: "center" }}>
+      <Typography sx={{ fontSize: "16px", padding: { md: "0 20%", sm: "0 7%" }, textAlign: { sm: "center" } }}>
         Lifescript features make crafting your autobiography easy and engaging. Capture your life&apos;s journey, design with style, and visually represent your family heritage. Create a lasting legacy with a high-quality, printed book to share.
       </Typography>
 
-      <Box sx={{ marginTop: { lg: "200px", md: "150px", sm: "100px" }, display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <Box sx={{
+        marginTop: { lg: "200px", md: "150px", sm: "100px", xs: "80px" },
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        position: "relative"
+      }}>
         {Data.map((item, index) => <DetailFeature
           key={index}
           logo={item.logo}
@@ -112,31 +118,33 @@ function DetailFeature({ logo, heading, details, flex, gif, button }) {
     <Box sx={{
       display: "flex",
       justifyContent: "space-between",
-      flexDirection: { md: "row", sm: "column" },
+      flexDirection: { md: "row", sm: "column", xs: "column" },
       alignItems: { md: "center", sm: "start", sx: "start" },
       columnGap: "20px",
-      marginBottom: { lg: "250px", md: "200px", sm: "100px" },
+      marginBottom: { lg: "250px", md: "200px", sm: "100px", xs: "50px" },
       width: "100%",
-      padding: { sm: "0 50px", xs: " 0 20px" }
+      padding: { sm: "0 50px" }
     }}
       flexDirection={flex}
     >
-      <Box sx={{ maxWidth: "355px" }}>
+      <Box sx={{ maxWidth: { sm: "355px", xs: "100%" } }}>
         <Image src={logo} alt="icon" className={styles.gifIcon} />
         <Content
           subWidth="330px"
           heading={heading}
           subHeading={details} />
-        {button && <Box sx={{ marginTop: "50px" }}>
-          <Button
-            title='Get Started'
-            width='200px'
-            height='50px'
-            img1={Pen}
-          />
+        {button && <Box sx={{ marginTop: "50px" }} className={styles.buttonBox}>
+          <Box sx={{ width: { sm: "200px", xs: "100%" } }}>
+            <Button
+              title='Get Started'
+              width='100%'
+              height='50px'
+              img1={Pen}
+            />
+          </Box>
           <Typography
-            sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 0px' }}
-          >NStart Free Trial (no credit card required)
+            sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 0' }}
+          >Start Free Trial (no credit card required)
           </Typography>
         </Box>
         }
