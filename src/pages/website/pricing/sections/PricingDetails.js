@@ -9,9 +9,9 @@ import LeftStyle from "@/__webAssets/pngs/left-style2.png"
 const PricingDetails = ({ heading, cardsDetail }) => {
 
   return (
-    <Box className={styles.pricingDetails}>
-      <PrimaryHeading heading={heading} showStyle={true} left={LeftStyle} right={RightStyle} />
-      <Box sx={{ margin: "100px 0 100px ", display: "flex", justifyContent: "center", columnGap: "16px" }}>
+    <Box>
+      <PrimaryHeading heading={heading} showStyle={true} removeStyleMbl={true} left={LeftStyle} right={RightStyle} />
+      <Box sx={{ margin: { lg: "100px 0", md: "100px 20px", sm: "100px 0", xs: "70px 0 0" }, display: "flex", justifyContent: "center", flexDirection: { md: "row", sm: "column", xs: "column" }, alignItems: "center", columnGap: "16px" }}>
         {cardsDetail.map((item, index) => <DetailCard
           key={index}
           header={item.header}
@@ -29,14 +29,30 @@ export default PricingDetails;
 
 function DetailCard({ header, logo, points, bgColor, sCase }) {
   return (
-    <Box sx={{ maxWidth: "405px", width: "100%", bgcolor: "#F4F4F4", borderRadius: "8px" }}>
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "75px", textAlign: "center", fontSize: "20px", color: "#fff", fontWeight: 800, borderRadius: "8px 8px 0 0" }}
+    <Box sx={{
+      maxWidth: { lg: "405px", md: "320px", sm: "405px", xs: "325px" },
+      marginBottom: { md: "0", sm: "50px", xs: "50px" },
+      width: "100%",
+      bgcolor: "#F4F4F4",
+      borderRadius: "8px"
+    }}>
+      <Box sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "75px",
+        textAlign: "center",
+        fontSize: "20px",
+        color: "#fff",
+        fontWeight: 800,
+        borderRadius: "8px 8px 0 0"
+      }}
         bgcolor={bgColor}>
         {header}
         {logo && <Image src={logo} alt="logo" />}
       </Box>
       <Box
-        sx={{ padding: "10px 20px" }}
+        sx={{ padding: { sm: "10px 20px", xs: "10px 10px 10px 20px" } }}
         className={styles.cardBorder}
       >
         {points.map((item, index) => <Box
@@ -45,7 +61,7 @@ function DetailCard({ header, logo, points, bgColor, sCase }) {
             padding: "20px 0 20px 5px",
             height: "58px",
             display: "flex",
-            fontSize: "16px",
+            fontSize: { lg: "16px", md: "14px", sm: "16px", xs: "16px" },
             fontWeight: 800,
           }}
           alignItems={index === 1 && sCase ? "" : "center"}

@@ -133,7 +133,7 @@ const PricingPage = () => {
       <NavBar color="#F3ECDA" logo={Logo} />
       <Pricing />
       <Working data={pointsArray} heading="How we’re different:" subHeading="Lifescript vs Storyworth" />
-      <Box sx={{ margin: "100px 0 0" }}>
+      <Box sx={{ margin: { sm: "100px 0 0", xs: " 10px 0 -50px" } }}>
         <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book Details" />
         <PricingDetails cardsDetail={featuresDetails} heading="Features Comparison" />
       </Box>
