@@ -49,8 +49,7 @@
 .features {
   background-image: url(../../../__webAssets/pngs/bg-feature.png);
   background-repeat: no-repeat;
-  background-size: 100%;
-  object-fit: cover;
+  background-size: cover;
 }
 
 .lineBox {
@@ -102,6 +101,12 @@
 .headingStyles{
   width: 130px;
 }
+
+/* Feature Intro  */
+.line {
+ width: 100px;
+}
+
 }
 
 @media screen and  (max-width: 600px) {
@@ -120,8 +125,14 @@
   }
 
   /* ContactFooter  */
-.contactFooterBox {
-  background-size:cover;
-  background-repeat: no-repeat;
-}
+  .contactFooterBox {
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+
+  /* Feature Intro  */
+.line {
+  width: 80px;
+  right: -10px;
+ }
   }
