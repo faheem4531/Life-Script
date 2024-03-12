@@ -82,7 +82,6 @@ function StoryWraper({ direction, heading, content, image, button = false }) {
       alignItems: { md: "center" },
       flexDirection: { md: direction, sm: "column-reverse", xs: "column-reverse" }
     }}
-    // flexDirection={direction}
     >
       <Box sx={{ margin: { md: "0", sm: "30px 0 0", xs: "20px 0 0" } }}>
         <Content heading={heading} subHeading={content} />

@@ -179,7 +179,7 @@
 .bookBox {
   background-image: url(../../../../__webAssets/pngs/bg-books.png);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 
 .book {
@@ -187,7 +187,7 @@
   height: 580px;
 }
 
-.leftAero,
+/* .leftAero,
 .rightAero {
   position: relative;
   z-index: 10;
@@ -205,7 +205,7 @@
   position: absolute;
   bottom: -5px;
   left: 0;
-}
+} */
 
 @media screen and (min-width: 1600px) {
   .book {
@@ -333,6 +333,12 @@
   background-image: none;
 }
 
+/* Books  */
+.book {
+  width: 310px;
+  height: 450px;
+}
+
 }
 
 @media screen and (max-width: 899px) {
@@ -367,6 +373,14 @@ display: none;}
   .bgStorytelling {
     background-image: none;
   }
+
+
+/* Books  */
+.book {
+  width: 240px;
+  height: 340px;
+}
+
 }
 
 
@@ -409,5 +423,15 @@ display: none;}
 .stroyImages {
   width: 100%;
   /* height: 240px; */
+}
+
+/* Books  */
+.slider {
+  width: 200px;
+  margin: 70px 0 0;
+}
+.book {
+  width: 200px;
+  height: 270px;
 }
   }

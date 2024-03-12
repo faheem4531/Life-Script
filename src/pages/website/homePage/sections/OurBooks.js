@@ -68,7 +68,7 @@ const OurBooks = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1
         }
@@ -87,27 +87,32 @@ const OurBooks = () => {
 
   return (
     <Box
-      sx={{ padding: "160px 0 110px" }}
+      sx={{
+        padding: { lg: "160px 0 110px", md: "150px 0 100px", sm: "100px 0 ", xs: "100px 0" },
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
       className={styles.bookBox}
     >
       <PrimaryHeading showStyle={true} heading="Our Books" color="#F3ECDA" />
       <Slider {...settings} className={styles.slider}>
-        <Box sx={{ padding: "0 100px 0 0", width: { sm: "450px", xl: "500px" } }}>
+        <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book} alt="image" className={styles.book} />
         </Box>
-        <Box sx={{ padding: "0 100px 0 0", width: { sm: "450px", xl: "500px" } }}>
+        <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book2} alt="image" className={styles.book} />
         </Box>
-        <Box sx={{ padding: "0 100px 0 0", width: { sm: "450px", xl: "500px" } }}>
+        <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book3} alt="image" className={styles.book} />
         </Box>
-        <Box sx={{ padding: "0 100px 0 0", width: { sm: "450px", xl: "500px" } }}>
+        <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book4} alt="image" className={styles.book} />
         </Box>
-        <Box sx={{ padding: "0 100px 0 0", width: { sm: "450px", xl: "500px" } }}>
+        <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book5} alt="image" className={styles.book} />
         </Box>
-        <Box sx={{ padding: "0 100px 0 0", width: { sm: "450px", xl: "500px" } }}>
+        <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book6} alt="image" className={styles.book} />
         </Box>
       </Slider>
