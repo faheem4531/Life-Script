@@ -68,9 +68,10 @@ const PricingPage = () => {
     {
       logo: StoryWorthy,
       bgColor: "#15372F",
+      sCase: true,
       data: [
         "No",
-        "139$ (initially 99$ but additional 40$ if you want full-color book)",
+        "139$",
         "For a full-color book, 40$ additional. Cannot be prepaid by gifter",
         "79$ (up to 300 pages) ,99$ (up to 480 pages)",
         "No, only for US.",

@@ -16,6 +16,7 @@ const PricingDetails = ({ heading, cardsDetail }) => {
           key={index}
           header={item.header}
           bgColor={item.bgColor}
+          sCase={item.sCase}
           logo={item.logo}
           points={item.data}
         />)}
@@ -26,7 +27,7 @@ const PricingDetails = ({ heading, cardsDetail }) => {
 
 export default PricingDetails;
 
-function DetailCard({ header, logo, points, bgColor }) {
+function DetailCard({ header, logo, points, bgColor, sCase }) {
   return (
     <Box sx={{ maxWidth: "405px", width: "100%", bgcolor: "#F4F4F4", borderRadius: "8px" }}>
       <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "75px", textAlign: "center", fontSize: "20px", color: "#fff", fontWeight: 800, borderRadius: "8px 8px 0 0" }}
@@ -38,11 +39,19 @@ function DetailCard({ header, logo, points, bgColor }) {
         sx={{ padding: "10px 20px" }}
         className={styles.cardBorder}
       >
-        {points.map((item, index) => <Typography
+        {points.map((item, index) => <Box
           key={index}
-          sx={{ padding: "20px 0", height: "58px", display: "flex", alignItems: "center", fontSize: "16px", fontWeight: 500, }}>
-          {item}
-        </Typography>)}
+          sx={{
+            padding: "20px 0 20px 5px",
+            height: "58px",
+            display: "flex",
+            fontSize: "16px",
+            fontWeight: 800,
+          }}
+          alignItems={index === 1 && sCase ? "" : "center"}
+        >
+          {item} {index === 1 && sCase && <Typography sx={{ fontSize: "14px", marginLeft: "5px", lineHeight: "15px" }}> (initially 99$ but additional 40$ if you want full-color book)</Typography>}
+        </Box>)}
 
 
       </Box>
