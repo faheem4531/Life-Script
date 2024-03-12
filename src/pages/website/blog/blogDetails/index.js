@@ -17,27 +17,34 @@ const BlogDetailPage = () => {
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.introBlog}>
       <NavBar color="#F3ECDA" logo={Logo} />
-      <Box>
-        <Box sx={{ margin: "250px 190px 0 200px", maxWidth: "1050px", }}>
-          <Box>
-            <Box sx={{ display: "flex", alignItems: "center", columnGap: "8px" }}>
-              <Link href="/blog">
-                <Image src={Back} alt="icon" />
-              </Link>
-              <Typography>Back to Blog</Typography>
-            </Box>
-            <Typography sx={{ fontSize: "40px", fontWeight: 500, marginBottom: "20px", width: "80%", fontFamily: "Besley !important" }}>
-              Crafting Your Legacy: A Guide to Writing Your Autobiography
-            </Typography>
-            <Typography x={{ fontSize: "16px" }}>
-              Published by Angel on January 12, 2024
-            </Typography>
+      <Box sx={{
+        margin: { lg: "250px auto 200px", md: "180px auto 150px", sm: "120px auto 100px", xs: "100px 20px 80px" },
+        maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
+      }}>
+        <Box>
+          <Box sx={{ display: "flex", alignItems: "center", columnGap: "8px", marginBottom: { xs: "20px", sm: "0" } }}>
+            <Link href="/blog">
+              <Image src={Back} alt="icon" />
+            </Link>
+            <Typography>Back to Blog</Typography>
           </Box>
-          <Image src={BlogImage} alt="img" className={styles.blogImg} />
-          <BlogDetails />
+          <Typography sx={{
+            fontSize: { sm: "40px", xs: "30px" },
+            fontWeight: 500,
+            marginBottom: "20px",
+            width: { md: "80%", sm: "100%", xs: "100%" },
+            fontFamily: "Besley !important"
+          }}>
+            Crafting Your Legacy: A Guide to Writing Your Autobiography
+          </Typography>
+          <Typography x={{ fontSize: "16px" }}>
+            Published by Angel on January 12, 2024
+          </Typography>
         </Box>
+        <Image src={BlogImage} alt="img" className={styles.blogImg} />
+        <BlogDetails />
       </Box>
-      <Box sx={{ margin: "240px 0" }}>
+      <Box sx={{ margin: { lg: "240px auto", md: "150px auto", sm: "100px auto", xs: "120px 0 80px" } }}>
         <GifTab
           heading="Still not convinced? Try it now!"
           subHeading="Don’t worry no credit card required."
@@ -46,7 +53,7 @@ const BlogDetailPage = () => {
         />
       </Box>
       <Footer />
-    </Box>
+    </Box >
   )
 }
 
