@@ -76,13 +76,16 @@ const GotQuestions = () => {
 
   return (
     <Box
-      sx={{ padding: "150px 160px  200px 110px" }}
+      sx={{ padding: { lg: "150px 160px  200px 110px", md: "150px 50px 150px", sm: "150px 100px 150px", xs: "120px 20px 80px" } }}
       className={styles.gotQsBg}
     >
-      <Typography sx={{ fontSize: "52px", fontWeight: 500, fontFamily: "Besley !important" }}>Got Questions?</Typography>
-      <Typography sx={{ fontSize: "20px", marginTop: "10px" }}>Got Questions? We&apos;ve Got Answers!</Typography>
-      <Box sx={{ margin: "85px 0 0", display: "flex", columnGap: "10%" }}>
-        <Box sx={{ width: "45%" }}>
+      <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>Got Questions?</Typography>
+      <Typography sx={{ fontSize: { sm: "20px", xs: "16px" }, marginTop: "10px" }}>Got Questions? We&apos;ve Got Answers!</Typography>
+      <Box sx={{
+        marginTop: { sm: "85px", xs: "45px" }, display: "flex", flexDirection: { md: "row", sm: "column", xs: "column" },
+        columnGap: { lg: "10%", md: "5%" }
+      }}>
+        <Box sx={{ width: "100%" }}>
           {DumyQs1.slice(0, 4).map((item, index) => <Question
             key={index}
             qs={item.qs}
@@ -93,7 +96,7 @@ const GotQuestions = () => {
           />)}
         </Box>
 
-        <Box sx={{ width: "45%" }}>
+        <Box sx={{ width: "100%" }}>
           {DumyQs1.slice(4, 8).map((item, index) => <Question
             key={index}
             qs={item.qs}
