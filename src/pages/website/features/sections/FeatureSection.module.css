@@ -10,3 +10,28 @@
   max-width: 700px;
   max-height: 445px;
 }
+
+@media screen and (max-width:1200px)and (min-width:899px) {
+  
+  .gifIcon{
+    width: 90px;
+    height: auto;
+  }
+  .gif{
+    width: 550px;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width:899px) {
+  
+  .gifIcon{
+    width: 90px;
+    height: auto;
+  }
+  
+  .gif{
+    width: 550px;
+    height: 360px;
+  }
+}

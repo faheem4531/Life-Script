@@ -70,14 +70,25 @@ const FeaturesItems = () => {
     },
 
   ]
-  return (
-    <Box sx={{ padding: "200px 120px 0" }}>
-      <Box sx={{ display: "flex", alignItems: "center", flexDirection: "column", width: "90%", textAlign: "center" }}>
-        <Typography sx={{ fontSize: "52px", fontWeight: 500, marginBottom: "20px", fontFamily: "Besley !important" }}>Features That Shape Your Storytelling Experience Fun and Easy</Typography>
-        <Typography sx={{ fontSize: "16px", width: "80%" }}>Lifescript features make crafting your autobiography easy and engaging. Capture your life&apos;s journey, design with style, and visually represent your family heritage. Create a lasting legacy with a high-quality, printed book to share.</Typography>
-      </Box>
-      <Box sx={{ marginTop: "200px", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
+  return (
+    <Box sx={{ maxWidth: "1200px", margin: { lg: "200px auto 0", md: "150px auto 0", sm: "120px auto 0" } }}>
+
+      <Typography sx={{
+        fontSize: { md: "52px", sm: "44px", xs: "32px" },
+        fontWeight: 500,
+        marginBottom: "20px",
+        fontFamily: "Besley !important",
+        padding: { lg: "0 10%", md: "0 5%", sm: "50px 50px 0" },
+        textAlign: "center"
+      }}>
+        Features That Shape Your Storytelling Experience Fun and Easy
+      </Typography>
+      <Typography sx={{ fontSize: "16px", padding: { md: "0 20%", sm: "0 7%" }, textAlign: "center" }}>
+        Lifescript features make crafting your autobiography easy and engaging. Capture your life&apos;s journey, design with style, and visually represent your family heritage. Create a lasting legacy with a high-quality, printed book to share.
+      </Typography>
+
+      <Box sx={{ marginTop: { lg: "200px", md: "150px", sm: "100px" }, display: "flex", flexDirection: "column", alignItems: "center" }}>
         {Data.map((item, index) => <DetailFeature
           key={index}
           logo={item.logo}
@@ -101,11 +112,12 @@ function DetailFeature({ logo, heading, details, flex, gif, button }) {
     <Box sx={{
       display: "flex",
       justifyContent: "space-between",
-      alignItems: "center",
+      flexDirection: { md: "row", sm: "column" },
+      alignItems: { md: "center", sm: "start", sx: "start" },
       columnGap: "20px",
-      marginBottom: "250px",
-      maxWidth: "1200px",
-      width: "100%"
+      marginBottom: { lg: "250px", md: "200px", sm: "100px" },
+      width: "100%",
+      padding: { sm: "0 50px", xs: " 0 20px" }
     }}
       flexDirection={flex}
     >
