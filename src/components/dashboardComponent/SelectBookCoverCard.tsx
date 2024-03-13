@@ -431,7 +431,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
             {isLoading ? (
               <CircularProgress />
             ) : (
-              <Image
+              <img
                 // fill={true}
                 width={290}
                 height={414}
