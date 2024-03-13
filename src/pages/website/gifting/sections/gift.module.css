@@ -1,9 +1,10 @@
 /* Gift Introduction  */
 .giftIntro {
   background-image: url(../../../../__webAssets/pngs/bg-feature.png);
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
+
 .logo {
   width: 290px;
   height: 40px;
@@ -37,3 +38,11 @@
   border: 1px solid #30422e;
   border-radius: 2px;
 }
+
+@media screen and (max-width: 600px)  {
+  .logo {
+    width: 220px;
+  }
+
+}
+
