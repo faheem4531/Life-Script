@@ -39,10 +39,22 @@
   border-radius: 2px;
 }
 
+@media screen and (max-width: 899px)  {
+.designCard {
+  background-image: none;
+}
+
+}
+
 @media screen and (max-width: 600px)  {
   .logo {
     width: 220px;
   }
 
+  .DesignImg {
+    max-width: 300px;
+    height: 400px;
+    z-index: 1;
+  }
 }
 

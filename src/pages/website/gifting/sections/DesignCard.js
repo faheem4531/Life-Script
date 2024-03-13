@@ -14,26 +14,34 @@ const DesignCard = () => {
     <Box sx={{
       alignItems: "center",
       textAlign: "center",
-      padding: "150px 170px 40px 160px"
+      padding: { lg: "150px 170px 40px 160px", md: "150px 50px 40px 100px", sm: "100px 50px 0", xs: " 50px 20px 0" }
     }}
       className={styles.designCard}
     >
-      <PrimaryHeading showStyle={true} heading="Design your gift card" left={LeftStyle} right={RightStyle} />
-      <Box sx={{ display: "flex", columnGap: "120px", justifyContent: "center", alignItems: "center", margin: "140px 0 0" }}>
+      <PrimaryHeading showStyle={true} removeStyleMbl={true} heading="Design your gift card" left={LeftStyle} right={RightStyle} />
+      <Box sx={{
+        display: "flex",
+        flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
+        columnGap: "120px",
+        rowGap: "60px",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: { sm: "140px 0 0", xs: "50px 0 0" }
+      }}>
 
 
         <Box sx={{ maxWidth: "560px", textAlign: "start", width: "100%" }}>
-          <Typography sx={{ fontSize: "32px", fontWeight: 500, margin: "0 0 20px" }}>Customize:</Typography>
+          <Typography sx={{ fontSize: { sm: "32px", xs: "24px" }, fontWeight: 500, margin: "0 0 20px" }}>Customize:</Typography>
           <Input placeholder="Book title |" />
           <Box sx={{ display: "flex", gap: "14px", margin: "26px 0" }}>
             <Input placeholder="Your Name" />
             <Input placeholder="Your Email" />
           </Box>
           <Input placeholder="Personal message" />
-          <Box sx={{ marginTop: "40px" }}>
+          <Box sx={{ marginTop: "40px", width: { sm: "180px", xs: "100%" } }}>
             <Button
               title="Gift Now!!"
-              width='180px'
+              width='100%'
               height='55px'
               img1={Gift}
             />
@@ -52,7 +60,11 @@ export default DesignCard;
 
 
 function Input({ placeholder }) {
+  const colorS = {
+    color: "#30422E"
+  }
   return <input
+    style={colorS}
     placeholder={placeholder}
     className={styles.input}
   />

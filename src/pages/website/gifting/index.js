@@ -34,7 +34,9 @@ const GiftingPage = () => {
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <HeroGifting />
       <Gifting />
-      <Experience />
+      <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
+        <Experience />
+      </Box>
       <Working data={pointsArray} heading=" How it works" />
       <DesignCard />
       <GotQuestions />
