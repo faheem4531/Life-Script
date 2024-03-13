@@ -11,3 +11,23 @@
   left: 0;
   height: 95%;
 }
+
+@media screen and (max-width: 899px)  {
+  .faqPage {
+    background-size: 100% 150px;
+  }
+
+.qsPoints{
+  display: none;
+}
+}
+
+
+@media screen and (max-width: 600px)  {
+  .faqPage {
+    background-size: 100% 120px;
+  }
+
+}
+
+
