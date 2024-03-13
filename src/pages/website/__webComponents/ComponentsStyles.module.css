@@ -81,11 +81,21 @@
   height: 40px;
 }
 
+/* Got Questions  */
+.questionIcon{
+  width: 44px;
+  height: 44px;
+ }
+
 @media screen and  (max-width: 1200px) and (min-width:899px) {
   .gif {
     width: 450px;
     height: 350px;
   }
+  .questionIcon{
+    width: 40px;
+    height: 40px;
+   }
 
 }
 @media screen and  (max-width: 899px) {
@@ -107,6 +117,10 @@
  width: 100px;
 }
 
+.questionIcon{
+  width: 30px;
+  height: 30px;
+ }
 }
 
 @media screen and  (max-width: 600px) {
@@ -135,4 +149,5 @@
   width: 80px;
   right: -10px;
  }
+
   }
