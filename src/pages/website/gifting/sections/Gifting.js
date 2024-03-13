@@ -10,7 +10,8 @@ const Gifting = () => {
     <Box sx={{
       minHeight: "100vh",
       alignItems: "center",
-      textAlign: "center"
+      textAlign: "center",
+      margin: "50px 0 0"
     }}
     >
       <PrimaryHeading showStyle={true} heading="What you can gift" left={LeftStyle} right={RightStyle} />
