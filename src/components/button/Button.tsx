@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import Image from "next/image";
 
 interface Props {
@@ -15,6 +15,7 @@ interface Props {
   disabled?: boolean;
   isLulu?: boolean;
   image2?: any;
+  isLoading?: boolean;
 }
 
 const GlobelBtn = ({
@@ -35,6 +36,7 @@ const GlobelBtn = ({
   p = "6px 24px",
   disabled = false,
   image2,
+  isLoading = false,
 }: Props) => {
   return (
     <Button
@@ -75,6 +77,11 @@ const GlobelBtn = ({
             }}
           />
         </Box>
+      )}
+      {isLoading && (
+        <CircularProgress
+          style={{ color: "white", height: "20px", width: "20px" }}
+        />
       )}
       <Typography
         sx={{

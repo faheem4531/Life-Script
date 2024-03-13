@@ -4,6 +4,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ['lifescript-media.s3.eu-north-1.amazonaws.com'],
+  },
   // Can be safely removed in newer versions of Next.js
   future: {
     // by default, if you customize webpack config, they switch back to version 4.

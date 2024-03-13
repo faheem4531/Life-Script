@@ -268,15 +268,21 @@ const FamilyTree = ({ familyTreeData }) => {
             svgAsPngUri(mainSvg.node(), "familytree.png", {
               scale: 1,
               backgroundColor: "#FFFFFF",
+              // height: "auto",
+              // width: "100%",
             }).then((uri) => {
               console.log("data", uri);
 
               fetch(uri)
                 .then((response) => response.blob())
                 .then((imgBlob) => {
+                  console.log("imgBlob", imgBlob);
                   const formData = new FormData();
+                  setLoading(false);
                   formData.append("image", imgBlob);
                   uploadImageonCloud(formData);
+                  familyTreeGroup.remove();
+                  familyTreeGroupFamily.remove();
                 });
             });
           });

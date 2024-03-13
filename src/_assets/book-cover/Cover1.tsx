@@ -1,16 +1,22 @@
 import * as React from "react";
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
-function Cover1(props: SvgIconProps) {
+function Cover1(props: any) {
+  const newStyle = props.filters
+    ? props.filters
+    : "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))";
+
   return (
     <SvgIcon
+      // id={props.id}
       {...props}
+      ref={props.svgRef}
       width="1772"
       height="2480"
       viewBox="0 0 1772 2480"
       fill="none"
       style={{
-        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+        filter: { newStyle },
       }}
     >
       <g clip-path="url(#clip0_2029_343)">
