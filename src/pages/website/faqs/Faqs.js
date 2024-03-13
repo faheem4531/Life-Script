@@ -81,8 +81,19 @@ const Faqs = () => {
   ]
 
   return (
-    <Box sx={{ padding: { lg: "200px 260px 150px 150px", md: "150px 70px 150px 100px", sm: "100px 50px", xs: "80px 16px" } }}>
-      <Box sx={{ borderBottom: "1px solid #E1683B", paddingBottom: { md: "35px", sx: "25px", xs: "15px", paddingLeft: { sm: "0", xs: "50px" } } }}>
+    <Box sx={{
+      padding: { lg: "200px 260px 150px 150px", md: "150px 70px 150px 100px", sm: "100px 50px", xs: "80px 16px 150px" }
+    }}
+      className={styles.hurtBg}
+    >
+
+      <Box sx={{
+        borderBottom: "1px solid #E1683B",
+        paddingBottom: {
+          md: "35px", sx: "25px", xs: "15px",
+          paddingLeft: { sm: "0", xs: "50px" }
+        }
+      }}>
         <Typography sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>FAQs</Typography>
         <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Frequently Asked Questions.</Typography>
         <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Here are some common questions about Lifescript.</Typography>
