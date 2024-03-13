@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
 import Menu from "@/__webAssets/svgs/mobile-menu.svg"
+import MenuW from "@/__webAssets/svgs/mobile-menu-white.svg"
 
 const NavBar = ({ color, logo }) => {
   const [mobileState, setMobileState] = useState(false)
@@ -34,17 +35,20 @@ const NavBar = ({ color, logo }) => {
   function handleMenu() {
     setMobileState(pre => !pre)
   }
+
   return (
     <Box sx={{
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: { lg: '64px 106px 0', md: "50px 60px 0 ", sm: "40px 50px 0", xs: "30px 16px 0" },
-      position: "relative", bgcolor: ""
+      position: "relative",
+      bgcolor: { md: "none", sm: mobileState && "#F3ECDA", xs: mobileState && "#F3ECDA" },
+      zIndex: "10"
     }}>
       {!mobileState && <Image src={logo} alt="Logo" className={styles.logo} />}
 
-      <Image src={Menu} alt="icon" onClick={handleMenu} className={styles.menu} />
+      <Image src={pathname === '/' ? Menu : MenuW && (mobileState ? Menu : MenuW)} alt="icon" onClick={handleMenu} className={styles.menu} />
 
       <Box sx={{
         display: 'flex',
@@ -53,7 +57,7 @@ const NavBar = ({ color, logo }) => {
         fontSize: '18px',
         fontWeight: 500,
       }}
-        color={color}
+        color={mobileState ? "" : color}
         className={`${mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide}`}
       >
         <Link href="/">

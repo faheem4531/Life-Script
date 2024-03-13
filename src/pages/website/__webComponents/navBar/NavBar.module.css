@@ -43,9 +43,14 @@
 
 @media screen and (max-width: 899px) {
   .logo {
-    width: 130px;
-    height: 20px;
+    width: 150px;
+    height: 25px;
   }
+  
+  .underLine {
+    animation: none;
+  }
+
   .menu{
     display: block;
     width: 30px;
