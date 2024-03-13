@@ -501,6 +501,7 @@ const EditBookCover = () => {
 
   const coverAspectRatio = () => {
     if (CoverNumber === "1") return 1702 / 2610;
+    else if (CoverNumber === "2") return 0.67 / 1;
     else return 1772 / 2480;
   };
 
