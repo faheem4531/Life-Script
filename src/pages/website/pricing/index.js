@@ -28,7 +28,7 @@ const PricingPage = () => {
     },
     {
       icon: Check,
-      title: "Understanding Ancestry helo",
+      title: "Understanding Ancestry",
       discription: "If we know who we came from, we may better understand who we are. Lifescript helps users build their family tree with photos, names, and birthplaces, making it easy to see the connections between the different generations."
     },
 

@@ -121,6 +121,11 @@
   width: 30px;
   height: 30px;
  }
+
+ /* Working  */
+.workingBox {
+  background-size: 200% 100%;
+}
 }
 
 @media screen and  (max-width: 600px) {
@@ -145,9 +150,14 @@
   }
 
   /* Feature Intro  */
-.line {
-  width: 80px;
-  right: -10px;
- }
+  .line {
+    width: 80px;
+    right: -10px;
+  }
 
+   /* Working  */
+.workingBox {
+  background-size: 250% 100%;
+}
+  
   }
