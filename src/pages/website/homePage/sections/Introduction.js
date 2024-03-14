@@ -40,12 +40,28 @@ const Introduction = () => {
   return (
     <Box sx={{ padding: { md: "90px 0 0 75px", sm: "100px 0 0 50px", xs: "40px 16px 40px" }, position: "relative" }}>
       <Box sx={{ width: { md: '55%', sm: "100%", xs: "100%" }, zIndex: "20" }}>
-        <Typography
-          sx={{ fontSize: { md: '60px', sm: "53px", xs: "32px" }, lineHeight: { sm: '70px', xs: "37px" }, fontFamily: "Besley !important", minWidth: "770px" }}
-        >The Best Way To <span className="multiple-text" style={color}></span> <br /> An Autobiography Book  </Typography>
-        <Typography
-          sx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 500, margin: { sm: '90px 0 30px', xs: "32px 0 25px" }, width: { sm: '70%', xs: "100%" } }}
-        >An easy-to-use platform enabling people to preserve their memories, rediscover their roots, and
+        <Typography sx={{
+          fontSize: { md: '60px', md: "50px", sm: "44px", xs: "32px" },
+          lineHeight: { sm: '70px', xs: "37px" },
+          fontFamily: "Besley !important",
+          minWidth: { sm: "770px", xs: "300px" },
+          maxWidth: { xs: "400px", sm: "100%" },
+          minHeight: "130px",
+          zIndex: "10",
+          position: "relative"
+        }}
+        >
+          The Best Way To <span className="multiple-text" style={color}></span> <br className={styles.braker} /> An Autobiography Book
+        </Typography>
+        <Typography sx={{
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: 500,
+          margin: { sm: '90px 0 30px', xs: "32px 0 25px" },
+          width: { sm: '70%', xs: "100%" }
+        }}
+        >
+          An easy-to-use platform enabling people to preserve their memories, rediscover their roots, and
           create a deeper connection with themselves and their families.
         </Typography>
         <Box sx={{ width: { sm: "230px", xs: "100%" }, height: "55px" }}>

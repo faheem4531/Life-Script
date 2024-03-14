@@ -418,6 +418,10 @@ display: none;}
 
 
 @media screen and (max-width: 600px) {
+
+  .braker{
+    display: none;
+  }
     /* Suggestion  */
     .suggestionImg{
       width: 100%;
