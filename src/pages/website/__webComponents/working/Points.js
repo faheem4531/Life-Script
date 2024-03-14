@@ -9,9 +9,9 @@ const Points = ({ no = false, icon, title, discription }) => {
       border: "1px dashed #F3ECDA",
       borderRadius: '4px',
       display: "inline-block",
-      maxWidth: { md: "340px", sm: "450px", xs: "100%" },
-      minHeight: { lg: "220px", md: "200px", xs: "" },
-      height: { lg: icon && "360px", md: icon && "320px" },
+      maxWidth: { md: "350px", sm: "450px", xs: "100%" },
+      minHeight: { lg: "260px", md: "220px", xs: "" },
+      height: { lg: icon && "360px", md: icon && "340px" },
       width: "100%"
     }}
     >
@@ -29,7 +29,7 @@ const Points = ({ no = false, icon, title, discription }) => {
         color: "#F3ECDA",
         fontSize: { lg: "28px", md: "22px", sm: "28px", xs: "30px" },
         fontWeight: 500,
-        minHeight: { lg: icon ? "100px" : "120px", md: icon ? "65px" : "90px" },
+        minHeight: { lg: icon ? "100px" : "140px", md: icon ? "75px" : "110px" },
         fontFamily: "Besley !important",
       }}>
         {title}

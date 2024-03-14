@@ -209,11 +209,11 @@
 }
 
 .rightAero {
-  right: 90px;
+  right: 40px;
 }
 
 .leftAero {
-  left: 90px;
+  left: 40px;
 }
 
 @media screen and (min-width: 1600px) {
