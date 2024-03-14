@@ -184,7 +184,7 @@
 /* Our Books  */
 .slider {
   width: calc(100vw + 120px);
-  margin: 120px 0 0;
+  z-index: 5;
 }
 
 .bookBox {
@@ -198,27 +198,31 @@
   height: 580px;
 }
 
-/* .leftAero,
-.rightAero {
-  position: relative;
+.rightAero, 
+.leftAero{
+  position: absolute;
+  width: 50px;
+  height: 50px;
   z-index: 10;
-  width: 40px;
-  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .rightAero {
-  position: absolute;
-  bottom: -10px;
-  right: 0px;
+  right: 90px;
 }
 
 .leftAero {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-} */
+  left: 90px;
+}
 
 @media screen and (min-width: 1600px) {
+  .rightAero, 
+.leftAero{
+  width: 60px;
+  height: 60px;
+}
+
   .book {
     width: 550px;
     height: 800px;
@@ -351,6 +355,12 @@
   height: 450px;
 }
 
+.rightAero, 
+.leftAero{
+  width: 40px;
+  height: 40px;
+}
+
 }
 
 @media screen and (max-width: 899px) {
@@ -391,11 +401,18 @@ display: none;}
     right: -20px;
   }
   
-/* Books  */
-.book {
-  width: 240px;
-  height: 340px;
+  /* Books  */
+  .book {
+    width: 240px;
+    height: 340px;
+  }
+
+.rightAero, 
+.leftAero{
+  width: 40px;
+  height: 40px;
 }
+
 
 }
 
@@ -449,12 +466,25 @@ display: none;}
 /* Books  */
   .slider {
     width: 200px;
-    margin: 70px 0 0;
   }
 
   .book {
     width: 200px;
     height: 270px;
+  }
+
+  .rightAero, 
+.leftAero{
+  width: 28px;
+  height: 28px;
+}
+
+  .rightAero {
+    right: 30px;
+  }
+  
+  .leftAero {
+    left: 30px;
   }
 
 /* Textimonial  */
