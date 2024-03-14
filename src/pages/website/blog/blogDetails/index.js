@@ -33,7 +33,8 @@ const BlogDetailPage = () => {
             fontWeight: 500,
             marginBottom: "20px",
             width: { md: "80%", sm: "100%", xs: "100%" },
-            fontFamily: "Besley !important"
+            fontFamily: "Besley !important",
+            lineHeight: { sm: "50px", xs: "36px" }
           }}>
             Crafting Your Legacy: A Guide to Writing Your Autobiography
           </Typography>

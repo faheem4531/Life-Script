@@ -18,7 +18,7 @@ const DesignCard = () => {
     }}
       className={styles.designCard}
     >
-      <PrimaryHeading showStyle={true} removeStyleMbl={true} heading="Design your gift card" left={LeftStyle} right={RightStyle} />
+      <PrimaryHeading showStyle={true} removeStyleMbl={true} heading="Design your gift" marked="card" left={LeftStyle} right={RightStyle} />
       <Box sx={{
         display: "flex",
         flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },

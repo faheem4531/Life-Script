@@ -15,6 +15,7 @@ import PricingDetails from "./sections/PricingDetails";
 import StoryWorthy from "@/__webAssets/svgs/story-worthy-logo.svg"
 
 const PricingPage = () => {
+
   const pointsArray = [
     {
       icon: Check,
@@ -132,10 +133,10 @@ const PricingPage = () => {
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.pricingPage}>
       <NavBar color="#F3ECDA" logo={Logo} />
       <Pricing />
-      <Working data={pointsArray} heading="How we’re different:" subHeading="Lifescript vs Storyworth" />
+      <Working data={pointsArray} heading="How we’re" marked="different:" subHeading="Lifescript vs Storyworth" />
       <Box sx={{ margin: { sm: "100px 0 0", xs: " 10px 0 -50px" } }}>
-        <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book Details" />
-        <PricingDetails cardsDetail={featuresDetails} heading="Features Comparison" />
+        <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book" marked="Details" />
+        <PricingDetails cardsDetail={featuresDetails} heading="Features " marked="Comparison" />
       </Box>
       <GotQuestions />
       <ContactFooter

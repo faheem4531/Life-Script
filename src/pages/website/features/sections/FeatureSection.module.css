@@ -48,9 +48,9 @@
   }
   
   .gif{
-    min-width: 354px;
+    /* min-width: 354px; */
     width: 100%;
-    min-height: 270px;
+    min-height: 230px;
     height: auto;
   }
 

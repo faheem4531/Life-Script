@@ -22,7 +22,7 @@ const HeroGifting = () => {
       className={styles.giftIntro}
     >
       <Image src={Logo} alt="logo" className={styles.logo} />
-      <PrimaryHeading showStyle={false} heading="The Commemoration Chronicle" color="#F3ECDA" />
+      <PrimaryHeading showStyle={false} direction="column" heading="The Commemoration " marked="Chronicle" color="#F3ECDA" />
       <Typography sx={{ fontSize: "16px", maxWidth: "720px", margin: { sm: "40px 0 30px", xs: "25px 0 30px" } }}>
         Craft an ideal gift: a compilation of stories shared by friends and family, elegantly gathered within a stunning book.
       </Typography>

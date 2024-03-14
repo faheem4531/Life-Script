@@ -87,6 +87,16 @@
   height: 44px;
  }
 
+ /* Primary Heading  */
+
+ .headingLine{
+  position: absolute;
+  width: 120px !important;
+  bottom: -10px;
+  right: -20px;
+}
+
+
 @media screen and  (max-width: 1200px) and (min-width:899px) {
   .gif {
     width: 450px;
@@ -156,8 +166,20 @@
   }
 
    /* Working  */
-.workingBox {
-  background-size: 250% 100%;
+  .workingBox {
+    background-size: 250% 100%;
+  }
+    
+
+  /* Got Questions  */
+  .gotQsBg {
+    background-size: 220px 115px;
+    }
+
+  /* Primary Heading  */
+
+ .headingLine{
+  bottom: -10px;
+  right: -10px;
 }
-  
   }

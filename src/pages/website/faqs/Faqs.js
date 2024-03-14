@@ -89,10 +89,8 @@ const Faqs = () => {
 
       <Box sx={{
         borderBottom: "1px solid #E1683B",
-        paddingBottom: {
-          md: "35px", sx: "25px", xs: "15px",
-          paddingLeft: { sm: "0", xs: "50px" }
-        }
+        paddingBottom: { md: "35px", sx: "25px", xs: "15px" },
+        paddingLeft: { sm: "0", xs: "15px" }
       }}>
         <Typography sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>FAQs</Typography>
         <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Frequently Asked Questions.</Typography>
@@ -141,7 +139,7 @@ function QuestionNo({ qs, ans, index }) {
           {qs}
         </Typography>
       </Box>
-      <Typography sx={{ fontSize: "16px", padding: { sm: "20px 0 0 35px", xs: "15px 0 0 25px" } }}>{ans}</Typography>
+      <Typography sx={{ fontSize: "16px", padding: { sm: "20px 0 0 35px", xs: "15px 0 0 27px" } }}>{ans}</Typography>
     </Box>
   )
 }

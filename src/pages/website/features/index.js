@@ -10,8 +10,8 @@ const FeaturesPage = () => {
   return (
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <FeaturesIntroduction
-        heading="We take care of "
-        keyWorld="everything"
+        heading="We Take Care Of "
+        keyWorld="Everything"
         subHeading="Crafting your narrative in a book is now faster and simpler than ever."
       />
       <FeaturesItems />

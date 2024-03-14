@@ -10,6 +10,7 @@ import StoryImage3 from "@/__webAssets/pngs/story-3.png"
 import StoryImage4 from "@/__webAssets/pngs/story-4.png"
 import Button from "@/pages/website/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
+import Line from "@/__webAssets/pngs/under-line-long.png"
 
 const StoryTelling = () => {
   const stories = [
@@ -41,15 +42,27 @@ const StoryTelling = () => {
   ]
 
   return (
-    <Box sx={{ padding: { md: "180px 0 0", sm: "100px 0 0 ", xs: "80px 20px 100px " } }} >
-      <PrimaryHeading heading="Your storytelling journey is now:" />
+    <Box sx={{ padding: { md: "180px 0 0", sm: "100px 0 0 ", xs: "60px 20px 100px " } }} >
+
+      <Box sx={{
+        fontSize: { md: "54px", sm: "44px", xs: "32px" },
+        fontWeight: 500,
+        marginBottom: { md: "30px", sx: "20px", xs: "30px" },
+        fontFamily: "Besley !important",
+        textAlign: { sm: "center", xs: "left" }
+      }}>
+        Your storytelling journey is{" "}
+        <span className={styles.marked}>
+          now:
+          <Image src={Line} alt="mark" className={styles.line} />
+        </span>
+      </Box>
 
       <Box sx={{
         padding: { lg: "100px 130px 250px", md: "50px 100px 150px", sm: "50px 50px 150px" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        bgcolor: ""
       }}
         className={styles.bgStorytelling}>
 
@@ -60,7 +73,6 @@ const StoryTelling = () => {
           button={item.button}
           image={item.image}
           direction={item.direction}
-
         />)}
 
       </Box>

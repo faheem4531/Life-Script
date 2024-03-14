@@ -31,4 +31,10 @@
     width:100%;
     height: auto;
   }
+
+  /* Our Values  */
+.valuesBox {
+background-size: 220px 115px;
+}
+
 }

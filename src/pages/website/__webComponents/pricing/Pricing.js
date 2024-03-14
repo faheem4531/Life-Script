@@ -2,6 +2,7 @@
 import { Box, Typography } from "@mui/material";
 import PricingCard from "./Card";
 import styles from "../ComponentsStyles.module.css"
+import PrimaryHeading from "../headings/PrimaryHeading";
 
 const Pricing = () => {
 
@@ -53,7 +54,8 @@ const Pricing = () => {
       margin: { lg: '170px 95px', sm: "150px 30px", xs: "80px 20px 100px" },
     }}>
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: "60px" }}>
-        <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>Our Pricing Plan</Typography>
+        <PrimaryHeading heading="Our Pricing" marked="Plan" showStyle={false} />
+
         <Box sx={{ marginTop: { xs: "15px" }, fontSize: { sm: "24px", xs: "16px" }, width: { sm: "60%", xs: "90%" }, fontFamily: "Avenir" }}>
           Each package comes with a one-year Lifescript subscription,
           a premium full-color hardcover book, and <Typography sx={{ fontWeight: 900, display: "inline" }}>free shipping.</Typography>
@@ -72,7 +74,7 @@ const Pricing = () => {
       </Box>
       <Typography sx={{ marginTop: "20px", fontSize: "20px", fontWeight: 900, color: "#495845", textAlign: "center" }}>30 days money back guarantee </Typography>
 
-    </Box>
+    </Box >
   )
 }
 

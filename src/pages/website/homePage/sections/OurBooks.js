@@ -95,7 +95,7 @@ const OurBooks = () => {
       }}
       className={styles.bookBox}
     >
-      <PrimaryHeading showStyle={true} heading="Our Books" color="#F3ECDA" />
+      <PrimaryHeading showStyle={true} heading="Our " marked="Books" color="#F3ECDA" />
       <Slider {...settings} className={styles.slider}>
         <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
           <Image src={Book} alt="image" className={styles.book} />

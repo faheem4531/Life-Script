@@ -12,7 +12,7 @@ const Experience = () => {
     <Box sx={{ margin: { lg: '220px 0  120px', md: "170px 0 100px" } }}
     >
       <Box sx={{ textAlign: "center" }}>
-        <PrimaryHeading lineHeight="60px" showStyle={false} heading=" Experience the LifeScript Advantage" />
+        <PrimaryHeading lineHeight="60px" showStyle={false} heading=" Experience the LifeScript " marked="Advantage" />
         <Image src={FlowerLine} alt="logo" />
       </Box>
 

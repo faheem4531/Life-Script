@@ -38,7 +38,7 @@ const BlogDetails = () => {
       />
 
       <Box>
-        <Typography sx={{ fontSize: "32px", fontWeight: 500, color: { xs: "#E1683B", sm: "#3E4F3C" } }}>4. Navigating Challenges and Refining Your Masterpiece</Typography>
+        <Typography sx={{ fontSize: "28px", lineHeight: { sm: "50px", xs: "36px" }, fontWeight: 500, color: { xs: "#E1683B", sm: "#3E4F3C" } }}>4. Navigating Challenges and Refining Your Masterpiece</Typography>
         <Typography sx={{ fontSize: "20", fontWeight: 800, margin: "15px 0" }}>Discovering Your Unique Voice</Typography>
         <Typography sx={{ fontSize: "20px" }}>Authenticity is the heartbeat of any autobiography. The journey through this guide encourages you to discover and embrace your unique narrative voice. Stay true to your story, captivate your readers, and infuse your autobiography with a genuine authenticity that reflects your distinct perspective and life experiences.</Typography>
         <Typography sx={{ fontSize: "20", fontWeight: 800, margin: "15px 0" }}>Overcoming Writing Challenges</Typography>
@@ -49,7 +49,7 @@ const BlogDetails = () => {
 
 
       <Box>
-        <Typography sx={{ fontSize: "32px", fontWeight: 500, color: { xs: "#E1683B", sm: "#3E4F3C" } }}>5. Navigating Publication and Contemplating Legacy</Typography>
+        <Typography sx={{ fontSize: "28px", lineHeight: { sm: "50px", xs: "36px" }, fontWeight: 500, color: { xs: "#E1683B", sm: "#3E4F3C" } }}>5. Navigating Publication and Contemplating Legacy</Typography>
         <Typography sx={{ fontSize: "20", fontWeight: 800, margin: "15px 0" }}>Publication and Distribution</Typography>
         <Typography sx={{ fontSize: "20px" }}>As your autobiography nears completion, the journey doesnt conclude. The guide navigates you through the diverse options for publication and distribution. Whether through traditional publishing, self-publishing, or sharing your story with a select audience, this section ensures your legacy reaches its intended audience.</Typography>
         <Typography sx={{ fontSize: "20", fontWeight: 800, margin: "15px 0" }}>Contemplating Your Legacy</Typography>

@@ -14,7 +14,7 @@ const Gifting = () => {
       margin: "50px 0 0"
     }}
     >
-      <PrimaryHeading showStyle={true} removeStyleMbl={true} heading="What you can gift" left={LeftStyle} right={RightStyle} />
+      <PrimaryHeading showStyle={true} removeStyleMbl={true} heading="What you can" marked="gift" left={LeftStyle} right={RightStyle} />
       <Typography sx={{ fontSize: { sm: "24px", xs: "16px" }, margin: { sm: "40px 0 30px", xs: "30px 0 30px" } }}>
         Give the gift of inspiration on their special day
       </Typography>

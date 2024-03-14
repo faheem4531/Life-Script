@@ -49,7 +49,7 @@ const HomePage = () => {
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <NavBar logo={Logo} color="#3E4F3C" />
       <Introduction />
-      <Working data={pointsArray} heading=" How it works" />
+      <Working data={pointsArray} heading=" How it" marked="works" />
       <Suggestion />
       <GifTab
         heading="Surprise your loved one with Lifescript and transform their memories into a keepsake book."

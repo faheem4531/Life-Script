@@ -5,7 +5,7 @@ import Image from "next/image";
 import Line from "@/__webAssets/pngs/under-line-long.png"
 import styles from "../ComponentsStyles.module.css"
 
-const PrimaryHeading = ({ heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle, lineWidth, removeStyleMbl = false }) => {
+const PrimaryHeading = ({ direction = "row", heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle, lineWidth, removeStyleMbl = false, marked }) => {
 
   const styleLine = {
     width: "140px" || lineWidth,
@@ -27,10 +27,25 @@ const PrimaryHeading = ({ heading, showStyle, color, lineHeight, left = LeftStyl
       }} >
         {showStyle && <Image src={left} alt="logo" className={styles.headingStyles} />}
       </Box>
-      <Box color={color} lineHeight={lineHeight} sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, margin: { sm: "0 18px", xs: "0" }, position: "relative", fontFamily: "Besley !important" }}>
+      <Box
+        color={color}
+        lineHeight={lineHeight}
+        sx={{
+          fontSize: { md: "52px", sm: "44px", xs: "32px" },
+          fontWeight: 500,
+          margin: { sm: "0 18px", xs: "0" },
+          fontFamily: "Besley !important",
+          textAlign: "center",
+          display: "flex",
+          flexDirection: { sm: "row", xs: direction },
+          columnGap: { md: "15px", sm: "10px", xs: "10px" }
+        }}>
         {heading}
-        <Box sx={{ position: "absolute", top: { sm: "25px", xs: "15px" }, right: "0" }}>
-          <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
+        <Box>
+          <Box display="inline-block" position="relative">
+            {marked}
+            <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
+          </Box>
         </Box>
       </Box>
       <Box sx={{

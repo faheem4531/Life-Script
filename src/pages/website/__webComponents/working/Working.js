@@ -3,13 +3,13 @@ import PrimaryHeading from "../headings/PrimaryHeading";
 import styles from "../ComponentsStyles.module.css"
 import Points from "./Points";
 
-const Working = ({ data, heading, subHeading = false }) => {
+const Working = ({ data, heading, subHeading = false, marked }) => {
 
   return (
     <Box sx={{ padding: { lg: '200px 25px 220px', md: "150px 20px 200px", sm: "150px 30px 200px", xs: "170px 0px" }, height: "" }}
       className={styles.workingBox}
     >
-      <PrimaryHeading showStyle={true} removeStyleMbl={data[0].icon ? true : false} heading={heading} color="#F3ECDA" />
+      <PrimaryHeading showStyle={true} marked={marked} removeStyleMbl={data[0].icon ? true : false} heading={heading} color="#F3ECDA" />
       {subHeading && <Typography sx={{ fontSize: "32px", display: { md: "block", sm: "none", xs: "none" }, fontWeight: 500, margin: "64px 0 -80px", textAlign: "center", color: "#F3ECDA" }}>{subHeading}</Typography>}
 
       <Box sx={{
