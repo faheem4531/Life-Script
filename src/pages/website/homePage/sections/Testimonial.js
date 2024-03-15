@@ -39,28 +39,24 @@ const Testimonial = () => {
   ]
 
   return (
-    <Box>
-      <PrimaryHeading showStyle={false} heading="Testimonials" />
-      <Typography sx={{ color: "#495845", margin: "10px 0 100px", textAlign: "center" }}>
+    <Box sx={{ marginTop: { lg: "200px", sm: "150px", xs: "100px" } }}>
+      <PrimaryHeading showStyle={false} marked="Testimonials" />
+      <Typography sx={{ color: "#495845", margin: { sm: "15px 0 100px", xs: "20px 0 50px" }, textAlign: "center" }}>
         Voices of appreciation: What our customers say
       </Typography>
 
-      <Box sx={{
-        display: "flex", columnGap: "35px", padding: "0 0 40px ",
-      }}
+      <Marquee
+        pauseOnHover={true}
       >
-        <Marquee
-          pauseOnHover={true}
-        >
-          {Client.map((item, index) => <ReviewCard
-            key={index}
-            profile={item.profile}
-            name={item.name}
-            designation={item.designation}
-            details={item.details}
-          />)}
-        </Marquee>
-      </Box>
+        {Client.map((item, index) => <ReviewCard
+          key={index}
+          profile={item.profile}
+          name={item.name}
+          designation={item.designation}
+          details={item.details}
+        />)}
+      </Marquee>
+
     </Box >
   )
 }
@@ -72,24 +68,30 @@ function ReviewCard({ profile, name, designation, details }) {
     <Box sx={{
       boxShadow: " 0px 4px 15px 0px rgba(0, 0, 0, 0.10)",
       borderRadius: "4px",
-      padding: "25px 32px 35px 40px",
-      minWidth: "380px",
-      height: "420px",
+      padding: { md: "25px 32px 35px 40px", sm: "20px 25px 30px", xs: "20px 20px 25px" },
+      minWidth: { sm: "380px", xs: "330px" },
+      height: { sm: "420px", xs: "390px" },
       bgcolor: "#F4F4F4",
-      marginRight: "38px"
+      marginRight: { md: "38px", sm: "25px", xs: "20px" }
     }}>
-      <Box sx={{ paddingBottom: "15px", display: 'flex', columnGap: "15px", alignItems: "center", fontSize: "20px", borderBottom: "1px solid #BFC4B5" }}>
+      <Box sx={{
+        paddingBottom: "15px",
+        display: 'flex',
+        columnGap: "15px",
+        alignItems: "center",
+        borderBottom: "1px solid #BFC4B5"
+      }}>
         <Image
           src={profile}
           alt="image"
           className={styles.clientImg}
         />
         <Box>
-          <Typography sx={{ color: "#E1683B", fontWeight: 800 }}>{name}</Typography>
-          <Typography sx={{ color: "#BFC4B5" }}>{designation}</Typography>
+          <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#E1683B", fontWeight: 800 }}>{name}</Typography>
+          <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#BFC4B5" }}>{designation}</Typography>
         </Box>
       </Box>
-      <Typography sx={{ padding: "20px 20px 0 10px", lineHeight: "26px", fontSize: "16px", maxWidth: "300px" }}>
+      <Typography sx={{ padding: { sm: "20px 20px 0 10px", xs: "10px 0 0 10px" }, lineHeight: "26px", fontSize: "16px", maxWidth: "300px" }}>
         &quot;{details}&quot;
       </Typography>
     </Box >

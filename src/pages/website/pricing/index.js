@@ -15,6 +15,7 @@ import PricingDetails from "./sections/PricingDetails";
 import StoryWorthy from "@/__webAssets/svgs/story-worthy-logo.svg"
 
 const PricingPage = () => {
+
   const pointsArray = [
     {
       icon: Check,
@@ -28,7 +29,7 @@ const PricingPage = () => {
     },
     {
       icon: Check,
-      title: "Understanding Ancestry helo",
+      title: "Understanding Ancestry",
       discription: "If we know who we came from, we may better understand who we are. Lifescript helps users build their family tree with photos, names, and birthplaces, making it easy to see the connections between the different generations."
     },
 
@@ -68,9 +69,10 @@ const PricingPage = () => {
     {
       logo: StoryWorthy,
       bgColor: "#15372F",
+      sCase: true,
       data: [
         "No",
-        "139$ (initially 99$ but additional 40$ if you want full-color book)",
+        "139$",
         "For a full-color book, 40$ additional. Cannot be prepaid by gifter",
         "79$ (up to 300 pages) ,99$ (up to 480 pages)",
         "No, only for US.",
@@ -131,10 +133,10 @@ const PricingPage = () => {
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.pricingPage}>
       <NavBar color="#F3ECDA" logo={Logo} />
       <Pricing />
-      <Working data={pointsArray} heading="How we’re different:" subHeading="Lifescript vs Storyworth" />
-      <Box sx={{ margin: "100px 0 0" }}>
-        <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book Details" />
-        <PricingDetails cardsDetail={featuresDetails} heading="Features Comparison" />
+      <Working data={pointsArray} heading="How we’re" marked="different:" subHeading="Lifescript vs Storyworth" />
+      <Box sx={{ margin: { sm: "100px 0 0", xs: " 10px 0 -50px" } }}>
+        <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book" marked="Details" />
+        <PricingDetails cardsDetail={featuresDetails} heading="Features " marked="Comparison" />
       </Box>
       <GotQuestions />
       <ContactFooter

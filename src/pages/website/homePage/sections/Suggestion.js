@@ -28,36 +28,53 @@ const Suggestion = () => {
   ]
 
   return (
-    <Box sx={{ margin: "100px 0 220px" }}>
+    <Box sx={{ margin: { md: "100px 0 220px", xs: " 20px 0 100px" } }}>
       {/* heading  */}
       <Box sx={{
         textAlign: "center",
         width: "100%",
         position: "relative",
+        padding: "0 20px"
       }}
       >
-        <Typography sx={{ fontSize: "52px", fontWeight: 500, fontFamily: "Besley !important" }}>
+        <Typography sx={{
+          fontSize: { md: "52px", sm: "44px", xs: "32px" },
+          margin: "0 auto",
+          maxWidth: { sm: "100%", xs: "380px" },
+          fontWeight: 500,
+          fontFamily: "Besley !important"
+        }}>
           Perfect for when you want to
         </Typography>
         <Image src={FlowerLine} alt="logo" className={styles.fullStyle} />
       </Box >
-      <Box sx={{ margin: "160px 85px 0 105px", display: "flex", justifyContent: "center", alignItems: "center", columnGap: "100px" }}>
+      <Box sx={{
+        margin: {
+          lg: "160px 60px 0 105px",
+          md: "150px 40px 0 75px",
+          sm: "100px auto 0",
+          xs: "50px 16px 0"
+        },
+        display: "flex",
+        flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
+        justifyContent: "center",
+        alignItems: "center",
+        columnGap: { lg: "100px", md: "50px" }
+      }}>
         {/* left Section  */}
-        <Box sx={{ bgcolor: "", display: "flex", alignItems: "center " }}>
-          <Image src={ListPoints} alt="points" />
-          <Box sx={{ marginLeft: "30px" }}>
+        <Box sx={{ display: "flex", alignItems: "center ", marginTop: { sm: "50px", md: "0", xs: "60px" } }}>
+          <Image src={ListPoints} alt="points" className={styles.pointsLine} />
+          <Box sx={{ marginLeft: { md: "30px", }, }}>
             {
               content.map((item, index) => <Content
                 key={index}
                 heading={item.title}
                 subHeading={item.subTitle}
-                marginB="25px"
-                subWidth="80%"
               />)
             }
           </Box>
         </Box>
-        <Image src={Heroimage} alt="image" />
+        <Image src={Heroimage} alt="image" className={styles.suggestionImg} />
       </Box>
     </Box>
   )

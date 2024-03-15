@@ -10,11 +10,12 @@ const Gifting = () => {
     <Box sx={{
       minHeight: "100vh",
       alignItems: "center",
-      textAlign: "center"
+      textAlign: "center",
+      margin: "50px 0 0"
     }}
     >
-      <PrimaryHeading showStyle={true} heading="What you can gift" left={LeftStyle} right={RightStyle} />
-      <Typography sx={{ fontSize: "24px", margin: "40px 0 30px" }}>
+      <PrimaryHeading showStyle={true} removeStyleMbl={true} heading="What you can" marked="gift" left={LeftStyle} right={RightStyle} />
+      <Typography sx={{ fontSize: { sm: "24px", xs: "16px" }, margin: { sm: "40px 0 30px", xs: "30px 0 30px" } }}>
         Give the gift of inspiration on their special day
       </Typography>
     </Box>

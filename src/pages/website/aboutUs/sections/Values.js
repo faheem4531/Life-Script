@@ -45,10 +45,18 @@ const Values = () => {
     },
   ]
   return (
-    <Box sx={{ padding: "180px 160px 150px 145px", display: "flex", justifyContent: "center" }} className={styles.valuesBox}>
+    <Box sx={{
+      padding: { lg: "180px 160px 150px 145px", md: "100px 80px 100px 100px", sm: "100px 50px 150px", xs: "100px 20px 150px" },
+      display: "flex",
+      justifyContent: "center"
+    }}
+      className={styles.valuesBox}
+    >
       <Box sx={{ maxWidth: "1200px" }}>
 
-        <Typography sx={{ fontSize: "52px", fontWeight: 500, paddingBottom: "20px", borderBottom: "1px solid #E1683B", fontFamily: "Besley !important" }}>Our Values</Typography>
+        <Typography sx={{
+          fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, paddingBottom: "20px", borderBottom: "1px solid #E1683B", fontFamily: "Besley !important"
+        }}>Our Values</Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", maxWidth: "1100px" }}>
           {ValueData.map((item, index) => <Value
             key={index}
@@ -57,7 +65,7 @@ const Values = () => {
             icon={item.icon}
           />)}
         </Box>
-        <Box sx={{ margin: "30px 0 0 40px" }}>
+        <Box sx={{ margin: "30px 0 0 40px", display: { md: "block", sm: "none", xs: "none" } }}>
           < Button
             title='Get Started'
             width='200px'
@@ -76,11 +84,11 @@ export default Values;
 
 function Value({ title, icon, detail }) {
   return (
-    <Box sx={{ maxWidth: "440px", display: "flex", columnGap: "15px", margin: "50px 0 0" }}>
+    <Box sx={{ maxWidth: { lg: "440px", md: "380px", sm: "80%", xs: "100%" }, display: "flex", columnGap: "15px", margin: "50px 0 0" }}>
       <Image src={icon} alt="icon" />
       <Box>
         <Typography sx={{ fontSize: "16px", fontWeight: 800, paddingBottom: "20px", }}>{title}</Typography>
-        <Typography>{detail}</Typography>
+        <Typography >{detail}</Typography>
       </Box>
     </Box>
   )

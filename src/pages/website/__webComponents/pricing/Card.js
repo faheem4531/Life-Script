@@ -71,7 +71,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
   return (
     <Box sx={{
       borderRadius: "8px",
-      width: "405px",
+      width: { sm: "405px", xs: "340px" },
       position: "relative"
     }}
       backgroundColor={card == "2" ? "#30422E" : "#F4F4F4"}
@@ -79,7 +79,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
       id={id}
       onMouseOver={() => handleHover(id)}
     >
-      <Box sx={{ padding: "39px 45px 85px" }}>
+      <Box sx={{ padding: { lg: "39px 45px 85px", md: "35px 20px 85px", sm: "39px 45px 85px", xs: "35px 25px 80px" } }}>
         <Box sx={{
           borderRadius: "4px", backgroundColor: "#E7E7E7", padding: "4px 8px", display: "inline", color: "#3E4F3C"
         }}
@@ -120,7 +120,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
                 display: "flex",
                 columnGap: "25px",
                 alignItems: "center",
-                marginBottom: "24px"
+                marginBottom: "24px",
               }}
               key={index}>
               <Image src={item.basicStatus ? Check : Lock} alt="check" />

@@ -18,6 +18,8 @@
 .blogImg {
   max-width: 1050px;
   width: 100%;
+  max-height: 560px;
+  height: auto;
   margin: 20px 0;
 }
 
@@ -32,4 +34,26 @@
   position: relative;
   width: 100vw;
   z-index: -10;
+}
+
+@media screen and (max-width:899px) {
+  .introBlog {
+    background-size: 100% 150px;
+    
+  }
+
+  .line {
+    width: 120px;
+  }
+
+}
+
+
+@media screen and (max-width:899px) {
+  .introBlog {
+    background-size: 100% 120px;
+  }
+  .line {
+    width: 80px;
+  }
 }

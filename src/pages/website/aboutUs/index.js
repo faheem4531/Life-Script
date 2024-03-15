@@ -11,6 +11,7 @@ import Values from "./sections/Values";
 const AboutUs = () => {
   return (
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
+
       <FeaturesIntroduction heading="Empowering people to create a timeless legacy, resonating across" width="75%" keyWorld=" generations." />
       <Mission />
       <Story />

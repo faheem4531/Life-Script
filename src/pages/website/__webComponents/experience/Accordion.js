@@ -79,7 +79,7 @@ export default function CustomizedAccordions() {
       <Box sx={{ maxHeight: "460px" }}>
         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} open={expanded === 'panel1'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography sx={{ fontSize: "32px", fontWeight: 500 }} color={panelActive.panel1 ? "#3E4F3C" : ""}>1. Narrative Fusion</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel1 ? "#3E4F3C" : ""}>1. Narrative Fusion</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -96,7 +96,7 @@ export default function CustomizedAccordions() {
         </Accordion>
         <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} open={expanded === 'panel2'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography sx={{ fontSize: "32px", fontWeight: 500 }} color={panelActive.panel2 ? "#3E4F3C" : ""}>2. Assisted Editing</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel2 ? "#3E4F3C" : ""}>2. Assisted Editing</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -113,7 +113,7 @@ export default function CustomizedAccordions() {
         </Accordion>
         <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} open={expanded === 'panel3'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography sx={{ fontSize: "32px", fontWeight: 500 }} color={panelActive.panel3 ? "#3E4F3C" : ""}>3. Voice-to-Text</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel3 ? "#3E4F3C" : ""}>3. Voice-to-Text</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -130,7 +130,7 @@ export default function CustomizedAccordions() {
         </Accordion>
         <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} open={expanded === 'panel4'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography sx={{ fontSize: "32px", fontWeight: 500 }} color={panelActive.panel4 ? "#3E4F3C" : ""}>4. Family Tree</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel4 ? "#3E4F3C" : ""}>4. Family Tree</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -147,7 +147,7 @@ export default function CustomizedAccordions() {
         </Accordion>
         <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} open={expanded === 'panel5'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography sx={{ fontSize: "32px", fontWeight: 500 }} color={panelActive.panel5 ? "#3E4F3C" : ""}>5. Formatting Feature</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel5 ? "#3E4F3C" : ""}>5. Formatting Feature</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -164,7 +164,7 @@ export default function CustomizedAccordions() {
         </Accordion>
         <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')} open={expanded === 'panel6'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography sx={{ fontSize: "32px", fontWeight: 500 }} color={panelActive.panel6 ? "#3E4F3C" : ""}>6. Auto Photo Improvement</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel6 ? "#3E4F3C" : ""}>6. Auto Photo Improvement</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{

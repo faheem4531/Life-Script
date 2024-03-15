@@ -8,6 +8,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import Icon from "@/__webAssets/svgs/qs-list.svg"
 import Image from 'next/image';
+import styles from "../ComponentsStyles.module.css"
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -24,13 +25,12 @@ const Accordion = styled((props) => (
 const AccordionSummary = styled((props) => (
   <MuiAccordionSummary
     expandIcon={
-      <Image src={Icon} alt='icon' />
+      <Image src={Icon} alt='icon' className={styles.questionIcon} />
     }
     {...props}
   />
 ))(({ theme }) => ({
   backgroundColor: '#F3ECDA',
-  padding: "10px 0",
   flexDirection: 'row-reverse',
   color: "#3E4F3C",
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
@@ -52,6 +52,7 @@ export default function Question({ qs, ans, panelNo, expanded, handleExpands }) 
     <div>
       <Accordion expanded={expanded} onChange={() => handleExpands(panelNo)}>
         <AccordionSummary
+          sx={{ padding: { md: "10px 0 ", sm: "5px 0", xs: "5px 0" } }}
         >
           <Typography sx={{ fontFamily: "myfamily" }}>{qs}</Typography>
         </AccordionSummary>

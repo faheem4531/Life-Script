@@ -38,26 +38,45 @@ const Introduction = () => {
   }, []);
 
   return (
-    <Box sx={{ padding: "90px 0 0 75px", position: "relative" }}>
-      <Box sx={{ width: '55%', zIndex: "20" }}>
-        <Typography
-          sx={{ fontSize: '60px', lineHeight: '70px', fontFamily: "Besley !important", minWidth: "770px" }}
-        >An Autobiography Book <br /> The Best Way To <span className="multiple-text" style={color}></span> </Typography>
-        <Typography
-          sx={{ fontSize: '16px', lineHeight: '24px', fontWeight: 500, margin: '90px 0 30px', width: '70%' }}
-        >An easy-to-use platform enabling people to preserve their memories, rediscover their roots, and
-          create a deeper connection with themselves and their families.
+    <Box sx={{ padding: { md: "90px 0 0 75px", sm: "100px 0 0 50px", xs: "40px 16px 40px" }, position: "relative" }}>
+      <Box sx={{ width: { md: '55%', sm: "100%", xs: "100%" }, zIndex: "20" }}>
+        <Typography sx={{
+          fontSize: { md: '60px', md: "50px", sm: "44px", xs: "32px" },
+          lineHeight: { sm: '70px', xs: "37px" },
+          fontFamily: "Besley !important",
+          minWidth: { md: "770px", sm: "550px", xs: "300px" },
+          maxWidth: { xs: "400px", sm: "100%" },
+          minHeight: "130px",
+          zIndex: "10",
+          position: "relative"
+        }}
+        >
+          The Best Way To <span className="multiple-text" style={color}></span> <br className={styles.braker} /> A Personal Autobiography Book Easily
         </Typography>
-        <Box sx={{ width: "230px", height: "55px" }}>
+        <Typography sx={{
+          fontSize: '16px',
+          lineHeight: '24px',
+          fontWeight: 500,
+          fontFamily: "Avenir",
+          margin: { sm: '90px 0 30px', xs: "32px 0 25px" },
+          width: { sm: '70%', xs: "100%" }
+        }}
+        >
+          Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent.
+        </Typography>
+        <Box sx={{ width: { sm: "250px", xs: "100%" }, height: "55px" }}>
           <Button
-            title='Start Writing for Free'
+            title='Start 7-Day Free Trial'
             width="100%"
             height="100%"
             img1={Pen}
           />
         </Box>
         <Typography
-          sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 150px' }}
+          sx={{
+            fontSize: '11px', lineHeight: '24px', fontWeight: 500, fontFamily: "Avenir",
+            margin: { lg: '10px 0 150px', md: "10px 0 70px", sm: "10px 0 40px" }
+          }}
         >No credit card required
         </Typography>
       </Box>

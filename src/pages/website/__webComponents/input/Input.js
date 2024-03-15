@@ -7,6 +7,7 @@ const Input = ({ width, height, backgroundColor, fontSize, borderRadius, placeHo
     border: "none",
     outline: "none",
     backgroundColor: "transparent",
+    color: "#3e4f3c"
   };
 
   return <Box sx={{
@@ -16,7 +17,6 @@ const Input = ({ width, height, backgroundColor, fontSize, borderRadius, placeHo
     justifyContent: "space-between",
     alignItems: "center",
     background: "#F5F5F5",
-    maxWidth: "375px"
   }}
     height="55px"
     width="100%"

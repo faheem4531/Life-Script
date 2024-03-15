@@ -5,13 +5,15 @@ import Image from "next/image";
 const Points = ({ no = false, icon, title, discription }) => {
   return (
     <Box sx={{
-      padding: '20px 30px 40px',
-      border: "1px dashed #F3ECDA",
+      padding: { lg: '20px 30px 40px', md: "15px 8px 20px 15px", sm: "20px 30px 40px ", xs: "24px 15px 28px 25px" },
       borderRadius: '4px',
       display: "inline-block",
-      maxWidth: "340px",
+      maxWidth: { md: "350px", sm: "450px", xs: "100%" },
+      minHeight: { lg: "260px", md: "220px", xs: "" },
+      height: { lg: icon && "360px", md: icon && "340px" },
       width: "100%"
     }}
+      className={styles.points}
     >
       {no && <Typography sx={{
         color: "#E1683B",
@@ -25,9 +27,9 @@ const Points = ({ no = false, icon, title, discription }) => {
 
       <Typography sx={{
         color: "#F3ECDA",
-        fontSize: "28px",
+        fontSize: { lg: "28px", md: "22px", sm: "28px", xs: "30px" },
         fontWeight: 500,
-        minHeight: "125px",
+        minHeight: { lg: icon ? "100px" : "140px", md: icon ? "75px" : "110px" },
         fontFamily: "Besley !important",
       }}>
         {title}
@@ -36,12 +38,12 @@ const Points = ({ no = false, icon, title, discription }) => {
       <Typography sx={{
         color: "#F3ECDA",
         fontSize: "16px",
-        marginTop: "10px",
-        fontFamily: "myfamily"
+        marginTop: { md: "0", sm: "20px", xs: "20px" },
+        fontFamily: "Avenir"
       }}>
         {discription}
       </Typography>
-    </Box>
+    </Box >
   )
 }
 
