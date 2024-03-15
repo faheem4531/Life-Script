@@ -8,6 +8,11 @@ import Li from "@/__webAssets/svgs/li.svg"
 import X from "@/__webAssets/svgs/x.svg"
 
 const Footer = () => {
+
+  const logo = {
+    width: "25px",
+    height: "auto"
+  }
   return (
     <Box>
 
@@ -27,32 +32,27 @@ const Footer = () => {
             alignItems: "center",
             justifyContent: { xs: "center", sm: "start" }
           }}>
-            <Image src={Insta} alt="logo" />
-            <Image src={Li} alt="logo" />
-            <Image src={Fb} alt="logo" />
-            <Image src={X} alt="logo" />
+            <Image src={Insta} alt="logo" style={logo} />
+            <Image src={Li} alt="logo" style={logo} />
+            <Image src={Fb} alt="logo" style={logo} />
+            <Image src={X} alt="logo" style={logo} />
           </Box>
         </Box>
 
         <Box sx={{ display: "flex", columnGap: "45px" }}>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
-            <Typography sx={{ fontWeight: 800, marginBottom: "19px" }}>Company</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>About</Typography>
-            <Typography sx={{ fontSize: "16px" }}>Features</Typography>
+            <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>COMPANY</Typography>
+            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>About Us</Typography>
+            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Features</Typography>
+            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Pricing</Typography>
+            <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Blog</Typography>
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
-            <Typography sx={{ fontWeight: 800, marginBottom: "19px" }}>Help</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Customer Suport</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Delivery Details</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Terms & Conditions</Typography>
-            <Typography sx={{ fontSize: "16px" }}>Privacy Policy</Typography>
-          </Box>
-          <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-            <Typography sx={{ fontWeight: 800, marginBottom: "19px" }}>Resources</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Free ebooks</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Development Tutorial</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>How to -Blog</Typography>
-            <Typography sx={{ fontSize: "16px" }}>Youtube Playlist</Typography>
+            <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>HELP</Typography>
+            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Contact Us</Typography>
+            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>FAQ</Typography>
+            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Terms and conditions</Typography>
+            <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Privacy Policy</Typography>
           </Box>
         </Box>
       </Box >
