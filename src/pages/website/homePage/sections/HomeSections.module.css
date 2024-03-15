@@ -444,8 +444,9 @@ display: none;}
   
   .fullStyle {
     bottom: -30px;
-    max-width: 320px;
-    height: 40px;
+    max-width: 100%;
+    height: 30px;
+    padding: 0 7%;
   }
 
   /* GifTab  */

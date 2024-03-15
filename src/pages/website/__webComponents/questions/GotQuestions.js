@@ -108,7 +108,7 @@ const GotQuestions = () => {
         </Box>
       </Box>
       <Link href="/faqs">
-        <Typography sx={{ textAlign: "center", fontSize: "24px", marginTop: "80px" }}>See More</Typography>
+        <Typography sx={{ textAlign: "center", fontSize: "24px", marginTop: "80px", border: "1px solid #3E4F3C", padding: "10px 20px" }}>See More</Typography>
       </Link>
     </Box>
   )

@@ -46,7 +46,7 @@ const Introduction = () => {
           fontFamily: "Besley !important",
           minWidth: { md: "770px", sm: "550px", xs: "300px" },
           maxWidth: { xs: "400px", sm: "100%" },
-          minHeight: "130px",
+          minHeight: "150px",
           zIndex: "10",
           position: "relative"
         }}

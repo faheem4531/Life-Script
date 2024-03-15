@@ -87,7 +87,7 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 45px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
               Turn your cherished memories into beautifully written chapters with a single click – no writing experience
               needed, especially perfect for seniors.
@@ -104,7 +104,7 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
               Turn your cherished memories into beautifully written chapters with a single click – no writing experience
               needed, especially perfect for seniors.
@@ -121,7 +121,7 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
               Turn your cherished memories into beautifully written chapters with a single click – no writing experience
               needed, especially perfect for seniors.
@@ -138,7 +138,7 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
               Turn your cherished memories into beautifully written chapters with a single click – no writing experience
               needed, especially perfect for seniors.
@@ -155,7 +155,7 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
               Turn your cherished memories into beautifully written chapters with a single click – no writing experience
               needed, especially perfect for seniors.
@@ -172,7 +172,7 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
               Turn your cherished memories into beautifully written chapters with a single click – no writing experience
               needed, especially perfect for seniors.
