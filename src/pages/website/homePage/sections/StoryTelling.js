@@ -89,7 +89,7 @@ function StoryWraper({ direction, heading, content, image, button = false }) {
     <Box sx={{
       display: "flex",
       paddingTop: { sm: "100px", xs: "30px" },
-      columnGap: { lg: "150px", md: "70px" },
+      columnGap: { lg: "170px", md: "70px" },
       justifyContent: "space-between",
       alignItems: { md: "center" },
       flexDirection: { md: direction, sm: "column-reverse", xs: "column-reverse" }
