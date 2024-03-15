@@ -1,13 +1,15 @@
 import { Box } from "@mui/material";
 import Image from "next/image";
 
-const Input = ({ width, height, backgroundColor, fontSize, borderRadius, placeHolder, img }) => {
+const Input = ({ width, height, backgroundColor, fontSize, placeHolder, img }) => {
 
   const inputStyles = {
     border: "none",
     outline: "none",
     backgroundColor: "transparent",
-    color: "#3e4f3c"
+    color: "#3e4f3c",
+    height: "55px",
+    width: "70%"
   };
 
   return <Box sx={{
