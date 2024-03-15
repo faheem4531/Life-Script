@@ -17,7 +17,6 @@ const FeaturesPage = () => {
       <FeaturesItems />
       <ContactFooter
         title="Still confused? Ask away!"
-        subTitle="Contact us Now!!!"
         input1="Your name"
         input2="Your email address"
         input3="What’s on your mind?"
