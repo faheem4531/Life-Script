@@ -54,7 +54,7 @@ const Pricing = () => {
       margin: { lg: '170px 95px', sm: "150px 30px", xs: "80px 20px 100px" },
     }}>
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: "60px" }}>
-        <PrimaryHeading heading="Our Pricing" marked="Plan" showStyle={false} />
+        <PrimaryHeading lineWidth="140px" heading="Our Pricing" marked="Plan" showStyle={false} />
 
         <Box sx={{ marginTop: { xs: "15px" }, fontSize: { sm: "24px", xs: "16px" }, width: { sm: "60%", xs: "90%" }, fontFamily: "Avenir" }}>
           Each package comes with a one-year Lifescript subscription,
