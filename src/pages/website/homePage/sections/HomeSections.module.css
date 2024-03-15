@@ -15,6 +15,7 @@
   /* width: 190px; */
   /* height: 242px; */
   animation: image1 4s -2s;
+  /* animation: slideIn 1s ease-in-out infinite alternate; */
 }
 
 .image2 {
@@ -25,6 +26,7 @@
   /* height: 225px; */
   z-index: 1;
   animation: image2 4s -2s;
+  /* animation: slideIn 1s ease-in-out infinite alternate; */
 }
 
 .image3 {
@@ -34,6 +36,7 @@
   /* width: 180px; */
   /* height: 280px; */
   animation: image3 4s -2s;
+  /* animation: slideIn 1s ease-in-out infinite alternate; */
 }
 
 .image4 {
@@ -44,6 +47,16 @@
   /* width: 260px; */
   /* height: 200px; */
   animation: image4 4s -2s;
+  /* animation: slideIn 1s ease-in-out infinite alternate; */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
 }
 
 @keyframes image1 {

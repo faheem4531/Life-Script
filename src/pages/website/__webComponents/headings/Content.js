@@ -14,7 +14,7 @@ export function Content({ heading, subHeading, marginB, subWidth, width, align, 
       }}>
         {heading}
       </Typography>
-      <Typography sx={{ maxWidth: { lg: subWidth || "420px", } }} fontSize={subFonts || "16px"} >
+      <Typography sx={{ maxWidth: { lg: subWidth || "420px", }, fontFamily: "Avenir" }} fontSize={subFonts || "16px"} >
         {subHeading}
       </Typography>
     </Box>
