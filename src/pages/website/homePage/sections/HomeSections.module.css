@@ -155,7 +155,9 @@
 .bgStorytelling {
   background-image: url(../../../../__webAssets/pngs/bg-story-telling.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 95%;
+  background-position:bottom;
+  /* background:red; */
 }
 
 .marked{

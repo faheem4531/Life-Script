@@ -3,7 +3,7 @@ import styles from "../ComponentsStyles.module.css"
 
 export function Content({ heading, subHeading, marginB, subWidth, width, align, subFonts, mblcolor }) {
   return (
-    <Box sx={{ marginBottom: { lg: "25px", sm: "20px", xs: "30px" } }} maxWidth={width || "505px"} marginBottom={marginB} textAlign={align}>
+    <Box sx={{ margin: { lg: "0 0 25px", sm: "0 0 20px", xs: "0 0 30px" } }} maxWidth={width || "500px"} marginBottom={marginB} textAlign={align}>
       <Typography sx={{
         fontSize: { md: "32px", sm: "28px", sx: "24px", xs: "28px" },
         color: { xs: mblcolor, sm: "#3E4F3C" },
@@ -14,7 +14,7 @@ export function Content({ heading, subHeading, marginB, subWidth, width, align, 
       }}>
         {heading}
       </Typography>
-      <Typography sx={{ maxWidth: { lg: subWidth || "420px", }, fontFamily: "Avenir" }} fontSize={subFonts || "16px"} >
+      <Typography sx={{ maxWidth: { lg: subWidth || "420px", } }} fontSize={subFonts || "16px"} >
         {subHeading}
       </Typography>
     </Box>

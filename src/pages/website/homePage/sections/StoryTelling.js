@@ -59,7 +59,7 @@ const StoryTelling = () => {
       </Box>
 
       <Box sx={{
-        padding: { lg: "100px 130px 250px", md: "50px 100px 150px", sm: "50px 50px 150px" },
+        padding: { lg: "100px 40px 250px", md: "50px 40px 150px", sm: "50px 50px 150px" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -89,19 +89,21 @@ function StoryWraper({ direction, heading, content, image, button = false }) {
     <Box sx={{
       display: "flex",
       paddingTop: { sm: "100px", xs: "30px" },
-      columnGap: { lg: "100px", md: "70px" },
+      columnGap: { lg: "150px", md: "70px" },
       justifyContent: "space-between",
       alignItems: { md: "center" },
       flexDirection: { md: direction, sm: "column-reverse", xs: "column-reverse" }
     }}
     >
       <Box sx={{ margin: { md: "0", sm: "30px 0 0", xs: "20px 0 0" } }}>
-        <Content heading={heading} subHeading={content} />
-        {button && <Box sx={{ marginTop: "40px", width: { sm: "140px", xs: "100%" } }}>
+        <Box sx={{ maxWidth: { lg: "475px", md: "400px" } }}>
+          <Content width="100%" subWidth="100%" heading={heading} subHeading={content} />
+        </Box>
+        {button && <Box sx={{ marginTop: "40px", width: { sm: "240px", xs: "100%" } }}>
           <Button
             title='Get Started'
             width="100%"
-            height='45px'
+            height='55px'
             img2={NextIcon}
           />
         </Box>}
