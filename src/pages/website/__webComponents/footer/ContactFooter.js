@@ -55,6 +55,7 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape 
           height='50px'
           backgroundColor="#30422E"
           img2={Smily}
+          bgHover="#1D291C"
         />
       </Box>
     </Box>

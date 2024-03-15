@@ -1,6 +1,10 @@
-import Image from "next/image";
+'use client'
 
-const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, fontSize, borderRadius }) => {
+import Image from 'next/image';
+import React, { useState } from 'react';
+
+const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, bgHover, fontSize, borderRadius }) => {
+  const [hover, setHover] = useState(false);
 
   const styles = {
     borderRadius: borderRadius || '2px',
@@ -18,11 +22,22 @@ const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, fo
     fontFamily: "myfamily"
   };
 
-  return <button style={styles} onClick={onClick}>
-    {img1 && <Image src={img1} alt="icon" />}
-    {title}
-    {img2 && <Image src={img2} alt="icon" />}
-  </button>
-}
+  const handleHover = {
+    backgroundColor: bgHover || "#B4522D"
+  };
+
+  return (
+    <button
+      style={{ ...styles, ...(hover ? handleHover : null) }}
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+    >
+      {img1 && <Image src={img1} alt="icon" />}
+      {title}
+      {img2 && <Image src={img2} alt="icon" />}
+    </button>
+  );
+};
 
 export default Button;
