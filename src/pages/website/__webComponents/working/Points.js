@@ -6,7 +6,6 @@ const Points = ({ no = false, icon, title, discription }) => {
   return (
     <Box sx={{
       padding: { lg: '20px 30px 40px', md: "15px 8px 20px 15px", sm: "20px 30px 40px ", xs: "24px 15px 28px 25px" },
-      border: "1px dashed #F3ECDA",
       borderRadius: '4px',
       display: "inline-block",
       maxWidth: { md: "350px", sm: "450px", xs: "100%" },
@@ -14,6 +13,7 @@ const Points = ({ no = false, icon, title, discription }) => {
       height: { lg: icon && "360px", md: icon && "340px" },
       width: "100%"
     }}
+      className={styles.points}
     >
       {no && <Typography sx={{
         color: "#E1683B",

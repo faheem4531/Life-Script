@@ -135,10 +135,10 @@
 
 .fullStyle {
   position: absolute;
-  bottom: -30px;
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 840px;
+  max-width: 910px;
 }
 
 .suggestionImg{
@@ -337,7 +337,7 @@
   }
 
   .fullStyle {
-    max-width: 750px;
+    max-width: 880px;
   }
 
   /* GifTab  */
@@ -388,8 +388,8 @@ display: none;}
   }
 
 .fullStyle {
-  bottom: -40px;
-  max-width: 600px;
+  bottom: -60px;
+  max-width: 95%;
 }
 
   /* GifTab  */
@@ -443,7 +443,7 @@ display: none;}
   
   .fullStyle {
     bottom: -30px;
-    max-width: 305px;
+    max-width: 320px;
     height: 40px;
   }
 

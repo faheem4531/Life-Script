@@ -54,8 +54,6 @@ const NavBar = ({ color, logo }) => {
         display: 'flex',
         alignItems: 'center',
         flexDirection: { md: "row", sm: "column", xs: "column" },
-        fontSize: '18px',
-        fontWeight: 500,
       }}
         color={mobileState ? "" : color}
         className={`${mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide}`}
