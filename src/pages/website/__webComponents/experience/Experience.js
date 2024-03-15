@@ -25,7 +25,7 @@ const Experience = () => {
       </Box>
       <Link href='/website/features'>
         <Typography sx={{
-          fontSize: "24px", border: "1px solid #30422E", borderRadius: "4px", padding: "10px 20px", fontFamily: "Avenir"
+          fontSize: "18px", border: "1px solid #30422E", borderRadius: "4px", padding: "10px 25px 7px", fontFamily: "Avenir"
         }}
         >See More
         </Typography>

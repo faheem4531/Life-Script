@@ -40,9 +40,9 @@ const Testimonial = () => {
 
   return (
     <Box sx={{ marginTop: { lg: "200px", sm: "150px", xs: "100px" } }}>
-      <PrimaryHeading showStyle={false} marked="Testimonials" />
-      <Typography sx={{ color: "#495845", margin: { sm: "15px 0 100px", xs: "20px 0 50px" }, textAlign: "center" }}>
-        Voices of appreciation: What our customers say
+      <PrimaryHeading showStyle={false} marked="Testimonials" lineWidth="180px" />
+      <Typography sx={{ color: "#495845", margin: { sm: "15px 0 100px", xs: "20px 0 50px" }, textAlign: "center", fontFamily: "Avenir" }}>
+        What our customers say
       </Typography>
 
       <Marquee
@@ -88,10 +88,13 @@ function ReviewCard({ profile, name, designation, details }) {
         />
         <Box>
           <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#E1683B", fontWeight: 800 }}>{name}</Typography>
-          <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#BFC4B5" }}>{designation}</Typography>
+          <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#BFC4B5", fontFamily: "Avenir" }}>{designation}</Typography>
         </Box>
       </Box>
-      <Typography sx={{ padding: { sm: "20px 20px 0 10px", xs: "10px 0 0 10px" }, lineHeight: "26px", fontSize: "16px", maxWidth: "300px" }}>
+      <Typography sx={{
+        padding: { sm: "20px 20px 0 10px", xs: "10px 0 0 10px" }, lineHeight: "26px", fontSize: "16px", maxWidth: "300px",
+        fontFamily: "Avenir"
+      }}>
         &quot;{details}&quot;
       </Typography>
     </Box >

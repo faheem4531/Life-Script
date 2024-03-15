@@ -21,7 +21,7 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text.gif"
 
 export default function CustomizedAccordions() {
 
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [expanded, setExpanded] = React.useState('');
   const [panelActive, setPanelActive] = React.useState({
     panel1: true,
     panel2: false,
