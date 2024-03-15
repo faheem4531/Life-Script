@@ -29,6 +29,10 @@ const OurBooks = () => {
     speed: 600,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 2500,
+    autoplaySpeed: 2500,
+    cssEase: "linear",
     responsive: [
       {
         settings: {
