@@ -19,19 +19,20 @@ const Values = () => {
       icon: Power
     },
     {
-      title: "Inspiration:",
-      detail: " Personal stories are wellsprings of motivation, lessons, wisdom, and encouragement for others to navigate their own paths in life.",
-      icon: Inspiration
+      title: "Family Legacy: ",
+      detail: "We empower intergenerational connections through sharing and safeguarding personal stories, fostering a deeper family identity and sense of belonging.",
+      icon: Family
     },
     {
       title: "Personal Growth: ",
       detail: "We champion self-discovery, self-reflection, and personal evolution that comes from revisiting and sharing life's moments.",
       icon: Growth
     },
+
     {
-      title: "Family Legacy: ",
-      detail: "We empower intergenerational connections through sharing and safeguarding personal stories, fostering a deeper family identity and sense of belonging.",
-      icon: Family
+      title: "Inspiration:",
+      detail: " Personal stories are wellsprings of motivation, lessons, wisdom, and encouragement for others to navigate their own paths in life.",
+      icon: Inspiration
     },
     {
       title: "Empathy & Insight:",
@@ -68,7 +69,7 @@ const Values = () => {
         <Box sx={{ margin: "30px 0 0 40px", display: { md: "block", sm: "none", xs: "none" } }}>
           < Button
             title='Get Started'
-            width='200px'
+            width='210px'
             height='55px'
             img2={NextIcon}
           />
@@ -87,8 +88,8 @@ function Value({ title, icon, detail }) {
     <Box sx={{ maxWidth: { lg: "440px", md: "380px", sm: "80%", xs: "100%" }, display: "flex", columnGap: "15px", margin: "50px 0 0" }}>
       <Image src={icon} alt="icon" />
       <Box>
-        <Typography sx={{ fontSize: "16px", fontWeight: 800, paddingBottom: "20px", }}>{title}</Typography>
-        <Typography >{detail}</Typography>
+        <Typography sx={{ fontSize: "20px", fontWeight: 800, paddingBottom: "20px", }}>{title}</Typography>
+        <Typography sx={{ fontFamily: "Avenir" }}>{detail}</Typography>
       </Box>
     </Box>
   )
