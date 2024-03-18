@@ -41,12 +41,12 @@ const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showS
           columnGap: { md: "15px", sm: "10px", xs: "10px" }
         }}>
         <h2>{heading}</h2>
-        <Box>
+        {marked && <Box>
           <Box display="inline-block" position="relative">
             <h2>{marked}</h2>
             <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
           </Box>
-        </Box>
+        </Box>}
       </Box>
       <Box sx={{
         display: {

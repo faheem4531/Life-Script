@@ -89,7 +89,7 @@ const PricingPage = () => {
       header: "Features",
       bgColor: "#E1683B",
       data: [
-        "Answer and Question Format",
+        "Question and Answer Format",
         "Narrative Fusion Format",
         "Formatting Features (bold, italics and more)",
         "Assisted Editing and Grammar Check",
@@ -124,7 +124,7 @@ const PricingPage = () => {
         "No",
         "No",
         "No",
-        "No",
+        "Yes",
       ]
     }
   ]
@@ -133,7 +133,7 @@ const PricingPage = () => {
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.pricingPage}>
       <NavBar color="#F3ECDA" logo={Logo} />
       <Pricing />
-      <Working data={pointsArray} heading="How we’re" marked="different:" subHeading="Lifescript vs Storyworth" />
+      <Working data={pointsArray} heading="Lifescript vs Storyworth" subHeading="How we’re different:" />
       <Box sx={{ margin: { sm: "100px 0 0", xs: " 10px 0 -50px" } }}>
         <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book" marked="Details" />
         <PricingDetails cardsDetail={featuresDetails} heading="Features " marked="Comparison" />
