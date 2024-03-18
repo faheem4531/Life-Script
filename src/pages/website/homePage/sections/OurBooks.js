@@ -29,6 +29,10 @@ const OurBooks = () => {
     speed: 600,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 3000,
+    cssEase: "linear",
     responsive: [
       {
         settings: {
@@ -79,7 +83,7 @@ const OurBooks = () => {
       }}
       className={styles.bookBox}
     >
-      <PrimaryHeading showStyle={true} heading="Our " marked="Books" color="#F3ECDA" />
+      <PrimaryHeading lineWidth="160px" showStyle={true} heading="Our " marked="Books" color="#F3ECDA" />
 
       <Box position="relative" sx={{ marginTop: { sm: "120px", xs: "70px" }, width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Slider {...settings} className={styles.slider} ref={sliderRef}>

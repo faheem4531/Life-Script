@@ -13,12 +13,14 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape 
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        color: "#F3ECDA"
+        color: "#F3ECDA",
+        position: "relative",
+        zIndex: "10"
       }}
       className={styles.contactFooterBox}
     >
       <Typography sx={{ fontSize: { md: "54px", sm: "44px", xs: "32px" }, textAlign: "center", fontWeight: 500, fontFamily: "Besley !important" }}>{title}</Typography>
-      <Typography sx={{ fontSize: "16px", textAlign: "center", fontWeight: 500, marginTop: "30px" }}>{subTitle}</Typography>
+      <Typography sx={{ fontSize: "16px", textAlign: "center", fontWeight: 500, marginTop: "30px", fontFamily: "Avenir" }}>{subTitle}</Typography>
 
       <Box sx={{
         display: "flex",

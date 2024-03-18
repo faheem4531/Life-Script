@@ -10,19 +10,17 @@ const FeaturesPage = () => {
   return (
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <FeaturesIntroduction
-        heading="We Take Care Of "
-        keyWorld="Everything"
-        subHeading="Crafting your narrative in a book is now faster and simpler than ever."
+        heading="Features That Make Your Storytelling Experience Fun and  "
+        keyWorld="Easy"
       />
-      <FeaturesItems />
-      <ContactFooter
-        title="Still confused? Ask away!"
-        subTitle="Contact us Now!!!"
-        input1="Your name"
-        input2="Your email address"
-        input3="What’s on your mind?"
-        button="Get in touch!"
-      />
+        <FeaturesItems />
+        <ContactFooter
+          title="Still confused? Ask away!"
+          input1="Your name"
+          input2="Your email address"
+          input3="What’s on your mind?"
+          button="Get in touch!"
+        />
       <Footer />
     </Box>
   )

@@ -41,17 +41,19 @@ const Introduction = () => {
     <Box sx={{ padding: { md: "90px 0 0 75px", sm: "100px 0 0 50px", xs: "40px 16px 40px" }, position: "relative" }}>
       <Box sx={{ width: { md: '55%', sm: "100%", xs: "100%" }, zIndex: "20" }}>
         <Typography sx={{
-          fontSize: { md: '60px', md: "50px", sm: "44px", xs: "32px" },
+          fontSize: { lg: '60px', md: "50px", sm: "44px", xs: "32px" },
           lineHeight: { sm: '70px', xs: "37px" },
           fontFamily: "Besley !important",
           minWidth: { md: "770px", sm: "550px", xs: "300px" },
           maxWidth: { xs: "400px", sm: "100%" },
-          minHeight: "130px",
+          minHeight: "150px",
           zIndex: "10",
           position: "relative"
         }}
         >
-          The Best Way To <span className="multiple-text" style={color}></span> <br className={styles.braker} /> A Personal Autobiography Book Easily
+          <h1>
+            The Best Way To <span className="multiple-text" style={color}></span> <br className={styles.braker} /> A Personal Autobiography Book Easily
+          </h1>
         </Typography>
         <Typography sx={{
           fontSize: '16px',
@@ -75,7 +77,7 @@ const Introduction = () => {
         <Typography
           sx={{
             fontSize: '11px', lineHeight: '24px', fontWeight: 500, fontFamily: "Avenir",
-            margin: { lg: '10px 0 150px', md: "10px 0 70px", sm: "10px 0 40px" }
+            margin: { lg: '10px 0 100px', md: "10px 0 70px", sm: "10px 0 40px" }
           }}
         >No credit card required
         </Typography>

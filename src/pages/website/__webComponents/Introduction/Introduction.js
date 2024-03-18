@@ -16,7 +16,7 @@ const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "
       <NavBar color="#F3ECDA" logo={Logo} />
       <Box sx={{
         textAlign: 'center', position: "absolute", top: "50%", left: "50%",
-        maxWidth: { xs: "325px", sm: "100%" },
+        maxWidth: { xs: "340px", sm: "1200px" },
         transform: "translate(-50%,-50%)"
       }}
         width={width}
@@ -25,19 +25,18 @@ const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "
           fontSize: { md: "55px", sm: "44px", xs: "32px" },
           padding: "0 20px",
           fontWeight: 500,
-          marginBottom: { md: "30px", sx: "20px", xs: "30px" },
+          margin: { md: " 0 auto 30px", sx: "20px", xs: "0px" },
           color: "#F3ECDA",
           fontFamily: "Besley !important",
         }}>
-          {heading}{" "}
-          <span className={styles.lineBox}>
-            {keyWorld}
-            <Image src={Line} alt="img" className={styles.line} />
-          </span>
+          <h1>
+            {heading}{" "}
+            <span className={styles.lineBox}>
+              {keyWorld}
+              <Image src={Line} alt="img" className={styles.line} />
+            </span>
+          </h1>
         </Box>
-        <Typography sx={{ fontSize: "16px", color: "#F3ECDA", marginTop: "10px", padding: "0 20px", opacity: ".8" }}>
-          {subHeading}
-        </Typography>
       </Box>
     </Box >
   )

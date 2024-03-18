@@ -22,13 +22,15 @@ const IntroductionBlog = () => {
           fontSize: { md: "52px", sm: "44px", xs: "32px" },
           fontWeight: 500, marginBottom: "30px", fontFamily: "Besley !important"
         }}>
-          Exploring Life Stories: Biography, Autobiography, Memoir {" "}
-          <span className={styles.lineBox}>
-            Insights
-            <Image src={Line} alt="img" className={styles.line} />
-          </span>
+          <h2>
+            Exploring the World of Storytelling: Insights, Inspiration, and Practical {" "}
+            <span className={styles.lineBox}>
+              Tips
+              <Image src={Line} alt="img" className={styles.line} />
+            </span>
+          </h2>
         </Box>
-        <Typography x={{ fontSize: "16px" }}>Unlock the Art of Biography Writing: A Comprehensive Guide to Crafting Compelling Life Stories</Typography>
+        <Typography x={{ fontSize: "16px" }}>Your Guide to Capturing Life&apos;s Moments: Unlocking the Secrets of Personal Narratives and Legacy Building</Typography>
       </Box>
     </Box>
   )

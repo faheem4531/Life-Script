@@ -11,8 +11,9 @@
 
 .line {
   position: absolute;
-  right: -20px;
-  bottom: -10px;
+  right: -40px;
+  bottom: -5px;
+  width: 160px;
 }
 
 .blogImg {
@@ -43,7 +44,8 @@
   }
 
   .line {
-    width: 120px;
+    width: 120px !important;
+    right: -20px;
   }
 
 }
@@ -54,6 +56,6 @@
     background-size: 100% 120px;
   }
   .line {
-    width: 80px;
+    width: 80px !important;
   }
 }

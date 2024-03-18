@@ -80,7 +80,7 @@ const GotQuestions = () => {
       className={styles.gotQsBg}
     >
       <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>Got Questions?</Typography>
-      <Typography sx={{ fontSize: { sm: "20px", xs: "16px" }, marginTop: "10px" }}>Got Questions? We&apos;ve Got Answers!</Typography>
+      <Typography sx={{ fontSize: { sm: "20px", xs: "16px" }, marginTop: "10px", fontFamily: "Avenir" }}>We&apos;ve Got Answers!</Typography>
       <Box sx={{
         marginTop: { sm: "85px", xs: "45px" }, display: "flex", flexDirection: { md: "row", sm: "column", xs: "column" },
         columnGap: { lg: "10%", md: "5%" }
@@ -107,9 +107,15 @@ const GotQuestions = () => {
           />)}
         </Box>
       </Box>
-      <Link href="/faqs">
-        <Typography sx={{ textAlign: "center", fontSize: "24px", marginTop: "80px" }}>See More</Typography>
-      </Link>
+
+      <Box sx={{ textAlign: "center" }}>
+        <Link href="/faqs">
+          <Typography sx={{
+            textAlign: "center", fontSize: "18px", marginTop: "80px", display: "inline-block",
+            border: "1px solid #3E4F3C", padding: "10px 25px 7px", fontFamily: "Avenir", borderRadius: "4px"
+          }}>See More</Typography>
+        </Link>
+      </Box>
     </Box>
   )
 }

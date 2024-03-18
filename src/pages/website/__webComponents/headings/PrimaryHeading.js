@@ -5,10 +5,10 @@ import Image from "next/image";
 import Line from "@/__webAssets/pngs/under-line-long.png"
 import styles from "../ComponentsStyles.module.css"
 
-const PrimaryHeading = ({ direction = "row", heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle, lineWidth, removeStyleMbl = false, marked }) => {
+const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle, lineWidth, removeStyleMbl = false, marked }) => {
 
   const styleLine = {
-    width: "140px" || lineWidth,
+    width: lineWidth || "120px",
   }
 
   return (
@@ -37,16 +37,16 @@ const PrimaryHeading = ({ direction = "row", heading, showStyle, color, lineHeig
           fontFamily: "Besley !important",
           textAlign: "center",
           display: "flex",
-          flexDirection: { sm: "row", xs: direction },
+          flexDirection: { sm: "row", md: mdDirection, lg: "row", xs: direction },
           columnGap: { md: "15px", sm: "10px", xs: "10px" }
         }}>
-        {heading}
-        <Box>
+        <h2>{heading}</h2>
+        {marked && <Box>
           <Box display="inline-block" position="relative">
-            {marked}
+            <h2>{marked}</h2>
             <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
           </Box>
-        </Box>
+        </Box>}
       </Box>
       <Box sx={{
         display: {

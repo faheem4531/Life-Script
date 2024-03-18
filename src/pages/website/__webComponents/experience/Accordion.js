@@ -21,7 +21,7 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text.gif"
 
 export default function CustomizedAccordions() {
 
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [expanded, setExpanded] = React.useState('');
   const [panelActive, setPanelActive] = React.useState({
     panel1: true,
     panel2: false,
@@ -79,7 +79,9 @@ export default function CustomizedAccordions() {
       <Box sx={{ maxHeight: "460px" }}>
         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} open={expanded === 'panel1'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel1 ? "#3E4F3C" : ""}>1. Narrative Fusion</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel1 ? "#3E4F3C" : ""}>
+              <h3>1. Narrative Fusion </h3>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -87,16 +89,17 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 45px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
-              Turn your cherished memories into beautifully written chapters with a single click – no writing experience
-              needed, especially perfect for seniors.
+              <h4>Turns your answers into beautifully written chapters with a single click. No writing experience needed.</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} open={expanded === 'panel2'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel2 ? "#3E4F3C" : ""}>2. Assisted Editing</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel2 ? "#3E4F3C" : ""}>
+              <h3>2. Assisted Editing </h3>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -104,16 +107,17 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
-              Turn your cherished memories into beautifully written chapters with a single click – no writing experience
-              needed, especially perfect for seniors.
+              <h4>Automatically edits and proofreads your text with real-time suggestions. No typos anymore.</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} open={expanded === 'panel3'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel3 ? "#3E4F3C" : ""}>3. Voice-to-Text</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel3 ? "#3E4F3C" : ""}>
+              <h3>3. Voice-to-Text</h3>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -121,16 +125,17 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
-              Turn your cherished memories into beautifully written chapters with a single click – no writing experience
-              needed, especially perfect for seniors.
+              <h4>Captures your spoken words, transforming them into written text if you don’t feel like typing.</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} open={expanded === 'panel4'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel4 ? "#3E4F3C" : ""}>4. Family Tree</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel4 ? "#3E4F3C" : ""}>
+              <h3>4. Family Tree </h3>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -138,16 +143,17 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
-              Turn your cherished memories into beautifully written chapters with a single click – no writing experience
-              needed, especially perfect for seniors.
+              <h4>Visually represents your ancestry from parents to distant ancestors at the end of your book.</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} open={expanded === 'panel5'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel5 ? "#3E4F3C" : ""}>5. Formatting Feature</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel5 ? "#3E4F3C" : ""}>
+              <h3>5. Formatting Features</h3>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -155,16 +161,17 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
-              Turn your cherished memories into beautifully written chapters with a single click – no writing experience
-              needed, especially perfect for seniors.
+              <h4> Allows you to customize your text and its font, style, size, color, layout and more.</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')} open={expanded === 'panel6'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel6 ? "#3E4F3C" : ""}>6. Auto Photo Improvement</Typography>
+            <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel6 ? "#3E4F3C" : ""}>
+              <h3>6. Auto Photo Improvement</h3>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography sx={{
@@ -172,10 +179,9 @@ export default function CustomizedAccordions() {
               fontSize: "16px",
               padding: "5px 0 20px 35px",
               maxWidth: "370px",
-              fontFamily: "myfamily"
+              fontFamily: "Avenir"
             }}>
-              Turn your cherished memories into beautifully written chapters with a single click – no writing experience
-              needed, especially perfect for seniors.
+              <h4>Automatically adjusts your photos for high-quality printing by managing size, resolution, and more.</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>

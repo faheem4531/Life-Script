@@ -81,6 +81,12 @@
   height: 40px;
 }
 
+.fullStyle {
+  max-width: 1140px;
+  width: 100%;
+}
+
+
 /* Got Questions  */
 .questionIcon{
   width: 44px;
@@ -90,7 +96,6 @@
  /* Primary Heading  */
  .headingLine{
   position: absolute;
-  width: 120px !important;
   bottom: -10px;
   right: -20px;
 }
@@ -109,6 +114,11 @@
     height: 40px;
    }
 
+   .fullStyle {
+    max-width: 900px;
+    width: 100%;
+  }
+  
 }
 @media screen and  (max-width: 899px) {
 /* Working  */

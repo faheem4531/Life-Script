@@ -10,7 +10,7 @@ const Points = ({ no = false, icon, title, discription }) => {
       display: "inline-block",
       maxWidth: { md: "350px", sm: "450px", xs: "100%" },
       minHeight: { lg: "260px", md: "220px", xs: "" },
-      height: { lg: icon && "360px", md: icon && "340px" },
+      height: { lg: icon && "380px", md: icon && "340px" },
       width: "100%"
     }}
       className={styles.points}
@@ -32,7 +32,7 @@ const Points = ({ no = false, icon, title, discription }) => {
         minHeight: { lg: icon ? "100px" : "140px", md: icon ? "75px" : "110px" },
         fontFamily: "Besley !important",
       }}>
-        {title}
+        <h4>{title}</h4>
       </Typography>
 
       <Typography sx={{
@@ -41,7 +41,7 @@ const Points = ({ no = false, icon, title, discription }) => {
         marginTop: { md: "0", sm: "20px", xs: "20px" },
         fontFamily: "Avenir"
       }}>
-        {discription}
+        <h5>{discription}</h5>
       </Typography>
     </Box >
   )

@@ -16,7 +16,7 @@ const StoryTelling = () => {
   const stories = [
     {
       heading: "Easy and Time-saving",
-      content: "Enjoy telling your story by simply answering thought-provoking questions and have fun while you reflect along the way. Save valuable time and avoid the hassle of years of writing, extensive interviews, and proofreading for typos.",
+      content: "Tell your story by simply answering thought-provoking questions and have fun while you reflect along the way. Save valuable time and avoid the hassle of years of writing, extensive interviews, and proofreading for typos.",
       image: StoryImage1,
       direction: "row"
     },
@@ -28,13 +28,13 @@ const StoryTelling = () => {
     },
     {
       heading: "Flexible",
-      content: "Your story is unique, and so is the way you tell it. If you don't feel like writing-speak your mind! Choose your own pace down memory lane on any device, anytime,anywhere.",
+      content: " Your story is unique, and so is the way you tell it. If you don't feel like writing, feel free to speak your mind! Choose your own pace down memory lane on any device, anytime, anywhere.",
       image: StoryImage3,
       direction: "row"
     },
     {
       heading: "Connected",
-      content: "Every second person can’t name their great-grandparent. Thanks to our Family Tree your family members won’t be part of this statistics. Create your family tree and uncover your ancestry at the end of your book.",
+      content: "Safeguard your legacy with our Family Tree feature, capturing your lineage from parents and great-grandparents to distant ancestors by visualizing them at the end of your book.",
       image: StoryImage4,
       direction: "row-reverse",
       button: true

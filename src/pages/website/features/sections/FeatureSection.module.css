@@ -10,16 +10,37 @@
   max-width: 700px;
   max-height: 445px;
 }
+.featureBg{
+  background-image: url(../../../../__webAssets/pngs/bg-top-bottom.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #F3ECDA;
+}
 
-@media screen and (max-width:1200px)and (min-width:899px) {
+.halfbg{
+  background-image: url(../../../../__webAssets/pngs/bg-top-bottom.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #F3ECDA;
+  height: 1100px !important;
+  margin-bottom: -80px;
+}
+
+@media screen and (max-width:1200px) and (min-width:899px) {
   
   .gifIcon{
     width: 90px;
     height: auto;
   }
+
   .gif{
-    width: 550px;
-    height: 360px;
+    width: 550px ;
+    height: 360px ;
+  }
+
+  .halfbg{
+    height: 900px !important;
+    margin-bottom: -80px;
   }
 }
 
@@ -39,6 +60,17 @@
     position: absolute;
     bottom: -20px;
   }
+
+  .featureBg, .halfbg{
+    background-image: none;
+    color: #3E4F3C;
+  }
+
+  .halfbg{
+    height: auto !important;
+    margin-bottom: 100px !important;
+    padding-bottom: 0px;
+  }
 }
 
 @media screen and (max-width:600px) {
@@ -48,16 +80,16 @@
   }
   
   .gif{
-    /* min-width: 354px; */
     width: 100%;
     min-height: 230px;
-    height: auto;
+    height: 100%;
   }
 
   .buttonBox{
     position: absolute;
-    bottom: -60px;
+    bottom: -30px;
     width: 100%;
     text-align: center;
+    padding-right: 20px;
   }
 }

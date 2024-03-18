@@ -11,7 +11,7 @@ const Suggestion = () => {
   const content = [
     {
       title: "Give a truly meaningful gift",
-      subTitle: "It is a heartfelt gesture to show that you care for the receiving part and a chance to learn about them. The result is not only a book but an unparalleled experience to be cherished for years to come."
+      subTitle: "For mother’s day, dad’s birthday, grandparents anniversary or just as a random heartfelt gesture and a chance to learn about them. The result is not only a book but an unparalleled experience to be cherished for years to come."
     },
     {
       title: "Share your Story and Wisdom",
@@ -44,7 +44,9 @@ const Suggestion = () => {
           fontWeight: 500,
           fontFamily: "Besley !important"
         }}>
-          Perfect for when you want to
+          <h2>
+            Perfect for when you want to
+          </h2>
         </Typography>
         <Image src={FlowerLine} alt="logo" className={styles.fullStyle} />
       </Box >
