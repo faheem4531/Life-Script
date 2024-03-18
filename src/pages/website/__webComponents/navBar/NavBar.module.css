@@ -27,15 +27,15 @@
 
 @media screen and (max-width: 1440px) {
   .logo {
-    width: 220px;
-    height: 35px;
+    width: 220px !important;
+    height: 35px !important;
   }
 }
 
 @media screen and (max-width: 1200px) and  (min-width: 900px) {
   .logo {
     width: 170px !important;
-    height: 25px !;
+    height: 25px !important;
   }
   .underLine {
     background-size: 45px 50%;
@@ -45,8 +45,8 @@
 
 @media screen and (max-width: 899px) {
   .logo {
-    width: 150px;
-    height: 25px;
+    width: 150px !important;
+    height: 25px !important;
   }
   
   .underLine {
@@ -88,8 +88,8 @@
 
 @media screen and (max-width: 600px) {
   .logo {
-    width: 130px;
-    height: 20px;
+    width: 130px !important;
+    height: 20px !important;
   }
 
 

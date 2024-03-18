@@ -33,8 +33,8 @@ const FeaturesItems = () => {
       gif: AssistedEditing,
       heading: "Assisted Editing",
       details: "Automatically edits and proofreads your text with real-time suggestions. From grammatical errors to sentence structure, it ensures a polished and professional narrative, saving you time and effort in the editing process.",
-      flex: "row-reverse"
-
+      flex: "row-reverse",
+      bg: true
     },
     {
       logo: VoiceLogo,
@@ -42,14 +42,14 @@ const FeaturesItems = () => {
       heading: "Voice-to-Text",
       details: "Captures your spoken words, transforming them into written text. Ideal for the storyteller on the move, those who prefer speaking to typing, or anyone who loves to tell their tales out loud. Just press to start, speak your heart, and click to finish. It's that simple.",
       flex: "row"
-
     },
     {
       logo: FamilyLogo,
       gif: FamilyTree,
       heading: "Family Tree",
       details: "Visually represents your ancestry at the end of your book. You simply add picture, name and age for the family members you wish to include. With family tree, you provide a rich personal and historical context to your story.",
-      flex: "row-reverse"
+      flex: "row-reverse",
+      bg: true
     },
 
     {
@@ -67,89 +67,90 @@ const FeaturesItems = () => {
       details: "Automatically adjusts your photos for high-quality printing by managing size, resolution, and aspect ratio. This eliminates manual editing, saving you time and effort in meeting printing requirements.",
       flex: "row-reverse",
       button: true,
+      bg: "half"
     },
 
   ]
 
   return (
-    <Box sx={{ maxWidth: "1200px", margin: { lg: "200px auto 0", md: "150px auto 0", sm: "120px auto 100px", xs: "100px 20px 150px" } }}>
-
-      <Typography sx={{
-        fontSize: { md: "52px", sm: "44px", xs: "32px" },
-        fontWeight: 500,
-        marginBottom: "20px",
-        fontFamily: "Besley !important",
-        padding: { lg: "0 10%", md: "0 5%", sm: "50px 50px 0" },
-        textAlign: { sm: "center" }
-      }}>
-        Features That Shape Your Storytelling <br /> Experience Fun and Easy
-      </Typography>
-      <Typography sx={{ fontSize: "16px", padding: { md: "0 20%", sm: "0 7%" }, textAlign: { sm: "center" } }}>
-        Lifescript features make crafting your autobiography easy and engaging. Capture your life&apos;s journey, design with style, and visually represent your family heritage. Create a lasting legacy with a high-quality, printed book to share.
-      </Typography>
-
-      <Box sx={{
-        marginTop: { lg: "200px", md: "150px", sm: "100px", xs: "80px" },
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        position: "relative"
-      }}>
-        {Data.map((item, index) => <DetailFeature
-          key={index}
-          logo={item.logo}
-          gif={item.gif}
-          heading={item.heading}
-          details={item.details}
-          flex={item.flex}
-          button={item.button}
-        />)}
-      </Box>
+    <Box sx={{
+      marginBottom: { md: "0", sm: "150px", xs: "150px" },
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      position: "relative"
+    }}>
+      {Data.map((item, index) => <DetailFeature
+        key={index}
+        logo={item.logo}
+        gif={item.gif}
+        heading={item.heading}
+        details={item.details}
+        flex={item.flex}
+        bg={item.bg}
+        button={item.button}
+      />)}
     </Box>
-
   )
 };
 
 export default FeaturesItems
 
 
-function DetailFeature({ logo, heading, details, flex, gif, button }) {
+function DetailFeature({ logo, heading, details, flex, gif, button, bg = false }) {
+
+  const bgWidthLg = bg == true ? "950px" : "800px"
+  const bgWidthMd = bg == true ? "800px" : "700px"
+
   return (
     <Box sx={{
       display: "flex",
-      justifyContent: "space-between",
-      flexDirection: { md: "row", sm: "column", xs: "column" },
-      alignItems: { md: "center", sm: "start", sx: "start" },
-      columnGap: "20px",
-      marginBottom: { lg: "250px", md: "200px", sm: "100px", xs: "50px" },
+      alignItems: "center",
+      justifyContent: "center",
       width: "100%",
-      padding: { sm: "0 50px" }
+      height: { lg: bgWidthLg, md: bgWidthMd },
+      padding: { sm: "70px 0 ", md: "0", xs: "50px 20px" }
     }}
-      flexDirection={flex}
-    >
-      <Box sx={{ maxWidth: { sm: "355px", xs: "100%" } }}>
-        <Image src={logo} alt="icon" className={styles.gifIcon} />
-        <Content
-          subWidth="330px"
-          heading={heading}
-          subHeading={details} />
-        {button && <Box sx={{ marginTop: "50px" }} className={styles.buttonBox}>
-          <Box sx={{ width: { sm: "200px", xs: "100%" } }}>
-            <Button
-              title='Get Started'
-              width='100%'
-              height='50px'
-              img1={Pen}
-            />
+      className={`${bg == true && styles.featureBg} ${bg == "half" && styles.halfbg}`} >
+      <Box sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: { md: flex, sm: "column", xs: "column" },
+        alignItems: { md: "center", sm: "start", sx: "start" },
+        columnGap: { lg: "90px", md: "50px" },
+        width: "100%",
+        maxWidth: "1200px",
+        padding: { sm: "0 50px" }
+      }}
+        flexDirection={flex}
+      >
+
+        <Box sx={{ maxWidth: { sm: "355px", xs: "100%" } }}>
+          <Image src={logo} alt="icon" className={styles.gifIcon} />
+          <Content
+            subWidth="330px"
+            heading={heading}
+            subHeading={details}
+            bg={bg}
+          />
+          {button && <Box sx={{ marginTop: "50px" }} className={styles.buttonBox}>
+            <Box sx={{ width: { sm: "200px", xs: "100%" }, padding: "0 20px 0 0" }}>
+              <Button
+                title='Get Started'
+                width='100%'
+                height='55px'
+                img1={Pen}
+              />
+            </Box>
+            <Typography
+              sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 0' }}
+            >Start Free Trial (no credit card required)
+            </Typography>
           </Box>
-          <Typography
-            sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 0' }}
-          >Start Free Trial (no credit card required)
-          </Typography>
+          }
         </Box>
-        }
+        <Image src={gif} alt="gif" className={styles.gif} />
       </Box>
-      <Image src={gif} alt="gif" className={styles.gif} />
     </Box >
   )
 

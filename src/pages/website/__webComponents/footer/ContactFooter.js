@@ -13,7 +13,9 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape 
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        color: "#F3ECDA"
+        color: "#F3ECDA",
+        position: "relative",
+        zIndex: "10"
       }}
       className={styles.contactFooterBox}
     >
