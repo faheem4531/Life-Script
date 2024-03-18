@@ -13,6 +13,7 @@ import Image1 from "@/__webAssets/pngs/hero-1.png"
 import Image2 from "@/__webAssets/pngs/hero-2.png"
 import Image3 from "@/__webAssets/pngs/hero-3.png"
 import Image4 from "@/__webAssets/pngs/hero-4.png"
+import Link from "next/link";
 
 const Introduction = () => {
 
@@ -67,12 +68,14 @@ const Introduction = () => {
           Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent.
         </Typography>
         <Box sx={{ width: { sm: "250px", xs: "100%" }, height: "55px" }}>
-          <Button
-            title='Start 7-Day Free Trial'
-            width="100%"
-            height="100%"
-            img1={Pen}
-          />
+          <Link href="/_auth/Auth">
+            <Button
+              title='Start 7-Day Free Trial'
+              width="100%"
+              height="100%"
+              img1={Pen}
+            />
+          </Link>
         </Box>
         <Typography
           sx={{

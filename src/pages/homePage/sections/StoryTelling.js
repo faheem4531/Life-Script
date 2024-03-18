@@ -11,6 +11,7 @@ import StoryImage4 from "@/__webAssets/pngs/story-4.png"
 import Button from "@/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
 import Line from "@/__webAssets/pngs/under-line-long.png"
+import Link from "next/link";
 
 const StoryTelling = () => {
   const stories = [
@@ -100,12 +101,14 @@ function StoryWraper({ direction, heading, content, image, button = false }) {
           <Content width="100%" subWidth="100%" heading={heading} subHeading={content} />
         </Box>
         {button && <Box sx={{ marginTop: "40px", width: { sm: "240px", xs: "100%" } }}>
-          <Button
-            title='Get Started'
-            width="100%"
-            height='55px'
-            img2={NextIcon}
-          />
+          <Link href="/_auth/Auth">
+            <Button
+              title='Get Started'
+              width="100%"
+              height='55px'
+              img2={NextIcon}
+            />
+          </Link>
         </Box>}
       </Box>
 

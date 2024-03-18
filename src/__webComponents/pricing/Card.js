@@ -6,6 +6,7 @@ import Button from "../button/Button";
 import Check from "@/__webAssets/svgs/check.svg"
 import Lock from "@/__webAssets/svgs/lock.svg"
 import NextIcon from '@/__webAssets/svgs/next.svg'
+import Link from "next/link";
 
 const PricingCard = ({ price, category, card, id, handleHover }) => {
 
@@ -163,14 +164,16 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
         }
       </Box>
       <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
-        <Button
-          title='Get Started'
-          width='100%'
-          height='75px'
-          fontSize="24px"
-          borderRadius="0px 0px 8px 8px"
-          img2={NextIcon}
-        />
+        <Link href="/_auth/Auth">
+          <Button
+            title='Get Started'
+            width='100%'
+            height='75px'
+            fontSize="24px"
+            borderRadius="0px 0px 8px 8px"
+            img2={NextIcon}
+          />
+        </Link>
       </Box>
     </Box >
   )

@@ -10,6 +10,7 @@ import Empathy from "@/__webAssets/svgs/values/empathy.svg"
 import Growth from "@/__webAssets/svgs/values/growth.svg"
 import Inspiration from "@/__webAssets/svgs/values/inspiration.svg"
 import Power from "@/__webAssets/svgs/values/power.svg"
+import Link from "next/link";
 
 const Values = () => {
   const ValueData = [
@@ -68,12 +69,14 @@ const Values = () => {
           />)}
         </Box>
         <Box sx={{ margin: "30px 0 0 40px", display: { md: "block", sm: "none", xs: "none" } }}>
-          < Button
-            title='Get Started'
-            width='210px'
-            height='55px'
-            img2={NextIcon}
-          />
+          <Link href="/_auth/Auth">
+            <Button
+              title='Get Started'
+              width='210px'
+              height='55px'
+              img2={NextIcon}
+            />
+          </Link>
         </Box>
       </Box>
 

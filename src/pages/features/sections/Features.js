@@ -18,6 +18,7 @@ import Formatting from "@/__webAssets/pngs/formatting-icon.png"
 import VoiceLogo from "@/__webAssets/pngs/voice-icon.png"
 import Pen from "@/__webAssets/svgs/writing-pen.svg"
 import Button from '@/__webComponents/button/Button'
+import Link from 'next/link'
 
 const FeaturesItems = () => {
   const Data = [
@@ -135,12 +136,14 @@ function DetailFeature({ logo, heading, details, flex, gif, button, bg = false }
           />
           {button && <Box sx={{ marginTop: "50px" }} className={styles.buttonBox}>
             <Box sx={{ width: { sm: "200px", xs: "100%" }, padding: "0 20px 0 0" }}>
-              <Button
-                title='Get Started'
-                width='100%'
-                height='55px'
-                img1={Pen}
-              />
+              <Link href="/_auth/Auth">
+                <Button
+                  title='Get Started'
+                  width='100%'
+                  height='55px'
+                  img1={Pen}
+                />
+              </Link>
             </Box>
             <Typography
               sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 0' }}

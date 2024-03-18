@@ -6,6 +6,7 @@ import Insta from "@/__webAssets/svgs/insta.svg"
 import Fb from "@/__webAssets/svgs/fb.svg"
 import Li from "@/__webAssets/svgs/li.svg"
 import X from "@/__webAssets/svgs/x.svg"
+import Link from "next/link"
 
 const Footer = () => {
 
@@ -42,17 +43,33 @@ const Footer = () => {
         <Box sx={{ display: "flex", columnGap: "45px" }}>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>COMPANY</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>About Us</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Features</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Pricing</Typography>
-            <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Blog</Typography>
+            <Link href="/aboutUs">
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>About Us</Typography>
+            </Link>
+            <Link href="/features">
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Features</Typography>
+            </Link>
+            <Link href="/pricing">
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Pricing</Typography>
+            </Link>
+            <Link href="/blog">
+              <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Blog</Typography>
+            </Link>
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>HELP</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Contact Us</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>FAQ</Typography>
-            <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Terms and conditions</Typography>
-            <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Privacy Policy</Typography>
+            <Link href="/">
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Contact Us</Typography>
+            </Link>
+            <Link href="/faqs">
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>FAQ</Typography>
+            </Link>
+            <Link href="/">
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Terms and conditions</Typography>
+            </Link>
+            <Link href="/">
+              <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Privacy Policy</Typography>
+            </Link>
           </Box>
         </Box>
       </Box >
