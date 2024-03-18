@@ -73,6 +73,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
     <Box sx={{
       borderRadius: "8px",
       width: { sm: "405px", xs: "340px" },
+      height: { lg: "700px" },
       position: "relative"
     }}
       backgroundColor={card == "2" ? "#30422E" : "#F4F4F4"}
