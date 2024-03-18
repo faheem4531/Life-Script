@@ -1,34 +1,29 @@
 'use client'
 
 import { Box, Typography } from "@mui/material";
-import Footer from "@/pages/website/__webComponents/footer/Footer";
-import ContactFooter from "@/pages/website/__webComponents/footer/ContactFooter";
-import NavBar from "@/pages/website/__webComponents/navBar/NavBar";
-import GotQuestions from "@/pages/website/__webComponents/questions/GotQuestions";
 import styles from "./Faq.module.css"
 import Image from "next/image";
 
 import Points from "@/__webAssets/pngs/qs-points.png"
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
-import Pricing from "@/pages/website/__webComponents/pricing/Pricing";
 
 const Faqs = () => {
 
   const QAs = [
     {
-      question: "What is included in each subscription?",
-      answer: "Full year of access to our platform, full-color hardcover printed book and free delivery.",
-    },
-    {
       question: "Can I purchase extra books?",
       answer: "Yes, additional full-color hardcover books are available for 39$ each during or after your subscription period.",
-    }, {
-      question: "Can I gift a subscription and how does that work?",
-      answer: "Absolutely, gifting a subscription is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch.",
     },
     {
       question: "How long will it take?",
       answer: "Your book, your pace! Some people finish their book in 2-3 sittings while others prefer to enjoy the process and continually polish their answers for months. However you choose, enjoy revisiting your unique memories!",
+    },
+    {
+      question: "Can I gift a subscription and how does that work?",
+      answer: "Absolutely, gifting a subscription is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch.",
+    },
+    {
+      question: "What is included in each subscription?",
+      answer: "Full year of access to our platform, full-color hardcover printed book and free delivery.",
     },
     {
       question: "Is international shipping available and how much does it cost?",
@@ -92,9 +87,12 @@ const Faqs = () => {
         paddingBottom: { md: "35px", sx: "25px", xs: "15px" },
         paddingLeft: { sm: "0", xs: "15px" }
       }}>
-        <Typography sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>FAQs</Typography>
-        <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Frequently Asked Questions.</Typography>
-        <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>Here are some common questions about Lifescript.</Typography>
+        <Typography sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>
+          <h1>FAQs</h1>
+        </Typography>
+        <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>
+          <h2> Want to know more about Lifescript? Here, you’ll find answers to the questions we get asked the most about.</h2>
+        </Typography>
       </Box>
       <Box sx={{ marginTop: { md: "120px", sx: "80px", xs: "50px" }, display: "flex", position: "relative" }}>
         <Image src={Points} alt="img" className={styles.qsPoints} />
@@ -118,7 +116,7 @@ function QuestionNo({ qs, ans, index }) {
   return (
     <Box sx={{
       margin: { md: " 0 0 70px 60px", sx: "0 0 50px 0", xs: "0 0 25px 0" },
-      maxWidth: "800px",
+      maxWidth: "820px",
       borderBottom: index < 15 && { sm: "0", xs: "1px solid #E1683B" },
       paddingBottom: index < 15 && { sm: "0", xs: "20px" }
     }} >
@@ -136,7 +134,7 @@ function QuestionNo({ qs, ans, index }) {
         <Typography sx={{
           fontSize: { sm: "24px", xs: "20px" },
         }}>
-          {qs}
+          <h3>{qs}</h3>
         </Typography>
       </Box>
       <Typography sx={{ fontSize: "16px", padding: { sm: "20px 0 0 35px", xs: "15px 0 0 27px" } }}>{ans}</Typography>
