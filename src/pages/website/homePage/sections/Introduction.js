@@ -22,7 +22,7 @@ const Introduction = () => {
     const element = document.querySelector(".multiple-text");
     if (element) {
       const typed = new Typed(element, {
-        strings: ["Create.", "Gifts."],
+        strings: ["Create", "Gifts"],
         typeSpeed: 100,
         backSpeed: 100,
         delaySpeed: 100,
@@ -46,13 +46,13 @@ const Introduction = () => {
           fontFamily: "Besley !important",
           minWidth: { md: "770px", sm: "550px", xs: "300px" },
           maxWidth: { xs: "400px", sm: "100%" },
-          minHeight: "150px",
+          minHeight: { sm: "150px", xs: "100px" },
           zIndex: "10",
           position: "relative"
         }}
         >
           <h1>
-            The Best Way To <span className="multiple-text" style={color}></span> <br className={styles.braker} /> A Personal Autobiography Book Easily
+            <span className="multiple-text" style={color}></span> a Personal Autobiography Book Easily
           </h1>
         </Typography>
         <Typography sx={{
