@@ -13,29 +13,58 @@ const Testimonial = () => {
   const Client = [
     {
       profile: Client1,
-      name: "James T.",
-      designation: "Novelist and Screenwriter",
-      details: "Lifescript transformed the daunting task of documenting my life into a beautifully guided journey. Their intuitive platform made it easy to organize my thoughts, memories, and experiences into a narrative that truly feels like my own. I'm grateful for the chance to share my story with my family in such a meaningful way."
+      name: "Arthur Thompson, 79",
+      designation: "",
+      details: "Compiling my life stories in chronological order offered me a unique perspective on my journey. The insightful questions and the option to add my own made the experience very personal. It’s been a fascinating trip down memory lane and most importantly made me re-connect with my daughters on topics never discussed before."
     },
     {
       profile: Client2,
-      name: "Samantha W.",
-      designation: "Entrepreneur",
-      details: "As someone who's always looking forward, taking the time to reflect and write my autobiography with Lifescript was a revelation. The process helped me understand my own path to success, and now I have a legacy to leave behind for future generations. Lifescript's tools and prompts were invaluable in drawing out stories I had forgotten."
+      name: "Eleanor Rodriguez, 84",
+      designation: "",
+      details: "It took me about 4 months to complete this wonderful gift from my granddaughter. I'm 84 years old and I relived my life during this project. I decided not to share with my extended family about this until I gifted each of them a book. They have now also received a copy and their reactions are heartwarming!"
     },
     {
       profile: Client3,
-      name: "Ethan K.",
-      designation: "Adventure Traveler",
-      details: "Thanks to Lifescript, I've been able to compile my adventures into an epic narrative that rivals the journeys I've embarked on. The platform's flexibility let me structure my story my way, ensuring that the thrill and lessons from my travels are captured vividly for others to experience."
+      name: "Margaret Campbell, 86",
+      designation: "",
+      details: "Received LifeScript as a gift from my grandkids. Delving into my past, sharing stories, and connecting dots I hadn't in years was enlightening. As I'm 86, I hope this book lets future generations say, 'Wow, I wish I'd known her!' It's a bridge to me for them, and that's priceless."
     },
     {
       profile: Client4,
-      name: "James T.",
-      designation: "Novelist and Screenwriter",
-      details: "Lifescript transformed the daunting task of documenting my life into a beautifully guided journey. Their intuitive platform made it easy to organize my thoughts, memories, and experiences into a narrative that truly feels like my own. I'm grateful for the chance to share my story with my family in such a meaningful way."
+      name: "George Watkins, 72",
+      designation: "",
+      details: "Reflecting on my life was a humbling experience. I never imagined I had a story worth sharing. Family means the world to me, and with so much of our family history fading away, my story together with the family tree could serve as information for my grandkids and their kids."
     },
-
+    {
+      profile: Client4,
+      name: "Linda Morris, 65",
+      designation: "",
+      details: "Starting this project, I really didn't know much about writing but the how-to videos made everything so much simpler. Anytime I got stuck, the support team helped me out with so much patience and kindness. They really helped me through it. The book turned out great and feels high quality. I've even told my sister to try it!"
+    },
+    {
+      profile: Client4,
+      name: "Derek Lee, 58",
+      designation: "",
+      details: "This was a really interesting experience. I liked that my normal answers were transformed into professional written text. I don’t have writing experience so narrative fusion and the auto grammar check really helped me get this done. Overall, I enjoyed the experience"
+    },
+    {
+      profile: Client4,
+      name: "Samantha Jones, 63",
+      designation: "",
+      details: "I loved picking out the font size and style for my book – it made it feel so personal. And the whole idea? Genius. Hats off to the people behind this. They've made sharing my story not just easy, but really special."
+    },
+    {
+      profile: Client4,
+      name: "Carlos Martinez, 70",
+      designation: "",
+      details: "I was worried it would take forever, but I finished in just 2 months without hurrying. Adding photos was simple, and they turned out even better in print. P.S. The paper in the printed version feels really good. Thanks!"
+    },
+    {
+      profile: Client4,
+      name: "Rachel Nguyen, 60",
+      designation: "",
+      details: "First time writing and this was fun! Most of the questions felt adequate and provoked some nice memories, glad that I could pen them down before I forget them. Hardcover book looks professional!"
+    },
   ]
 
   return (
@@ -88,7 +117,7 @@ function ReviewCard({ profile, name, designation, details }) {
         />
         <Box>
           <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#E1683B", fontWeight: 800 }}>{name}</Typography>
-          <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#BFC4B5", fontFamily: "Avenir" }}>{designation}</Typography>
+          <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#BFC4B5", fontFamily: "Avenir" }}>washington DC</Typography>
         </Box>
       </Box>
       <Typography sx={{
