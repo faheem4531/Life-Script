@@ -1,11 +1,9 @@
 import Welcome from "@/_assets/png/overview-welcome-card.png";
-import Star from "@/_assets/svg/stars.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import Button from "../button/Button";
 import styles from "./Custom.module.css";
 
-const SelectBookCoverHeader = () => {
+const SelectBookCoverHeader = ({ discription }) => {
   return (
     <Box
       sx={{
@@ -15,7 +13,7 @@ const SelectBookCoverHeader = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        maxWidth: "1149px",
+        // maxWidth: "1149px",
         width: "100%",
         height: { xs: "auto", sm: "150px", md: "165px" },
         gap: "30px",
@@ -39,27 +37,8 @@ const SelectBookCoverHeader = () => {
             fontWeight: 700,
           }}
         >
-          Select Book Cover
+          {discription}
         </Typography>
-        <Box
-          sx={{
-            height: "43px",
-            mt: { xs: "20px", md: "0px" },
-          }}
-        >
-          <Button
-            image={Star}
-            title="AI Generated Cover"
-            background="radial-gradient(ellipse at 49% 86%, rgba(44, 166, 152, .3) 0%, rgba(24, 111, 101, .6) 60%)"
-            borderRadius="33.922px"
-            border="2.5px solid #D9D9D9"
-            color="white"
-            padding="10px 18px"
-            onClick={() => {}}
-            width="183px"
-            fontSize={"13px"}
-          />
-        </Box>
       </Box>
       <Box
         sx={{
@@ -72,7 +51,7 @@ const SelectBookCoverHeader = () => {
             sm: "260px",
             lg: "360px",
           },
-          display: "flex",
+          display: { sm: "flex", xs: "none" },
           justifyContent: "center",
           alignItems: "center",
           borderTopLeftRadius: "50%",

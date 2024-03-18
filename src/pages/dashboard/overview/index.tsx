@@ -1,28 +1,49 @@
-import Layout from "@/components/Layout/Layout"
-import Profile from "@/components/dashboardComponent/OverviewProfile"
-import { PrintBook, ViewBook, ViewTree } from "@/components/dashboardComponent/OverviewSubComponents"
-import WelcomeOverview from "@/components/dashboardComponent/OverviewWelcome"
-import TimeTracker from "@/components/dashboardComponent/TimeTracker"
-import { Box } from "@mui/material"
-
+import Layout from "@/components/Layout/Layout";
+import Profile from "@/components/dashboardComponent/OverviewProfile";
+import {
+  PrintBook,
+  ViewBook,
+  ViewTree,
+} from "@/components/dashboardComponent/OverviewSubComponents";
+import WelcomeOverview from "@/components/dashboardComponent/OverviewWelcome";
+import TimeTracker from "@/components/dashboardComponent/TimeTracker";
+import { Box } from "@mui/material";
+import { useState } from "react";
 
 const OverView = () => {
+  const [achievements, setAchievements] = useState({
+    words: 0,
+    questions: 0,
+    chapters: 0,
+  })
+
   return (
     <Layout>
-      <Box sx={{ display: "flex", columnGap: { xl: "50px", md: "20px", sm: "10" } }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { lg: "row", xs: "column" },
+          gap: { xl: "50px", xs: "20px" },
+          p: { sm: "0px", xs: "10px" },
+        }}
+      >
         <Box sx={{ width: "100%" }}>
           <WelcomeOverview />
-          <TimeTracker />
-          <Box sx={{ margin: "20px 0", display: "flex", columnGap: "17px" }}>
+          <TimeTracker
+            onChange={(obj) =>
+              setAchievements(obj)
+            }
+          />
+          <Box sx={{ margin: "20px 0", display: "flex", gap: "17px" }}>
             <ViewBook />
             <ViewTree />
           </Box>
           <PrintBook />
         </Box>
-        <Profile />
+        <Profile data={achievements} />
       </Box>
     </Layout>
-  )
-}
+  );
+};
 
-export default OverView
+export default OverView;

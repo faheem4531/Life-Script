@@ -8,8 +8,11 @@
   background-position: right bottom;
   background-size: auto;
 }
+.displayBg {
+  width: 100vw;
+}
 
-@media screen and (max-width:900px) {
+@media screen and (max-width: 1199px) {
   .display {
     display: none;
   }

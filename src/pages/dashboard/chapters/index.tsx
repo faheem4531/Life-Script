@@ -19,6 +19,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import bgTree from "../../../_assets/svg/bgTree.svg";
@@ -30,11 +31,14 @@ const Dashboard = () => {
   const [allChapters, setAllChapters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [deleteChapter, setDeleteChapter] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [chapterTitle, setChapterTitle] = useState("");
   const [selectedChapterId, setSelectedChapterId] = useState("");
   const dispatch: any = useDispatch();
   const chapters = useSelector(selectAllChapters);
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleDeleteChapter = () => {
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))
@@ -79,9 +83,10 @@ const Dashboard = () => {
     chapterData: any;
     percentValue: any;
   }) => {
+    console.log("data.option", data.option);
     if (data?.option === "Delete") {
-      setDeleteChapter(true);
       setSelectedChapterId(data?.chapterData?._id);
+      setDeleteChapter(true);
     } else if (data?.option === "Edit") {
       setChapterTitle(data?.chapterData?.title);
       setSelectedChapterId(data?.chapterData?._id);
@@ -94,17 +99,37 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    dispatch(getChapters()).unwrap()
+    dispatch(getChapters())
+      .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, []);
 
   useEffect(() => {
     if (chapters) {
-      const inProgressChapters = chapters.filter((chapter) => chapter.status !== true);
+      const inProgressChapters = chapters.filter(
+        (chapter) =>
+          chapter.status !== true && chapter.compilingStatus === false
+      );
+
       setAllChapters(inProgressChapters);
     }
   }, [chapters]);
+
+  console.log("allChapters", allChapters);
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+
+      if (accessRole !== "FreePlan") {
+        setIsPremium(true);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -113,9 +138,16 @@ const Dashboard = () => {
           sx={{
             position: "relative",
             zIndex: "2",
+            p: { md: "0px", xs: "10px 30px" },
           }}
         >
-          <HomeSteps />
+          <Box
+            sx={{
+              display: { sm: "block", xs: "none" },
+            }}
+          >
+            <HomeSteps />
+          </Box>
 
           {loading ? (
             <Box
@@ -132,10 +164,21 @@ const Dashboard = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: { sm: "18px" },
               }}
             >
-              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+              <StartNewChapter
+                addChapterClick={() => {
+                  if (!isPremium && chapters.length > 4) {
+                    setBuyPremium(true);
+                  } else {
+                    setChapterModal(true);
+                  }
+                }}
+                chapters={chapters}
+                isPremium={isPremium}
+              />
+
               {allChapters.map((chapter, index) => (
                 <DetailCard
                   key={index}
@@ -144,6 +187,9 @@ const Dashboard = () => {
                   deleteFunc={(data) => {
                     handleCardClick(data);
                   }}
+                  starterCh={
+                    chapter?.introductionChapter || chapter?.startDefaultChapter
+                  }
                 />
               ))}
             </Box>
@@ -151,15 +197,24 @@ const Dashboard = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: "18px",
               }}
             >
-              <StartNewChapter addChapterClick={() => setChapterModal(true)} />
+              <StartNewChapter
+                addChapterClick={() => {
+                  if (!isPremium && chapters.length > 4) {
+                    setBuyPremium(true);
+                  } else {
+                    setChapterModal(true);
+                  }
+                }}
+                chapters={chapters}
+              />
             </Box>
           ) : (
             <Box
               sx={{
-                marginTop: { sm: "48px", xs: "25px" },
+                marginTop: { xs: "18px" },
               }}
             >
               <NoChapters />
@@ -177,11 +232,28 @@ const Dashboard = () => {
         }}
         customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
-        <Box>
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        <Box
+          sx={{
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
+          }}
+        >
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>
-          {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
+        <Typography
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
+        >
+          {updateChapterModal
+            ? `${t("ChModals.updateChName")}`
+            : `${t("ChModals.addNewCh")}`}
         </Typography>
         <AddChapter
           chapterData={(chapter: string) => {
@@ -191,17 +263,31 @@ const Dashboard = () => {
           }}
           data={chapterTitle}
           btnText={
-            updateChapterModal ? "Update Chapter Name" : "Add new chapter"
+            updateChapterModal
+              ? `${t("ChModals.updateChName")}`
+              : `${t("ChModals.addNewCh")}`
           }
         />
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteChapter}
-        heading="Delete"
-        description="Are you sure you want to delete this chapter"
+        heading={`${t("ChModals.Del")}`}
+        description={`${t("ChModals.DelDescri")}`}
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}
+      />
+      <TransitionsDialog
+        open={buyPremium}
+        heading="Buy Premium"
+        description="Only 5 chapters can be added in free trial. Buy premium to add more"
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
       />
       <Box
         sx={{

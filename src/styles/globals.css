@@ -1,5 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Nunito:wght@200;300;400;500;600;700;800;900;1000&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&display=swap');
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('./fonts/AvenirLTStd-Black.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-BlackOblique.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-Book.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-BookOblique.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-Heavy.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-HeavyOblique.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-Light.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-LightOblique.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-Medium.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-MediumOblique.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-Oblique.otf') format('opentype');
+  src: url('./fonts/AvenirLTStd-Roman.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -93,6 +113,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+  background-color: white;
 }
 
 a {
@@ -118,10 +139,20 @@ a {
 
 .rdw-image-imagewrapper img {
   float: left;
-  max-width: 800px;
   height: auto !important;
   width: 400px !important;
 }
+.rdw-image-modal-upload-option-label{
+  word-break: break-all !important;
+}
+/* .rdw-image-modal-upload-option-label:after{
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  z-index: 99;
+  color: black;
+  content: "Click Add";
+} */
 
 .icon-tabler-photo {
   display: none !important;
@@ -163,4 +194,72 @@ a {
 
 .css-od7rqf-MuiLinearProgress-root::before {
   opacity: 0;
+}
+
+.css-10d9dml-MuiTabs-indicator {
+  display: none;
+}
+.css-lfwcke-MuiTabs-flexContainer {
+  padding: 20px 10px;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  border-radius: 15px;
+}
+
+.css-zc2y38-MuiCircularProgress-root {
+  color: #197065 !important;
+}
+
+.css-2rbg70-MuiPaper-root-MuiDialog-paper {
+  border-radius: 22px;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+/* .react-pdf__Page__canvas {
+  height: 600px !important;
+} */
+
+.pdfNumberInput::-webkit-outer-spin-button,
+.pdfNumberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.pdfNumberInput[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.rdw-image-modal-btn:disabled,
+.rdw-embedded-modal-btn:disabled,
+.rdw-link-modal-btn:disabled {
+  background: #197065 !important;
+  color: white !important;
+  border-radius: 30px !important;
+}
+
+.rdw-image-modal-btn,
+.rdw-embedded-modal-btn,
+.rdw-link-modal-btn {
+  background: transparent !important;
+  color: #197065 !important;
+  border-radius: 30px !important;
+  border: 1px solid #197065 !important;
+}
+
+button{
+  cursor: pointer;
+}
+
+h1, h2,h3,h4{
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  display: inherit;
 }

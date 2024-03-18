@@ -1,4 +1,16 @@
 {
+  "sideBar": {
+    "Overview": "Resumen",
+    "AllCh": "Capítulos",
+    "InPro": "En Progreso",
+    "Com": "Completados",
+    "bookCover": "Portada del Libro",
+    "SubPlan": "Plan de Suscripción",
+    "toc": "Tabla de Contenidos",
+    "FamilyTree": "Árbol Genealógico",
+    "account": "Cuenta",
+    "Support": "Soporte"
+  },
   "login-page": {
     "email": "Correo electrónico",
     "enter-email": "Ingresa tu dirección de correo electrónico",
@@ -84,5 +96,236 @@
     "resetPassword": "El enlace para restablecer contraseña ha sido enviado a",
     "clickLink": "Por favor haga clic en el enlace para",
     "reset": "Restablecer su contraseña"
+  },
+  "getTitle": {
+    "hi": "Hola",
+    "getQues": "¿Cómo te gustaría llamar a tu guión de vida?",
+    "inputBottom": "Puedes cambiarlo en cualquier momento antes de imprimirlo.",
+    "getBtn": "Comenzar a Escribir",
+    "LetUsHelpYou": "Permítenos Ayudarte..."
+  },
+
+  "navBar": {
+    "notif1": "El capítulo",
+    "notif2": "está fusionado y listo para ser visto",
+    "emptyNotif": "No hay notificaciones.",
+    "logout": "Cerrar sesión"
+  },
+  "overView": {
+    "headerWelcome": "Bienvenido de vuelta ...",
+    "headerdescription": "“El éxito no es definitivo, el fracaso no es fatal: es el coraje para continuar lo que cuenta.”",
+    "headerBtnText": "Continuar escribiendo",
+    "ViewBtn": "Ver libro",
+    "famliyTreeBtn": "Árbol genealógico",
+    "EverySpecial": "Cada vida es especial",
+    "continue": "Continuar",
+    "achivement": "Logro",
+    "RecentCh": "Capítulos recientes",
+    "viewMore": "Ver más"
+  },
+  "ChapterSteps": {
+    "step1": "Comenzar capítulo",
+    "step2": "Responder preguntas",
+    "step3": "Utilice la fusión narrativa",
+    "step4": "Vista previa y finalizar"
+  },
+  "ChName": {
+    "ChName": "Nombre del Capítulo",
+    "Questions": "Preguntas",
+    "AddQuestions": "Agregar Pregunta",
+    "Suggestion": "Sugerencia",
+    "edit": "Editar",
+    "completed": "Completado",
+    "Del": "Eliminar",
+    "tooltip": "Fusión Narrativa",
+    "description": "No puedes usar esta función hasta que todas las preguntas estén completadas",
+    "UQ": "Actualizar Pregunta",
+    "DelText": "Eliminar",
+    "DelDescri": "¿Estás seguro de que quieres eliminar esta pregunta?",
+    "thankYou": "¡Gracias!",
+    "TYDescription": "Tu capítulo se está escribiendo. Lo recibirás en breve",
+    "ok": "De acuerdo",
+    "NF": "Fusión Narrativa",
+    "NFdescPremium": "Esta función es solo para usuarios Premium y Estándar",
+    "NFDes": "Es una función de uso único del capítulo. ¿Quieres conservar tu texto original? ¿Proceder con 'Compilar texto original'?",
+    "NFOriginBtn": "Compilar Texto Original",
+    "NFBuyPrBtn": "Comprar Premium",
+    "NFuseBtn": "Usar Fusión Narrativa",
+    "GPTRes": "Respuesta de GPT",
+    "AddNewQues": "Agregar Nueva Pregunta",
+    "AddQuesBtn": "Agregar Pregunta",
+    "AIGenQues": "Pregunta generada por IA",
+    "AIAddToChBtn": "Agregar al Capítulo",
+    "AISkipBtn": "Saltar",
+    "SugQues": "Pregunta Sugerida",
+    "SugQuesRemain": "Preguntas restantes:",
+    "SugQuesAddBtn": "Agregar",
+    "SugQuesSkipBtn": "Saltar",
+    "SugQuesCloseBtn": "Cerrar"
+  },
+  "ChModals": {
+    "addNewCh": "Agregar nuevo capítulo",
+    "addNewChBtn": "Agregar nuevo capítulo",
+    "updateChName": "Actualizar",
+    "Del": "Eliminar",
+    "DelDescri": "¿Estás seguro de que quieres eliminar este capítulo?"
+  },
+  "modals": {
+    "yes": "Sí",
+    "no": "No"
+  },
+
+  "richText": {
+    "detecte": "Detectando...",
+    "stop": "Detener",
+    "STT": "Texto a Voz",
+    "MAC": "Marcar como Completado",
+    "ByPreHeading": "Comprar Premium",
+    "PreDes": "La función de Texto a Voz solo está disponible para usuarios Estándar y Premium. ¿Quieres comprar ahora?"
+  },
+  "StartNewChapter": {
+    "StartNewChapter": "Iniciar nuevo capítulo",
+    "useTem": "Usar plantilla"
+  },
+
+  "StartNewTem": {
+    "StartNewTem": "Iniciar nuevo capítulo",
+    "useTem": "Usar plantilla",
+    "useTemDescrip": "",
+    "chTitle": "El Libro de Juan Pérez",
+    "chQues1": "Ganador del Premio al Mejor Libro de la Academia Nacional de Ciencias en 2012",
+    "chQues2": "El Peor Trabajo Jamás Realizado",
+    "chQues3": "El Mejor Trabajo Jamás Realizado"
+  },
+
+  "template": {
+    "choose": "Elegir un",
+    "temp": "Plantilla",
+    "Questions": "Preguntas",
+    "useTemBtn": "Usar Plantilla",
+    "ch": "Capítulo",
+    "temModal": {
+      "thankYou": "¡Gracias!",
+      "TYDescription": "La plantilla ha sido añadida a tus capítulos.",
+      "SEBtn": "Comenzar edición",
+      "copyTem": "Copiar Plantilla",
+      "copyTemDes": "Esta plantilla ya está copiada, ¿quieres copiarla de nuevo?"
+    }
+  },
+
+  "completedCh": {
+    "com": "Completados"
+  },
+  "BookCover": {
+    "SelectBookCover": "Seleccionar Portada del Libro",
+    "EditBookCover": "Editar Portada del Libro",
+    "BookCover": "Portada del Libro",
+    "viewMore": "Ver más"
+  },
+  "BookCoverCard": {
+    "title": "Título del Libro",
+    "author": "Autor",
+    "byLine": "Línea del Autor",
+    "UseThisCover": "Usar Esta Portada",
+    "colour": "Paleta de Colores",
+    "dragOrDrop": "Arrastra y suelta archivos aquí",
+    "or": "o",
+    "browserFile": "Examinar Archivos",
+    "changeCover": "Cambiar Portada",
+    "saveCover": "Guardar Portada",
+    "Saving": "Guardando...",
+    "UpdateCover": "Actualizar Portada",
+    "viewPdf": "Ver PDF",
+    "editCover": "Editar Portada"
+  },
+  "SubsPlan": {
+    "SubsHeaderTitle": "Plan de Suscripción",
+    "SubsHeaderDes": "Elige un plan de suscripción a continuación antes del 30 de agosto de 2023 para desbloquear esta oferta especial.",
+    "cardBtn": "Elegir Plan",
+    "cardProBtn": "Procesando...",
+    "SubsCardBasic": {
+      "SubsCardHeading": "Plan Básico",
+      "SubsCardHeadingDes": "",
+      "SubsCardHeadingOffer": "Ofertas del Plan Básico",
+      "SubsCardHeadingOfferDes": "Ofertas del Plan Básico"
+    },
+    "SubsCardStand": {
+      "SubsCardHeading": "Plan Estándar",
+      "SubsCardHeadingDes": "",
+      "SubsCardHeadingOffer": "Ofertas del Plan Estándar",
+      "SubsCardHeadingOfferDes": ""
+    },
+    "SubsCardPrem": {
+      "SubsCardHeading": "Plan Premium",
+      "SubsCardHeadingDes": "",
+      "SubsCardHeadingOffer": "Ofertas del Plan Premium",
+      "SubsCardHeadingOfferDes": ""
+    },
+    "CardNum": "Número de Tarjeta",
+    "CardholderName": "Nombre del Titular",
+    "ExpDate": "Fecha de Vencimiento",
+    "cvc": "CVC",
+    "premPlan": "Plan Premium",
+    "premPlanDes1": "Se deducirá una cantidad de ",
+    "premPlanDes2": " de tu cuenta bancaria seleccionada. ¿Realmente deseas proceder?",
+    "Sorry": "Lo siento",
+    "SorryDes": "Stripe no pudo procesar tu pago",
+    "TY": "¡Gracias!",
+    "TYDes": "Tu paquete ha sido actualizado",
+    "sorryBtn": "Intentar más tarde",
+    "TYBtn": "Comenzar a usar"
+  },
+  "TOC": {
+    "TOCHeader": "Tabla de Contenido",
+    "ch": "Capítulos",
+    "addChBtn": "Agregar Capítulos",
+    "editChBtn": "Editar Capítulos",
+    "addBtn": "Agregar",
+    "adding": "Añadiendo..."
+  },
+  "profileSetting": {
+    "AccountSettings": "Configuración de la Cuenta",
+    "SetProImg": "Configurar Imagen de Perfil",
+    "DOB": "Fecha de Nacimiento",
+    "fullName": "Nombre Completo",
+    "Email": "Correo Electrónico",
+    "Gender": "Género",
+    "Phone": "Teléfono",
+    "male": "Masculino",
+    "female": "Femenino",
+    "other": "Otro",
+    "save": "Guardar Cambios",
+    "saveDes": "¿Quieres guardar los cambios?",
+    "SaveChBtn": "Guardar Cambios",
+    "DelBtn": "No Guardar",
+    "changeProBtn": "Cambiar el perfil"
+  },
+  "support": {
+    "supHeading": "Soporte",
+    "AddSub": "Agregar Asunto",
+    "WriteSubHere": "Escribe el Asunto aquí...",
+    "AddDes": "Agregar Descripción",
+    "WriteDes": "Escribe la Descripción aquí...",
+    "subBtn": "Enviar",
+    "Ty": "¡Gracias!",
+    "TyDes": "Tu solicitud de soporte ha sido creada. Nuestro equipo se pondrá en contacto contigo pronto.",
+    "ok": "De acuerdo"
+  },
+  "narrativeLoading": {
+    "ReadingContent": "LEYENDO CONTENIDO....",
+    "viewCh": "Ver capítulos"
+  },
+  "narrative": {
+    "editRes": "Editar Respuesta",
+    "saveRes": "Guardar Respuesta",
+    "saveResDes": "Una vez guardado, encontrarás el capítulo en la pestaña de capítulos completados.",
+    "saveResProcBtn": "Aún no",
+    "saveResCancelBtn": "Conservar Cambios",
+
+    "RevertRes": "Revertir Respuesta",
+    "RevertResDes": "Esto deshará todos los cambios de fusión narrativa. Serás redirigido al capítulo compilado original para editarlo.",
+    "dontLike": "¿No te gusta la respuesta de la fusión narrativa?",
+    "RevertResProcBtn": "Aún no",
+    "RevertResCancelBtn": "Revertir Cambios"
   }
 }

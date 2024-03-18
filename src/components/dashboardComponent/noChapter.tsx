@@ -16,11 +16,15 @@ export default function NoChapters() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: { sm: "400px", xs: "280px" },
+          height: { xs: "calc(100vh - 290px)" },
         }}
       >
         <Typography
-          sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "32px", xs: "22px" } }}
+          sx={{
+            textAlign: "center",
+            color: "#B2B2B2",
+            fontSize: { sm: "32px", xs: "22px" },
+          }}
         >
           Start New Chapter
         </Typography>
@@ -31,17 +35,13 @@ export default function NoChapters() {
             justifyContent: "center",
           }}
         >
-          <Image
-            src={noData}
-            alt="No Data"
-            height={120}
-          />
+          <Image src={noData} alt="No Data" height={120} />
         </Box>
         <Typography
           sx={{
             textAlign: "center",
             color: "#B2B2B2",
-            fontSize: { sm: "26px", xs: "18px" }
+            fontSize: { sm: "26px", xs: "18px" },
           }}
         >
           {" "}

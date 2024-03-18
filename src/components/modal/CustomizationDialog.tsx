@@ -57,16 +57,16 @@ export default function CustomizationDialog({
   customStyles,
 }) {
   return (
-    <Box>
+    <Box sx={{ bgcolor: "white", maxWidth: "80vw" }}>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
         // fullWidth={fullWidth}
         maxWidth={"xl"}
-        style={{ overflowY: "hidden" }}
+        style={{ overflowY: "hidden", borderRadius: "22px" }}
       >
-        <div className="bg-black" style={customStyles}>
+        <Box className="bg-black" sx={customStyles}>
           <BootstrapDialogTitle
             // id="customized-dialog-title"
             onClose={handleClose}
@@ -75,11 +75,15 @@ export default function CustomizationDialog({
           </BootstrapDialogTitle>
           <DialogContent
             // dividers
-            style={{ maxHeight: "80vh", overflowY: "auto" }}
+            sx={{
+              maxHeight: "100vh",
+              overflowY: "auto",
+              "&::-webkit-scrollbar": { display: "none" },
+            }}
           >
             {children}
           </DialogContent>
-        </div>
+        </Box>
       </BootstrapDialog>
     </Box>
   );

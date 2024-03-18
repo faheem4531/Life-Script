@@ -4,29 +4,41 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import Arrow from "../../../public/startArrow.png";
 import styles from "./GetTitle.module.css";
+import i18n from "../../../i18n";
 
 const getStarted = () => {
   const dispatch: any = useDispatch();
   const router = useRouter();
   const { userName } = router.query;
+  const { t } = useTranslation();
 
   useEffect(() => {
+    const languageStored = localStorage.getItem("language");
+    const language = languageStored === "Spanish" ? "sp" : "en";
+    i18n.changeLanguage(language);
     dispatch(getBookTitle())
+      .unwrap()
       .then((res) => {
-        if (res.payload.length > 0) {
+        if (res?.length > 0 && res[0].title !== "") {
           setTimeout(() => {
             router.push("/dashboard/chapters");
-          }, 2000);
+          }, 3000);
         } else {
           setTimeout(() => {
-            router.push(`/getStarted/getTitle?userName=${userName}`);
-          }, 2000);
+            router.push(`/dashboard/Questionnaire`);
+          }, 3000);
         }
       })
-      .catch(() => router.push(`/getStarted/getTitle?userName=${userName}`));
+      .catch(() =>
+        setTimeout(() => {
+          console.log("fail");
+          router.push(`/dashboard/Questionnaire`);
+        }, 3000)
+      );
   }, []);
 
   return (
@@ -58,7 +70,7 @@ const getStarted = () => {
         <Typography
           sx={{ fontSize: { lg: "60px", md: "50px", sm: "40px", xs: "30px" } }}
         >
-          Hi {userName} 👋
+          {t("getTitle.hi")} {userName} 👋
         </Typography>
         <Image src={Arrow} alt="arrow" className={styles.aero} />
         <Typography
@@ -73,7 +85,7 @@ const getStarted = () => {
             },
           }}
         >
-          Let Us Help You...
+          {t("getTitle.LetUsHelpYou")}
         </Typography>
       </Box>
 

@@ -3,26 +3,27 @@
   bottom: 30px;
   left: 55%;
   transform: translateX(-55%);
-  z-index: 1000;
+  z-index: 10;
   cursor: pointer;
-
 }
 
 .btnMain {
   cursor: pointer;
 }
 
-.loadImageMain{
+.loadImageMain {
   position: relative;
 }
 
-.BgloadImage{
+.BgloadImage {
   width: 160px;
+  height: 160px;
   animation: rotation 7s infinite linear;
 }
 
-.BgLoad{
+.BgLoad {
   width: 160px;
+  height: 160px;
 }
 
 @keyframes rotation {
@@ -34,11 +35,11 @@
   }
 }
 
-
 .loadImage {
   position: absolute;
-  top: 57px;
+  top: 28px;
   left: 28px;
   width: 104px;
+  height: 104px;
   z-index: 4;
 }

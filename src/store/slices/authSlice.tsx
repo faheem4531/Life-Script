@@ -19,10 +19,30 @@ import {
   signupApi,
   updatePasswordApi,
   verifyEmailApi,
+  stripeDoneApi,
+  updateUserProfileApi,
+  getUserProfileApi,
+  getLuluBalanceApi,
+  getLuluShippingApi,
+  createLuluShippingApi,
+  updateLuluShippingApi,
+  stripPaymentLuluApi,
+  luluCallApi,
+  getBookInteriorApi
 } from "../api/authApi";
 
-const initialState = {
-  user: {} as UserData,
+interface State {
+  luluBalance: any;
+  luluData: any;
+  user: any;
+  luluPaymentStatus: string
+}
+
+const initialState: State = {
+  luluBalance: {},
+  user: {},
+  luluData: {},
+  luluPaymentStatus: '',
 };
 
 export const changePassword = createAsyncThunk<UserData, ChangePassword>(
@@ -30,6 +50,122 @@ export const changePassword = createAsyncThunk<UserData, ChangePassword>(
   async (data) => {
     try {
       const response = await changePasswordApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const luluCall = createAsyncThunk<any, any>(
+  "user/lulu-call",
+  async (data: any) => {
+    try {
+      const response = await luluCallApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateUserProfile = createAsyncThunk<any, any>(
+  "user/user-profile",
+  async (data) => {
+    try {
+      const response = await updateUserProfileApi(data);
+
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateLuluPaymentStatus = createAsyncThunk<string, string>(
+  "auth/update-lulu-payment-status",
+  async (status: string) => {
+    return status;
+  }
+);
+
+export const getUserProfile = createAsyncThunk<any[], void>(
+  "user/get-user-profile",
+  async () => {
+    try {
+      const response = await getUserProfileApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getBookInterior = createAsyncThunk<any[], void>(
+  "user/get-book-interior",
+  async () => {
+    try {
+      const response = await getBookInteriorApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getLuluShipping = createAsyncThunk<any[], void>(
+  "auth/shipping",
+  async () => {
+    try {
+      const response = await getLuluShippingApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const createLuluShipping = createAsyncThunk<UserData, any>(
+  "auth/create-shipping",
+  async (data) => {
+    try {
+      const response = await createLuluShippingApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const updateLuluShipping = createAsyncThunk<UserData, any>(
+  "auth/update-shipping",
+  async (data) => {
+    try {
+      const response = await updateLuluShippingApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const stripPaymentLulu = createAsyncThunk<UserData, any>(
+  "auth/payment-lulu-shipping",
+  async (data) => {
+    try {
+      const response = await stripPaymentLuluApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getLuluBalance = createAsyncThunk<any[], void>(
+  "user/get-lulu-balance",
+  async () => {
+    try {
+      const response = await getLuluBalanceApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -66,6 +202,18 @@ export const login = createAsyncThunk<UserData, LoginData>(
   async (data) => {
     try {
       const response = await loginApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const stripeDone = createAsyncThunk<any[], void>(
+  "auth/stripe-done",
+  async () => {
+    try {
+      const response = await stripeDoneApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -158,13 +306,31 @@ export const authSlice = createSlice({
     builder.addCase(login.fulfilled, (state, action) => {
       state.user = action.payload;
     });
+    builder.addCase(getUserProfile.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    builder.addCase(getLuluBalance.fulfilled, (state, action) => {
+      state.luluBalance = action.payload;
+    });
+    builder.addCase(getLuluShipping.fulfilled, (state, action) => {
+      state.luluData = action.payload;
+    });
+    builder.addCase(updateLuluPaymentStatus.fulfilled, (state, action) => {
+      state.luluPaymentStatus = action.payload;
+      localStorage.setItem('luluStatus',action.payload);
+    });
   },
 });
 
 export const {} = authSlice.actions;
 
-export const selectUser = (state: { auth: { user: UserData } }) =>
-  state.auth.user;
-//   export const selectUser = (state: { auth: AuthState }) => state.auth.user;
+export const selectUser = (state: { auth: any }) => state.auth.user;
+
+export const selectLuluBalance = (state: { auth: any }) =>
+  state.auth.luluBalance;
+
+export const selectLuluData = (state: { auth: any }) => state.auth.luluData;
+
+export const selectLuluPaymentStatus = (state: { auth: any }) => state.auth.luluPaymentStatus;
 
 export default authSlice.reducer;

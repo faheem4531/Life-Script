@@ -9,6 +9,9 @@ import Carousel2 from "../../../public/carousel.png";
 import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
 
+import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Logo from "../../../public/logo.svg";
 import Carousel from "./Carousel";
 import Login from "./Login";
@@ -52,8 +55,10 @@ function a11yProps(index: number) {
 }
 
 export default function Register() {
+  const router = useRouter();
   const { t } = useTranslation();
   const [value, setValue] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -91,102 +96,130 @@ export default function Register() {
     // Add more images as needed
   ];
 
+  useEffect(() => {
+    const Tokken = localStorage.getItem("token");
+    if (Tokken) {
+      setTimeout(() => {
+        setLoading(false);
+        router.push("/dashboard/chapters");
+      }, 1000);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
   return (
-    <Box
-      display="grid"
-      alignItems="center"
-      overflow="scroll"
-      height="100dvh"
-      boxSizing="border-box"
-      gap="1rem"
-      color="#000"
-      sx={{
-        overflowX: "hidden",
-        p: 2,
-        backgroundColor: "#FFF7EA",
-        gridTemplateColumns: {
-          md: "repeat(2, minmax(0, 1fr))",
-          xs: "repeat(1, minmax(0, 1fr))",
-        },
-      }}
-    >
-      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items={carouselItems} />
-      </Box>
-      <Box
-        sx={{
-          margin: 0,
-          height: "auto",
-          width: "100%",
-        }}
-      >
-        <Box textAlign={"center"}>
-          <Image src={Logo} width={160} height={130} alt="Logo Image" />
-        </Box>
+    <Box>
+      {loading ? (
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            // pl: "20px",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
           }}
         >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Box
+          display="grid"
+          alignItems="center"
+          overflow="scroll"
+          height="100dvh"
+          boxSizing="border-box"
+          gap="1rem"
+          color="#000"
+          sx={{
+            overflowX: "hidden",
+            p: 2,
+            backgroundColor: "#FFF7EA",
+            gridTemplateColumns: {
+              md: "repeat(2, minmax(0, 1fr))",
+              xs: "repeat(1, minmax(0, 1fr))",
+            },
+          }}
+        >
+          <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+            <Carousel items={carouselItems} />
+          </Box>
           <Box
             sx={{
-              marginTop: "20px",
+              margin: 0,
               height: "auto",
-              border: "1px solid black",
-              maxWidth: "460px",
               width: "100%",
-              background: "white",
-              borderRadius: "40px",
             }}
           >
-            <Tabs
+            <Box textAlign={"center"}>
+              <Image src={Logo} width={160} height={130} alt="Logo Image" />
+            </Box>
+            <Box
               sx={{
-                "& .MuiTabs-flexContainer": {
-                  justifyContent: "center",
-                },
-                "& .MuiTabs-indicator": {
-                  display: "none", // Hide the indicator line
-                },
-                "& .MuiTab-root": {
-                  width: "50%",
-                  borderRadius: "25px",
-                  // backgroundColor: "wheat",
-
-                  color: "#186F65",
-                  "&.Mui-selected": {
-                    backgroundColor: "#186F65",
-                    color: "white",
-                  },
-                },
+                display: "flex",
+                justifyContent: "center",
+                // pl: "20px",
               }}
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
             >
-              <Tab
-                label={t("Register.Login")}
-                {...a11yProps(0)}
-                sx={{ textTransform: "capitalize" }}
-              />
-              <Tab
-                label={t("Register.Register")}
-                {...a11yProps(1)}
-                sx={{ textTransform: "capitalize" }}
-              />
-            </Tabs>
+              <Box
+                sx={{
+                  marginTop: "20px",
+                  height: "auto",
+                  border: "1px solid black",
+                  maxWidth: "460px",
+                  width: "100%",
+                  background: "white",
+                  borderRadius: "40px",
+                }}
+              >
+                <Tabs
+                  sx={{
+                    "& .MuiTabs-flexContainer": {
+                      justifyContent: "center",
+                    },
+                    "& .MuiTabs-indicator": {
+                      display: "none", // Hide the indicator line
+                    },
+                    "& .MuiTab-root": {
+                      width: "50%",
+                      borderRadius: "25px",
+                      // backgroundColor: "wheat",
+
+                      color: "#186F65",
+                      "&.Mui-selected": {
+                        backgroundColor: "#186F65",
+                        color: "white",
+                      },
+                    },
+                  }}
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="basic tabs example"
+                >
+                  <Tab
+                    label={t("Register.Login")}
+                    {...a11yProps(0)}
+                    sx={{ textTransform: "capitalize" }}
+                  />
+                  <Tab
+                    label={t("Register.Register")}
+                    {...a11yProps(1)}
+                    sx={{ textTransform: "capitalize" }}
+                  />
+                </Tabs>
+              </Box>
+            </Box>
+            <Box>
+              <CustomTabPanel value={value} index={0}>
+                <Login signinClick={() => setValue(1)} />
+              </CustomTabPanel>
+              <CustomTabPanel value={value} index={1}>
+                <Signup signupClick={() => setValue(0)} />
+              </CustomTabPanel>
+            </Box>
           </Box>
         </Box>
-        <Box>
-          <CustomTabPanel value={value} index={0}>
-            <Login signinClick={() => setValue(1)} />
-          </CustomTabPanel>
-          <CustomTabPanel value={value} index={1}>
-            <Signup signupClick={() => setValue(0)} />
-          </CustomTabPanel>
-        </Box>
-      </Box>
+      )}
     </Box>
   );
 }

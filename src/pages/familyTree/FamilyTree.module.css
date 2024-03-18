@@ -1,0 +1,65 @@
+/* FamilyTree.css */
+
+/* .body {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .text {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+  } */
+
+.title {
+  font-size: larger;
+  text-align: center;
+}
+
+.name {
+  fill: black !important;
+  font-size: 10px
+}
+
+.dateLocation {
+  fill: black !important;
+  font-size: 7px
+}
+
+.about {
+  fill: #777;
+  font-size: smaller;
+}
+
+.lifespan {
+  fill: #2c5;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+  shape-rendering: auto;
+}
+
+.node {
+  fill: grey;
+}
+
+.nameRect {
+  fill: white;
+  stroke: #6495ED; /* Border color */
+  stroke-width: 2; /* Border width */
+  border-radius: 10;
+}
+.spouseRect {
+  fill: white;
+  stroke: pink;
+  stroke-width: 2; /* Border width */
+  border-radius: 10;
+}
+.circularImage {
+  border-radius: 50%;
+  overflow: hidden;
+}

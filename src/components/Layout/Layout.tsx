@@ -4,11 +4,13 @@ import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
   const router = useRouter();
+  const dispatch: any = useDispatch();
 
   return (
     <Box
@@ -26,36 +28,64 @@ const Layout = ({ children }: { children?: any }) => {
         sx={{
           position: "fixed",
           right: "0",
-          left: { md: "220px", sm: 0, xs: 0 },
+          left: { lg: "220px", sm: 0, xs: 0 },
           top: "0",
           zIndex: "3",
         }}
       >
         <NavBar sideBarHandle={() => setHandleSideBar(true)} />
       </Box>
-      <Box sx={{ marginTop: "1px", display: "flex", mt: "70px" }}>
+      <Box
+        sx={{
+          marginTop: "1px",
+          display: "flex",
+          mt: { xs: "50px", lg: "70px" },
+        }}
+      >
         <Box
           sx={{
-            width: "220px",
-            backgroundColor: "#197065",
+            bgcolor: "rgba(0, 0, 0, 0.76)",
+            width: handleSideBar && "100%",
+            height: "100vh",
             position: "fixed",
-            bottom: "0",
             top: "0px",
-            zIndex: "2",
+            left: "0px",
+            zIndex: "12",
           }}
           className={`${styles.display} ${handleSideBar && styles.displayShow}`}
+          onClick={() => setHandleSideBar(false)}
         >
-          <SideBar />
+          <Box
+            sx={{
+              width: "220px",
+              backgroundColor: "#197065",
+              position: "fixed",
+              bottom: "0",
+              top: "0px",
+              zIndex: "2",
+            }}
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+            className={`${styles.display} ${
+              handleSideBar && styles.displayShow
+            }`}
+          >
+            <SideBar
+              handleSideCheck={handleSideBar}
+              menuClick={() => setHandleSideBar(false)}
+            />
+          </Box>
         </Box>
         <Box
           sx={{
             width: "100%",
-            maxWidth: "1600px",
+            // maxWidth: "1600px",
             color: "#000",
             height: "100%",
             minHeight: "calc(100vh - 70px)",
-            padding: { sm: "10px 33px 30px", xs: "10px 16px 30px" },
-            marginLeft: { lg: "220px", md: "200px", sm: 0, xs: 0 },
+            padding: { sm: "10px 33px 30px" },
+            marginLeft: { lg: "220px", md: "0px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
         >

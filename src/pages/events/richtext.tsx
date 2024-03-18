@@ -1,7 +1,11 @@
 "use client";
-import PIcon from "@/_assets/svg/edit-text-title-icon.svg";
-import { compiledChapter, uploadImage } from "@/store/slices/chatSlice";
-import { Box, ButtonBase } from "@mui/material";
+import {
+  compiledChapter,
+  getChapters,
+  simpleChapter,
+  uploadImage,
+} from "@/store/slices/chatSlice"; //uploadImage
+import { Box } from "@mui/material";
 import {
   ContentState,
   //ContentState,
@@ -11,11 +15,13 @@ import {
   //convertFromHTML,
   convertToRaw,
 } from "draft-js";
-// import htmlToDraft from "html-to-draftjs";
 
 import styles from "./styles.module.css";
-// import speechIcon from "@/_assets/svg/speeect-text-icon.svg";
-import Button from "@/components/button/Button";
+import MicListing from "@/_assets/svg/mic-listing.svg";
+import MicOff from "@/_assets/svg/mic-off.svg";
+import MicRegular from "@/_assets/svg/mic-regular.svg";
+import { default as GlobelBtn } from "@/components/button/Button";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   getAnswerbyId,
   getQuestionbyId,
@@ -31,11 +37,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
-
-// import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
+import backArrow from "../../_assets/svg/left.svg";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -53,15 +59,17 @@ const RichText = ({ questionId }) => {
   );
   const [questionData, setQuestionData] = useState<any>({});
   const [compileChapter, setCompileChapter] = useState();
-
+  const [isPremium, setIsPremium] = useState(false);
   const [recording, setRecording] = useState(false);
   const [detecting, setDetecting] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [userChapter, setUserChapter] = useState("");
   const [gptChapter, setGptChapter] = useState("");
   const [seconds, setSeconds] = useState(0);
   const { compileChapterId, openai } = router.query;
+  const { t } = useTranslation();
 
   const startRecording = async () => {
     try {
@@ -134,6 +142,29 @@ const RichText = ({ questionId }) => {
     }
   };
 
+  const handleSpeechtoText = () => {
+    if (isPremium) {
+      setDetecting(true);
+      handleToggleRecording();
+    } else {
+      setBuyPremium(true);
+    }
+  };
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+        setIsPremium(true);
+      } else {
+        setIsPremium(false);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     if (compileChapterId) {
       let htmlToDraft = null;
@@ -170,12 +201,12 @@ const RichText = ({ questionId }) => {
   }, []);
 
   // consoling editor html
-  useEffect(() => {
-    console.log(
-      "html",
-      draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    );
-  }, [editorState]);
+  // useEffect(() => {
+  //   console.log(
+  //     "html",
+  //     draftToHtml(convertToRaw(editorState.getCurrentContent()))
+  //   );
+  // }, [editorState]);
 
   //getting question
   useEffect(() => {
@@ -252,19 +283,12 @@ const RichText = ({ questionId }) => {
     }
   }, []); //to import webspellcheckr
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     // Import html-to-draftjs only in a browser environment
-  //     htmlToDraftJs = require("html-to-draftjs");
-  //   }
-  // }, []);
-
   //autosave answer
   useEffect(() => {
     if (!openai) {
       const interval = setInterval(() => {
         setSeconds((prevSeconds) => prevSeconds + 1);
-      }, 30000);
+      }, 15000);
       if (questionData && questionData?.chapter?._id) {
         saveUserAnswer();
       }
@@ -305,31 +329,79 @@ const RichText = ({ questionId }) => {
 
   //answer completed
   const handleCompleteAnswer = () => {
-    saveUserAnswer();
-    dispatch(
-      updateQuestion({
-        text: questionData?.text,
-        id: questionData?._id,
-        chapter: questionData?.chapter?._id,
-        status: "Completed",
-      })
-    )
-      .unwrap()
-      .then(() => {
-        router.push(
-          `/dashboard/chapters/chapterName?chapterId=${questionData?.chapter?._id}`
-        );
-      })
-      .catch(() => toast.error("Failed to mark as complete"));
+    dispatch(getChapters()).then(({ payload }) => {
+      // const [chapter] = payload.filter(
+      //   (chapter) => chapter.introductionChapter || chapter.startDefaultChapter
+      // );
+
+      // console.log("chapter????????", chapter);
+      // if (chapter.introductionChapter || chapter.startDefaultChapter) {
+      //   console.log("into completed", chapter);
+      //   console.log("into completed", chapter.startDefaultChapter);
+      //   dispatch(simpleChapter({ chapterId: chapter?._id }));
+      // }
+
+      const introductionChapter = payload.filter(
+        (chapter) => chapter.introductionChapter
+      );
+
+      if (introductionChapter[0]?.introductionChapter) {
+        dispatch(simpleChapter({ chapterId: introductionChapter[0]?._id }));
+      }
+
+      const dedicationChapter = payload.filter(
+        (chapter) => chapter.startDefaultChapter
+      );
+
+      if (dedicationChapter[0]?.startDefaultChapter) {
+        dispatch(simpleChapter({ chapterId: dedicationChapter[0]?._id }));
+      }
+    });
+
+    if (!compileChapterId) {
+      saveUserAnswer();
+      dispatch(
+        updateQuestion({
+          text: questionData?.text,
+          id: questionData?._id,
+          chapter: questionData?.chapter?._id,
+          status: "Completed",
+        })
+      )
+        .unwrap()
+        .then(() => {
+          router.push(
+            `/dashboard/chapters/chapterName?chapterId=${questionData?.chapter?._id}`
+          );
+        })
+        .catch(() => toast.error("Failed to mark as complete"));
+    } else {
+      const editedChapter = {
+        id: compileChapterId,
+        userText:
+          openai === "true"
+            ? userChapter
+            : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+        openaiChapterText:
+          openai === "false"
+            ? gptChapter
+            : draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      };
+      dispatch(updateChapterResponse(editedChapter))
+        .unwrap()
+        .then(() => router.push("/dashboard/chapters/completedChapter"))
+        .catch(() => toast.error("Failed to save your chapter"));
+    }
   };
 
   //for uploadin image
-  const uploadCallback = (file, callback) => {
+  const uploadCallback = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new window.FileReader();
       reader.onloadend = async () => {
         const form_data = new FormData();
         form_data.append("image", file);
+
         const res = await dispatch(uploadImage(form_data));
 
         resolve({ data: { link: res.payload } });
@@ -339,216 +411,203 @@ const RichText = ({ questionId }) => {
   };
 
   return (
-    <Box className="rich-editor">
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+    <>
+      <Box className="rich-editor">
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
-            marginRight: "10px",
-          }}
-        >
-          <Image alt="icon" src={PIcon} />
-          <div className={styles.overflowQuestionText}>
-            {questionData?.text ? questionData?.text : compileChapter}
-          </div>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            columnGap: "10px",
+            // alignItems: { md: "center" },
+            justifyContent: "space-between",
+            flexDirection: { xs: "column" },
+            rowGap: "30px",
           }}
         >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: "10px",
-              flexWrap: { xs: "wrap", lg: "nowrap" },
+              marginRight: "10px",
             }}
           >
-            <Button
-              // image={speechIcon}
-              image={null}
-              title={
-                detecting
-                  ? "Detecting..."
-                  : listening
-                  ? "Stop"
-                  : "Speech-to-text"
-              }
-              background="#fff"
-              borderRadius="27px"
-              color="#197065"
-              width="155px"
-              fontSize="14px"
-              padding="9px 10px"
-              onClick={() => {
-                setDetecting(true);
-                handleToggleRecording();
-              }}
-              border="1px solid #197065"
-              height={undefined}
-            />
+            {/* <Image alt="icon" src={PIcon} /> */}
 
-            {!openai && (
-              <ButtonBase
-                onClick={handleCompleteAnswer}
-                sx={{
-                  height: "35px",
-                  p: 2,
-                  borderRadius: "27px",
-                  border: "1px solid #197065",
-                  color: "#197065",
-                  fontSize: "14px",
-                  bgcolor: "#fff",
-                  textTransform: "none",
-                  "&:hover": {
-                    backgroundColor: "#fff",
-                  },
-                  width: "150px",
-                }}
-              >
-                Mark As Complete
-              </ButtonBase>
-            )}
-            <ButtonBase
-              onClick={saveUserAnswer}
+            <Box
+              onClick={() => {
+                router.back();
+              }}
               sx={{
-                // width: "85px",
-                p: 2,
-                textTransform: "none",
-                height: "35px",
-                fontSize: "14px",
-                borderRadius: "27px",
-                color: "#FFF",
-                bgcolor: "#197065",
-                "&:hover": {
-                  backgroundColor: "#197065",
-                },
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "53.679px",
+                height: "53.679px",
+                bgcolor: "#b5b5be66",
+                flexShrink: "0",
               }}
             >
-              Save
-            </ButtonBase>
+              <Image src={backArrow} alt="backArrow" />
+            </Box>
+            <div className={styles.overflowQuestionText}>
+              {questionData?.text ? questionData?.text : compileChapter}
+            </div>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              columnGap: "10px",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                flexWrap: { xs: "wrap", lg: "nowrap" },
+              }}
+            >
+              <GlobelBtn
+                image={detecting ? MicRegular : listening ? MicListing : MicOff}
+                btnText={
+                  detecting
+                    ? `${t("richText.detecte")}`
+                    : listening
+                    ? `${t("richText.stop")}`
+                    : `${t("richText.STT")}`
+                }
+                onClick={handleSpeechtoText}
+              />
+
+              {true && (
+                <GlobelBtn
+                  onClick={handleCompleteAnswer}
+                  disabled={
+                    draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                      .length < 9
+                  }
+                  btnText={`${t("richText.MAC")}`}
+                />
+              )}
+            </Box>
           </Box>
         </Box>
-      </Box>
-      <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
-        <Editor
-          editorState={editorState}
-          onEditorStateChange={setEditorState}
-          wrapperClassName="wrapper-class"
-          editorClassName="editor-class"
-          toolbarClassName="toolbar-class"
-          editorStyle={{
-            borderRadius: "10px",
-            minHeight: "65vh",
-            maxHeight: "68vh",
-            backgroundColor: "white",
-            overflowY: "auto",
-            padding: "20px",
-          }}
-          toolbarStyle={{
-            minHeight: "50px",
-            borderRadius: "10px",
-            display: "flex",
-            justifyContent: "center", // Center-align toolbar items horizontally
-            alignItems: "center",
-          }}
-          toolbar={{
-            options: [
-              "inline",
-              "blockType",
-              "fontSize",
-              "fontFamily",
-              "list",
-              "textAlign",
-              "link",
-              "embedded",
-              "colorPicker",
-              "emoji",
-              "image",
-              "history",
-            ],
-            inline: {
-              options: ["bold", "italic", "underline"],
-            },
-            blockType: {
+        <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={setEditorState}
+            wrapperClassName="wrapper-class"
+            editorClassName="editor-class"
+            toolbarClassName="toolbar-class"
+            editorStyle={{
+              borderRadius: "10px",
+              minHeight: "65vh",
+              maxHeight: "68vh",
+              backgroundColor: "white",
+              overflowY: "auto",
+              padding: "20px",
+            }}
+            toolbarStyle={{
+              minHeight: "50px",
+              borderRadius: "10px",
+              display: "flex",
+              justifyContent: "center", // Center-align toolbar items horizontally
+              alignItems: "center",
+            }}
+            toolbar={{
               options: [
-                "Normal",
-                "H1",
-                "H2",
-                "H3",
-                "H4",
-                "H5",
-                "H6",
-                "Blockquote",
-                "Code",
+                "inline",
+                "blockType",
+                "fontSize",
+                "fontFamily",
+                "list",
+                "textAlign",
+                "link",
+                "colorPicker",
+                "emoji",
+                "image",
+                "history",
               ],
-            },
-            fontSize: {
-              options: [
-                8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
-              ],
-            },
-            fontFamily: {
-              options: [
-                "Garamond",
-                "Georgia",
-                "Arial",
-                "Times New Roman",
-                "Verdana",
-                "Merriweather",
-              ],
-            },
-            list: {
-              options: ["unordered", "ordered"],
-            },
-            textAlign: {
-              options: ["left", "center", "right"],
-            },
-            link: {
-              showOpenOptionOnHover: true,
-              defaultTargetOption: "_self",
-              options: ["link"],
-            },
-            embedded: {
-              defaultSize: {
-                height: "auto",
-                width: "auto",
+              inline: {
+                options: ["bold", "italic", "underline"],
               },
-            },
-            image: {
-              // urlEnabled: true,
-              uploadEnabled: true,
-              alignmentEnabled: false,
-              previewImage: true,
-              inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
-              uploadCallback: uploadCallback,
-              alt: { present: false, mandatory: false },
-              defaultSize: {
-                height: "auto",
-                width: "400px",
+              blockType: {
+                options: [
+                  "Normal",
+                  "H1",
+                  "H2",
+                  "H3",
+                  "H4",
+                  "H5",
+                  "H6",
+                  "Blockquote",
+                  "Code",
+                ],
               },
-            },
-            history: {
-              inDropdown: false,
-              className: undefined,
-              component: undefined,
-              dropdownClassName: undefined,
-              options: ["undo", "redo"],
-            },
-          }}
-        />
+              fontSize: {
+                options: [
+                  8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
+                ],
+              },
+              fontFamily: {
+                options: [
+                  "Garamond",
+                  "Georgia",
+                  "Arial",
+                  "Times New Roman",
+                  "Verdana",
+                  "Merriweather",
+                ],
+              },
+              list: {
+                options: ["unordered", "ordered"],
+              },
+              textAlign: {
+                options: ["left", "center", "right"],
+              },
+              link: {
+                showOpenOptionOnHover: true,
+                defaultTargetOption: "_self",
+                options: ["link"],
+              },
+              image: {
+                urlEnabled: true,
+                uploadEnabled: true,
+                alignmentEnabled: false,
+                previewImage: false,
+                inputAccept: "image/jpeg,image/jpg,image/png",
+                uploadCallback: uploadCallback,
+                alt: { present: false, mandatory: false },
+                defaultSize: {
+                  height: "auto",
+                  width: "400px",
+                },
+              },
+              history: {
+                inDropdown: false,
+                className: undefined,
+                component: undefined,
+                dropdownClassName: undefined,
+                options: ["undo", "redo"],
+              },
+            }}
+          />
+        </Box>
       </Box>
-    </Box>
+
+      <TransitionsDialog
+        open={buyPremium}
+        heading={`${t("richText.ByPreHeading")}`}
+        description={`${t("richText.PreDes")}`}
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => router.push("/dashboard/SubscribePlans")}
+      />
+    </>
   );
 };
 

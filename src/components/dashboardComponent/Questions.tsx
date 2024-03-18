@@ -11,12 +11,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
 
-const options = ["Delete", "Edit"];
 const ITEM_HEIGHT = 48;
 
 interface QuestionsProps {
@@ -26,6 +26,7 @@ interface QuestionsProps {
   templateQuestion?: (id: string) => void;
   questionChanged?: () => void;
   title?: string;
+  StarterChapter?: boolean;
 }
 
 export default function Questions({
@@ -35,7 +36,9 @@ export default function Questions({
   templateQuestion,
   questionChanged,
   answerClick,
+  StarterChapter,
 }: QuestionsProps) {
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
   const [deleteQuestionModal, setDeleteQuestionModal] = useState(false);
   const [questionId, setQuestionId] = useState("");
@@ -49,11 +52,12 @@ export default function Questions({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleClickOption = (option) => {
-    if (option === "Delete") {
+    if (option === `${t("ChName.Del")}`) {
       setDeleteQuestionModal(true);
       setAnchorEl(null);
-    } else if (option === "Edit") {
+    } else if (option === `${t("ChName.edit")}`) {
       setUpdateQuestionModal(true);
       setAnchorEl(null);
     } else {
@@ -96,6 +100,8 @@ export default function Questions({
     setExpanded(!expanded);
   };
 
+  const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
+
   return (
     <Box sx={{ position: "relative" }}>
       <Box
@@ -104,7 +110,9 @@ export default function Questions({
           alignItems: "center",
           gap: "10px",
           width: "100%",
-          mt: { sm: "15px", xs: "8px" },
+          mb: { sm: "15px", xs: "8px" },
+          bgcolor: title == "templateView" && "#F9F9F9",
+          borderRadius: title == "templateView" && "8px",
         }}
       >
         <Box
@@ -118,7 +126,7 @@ export default function Questions({
             bgcolor: "#F9F9F9",
             borderRadius: "8px",
             borderLeft: "11px solid #186F65",
-            height: expanded ? "auto" : { sm: "60px", xs: "60px" },
+            height: expanded ? "auto" : { sm: "50px", xs: "50px" },
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -135,11 +143,11 @@ export default function Questions({
           >
             <Typography
               sx={{
-                marginLeft: { sm: "20px", xs: "10px" },
+                marginLeft: { sm: "15px", xs: "10px" },
                 color: "rgba(22, 22, 22, 0.90)",
-                fontSize: { sm: "22px", xs: "16px" },
+                fontSize: { sm: "22px", xs: "15px" },
                 fontWeight: 400,
-                width: { xs: "48vw", sm: "50vw", md: "53vw", lg: "55vw" },
+                width: { xs: "48vw", sm: "55vw", md: "52vw", lg: "64vw" },
                 textOverflow: expanded ? "clip" : "ellipsis",
                 overflow: "hidden",
                 // whiteSpace: expanded ? "wrap" : "nowrap",
@@ -151,11 +159,10 @@ export default function Questions({
             >
               <Typography
                 sx={{
-                  marginLeft: { sm: "20px", xs: "10px" },
                   color: "rgba(22, 22, 22, 0.90)",
-                  fontSize: { sm: "22px", xs: "16px" },
+                  fontSize: "14px",
                   fontWeight: 400,
-                  width: "58vw",
+                  width: "100vw",
                   textOverflow: expanded ? "clip" : "ellipsis",
                   overflow: "hidden",
                   whiteSpace: expanded ? "wrap" : "nowrap",
@@ -166,7 +173,7 @@ export default function Questions({
                 {". "}
                 {question?.text}
               </Typography>
-              {question?.text.length > 80 && (
+              {question?.text.length > 125 && (
                 <Typography
                   onClick={handleSeeMoreClick}
                   sx={{
@@ -192,7 +199,7 @@ export default function Questions({
                   borderRadius: " 0px 8px 8px 0px",
                   backgroundColor: "#white",
                   color: "rgba(255, 255, 255, 0.90)",
-                  height: { sm: "60px", xs: "60px" },
+                  height: { sm: "50px", xs: "50px" },
                   p: "0px",
                   "&:hover": {
                     backgroundColor: "#white",
@@ -215,7 +222,7 @@ export default function Questions({
                     <Box>
                       <Image alt="icon" src={Completed} />
                     </Box>
-                    <Box>{"Completed"}</Box>
+                    <Box>{t("ChName.completed")}</Box>
                   </Box>
                 )}
                 {question.status !== "Completed" && (
@@ -225,12 +232,13 @@ export default function Questions({
                       alignItems: "center",
                       columnGap: "5px",
                       color: "#197065",
-                      fontSize: "10px",
+                      fontSize: "12px",
                       px: "16px",
                       py: "7px",
+                      textTransform: "capitalize",
                     }}
                   >
-                    <Image alt="icon" src={EditGreen} /> {"Edit"}
+                    <Image alt="icon" src={EditGreen} /> Answer
                   </Box>
                 )}
               </Button>
@@ -240,48 +248,57 @@ export default function Questions({
 
         {/* More option :start */}
         {title != "templateView" ? (
-          <Box>
-            <IconButton
-              aria-label="more"
-              id="long-button"
-              aria-controls={open ? "long-menu" : undefined}
-              aria-expanded={open ? "true" : undefined}
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              <Image alt="options" src={Option} />
-            </IconButton>
-            <Menu
-              id="long-menu"
-              MenuListProps={{
-                "aria-labelledby": "long-button",
-              }}
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              PaperProps={{
-                style: {
-                  maxHeight: ITEM_HEIGHT * 4.5,
-                  width: "10ch",
-                },
-              }}
-            >
-              {options.map((option) => (
-                <MenuItem
-                  key={option}
-                  selected={option === "Pyxis"}
-                  onClick={() => {
-                    setQuestionId(question?._id);
-                    handleClickOption(option);
+          <>
+            {!StarterChapter && (
+              <Box>
+                <IconButton
+                  aria-label="more"
+                  id="long-button"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <Image alt="options" src={Option} />
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "long-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                      maxHeight: ITEM_HEIGHT * 4.5,
+                      width: "10ch",
+                    },
                   }}
                 >
-                  {option}
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+                  {options.map((option) => (
+                    <MenuItem
+                      key={option}
+                      selected={option === "Pyxis"}
+                      onClick={() => {
+                        setQuestionId(question?._id);
+                        handleClickOption(option);
+                      }}
+                    >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            )}
+          </>
         ) : (
-          <Box sx={{ textAlign: "center", width: "max-content" }}>
+          <Box
+            sx={{
+              textAlign: "center",
+              mr: { md: "20px", sm: "15px", xs: "10px" },
+            }}
+          >
             <Checkbox
               defaultChecked={true}
               onChange={() => templateQuestion(question?._id)}
@@ -301,20 +318,22 @@ export default function Questions({
         <Box>
           <Image src={ModalImage} width={91} height={60} alt="logo" />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>Update Question</Typography>
+        <Typography sx={{ fontSize: { md: "24px", sm: "22px", xs: "18px" } }}>
+          {t("ChName.UQ")}
+        </Typography>
         <AddQuestion
           questionData={(question: string) => {
             handleUpdateQuestion(question);
             setUpdateQuestionModal(false);
           }}
           questionText={question?.text}
-          btnText={"Update Question"}
+          btnText={`${t("ChName.UQ")}`}
         />
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteQuestionModal}
-        heading="Delete"
-        description="Are you sure you want to delete this question"
+        heading={`${t("ChName.DelText")}`}
+        description={`${t("ChName.DelDescri")}`}
         cancel={() => setDeleteQuestionModal(false)}
         proceed={handleDeleteQuestion}
         closeModal={() => setDeleteQuestionModal(false)}

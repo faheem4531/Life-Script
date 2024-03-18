@@ -1,8 +1,7 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import Layout from "@/components/Layout/Layout";
-import { StartNewChapter } from "@/components/dashboardComponent/CreateChapterCard";
+import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
-import HomeSteps from "@/components/dashboardComponent/HomeSteps";
 import NoChapters from "@/components/dashboardComponent/noChapter";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
@@ -19,6 +18,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import bgTree from "../../../_assets/svg/bgTree.svg";
@@ -35,6 +35,7 @@ const CompletedChapters = () => {
   const dispatch: any = useDispatch();
   const chapters = useSelector(selectAllChapters);
   const router = useRouter();
+  const { t } = useTranslation();
 
   const handleDeleteChapter = () => {
     dispatch(deleteSelectedChapter({ id: selectedChapterId }))
@@ -94,14 +95,17 @@ const CompletedChapters = () => {
   };
 
   useEffect(() => {
-    dispatch(getChapters()).unwrap()
+    dispatch(getChapters())
+      .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
   }, []);
 
   useEffect(() => {
     if (chapters) {
-      const inProgressChapters = chapters.filter((chapter) => chapter.status === true);
+      const inProgressChapters = chapters.filter(
+        (chapter) => chapter.status === true
+      );
       setAllChapters(inProgressChapters);
     }
   }, [chapters]);
@@ -113,9 +117,16 @@ const CompletedChapters = () => {
           sx={{
             position: "relative",
             zIndex: "2",
+            p: { md: "0px", xs: "10px 30px" },
           }}
         >
-          <HomeSteps />
+          <Box
+            sx={{
+              display: { sm: "block", xs: "none" },
+            }}
+          >
+            <CompletedChapterHeader />
+          </Box>
 
           {loading ? (
             <Box
@@ -132,12 +143,11 @@ const CompletedChapters = () => {
             <Box
               className={styles.CardsContainer}
               sx={{
-                marginTop: "48px",
+                marginTop: { sm: "18px" },
               }}
             >
               {/* <StartNewChapter addChapterClick={() => setChapterModal(true)} /> */}
               {allChapters.map((chapter, index) => (
-
                 <DetailCard
                   key={index}
                   chapter={chapter}
@@ -145,13 +155,15 @@ const CompletedChapters = () => {
                   deleteFunc={(data) => {
                     handleCardClick(data);
                   }}
+                  starterCh={true}
                 />
               ))}
             </Box>
-          ): (
+          ) : (
             <Box
               sx={{
-                marginTop: { sm: "48px", xs: "25px" },
+                marginTop: { xs: "18px" },
+                p: { md: "0px", xs: "0px 10px" },
               }}
             >
               <NoChapters />
@@ -169,11 +181,28 @@ const CompletedChapters = () => {
         }}
         customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
-        <Box>
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
+        <Box
+          sx={{
+            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            margin: "auto",
+          }}
+        >
+          <Image
+            alt="image"
+            src={ModalImage}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
-        <Typography sx={{ fontSize: "30px" }}>
-          {updateChapterModal ? "Update Chapter Name" : "Add new chapter"}
+        <Typography
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
+        >
+          {updateChapterModal
+            ? `${t("ChModals.updateChName")}`
+            : `${t("ChModals.addNewCh")}`}
         </Typography>
         <AddChapter
           chapterData={(chapter: string) => {
@@ -183,14 +212,16 @@ const CompletedChapters = () => {
           }}
           data={chapterTitle}
           btnText={
-            updateChapterModal ? "Update Chapter Name" : "Add new chapter"
+            updateChapterModal
+              ? `${t("ChModals.updateChName")}`
+              : `${t("ChModals.addNewCh")}`
           }
         />
       </CustomizationDialog>
       <TransitionsDialog
         open={deleteChapter}
-        heading="Delete"
-        description="Are you sure you want to delete this chapter"
+        heading={`${t("ChModals.Del")}`}
+        description={`${t("ChModals.DelDescri")}`}
         cancel={() => setDeleteChapter(false)}
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}

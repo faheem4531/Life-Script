@@ -140,7 +140,7 @@ const Signup = ({ signupClick }) => {
         <Typography
           sx={{
             // marginRight: "300px",
-            // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             marginTop: "24px",
           }}
         >
@@ -222,7 +222,7 @@ const Signup = ({ signupClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "60%",
+              width: { md: "60%", sm: "70%", xs: "70%" },
               marginTop: { xs: "40px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
@@ -276,7 +276,7 @@ const Signup = ({ signupClick }) => {
             justifyContent: "center",
           }}
         >
-          <Box sx={{ width: "60%" }}>
+          <Box sx={{ width: { md: "60%", sm: "70%", xs: "70%" } }}>
             <Button
               variant="contained"
               type="submit"
@@ -287,19 +287,14 @@ const Signup = ({ signupClick }) => {
                 color: "black",
                 width: "100%",
                 gap: "10px",
-                marginTop: { xs: "40px", sm: "20px" },
+                marginTop: { xs: "20px" },
                 textTransform: "capitalize",
                 "&:hover": {
                   backgroundColor: "white",
                 },
               }}
             >
-              <Image
-                src={googleLogo}
-                alt="Google Logo"
-                width={24}
-                height={24}
-              />
+              <Image src={googleLogo} alt="Google Logo" />
               <Typography>Signup With Google</Typography>
             </Button>
           </Box>

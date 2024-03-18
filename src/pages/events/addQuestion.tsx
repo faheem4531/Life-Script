@@ -1,10 +1,12 @@
-import { Box, Button, TextField } from "@mui/material";
+import GlobelBtn from "@/components/button/Button";
+import { Box, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface AddQuestionProps {
   questionData?: (question: string) => void; // Assuming the return type is void, modify as needed
   questionText?: string;
-  btnText: string
+  btnText: string;
 }
 export default function AddQuestion({
   questionData,
@@ -12,6 +14,7 @@ export default function AddQuestion({
   btnText,
 }: AddQuestionProps) {
   const [question, setQuestion] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     questionData(question);
@@ -25,7 +28,7 @@ export default function AddQuestion({
       <Box>
         <TextField
           variant="outlined"
-          placeholder="Add Question"
+          placeholder={`${t("ChName.AddQuesBtn")}`}
           name="email"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
@@ -34,31 +37,33 @@ export default function AddQuestion({
             "& .MuiOutlinedInput-root": {
               borderRadius: "50px",
               backgroundColor: "white",
+              height: { md: "50px", sm: "45px", xs: "40px" },
             },
-            width: { sm: "400px", xs: "250px" },
+            width: { sm: "400px", xs: "100%" },
           }}
         />
       </Box>
       <Box sx={{ justifyContent: "center", textAlign: "center" }}>
-        <Button
-          variant="contained"
-          disabled={!question}
-          onClick={(event: any) => handleSubmit()}
-          type="submit"
+        <Box
           sx={{
-            borderRadius: "48px",
-            backgroundColor: "#186F65",
-            color: "white",
-            width: "200px",
-            marginTop: { sm: "50px", xs: "20px" },
-            textTransform: "capitalize",
-            "&:hover": {
-              backgroundColor: "#186F65",
-            },
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            mt: "20px",
+            opacity: question ? "1" : "0.4",
           }}
         >
-          {btnText}
-        </Button>
+          <GlobelBtn
+            disabled={!question}
+            btnText={btnText}
+            bgColor="#197065"
+            borderRadius="23px"
+            color="#fff"
+            // width={{ md: "234px", sm: "153px", xs: "103px" }}
+            border="1px solid #197065"
+            onClick={(event: any) => handleSubmit()}
+          />
+        </Box>
       </Box>
     </Box>
   );

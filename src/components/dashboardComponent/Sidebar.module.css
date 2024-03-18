@@ -1,9 +1,9 @@
 .link {
   display: flex;
   align-items: center;
-  font-size: 15px;
+  font-size: 13px;
   column-gap: 8px;
-  padding: 8px 8px 8px 15px;
+  padding: 8px 8px 8px 10px;
   border-radius: 10px;
   margin-bottom: 25px;
 }
@@ -28,4 +28,10 @@
 
 .subLink:hover {
   background-color: #333;
+}
+
+@media (max-width: 900px) {
+  .link {
+    column-gap: 5px;
+  }
 }

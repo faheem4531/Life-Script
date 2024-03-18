@@ -46,7 +46,7 @@ const Login = ({ signinClick }) => {
       .unwrap()
       .then((res) => {
         toast.success(t("login-page.loggedIn"));
-        router.push(`/getStarted?userName=${res.name}`);
+        router.push(`/getStarted?userName=${res?.name}`);
       })
       .catch((error: any) => {
         toast.error(error.message);
@@ -69,8 +69,8 @@ const Login = ({ signinClick }) => {
         .unwrap()
         .then((res) => {
           toast.success(t("login-page.loggedIn"));
-          setLoading(false);
-          router.push(`/getStarted?userName=${res.name}`);
+          // setLoading(false);
+          router.push(`/getStarted?userName=${res?.name}`);
         })
         .catch((error: any) => {
           setLoginFailed(true);
@@ -131,7 +131,7 @@ const Login = ({ signinClick }) => {
               sx={{
                 // marginRight: "300px",
                 marginTop: "24px",
-                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
               {t("login-page.password")}
@@ -217,7 +217,7 @@ const Login = ({ signinClick }) => {
                 sx={{
                   // marginTop: "9px",
                   // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
-                  fontSize: "14px",
+                  fontSize: { xs: 12, sm: 14, md: 16 },
                 }}
               >
                 {t("login-page.forget-password")}
@@ -234,7 +234,7 @@ const Login = ({ signinClick }) => {
               borderRadius: "48px",
               backgroundColor: "#186F65",
               color: "white",
-              width: "60%",
+              width: { md: "60%", sm: "70%", xs: "70%" },
               marginTop: { xs: "60px", sm: "20px" },
               "&:hover": {
                 backgroundColor: "#186F65",
@@ -288,7 +288,7 @@ const Login = ({ signinClick }) => {
             justifyContent: "center",
           }}
         >
-          <Box sx={{ width: "60%" }}>
+          <Box sx={{ width: { md: "60%", sm: "70%", xs: "70%" } }}>
             <Button
               variant="contained"
               type="submit"
@@ -299,9 +299,9 @@ const Login = ({ signinClick }) => {
                 color: "black",
                 width: "100%",
                 gap: "10px",
-                marginTop: { xs: "60px", sm: "20px" },
+                marginTop: { xs: "20px" },
                 "&:hover": {
-                  backgroundColor: "#186F65",
+                  backgroundColor: "white",
                 },
                 textTransform: "capitalize",
               }}
@@ -309,8 +309,8 @@ const Login = ({ signinClick }) => {
               <Image
                 src={googleLogo}
                 alt="Google Logo"
-                width={24}
-                height={24}
+                // width={24}
+                // height={24}
               />
               <Typography>Login with Google</Typography>
             </Button>

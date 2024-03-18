@@ -7,13 +7,36 @@ import {
   VerifyEmail,
 } from "@/interface/authInterface";
 import api from "@/services/api";
+import socket from "@/services/socketManager";
+import axios from "axios";
 import Error from "next/error";
 
 export async function loginApi(data: LoginData) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/login", data);
+    console.log("res login", res);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("language", res.data.language);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
 
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function stripeDoneApi() {
+  try {
+    const res = await api.get("/auth/refreshToken");
+    localStorage.clear();
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
@@ -35,9 +58,12 @@ export async function googleLoginApi(data: { credential: string }) {
   try {
     const res = await api.post("/auth/google/callback/sign-in", data);
     localStorage.setItem("token", res.token);
+    localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("username", res.data.name);
+    localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    socket.emit("joinRoom", res.data._id);
 
     return res.data;
   } catch (error: any) {
@@ -74,6 +100,7 @@ export async function googleSignupApi(data: { credential: string }) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/google/callback/sign-up", data);
+    localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
@@ -126,10 +153,164 @@ export async function updatePasswordApi(data: UpdatePasswordData) {
   }
 }
 
+export async function updateUserProfileApi(data: any) {
+  try {
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const userId = localStorage.getItem("userId"); 
+    const res = await axios.put(`https://api.thelifescript.com/users/${userId}`, data, {headers});
+    res?.data?.name && localStorage.setItem("username", res?.data?.name);
+    return res;
+  } catch (error: any) {
+    
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getUserProfileApi() {
+  try {
+    const userId = localStorage.getItem("userId");
+
+    const res = await api.get(`users/${userId}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getBookInteriorApi() {
+  try {
+    const res = await api.get("chapter-compile/generate-pdf");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function stripPaymentLuluApi(data: any) {
+  try {
+    const token = localStorage.getItem('token');
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      'Content-Type': 'application/json',
+    };
+    const res = await axios.post("https://api.thelifescript.com/chapter-compile/payment/stripe-lulu", data, {headers});
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getLuluBalanceApi() {
+  try {
+
+    const res = await api.get("chapter-compile/lulu-stripe/balance");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getLuluShippingApi() {
+  try {
+
+    const res = await api.get("lulu-shipping");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function luluCallApi(data) {
+  try {
+
+    const res = await api.post("chapter-compile/payment/stripe-lulu", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function createLuluShippingApi(data: any) {
+  try {
+
+    const res = await api.post("lulu-shipping",data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function updateLuluShippingApi(data) {
+  try {
+
+    const res = await api.patch(`lulu-shipping`,data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to log in");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function signupApi(data: SignupData) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/", data);
+    localStorage.setItem("accessRole", res?.data?.accessRole);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
+
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

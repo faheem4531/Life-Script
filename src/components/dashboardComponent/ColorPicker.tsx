@@ -1,8 +1,10 @@
 import { Box, TextField, Typography } from "@mui/material";
-import React, { useState, useRef, useEffect, ChangeEvent } from "react";
-import { BlockPicker, ColorResult } from "react-color";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ColorResult, SketchPicker } from "react-color";
+import { useTranslation } from "react-i18next";
 
-const ColorPickerComponent = ({setSelectedColor, selectedColor}) => {
+const ColorPickerComponent = ({ setSelectedColor, selectedColor }) => {
+  const { t } = useTranslation();
   const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
 
   const colorPickerRef = useRef<HTMLDivElement>(null);
@@ -21,19 +23,37 @@ const ColorPickerComponent = ({setSelectedColor, selectedColor}) => {
     setSelectedColor(inputColor);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      colorPickerRef.current &&
+      !colorPickerRef.current.contains(event.target as Node) &&
+      inputRef.current &&
+      !inputRef.current.contains(event.target as Node)
+    ) {
+      setDisplayColorPicker(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <Box position={"relative"}>
       <Box>
         <Typography
           sx={{
             fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
           }}
         >
-          Colour Palette*
+          {t("BookCoverCard.colour")}*
         </Typography>
         <TextField
           variant="outlined"
-          placeholder={"Colour Palette*"}
+          placeholder={`${t("BookCoverCard.colour")}*`}
           name="text"
           ref={inputRef}
           type="text"
@@ -51,11 +71,14 @@ const ColorPickerComponent = ({setSelectedColor, selectedColor}) => {
         />
       </Box>
       {displayColorPicker && (
-        <div ref={colorPickerRef} style={{ position: "absolute", zIndex: 2 }}>
-          <BlockPicker color={selectedColor} onChange={handleColorChange} />
+        <div
+          ref={colorPickerRef}
+          style={{ position: "absolute", zIndex: 2, top: "0px", right: "0px" }}
+        >
+          <SketchPicker color={selectedColor} onChange={handleColorChange} />
         </div>
       )}
-    </div>
+    </Box>
   );
 };
 

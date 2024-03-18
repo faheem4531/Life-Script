@@ -51,7 +51,6 @@ const EmailVerification = () => {
   const currentUrl = router.asPath;
   const token = getTokenFromURL(currentUrl);
   const ciphertext = token?.replace(/ /g, "+");
-  console.log("token", token, typeof token);
 
   useEffect(() => {
     if (ciphertext) {

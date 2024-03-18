@@ -1,13 +1,15 @@
-import { Box } from "@mui/material";
-import React from "react";
 import CoverImg from "@/_assets/png/selectBookCover.png";
 import logo from "@/_assets/svg/SmallLogoWhite.svg";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
+import { useRouter } from "next/router";
+import React from "react";
+import { useTranslation } from "react-i18next";
+import GlobelBtn from "../button/Button";
 
 interface SelectBookCoverCardProps {
-  landScape?: boolean;
+  landScape?: string;
   title?: string;
   subtitle?: string;
   Byline?: string;
@@ -15,25 +17,27 @@ interface SelectBookCoverCardProps {
   ColourPalette?: string;
 }
 
-
-const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> =  ({
+const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   landScape,
-  title = "My Adventurous Life",
-  subtitle = "John Doe",
-  Byline = "Volume 01",
+  title = "",
+  subtitle = "",
+  Byline = "",
   ColourPalette = "#197065",
   droppedImage,
 }) => {
+  const currentPath = usePathname();
+  const router = useRouter();
+  const { t } = useTranslation();
 
-const currentPath = usePathname()
-console.log("currentPath", currentPath);
+  const viewBookCheck = currentPath == "/dashboard/BookCover/ViewBookCover";
 
   return (
     <Box
       sx={{
         position: "relative",
         "&:hover .hoverBox": {
-          display: currentPath == "/dashboard/BookCover/SelectBookCover" && "flex",
+          display:
+            currentPath == "/dashboard/BookCover/SelectBookCover" && "flex",
           cursor: "pointer",
         },
       }}
@@ -46,15 +50,51 @@ console.log("currentPath", currentPath);
           width: "100%",
           height: "100%",
           p: "53px 20px",
+          overflowX: "auto",
         }}
       >
+        {currentPath === "/dashboard/BookView" && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "center",
+              pb: "20px",
+              mt: "-27px",
+              mr: "25px",
+            }}
+          >
+            <Box>
+              <GlobelBtn
+                btnText="Edit"
+                onClick={() => {
+                  router.push("/dashboard/BookCover/SelectBookCover");
+                }}
+              />
+            </Box>
+          </Box>
+        )}
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            gap: { xs: "15px", sm: "20px", md: "25px", lg: "30px", xl: "43px" },
+            gap: !viewBookCheck
+              ? { xs: "15px", sm: "20px", md: "25px", lg: "30px", xl: "43px" }
+              : "2px",
           }}
         >
+          {viewBookCheck && (
+            <Box
+              sx={{
+                width: { xs: "260px", md: "240px", lg: "287.611px" },
+                height: "414.319px",
+                bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
+                color: "white",
+                textAlign: "center",
+                p: "10px",
+              }}
+            ></Box>
+          )}
           <Box
             sx={{
               bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
@@ -75,7 +115,19 @@ console.log("currentPath", currentPath);
                 textOrientation: "mixed",
               }}
             >
-              <Box>MY ADVENTUROUS LIFE | John Doe</Box>
+              <Box>
+                {title.length == 0 ? (
+                  <span> {t("BookCoverCard.title")}</span>
+                ) : (
+                  title
+                )}{" "}
+                |{" "}
+                {subtitle.length == 0 ? (
+                  <span> {t("BookCoverCard.author")}</span>
+                ) : (
+                  subtitle
+                )}
+              </Box>
               <Box>
                 <Image src={logo} alt="" />
               </Box>
@@ -84,7 +136,7 @@ console.log("currentPath", currentPath);
 
           <Box
             sx={{
-              width: { xs: "80%", sm: "260px", md: "240px", lg: "287.611px" },
+              width: { xs: "240px", md: "240px", lg: "287.611px" },
               height: "414.319px",
               bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
               color: "white",
@@ -96,7 +148,7 @@ console.log("currentPath", currentPath);
               sx={{
                 width: "100%",
                 height: "100%",
-                border: landScape ? "" : "1.942px solid white",
+                border: "1.942px solid white",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -108,43 +160,55 @@ console.log("currentPath", currentPath);
                     fontSize: { sm: "12px", md: "13px", lg: "15.559px" },
                     fontWeight: 300,
                     letterSpacing: "2.956px",
+                    wordBreak: "break-all",
+                    p: "0px 15px",
                   }}
                 >
-                  {Byline.length == 0 ? "Volume 01" : Byline}
+                  {Byline.length == 0 ? "" : Byline}
                 </Box>
 
                 <Box
-                  mt={landScape && "12px"}
+                  mt={landScape === "1" && "12px"}
                   display="flex"
-                  flexDirection={landScape ? "column" : "column-reverse"}
+                  flexDirection={
+                    landScape === "1" ? "column" : "column-reverse"
+                  }
                 >
                   <Box
                     sx={{
                       fontSize: { sm: "16px", md: "18px", lg: "22.275px" },
                       fontWeight: 600,
-                      width: landScape ? "70%" : "100%",
+                      width: landScape === "1" ? "70%" : "100%",
                       margin: "auto",
-                      pb: !landScape && "20px",
+                      pb: landScape === "2" && "20px",
+                      wordBreak: "break-all",
+                      p: "0px 15px",
                     }}
                   >
-                    {title.length == 0 ? "My Adventurous Life" : title}
+                    {title.length == 0 ? (
+                      <span> {t("BookCoverCard.title")}</span>
+                    ) : (
+                      title
+                    )}
                     <Box
                       sx={{
                         borderBottom: "2.5px solid white",
-                        width: landScape ? "82%" : "58%",
+                        width: landScape === "1" ? "82%" : "58%",
                         margin: "auto",
-                        pt: !landScape && "20px",
+                        pt: landScape === "2" && "20px",
                       }}
                     ></Box>
                   </Box>
 
                   <Box
                     sx={{
-                      width: landScape
-                        ? { xs: "80%", md: "200px", lg: "212.377px" }
-                        : "91.274px",
-                      height: landScape ? "104.868px" : "149.534px",
-                      margin: landScape ? "45px auto 17px" : "25px auto",
+                      width:
+                        landScape === "1"
+                          ? { xs: "80%", md: "200px", lg: "212.377px" }
+                          : "91.274px",
+                      height: landScape === "1" ? "104.868px" : "149.534px",
+                      margin:
+                        landScape === "1" ? "45px auto 17px" : "25px auto",
                     }}
                   >
                     {droppedImage ? (
@@ -180,10 +244,15 @@ console.log("currentPath", currentPath);
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "10px",
+                    wordBreak: "break-all",
                   }}
                 >
                   <span>-</span>
-                  {subtitle.length == 0 ? "John Doe" : subtitle}
+                  {subtitle.length == 0 ? (
+                    <span>{t("BookCoverCard.author")}</span>
+                  ) : (
+                    subtitle
+                  )}
                   <span>-</span>
                 </Box>
               </Box>
@@ -218,7 +287,7 @@ console.log("currentPath", currentPath);
             textAlign: "center",
           }}
         >
-          Use this cover
+          {t("BookCoverCard.UseThisCover")}
         </Box>
       </Box>
     </Box>
