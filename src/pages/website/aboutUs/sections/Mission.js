@@ -16,7 +16,9 @@ const Mission = () => {
         paddingBottom: "40px",
         borderBottom: "1px solid #E1683B",
         fontFamily: "Avenir"
-      }}>There is this notion that to have your own autobiography book, you need to be either rich or famous. But we believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories, rediscover their roots, and create a deeper connection with themselves and their families.</Typography>
+      }}>
+        <h3>There is this notion that to have your own autobiography book, you need to be either rich or famous. But we believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories, rediscover their roots, and create a deeper connection with themselves and their families.</h3>
+      </Typography>
     </Box>
   )
 }

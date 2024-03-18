@@ -21,7 +21,7 @@ const Story = () => {
           marginBottom: "20px",
           fontFamily: "Besley !important"
         }}>
-          Our Story...
+          <h2> Our Story...</h2>
         </Typography>
         <Typography sx={{ fontSize: "16px", marginTop: { md: "0", sm: "20px", xs: "20px" }, fontFamily: "Avenir" }}>A couple of years ago, our founder, Angel, accidentally found a dusty, forgotten book that turned out to be a portal to the past. It was written by his great grandfather who passed away shortly after Angel was born, and chronicled his personal experiences and memories from the harsh 20th century communist regime in his home country - Bulgaria. After reading the book, Angel felt a deep connection to his great grandfather, as if they had known each other well, despite never having met.</Typography>
         <Typography sx={{ fontSize: "16px", margin: "15px 0", fontFamily: "Avenir" }}>This experience sparked a realization that personal stories have the power to inspire us, to heal us, and to bring us together across time and space.</Typography>

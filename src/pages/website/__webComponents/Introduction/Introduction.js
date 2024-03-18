@@ -29,11 +29,13 @@ const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "
           color: "#F3ECDA",
           fontFamily: "Besley !important",
         }}>
-          {heading}{" "}
-          <span className={styles.lineBox}>
-            {keyWorld}
-            <Image src={Line} alt="img" className={styles.line} />
-          </span>
+          <h1>
+            {heading}{" "}
+            <span className={styles.lineBox}>
+              {keyWorld}
+              <Image src={Line} alt="img" className={styles.line} />
+            </span>
+          </h1>
         </Box>
         <Typography sx={{ fontSize: "16px", color: "#F3ECDA", marginTop: "10px", padding: "0 20px", opacity: ".8" }}>
           {subHeading}

@@ -52,7 +52,7 @@ const HomePage = () => {
       <Working data={pointsArray} heading=" How it" marked="works" />
       <Suggestion />
       <GifTab
-        heading="Surprise your loved one with Lifescript and transform their memories into a keepsake book."
+        heading="Surprise your loved one with Lifescript and let them transform their memories into a keepsake book."
         button="Gift Now!!"
         icon={Gift}
       />

@@ -57,7 +57,8 @@ const Values = () => {
 
         <Typography sx={{
           fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, paddingBottom: "20px", borderBottom: "1px solid #E1683B", fontFamily: "Besley !important"
-        }}>Our Values</Typography>
+        }}>
+          <h2>Our Values</h2></Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", maxWidth: "1100px" }}>
           {ValueData.map((item, index) => <Value
             key={index}
@@ -88,8 +89,8 @@ function Value({ title, icon, detail }) {
     <Box sx={{ maxWidth: { lg: "440px", md: "380px", sm: "80%", xs: "100%" }, display: "flex", columnGap: "15px", margin: "50px 0 0" }}>
       <Image src={icon} alt="icon" />
       <Box>
-        <Typography sx={{ fontSize: "20px", fontWeight: 800, paddingBottom: "20px", }}>{title}</Typography>
-        <Typography sx={{ fontFamily: "Avenir" }}>{detail}</Typography>
+        <Typography sx={{ fontSize: "20px", fontWeight: 800, paddingBottom: "20px", }}><h3> {title}</h3></Typography>
+        <Typography sx={{ fontFamily: "Avenir" }}><h4>{detail}</h4></Typography>
       </Box>
     </Box>
   )

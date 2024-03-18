@@ -12,10 +12,10 @@ export function Content({ heading, subHeading, marginB, subWidth, width, align, 
         fontFamily: "Besley !important",
         lineHeight: { sm: "50px", xs: "36px" }
       }}>
-        {heading}
+        <h3>{heading}</h3>
       </Typography>
       <Typography sx={{ maxWidth: { lg: subWidth || "420px", }, fontFamily: "Avenir" }} fontSize={subFonts || "16px"} >
-        {subHeading}
+        <h4> {subHeading} </h4>
       </Typography>
     </Box>
   )
