@@ -104,18 +104,18 @@ const TermsAndConditions = () => {
 
       <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
 
-        <Box sx={{ margin: "200px 0", maxWidth: "1050px", bgcolor: "" }}>
+        <Box sx={{ margin: { md: "200px 0 250px", sm: "150px 50px", xs: "120px 20px" }, maxWidth: { lg: "1050px", md: "850px", sm: "100%" } }}>
           <Box sx={{ textAlign: "center" }}>
             <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontFamily: "Basely", fontWeight: 600 }}>Terms of Use</Typography>
             <Typography>Updated at January 30th, 2024</Typography>
           </Box>
-          <Typography sx={{ margin: "80px 0 50px" }}>Welcome to Lifescript, a platform dedicated to capturing and preserving life stories. By accessing and using the services provided by Lifescript (&quot;Service&quot;), you engage with Lifescript Ltd., located at 16 Avgusta Trayana, Stara Zagora, Bulgaria (&quot;Company&quot;).This document, the Terms of Use (&quot;Terms&quot;), governs your access to and use of our Services, including our website located at www.thelifescript.com (&quot;Website&quot;). These Terms form a binding contract between you and Lifescript Ltd. If you do not agree to these Terms, you should not use the Lifescript Service</Typography>
+          <Typography sx={{ margin: { sm: "80px 0 50px", xs: "40px 0 30px" } }}>Welcome to Lifescript, a platform dedicated to capturing and preserving life stories. By accessing and using the services provided by Lifescript (&quot;Service&quot;), you engage with Lifescript Ltd., located at 16 Avgusta Trayana, Stara Zagora, Bulgaria (&quot;Company&quot;).This document, the Terms of Use (&quot;Terms&quot;), governs your access to and use of our Services, including our website located at www.thelifescript.com (&quot;Website&quot;). These Terms form a binding contract between you and Lifescript Ltd. If you do not agree to these Terms, you should not use the Lifescript Service</Typography>
           <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>Definitions and Key Terms</Typography>
           <Typography sx={{ margin: "20px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
 
           <Box sx={{ maxWidth: "900px" }}>
 
-            <Box sx={{ maxWidth: "90%", margin: "0 0 50px 50px" }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
               {keyTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -123,7 +123,7 @@ const TermsAndConditions = () => {
               />)}
             </Box>
             <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>General Terms of Use</Typography>
-            <Box sx={{ maxWidth: "90%", margin: "20px 0 20px 50px" }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
               {generalTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -142,7 +142,7 @@ const TermsAndConditions = () => {
             <PHeading text="Restrictions" />
             <Text margin="0 0 20px" text="You agree not to, and you will not permit others to:" />
 
-            <Box sx={{ marginLeft: "50px" }}>
+            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
               <ul>
                 <li>License, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the website or make the platform
                   available to any third party.</li>
@@ -153,7 +153,7 @@ const TermsAndConditions = () => {
             </Box>
             <PHeading text="Payment" />
             <Text margin="0 0 20px" text="Thank you for considering Lifescript. As you explore our products, we are committed to providing you with exceptional service and value. By registering for any of our subscription plans, you acknowledge and agree to the following terms and conditions, which form an integral part of our Terms of Use." />
-            <Box sx={{ maxWidth: "90%", margin: "0 0 50px 50px" }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
               {payment.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -163,7 +163,7 @@ const TermsAndConditions = () => {
             <PHeading text="Intellectual Property and Content Submission" />
             <Text text="When you submit or upload written materials, photographs, voice and/or video recordings, or other content (collectively, the “Content”) to Lifescript, you retain ownership of any intellectual property rights in that Content. However, by submitting Content, you grant Lifescript a worldwide, perpetual, sublicensable, and transferable license to use, adapt, modify, and display the Content in connection with providing Lifescript's services and for any other purposes agreed upon with you, such as marketing. Please be aware that while you maintain ownership of your Content, any format, template, or layout used to arrange or organize such Content through Lifescript's tools and features is proprietary to Lifescript and remains with us" />
             <Text margin="20px 0" text="You bear full responsibility for the Content you share with us. Should you choose to share the Content publicly, you do so at your own risk. Lifescript is not liable for any actions taken by other users regarding your Content. You affirm and warrant that:" />
-            <Box sx={{ marginLeft: "50px" }}>
+            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
               <ul>
                 <li>You either own the Content or have the necessary rights to submit it to Lifescript and to grant us the license to use it as specified</li>
                 <li>The Content does not infringe upon, misappropriate, or otherwise violate any intellectual property or other rights of a third party.</li>
@@ -185,7 +185,7 @@ const TermsAndConditions = () => {
             <Text margin="20px 0 0" text="Remember, your interactions with these Social Network Providers, including any content you provide to them, are subject to your agreements with them, and Lifescript bears no responsibility for these interactions and content outside our Services." />
             <PHeading text="Copyright Infringement Notice" />
             <Text margin="0 0 20px" text="We are not obliged to review content for copyright or trademark infringement; however, we are dedicated to protecting copyrights and trademarks and expect users of Lifescript to do the same. If you are a copyright owner or such owner’s agent and believe any material on our website constitutes an infringement on your copyright, please contact us setting forth the following information: " />
-            <Box sx={{ marginLeft: "50px" }}>
+            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
               <ol>
                 <li>A physical or electronic signature of the copyright owner or a person authorized to act on his behalf; </li>
                 <li>Identification of the material that is claimed to be infringing; </li>
@@ -222,7 +222,7 @@ const TermsAndConditions = () => {
             <PHeading text="Miscellaneous" />
             <Text text="If for any reason a court of competent jurisdiction finds any provision or portion of these Terms of Use to be unenforceable, the remainder of these Terms of Use will continue in full force and effect. Any waiver of any provision of these Terms of Use will be effective only if in writing and signed by an authorized representative of Lifescript. Lifescript will be entitled to injunctive or other equitable relief (without the obligations of posting any bond or surety) in the event of any breach or anticipatory breach by you. Lifescript operates and controls the Lifescript Service from its offices in Bulgaria. The Service is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation. Accordingly, those persons who choose to access the Lifescript Service from other locations do so on their own initiative and are solely responsible for compliance with local laws, if and to the extent local laws are applicable. These Terms of Use (which include and incorporate the Lifescript Privacy Policy) contains the entire understanding, and supersedes all prior understandings, between you and Lifescript concerning its subject matter, and cannot be changed or modified by you. The section headings used in this Agreement are for convenience only and will not be given any legal import." />
             <PHeading text="Contact Us" />
-            <Text text="Should you find yourself dissatisfied with our Services, we encourage you to get in touch with us. Our aim is to settle matters in a friendly manner, and we are committed to addressing your concerns effectively. For any assistance or to discuss your issues, please feel free to email us at info@thelifescript.com, or you can also reach us by phone at +359888771442." />
+            <Typography> Should you find yourself dissatisfied with our Services, we encourage you to get in touch with us. Our aim is to settle matters in a friendly manner, and we are committed to addressing your concerns effectively. For any assistance or to discuss your issues, please feel free to email us at <a href="mailto:info@thelifescript.com" className={styles.url}>info@thelifescript.com</a>, or you can also reach us by phone at <a href="tel:+359888771442" className={styles.url}>+359888771442</a> .</Typography>
           </Box>
         </Box>
       </Box>
@@ -234,7 +234,7 @@ const TermsAndConditions = () => {
 export default TermsAndConditions;
 
 function PHeading({ text }) {
-  return <Typography sx={{ fontFamily: "Basely !important", fontSize: { md: "32px", sm: "24px", xs: "20px" }, margin: "50px 100px 20px 0", fontWeight: 600 }}>{text}</Typography>
+  return <Typography sx={{ fontFamily: "Basely !important", fontSize: { md: "32px", sm: "24px", xs: "20px" }, margin: { md: "50px 100px 20px 0", xs: "30px 0 10px" }, fontWeight: 600 }}>{text}</Typography>
 }
 
 function Text({ text, margin }) {
@@ -242,5 +242,5 @@ function Text({ text, margin }) {
 }
 
 function Point({ title, text }) {
-  return <Box sx={{ marginBottom: "20px" }}><Typography sx={{ fontWeight: "bold", marginBottom: "5px" }}>{title}</Typography> <Typography>{text}</Typography></Box>
+  return <Box sx={{ marginBottom: { md: "20px", xs: "10px" } }}><Typography sx={{ fontWeight: "bold", marginBottom: "5px" }}>{title}</Typography> <Typography>{text}</Typography></Box>
 }
