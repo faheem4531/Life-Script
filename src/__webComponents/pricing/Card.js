@@ -81,7 +81,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
       id={id}
       onMouseOver={() => handleHover(id)}
     >
-      <Box sx={{ padding: { lg: "39px 45px 85px", md: "35px 20px 85px", sm: "39px 45px 85px", xs: "35px 25px 80px" } }}>
+      <Box sx={{ padding: { lg: "39px 30px 85px 45px", md: "35px 20px 85px", sm: "39px 45px 85px", xs: "35px 25px 80px" } }}>
         <Box sx={{
           borderRadius: "4px", backgroundColor: "#E7E7E7", padding: "4px 8px", display: "inline", color: "#3E4F3C", fontFamily: "Avenir"
         }}
