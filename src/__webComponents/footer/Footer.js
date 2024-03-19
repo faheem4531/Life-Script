@@ -67,7 +67,7 @@ const Footer = () => {
             <Link href="/termsOfUse">
               <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Terms and conditions</Typography>
             </Link>
-            <Link href="/">
+            <Link href="/privacyPolicy">
               <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Privacy Policy</Typography>
             </Link>
           </Box>
