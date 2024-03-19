@@ -58,13 +58,13 @@ const Footer = () => {
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>HELP</Typography>
-            <Link href="/">
+            <Link href="/termsOfUse">
               <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Contact Us</Typography>
             </Link>
             <Link href="/faqs">
               <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>FAQ</Typography>
             </Link>
-            <Link href="/">
+            <Link href="/termsOfUse">
               <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Terms and conditions</Typography>
             </Link>
             <Link href="/">
