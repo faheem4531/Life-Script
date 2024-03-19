@@ -105,6 +105,7 @@ export async function bookCoverApi(data: {
   byLine: string;
   color: string;
   image: string;
+  coverPagePhoto: string;
 }) {
   try {
     const res = await api.post("/book-cover", data);
@@ -126,6 +127,7 @@ export async function updateBookCoverApi(data: {
   byLine: string;
   color: string;
   image: string;
+  coverPagePhoto: string;
 }) {
   try {
     const payload = {
@@ -135,6 +137,7 @@ export async function updateBookCoverApi(data: {
       color: data.color,
       image: data.image,
       coverNumber: data.CoverNumber,
+      coverPagePhoto: data.coverPagePhoto,
     };
     const res = await api.patch(`/book-cover/${data.id}`, payload);
     return res;

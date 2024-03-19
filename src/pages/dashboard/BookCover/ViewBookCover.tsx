@@ -3,8 +3,9 @@ import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
+
 import { font } from "../../../styles/font";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -15,6 +16,7 @@ const ViewBookCover = () => {
   const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const router = useRouter();
+
   const coverData = useSelector(selectCoverData);
   const { CoverNumber } = router.query;
   const [title, setTitle] = useState("");
@@ -22,6 +24,8 @@ const ViewBookCover = () => {
   const [subtitle, setSubtitle] = useState("");
   const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
+  const [finalCover, setFinalCover] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const elementRef = useRef(null);
 
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
@@ -32,9 +36,11 @@ const ViewBookCover = () => {
     name,
     imgUrl,
     color,
+    finalCover,
     spine = 6
   ) => {
-    const logo = "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
+    const logo =
+      "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
     const tail = spine;
@@ -48,12 +54,12 @@ const ViewBookCover = () => {
     pdf.addFileToVFS("WorkSans-normal.ttf", font);
 
     pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
-  
+
     // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
 
-    const text2 = subtitle?.toUpperCase();
+    const text2 = subtitle?.toUpperCase(); //bookName
     const text1 = title?.toUpperCase();
-    const writter = name?.toUpperCase();
+    const writter = name?.toUpperCase(); //Author name
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
     // Section 1:
@@ -74,18 +80,25 @@ const ViewBookCover = () => {
     // const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
     const textCenter = pageWidth + tail / 2 - 1.3;
 
+    //bookName
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(255, 255, 255);
+      // pdf.setTextColor(255, 255, 255);
+      if (CoverNumber === "5") {
+        pdf.setTextColor(255, 255, 255);
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
 
     pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
-    pdf.setTextColor(255, 255, 255);
+    pdf.setTextColor(0, 0, 0);
     pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
 
     y = y + 6;
@@ -94,44 +107,105 @@ const ViewBookCover = () => {
       const char = writter[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(255, 255, 255);
+      // pdf.setTextColor(255, 255, 255);
+      if (CoverNumber === "5") {
+        pdf.setTextColor(255, 255, 255);
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      // pdf.setTextColor(0, 0, 0);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
+
     const logoSize = tail < 22 ? tail - 3 : 20;
     const tailcenter = pageWidth + (tail - logoSize) / 2;
-    pdf.addImage(logo, "pnf", tailcenter, 225, logoSize, logoSize);
+    pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
 
     // Section 3:
+    // pdf.setFillColor(bgcolor);
+    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+    // const centerX = pageWidth + tail + pageWidth / 2;
+
+    // // 1st Text: "A good book" with font size 16px
+    // pdf.setFontSize(16);
+    // pdf.setFont("WorkSans");
+    // pdf.setTextColor(255, 255, 255);
+    // pdf.text(text1, centerX, 50.8, { align: "center" });
+
+    // // 2nd Text: "New Book" font size 22px, bold, and underlined
+    // pdf.setFontSize(30);
+    // pdf.setFont("WorkSans");
+    // pdf.setTextColor(255, 255, 255);
+    // pdf.text(text2, centerX, 66.04, {
+    //   align: "center",
+    // }); // Convert inches to millimeters
+
+    // const imgWidth = 140; // Convert inches to millimeters
+    // const imgHeight = 80; // Convert inches to millimeters
+    // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+    // const yPos = 87; // Convert inches to millimeters
+    // pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
+
+    // // 4th Text: "- good book -" font size 16px
+    // pdf.setFont("WorkSans");
+    // pdf.setTextColor(255, 255, 255);
+    // pdf.setFontSize(16);
+    // pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
+
+    //Mypdf section4
+    // const svgComponentWidth = pageWidth;
+    // const svgComponentHeight = pdfHeight;
+
+    // // Calculate the position to center the SVG component within Section 3
+    // const svgComponentX = pageWidth + tail;
+    // const svgComponentY = 0;
+
+    // // Call the function to add your SVG component to the PDF
+    // await addSvgComponentToPdf(
+    //   pdf,
+    //   svgComponentX,
+    //   svgComponentY,
+    //   svgComponentWidth,
+    //   svgComponentHeight
+    // );
+
+    // pdf.setFillColor(bgcolor);
+    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+    // const centerX = pageWidth + tail + pageWidth / 2;
+    // const yPos = 20;
+
+    // const svgElement = renderToStaticMarkup(<Cover1 />);
+
+    // saveSvgAsPng(svgElement, "familytree.png", {
+    //   scale: 1,
+    //   backgroundColor: "#FFFFFF",
+    // }).then((data) => {
+    //   console.log("data", data);
+    //   // uploadImageonCloud(data);
+    // });
+
+    // const svgImage = await convertSvgToImage();
+
+    // pdf.setFillColor(bgcolor);
+    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+    // const centerX = pageWidth + tail + pageWidth / 2;
+
+    // const imgWidth = pageWidth; // Convert inches to millimeters
+    // const imgHeight = pageWidth; // Convert inches to millimeters
+    // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+    // const yPos = 87; // Convert inches to millimeters
+    // pdf.addImage(svgPng, "png", centerX, 0, imgWidth, imgHeight);
+    // console.log("svg", svgPng);
+    // pdf.addImage(svgPng, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
+
+    // pdf.setFillColor(bgcolor);
+    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+
     pdf.setFillColor(bgcolor);
     pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
     const centerX = pageWidth + tail + pageWidth / 2;
-
-    // 1st Text: "A good book" with font size 16px
-    pdf.setFontSize(16);
-    pdf.setFont("WorkSans");
-    pdf.setTextColor(255, 255, 255);
-    pdf.text(text1, centerX, 50.8, { align: "center" });
-
-    // 2nd Text: "New Book" font size 22px, bold, and underlined
-    pdf.setFontSize(30);
-    pdf.setFont("WorkSans");
-    pdf.setTextColor(255, 255, 255);
-    pdf.text(text2, centerX, 66.04, {
-      align: "center",
-    }); // Convert inches to millimeters
-
-    const imgWidth = 140; // Convert inches to millimeters
-    const imgHeight = 80; // Convert inches to millimeters
-    const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-    const yPos = 87; // Convert inches to millimeters
-    pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
-
-    // 4th Text: "- good book -" font size 16px
-    pdf.setFont("WorkSans");
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(16);
-    pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
+    pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
 
     pdf.save("my_document2.pdf");
   };
@@ -144,7 +218,8 @@ const ViewBookCover = () => {
     color,
     spine = 6
   ) => {
-    const logo = "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
+    const logo =
+      "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
     const tail = spine;
@@ -245,11 +320,25 @@ const ViewBookCover = () => {
     pdf.setFontSize(16);
     pdf.text(`-   ${writter}   -`, centerX, 215, { align: "center" }); // Convert inches to millimeters
 
+    // pdf.setFillColor(bgColor);
+    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+    // const centerX = pageWidth + tail + pageWidth / 2;
+    // const yPos = 20;
+
+    // const svgString = `<svg id="mysvg" width="100" height="100">this is new</svg>`;
+
+    // pdf.text(svgString, centerX, yPos, {
+    //   // Include SVG string with width and height
+    //   // Additional styling options for the SVG element can be added here
+    // });
+
     pdf.save("my_document.pdf");
   };
 
   useEffect(() => {
-    dispatch(getBookCover());
+    dispatch(getBookCover()).then((res) => {
+      setIsLoading(false);
+    });
   }, []);
 
   useEffect(() => {
@@ -259,18 +348,21 @@ const ViewBookCover = () => {
       setSubtitle(coverData.subTitle);
       setImageLink(coverData.image);
       setSelectedColor(coverData.color);
+      setFinalCover(coverData.coverPagePhoto);
     }
   }, [coverData]);
 
   return (
     <div>
       <Layout>
+        {/* <Cover1 id="mysvg" /> */}
         <Box
           sx={{
             p: { md: "0px", xs: "10px 20px" },
           }}
         >
           <SelectBookCoverHeader discription={`${t("BookCover.BookCover")}`} />
+
           <Box
             display="flex"
             columnGap="30px"
@@ -285,22 +377,32 @@ const ViewBookCover = () => {
                 btnText={`${t("BookCoverCard.viewPdf")}`}
                 fontSize={{ xs: "12px", md: "16px" }}
                 border="1px solid #197065"
-                onClick={() =>
-                  CoverNumber.toString() === "2"
-                    ? generatePDFTwo(
-                        byline,
-                        title,
-                        subtitle,
-                        imageLink,
-                        selectedColor
-                      )
-                    : generatePDFOne(
-                        byline,
-                        title,
-                        subtitle,
-                        imageLink,
-                        selectedColor
-                      )
+                onClick={
+                  () =>
+                    generatePDFOne(
+                      byline,
+                      title,
+                      subtitle,
+                      imageLink,
+                      selectedColor,
+                      finalCover
+                    )
+                  // finalGetPdf()
+                  // CoverNumber.toString() === "2"
+                  //   ? generatePDFTwo(
+                  //       byline,
+                  //       title,
+                  //       subtitle,
+                  //       imageLink,
+                  //       selectedColor
+                  //     )
+                  //   : generatePDFOne(
+                  //       byline,
+                  //       title,
+                  //       subtitle,
+                  //       imageLink,
+                  //       selectedColor
+                  //     )
                 }
                 width={"180px"}
               />
@@ -348,6 +450,8 @@ const ViewBookCover = () => {
                   Byline={byline}
                   droppedImage={imageLink}
                   ColourPalette={selectedColor}
+                  finalCover={finalCover}
+                  isLoading={isLoading}
                 />
               </Box>
             </Box>

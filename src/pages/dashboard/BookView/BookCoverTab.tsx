@@ -26,6 +26,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const [spineSize, setSpineSize] = useState(null);
   const coverData = useSelector(selectCoverData);
   const [loading, setLoading] = useState(false);
+  const [finalCover, setFinalCover] = useState("");
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
@@ -48,12 +49,11 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     color,
     spine = 6
   ) => {
-
     const logo =
       "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
-    const tail =  spine <6 ? 6 : spine;
+    const tail = spine < 6 ? 6 : spine;
     const pdfWidth = pageWidth + pageWidth + tail;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
@@ -116,35 +116,40 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
 
     // Section 3:
+    // pdf.setFillColor(bgcolor);
+    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+    // const centerX = pageWidth + tail + pageWidth / 2;
+
+    // // 1st Text: "A good book" with font size 16px
+    // pdf.setFontSize(16);
+    // pdf.setFont("WorkSans");
+    // pdf.setTextColor(255, 255, 255);
+    // pdf.text(text1, centerX, 50.8, { align: "center" });
+
+    // // 2nd Text: "New Book" font size 22px, bold, and underlined
+    // pdf.setFontSize(30);
+    // pdf.setFont("WorkSans");
+    // pdf.setTextColor(255, 255, 255);
+    // pdf.text(text2, centerX, 66.04, {
+    //   align: "center",
+    // }); // Convert inches to millimeters
+
+    // const imgWidth = 140; // Convert inches to millimeters
+    // const imgHeight = 80; // Convert inches to millimeters
+    // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+    // const yPos = 87; // Convert inches to millimeters
+    // pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
+
+    // // 4th Text: "- good book -" font size 16px
+    // pdf.setFont("WorkSans");
+    // pdf.setTextColor(255, 255, 255);
+    // pdf.setFontSize(16);
+    // pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
+
     pdf.setFillColor(bgcolor);
     pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
     const centerX = pageWidth + tail + pageWidth / 2;
-
-    // 1st Text: "A good book" with font size 16px
-    pdf.setFontSize(16);
-    pdf.setFont("WorkSans");
-    pdf.setTextColor(255, 255, 255);
-    pdf.text(text1, centerX, 50.8, { align: "center" });
-
-    // 2nd Text: "New Book" font size 22px, bold, and underlined
-    pdf.setFontSize(30);
-    pdf.setFont("WorkSans");
-    pdf.setTextColor(255, 255, 255);
-    pdf.text(text2, centerX, 66.04, {
-      align: "center",
-    }); // Convert inches to millimeters
-
-    const imgWidth = 140; // Convert inches to millimeters
-    const imgHeight = 80; // Convert inches to millimeters
-    const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-    const yPos = 87; // Convert inches to millimeters
-    pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
-
-    // 4th Text: "- good book -" font size 16px
-    pdf.setFont("WorkSans");
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(16);
-    pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
+    pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
 
     const pdfContent = pdf.output("datauristring"); // Get the PDF content as a data URI
 
@@ -163,7 +168,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
-    const tail = spine <6 ? 6 : spine;
+    const tail = spine < 6 ? 6 : spine;
     const pdfWidth = pageWidth + pageWidth + tail;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
@@ -387,6 +392,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       setSubtitle(coverData.subTitle);
       setImageLink(coverData.image);
       setSelectedColor(coverData.color);
+      setFinalCover(coverData.coverPagePhoto);
     }
   }, [coverData]);
 
@@ -404,6 +410,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
           Byline={byline}
           droppedImage={imageLink}
           ColourPalette={selectedColor}
+          finalCover={finalCover}
         />
         <Box
           sx={{

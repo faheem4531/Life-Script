@@ -1,6 +1,10 @@
 import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
-function Cover6(props: SvgIconProps) {
+function Cover6(props: any) {
+  const newStyle = props.filters
+    ? props.filters
+    : "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))";
+
   return (
     <SvgIcon
       {...props}
@@ -9,8 +13,11 @@ function Cover6(props: SvgIconProps) {
       viewBox="0 0 1772 2480"
       fill="none"
       style={{
-        filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+        filter: { newStyle },
       }}
+      // style={{
+      //   filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+      // }}
     >
       <g clip-path="url(#clip0_2029_388x)">
         <rect width="1772" height="2480" fill="url(#pattern0x)" />

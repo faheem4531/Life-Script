@@ -1,13 +1,13 @@
 "use client";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import BlogDetailPage from "./website/blog/blogDetails"
+import BlogDetailPage from "./blog/blogDetails"
 
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 import AuthPage from "./_auth/Auth";
-import HomePage from './website/homePage';
-import FeaturesPage from './website/features';
-import GiftingPage from "./website/gifting"
+import HomePage from './homePage';
+import FeaturesPage from './features';
+import GiftingPage from "./gifting"
 
 const inter = Inter({ subsets: ["latin"] });
 
