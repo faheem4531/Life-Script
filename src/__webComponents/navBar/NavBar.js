@@ -135,9 +135,9 @@ const NavBar = ({ color, logo }) => {
               onClick={handleButtonClick}
             />
           </Link>
-          <Box sx={{ display: { md: "inline-block", sm: "none" } }}>
+          {/* <Box sx={{ display: { md: "inline-block", sm: "none" } }}>
             <LanguageOption />
-          </Box>
+          </Box> */}
         </Box>
       </Box>
 
