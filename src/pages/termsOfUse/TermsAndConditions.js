@@ -111,7 +111,7 @@ const TermsAndConditions = () => {
           </Box>
           <Typography sx={{ margin: { sm: "80px 0 50px", xs: "40px 0 30px" } }}>Welcome to Lifescript, a platform dedicated to capturing and preserving life stories. By accessing and using the services provided by Lifescript (&quot;Service&quot;), you engage with Lifescript Ltd., located at 16 Avgusta Trayana, Stara Zagora, Bulgaria (&quot;Company&quot;).This document, the Terms of Use (&quot;Terms&quot;), governs your access to and use of our Services, including our website located at www.thelifescript.com (&quot;Website&quot;). These Terms form a binding contract between you and Lifescript Ltd. If you do not agree to these Terms, you should not use the Lifescript Service</Typography>
           <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>Definitions and Key Terms</Typography>
-          <Typography sx={{ margin: "20px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
+          <Typography sx={{ margin: "10px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
 
           <Box sx={{ maxWidth: "900px" }}>
 
@@ -123,7 +123,7 @@ const TermsAndConditions = () => {
               />)}
             </Box>
             <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>General Terms of Use</Typography>
-            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 50px", xs: "10px 0 30px 30px" } }}>
               {generalTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
