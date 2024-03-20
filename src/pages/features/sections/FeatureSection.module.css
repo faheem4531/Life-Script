@@ -7,8 +7,8 @@
 }
 
 .gif{
-  max-width: 700px;
-  max-height: 445px;
+  width: 700px;
+  height: auto;
 }
 .featureBg{
   background-image: url(../../../__webAssets/pngs/bg-top-bottom.png);
@@ -35,7 +35,6 @@
 
   .gif{
     width: 550px ;
-    height: 360px ;
   }
 
   .halfbg{
@@ -53,7 +52,6 @@
 
   .gif{
     width: 550px;
-    height: 360px;
   }
 
   .buttonBox{
@@ -82,7 +80,7 @@
   .gif{
     width: 100%;
     min-height: 230px;
-    height: 100%;
+    height: auto;
   }
 
   .buttonBox{
