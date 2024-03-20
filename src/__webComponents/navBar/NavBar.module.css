@@ -25,12 +25,12 @@
   }
 }
 
-@media screen and (max-width: 1440px) {
+/* @media screen and (max-width: 1440px) {
   .logo {
     width: 220px !important;
     height: 35px !important;
   }
-}
+} */
 
 @media screen and (max-width: 1200px) and  (min-width: 900px) {
   .logo {

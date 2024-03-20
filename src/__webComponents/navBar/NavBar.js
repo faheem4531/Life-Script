@@ -47,7 +47,9 @@ const NavBar = ({ color, logo }) => {
       bgcolor: { md: "none", sm: mobileState && "#F3ECDA", xs: mobileState && "#F3ECDA" },
       zIndex: "10"
     }}>
-      {!mobileState && <Image src={logo} alt="Logo" className={styles.logo} />}
+      <Link href="/">
+        {!mobileState && <Image src={logo} alt="Logo" className={styles.logo} />}
+      </Link>
 
       <Image src={pathname === '/' ? Menu : MenuW && (mobileState ? Menu : MenuW)} alt="icon" onClick={handleMenu} className={styles.menu} />
 

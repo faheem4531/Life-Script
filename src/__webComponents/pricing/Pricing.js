@@ -57,7 +57,7 @@ const Pricing = () => {
         <PrimaryHeading lineWidth="140px" heading="Our Pricing" marked="Plan" showStyle={false} />
 
         <Box sx={{ marginTop: { xs: "15px" }, fontSize: { sm: "24px", xs: "16px" }, width: { sm: "60%", xs: "90%" }, fontFamily: "Avenir" }}>
-          Each package comes with a one-year Lifescript subscription,
+          Each package comes with a one-year LifeScript subscription,
           a premium full-color hardcover book, and <Typography sx={{ fontSize: "24px", fontWeight: 900, display: "inline" }}>free shipping.</Typography>
         </Box>
       </Box>
