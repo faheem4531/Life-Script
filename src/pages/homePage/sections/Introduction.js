@@ -23,7 +23,7 @@ const Introduction = () => {
     const element = document.querySelector(".multiple-text");
     if (element) {
       const typed = new Typed(element, {
-        strings: ["Create", "Gifts"],
+        strings: ["Create", "Gift"],
         typeSpeed: 100,
         backSpeed: 100,
         delaySpeed: 100,
