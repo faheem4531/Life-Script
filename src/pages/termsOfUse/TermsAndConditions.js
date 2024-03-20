@@ -106,15 +106,15 @@ const TermsAndConditions = () => {
 
         <Box sx={{ margin: { md: "200px 0 250px", sm: "150px 50px", xs: "120px 20px" }, maxWidth: { lg: "1050px", md: "850px", sm: "100%" } }}>
           <Box sx={{ textAlign: "center" }}>
-            <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontFamily: "Basely", fontWeight: 600 }}>Terms of Use</Typography>
+            <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontFamily: "Basely !important", fontWeight: 500 }}>Terms of Use</Typography>
             <Typography>Updated at January 30th, 2024</Typography>
           </Box>
           <Typography sx={{ margin: { sm: "80px 0 50px", xs: "40px 0 30px" } }}>Welcome to Lifescript, a platform dedicated to capturing and preserving life stories. By accessing and using the services provided by Lifescript (&quot;Service&quot;), you engage with Lifescript Ltd., located at 16 Avgusta Trayana, Stara Zagora, Bulgaria (&quot;Company&quot;).This document, the Terms of Use (&quot;Terms&quot;), governs your access to and use of our Services, including our website located at www.thelifescript.com (&quot;Website&quot;). These Terms form a binding contract between you and Lifescript Ltd. If you do not agree to these Terms, you should not use the Lifescript Service</Typography>
-          <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>Definitions and Key Terms</Typography>
+
+
+          <PHeading text="Definitions and Key Terms" />
           <Typography sx={{ margin: "10px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
-
           <Box sx={{ maxWidth: "900px" }}>
-
             <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
               {keyTerms.map((item, index) => <Point
                 key={index}
@@ -122,7 +122,8 @@ const TermsAndConditions = () => {
                 text={item.text}
               />)}
             </Box>
-            <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>General Terms of Use</Typography>
+
+            <PHeading text="General Terms of Use" />
             <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 50px", xs: "10px 0 30px 30px" } }}>
               {generalTerms.map((item, index) => <Point
                 key={index}
@@ -234,7 +235,7 @@ const TermsAndConditions = () => {
 export default TermsAndConditions;
 
 function PHeading({ text }) {
-  return <Typography sx={{ fontFamily: "Basely !important", fontSize: { md: "32px", sm: "24px", xs: "20px" }, margin: { md: "50px 100px 20px 0", xs: "30px 0 10px" }, fontWeight: 600 }}>{text}</Typography>
+  return <Typography sx={{ fontFamily: "Avenir8 !important", fontSize: { md: "32px", sm: "24px", xs: "20px" }, margin: { md: "50px 100px 20px 0", xs: "30px 0 10px" } }}>{text}</Typography>
 }
 
 function Text({ text, margin }) {
@@ -242,5 +243,14 @@ function Text({ text, margin }) {
 }
 
 function Point({ title, text }) {
-  return <Box sx={{ marginBottom: { md: "20px", xs: "10px" } }}><Typography sx={{ fontWeight: "bold", marginBottom: "5px" }}>{title}</Typography> <Typography>{text}</Typography></Box>
+  return <Box sx={{
+    marginBottom: { md: "20px", xs: "10px" }
+  }}>
+    <Typography sx={{
+      fontFamily: "Avenir8 !important",
+      marginBottom: "5px"
+    }}>{title}
+    </Typography>
+    <Typography>{text}</Typography>
+  </Box>
 }
