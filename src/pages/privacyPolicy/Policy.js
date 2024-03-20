@@ -102,16 +102,16 @@ const Policy = () => {
 
         <Box sx={{ margin: { md: "200px 0 250px", sm: "150px 50px", xs: "120px 20px" }, maxWidth: { lg: "1050px", md: "850px", sm: "100%" } }}>
           <Box sx={{ textAlign: "center" }}>
-            <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontFamily: "Basely", fontWeight: 600 }}>PRIVACY POLICY </Typography>
+            <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontFamily: "Basely !important", fontWeight: 500 }}>PRIVACY POLICY </Typography>
             <Typography>Updated at January 29st, 2024 </Typography>
           </Box>
           <Typography sx={{ margin: { sm: "80px 0 50px", xs: "40px 0 30px" } }}>
             Lifescript (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Lifescript.
             This Privacy Policy applies to our website, and its associated subdomains (collectively, our “Service”) alongside our application, Lifescript. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.
           </Typography>
-          <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>Definitions and Key Terms</Typography>
-          <Typography sx={{ margin: "10px 0 20px" }}>To help explain things as clearly as possible in this Privacy Policy, every time any of these terms are referenced, are strictly defined as: </Typography>
 
+          <PHeading text="Definitions and Key Terms" />
+          <Typography sx={{ margin: "10px 0 20px" }}>To help explain things as clearly as possible in this Privacy Policy, every time any of these terms are referenced, are strictly defined as: </Typography>
           <Box sx={{ maxWidth: "900px" }}>
             <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
               {keyTerms.map((item, index) => <Point
@@ -120,8 +120,8 @@ const Policy = () => {
                 text={item.text}
               />)}
             </Box>
-            <Typography sx={{ fontSize: "18px", fontWeight: 700 }}>User Information Collected and Its Usage </Typography>
 
+            <PHeading text="User Information Collected and Its Usage " />
             <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 50px", xs: "10px 0 30px 30px" } }}>
               <Point title="Scope and Collection of Personal Information:" text="Lifescript diligently adheres to the principles of data protection and privacy. In the regular course of business, we collect a range of personal information from our users. This information is garnered through multiple channels: when users register for an account, participate in surveys, enter contests, solicit customer support, engage with our Services, or interact with our website in any capacity. The types of personal information collected include, but are not limited to, names, mailing addresses, email addresses, telephone numbers, credit card details, and other related data. This data collection occurs both directly (e.g., via account registration or survey participation) and indirectly (e.g., through technological means like browser or device analytics when users access our website). " />
               <Point title="Utilization of Information: " text=" The personal information collected is utilized in strict accordance with this Privacy Policy. The primary objectives include:" />
@@ -295,7 +295,7 @@ The Data Protection Principles include requirements such as: " />
 export default Policy;
 
 function PHeading({ text }) {
-  return <Typography sx={{ fontFamily: "Basely !important", fontSize: { md: "32px", sm: "24px", xs: "20px" }, margin: { md: "50px 100px 20px 0", xs: "30px 0 10px" }, fontWeight: 600 }}>{text}</Typography>
+  return <Typography sx={{ fontFamily: "Avenir8 !important", fontSize: { md: "32px", sm: "24px", xs: "20px" }, margin: { md: "50px 100px 20px 0", xs: "30px 0 10px" }, fontWeight: 600 }}>{text}</Typography>
 }
 
 function Text({ text, margin }) {
@@ -303,5 +303,14 @@ function Text({ text, margin }) {
 }
 
 function Point({ title, text }) {
-  return <Box sx={{ marginBottom: { md: "20px", xs: "10px" } }}><Typography sx={{ fontWeight: "bold", marginBottom: "5px" }}>{title}</Typography> <Typography>{text}</Typography></Box>
+  return <Box sx={{
+    marginBottom: { md: "20px", xs: "10px" }
+  }}>
+    <Typography sx={{
+      fontFamily: "Avenir8 !important",
+      marginBottom: "5px"
+    }}>{title}
+    </Typography>
+    <Typography>{text}</Typography>
+  </Box>
 }
