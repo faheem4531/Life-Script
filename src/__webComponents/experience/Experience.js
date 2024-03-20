@@ -18,7 +18,7 @@ const Experience = () => {
       </Box>
 
       <Box sx={{
-        margin: { lg: "220px 60px 200px 130px", md: "100px 40px 100px 70px" }, display: "flex", justifyContent: "center",
+        margin: { lg: "220px 60px 80px 130px", md: "100px 40px 70px 70px" }, display: "flex", justifyContent: "center",
         columnGap: { lg: "140px", md: "70px" }, alignItems: "center"
       }}>
         <CustomizedAccordions />

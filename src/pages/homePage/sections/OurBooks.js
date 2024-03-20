@@ -30,8 +30,8 @@ const OurBooks = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 3000,
-    autoplaySpeed: 3000,
+    speed: 7000,
+    autoplaySpeed: 1000,
     cssEase: "linear",
     responsive: [
       {
@@ -107,8 +107,8 @@ const OurBooks = () => {
           </Box>
         </Slider>
 
-        <Image src={Left} alt="icon" className={styles.leftAero} onClick={goToPrevSlide} />
-        <Image src={Right} alt="icon" className={styles.rightAero} onClick={goToNextSlide} />
+        {/* <Image src={Left} alt="icon" className={styles.leftAero} onClick={goToPrevSlide} />
+        <Image src={Right} alt="icon" className={styles.rightAero} onClick={goToNextSlide} /> */}
       </Box>
 
     </Box>
