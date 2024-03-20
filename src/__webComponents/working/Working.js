@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import PrimaryHeading from "../headings/PrimaryHeading";
 import styles from "../ComponentsStyles.module.css"
 import Points from "./Points";
-import Line from "@/__webAssets/pngs/under-line-long.png"
+import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
 
 const Working = ({ data, heading, subHeading = false, marked = false }) => {

@@ -9,7 +9,7 @@ const Input = ({ width, height, backgroundColor, fontSize, placeHolder, img }) =
     backgroundColor: "transparent",
     color: "#3e4f3c",
     height: "55px",
-    width: "70%"
+    width: "100%",
   };
 
   return <Box sx={{

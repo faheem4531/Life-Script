@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import LeftStyle from "@/__webAssets/pngs/left-style.png"
 import RightStyle from "@/__webAssets/pngs/right-style.png"
 import Image from "next/image";
-import Line from "@/__webAssets/pngs/under-line-long.png"
+import Line from "@/__webAssets/svgs/line-orange.svg"
 import styles from "../ComponentsStyles.module.css"
 
 const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showStyle, color, lineHeight, left = LeftStyle, right = RightStyle, lineWidth, removeStyleMbl = false, marked }) => {

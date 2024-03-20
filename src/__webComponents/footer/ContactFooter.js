@@ -4,8 +4,10 @@ import styles from "../ComponentsStyles.module.css"
 import Smily from "@/__webAssets/svgs/smily.svg"
 import Button from "../button/Button"
 import Input from "../input/Input"
+import Line from "@/__webAssets/svgs/line-white.svg"
 
-const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape }) => {
+
+const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape, marked, lineWidth }) => {
   return (
     <Box
       sx={{
@@ -19,8 +21,27 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape 
       }}
       className={styles.contactFooterBox}
     >
-      <Typography sx={{ fontSize: { md: "54px", sm: "44px", xs: "32px" }, textAlign: "center", fontWeight: 500, fontFamily: "Besley !important" }}>{title}</Typography>
-      <Typography sx={{ fontSize: "16px", textAlign: "center", fontWeight: 500, marginTop: "30px", fontFamily: "Avenir" }}>{subTitle}</Typography>
+      <Box sx={{
+        fontSize: { md: "54px", sm: "44px", xs: "32px" },
+        textAlign: "center",
+        fontWeight: 500,
+        fontFamily: "Besley !important",
+      }}
+      >
+        {title} {" "}
+        <Box sx={{ display: "inline", position: "relative" }}>
+          {marked}
+          <Box sx={{ maxWidth: "180px", position: "absolute", right: { sm: "-10px", xs: "-10px" }, bottom: { sm: "-30px", xs: "-20px" } }}>
+            <Image src={Line} alt="line" className={styles.footerLine} width={lineWidth} />
+          </Box>
+        </Box>
+
+
+      </Box>
+
+      <Typography sx={{ fontSize: "16px", textAlign: "center", fontWeight: 500, marginTop: "30px", fontFamily: "Avenir" }}>
+        {subTitle}
+      </Typography>
 
       <Box sx={{
         display: "flex",

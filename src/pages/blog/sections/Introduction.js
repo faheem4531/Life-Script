@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import styles from "./BlogSection.module.css"
 
 import Logo from "@/__webAssets/svgs/logo-footer.svg"
-import Line from "@/__webAssets/pngs/under-line-long.png"
+import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
 
 const IntroductionBlog = () => {

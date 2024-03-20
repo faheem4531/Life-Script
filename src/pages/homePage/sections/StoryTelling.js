@@ -10,7 +10,7 @@ import StoryImage3 from "@/__webAssets/pngs/story-3.png"
 import StoryImage4 from "@/__webAssets/pngs/story-4.png"
 import Button from "@/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
-import Line from "@/__webAssets/pngs/under-line-long.png"
+import Line from "@/__webAssets/svgs/line-orange.svg"
 import Link from "next/link";
 
 const StoryTelling = () => {
