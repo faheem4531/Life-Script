@@ -10,7 +10,6 @@ const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, bg
     borderRadius: borderRadius || '2px',
     backgroundColor: backgroundColor || '#E1683B',
     color: "#ffffff",
-    fontWeight: 500,
     border: 'none',
     display: 'flex',
     justifyContent: 'center',
@@ -19,7 +18,7 @@ const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, bg
     width: width,
     height: height,
     fontSize: "18px",
-    fontFamily: "Avenir"
+    fontFamily: "Avenir5"
   };
 
   const handleHover = {

@@ -27,7 +27,7 @@ const PricingDetails = ({ heading, cardsDetail, marked }) => {
 
 export default PricingDetails;
 
-function DetailCard({ header, logo, points, bgColor, sCase }) {
+function DetailCard({ header, logo = false, points, bgColor, sCase }) {
   return (
     <Box sx={{
       maxWidth: { lg: "405px", md: "320px", sm: "405px", xs: "325px" },
@@ -44,7 +44,7 @@ function DetailCard({ header, logo, points, bgColor, sCase }) {
         textAlign: "center",
         fontSize: "20px",
         color: "#fff",
-        fontWeight: 800,
+        fontFamily: "Avenir8",
         borderRadius: "8px 8px 0 0"
       }}
         bgcolor={bgColor}>
@@ -63,6 +63,7 @@ function DetailCard({ header, logo, points, bgColor, sCase }) {
             display: "flex",
             fontSize: { lg: "16px", md: "14px", sm: "16px", xs: "16px" },
             fontWeight: 800,
+            fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important"
           }}
           alignItems={index === 1 && sCase ? "" : "center"}
         >

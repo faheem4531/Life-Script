@@ -72,7 +72,7 @@ const Pricing = () => {
           handleHover={handleHover}
         />)}
       </Box>
-      <Typography sx={{ marginTop: "20px", fontSize: "24px", fontWeight: 900, color: "#495845", textAlign: "center" }}>30 days money back guarantee </Typography>
+      <Typography sx={{ marginTop: "20px", fontSize: "24px", fontWeight: 900, color: "#495845", textAlign: "center", fontFamily: "Avenir8 !important" }}>30 days money back guarantee </Typography>
 
     </Box >
   )

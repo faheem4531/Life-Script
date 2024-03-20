@@ -42,39 +42,39 @@ const Footer = () => {
 
         <Box sx={{ display: "flex", columnGap: "45px" }}>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
-            <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>COMPANY</Typography>
+            <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir8 !important" }}>COMPANY</Typography>
             <Link href="/aboutUs">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>About Us</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>About Us</Typography>
             </Link>
             <Link href="/features">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Features</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Features</Typography>
             </Link>
             <Link href="/pricing">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Pricing</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Pricing</Typography>
             </Link>
             <Link href="/blog">
-              <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Blog</Typography>
+              <Typography sx={{ fontSize: "16px" }}>Blog</Typography>
             </Link>
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
-            <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir" }}>HELP</Typography>
+            <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir8 !important" }}>HELP</Typography>
             <Link href="/termsOfUse">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Contact Us</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Contact Us</Typography>
             </Link>
             <Link href="/faqs">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>FAQ</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>FAQ</Typography>
             </Link>
             <Link href="/termsOfUse">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px", fontFamily: "Avenir" }}>Terms and conditions</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Terms and conditions</Typography>
             </Link>
             <Link href="/privacyPolicy">
-              <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Privacy Policy</Typography>
+              <Typography sx={{ fontSize: "16px" }}>Privacy Policy</Typography>
             </Link>
           </Box>
         </Box>
       </Box >
 
-      <Box sx={{ textAlign: "center", padding: "23px 0", fontSize: { xs: "12px", sx: "14px" } }}>© Copyright  2024 LifeScript</Box>
+      <Box sx={{ textAlign: "center", padding: "23px 0", fontSize: { xs: "12px", sx: "14px" }, fontFamily: "Avenir" }}>© Copyright  2024 LifeScript</Box>
     </Box>
   )
 }

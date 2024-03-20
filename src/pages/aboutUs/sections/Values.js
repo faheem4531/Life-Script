@@ -92,8 +92,8 @@ function Value({ title, icon, detail }) {
     <Box sx={{ maxWidth: { lg: "440px", md: "380px", sm: "80%", xs: "100%" }, display: "flex", columnGap: "15px", margin: "50px 0 0" }}>
       <Image src={icon} alt="icon" />
       <Box>
-        <Typography sx={{ fontSize: "20px", fontWeight: 800, paddingBottom: "20px", }}><h3> {title}</h3></Typography>
-        <Typography sx={{ fontFamily: "Avenir" }}><h4>{detail}</h4></Typography>
+        <Typography sx={{ fontSize: "20px", fontFamily: "Avenir8 !important", paddingBottom: "20px", }}><h3> {title}</h3></Typography>
+        <Typography ><h4>{detail}</h4></Typography>
       </Box>
     </Box>
   )

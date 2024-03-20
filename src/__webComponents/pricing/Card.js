@@ -83,7 +83,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
     >
       <Box sx={{ padding: { lg: "39px 30px 85px 45px", md: "35px 20px 85px", sm: "39px 45px 85px", xs: "35px 25px 80px" } }}>
         <Box sx={{
-          borderRadius: "4px", backgroundColor: "#E7E7E7", padding: "4px 8px", display: "inline", color: "#3E4F3C", fontFamily: "Avenir"
+          borderRadius: "4px", backgroundColor: "#E7E7E7", padding: "4px 8px", display: "inline", color: "#3E4F3C", fontFamily: "Avenir5"
         }}
         >
           {category}
@@ -95,7 +95,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
           color: "#F4F4F4",
           marginLeft: "6px",
           display: "inline",
-          fontFamily: "Avenir"
+          fontFamily: "Avenir5"
         }}>
           Popular
         </Box>}
@@ -105,7 +105,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
           borderBottom: "1px solid #BFC4B5",
           padding: "10px 0",
           marginBottom: "34px",
-          fontFamily: "Avenir"
+          fontFamily: "Avenir8"
         }}
           className={styles.price}
         >
