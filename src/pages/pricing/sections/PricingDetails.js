@@ -5,6 +5,8 @@ import Image from "next/image";
 
 import RightStyle from "@/__webAssets/pngs/right-style2.png"
 import LeftStyle from "@/__webAssets/pngs/left-style2.png"
+import Yes from "@/__webAssets/svgs/check.svg"
+import No from "@/__webAssets/svgs/uncheck.svg"
 
 const PricingDetails = ({ heading, cardsDetail, marked }) => {
 
@@ -67,7 +69,14 @@ function DetailCard({ header, logo = false, points, bgColor, sCase }) {
           }}
           alignItems={index === 1 && sCase ? "" : "center"}
         >
-          {item} {index === 1 && sCase && <Typography sx={{ fontSize: "14px", marginLeft: "5px", lineHeight: "15px" }}> (initially 99$ but additional 40$ if you want full-color book)</Typography>}
+          {item === "Yes" ? (
+            <Image src={Yes} alt="tick" />
+          ) : item === "No" ? (
+            <Image src={No} alt="cross" />
+          ) : (
+            <span>{item}</span>
+          )}
+          {index === 1 && sCase && <Typography sx={{ fontSize: "14px", marginLeft: "5px", lineHeight: "15px" }}> (initially 99$ but additional 40$ if you want full-color book)</Typography>}
         </Box>)}
 
 
