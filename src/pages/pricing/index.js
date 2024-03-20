@@ -12,7 +12,7 @@ import Pricing from "@/__webComponents/pricing/Pricing";
 import Working from "@/__webComponents/working/Working";
 import Check from "@/__webAssets/svgs/check-square.svg"
 import PricingDetails from "./sections/PricingDetails";
-import StoryWorthy from "@/__webAssets/svgs/story-worthy-logo.svg"
+import StoryWorthy from "@/__webAssets/pngs/story-worthy-logo.png"
 
 const PricingPage = () => {
 
