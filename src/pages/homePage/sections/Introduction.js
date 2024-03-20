@@ -45,8 +45,7 @@ const Introduction = () => {
           fontSize: { lg: '60px', md: "50px", sm: "44px", xs: "32px" },
           lineHeight: { sm: '70px', xs: "37px" },
           fontFamily: "Besley !important",
-          minWidth: { md: "770px", sm: "550px", xs: "300px" },
-          maxWidth: { xs: "400px", sm: "100%" },
+          maxWidth: { sm: "700px", xs: "100%" },
           minHeight: { sm: "150px", xs: "100px" },
           zIndex: "10",
           position: "relative"
