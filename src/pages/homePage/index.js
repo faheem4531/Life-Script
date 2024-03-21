@@ -1,5 +1,6 @@
 'use client'
 
+import Head from 'next/head';
 import NavBar from "@/__webComponents/navBar/NavBar";
 import { Box } from "@mui/material";
 import Working from "@/__webComponents/working/Working";
@@ -46,37 +47,45 @@ const HomePage = () => {
   ]
 
   return (
-    <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-      <NavBar logo={Logo} color="#3E4F3C" />
-      <Introduction />
-      <Working data={pointsArray} heading=" How it" marked="works" />
-      <Suggestion />
-      <GifTab
-        heading="Surprise your loved one with LifeScript and let them transform their memories into a keepsake book."
-        button="Gift Now!!"
-        icon={Gift}
-      />
-      <StoryTelling />
-      <Reviews />
-      <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-        <Experience />
-      </Box>
-      <Pricing />
-      <OurBooks />
-      <Testimonial />
-      <GotQuestions />
-      <ContactFooter
-        title="Missed the moment? Set a"
-        marked="reminder!"
-        subTitle="Complete the form, and we'll send you a reminder as your loved one's special day approaches."
-        input1="Your email address"
-        input2="What’s the occasion?"
-        input3="When it’s happening?"
-        button="Remind Me"
-        shape={Shape}
-      />
-      <Footer />
-    </Box >
+    <>
+      <Head>
+        <title>Easily Create or Gift a Personal Autobiography Book - LifeScript</title>
+        <meta name="description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent." />
+      </Head>
+
+
+      <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
+        <NavBar logo={Logo} color="#3E4F3C" />
+        <Introduction />
+        <Working data={pointsArray} heading=" How it" marked="works" />
+        <Suggestion />
+        <GifTab
+          heading="Surprise your loved one with LifeScript and let them transform their memories into a keepsake book."
+          button="Gift Now!!"
+          icon={Gift}
+        />
+        <StoryTelling />
+        <Reviews />
+        <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
+          <Experience />
+        </Box>
+        <Pricing />
+        <OurBooks />
+        <Testimonial />
+        <GotQuestions />
+        <ContactFooter
+          title="Missed the moment? Set a"
+          marked="reminder!"
+          subTitle="Complete the form, and we'll send you a reminder as your loved one's special day approaches."
+          input1="Your email address"
+          input2="What’s the occasion?"
+          input3="When it’s happening?"
+          button="Remind Me"
+          shape={Shape}
+        />
+        <Footer />
+      </Box >
+    </>
   )
 }
 
