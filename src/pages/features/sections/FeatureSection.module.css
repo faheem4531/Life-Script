@@ -10,6 +10,7 @@
   width: 700px;
   height: auto;
 }
+
 .featureBg{
   background-image: url(../../../__webAssets/pngs/bg-top-bottom.png);
   background-repeat: no-repeat;
@@ -22,8 +23,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #F3ECDA;
-  height: 1100px !important;
-  margin-bottom: -80px;
+  height: 950px !important;
+  margin-bottom: -70px;
 }
 
 @media screen and (max-width:1200px) and (min-width:899px) {

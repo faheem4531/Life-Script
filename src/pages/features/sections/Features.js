@@ -100,7 +100,7 @@ export default FeaturesItems
 
 function DetailFeature({ logo, heading, details, flex, gif, button, bg = false }) {
 
-  const bgWidthLg = bg == true ? "900px" : "800px"
+  const bgWidthLg = bg == true ? "800px" : "700px"
   const bgWidthMd = bg == true ? "750px" : "700px"
 
   return (
