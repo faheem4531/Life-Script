@@ -1,5 +1,6 @@
 'use client'
 
+import Head from 'next/head';
 import { Box } from "@mui/material";
 import FeaturesIntroduction from "../../__webComponents/Introduction/Introduction";
 import FeaturesItems from "./sections/Features";
@@ -8,23 +9,31 @@ import ContactFooter from "@/__webComponents/footer/ContactFooter";
 
 const FeaturesPage = () => {
   return (
-    <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-      <FeaturesIntroduction
-        heading="Features That Make Your Storytelling Experience Fun and  "
-        keyWorld="Easy"
-      />
-      <FeaturesItems />
-      <ContactFooter
-        title="Still confused? Ask"
-        marked=" away!"
-        lineWidth={150}
-        input1="Your name"
-        input2="Your email address"
-        input3="What’s on your mind?"
-        button="Get in touch!"
-      />
-      <Footer />
-    </Box>
+    <>
+      <Head>
+        <title>Features That Make Your Storytelling Fun and Easy</title>
+        <meta name="description" content="Take advantage of our assisted editing, text formatting features, voice-to-text, family tree, automatic photo improvement, premium book covers and more." />
+      </Head>
+
+
+      <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
+        <FeaturesIntroduction
+          heading="Features That Make Your Storytelling Experience Fun and  "
+          keyWorld="Easy"
+        />
+        <FeaturesItems />
+        <ContactFooter
+          title="Still confused? Ask"
+          marked=" away!"
+          lineWidth={150}
+          input1="Your name"
+          input2="Your email address"
+          input3="What’s on your mind?"
+          button="Get in touch!"
+        />
+        <Footer />
+      </Box>
+    </>
   )
 }
 
