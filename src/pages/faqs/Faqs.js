@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import styles from "./Faq.module.css"
 import Image from "next/image";
 
-import Points from "@/__webAssets/pngs/qs-points.png"
+import Points from "@/__webAssets/svgs/qs-points.svg"
 
 const Faqs = () => {
 
