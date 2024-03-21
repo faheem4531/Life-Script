@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import RightStyle from "@/__webAssets/pngs/right-style2.png"
 import LeftStyle from "@/__webAssets/pngs/left-style2.png"
-import Yes from "@/__webAssets/svgs/check.svg"
-import No from "@/__webAssets/svgs/uncheck.svg"
+import Yes from "@/__webAssets/svgs/tick.svg"
+import No from "@/__webAssets/svgs/cross.svg"
 
 const PricingDetails = ({ heading, cardsDetail, marked }) => {
 
@@ -63,6 +63,7 @@ function DetailCard({ header, logo = false, points, bgColor, sCase }) {
             padding: "20px 0 20px 5px",
             height: "58px",
             display: "flex",
+            justifyContent: "center",
             fontSize: { lg: "16px", md: "14px", sm: "16px", xs: "16px" },
             fontWeight: 800,
             fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important"
