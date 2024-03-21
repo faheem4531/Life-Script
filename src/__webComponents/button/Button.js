@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, bgHover, borderRadius }) => {
+const Button = ({ title, font = "18px", onClick, img1, img2, width, height, backgroundColor, bgHover, borderRadius }) => {
   const [hover, setHover] = useState(false);
 
   const styles = {
@@ -17,7 +17,7 @@ const Button = ({ title, onClick, img1, img2, width, height, backgroundColor, bg
     columnGap: '10px',
     width: width,
     height: height,
-    fontSize: "18px",
+    fontSize: font,
     fontFamily: "Avenir5"
   };
 

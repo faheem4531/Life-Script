@@ -1,9 +1,9 @@
-import FlowerLine from "@/__webAssets/pngs/full-style.png"
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./HomeSections.module.css"
 import Content from "@/__webComponents/headings/Content";
-import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
+import Link from "next/link";
+
 import StoryImage1 from "@/__webAssets/pngs/story-1.png"
 import StoryImage2 from "@/__webAssets/pngs/story-2.png"
 import StoryImage3 from "@/__webAssets/pngs/story-3.png"
@@ -11,7 +11,7 @@ import StoryImage4 from "@/__webAssets/pngs/story-4.png"
 import Button from "@/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
 import Line from "@/__webAssets/svgs/line-orange.svg"
-import Link from "next/link";
+import Bg from "@/__webAssets/pngs/bg-story-telling.png"
 
 const StoryTelling = () => {
   const stories = [
@@ -64,18 +64,19 @@ const StoryTelling = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-      }}
-        className={styles.bgStorytelling}>
+        position: "relative"
+      }}>
 
         {stories.map((item, index) => <StoryWraper
           key={index}
+          cardNo={index + 1}
           heading={item.heading}
           content={item.content}
           button={item.button}
           image={item.image}
           direction={item.direction}
         />)}
-
+        <Image src={Bg} alt="bg" className={styles.storyBg} />
       </Box>
     </Box>
   )
@@ -85,19 +86,19 @@ const StoryTelling = () => {
 export default StoryTelling;
 
 
-function StoryWraper({ direction, heading, content, image, button = false }) {
+function StoryWraper({ direction, heading, content, image, button = false, cardNo }) {
   return (
     <Box sx={{
       display: "flex",
-      paddingTop: { sm: "100px", xs: "30px" },
+      paddingTop: { sm: "120px", xs: "30px" },
       columnGap: { lg: "170px", md: "70px" },
       justifyContent: "space-between",
       alignItems: { md: "center" },
-      flexDirection: { md: direction, sm: "column-reverse", xs: "column-reverse" }
+      flexDirection: { md: direction, sm: "column-reverse", xs: "column-reverse" },
     }}
     >
       <Box sx={{ margin: { md: "0", sm: "30px 0 0", xs: "20px 0 0" } }}>
-        <Box sx={{ maxWidth: { lg: "475px", md: "400px" } }}>
+        <Box sx={{ maxWidth: { lg: "475px", md: "400px" }, position: "relative", zIndex: "100" }}>
           <Content width="100%" subWidth="100%" heading={heading} subHeading={content} />
         </Box>
         {button && <Box sx={{ marginTop: "40px", width: { sm: "240px", xs: "100%" } }}>
@@ -105,6 +106,7 @@ function StoryWraper({ direction, heading, content, image, button = false }) {
             <Button
               title='Get Started'
               width="100%"
+              font="24px"
               height='55px'
               img2={NextIcon}
             />
@@ -112,7 +114,7 @@ function StoryWraper({ direction, heading, content, image, button = false }) {
         </Box>}
       </Box>
 
-      <Image src={image} alt="image" className={styles.stroyImages} />
+      <Image src={image} alt="image" className={`${styles.stroyImages} ${cardNo == '1' && styles.index}`} />
     </Box>
   )
 }
