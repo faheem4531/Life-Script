@@ -1,5 +1,6 @@
 'use client'
 
+import Head from 'next/head';
 import { Box } from "@mui/material";
 import Footer from "@/__webComponents/footer/Footer";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
@@ -130,27 +131,39 @@ const PricingPage = () => {
   ]
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.pricingPage}>
-      <NavBar color="#F3ECDA" logo={Logo} />
-      <Pricing />
-      <Working data={pointsArray} heading="Lifescript vs Storyworth" subHeading="How we’re different:" />
-      <Box sx={{ margin: { sm: "100px 0 0", xs: " 10px 0 -50px" } }}>
-        <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book" marked="Details" />
-        <PricingDetails cardsDetail={featuresDetails} heading="Features " marked="Comparison" />
+
+    <>
+      <Head>
+        <title>Pricing Plans and Competitor Comparison</title>
+        <meta
+          name="description"
+          content="Each package includes a full year of access to our platform, a premium full-color hardcover book and free shipping."
+        />
+      </Head>
+
+
+      <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.pricingPage}>
+        <NavBar color="#F3ECDA" logo={Logo} />
+        <Pricing />
+        <Working data={pointsArray} heading="Lifescript vs Storyworth" subHeading="How we’re different:" />
+        <Box sx={{ margin: { sm: "100px 0 0", xs: " 10px 0 -50px" } }}>
+          <PricingDetails cardsDetail={pricingDetails} heading="Pricing and Book" marked="Details" />
+          <PricingDetails cardsDetail={featuresDetails} heading="Features " marked="Comparison" />
+        </Box>
+        <GotQuestions />
+        <ContactFooter
+          title="Still confused? Ask"
+          marked=" away!"
+          lineWidth={150}
+          subTitle="Contact us Now!!!"
+          input1="Your name"
+          input2="Your email address"
+          input3="What’s on your mind?"
+          button="Get in touch!"
+        />
+        <Footer />
       </Box>
-      <GotQuestions />
-      <ContactFooter
-        title="Still confused? Ask"
-        marked=" away!"
-        lineWidth={150}
-        subTitle="Contact us Now!!!"
-        input1="Your name"
-        input2="Your email address"
-        input3="What’s on your mind?"
-        button="Get in touch!"
-      />
-      <Footer />
-    </Box>
+    </>
   )
 }
 
