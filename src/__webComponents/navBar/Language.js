@@ -10,8 +10,6 @@ import Image from 'next/image';
 import { Box } from '@mui/material';
 import styles from "./NavBar.module.css"
 import Check from "@/__webAssets/svgs/check.svg"
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 
 export default function LanguageOption() {
   const [selectedValue, setSelectedValue] = React.useState(10); // Initial selected value
@@ -37,9 +35,7 @@ export default function LanguageOption() {
           <Box sx={{
             borderRadius: "50%", width: "36px", height: "36px", position: "absolute", left: "15px", top: "17px",
           }}>
-            <Tooltip title="English" placement="left">
-              <Image src={EN} alt="English" width={25} height={25} />
-            </Tooltip>
+            <Image src={EN} alt="English" width={25} height={25} />
           </Box>
           {selectedValue == 10 &&
             <Box sx={{ position: "absolute", right: "15px", bottom: "20px" }}>
@@ -49,9 +45,7 @@ export default function LanguageOption() {
         <BaseOption value={20} className={`${styles.option} ${selectedValue == 20 && styles.optionsBg}`}>
           ES
           <Box sx={{ borderRadius: "50%", width: "36px", height: "36px", position: "absolute", left: "15px", bottom: "8px" }}>
-            <Tooltip title="Spanish" placement="left">
-              <Image src={SP} alt="Spanish" width={25} height={25} />
-            </Tooltip>
+            <Image src={SP} alt="Spanish" width={25} height={25} />
           </Box>
 
           {selectedValue == 20 && <Box sx={{ position: "absolute", right: "15px", bottom: "20px" }}>
