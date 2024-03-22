@@ -8,7 +8,7 @@ import RightStyle from "@/__webAssets/pngs/right-style2.png"
 
 const Mission = () => {
   return (
-    <Box sx={{ margin: { md: "50px 150px 170px", sm: "50px 0px 100px", xs: "40px 20px 50px" }, }}>
+    <Box sx={{ margin: { md: "50px 150px 80px", sm: "50px 0px 100px", xs: "40px 20px 50px" }, }}>
       <PrimaryHeading heading="Our " marked="Mission" showStyle={true} left={LeftStyle} right={RightStyle} />
       <Typography sx={{
         fontSize: "16px", textAlign: "center",

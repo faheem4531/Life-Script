@@ -84,7 +84,7 @@ const Testimonial = () => {
   ]
 
   return (
-    <Box sx={{ marginTop: { lg: "200px", sm: "150px", xs: "100px" } }}>
+    <Box sx={{ marginTop: { lg: "120px", sm: "150px", xs: "100px" } }}>
       <PrimaryHeading showStyle={false} marked="Testimonials" lineWidth="180px" />
       <Typography sx={{ color: "#495845", margin: { sm: "15px 0 100px", xs: "20px 0 50px" }, textAlign: "center", fontFamily: "Avenir" }}>
         What our customers say

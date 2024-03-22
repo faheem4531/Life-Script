@@ -10,7 +10,7 @@ import Link from "next/link";
 const Experience = () => {
 
   return (
-    <Box sx={{ margin: { lg: '220px 0  150px', md: "170px 0 130px" }, display: "flex", flexDirection: "column", alignItems: "center" }}
+    <Box sx={{ margin: { lg: '150px 0  100px', md: "170px 0 130px" }, display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <Box sx={{ textAlign: "center", width: "100%" }}>
         <PrimaryHeading lineWidth="180px" lineHeight="60px" mdDirection="column" showStyle={false} heading="Get a Feel for LifeScript’s " marked="Features" />
@@ -18,7 +18,7 @@ const Experience = () => {
       </Box>
 
       <Box sx={{
-        margin: { lg: "220px 60px 80px 130px", md: "100px 40px 70px 70px" }, display: "flex", justifyContent: "center",
+        margin: { lg: "120px 60px 120px 130px", md: "100px 40px 70px 70px" }, display: "flex", justifyContent: "center",
         columnGap: { lg: "140px", md: "70px" }, alignItems: "center"
       }}>
         <CustomizedAccordions />

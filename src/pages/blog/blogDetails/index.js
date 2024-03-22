@@ -18,7 +18,7 @@ const BlogDetailPage = () => {
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.introBlog}>
       <NavBar color="#F3ECDA" logo={Logo} />
       <Box sx={{
-        margin: { lg: "250px auto 200px", md: "180px auto 150px", sm: "120px auto 100px", xs: "100px 20px 80px" },
+        margin: { lg: "200px auto 120px", md: "180px auto 150px", sm: "120px auto 100px", xs: "100px 20px 80px" },
         maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
       }}>
         <Box>
@@ -45,7 +45,7 @@ const BlogDetailPage = () => {
         <Image src={BlogImage} alt="img" className={styles.blogImg} />
         <BlogDetails />
       </Box>
-      <Box sx={{ margin: { lg: "240px auto", md: "150px auto", sm: "100px auto", xs: "120px 0 80px" } }}>
+      <Box sx={{ margin: { lg: "80px auto", md: "150px auto", sm: "100px auto", xs: "120px 0 80px" } }}>
         <GifTab
           heading="Still not convinced? Try it now!"
           subHeading="Don’t worry no credit card required."

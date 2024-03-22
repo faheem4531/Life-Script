@@ -21,7 +21,7 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text.gif"
 const panels = [
   {
     panel: 'panel1',
-    timer: 10250
+    timer: 11000
   },
   {
     panel: 'panel2',
@@ -29,15 +29,15 @@ const panels = [
   },
   {
     panel: 'panel3',
-    timer: 10390
+    timer: 10700
   },
   {
     panel: 'panel4',
-    timer: 10200
+    timer: 10700
   },
   {
     panel: 'panel5',
-    timer: 4500
+    timer: 5000
   },
   {
     panel: 'panel6',

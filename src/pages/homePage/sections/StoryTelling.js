@@ -43,7 +43,7 @@ const StoryTelling = () => {
   ]
 
   return (
-    <Box sx={{ padding: { md: "180px 0 0", sm: "100px 0 0 ", xs: "60px 20px 100px " } }} >
+    <Box sx={{ padding: { md: "150px 0 0", sm: "100px 0 0 ", xs: "60px 20px 100px " } }} >
 
       <Box sx={{
         fontSize: { md: "54px", sm: "44px", xs: "32px" },
@@ -60,7 +60,7 @@ const StoryTelling = () => {
       </Box>
 
       <Box sx={{
-        padding: { lg: "100px 0px 250px", md: "50px 40px 150px", sm: "50px 50px 150px" },
+        padding: { lg: "0px 0px 180px", md: "50px 40px 150px", sm: "50px 50px 150px" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

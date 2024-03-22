@@ -50,7 +50,7 @@
 .features {
   background-image: url(../__webAssets/pngs/bg-feature.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 .lineBox {

@@ -104,7 +104,7 @@ const TermsAndConditions = () => {
 
       <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
 
-        <Box sx={{ margin: { md: "200px 0 250px", sm: "150px 50px", xs: "120px 20px" }, maxWidth: { lg: "1050px", md: "850px", sm: "100%" } }}>
+        <Box sx={{ margin: { md: "200px 0 150px", sm: "150px 50px", xs: "120px 20px" }, maxWidth: { lg: "1050px", md: "850px", sm: "100%" } }}>
           <Box sx={{ textAlign: "center" }}>
             <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontFamily: "Basely !important", fontWeight: 500 }}>Terms of Use</Typography>
             <Typography>Updated at January 30th, 2024</Typography>
@@ -115,7 +115,7 @@ const TermsAndConditions = () => {
           <PHeading text="Definitions and Key Terms" />
           <Typography sx={{ margin: "10px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
           <Box sx={{ maxWidth: "900px" }}>
-            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 30px" } }}>
               {keyTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -124,7 +124,7 @@ const TermsAndConditions = () => {
             </Box>
 
             <PHeading text="General Terms of Use" />
-            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 50px", xs: "10px 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 20px", xs: "10px 0 30px 30px" } }}>
               {generalTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}

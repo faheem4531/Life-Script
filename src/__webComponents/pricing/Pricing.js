@@ -51,7 +51,7 @@ const Pricing = () => {
 
   return (
     <Box sx={{
-      margin: { lg: '170px 95px', sm: "150px 30px", xs: "80px 20px 100px" },
+      margin: { lg: '170px 95px  130px', sm: "150px 30px", xs: "80px 20px 100px" },
     }}>
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: "60px" }}>
         <PrimaryHeading lineWidth="140px" heading="Our Pricing" marked="Plan" showStyle={false} />

@@ -10,7 +10,7 @@ import Line from "@/__webAssets/svgs/line-orange.svg"
 const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "100%" }) => {
 
   return (
-    <Box sx={{ height: "100vh", position: "relative" }}
+    <Box sx={{ height: { lg: "700px", sm: "100vh", xs: "100vh" }, position: "relative" }}
       className={styles.features}
     >
       <NavBar color="#F3ECDA" logo={Logo} />

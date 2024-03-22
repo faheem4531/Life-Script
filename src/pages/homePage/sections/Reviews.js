@@ -7,7 +7,7 @@ const Reviews = () => {
 
   return (
     <Box sx={{
-      bgcolor: "#30422E", color: "#F3ECDA", textAlign: "center", padding: { sm: "44px 30px 80px", xs: "44px 20px 40px" }, fontSize: "16px",
+      bgcolor: "#30422E", color: "#F3ECDA", textAlign: "center", padding: { sm: "44px 30px 30px", xs: "44px 20px 40px" }, fontSize: "16px",
       display: "flex",
       flexDirection: { sm: "column", xs: "column-reverse" },
       justifyContent: "center",

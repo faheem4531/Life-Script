@@ -170,7 +170,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
             title='Get Started'
             width='100%'
             height='75px'
-            fontSize="24px"
+            font="24px"
             borderRadius="0px 0px 8px 8px"
             img2={NextIcon}
           />

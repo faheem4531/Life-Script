@@ -75,7 +75,7 @@ const GotQuestions = () => {
 
   return (
     <Box
-      sx={{ padding: { lg: "150px 160px  200px 110px", md: "150px 50px 150px", sm: "150px 100px 150px", xs: "120px 20px 80px" } }}
+      sx={{ padding: { lg: "150px 160px  120px 110px", md: "150px 50px 150px", sm: "150px 100px 150px", xs: "120px 20px 80px" } }}
       className={styles.gotQsBg}
     >
       <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>Got Questions?</Typography>
