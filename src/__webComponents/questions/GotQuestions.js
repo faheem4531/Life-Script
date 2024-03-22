@@ -112,7 +112,9 @@ const GotQuestions = () => {
           <Typography sx={{
             textAlign: "center", fontSize: "18px", marginTop: "80px", display: "inline-block",
             border: "1px solid #3E4F3C", padding: "10px 25px 7px", fontFamily: "Avenir", borderRadius: "4px"
-          }}>See More</Typography>
+          }}
+            className={styles.seeMorebtn}
+          >See More</Typography>
         </Link>
       </Box>
     </Box>

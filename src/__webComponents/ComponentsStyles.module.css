@@ -87,6 +87,9 @@
   width: 100%;
 }
 
+.seeMorebtn:hover{
+background-color: #a5a19737 !important;
+}
 
 /* Got Questions  */
 .questionIcon{

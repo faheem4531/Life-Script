@@ -27,6 +27,7 @@ const Experience = () => {
         <Typography sx={{
           fontSize: "18px", border: "1px solid #30422E", borderRadius: "4px", padding: "10px 25px 7px", fontFamily: "Avenir"
         }}
+          className={styles.seeMorebtn}
         >See More
         </Typography>
       </Link>
