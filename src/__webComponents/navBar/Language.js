@@ -35,10 +35,10 @@ export default function LanguageOption() {
         <BaseOption value={10} className={`${styles.option} ${styles.optiontop} ${selectedValue == 10 && styles.optionsBg}`}>
           EN
           <Box sx={{
-            bgcolor: "#fff", borderRadius: "50%", width: "36px", height: "36px", position: "absolute", left: "15px", top: "10px",
+            borderRadius: "50%", width: "36px", height: "36px", position: "absolute", left: "15px", top: "17px",
           }}>
-            <Tooltip title="English">
-              <Image src={EN} alt="English" width={36} height={36} />
+            <Tooltip title="English" placement="left">
+              <Image src={EN} alt="English" width={25} height={25} />
             </Tooltip>
           </Box>
           {selectedValue == 10 &&
@@ -48,8 +48,10 @@ export default function LanguageOption() {
         </BaseOption>
         <BaseOption value={20} className={`${styles.option} ${selectedValue == 20 && styles.optionsBg}`}>
           ES
-          <Box sx={{ borderRadius: "50%", width: "36px", height: "36px", position: "absolute", left: "15px", bottom: "15px" }}>
-            <Image src={SP} alt="Spanish" width={36} height={36} />
+          <Box sx={{ borderRadius: "50%", width: "36px", height: "36px", position: "absolute", left: "15px", bottom: "8px" }}>
+            <Tooltip title="Spanish" placement="left">
+              <Image src={SP} alt="Spanish" width={25} height={25} />
+            </Tooltip>
           </Box>
 
           {selectedValue == 20 && <Box sx={{ position: "absolute", right: "15px", bottom: "20px" }}>
