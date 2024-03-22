@@ -115,7 +115,7 @@ const TermsAndConditions = () => {
           <PHeading text="Definitions and Key Terms" />
           <Typography sx={{ margin: "10px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
           <Box sx={{ maxWidth: "900px" }}>
-            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 20px" } }}>
               {keyTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -124,7 +124,7 @@ const TermsAndConditions = () => {
             </Box>
 
             <PHeading text="General Terms of Use" />
-            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 20px", xs: "10px 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 20px", xs: "10px 0 30px 20px" } }}>
               {generalTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -143,7 +143,7 @@ const TermsAndConditions = () => {
             <PHeading text="Restrictions" />
             <Text margin="0 0 20px" text="You agree not to, and you will not permit others to:" />
 
-            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
+            <Box sx={{ marginLeft: "20px" }}>
               <ul>
                 <li>License, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the website or make the platform
                   available to any third party.</li>
@@ -154,7 +154,7 @@ const TermsAndConditions = () => {
             </Box>
             <PHeading text="Payment" />
             <Text margin="0 0 20px" text="Thank you for considering Lifescript. As you explore our products, we are committed to providing you with exceptional service and value. By registering for any of our subscription plans, you acknowledge and agree to the following terms and conditions, which form an integral part of our Terms of Use." />
-            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 20px" } }}>
               {payment.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -164,7 +164,7 @@ const TermsAndConditions = () => {
             <PHeading text="Intellectual Property and Content Submission" />
             <Text text="When you submit or upload written materials, photographs, voice and/or video recordings, or other content (collectively, the “Content”) to Lifescript, you retain ownership of any intellectual property rights in that Content. However, by submitting Content, you grant Lifescript a worldwide, perpetual, sublicensable, and transferable license to use, adapt, modify, and display the Content in connection with providing Lifescript's services and for any other purposes agreed upon with you, such as marketing. Please be aware that while you maintain ownership of your Content, any format, template, or layout used to arrange or organize such Content through Lifescript's tools and features is proprietary to Lifescript and remains with us" />
             <Text margin="20px 0" text="You bear full responsibility for the Content you share with us. Should you choose to share the Content publicly, you do so at your own risk. Lifescript is not liable for any actions taken by other users regarding your Content. You affirm and warrant that:" />
-            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
+            <Box sx={{ marginLeft: "20px" }}>
               <ul>
                 <li>You either own the Content or have the necessary rights to submit it to Lifescript and to grant us the license to use it as specified</li>
                 <li>The Content does not infringe upon, misappropriate, or otherwise violate any intellectual property or other rights of a third party.</li>
@@ -186,7 +186,7 @@ const TermsAndConditions = () => {
             <Text margin="20px 0 0" text="Remember, your interactions with these Social Network Providers, including any content you provide to them, are subject to your agreements with them, and Lifescript bears no responsibility for these interactions and content outside our Services." />
             <PHeading text="Copyright Infringement Notice" />
             <Text margin="0 0 20px" text="We are not obliged to review content for copyright or trademark infringement; however, we are dedicated to protecting copyrights and trademarks and expect users of Lifescript to do the same. If you are a copyright owner or such owner’s agent and believe any material on our website constitutes an infringement on your copyright, please contact us setting forth the following information: " />
-            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
+            <Box sx={{ marginLeft: "20px" }}>
               <ol>
                 <li>A physical or electronic signature of the copyright owner or a person authorized to act on his behalf; </li>
                 <li>Identification of the material that is claimed to be infringing; </li>
