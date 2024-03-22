@@ -113,7 +113,7 @@ const Policy = () => {
           <PHeading text="Definitions and Key Terms" />
           <Typography sx={{ margin: "10px 0 20px" }}>To help explain things as clearly as possible in this Privacy Policy, every time any of these terms are referenced, are strictly defined as: </Typography>
           <Box sx={{ maxWidth: "900px" }}>
-            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 50px", xs: "0 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 20px" } }}>
               {keyTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
@@ -122,10 +122,10 @@ const Policy = () => {
             </Box>
 
             <PHeading text="User Information Collected and Its Usage " />
-            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 50px", xs: "10px 0 30px 30px" } }}>
+            <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 20px", xs: "10px 0 30px 20px" } }}>
               <Point title="Scope and Collection of Personal Information:" text="Lifescript diligently adheres to the principles of data protection and privacy. In the regular course of business, we collect a range of personal information from our users. This information is garnered through multiple channels: when users register for an account, participate in surveys, enter contests, solicit customer support, engage with our Services, or interact with our website in any capacity. The types of personal information collected include, but are not limited to, names, mailing addresses, email addresses, telephone numbers, credit card details, and other related data. This data collection occurs both directly (e.g., via account registration or survey participation) and indirectly (e.g., through technological means like browser or device analytics when users access our website). " />
               <Point title="Utilization of Information: " text=" The personal information collected is utilized in strict accordance with this Privacy Policy. The primary objectives include:" />
-              <Box sx={{ margin: { sm: "0 0 20px 50px", xs: "0 0 10px 30px" } }}>
+              <Box sx={{ margin: { sm: "0 0 20px 20px", xs: "0 0 10px 20px" } }}>
                 <ul>
                   <li>Provision and enhancement of the Services offered, including but not limited to, account maintenance, order processing, and customer support. </li>
                   <li>Development of new services and improvement of existing ones. </li>
@@ -138,7 +138,7 @@ const Policy = () => {
               </Box>
               <Point title="Categories of Information and Specific Applications:"
                 text=" The following delineates the categories of information collected, their sources, and specific applications:" />
-              <Box sx={{ margin: { sm: "0 0 20px 50px", xs: "0 0 10px 30px" } }}>
+              <Box sx={{ margin: { sm: "0 0 20px 20px", xs: "0 0 10px 20px" } }}>
                 {userInfo.map((item, index) => <Point
                   key={index}
                   title={item.title}
@@ -225,7 +225,7 @@ const Policy = () => {
             <PHeading text="What is personal data? " />
             <Text margin="0 0 20px" text="Any data that relates to an identifiable or identified individual. GDPR covers a broad spectrum of information that could be used on its own, or in combination with other pieces of information, to identify a person. Personal data extends beyond a person’s name or email address. Some examples include financial information, political opinions, genetic data, biometric data, IP addresses, physical address, sexual orientation, and ethnicity.
 The Data Protection Principles include requirements such as: " />
-            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
+            <Box sx={{ marginLeft: "20px" }}>
               <ul>
                 <li>Personal data collected must be processed in a fair, legal, and transparent way and should only be used in a way that a person would reasonably expect. </li>
                 <li>Personal data should only be collected to fulfil a specific purpose and it should only be used for that purpose. Organizations must specify why they need the personal data when they collect it. </li>
@@ -243,7 +243,7 @@ The Data Protection Principles include requirements such as: " />
             <PHeading text="California Residents " />
             <Text text="The California Consumer Privacy Act (CCPA) requires us to disclose categories of Personal Information we collect and how we use it, the categories of sources from whom we collect Personal Information, and the third parties with whom we share it, which we have explained above. " />
             <Text margin="0 0 20px" text="We are also required to communicate information about rights California residents have under California law. You may exercise the following rights: " />
-            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
+            <Box sx={{ marginLeft: "20px" }}>
               <ul>
                 <li>Right to Know and Access. You may submit a verifiable request for information regarding the: (1) categories of Personal Information we collect, use, or share; (2) purposes for which categories of Personal Information are collected or used by us; (3) categories of sources from which we collect Personal Information; and (4) specific pieces of Personal Information we have collected about you. </li>
                 <li>Right to Equal Service. We will not discriminate against you if you exercise your privacy rights.</li>
@@ -259,10 +259,10 @@ The Data Protection Principles include requirements such as: " />
             <PHeading text="California Online Privacy Protection Act (CalOPPA) " />
             <Text text="CalOPPA requires us to disclose categories of Personal Information we collect and how we use it, the categories of sources from whom we collect Personal Information, and the third parties with whom we share it, which we have explained above. " />
             <Text margin="0 0 20px" text="CalOPPA users have the following rights: " />
-            <Box sx={{ marginLeft: { sm: "50px", xs: "30px" } }}>
+            <Box sx={{ marginLeft: "20px" }}>
               <ul>
                 <li> <li>Right to Know and Access. You may submit a verifiable request for information regarding the:</li>
-                  <Box sx={{ margin: { sm: "0 0 0 50px", xs: "0 0 0 20px" } }}>
+                  <Box sx={{ marginLeft: "20px" }}>
                     <ol>
                       <li>categories of Personal Information we collect, use, or share;</li>
                       <li>purposes for which categories of Personal Information are collected or used by us;</li>
