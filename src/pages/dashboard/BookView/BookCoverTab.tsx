@@ -91,7 +91,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const char = text2[i];
       pdf.setFontSize(fontSize);
       pdf.setFont("WorkSans");
-      pdf.setTextColor(255, 255, 255);
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255);
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      // pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
@@ -107,7 +112,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const char = writter[i];
       pdf.setFontSize(fontSize);
       pdf.setFont("WorkSans");
-      pdf.setTextColor(255, 255, 255);
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255);
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      // pdf.setTextColor(255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
@@ -272,24 +282,32 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   };
 
   const generateAndUploadPDF = async () => {
-    const pdfContent =
-      coverData?.coverNumber === "1"
-        ? await generatePDFOne(
-            coverData.byLine,
-            coverData.title,
-            coverData.subTitle,
-            coverData.image,
-            coverData.color,
-            spineSize
-          )
-        : await generatePDFTwo(
-            coverData.byLine,
-            coverData.title,
-            coverData.subTitle,
-            coverData.image,
-            coverData.color,
-            spineSize
-          );
+    const pdfContent = await generatePDFOne(
+      coverData.byLine,
+      coverData.title,
+      coverData.subTitle,
+      coverData.image,
+      coverData.color,
+      spineSize
+    );
+    // const pdfContent =
+    //   coverData?.coverNumber === "1"
+    //     ? await generatePDFOne(
+    //         coverData.byLine,
+    //         coverData.title,
+    //         coverData.subTitle,
+    //         coverData.image,
+    //         coverData.color,
+    //         spineSize
+    //       )
+    //     : await generatePDFTwo(
+    //         coverData.byLine,
+    //         coverData.title,
+    //         coverData.subTitle,
+    //         coverData.image,
+    //         coverData.color,
+    //         spineSize
+    //       );
 
     // Convert data URI to Blob
     const pdfBlob = await fetch(pdfContent).then((res) => res.blob());
