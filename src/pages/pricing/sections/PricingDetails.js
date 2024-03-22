@@ -63,7 +63,7 @@ function DetailCard({ header, logo = false, points, bgColor, sCase }) {
             padding: "20px 0 20px 5px",
             height: "58px",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: logo ? "center" : "start",
             fontSize: { lg: "16px", md: "14px", sm: "16px", xs: "16px" },
             fontWeight: 800,
             fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important"
