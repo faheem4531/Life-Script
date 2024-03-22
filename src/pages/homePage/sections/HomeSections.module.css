@@ -23,7 +23,6 @@
   top: 80px;
   /* width: 200px; */
   /* height: 225px; */
-  z-index: 1;
   animation: image2 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
 

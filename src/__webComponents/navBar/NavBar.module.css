@@ -16,6 +16,54 @@
   display: none;
 }
 
+.selector{
+  font-size:18px;
+  font-family: Avenir5;
+  box-sizing: border-box;
+  width: 70px;
+  padding: 11px 10px;
+  border-radius: 2px;
+  text-align: left;
+  background-color: #FBFBFB;
+  color:#E1683B ;
+  border:1px solid #E1683B ;
+  position: relative;
+}
+
+.downAero{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.option{
+  margin: 0;
+  background-color: #fff;
+  width: 170px;
+  padding: 10px 0 10px 70px;
+  color: #06152B;
+  height: 60px;
+  font-size: 16px;
+  font-family: Avenir ;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 999999;
+}
+
+.optiontop{
+  margin-top: 15px;
+}
+
+.option:hover{
+  background-color: #fcf0eb ; 
+}
+.optionsBg{
+  background-color: #fcf0eb ; 
+}
 @keyframes slideIn {
   0% {
     transform: translateY(0);

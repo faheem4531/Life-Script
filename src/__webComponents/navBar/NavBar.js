@@ -45,7 +45,7 @@ const NavBar = ({ color, logo }) => {
       padding: { lg: '64px 90px 0', md: "50px 50px 0 ", sm: "40px 50px 0", xs: "30px 16px 0" },
       position: "relative",
       bgcolor: { md: "none", sm: mobileState && "#F3ECDA", xs: mobileState && "#F3ECDA" },
-      zIndex: "10"
+      zIndex: "100"
     }}>
       <Link href="/">
         {!mobileState && <Image src={logo} alt="Logo" className={styles.logo} />}
@@ -131,9 +131,9 @@ const NavBar = ({ color, logo }) => {
               onClick={handleButtonClick}
             />
           </Link>
-          {/* <Box sx={{ display: { md: "inline-block", sm: "none" } }}>
+          <Box sx={{ display: { lg: "block", sm: "none", xs: "none" } }}>
             <LanguageOption />
-          </Box> */}
+          </Box>
         </Box>
       </Box>
 

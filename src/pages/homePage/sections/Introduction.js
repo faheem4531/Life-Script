@@ -86,8 +86,8 @@ const Introduction = () => {
       </Box>
 
       <Image src={Image1} alt="image" className={styles.image1} />
-      <Image src={Image2} alt="image" className={styles.image2} />
       <Image src={Image3} alt="image" className={styles.image3} />
+      <Image src={Image2} alt="image" className={styles.image2} />
       <Image src={Image4} alt="image" className={styles.image4} />
       <Image src={Book} alt="book" className={styles.bookImg} />
     </Box>
