@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
@@ -18,11 +18,20 @@ import FormattingFeatures from "@/__webAssets/gif/formatting-features.gif"
 import Narrative from "@/__webAssets/gif/narrative.gif"
 import VoiceToText from "@/__webAssets/gif/voice-to-text.gif"
 
+const panels = [
+  'panel1',
+  'panel2',
+  'panel3',
+  'panel4',
+  'panel5',
+  'panel6',
+];
 
 export default function CustomizedAccordions() {
 
-  const [expanded, setExpanded] = React.useState('');
-  const [panelActive, setPanelActive] = React.useState({
+  const [currentPanel, setCurrentPanel] = useState(0);
+  const [expanded, setExpanded] = useState('panel1');
+  const [panelActive, setPanelActive] = useState({
     panel1: true,
     panel2: false,
     panel3: false,
@@ -31,9 +40,8 @@ export default function CustomizedAccordions() {
     panel6: false,
   })
 
-  const handleChange = (panel) => (event, newExpanded) => {
-    setExpanded(newExpanded ? panel : false);
-    console.log(panel, "   ", newExpanded);
+  const handleChange = (panel) => {
+    setExpanded(expanded === panel ? false : panel);
     setPanelActive((prevState) => ({
       ...Object.fromEntries(Object.keys(prevState).map(key => [key, false])),
       [panel]: true,
@@ -74,10 +82,24 @@ export default function CustomizedAccordions() {
     backgroundColor: '#F3ECDA'
   }));
 
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // Calculate the index of the next panel
+      const nextPanelIndex = (currentPanel + 1) % panels.length;
+      console.log(nextPanelIndex, 'nextPanelIndex')
+      handleChange(panels[nextPanelIndex]);
+      setCurrentPanel(nextPanelIndex);
+    }, 6000);
+
+    // Cleanup function to clear the timeout when component unmounts or when the dependency array changes
+    return () => clearTimeout(timeoutId);
+  }, [currentPanel]);
+
   return (
     <>
       <Box sx={{ maxHeight: "460px" }}>
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} open={expanded === 'panel1'}>
+        <Accordion expanded={expanded === 'panel1'} onChange={() => handleChange('panel1')} open={expanded === 'panel1'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel1 ? "#3E4F3C" : ""}>
               <h3>1. Narrative Fusion </h3>
@@ -95,7 +117,7 @@ export default function CustomizedAccordions() {
             </Typography>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} open={expanded === 'panel2'}>
+        <Accordion expanded={expanded === 'panel2'} onChange={() => handleChange('panel2')} open={expanded === 'panel2'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel2 ? "#3E4F3C" : ""}>
               <h3>2. Assisted Editing </h3>
@@ -113,7 +135,7 @@ export default function CustomizedAccordions() {
             </Typography>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} open={expanded === 'panel3'}>
+        <Accordion expanded={expanded === 'panel3'} onChange={() => handleChange('panel3')} open={expanded === 'panel3'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel3 ? "#3E4F3C" : ""}>
               <h3>3. Voice-to-Text</h3>
@@ -131,7 +153,7 @@ export default function CustomizedAccordions() {
             </Typography>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')} open={expanded === 'panel4'}>
+        <Accordion expanded={expanded === 'panel4'} onChange={() => handleChange('panel4')} open={expanded === 'panel4'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel4 ? "#3E4F3C" : ""}>
               <h3>4. Family Tree </h3>
@@ -149,7 +171,7 @@ export default function CustomizedAccordions() {
             </Typography>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')} open={expanded === 'panel5'}>
+        <Accordion expanded={expanded === 'panel5'} onChange={() => handleChange('panel5')} open={expanded === 'panel5'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel5 ? "#3E4F3C" : ""}>
               <h3>5. Formatting Features</h3>
@@ -167,7 +189,7 @@ export default function CustomizedAccordions() {
             </Typography>
           </AccordionDetails>
         </Accordion>
-        <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')} open={expanded === 'panel6'}>
+        <Accordion expanded={expanded === 'panel6'} onChange={() => handleChange('panel6')} open={expanded === 'panel6'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel6 ? "#3E4F3C" : ""}>
               <h3>6. Auto Photo Improvement</h3>
