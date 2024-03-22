@@ -11,7 +11,9 @@ const Reviews = () => {
       display: "flex",
       flexDirection: { sm: "column", xs: "column-reverse" },
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
+      position: 'relative',
+      zIndex: "10"
     }}>
       <Image src={Stars} alt="rating" />
       <Box sx={{ display: "flex", margin: { sm: "40px", xs: "40px 0 40px" }, justifyContent: "center" }}>

@@ -43,7 +43,7 @@ const StoryTelling = () => {
   ]
 
   return (
-    <Box sx={{ padding: { md: "150px 0 0", sm: "100px 0 0 ", xs: "60px 20px 100px " } }} >
+    <Box sx={{ padding: { md: "150px 0 0", sm: "100px 0 0 ", xs: "60px 20px 100px " }, position: "relative" }} >
 
       <Box sx={{
         fontSize: { md: "54px", sm: "44px", xs: "32px" },
@@ -64,7 +64,6 @@ const StoryTelling = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        position: "relative"
       }}>
 
         {stories.map((item, index) => <StoryWraper
@@ -76,8 +75,8 @@ const StoryTelling = () => {
           image={item.image}
           direction={item.direction}
         />)}
-        <Image src={Bg} alt="bg" className={styles.storyBg} />
       </Box>
+      <Image src={Bg} alt="bg" className={styles.storyBg} />
     </Box>
   )
 }
