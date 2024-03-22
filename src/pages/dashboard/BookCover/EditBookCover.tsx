@@ -158,7 +158,8 @@ const EditBookCover = () => {
             !(CoverNumber === "6" && elmId === "author-text") &&
             !(CoverNumber === "5" && elmId === "heading-text") &&
             !(CoverNumber === "5" && elmId === "author-text") &&
-            !(CoverNumber === "6" && elmId === "heading-text")
+            !(CoverNumber === "4" && elmId === "author-text")
+            // !(CoverNumber === "6" && elmId === "heading-text")
           ) {
             defaultTspan.setAttribute("x", "50%");
             defaultTspan.setAttribute("dy", "1.2em");
@@ -173,7 +174,8 @@ const EditBookCover = () => {
         words.forEach((word) => {
           if (
             !currentTspan ||
-            currentTspan.innerHTML.length + word.length > 12
+            (currentTspan.innerHTML.length + word.length > 12 &&
+              CoverNumber !== "6")
           ) {
             // Create a new tspan if not exists or the current one is full
             currentTspan = document.createElementNS(
@@ -185,9 +187,34 @@ const EditBookCover = () => {
               !(CoverNumber === "6" && elmId === "author-text") &&
               !(CoverNumber === "5" && elmId === "heading-text") &&
               !(CoverNumber === "5" && elmId === "author-text") &&
-              !(CoverNumber === "6" && elmId === "heading-text")
+              !(CoverNumber === "4" && elmId === "author-text")
+              // !(CoverNumber === "6" && elmId === "heading-text")
             ) {
               console.log("Reached");
+
+              currentTspan.setAttribute("x", "50%");
+              currentTspan.setAttribute("dy", "1.2em");
+            }
+            headingText.appendChild(currentTspan);
+          } else if (
+            !currentTspan ||
+            (currentTspan.innerHTML.length + word.length > 25 &&
+              CoverNumber === "6")
+          ) {
+            // Create a new tspan if not exists or the current one is full
+            currentTspan = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "tspan"
+            );
+            if (
+              !(CoverNumber === "2" && elmId === "author-text") &&
+              !(CoverNumber === "6" && elmId === "author-text") &&
+              !(CoverNumber === "5" && elmId === "heading-text") &&
+              !(CoverNumber === "5" && elmId === "author-text") &&
+              !(CoverNumber === "4" && elmId === "author-text")
+              // !(CoverNumber === "6" && elmId === "heading-text")
+            ) {
+              console.log("Reached if else");
 
               currentTspan.setAttribute("x", "50%");
               currentTspan.setAttribute("dy", "1.2em");
@@ -203,7 +230,7 @@ const EditBookCover = () => {
   }
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length <= 25) {
+    if (event.target.value.length <= 37) {
       appendTitleToSVG(event.target.value, "heading-text");
       setTitle(event.target.value);
     }
@@ -349,6 +376,8 @@ const EditBookCover = () => {
       const doc: any = new jsPDF();
       const svgData = new XMLSerializer().serializeToString(svgElement);
 
+      console.log("svgData", svgData);
+
       if (doc.addSVG) {
         await doc.addSVG(svgData, 0, 0); // Adjust coordinates as needed
       } else {
@@ -360,6 +389,8 @@ const EditBookCover = () => {
       // **Method B: Converting SVG to canvas and then adding to PDF (fallback):**
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
+
+      console.log("context", context);
 
       // const img = new Image(0, 0);
       const img = document.createElement("img");
@@ -394,11 +425,9 @@ const EditBookCover = () => {
         context.drawImage(img, 0, 0);
 
         const imgData = canvas.toDataURL("image/png"); // Convert to PNG for compatibility
-        console.log("ImageOn Load???????????", imgData);
         uploadImageonCloudNew(imgData);
         doc.addImage(imgData, "PNG", 0, 0);
       };
-      console.log("img", img);
       img.src = `data:image/svg+xml;base64,${btoa(svgData)}`; // Encode SVG data
       if (img) {
         return true;
@@ -502,6 +531,7 @@ const EditBookCover = () => {
   const coverAspectRatio = () => {
     if (CoverNumber === "1") return 1702 / 2610;
     else if (CoverNumber === "2") return 0.67 / 1;
+    else if (CoverNumber === "3") return 164 / 270;
     else return 1772 / 2480;
   };
 

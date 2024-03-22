@@ -48,7 +48,7 @@ function Cover4(props: any) {
           dominantBaseline="middle"
           textAnchor="middle"
           fontFamily="Times"
-          fontSize="120px"
+          fontSize="100px"
           fill="#17214B"
           width="80%"
         >
