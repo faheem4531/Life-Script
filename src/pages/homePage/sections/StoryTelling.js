@@ -100,7 +100,8 @@ function StoryWraper({ direction, heading, content, image, button = false, cardN
         <Box sx={{ maxWidth: { lg: "475px", md: "400px" }, position: "relative", zIndex: "100" }}>
           <Content width="100%" subWidth="100%" heading={heading} subHeading={content} />
         </Box>
-        {button && <Box sx={{ marginTop: "40px", width: { sm: "240px", xs: "100%" } }}>
+
+        {button && <Box sx={{ marginTop: "40px", width: { sm: "240px", xs: "100%" }, position: "relative", zIndex: "100" }}>
           <Link href="/_auth/Auth">
             <Button
               title='Get Started'
