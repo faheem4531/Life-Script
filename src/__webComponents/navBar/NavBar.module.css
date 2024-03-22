@@ -16,6 +16,11 @@
   display: none;
 }
 
+.hoverLinks:hover{
+  color: #2d392c;
+  font-family: Avenir8;
+}
+
 .selector{
   font-size:18px;
   font-family: Avenir5;
@@ -28,6 +33,10 @@
   color:#E1683B ;
   border:1px solid #E1683B ;
   position: relative;
+}
+
+.selector:hover{
+  background-color: #edeaea;
 }
 
 .downAero{
@@ -51,7 +60,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 999999;
+  cursor: pointer;
 }
 
 .optiontop{

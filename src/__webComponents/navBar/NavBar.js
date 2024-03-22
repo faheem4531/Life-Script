@@ -67,7 +67,7 @@ const NavBar = ({ color, logo }) => {
             fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
-            className={`${pathname === '/' ? styles.underLine : ''}`}
+            className={`${pathname === '/' ? styles.underLine : ''} ${styles.hoverLinks}`}
           >Home</Typography>
         </Link>
 
@@ -77,7 +77,7 @@ const NavBar = ({ color, logo }) => {
             fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
-            className={`${pathname === '/features' ? styles.underLine : ''}`}
+            className={`${pathname === '/features' ? styles.underLine : ''}  ${styles.hoverLinks}`}
           >Features</Typography>
         </Link>
 
@@ -87,7 +87,7 @@ const NavBar = ({ color, logo }) => {
             fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5",
           }}
-            className={`${pathname === '/blog' || pathname === '/blog/blogDetails' ? styles.underLine : ''}`}
+            className={`${pathname === '/blog' || pathname === '/blog/blogDetails' ? styles.underLine : ''}  ${styles.hoverLinks}`}
           >Blog</Typography>
         </Link>
 
@@ -97,7 +97,7 @@ const NavBar = ({ color, logo }) => {
             fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
-            className={`${pathname === '/aboutUs' ? styles.underLine : ''}`}
+            className={`${pathname === '/aboutUs' ? styles.underLine : ''}  ${styles.hoverLinks}`}
           >About Us</Typography>
         </Link>
 
@@ -107,7 +107,7 @@ const NavBar = ({ color, logo }) => {
             fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
-            className={`${pathname === '/pricing' ? styles.underLine : ''}`}
+            className={`${pathname === '/pricing' ? styles.underLine : ''}  ${styles.hoverLinks}`}
           >Pricing</Typography>
         </Link>
 
@@ -117,7 +117,7 @@ const NavBar = ({ color, logo }) => {
             fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5",
           }}
-            className={`${pathname === '/faqs' ? styles.underLine : ''}`}
+            className={`${pathname === '/faqs' ? styles.underLine : ''}  ${styles.hoverLinks}`}
           >FAQ&apos;s</Typography>
         </Link>
 
