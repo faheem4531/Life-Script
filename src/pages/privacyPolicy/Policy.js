@@ -13,19 +13,19 @@ const Policy = () => {
     },
     {
       title: "Company:",
-      text: "When this policy mentions “Company,” “we,” “us,” or “our,” it refers to Lifescript Ltd., that is responsible for your information under this Privacy Policy."
+      text: "When this policy mentions “Company,” “we,” “us,” or “our,” it refers to LifeScript Ltd., that is responsible for your information under this Privacy Policy."
     },
     {
       title: "Country:",
-      text: "Where Lifescript or the owners/founders of Lifescript are based, in this case is Bulgaria."
+      text: "Where LifeScript or the owners/founders of LifeScript are based, in this case is Bulgaria."
     },
     {
       title: "Customer:  ",
-      text: "Refers to the person that signs up to use the Lifescript Service."
+      text: "Refers to the person that signs up to use the LifeScript Service."
     },
     {
       title: "Device:",
-      text: "Any internet connected device such as a phone, tablet, computer or any other device that can be used to visit Lifescript and use the services."
+      text: "Any internet connected device such as a phone, tablet, computer or any other device that can be used to visit LifeScript and use the services."
     },
     {
       title: "IP address:",
@@ -37,7 +37,7 @@ const Policy = () => {
     },
     {
       title: "Service:",
-      text: "Refers to the service provided by Lifescript as described in the relative terms and on this platform."
+      text: "Refers to the service provided by LifeScript as described in the relative terms and on this platform."
     },
     {
       title: "Third-party service:",
@@ -45,7 +45,7 @@ const Policy = () => {
     },
     {
       title: "You:",
-      text: "A person or entity that is registered with Lifescript to use the Services. "
+      text: "A person or entity that is registered with LifeScript to use the Services. "
     },
   ]
 
@@ -60,7 +60,7 @@ const Policy = () => {
     },
     {
       title: "Payment Information:",
-      text: "Payment details, including credit card information, are essential for transaction processing. Note: Full credit card numbers are securely processed and stored by payment processors, with Lifescript retaining only truncated versions for security purposes."
+      text: "Payment details, including credit card information, are essential for transaction processing. Note: Full credit card numbers are securely processed and stored by payment processors, with LifeScript retaining only truncated versions for security purposes."
     },
     {
       title: "Commercial Information: ",
@@ -79,11 +79,11 @@ const Policy = () => {
     },
     {
       title: "Billing Authorization: ",
-      text: "By providing Lifescript with your credit card number and associated payment information, you authorize us to verify information immediately and to invoice your account for all fees and charges due and payable to Lifescript under these terms. This authorization means that no additional notice or consent is required for billing. We reserve the right to change prices and billing methods at any time upon posting on our website."
+      text: "By providing LifeScript with your credit card number and associated payment information, you authorize us to verify information immediately and to invoice your account for all fees and charges due and payable to LifeScript under these terms. This authorization means that no additional notice or consent is required for billing. We reserve the right to change prices and billing methods at any time upon posting on our website."
     },
     {
       title: "Collection and Fees:",
-      text: "Any attorney fees, court costs, or other costs incurred in collection of delinquent undisputed amounts will be your responsibility. A contract for the Service between you and Lifescript is established only after Lifescript accepts your order via confirmatory e-mail or other appropriate means of communication. You are also responsible for any third-party fees incurred when using the Service."
+      text: "Any attorney fees, court costs, or other costs incurred in collection of delinquent undisputed amounts will be your responsibility. A contract for the Service between you and LifeScript is established only after LifeScript accepts your order via confirmatory e-mail or other appropriate means of communication. You are also responsible for any third-party fees incurred when using the Service."
     },
     {
       title: "Product Purchases: ",
@@ -106,8 +106,8 @@ const Policy = () => {
             <Typography>Updated at January 29st, 2024 </Typography>
           </Box>
           <Typography sx={{ margin: { sm: "80px 0 50px", xs: "40px 0 30px" } }}>
-            Lifescript (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Lifescript.
-            This Privacy Policy applies to our website, and its associated subdomains (collectively, our “Service”) alongside our application, Lifescript. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.
+            LifeScript (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by LifeScript.
+            This Privacy Policy applies to our website, and its associated subdomains (collectively, our “Service”) alongside our application, LifeScript. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy and our Terms of Service.
           </Typography>
 
           <PHeading text="Definitions and Key Terms" />
@@ -123,14 +123,14 @@ const Policy = () => {
 
             <PHeading text="User Information Collected and Its Usage " />
             <Box sx={{ maxWidth: "90%", margin: { sm: "20px 0 50px 20px", xs: "10px 0 30px 20px" } }}>
-              <Point title="Scope and Collection of Personal Information:" text="Lifescript diligently adheres to the principles of data protection and privacy. In the regular course of business, we collect a range of personal information from our users. This information is garnered through multiple channels: when users register for an account, participate in surveys, enter contests, solicit customer support, engage with our Services, or interact with our website in any capacity. The types of personal information collected include, but are not limited to, names, mailing addresses, email addresses, telephone numbers, credit card details, and other related data. This data collection occurs both directly (e.g., via account registration or survey participation) and indirectly (e.g., through technological means like browser or device analytics when users access our website). " />
+              <Point title="Scope and Collection of Personal Information:" text="LifeScript diligently adheres to the principles of data protection and privacy. In the regular course of business, we collect a range of personal information from our users. This information is garnered through multiple channels: when users register for an account, participate in surveys, enter contests, solicit customer support, engage with our Services, or interact with our website in any capacity. The types of personal information collected include, but are not limited to, names, mailing addresses, email addresses, telephone numbers, credit card details, and other related data. This data collection occurs both directly (e.g., via account registration or survey participation) and indirectly (e.g., through technological means like browser or device analytics when users access our website). " />
               <Point title="Utilization of Information: " text=" The personal information collected is utilized in strict accordance with this Privacy Policy. The primary objectives include:" />
               <Box sx={{ margin: { sm: "0 0 20px 20px", xs: "0 0 10px 20px" } }}>
                 <ul>
                   <li>Provision and enhancement of the Services offered, including but not limited to, account maintenance, order processing, and customer support. </li>
                   <li>Development of new services and improvement of existing ones. </li>
                   <li>Implementation of marketing strategies and dissemination of promotional materials that are deemed relevant to the user.</li>
-                  <li>Protection of Lifescript’s interests, including the security and integrity of our Services and our users. </li>
+                  <li>Protection of LifeScript’s interests, including the security and integrity of our Services and our users. </li>
                   <li>Compliance with applicable legal and regulatory requirements. </li>
                   <li>Customization of user experience, including personalization of content and advertising. </li>
                   <li>Internal operational purposes, analytics, and service optimization. </li>
@@ -146,16 +146,16 @@ const Policy = () => {
                 />)}
               </Box>
               <Point title="Commitment to Data Protection: "
-                text="Lifescript is unwavering in its commitment to protecting the personal information of its users. We employ robust security measures to safeguard data against unauthorized access, disclosure, alteration, and destruction. Furthermore, we regularly review our data collection, storage, and processing practices to ensure compliance with best practices and legal standards." />
+                text="LifeScript is unwavering in its commitment to protecting the personal information of its users. We employ robust security measures to safeguard data against unauthorized access, disclosure, alteration, and destruction. Furthermore, we regularly review our data collection, storage, and processing practices to ensure compliance with best practices and legal standards." />
             </Box>
 
             <PHeading text="Integration with Social Media Platforms " />
-            <Text text="Lifescript's offerings do not depend on connections with external social media platforms or services like Google. However, we give you the option to allow Lifescript to access your accounts on various third-party platforms, such as Facebook or Google. This integration facilitates features like logging into our Services using your social media credentials or importing and sharing specific items such as images and contacts, referred to here as “Social Content.” Granting Lifescript access to your Social Content implies your consent for us to access, display, and store this content, as necessary, to make it available for your personal use within our Services." />
+            <Text text="LifeScript's offerings do not depend on connections with external social media platforms or services like Google. However, we give you the option to allow LifeScript to access your accounts on various third-party platforms, such as Facebook or Google. This integration facilitates features like logging into our Services using your social media credentials or importing and sharing specific items such as images and contacts, referred to here as “Social Content.” Granting LifeScript access to your Social Content implies your consent for us to access, display, and store this content, as necessary, to make it available for your personal use within our Services." />
 
             <PHeading text="Management of Photos and Other User-Generated Content " />
-            <Text text="Lifescript typically does not review the photos, stories, transcripts, voice recordings, or other materials (“Your Content”) provided by our users. Nevertheless, incidental exposure to a portion of Your Content may occur as part of our service delivery, for instance, during customer support activities. We utilize Your Content only as required to deliver our Services to you, unless you specifically authorize us for additional uses. Refer to the “User-Generated Content: Rights, Responsibilities, and Usage” section in our Terms for guidelines on permissible content." />
+            <Text text="LifeScript typically does not review the photos, stories, transcripts, voice recordings, or other materials (“Your Content”) provided by our users. Nevertheless, incidental exposure to a portion of Your Content may occur as part of our service delivery, for instance, during customer support activities. We utilize Your Content only as required to deliver our Services to you, unless you specifically authorize us for additional uses. Refer to the “User-Generated Content: Rights, Responsibilities, and Usage” section in our Terms for guidelines on permissible content." />
             <Text text="When you upload or grant us access to your photos and videos, Your Content may include additional details like timestamps and geographic tags embedded by your image-capturing device. To manage the capture of this image metadata, you may adjust the settings on your device." margin="20px 0" />
-            <Text text="You retain control over Your Content provided to Lifescript. By default, we do not delete Your Content unless you request its removal or close your account. Your Content remains in your account based on your preferences. Upon deletion from your account, Your Content is promptly removed from our interfaces and will be permanently deleted from our systems as per our standard business procedures. If you decide to close your account, we will erase Your Content within a reasonable period post-termination.  " />
+            <Text text="You retain control over Your Content provided to LifeScript. By default, we do not delete Your Content unless you request its removal or close your account. Your Content remains in your account based on your preferences. Upon deletion from your account, Your Content is promptly removed from our interfaces and will be permanently deleted from our systems as per our standard business procedures. If you decide to close your account, we will erase Your Content within a reasonable period post-termination.  " />
 
             <PHeading text="Do we share the information we collect with third parties? " />
             <Text text="We may share the information that we collect, both personal and non-personal, with third parties such as advertisers, contest sponsors, promotional and marketing partners, and others who provide our content or whose products or services we think may interest you. We may also share it with our current and future affiliated companies and business partners, and if we are involved in a merger, asset sale or other business reorganization, we may also share or transfer your personal and non-personal information to our successors-in-interest." />
@@ -168,16 +168,16 @@ const Policy = () => {
             <Text text="By submitting your email address on this website, you agree to receive emails from us. You can cancel your participation in any of these email lists at any time by clicking on the opt-out link or other unsubscribe option that is included in the respective email. We only send emails to people who have authorized us to contact them, either directly, or through a third party. We do not send unsolicited commercial emails, because we hate spam as much as you do. By submitting your email address, you also agree to allow us to use your email address for customer audience targeting on sites like Facebook, where we display custom advertising to specific people who have opted-in to receive communications from us. Email addresses submitted only through the order processing page will be used for the sole purpose of sending you information and updates pertaining to your order. If, however, you have provided the same email to us through another method, we may use it for any of the purposes stated in this Policy. Note: If at any time you would like to unsubscribe from receiving future emails, we include detailed unsubscribe instructions at the bottom of each email." />
 
             <PHeading text="How Long Do We Retain Your Information?" />
-            <Text text="We will retain your information for as long as necessary to provide you with the Services and for the other purposes described in this Policy, in accordance with your instructions, and (iii) as required by applicable law, regulations and legal process . This may include keeping certain information after your subscription has ended and/or after you have received your book as many of our customers like to return to Lifescript at a later date to download their digital copy of the book and/or purchase additional physical books. If you prefer that we delete your digital book once you have completed it or after your subscription ends, please contact us at info@thelifescript.com to request such deletion and we will promptly honor your request. Any photos and content of your book retained by us will not be used except as necessary to provide additional Services to you. Note that we may retain certain information (excluding the content of your book) even after such a deletion request is made  for the period of time needed for Lifescript to pursue legitimate business interests, conduct audits, comply with (and demonstrate compliance with) legal obligations, resolve disputes, and enforce our Terms. " />
+            <Text text="We will retain your information for as long as necessary to provide you with the Services and for the other purposes described in this Policy, in accordance with your instructions, and (iii) as required by applicable law, regulations and legal process . This may include keeping certain information after your subscription has ended and/or after you have received your book as many of our customers like to return to LifeScript at a later date to download their digital copy of the book and/or purchase additional physical books. If you prefer that we delete your digital book once you have completed it or after your subscription ends, please contact us at info@theLifeScript.com to request such deletion and we will promptly honor your request. Any photos and content of your book retained by us will not be used except as necessary to provide additional Services to you. Note that we may retain certain information (excluding the content of your book) even after such a deletion request is made  for the period of time needed for LifeScript to pursue legitimate business interests, conduct audits, comply with (and demonstrate compliance with) legal obligations, resolve disputes, and enforce our Terms. " />
 
 
             <PHeading text="How Do We Protect Your Information?" />
-            <Text text="We implement a variety of security measures to maintain the safety of your personal information when you place an order or enter, submit, or access your personal information. We offer the use of a secure server. All supplied sensitive/credit information is transmitted via Secure Socket Layer (SSL) technology and then encrypted into our Payment gateway providers database only to be accessible by those authorized with special access rights to such systems, and are required to keep the information confidential. After a transaction, your private information (credit cards, social security numbers, financials, etc.) is never kept on file. We cannot, however, ensure or warrant the absolute security of any information you transmit to Lifescript or guarantee that your information on the Service may not be accessed, disclosed, altered, or destroyed by a breach of any of our physical, technical, or managerial safeguards. " />
+            <Text text="We implement a variety of security measures to maintain the safety of your personal information when you place an order or enter, submit, or access your personal information. We offer the use of a secure server. All supplied sensitive/credit information is transmitted via Secure Socket Layer (SSL) technology and then encrypted into our Payment gateway providers database only to be accessible by those authorized with special access rights to such systems, and are required to keep the information confidential. After a transaction, your private information (credit cards, social security numbers, financials, etc.) is never kept on file. We cannot, however, ensure or warrant the absolute security of any information you transmit to LifeScript or guarantee that your information on the Service may not be accessed, disclosed, altered, or destroyed by a breach of any of our physical, technical, or managerial safeguards. " />
 
             <PHeading text="Could my information be transferred to other countries? " />
-            <Text text="Lifescript is incorporated in Bulgaria. Information collected via our website, through direct interactions with you, or from use of our help services may be transferred from time to time to third parties, located throughout the world, and may be viewed and hosted anywhere in the world, including countries that may not have laws of general applicability regulating the use and transfer of such data. If we transfer your data abroad, we will ensure compliance with the requirements of the applicable laws in the respective jurisdictions. To the fullest extent allowed by applicable law, by using any of the above, you voluntarily consent to the trans-border transfer and hosting of such information." />
+            <Text text="LifeScript is incorporated in Bulgaria. Information collected via our website, through direct interactions with you, or from use of our help services may be transferred from time to time to third parties, located throughout the world, and may be viewed and hosted anywhere in the world, including countries that may not have laws of general applicability regulating the use and transfer of such data. If we transfer your data abroad, we will ensure compliance with the requirements of the applicable laws in the respective jurisdictions. To the fullest extent allowed by applicable law, by using any of the above, you voluntarily consent to the trans-border transfer and hosting of such information." />
 
-            <PHeading text="Is the information collected through the Lifescript Service secure?" />
+            <PHeading text="Is the information collected through the LifeScript Service secure?" />
             <Text text="We take precautions to protect the security of your information. We have physical, electronic, and managerial procedures to help safeguard, prevent unauthorized access, maintain data security, and correctly use your information. However, neither people nor security systems are foolproof, including encryption systems. In addition, people can commit intentional crimes, make mistakes or fail to follow policies. Therefore, while we use reasonable efforts to protect your personal information, we cannot guarantee its absolute security. If applicable law imposes any non-disclaimable duty to protect your personal information, you agree that intentional misconduct will be the standards used to measure our compliance with that duty. " />
 
             <PHeading text="Can I update or correct my information? " />
@@ -185,17 +185,17 @@ const Policy = () => {
             <Text text="You should be aware that it is not technologically possible to remove each and every record of the information you have provided to us from our system. The need to back up our systems to protect information from inadvertent loss means that a copy of your information may exist in a non-erasable form that will be difficult or impossible for us to locate. Promptly after receiving your request, all personal information stored in databases we actively use, and other readily searchable media will be updated, corrected, changed or deleted, as appropriate, as soon as and to the extent reasonably and technically practicable. " />
 
             <PHeading text="Sale of Business " />
-            <Text text="We reserve the right to transfer information to a third party in the event of a sale, merger or other transfer of all or substantially all of the assets of Lifescript or any of its Corporate Affiliates (as defined herein), or that portion of Lifescript or any of its Corporate Affiliates to which the Service relates, or in the event that we discontinue our business or file a petition or have filed against us a petition in bankruptcy, reorganization or similar proceeding, provided that the third party agrees to adhere to the terms of this Privacy Policy. " />
+            <Text text="We reserve the right to transfer information to a third party in the event of a sale, merger or other transfer of all or substantially all of the assets of LifeScript or any of its Corporate Affiliates (as defined herein), or that portion of LifeScript or any of its Corporate Affiliates to which the Service relates, or in the event that we discontinue our business or file a petition or have filed against us a petition in bankruptcy, reorganization or similar proceeding, provided that the third party agrees to adhere to the terms of this Privacy Policy. " />
 
             <PHeading text="Governing Law " />
             <Text text="This Privacy Policy is governed by the laws of Bulgaria without regard to its conflict of laws provision. You consent to the exclusive jurisdiction of the courts in connection with any action or dispute arising between the parties under or in connection with this Privacy Policy except for those individuals who may have rights to make claims under Privacy Shield, or the Swiss-US framework. " />
             <Text margin="20px 0 0" text="The laws of Bulgaria, excluding its conflicts of law rules, shall govern this Agreement and your use of the website. Your use of the website may also be subject to other local, state, national, or international laws." />
 
             <PHeading text="Links to Other Websites " />
-            <Text text="This Privacy Policy applies only to the Services. The Services may contain links to other websites not operated or controlled by Lifescript. We are not responsible for the content, accuracy or opinions expressed in such websites, and such websites are not investigated, monitored or checked for accuracy or completeness by us. Please remember that when you use a link to go from the Services to another website, our Privacy Policy is no longer in effect. Your browsing and interaction on any other website, including those that have a link on our platform, is subject to that website’s own rules and policies. Such third parties may use their own cookies or other methods to collect information about you. " />
+            <Text text="This Privacy Policy applies only to the Services. The Services may contain links to other websites not operated or controlled by LifeScript. We are not responsible for the content, accuracy or opinions expressed in such websites, and such websites are not investigated, monitored or checked for accuracy or completeness by us. Please remember that when you use a link to go from the Services to another website, our Privacy Policy is no longer in effect. Your browsing and interaction on any other website, including those that have a link on our platform, is subject to that website’s own rules and policies. Such third parties may use their own cookies or other methods to collect information about you. " />
 
             <PHeading text="Cookies Usage and Management " />
-            <Text text='Lifescript uses "Cookies" - small pieces of data stored by your web browser on your computer or mobile device - to enhance the performance and functionality of our website and platform. These Cookies help identify the areas you have visited and are crucial for improving your user experience. While not essential for the basic functionality of our website and platform, Cookies enable certain features, like remembering your login details or enabling video content, and their absence may lead to a requirement to re-enter login details upon each visit. ' />
+            <Text text='LifeScript uses "Cookies" - small pieces of data stored by your web browser on your computer or mobile device - to enhance the performance and functionality of our website and platform. These Cookies help identify the areas you have visited and are crucial for improving your user experience. While not essential for the basic functionality of our website and platform, Cookies enable certain features, like remembering your login details or enabling video content, and their absence may lead to a requirement to re-enter login details upon each visit. ' />
             <Text text="Please note that we never store Personally Identifiable Information in Cookies. You have the option to disable Cookies through your web browser settings. However, doing so might limit your access to certain features and services on our website and platform, adversely affecting your experience. Blocking Cookies may also result in the loss of saved information such as login details and site preferences. Each browser offers different controls for managing Cookies, and disabling a cookie or a category of cookies does not remove them from your browser. To delete Cookies, you will need to do so manually within your browser settings. For more detailed guidance, we recommend consulting your browser's help menu. " />
 
             <PHeading text="Remarketing Services " />
@@ -205,14 +205,14 @@ const Policy = () => {
             <Text text="In respect to any credit card or other payment processing details you have provided us, we commit that this confidential information will be stored in the most secure manner possible. " />
 
             <PHeading text="Kids' Privacy and Age Limitations " />
-            <Text text="These Services do not address anyone under the age of 18. We do not knowingly collect personally identifiable information from children under 18. In the case we discover that a person under 18 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us at info@thelifescript.com, and we will take appropriate actions. " />
+            <Text text="These Services do not address anyone under the age of 18. We do not knowingly collect personally identifiable information from children under 18. In the case we discover that a person under 18 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us at info@theLifeScript.com, and we will take appropriate actions. " />
 
             <PHeading text="Changes To Our Privacy Policy " />
-            <Text text='Should Lifescript implement any updates to this Policy, these updates will be promptly displayed on our website. Lifescript holds the right to alter this Policy at its discretion, hence we encourage you to review it regularly. The last update date of this Policy can be verified by checking the "Effective Date" mentioned at the beginning of this document. Changes to this Policy are effective as soon as they are published on our website or within the Services. In case of significant changes, we might inform you via email (to the email address associated with your account) or through a notification on our website or within the Services before the changes take effect. If you opt for email updates, you will receive notifications of any significant policy changes via email. Your continued use of the Services or Site following any amendments signifies your agreement to the updated Privacy Policy.' />
+            <Text text='Should LifeScript implement any updates to this Policy, these updates will be promptly displayed on our website. LifeScript holds the right to alter this Policy at its discretion, hence we encourage you to review it regularly. The last update date of this Policy can be verified by checking the "Effective Date" mentioned at the beginning of this document. Changes to this Policy are effective as soon as they are published on our website or within the Services. In case of significant changes, we might inform you via email (to the email address associated with your account) or through a notification on our website or within the Services before the changes take effect. If you opt for email updates, you will receive notifications of any significant policy changes via email. Your continued use of the Services or Site following any amendments signifies your agreement to the updated Privacy Policy.' />
 
             <PHeading text="Third-Party Services " />
             <Text text='We may display, include or make available third-party content (including data, information, applications and other products services) or provide links to third-party websites or services ("Third- Party Services"). ' />
-            <Text text="You acknowledge and agree that Lifescript shall not be responsible for any Third-Party Services, including their accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect thereof. Lifescript does not assume and shall not have any liability or responsibility to you or any other person or entity for any Third-Party Services." />
+            <Text text="You acknowledge and agree that LifeScript shall not be responsible for any Third-Party Services, including their accuracy, completeness, timeliness, validity, copyright compliance, legality, decency, quality or any other aspect thereof. LifeScript does not assume and shall not have any liability or responsibility to you or any other person or entity for any Third-Party Services." />
             <Text text="Third-Party Services and links thereto are provided solely as a convenience to you and you access and use them entirely at your own risk and subject to such third parties' terms and conditions." />
 
             <PHeading text="Information about General Data Protection Regulation (GDPR) " />
@@ -235,7 +235,7 @@ The Data Protection Principles include requirements such as: " />
             </Box>
 
             <PHeading text="Why is GDPR important? " />
-            <Text text="GDPR adds some new requirements regarding how companies should protect individuals' personal data that they collect and process. It also raises the stakes for compliance by increasing enforcement and imposing greater fines for breach. Beyond these facts it's simply the right thing to do. At Lifescript we strongly believe that your data privacy is very important and we already have solid security and privacy practices in place that go beyond the requirements of this new regulation." />
+            <Text text="GDPR adds some new requirements regarding how companies should protect individuals' personal data that they collect and process. It also raises the stakes for compliance by increasing enforcement and imposing greater fines for breach. Beyond these facts it's simply the right thing to do. At LifeScript we strongly believe that your data privacy is very important and we already have solid security and privacy practices in place that go beyond the requirements of this new regulation." />
 
             <PHeading text="Individual Data Subject's Rights - Data Access, Portability and Deletion " />
             <Text text="We are committed to helping our customers meet the data subject rights requirements of GDPR. We do store all conversation and personal data unless your account is deleted. In which case, we dispose of all data within a reasonable period in accordance with our Terms of Service and Privacy Policy. " />
@@ -283,7 +283,7 @@ The Data Protection Principles include requirements such as: " />
 
             <PHeading text="Contact Us" />
             <Text margin="0 0 20px" text="Don't hesitate to contact us if you have any questions about this Policy or our practices, or if you are seeking to exercise any of your statutory rights. " />
-            <li>Via Email: <a href="mailto:info@thelifescript.com" className={styles.url}>info@thelifescript.com</a></li>
+            <li>Via Email: <a href="mailto:info@theLifeScript.com" className={styles.url}>info@theLifeScript.com</a></li>
           </Box>
         </Box>
       </Box>
