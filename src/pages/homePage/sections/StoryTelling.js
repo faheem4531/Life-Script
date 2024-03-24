@@ -19,24 +19,28 @@ const StoryTelling = () => {
       heading: "Easy and Time-saving",
       content: "Tell your story by simply answering thought-provoking questions and have fun while you reflect along the way. Save valuable time and avoid the hassle of years of writing, extensive interviews, and proofreading for typos.",
       image: StoryImage1,
+      alt: "A picture of a happy grandma holding her granddaughter who is kissing her on the cheek in the forest - LifeScript",
       direction: "row"
     },
     {
       heading: "Supported",
       content: "Enjoy a stress-free experience with our support through live chat, video tutorials, FAQs, and more. Our dedicated team is here to guide you at every step of your storytelling journey, ensuring you have the resources and assistance needed to effortlessly bring your story to life.",
       image: StoryImage2,
+      alt: "A close-up photo of the hands of a grandpa who is writing his memoir book by hand - LifeScript ",
       direction: "row-reverse"
     },
     {
       heading: "Flexible",
       content: " Your story is unique, and so is the way you tell it. If you don't feel like writing, feel free to speak your mind! Choose your own pace down memory lane on any device, anytime, anywhere.",
       image: StoryImage3,
+      alt: "A photo of an old lady who is recording her memories over the phone - LifeScript",
       direction: "row"
     },
     {
       heading: "Connected",
       content: "Safeguard your legacy with our Family Tree feature, capturing your lineage from parents and great-grandparents to distant ancestors by visualizing them at the end of your book.",
       image: StoryImage4,
+      alt: "Three generation family together in a circle smiling at the camera - LifeScript",
       direction: "row-reverse",
       button: true
     },
@@ -73,6 +77,7 @@ const StoryTelling = () => {
           content={item.content}
           button={item.button}
           image={item.image}
+          alt={item.alt}
           direction={item.direction}
         />)}
       </Box>
@@ -85,7 +90,7 @@ const StoryTelling = () => {
 export default StoryTelling;
 
 
-function StoryWraper({ direction, heading, content, image, button = false, cardNo }) {
+function StoryWraper({ direction, heading, content, image, alt, button = false, cardNo }) {
   return (
     <Box sx={{
       display: "flex",
@@ -114,7 +119,7 @@ function StoryWraper({ direction, heading, content, image, button = false, cardN
         </Box>}
       </Box>
 
-      <Image src={image} alt="image" className={`${styles.stroyImages} ${cardNo == '1' && styles.index}`} />
+      <Image src={image} alt={alt} className={`${styles.stroyImages} ${cardNo == '1' && styles.index}`} />
     </Box>
   )
 }
