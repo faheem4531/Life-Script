@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import StoryImg from "@/__webAssets/pngs/about-story.png"
 import Image from "next/image";
 import styles from "./AboutUs.module.css"
+
+import StoryImg from "@/__webAssets/webp/about-story.webp"
 
 const Story = () => {
   return (
