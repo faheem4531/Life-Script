@@ -4,19 +4,19 @@ import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading"
 import { Box } from "@mui/material"
 import Image from "next/image"
 import styles from "./HomeSections.module.css"
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Book from "@/__webAssets/pngs/book-1.png"
-import Book2 from "@/__webAssets/pngs/book-2.png"
-import Book3 from "@/__webAssets/pngs/book-3.png"
-import Book4 from "@/__webAssets/pngs/book-4.png"
-import Book5 from "@/__webAssets/pngs/book-5.png"
-import Book6 from "@/__webAssets/pngs/book-6.png"
+import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp"
+import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp"
+import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp"
+import Book4 from "@/__webAssets/webp/bookCovers/Grandparents-book-cover-design.webp"
+import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp"
+import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp"
 import Left from "@/__webAssets/pngs/aero-left.png"
 import Right from "@/__webAssets/pngs/aero-right.png"
+
 import { useRef, useState } from "react";
 
 const OurBooks = () => {
@@ -88,22 +88,46 @@ const OurBooks = () => {
       <Box position="relative" sx={{ marginTop: { sm: "120px", xs: "70px" }, width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Slider {...settings} className={styles.slider} ref={sliderRef}>
           <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
-            <Image src={Book} alt="image" className={styles.book} />
+            <Image
+              src={Book1}
+              alt="A book cover design with an old man celebrating anniversary with his wife on a swing - LifeScript"
+              className={styles.book}
+            />
           </Box>
           <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
-            <Image src={Book2} alt="image" className={styles.book} />
+            <Image
+              src={Book2}
+              alt="A full book cover picture design of a life story book with family standing in front of a lake - LifeScript"
+              className={styles.book}
+            />
           </Box>
           <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
-            <Image src={Book3} alt="image" className={styles.book} />
+            <Image
+              src={Book3}
+              alt="A book cover design with an old couple celebrating grandma birthday - LifeScript"
+              className={styles.book}
+            />
           </Box>
           <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
-            <Image src={Book4} alt="image" className={styles.book} />
+            <Image
+              src={Book4}
+              alt="A book cover design with a couple in the forest enjoying the sun and playing around - LifeScript"
+              className={styles.book}
+            />
           </Box>
           <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
-            <Image src={Book5} alt="image" className={styles.book} />
+            <Image
+              src={Book5}
+              alt="Memoir book cover design with small picture of author and customizable text - LifeScript"
+              className={styles.book}
+            />
           </Box>
           <Box sx={{ width: { sm: "450px", xl: "500px" } }}>
-            <Image src={Book6} alt="image" className={styles.book} />
+            <Image
+              src={Book6}
+              alt="Simplistic design of autobiography book cover with minimalistic elements that you can customize - LifeScript"
+              className={styles.book}
+            />
           </Box>
         </Slider>
 
