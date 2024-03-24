@@ -4,7 +4,7 @@ import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 import Image from "next/image";
 import Button from "@/__webComponents/button/Button";
 
-import Design from "@/__webAssets/pngs/design-card.png"
+import Design from "@/__webAssets/webp/design-card.webp"
 import LeftStyle from "@/__webAssets/pngs/left-style2.png"
 import RightStyle from "@/__webAssets/pngs/right-style2.png"
 import Gift from "@/__webAssets/svgs/gift.svg"
