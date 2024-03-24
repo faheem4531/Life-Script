@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import Image from "next/image"
+import styles from "../ComponentsStyles.module.css"
 
 import Logo from "@/__webAssets/svgs/logo-footer.svg"
 import Insta from "@/__webAssets/svgs/insta.svg"
@@ -44,37 +45,39 @@ const Footer = () => {
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir8 !important" }}>COMPANY</Typography>
             <Link href="/aboutUs">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>About Us</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>About Us</Typography>
             </Link>
             <Link href="/features">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Features</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>Features</Typography>
             </Link>
             <Link href="/pricing">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Pricing</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>Pricing</Typography>
             </Link>
             <Link href="/blog">
-              <Typography sx={{ fontSize: "16px" }}>Blog</Typography>
+              <Typography sx={{ fontSize: "16px" }} className={styles.hoverLinks}>Blog</Typography>
             </Link>
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir8 !important" }}>HELP</Typography>
             <Link href="/termsOfUse">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Contact Us</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>Contact Us</Typography>
             </Link>
             <Link href="/faqs">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>FAQ</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>FAQ</Typography>
             </Link>
             <Link href="/termsOfUse">
-              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }}>Terms and conditions</Typography>
+              <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>Terms and conditions</Typography>
             </Link>
             <Link href="/privacyPolicy">
-              <Typography sx={{ fontSize: "16px" }}>Privacy Policy</Typography>
+              <Typography sx={{ fontSize: "16px" }} className={styles.hoverLinks}>Privacy Policy</Typography>
             </Link>
           </Box>
         </Box>
       </Box >
 
-      <Box sx={{ textAlign: "center", padding: "23px 0", fontSize: { xs: "12px", sx: "14px" }, fontFamily: "Avenir" }}>© Copyright  2024 LifeScript</Box>
+      <Box sx={{ textAlign: "center", padding: "23px 0", fontSize: { xs: "12px", sx: "14px" }, fontFamily: "Avenir" }}>
+        © Copyright  2024 LifeScript
+      </Box>
     </Box>
   )
 }

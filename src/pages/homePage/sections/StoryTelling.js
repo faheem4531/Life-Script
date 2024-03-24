@@ -4,10 +4,10 @@ import styles from "./HomeSections.module.css"
 import Content from "@/__webComponents/headings/Content";
 import Link from "next/link";
 
-import StoryImage1 from "@/__webAssets/pngs/story-1.png"
-import StoryImage2 from "@/__webAssets/pngs/story-2.png"
-import StoryImage3 from "@/__webAssets/pngs/story-3.png"
-import StoryImage4 from "@/__webAssets/pngs/story-4.png"
+import StoryImage1 from "@/__webAssets/webp/storytelling/happy-grandma-holding-her-granddaughter.webp"
+import StoryImage2 from "@/__webAssets/webp/storytelling/grandpa-writing-by-hand-his-memoir.webp"
+import StoryImage3 from "@/__webAssets/webp/storytelling/grandma-recording-her-memories-over-the-phone.webp"
+import StoryImage4 from "@/__webAssets/webp/storytelling/three-generations-family-smiling-at-the-camera.webp"
 import Button from "@/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
 import Line from "@/__webAssets/svgs/line-orange.svg"

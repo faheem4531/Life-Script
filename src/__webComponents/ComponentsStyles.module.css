@@ -108,6 +108,12 @@ background-color: #a5a19737 !important;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='white' stroke-width='1' stroke-dasharray='7%2c7' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
 }
 
+/* Footer  */
+.hoverLinks:hover{
+  color: #E1683B;
+}
+
+
 @media screen and  (max-width: 1200px) and (min-width:899px) {
   .gif {
     width: 450px;
