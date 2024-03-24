@@ -3,7 +3,7 @@ import FlowerLine from "@/__webAssets/pngs/full-style.png"
 import Image from "next/image";
 import styles from "./HomeSections.module.css"
 import Content from "@/__webComponents/headings/Content";
-import Heroimage from "@/__webAssets/pngs/suggestion-hero.png"
+import Heroimage from "@/__webAssets/webp/family-collage-life-story-books.webp"
 import ListPoints from "@/__webAssets/svgs/curved-list.svg"
 
 const Suggestion = () => {
@@ -76,7 +76,11 @@ const Suggestion = () => {
             }
           </Box>
         </Box>
-        <Image src={Heroimage} alt="image" className={styles.suggestionImg} />
+        <Image
+          src={Heroimage}
+          alt="A collage of a dad with kids and a grandpa sitting on top of life story books packaged as a gift - LifeScript"
+          className={styles.suggestionImg}
+        />
       </Box>
     </Box>
   )
