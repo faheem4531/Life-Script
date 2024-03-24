@@ -31,7 +31,6 @@ const Introduction = () => {
         showCursor: false,
       });
 
-      // Cleanup the typed instance when the component unmounts
       return () => {
         typed.destroy();
       };
