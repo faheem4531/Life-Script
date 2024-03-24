@@ -3,17 +3,17 @@
 import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import Button from "@/__webComponents/button/Button";
-import Pen from "@/__webAssets/svgs/writing-pen.svg"
-import Book from "@/__webAssets/pngs/hero-book.png"
 import Image from "next/image";
 import styles from "./HomeSections.module.css"
 import Typed from "typed.js";
-
-import Image1 from "@/__webAssets/pngs/hero-1.png"
-import Image2 from "@/__webAssets/pngs/hero-2.png"
-import Image3 from "@/__webAssets/pngs/hero-3.png"
-import Image4 from "@/__webAssets/pngs/hero-4.png"
 import Link from "next/link";
+
+import Image1 from "@/__webAssets/webp/heroImages/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp"
+import Image2 from "@/__webAssets/webp/heroImages/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp"
+import Image3 from "@/__webAssets/webp/heroImages/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp"
+import Image4 from "@/__webAssets/webp/heroImages/grandma-and-grandpa-laughing-and-eating-ice cream-happy-memories.webp"
+import Book from "@/__webAssets/webp/heroImages/old-opened-autobiography-book.webp"
+import Pen from "@/__webAssets/svgs/writing-pen.svg"
 
 const Introduction = () => {
 
@@ -85,11 +85,31 @@ const Introduction = () => {
         </Typography>
       </Box>
 
-      <Image src={Image1} alt="image" className={styles.image1} />
-      <Image src={Image3} alt="image" className={styles.image3} />
-      <Image src={Image2} alt="image" className={styles.image2} />
-      <Image src={Image4} alt="image" className={styles.image4} />
-      <Image src={Book} alt="book" className={styles.bookImg} />
+      <Image
+        src={Image1}
+        alt="Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript"
+        className={styles.image1}
+      />
+      <Image
+        src={Image3}
+        alt="Children dancing and having fun with bubbles on a vintage photograph - LifeScript"
+        className={styles.image3}
+      />
+      <Image
+        src={Image2}
+        alt="childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript"
+        className={styles.image2}
+      />
+      <Image
+        src={Image4}
+        alt="Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript"
+        className={styles.image4}
+      />
+      <Image
+        src={Book}
+        alt="An old opened autobiography book - LifeScript"
+        className={styles.bookImg}
+      />
     </Box>
   )
 }

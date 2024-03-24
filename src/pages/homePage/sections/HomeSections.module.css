@@ -12,8 +12,8 @@
   position: absolute;
   right: 320px;
   top: 150px;
-  /* width: 190px; */
-  /* height: 242px; */
+  width: 260px;
+  height: 290px;
   animation: image1 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
 
@@ -21,8 +21,8 @@
   position: absolute;
   right: 190px;
   top: 80px;
-  /* width: 200px; */
-  /* height: 225px; */
+  width: 225px;
+  height: 245px;
   animation: image2 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
 
@@ -30,8 +30,8 @@
   position: absolute;
   right: 0;
   top: 75px;
-  /* width: 180px; */
-  /* height: 280px; */
+  width: 275px;
+  height: 330px;
   animation: image3 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
 
@@ -40,8 +40,8 @@
   right: 130px;
   top: 260px;
   z-index: 2;
-  /* width: 260px; */
-  /* height: 200px; */
+  width: 322px;
+  height: 290px;
   animation: image4 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
 
