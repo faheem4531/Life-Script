@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp"
 import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp"
 import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp"
-import Book4 from "@/__webAssets/webp/bookCovers/Grandparents-book-cover-design.webp"
+import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp"
 import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp"
 import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp"
 import Left from "@/__webAssets/pngs/aero-left.png"
