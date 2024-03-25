@@ -54,6 +54,7 @@ const Blogs = () => {
               date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
               image={imageUrl}
               details={item.attributes?.description}
+              caption={item.attributes.image.data[0].attributes.caption}
             />
           );
         })}

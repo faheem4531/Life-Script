@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import More from "@/__webAssets/svgs/read-more.svg";
 import { useRouter } from "next/router";
-const MapCard = ({ title, date, image, details }) => {
+const MapCard = ({ title, date, image, details,caption }) => {
   const [showFullDetails, setShowFullDetails] = useState(false);
 
   //   const toggleDetails = () => {
@@ -56,6 +56,9 @@ const MapCard = ({ title, date, image, details }) => {
         width={250}
         height={250}
       />
+     {caption && (
+                <Typography sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>Caption: {caption}</Typography>
+            )}
       {/* <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>{details}
             <Link href="/blog/blogDetails">
               <span className={styles.readMore}>Read more <Image src={More} alt="more" /></span>
