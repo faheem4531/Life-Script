@@ -27,7 +27,7 @@ const Footer = () => {
       }}>
         <Box>
           <Image src={Logo} alt="logo" />
-          <Typography sx={{ width: "210px", fontSize: "16px", margin: "23px 0", textAlign: { xs: "center", sm: "start" } }}>Echoes of the past, blueprint for the future.</Typography>
+          <Typography sx={{ width: "210px", fontSize: "16px", margin: "23px 0", textAlign: { xs: "center", sm: "start" } }}>echoes of the past, blueprint for the future.</Typography>
           <Box sx={{
             display: "flex",
             columnGap: "13px",
