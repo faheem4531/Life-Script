@@ -59,7 +59,7 @@ const Footer = () => {
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir8 !important" }}>HELP</Typography>
-            <Link href="/termsOfUse">
+            <Link  href="/aboutUs#ContactUs">
               <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>Contact Us</Typography>
             </Link>
             <Link href="/faqs">

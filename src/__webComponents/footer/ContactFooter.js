@@ -20,6 +20,7 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape,
         zIndex: "10"
       }}
       className={styles.contactFooterBox}
+      id="ContactUs"
     >
       <Box sx={{
         fontSize: { md: "54px", sm: "44px", xs: "32px" },
