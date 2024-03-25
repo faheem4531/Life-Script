@@ -1,7 +1,6 @@
-import BlogImage from "@/__webAssets/pngs/blog-img.png";
 import { Box } from "@mui/material";
-import MapCard from "./MapCard";
 import { useEffect, useState } from "react";
+import MapCard from "./MapCard";
 
 const Blogs = () => {
   const [blogsData, setBlogsData] = useState([]);
@@ -23,8 +22,18 @@ const Blogs = () => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
-        const data = await response.json();
-        setBlogsData(data);
+        const responseData = await response.json();
+
+        if (!Array.isArray(responseData.data)) {
+          console.error("Data received from the API does not contain an array:", responseData.data);
+          return; // Exit early if data is not an array
+        }
+
+        // Sort the data based on publish date in descending order
+        const sortedData = responseData.data.sort((a, b) => new Date(b.attributes.datePublish) - new Date(a.attributes.datePublish));
+
+        // console.log("Sorted data:", sortedData); // Log sorted data
+        setBlogsData(sortedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -33,20 +42,21 @@ const Blogs = () => {
     fetchData();
   }, []);
 
-  console.log(blogsData, "Hello");
+  // console.log(blogsData, "Hello");
   const baseUrl = "http://ec2-51-20-134-5.eu-north-1.compute.amazonaws.com:1337";
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
+      {/* {console.log("bbbbbbbb", blogsData)} */}
       {blogsData &&
-        blogsData?.data?.map((item, index) => {
-          console.log(item,"Image issue")
+        blogsData?.map((item, index) => {
+          // console.log(item,"Image issue")
           const imageUrl =
           item.attributes.image.data[0] &&
           baseUrl + item.attributes.image.data[0].attributes.url;
          
-            console.log(imageUrl,"URl=====")
+            // console.log(imageUrl,"URl=====")
           return (
             <MapCard
               key={index}
