@@ -12,8 +12,13 @@ import BlogDetails from "../sections/BlogDetails";
 import Footer from "@/__webComponents/footer/Footer";
 import Pen from "@/__webAssets/svgs/writing-pen.svg"
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const BlogDetailPage = () => {
+  const router = useRouter();
+
+  // Access query parameters passed from the MapCard component
+  const { title, date, image, details } = router.query;
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.introBlog}>
       <NavBar color="#F3ECDA" logo={Logo} />
@@ -36,10 +41,13 @@ const BlogDetailPage = () => {
             fontFamily: "Besley !important",
             lineHeight: { sm: "50px", xs: "36px" }
           }}>
-            Crafting Your Legacy: A Guide to Writing Your Autobiography
+            {/* Crafting Your Legacy: A Guide to Writing Your Autobiography */}
+            {title}
+
           </Typography>
           <Typography x={{ fontSize: "16px" }}>
-            Published by Angel on January 12, 2024
+            {/* Published by Angel on January 12, 2024 */}
+            {date}
           </Typography>
         </Box>
         <Image src={BlogImage} alt="img" className={styles.blogImg} />
