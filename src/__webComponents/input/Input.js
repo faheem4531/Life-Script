@@ -10,6 +10,7 @@ const Input = ({ width, height, backgroundColor, fontSize, placeHolder, img }) =
     color: "#3e4f3c",
     height: "55px",
     width: "100%",
+    fontSize: "18px"
   };
 
   return <Box sx={{
