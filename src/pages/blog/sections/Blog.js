@@ -47,7 +47,7 @@ const Blogs = () => {
   }, []);
 
   console.log(blogsData, "Hello");
-  // const baseUrl = "http://ec2-51-20-134-5.eu-north-1.compute.amazonaws.com:1337";
+  const baseUrl = "https://strapi.thelifescript.com";
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -57,8 +57,8 @@ const Blogs = () => {
         blogsData?.map((item, index) => {
           // console.log(item,"Image issue")
           const imageUrl =
-            item.attributes.image.data[0] &&
-            item.attributes.image.data[0].attributes.url;
+            item.attributes.image.data[0] && 
+            baseUrl + item.attributes.image.data[0].attributes.url;
 
           // console.log(imageUrl,"URl=====")
           return (
