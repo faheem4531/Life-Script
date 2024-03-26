@@ -19,6 +19,7 @@ const BlogDetailPage = () => {
 
   // Access query parameters passed from the MapCard component
   const { title, date, image, details } = router.query;
+  // console.log(image,"url====")
   return (
     <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.introBlog}>
       <NavBar color="#F3ECDA" logo={Logo} />
@@ -50,7 +51,7 @@ const BlogDetailPage = () => {
             {date}
           </Typography>
         </Box>
-        <Image src={BlogImage} alt="img" className={styles.blogImg} />
+        <img src={image} alt="img" className={styles.blogImg} />
         <BlogDetails />
       </Box>
       <Box sx={{ margin: { lg: "80px auto", md: "150px auto", sm: "100px auto", xs: "120px 0 80px" } }}>

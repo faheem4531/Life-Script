@@ -47,7 +47,7 @@ const Blogs = () => {
   }, []);
 
   console.log(blogsData, "Hello");
-  const baseUrl = "https://strapi.thelifescript.com";
+  // const baseUrl = "https://strapi.thelifescript.com";
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
@@ -58,7 +58,7 @@ const Blogs = () => {
           // console.log(item,"Image issue")
           const imageUrl =
             item.attributes.image.data[0] && 
-            baseUrl + item.attributes.image.data[0].attributes.url;
+             item.attributes.image.data[0].attributes.url;
 
           // console.log(imageUrl,"URl=====")
           return (
