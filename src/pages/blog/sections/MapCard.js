@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import More from "@/__webAssets/svgs/read-more.svg";
 import { useRouter } from "next/router";
-const MapCard = ({ title, date, image, details,caption }) => {
+const MapCard = ({ title, date, image, details,caption, slug }) => {
+  // console.log(slug,"hello")
   const [showFullDetails, setShowFullDetails] = useState(false);
 
   //   const toggleDetails = () => {
@@ -16,10 +17,10 @@ const MapCard = ({ title, date, image, details,caption }) => {
 
   const router = useRouter();
   const handleReadMoreClick = () => {
-    // Navigate to the BlogDetails page and pass necessary data via query parameters
     router.push({
       pathname: "/blog/blogDetails",
-      query: { title, date, image, details },
+      // query: { title, date, image, details },
+      query: { slug },
     });
   };
 

@@ -1,16 +1,25 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import MapCard from "./MapCard";
+import { Circles } from "react-loader-spinner";
+
 
 const Blogs = () => {
   const [blogsData, setBlogsData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [blogsPerPage] = useState(5);
+  const [paginateData, setPaginateData] = useState({});
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           // "http://localhost:1337/api/blogs?populate=*",
-          "https://strapi.thelifescript.com/api/blogs?populate=*",
+          // "https://strapi.thelifescript.com/api/blogs?populate=*",
+          `https://strapi.thelifescript.com/api/blogs?pagination[page]=${currentPage}&pagination[pageSize]=${blogsPerPage}&populate=*`
+
           // {
           //   headers: {
           //     Authorization:
@@ -28,7 +37,7 @@ const Blogs = () => {
             "Data received from the API does not contain an array:",
             responseData.data
           );
-          return; 
+          return;
         }
 
         // Sort the data based on publish date in descending order
@@ -38,43 +47,103 @@ const Blogs = () => {
             new Date(a.attributes.datePublish)
         );
         setBlogsData(sortedData);
+        setPaginateData(responseData.meta.pagination);
+        setLoading(false); 
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false); 
       }
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   console.log(blogsData, "Hello");
-  // const baseUrl = "https://strapi.thelifescript.com";
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       {/* {console.log("bbbbbbbb", blogsData)} */}
-      {blogsData &&
-        blogsData?.map((item, index) => {
-          // console.log(item,"Image issue")
-          const imageUrl =
-            item.attributes.image.data[0] && 
-             item.attributes.image.data[0].attributes.url;
-
-          // console.log(imageUrl,"URl=====")
-          return (
-            <MapCard
-              key={index}
-              title={item.attributes?.title}
-              date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
-              image={imageUrl}
-              details={item.attributes?.description}
-              caption={item.attributes.image.data[0].attributes.caption}
+      {/* Loader */}
+      {loading && (
+        <Box sx={{
+          margin: {
+            lg: "200px auto 120px",
+            md: "180px auto 150px",
+            sm: "120px auto 100px",
+            xs: "100px 20px 80px",
+          },
+          maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
+        }}>
+          <Circles
+              height="80"
+              width="80"
+              color="#B4522D"
+              ariaLabel="circles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
             />
-          );
-        })}
+        </Box>
+      )}
+      {!loading && (
+        <>
+          {blogsData &&
+            blogsData.map((item, index) => {
+              const imageUrl =
+                item.attributes.image.data[0] &&
+                item.attributes.image.data[0].attributes.url;
+
+              return (
+                <MapCard
+                  key={index}
+                  slug={item.id}
+                  title={item.attributes?.title}
+                  date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
+                  image={imageUrl}
+                  details={item.attributes?.description}
+                  caption={item.attributes.image.data[0].attributes.caption}
+                />
+              );
+            })}
+
+          {/* Pagination */}
+          <Box mt={2} display="flex" justifyContent="center">
+            <Button onClick={prevPage} disabled={currentPage === 1}>
+              Previous
+            </Button>
+            {[...Array(paginateData.pageCount)].map((_, index) => (
+              <Button
+                sx={{ padding: "2px", margin: "2px" }}
+                key={index + 1}
+                onClick={() => paginate(index + 1)}
+                variant={currentPage === index + 1 ? "contained" : "outlined"}
+              >
+                {index + 1}
+              </Button>
+            ))}
+            <Button
+              onClick={nextPage}
+              disabled={currentPage === paginateData.pageCount}
+            >
+              Next
+            </Button>
+          </Box>
+        </>
+      )}
     </Box>
   );
 };
-
 
 export default Blogs;
