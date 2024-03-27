@@ -76,6 +76,7 @@ const HomePage = () => {
         <ContactFooter
           title="Missed the moment? Set a"
           marked="reminder!"
+          date={true}
           subTitle="Complete the form, and we'll send you a reminder as your loved one's special day approaches."
           input1="Your email address"
           input2="What’s the occasion?"
