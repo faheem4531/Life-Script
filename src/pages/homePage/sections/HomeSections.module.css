@@ -299,7 +299,7 @@
 @keyframes image1 {
   0% {
     right: 100px;
-    bottom: -250px;
+    bottom: -600px;
   }
 
   100% {
@@ -310,7 +310,7 @@
 
 @keyframes image2 {
   0% {
-    bottom: -250px;
+    bottom: -600px;
   }
   100% {
     bottom: 120px;
@@ -320,7 +320,7 @@
 
 @keyframes image3 {
   0% {
-    bottom: -250px;
+    bottom: -600px;
   }
   100% {
     bottom: 70px;
@@ -329,7 +329,7 @@
 
 @keyframes image4 {
   0% {
-    bottom: -250px;
+    bottom: -600px;
   }
   100% {
   bottom: -10px;
@@ -351,6 +351,7 @@
 .gifTabBox {
   background-size: 100% 200px;
 }
+
 .bgHurt {
   height: 120px;
   width:200px;
@@ -383,8 +384,14 @@ display: none;
 
 @media screen and (max-width: 899px) {
 /* Introduction sec*/
-.bookImg, .image1 , .image2, .image3, .image4, .pointsLine {
-display: none;}
+  .bookImg, 
+  .image1 , 
+  .image2, 
+  .image3, 
+  .image4, 
+  .pointsLine {
+    display: none;
+  }
 
   /* Suggestion  */
   .suggestionImg{

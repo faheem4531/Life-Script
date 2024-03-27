@@ -64,7 +64,7 @@ const NavBar = ({ color, logo }) => {
         <Link href="/">
           <Typography sx={{
             padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" },
-            fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
+            fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
             className={`${pathname === '/' ? styles.underLine : ''} ${styles.hoverLinks}`}
@@ -74,7 +74,7 @@ const NavBar = ({ color, logo }) => {
         <Link href="/features">
           <Typography sx={{
             padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" },
-            fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
+            fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
             className={`${pathname === '/features' ? styles.underLine : ''}  ${styles.hoverLinks}`}
@@ -84,7 +84,7 @@ const NavBar = ({ color, logo }) => {
         <Link href="/blog">
           <Typography sx={{
             padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" },
-            fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
+            fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5",
           }}
             className={`${pathname === '/blog' || pathname === '/blog/blogDetails' ? styles.underLine : ''}  ${styles.hoverLinks}`}
@@ -94,7 +94,7 @@ const NavBar = ({ color, logo }) => {
         <Link href="/aboutUs">
           <Typography sx={{
             padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" },
-            fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
+            fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
             className={`${pathname === '/aboutUs' ? styles.underLine : ''}  ${styles.hoverLinks}`}
@@ -104,7 +104,7 @@ const NavBar = ({ color, logo }) => {
         <Link href="/pricing">
           <Typography sx={{
             padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" },
-            fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
+            fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5"
           }}
             className={`${pathname === '/pricing' ? styles.underLine : ''}  ${styles.hoverLinks}`}
@@ -114,7 +114,7 @@ const NavBar = ({ color, logo }) => {
         <Link href="/faqs">
           <Typography sx={{
             padding: { lg: ' 0 20px 10px', md: "0px 12px 10px", sm: "0 10px 20px", xs: "0 0 20px" },
-            fontSize: { lg: "18px", md: "16px", sm: "18px", xs: "18px" },
+            fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
             fontFamily: "Avenir5",
           }}
             className={`${pathname === '/faqs' ? styles.underLine : ''}  ${styles.hoverLinks}`}
