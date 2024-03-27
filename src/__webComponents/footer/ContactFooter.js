@@ -99,12 +99,25 @@ export default ContactFooter
 
 function GetDate() {
   const [isOpen, setIsOpen] = useState(false);
+
   function handleCalander() {
     setIsOpen((pre) => !pre)
   }
+
   return (
-    <Box sx={{ position: "relative" }}>
-      <Box sx={{ bgcolor: "#f5f5f5", position: "absolute", right: "10px", zIndex: "100", top: "15px" }} onClick={handleCalander}><CustomCalendarIcon /></Box>
+    <Box sx={{ position: "relative" }} onCli>
+      <Box sx={{
+        bgcolor: "#f5f5f5",
+        position: "absolute",
+        right: "10px",
+        zIndex: "100",
+        top: "15px",
+        cursor: "pointer",
+      }}
+        onClick={handleCalander}
+      >
+        <CustomCalendarIcon />
+      </Box>
 
       <DatePicker sx={{
         bgcolor: "#f5f5f5",

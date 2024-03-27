@@ -131,7 +131,7 @@ const NavBar = ({ color, logo }) => {
               onClick={handleButtonClick}
             />
           </Link>
-          <Box sx={{ display: { lg: "block", sm: "none", xs: "none" } }}>
+          <Box className={styles.langBtn}>
             <LanguageOption />
           </Box>
         </Box>
