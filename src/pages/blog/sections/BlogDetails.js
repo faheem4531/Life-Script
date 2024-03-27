@@ -1,56 +1,20 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import styles from "./BlogSection.module.css";
 import Content from "@/__webComponents/headings/Content";
-import { useRouter } from 'next/router';
 
-const BlogDetails = () => {
-  
-  const router = useRouter();
+const BlogDetails = ({details}) => {
 
-  // Access query parameters passed from the MapCard component
-  const { title, date, image, details } = router.query;
-
-  const dumyDate1 = [
-    {
-      title: "1. Embarking on the Journey of Self-Discovery",
-    },
-  ];
   return (
     <Box sx={{ display: "flex", flexDirection: "column", rowGap: "20px" }}>
-       <Content
-        width="100%"
-        subFonts="20px"
-        subWidth="100%"
-        mblcolor="#E1683B"
-        heading=""
-        subHeading={details}
-      />
-      {/* <Content
-        width="100%"
-        subFonts="20px"
-        subWidth="100%"
-        mblcolor="#E1683B"
-        heading="1. Embarking on the Journey of Self-Discovery"
-        subHeading="Embarking on the journey of writing your autobiography is a profound and transformative experience.  Crafting Your Legacy:A Guide to Writing Your Autobiography serves as a comprehensive compass, guiding you through the intricate yet rewarding process of immortalizing your life's story on paper."
-      /> */}
-{/* 
-      <Content
-        width="100%"
-        subFonts="20px"
-        subWidth="100%"
-        mblcolor="#E1683B"
-        heading="2. Unveiling the Treasury of Memories"
-        subHeading="The initial step in this introspective expedition involves unveiling the treasury of memories that have shaped your existence. Delve into prompts and exercises meticulously designed to elicit recollections, unlocking the vibrant details that contribute to the tapestry of your unique story. From the innocent anecdotes of childhood to the pivotal moments that defined you, this chapter sets the stage for a narrative that captures the essence of your being."
-      /> */}
+        <Content
+          width="100%"
+          subFonts="20px"
+          subWidth="100%"
+          mblcolor="#E1683B"
+          heading=""
+          subHeading={details} 
+        />
 
-      {/* <Content
-        width="100%"
-        subFonts="20px"
-        subWidth="100%"
-        mblcolor="#E1683B"
-        heading="3. Crafting an Authentic Narrative"
-        subHeading="As memories unfold, the next phase is an artful endeavor — transforming these fragments into a coherent narrative. Practical insights illuminate the path, guiding you in structuring your autobiography. Selecting a writing style that resonates and crafting a timeline that engages your readers become integral aspects of this process, ensuring a seamless transition from the recesses of your thoughts to the pages of your manuscript."
-      /> */}
 
       {/* <Box>
         <Typography
