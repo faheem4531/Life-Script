@@ -43,27 +43,23 @@ const BlogDetailPage = () => {
 
     fetchData();
   }, [slug]);
-  // If there's no data, display "No Data" message
-  if (
-    !blogsDetailsData ||
-    !blogsDetailsData.data ||
-    !blogsDetailsData.data.attributes
-  ) {
-    return (
-      <Box
-        sx={{
-          minHeight: "100vh",
-          bgcolor: "#f3ecda",
-          color: "#3e4f3c",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography>No Data</Typography>
-      </Box>
-    );
-  }
+
+ if (!slug || Object.keys(slug).length === 0) {
+  return (
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#f3ecda",
+        color: "#3e4f3c",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Typography variant="h4">No matching data found</Typography>
+    </Box>
+  );
+}
 
   // console.log(blogsDetailsData, "Testing Heja");
 
