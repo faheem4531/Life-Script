@@ -13,6 +13,7 @@
 }
 
 @media screen and (min-width: 899px) and (max-width: 1200px) {
+
   .storyImage {
     width:auto;
     height: 500px;
@@ -33,8 +34,8 @@
   }
 
   /* Our Values  */
-.valuesBox {
-background-size: 220px 115px;
-}
+  .valuesBox {
+  background-size: 220px 115px;
+  }
 
 }

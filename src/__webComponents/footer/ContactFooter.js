@@ -1,3 +1,4 @@
+'use client '
 import { Box, Typography } from "@mui/material"
 import Image from "next/image"
 import styles from "../ComponentsStyles.module.css"
@@ -5,9 +6,11 @@ import Smily from "@/__webAssets/svgs/smily.svg"
 import Button from "../button/Button"
 import Input from "../input/Input"
 import Line from "@/__webAssets/svgs/line-white.svg"
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Shape from "@/__webAssets/svgs/input-shape.svg"
+import { useState } from "react"
 
-
-const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape, marked, lineWidth }) => {
+const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, button, shape, marked, lineWidth }) => {
   return (
     <Box
       sx={{
@@ -65,10 +68,13 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape,
           />
         </Box>
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
-          <Input
-            placeHolder={input3}
-            img={shape}
-          />
+          {date ?
+            <GetDate />
+            :
+            <Input
+              placeHolder={input3}
+            />
+          }
         </Box>
       </Box>
 
@@ -87,3 +93,34 @@ const ContactFooter = ({ title, subTitle, input1, input2, input3, button, shape,
 }
 
 export default ContactFooter
+
+
+
+
+function GetDate() {
+  const [isOpen, setIsOpen] = useState(false);
+  function handleCalander() {
+    setIsOpen((pre) => !pre)
+  }
+  return (
+    <Box sx={{ position: "relative" }}>
+      <Box sx={{ bgcolor: "#f5f5f5", position: "absolute", right: "10px", zIndex: "100", top: "15px" }} onClick={handleCalander}><CustomCalendarIcon /></Box>
+
+      <DatePicker sx={{
+        bgcolor: "#f5f5f5",
+        borderRadius: "2px",
+        width: "100%",
+        color: "#7e7e7e"
+      }}
+        open={isOpen}
+        label="When it's happening?"
+
+      />
+    </Box>
+  );
+}
+
+
+const CustomCalendarIcon = () => (
+  <Image src={Shape} alt="Calendar" width={26} height={24} />
+);
