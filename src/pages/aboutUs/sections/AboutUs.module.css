@@ -14,14 +14,14 @@
 
 @media screen and (min-width: 899px) and (max-width: 1200px) {
   .storyImage {
-    width:440px;
+    width:auto;
     height: 500px;
   }
 }
 
 @media screen and (max-width: 899px) {
   .storyImage {
-    width:440px;
+    width:auto;
     height: 550px;
   }
 }

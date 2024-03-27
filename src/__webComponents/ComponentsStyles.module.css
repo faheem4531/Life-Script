@@ -117,8 +117,8 @@ background-color: #a5a19737 !important;
 @media screen and  (max-width: 1200px) and (min-width:899px) {
   .gif {
     width: 450px;
-    height: 350px;
   }
+  
   .questionIcon{
     width: 40px;
     height: 40px;

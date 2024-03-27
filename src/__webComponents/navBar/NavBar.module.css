@@ -69,9 +69,11 @@
 .option:hover{
   background-color: #fcf0eb ; 
 }
+
 .optionsBg{
   background-color: #fcf0eb ; 
 }
+
 @keyframes slideIn {
   0% {
     transform: translateY(0);
@@ -90,12 +92,14 @@
 
 @media screen and (max-width: 1200px) and  (min-width: 900px) {
   .logo {
-    width: 170px !important;
-    height: 25px !important;
+    width: 210px !important;
+    height: auto !important;
   }
+
   .underLine {
     background-size: 45px 50%;
   }
+  
 }
  
 
