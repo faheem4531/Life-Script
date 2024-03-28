@@ -11,12 +11,13 @@ import Image from 'next/image';
 import styles from "../ComponentsStyles.module.css"
 
 import Bandage from "@/__webAssets/pngs/bandage.png"
-import AssistedEditing from "@/__webAssets/gif/assisted-editing.gif"
-import AutoPhoto from "@/__webAssets/gif/auto-photo.gif"
-import FamilyTree from "@/__webAssets/gif/family-tree.gif"
-import FormattingFeatures from "@/__webAssets/gif/formatting-features.gif"
-import Narrative from "@/__webAssets/gif/narrative.gif"
-import VoiceToText from "@/__webAssets/gif/voice-to-text.gif"
+
+import AssistedEditing from "@/__webAssets/gif/GifsToWebp/assisted-editing-ezgif.com-gif-to-webp-converter.webp"
+import AutoPhoto from "@/__webAssets/gif/GifsToWebp/auto-photo-ezgif.com-gif-to-webp-converter.webp"
+import FamilyTree from "@/__webAssets/gif/GifsToWebp/family-tree-ezgif.com-optiwebp.webp"
+import FormattingFeatures from "@/__webAssets/gif/GifsToWebp/formatting-features-ezgif.com-gif-to-webp-converter.webp"
+import Narrative from "@/__webAssets/gif/GifsToWebp/narrative-ezgif.com-gif-to-webp-converter.webp"
+import VoiceToText from "@/__webAssets/gif/GifsToWebp/voice-to-text-ezgif.com-gif-to-webp-converter.webp"
 
 const panels = [
   {
