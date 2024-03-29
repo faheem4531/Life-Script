@@ -21,14 +21,14 @@ const BlogDetailPage = () => {
   const [blogsDetailsData, setBlogsDetailsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { slug } = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!slug) return; // Prevent fetching data if slug is not available yet
+        if (!id) return; // Prevent fetching data if slug is not available yet
         const response = await fetch(
-          `https://strapi.thelifescript.com/api/blogs/${slug}?populate=*`
+          `https://strapi.thelifescript.com/api/blogs/${id}?populate=*`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -42,24 +42,24 @@ const BlogDetailPage = () => {
     };
 
     fetchData();
-  }, [slug]);
+  }, [id]);
 
- if (!slug || Object.keys(slug).length === 0) {
-  return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        bgcolor: "#f3ecda",
-        color: "#3e4f3c",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Typography variant="h4">No matching data found</Typography>
-    </Box>
-  );
-}
+  if (!id || Object.keys(id).length === 0) {
+    return (
+      <Box
+        sx={{
+          minHeight: "100vh",
+          bgcolor: "#f3ecda",
+          color: "#3e4f3c",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4">No matching data found</Typography>
+      </Box>
+    );
+  }
 
   // console.log(blogsDetailsData, "Testing Heja");
 

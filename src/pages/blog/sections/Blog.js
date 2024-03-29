@@ -58,7 +58,7 @@ const Blogs = () => {
     fetchData();
   }, [currentPage]);
 
-  console.log(blogsData, "Hello");
+  // console.log(blogsData, "Hello");
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -108,7 +108,7 @@ const Blogs = () => {
               return (
                 <MapCard
                   key={index}
-                  slug={item.id}
+                  id={item.id}
                   title={item.attributes?.title}
                   date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
                   image={imageUrl}

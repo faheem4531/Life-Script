@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import styles from "./BlogSection.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import More from "@/__webAssets/svgs/read-more.svg";
 import { useRouter } from "next/router";
 import markdownit from "markdown-it";
-const MapCard = ({ title, date, image, details, caption, slug }) => {
+const MapCard = ({ title, date, image, details, caption, id }) => {
   const md = new markdownit();
   const htmlContent = md.render(details);
-  // console.log(slug,"hello")
   const [showFullDetails, setShowFullDetails] = useState(false);
 
   //   const toggleDetails = () => {
@@ -23,7 +21,7 @@ const MapCard = ({ title, date, image, details, caption, slug }) => {
     router.push({
       pathname: "/blog/blogDetails",
       // query: { title, date, image, details },
-      query: { slug },
+      query: { id },
     });
   };
 
