@@ -44,7 +44,7 @@ const BlogDetailPage = () => {
     fetchData();
   }, [id]);
 
-  if (!slug || Object.keys(slug).length === 0) {
+  if (!id || Object.keys(id).length === 0) {
     return (
       <Box
         sx={{

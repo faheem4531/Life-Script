@@ -14,7 +14,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
   //       setShowFullDetails(!showFullDetails);
   //   };
 
-  const truncatedDetails = htmlContent.split("\n").slice(0, 5).join("\n");
+  const truncatedDetails = htmlContent.split("\n").slice(0, 2).join("\n");
 
   const router = useRouter();
   const handleReadMoreClick = () => {
