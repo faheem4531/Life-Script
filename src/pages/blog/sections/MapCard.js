@@ -5,7 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import More from "@/__webAssets/svgs/read-more.svg";
 import { useRouter } from "next/router";
-const MapCard = ({ title, date, image, details,caption, slug }) => {
+import markdownit from "markdown-it";
+const MapCard = ({ title, date, image, details, caption, slug }) => {
+  const md = new markdownit();
+  const htmlContent = md.render(details);
   // console.log(slug,"hello")
   const [showFullDetails, setShowFullDetails] = useState(false);
 
@@ -13,7 +16,7 @@ const MapCard = ({ title, date, image, details,caption, slug }) => {
   //       setShowFullDetails(!showFullDetails);
   //   };
 
-  const truncatedDetails = details.split("\n").slice(0, 5).join("\n");
+  const truncatedDetails = htmlContent.split("\n").slice(0, 5).join("\n");
 
   const router = useRouter();
   const handleReadMoreClick = () => {
@@ -57,32 +60,42 @@ const MapCard = ({ title, date, image, details,caption, slug }) => {
         width={250}
         height={250}
       />
-     {caption && (
-                <Typography sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>Caption: {caption}</Typography>
-            )}
-      {/* <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>{details}
-            <Link href="/blog/blogDetails">
-              <span className={styles.readMore}>Read more <Image src={More} alt="more" /></span>
-            </Link>
-          </Typography> */}
-      {/* <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>
-                {showFullDetails ? details : truncatedDetails}
-                {details.length > truncatedDetails.length && (
-                    <span className={styles.readMore} onClick={toggleDetails}>
-                        {showFullDetails ? 'Read less ' : 'Read more '}
-                        <Image src={More} alt="more" />
-                    </span>
-                )}
-            </Typography> */}
-      {/* <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>{details}
-                <span className={styles.readMore} onClick={handleReadMoreClick}>
-                    Read more <Image src={More} alt="more" />
-                </span>
-            </Typography> */}
+      {caption && (
+        <Typography
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          Caption: {caption}
+        </Typography>
+      )}
 
+      {/* <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>
+        {showFullDetails ? htmlContent : truncatedDetails}
+        {htmlContent.length > truncatedDetails.length && (
+          <span className={styles.readMore} onClick={handleReadMoreClick}>
+            {showFullDetails ? "Read less " : "Read more "}
+            <Image src={More} alt="more" />
+          </span>
+        )}
+      </Typography> */}
       <Typography sx={{ fontSize: "16px", maxWidth: "1050px", width: "100%" }}>
-        {showFullDetails ? details : truncatedDetails}
-        {details.length > truncatedDetails.length && (
+        {showFullDetails ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: htmlContent.replace(/<img.*?>/g, ""),
+            }}
+          />
+        ) : (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: truncatedDetails.replace(/<img.*?>/g, ""),
+            }}
+          />
+        )}
+        {htmlContent.length > truncatedDetails.length && (
           <span className={styles.readMore} onClick={handleReadMoreClick}>
             {showFullDetails ? "Read less " : "Read more "}
             <Image src={More} alt="more" />
