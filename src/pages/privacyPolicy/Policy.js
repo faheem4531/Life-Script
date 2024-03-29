@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import styles from "./Policy.module.css"
 
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 
 const Policy = () => {
   const keyTerms = [

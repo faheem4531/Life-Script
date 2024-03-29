@@ -79,6 +79,7 @@ const Suggestion = () => {
         <Image
           src={Heroimage}
           alt="A collage of a dad with kids and a grandpa sitting on top of life story books packaged as a gift - LifeScript"
+          title="Family collage photo"
           className={styles.suggestionImg}
         />
       </Box>

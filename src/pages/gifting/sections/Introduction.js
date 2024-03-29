@@ -4,7 +4,7 @@ import Button from "@/__webComponents/button/Button";
 import Image from "next/image";
 import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import Pen from "@/__webAssets/svgs/writing-pen.svg"
 import Link from "next/link";
 

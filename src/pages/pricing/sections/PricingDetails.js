@@ -20,6 +20,8 @@ const PricingDetails = ({ heading, cardsDetail, marked }) => {
           bgColor={item.bgColor}
           sCase={item.sCase}
           logo={item.logo}
+          title={item.title}
+          alt={item.alt}
           points={item.data}
         />)}
       </Box>
@@ -29,7 +31,7 @@ const PricingDetails = ({ heading, cardsDetail, marked }) => {
 
 export default PricingDetails;
 
-function DetailCard({ header, logo = false, points, bgColor, sCase }) {
+function DetailCard({ header, logo = false, alt, title, points, bgColor, sCase }) {
   return (
     <Box sx={{
       maxWidth: { lg: "405px", md: "320px", sm: "405px", xs: "325px" },
@@ -51,7 +53,7 @@ function DetailCard({ header, logo = false, points, bgColor, sCase }) {
       }}
         bgcolor={bgColor}>
         {header}
-        {logo && <Image src={logo} alt="logo" width={170} />}
+        {logo && <Image src={logo} alt={alt} title={title} width={170} />}
       </Box>
       <Box
         sx={{ padding: { sm: "10px 20px", xs: "10px 10px 10px 20px" } }}

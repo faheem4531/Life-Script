@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import GifTab from "../../homePage/sections/GifTab";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import styles from "../sections/BlogSection.module.css";
-import Logo from "@/__webAssets/svgs/logo-footer.svg";
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Image from "next/image";
 import BlogImage from "@/__webAssets/pngs/blog-img.png";
 import Back from "@/__webAssets/svgs/back-aero.svg";
@@ -44,7 +44,7 @@ const BlogDetailPage = () => {
     fetchData();
   }, [id]);
 
-  if (!id || Object.keys(id).length === 0) {
+  if (!slug || Object.keys(slug).length === 0) {
     return (
       <Box
         sx={{

@@ -2,6 +2,8 @@ import { Box, Typography } from '@mui/material'
 import Content from '@/__webComponents/headings/Content'
 import styles from "./FeatureSection.module.css"
 import Image from 'next/image'
+import Button from '@/__webComponents/button/Button'
+import Link from 'next/link'
 
 import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp"
 import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp"
@@ -9,15 +11,13 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.
 import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp"
 import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp"
 import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-animation.webp"
-import Button from '@/__webComponents/button/Button'
-import Link from 'next/link'
 
-import NarrativeLogo from "@/__webAssets/pngs/narative-icon.png"
-import AssistedLogo from "@/__webAssets/pngs/assisted-icon.png"
-import AutoPhopoLogo from "@/__webAssets/pngs/auto-photo.png"
-import FamilyLogo from "@/__webAssets/pngs/family-icon.png"
-import Formatting from "@/__webAssets/pngs/formatting-icon.png"
-import VoiceLogo from "@/__webAssets/pngs/voice-icon.png"
+import NarrativeLogo from "@/__webAssets/pngs/featuresLogos/narrative-fusion-feature-icon.png"
+import AssistedLogo from "@/__webAssets/pngs/featuresLogos/assisted-editing-feature-icon.png"
+import AutoPhotoLogo from "@/__webAssets/pngs/featuresLogos/auto-photo-improvement-feature-icon.png"
+import FamilyLogo from "@/__webAssets/pngs/featuresLogos/family-tree-feature-icon.png"
+import Formatting from "@/__webAssets/pngs/featuresLogos/formatting-features-icon.png"
+import VoiceLogo from "@/__webAssets/pngs/featuresLogos/voice-to-text-feature-icon.png"
 import Pen from "@/__webAssets/svgs/writing-pen.svg"
 
 
@@ -26,6 +26,8 @@ const FeaturesItems = () => {
   const Data = [
     {
       logo: NarrativeLogo,
+      altLogo: "An icon of a lightbulb over a book that represents narrative fusion feature for assembling answers - LifeScript",
+      titleLogo: "Narrative fusion feature icon",
       gif: Narrative,
       alt: "Narrative fusion feature demo animation showing how it works - LifeScript",
       title: "Narrative Fusion demo animation",
@@ -35,6 +37,8 @@ const FeaturesItems = () => {
     },
     {
       logo: AssistedLogo,
+      altLogo: "An icon of a pen over a book that represents assisted editing feature for automatic corrections - LifeScript",
+      titleLogo: "Assisted editing feature icon",
       gif: AssistedEditing,
       alt: "Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript",
       title: "Assisted Editing demo animation",
@@ -45,6 +49,8 @@ const FeaturesItems = () => {
     },
     {
       logo: VoiceLogo,
+      altLogo: "An icon of a microphone and window of text over it that represents recording memories via speech - LifeScript",
+      titleLogo: "Voice-to-text feature icon",
       gif: VoiceToText,
       alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript",
       title: "Voice-to-text demo animation",
@@ -54,6 +60,8 @@ const FeaturesItems = () => {
     },
     {
       logo: FamilyLogo,
+      altLogo: "An icon of people connected between each other that represents visualizing family ancestry - LifeScript",
+      titleLogo: "Family tree feature icon",
       gif: FamilyTree,
       alt: "Family Tree feature demo animation showing how your family members visualize across generations - LifeScript",
       title: "Family tree demo animation",
@@ -65,6 +73,8 @@ const FeaturesItems = () => {
 
     {
       logo: Formatting,
+      altLogo: "An icon of paper with text on it that represents various formatting options - LifeScript",
+      titleLogo: "Formatting features icon",
       gif: FormattingFeatures,
       alt: "Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript",
       title: "Formatting features demo animation",
@@ -74,7 +84,9 @@ const FeaturesItems = () => {
 
     },
     {
-      logo: AutoPhopoLogo,
+      logo: AutoPhotoLogo,
+      altLogo: "An icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
+      titleLogo: "Auto photo improvement feature icon",
       gif: AutoPhoto,
       alt: "Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript",
       title: "Auto photo improvement feature demo animation",
@@ -98,6 +110,8 @@ const FeaturesItems = () => {
       {Data.map((item, index) => <DetailFeature
         key={index}
         logo={item.logo}
+        altLogo={item.altLogo}
+        titleLogo={item.titleLogo}
         gif={item.gif}
         alt={item.alt}
         title={item.title}
@@ -114,7 +128,7 @@ const FeaturesItems = () => {
 export default FeaturesItems
 
 
-function DetailFeature({ logo, heading, details, flex, gif, alt, title, button, bg = false }) {
+function DetailFeature({ logo, altLogo, titleLogo, heading, details, flex, gif, alt, title, button, bg = false }) {
 
   const bgWidthLg = bg == true ? "800px" : "700px"
   const bgWidthMd = bg == true ? "750px" : "700px"
@@ -143,7 +157,7 @@ function DetailFeature({ logo, heading, details, flex, gif, alt, title, button, 
       >
 
         <Box sx={{ maxWidth: { sm: "355px", xs: "100%" } }}>
-          <Image src={logo} alt="icon" className={styles.gifIcon} />
+          <Image src={logo} alt={altLogo} title={titleLogo} className={styles.gifIcon} />
           <Content
             subWidth="330px"
             heading={heading}
