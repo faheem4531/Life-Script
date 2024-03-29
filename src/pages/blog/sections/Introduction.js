@@ -2,7 +2,7 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import { Box, Typography } from "@mui/material";
 import styles from "./BlogSection.module.css"
 
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
 

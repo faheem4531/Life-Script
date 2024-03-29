@@ -8,7 +8,7 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import styles from "./Faq.module.css"
 import Faqs from "./Faqs";
 
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 
 const FaqPage = () => {
 

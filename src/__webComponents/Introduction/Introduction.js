@@ -4,7 +4,7 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "../ComponentsStyles.module.css"
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import Line from "@/__webAssets/svgs/line-orange.svg"
 
 const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "100%" }) => {

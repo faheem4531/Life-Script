@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material"
 import Image from "next/image"
 import styles from "../ComponentsStyles.module.css"
 
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import Insta from "@/__webAssets/svgs/insta.svg"
 import Fb from "@/__webAssets/svgs/fb.svg"
 import Li from "@/__webAssets/svgs/li.svg"
@@ -59,7 +59,7 @@ const Footer = () => {
           </Box>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography sx={{ fontWeight: 800, marginBottom: "19px", fontFamily: "Avenir8 !important" }}>HELP</Typography>
-            <Link  href="/aboutUs#ContactUs">
+            <Link href="/aboutUs#ContactUs">
               <Typography sx={{ fontSize: "16px", marginBottom: "19px" }} className={styles.hoverLinks}>Contact Us</Typography>
             </Link>
             <Link href="/faqs">

@@ -8,12 +8,12 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import styles from "./sections/Pricing.module.css"
 
-import Logo from "@/__webAssets/svgs/logo-footer.svg"
+import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import Pricing from "@/__webComponents/pricing/Pricing";
 import Working from "@/__webComponents/working/Working";
 import Check from "@/__webAssets/svgs/check-square.svg"
 import PricingDetails from "./sections/PricingDetails";
-import StoryWorthy from "@/__webAssets/pngs/story-worthy-logo.png"
+import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png"
 
 const PricingPage = () => {
 
@@ -53,7 +53,9 @@ const PricingPage = () => {
       ]
     },
     {
-      logo: Logo,
+      logo: LifeScriptLogo,
+      alt: " the logo of LifeScript that represents a grandpa telling stories to his grandson under the cover of a book",
+      title: "LifeScript logo",
       bgColor: "#30422E",
       data: [
         "Yes",
@@ -69,6 +71,8 @@ const PricingPage = () => {
     },
     {
       logo: StoryWorthy,
+      alt: "the logo icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
+      title: "Storyworth",
       bgColor: "#15372F",
       sCase: true,
       data: [
@@ -101,7 +105,9 @@ const PricingPage = () => {
       ]
     },
     {
-      logo: Logo,
+      logo: LifeScriptLogo,
+      alt: " the logo of LifeScript that represents a grandpa telling stories to his grandson under the cover of a book",
+      title: "LifeScript logo",
       bgColor: "#30422E",
       data: [
         "Yes",
@@ -116,6 +122,8 @@ const PricingPage = () => {
     },
     {
       logo: StoryWorthy,
+      alt: "the logo icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
+      title: "Storyworth",
       bgColor: "#15372F",
       data: [
         "Yes",
@@ -143,7 +151,7 @@ const PricingPage = () => {
 
 
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.pricingPage}>
-        <NavBar color="#F3ECDA" logo={Logo} />
+        <NavBar color="#F3ECDA" logo={LifeScriptLogo} />
         <Pricing />
         <Working data={pointsArray} heading="Lifescript vs Storyworth" subHeading="How we’re different:" />
         <Box sx={{ margin: { sm: "100px 0 -100px", xs: " 10px 0 -50px" } }}>
