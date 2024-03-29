@@ -11,13 +11,12 @@ import Image from 'next/image';
 import styles from "../ComponentsStyles.module.css"
 
 import Bandage from "@/__webAssets/pngs/bandage.png"
-
-import AssistedEditing from "@/__webAssets/gif/GifsToWebp/assisted-editing-ezgif.com-gif-to-webp-converter.webp"
-import AutoPhoto from "@/__webAssets/gif/GifsToWebp/auto-photo-ezgif.com-gif-to-webp-converter.webp"
-import FamilyTree from "@/__webAssets/gif/GifsToWebp/family-tree-ezgif.com-optiwebp.webp"
-import FormattingFeatures from "@/__webAssets/gif/GifsToWebp/formatting-features-ezgif.com-gif-to-webp-converter.webp"
-import Narrative from "@/__webAssets/gif/GifsToWebp/narrative-ezgif.com-gif-to-webp-converter.webp"
-import VoiceToText from "@/__webAssets/gif/GifsToWebp/voice-to-text-ezgif.com-gif-to-webp-converter.webp"
+import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp"
+import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp"
+import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp"
+import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp"
+import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp"
+import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-animation.webp"
 
 const panels = [
   {
@@ -233,14 +232,41 @@ export default function CustomizedAccordions() {
       </Box>
 
       <Box sx={{ position: "relative" }}>
-        {panelActive.panel1 && <Image src={Narrative} alt="gif" className={styles.gif} />}
-        {panelActive.panel2 && <Image src={AssistedEditing} alt="gif" className={styles.gif} />}
-        {panelActive.panel3 && <Image src={VoiceToText} alt="gif" className={styles.gif} />}
-        {panelActive.panel4 && <Image src={FamilyTree} alt="gif" className={styles.gif} />}
-        {panelActive.panel5 && <Image src={FormattingFeatures} alt="gif" className={styles.gif} />}
-        {panelActive.panel6 && <Image src={AutoPhoto} alt="gif" className={styles.gif} />}
+        {panelActive.panel1 && <Image
+          src={Narrative}
+          alt="Narrative fusion feature demo animation showing how it works - LifeScript"
+          title='Narrative Fusion demo animation'
+          className={styles.gif}
+        />}
+        {panelActive.panel2 && <Image
+          src={AssistedEditing}
+          alt="Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript"
+          title='Assisted Editing demo animation'
+          className={styles.gif} />}
+        {panelActive.panel3 && <Image
+          src={VoiceToText}
+          alt="Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript"
+          title='Voice-to-text demo animation'
+          className={styles.gif} />}
+        {panelActive.panel4 && <Image
+          src={FamilyTree}
+          alt="Family Tree feature demo animation showing how your family members visualize across generations - LifeScript"
+          title='Family tree demo animation'
+          className={styles.gif} />}
+        {panelActive.panel5 && <Image
+          src={FormattingFeatures}
+          alt="Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript"
+          title=' Formatting features demo animation'
+          className={styles.gif} />}
+        {panelActive.panel6 && <Image
+          src={AutoPhoto}
+          alt="Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript"
+          title='Auto photo improvement feature demo animation'
+          className={styles.gif} />}
 
-        <Image src={Bandage} alt="image" className={styles.bandage} />
+        <Image src={Bandage}
+          alt="image"
+          className={styles.bandage} />
       </Box>
 
     </>
