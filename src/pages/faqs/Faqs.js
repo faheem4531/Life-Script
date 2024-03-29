@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import styles from "./Faq.module.css"
 import Image from "next/image";
 
-import Points from "@/__webAssets/svgs/qs-points.svg"
+import Points from "@/__webAssets/svgs/lifescript-frequently-asked-questions-element.svg"
 
 const Faqs = () => {
 
@@ -95,7 +95,12 @@ const Faqs = () => {
         </Typography>
       </Box>
       <Box sx={{ marginTop: { md: "120px", sx: "80px", xs: "50px" }, display: "flex", position: "relative" }}>
-        <Image src={Points} alt="img" className={styles.qsPoints} />
+        <Image
+          src={Points}
+          alt="A graphic element in the FAQ section that presents beautifully the answers to most common questions - LifeScript"
+          title="LifeScript faq graphic element"
+          className={styles.qsPoints}
+        />
 
         <Box >
           {QAs.map((item, index) => <QuestionNo
