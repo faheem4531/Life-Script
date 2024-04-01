@@ -19,7 +19,7 @@ float: right;
 }
 
 .introBlog {
-  background-image: url(../../../__webAssets/pngs/bg-blog.png);
+  background-image: url(../../../__webAssets/pngs/bg-blog.png) !important;
   background-repeat: no-repeat;
   background-size: 100% 200px;
   object-fit: cover;
