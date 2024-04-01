@@ -36,8 +36,10 @@ export default function App({ Component, pageProps }: AppProps) {
     ];
     if (publicRoutes.includes(currentPath)) {
       if (!userLoggedIn) router.push(currentPath);
-      else router.push("/dashboard/overview");
+      else router.push("/dashboard/chapters");
       setLoading(false);
+    } else if (currentPath == "/" && userLoggedIn) {
+      router.push("/dashboard/chapters");
     } else {
       if (!userLoggedIn) {
         router.push("/");
