@@ -297,3 +297,7 @@ border-radius: 2px;
  border: none !important;
  outline: none !important;
   }
+
+  .BlogSection_introBlog__VkxPb{
+    background-image: url(../__webAssets/pngs/bg-blog.png) !important;
+  }

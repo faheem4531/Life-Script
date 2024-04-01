@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&display=swap');
 .content h1{
-  font-family: 'Besley ';
+  font-family: Besley !important;
   font-size:  30px;
   font-weight: 700; 
   /* background-color: red; */
   margin-top: 5px;
 }
 .content p{
-  font-family: 'Avenir5';
+  font-family: Avenir5 !important;
   padding: 2px;
 }
 
@@ -19,7 +19,7 @@ float: right;
 }
 
 .introBlog {
-  background-image: url(../../../__webAssets/pngs/bg-blog.png) !important;
+  background-image: url(../../../__webAssets/pngs/bg-blog.png);
   background-repeat: no-repeat;
   background-size: 100% 200px;
   object-fit: cover;
