@@ -12,10 +12,10 @@
 }
 
 .content img{
-width: 50%;
-padding: 20px;
-/* background-color: red; */
-float: right;
+  width: 50%;
+  padding: 20px;
+  /* background-color: red; */
+  float: right;
 }
 
 .introBlog {

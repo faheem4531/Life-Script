@@ -289,15 +289,11 @@ li{
 
 /* WebFooter calander styling  */
 .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
-color:#3e4f3c;
-border-radius: 2px;
+  color:#3e4f3c;
+  border-radius: 2px;
 }
 
 .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root:hover {
- border: none !important;
- outline: none !important;
-  }
-
-  .BlogSection_introBlog__VkxPb{
-    background-image: url(../__webAssets/pngs/bg-blog.png) !important;
+  border: none !important;
+  outline: none !important;
   }
