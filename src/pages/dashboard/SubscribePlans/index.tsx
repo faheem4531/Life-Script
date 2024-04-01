@@ -29,36 +29,38 @@ const SubscribePlan = () => {
   useEffect(() => {
     const jwt = require("jsonwebtoken");
     const token = localStorage.getItem("token");
-    const decodedToken = jwt?.decode(token);
-    const accessRole = decodedToken?.accessRole;
-    if (accessRole === "PremiumPlan") {
-      setDisableButton({
-        standard: true,
-        basic: true,
-        premium: true,
-      });
-    } else if (accessRole === "GoldPlan") {
-      setDisableButton({
-        ...disableButton,
-        basic: true,
-        standard: true,
-      });
-      setPlanPrices({
-        ...planPrices,
-        premium: planPrices?.premium / 2,
-      });
-    } else if (accessRole === "BasicPlan") {
-      setDisableButton({
-        ...disableButton,
-        basic: true,
-      });
-      setPlanPrices({
-        ...planPrices,
-        standard: planPrices?.standard / 2,
-        premium: planPrices?.premium / 2,
-      });
-    } else {
-      //do nothing
+    if (token) {
+      const decodedToken = jwt?.decode(token);
+      const accessRole = decodedToken?.accessRole;
+      if (accessRole === "PremiumPlan") {
+        setDisableButton({
+          standard: true,
+          basic: true,
+          premium: true,
+        });
+      } else if (accessRole === "GoldPlan") {
+        setDisableButton({
+          ...disableButton,
+          basic: true,
+          standard: true,
+        });
+        setPlanPrices({
+          ...planPrices,
+          premium: planPrices?.premium / 2,
+        });
+      } else if (accessRole === "BasicPlan") {
+        setDisableButton({
+          ...disableButton,
+          basic: true,
+        });
+        setPlanPrices({
+          ...planPrices,
+          standard: planPrices?.standard / 2,
+          premium: planPrices?.premium / 2,
+        });
+      } else {
+        //do nothing
+      }
     }
   }, []);
 
@@ -67,7 +69,7 @@ const SubscribePlan = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const decodedToken = jwt.decode(token);
-      const accessRole = decodedToken.accessRole;
+      const accessRole = decodedToken?.accessRole;
       console.log("acccedfgdj", accessRole);
 
       if (accessRole) {

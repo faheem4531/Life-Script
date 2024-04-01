@@ -61,7 +61,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     const token = localStorage.getItem("token");
     if (token) {
       const decodedToken = jwt.decode(token);
-      const accessRole = decodedToken.accessRole;
+      const accessRole = decodedToken?.accessRole;
       console.log("111acccrole", accessRole);
       if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
         setIsPremium(true);
@@ -277,9 +277,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                     setCoverNumber(res.coverNumber);
                     if (res.coverNumber) {
                       router.push(
-                        `/dashboard/BookCover/ViewBookCover?CoverNumber=${
-                          res.coverNumber
-                        }`
+                        `/dashboard/BookCover/ViewBookCover?CoverNumber=${res.coverNumber}`
                       );
                     } else {
                       router.push("/dashboard/BookCover/SelectBookCover");

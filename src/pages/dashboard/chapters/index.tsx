@@ -125,7 +125,7 @@ const Dashboard = () => {
       if (token) {
         const decodedToken = jwt.decode(token);
         console.log("decodedToke", decodedToken);
-        const accessRole = decodedToken.accessRole;
+        const accessRole = decodedToken?.accessRole;
 
         if (accessRole !== "FreePlan") {
           setIsPremium(true);

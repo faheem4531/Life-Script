@@ -42,12 +42,12 @@ const chapterName = () => {
   const [gptSocket, setgptSocket] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   // console.log("ispremium", isPremium);
-  const [buyPremium ,setBuyPremium] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allQuestionsLoading, setAllQuestionsLoading] = useState(true);
   const [allQuestions, setAllQuestions] = useState([]);
   const [aiQuestions, setaiQuestions] = useState([]);
-  const [showFusion, setShowFusion] = useState(false)
+  const [showFusion, setShowFusion] = useState(false);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
   const [aiGeneration, setAiGeneration] = useState(false);
@@ -55,7 +55,7 @@ const chapterName = () => {
     questionTitle: "",
     questionId: "",
   });
-  
+
   const [narrativeRefuse, setNarrativeRefuse] = useState(false); // narrative
   const question = useSelector(selectChapter);
   const router = useRouter();
@@ -97,10 +97,10 @@ const chapterName = () => {
   }, [openAiQuestionId]);
 
   const handleCancel = () => {
-    if(!isPremium){
+    if (!isPremium) {
       setBuyPremium(true);
       setOpenCustomizationDialog(false);
-    }else{
+    } else {
       if (areAllCompleted(allQuestions) === true) {
         gptSocketCall();
         setOpenCustomizationDialog(false);
@@ -176,21 +176,23 @@ const chapterName = () => {
           setLoading(false);
           setAllQuestionsLoading(false);
         });
-        
 
-        dispatch(getChapters()).then(({payload})=> {
-          const [chapter] = payload.filter((chapter) => chapter._id === chapterId?.toString());
+    dispatch(getChapters()).then(({ payload }) => {
+      const [chapter] = payload.filter(
+        (chapter) => chapter._id === chapterId?.toString()
+      );
 
-          if (chapter !== undefined && (chapter.introductionChapter || chapter.startDefaultChapter)) {
-            setShowFusion(true);
-          }
-          
-          // console.log("JKJE", chatpter);
-          
-        })
-        // const fff = chapters.filter((chapter)=> chapter._id === chapterId?.toString() )
-        // console.log("KKK", fff, chapters);
+      if (
+        chapter !== undefined &&
+        (chapter.introductionChapter || chapter.startDefaultChapter)
+      ) {
+        setShowFusion(true);
+      }
 
+      // console.log("JKJE", chatpter);
+    });
+    // const fff = chapters.filter((chapter)=> chapter._id === chapterId?.toString() )
+    // console.log("KKK", fff, chapters);
   }, [chapterId, questionChanged]);
 
   // useEffect(()=> {
@@ -203,10 +205,8 @@ const chapterName = () => {
     setaiQuestions(question?.openAiQuestion);
     setChapterName(question?.title);
 
-    
     // if (startDefaultChapter && introductionChapter) {}
     // setShowFusion(startDefaultChapter && introductionChapter)
-
 
     if (question?.questions?.length > 1) {
       dispatch(getaiQuestions({ chapterId: chapterId.toString() }));
@@ -239,15 +239,14 @@ const chapterName = () => {
         flag: "true",
         id: questionId,
       })
-    )
-      .then(({payload}) => {
-        dispatch(getChapterbyId({ id: chapterId?.toString() })).then(()=> {
-          if (emailQuestion?.questionTitle) {
-            setEmailQuestion({ questionTitle: "", questionId: "" });
-            router.push(`/events?questionId=${payload._id}`);
-          }
-        })
+    ).then(({ payload }) => {
+      dispatch(getChapterbyId({ id: chapterId?.toString() })).then(() => {
+        if (emailQuestion?.questionTitle) {
+          setEmailQuestion({ questionTitle: "", questionId: "" });
+          router.push(`/events?questionId=${payload._id}`);
+        }
       });
+    });
   };
 
   const handleSkip = (questionId) => {
@@ -298,7 +297,7 @@ const chapterName = () => {
     const token = localStorage.getItem("token");
     if (token) {
       const decodedToken = jwt.decode(token);
-      const accessRole = decodedToken.accessRole;
+      const accessRole = decodedToken?.accessRole;
       if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
         setIsPremium(true);
       } else {
@@ -308,7 +307,6 @@ const chapterName = () => {
   }, []);
   // console.log("HHHHHHHHH", allQuestions);
 
-  
   return (
     <>
       <Box>
@@ -512,47 +510,49 @@ const chapterName = () => {
             )}
           </Box>
 
-          {allQuestions?.length > 0 && !showFusion  && (<Box>
-            <FloatButton
-              onClick={() => {
-                if (
-                  StarterChapter &&
-                  allQuestions?.some(
-                    (question) => question.status === "Progress"
-                  )
-                ) {
-                  setNarrativeRefuse(true);
-                } else if (
-                  StarterChapter &&
-                  !allQuestions?.some(
-                    (question) => question.status === "Progress"
-                  )
-                ) {
-                  proceedFusion();
-                } else {
-                  handleFloatButtonClick();
-                }
-              }}
-              narrativeRefuse={narrativeRefuse}
-            />
-            {/* Refuse Narative  */}
-
-            {narrativeRefuse && (
-              <Box
-                sx={{
-                  display: {
-                    md: "block",
-                    xs: "none",
-                  },
+          {allQuestions?.length > 0 && !showFusion && (
+            <Box>
+              <FloatButton
+                onClick={() => {
+                  if (
+                    StarterChapter &&
+                    allQuestions?.some(
+                      (question) => question.status === "Progress"
+                    )
+                  ) {
+                    setNarrativeRefuse(true);
+                  } else if (
+                    StarterChapter &&
+                    !allQuestions?.some(
+                      (question) => question.status === "Progress"
+                    )
+                  ) {
+                    proceedFusion();
+                  } else {
+                    handleFloatButtonClick();
+                  }
                 }}
-              >
-                <Tooltip
-                  title={`${t("ChName.tooltip")}`}
-                  text={`${t("ChName.description")}`}
-                />
-              </Box>
-            )}
-          </Box>)}
+                narrativeRefuse={narrativeRefuse}
+              />
+              {/* Refuse Narative  */}
+
+              {narrativeRefuse && (
+                <Box
+                  sx={{
+                    display: {
+                      md: "block",
+                      xs: "none",
+                    },
+                  }}
+                >
+                  <Tooltip
+                    title={`${t("ChName.tooltip")}`}
+                    text={`${t("ChName.description")}`}
+                  />
+                </Box>
+              )}
+            </Box>
+          )}
         </Layout>
       </Box>
 
