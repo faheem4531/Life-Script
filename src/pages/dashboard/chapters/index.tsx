@@ -119,14 +119,17 @@ const Dashboard = () => {
   console.log("allChapters", allChapters);
 
   useEffect(() => {
-    const jwt = require("jsonwebtoken");
-    const token = localStorage.getItem("token");
-    if (token) {
-      const decodedToken = jwt.decode(token);
-      const accessRole = decodedToken.accessRole;
+    if (typeof window != "undefined") {
+      const jwt = require("jsonwebtoken");
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwt.decode(token);
+        console.log("decodedToke", decodedToken);
+        const accessRole = decodedToken.accessRole;
 
-      if (accessRole !== "FreePlan") {
-        setIsPremium(true);
+        if (accessRole !== "FreePlan") {
+          setIsPremium(true);
+        }
       }
     }
   }, []);
