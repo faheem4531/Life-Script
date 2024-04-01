@@ -28,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/verify/forgetPassword",
       "/homePage",
       "/blog",
+      "/blog/blogDetails",
       "/aboutUs",
       "/gifting",
       "/features",
