@@ -35,8 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
       "/faqs",
       "/_auth/Auth",
     ];
+    const queryParams = new URLSearchParams(window.location.search);
+    const id = queryParams.get("id");
     if (publicRoutes.includes(currentPath)) {
-      if (!userLoggedIn) router.push(currentPath);
+      if (!userLoggedIn)
+        id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
       else router.push("/dashboard/chapters");
       setLoading(false);
     } else if (currentPath == "/" && userLoggedIn) {
