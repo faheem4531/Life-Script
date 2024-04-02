@@ -5,8 +5,8 @@ import Image from "next/image";
 import * as React from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Carousel2 from "../../../public/carousel.png";
-import Carousel1 from "../../../public/carousel1.png";
+import Carousel2 from "../../../public/carousel1.png";
+import Carousel1 from "../../../public/carousel.png";
 import Carousel3 from "../../../public/carousel3.png";
 
 import { CircularProgress } from "@mui/material";
