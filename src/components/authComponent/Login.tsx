@@ -100,6 +100,7 @@ const Login = ({ signinClick }) => {
           <Typography
             sx={{
               // marginRight: "300px",
+              color: "#30422E",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -114,7 +115,7 @@ const Login = ({ signinClick }) => {
             sx={{
               marginTop: "10px",
               "& .MuiOutlinedInput-root": {
-                borderRadius: "50px",
+                borderRadius: "2px",
                 backgroundColor: "white",
               },
               width: "100%",
@@ -131,6 +132,7 @@ const Login = ({ signinClick }) => {
               sx={{
                 // marginRight: "300px",
                 marginTop: "24px",
+                color: "#30422E",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
@@ -140,8 +142,9 @@ const Login = ({ signinClick }) => {
               sx={{
                 marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px", // Adjust the border radius as needed
+                  borderRadius: "2px", // Adjust the border radius as needed
                   backgroundColor: "white",
+                  border: "1px solid #30422E"
                 },
                 width: "100%",
               }}
@@ -217,6 +220,7 @@ const Login = ({ signinClick }) => {
                 sx={{
                   // marginTop: "9px",
                   // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
+                  color: "#30422E",
                   fontSize: { xs: 12, sm: 14, md: 16 },
                 }}
               >
@@ -231,11 +235,12 @@ const Login = ({ signinClick }) => {
             onClick={(event) => formik.handleSubmit()}
             type="submit"
             sx={{
-              borderRadius: "48px",
-              backgroundColor: "#186F65",
+              borderRadius: "2px",
+              backgroundColor: "#30422E",
+              padding: "10px 0",
               color: "white",
               width: { md: "60%", sm: "70%", xs: "70%" },
-              marginTop: { xs: "60px", sm: "20px" },
+              marginTop: { xs: "60px", sm: "30px" },
               "&:hover": {
                 backgroundColor: "#186F65",
               },
@@ -294,9 +299,10 @@ const Login = ({ signinClick }) => {
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
-                borderRadius: "48px",
+                borderRadius: "2px",
                 backgroundColor: "#fff",
-                color: "black",
+                padding: "10px 0",
+                color: "#30422E",
                 width: "100%",
                 gap: "10px",
                 marginTop: { xs: "20px" },
@@ -309,8 +315,8 @@ const Login = ({ signinClick }) => {
               <Image
                 src={googleLogo}
                 alt="Google Logo"
-                // width={24}
-                // height={24}
+              // width={24}
+              // height={24}
               />
               <Typography>Login with Google</Typography>
             </Button>
@@ -321,7 +327,7 @@ const Login = ({ signinClick }) => {
             mt: "20px",
             fontSize: "16px",
             textAlign: "center",
-            color: "#186F65",
+            color: "#30422E",
           }}
         >
           {t("login-page.not-member")}

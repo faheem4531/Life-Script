@@ -168,8 +168,8 @@ export default function Register() {
                   border: "1px solid black",
                   maxWidth: "460px",
                   width: "100%",
-                  background: "white",
-                  borderRadius: "40px",
+                  background: "transparent",
+                  borderRadius: "2px",
                 }}
               >
                 <Tabs
@@ -182,12 +182,12 @@ export default function Register() {
                     },
                     "& .MuiTab-root": {
                       width: "50%",
-                      borderRadius: "25px",
+                      borderRadius: "2px",
                       // backgroundColor: "wheat",
 
-                      color: "#186F65",
+                      color: "#30422E",
                       "&.Mui-selected": {
-                        backgroundColor: "#186F65",
+                        backgroundColor: "#30422E",
                         color: "white",
                       },
                     },
