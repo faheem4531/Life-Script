@@ -49,7 +49,7 @@ export default function Document() {
         <meta property="og:url" content="https://www.thelifescript.com/" />
         <meta property="og:description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://github.com/Tayyab-103/JavaScript-103/assets/109760448/26d04d82-e102-4c24-961b-9954303bd1b5" />
+        <meta property="og:image" content="https://github.com/Tayyab-103/JavaScript-103/assets/109760448/9b9d0b25-965c-4e98-b719-b9fcdcf67311" />
       </Head>
       <body style={{ margin: 0 }}>
         <Main />
