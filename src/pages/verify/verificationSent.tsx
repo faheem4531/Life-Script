@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import Carousel2 from "../../../public/carousel.png";
 import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
-import Logo from "../../../public/logo.svg";
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 const CryptoJS = require("crypto-js");
 
 const EmailVerification = () => {
@@ -101,14 +101,14 @@ const EmailVerification = () => {
         }}
       >
         <Box textAlign={"center"}>
-          <Image src={Logo} width={184} height={100} alt="Logo Image" />
+          <Image src={Logo} width={320} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
+            sx={{ color: "#30422E", fontSize: "30px", marginTop: "100px" }}
           >
             {t("Verify.emailVerification")}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "100px" }}>
+        <Box sx={{ marginTop: "70px" }}>
           {/* <Box>
             <Typography
               sx={{
@@ -134,7 +134,7 @@ const EmailVerification = () => {
             />
           </Box> */}
           <Typography
-            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+            sx={{ marginTop: "23px", color: "#30422E", fontSize: "21px" }}
           >
             {t("Verify.emailVerified")}
             {/* <br /> {t("Verify.proceedForward")} */}
