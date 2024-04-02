@@ -14,7 +14,7 @@ import * as Yup from "yup";
 import Carousel2 from "../../../public/carousel.png";
 import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
-import Logo from "../../../public/logo.svg";
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import Carousel from "../../components/authComponent/Carousel";
 
 const ForgetPassword = () => {
@@ -91,17 +91,17 @@ const ForgetPassword = () => {
         }}
       >
         <Box textAlign={"center"}>
-          <Image src={Logo} width={223} height={165} alt="Logo Image" />
+          <Image src={Logo} width={320} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
+            sx={{ color: "#30422E", fontSize: "30px", marginTop: "50px" }}
           >
             {t("ForgetPassword.forgotPassword?")}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "100px" }}>
+        <Box sx={{ marginTop: "70px" }}>
           <Box sx={{ marginBottom: "14px" }}>
             <Typography
-              sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+              sx={{ marginTop: "23px", color: "#30422E", fontSize: "21px" }}
             >
               {t("ForgetPassword.enterEmail")}
             </Typography>
@@ -111,6 +111,7 @@ const ForgetPassword = () => {
                 marginTop: "34px",
                 // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 fontSize: "21px",
+                color: "#30422E"
               }}
             >
               {t("ForgetPassword.email")}
@@ -126,7 +127,7 @@ const ForgetPassword = () => {
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
                   backgroundColor: "white",
-                  borderRadius: "50px", // Adjust the border radius as needed
+                  borderRadius: "2px", // Adjust the border radius as needed
                 },
                 width: "100%",
               }}
@@ -155,8 +156,8 @@ const ForgetPassword = () => {
               onClick={(event) => formik.handleSubmit()}
               type="submit"
               sx={{
-                borderRadius: "48px",
-                backgroundColor: "#186F65",
+                borderRadius: "2px",
+                backgroundColor: "#30422E",
                 color: "white",
                 width: "300px",
                 padding: "15px",
