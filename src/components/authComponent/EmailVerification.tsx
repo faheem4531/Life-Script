@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Email from "../../../public/Sign-up.png";
-import Logo from "../../../public/logo.svg";
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import Carousel from "./Carousel";
 import Carousel1 from "../../../public/carousel1.png";
 import Carousel2 from "../../../public/carousel.png";
@@ -90,17 +90,17 @@ const EmailVerification = () => {
         color: "#000",
       }}
     >
-        <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items= {carouselItems} />
+      <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
+        <Carousel items={carouselItems} />
       </Box>
       {/* <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}> */}
-        {/* <Image
+      {/* <Image
           src={Email}
           alt="image of login"
           style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
         /> */}
 
-        {/* </Grid> */}
+      {/* </Grid> */}
       {/* </Box> */}
       {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
@@ -114,19 +114,20 @@ const EmailVerification = () => {
         }}
       >
         <Box textAlign={"center"}>
-          <Image src={Logo} width={184} height={100} alt="Logo Image" />
+          <Image src={Logo} width={320} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
+            sx={{ color: "#30422E", fontSize: "30px", marginTop: "50px" }}
           >
             {t("Verify.emailVerification")}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "100px" }}>
+        <Box sx={{ marginTop: "70px" }}>
           <Box>
             <Typography
               sx={{
                 marginRight: "300px",
                 marginTop: "56px",
+                color: "#30422E",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
@@ -140,14 +141,14 @@ const EmailVerification = () => {
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px", // Adjust the border radius as needed
+                  borderRadius: "2px", // Adjust the border radius as needed
                 },
                 width: "100%",
               }}
             />
           </Box>
           <Typography
-            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+            sx={{ marginTop: "23px", color: "#30422E", fontSize: "21px" }}
           >
             {t("Verify.emailVerified")}
             {/* <br /> {t("Verify.proceedForward")} */}
@@ -165,8 +166,9 @@ const EmailVerification = () => {
               disabled={!userEmail}
               onClick={(event: any) => handleVerifyEmail()}
               sx={{
-                borderRadius: "48px",
-                backgroundColor: "#186F65",
+                borderRadius: "2px",
+                padding: "10px 0",
+                backgroundColor: "#30422E",
                 color: "white",
                 width: "310px",
                 marginTop: "20px",
