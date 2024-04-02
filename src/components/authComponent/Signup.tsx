@@ -46,7 +46,7 @@ const Signup = ({ signupClick }) => {
     setRememberMe(event.target.checked);
   };
 
-  const responseFacebook = (response: any) => {};
+  const responseFacebook = (response: any) => { };
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
@@ -112,6 +112,7 @@ const Signup = ({ signupClick }) => {
             sx={{
               // marginRight: "300px",
               // marginTop: "24px",
+              color: "#30422E",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
@@ -126,7 +127,7 @@ const Signup = ({ signupClick }) => {
             sx={{
               margin: "10px 0",
               "& .MuiOutlinedInput-root": {
-                borderRadius: "50px", // Adjust the border radius as needed
+                borderRadius: "2px", // Adjust the border radius as needed
                 backgroundColor: "white",
               },
               width: "100%",
@@ -141,6 +142,7 @@ const Signup = ({ signupClick }) => {
           sx={{
             // marginRight: "300px",
             fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            color: "#30422E",
             marginTop: "24px",
           }}
         >
@@ -158,7 +160,7 @@ const Signup = ({ signupClick }) => {
               margin: "10px 0",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
-                borderRadius: "50px", // Adjust the border radius as needed
+                borderRadius: "2px", // Adjust the border radius as needed
               },
               width: "100%",
             }}
@@ -174,6 +176,7 @@ const Signup = ({ signupClick }) => {
               sx={{
                 // marginRight: "300px",
                 marginTop: "24px",
+                color: "#30422E",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
@@ -183,7 +186,7 @@ const Signup = ({ signupClick }) => {
               sx={{
                 margin: "10px 0",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px", // Adjust the border radius as needed
+                  borderRadius: "2px", // Adjust the border radius as needed
                   backgroundColor: "white",
                 },
                 width: "100%",
@@ -219,9 +222,10 @@ const Signup = ({ signupClick }) => {
             onClick={(event) => formik.handleSubmit()}
             type="submit"
             sx={{
-              borderRadius: "48px",
-              backgroundColor: "#186F65",
+              borderRadius: "2px",
+              backgroundColor: "#30422E",
               color: "white",
+              padding: "10px 0",
               width: { md: "60%", sm: "70%", xs: "70%" },
               marginTop: { xs: "40px", sm: "20px" },
               "&:hover": {
@@ -246,7 +250,7 @@ const Signup = ({ signupClick }) => {
                   marginTop: "10px",
 
                   backgroundColor: "black",
-                  width: "97px",
+                  width: "118px",
                 }}
                 orientation="horizontal"
               />
@@ -262,7 +266,7 @@ const Signup = ({ signupClick }) => {
                   marginTop: "10px",
                   marginLeft: "10px",
                   backgroundColor: "black",
-                  width: "97px",
+                  width: "118px",
                 }}
                 orientation="horizontal"
               />
@@ -282,9 +286,10 @@ const Signup = ({ signupClick }) => {
               type="submit"
               onClick={() => handleGoogleLogin()}
               sx={{
-                borderRadius: "48px",
+                borderRadius: "2px",
+                padding: "10px 0",
                 backgroundColor: "#fff",
-                color: "black",
+                color: "#30422E",
                 width: "100%",
                 gap: "10px",
                 marginTop: { xs: "20px" },
@@ -333,7 +338,7 @@ const Signup = ({ signupClick }) => {
             mt: "20px",
             fontSize: "16px",
             textAlign: "center",
-            color: "#186F65",
+            color: "#30422E",
           }}
         >
           {t("signup-page.alreadyRegisterd")}

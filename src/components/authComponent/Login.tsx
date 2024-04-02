@@ -263,7 +263,7 @@ const Login = ({ signinClick }) => {
                   marginTop: "10px",
 
                   backgroundColor: "black",
-                  width: "97px",
+                  width: "115px",
                 }}
                 orientation="horizontal"
               />
@@ -279,7 +279,7 @@ const Login = ({ signinClick }) => {
                   marginTop: "10px",
                   marginLeft: "10px",
                   backgroundColor: "black",
-                  width: "97px",
+                  width: "115px",
                 }}
                 orientation="horizontal"
               />

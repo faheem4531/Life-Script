@@ -12,7 +12,7 @@ import Carousel3 from "../../../public/carousel3.png";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Logo from "../../../public/logo.svg";
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import Carousel from "./Carousel";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -149,15 +149,17 @@ export default function Register() {
               margin: 0,
               height: "auto",
               width: "100%",
+              marginTop: "40px"
             }}
           >
             <Box textAlign={"center"}>
-              <Image src={Logo} width={160} height={130} alt="Logo Image" />
+              <Image src={Logo} width={320} alt="Logo Image" />
             </Box>
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
+                marginTop: "30px"
                 // pl: "20px",
               }}
             >
