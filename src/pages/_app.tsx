@@ -21,64 +21,65 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
     console.log("userLoggedIn", userLoggedIn);
-    // const publicRoutes = [
-    //   "/pricing",
-    //   "/verify/verificationSent",
-    //   "/verify",
-    //   "/verify/forgetPassword",
-    //   "/homePage",
-    //   "/blog",
-    //   "/blog/blogDetails",
-    //   "/aboutUs",
-    //   "/gifting",
-    //   "/features",
-    //   "/faqs",
-    //   "/_auth/Auth",
-    // ];
-    // const queryParams = new URLSearchParams(window.location.search);
-    // const id = queryParams.get("id");
-    // if (publicRoutes.includes(currentPath)) {
-    //   if (!userLoggedIn)
-    //     id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
-    //   else router.push("/dashboard/chapters");
-    //   setLoading(false);
-    // } else if (currentPath == "/" && userLoggedIn) {
-    //   router.push("/dashboard/chapters");
-    // } else {
-    //   if (!userLoggedIn) {
-    //     router.push("/");
-    //   } else {
-    //     router.push(currentPath);
-    //   }
-    //   setLoading(false);
-    // }
-    if (
-      !userLoggedIn &&
-      userLoggedIn !== "undefined" &&
-      currentPath !== "/verify/verificationSent" &&
-      currentPath !== "/verify" &&
-      currentPath !== "/verify/forgetPassword" &&
-      currentPath !== "website/pricing" &&
-      currentPath !== "website/homePage" &&
-      currentPath !== "website/blog" &&
-      currentPath !== "website/aboutUs" &&
-      currentPath !== "website/gifting"
-    ) {
-      console.log("1");
-      // router.push("/");
+    const publicRoutes = [
+      "/pricing",
+      "/verify/verificationSent",
+      "/verify",
+      "/verify/forgetPassword",
+      "/homePage",
+      "/blog",
+      "/blog/blogDetails",
+      "/aboutUs",
+      "/gifting",
+      "/features",
+      "/faqs",
+      "/_auth/Auth",
+      "/termsOfUse",
+      "/privacyPolicy",
+    ];
+    const queryParams = new URLSearchParams(window.location.search);
+    const id = queryParams.get("id");
+    if (publicRoutes.some((route) => route.includes(currentPath))) {
+      if (!userLoggedIn)
+        id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
+      else router.push("/dashboard/chapters");
       setLoading(false);
-    } else if (currentPath == "/") {
-      console.log("2");
-      setTimeout(() => {
-        setLoading(false);
-        router.push("/dashboard/chapters");
-      }, 1000);
-      // router.push("/dashboard/chapters");
+    } else if (currentPath == "/" && userLoggedIn) {
+      router.push("/dashboard/chapters");
     } else {
-      console.log("3");
+      if (!userLoggedIn) {
+        router.push("/");
+      }
       setLoading(false);
-      // router.push("/dashboard/chapters");
     }
+
+    // if (
+    //   !userLoggedIn &&
+    //   userLoggedIn !== "undefined" &&
+    //   currentPath !== "/verify/verificationSent" &&
+    //   currentPath !== "/verify" &&
+    //   currentPath !== "/verify/forgetPassword" &&
+    //   currentPath !== "website/pricing" &&
+    //   currentPath !== "website/homePage" &&
+    //   currentPath !== "website/blog" &&
+    //   currentPath !== "website/aboutUs" &&
+    //   currentPath !== "website/gifting"
+    // ) {
+    //   console.log("1");
+    //   // router.push("/");
+    //   setLoading(false);
+    // } else if (currentPath == "/") {
+    //   console.log("2");
+    //   setTimeout(() => {
+    //     setLoading(false);
+    //     router.push("/dashboard/chapters");
+    //   }, 1000);
+    //   // router.push("/dashboard/chapters");
+    // } else {
+    //   console.log("3");
+    //   setLoading(false);
+    //   // router.push("/dashboard/chapters");
+    // }
   }, [currentPath]);
 
   return (
