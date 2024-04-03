@@ -63,173 +63,146 @@ export const StartNewChapter = ({
       borderRadius={"8px"}
       boxShadow={"4.715px 4.042px 11.519px 0px rgba(0, 0, 0, 0.14)"}
     >
-      <Box
+      <Card
+        className="container-fontfamily"
         sx={{
-          boxShadow: {
-            md: "4px 4px white",
-            sm: "3px 3px white",
-            xs: "2.5px 2.5px white",
-          },
           borderRadius: "6.5px",
-          padding: " 0px 4px 4px 0px",
-          borderRight: "1.5px solid #EEEEEE",
-          borderBottom: "1.5px solid #EEEEEE",
+          height: { sm: "250px", xs: "129px" },
+          boxShadow: "none",
         }}
       >
-        <Box
-          sx={{
-            boxShadow: {
-              md: "4px 4px white",
-              sm: "3px 3px white",
-              xs: "2.5px 2.5px white",
-            },
-            borderRadius: "6.5px",
-            borderRight: "1.5px solid #EEEEEE",
-            borderBottom: "1.5px solid #EEEEEE",
-          }}
-        >
-          <Card
-            className="container-fontfamily"
+        {newChapter && (
+          <Box
             sx={{
-              borderRadius: "6.5px",
-              height: { sm: "240px", xs: "129px" },
-              padding: "8px",
-              boxShadow: "none",
+              height: "100%",
+              display: "flex",
+              flexDirection: { sm: "column" },
+              alignItems: "center",
+              gap: "17px",
+              justifyContent: "center",
+              border: "1.6px dashed #CDCDCD",
+              borderRadius: "4px"
             }}
+            onClick={() => setNewChapter(false)}
           >
-            {newChapter && (
+            <Box
+              sx={{
+                width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
+                height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
+                cursor: "pointer"
+              }}
+            >
+              <Image
+                alt="image"
+                src={AddChapterImage}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </Box>
+            <Typography
+              sx={{
+                color: "#3E4F3C",
+                fontWeight: 600,
+                fontSize: { md: "14px", sm: "13.4px", xs: " 10.34px" },
+              }}
+            >
+              {/* Start new chapter */}
+              {t("StartNewChapter.StartNewChapter")}
+            </Typography>
+          </Box>
+        )}
+        {!newChapter && (
+          <Box sx={{ height: "100%" }}>
+            <Box
+              sx={{
+                height: "49%",
+                display: "flex",
+                alignItems: "center",
+                columnGap: "17px",
+                justifyContent: "center",
+                border: "1.6px dashed #CDCDCD",
+                borderRadius: "4px",
+                marginBottom: "2%",
+                cursor: "pointer",
+                "&:hover": {
+                  borderColor: "#197065",
+                  borderStyle: "dashed",
+                  color: "#197065",
+                },
+              }}
+              onMouseEnter={handleHoverStartNewChapter}
+              onMouseLeave={handleLeaveStartNewChapter}
+              onClick={addChapterClick}
+            >
               <Box
                 sx={{
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: { sm: "column" },
-                  alignItems: "center",
-                  gap: "17px",
-                  justifyContent: "center",
-                  border: "1.6px dashed #CDCDCD",
-                  borderRadius: "4px",
+                  width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
+                  height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
                 }}
-                onClick={() => setNewChapter(false)}
               >
-                <Box
-                  sx={{
-                    width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                    height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                  }}
-                >
-                  <Image
-                    alt="image"
-                    src={AddChapterImage}
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </Box>
-                <Typography
-                  sx={{
-                    color: "#197065",
-                    fontWeight: 600,
-                    fontSize: { md: "14px", sm: "13.4px", xs: " 10.34px" },
-                  }}
-                >
-                  {/* Start new chapter */}
-                  {t("StartNewChapter.StartNewChapter")}
-                </Typography>
+                <Image
+                  alt="image"
+                  src={
+                    hoverStartNewChapter ? AddChapterImage : AddChapterWhite
+                  }
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Box>
-            )}
-            {!newChapter && (
-              <Box sx={{ height: "100%" }}>
-                <Box
-                  sx={{
-                    height: "49%",
-                    display: "flex",
-                    alignItems: "center",
-                    columnGap: "17px",
-                    justifyContent: "center",
-                    border: "1.6px dashed #CDCDCD",
-                    borderRadius: "4px",
-                    marginBottom: "2%",
-                    cursor: "pointer",
-                    "&:hover": {
-                      borderColor: "#197065",
-                      borderStyle: "dashed",
-                      color: "#197065",
-                    },
-                  }}
-                  onMouseEnter={handleHoverStartNewChapter}
-                  onMouseLeave={handleLeaveStartNewChapter}
-                  onClick={addChapterClick}
-                >
-                  <Box
-                    sx={{
-                      width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                      height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                    }}
-                  >
-                    <Image
-                      alt="image"
-                      src={
-                        hoverStartNewChapter ? AddChapterImage : AddChapterWhite
-                      }
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </Box>
-                  <Typography
-                    sx={{
-                      color: hoverStartNewChapter ? "#197065" : "#CDCDCD",
-                      fontWeight: 600,
-                      fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
-                    }}
-                  >
-                    Start from Scratch
-                  </Typography>
-                </Box>
+              <Typography
+                sx={{
+                  color: hoverStartNewChapter ? "#197065" : "#CDCDCD",
+                  fontWeight: 600,
+                  fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
+                }}
+              >
+                Start from Scratch
+              </Typography>
+            </Box>
 
-                <Box
-                  sx={{
-                    height: "49%",
-                    display: "flex",
-                    alignItems: "center",
-                    columnGap: "17px",
-                    justifyContent: "center",
-                    border: "1.6px dashed #CDCDCD",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    "&:hover": {
-                      borderColor: "#197065",
-                      borderStyle: "dashed",
-                      color: "#197065",
-                    },
-                  }}
-                  onMouseEnter={handleHoverUseTemplate}
-                  onMouseLeave={handleLeaveUseTemplate}
-                  onClick={handleTemplateClick}
-                >
-                  <Box
-                    sx={{
-                      width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                      height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                    }}
-                  >
-                    <Image
-                      alt="image"
-                      src={hoverUseTemplate ? Template : TemplateWhite}
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </Box>
-                  <Typography
-                    sx={{
-                      color: hoverUseTemplate ? "#197065" : "#CDCDCD",
-                      fontWeight: 600,
-                      fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
-                    }}
-                  >
-                    {t("StartNewChapter.useTem")}
-                  </Typography>
-                </Box>
+            <Box
+              sx={{
+                height: "49%",
+                display: "flex",
+                alignItems: "center",
+                columnGap: "17px",
+                justifyContent: "center",
+                border: "1.6px dashed #CDCDCD",
+                borderRadius: "4px",
+                cursor: "pointer",
+                "&:hover": {
+                  borderColor: "#197065",
+                  borderStyle: "dashed",
+                  color: "#197065",
+                },
+              }}
+              onMouseEnter={handleHoverUseTemplate}
+              onMouseLeave={handleLeaveUseTemplate}
+              onClick={handleTemplateClick}
+            >
+              <Box
+                sx={{
+                  width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
+                  height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
+                }}
+              >
+                <Image
+                  alt="image"
+                  src={hoverUseTemplate ? Template : TemplateWhite}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Box>
-            )}
-          </Card>
-        </Box>
-      </Box>
+              <Typography
+                sx={{
+                  color: hoverUseTemplate ? "#197065" : "#CDCDCD",
+                  fontWeight: 600,
+                  fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
+                }}
+              >
+                {t("StartNewChapter.useTem")}
+              </Typography>
+            </Box>
+          </Box>
+        )}
+      </Card>
       <TransitionsDialog
         open={buyPremium}
         heading="Buy Premium"

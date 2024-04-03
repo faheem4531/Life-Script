@@ -15,7 +15,7 @@ const Layout = ({ children }: { children?: any }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#FFF9F0",
+        backgroundColor: "#ffffff",
         overflowX: "hidden",
         minHeight: "100vh",
       }}
@@ -67,9 +67,8 @@ const Layout = ({ children }: { children?: any }) => {
             onClick={(event) => {
               event.stopPropagation();
             }}
-            className={`${styles.display} ${
-              handleSideBar && styles.displayShow
-            }`}
+            className={`${styles.display} ${handleSideBar && styles.displayShow
+              }`}
           >
             <SideBar
               handleSideCheck={handleSideBar}

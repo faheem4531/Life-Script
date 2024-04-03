@@ -12,10 +12,11 @@ const HomeSteps = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#197065",
-        color: "#fff",
-        borderRadius: { sm: "24px", xs: "5px" },
-        padding: { sm: "20px 45px", xs: "20px 40px" },
+        marginTop: "20px",
+        backgroundColor: "#F3ECDA",
+        color: "#30422E",
+        borderRadius: "2px",
+        padding: { sm: "0px 45px 20px", xs: "20px 40px" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -25,7 +26,6 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -33,7 +33,7 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            top: "0px",
+            bottom: "10px",
             left: { sm: "-40", xs: "-20px" },
             width: "150px",
           }}
@@ -56,7 +56,6 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -87,7 +86,6 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
@@ -95,7 +93,7 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            top: "0px",
+            bottom: "10px",
             left: { md: "-60px", sm: "-60px", xs: "-55px" },
             width: "180px",
             textAlign: "center",
@@ -118,7 +116,6 @@ const HomeSteps = () => {
         sx={{
           position: "relative",
           zIndex: "1",
-          padding: "20px 0",
         }}
         className={styles.stepContainer}
       >
