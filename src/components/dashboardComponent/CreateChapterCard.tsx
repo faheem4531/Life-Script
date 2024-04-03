@@ -114,7 +114,7 @@ export const StartNewChapter = ({
           <Box sx={{ height: "100%" }}>
             <Box
               sx={{
-                height: "49%",
+                height: "48.5%",
                 display: "flex",
                 alignItems: "center",
                 columnGap: "17px",
@@ -124,9 +124,9 @@ export const StartNewChapter = ({
                 marginBottom: "2%",
                 cursor: "pointer",
                 "&:hover": {
-                  borderColor: "#197065",
+                  borderColor: "#3E4F3C",
                   borderStyle: "dashed",
-                  color: "#197065",
+                  color: "#3E4F3C",
                 },
               }}
               onMouseEnter={handleHoverStartNewChapter}
@@ -149,7 +149,7 @@ export const StartNewChapter = ({
               </Box>
               <Typography
                 sx={{
-                  color: hoverStartNewChapter ? "#197065" : "#CDCDCD",
+                  color: hoverStartNewChapter ? "#3E4F3C" : "#CDCDCD",
                   fontWeight: 600,
                   fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
                 }}
@@ -160,7 +160,7 @@ export const StartNewChapter = ({
 
             <Box
               sx={{
-                height: "49%",
+                height: "48.9%",
                 display: "flex",
                 alignItems: "center",
                 columnGap: "17px",
@@ -169,9 +169,9 @@ export const StartNewChapter = ({
                 borderRadius: "4px",
                 cursor: "pointer",
                 "&:hover": {
-                  borderColor: "#197065",
+                  borderColor: "#3E4F3C",
                   borderStyle: "dashed",
-                  color: "#197065",
+                  color: "#3E4F3C",
                 },
               }}
               onMouseEnter={handleHoverUseTemplate}
@@ -192,7 +192,7 @@ export const StartNewChapter = ({
               </Box>
               <Typography
                 sx={{
-                  color: hoverUseTemplate ? "#197065" : "#CDCDCD",
+                  color: hoverUseTemplate ? "#3E4F3C" : "#CDCDCD",
                   fontWeight: 600,
                   fontSize: { md: "14px", sm: "13.4", xs: " 10.34px" },
                 }}
