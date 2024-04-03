@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import BookImage from "../../../public/chapterName.svg";
+import BookImage from "@/_assets/png/hero-book.png";
 import Check from "../../_assets/svg/bgTickIcon.svg";
 import styles from "./AddChapterName.module.css";
 
@@ -45,9 +45,9 @@ const AddChapterName = ({
   return (
     <Box
       sx={{
-        backgroundColor: "#197065",
-        color: "#fff",
-        borderRadius: { sm: "24px", xs: "5px" },
+        backgroundColor: "#F3ECDA",
+        color: "#30422E",
+        borderRadius: "4px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -55,7 +55,6 @@ const AddChapterName = ({
         overflow: "hidden",
         width: "100%",
       }}
-      className={styles.welcomeMain}
     >
       <Box
         sx={{
@@ -147,7 +146,7 @@ const AddChapterName = ({
       </Box>
       <Box
         sx={{
-          background: { xs: "transparent", sm: "#17756A" },
+          background: { xs: "transparent", sm: "#d6d3c1" },
           height: {
             sm: "400px",
           },
@@ -157,7 +156,7 @@ const AddChapterName = ({
             lg: "360px",
           },
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "end",
           alignItems: "center",
           borderTopLeftRadius: "50%",
           borderBottomLeftRadius: "50%",

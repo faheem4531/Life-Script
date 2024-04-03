@@ -104,7 +104,6 @@
     "getBtn": "Comenzar a Escribir",
     "LetUsHelpYou": "Permítenos Ayudarte..."
   },
-
   "navBar": {
     "notif1": "El capítulo",
     "notif2": "está fusionado y listo para ser visto",
@@ -174,7 +173,6 @@
     "yes": "Sí",
     "no": "No"
   },
-
   "richText": {
     "detecte": "Detectando...",
     "stop": "Detener",
@@ -187,7 +185,6 @@
     "StartNewChapter": "Iniciar nuevo capítulo",
     "useTem": "Usar plantilla"
   },
-
   "StartNewTem": {
     "StartNewTem": "Iniciar nuevo capítulo",
     "useTem": "Usar plantilla",
@@ -197,13 +194,12 @@
     "chQues2": "El Peor Trabajo Jamás Realizado",
     "chQues3": "El Mejor Trabajo Jamás Realizado"
   },
-
   "template": {
     "choose": "Elegir un",
     "temp": "Plantilla",
     "Questions": "Preguntas",
     "useTemBtn": "Usar Plantilla",
-    "ch": "Capítulo",
+    "ch": "Escoge un",
     "temModal": {
       "thankYou": "¡Gracias!",
       "TYDescription": "La plantilla ha sido añadida a tus capítulos.",
@@ -212,7 +208,6 @@
       "copyTemDes": "Esta plantilla ya está copiada, ¿quieres copiarla de nuevo?"
     }
   },
-
   "completedCh": {
     "com": "Completados"
   },
@@ -321,7 +316,6 @@
     "saveResDes": "Una vez guardado, encontrarás el capítulo en la pestaña de capítulos completados.",
     "saveResProcBtn": "Aún no",
     "saveResCancelBtn": "Conservar Cambios",
-
     "RevertRes": "Revertir Respuesta",
     "RevertResDes": "Esto deshará todos los cambios de fusión narrativa. Serás redirigido al capítulo compilado original para editarlo.",
     "dontLike": "¿No te gusta la respuesta de la fusión narrativa?",
