@@ -300,7 +300,7 @@ const Dashboard = () => {
           zIndex: "1",
         }}
       >
-        <Image src={bgTree} alt="bgTree" />
+        {/* <Image src={bgTree} alt="bgTree" /> */}
       </Box>
     </>
   );
