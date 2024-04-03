@@ -103,208 +103,209 @@ export default function Questions({
   const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={{ position: "relative", bgcolor: "#F4F4F4" }}>
       <Box
         sx={{
+          padding: { sm: "10px 30px 0", xs: "10px 15px 0" }
+        }}
+      >
+        <Box sx={{
           display: "flex",
           alignItems: "center",
           gap: "10px",
           width: "100%",
-          mb: { sm: "15px", xs: "8px" },
-          bgcolor: title == "templateView" && "#F9F9F9",
-          borderRadius: title == "templateView" && "8px",
-        }}
-      >
-        <Box
-          onClick={() => {
-            if (title !== "templateView") {
-              answerClick(question?._id);
-            }
-          }}
-          sx={{
-            cursor: "pointer",
-            bgcolor: "#F9F9F9",
-            borderRadius: "8px",
-            borderLeft: "11px solid #186F65",
-            height: expanded ? "auto" : { sm: "50px", xs: "50px" },
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-            overflowX: "hidden",
-          }}
-        >
+          borderBottom: "1px solid #30422E",
+          bgcolor: title == "templateView" && "#F4F4F4",
+        }}>
           <Box
+            onClick={() => {
+              if (title !== "templateView") {
+                answerClick(question?._id);
+              }
+            }}
             sx={{
+              cursor: "pointer",
+              // borderRadius: "8px",
+              height: expanded ? "auto" : { sm: "50px", xs: "50px" },
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
               width: "100%",
+              overflowX: "hidden",
             }}
           >
-            <Typography
+            <Box
               sx={{
-                marginLeft: { sm: "15px", xs: "10px" },
-                color: "rgba(22, 22, 22, 0.90)",
-                fontSize: { sm: "22px", xs: "15px" },
-                fontWeight: 400,
-                width: { xs: "48vw", sm: "55vw", md: "52vw", lg: "64vw" },
-                textOverflow: expanded ? "clip" : "ellipsis",
-                overflow: "hidden",
-                // whiteSpace: expanded ? "wrap" : "nowrap",
-                padding: expanded && "10px 0px",
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                width: "100%",
               }}
             >
               <Typography
                 sx={{
+                  // marginLeft: { sm: "15px", xs: "10px" },
                   color: "rgba(22, 22, 22, 0.90)",
-                  fontSize: "14px",
+                  fontSize: { sm: "22px", xs: "15px" },
                   fontWeight: 400,
-                  width: "100vw",
+                  width: { xs: "48vw", sm: "55vw", md: "52vw", lg: "64vw" },
                   textOverflow: expanded ? "clip" : "ellipsis",
                   overflow: "hidden",
-                  whiteSpace: expanded ? "wrap" : "nowrap",
+                  // whiteSpace: expanded ? "wrap" : "nowrap",
                   padding: expanded && "10px 0px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
                 }}
               >
-                {number}
-                {". "}
-                {question?.text}
-              </Typography>
-              {question?.text.length > 125 && (
                 <Typography
-                  onClick={handleSeeMoreClick}
                   sx={{
-                    fontSize: "10px",
-                    color: "#197065",
-                    width: "80px",
-                    mt: "5px",
+                    color: "rgba(22, 22, 22, 0.90)",
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    width: "100vw",
+                    textOverflow: expanded ? "clip" : "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: expanded ? "wrap" : "nowrap",
+                    padding: expanded && "10px 0px",
                   }}
                 >
-                  {expanded ? "Less" : "See All"}
+                  {number}
+                  {". "}
+                  {question?.text}
                 </Typography>
-              )}
-            </Typography>
+                {question?.text.length > 125 && (
+                  <Typography
+                    onClick={handleSeeMoreClick}
+                    sx={{
+                      fontSize: "10px",
+                      color: "#197065",
+                      width: "80px",
+                      mt: "5px",
+                    }}
+                  >
+                    {expanded ? "Less" : "See All"}
+                  </Typography>
+                )}
+              </Typography>
+            </Box>
+
+            {title != "templateView" && (
+              <Box sx={{ textAlign: "center", width: "max-content" }}>
+                <Button
+                  // variant="contained"
+                  // disabled={question?.status === "Completed"}
+                  type="submit"
+                  sx={{
+                    borderRadius: " 0px 8px 8px 0px",
+                    backgroundColor: "#white",
+                    color: "rgba(255, 255, 255, 0.90)",
+                    height: { sm: "50px", xs: "50px" },
+                    p: "0px",
+                    "&:hover": {
+                      backgroundColor: "#white",
+                    },
+                    width: "90px",
+                  }}
+                >
+                  {question.status === "Completed" && (
+                    <Box
+                      sx={{
+                        flexDirection: "column",
+                        rowGap: "5px",
+                        color: "#197065",
+                        height: "100%",
+                        fontSize: "10px",
+                        px: "16px",
+                        py: "7px",
+                      }}
+                    >
+                      <Box>
+                        <Image alt="icon" src={Completed} />
+                      </Box>
+                      <Box>{t("ChName.completed")}</Box>
+                    </Box>
+                  )}
+                  {question.status !== "Completed" && (
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        columnGap: "5px",
+                        color: "#197065",
+                        fontSize: "12px",
+                        px: "16px",
+                        py: "7px",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      <Image alt="icon" src={EditGreen} /> Answer
+                    </Box>
+                  )}
+                </Button>
+              </Box>
+            )}
           </Box>
 
-          {title != "templateView" && (
-            <Box sx={{ textAlign: "center", width: "max-content" }}>
-              <Button
-                // variant="contained"
-                // disabled={question?.status === "Completed"}
-                type="submit"
-                sx={{
-                  borderRadius: " 0px 8px 8px 0px",
-                  backgroundColor: "#white",
-                  color: "rgba(255, 255, 255, 0.90)",
-                  height: { sm: "50px", xs: "50px" },
-                  p: "0px",
-                  "&:hover": {
-                    backgroundColor: "#white",
-                  },
-                  width: "90px",
-                }}
-              >
-                {question.status === "Completed" && (
-                  <Box
-                    sx={{
-                      flexDirection: "column",
-                      rowGap: "5px",
-                      color: "#197065",
-                      height: "100%",
-                      fontSize: "10px",
-                      px: "16px",
-                      py: "7px",
+          {/* More option :start */}
+          {title != "templateView" ? (
+            <>
+              {!StarterChapter && (
+                <Box>
+                  <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? "long-menu" : undefined}
+                    aria-expanded={open ? "true" : undefined}
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                  >
+                    <Image alt="options" src={Option} />
+                  </IconButton>
+                  <Menu
+                    id="long-menu"
+                    MenuListProps={{
+                      "aria-labelledby": "long-button",
+                    }}
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    PaperProps={{
+                      style: {
+                        maxHeight: ITEM_HEIGHT * 4.5,
+                        width: "10ch",
+                      },
                     }}
                   >
-                    <Box>
-                      <Image alt="icon" src={Completed} />
-                    </Box>
-                    <Box>{t("ChName.completed")}</Box>
-                  </Box>
-                )}
-                {question.status !== "Completed" && (
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      columnGap: "5px",
-                      color: "#197065",
-                      fontSize: "12px",
-                      px: "16px",
-                      py: "7px",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    <Image alt="icon" src={EditGreen} /> Answer
-                  </Box>
-                )}
-              </Button>
+                    {options.map((option) => (
+                      <MenuItem
+                        key={option}
+                        selected={option === "Pyxis"}
+                        onClick={() => {
+                          setQuestionId(question?._id);
+                          handleClickOption(option);
+                        }}
+                      >
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+              )}
+            </>
+          ) : (
+            <Box
+              sx={{
+                textAlign: "center",
+                // mr: { md: "20px", sm: "15px", xs: "10px" },
+              }}
+            >
+              <Checkbox
+                defaultChecked={true}
+                onChange={() => templateQuestion(question?._id)}
+              />
             </Box>
           )}
         </Box>
-
-        {/* More option :start */}
-        {title != "templateView" ? (
-          <>
-            {!StarterChapter && (
-              <Box>
-                <IconButton
-                  aria-label="more"
-                  id="long-button"
-                  aria-controls={open ? "long-menu" : undefined}
-                  aria-expanded={open ? "true" : undefined}
-                  aria-haspopup="true"
-                  onClick={handleClick}
-                >
-                  <Image alt="options" src={Option} />
-                </IconButton>
-                <Menu
-                  id="long-menu"
-                  MenuListProps={{
-                    "aria-labelledby": "long-button",
-                  }}
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  PaperProps={{
-                    style: {
-                      maxHeight: ITEM_HEIGHT * 4.5,
-                      width: "10ch",
-                    },
-                  }}
-                >
-                  {options.map((option) => (
-                    <MenuItem
-                      key={option}
-                      selected={option === "Pyxis"}
-                      onClick={() => {
-                        setQuestionId(question?._id);
-                        handleClickOption(option);
-                      }}
-                    >
-                      {option}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-            )}
-          </>
-        ) : (
-          <Box
-            sx={{
-              textAlign: "center",
-              mr: { md: "20px", sm: "15px", xs: "10px" },
-            }}
-          >
-            <Checkbox
-              defaultChecked={true}
-              onChange={() => templateQuestion(question?._id)}
-            />
-          </Box>
-        )}
       </Box>
 
       <CustomizationDialog

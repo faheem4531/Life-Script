@@ -25,6 +25,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import backArrow from "../../../_assets/svg/left.svg";
 import Loading from "./components/loading";
+
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [completionModal, setCompletionModal] = useState(false);
@@ -151,7 +152,7 @@ const chapterName = () => {
             <CircularProgress />
           </Box>
         ) : isLoaded ? (
-          <Loading progressCompleted ={openModal} completed ={()=>{
+          <Loading progressCompleted={openModal} completed={() => {
             setCompletionModal(true);
             setIsloaded(false);
           }} />
@@ -200,11 +201,12 @@ const chapterName = () => {
                 sx={{
                   fontSize: { md: "19.379px", sm: "18.501px" },
                   fontWeight: 700,
-                  color: "rgba(0, 0, 0, 0.87)",
+                  color: "#30422E",
+                  marginBottom: "-90px",
                   display: { sm: "block", xs: "none" },
                 }}
               >
-                {t("template.temp")}
+                {t("template.Questions")}
               </Typography>
               <Box>
                 <GlobelBtn
@@ -233,7 +235,7 @@ const chapterName = () => {
               </Box>
             ) : (
               // <Loading isLoaded={isLoaded} />
-              <>
+              <Box sx={{ marginTop: "60px", bgcolor: "#F4F4F4", padding: "10px 0 30px" }}>
                 {allQuestions?.length > 0 ? (
                   allQuestions.map((question, index) => (
                     <Questions
@@ -247,7 +249,7 @@ const chapterName = () => {
                 ) : (
                   <NoQuestions />
                 )}
-              </>
+              </Box>
             )}
           </Box>
         )}
