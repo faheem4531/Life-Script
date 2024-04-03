@@ -4,13 +4,13 @@
   font-size: 13px;
   column-gap: 8px;
   padding: 8px 8px 8px 10px;
-  border-radius: 10px;
+  border-radius: 3px;
   margin-bottom: 25px;
 }
 
 .active {
-  background-color: #fff;
-  color: #197065;
+  background-color: #E1683B;
+  color: #fff;
 }
 
 .subLinks {

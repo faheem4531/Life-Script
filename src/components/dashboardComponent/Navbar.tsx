@@ -1,7 +1,7 @@
 import More from "@/_assets/svg/nav-menue.svg";
 import NavMenu from "@/_assets/svg/sidebar/menuIcon.svg";
 import Step1 from "@/_assets/svg/smallBook.svg";
-import Logo from "@/_assets/svg/white-logo.svg";
+import Logo from "@/_assets/svg/logo-dashboard.svg";
 import {
   getChapterNotifications,
   readNotification,
@@ -77,7 +77,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
   }
 
   // const options = [`${t("navBar.logout")}`];
-  const options = [{id:1, title: `${t("navBar.logout")}`}];
+  const options = [{ id: 1, title: `${t("navBar.logout")}` }];
 
   return (
     <Box
@@ -85,7 +85,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#197065",
+        backgroundColor: "#30422E",
         padding: { xs: "0px 8px", md: "0 14px" },
         height: { xs: "48px", lg: "70px" },
       }}

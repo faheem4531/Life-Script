@@ -9,6 +9,7 @@ import styles from "./Layout.module.css";
 
 const Layout = ({ children }: { children?: any }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
+
   const router = useRouter();
   const dispatch: any = useDispatch();
 
@@ -58,7 +59,7 @@ const Layout = ({ children }: { children?: any }) => {
           <Box
             sx={{
               width: "220px",
-              backgroundColor: "#197065",
+              backgroundColor: "#F3ECDA",
               position: "fixed",
               bottom: "0",
               top: "0px",
