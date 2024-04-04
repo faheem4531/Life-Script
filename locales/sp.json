@@ -102,7 +102,8 @@
     "getQues": "¿Cómo te gustaría llamar a tu guión de vida?",
     "inputBottom": "Puedes cambiarlo en cualquier momento antes de imprimirlo.",
     "getBtn": "Comenzar a Escribir",
-    "LetUsHelpYou": "Permítenos Ayudarte..."
+    "LetUsHelpYou": "Permítenos Ayudarte...",
+    "LetGetStarted": "Empecemos..."
   },
   "navBar": {
     "notif1": "El capítulo",

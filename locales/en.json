@@ -104,7 +104,8 @@
     "getQues": "What would you like to call your lifescript?",
     "inputBottom": "You can change it at any time before printing.",
     "getBtn": "Start Writing",
-    "LetUsHelpYou": " Let Us Help You..."
+    "LetUsHelpYou": " Let Us Help You...",
+    "LetGetStarted": " Let's Get Started..."
   },
   "navBar": {
     "notif1": "Chapter",

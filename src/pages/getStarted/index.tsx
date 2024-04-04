@@ -1,14 +1,18 @@
-import Dots from "@/_assets/png/getStarted-dots.png";
+import { useEffect } from "react";
 import { getBookTitle } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import Arrow from "../../../public/startArrow.png";
-import styles from "./GetTitle.module.css";
 import i18n from "../../../i18n";
+import styles from "./GetTitle.module.css";
+import Image from "next/image";
+
+import Line from "@/_assets/svg/line-orange.svg";
+import Arrow from "@/_assets/svg/getStarted-aero.svg";
+import DotsLeft from "@/_assets/svg/dots-left.svg";
+import DotsRight from "@/_assets/svg/dots-Right.svg";
+import House from "@/_assets/png/bg-hunt.png";
 
 const getStarted = () => {
   const dispatch: any = useDispatch();
@@ -44,7 +48,7 @@ const getStarted = () => {
   return (
     <Box
       sx={{
-        backgroundImage: 'url("/letsStarted.png")',
+        backgroundImage: 'url("/bgGetStarted.png")',
         backgroundSize: "cover",
         backgroundPosition: { sm: "center center", xs: "left " },
         backgroundRepeat: "no-repeat",
@@ -54,43 +58,51 @@ const getStarted = () => {
         position: "relative",
         display: "flex",
         alignItems: "center",
+        bgcolor: "#30422E"
       }}
+      className={styles.getStarted}
     >
       <Box
         sx={{
           marginLeft: {
-            xl: "200px",
-            lg: "150px",
-            md: "100px",
-            sm: "100px",
-            xs: "50px",
+            lg: "120px",
+            md: "80px",
+            sm: "80px",
+            xs: "40px",
           },
         }}
       >
         <Typography
-          sx={{ fontSize: { lg: "60px", md: "50px", sm: "40px", xs: "30px" } }}
+          sx={{
+            fontSize: { lg: "55px", sm: "40px", xs: "35px" },
+            margin: {
+              lg: "-30% 0 120px",
+              md: "-100px 0 80px",
+              sm: "-100px 0 80px",
+              xs: "-80px 0 40px",
+            },
+          }}
         >
-          {t("getTitle.hi")} {userName} 👋
+          {t("getTitle.hi")} {userName}{"!"}
         </Typography>
-        <Image src={Arrow} alt="arrow" className={styles.aero} />
         <Typography
           sx={{
             fontWeight: 700,
             fontSize: {
-              xl: "85px",
-              lg: "65px",
               md: "55px",
               sm: "40px",
               xs: "35px",
             },
           }}
         >
-          {t("getTitle.LetUsHelpYou")}
+          {t("getTitle.LetGetStarted")}
         </Typography>
       </Box>
 
-      <Image src={Dots} alt="arrow" className={styles.topDots} />
-      <Image src={Dots} alt="arrow" className={styles.bottomDots} />
+      <Image src={Arrow} alt="arrow" className={styles.aero} />
+      <Image src={DotsRight} alt="arrow" className={styles.topDots} />
+      <Image src={DotsLeft} alt="arrow" className={styles.bottomDots} />
+      <Image src={House} alt="arrow" className={styles.house} />
     </Box>
   );
 };

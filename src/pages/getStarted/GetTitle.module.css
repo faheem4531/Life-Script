@@ -31,17 +31,27 @@
 .topDots {
   position: absolute;
   top: 0;
-  right: 250px;
+  right: 0;
 }
 
 .bottomDots {
   position: absolute;
   bottom: 0;
-  left: 100px;
+  left: 0;
 }
 
 .aero {
-  margin: 100px 0;
+  position: absolute;
+  right: 80px;
+  bottom: 50px;
+}
+
+.house{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 550px;
+  height: auto;
 }
 
 @media (min-width: 1400px) and (max-width: 1800px) {
@@ -62,17 +72,6 @@
 
   /*   LetsStarted Code here  */
 
-  .topDots {
-    right: 250px;
-    height: 110px;
-    width: 650px;
-  }
-
-  .bottomDots {
-    left: 100px;
-    height: 110px;
-    width: 650px;
-  }
 }
 
 @media (min-width: 992px) and (max-width: 1400px) {
@@ -103,24 +102,6 @@
     height: 70px;
   }
 
-  /*   LetsStarted Code here  */
-
-  .topDots {
-    right: 150px;
-    height: 100px;
-    width: 500px;
-  }
-
-  .bottomDots {
-    left: 80px;
-    height: 100px;
-    width: 500px;
-  }
-
-  .aero {
-    margin: 0px 0;
-    width: 500px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -155,25 +136,6 @@
     height: 50px;
   }
 
-  /*   LetsStarted Code here  */
-
-  .topDots {
-    right: 100px;
-    height: 80px;
-    width: 400px;
-  }
-
-  .bottomDots {
-    left: 60px;
-    height: 80px;
-    width: 400px;
-  }
-
-  .aero {
-    margin: 50px 0;
-    width: 450px;
-    height: 80px;
-  }
 }
 
 @media (min-width: 600px) and (max-width: 768px) {
@@ -188,11 +150,11 @@
 
   /*   LetsStarted Code here  */
 
-  .aero {
+  /* .aero {
     margin: 60px 0;
     width: 360px;
     height: 80px;
-  }
+  } */
 }
 
 @media (max-width: 600px) {
@@ -215,32 +177,24 @@
   .whiteBlock {
     display: none;
   }
-
   /*   LetsStarted Code here  */
 
-  .topDots {
+  .topDots, .bottomDots {
+    width: 100px;
+  }
+  
+  .aero {
+    width: 80px;
     right: 20px;
-    height: 70px;
-    width: 320px;
+    bottom: 30px;
+  }
+  
+  .house{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 550px;
+    height: auto;
   }
 
-  .bottomDots {
-    left: 30px;
-    height: 70px;
-    width: 320px;
-  }
-
-  .aero {
-    margin: 60px 0;
-    width: 90%;
-    height: 70px;
-  }
-}
-
-/*   LetsStarted Code here  */
-@media (min-width: 1200px) and (max-width: 1550px) {
-  .aero {
-    margin: 45px 0;
-    width: 600px;
-  }
 }
