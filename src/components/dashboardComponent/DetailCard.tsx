@@ -98,31 +98,6 @@ export default function DetailCard({
       borderRadius={"8px"}
       boxShadow={"4.715px 4.042px 11.519px 0px rgba(0, 0, 0, 0.14)"}
     >
-      {/* <Box
-        sx={{
-          boxShadow: {
-            md: "4px 4px white",
-            sm: "3px 3px white",
-            xs: "2.5px 2.5px white",
-          },
-          borderRadius: "6.5px",
-          padding: " 0px 4px 4px 0px",
-          borderRight: "1.5px solid #EEEEEE",
-          borderBottom: "1.5px solid #EEEEEE",
-        }}
-      >
-        <Box
-          sx={{
-            boxShadow: {
-              md: "4px 4px white",
-              sm: "3px 3px white",
-              xs: "2.5px 2.5px white",
-            },
-            borderRadius: "6.5px",
-            borderRight: "1.5px solid #EEEEEE",
-            borderBottom: "1.5px solid #EEEEEE",
-          }}
-        > */}
       <Card
         className="container-fontfamily"
         sx={{
@@ -260,39 +235,34 @@ export default function DetailCard({
                         mb: { sm: "2px", xs: "1px" },
                         color: "#30422E",
                         columnGap: "10px",
+                        display: "flex",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <Image
+                        alt="check"
+                        src={Tick}
+                        width={15}
+                      />
+                      <Typography sx={{
+                        whiteSpace: "nowrap",
+                        width: { xl: "360px" },
+                        paddingRight: "20px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
                         fontSize: {
                           md: "11px",
                           sm: "8.803px",
                           xs: "7.332px",
                         },
-                        display: "flex",
-                        alignItems: "flex-start",
                       }}
-                    >
-                      <Box
-                        sx={{
-                          width: {
-                            md: "21.701px",
-                            sm: "19.491px",
-                            xs: "12.467px",
-                          },
-                          height: {
-                            md: "18.547px",
-                            sm: "16.658px",
-                            xs: "10.467px",
-                          },
-                          flexShrink: "0",
-                        }}
+                        className={styles.questionWidth}
                       >
-                        <Image
-                          alt="check"
-                          src={Tick}
-                          width={15}
-                        />
-                      </Box>
-                      {question.text.length > 45
-                        ? question.text.slice(0, 42) + "..."
-                        : question.text}
+                        {question.text}
+                      </Typography>
+                      {/* {question.text.length > 45
+                      ? question.text.slice(0, 42) + "..."
+                      : question.text} */}
                     </Typography>
                   ))
                 ) : (
