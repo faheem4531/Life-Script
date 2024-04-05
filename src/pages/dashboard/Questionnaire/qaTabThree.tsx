@@ -25,13 +25,18 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
     setQuestionFrequency(event.target.value);
   };
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "90%",
+      }}>
       <Box
         sx={{
-          color: "black",
-          display: { sm: "flex", xs: "none" },
+          color: "#30422E",
           alignItems: "center",
           gap: "8px",
+          mt: "20px"
         }}
       >
         <Typography
@@ -40,94 +45,19 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
             fontWeight: 700,
           }}
         >
-          Details
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: { md: "16px", sm: "14px", xs: "12px" },
-            fontWeight: 700,
-            color: "rgba(78, 81, 109, 0.70)",
-          }}
-        >
-          Details for personalized questions
+          Step 3 of 4
         </Typography>
       </Box>
       <QaTabBars tabProp={3} />
-      <Box sx={{ mt: 6 }}>
+      <Box sx={{ mt: 10 }}>
         <Typography
           sx={{
             fontSize: { md: "33px", sm: "25px", xs: "20px" },
             fontWeight: 700,
-            color: "black",
+            color: "#30422E",
           }}
         >
-          Details for personalized questions
-        </Typography>
-        <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
-          <RadioGroup value={personalQuestion} onChange={handlePersonalInfo}>
-            <FormControlLabel
-              value="ChronologicalOrder"
-              checked={personalQuestion === "ChronologicalOrder"}
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
-              label={
-                <Typography
-                  sx={{
-                    ml: 2,
-                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
-                    fontWeight: 400,
-                    color: "rgba(0, 0, 0, 0.6)",
-                  }}
-                >
-                  Chronological order (starting from early childhood till
-                  current age)
-                </Typography>
-              }
-            />
-            <FormControlLabel
-              value="RandomOrder"
-              checked={personalQuestion === "RandomOrder"}
-              control={
-                <Radio
-                  sx={{
-                    "&.Mui-checked .MuiSvgIcon-root": {
-                      fill: "rgba(25, 112, 101, 1)",
-                    },
-                  }}
-                />
-              }
-              label={
-                <Typography
-                  sx={{
-                    ml: 2,
-                    fontSize: { md: "24px", sm: "20px", xs: "16px" },
-                    fontWeight: 400,
-                    color: "rgba(0, 0, 0, 0.6)",
-                  }}
-                >
-                  Random order
-                </Typography>
-              }
-            />
-          </RadioGroup>
-        </Box>
-      </Box>
-      <Box sx={{ mt: 4 }}>
-        <Typography
-          sx={{
-            fontSize: { md: "33px", sm: "25px", xs: "20px" },
-            fontWeight: 700,
-            color: "black",
-          }}
-        >
-          What should be the frequency of the questions?
+          How often would you like to receive questions via email?
         </Typography>
         <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 2 }}>
           <RadioGroup
@@ -238,36 +168,38 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
         </Box>
       </Box>
       <Box
+        flex={1}
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          alignItems: "center",
+          alignItems: "end",
           gap: 2,
-          flexWrap: "wrap",
-          mt: {
-            sm: "0px",
-            xs: "20px",
-          },
         }}
       >
-        <Box>
-          <GlobelBtn btnText="Back" onClick={onClickBack} image={backArrow} />
-        </Box>
-        <Box>
-          <GlobelBtn
-            bgColor="#186F65"
-            color="white"
-            btnText="Take me in"
-            onClick={() =>
-              onClickNext({
-                personal: personalQuestion,
-                frequency: questionFrequency,
-              })
-            }
-            image2={NextArrow}
-          />
-        </Box>
+        <GlobelBtn
+          bgColor="#ffffff"
+          border='1px solid #E1683B'
+          borderRadius="4px"
+          color="#E1683B"
+          btnText="Back"
+          onClick={onClickBack}
+          image={backArrow}
+        />
+
+        <GlobelBtn
+          borderRadius="4px"
+          bgColor="#E1683B"
+          color="white"
+          btnText="Next"
+          onClick={() =>
+            onClickNext({
+              personal: personalQuestion,
+              frequency: questionFrequency,
+            })
+          }
+          image2={NextArrow}
+        />
       </Box>
-    </>
+    </Box>
   );
 }
