@@ -5,12 +5,10 @@
 }
 
 .QuestionnaireSideBar {
-  width: 140px;
+  width: 160px;
   height: 100vh;
-  /* background: url("../../../_assets//svg//QuestionnaireMainBg.svg"); */
-  /* background-position: left top; */
+  border-left: 8px solid #E1683B;
   background-color: #30422E;
-  /* opacity: 0.7; */
 }
 
 .QuestionnaireLandingMain {
