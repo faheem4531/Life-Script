@@ -31,7 +31,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
             color: "#30422E",
             gap: "8px",
             mt: "20px",
-            display: { sm: "block", xs: "none" },
+            // display: { sm: "block", xs: "none" },
           }}
         >
           <Typography
@@ -44,7 +44,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
           </Typography>
         </Box>
         <QaTabBars tabProp={1} />
-        <Box sx={{ mt: { md: 10, sm: 4, xs: 2 } }}>
+        <Box sx={{ mt: { md: 10, sm: 7, xs: 7 } }}>
           <Typography
             sx={{
               fontSize: { md: "33px", sm: "25px", xs: "20px" },

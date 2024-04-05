@@ -44,6 +44,13 @@
   width: 140px;
 }
 
+@media screen and (max-width:1200px) and (min-width:600px) {
+  .QuestionnaireMain {
+    background-size: 550px 350px;
+  }
+
+}
+
 @media screen and (max-width:600px) {
   .QuestionnaireLandingMain {
     background:#30422E;
@@ -53,5 +60,9 @@
   .nextAero{
     right: 40px;
     width: 100px;
+  }
+
+  .QuestionnaireMain {
+    background-size: 320px 200px;
   }
 }
