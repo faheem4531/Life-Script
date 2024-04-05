@@ -28,7 +28,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
       <Box>
         <Box
           sx={{
-            color: "black",
+            color: "#30422E",
             gap: "8px",
             mt: "20px",
             display: { sm: "block", xs: "none" },
@@ -40,25 +40,16 @@ export default function TabOne({ onClick, data, setQaTab }) {
               fontWeight: 700,
             }}
           >
-            For Whom?
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: { md: "16px", sm: "14px", xs: "12px" },
-              fontWeight: 700,
-              color: "rgba(78, 81, 109, 0.70)",
-            }}
-          >
-            Who will use lifescript?
+            Step 1 of 4
           </Typography>
         </Box>
         <QaTabBars tabProp={1} />
-        <Box sx={{ mt: { md: 6, sm: 4, xs: 2 } }}>
+        <Box sx={{ mt: { md: 10, sm: 4, xs: 2 } }}>
           <Typography
             sx={{
               fontSize: { md: "33px", sm: "25px", xs: "20px" },
               fontWeight: 700,
-              color: "black",
+              color: "#30422E",
             }}
           >
             Who will use lifescript?
@@ -79,7 +70,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                   <Radio
                     sx={{
                       "&.Mui-checked .MuiSvgIcon-root": {
-                        fill: "rgba(25, 112, 101, 1)",
+                        fill: "#30422E",
                       },
                     }}
                   />
@@ -93,7 +84,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                       color: "rgba(0, 0, 0, 0.6)",
                     }}
                   >
-                    I am writing my biography
+                    I am writing my own story
                   </Typography>
                 }
               />
@@ -104,7 +95,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                   <Radio
                     sx={{
                       "&.Mui-checked .MuiSvgIcon-root": {
-                        fill: "rgba(25, 112, 101, 1)",
+                        fill: "#30422E",
                       },
                     }}
                   />
@@ -118,32 +109,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
                       fontSize: { md: "24px", sm: "20px", xs: "16px" },
                     }}
                   >
-                    I am gifting life story to a loved one
-                  </Typography>
-                }
-              />
-              <FormControlLabel
-                value="SomeOne"
-                checked={selectedValue === "SomeOne"}
-                control={
-                  <Radio
-                    sx={{
-                      "&.Mui-checked .MuiSvgIcon-root": {
-                        fill: "rgba(25, 112, 101, 1)",
-                      },
-                    }}
-                  />
-                }
-                label={
-                  <Typography
-                    sx={{
-                      ml: { md: 2, sm: 1, xs: 0.5 },
-                      fontSize: { md: "24px", sm: "20px", xs: "16px" },
-                      fontWeight: 400,
-                      color: "rgba(0, 0, 0, 0.6)",
-                    }}
-                  >
-                    I am using life story for someone
+                    I am assisting someone else write their story.
                   </Typography>
                 }
               />
@@ -162,7 +128,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
         }}
       >
         <GlobelBtn
-          bgColor="#186F65"
+          bgColor="#E1683B"
           color="white"
           btnText="Next"
           onClick={() => onClick(selectedValue)}
