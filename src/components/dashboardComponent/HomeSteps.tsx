@@ -33,7 +33,6 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            bottom: "10px",
             left: { sm: "-40", xs: "-20px" },
             width: "150px",
           }}
@@ -63,7 +62,6 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            bottom: "10px",
             left: "-48px",
             width: "150px",
             textAlign: "center",
@@ -93,7 +91,6 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            bottom: "10px",
             left: { md: "-60px", sm: "-60px", xs: "-55px" },
             width: "180px",
             textAlign: "center",
@@ -123,7 +120,6 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            bottom: "10px",
             left: "-40px",
             width: "200px",
           }}
