@@ -336,41 +336,36 @@ export default function TabTwo({
         </Box>
       </Box>
       <Box
+        flex={1}
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          alignItems: "center",
+          alignItems: "end",
           gap: 2,
-          mt: 2,
-          flexWrap: "wrap",
         }}
       >
-        <Box>
-          <GlobelBtn
-            bgColor="#ffffff"
-            border='1px solid #E1683B'
-            borderRadius="4px"
-            color="#E1683B"
-            btnText="Back"
-            onClick={onClickBack}
-            image={backArrow}
-          />
-        </Box>
+        <GlobelBtn
+          bgColor="#ffffff"
+          border='1px solid #E1683B'
+          borderRadius="4px"
+          color="#E1683B"
+          btnText="Back"
+          onClick={onClickBack}
+          image={backArrow}
+        />
         <Tooltip
           open={showTooltip}
           onClose={() => setShowTooltip(false)}
           title="Please fill in all fields before proceeding."
         >
-          <Box>
-            <GlobelBtn
-              borderRadius="4px"
-              bgColor="#E1683B"
-              color="white"
-              btnText="Next"
-              onClick={handleButtonClick}
-              image2={NextArrow}
-            />
-          </Box>
+          <GlobelBtn
+            borderRadius="4px"
+            bgColor="#E1683B"
+            color="white"
+            btnText="Next"
+            onClick={handleButtonClick}
+            image2={NextArrow}
+          />
         </Tooltip>
       </Box>
     </Box>
