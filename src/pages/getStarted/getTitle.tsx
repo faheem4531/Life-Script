@@ -12,7 +12,7 @@ import styles from "./GetTitle.module.css";
 
 import BookImage from "../../../public/getTitleBook.png";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
-import DotsRight from "@/_assets/svg/dots-Right.svg";
+import DotsRight from "@/_assets/svg/dots-right.svg";
 
 const getTitle = () => {
   const router = useRouter();
