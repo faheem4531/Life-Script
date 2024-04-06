@@ -26,6 +26,7 @@ const GlobelBtn = ({
   image,
   color = "#fff",
   width,
+  border,
   borderRadius = "8px",
   fontSize = {
     md: "16px",
@@ -50,6 +51,7 @@ const GlobelBtn = ({
         borderRadius: borderRadius,
         color: color,
         textTransform: "capitalize",
+        border: border,
         p: p,
         bgcolor: bgColor,
         "&:hover": {

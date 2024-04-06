@@ -12,7 +12,7 @@ const QaTabBars = ({ tabProp }) => {
         item
         xs={tabProp === 1 ? 5.5 : 2.5}
         sx={{
-          bgcolor: tabProp === 1 ? "#197065" : "#005387",
+          bgcolor: tabProp === 1 ? "#E1683B" : "#E1683B",
           borderRadius: "3px",
           height: "10px",
           opacity: tabProp === 1 ? "1" : "0.2",
@@ -24,7 +24,7 @@ const QaTabBars = ({ tabProp }) => {
         item
         xs={tabProp === 2 ? 5.5 : 2.5}
         sx={{
-          bgcolor: tabProp === 2 ? "#197065" : "#005387",
+          bgcolor: tabProp === 2 ? "#E1683B" : "#E1683B",
           borderRadius: "3px",
           height: "10px",
           opacity: tabProp === 2 ? "1" : "0.2",
@@ -36,7 +36,7 @@ const QaTabBars = ({ tabProp }) => {
         item
         xs={tabProp === 3 ? 5.5 : 2.5}
         sx={{
-          bgcolor: tabProp === 3 ? "#197065" : "#005387", // Change this color as needed
+          bgcolor: tabProp === 3 ? "#E1683B" : "#E1683B", // Change this color as needed
           borderRadius: "3px",
           height: "10px",
           opacity: tabProp === 3 ? "1" : "0.2",

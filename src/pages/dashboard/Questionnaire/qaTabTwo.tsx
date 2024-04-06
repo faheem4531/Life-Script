@@ -42,7 +42,7 @@ export default function TabTwo({
   useEffect(() => {
     const userName = localStorage.getItem("username");
     setName(userName.toString());
-  },[])
+  }, [])
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
@@ -82,10 +82,10 @@ export default function TabTwo({
       <Box>
         <Box
           sx={{
-            color: "black",
+            color: "#30422E",
             alignItems: "center",
             gap: "8px",
-            display: { sm: "flex", xs: "none" },
+            mt: "20px"
           }}
         >
           <Typography
@@ -94,25 +94,17 @@ export default function TabTwo({
               fontWeight: 700,
             }}
           >
-            Identity!
+            Step 2 of 4
           </Typography>
-          <Typography
-            sx={{
-              fontSize: { md: "16px", sm: "14px", xs: "12px" },
-              fontWeight: 700,
-              color: "rgba(78, 81, 109, 0.70)",
-            }}
-          >
-            Tell us about yourself
-          </Typography>
+
         </Box>
         <QaTabBars tabProp={2} />
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 10 }}>
           <Typography
             sx={{
               fontSize: { md: "33px", sm: "25px", xs: "20px" },
               fontWeight: 700,
-              color: "black",
+              color: "#30422E",
             }}
           >
             Tell us about yourself
@@ -132,7 +124,7 @@ export default function TabTwo({
                 sx={{
                   fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
                   fontWeight: 500,
-                  color: "#171725",
+                  color: "#30422E",
                 }}
               >
                 Full Name
@@ -146,7 +138,7 @@ export default function TabTwo({
                 sx={{
                   width: "100%",
                   "& .MuiOutlinedInput-root": {
-                    borderRadius: "50px",
+                    borderRadius: "2px",
                     backgroundColor: "white",
                   },
                 }}
@@ -157,7 +149,7 @@ export default function TabTwo({
                 sx={{
                   fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
                   fontWeight: 500,
-                  color: "#171725",
+                  color: "#30422E",
                 }}
               >
                 Marital Status
@@ -173,7 +165,7 @@ export default function TabTwo({
                   onChange={(e) => setMaritalStatus(e.target.value)}
                   sx={{
                     width: "100%",
-                    borderRadius: "50px",
+                    borderRadius: "2px",
                     backgroundColor: "white",
                   }}
                 >
@@ -209,7 +201,7 @@ export default function TabTwo({
                 sx={{
                   fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
                   fontWeight: 500,
-                  color: "#171725",
+                  color: "#30422E",
                 }}
               >
                 Gender
@@ -225,7 +217,7 @@ export default function TabTwo({
                   onChange={(e) => setGender(e.target.value)}
                   sx={{
                     width: "100%",
-                    borderRadius: "50px",
+                    borderRadius: "2px",
                     backgroundColor: "white",
                   }}
                 >
@@ -252,7 +244,7 @@ export default function TabTwo({
                 sx={{
                   fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
                   fontWeight: 500,
-                  color: "#171725",
+                  color: "#30422E",
                 }}
               >
                 Date of Birth
@@ -264,10 +256,10 @@ export default function TabTwo({
                 sx={{
                   width: "100%",
                   backgroundColor: "white",
-                  borderRadius: "50px",
+                  borderRadius: "2px",
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderRadius: "50px",
+                      borderRadius: "2px",
                     },
                   },
                 }}
@@ -288,7 +280,7 @@ export default function TabTwo({
                 sx={{
                   fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
                   fontWeight: 500,
-                  color: "#171725",
+                  color: "#30422E",
                 }}
               >
                 Language Preference
@@ -304,7 +296,7 @@ export default function TabTwo({
                   onChange={(e) => setLangPre(e.target.value)}
                   sx={{
                     width: "100%",
-                    borderRadius: "50px",
+                    borderRadius: "2px",
                     backgroundColor: "white",
                   }}
                 >
@@ -344,32 +336,36 @@ export default function TabTwo({
         </Box>
       </Box>
       <Box
+        flex={1}
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          alignItems: "center",
+          alignItems: "end",
           gap: 2,
-          mt: 2,
-          flexWrap: "wrap",
         }}
       >
-        <Box>
-          <GlobelBtn btnText="Back" onClick={onClickBack} image={backArrow} />
-        </Box>
+        <GlobelBtn
+          bgColor="#ffffff"
+          border='1px solid #E1683B'
+          borderRadius="4px"
+          color="#E1683B"
+          btnText="Back"
+          onClick={onClickBack}
+          image={backArrow}
+        />
         <Tooltip
           open={showTooltip}
           onClose={() => setShowTooltip(false)}
           title="Please fill in all fields before proceeding."
         >
-          <Box>
-            <GlobelBtn
-              bgColor="#186F65"
-              color="white"
-              btnText="Next"
-              onClick={handleButtonClick}
-              image2={NextArrow}
-            />
-          </Box>
+          <GlobelBtn
+            borderRadius="4px"
+            bgColor="#E1683B"
+            color="white"
+            btnText="Next"
+            onClick={handleButtonClick}
+            image2={NextArrow}
+          />
         </Tooltip>
       </Box>
     </Box>

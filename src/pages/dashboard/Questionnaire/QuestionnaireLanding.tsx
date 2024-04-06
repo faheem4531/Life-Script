@@ -68,7 +68,7 @@ const Questionnaire = () => {
         const username = localStorage.getItem("username");
         router.push(`/getStarted/getTitle`);
       })
-      .catch(() => {});
+      .catch(() => { });
   };
 
   useEffect(() => {
@@ -131,10 +131,9 @@ const Questionnaire = () => {
             }}
             className={styles.QuestionnaireTabsMain}
           >
-            <SubscriptionHeader title="Questionnaire" description="" />
             <Box
               sx={{
-                p: { md: "10px 20px", xs: "10px 0px" },
+                p: { md: "10px 20px 0 70px", xs: "10px 0px" },
                 flex: 1,
                 overflowY: "auto",
                 mt: { sm: "0px", xs: "20px" },
