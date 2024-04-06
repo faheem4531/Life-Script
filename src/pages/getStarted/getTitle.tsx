@@ -8,13 +8,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-
-import BookImage from "../../../public/getTitleBook.png";
 import styles from "./GetTitle.module.css";
 
-import GreenBlock from "@/_assets/png/getTitle-green-block.png";
-import WhiteBlock from "@/_assets/png/getTitle-white-block.png";
-
+import BookImage from "../../../public/getTitleBook.png";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
 import DotsRight from "@/_assets/svg/dots-Right.svg";
 
@@ -93,15 +89,8 @@ const getTitle = () => {
             bgcolor: { xs: "#F3ECDA" },
             borderTop: { xs: "55px solid #30422E", sm: "none" },
             borderBottom: { xs: "55px solid #30422E", sm: "none" },
-            // backgroundSize: "cover",
-            // backgroundPosition: "center center",
-            // backgroundRepeat: "no-repeat",
             width: "100%",
             height: "100vh",
-            // minHeight: "100%",
-            // margin: 0,
-            // padding: 0,
-            // gap: 0,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -198,8 +187,8 @@ const getTitle = () => {
           >
             <Image src={BookImage} alt="book image" className={styles.book} />
           </Box>
-          {/* <Image alt="image" src={DotsLeft} className={styles.greenBlock} />
-          <Image alt="image" src={DotsRight} className={styles.whiteBlock} /> */}
+          <Image alt="image" src={DotsLeft} className={styles.topLeft} />
+          <Image alt="image" src={DotsRight} className={styles.bottomRight} />
         </Box>
       )}
     </Box>
