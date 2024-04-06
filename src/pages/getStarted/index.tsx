@@ -12,6 +12,7 @@ import Image from "next/image";
 import Arrow from "@/_assets/svg/getStarted-aero.svg";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
 import DotsRight from "@/_assets/svg/dots-right.svg";
+import Line from "@/_assets/svg/orange-line.svg";
 import House from "@/_assets/png/bg-hunt.png";
 
 const getStarted = () => {
@@ -20,30 +21,30 @@ const getStarted = () => {
   const { userName } = router.query;
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const languageStored = localStorage.getItem("language");
-    const language = languageStored === "Spanish" ? "sp" : "en";
-    i18n.changeLanguage(language);
-    dispatch(getBookTitle())
-      .unwrap()
-      .then((res) => {
-        if (res?.length > 0 && res[0].title !== "") {
-          setTimeout(() => {
-            router.push("/dashboard/chapters");
-          }, 3000);
-        } else {
-          setTimeout(() => {
-            router.push(`/dashboard/Questionnaire`);
-          }, 3000);
-        }
-      })
-      .catch(() =>
-        setTimeout(() => {
-          console.log("fail");
-          router.push(`/dashboard/Questionnaire`);
-        }, 3000)
-      );
-  }, []);
+  // useEffect(() => {
+  //   const languageStored = localStorage.getItem("language");
+  //   const language = languageStored === "Spanish" ? "sp" : "en";
+  //   i18n.changeLanguage(language);
+  //   dispatch(getBookTitle())
+  //     .unwrap()
+  //     .then((res) => {
+  //       if (res?.length > 0 && res[0].title !== "") {
+  //         setTimeout(() => {
+  //           router.push("/dashboard/chapters");
+  //         }, 3000);
+  //       } else {
+  //         setTimeout(() => {
+  //           router.push(`/dashboard/Questionnaire`);
+  //         }, 3000);
+  //       }
+  //     })
+  //     .catch(() =>
+  //       setTimeout(() => {
+  //         console.log("fail");
+  //         router.push(`/dashboard/Questionnaire`);
+  //       }, 3000)
+  //     );
+  // }, []);
 
   return (
     <Box
@@ -74,7 +75,9 @@ const getStarted = () => {
       >
         <Typography
           sx={{
+            color: "#F3ECDA",
             fontSize: { lg: "55px", sm: "40px", xs: "35px" },
+            fontFamily: "Avenir8 !important",
             margin: {
               lg: "-30% 0 120px",
               md: "-100px 0 80px",
@@ -85,18 +88,22 @@ const getStarted = () => {
         >
           {t("getTitle.hi")} {userName}{"!"}
         </Typography>
-        <Typography
-          sx={{
-            fontWeight: 700,
-            fontSize: {
-              md: "55px",
-              sm: "40px",
-              xs: "35px",
-            },
-          }}
-        >
-          {t("getTitle.LetGetStarted")}
-        </Typography>
+        <Box sx={{ position: "relative" }}>
+          <Typography
+            sx={{
+              color: "#F3ECDA",
+              fontFamily: "Avenir8 !important",
+              fontSize: {
+                lg: "55px",
+                sm: "40px",
+                xs: "35px",
+              },
+            }}
+          >
+            {t("getTitle.LetGetStarted")}
+          </Typography>
+          <Image src={Line} alt="img" className={styles.orangeLine} />
+        </Box>
       </Box>
 
       <Image src={Arrow} alt="arrow" className={styles.aero} />
