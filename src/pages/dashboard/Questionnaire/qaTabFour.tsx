@@ -84,7 +84,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
         </Typography>
       </Box>
       <QaTabBars tabProp={4} />
-      <Box sx={{ mt: 10 }}>
+      <Box sx={{ mt: { sm: 10, xs: 5 } }}>
         <Typography
           sx={{
             fontSize: { md: "33px", sm: "25px", xs: "20px" },
@@ -94,7 +94,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
         >
           What are some of the chapters you&apos;d like to have in your book?
         </Typography>
-        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 2, height: "45vh", overflowY: "scroll" }}>
+        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: { sm: 2, xs: 0 }, height: "45vh", overflowY: "scroll" }}>
           {templates.map((item, index) => <Chapters
             key={index + 1}
             title={item.title}
@@ -106,8 +106,8 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
         </Box>
       </Box>
 
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ margin: "auto 0 -30px" }}>
+      <Box sx={{ display: "flex", flexDirection: { sm: "row", xs: "column" }, justifyContent: { xs: "end", sm: "space-between" } }} flex={1}>
+        <Box sx={{ margin: { sm: "auto 0 -30px", xs: "0 0 10px" } }}>
           <Chapters
             title='Mark All'
             id="mark_all"
@@ -115,7 +115,6 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             markAllChecked={markAllChecked} />
         </Box>
         <Box
-          flex={1}
           sx={{
             display: "flex",
             justifyContent: "flex-end",
@@ -191,7 +190,8 @@ function Chapters({ title, id, handleCheckboxChange, markAllChecked }: ChaptersP
           onChange={handleChange}
         />
       )}
-      <Typography sx={{ color: "#30422E", fontSize: "24px", lineHeight: "24px" }}>
+
+      <Typography sx={{ color: "#30422E", fontSize: { sm: "24px", xs: "16px" }, lineHeight: "24px" }}>
         {title}
       </Typography>
     </Box>
