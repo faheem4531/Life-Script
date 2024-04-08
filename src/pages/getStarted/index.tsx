@@ -8,7 +8,6 @@ import i18n from "../../../i18n";
 import styles from "./GetTitle.module.css";
 import Image from "next/image";
 
-// import Line from "@/_assets/svg/line-orange.svg";
 import Arrow from "@/_assets/svg/getStarted-aero.svg";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
 import DotsRight from "@/_assets/svg/dots-right.svg";
