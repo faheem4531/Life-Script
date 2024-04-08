@@ -8,6 +8,7 @@ import styles from "./Questionnaire.module.css";
 import TabOne from "./qaTabOne";
 import TabThree from "./qaTabThree";
 import TabTwo from "./qaTabTwo";
+import TabFour from './qaTabFour';
 
 const Questionnaire = () => {
   const dispatch: any = useDispatch();
@@ -25,6 +26,7 @@ const Questionnaire = () => {
     dateOfBirth: "",
     LanguagePreferences: "",
   });
+
   const handleTabOneClick = (val) => {
     setUserData({
       ...userData,
@@ -32,6 +34,7 @@ const Questionnaire = () => {
     });
     setQaTab(2);
   };
+
   const handleTabTwoClick = (val) => {
     setUserData({
       ...userData,
@@ -43,12 +46,44 @@ const Questionnaire = () => {
     });
     setQaTab(3);
   };
+
   const handleTabThreeClick = (val) => {
-    setLoading(false);
+    // setLoading(false);
     setUserData({
       ...userData,
       questionAskType: val.frequency,
       personalizedQuestion: val.personal,
+    });
+    setQaTab(4);
+
+    // dispatch(
+    //   updateUserProfile({
+    //     name: userData?.name,
+    //     questionAskType: val.frequency,
+    //     bookUseFor: userData?.bookUseFor,
+    //     personalizedQuestion: val.personal,
+    //     gender: userData?.gender,
+    //     martialStatus: userData?.martialStatus,
+    //     dateOfBirth: userData?.dateOfBirth,
+    //     language: userData?.LanguagePreferences,
+    //   })
+    // )
+    // .unwrap()
+    // .then(() => {
+    //   const username = localStorage.getItem("username");
+    //   router.push(`/getStarted/getTitle`);
+    // })
+    // .catch(() => { });
+  };
+
+  const handleTabFourClick = (val) => {
+    setUserData({
+      ...userData,
+      name: val.name,
+      gender: val.gender,
+      martialStatus: val.maritalStatus,
+      dateOfBirth: val.dob,
+      LanguagePreferences: val.lp,
     });
 
     dispatch(
@@ -153,10 +188,17 @@ const Questionnaire = () => {
                   userName={userName}
                   setQaTab={setQaTab}
                 />
-              ) : (
+              ) : qaTab === 3 ? (
                 <TabThree
                   onClickBack={() => setQaTab(2)}
                   onClickNext={handleTabThreeClick}
+                  data={userData}
+                  setQaTab={setQaTab}
+                />
+              ) : (
+                <TabFour
+                  onClickBack={() => setQaTab(3)}
+                  onClickNext={handleTabFourClick}
                   data={userData}
                   setQaTab={setQaTab}
                 />
