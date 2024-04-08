@@ -28,22 +28,36 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const dispatch: any = useDispatch();
   const templates = useSelector(selectTemplates);
   const [checkedIds, setCheckedIds] = useState([]);
+  const [checkedIdsAll, setCheckedIdsAll] = useState([]);
+  const [markAllChecked, setMarkAllChecked] = useState(false);
 
   const handleCheckboxChange = (id, isChecked) => {
-    if (isChecked) {
+    if (isChecked && id !== 'mark_all') {
       setCheckedIds([...checkedIds, id]);
     } else {
       setCheckedIds(checkedIds.filter((checkedId) => checkedId !== id));
     }
+
+    if (id === 'mark_all') {
+      setMarkAllChecked(isChecked);
+
+      if (markAllChecked) {
+        setCheckedIdsAll(markAllChecked ? templates.map((template) => template._id) : []);
+      }
+      else {
+        setCheckedIdsAll([])
+      }
+      console.log(checkedIdsAll, "markAllChecked");
+    }
   };
 
 
+  console.log(checkedIds, "checkedIds");
 
   useEffect(() => {
     dispatch(getTemplates());
   }, []);
 
-  console.log(checkedIds, "faheem");
 
   return (
     <Box
@@ -80,60 +94,61 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
         >
           What are some of the chapters you&apos;d like to have in your book?
         </Typography>
-        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 2, height: "48vh", overflowY: "scroll" }}>
+        <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 2, height: "45vh", overflowY: "scroll" }}>
           {templates.map((item, index) => <Chapters
             key={index + 1}
             title={item.title}
             id={item._id}
+            markAllChecked={markAllChecked}
             handleCheckboxChange={handleCheckboxChange}
           />)}
 
         </Box>
-        {/* <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Checkbox
-            defaultChecked={false}
-            style={{ color: "#30422E", marginRight: "7px" }}
-            checked={markAllChecked}
-            onChange={handleMarkAllChange}
-          />
-          <Typography sx={{ color: "#30422E", fontSize: "24px", lineHeight: "24px" }}>
-            Mark All
-          </Typography>
-        </Box> */}
       </Box>
-      <Box
-        flex={1}
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "end",
-          gap: 2,
-        }}
-      >
-        <GlobelBtn
-          bgColor="#ffffff"
-          border='1px solid #E1683B'
-          borderRadius="4px"
-          color="#E1683B"
-          btnText="Back"
-          onClick={onClickBack}
-          image={backArrow}
-        />
 
-        <GlobelBtn
-          borderRadius="4px"
-          bgColor="#E1683B"
-          color="white"
-          btnText="Take me in"
-          // onClick={() =>
-          // onClickNext({
-          //   personal: personalQuestion,
-          //   frequency: questionFrequency,
-          // })
-          // }
-          image2={NextArrow}
-        />
+      <Box sx={{ display: "flex" }}>
+        <Box sx={{ margin: "auto 0 -30px" }}>
+          <Chapters
+            title='Mark All'
+            id="mark_all"
+            handleCheckboxChange={handleCheckboxChange}
+            markAllChecked={markAllChecked} />
+        </Box>
+        <Box
+          flex={1}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "end",
+            gap: 2,
+          }}
+        >
+          <GlobelBtn
+            bgColor="#ffffff"
+            border='1px solid #E1683B'
+            borderRadius="4px"
+            color="#E1683B"
+            btnText="Back"
+            onClick={onClickBack}
+            image={backArrow}
+          />
+
+          <GlobelBtn
+            borderRadius="4px"
+            bgColor="#E1683B"
+            color="white"
+            btnText="Take me in"
+            // onClick={() =>
+            // onClickNext({
+            //   personal: personalQuestion,
+            //   frequency: questionFrequency,
+            // })
+            // }
+            image2={NextArrow}
+          />
+        </Box>
       </Box>
+
     </Box>
   );
 }
@@ -141,10 +156,11 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
 interface ChaptersProps {
   title: string;
   id: string;
+  markAllChecked: boolean;
   handleCheckboxChange: (id: string, isChecked: boolean) => void;
 }
 
-function Chapters({ title, id, handleCheckboxChange }: ChaptersProps) {
+function Chapters({ title, id, handleCheckboxChange, markAllChecked }: ChaptersProps) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = () => {
@@ -152,15 +168,29 @@ function Chapters({ title, id, handleCheckboxChange }: ChaptersProps) {
     handleCheckboxChange(id, !isChecked); // Pass the id and checked state to the parent component
   };
 
+  const handleMarkAllChange = () => {
+    setIsChecked(!markAllChecked); // Invert the checked state
+    handleCheckboxChange(id, !markAllChecked); // Pass the id and checked state to the parent component
+  };
+
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
 
-      <Checkbox
-        defaultChecked={false}
-        style={{ color: "#30422E", marginRight: "7px" }}
-        checked={isChecked}
-        onChange={handleChange}
-      />
+      {title === "Mark All" ? (
+        <Checkbox
+          defaultChecked={false}
+          checked={markAllChecked}
+          style={{ color: "#30422E", marginRight: "7px" }}
+          onChange={handleMarkAllChange}
+        />
+      ) : (
+        <Checkbox
+          defaultChecked={false}
+          style={{ color: "#30422E", marginRight: "7px" }}
+          checked={isChecked || markAllChecked}
+          onChange={handleChange}
+        />
+      )}
       <Typography sx={{ color: "#30422E", fontSize: "24px", lineHeight: "24px" }}>
         {title}
       </Typography>
