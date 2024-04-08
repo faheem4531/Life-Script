@@ -1,13 +1,11 @@
 import GlobelBtn from "@/components/button/Button";
-import { Box, FormControlLabel, RadioGroup, Typography } from "@mui/material";
-import Radio from "@mui/material/Radio";
+import { Box, Checkbox, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
 import { getTemplates, selectTemplates } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { log } from 'console';
 
 export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   // const [personalQuestion, setPersonalQuestion] =
@@ -29,12 +27,23 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   // };
   const dispatch: any = useDispatch();
   const templates = useSelector(selectTemplates);
+  const [checkedIds, setCheckedIds] = useState([]);
+
+  const handleCheckboxChange = (id, isChecked) => {
+    if (isChecked) {
+      setCheckedIds([...checkedIds, id]);
+    } else {
+      setCheckedIds(checkedIds.filter((checkedId) => checkedId !== id));
+    }
+  };
+
+
 
   useEffect(() => {
     dispatch(getTemplates());
   }, []);
 
-  console.log(templates, "faheem");
+  console.log(checkedIds, "faheem");
 
   return (
     <Box
@@ -75,8 +84,22 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
           {templates.map((item, index) => <Chapters
             key={index + 1}
             title={item.title}
+            id={item._id}
+            handleCheckboxChange={handleCheckboxChange}
           />)}
+
         </Box>
+        {/* <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Checkbox
+            defaultChecked={false}
+            style={{ color: "#30422E", marginRight: "7px" }}
+            checked={markAllChecked}
+            onChange={handleMarkAllChange}
+          />
+          <Typography sx={{ color: "#30422E", fontSize: "24px", lineHeight: "24px" }}>
+            Mark All
+          </Typography>
+        </Box> */}
       </Box>
       <Box
         flex={1}
@@ -117,12 +140,28 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
 
 interface ChaptersProps {
   title: string;
+  id: string;
+  handleCheckboxChange: (id: string, isChecked: boolean) => void;
 }
 
-function Chapters({ title }: ChaptersProps) {
+function Chapters({ title, id, handleCheckboxChange }: ChaptersProps) {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+    handleCheckboxChange(id, !isChecked); // Pass the id and checked state to the parent component
+  };
+
   return (
-    <Box>
-      <Typography sx={{ color: "#30422E", fontSize: "24px" }}>
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+
+      <Checkbox
+        defaultChecked={false}
+        style={{ color: "#30422E", marginRight: "7px" }}
+        checked={isChecked}
+        onChange={handleChange}
+      />
+      <Typography sx={{ color: "#30422E", fontSize: "24px", lineHeight: "24px" }}>
         {title}
       </Typography>
     </Box>
