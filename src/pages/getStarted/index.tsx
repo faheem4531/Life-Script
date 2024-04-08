@@ -21,30 +21,30 @@ const getStarted = () => {
   const { userName } = router.query;
   const { t } = useTranslation();
 
-  // useEffect(() => {
-  //   const languageStored = localStorage.getItem("language");
-  //   const language = languageStored === "Spanish" ? "sp" : "en";
-  //   i18n.changeLanguage(language);
-  //   dispatch(getBookTitle())
-  //     .unwrap()
-  //     .then((res) => {
-  //       if (res?.length > 0 && res[0].title !== "") {
-  //         setTimeout(() => {
-  //           router.push("/dashboard/chapters");
-  //         }, 3000);
-  //       } else {
-  //         setTimeout(() => {
-  //           router.push(`/dashboard/Questionnaire`);
-  //         }, 3000);
-  //       }
-  //     })
-  //     .catch(() =>
-  //       setTimeout(() => {
-  //         console.log("fail");
-  //         router.push(`/dashboard/Questionnaire`);
-  //       }, 3000)
-  //     );
-  // }, []);
+  useEffect(() => {
+    const languageStored = localStorage.getItem("language");
+    const language = languageStored === "Spanish" ? "sp" : "en";
+    i18n.changeLanguage(language);
+    dispatch(getBookTitle())
+      .unwrap()
+      .then((res) => {
+        if (res?.length > 0 && res[0].title !== "") {
+          setTimeout(() => {
+            router.push("/dashboard/chapters");
+          }, 3000);
+        } else {
+          setTimeout(() => {
+            router.push(`/dashboard/Questionnaire`);
+          }, 3000);
+        }
+      })
+      .catch(() =>
+        setTimeout(() => {
+          console.log("fail");
+          router.push(`/dashboard/Questionnaire`);
+        }, 3000)
+      );
+  }, []);
 
   return (
     <Box
