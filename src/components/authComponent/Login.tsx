@@ -70,7 +70,8 @@ const Login = ({ signinClick }) => {
         .then((res) => {
           toast.success(t("login-page.loggedIn"));
           // setLoading(false);
-          router.push(`/getStarted?userName=${res?.name}`);
+          router.push(`/getStarted?userName=${res?.name}`); //here it leades to get started 
+          // router.push(`/dashboard/Questionnaire?userName=${res?.name}`); //here it leades to get started 
         })
         .catch((error: any) => {
           setLoginFailed(true);

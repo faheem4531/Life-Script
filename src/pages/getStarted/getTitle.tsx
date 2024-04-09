@@ -18,7 +18,7 @@ const getTitle = () => {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { userName } = router.query;
-  const [text, setText] = useState("");
+  const [text, setText] = useState(`Life of ${userName}`);
   const maxLength = 30; // Set the maximum character count to 20
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
@@ -35,7 +35,7 @@ const getTitle = () => {
       .unwrap()
       .then(() => {
         toast.success("Book title saved successfully");
-        router.push("/dashboard/chapters");
+        router.push(`/dashboard/Questionnaire?userName=${userName}`);  //lead this to questionary area 
       })
       .catch(() => {
         toast.error("Failed to save book title");
@@ -57,6 +57,7 @@ const getTitle = () => {
         } else {
           setTimeout(() => {
             setLoading(false);
+            // router.push(`/dashboard/Questionnaire?userName=${userName}`);
           }, 1000);
         }
       })

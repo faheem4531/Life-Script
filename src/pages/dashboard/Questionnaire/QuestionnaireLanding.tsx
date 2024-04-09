@@ -101,7 +101,7 @@ const Questionnaire = () => {
       .unwrap()
       .then(() => {
         const username = localStorage.getItem("username");
-        router.push(`/getStarted/getTitle`);
+        router.push(`/dashboard/chapters`);  // lead this to the dashboard
       })
       .catch(() => { });
   };

@@ -8,10 +8,10 @@ import i18n from "../../../i18n";
 import styles from "./GetTitle.module.css";
 import Image from "next/image";
 
+import Line from "@/_assets/svg/line-orange.svg";
 import Arrow from "@/_assets/svg/getStarted-aero.svg";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
-import DotsRight from "@/_assets/svg/dots-right.svg";
-import Line from "@/_assets/svg/orange-line.svg";
+import DotsRight from "@/_assets/svg/dots-Right.svg";
 import House from "@/_assets/png/bg-hunt.png";
 
 const getStarted = () => {
@@ -32,9 +32,9 @@ const getStarted = () => {
             router.push("/dashboard/chapters");
           }, 3000);
         } else {
-          setTimeout(() => {
-            router.push(`/dashboard/Questionnaire`);
-          }, 3000);
+          // setTimeout(() => {
+          router.push(`/getStarted/getTitle?userName=${userName}`);
+          // }, 3000);
         }
       })
       .catch(() =>
@@ -74,9 +74,7 @@ const getStarted = () => {
       >
         <Typography
           sx={{
-            color: "#F3ECDA",
             fontSize: { lg: "55px", sm: "40px", xs: "35px" },
-            fontFamily: "Avenir8 !important",
             margin: {
               lg: "-30% 0 120px",
               md: "-100px 0 80px",
@@ -87,22 +85,18 @@ const getStarted = () => {
         >
           {t("getTitle.hi")} {userName}{"!"}
         </Typography>
-        <Box sx={{ position: "relative" }}>
-          <Typography
-            sx={{
-              color: "#F3ECDA",
-              fontFamily: "Avenir8 !important",
-              fontSize: {
-                lg: "55px",
-                sm: "40px",
-                xs: "35px",
-              },
-            }}
-          >
-            {t("getTitle.LetGetStarted")}
-          </Typography>
-          <Image src={Line} alt="img" className={styles.orangeLine} />
-        </Box>
+        <Typography
+          sx={{
+            fontWeight: 700,
+            fontSize: {
+              md: "55px",
+              sm: "40px",
+              xs: "35px",
+            },
+          }}
+        >
+          {t("getTitle.LetGetStarted")}
+        </Typography>
       </Box>
 
       <Image src={Arrow} alt="arrow" className={styles.aero} />

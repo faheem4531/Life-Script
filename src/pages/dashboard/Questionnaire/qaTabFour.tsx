@@ -1,5 +1,6 @@
 import GlobelBtn from "@/components/button/Button";
 import { Box, Checkbox, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
@@ -30,6 +31,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const [checkedIds, setCheckedIds] = useState([]);
   const [checkedIdsAll, setCheckedIdsAll] = useState([]);
   const [markAllChecked, setMarkAllChecked] = useState(false);
+  const router = useRouter();
 
   const handleCheckboxChange = (id, isChecked) => {
     if (isChecked && id !== 'mark_all') {
@@ -137,7 +139,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             bgColor="#E1683B"
             color="white"
             btnText="Take me in"
-            // onClick={() =>
+            onClick={() => router.push(`/dashboard/chapters`)}
             // onClickNext({
             //   personal: personalQuestion,
             //   frequency: questionFrequency,
