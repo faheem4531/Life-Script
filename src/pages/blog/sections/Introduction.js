@@ -3,13 +3,17 @@ import { Box, Typography } from "@mui/material";
 import styles from "./BlogSection.module.css"
 
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
+import BgImage from "@/__webAssets/pngs/bg-blog.png"
 import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
 
 const IntroductionBlog = () => {
   return (
-    <div className={styles.introBlog}>
+    <Box sx={{ position: "relative" }} >
+
       <NavBar color="#F3ECDA" logo={Logo} />
+      <Image src={BgImage} alt='img' className={styles.bgImage} />
+
       <Box sx={{
         margin: {
           lg: "180px auto 120px", md: "200px 90px 150px ", sm: "120px 50px 120px", xs: "80px 20px 50px"
@@ -32,7 +36,7 @@ const IntroductionBlog = () => {
         </Box>
         <Typography x={{ fontSize: "16px" }}>Your Guide to Capturing Life&apos;s Moments: Unlocking the Secrets of Personal Narratives and Legacy Building</Typography>
       </Box>
-    </div>
+    </Box>
   )
 }
 
