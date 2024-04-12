@@ -5,27 +5,10 @@ import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
-import { getTemplates, selectTemplates } from "@/store/slices/chatSlice";
+import { getTemplates, selectTemplates, selectedChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
-  // const [personalQuestion, setPersonalQuestion] =
-  //   useState("ChronologicalOrder");
-  // const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
-
-  // useEffect(() => {
-  //   if (data?.personalizedQuestion) {
-  //     setPersonalQuestion(data.personalizedQuestion);
-  //     setQuestionFrequency(data.questionAskType);
-  //   }
-  // }, [data]);
-
-  // const handlePersonalInfo = (event) => {
-  //   setPersonalQuestion(event.target.value);
-  // };
-  // const handleQuestionFrequency = (event) => {
-  //   setQuestionFrequency(event.target.value);
-  // };
   const dispatch: any = useDispatch();
   const templates = useSelector(selectTemplates);
   const [checkedIds, setCheckedIds] = useState([]);
@@ -34,27 +17,27 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const router = useRouter();
 
   const handleCheckboxChange = (id, isChecked) => {
-    if (isChecked && id !== 'mark_all') {
-      setCheckedIds([...checkedIds, id]);
-    } else {
-      setCheckedIds(checkedIds.filter((checkedId) => checkedId !== id));
-    }
-
     if (id === 'mark_all') {
       setMarkAllChecked(isChecked);
-
-      if (markAllChecked) {
-        setCheckedIdsAll(markAllChecked ? templates.map((template) => template._id) : []);
+    }
+    else {
+      if (isChecked && id !== 'mark_all') {
+        setCheckedIds([...checkedIds, id]);
+      } else {
+        setCheckedIds(checkedIds.filter((checkedId) => checkedId !== id));
       }
-      else {
-        setCheckedIdsAll([])
-      }
-      console.log(checkedIdsAll, "markAllChecked");
     }
   };
 
-
-  console.log(checkedIds, "checkedIds");
+  function handleNext() {
+    if (markAllChecked) {
+      dispatch(selectedChapters(markAllChecked ? templates.map((template) => template._id) : []))
+    }
+    else {
+      dispatch(selectedChapters(checkedIds))
+    }
+    onClickNext()
+  }
 
   useEffect(() => {
     dispatch(getTemplates());
@@ -139,12 +122,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             bgColor="#E1683B"
             color="white"
             btnText="Take me in"
-            onClick={() => router.push(`/dashboard/chapters`)}
-            // onClickNext({
-            //   personal: personalQuestion,
-            //   frequency: questionFrequency,
-            // })
-            // }
+            onClick={handleNext}
             image2={NextArrow}
           />
         </Box>

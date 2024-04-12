@@ -54,7 +54,9 @@ const Questionnaire = () => {
       questionAskType: val.frequency,
       personalizedQuestion: val.personal,
     });
+
     setQaTab(4);
+
 
     // dispatch(
     //   updateUserProfile({
@@ -68,23 +70,23 @@ const Questionnaire = () => {
     //     language: userData?.LanguagePreferences,
     //   })
     // )
-    // .unwrap()
-    // .then(() => {
-    //   const username = localStorage.getItem("username");
-    //   router.push(`/getStarted/getTitle`);
-    // })
-    // .catch(() => { });
+    //   .unwrap()
+    //   .then(() => {
+    //     // const username = localStorage.getItem("username");
+    //     // router.push(`/getStarted/getTitle`);
+    //   })
+    //   .catch(() => { });
   };
 
   const handleTabFourClick = (val) => {
-    setUserData({
-      ...userData,
-      name: val.name,
-      gender: val.gender,
-      martialStatus: val.maritalStatus,
-      dateOfBirth: val.dob,
-      LanguagePreferences: val.lp,
-    });
+    // setUserData({
+    //   ...userData,
+    //   name: val.name,
+    //   gender: val.gender,
+    //   martialStatus: val.maritalStatus,
+    //   dateOfBirth: val.dob,
+    //   LanguagePreferences: val.lp,
+    // });
 
     dispatch(
       updateUserProfile({
@@ -98,9 +100,11 @@ const Questionnaire = () => {
         language: userData?.LanguagePreferences,
       })
     )
+
+    dispatch()
       .unwrap()
       .then(() => {
-        const username = localStorage.getItem("username");
+        // const username = localStorage.getItem("username");
         router.push(`/dashboard/chapters`);  // lead this to the dashboard
       })
       .catch(() => { });
