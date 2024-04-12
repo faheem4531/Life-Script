@@ -529,6 +529,21 @@ export async function getBookTitleApi() {
   }
 }
 
+export async function selectedChaptersApi(data: string[]) {
+  try {
+    const res = await api.post("/chapters/cloneSelectedChapter/", { ids: data });
+
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function createChapterApi(data: { title: string }) {
   try {
     const res = await api.post("/chapters", data);
@@ -542,6 +557,7 @@ export async function createChapterApi(data: { title: string }) {
     }
   }
 }
+
 
 export async function deleteChapterApi(data: { id: string }) {
   try {
