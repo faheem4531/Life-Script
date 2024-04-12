@@ -11,7 +11,7 @@ import Image from "next/image";
 import Line from "@/_assets/svg/line-orange.svg";
 import Arrow from "@/_assets/svg/getStarted-aero.svg";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
-import DotsRight from "@/_assets/svg/dots-Right.svg";
+import DotsRight from "@/_assets/svg/dots-right.svg";
 import House from "@/_assets/png/bg-hunt.png";
 
 const getStarted = () => {
