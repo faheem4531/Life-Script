@@ -26,6 +26,7 @@ import {
   getQuestionbyIdApi,
   getQuestionsApi,
   getTemplatesApi,
+  selectedChaptersApi,
   isTemplateClonedApi,
   narrativeFusionApi,
   readNotificationApi,
@@ -525,6 +526,20 @@ export const updateChapter = createAsyncThunk<UserData, any>(
     }
   }
 );
+
+
+export const selectedChapters = createAsyncThunk<UserData, any>(
+  "chat/selected-chapter",
+  async (data: string[]) => {
+    try {
+      const response = await selectedChaptersApi(data);
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 
 export const getAnswerbyId = createAsyncThunk<UserData, any>(
   "chat/get-answer",
