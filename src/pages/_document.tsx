@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         {/* Clarity Analytics Code */}
         <Script
-        id="clarity"
+          id="clarity"
           type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
@@ -43,8 +43,8 @@ export default function Document() {
 
   gtag('config', 'AW-11454589354');`}
         </Script>
-       {/* Open Graph Protocol Meta Tags */}
-       <meta property="og:title" content="The Lifescript" />
+        {/* Open Graph Protocol Meta Tags */}
+        <meta property="og:title" content="The Lifescript" />
         <meta property="og:site_name" content="The Lifescript" />
         <meta property="og:url" content="https://www.thelifescript.com/" />
         <meta property="og:description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent" />
@@ -54,6 +54,9 @@ export default function Document() {
 
         {/* Google Search Console */}
         <meta name="google-site-verification" content="wt1qy_zKsDB3gvsPGfgbQoo0d3yvcUK4tOd9wkwSnJE" />
+
+        {/* second */}
+        <meta name="google-site-verification" content="FLQHtOf63xbf907IegSWlW9Gj9H_9x1bckZb-9r9EFw" />
       </Head>
       <body style={{ margin: 0 }}>
         <Main />
