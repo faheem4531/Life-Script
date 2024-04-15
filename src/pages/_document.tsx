@@ -53,7 +53,7 @@ export default function Document() {
 
 
         {/* Google Search Console */}
-        <meta name="google-site-verification" content="wt1qy_zKsDB3gvsPGfgbQoo0d3yvcUK4tOd9wkwSnJE" />
+        {/* <meta name="google-site-verification" content="wt1qy_zKsDB3gvsPGfgbQoo0d3yvcUK4tOd9wkwSnJE" /> */}
 
         {/* second */}
         <meta name="google-site-verification" content="FLQHtOf63xbf907IegSWlW9Gj9H_9x1bckZb-9r9EFw" />
