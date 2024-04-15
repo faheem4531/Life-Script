@@ -50,6 +50,10 @@ export default function Document() {
         <meta property="og:description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://github.com/Tayyab-103/JavaScript-103/assets/109760448/9b9d0b25-965c-4e98-b719-b9fcdcf67311" />
+
+
+        {/* Google Search Console */}
+        <meta name="google-site-verification" content="wt1qy_zKsDB3gvsPGfgbQoo0d3yvcUK4tOd9wkwSnJE" />
       </Head>
       <body style={{ margin: 0 }}>
         <Main />
