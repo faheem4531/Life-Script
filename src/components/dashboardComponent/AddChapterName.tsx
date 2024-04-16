@@ -10,6 +10,9 @@ import { toast } from "react-toastify";
 import BookImage from "@/_assets/png/hero-book.png";
 import Check from "../../_assets/svg/bgTickIcon.svg";
 import styles from "./AddChapterName.module.css";
+import { useRouter } from "next/router";
+
+
 
 const AddChapterName = ({
   chapter,
@@ -42,6 +45,9 @@ const AddChapterName = ({
     chapter && setChapterName(chapter);
   }, [chapter]);
 
+  const router = useRouter();
+
+
   return (
     <Box
       sx={{
@@ -58,13 +64,21 @@ const AddChapterName = ({
     >
       <Box
         sx={{
-          padding: { sm: "27px 30px", xs: "10px 15px" },
-          position: "relative",
-          zIndex: "1",
+          padding: { sm: "10px 15px", xs: "5px 10px" },
+          marginTop: "-50px"
+          // position: "relative",
+          // zIndex: "1",
         }}
-      >
+        >
+        <Box sx={{borderRadius:"3px", backgroundColor:"white", width:"40px", height:"30px",display:"flex" ,justifyContent:"center", alignItems:"center",cursor:"pointer", border: "1px solid #E1693B", color:"#E1693B"}}
+        onClick={() => router.back()}
+        >
+          {"<--"} 
+        </Box>
+
+        <Box>
         {title === "templateView" && (
-          <Box>
+          <Box sx={{display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"80px"}}>
             {subTitle && (
               <Typography
                 sx={{
@@ -76,7 +90,7 @@ const AddChapterName = ({
                   },
                 }}
               >
-                {subTitle}
+                {subTitle} 
               </Typography>
             )}
             <Typography
@@ -93,6 +107,7 @@ const AddChapterName = ({
             </Typography>
           </Box>
         )}
+        </Box>
         {title != "templateView" && (
           <Box>
             <Typography

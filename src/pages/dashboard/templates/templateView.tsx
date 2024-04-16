@@ -6,7 +6,7 @@ import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 import Questions from "@/components/dashboardComponent/Questions";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 // import AddQuestion from "@/pages/events/addQuestion";
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import FrameImage from "@/_assets/svg/Frame.svg";
 import UseTemplate from "@/_assets/svg/useTemplate.svg";
 import { default as GlobelBtn } from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
@@ -235,7 +235,7 @@ const chapterName = () => {
               </Box>
             ) : (
               // <Loading isLoaded={isLoaded} />
-              <Box sx={{ marginTop: "60px", bgcolor: "#F4F4F4", padding: "10px 0 30px" }}>
+              <Box sx={{ marginTop: "60px", bgcolor: "#f3ecda", padding: "10px 0 30px", borderRadius:"5px" }}>
                 {allQuestions?.length > 0 ? (
                   allQuestions.map((question, index) => (
                     <Questions
@@ -263,9 +263,9 @@ const chapterName = () => {
           setCompletionModal(false);
           router.push("/dashboard/chapters");
         }}
-        customStyles={{ backgroundColor: "auto", borderRadius: "22px" }}
+        customStyles={{ backgroundColor: "#f3ecda", borderRadius: "5px" }}
       >
-        <Box sx={{ textAlign: "center" }}>
+        <Box sx={{ textAlign: "center"}}>
           <Box
             sx={{
               width: { md: "91.555px", sm: "66.161px", xs: "47px" },
@@ -274,7 +274,8 @@ const chapterName = () => {
           >
             <Image
               alt="image"
-              src={ModalImage}
+              // src={ModalImage}
+              src={FrameImage}
               style={{
                 width: "100%",
                 height: "100%",
@@ -284,8 +285,8 @@ const chapterName = () => {
           <Typography
             sx={{
               fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
-              fontWeight: 700,
-              color: "#070707",
+              fontWeight: 900,
+              color: "#30422e",
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
@@ -294,7 +295,7 @@ const chapterName = () => {
           <Typography
             sx={{
               fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-              color: "#070707",
+              color: "#30422e",
               width: { md: "400px", sm: "300px", xs: "180px" },
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
@@ -310,7 +311,7 @@ const chapterName = () => {
           >
             <GlobelBtn
               btnText={`${t("template.temModal.SEBtn")}`}
-              bgColor="#197065"
+              bgColor="#e1693b"
               color="white"
               onClick={() => {
                 router.push("/dashboard/chapters");

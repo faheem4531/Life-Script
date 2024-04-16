@@ -103,10 +103,14 @@ export default function Questions({
   const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
 
   return (
-    <Box sx={{ position: "relative", bgcolor: "#F4F4F4" }}>
+    <Box
+    //  sx={{ position: "relative", bgcolor: "#F4F4F4" }}
+    >
       <Box
         sx={{
-          padding: { sm: "10px 30px 0", xs: "10px 15px 0" }
+          padding: { sm: "10px 30px 0", xs: "10px 15px 0" },
+          // margin:"20px",
+          // backgroundColor:"white"
         }}
       >
         <Box sx={{
@@ -114,8 +118,11 @@ export default function Questions({
           alignItems: "center",
           gap: "10px",
           width: "100%",
-          borderBottom: "1px solid #30422E",
           bgcolor: title == "templateView" && "#F4F4F4",
+          margin: "2px",
+          borderLeft: "6px solid #7f886b",
+          borderRadius: "5px",
+          backgroundColor: "white"
         }}>
           <Box
             onClick={() => {
@@ -125,13 +132,15 @@ export default function Questions({
             }}
             sx={{
               cursor: "pointer",
-              // borderRadius: "8px",
+              borderRadius: "8px",
               height: expanded ? "auto" : { sm: "50px", xs: "50px" },
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
               overflowX: "hidden",
+              // border:"2px solid red"
+              marginLeft: "15px"
             }}
           >
             <Box
@@ -139,6 +148,7 @@ export default function Questions({
                 display: "flex",
                 alignItems: "center",
                 width: "100%",
+                // border:"2px solid red"
               }}
             >
               <Typography
@@ -302,6 +312,12 @@ export default function Questions({
               <Checkbox
                 defaultChecked={true}
                 onChange={() => templateQuestion(question?._id)}
+                sx={{
+                  color: "#e1693b", 
+                  "&.Mui-checked": {
+                    color: "#e1693b", 
+                  },
+                }}
               />
             </Box>
           )}

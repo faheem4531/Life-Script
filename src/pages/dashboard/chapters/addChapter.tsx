@@ -19,7 +19,8 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
       <Box>
         <TextField
           variant="outlined"
-          placeholder={`${t("ChModals.addNewCh")}`}
+          // placeholder={`${t("ChModals.addtextCh")}`}
+          placeholder="My Life Journey"
           value={chapter}
           onChange={(e) => setChapter(e.target.value)}
           sx={{
@@ -44,8 +45,9 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
       >
         <GlobelBtn
           disabled={!chapter}
-          btnText={btnText}
-          bgColor="#197065"
+          // btnText={btnText}
+          btnText={"Add Chapter"}
+          bgColor="#e1693b"
           color="#fff"
           // width={{ md: "234px", sm: "153px", xs: "103px" }}
           // border="1px solid #197065"

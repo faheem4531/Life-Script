@@ -24,6 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import bgTree from "../../../_assets/svg/bgTree.svg";
 import AddChapter from "./addChapter";
+import FrameImage from "@/_assets/svg/Frame.svg";
 
 const Dashboard = () => {
   const [chapterModal, setChapterModal] = useState(false);
@@ -233,7 +234,7 @@ const Dashboard = () => {
           setChapterModal(false);
           setUpdateChapterModal(false);
         }}
-        customStyles={{ backgroundColor: "auto", textAlign: "center" }}
+        customStyles={{ backgroundColor: "#f3ecda", textAlign: "center" }}
       >
         <Box
           sx={{
@@ -244,7 +245,8 @@ const Dashboard = () => {
         >
           <Image
             alt="image"
-            src={ModalImage}
+            // src={ModalImage}
+            src={FrameImage}
             style={{
               width: "100%",
               height: "100%",
@@ -252,7 +254,7 @@ const Dashboard = () => {
           />
         </Box>
         <Typography
-          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px", color:"#30422e" } }}
         >
           {updateChapterModal
             ? `${t("ChModals.updateChName")}`

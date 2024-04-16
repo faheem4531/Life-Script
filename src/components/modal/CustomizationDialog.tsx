@@ -64,7 +64,12 @@ export default function CustomizationDialog({
         open={open}
         // fullWidth={fullWidth}
         maxWidth={"xl"}
-        style={{ overflowY: "hidden", borderRadius: "22px" }}
+        // style={{ overflowY: "hidden" }}
+        sx={{
+          ".css-2rbg70-MuiPaper-root-MuiDialog-paper":{
+            borderRadius:"5px"
+          }
+        }}
       >
         <Box className="bg-black" sx={customStyles}>
           <BootstrapDialogTitle
