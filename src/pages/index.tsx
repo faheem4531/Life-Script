@@ -6,6 +6,7 @@ import BlogDetailPage from "./blog/blogDetails"
 // import WProofreaderSDK from "@webspellchecker/wproofreader-sdk-js";
 import AuthPage from "./_auth/Auth";
 import HomePage from './homePage';
+import StripePage from './stripePage';
 import FeaturesPage from './features';
 import GiftingPage from "./gifting"
 import Script from "next/script";
@@ -68,6 +69,7 @@ export default function Home() {
       </Head>
       {/* <FeaturesPage /> */}
       <HomePage />
+      {/* <StripePage/> */}
       {/* <AuthPage /> */}
       {/* <BlogPage /> */}
       {/* <BlogDetailPage /> */}
