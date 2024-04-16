@@ -1,10 +1,15 @@
+
 import { Head, Html, Main, NextScript } from "next/document";
-import Script from 'next/script'
+import Script from 'next/script';
 
 export default function Document() {
   return (
     <Html lang="en">
       <Head>
+      <title>LifeScript</title>
+
+      <meta name="description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent." />
+
         {/* Clarity Analytics Code */}
         <Script
           id="clarity"
@@ -43,6 +48,9 @@ export default function Document() {
 
   gtag('config', 'AW-11454589354');`}
         </Script>
+
+       
+
         {/* Open Graph Protocol Meta Tags */}
         <meta property="og:title" content="The Lifescript" />
         <meta property="og:site_name" content="The Lifescript" />
