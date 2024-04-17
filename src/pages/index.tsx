@@ -7,6 +7,7 @@ import BlogDetailPage from "./blog/blogDetails"
 import AuthPage from "./_auth/Auth";
 import HomePage from './homePage';
 import StripePage from './stripePage';
+import SubscriptionPage from "./stripePage/subscription/index"
 import FeaturesPage from './features';
 import GiftingPage from "./gifting"
 import Script from "next/script";
@@ -70,6 +71,7 @@ export default function Home() {
       {/* <FeaturesPage /> */}
       <HomePage />
       {/* <StripePage/> */}
+      {/* <SubscriptionPage/> */}
       {/* <AuthPage /> */}
       {/* <BlogPage /> */}
       {/* <BlogDetailPage /> */}
