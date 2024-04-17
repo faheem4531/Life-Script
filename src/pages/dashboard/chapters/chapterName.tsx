@@ -4,6 +4,7 @@ import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 // import ProgressBar from "@/components/dashboardComponent/ProgressBar";
 import ModalImage from "@/_assets/png/view-template-modal.png";
+import Frame from "@/_assets/svg/Frame.svg";
 import GlobelBtn from "@/components/button/Button";
 import FloatButton from "@/components/button/FloatButton";
 import LinearProgressBar from "@/components/dashboardComponent/LinearProgressBar";
@@ -383,11 +384,11 @@ const chapterName = () => {
           <Box
             sx={{
               backgroundColor: "#fff",
-              padding: {
-                md: "0px 46px 16px 37px",
-                sm: "0px 30px 10px 30px",
-                xs: "10px 10px 10px",
-              },
+              // padding: {
+              //   md: "0px 46px 16px 37px",
+              //   sm: "0px 30px 10px 30px",
+              //   xs: "10px 10px 10px",
+              // },
               marginTop: "10px",
               height: {
                 sm: "calc(100vh - 340px)",
@@ -562,7 +563,10 @@ const chapterName = () => {
         handleClose={() => {
           setgptSocket(false);
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        customStyles={{ backgroundColor: "#f3ecda",
+        textAlign: "center",
+        color: "#30422E",
+        fontSize: "30px",}}
       >
         <Box sx={{ textAlign: "center", p: "20px" }}>
           <Box
@@ -574,7 +578,7 @@ const chapterName = () => {
           >
             <Image
               alt="image"
-              src={ModalImage}
+              src={Frame}
               style={{
                 width: "100%",
                 height: "100%",
@@ -585,7 +589,7 @@ const chapterName = () => {
             sx={{
               fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
-              color: "#070707",
+              color: "#30422e",
               margin: "15px 0",
             }}
           >
@@ -594,7 +598,7 @@ const chapterName = () => {
           <Typography
             sx={{
               fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-              color: "#070707",
+              color: "#30422e",
               // width: "400px",
             }}
           >
@@ -609,10 +613,10 @@ const chapterName = () => {
           >
             <GlobelBtn
               btnText={`${t("ChName.ok")}`}
-              bgColor="#197065"
+              bgColor="#e1693b"
               borderRadius="23px"
               color="#fff"
-              border="1px solid #197065"
+              // border="1px solid #197065"
               onClick={() => {
                 router.push("/dashboard/chapters");
                 setgptSocket(false);
@@ -641,9 +645,9 @@ const chapterName = () => {
           setOpenModal(false);
         }}
         customStyles={{
-          backgroundColor: "auto",
+          backgroundColor: "#f3ecda",
           textAlign: "center",
-          color: "#070707",
+          color: "#30422E",
           fontSize: "30px",
         }}
       >
@@ -656,7 +660,8 @@ const chapterName = () => {
         >
           <Image
             alt="image"
-            src={ModalImage}
+            // src={ModalImage}
+            src={Frame}
             style={{
               width: "100%",
               height: "100%",
@@ -666,7 +671,9 @@ const chapterName = () => {
         <Typography
           sx={{
             fontSize: { md: "24px", sm: "22px", xs: "18px" },
+            fontWeight:"700",
             cursor: "pointer",
+            marginTop:"20px"
           }}
         >
           {t("ChName.AddNewQues")}
@@ -690,9 +697,9 @@ const chapterName = () => {
           dispatch(getChapterbyId({ id: chapterId?.toString() }));
         }}
         customStyles={{
-          backgroundColor: "auto",
+          backgroundColor: "#f3ecda",
           textAlign: "center",
-          color: "#070707",
+          color: "#30422E",
           fontSize: "30px",
         }}
       >
@@ -705,7 +712,7 @@ const chapterName = () => {
         >
           <Image
             alt="image"
-            src={ModalImage}
+            src={Frame}
             style={{
               width: "100%",
               height: "100%",

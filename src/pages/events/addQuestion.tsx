@@ -27,15 +27,16 @@ export default function AddQuestion({
     <Box sx={{ margin: "10px" }}>
       <Box>
         <TextField
-          variant="outlined"
-          placeholder={`${t("ChName.AddQuesBtn")}`}
-          name="email"
+          // variant="outlined"
+          // placeholder={`${t("ChName.AddQuesBtn")}`}
+          placeholder="How was my first job experience?"
+          name="add-question"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
-              borderRadius: "50px",
+              borderRadius: "5px",
               backgroundColor: "white",
               height: { md: "50px", sm: "45px", xs: "40px" },
             },
@@ -56,11 +57,11 @@ export default function AddQuestion({
           <GlobelBtn
             disabled={!question}
             btnText={btnText}
-            bgColor="#197065"
+            bgColor="#e1693b"
             borderRadius="23px"
             color="#fff"
             // width={{ md: "234px", sm: "153px", xs: "103px" }}
-            border="1px solid #197065"
+            // border="1px solid #197065"
             onClick={(event: any) => handleSubmit()}
           />
         </Box>

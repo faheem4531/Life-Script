@@ -1,7 +1,8 @@
 "use client";
 import Option from "@/_assets/png/X-menu.png";
 import ModalImage from "@/_assets/png/view-template-modal.png";
-import Completed from "@/_assets/svg/completed-icon.svg";
+// import Completed from "@/_assets/svg/completed-icon.svg";
+import CompletedIcon from "@/_assets/svg/CompletedIcon.svg";
 import EditGreen from "@/_assets/svg/edit-icon-green.svg";
 import AddQuestion from "@/pages/events/addQuestion";
 import { deleteQuestion, updateQuestion } from "@/store/slices/chatSlice";
@@ -220,19 +221,24 @@ export default function Questions({
                   {question.status === "Completed" && (
                     <Box
                       sx={{
-                        flexDirection: "column",
-                        rowGap: "5px",
+                        display: "flex",
+                        flexDirection: "row",
+                        columnGap: "10px",
                         color: "#197065",
                         height: "100%",
-                        fontSize: "10px",
-                        px: "16px",
-                        py: "7px",
+                        fontSize: "12px",
+                        padding:"20px",
+                        // px: "16px",
+                        // py: "7px",
+                        textTransform: "capitalize",
                       }}
                     >
+                      <Box sx={{color: "#30422e",}}>{t("ChName.completed")}</Box>
                       <Box>
-                        <Image alt="icon" src={Completed} />
+                        <Image alt="icon" src={CompletedIcon} style={{ color: "#7f886b" }}
+                        width={15}
+                        />
                       </Box>
-                      <Box>{t("ChName.completed")}</Box>
                     </Box>
                   )}
                   {question.status !== "Completed" && (
@@ -240,15 +246,17 @@ export default function Questions({
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        columnGap: "5px",
-                        color: "#197065",
+                        columnGap: "15px",
+                        color: "#30422e",
                         fontSize: "12px",
-                        px: "16px",
-                        py: "7px",
+                        padding:"20px",
+                        // px: "16px",
+                        // py: "7px",
                         textTransform: "capitalize",
                       }}
                     >
-                      <Image alt="icon" src={EditGreen} /> Answer
+                      <Image alt="icon" src={EditGreen} style={{ color: "#7f886b" }} /> 
+                      <Box sx={{color: "#30422e",}}>Edit</Box>
                     </Box>
                   )}
                 </Button>
@@ -313,9 +321,9 @@ export default function Questions({
                 defaultChecked={true}
                 onChange={() => templateQuestion(question?._id)}
                 sx={{
-                  color: "#e1693b", 
+                  color: "#e1693b",
                   "&.Mui-checked": {
-                    color: "#e1693b", 
+                    color: "#e1693b",
                   },
                 }}
               />

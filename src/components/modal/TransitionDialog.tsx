@@ -1,4 +1,5 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+// import ModalImage from "@/_assets/png/view-template-modal.png";
+import FrameImage from "@/_assets/svg/Frame.svg"
 import { Box, Typography } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Slide, { SlideProps } from "@mui/material/Slide";
@@ -36,6 +37,7 @@ export default function TransitionsDialog({
         sx={{
           textAlign: "center",
           padding: "50px 20px 35px",
+          backgroundColor: "#f3ecda",
         }}
       >
         <Box
@@ -47,7 +49,8 @@ export default function TransitionsDialog({
         >
           <Image
             alt="image"
-            src={ModalImage}
+            // src={ModalImage}
+            src={FrameImage}
             style={{
               width: "100%",
               height: "100%",
@@ -58,7 +61,7 @@ export default function TransitionsDialog({
           sx={{
             fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
             fontWeight: 700,
-            color: "#070707",
+            color: "#30422e",
             margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
           }}
         >
@@ -67,7 +70,7 @@ export default function TransitionsDialog({
         <Typography
           sx={{
             fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-            color: "#070707",
+            color: "#30422e",
             width: { md: "500px", sm: "400px" },
           }}
         >
@@ -86,9 +89,10 @@ export default function TransitionsDialog({
           <Box flex={1}>
             <GlobelBtn
               btnText={proceedText ? proceedText : `${t("modals.yes")}`}
-              bgColor="#fff"
-              borderRadius="23px"
-              color="#197065"
+              bgColor=""
+              // borderRadius="23px"
+              border="1px solid #e1693b"
+              color="#e1693b" 
               width="100%"
               // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
               // border="1px solid #197065"
@@ -98,8 +102,8 @@ export default function TransitionsDialog({
           <Box flex={1}>
             <GlobelBtn
               btnText={cancelText ? cancelText : `${t("modals.no")}`}
-              bgColor="#197065"
-              borderRadius="23px"
+              bgColor="#e1693b"
+              // borderRadius="23px"
               color="#fff"
               width="100%"
               // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}

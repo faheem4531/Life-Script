@@ -65,9 +65,9 @@ const AddChapterName = ({
       <Box
         sx={{
           padding: { sm: "10px 15px", xs: "5px 10px" },
-          marginTop: "-50px"
-          // position: "relative",
-          // zIndex: "1",
+          marginTop: "-50px",
+          position: "relative",
+          zIndex: "1",
         }}
         >
         <Box sx={{borderRadius:"3px", backgroundColor:"white", width:"40px", height:"30px",display:"flex" ,justifyContent:"center", alignItems:"center",cursor:"pointer", border: "1px solid #E1693B", color:"#E1693B"}}
@@ -123,7 +123,7 @@ const AddChapterName = ({
             >
               {t("ChName.ChName")}
             </Typography>
-            <Box>
+            {/* <Box>
               <TextField
                 variant="outlined"
                 value={chapterName}
@@ -155,7 +155,7 @@ const AddChapterName = ({
                   width: { sm: "300px", lg: "390px" },
                 }}
               />
-            </Box>
+            </Box> */}
           </Box>
         )}
       </Box>

@@ -3,8 +3,10 @@ import { Box, Fab } from "@mui/material";
 import styles from "./Button.module.css";
 import FloatImage from "@/_assets/svg/float-btn.svg";
 import Image from "next/image";
-import LoadImage from "@/_assets/svg/loading.svg";
-import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
+// import LoadImage from "@/_assets/svg/loading.svg";
+import animationLogo from "@/_assets/svg/animationLogo.svg";
+// import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
+
 
 const FloatButton = ({ onClick, narrativeRefuse }) => {
   return (
@@ -15,11 +17,11 @@ const FloatButton = ({ onClick, narrativeRefuse }) => {
       >
         <Box className={styles.loadImageMain}>
           <Image
-            src={BgLoadImage}
+            src={animationLogo}
             alt="BgLoadImage"
             className={narrativeRefuse ? styles.BgloadImage : styles.BgLoad}
           />
-          <Image alt="image" src={LoadImage} className={styles.loadImage} />
+          <Image alt="image" src={animationLogo} className={styles.loadImage} />
         </Box>
       </Fab>
     </div>

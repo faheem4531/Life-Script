@@ -13,24 +13,26 @@ function LinearProgressWithLabel(
         padding: "6px 3px",
         alignItems: "center",
         position: "relative",
-        border: "2px solid #187167",
+        border: "2px solid #7f886b",
         height: "35px",
         bgcolor: "#F9F9F9",
-        borderRadius: "30px",
+        borderRadius: "10px",
       }}
     >
-      <Stack sx={{ width: "100%", color: "#197065" }} spacing={2}>
+      <Stack sx={{ width: "100%", color: "#7f886b" }} spacing={2}>
         <LinearProgress
-          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px" }}
+          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px" ,"& .MuiLinearProgress-bar": {
+            backgroundColor: "#7f886b", // Custom color for the progress bar
+          }, }}
           variant="determinate"
-          color="inherit"
+          // color="inherit"
           {...props}
         />
       </Stack>
       <Box sx={{ minWidth: 35, position: "absolute", right: "20px" }}>
         <Typography
           variant="body2"
-          color={Math.round(props.value) === 100 ? "white" : "#197065"}
+          color={Math.round(props.value) === 100 ? "white" : "#7f886b"}
           fontWeight="500"
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>

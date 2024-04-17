@@ -80,9 +80,9 @@ const QuestionComponent = ({
               btnText={`${t("ChName.SugQuesAddBtn")}`}
               bgColor="#fff"
               borderRadius="23px"
-              color="#197065"
+              color="#30422e"
               width="100%"
-              border="1px solid #197065"
+              // border="1px solid #197065"
               onClick={() => Proceed(questions[currentQuestionIndex].id)}
             />
           </Box>
@@ -93,11 +93,11 @@ const QuestionComponent = ({
                   ? `${t("ChName.SugQuesCloseBtn")}`
                   : `${t("ChName.SugQuesSkipBtn")}`
               }
-              bgColor="#197065"
+              bgColor="#e1693b"
               borderRadius="23px"
               color="#fff"
               width="100%"
-              border="1px solid #197065"
+              // border="1px solid #197065"
               onClick={
                 questions?.length === currentQuestionIndex + 1
                   ? handleEnd
