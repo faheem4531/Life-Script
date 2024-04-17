@@ -7,7 +7,7 @@ import "regenerator-runtime/runtime";
 import "../styles/globals.css";
 import NewApp from "./_newApp";
 
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography, useMediaQuery, Theme, useTheme } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -93,10 +93,13 @@ export default function App({ Component, pageProps }: AppProps) {
     console.log("cookie: ", Cookies.get(testCookieName));
   }, []);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   return (
     <StoreProvider store={store}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        {showCookieBar && (
+        {/* {showCookieBar && (
           <CookieConsent
             enableDeclineButton
             declineButtonText="Customize"
@@ -138,7 +141,62 @@ export default function App({ Component, pageProps }: AppProps) {
 
             </div>
           </CookieConsent>
-        )}
+        )} */}
+
+        <Grid container justifyContent="center">
+          {showCookieBar && (
+            <CookieConsent
+              enableDeclineButton
+              declineButtonText="Customize"
+              buttonText="Accept"
+              flipButtons
+              onDecline={() => {
+                alert("Are you Sure!");
+              }}
+              setDeclineCookie={false}
+              style={{
+                background: "#2A3724",
+                color: "#fff",
+                fontSize: isMobile ? "10px" : isTablet ? "16px" : "18px",
+                padding: "1px",
+                // width: isMobile ? "90%" : "30%",
+                width: isMobile ? "90%" : isTablet ? "50%" : "40%",
+                borderRadius: "10px",
+              }}
+              buttonStyle={{
+                background: "#ff5722",
+                color: "#fff",
+                fontSize: "14px",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                marginLeft: "15px",
+              }}
+              declineButtonStyle={{
+                background: "#777",
+                color: "#fff",
+                fontSize: "14px",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              {/* <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+          <Typography sx={{ marginBottom: "15px", fontWeight: "700", fontSize: "15px" }}>We Value Your Privacy</Typography>
+          <Typography>LifeScript uses cookies to ensure you get the best possible experience and to optimize our website. By clicking &apos;Accept&apos;, you consent to our use of cookies. If you wish to manage your preferences or learn more, please visit our Privacy Policy or select &lsquo;Customize&rsquo;.</Typography>
+        </div> */}
+
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                <Typography variant={isMobile ? "body2"  : isTablet ? "body1" : "h6"} sx={{ marginBottom: "15px", fontWeight: "700", fontSize: "18px" }}>
+                  We Value Your Privacy
+                </Typography>
+                <Typography variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}>
+                LifeScript uses cookies to ensure you get the best possible experience and to optimize our website. By clicking &apos;Accept&apos;, you consent to our use of cookies. If you wish to manage your preferences or learn more, please visit our Privacy Policy or select &lsquo;Customize&rsquo;.
+                </Typography>
+              </div>
+            </CookieConsent>
+          )}
+        </Grid>
 
         {loading ? (
           <Box
