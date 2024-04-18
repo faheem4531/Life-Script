@@ -112,7 +112,7 @@ function StoryWraper({ direction, heading, content, image, alt, button = false, 
         </Box>
 
         {button && <Box sx={{ marginTop: "40px", width: { sm: "240px", xs: "100%" }, position: "relative", zIndex: "100" }}>
-          <Link href="/stripePage">
+          <Link href="/stripe-page">
             <Button
               title='Get Started'
               width="100%"

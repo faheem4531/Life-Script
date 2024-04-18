@@ -5,7 +5,7 @@ import Image from "next/image";
 import googleLogo from "../../../../../public/googleIcon.svg";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
 
-import BasicPlanCard from "../_components/BasicPlanCard"
+import BasicPlanCard from "./BasicPlanCard"
 
 import { googleSignup } from "@/store/slices/authSlice";
 import { useGoogleLogin } from "@react-oauth/google";

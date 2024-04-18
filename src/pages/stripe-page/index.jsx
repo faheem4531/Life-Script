@@ -22,11 +22,11 @@ const StripePage = () => {
 
   const handleContinue = () => {
     setShowSecondForm(true);
-    // router.push("/stripePage/subscription");
+    // router.push("/stripe-page/subscription");
   };
   const handleContinueNext = () => {
     // setShowSecondForm(true);
-    router.push("/stripePage/subscription");
+    router.push("/stripe-page/subscription");
   };
 
   return (

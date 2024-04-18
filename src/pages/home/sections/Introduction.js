@@ -66,7 +66,7 @@ const Introduction = () => {
           Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent.
         </Typography>
         <Box sx={{ width: { sm: "250px", xs: "100%" }, height: "55px" }}>
-          <Link href="/stripePage">
+          <Link href="/stripe-page">
             <Button
               title='Start 7-Day Free Trial'
               width="100%"
