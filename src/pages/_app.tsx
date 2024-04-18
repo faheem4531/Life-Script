@@ -37,6 +37,8 @@ export default function App({ Component, pageProps }: AppProps) {
       "/_auth/Auth",
       "/termsOfUse",
       "/privacyPolicy",
+      "/stripePage",
+      "/stripePage/subscription"
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
