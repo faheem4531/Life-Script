@@ -4,8 +4,7 @@ import PricingCard from "../../../../__webComponents/pricing/Card";
 import styles from "../../../../__webComponents/ComponentsStyles.module.css"
 import PrimaryHeading from "../../../../__webComponents/headings/PrimaryHeading";
 
-const TabPanel = () => {
-
+const TabPanel = ({onClick,selectedTab}) => {
   const pricingCard = [
     {
       id: "basic",
@@ -50,7 +49,9 @@ const TabPanel = () => {
             premium full-color hardcover book, and free shipping.
           </Box>
         </Box>
-      <Box sx={{ display: "flex", flexDirection: { md: "row", sm: "column", xs: "column" }, alignItems: "center", columnGap: "17px", rowGap: "50px", justifyContent: "center" }} className={styles.cardsMain} >
+      <Box sx={{ display: "flex", flexDirection: { md: "row", sm: "column", xs: "column" }, alignItems: "center", columnGap: "17px", rowGap: "50px", justifyContent: "center" }} className={styles.cardsMain} 
+      onClick={() => onClick(selectedTab + 1 )}
+      >
         {pricingCard.map((item) => <PricingCard
           key={item.id}
           category={item.category}

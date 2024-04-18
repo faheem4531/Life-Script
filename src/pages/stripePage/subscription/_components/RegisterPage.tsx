@@ -1,29 +1,46 @@
 "use client";
 
 import { Box, Typography, TextField, Button, Divider } from "@mui/material";
-import { useFormik } from "formik";
 import Image from "next/image";
-import * as Yup from "yup"; 
 import googleLogo from "../../../../../public/googleIcon.svg";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
 
 import BasicPlanCard from "../_components/BasicPlanCard"
 
-const RegisterPage = () => {
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-    },
-    validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
-      email: Yup.string().email("Invalid email address").required("Email is required"),
-    }),
-    onSubmit: (values) => {
-      // Handle form submission here, e.g., make an API call
-      console.log(values);
-    },
+import { googleSignup } from "@/store/slices/authSlice";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+
+
+const RegisterPage = ({onClick,selectedTab}) => {
+
+  const dispatch: any = useDispatch();
+  const router = useRouter();
+  const { t } = useTranslation();
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
+    onError: () => handleGoogleLoginFailure(),
   });
+
+  const handleGoogleLoginSuccess = (e: any) => {
+    dispatch(googleSignup({ credential: e.access_token }))
+      .unwrap()
+      .then((res) => {
+        toast.success(t("signup-page.signedUpSuccessfully"));
+        router.push(`/getStarted?userName=${res.name}`);
+      })
+      .catch((error: any) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogleLoginFailure = () => {
+    toast.error(t("signup-page.failedSignupGoogle"));
+  };
 
   return (
 
@@ -34,7 +51,7 @@ const RegisterPage = () => {
       <Typography variant="h4" sx={{marginBottom:"30px"}}>Register LifeScript</Typography>
 
       <Box sx={{width:"530px"}}>
-        <form onSubmit={formik.handleSubmit}>
+        {/* <form > */}
           <Box>
             <Typography
               sx={{
@@ -48,11 +65,6 @@ const RegisterPage = () => {
               variant="outlined"
               placeholder="Enter your full name"
               name="name"
-              value={formik.values.name}
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
               sx={{
                 marginBottom: "10px",
                 width: "100%",
@@ -74,11 +86,6 @@ const RegisterPage = () => {
               variant="outlined"
               placeholder="Enter your email address"
               name="email"
-              value={formik.values.email}
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
               sx={{
                 marginBottom: "10px",
                 width: "100%",
@@ -137,7 +144,7 @@ const RegisterPage = () => {
             <Button
               variant="contained"
               type="submit"
-            //   onClick={() => handleGoogleLogin()}
+              onClick={() => handleGoogleLogin()}
               sx={{
                 borderRadius: "2px",
                 backgroundColor: "#fff",
@@ -168,8 +175,7 @@ const RegisterPage = () => {
           >
             <Button
               variant="contained"
-              type="submit"
-            //   onClick={() => handleGoogleLogin()}
+              // type="submit"
               sx={{
                 borderRadius: "2px",
                 backgroundColor: "#fff",
@@ -195,16 +201,18 @@ const RegisterPage = () => {
           </Box>
         </Box>
 
-          <Button type="submit" variant="contained" color="primary"  sx={{ marginTop: "20px" ,bgcolor:"#e1693b" , "&:hover": {
+          <Button variant="contained" color="primary"  sx={{ width:"200px",marginTop: "50px" ,bgcolor:"#e1693b" , "&:hover": {
                 backgroundColor: "#b5522d",
-              }, }}>
+              }, }}
+              onClick={() => onClick(selectedTab + 1)}
+              >
             Continue
           </Button>
-        </form>
+        {/* </form> */}
       </Box>
     </Box>
 
-    <Box sx={{border:"2px solid red", width:"50%"}}>
+    <Box sx={{ width:"50%"}}>
 
         <Box>
         <BasicPlanCard/>
