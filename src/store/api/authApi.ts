@@ -122,6 +122,7 @@ export async function facebookSignupApi(data: { credential: string }) {
   try {
     const res = await api.post("/auth/facebook/callback/sign-up", data);
     localStorage.setItem("token", res.token);
+    localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
@@ -155,18 +156,21 @@ export async function updatePasswordApi(data: UpdatePasswordData) {
 
 export async function updateUserProfileApi(data: any) {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    const userId = localStorage.getItem("userId"); 
-    const res = await axios.put(`https://api.thelifescript.com/users/${userId}`, data, {headers});
+    const userId = localStorage.getItem("userId");
+    const res = await axios.put(
+      `https://api.thelifescript.com/users/${userId}`,
+      data,
+      { headers }
+    );
     res?.data?.name && localStorage.setItem("username", res?.data?.name);
     return res;
   } catch (error: any) {
-    
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
       throw new Error(errors ? errors[0] : "Failed");
@@ -208,13 +212,17 @@ export async function getBookInteriorApi() {
 
 export async function stripPaymentLuluApi(data: any) {
   try {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    const res = await axios.post("https://api.thelifescript.com/chapter-compile/payment/stripe-lulu", data, {headers});
+    const res = await axios.post(
+      "https://api.thelifescript.com/chapter-compile/payment/stripe-lulu",
+      data,
+      { headers }
+    );
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -228,7 +236,6 @@ export async function stripPaymentLuluApi(data: any) {
 
 export async function getLuluBalanceApi() {
   try {
-
     const res = await api.get("chapter-compile/lulu-stripe/balance");
     return res;
   } catch (error: any) {
@@ -243,7 +250,6 @@ export async function getLuluBalanceApi() {
 
 export async function getLuluShippingApi() {
   try {
-
     const res = await api.get("lulu-shipping");
     return res;
   } catch (error: any) {
@@ -258,7 +264,6 @@ export async function getLuluShippingApi() {
 
 export async function luluCallApi(data) {
   try {
-
     const res = await api.post("chapter-compile/payment/stripe-lulu", data);
     return res;
   } catch (error: any) {
@@ -273,8 +278,7 @@ export async function luluCallApi(data) {
 
 export async function createLuluShippingApi(data: any) {
   try {
-
-    const res = await api.post("lulu-shipping",data);
+    const res = await api.post("lulu-shipping", data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -288,8 +292,7 @@ export async function createLuluShippingApi(data: any) {
 
 export async function updateLuluShippingApi(data) {
   try {
-
-    const res = await api.patch(`lulu-shipping`,data);
+    const res = await api.patch(`lulu-shipping`, data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

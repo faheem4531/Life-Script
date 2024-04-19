@@ -2,25 +2,42 @@
 import Logo from "@/_assets/svg/logo-dashboard.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PurchaseForm from "./_components/PurchaseForm";
 import RegisterPage from "./_components/RegisterPage";
 import TabPanel from "./_components/TabPanel";
 import NewTabBar from "./_components/NewTabBar";
+import { useSession } from "next-auth/react";
+import { facebookLogin } from "@/store/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 const SubscriptionPage = () => {
+  const dispatch = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
-  const tabs = [
-    { label: "Choose Plan", active: selectedTab >= 0 },
-    { label: "Register", active: selectedTab >= 1 },
-    { label: "Payment", active: selectedTab >= 2 },
- 
-  ];
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session) {
+      if (session.user) {
+        setSelectedTab(2);
+        const payload = {
+          name: session.user.name,
+          email: session.user.email
+        };
+        dispatch(facebookLogin(payload));
+      }
+    }
+  }, [session, dispatch]);
 
   const handleTabClick = (index) => {
-    setSelectedTab(index );
-    console.log("Click HandleClick Tab")
+    setSelectedTab(index);
   };
+
+  const tabsData = [
+    { label: "Choose Plan", active: selectedTab === 0 },
+    { label: "Register", active: selectedTab === 1 && !session },
+    { label: "Payment", active: selectedTab === 2 }
+  ];
 
   return (
     <>
@@ -42,37 +59,29 @@ const SubscriptionPage = () => {
           <Image src={Logo} alt="Logo" />
         </Box>
 
-
-        <Box   sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%", 
-        marginTop: "30px",
-        marginLeft:"80px" 
-    }}>
-
-        <NewTabBar tabs={tabs} onClick={handleTabClick}  />
+        <Box sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          marginTop: "30px",
+          marginLeft: "80px"
+        }}>
+          <NewTabBar tabs={tabsData} onClick={handleTabClick} />
         </Box>
-      
 
         <Box>
-        <Box mt="15px">
+          <Box mt="15px">
             {selectedTab === 0 && (
-                        <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />
+              <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />
             )}
-            {selectedTab === 1 && (
-              <RegisterPage  selectedTab={selectedTab} onClick={handleTabClick} />
+            {selectedTab === 1 && !session && (
+              <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} />
             )}
             {selectedTab === 2 && (
-               <PurchaseForm  selectedTab={selectedTab} onClick={handleTabClick} />
+              <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
             )}
-            
           </Box>
-
-         
-
-         
         </Box>
       </Box>
     </>

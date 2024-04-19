@@ -79,7 +79,7 @@ const StripePage = () => {
                 <Box
                   sx={{
                     backgroundColor: "white",
-                    margin:"10px",
+                    margin: "10px",
                     marginLeft: "-10px",
                     border: "1px solid black",
                     borderRadius: "4px",
@@ -103,7 +103,7 @@ const StripePage = () => {
                 <Box
                   sx={{
                     backgroundColor: "white",
-                    margin:"10px",
+                    margin: "10px",
                     marginLeft: "-10px",
                     border: "1px solid black",
                     borderRadius: "4px",
@@ -126,16 +126,16 @@ const StripePage = () => {
                 </Box>
               </RadioGroup>
               {userType && (
-              <Box sx={{ margin: "10px" }}>
-              <Button
-                width="50%"
-                height="50px"
-                backgroundColor="#E1693B"
-                title={"Continue"}
-                bgHover="#B5522D"
-                onClick={handleContinue}
-              />
-            </Box>
+                <Box sx={{ margin: "10px" }}>
+                  <Button
+                    width="50%"
+                    height="50px"
+                    backgroundColor="#E1693B"
+                    title={"Continue"}
+                    bgHover="#B5522D"
+                    onClick={handleContinue}
+                  />
+                </Box>
               )}
             </FormControl>
 
@@ -155,7 +155,7 @@ const StripePage = () => {
                   <Box
                     sx={{
                       backgroundColor: "white",
-                      margin:"10px",
+                      margin: "10px",
                       marginLeft: "-10px",
                       border: "1px solid black",
                       borderRadius: "4px",
@@ -179,7 +179,7 @@ const StripePage = () => {
                   <Box
                     sx={{
                       backgroundColor: "white",
-                      margin:"10px",
+                      margin: "10px",
                       marginLeft: "-10px",
                       border: "1px solid black",
                       borderRadius: "4px",
@@ -201,21 +201,21 @@ const StripePage = () => {
                     />
                   </Box>
                 </RadioGroup>
-                
+
                 <Box sx={{ margin: "10px" }}>
-              <Button
-                width="50%"
-                height="50px"
-                backgroundColor="#E1693B"
-                title={"Continue"}
-                bgHover="#B5522D"
-                onClick={handleContinueNext}
-              />
-            </Box>
+                  <Button
+                    width="50%"
+                    height="50px"
+                    backgroundColor="#E1693B"
+                    title={"Continue"}
+                    bgHover="#B5522D"
+                    onClick={handleContinueNext}
+                  />
+                </Box>
               </FormControl>
             )}
 
-            
+
           </Box>
         </Box>
         <Box
