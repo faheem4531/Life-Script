@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import BellIcon from "../../_assets/svg/bellIcon.svg";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const ITEM_HEIGHT = 48;
 
@@ -66,6 +67,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
     if (option.id === 1) {
       dispatch(resetChatState());
       localStorage.clear();
+      signOut();
       router.push("/");
     }
     handleMoreClose();

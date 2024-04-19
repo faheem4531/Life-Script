@@ -28,21 +28,23 @@ import {
   updateLuluShippingApi,
   stripPaymentLuluApi,
   luluCallApi,
-  getBookInteriorApi
+  getBookInteriorApi,
 } from "../api/authApi";
 
 interface State {
   luluBalance: any;
   luluData: any;
   user: any;
-  luluPaymentStatus: string
+  luluPaymentStatus: string;
+  socialUser: any;
 }
 
 const initialState: State = {
   luluBalance: {},
   user: {},
   luluData: {},
-  luluPaymentStatus: '',
+  luluPaymentStatus: "",
+  socialUser: null,
 };
 
 export const changePassword = createAsyncThunk<UserData, ChangePassword>(
@@ -51,6 +53,17 @@ export const changePassword = createAsyncThunk<UserData, ChangePassword>(
     try {
       const response = await changePasswordApi(data);
       return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const setSocialUser = createAsyncThunk<any, any>(
+  "user/social-user",
+  async (data) => {
+    try {
+      return data;
     } catch (error: any) {
       throw new Error(error.props);
     }
@@ -317,7 +330,11 @@ export const authSlice = createSlice({
     });
     builder.addCase(updateLuluPaymentStatus.fulfilled, (state, action) => {
       state.luluPaymentStatus = action.payload;
-      localStorage.setItem('luluStatus',action.payload);
+      localStorage.setItem("luluStatus", action.payload);
+    });
+
+    builder.addCase(setSocialUser.fulfilled, (state, action) => {
+      state.socialUser = action.payload;
     });
   },
 });
@@ -326,11 +343,14 @@ export const {} = authSlice.actions;
 
 export const selectUser = (state: { auth: any }) => state.auth.user;
 
+export const selectSocialUser = (state: { auth: any }) => state.auth.socialUser;
+
 export const selectLuluBalance = (state: { auth: any }) =>
   state.auth.luluBalance;
 
 export const selectLuluData = (state: { auth: any }) => state.auth.luluData;
 
-export const selectLuluPaymentStatus = (state: { auth: any }) => state.auth.luluPaymentStatus;
+export const selectLuluPaymentStatus = (state: { auth: any }) =>
+  state.auth.luluPaymentStatus;
 
 export default authSlice.reducer;

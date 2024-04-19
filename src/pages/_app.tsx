@@ -6,8 +6,17 @@ import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import "../styles/globals.css";
 import NewApp from "./_newApp";
+import { SessionProvider } from "next-auth/react";
 
-import { Box, CircularProgress, Grid, Typography, useMediaQuery, Theme, useTheme } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Grid,
+  Typography,
+  useMediaQuery,
+  Theme,
+  useTheme,
+} from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -38,7 +47,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/terms-of-use",
       "/privacy-policy",
       "/stripe-page",
-      "/stripe-page/subscription"
+      "/stripe-page/subscription",
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
@@ -96,8 +105,8 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
   return (
     <StoreProvider store={store}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -188,12 +197,31 @@ export default function App({ Component, pageProps }: AppProps) {
           <Typography>LifeScript uses cookies to ensure you get the best possible experience and to optimize our website. By clicking &apos;Accept&apos;, you consent to our use of cookies. If you wish to manage your preferences or learn more, please visit our Privacy Policy or select &lsquo;Customize&rsquo;.</Typography>
         </div> */}
 
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <Typography variant={isMobile ? "body2"  : isTablet ? "body1" : "h6"} sx={{ marginBottom: "15px", fontWeight: "700", fontSize: "18px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography
+                  variant={isMobile ? "body2" : isTablet ? "body1" : "h6"}
+                  sx={{
+                    marginBottom: "15px",
+                    fontWeight: "700",
+                    fontSize: "18px",
+                  }}
+                >
                   We Value Your Privacy
                 </Typography>
-                <Typography variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}>
-                LifeScript uses cookies to ensure you get the best possible experience and to optimize our website. By clicking &apos;Accept&apos;, you consent to our use of cookies. If you wish to manage your preferences or learn more, please visit our Privacy Policy or select &lsquo;Customize&rsquo;.
+                <Typography
+                  variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}
+                >
+                  LifeScript uses cookies to ensure you get the best possible
+                  experience and to optimize our website. By clicking
+                  &apos;Accept&apos;, you consent to our use of cookies. If you
+                  wish to manage your preferences or learn more, please visit
+                  our Privacy Policy or select &lsquo;Customize&rsquo;.
                 </Typography>
               </div>
             </CookieConsent>
@@ -213,9 +241,11 @@ export default function App({ Component, pageProps }: AppProps) {
             <CircularProgress />
           </Box>
         ) : (
-          <NewApp>
-            <Component {...pageProps} />
-          </NewApp>
+          <SessionProvider session={pageProps?.session}>
+            <NewApp>
+              <Component {...pageProps} />
+            </NewApp>
+          </SessionProvider>
         )}
       </LocalizationProvider>
     </StoreProvider>
