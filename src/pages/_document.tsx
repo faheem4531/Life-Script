@@ -1,6 +1,5 @@
-
 import { Head, Html, Main, NextScript } from "next/document";
-import Script from 'next/script';
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -8,7 +7,10 @@ export default function Document() {
       <Head>
         <title>LifeScript</title>
 
-        <meta name="description" content="Turn memories into a stunning hardcover book. Cherish connections across generations. Ideal gift for loved ones." />
+        <meta
+          name="description"
+          content="Turn memories into a stunning hardcover book. Cherish connections across generations. Ideal gift for loved ones."
+        />
 
         {/* Clarity Analytics Code */}
         <Script
@@ -40,7 +42,10 @@ export default function Document() {
           `}
         </Script>
 
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"></Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"
+        ></Script>
         <Script id="google-ads">
           {`window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -49,22 +54,28 @@ export default function Document() {
   gtag('config', 'AW-11454589354');`}
         </Script>
 
-
-
         {/* Open Graph Protocol Meta Tags */}
         <meta property="og:title" content="The Lifescript" />
         <meta property="og:site_name" content="The Lifescript" />
         <meta property="og:url" content="https://www.thelifescript.com/" />
-        <meta property="og:description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent" />
+        <meta
+          property="og:description"
+          content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent"
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://github.com/Tayyab-103/JavaScript-103/assets/109760448/9b9d0b25-965c-4e98-b719-b9fcdcf67311" />
-
+        <meta
+          property="og:image"
+          content="https://github.com/Tayyab-103/JavaScript-103/assets/109760448/9b9d0b25-965c-4e98-b719-b9fcdcf67311"
+        />
 
         {/* Google Search Console */}
         {/* <meta name="google-site-verification" content="wt1qy_zKsDB3gvsPGfgbQoo0d3yvcUK4tOd9wkwSnJE" /> */}
 
         {/* second */}
-        <meta name="google-site-verification" content="FLQHtOf63xbf907IegSWlW9Gj9H_9x1bckZb-9r9EFw" />
+        <meta
+          name="google-site-verification"
+          content="FLQHtOf63xbf907IegSWlW9Gj9H_9x1bckZb-9r9EFw"
+        />
 
         <script
           dangerouslySetInnerHTML={{
@@ -83,12 +94,26 @@ export default function Document() {
           }}
         />
 
+        {/* tiktok */}
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      !function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+
+  ttq.load('COH1I7RC77U0VOQQGVF0');
+  ttq.page();
+}(window, document, 'ttq');
+    `,
+          }}
+        />
 
         <Script
           id="plerdy-script"
           defer
           type="text/javascript"
-          data-plerdy_code='1'
+          data-plerdy_code="1"
           dangerouslySetInnerHTML={{
             __html: `
       var _protocol="https:"==document.location.protocol?"https://":"http://";
