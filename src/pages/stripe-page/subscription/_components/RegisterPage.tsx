@@ -26,7 +26,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "https://www.thelifescript.com/stripe-page/subscription",
+      callbackUrl: "/stripe-page/subscription",
     });
   };
   console.log("data", session);
