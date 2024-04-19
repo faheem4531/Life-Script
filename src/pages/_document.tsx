@@ -105,6 +105,14 @@ export default function Document() {
     `,
           }}
         />
+
+
+        <Script id="suid-script" type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `var _suid=49691;`,
+        }} />
+
+        <Script async src="https://a.plerdy.com/public/js/click/plerdy_ab-min.js?v=9139514"></Script>
+
       </body>
     </Html>
   );
