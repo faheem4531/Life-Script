@@ -6,9 +6,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-      <title>LifeScript</title>
+        <title>LifeScript</title>
 
-      <meta name="description" content="Turn memories into a stunning hardcover book. Cherish connections across generations. Ideal gift for loved ones." />
+        <meta name="description" content="Turn memories into a stunning hardcover book. Cherish connections across generations. Ideal gift for loved ones." />
 
         {/* Clarity Analytics Code */}
         <Script
@@ -49,7 +49,7 @@ export default function Document() {
   gtag('config', 'AW-11454589354');`}
         </Script>
 
-       
+
 
         {/* Open Graph Protocol Meta Tags */}
         <meta property="og:title" content="The Lifescript" />
@@ -65,6 +65,23 @@ export default function Document() {
 
         {/* second */}
         <meta name="google-site-verification" content="FLQHtOf63xbf907IegSWlW9Gj9H_9x1bckZb-9r9EFw" />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '389875753839602');
+      fbq('track', 'PageView');
+    `,
+          }}
+        />
       </Head>
       <body style={{ margin: 0 }}>
         <Main />
