@@ -5,7 +5,7 @@ import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
 import Check from "@/__webAssets/svgs/check.svg"
 import Lock from "@/__webAssets/svgs/lock.svg"
 
-const BasicPlanCard = () => {
+const BasicPlanCard = ({price, category}) => {
 
   const CheckArray = [
     {
@@ -66,7 +66,7 @@ const BasicPlanCard = () => {
             fontWeight: "700",
           }}
         >
-          Basic Plan
+          {category ? `${category} Plan` : "Choose Plan"}
         </Typography>
 
         <Box>
@@ -101,7 +101,7 @@ const BasicPlanCard = () => {
         }}
           // className={styles.price}
         >
-          {"$135"}
+          {/* {"$135"} */}{price ?? "$0"}
           <Typography sx={{ color: "black", fontSize: "12px", display: "inline" }}>
             / year
           </Typography>

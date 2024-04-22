@@ -36,6 +36,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   };
 
   const router = useRouter();
+  const { price, category } = router.query;
   const { t } = useTranslation();
 
   const handleGoogleLogin = useGoogleLogin({
@@ -241,7 +242,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
       <Box sx={{ width: "50%" }}>
         <Box>
-          <BasicPlanCard />
+        <BasicPlanCard price={price} category={category}   />
         </Box>
       </Box>
     </Box>

@@ -1,8 +1,8 @@
 'use client'
 import { Box } from "@mui/material";
-import PricingCard from "../../../../__webComponents/pricing/Card";
 import styles from "../../../../__webComponents/ComponentsStyles.module.css"
 import PrimaryHeading from "../../../../__webComponents/headings/PrimaryHeading";
+import NewPricingCard from "./NewPricingCard";
 
 const TabPanel = ({onClick,selectedTab}) => {
   const pricingCard = [
@@ -42,7 +42,7 @@ const TabPanel = ({onClick,selectedTab}) => {
               fontSize: { sm: "15px", xs: "16px" },
               width: { sm: "60%", xs: "90%" },
               fontFamily: "Avenir",
-              marginLeft: "100px",
+              marginLeft: "150px",
             }}
           >
             Each package comes with a one-year LifeScript subscription, a
@@ -52,7 +52,7 @@ const TabPanel = ({onClick,selectedTab}) => {
       <Box sx={{ display: "flex", flexDirection: { md: "row", sm: "column", xs: "column" }, alignItems: "center", columnGap: "17px", rowGap: "50px", justifyContent: "center" }} className={styles.cardsMain} 
       onClick={() => onClick(selectedTab + 1 )}
       >
-        {pricingCard.map((item) => <PricingCard
+        {pricingCard.map((item) => <NewPricingCard
           key={item.id}
           category={item.category}
           price={item.price}

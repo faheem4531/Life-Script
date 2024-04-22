@@ -4,8 +4,11 @@ import BasicPlanCard from './BasicPlanCard';
 import Image from 'next/image';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
 import CheckIcon from '@mui/icons-material/Check';
+import { useRouter } from "next/router";
+const PurchaseForm = () => {
+    const router = useRouter();
+    const { price, category } = router.query;
 
-const PurchaseForm = ({onClick,selectedTab}) => {
     const [selectedBooks, setSelectedBooks] = useState('default');
     const [referralCode, setReferralCode] = useState('');
     const [cardHolderName, setCardHolderName] = useState('');
@@ -177,7 +180,7 @@ const PurchaseForm = ({onClick,selectedTab}) => {
             </Box>
 
             <Box>
-                <BasicPlanCard />
+            <BasicPlanCard price={price} category={category}/>
             </Box>
         </Box>
     );
