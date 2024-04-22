@@ -25,8 +25,11 @@ const StripePage = () => {
     // router.push("/stripe-page/subscription");
   };
   const handleContinueNext = () => {
-    // setShowSecondForm(true);
-    router.push("/stripe-page/subscription");
+    if (paymentType === "free-trial") {
+      router.push("/stripe-page/gift-subscription");
+    } else {
+      router.push("/stripe-page/subscription");
+    }
   };
 
   return (

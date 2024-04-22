@@ -48,6 +48,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/privacy-policy",
       "/stripe-page",
       "/stripe-page/subscription",
+      "/stripe-page/gift-subscription",
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
