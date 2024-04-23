@@ -108,22 +108,22 @@ const NewPricingCard = ({ price, category, card, id, handleHover }) => {
           color: "#F4F4F4",
           marginLeft: "6px",
           display: "inline",
-          fontFamily: "Avenir5"
+          fontFamily: "Avenir LT Std"
         }}>
           Popular
         </Box>}
         <Box sx={{
-          fontSize: "60px",
-          fontWeight: "800",
-          borderBottom: "1px solid #BFC4B5",
-          padding: "10px 0",
-          marginBottom: "34px",
-          fontFamily: "Avenir8"
+           fontSize: "36px",
+           fontWeight: "400",
+           borderBottom: "1px solid #BFC4B5",
+           padding: "10px 0",
+           marginBottom: "34px",
+           // fontFamily: "Avenir8"
         }}
           className={styles.price}
         >
           {price}
-          <Typography sx={{ color: "#BFC4B5", fontSize: "12px", display: "inline" }}>
+          <Typography sx={{ color: "#BFC4B5", fontSize: "14px", display: "inline" }}>
             / year
           </Typography>
         </Box>

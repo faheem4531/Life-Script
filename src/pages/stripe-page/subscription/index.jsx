@@ -34,9 +34,9 @@ const SubscriptionPage = () => {
   };
 
   const tabsData = [
-    { label: "Choose Plan", active: selectedTab === 0 },
-    { label: "Register", active: selectedTab === 1 && !session },
-    { label: "Payment", active: selectedTab === 2 }
+    { label: "CHOOSE PLAN", active: selectedTab === 0 },
+    { label: "REGISTER", active: selectedTab === 1 && !session },
+    { label: "PAYMENT", active: selectedTab === 2 }
   ];
 
   return (

@@ -35,10 +35,10 @@ const GiftSubscriptionPage = () => {
   };
 
   const tabsData = [
-    { label: "Choose Plan", active: selectedTab === 0 },
-    { label: "Delivery", active: selectedTab === 1 },
-    { label: "Register", active: selectedTab === 2 && !session },
-    { label: "Payment", active: selectedTab === 3 }
+    { label: "CHOOSE PLAN", active: selectedTab === 0 },
+    { label: "DELIVERY", active: selectedTab === 1 },
+    { label: "REGISTER", active: selectedTab === 2 && !session },
+    { label: "PAYMENT", active: selectedTab === 3 }
   ];
 
   return (

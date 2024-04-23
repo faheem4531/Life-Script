@@ -113,12 +113,12 @@ const GiftPricingCard = ({ price, category, card, id, handleHover }) => {
           Popular
         </Box>}
         <Box sx={{
-          fontSize: "60px",
-          fontWeight: "800",
+          fontSize: "36px",
+          fontWeight: "400",
           borderBottom: "1px solid #BFC4B5",
           padding: "10px 0",
           marginBottom: "34px",
-          fontFamily: "Avenir8"
+          // fontFamily: "Avenir8"
         }}
           className={styles.price}
         >
