@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "../../narrative/Narrative.module.css";
+import AnimationLogo from "../../../../_assets/svg/animationLogo.svg"
 
 const Loading = ({progressCompleted, completed}) => {
   const [progress, setProgress] = useState(10);
@@ -44,7 +45,7 @@ const Loading = ({progressCompleted, completed}) => {
   return (
     <Box
       sx={{
-        // height: "100vh",
+        height: "80vh",
         bgcolor: "#FFF9F0",
         color: "#197065",
         display: "flex",
@@ -53,18 +54,20 @@ const Loading = ({progressCompleted, completed}) => {
         alignItems: "center",
       }}
     >
-      <Typography sx={{ fontSize: "34px", fontWeight: 200, mt:'20px' }}>
-        {progress < 50 && "Copying Template"}
-        {progress <= 90 && progress >= 50 && "Suggesting Questions"}
+      <Typography sx={{ fontSize: "34px", fontWeight: 200, mb:'50px', color:"#7f886b" }}>
+        {progress < 50 && "Reading Content...."}
+        {progress <= 90 && progress >= 50 && "Analyzing Tones..."}
         {progress > 90  && "Finalizing"}
       </Typography>
       <Box className={styles.loadImageTemp}>
         <Image
-          src={BgLoadImage}
-          alt="BgLoadImage"
+          // src={BgLoadImage}
+          src={AnimationLogo}
+          alt="AnimationLogo"
           className={styles.BgloadImage}
+          width={322.512}
         />
-        <Image alt="image" src={LoadImage} className={styles.loadImage} />
+        {/* <Image alt="image" src={LoadImage} className={styles.loadImage} /> */}
       </Box>
       <Box sx={{ width: { xs: "90%", sm: "80%", lg: "60%" } }}>
         <ReloadingBar value={progress} />

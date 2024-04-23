@@ -335,15 +335,17 @@ function CircularProgressWithLabel(props) {
       sx={{
         position: "relative",
         display: "inline-flex",
-        marginBottom: { sm: "-8px", xs: "-20px" },
-        width: { md: "30px", sm: "26.015px", xs: "20px" },
+        // marginBottom: { sm: "-8px", xs: "-20px" },
+        // width: { md: "30px", sm: "26.015px", xs: "20px" },
+        // backgroundColor:"#7f886b",
+        borderRadius:"50px"
       }}
     >
       <CircularProgress sx={{ color: "#E1683B" }} variant="determinate" {...props} />
       <Box
         sx={{
-          top: { sm: "-7px", xs: "-20px" },
-          left: { sm: "2px", xs: "2px" },
+          top: { sm: "-7px", xs: "-20px",md:"0px" },
+          left: { sm: "2px", xs: "2px",md:"0px" },
           bottom: 0,
           right: 0,
           position: "absolute",
@@ -353,10 +355,10 @@ function CircularProgressWithLabel(props) {
         }}
       >
         <Typography
-          variant="caption"
+          // variant="caption"
           component="div"
           color="#E1683B"
-          sx={{ fontSize: { md: "8px", sm: "7.804px", xs: "5px" } }}
+          sx={{ fontSize: { md: "8px", sm: "7.804px", xs: "8px" } }}
         >
           {`${Math.round(props.value)}%`}
         </Typography>
