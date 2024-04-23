@@ -23,6 +23,7 @@ import YourSliderComponent from "./slider";
 const NarrativeResponse = () => {
   const [revertModal, setRevertModal] = useState(false);
   const [saveResponseModal, setSaveResponseModal] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState("");
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { chapterId, openai } = router.query;
@@ -69,7 +70,7 @@ const NarrativeResponse = () => {
   };
 
   useEffect(() => {
-    setLoading(false);
+    setLoading(true);
     openai && setResponseType(openai === "false" ? false : true);
   }, [openai]);
 
@@ -81,6 +82,7 @@ const NarrativeResponse = () => {
           setChapterTitle(res?.chapter?.title);
           setUserChapter(res?.userText);
           setGptChapter(res?.openaiChapterText);
+          setPdfUrl(res?.chapterCompilePdf)
           setLoading(false);
         });
     }
@@ -186,6 +188,20 @@ const NarrativeResponse = () => {
                       fontSize={{ xs: "12px" }}
                       p="4px 20px"
                     />
+                  </Box>
+                  <Box>
+                    {pdfUrl && (
+                      <GlobelBtn
+                        bgColor="#197065"
+                        btnText={`${t("narrative.pdfdownload")}`}
+                        borderRadius="27px"
+                        color="#fff"
+                        image={SaveIcon}
+                        onClick={() => window.open(pdfUrl, '_blank')}
+                        fontSize="12px"
+                        p="4px 20px"
+                      />
+                    )}
                   </Box>
                 </Box>
               </Box>
