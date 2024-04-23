@@ -316,6 +316,7 @@
   "narrative": {
     "editRes": "Edit Response",
     "saveRes": "Save Response",
+    "pdfdownload": "PDF Download",
     "saveResDes": "Once saved, you will find the chapter in completed chapters tab.",
     "saveResProcBtn": "Not Yet",
     "saveResCancelBtn": "Keep Changes",
