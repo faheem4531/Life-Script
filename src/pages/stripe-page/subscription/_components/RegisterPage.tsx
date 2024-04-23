@@ -61,190 +61,181 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+    <Box sx={{ display: "flex", justifyContent: "space-between", }}>
       <Box
-        sx={{ marginLeft: "100px", border: "2px soild green", width: "50%" }}
+        sx={{ marginLeft: "70px", border: "2px soild green", width: "100%" }}
       >
-        <Typography variant="h4" sx={{ marginBottom: "30px" }}>
+        <Typography variant="h4" sx={{ marginBottom: "60px" }}>
           Register LifeScript
         </Typography>
 
-        <Box sx={{ width: "530px" }}>
-          {/* <form > */}
-          <Box>
-            <Typography
-              sx={{
-                color: "#30422E",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Name
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="Enter your full name"
-              name="name"
-              sx={{
-                marginBottom: "10px",
-                width: "100%",
-                bgcolor: "white",
-              }}
-            />
-          </Box>
+        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
 
-          <Box>
-            <Typography
-              sx={{
-                color: "#30422E",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Email
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="Enter your email address"
-              name="email"
-              sx={{
-                marginBottom: "10px",
-                width: "100%",
-                bgcolor: "white",
-              }}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "10px",
-            }}
-          >
+          <Box sx={{ maxWidth: "530px" }}>
             <Box>
-              <Divider
+              <Typography
                 sx={{
-                  marginTop: "10px",
-
-                  backgroundColor: "black",
-                  width: "240px",
+                  color: "#30422E",
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
-                orientation="horizontal"
-              />
-            </Box>
-            <Box>
-              <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-                {"or"}
+              >
+                Name
               </Typography>
-            </Box>
-            <Box>
-              <Divider
+              <TextField
+                variant="outlined"
+                placeholder="Enter your full name"
+                name="name"
                 sx={{
-                  marginTop: "10px",
-                  marginLeft: "10px",
-                  backgroundColor: "black",
-                  width: "240px",
+                  marginBottom: "30px",
+                  width: "100%",
+                  bgcolor: "white",
                 }}
-                orientation="horizontal"
               />
             </Box>
-          </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 1,
-              justifyContent: "center",
-            }}
-          >
-            <Box
-            //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
-            >
-              <Button
-                variant="contained"
-                type="submit"
-                onClick={() => handleGoogleLogin()}
+            <Box>
+              <Typography
                 sx={{
-                  borderRadius: "2px",
-                  backgroundColor: "#fff",
-                  padding: "10px 0",
                   color: "#30422E",
-                  width: "530px",
-                  gap: "10px",
-                  marginTop: { xs: "20px" },
-                  "&:hover": {
-                    backgroundColor: "white",
-                  },
-                  textTransform: "capitalize",
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
-                <Image
-                  src={googleLogo}
-                  alt="Google Logo"
-                  // width={24}
-                  // height={24}
-                />
-                <Typography>Login with Google</Typography>
-              </Button>
+                Email
+              </Typography>
+              <TextField
+                variant="outlined"
+                placeholder="Enter your email address"
+                name="email"
+                sx={{
+                  marginBottom: "30px",
+                  width: "100%",
+                  bgcolor: "white",
+                }}
+              />
             </Box>
 
-            {/* Login With Facebook */}
             <Box
-            //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
             >
-              <Button
-                variant="contained"
-                // type="submit"
-                sx={{
-                  borderRadius: "2px",
-                  backgroundColor: "#fff",
-                  padding: "10px 0",
-                  color: "#30422E",
-                  width: "530px",
-                  gap: "10px",
-                  marginTop: { xs: "20px" },
-                  "&:hover": {
-                    backgroundColor: "white",
-                  },
-                  textTransform: "capitalize",
-                }}
-                onClick={handleSignin}
-              >
-                <Image
-                  src={facebookIcon}
-                  alt="Facebook Logo"
-                  // width={24}
-                  // height={24}
+              <Box>
+                <Divider
+                  sx={{
+                    backgroundColor: "black",
+                    width: "235px",
+                  }}
+                  orientation="horizontal"
                 />
-                <Typography>Login with Facebook</Typography>
-              </Button>
+              </Box>
+              <Box>
+                <Typography sx={{ margin: "0 20px", color: "#0000006B" }}>
+                  {"or"}
+                </Typography>
+              </Box>
+              <Box>
+                <Divider
+                  sx={{
+                    backgroundColor: "black",
+                    width: "235px",
+                  }}
+                  orientation="horizontal"
+                />
+              </Box>
             </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                // gap: 1,
+                justifyContent: "center",
+              }}
+            >
+              <Box
+              //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
+              >
+                <Button
+                  variant="contained"
+                  type="submit"
+                  onClick={() => handleGoogleLogin()}
+                  sx={{
+                    borderRadius: "2px",
+                    backgroundColor: "#fff",
+                    padding: "20px 0",
+                    color: "#30422E",
+                    width: "530px",
+                    gap: "30px",
+                    margin: "30px 0",
+                    "&:hover": {
+                      backgroundColor: "white",
+                    },
+                    textTransform: "capitalize",
+                  }}
+                >
+                  <Image
+                    src={googleLogo}
+                    alt="Google Logo"
+                  />
+                  <Typography>Login with Google</Typography>
+                </Button>
+              </Box>
+
+              <Box>
+                <Button
+                  variant="contained"
+                  // type="submit"
+                  sx={{
+                    borderRadius: "2px",
+                    backgroundColor: "#fff",
+                    padding: "20px 0",
+                    color: "#30422E",
+                    width: "530px",
+                    gap: "30px",
+                    "&:hover": {
+                      backgroundColor: "white",
+                    },
+                    textTransform: "capitalize",
+                  }}
+                  onClick={handleSignin}
+                >
+                  <Image
+                    src={facebookIcon}
+                    alt="Facebook Logo"
+                  />
+                  <Typography>Login with Facebook</Typography>
+                </Button>
+              </Box>
+            </Box>
+
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                width: "260px",
+                height: "50px",
+                marginTop: "60px",
+                bgcolor: "#e1693b",
+                "&:hover": {
+                  backgroundColor: "#b5522d",
+                },
+              }}
+              onClick={() => onClick(selectedTab + 1)}
+            >
+              Continue
+            </Button>
           </Box>
 
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              width: "200px",
-              marginTop: "50px",
-              bgcolor: "#e1693b",
-              "&:hover": {
-                backgroundColor: "#b5522d",
-              },
-            }}
-            onClick={() => onClick(selectedTab + 1)}
-          >
-            Continue
-          </Button>
-          {/* </form> */}
+          <Box sx={{ margin: "0 35px 35px 0" }}>
+            <BasicPlanCard price={price} category={category} />
+          </Box>
         </Box>
+
       </Box>
 
-      <Box sx={{ width: "50%" }}>
-        <Box>
-        <BasicPlanCard price={price} category={category}   />
-        </Box>
-      </Box>
+
     </Box>
   );
 };
