@@ -131,13 +131,12 @@ const StripePage = () => {
 
             {showSecondForm && (
               <FormControl sx={{ display: 'block' }}>
-                <Typography sx={{ color: '#30422E', fontSize: '30px', margin: '10px' }}>Select Your Preference</Typography>
-                <RadioGroup aria-labelledby="demo-radio-buttons-group-label" value={paymentType} onChange={(e) => setPaymentType(e.target.value)} sx={{ padding: '20px' }}>
+                <Typography sx={{ color: '#30422E', fontSize: '30px' }}>Select Your Preference</Typography>
+                <RadioGroup aria-labelledby="demo-radio-buttons-group-label" value={paymentType} onChange={(e) => setPaymentType(e.target.value)}>
                   <Box
                     sx={{
                       backgroundColor: 'white',
-                      margin: '10px',
-                      marginLeft: '-10px',
+                      margin: { sm: '70px 0 30px', xs: '50px 0 15px' },
                       height: '68px',
                       display: 'flex',
                       alignItems: 'center',
@@ -163,8 +162,8 @@ const StripePage = () => {
                   <Box
                     sx={{
                       backgroundColor: 'white',
-                      margin: '10px',
-                      marginLeft: '-10px',
+                      // margin: '10px',
+                      // marginLeft: '-10px',
                       height: '68px',
                       display: 'flex',
                       alignItems: 'center',
@@ -189,7 +188,7 @@ const StripePage = () => {
                   </Box>
                 </RadioGroup>
 
-                <Box sx={{ margin: '10px', width: { sm: '300px', xs: '100%' } }}>
+                <Box sx={{ marginTop: { sm: '40px', xs: '20px' }, width: { sm: '300px', xs: '100%' } }}>
                   <Button width="100%" height="50px" backgroundColor="#E1693B" title={'Continue'} bgHover="#B5522D" onClick={handleContinueNext} />
                 </Box>
               </FormControl>
@@ -202,7 +201,7 @@ const StripePage = () => {
             right: '0px',
             bottom: '0px',
             zIndex: 1,
-            maxWidth: '768px',
+            maxWidth: '740px',
             width: '100%',
           }}
         >
