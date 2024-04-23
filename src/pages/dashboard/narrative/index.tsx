@@ -193,7 +193,8 @@ const NarrativeResponse = () => {
                     {pdfUrl && (
                       <GlobelBtn
                         bgColor="#197065"
-                        btnText={`${t("narrative.pdfdownload")}`}
+                        // btnText={`${t("narrative.pdfdownload")}`}
+                        btnText={`PDF Download`}
                         borderRadius="27px"
                         color="#fff"
                         image={SaveIcon}
