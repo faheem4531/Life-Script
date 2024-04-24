@@ -36,10 +36,10 @@ const RegisterFreeTrial = () => {
           name: session.user.name,
           email: session.user.email
         };
-        dispatch(facebookLogin(payload)) .then((res) => {
-          console.log("Res Console" ,res)
+        dispatch(facebookLogin(payload)) .then((session) => {
+          console.log("Res Console" ,session)
           toast.success(t("login with facebook"));
-          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+          router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
         })
         .catch((error: any) => {
           toast.error(error.message);
@@ -51,7 +51,7 @@ const RegisterFreeTrial = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/dgetStarted/getTitle",
+      callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name}`,
     });
   };
 
