@@ -4,29 +4,29 @@
 import Logo from "@/_assets/svg/logo-dashboard.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { facebookLogin } from "@/store/slices/authSlice";
-import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { useSession } from "next-auth/react";
+// import { facebookLogin } from "@/store/slices/authSlice";
+// import { useDispatch } from "react-redux";
 import RegisterFreeTrial from "./_components/RegisterFreeTrial";
 import BgLogo from "../../../_assets/svg/BgLogo.svg";
 
 
 const RegisterTrialPage = () => {
-    const dispatch = useDispatch();
-    const { data: session } = useSession();
+    // const dispatch = useDispatch();
+    // const { data: session } = useSession();
   
-    useEffect(() => {
-      if (session) {
-        if (session.user) {
-          const payload = {
-            name: session.user.name,
-            email: session.user.email
-          };
-          dispatch(facebookLogin(payload));
-        }
-      }
-    }, [session, dispatch]);
+    // useEffect(() => {
+    //   if (session) {
+    //     if (session.user) {
+    //       const payload = {
+    //         name: session.user.name,
+    //         email: session.user.email
+    //       };
+    //       dispatch(facebookLogin(payload));
+    //     }
+    //   }
+    // }, [session, dispatch]);
 
     return (
         <>

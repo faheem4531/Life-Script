@@ -17,45 +17,49 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useSession, signIn, signOut } from "next-auth/react";
 
+import { useEffect } from "react";
+import { facebookLogin } from "@/store/slices/authSlice";
+
 
 const RegisterFreeTrial = () => {
 
     const router = useRouter();
     const { t } = useTranslation();
-  const dispatch: any = useDispatch();
+
+  const dispatch = useDispatch();
   const { data: session } = useSession();
 
-  // const handleSignin = async (e) => {
-  //   e.preventDefault();
-  //   signIn("facebook", {
-  //     callbackUrl: "/dgetStarted/getTitle",
-  //   });
-  // };
+  useEffect(() => {
+    if (session) {
+      if (session.user) {
+        const payload = {
+          name: session.user.name,
+          email: session.user.email
+        };
+        dispatch(facebookLogin(payload)) .then((res) => {
+          console.log("Res Console" ,res)
+          toast.success(t("login with facebook"));
+          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+        })
+        .catch((error: any) => {
+          toast.error(error.message);
+        });;
+      }
+    }
+  }, [session, dispatch]);
 
   const handleSignin = async (e) => {
     e.preventDefault();
-    const response = await signIn("facebook", {
-      callbackUrl: "/getStarted/getTitle",
+    signIn("facebook", {
+      callbackUrl: "/dgetStarted/getTitle",
     });
-  
-    if (response.error) {
-      // Handle sign-in error
-      console.error("Failed to sign in with Facebook:", response.error);
-      // You can display an error message to the user if needed
-      return;
-    }
-  
-    // Check if the session contains user data
-    const userName = session?.user?.name;
-    if (userName) {
-      router.push(`/getStarted/getTitle?userName=${userName}`);
-    } else {
-      console.error("Failed to retrieve user's name from session.");
-      // You can handle this case according to your application's logic
-    }
   };
+
+
   
   console.log("data", session);
+
+  
   const handleSignout = (e) => {
     e.preventDefault();
     signOut();
