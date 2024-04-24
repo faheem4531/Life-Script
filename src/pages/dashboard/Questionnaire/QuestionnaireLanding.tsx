@@ -105,6 +105,7 @@ const Questionnaire = () => {
         martialStatus: userData?.martialStatus,
         dateOfBirth: userData?.dateOfBirth,
         language: userData?.LanguagePreferences,
+        onBoarding: true,
       })
     )
 
