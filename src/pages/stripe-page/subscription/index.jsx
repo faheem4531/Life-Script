@@ -45,6 +45,7 @@ const SubscriptionPage = () => {
         sx={{
           bgcolor: '#f3ecda',
           color: '#3e4f3c',
+          minHeight: '100vh',
         }}
       >
         <Box

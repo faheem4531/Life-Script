@@ -61,17 +61,17 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between", }}>
+    <Box sx={{ display: "flex", justifyContent: "center", }}>
       <Box
-        sx={{ marginLeft: "70px", border: "2px soild green", width: "100%" }}
+        sx={{ margin: { sm: "0 0 0 70px", xs: "0 20px" }, border: "2px soild green", width: "100%", maxWidth: "1370px" }}
       >
-        <Typography variant="h4" sx={{ marginBottom: "60px" }}>
+        <Typography variant="h4" sx={{ marginBottom: { sm: "60px", xs: "30px" } }}>
           Register LifeScript
         </Typography>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", columnGap: "50px" }}>
 
-          <Box sx={{ maxWidth: "530px" }}>
+          <Box sx={{ maxWidth: { sm: "530px", xs: "100%" }, width: "100%" }}>
             <Box>
               <Typography
                 sx={{
@@ -125,7 +125,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                 <Divider
                   sx={{
                     backgroundColor: "black",
-                    width: "235px",
+                    width: { lg: "235px", md: "160px", sm: "235px", xs: "130px" },
                   }}
                   orientation="horizontal"
                 />
@@ -139,7 +139,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                 <Divider
                   sx={{
                     backgroundColor: "black",
-                    width: "235px",
+                    width: { lg: "235px", md: "160px", sm: "235px", xs: "130px" },
                   }}
                   orientation="horizontal"
                 />
@@ -150,13 +150,10 @@ const RegisterPage = ({ onClick, selectedTab }) => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                // gap: 1,
                 justifyContent: "center",
               }}
             >
-              <Box
-              //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
-              >
+              <Box>
                 <Button
                   variant="contained"
                   type="submit"
@@ -166,7 +163,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                     backgroundColor: "#fff",
                     padding: "20px 0",
                     color: "#30422E",
-                    width: "530px",
+                    width: "100%",
                     gap: "30px",
                     margin: "30px 0",
                     "&:hover": {
@@ -192,7 +189,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                     backgroundColor: "#fff",
                     padding: "20px 0",
                     color: "#30422E",
-                    width: "530px",
+                    width: "100%",
                     gap: "30px",
                     "&:hover": {
                       backgroundColor: "white",
@@ -228,7 +225,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
             </Button>
           </Box>
 
-          <Box sx={{ margin: "0 35px 35px 0" }}>
+          <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
             <BasicPlanCard price={price} category={category} />
           </Box>
         </Box>
