@@ -38,6 +38,8 @@ const RegisterFreeTrial = () => {
         dispatch(facebookLogin(payload)) 
         .then((res) => {
           console.log("Res Console" ,res)
+          alert(res?.name)
+          alert(res?.token)
           toast.success(t("login with facebook"));
           router.push(`/getStarted/getTitle?userName=${res?.name}`); 
         })

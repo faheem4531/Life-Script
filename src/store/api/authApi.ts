@@ -81,6 +81,7 @@ export async function facebookLoginApi(data: { credential: string }) {
   try {
     const res = await api.post("/auth/facebook/callback/sign-in", data);
     console.log("facebook response", res)
+    alert(`inside res method ${res.token}`)
     localStorage.setItem("token", res.token);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
