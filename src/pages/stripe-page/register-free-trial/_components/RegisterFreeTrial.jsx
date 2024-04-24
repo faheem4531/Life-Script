@@ -42,7 +42,7 @@ const RegisterFreeTrial = () => {
           alert(res?.data?.name)
           alert(res?.data?.token)
           toast.success(t("login with facebook"));
-          router.push(`/getStarted/getTitle?userName=${res?.data?.name}`); 
+          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
         })
         .catch((error) => {
           toast.error(error.message);
