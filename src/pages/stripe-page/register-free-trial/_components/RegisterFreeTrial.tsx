@@ -28,30 +28,31 @@ const RegisterFreeTrial = () => {
 
   const dispatch = useDispatch();
   const { data: session } = useSession();
+  console.log("Session Check ",session)
 
-  useEffect(() => {
-    if (session) {
-      if (session.user) {
-        const payload = {
-          name: session.user.name,
-          email: session.user.email
-        };
-        dispatch(facebookLogin(payload)) .then((session) => {
-          console.log("Res Console" ,session)
-          toast.success(t("login with facebook"));
-          router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
-        })
-        .catch((error: any) => {
-          toast.error(error.message);
-        });;
-      }
-    }
-  }, [session, dispatch]);
+  // useEffect(() => {
+  //   if (session) {
+  //     if (session.user) {
+  //       const payload = {
+  //         name: session.user.name,
+  //         email: session.user.email
+  //       };
+  //       dispatch(facebookLogin(payload)) .then((session) => {
+  //         console.log("Res Console" ,session)
+  //         toast.success(t("login with facebook"));
+  //         // router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
+  //       })
+  //       .catch((error: any) => {
+  //         toast.error(error.message);
+  //       });;
+  //     }
+  //   }
+  // }, [session, dispatch]);
 
   const handleSignin = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     signIn("facebook", {
-      callbackUrl: `/getStarted/getTitle`,
+      callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name}`,
     });
   };
 
