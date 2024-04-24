@@ -28,28 +28,28 @@ const RegisterFreeTrial = () => {
   const { data: session } = useSession();
   console.log("Session Check ",session)
 
-  useEffect(() => {
-    if (session) {
-      if (session.user) {
-        const payload = {
-          name: session.user.name,
-          email: session.user.email
-        };
-        dispatch(facebookLogin(payload))
-        .unwrap() 
-        .then((res) => {
-          console.log("Res Console" ,res)
-          alert(res?.data?.name)
-          alert(res?.data?.token)
-          toast.success(t("login with facebook"));
-          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-        })
-        .catch((error) => {
-          toast.error(error.message);
-        });
-      }
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) {
+  //     if (session.user) {
+  //       const payload = {
+  //         name: session.user.name,
+  //         email: session.user.email
+  //       };
+  //       dispatch(facebookLogin(payload))
+  //       .unwrap() 
+  //       .then((res) => {
+  //         console.log("Res Console" ,res)
+  //         alert(res?.data?.name)
+  //         alert(res?.data?.token)
+  //         toast.success(t("login with facebook"));
+  //         router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+  //       })
+  //       .catch((error) => {
+  //         toast.error(error.message);
+  //       });
+  //     }
+  //   }
+  // }, [session]);
 
   const handleSignin = async (e) => {
     e.preventDefault();
