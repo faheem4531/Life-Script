@@ -35,7 +35,8 @@ const RegisterFreeTrial = () => {
           name: session.user.name,
           email: session.user.email
         };
-        dispatch(facebookLogin(payload)) 
+        dispatch(facebookLogin(payload))
+        .unwrap() 
         .then((res) => {
           console.log("Res Console" ,res)
           alert(res?.data?.name)
