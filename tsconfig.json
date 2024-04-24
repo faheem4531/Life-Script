@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/home/index.js", "src/pages/pricing/index.js", "src/pages/stripe-page/gift-subscription/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/home/index.js", "src/pages/pricing/index.js", "src/pages/stripe-page/gift-subscription/index.jsx", "src/pages/stripe-page/register-free-trial/index.jsx"],
   "exclude": ["node_modules"]
 }

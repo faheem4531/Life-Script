@@ -28,7 +28,7 @@ const RegisterFreeTrial = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/stripe-page/register-free-trial",
+      callbackUrl: "/dashboard/chapters",
     });
   };
   console.log("data", session);

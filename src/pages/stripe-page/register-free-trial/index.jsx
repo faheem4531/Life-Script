@@ -11,21 +11,22 @@ import { useDispatch } from "react-redux";
 import RegisterFreeTrial from "./_components/RegisterFreeTrial";
 import BgLogo from "../../../_assets/svg/BgLogo.svg";
 
-const RegisterTrialPage = () => {
-    // const dispatch = useDispatch();
-    // const { data: session } = useSession();
 
-    // useEffect(() => {
-    //     if (session) {
-    //         if (session.user) {
-    //             const payload = {
-    //                 name: session.user.name,
-    //                 email: session.user.email
-    //             };
-    //             dispatch(facebookLogin(payload));
-    //         }
-    //     }
-    // }, [session, dispatch]);
+const RegisterTrialPage = () => {
+    const dispatch = useDispatch();
+    const { data: session } = useSession();
+  
+    useEffect(() => {
+      if (session) {
+        if (session.user) {
+          const payload = {
+            name: session.user.name,
+            email: session.user.email
+          };
+          dispatch(facebookLogin(payload));
+        }
+      }
+    }, [session, dispatch]);
 
     return (
         <>
