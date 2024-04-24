@@ -1,24 +1,22 @@
 "use client";
 
-import { Box, Typography, TextField, Button, Divider } from "@mui/material";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import Image from "next/image";
-import googleLogo from "../../../../../public/googleIcon.svg";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
+import googleLogo from "../../../../../public/googleIcon.svg";
 
 import {
-  googleSignup,
-  selectSocialUser,
-  setSocialUser,
+  googleSignup
 } from "@/store/slices/authSlice";
 import { useGoogleLogin } from "@react-oauth/google";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useSession, signIn, signOut } from "next-auth/react";
 
-import { useEffect } from "react";
 import { facebookLogin } from "@/store/slices/authSlice";
+import { useEffect } from "react";
 
 
 const RegisterFreeTrial = () => {
@@ -38,17 +36,17 @@ const RegisterFreeTrial = () => {
           email: session.user.email
         };
         dispatch(facebookLogin(payload)) 
-        // .then((session) => {
-        //   console.log("Res Console" ,session)
-        //   toast.success(t("login with facebook"));
-        //   // router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
-        // })
-        // .catch((error: any) => {
-        //   toast.error(error.message);
-        // });
+        .then((res) => {
+          console.log("Res Console" ,res)
+          toast.success(t("login with facebook"));
+          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
       }
     }
-  }, [session, dispatch]);
+  }, [session]);
 
   const handleSignin = async (e) => {
     e.preventDefault();
@@ -74,7 +72,7 @@ const RegisterFreeTrial = () => {
     onError: () => handleGoogleLoginFailure(),
   });
 
-  const handleGoogleLoginSuccess = (e: any) => {
+  const handleGoogleLoginSuccess = (e) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
       .then((res) => {
@@ -82,7 +80,7 @@ const RegisterFreeTrial = () => {
         toast.success(t("signup-page.signedUpSuccessfully"));
         router.push(`/getStarted/getTitle?userName=${res?.name}`); 
       })
-      .catch((error: any) => {
+      .catch((error) => {
         toast.error(error.message);
       });
   };
