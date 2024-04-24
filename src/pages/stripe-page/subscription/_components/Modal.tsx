@@ -18,7 +18,6 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   bgcolor: '#F3ECDA',
-  p: "40px",
   color: "#30422E",
   borderRadius: "2px",
   textAlign: "center",
@@ -63,9 +62,9 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
       }}
     >
       <Fade in={openModal}>
-        <Box sx={style}>
+        <Box sx={{ ...style, padding: { sm: "40px", xs: "30px" } }}>
           <Image src={Logo} alt="logo" />
-          <Typography id="transition-modal-title" sx={{ margin: "40px 0", fontSize: "32px" }}>
+          <Typography id="transition-modal-title" sx={{ margin: { sm: "40px 0", xs: "25px 0" }, fontSize: { sm: "32px", xs: "28px" } }}>
             {value == 100 ? 'Transaction Successful!' : 'Processing..'}
           </Typography>
           <Box sx={{ width: { xs: "300px", sm: "470px" } }}>
@@ -78,7 +77,7 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
               color="primary"
               sx={{
                 width: "260px",
-                marginTop: "40px",
+                marginTop: { sm: "40px", xs: "25px" },
                 bgcolor: "#e1693b",
                 "&:hover": {
                   backgroundColor: "#b5522d",
@@ -88,11 +87,11 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
             </Button>
           }
           {value == 100 && selectedTab == 3 &&
-            <Typography sx={{ marginTop: "40px" }}>
+            <Typography sx={{ marginTop: { sm: "40px", xs: "25px" } }}>
               The gift recipient will receive their gift via email on the date provided. More details about your gift will be emailed to you shortly!</Typography>
           }
         </Box>
       </Fade>
-    </Modal>
+    </Modal >
   );
 }
