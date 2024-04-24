@@ -14,7 +14,7 @@ import DeliveryForm from './_components/DeliveryForm';
 import Bg from '@/_assets/png/bg-hurt-lite.png';
 
 const GiftSubscriptionPage = () => {
-  const dispatch = useDispatch();
+  const dispatch:any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
   const { data: session } = useSession();
 

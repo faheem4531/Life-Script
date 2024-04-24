@@ -128,7 +128,7 @@ const StripePage = () => {
                     width: { sm: '300px', xs: '100%' },
                   }}
                 >
-                  <Button width="100%" height="50px" backgroundColor="#E1693B" title={'Continue'} bgHover="#B5522D" onClick={handleContinue} />
+                  <Button width="100%" height="50px" backgroundColor="#E1693B" title={'Continue'} bgHover="#B5522D" onClick={handleContinue} img1={undefined} img2={undefined} borderRadius={undefined} />
                 </Box>
               )}
             </FormControl>
@@ -193,7 +193,7 @@ const StripePage = () => {
                 </RadioGroup>
 
                 <Box sx={{ marginTop: { sm: '40px', xs: '20px' }, width: { sm: '300px', xs: '100%' } }}>
-                  <Button width="100%" height="50px" backgroundColor="#E1693B" title={'Continue'} bgHover="#B5522D" onClick={handleContinueNext} />
+                  <Button width="100%" height="50px" backgroundColor="#E1693B" title={'Continue'} bgHover="#B5522D" onClick={handleContinueNext} img1={undefined} img2={undefined} borderRadius={undefined} />
                 </Box>
               </FormControl>
             )}

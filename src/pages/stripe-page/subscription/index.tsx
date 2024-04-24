@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import Bg from '@/_assets/png/bg-hurt-lite.png';
 
 const SubscriptionPage = () => {
-  const dispatch = useDispatch();
+  const dispatch:any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
   const { data: session } = useSession();
 

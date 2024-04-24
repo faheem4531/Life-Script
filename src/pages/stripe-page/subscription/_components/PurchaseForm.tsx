@@ -7,7 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useRouter } from "next/router";
 import PaymentProcessingModal from './Modal';
 
-const PurchaseForm = ({ selectedTab }) => {
+const PurchaseForm = ({ onClick, selectedTab }) => {
   const router = useRouter();
   const { price, category } = router.query;
 

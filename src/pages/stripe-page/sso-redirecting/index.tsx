@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const SsoRedirecting = () => {
     const [loading, setLoading] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch:any = useDispatch();
     const router = useRouter()
     const { data: session } = useSession();
     useEffect(() => {
