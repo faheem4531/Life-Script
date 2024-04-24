@@ -1,7 +1,7 @@
 import { facebookLogin } from "@/store/slices/authSlice";
 import { Box, CircularProgress } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
