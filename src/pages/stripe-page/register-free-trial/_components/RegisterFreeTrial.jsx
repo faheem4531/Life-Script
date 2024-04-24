@@ -15,8 +15,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-import { facebookLogin } from "@/store/slices/authSlice";
-import { useEffect } from "react";
 
 
 const RegisterFreeTrial = () => {
@@ -54,7 +52,8 @@ const RegisterFreeTrial = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
+      // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
+      callbackUrl: `/stripe-page/subscription`,
     });
   };
 
