@@ -21,9 +21,11 @@ function LinearProgressWithLabel(
     >
       <Stack sx={{ width: "100%", color: "#7f886b" }} spacing={2}>
         <LinearProgress
-          sx={{ height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px" ,"& .MuiLinearProgress-bar": {
-            backgroundColor: "#7f886b", // Custom color for the progress bar
-          }, }}
+          sx={{
+            height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px", "& .MuiLinearProgress-bar": {
+              backgroundColor: "#7f886b", // Custom color for the progress bar
+            },
+          }}
           variant="determinate"
           // color="inherit"
           {...props}
@@ -84,23 +86,25 @@ function LoadingProgress(props: LinearProgressProps & { value: number }) {
         spacing={2}
       >
         <LinearProgress
-          sx={{ height: "45px", bgcolor: "#d1cfb9", borderRadius: "5px" ,"& .MuiLinearProgress-bar": {
-            backgroundColor: "#7f886b", // Custom color for the progress bar
-          },}}
+          sx={{
+            height: "45px", bgcolor: "#d1cfb9", borderRadius: "5px", "& .MuiLinearProgress-bar": {
+              backgroundColor: "#7f886b", // Custom color for the progress bar
+            },
+          }}
           variant="determinate"
           // color="inherit"
           {...props}
         />
-      <Box
-        sx={{ minWidth: 35, position: "absolute", right: "42%", top: "-18px" }}
-      >
-        <Typography
-          variant="body2"
-          color="#FAFAFA"
-          fontSize="36px"
-          fontWeight="500"
-        >{`${Math.round(props.value)}%`}</Typography>
-      </Box>
+        <Box
+          sx={{ minWidth: 35, position: "absolute", right: "42%", top: "-12px" }}
+        >
+          <Typography
+            variant="body2"
+            color="#FAFAFA"
+            fontSize="30px"
+            fontWeight="300"
+          >{`${Math.round(props.value)}%`}</Typography>
+        </Box>
       </Stack>
     </Box>
   );
