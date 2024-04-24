@@ -25,12 +25,36 @@ const RegisterFreeTrial = () => {
   const dispatch: any = useDispatch();
   const { data: session } = useSession();
 
+  // const handleSignin = async (e) => {
+  //   e.preventDefault();
+  //   signIn("facebook", {
+  //     callbackUrl: "/dgetStarted/getTitle",
+  //   });
+  // };
+
   const handleSignin = async (e) => {
     e.preventDefault();
-    signIn("facebook", {
-      callbackUrl: "/dgetStarted/getTitle",
+    const response = await signIn("facebook", {
+      callbackUrl: "/getStarted/getTitle",
     });
+  
+    if (response.error) {
+      // Handle sign-in error
+      console.error("Failed to sign in with Facebook:", response.error);
+      // You can display an error message to the user if needed
+      return;
+    }
+  
+    // Check if the session contains user data
+    const userName = session?.user?.name;
+    if (userName) {
+      router.push(`/getStarted/getTitle?userName=${userName}`);
+    } else {
+      console.error("Failed to retrieve user's name from session.");
+      // You can handle this case according to your application's logic
+    }
   };
+  
   console.log("data", session);
   const handleSignout = (e) => {
     e.preventDefault();
@@ -233,7 +257,7 @@ const RegisterFreeTrial = () => {
               },
             }}
           >
-            Continue
+            Start 7-Day Free Trial
           </Button>
           {/* </form> */}
         </Box>
