@@ -4,9 +4,7 @@ import { Box, Typography, TextField, Button, Divider } from "@mui/material";
 import Image from "next/image";
 import googleLogo from "../../../../../public/googleIcon.svg";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
-
 import BasicPlanCard from "./BasicPlanCard";
-
 import {
   googleSignup,
   selectSocialUser,
