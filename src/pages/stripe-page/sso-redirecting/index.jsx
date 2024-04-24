@@ -1,8 +1,7 @@
-import { Box, CircularProgress } from "@mui/material";
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
 import { facebookLogin } from "@/store/slices/authSlice";
+import { Box, CircularProgress } from "@mui/material";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const SsoRedirecting = () => {
@@ -12,6 +11,7 @@ const SsoRedirecting = () => {
     useEffect(() => {
         setLoading(true)
         if (session) {
+            console.log('session data', session)
           if (session.user) {
             const payload = {
               name: session.user.name,
@@ -22,6 +22,7 @@ const SsoRedirecting = () => {
             .then((res) => {
                 setLoading(false)
               console.log("Res Console" ,res)
+              alert(t("login with facebook"));
               toast.success(t("login with facebook"));
               router.push(`/getStarted/getTitle?userName=${res?.name}`); 
             })
