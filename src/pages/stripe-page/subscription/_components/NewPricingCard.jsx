@@ -2,13 +2,10 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import styles from '../../../../__webComponents/ComponentsStyles.module.css';
-// import Button from "../button/Button";
 import Button from '../../../../__webComponents/button/Button';
-
 import Check from '@/__webAssets/svgs/check.svg';
 import Lock from '@/__webAssets/svgs/lock.svg';
 import NextIcon from '@/__webAssets/svgs/next.svg';
-
 import { useRouter } from 'next/router';
 
 const NewPricingCard = ({ price, category, card, id, handleHover }) => {
@@ -86,7 +83,6 @@ const NewPricingCard = ({ price, category, card, id, handleHover }) => {
         width: { sm: '350px', xs: '340px' },
         height: { lg: '700px' },
         position: 'relative',
-        // margin:"20px"
       }}
       backgroundColor={card == '2' ? '#30422E' : '#F4F4F4'}
       color={card == '2' && '#f4f4f4'}
@@ -128,7 +124,6 @@ const NewPricingCard = ({ price, category, card, id, handleHover }) => {
             borderBottom: '1px solid #BFC4B5',
             padding: '10px 0',
             marginBottom: '34px',
-            // fontFamily: "Avenir8"
           }}
           className={styles.price}
         >

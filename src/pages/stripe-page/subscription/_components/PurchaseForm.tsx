@@ -92,7 +92,7 @@ const PurchaseForm = () => {
               <Select
                 value={selectedBooks}
                 onChange={handleChange}
-                sx={{ width: { sm: "50%", xs: "100%" }, backgroundColor: "white", marginBottom: "50px" }}
+                sx={{ width: { sm: "400px", xs: "100%" }, backgroundColor: "white", marginBottom: "50px" }}
               >
                 {options.map((option, index) => (
                   <MenuItem key={option.value} value={option.value} hidden={option.hidden}>
@@ -106,19 +106,19 @@ const PurchaseForm = () => {
 
             <Box sx={{ marginBottom: "40px" }}>
               <Typography>Referred by a friend? Enter Referral code here</Typography>
-              <Divider sx={{ width: { sm: "80%", xs: "100%" } }} />
+              <Divider sx={{ width: { sm: "600px", xs: "100%" } }} />
 
               <TextField
                 label="Referral Code"
                 value={referralCode}
                 onChange={handleReferralCodeChange}
-                sx={{ width: { sm: "80%", xs: "100%" }, backgroundColor: "white", marginTop: "15px" }}
+                sx={{ width: { sm: "600px", xs: "100%" }, backgroundColor: "white", marginTop: "15px" }}
               />
             </Box>
 
             <Box>
               <Typography>Checkout</Typography>
-              <Divider sx={{ width: "80%", marginBottom: "50px" }} />
+              <Divider sx={{ width: "600px", marginBottom: "50px" }} />
 
               <Typography sx={{ marginBottom: "5px" }}>Prefer to enter details manually? Please provide your payment info below.</Typography>
 
@@ -127,37 +127,40 @@ const PurchaseForm = () => {
                   label="Card Holder Name"
                   value={cardHolderName}
                   onChange={handleCardHolderChange}
-                  sx={{ width: { sm: "80%", xs: "100%" }, backgroundColor: "white" }}
+                  sx={{ width: { sm: "600px", xs: "100%" }, backgroundColor: "white" }}
                 />
                 <TextField
                   label="Card Number"
                   value={cardNumber}
                   onChange={handleCardNumberChange}
-                  sx={{ width: { sm: "80%", xs: "100%" }, backgroundColor: "white" }}
+                  sx={{ width: { sm: "600px", xs: "100%" }, backgroundColor: "white" }}
                 />
-                <TextField
-                  label="MM/YY"
-                  value={expiry}
-                  onChange={handleExpiryChange}
-                  sx={{ width: { sm: "40%", xs: "50%" }, backgroundColor: "white" }}
-                />
-                <TextField
-                  label="CVC"
-                  value={cvc}
-                  onChange={handleCvcChange}
-                  sx={{ width: { sm: "40%", xs: "50%" }, backgroundColor: "white" }}
-                />
+                <Box sx={{ width: { sm: "600px", xs: "100%" }, display: "flex" }}>
+                  <TextField
+                    label="MM/YY"
+                    value={expiry}
+                    onChange={handleExpiryChange}
+                    sx={{ width: "50%", backgroundColor: "white" }}
+                  />
+                  <TextField
+                    label="CVC"
+                    value={cvc}
+                    onChange={handleCvcChange}
+                    sx={{ width: "50%", backgroundColor: "white" }}
+                  />
+                </Box>
+
               </Box>
             </Box>
 
-            <Box sx={{ border: "1px solid black", padding: "10px", borderRadius: "5px", marginTop: "30px", width: { sm: "80%", xs: "100%" } }}>
+            <Box sx={{ border: "1px solid black", padding: "10px", borderRadius: "5px", marginTop: "30px", width: { sm: "600px", xs: "100%" } }}>
               <FormControlLabel
                 control={<Checkbox checked={subscribeUpdates} onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }} />}
                 label="Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers."
               />
             </Box>
 
-            <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: { sm: "80%", xs: "100%" }, marginTop: "20px" }}>
+            <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: { sm: "600px", xs: "100%" }, marginTop: "20px" }}>
               <Typography sx={{ fontSize: "14px" }}>
                 We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&rsquos terms and conditions and privacy policy.
               </Typography>

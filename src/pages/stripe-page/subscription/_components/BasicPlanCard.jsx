@@ -30,7 +30,6 @@ const BasicPlanCard = ({ price, category }) => {
   return (
     <Box
       sx={{
-        // border: "2px solid black",
         borderRadius: '3px',
         width: { lg: '445px', md: '400px' },
         height: 'auto',
@@ -91,9 +90,7 @@ const BasicPlanCard = ({ price, category }) => {
             marginBottom: '34px',
             fontFamily: 'Avenir8',
           }}
-          // className={styles.price}
         >
-          {/* {"$135"} */}
           {price ?? '$0'}
           <Typography sx={{ color: 'black', fontSize: '12px', display: 'inline' }}>/ year</Typography>
         </Box>
