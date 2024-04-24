@@ -28,7 +28,6 @@ const RegisterFreeTrial = () => {
 
   const dispatch = useDispatch();
   const { data: session } = useSession();
-  console.log("Session Check ",session)
 
   // useEffect(() => {
   //   if (session) {
@@ -37,26 +36,45 @@ const RegisterFreeTrial = () => {
   //         name: session.user.name,
   //         email: session.user.email
   //       };
-  //       dispatch(facebookLogin(payload)) .then((session) => {
-  //         console.log("Res Console" ,session)
-  //         toast.success(t("login with facebook"));
-  //         // router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
-  //       })
-  //       .catch((error: any) => {
-  //         toast.error(error.message);
-  //       });;
+  //       dispatch(facebookLogin(payload)) 
+  //       // .then((session) => {
+  //       //   console.log("Res Console" ,session)
+  //       //   toast.success(t("login with facebook"));
+  //       //   // router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
+  //       // })
+  //       // .catch((error: any) => {
+  //       //   toast.error(error.message);
+  //       // });
   //     }
   //   }
   // }, [session, dispatch]);
 
-  const handleSignin = async (e) => {
-    // e.preventDefault();
-    signIn("facebook", {
-      callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name}`,
-    });
+  // const handleSignin = async (e) => {
+  //   // e.preventDefault();
+  //   signIn("facebook", {
+  //     callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name}`,
+  //   });
+  // };
+
+  const handleFacebookLogin = async () => {
+    try {
+      await signIn("facebook");
+    } catch (error) {
+      console.error("Facebook login error:", error);
+      toast.error("Failed to login with Facebook");
+    }
   };
 
-
+  useEffect(() => {
+    if (session) {
+      if (session.user) {
+        const { name, email } = session.user;
+        dispatch(facebookLogin({ name, email }));
+        toast.success("Logged in with Facebook");
+        router.push(`/getStarted/getTitle?userName=${name}`);
+      }
+    }
+  }, [session, dispatch, router]);
   
   console.log("data", session);
 
@@ -237,7 +255,8 @@ const RegisterFreeTrial = () => {
                   },
                   textTransform: "capitalize",
                 }}
-                onClick={handleSignin}
+                // onClick={handleSignin}
+                onClick={handleFacebookLogin}
               >
                 <Image
                   src={facebookIcon}
@@ -254,7 +273,7 @@ const RegisterFreeTrial = () => {
             variant="contained"
             color="primary"
             sx={{
-              width: "200px",
+              width: "50%",
               marginTop: "50px",
               bgcolor: "#e1693b",
               "&:hover": {
