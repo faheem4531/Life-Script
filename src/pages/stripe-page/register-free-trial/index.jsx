@@ -13,8 +13,8 @@ import BgLogo from "../../../_assets/svg/BgLogo.svg";
 
 
 const RegisterTrialPage = () => {
-    const dispatch = useDispatch();
-    const { data: session } = useSession();
+    // const dispatch = useDispatch();
+    // const { data: session } = useSession();
   
     // useEffect(() => {
     //   if (session) {
@@ -28,28 +28,28 @@ const RegisterTrialPage = () => {
     //   }
     // }, [session, dispatch]);
 
-    useEffect(() => {
-        if (session) {
-          if (session.user) {
-            const payload = {
-              name: session.user.name,
-              email: session.user.email
-            };
-            dispatch(facebookLogin(payload))
-            .unwrap() 
-            .then((res) => {
-              console.log("Res Console" ,res)
-              alert(res?.data?.name)
-              alert(res?.data?.token)
-              toast.success(t("login with facebook"));
-              router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-            })
-            .catch((error) => {
-              toast.error(error.message);
-            });
-          }
-        }
-      }, [session, dispatch]);
+    // useEffect(() => {
+    //     if (session) {
+    //       if (session.user) {
+    //         const payload = {
+    //           name: session.user.name,
+    //           email: session.user.email
+    //         };
+    //         dispatch(facebookLogin(payload))
+    //         .unwrap() 
+    //         .then((res) => {
+    //           console.log("Res Console" ,res)
+    //           alert(res?.data?.name)
+    //           alert(res?.data?.token)
+    //           toast.success(t("login with facebook"));
+    //           router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+    //         })
+    //         .catch((error) => {
+    //           toast.error(error.message);
+    //         });
+    //       }
+    //     }
+    //   }, [session, dispatch]);
 
     return (
         <>

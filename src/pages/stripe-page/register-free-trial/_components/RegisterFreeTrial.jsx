@@ -53,7 +53,7 @@ const RegisterFreeTrial = () => {
     e.preventDefault();
     signIn("facebook", {
       // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
-      callbackUrl: `/stripe-page/subscription`,
+      callbackUrl: `/stripe-page/sso-redirecting`,
     });
   };
 
