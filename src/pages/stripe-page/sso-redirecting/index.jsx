@@ -1,12 +1,14 @@
 import { facebookLogin } from "@/store/slices/authSlice";
 import { Box, CircularProgress } from "@mui/material";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 const SsoRedirecting = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
+    const router = useRouter()
     const { data: session } = useSession();
     useEffect(() => {
         setLoading(true)
@@ -25,7 +27,7 @@ const SsoRedirecting = () => {
               alert("login with facebook");
               toast.success(t("login with facebook"));
               router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-              window.location.href = `/getStarted/getTitle?userName=${res?.name}`
+            //   window.location.href = `/getStarted/getTitle?userName=${res?.name}`
             })
             
             .catch((error) => {
