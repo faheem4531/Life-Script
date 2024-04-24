@@ -25,6 +25,7 @@ const SsoRedirecting = () => {
               alert("login with facebook");
               toast.success(t("login with facebook"));
               router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+              window.location.href = `/getStarted/getTitle?userName=${res?.name}`
             })
             
             .catch((error) => {
