@@ -22,7 +22,7 @@ const SsoRedirecting = () => {
             .then((res) => {
                 setLoading(false)
               console.log("Res Console" ,res)
-              alert(t("login with facebook"));
+              alert("login with facebook");
               toast.success(t("login with facebook"));
               router.push(`/getStarted/getTitle?userName=${res?.name}`); 
             })
