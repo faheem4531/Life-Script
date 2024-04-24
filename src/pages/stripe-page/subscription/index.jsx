@@ -10,6 +10,7 @@ import NewTabBar from './_components/NewTabBar';
 import { useSession } from 'next-auth/react';
 import { facebookLogin } from '@/store/slices/authSlice';
 import { useDispatch } from 'react-redux';
+import Bg from '@/_assets/png/bg-hurt-lite.png';
 
 const SubscriptionPage = () => {
   const dispatch = useDispatch();
@@ -73,11 +74,14 @@ const SubscriptionPage = () => {
           <NewTabBar tabs={tabsData} onClick={handleTabClick} />
         </Box>
 
-        <Box>
-          <Box mt="60px">
+        <Box sx={{ position: 'relative' }}>
+          <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 2 && <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />}
+          </Box>
+          <Box sx={{ position: 'absolute', right: 0, bottom: 0, display: { md: 'block', sm: 'none', xs: 'none' } }}>
+            <Image src={Bg} alt="img" />
           </Box>
         </Box>
       </Box>
