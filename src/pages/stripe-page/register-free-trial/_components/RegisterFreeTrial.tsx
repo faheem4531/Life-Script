@@ -5,8 +5,6 @@ import Image from "next/image";
 import googleLogo from "../../../../../public/googleIcon.svg";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
 
-import BasicPlanCard from "./BasicPlanCard";
-
 import {
   googleSignup,
   selectSocialUser,
@@ -19,14 +17,18 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { useSession, signIn, signOut } from "next-auth/react";
 
-const RegisterPage = ({ onClick, selectedTab }) => {
+
+const RegisterFreeTrial = () => {
+
+    const router = useRouter();
+    const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const { data: session } = useSession();
 
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/stripe-page/subscription",
+      callbackUrl: "/stripe-page/register-free-trial",
     });
   };
   console.log("data", session);
@@ -35,9 +37,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
     signOut();
   };
 
-  const router = useRouter();
-  const { price, category } = router.query;
-  const { t } = useTranslation();
+
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
@@ -48,8 +48,8 @@ const RegisterPage = ({ onClick, selectedTab }) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
       .then((res) => {
+        console.log("Res Console" ,res)
         toast.success(t("signup-page.signedUpSuccessfully"));
-        // router.push(`/getStarted?userName=${res.name}`);
         router.push(`/getStarted/getTitle?userName=${res?.name}`); 
       })
       .catch((error: any) => {
@@ -62,7 +62,6 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
       <Box
         sx={{ marginLeft: "100px", border: "2px soild green", width: "50%" }}
       >
@@ -233,21 +232,13 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                 backgroundColor: "#b5522d",
               },
             }}
-            onClick={() => onClick(selectedTab + 1)}
           >
             Continue
           </Button>
           {/* </form> */}
         </Box>
       </Box>
-
-      <Box sx={{ width: "50%" }}>
-        <Box>
-        <BasicPlanCard price={price} category={category}   />
-        </Box>
-      </Box>
-    </Box>
   );
 };
 
-export default RegisterPage;
+export default RegisterFreeTrial;

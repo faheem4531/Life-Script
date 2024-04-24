@@ -87,13 +87,20 @@ const Questionnaire = () => {
     //   dateOfBirth: val.dob,
     //   LanguagePreferences: val.lp,
     // });
+    
+    //spread operator use in setUserData
+    setUserData({
+      ...userData,
+      questionAskType: val?.frequency,
+      personalizedQuestion: val?.personal,
+    });
 
     dispatch(
       updateUserProfile({
         name: userData?.name,
-        questionAskType: val.frequency,
+        // questionAskType: val.frequency,
         bookUseFor: userData?.bookUseFor,
-        personalizedQuestion: val.personal,
+        // personalizedQuestion: val.personal,
         gender: userData?.gender,
         martialStatus: userData?.martialStatus,
         dateOfBirth: userData?.dateOfBirth,
@@ -101,7 +108,7 @@ const Questionnaire = () => {
       })
     )
 
-    dispatch()
+      // dispatch()
       .unwrap()
       .then(() => {
         // const username = localStorage.getItem("username");

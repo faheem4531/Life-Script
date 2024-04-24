@@ -12,7 +12,7 @@ import {
 import Head from "next/head";
 import Image from "next/image";
 import BgLogo from "../../_assets/svg/BgLogo.svg";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const StripePage = () => {
   const router = useRouter();
@@ -21,12 +21,16 @@ const StripePage = () => {
   const [showSecondForm, setShowSecondForm] = useState(false);
 
   const handleContinue = () => {
-    setShowSecondForm(true);
+    if (userType === "gift-of-someone-else") {
+      router.push("/stripe-page/gift-subscription");
+    } else {
+      setShowSecondForm(true);
+    }
     // router.push("/stripe-page/subscription");
   };
   const handleContinueNext = () => {
     if (paymentType === "free-trial") {
-      router.push("/stripe-page/gift-subscription");
+      router.push("/stripe-page/register-free-trial");
     } else {
       router.push("/stripe-page/subscription");
     }
@@ -217,8 +221,6 @@ const StripePage = () => {
                 </Box>
               </FormControl>
             )}
-
-
           </Box>
         </Box>
         <Box

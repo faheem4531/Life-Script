@@ -49,6 +49,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/stripe-page",
       "/stripe-page/subscription",
       "/stripe-page/gift-subscription",
+      "/stripe-page/register-free-trial",
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
