@@ -28,53 +28,36 @@ const RegisterFreeTrial = () => {
 
   const dispatch = useDispatch();
   const { data: session } = useSession();
-
-  // useEffect(() => {
-  //   if (session) {
-  //     if (session.user) {
-  //       const payload = {
-  //         name: session.user.name,
-  //         email: session.user.email
-  //       };
-  //       dispatch(facebookLogin(payload)) 
-  //       // .then((session) => {
-  //       //   console.log("Res Console" ,session)
-  //       //   toast.success(t("login with facebook"));
-  //       //   // router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
-  //       // })
-  //       // .catch((error: any) => {
-  //       //   toast.error(error.message);
-  //       // });
-  //     }
-  //   }
-  // }, [session, dispatch]);
-
-  // const handleSignin = async (e) => {
-  //   // e.preventDefault();
-  //   signIn("facebook", {
-  //     callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name}`,
-  //   });
-  // };
-
-  const handleFacebookLogin = async () => {
-    try {
-      await signIn("facebook");
-    } catch (error) {
-      console.error("Facebook login error:", error);
-      toast.error("Failed to login with Facebook");
-    }
-  };
+  console.log("Session Check ",session)
 
   useEffect(() => {
     if (session) {
       if (session.user) {
-        const { name, email } = session.user;
-        dispatch(facebookLogin({ name, email }));
-        toast.success("Logged in with Facebook");
-        router.push(`/getStarted/getTitle?userName=${name}`);
+        const payload = {
+          name: session.user.name,
+          email: session.user.email
+        };
+        dispatch(facebookLogin(payload)) 
+        // .then((session) => {
+        //   console.log("Res Console" ,session)
+        //   toast.success(t("login with facebook"));
+        //   // router.push(`/getStarted/getTitle?userName=${session?.user?.name}`); 
+        // })
+        // .catch((error: any) => {
+        //   toast.error(error.message);
+        // });
       }
     }
-  }, [session, dispatch, router]);
+  }, [session, dispatch]);
+
+  const handleSignin = async (e) => {
+    e.preventDefault();
+    signIn("facebook", {
+      callbackUrl: `/stripe-page/subscription`,
+    });
+  };
+
+
   
   console.log("data", session);
 
@@ -255,8 +238,7 @@ const RegisterFreeTrial = () => {
                   },
                   textTransform: "capitalize",
                 }}
-                // onClick={handleSignin}
-                onClick={handleFacebookLogin}
+                onClick={handleSignin}
               >
                 <Image
                   src={facebookIcon}
@@ -273,7 +255,7 @@ const RegisterFreeTrial = () => {
             variant="contained"
             color="primary"
             sx={{
-              width: "50%",
+              width: "200px",
               marginTop: "50px",
               bgcolor: "#e1693b",
               "&:hover": {
