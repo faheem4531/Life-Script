@@ -109,7 +109,7 @@ export default function Document() {
           }}
         />
 
-        <Script
+        {/* <Script
           id="plerdy-script"
           defer
           type="text/javascript"
@@ -125,7 +125,7 @@ export default function Document() {
       try{document.head.appendChild(plerdyScript)}catch(t){console.log(t,"unable add script tag")}
     `,
           }}
-        />
+        /> */}
         {/* Google Tag Manager Script */}
         <Script
 
