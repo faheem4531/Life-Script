@@ -23,7 +23,7 @@ const EmailVerification = () => {
   const { t } = useTranslation();
 
   function handleVerifyEmail() {
-    dispatch(verifyEmail({ email: userEmail, otp: otp }))
+    dispatch(verifyEmail({ email: userEmail, otp: otp, password: "", confirmPassword: "" }))
       .unwrap()
       .then(() => {
         toast.success(t("Verify.emailVerifiedSuccessfully"));
