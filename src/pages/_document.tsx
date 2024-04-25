@@ -112,6 +112,22 @@ export default function Document() {
       </Head>
       <body style={{ margin: 0 }}>
         <Main />
+        {/* Paste the Plerdy tracking script here */}
+        <Script
+          id="plerdy"
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              var _protocol="https:"==document.location.protocol?"https://":"http://";
+              _site_hash_code = "ec5ed5a2ee310ca961dd1dff624c8bee",_suid=50160, plerdyScript=document.createElement("script");
+              plerdyScript.setAttribute("defer",""),plerdyScript.dataset.plerdymainscript="plerdymainscript",
+              plerdyScript.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+              var plerdymainscript=document.querySelector("[data-plerdymainscript='plerdymainscript']");
+              plerdymainscript&&plerdymainscript.parentNode.removeChild(plerdymainscript);
+              try{document.head.appendChild(plerdyScript)}catch(t){console.log(t,"unable add script tag")}
+            `,
+          }}
+        />
         <NextScript />
       </body>
     </Html>
