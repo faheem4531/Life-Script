@@ -19,12 +19,12 @@ import { toast } from "react-toastify";
 
 const RegisterFreeTrial = () => {
 
-    const router = useRouter();
-    const { t } = useTranslation();
+  const router = useRouter();
+  const { t } = useTranslation();
 
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const { data: session } = useSession();
-  console.log("Session Check ",session)
+  console.log("Session Check ", session)
 
   // useEffect(() => {
   //   if (session) {
@@ -58,10 +58,10 @@ const RegisterFreeTrial = () => {
   };
 
 
-  
+
   console.log("data", session);
 
-  
+
   const handleSignout = (e) => {
     e.preventDefault();
     signOut();
@@ -78,9 +78,9 @@ const RegisterFreeTrial = () => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
       .then((res) => {
-        console.log("Res Console" ,res)
+        console.log("Res Console", res)
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+        router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
       .catch((error) => {
         toast.error(error.message);
@@ -92,182 +92,176 @@ const RegisterFreeTrial = () => {
   };
 
   return (
-      <Box
-        sx={{ marginLeft: "100px", border: "2px soild green", width: "50%" }}
-      >
-        <Typography variant="h4" sx={{ marginBottom: "30px" }}>
-          Register LifeScript
-        </Typography>
+    <Box
+      sx={{ border: "2px soild green", width: "100%" }}
+    >
+      <Typography variant="h4" sx={{ marginBottom: "60px" }}>
+        Register LifeScript
+      </Typography>
 
-        <Box sx={{ width: "530px" }}>
-          {/* <form > */}
-          <Box>
-            <Typography
-              sx={{
-                color: "#30422E",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Name
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="Enter your full name"
-              name="name"
-              sx={{
-                marginBottom: "10px",
-                width: "100%",
-                bgcolor: "white",
-              }}
-            />
-          </Box>
-
-          <Box>
-            <Typography
-              sx={{
-                color: "#30422E",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              Email
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="Enter your email address"
-              name="email"
-              sx={{
-                marginBottom: "10px",
-                width: "100%",
-                bgcolor: "white",
-              }}
-            />
-          </Box>
-
-          <Box
+      <Box sx={{ maxWidth: "600px", width: "100%" }}>
+        {/* <form > */}
+        <Box>
+          <Typography
             sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "10px",
+              color: "#30422E",
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
           >
-            <Box>
-              <Divider
-                sx={{
-                  marginTop: "10px",
-
-                  backgroundColor: "black",
-                  width: "240px",
-                }}
-                orientation="horizontal"
-              />
-            </Box>
-            <Box>
-              <Typography sx={{ marginLeft: "10px", color: "#0000006B" }}>
-                {"or"}
-              </Typography>
-            </Box>
-            <Box>
-              <Divider
-                sx={{
-                  marginTop: "10px",
-                  marginLeft: "10px",
-                  backgroundColor: "black",
-                  width: "240px",
-                }}
-                orientation="horizontal"
-              />
-            </Box>
-          </Box>
-
-          <Box
+            Name
+          </Typography>
+          <TextField
+            variant="outlined"
+            placeholder="Enter your full name"
+            name="name"
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 1,
-              justifyContent: "center",
+              marginBottom: "30px",
+              width: "100%",
+              bgcolor: "white",
             }}
-          >
-            <Box
-            //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
-            >
-              <Button
-                variant="contained"
-                type="submit"
-                onClick={() => handleGoogleLogin()}
-                sx={{
-                  borderRadius: "2px",
-                  backgroundColor: "#fff",
-                  padding: "10px 0",
-                  color: "#30422E",
-                  width: "530px",
-                  gap: "10px",
-                  marginTop: { xs: "20px" },
-                  "&:hover": {
-                    backgroundColor: "white",
-                  },
-                  textTransform: "capitalize",
-                }}
-              >
-                <Image
-                  src={googleLogo}
-                  alt="Google Logo"
-                  // width={24}
-                  // height={24}
-                />
-                <Typography>Login with Google</Typography>
-              </Button>
-            </Box>
-
-            {/* Login With Facebook */}
-            <Box
-            //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
-            >
-              <Button
-                variant="contained"
-                // type="submit"
-                sx={{
-                  borderRadius: "2px",
-                  backgroundColor: "#fff",
-                  padding: "10px 0",
-                  color: "#30422E",
-                  width: "530px",
-                  gap: "10px",
-                  marginTop: { xs: "20px" },
-                  "&:hover": {
-                    backgroundColor: "white",
-                  },
-                  textTransform: "capitalize",
-                }}
-                onClick={handleSignin}
-              >
-                <Image
-                  src={facebookIcon}
-                  alt="Facebook Logo"
-                  // width={24}
-                  // height={24}
-                />
-                <Typography>Login with Facebook</Typography>
-              </Button>
-            </Box>
-          </Box>
-
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              width: "200px",
-              marginTop: "50px",
-              bgcolor: "#e1693b",
-              "&:hover": {
-                backgroundColor: "#b5522d",
-              },
-            }}
-          >
-            Start 7-Day Free Trial
-          </Button>
-          {/* </form> */}
+          />
         </Box>
+
+        <Box>
+          <Typography
+            sx={{
+              color: "#30422E",
+              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+            }}
+          >
+            Email
+          </Typography>
+          <TextField
+            variant="outlined"
+            placeholder="Enter your email address"
+            name="email"
+            sx={{
+              marginBottom: "30px",
+              width: "100%",
+              bgcolor: "white",
+            }}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <Box>
+            <Divider
+              sx={{
+                backgroundColor: "black",
+                width: { md: "270px", sm: "210px", xs: "130px" },
+              }}
+              orientation="horizontal"
+            />
+          </Box>
+          <Box>
+            <Typography sx={{ margin: "0 20px", color: "#0000006B" }}>
+              {"or"}
+            </Typography>
+          </Box>
+          <Box>
+            <Divider
+              sx={{
+                backgroundColor: "black",
+                width: { md: "270px", sm: "210px", xs: "130px" },
+              }}
+              orientation="horizontal"
+            />
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 1,
+            justifyContent: "center",
+          }}
+        >
+          <Box
+          //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
+          >
+            <Button
+              variant="contained"
+              type="submit"
+              onClick={() => handleGoogleLogin()}
+              sx={{
+                borderRadius: "2px",
+                backgroundColor: "#fff",
+                padding: "10px 0",
+                color: "#30422E",
+                width: "100%",
+                height: "60px",
+                gap: "30px",
+                marginTop: { xs: "20px" },
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+                textTransform: "capitalize",
+              }}
+            >
+              <Image
+                src={googleLogo}
+                alt="Google Logo"
+              />
+              <Typography>Login with Google</Typography>
+            </Button>
+          </Box>
+
+          {/* Login With Facebook */}
+          <Box
+          //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
+          >
+            <Button
+              variant="contained"
+              // type="submit"
+              sx={{
+                borderRadius: "2px",
+                backgroundColor: "#fff",
+                padding: "10px 0",
+                color: "#30422E",
+                width: "100%",
+                height: "60px",
+                gap: "30px",
+                marginTop: { xs: "20px" },
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+                textTransform: "capitalize",
+              }}
+              onClick={handleSignin}
+            >
+              <Image
+                src={facebookIcon}
+                alt="Facebook Logo"
+              />
+              <Typography>Login with Facebook</Typography>
+            </Button>
+          </Box>
+        </Box>
+
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{
+            width: "260px",
+            marginTop: "60px",
+            height: "50px",
+            bgcolor: "#e1693b",
+            "&:hover": {
+              backgroundColor: "#b5522d",
+            },
+          }}
+        >
+          Start 7-Day Free Trial
+        </Button>
       </Box>
+    </Box>
   );
 };
 
