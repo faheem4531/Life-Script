@@ -100,7 +100,6 @@ const RegisterFreeTrial = () => {
       </Typography>
 
       <Box sx={{ maxWidth: "600px", width: "100%" }}>
-        {/* <form > */}
         <Box>
           <Typography
             sx={{
@@ -183,9 +182,7 @@ const RegisterFreeTrial = () => {
             justifyContent: "center",
           }}
         >
-          <Box
-          //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
-          >
+          <Box>
             <Button
               variant="contained"
               type="submit"
@@ -214,9 +211,7 @@ const RegisterFreeTrial = () => {
           </Box>
 
           {/* Login With Facebook */}
-          <Box
-          //   sx={{ width: { md: "60%", sm: "100%", xs: "70%" } }}
-          >
+          <Box>
             <Button
               variant="contained"
               // type="submit"
