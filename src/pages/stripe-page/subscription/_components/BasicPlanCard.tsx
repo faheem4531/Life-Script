@@ -91,7 +91,7 @@ const BasicPlanCard = ({ price, category }) => {
             fontFamily: 'Avenir8',
           }}
         >
-          {price ?? '$0'}
+          {price ? `$${price}` : "$0"}
           <Typography sx={{ color: 'black', fontSize: '12px', display: 'inline' }}>/ year</Typography>
         </Box>
       </Box>

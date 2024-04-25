@@ -1,10 +1,9 @@
-import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Box, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import BasicPlanCard from './BasicPlanCard';
 // import Image from 'next/image';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
 import CheckIcon from '@mui/icons-material/Check';
-// import { useRouter } from "next/router";
-import PaymentProcessingModal from './Modal';
+// import PaymentProcessingModal from './Modal';
 
 
 
@@ -59,12 +58,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
   const [selectedBooks, setSelectedBooks] = useState('default');
   const [referralCode, setReferralCode] = useState('');
-  // const [cardHolderName, setCardHolderName] = useState('');
-  // const [cardNumber, setCardNumber] = useState('');
-  // const [expiry, setExpiry] = useState('');
-  // const [cvc, setCvc] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
 
 
 
@@ -84,9 +79,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const elements = useElements();
   const { t } = useTranslation();
 
-  const {  category } = router.query;
-
-  const price = 179
+  const {price, category } = router.query;
 
   const handleSubmit = async (event) => {
     const subscriptionPrice = Number(price);
@@ -157,9 +150,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     setReferralCode(event.target.value);
   };
 
-  const handleCardHolderChange = (event) => {
-    setCardHolderName(event.target.value);
-  };
+  // const handleCardHolderChange = (event) => {
+  //   setCardHolderName(event.target.value);
+  // };
 
   // const handleCardNumberChange = (event) => {
   //   setCardNumber(event.target.value);
@@ -285,14 +278,44 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                   }}
                 >
                   <Box>
-                    <Box mb="20px">
-                      <Typography
+                  <Box
+                    //  mb="20px"
+                    >
+                      {/* <Typography
+                        sx={{
+                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                        }}
+                      >
+                        {t("SubsPlan.CardholderName")}
+                      </Typography> */}
+                      <TextField
+                        variant="outlined"
+                        onChange={(event: any) => setCardHolderName(event.target.value)}
+                        placeholder={`${t("SubsPlan.CardholderName")}`}
+                        name="title"
+                        sx={{
+                          // marginTop: "10px",
+                          "& .MuiOutlinedInput-root": {
+                            borderRadius: "3px",
+                            backgroundColor: "white",
+                            // border: "1px solid gray",
+                            height: "46px",
+                            p: "10px 22px",
+                          },
+                          width: "100%",
+                        }}
+                      />
+                    </Box>
+                    <Box
+                    // mb="20px"
+                    >
+                      {/* <Typography
                         sx={{
                           fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                         }}
                       >
                         {t("SubsPlan.CardNum")}
-                      </Typography>
+                      </Typography> */}
                       <Box
                         sx={{
                           width: "100%",
@@ -305,58 +328,39 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                         }}
                       >
                         <CardNumberElement
-                          options={options}
+                          options={{
+                            ...options,
+                            placeholder: 'Card Number', // Placeholder text
+                          }}
                           onChange={(event) => {
-                            console.log("CardNumberElement [change]", event);
+                            // console.log("CardNumberElement [change]", event);
                             setIsError(!event.complete || !!event.error);
                           }}
                         />
                       </Box>
                     </Box>
 
-                    <Box mb="20px">
-                      <Typography
-                        sx={{
-                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                        }}
-                      >
-                        {t("SubsPlan.CardholderName")}
-                      </Typography>
-                      <TextField
-                        variant="outlined"
-                        onChange={(event: any) => setCardHolderName(event.target.value)}
-                        placeholder={`${t("SubsPlan.CardholderName")}`}
-                        name="title"
-                        sx={{
-                          // marginTop: "10px",
-                          "& .MuiOutlinedInput-root": {
-                            borderRadius: "3px",
-                            backgroundColor: "white",
-                            border: "1px solid gray",
-                            height: "46px",
-                          },
-                          width: "100%",
-                        }}
-                      />
-                    </Box>
+                    
 
                     <Box
                       sx={{
                         display: "flex",
-                        gap: "20px",
+                        // gap: "20px",
                         alignItems: "center",
                         width: "100%",
                         // mb: "20px",
                       }}
                     >
-                      <Box flex={1}>
-                        <Typography
+                      <Box sx={{ width: "50%" }}
+                      // flex={1}
+                      >
+                        {/* <Typography
                           sx={{
                             fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                           }}
                         >
                           {t("SubsPlan.ExpDate")}
-                        </Typography>
+                        </Typography> */}
                         <Box
                           sx={{
                             width: "100%",
@@ -370,20 +374,22 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           <CardExpiryElement
                             options={options}
                             onChange={(event) => {
-                              console.log("CardExpiryElement [change]", event);
+                              // console.log("CardExpiryElement [change]", event);
                               setIsError(!event.complete || !!event.error);
                             }}
                           />
                         </Box>
                       </Box>
-                      <Box flex={1}>
-                        <Typography
+                      <Box sx={{ width: "50%" }}
+                      //  flex={1}
+                      >
+                        {/* <Typography
                           sx={{
                             fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                           }}
                         >
                           {t("SubsPlan.cvc")}
-                        </Typography>
+                        </Typography> */}
                         <Box
                           sx={{
                             width: "100%",
@@ -397,7 +403,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           <CardCvcElement
                             options={options}
                             onChange={(event) => {
-                              console.log("CardCvcElement [change]", event);
+                              // console.log("CardCvcElement [change]", event);
                               setIsError(!event.complete || !!event.error);
                             }}
                           />
@@ -430,7 +436,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                         btnText={
                           loading
                             ? "Loading..."
-                            : `Buy for ${price}`
+                            : `Buy for $${price}`
                         }
                         onClick={() => {
                           if (!loading && !isError && cardHolderName) {

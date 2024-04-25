@@ -9,19 +9,19 @@ const TabPanel = ({ onClick, selectedTab }) => {
     {
       id: 'basic',
       category: 'Basic',
-      price: '$139',
+      price: '139',
       card: '1',
     },
     {
-      id: 'standard',
-      category: 'Standard',
-      price: '$179',
+      id: 'gold',
+      category: 'Gold',
+      price: '179',
       card: '2',
     },
     {
       id: 'primium',
       category: 'Premium',
-      price: '$239',
+      price: '239',
       card: '3',
     },
   ];
