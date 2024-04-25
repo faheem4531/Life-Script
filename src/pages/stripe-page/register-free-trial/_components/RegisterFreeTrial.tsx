@@ -105,7 +105,9 @@ const RegisterFreeTrial = () => {
         .unwrap()
         .then(() => {
           toast.success(t("signup-page.verificationEmailSent"));
-          setOpenModal(true)
+          setTimeout(() => {
+            setOpenModal(true);
+          }, 3000);
           // router.push(`/verify/verificationSent/?email=${data.email}`);
         })
         .catch((error: any) => {
