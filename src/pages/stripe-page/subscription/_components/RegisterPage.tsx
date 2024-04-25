@@ -45,10 +45,14 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
-      .then((res) => {
+      .then((res:any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        // router.push(`/getStarted?userName=${res.name}`);
-        router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+        if (res.onBoarding) {
+          router.push("/stripe-page/subscription");
+        } else {
+          // If onBoarding is false, continue with the existing redirection
+          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+        }
       })
       .catch((error: any) => {
         toast.error(error.message);
