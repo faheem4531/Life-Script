@@ -18,7 +18,7 @@ import * as Yup from "yup";
 import googleLogo from "../../../public/googleIcon.svg";
 
 const Signup = ({ signupClick }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch: any = useDispatch();
   const router = useRouter();
@@ -38,9 +38,9 @@ const Signup = ({ signupClick }) => {
   //   socialSignin();
   // }, [status]);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword((prevShowPassword) => !prevShowPassword);
+  // };
 
   const handleRememberMeChange = (event: any) => {
     setRememberMe(event.target.checked);
@@ -73,7 +73,7 @@ const Signup = ({ signupClick }) => {
     initialValues: {
       email: "",
       name: "",
-      password: "",
+      // password: "",
     },
     onSubmit: async (data: SignupData) => {
       dispatch(signup(data))
@@ -88,9 +88,9 @@ const Signup = ({ signupClick }) => {
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required(t("signup-page.emailRequired")),
-      password: Yup.string()
-        .min(8, t("signup-page.passwordLength"))
-        .required(t("signup-page.passwordRequired")),
+      // password: Yup.string()
+      //   .min(8, t("signup-page.passwordLength"))
+      //   .required(t("signup-page.passwordRequired")),
       name: Yup.string().required(t("signup-page.nameRequired")),
     }),
   });
@@ -110,8 +110,6 @@ const Signup = ({ signupClick }) => {
         <Box>
           <Typography
             sx={{
-              // marginRight: "300px",
-              // marginTop: "24px",
               color: "#30422E",
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
             }}
@@ -171,7 +169,7 @@ const Signup = ({ signupClick }) => {
         )}
 
         <Box>
-          <Box>
+          {/* <Box>
             <Typography
               sx={{
                 // marginRight: "300px",
@@ -211,10 +209,10 @@ const Signup = ({ signupClick }) => {
                 ),
               }}
             />
-          </Box>
-          {formik.touched.password && formik.errors.password && (
+          </Box> */}
+          {/* {formik.touched.password && formik.errors.password && (
             <span style={{ color: "red" }}>{formik.errors.password}</span>
-          )}
+          )} */}
         </Box>
         <Box sx={{ justifyContent: "center", textAlign: "center" }}>
           <Button
