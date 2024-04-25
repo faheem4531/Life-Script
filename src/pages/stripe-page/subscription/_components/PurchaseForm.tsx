@@ -101,7 +101,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
           country: "USA",
           amount: subscriptionPrice,
           token: result.token,
-          packageName: "GoldPlan",
+          packageName: category,
           cardHolderName: cardHolderName,
         })
       )
