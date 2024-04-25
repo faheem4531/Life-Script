@@ -14,22 +14,33 @@ import Carousel from "./Carousel";
 import Carousel1 from "../../../public/carousel1.png";
 import Carousel2 from "../../../public/carousel.png";
 import Carousel3 from "../../../public/carousel3.png";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useFormik } from "formik";
+import { VerifyEmail } from "@/interface/authInterface";
+import * as Yup from "yup";
+
+
+
 const CryptoJS = require("crypto-js");
 
 const EmailVerification = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [showCPassword, setShowCPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [otp, setOtp] = useState("");
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
 
-  function handleVerifyEmail() {
-    dispatch(verifyEmail({ email: userEmail, otp: otp }))
+  function handleVerifyEmail(pass: any) {
+    dispatch(verifyEmail({ email: userEmail, otp: otp, password: pass }))
       .unwrap()
       .then(() => {
         toast.success(t("Verify.emailVerifiedSuccessfully"));
-        router.push("/");
+        router.push(`/getStarted?userName=${"Dumy Name"}`);
       })
       .catch((error: any) => {
         toast.error(error || t("Verify.failedVerifyEmail"));
@@ -44,7 +55,9 @@ const EmailVerification = () => {
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-
+  const toggleCPasswordVisibility = () => {
+    setShowCPassword((prevShowPassword) => !prevShowPassword);
+  };
   const handleRememberMeChange = (event: any) => {
     setRememberMe(event.target.checked);
   };
@@ -72,6 +85,26 @@ const EmailVerification = () => {
 
     // Add more images as needed
   ];
+
+  const formik = useFormik({
+    initialValues: {
+      email: userEmail,
+      password: "",
+      otp: otp
+    },
+    onSubmit: async (data: VerifyEmail) => {
+      handleVerifyEmail(data.password)
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required(t("signup-page.emailRequired")),
+      password: Yup.string()
+        .min(8, t("signup-page.passwordLength"))
+        .required(t("signup-page.passwordRequired")),
+      confirmPassword: Yup.string() // Define confirmPassword validation
+        .oneOf([Yup.ref('password'), null], "Password doesnot matches") // Ensure it matches the password
+        .required(t("signup-page.passwordRequired")),
+    }),
+  });
 
   return (
     <Box
@@ -107,7 +140,7 @@ const EmailVerification = () => {
         // textAlign={'center'}
         sx={{
           maxWidth: "460px",
-          margin: "0 auto",
+          margin: "50px auto",
           minWidth: "280px",
           width: "100%",
           marginX: { sx: "0 35px" },
@@ -118,10 +151,16 @@ const EmailVerification = () => {
           <Typography
             sx={{ color: "#30422E", fontSize: "30px", marginTop: "50px" }}
           >
-            {t("Verify.emailVerification")}
+            Set Password
+          </Typography>
+          <Typography
+            sx={{ color: "#30422E", fontSize: "20px", marginTop: "10px" }}
+          >
+            Secure your account with a strong password.
           </Typography>
         </Box>
         <Box sx={{ marginTop: "70px" }}>
+          {/* Email  */}
           <Box>
             <Typography
               sx={{
@@ -141,30 +180,114 @@ const EmailVerification = () => {
               sx={{
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "2px", // Adjust the border radius as needed
+                  borderRadius: "2px",
                 },
                 width: "100%",
               }}
             />
           </Box>
-          <Typography
-            sx={{ marginTop: "23px", color: "#30422E", fontSize: "21px" }}
-          >
-            {t("Verify.emailVerified")}
-            {/* <br /> {t("Verify.proceedForward")} */}
-          </Typography>
 
+          {/* Password  */}
+          <Box>
+            <Typography
+              sx={{
+                marginTop: "24px",
+                color: "#30422E",
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              {t("signup-page.password")}
+            </Typography>
+            <TextField
+              sx={{
+                margin: "10px 0",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "2px",
+                  backgroundColor: "white",
+                },
+                width: "100%",
+              }}
+              placeholder={t("signup-page.enter-password")}
+              name="password"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Box>
+          {formik.touched.password && formik.errors.password && (
+            <span style={{ color: "red" }}>{formik.errors.password}</span>
+          )}
+
+          {/* Confirm passowrd  */}
+          <Box>
+            <Typography
+              sx={{
+                marginTop: "24px",
+                color: "#30422E",
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              Confirm Password
+            </Typography>
+            <TextField
+              sx={{
+                margin: "10px 0",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "2px",
+                  backgroundColor: "white",
+                },
+                width: "100%",
+              }}
+              placeholder={"Re-Enter the password"}
+              name="confirmPassword"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type={showCPassword ? "text" : "password"}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={toggleCPasswordVisibility} edge="end">
+                      {showCPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Box>
+          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+            <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
+          )}
+          {/* Lets begin btn  */}
           <Box
             sx={{
               justifyContent: "center",
               textAlign: "center",
-              marginTop: "130px",
+              marginTop: "70px",
             }}
           >
             <Button
               variant="contained"
               disabled={!userEmail}
-              onClick={(event: any) => handleVerifyEmail()}
+              onClick={(event) => formik.handleSubmit()}
               sx={{
                 borderRadius: "2px",
                 padding: "10px 0",

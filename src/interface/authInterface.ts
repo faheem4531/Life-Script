@@ -24,6 +24,7 @@ export interface SignupData {
 export interface VerifyEmail {
   email: string;
   otp: string;
+  password: string;
 }
 
 export interface ForgetPass {
