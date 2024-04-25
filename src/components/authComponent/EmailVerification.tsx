@@ -37,8 +37,11 @@ const EmailVerification = () => {
 
   function handleVerifyEmail(pass: any) {
     dispatch(verifyEmail({ email: userEmail, otp: otp, password: pass, confirmPassword: pass }))
+
       .unwrap()
       .then(() => {
+        console.log({ userEmail, otp, pass }, " dataa");
+
         toast.success(t("Verify.emailVerifiedSuccessfully"));
         router.push(`/getStarted?userName=${"Dumy Name"}`);
       })
@@ -94,6 +97,8 @@ const EmailVerification = () => {
       otp: otp
     },
     onSubmit: async (data: VerifyEmail) => {
+      console.log(data, "  verify data");
+
       handleVerifyEmail(data.password)
     },
     validationSchema: Yup.object({

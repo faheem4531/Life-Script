@@ -203,6 +203,7 @@ export const verifyEmail = createAsyncThunk<UserData, VerifyEmail>(
   async (data) => {
     try {
       const response = await verifyEmailApi(data);
+      console.log(response, "api response ");
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -339,7 +340,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const {} = authSlice.actions;
+export const { } = authSlice.actions;
 
 export const selectUser = (state: { auth: any }) => state.auth.user;
 
