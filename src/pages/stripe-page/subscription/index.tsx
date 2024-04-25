@@ -12,8 +12,14 @@ import { facebookLogin } from '@/store/slices/authSlice';
 import { useDispatch } from 'react-redux';
 import Bg from '@/_assets/png/bg-hurt-lite.png';
 
+
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
+
 const SubscriptionPage = () => {
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
   const { data: session } = useSession();
 
@@ -78,7 +84,12 @@ const SubscriptionPage = () => {
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 2 && <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />}
+            {selectedTab === 2 &&
+              <Elements stripe={stripePromise}>
+
+                <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
+              </Elements>
+            }
           </Box>
           <Box sx={{ position: 'absolute', right: 0, bottom: 0, display: { md: 'block', sm: 'none', xs: 'none' } }}>
             <Image src={Bg} alt="img" />
