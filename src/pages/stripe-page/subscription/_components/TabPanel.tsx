@@ -13,8 +13,8 @@ const TabPanel = ({ onClick, selectedTab }) => {
       card: '1',
     },
     {
-      id: 'gold',
-      category: 'Gold',
+      id: 'standard',
+      category: 'Standard',
       price: '179',
       card: '2',
     },

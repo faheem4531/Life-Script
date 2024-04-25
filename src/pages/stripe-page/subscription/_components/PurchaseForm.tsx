@@ -79,7 +79,23 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const elements = useElements();
   const { t } = useTranslation();
 
-  const {price, category } = router.query;
+  // const {price, category } = router.query;
+  // console.log("Category------",category)
+  const { price, category } = router.query;
+  // console.log("Category------", replaceCategory(category));
+
+  function replaceCategory(category) {
+    switch (category) {
+      case "Basic":
+        return "BasicPlan";
+      case "Standard":
+        return "GoldPlan";
+      case "Premium":
+        return "PremiumPlan";
+      default:
+        return category;
+    }
+  }
 
   const handleSubmit = async (event) => {
     const subscriptionPrice = Number(price);
@@ -101,7 +117,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
           country: "USA",
           amount: subscriptionPrice,
           token: result.token,
-          packageName: category,
+          packageName: replaceCategory(category),
           cardHolderName: cardHolderName,
         })
       )
@@ -278,7 +294,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                   }}
                 >
                   <Box>
-                  <Box
+                    <Box
                     //  mb="20px"
                     >
                       {/* <Typography
@@ -340,7 +356,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                       </Box>
                     </Box>
 
-                    
+
 
                     <Box
                       sx={{
