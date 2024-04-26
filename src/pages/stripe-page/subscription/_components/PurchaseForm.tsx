@@ -56,7 +56,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
 
 
-  const [selectedBooks, setSelectedBooks] = useState('default');
+  const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
   // const [openModal, setOpenModal] = useState(false);
@@ -74,14 +74,17 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const [stripeSucceed, setStripeSucceed] = useState(false);
   const [stripeFailed, setStripeFailed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [commissionState, setCommissionState] = useState(0);
   const stripe = useStripe();
   const router = useRouter();
   const elements = useElements();
   const { t } = useTranslation();
 
+
   // const {price, category } = router.query;
   // console.log("Category------",category)
   const { price, category } = router.query;
+  
   // console.log("Category------", replaceCategory(category));
 
   function replaceCategory(category) {
@@ -106,11 +109,17 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     )
     .unwrap()
     .then((res) => {
-console.log("VerifyReferralCode",res)
+      setCommissionState(res.commission_percent)
     })
     .catch(()=>{
       
     })
+  }
+
+  const totalPriceCalculation = (subscriptionPrice, booksNumber) => {
+    let totalBookPrice = booksNumber * 39;
+    let totalPriceWithBook = subscriptionPrice + totalBookPrice;
+    return totalPriceWithBook
   }
 
   const handleSubmit = async (event) => {
@@ -128,16 +137,17 @@ console.log("VerifyReferralCode",res)
       setIsError(true);
       setStripeFailed(true);
     } else {
+      const totalPrice = totalPriceCalculation(subscriptionPrice, selectedBooks) 
       dispatch(
         stripePaymentRegister({
           country: "USA",
-          amount: subscriptionPrice,
+          amount: totalPrice,
           token: result.token,
           packageName: replaceCategory(category),
           cardHolderName: cardHolderName,
-          numberOfBooks: 2,
-          bookPrice: 120,
-          commission: 10,
+          numberOfBooks: selectedBooks && selectedBooks,
+          bookPrice: selectedBooks && selectedBooks * 39,
+          commission: commissionState,
           processFrom: "register"
         })
       )
@@ -170,7 +180,7 @@ console.log("VerifyReferralCode",res)
 
 
   const dropDownOptions = [
-    { value: 'default', label: 'Included with Subscription', hidden: true },
+    { value: 0, label: 'Included with Subscription', hidden: true },
     { value: 1, label: "(1 extra books)", price: "+ $78", color: "#e1693b" },
     { value: 2, label: "(2 extra books)", price: "+ $138", color: "#e1693b" },
     { value: 3, label: "(3 extra books)", price: "+ $679", color: "#e1693b" },
@@ -475,7 +485,7 @@ console.log("VerifyReferralCode",res)
                         btnText={
                           loading
                             ? "Loading..."
-                            : `Buy for $${price}`
+                            : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
                         }
                         onClick={() => {
                           if (!loading && !isError && cardHolderName) {
