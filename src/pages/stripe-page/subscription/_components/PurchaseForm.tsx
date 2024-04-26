@@ -79,7 +79,10 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const elements = useElements();
   const { t } = useTranslation();
 
-  const { price, category } = router.query;
+  // const { price, category } = router.query;
+
+  const price = localStorage.getItem("price");
+  const category = localStorage.getItem("category");
 
 
   function replaceCategory(category) {

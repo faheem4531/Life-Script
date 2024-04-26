@@ -35,6 +35,8 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
   const router = useRouter();
   const { price, category } = router.query;
+  localStorage.setItem("price", price.toString());
+  localStorage.setItem("category", category.toString());
   const { t } = useTranslation();
 
   const handleGoogleLogin = useGoogleLogin({
