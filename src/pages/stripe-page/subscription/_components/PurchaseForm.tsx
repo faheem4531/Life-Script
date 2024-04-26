@@ -124,8 +124,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   }
 
   const handleSubmit = async (event) => {
+    setConfirmationStripe(true); //open the modal
+
     const subscriptionPrice = Number(price);
-    setConfirmationStripe(false);
     event.preventDefault();
     setLoading(true);
     if (!stripe || !elements) {
@@ -443,7 +444,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                         //   }
                         // }}
                         onClick={handleSubmit}
-                        
+
                         p={"10px 20px"}
                         width={"200px"}
                       />

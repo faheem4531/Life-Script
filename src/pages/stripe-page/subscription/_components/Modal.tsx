@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Logo from "@/_assets/svg/Frame.svg"
 import Image from 'next/image';
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
+import { useRouter } from "next/router";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -26,8 +27,9 @@ const style = {
   alignItems: "center"
 };
 
-export default function PaymentProcessingModal({ openModal, handleClose, selectedTab,stripeSucceed,stripeFailed }) {
+export default function PaymentProcessingModal({ openModal, handleClose, selectedTab, stripeSucceed, stripeFailed }) {
   const [value, setValue] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,11 +43,16 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
         // Otherwise, continue incrementing
         return prevValue + 1;
       });
-    }, 40);
+    }, 60);
 
     // Clear the interval when the component unmounts
     return () => clearInterval(interval);
   }, []);
+
+  function handleLetMeIn() {
+    const name = localStorage.getItem("username");
+    router.push(`/getStarted?userName=${name}`);
+  }
 
   return (
     <Modal
@@ -65,18 +72,25 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
         <Box sx={{ ...style, padding: { sm: "40px", xs: "30px" } }}>
           <Image src={Logo} alt="logo" />
           <Typography id="transition-modal-title" sx={{ margin: { sm: "40px 0", xs: "25px 0" }, fontSize: { sm: "32px", xs: "28px" } }}>
-            {value === 100 && selectedTab !== "verify" ? 'Transaction Successful!' : selectedTab !== "verify" ? 'Processing..' : ''}
+            {/* {value === 100 && selectedTab !== "verify" && stripeSucceed ? 'Transaction Successful!' : selectedTab !== "verify" ? 'Processing..' : ''} */}
+
+            {value === 100 && selectedTab !== "verify" && stripeSucceed ? 'Transaction Successful!'
+              : selectedTab !== "verify" && stripeFailed ? 'Transaction Failed!'
+                : selectedTab !== "verify" ? 'Processing..' : ''}
+
+
             {selectedTab == "verify" && "Email Verification"}
           </Typography>
-          {selectedTab !== "verify" &&
+          {selectedTab !== "verify" && !stripeFailed &&
             < Box sx={{ width: { xs: "300px", sm: "470px" } }}>
               <ReloadingBar value={value} />
             </Box>}
-          {value == 100 && selectedTab == 2 &&
+          {value == 100 && selectedTab == 2 && !stripeFailed &&
             <Button
               type="submit"
               variant="contained"
               color="primary"
+              onClick={handleLetMeIn}
               sx={{
                 width: "260px",
                 marginTop: { sm: "40px", xs: "25px" },
