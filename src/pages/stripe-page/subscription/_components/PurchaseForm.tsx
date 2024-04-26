@@ -12,7 +12,6 @@ import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
-// import { Box, TextField, Typography } from "@mui/material";
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -26,6 +25,7 @@ import { useRouter } from "next/router";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -80,12 +80,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const elements = useElements();
   const { t } = useTranslation();
 
-
-  // const {price, category } = router.query;
-  // console.log("Category------",category)
   const { price, category } = router.query;
   
-  // console.log("Category------", replaceCategory(category));
 
   function replaceCategory(category) {
     switch (category) {
@@ -95,8 +91,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
         return "GoldPlan";
       case "Premium":
         return "PremiumPlan";
-      default:
-        return category;
     }
   }
 
@@ -109,11 +103,14 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     )
     .unwrap()
     .then((res) => {
-      setCommissionState(res.commission_percent)
+      setCommissionState(res.commission_percent);
+      // Show toast message when referral code is verified
+      toast.success("Referral code verified successfully!");
     })
-    .catch(()=>{
-      
-    })
+    .catch(() => {
+      // Handle error
+      toast.error("Error verifying referral code!");
+    });
   }
 
   const totalPriceCalculation = (subscriptionPrice, booksNumber) => {
@@ -138,6 +135,22 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
       setStripeFailed(true);
     } else {
       const totalPrice = totalPriceCalculation(subscriptionPrice, selectedBooks) 
+
+      // console.log("Total Price:", totalPrice);
+  
+      // const payload = {
+      //   country: "USA",
+      //   amount: totalPrice,
+      //   token: result.token,
+      //   packageName: replaceCategory(category),
+      //   cardHolderName: cardHolderName,
+      //   numberOfBooks: selectedBooks && selectedBooks,
+      //   bookPrice: selectedBooks && selectedBooks * 39,
+      //   commission: commissionState,
+      //   processFrom: "register"
+      // };
+    
+      // console.log("Payload:", payload);
       dispatch(
         stripePaymentRegister({
           country: "USA",
@@ -196,21 +209,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     setReferralCode(event.target.value);
   };
 
-  // const handleCardHolderChange = (event) => {
-  //   setCardHolderName(event.target.value);
-  // };
-
-  // const handleCardNumberChange = (event) => {
-  //   setCardNumber(event.target.value);
-  // };
-
-  // const handleExpiryChange = (event) => {
-  //   setExpiry(event.target.value);
-  // };
-
-  // const handleCvcChange = (event) => {
-  //   setCvc(event.target.value);
-  // };
 
   const handleSubscribeUpdatesChange = (event) => {
     setSubscribeUpdates(event.target.checked);
@@ -288,36 +286,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
                 <Typography sx={{ marginBottom: "5px" }}>Prefer to enter details manually? Please provide your payment info below.</Typography>
 
-                {/* <Box>
-                  <TextField
-                    label="Card Holder Name"
-                    value={cardHolderName}
-                    onChange={handleCardHolderChange}
-                    sx={{ width: "100%", backgroundColor: "white" }}
-                  />
-                  <TextField
-                    label="Card Number"
-                    value={cardNumber}
-                    onChange={handleCardNumberChange}
-                    sx={{ width: "100%", backgroundColor: "white" }}
-                  />
-                  <Box sx={{ width: "100%", display: "flex" }}>
-                    <TextField
-                      label="MM/YY"
-                      value={expiry}
-                      onChange={handleExpiryChange}
-                      sx={{ width: "50%", backgroundColor: "white" }}
-                    />
-                    <TextField
-                      label="CVC"
-                      value={cvc}
-                      onChange={handleCvcChange}
-                      sx={{ width: "50%", backgroundColor: "white" }}
-                    />
-                  </Box>
-
-                </Box> */}
-
                 <Box
                   sx={{
                     display: "flex",
@@ -327,16 +295,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                   }}
                 >
                   <Box>
-                    <Box
-                    //  mb="20px"
-                    >
-                      {/* <Typography
-                        sx={{
-                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                        }}
-                      >
-                        {t("SubsPlan.CardholderName")}
-                      </Typography> */}
+                    <Box>
                       <TextField
                         variant="outlined"
                         onChange={(event: any) => setCardHolderName(event.target.value)}
@@ -355,16 +314,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                         }}
                       />
                     </Box>
-                    <Box
-                    // mb="20px"
-                    >
-                      {/* <Typography
-                        sx={{
-                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                        }}
-                      >
-                        {t("SubsPlan.CardNum")}
-                      </Typography> */}
+                    <Box>
                       <Box
                         sx={{
                           width: "100%",
@@ -400,16 +350,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                         // mb: "20px",
                       }}
                     >
-                      <Box sx={{ width: "50%" }}
-                      // flex={1}
-                      >
-                        {/* <Typography
-                          sx={{
-                            fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                          }}
-                        >
-                          {t("SubsPlan.ExpDate")}
-                        </Typography> */}
+                      <Box sx={{ width: "50%" }}>
                         <Box
                           sx={{
                             width: "100%",
@@ -429,16 +370,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           />
                         </Box>
                       </Box>
-                      <Box sx={{ width: "50%" }}
-                      //  flex={1}
-                      >
-                        {/* <Typography
-                          sx={{
-                            fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                          }}
-                        >
-                          {t("SubsPlan.cvc")}
-                        </Typography> */}
+                      <Box sx={{ width: "50%" }}>
                         <Box
                           sx={{
                             width: "100%",
