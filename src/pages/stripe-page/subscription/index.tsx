@@ -77,7 +77,7 @@ const SubscriptionPage = () => {
             marginLeft: { sm: '70px', xs: '20px' },
           }}
         >
-          <NewTabBar tabs={tabsData} onClick={handleTabClick} />
+          <NewTabBar tabs={tabsData} onClick={() => { }} />
         </Box>
 
         <Box sx={{ position: 'relative' }}>
@@ -86,7 +86,6 @@ const SubscriptionPage = () => {
             {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
-
                 <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
               </Elements>
             }

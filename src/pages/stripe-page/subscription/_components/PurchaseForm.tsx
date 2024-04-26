@@ -1,12 +1,7 @@
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import BasicPlanCard from './BasicPlanCard';
-// import Image from 'next/image';
 import CheckIcon from '@mui/icons-material/Check';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
-// import PaymentProcessingModal from './Modal';
-
-
-
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
@@ -27,6 +22,8 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import PaymentProcessingModal from './Modal';
+import Check from "@/_assets/svg/varifyedCheck.svg"
+import UnCheck from "@/_assets/svg/unVarifiedCheck.svg"
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -61,7 +58,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-
+  const [paymentSucess, setPaymentSucess] = useState(false)
+  const [paymentFail, setPaymentFail] = useState(false)
 
 
 
@@ -82,7 +80,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const { t } = useTranslation();
 
   const { price, category } = router.query;
-  
+
 
   function replaceCategory(category) {
     switch (category) {
@@ -102,16 +100,21 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
         id: referralCode
       })
     )
-    .unwrap()
-    .then((res) => {
-      setCommissionState(res.commission_percent);
-      // Show toast message when referral code is verified
-      toast.success("Referral code verified successfully!");
-    })
-    .catch(() => {
-      // Handle error
-      toast.error("Error verifying referral code!");
-    });
+      .unwrap()
+      .then((res) => {
+
+        setCommissionState(res.commission_percent);
+        // Show toast message when referral code is verified
+        setPaymentSucess(true)
+        setPaymentFail(false)
+        toast.success("Referral code verified successfully!");
+      })
+      .catch(() => {
+        // Handle error
+        setPaymentSucess(false)
+        setPaymentFail(true)
+        toast.error("Error verifying referral code!");
+      });
   }
 
   const totalPriceCalculation = (subscriptionPrice, booksNumber) => {
@@ -135,10 +138,10 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
       setIsError(true);
       setStripeFailed(true);
     } else {
-      const totalPrice = totalPriceCalculation(subscriptionPrice, selectedBooks) 
+      const totalPrice = totalPriceCalculation(subscriptionPrice, selectedBooks)
 
       // console.log("Total Price:", totalPrice);
-  
+
       // const payload = {
       //   country: "USA",
       //   amount: totalPrice,
@@ -150,7 +153,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
       //   commission: commissionState,
       //   processFrom: "register"
       // };
-    
+
       // console.log("Payload:", payload);
       dispatch(
         stripePaymentRegister({
@@ -266,7 +269,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                 </Select>
               </Box>
 
-              <Box sx={{ marginBottom: "40px" }}>
+              <Box sx={{ marginBottom: "40px", position: "relative" }}>
                 <Typography>Referred by a friend? Enter Referral code here</Typography>
                 <Divider sx={{ width: "100%" }} />
 
@@ -274,11 +277,23 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                   label="Referral Code"
                   value={referralCode}
                   onChange={handleReferralCodeChange}
-                  sx={{ width: "100%", backgroundColor: "white", marginTop: "15px" }}
+                  sx={{ width: "100%", backgroundColor: "white", marginTop: "15px", }}
                 />
-                <Button onClick={()=>{HandleVerifyReferralCode(referralCode)}}>
-                  Verify
-                </Button>
+                <Box sx={{
+                  position: "absolute",
+                  right: "12px",
+                  bottom: "12px",
+                  borderRadius: "4px", p: "0 10px",
+                  display: "flex",
+                  alignItems: "center",
+                  bgcolor: (paymentSucess && "#7F886B") || (paymentFail && "#F06262") || (!paymentFail && !paymentSucess && "#F4F4F4"),
+                }}>
+                  <Button sx={{ color: paymentSucess || paymentFail ? "#FFF" : "#30422E" }}
+                    onClick={() => { HandleVerifyReferralCode(referralCode) }}>
+                    Verify
+                  </Button>
+                  {paymentSucess || paymentFail && <Image src={paymentSucess ? Check : UnCheck} alt="checks" />}
+                </Box>
               </Box>
 
               <Box>
@@ -469,7 +484,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
 
       <PaymentProcessingModal
-        openModal={confirmationStripe} 
+        openModal={confirmationStripe}
         selectedTab={selectedTab}
         handleClose={() => setConfirmationStripe(false)}
         stripeSucceed={stripeSucceed}

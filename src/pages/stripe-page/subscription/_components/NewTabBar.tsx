@@ -10,7 +10,7 @@ const NewTabBar = ({ tabs, onClick }) => {
       sx={{
         color: "black",
         width: "100%",
-        maxWidth: "1500px",
+        maxWidth: "1500px"
       }}
     >
       {tabs?.map(
