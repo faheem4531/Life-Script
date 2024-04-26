@@ -34,7 +34,7 @@ const getStarted = () => {
           }, 3000);
         } else {
           // setTimeout(() => {
-          router.push(`/getStarted/getTitle?userName=${userName ? userName : name}`);
+          router.push(`/getStarted/getTitle?userName=${name ? name : userName}`);
           // }, 3000);
         }
       })
