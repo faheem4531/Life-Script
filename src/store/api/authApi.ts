@@ -118,7 +118,7 @@ export async function googleSignupApi(data: { credential: string }) {
 }
 
 export async function facebookSignupApi(data: { credential: string }) {
-  localStorage.clear();
+  // localStorage.clear();
   try {
     const res = await api.post("/auth/facebook/callback/sign-up", data);
     localStorage.setItem("token", res.token);
@@ -326,7 +326,7 @@ export async function signupApi(data: SignupData) {
 }
 
 export async function signupApiWithBuy(data: SignupData) {
-  localStorage.clear();
+  // localStorage.clear();
   try {
     const res = await api.post("/auth/", data);
     localStorage.setItem("accessRole", res?.data?.accessRole);
