@@ -121,7 +121,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
           cardHolderName: cardHolderName,
           numberOfBooks: 2,
           bookPrice: 120,
-          commission: 10
+          commission: 10,
+          processFrom: "register"
         })
       )
         .unwrap()

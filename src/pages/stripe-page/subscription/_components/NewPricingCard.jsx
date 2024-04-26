@@ -127,7 +127,7 @@ const NewPricingCard = ({ price, category, card, id, handleHover }) => {
           }}
           className={styles.price}
         >
-          {price}
+          ${price}
           <Typography sx={{ color: '#BFC4B5', fontSize: '14px', display: 'inline' }}>/ year</Typography>
         </Box>
 
