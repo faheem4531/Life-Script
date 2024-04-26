@@ -8,7 +8,6 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -34,10 +33,11 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
   const router = useRouter();
   const { price, category } = router.query;
-  const priceString = Array.isArray(price) ? price.join(', ') : price.toString();
-  const categoryString = Array.isArray(category) ? category.join(', ') : category.toString();
-  localStorage.setItem("price", priceString);
-      localStorage.setItem("category", categoryString);
+  
+  // const priceString = Array.isArray(price) ? price.join(', ') : price.toString();
+  // const categoryString = Array.isArray(category) ? category.join(', ') : category.toString();
+  // localStorage.setItem("price", priceString);
+  //     localStorage.setItem("category", categoryString);
   const { t } = useTranslation();
 
   const handleGoogleLogin = useGoogleLogin({
@@ -45,12 +45,12 @@ const RegisterPage = ({ onClick, selectedTab }) => {
     onError: () => handleGoogleLoginFailure(),
   });
 
-  useEffect(()=>{
-    if (typeof window != "undefined") {
-      localStorage.setItem("price", priceString);
-      localStorage.setItem("category", categoryString);
-    }
-  },[])
+  // useEffect(()=>{
+  //   if (typeof window != "undefined") {
+  //     localStorage.setItem("price", priceString);
+  //     localStorage.setItem("category", categoryString);
+  //   }
+  // },[])
 
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
