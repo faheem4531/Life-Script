@@ -8,6 +8,7 @@ import Arrow from "@/_assets/svg/getStarted-aero.svg";
 const QuestionnaireLanding = () => {
   const router = useRouter();
   const { userName } = router.query;
+  const name = localStorage.getItem("username");
 
   return (
     <Box className={styles.QuestionnaireLandingMain} onClick={() => {
@@ -32,7 +33,7 @@ const QuestionnaireLanding = () => {
               mt: "20px",
             }}
           >
-            Hi {userName}, Thank you for embarking on this journey!
+            Hi {name ? name : userName}, Thank you for embarking on this journey!
           </Typography>
 
           <Typography

@@ -108,7 +108,10 @@ const RegisterFreeTrial = () => {
           setTimeout(() => {
             setOpenModal(true);
           }, 3000);
-          // router.push(`/verify/verificationSent/?email=${data.email}`);
+          setTimeout(() => {
+            const name = localStorage.getItem("username");
+            router.push(`/getStarted?userName=${name}`);
+          }, 3000);
         })
         .catch((error: any) => {
           toast.error(error?.message || t("signup-page.failedSignup"));

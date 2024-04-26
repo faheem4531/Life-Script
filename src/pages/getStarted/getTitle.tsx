@@ -15,10 +15,11 @@ import DotsLeft from "@/_assets/svg/dots-left.svg";
 import DotsRight from "@/_assets/svg/dots-right.svg";
 
 const getTitle = () => {
+  const name = localStorage.getItem("username");
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { userName } = router.query;
-  const [text, setText] = useState(`Life of ${userName}`);
+  const [text, setText] = useState(`Life of ${userName ? userName : name}`);
   const maxLength = 30; // Set the maximum character count to 20
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();

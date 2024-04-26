@@ -309,10 +309,7 @@ export async function signupApi(data: SignupData) {
   try {
     const res = await api.post("/auth/", data);
     localStorage.setItem("accessRole", res?.data?.accessRole);
-    if (res?.token) {
-      localStorage.setItem("token", res.token);
-    }
-
+    localStorage.setItem("token", res?.accessToken);
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
