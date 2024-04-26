@@ -84,8 +84,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   // const [price, setPrice] = useState("");
   // const [category, setCategory] = useState("");
 
-  const price =localStorage.getItem("price")
-  const category =localStorage.getItem("category")
+  const price = localStorage.getItem("price")
+  const category = localStorage.getItem("category")
   // useEffect(()=>{
   //   if (typeof window != "undefined") {
   //     const p = localStorage.getItem("price");
@@ -202,7 +202,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             }
           } else {
             setStripeSucceed(true);
-            router.push(`/getStarted/getTitle?userName=${res?.name}`);
+            // router.push(`/getStarted/getTitle?userName=${res?.name}`);
           }
         })
         .catch((error) => {
