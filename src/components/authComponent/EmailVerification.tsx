@@ -36,14 +36,16 @@ const EmailVerification = () => {
   const { t } = useTranslation();
 
   function handleVerifyEmail(pass: any) {
-    dispatch(verifyEmail({ email: pass.email, otp: pass.otp, password: pass.password}))
+    dispatch(verifyEmail({ email: pass.email, otp: pass.otp, password: pass.password }))
 
       .unwrap()
       .then(() => {
-        console.log({ userEmail, otp, pass }, " dataa");
+        console.log(pass, "verifyEmail dataaaaa");
+        // console.log({ userEmail, otp, pass }, " dataa");
 
         toast.success(t("Verify.emailVerifiedSuccessfully"));
-        router.push(`/getStarted?userName=${"Dumy Name"}`);
+        const name = localStorage.getItem("username");
+        router.push(`/getStarted?userName=${name}`);
       })
       .catch((error: any) => {
         toast.error(error || t("Verify.failedVerifyEmail"));

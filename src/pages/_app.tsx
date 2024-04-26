@@ -54,6 +54,11 @@ export default function App({ Component, pageProps }: AppProps) {
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
+    if (currentPath.startsWith("/verify") && userLoggedIn) {
+      // If it's a /verify route with a token parameter, continue regardless of login status
+      setLoading(false);
+      return; // No need to redirect further
+    }
     if (publicRoutes.some((route) => route.includes(currentPath))) {
       if (!userLoggedIn)
         id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
