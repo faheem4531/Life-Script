@@ -1,5 +1,5 @@
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
-import { getUserProfile, updateUserProfile } from "@/store/slices/authSlice";
+import { getUserProfile, updateUserProfile, stripeDone } from "@/store/slices/authSlice";
 import { Box, CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -87,7 +87,7 @@ const Questionnaire = () => {
     //   dateOfBirth: val.dob,
     //   LanguagePreferences: val.lp,
     // });
-    
+
     //spread operator use in setUserData
     setUserData({
       ...userData,
@@ -112,10 +112,12 @@ const Questionnaire = () => {
       // dispatch()
       .unwrap()
       .then(() => {
+        dispatch(stripeDone())
         // const username = localStorage.getItem("username");
         router.push(`/dashboard/chapters`);  // lead this to the dashboard
       })
       .catch(() => { });
+
   };
 
   useEffect(() => {

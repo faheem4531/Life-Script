@@ -36,11 +36,13 @@ export async function loginApi(data: LoginData) {
 export async function stripeDoneApi() {
   try {
     const res = await api.get("/auth/refreshToken");
-    localStorage.clear();
+    // localStorage.clear();
     localStorage.setItem("token", res.token);
-    localStorage.setItem("username", res.data.name);
-    localStorage.setItem("userId", res.data._id);
-    localStorage.setItem("userEmail", res.data.email);
+    localStorage.setItem("accessRole", res?.data?.accessRole);
+
+    // localStorage.setItem("username", res.data.name);
+    // localStorage.setItem("userId", res.data._id);
+    // localStorage.setItem("userEmail", res.data.email);
 
     return res.data;
   } catch (error: any) {
