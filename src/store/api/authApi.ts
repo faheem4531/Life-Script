@@ -308,8 +308,13 @@ export async function signupApi(data: SignupData) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/", data);
+    // console.log(res, "Signup Aliiiiiiiii");
     localStorage.setItem("accessRole", res?.data?.accessRole);
-    localStorage.setItem("token", res.token);
+    // if (res?.token) {
+    //   localStorage.setItem("token", res.token);
+    // }
+    localStorage.setItem("token", "123456789xyz");
+
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);

@@ -36,7 +36,7 @@ const EmailVerification = () => {
   const { t } = useTranslation();
 
   function handleVerifyEmail(pass: any) {
-    dispatch(verifyEmail({ email: userEmail, otp: otp, password: pass, confirmPassword: pass }))
+    dispatch(verifyEmail({ email: pass.email, otp: pass.otp, password: pass.password}))
 
       .unwrap()
       .then(() => {
@@ -98,8 +98,13 @@ const EmailVerification = () => {
     },
     onSubmit: async (data: VerifyEmail) => {
       console.log(data, "  verify data");
+      const newData = {
+        email: userEmail,
+        password: data.password,
+        otp: otp
+      }
 
-      handleVerifyEmail(data.password)
+      handleVerifyEmail(newData)
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required(t("signup-page.emailRequired")),

@@ -198,7 +198,7 @@ export const forgetPassword = createAsyncThunk<UserData, ForgetPass>(
   }
 );
 
-export const verifyEmail = createAsyncThunk<UserData, VerifyEmail>(
+export const verifyEmail = createAsyncThunk<UserData, any>(
   "user/verify-email",
   async (data) => {
     try {
