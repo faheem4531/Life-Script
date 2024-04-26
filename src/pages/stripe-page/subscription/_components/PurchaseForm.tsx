@@ -26,6 +26,7 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
+import PaymentProcessingModal from './Modal';
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -59,7 +60,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
-  // const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
 
 
@@ -466,12 +467,20 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
         </Box>
       </Box >
 
+
+      <PaymentProcessingModal
+        openModal={confirmationStripe} 
+        selectedTab={selectedTab}
+        handleClose={() => setConfirmationStripe(false)}
+        stripeSucceed={stripeSucceed}
+        stripeFailed={stripeFailed}
+      />
       {/* <PaymentProcessingModal
         openModal={openModal}
         selectedTab={selectedTab}
         handleClose={() => setOpenModal(false)}
       /> */}
-      <TransitionsDialog
+      {/* <TransitionsDialog
         open={confirmationStripe}
         heading={`${t("SubsPlan.premPlan")}`}
         description={`${t("SubsPlan.premPlanDes1")} $${price} ${t(
@@ -484,17 +493,17 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
           setConfirmationStripe(false);
         }}
         proceed={handleSubmit}
-      />
+      /> */}
 
-      <CustomizationDialog
+      {/* <CustomizationDialog
         open={stripeSucceed || stripeFailed}
         title=""
         handleClose={() => {
           setStripeSucceed(false);
           setStripeFailed(false);
-          stripeFailed
-            ? router.push("/dashboard/SubscribePlans")
-            : router.push("/dashboard/chapters");
+          // stripeFailed
+          //   ? router.push("/dashboard/SubscribePlans")
+          //   : router.push("/dashboard/chapters");
         }}
         customStyles={{ backgroundColor: "auto" }}
       >
@@ -563,7 +572,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             />
           </Box>
         </Box>
-      </CustomizationDialog>
+      </CustomizationDialog> */}
     </>
 
   );
