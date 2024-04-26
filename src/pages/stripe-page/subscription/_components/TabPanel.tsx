@@ -1,7 +1,6 @@
 'use client';
 import { Box, Typography } from '@mui/material';
 import styles from '../../../../__webComponents/ComponentsStyles.module.css';
-import PrimaryHeading from '../../../../__webComponents/headings/PrimaryHeading';
 import NewPricingCard from './NewPricingCard';
 
 const TabPanel = ({ onClick, selectedTab }) => {
@@ -62,7 +61,7 @@ const TabPanel = ({ onClick, selectedTab }) => {
         onClick={() => onClick(selectedTab + 1)}
       >
         {pricingCard.map((item) => (
-          <NewPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} handleHover={handleHover} />
+          <NewPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} handleHover={handleHover}  />
         ))}
       </Box>
     </Box>

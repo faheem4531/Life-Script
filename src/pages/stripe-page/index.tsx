@@ -1,3 +1,4 @@
+"use client"
 import { useState } from 'react';
 import Button from '@/__webComponents/button/Button';
 import Logo from '@/_assets/svg/logo-dashboard.svg';
