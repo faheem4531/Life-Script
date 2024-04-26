@@ -45,14 +45,21 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
+      // .then((res:any) => {
+      //   toast.success(t("signup-page.signedUpSuccessfully"));
+      //   if (res.onBoarding === "false") {
+      //     router.push("/stripe-page/subscription");
+      //   } else {
+      //     // If onBoarding is false, continue with the existing redirection
+      //     router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+      //   }
+      // })
       .then((res:any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        if (res.onBoarding) {
+       
           router.push("/stripe-page/subscription");
-        } else {
-          // If onBoarding is false, continue with the existing redirection
-          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-        }
+          // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+       
       })
       .catch((error: any) => {
         toast.error(error.message);

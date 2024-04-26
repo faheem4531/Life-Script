@@ -4,8 +4,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import GlobelBtn from "@/components/button/Button";
-import CustomizationDialog from "@/components/modal/CustomizationDialog";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
+// import CustomizationDialog from "@/components/modal/CustomizationDialog";
+// import TransitionsDialog from "@/components/modal/TransitionDialog";
 import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
 import {
   CardCvcElement,
@@ -181,11 +181,13 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             );
             if (secureResult?.paymentIntent?.status === "succeeded") {
               setStripeSucceed(true);
+
             } else {
               setStripeFailed(true);
             }
           } else {
             setStripeSucceed(true);
+            router.push(`/getStarted/getTitle?userName=${res?.name}`);
           }
         })
         .catch((error) => {
@@ -435,11 +437,13 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                             ? "Loading..."
                             : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
                         }
-                        onClick={() => {
-                          if (!loading && !isError && cardHolderName) {
-                            setConfirmationStripe(true);
-                          }
-                        }}
+                        // onClick={() => {
+                        //   if (!loading && !isError && cardHolderName) {
+                        //     setConfirmationStripe(true);
+                        //   }
+                        // }}
+                        onClick={handleSubmit}
+                        
                         p={"10px 20px"}
                         width={"200px"}
                       />
@@ -476,7 +480,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             </Box>
 
             <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
-              <BasicPlanCard price={price} category={category} />
+              <BasicPlanCard price={Number(price) + (selectedBooks && selectedBooks * 39)} category={category} />
             </Box>
           </Box>
         </Box>
