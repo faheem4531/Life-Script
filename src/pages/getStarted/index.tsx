@@ -19,6 +19,7 @@ const getStarted = () => {
   const router = useRouter();
   const { userName } = router.query;
   const { t } = useTranslation();
+  const name = localStorage.getItem("username");
 
   useEffect(() => {
     const languageStored = localStorage.getItem("language");
@@ -33,7 +34,7 @@ const getStarted = () => {
           }, 3000);
         } else {
           // setTimeout(() => {
-          router.push(`/getStarted/getTitle?userName=${userName}`);
+          router.push(`/getStarted/getTitle?userName=${userName ? userName : name}`);
           // }, 3000);
         }
       })
