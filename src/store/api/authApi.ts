@@ -77,7 +77,8 @@ export async function googleLoginApi(data: { credential: string }) {
 }
 
 export async function facebookLoginApi(data: { credential: string }) {
-  localStorage.clear();
+  // localStorage.clear();
+
   try {
     const res = await api.post("/auth/facebook/callback/sign-in", data);
     localStorage.setItem("token", res.token);
