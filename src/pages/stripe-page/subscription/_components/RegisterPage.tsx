@@ -1,25 +1,26 @@
 "use client";
 
-import { Box, Typography, TextField, Button, Divider } from "@mui/material";
-import Image from "next/image";
-import googleLogo from "../../../../../public/googleIcon.svg";
-import facebookIcon from "../../../../../public/facebookIcon.svg";
-import BasicPlanCard from "./BasicPlanCard";
 import {
-  googleSignup,
   selectSocialUser,
   setSocialUser,
   signupWithBuy,
+  googleSignup
 } from "@/store/slices/authSlice";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import { useGoogleLogin } from "@react-oauth/google";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useSession, signIn, signOut } from "next-auth/react";
+// import { useSession, signIn, signOut } from "next-auth/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { SignupData } from "@/interface/authInterface";
+import facebookIcon from "../../../../../public/facebookIcon.svg";
+import googleLogo from "../../../../../public/googleIcon.svg";
+import BasicPlanCard from "./BasicPlanCard";
 
 const RegisterPage = ({ onClick, selectedTab }) => {
   const dispatch: any = useDispatch();
@@ -39,6 +40,11 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
   const router = useRouter();
   const { price, category } = router.query;
+
+  // const priceString = Array.isArray(price) ? price.join(', ') : price.toString();
+  // const categoryString = Array.isArray(category) ? category.join(', ') : category.toString();
+  // localStorage.setItem("price", priceString);
+  //     localStorage.setItem("category", categoryString);
   const { t } = useTranslation();
 
   const handleGoogleLogin = useGoogleLogin({
@@ -46,28 +52,35 @@ const RegisterPage = ({ onClick, selectedTab }) => {
     onError: () => handleGoogleLoginFailure(),
   });
 
+  // useEffect(()=>{
+  //   if (typeof window != "undefined") {
+  //     localStorage.setItem("price", priceString);
+  //     localStorage.setItem("category", categoryString);
+  //   }
+  // },[])
+
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
-      // .then((res:any) => {
-      //   toast.success(t("signup-page.signedUpSuccessfully"));
-      //   if (res.onBoarding === "false") {
-      //     router.push("/stripe-page/subscription");
-      //   } else {
-      //     // If onBoarding is false, continue with the existing redirection
-      //     router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-      //   }
-      // })
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-
-        router.push("/stripe-page/subscription");
-        // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-
+        if (res.onBoarding === "false") {
+          router.push("/stripe-page/subscription");
+        } else {
+          // If onBoarding is false, continue with the existing redirection
+          router.push(`/getStarted?userName=${res?.name}`);
+        }
       })
-      .catch((error: any) => {
-        toast.error(error.message);
-      });
+    // .then((res:any) => {
+    //   toast.success(t("signup-page.signedUpSuccessfully"));
+
+    //     router.push("/stripe-page/subscription");
+    //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+
+    // })
+    // .catch((error: any) => {
+    //   toast.error(error.message);
+    // });
   };
 
   const handleGoogleLoginFailure = () => {

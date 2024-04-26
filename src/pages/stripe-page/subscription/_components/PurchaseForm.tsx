@@ -1,11 +1,12 @@
-import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import BasicPlanCard from './BasicPlanCard';
-import CheckIcon from '@mui/icons-material/Check';
-import stripeLogo from "../../../../../public/stripeLogo.svg";
-import ModalImage from "@/_assets/png/view-template-modal.png";
 import GlobelBtn from "@/components/button/Button";
+import CheckIcon from '@mui/icons-material/Check';
+import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import stripeLogo from "../../../../../public/stripeLogo.svg";
+import BasicPlanCard from './BasicPlanCard';
 // import CustomizationDialog from "@/components/modal/CustomizationDialog";
 // import TransitionsDialog from "@/components/modal/TransitionDialog";
+import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
+import Check from "@/_assets/svg/varifyedCheck.svg";
 import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
 import {
   CardCvcElement,
@@ -17,13 +18,11 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import PaymentProcessingModal from './Modal';
-import Check from "@/_assets/svg/varifyedCheck.svg"
-import UnCheck from "@/_assets/svg/unVarifiedCheck.svg"
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -80,6 +79,18 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const { t } = useTranslation();
 
   const { price, category } = router.query;
+
+  // const [price, setPrice] = useState("");
+  // const [category, setCategory] = useState("");
+
+  // useEffect(()=>{
+  //   if (typeof window != "undefined") {
+  //     const p = localStorage.getItem("price");
+  //     setPrice(p);
+  //     const cat = localStorage.getItem("category");
+  //     setCategory(cat)
+  //   }
+  // },[])
 
 
   function replaceCategory(category) {
