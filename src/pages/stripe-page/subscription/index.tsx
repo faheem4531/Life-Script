@@ -26,7 +26,7 @@ const SubscriptionPage = () => {
   useEffect(() => {
     if (session) {
       if (session.user) {
-        setSelectedTab(1);
+        setSelectedTab(2);
         const payload = {
           name: session.user.name,
           email: session.user.email,
