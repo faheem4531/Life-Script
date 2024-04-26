@@ -17,6 +17,7 @@ import {
   googleSignupApi,
   loginApi,
   signupApi,
+  signupApiWithBuy,
   updatePasswordApi,
   verifyEmailApi,
   stripeDoneApi,
@@ -288,6 +289,18 @@ export const signup = createAsyncThunk<UserData, SignupData>(
   async (data) => {
     try {
       const response = await signupApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const signupWithBuy = createAsyncThunk<UserData, SignupData>(
+  "auth/signup",
+  async (data) => {
+    try {
+      const response = await signupApiWithBuy(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -1,6 +1,9 @@
 "use client";
 
 import {
+  selectSocialUser,
+  setSocialUser,
+  signupWithBuy,
   googleSignup
 } from "@/store/slices/authSlice";
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
@@ -11,6 +14,10 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+// import { useSession, signIn, signOut } from "next-auth/react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { SignupData } from "@/interface/authInterface";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
 import googleLogo from "../../../../../public/googleIcon.svg";
 import BasicPlanCard from "./BasicPlanCard";
@@ -33,7 +40,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
   const router = useRouter();
   const { price, category } = router.query;
-  
+
   // const priceString = Array.isArray(price) ? price.join(', ') : price.toString();
   // const categoryString = Array.isArray(category) ? category.join(', ') : category.toString();
   // localStorage.setItem("price", priceString);
@@ -55,30 +62,54 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
       .unwrap()
-      .then((res:any) => {
+      .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
         if (res.onBoarding === "false") {
           router.push("/stripe-page/subscription");
         } else {
           // If onBoarding is false, continue with the existing redirection
-          router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+          router.push(`/getStarted?userName=${res?.name}`);
         }
       })
-      // .then((res:any) => {
-      //   toast.success(t("signup-page.signedUpSuccessfully"));
-       
-      //     router.push("/stripe-page/subscription");
-      //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-       
-      // })
-      // .catch((error: any) => {
-      //   toast.error(error.message);
-      // });
+    // .then((res:any) => {
+    //   toast.success(t("signup-page.signedUpSuccessfully"));
+
+    //     router.push("/stripe-page/subscription");
+    //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+
+    // })
+    // .catch((error: any) => {
+    //   toast.error(error.message);
+    // });
   };
 
   const handleGoogleLoginFailure = () => {
     toast.error(t("signup-page.failedSignupGoogle"));
   };
+
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      name: "",
+    },
+    onSubmit: async (data: SignupData) => {
+
+      dispatch(signupWithBuy(data))
+        .unwrap()
+        .then(() => {
+          toast.success(t("signup-page.verificationEmailSent"));
+          onClick(selectedTab + 1)
+        })
+        .catch((error: any) => {
+          toast.error(error?.message || t("signup-page.failedSignup"));
+        });
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required(t("signup-page.emailRequired")),
+      name: Yup.string().required(t("signup-page.nameRequired")),
+    }),
+  });
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center", }}>
@@ -95,7 +126,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
             <Box>
               <Typography
                 sx={{
-                  color: "#30422E",
+                  color: "#30422E", mt: "30px",
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
@@ -105,18 +136,23 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                 variant="outlined"
                 placeholder="Enter your full name"
                 name="name"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 sx={{
-                  marginBottom: "30px",
+                  marginBottom: "10px",
                   width: "100%",
                   bgcolor: "white",
                 }}
               />
             </Box>
+            {formik.touched.name && formik.errors.name && (
+              <span style={{ color: "red" }}>{formik.errors.name}</span>
+            )}
 
             <Box>
               <Typography
                 sx={{
-                  color: "#30422E",
+                  color: "#30422E", mt: "30px",
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
@@ -126,14 +162,18 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                 variant="outlined"
                 placeholder="Enter your email address"
                 name="email"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 sx={{
-                  marginBottom: "30px",
+                  marginBottom: "10px",
                   width: "100%",
                   bgcolor: "white",
                 }}
               />
             </Box>
-
+            {formik.touched.email && formik.errors.email && (
+              <span style={{ color: "red" }}>{formik.errors.email}</span>
+            )}
             <Box
               sx={{
                 display: "flex",
@@ -239,8 +279,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                   backgroundColor: "#b5522d",
                 },
               }}
-              onClick={() => onClick(selectedTab + 1)}
-            >
+              onClick={(event) => formik.handleSubmit()}>
               Continue
             </Button>
           </Box>
