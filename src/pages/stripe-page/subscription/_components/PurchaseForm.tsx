@@ -81,19 +81,19 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
   // const { price, category } = router.query;
 
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
+  // const [price, setPrice] = useState("");
+  // const [category, setCategory] = useState("");
 
-  // const price =localStorage.getItem("price")
-  // const category =localStorage.getItem("category")
-  useEffect(()=>{
-    if (typeof window != "undefined") {
-      const p = localStorage.getItem("price");
-      setPrice(p);
-      const cat = localStorage.getItem("category");
-      setCategory(cat)
-    }
-  },[])
+  const price =localStorage.getItem("price")
+  const category =localStorage.getItem("category")
+  // useEffect(()=>{
+  //   if (typeof window != "undefined") {
+  //     const p = localStorage.getItem("price");
+  //     setPrice(p);
+  //     const cat = localStorage.getItem("category");
+  //     setCategory(cat)
+  //   }
+  // },[])
 
 
   function replaceCategory(category) {
