@@ -1,6 +1,7 @@
+'use client'
+
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'; // Import useRouter hook
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -25,9 +26,8 @@ const style = {
   alignItems: "center"
 };
 
-export default function PaymentProcessingModal({ openModal, handleClose, selectedTab, stripeSucceed, stripeFailed }) {
+export default function PaymentProcessingModal({ openModal, handleClose, selectedTab,stripeSucceed,stripeFailed }) {
   const [value, setValue] = useState(0);
-  const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,14 +47,6 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
     return () => clearInterval(interval);
   }, []);
 
-  // Function to handle redirection after successful transaction
-  const handleRedirect = () => {
-    const res = { name: localStorage.getItem('token') }; // Assuming token contains the username
-    if (res?.name) {
-      router.push(`/getStarted/getTitle?userName=${res.name}`); // Redirect with username from token
-    }
-  };
-
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -73,20 +65,16 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
         <Box sx={{ ...style, padding: { sm: "40px", xs: "30px" } }}>
           <Image src={Logo} alt="logo" />
           <Typography id="transition-modal-title" sx={{ margin: { sm: "40px 0", xs: "25px 0" }, fontSize: { sm: "32px", xs: "28px" } }}>
-            {stripeSucceed && 'Transaction Successful!'}
-            {stripeSucceed && selectedTab === 2 &&
-              'Let me in'}
-            {(!stripeSucceed && !stripeFailed) && 'Processing..'}
-            {stripeFailed && 'Transaction Failed!'}
-            {selectedTab === "verify" && "Email Verification"}
+            {value === 100 && selectedTab !== "verify" ? 'Transaction Successful!' : selectedTab !== "verify" ? 'Processing..' : ''}
+            {selectedTab == "verify" && "Email Verification"}
           </Typography>
-          {(!stripeSucceed && !stripeFailed && selectedTab !== "verify") &&
-            <Box sx={{ width: { xs: "300px", sm: "470px" } }}>
+          {selectedTab !== "verify" &&
+            < Box sx={{ width: { xs: "300px", sm: "470px" } }}>
               <ReloadingBar value={value} />
             </Box>}
-          {stripeSucceed && selectedTab === 2 &&
+          {value == 100 && selectedTab == 2 &&
             <Button
-              onClick={handleRedirect} // Call handleRedirect function on button click
+              type="submit"
               variant="contained"
               color="primary"
               sx={{
@@ -100,18 +88,17 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
               Let me in
             </Button>
           }
-          {stripeSucceed && selectedTab === 3 &&
+          {value == 100 && selectedTab == 3 &&
             <Typography sx={{ marginTop: { sm: "40px", xs: "25px" } }}>
-              The gift recipient will receive their gift via email on the date provided. More details about your gift will be emailed to you shortly!
-            </Typography>
+              The gift recipient will receive their gift via email on the date provided. More details about your gift will be emailed to you shortly!</Typography>
           }
           {selectedTab === "verify" &&
             <Typography sx={{ maxWidth: "400px" }}>
-              Please check your email to set up a password and start writing your LifeScript.
+              Please check your email to set-up password and start writing your LifeScript.
             </Typography>
           }
         </Box>
       </Fade>
-    </Modal>
+    </Modal >
   );
 }
