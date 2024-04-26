@@ -465,7 +465,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             </Box>
 
             <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
-              <BasicPlanCard price={price} category={category} />
+              <BasicPlanCard price={Number(price) + (selectedBooks && selectedBooks * 39)} category={category} />
             </Box>
           </Box>
         </Box>
