@@ -309,8 +309,7 @@ const RegisterFreeTrial = () => {
       <PaymentProcessingModal
         openModal={openModal}
         selectedTab={"verify"}
-        handleClose={() => setOpenModal(true)}
-      />
+        handleClose={() => setOpenModal(true)} stripeSucceed={undefined} stripeFailed={undefined}      />
 
     </>
 

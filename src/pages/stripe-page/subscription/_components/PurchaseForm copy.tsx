@@ -206,8 +206,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
       <PaymentProcessingModal
         openModal={openModal}
         selectedTab={selectedTab}
-        handleClose={() => setOpenModal(false)}
-      />
+        handleClose={() => setOpenModal(false)} stripeSucceed={undefined} stripeFailed={undefined}      />
     </>
 
   );
