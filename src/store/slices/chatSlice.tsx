@@ -53,6 +53,8 @@ import {
   updateBookApi,
   getaiQuestionsApi,
   luluPrintingApi,
+  stripPaymentRegisterApi,
+  VerifyReferralCodeApi,
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -137,6 +139,28 @@ export const stripePayment = createAsyncThunk<UserData, any>(
   async (data: any) => {
     try {
       const response = await stripPaymentApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+export const stripePaymentRegister = createAsyncThunk<UserData, any>(
+  "chat/stripe-payment",
+  async (data: any) => {
+    try {
+      const response = await stripPaymentRegisterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+export const VerifyReferralCode = createAsyncThunk<UserData, any>(
+  "chat/verify-referralcode",
+  async (data: any) => {
+    try {
+      const response = await VerifyReferralCodeApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

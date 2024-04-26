@@ -470,11 +470,59 @@ export async function stripPaymentApi(data: any) {
       "Content-Type": "application/json",
     };
     const res = await axios.post(
+      "https://api.thelifescript.com/users/stripe/payment",
+      // "https://7a44-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
+      data,
+      { headers }
+    );
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+export async function stripPaymentRegisterApi(data: any) {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      "Content-Type": "application/json",
+    };
+    const res = await axios.post(
       "https://api.thelifescript.com/users/stripe/register-payment",
       // "https://7a44-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
       data,
       { headers }
     );
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function VerifyReferralCodeApi(data: {
+  id: string;
+}) {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      "Content-Type": "application/json",
+    };
+    const res = await axios.get(`https://api.thelifescript.com/users/verify/referralCode/${data.id}`, {
+      headers,
+    });
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

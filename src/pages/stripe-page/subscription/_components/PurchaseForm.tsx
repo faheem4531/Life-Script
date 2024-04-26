@@ -1,8 +1,8 @@
-import { Box, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import BasicPlanCard from './BasicPlanCard';
 // import Image from 'next/image';
-import stripeLogo from "../../../../../public/stripeLogo.svg";
 import CheckIcon from '@mui/icons-material/Check';
+import stripeLogo from "../../../../../public/stripeLogo.svg";
 // import PaymentProcessingModal from './Modal';
 
 
@@ -11,7 +11,7 @@ import ModalImage from "@/_assets/png/view-template-modal.png";
 import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
-import { stripePayment } from "@/store/slices/chatSlice";
+import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
 // import { Box, TextField, Typography } from "@mui/material";
 import {
   CardCvcElement,
@@ -97,6 +97,22 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     }
   }
 
+
+  const HandleVerifyReferralCode = async (id) => {
+    dispatch(
+      VerifyReferralCode({
+        id: referralCode
+      })
+    )
+    .unwrap()
+    .then((res) => {
+console.log("VerifyReferralCode",res)
+    })
+    .catch(()=>{
+      
+    })
+  }
+
   const handleSubmit = async (event) => {
     const subscriptionPrice = Number(price);
     setConfirmationStripe(false);
@@ -113,7 +129,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
       setStripeFailed(true);
     } else {
       dispatch(
-        stripePayment({
+        stripePaymentRegister({
           country: "USA",
           amount: subscriptionPrice,
           token: result.token,
@@ -251,6 +267,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                   onChange={handleReferralCodeChange}
                   sx={{ width: "100%", backgroundColor: "white", marginTop: "15px" }}
                 />
+                <Button onClick={()=>{HandleVerifyReferralCode(referralCode)}}>
+                  Verify
+                </Button>
               </Box>
 
               <Box>
