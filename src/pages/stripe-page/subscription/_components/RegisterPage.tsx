@@ -1,21 +1,20 @@
 "use client";
 
-import { Box, Typography, TextField, Button, Divider } from "@mui/material";
-import Image from "next/image";
-import googleLogo from "../../../../../public/googleIcon.svg";
-import facebookIcon from "../../../../../public/facebookIcon.svg";
-import BasicPlanCard from "./BasicPlanCard";
 import {
-  googleSignup,
-  selectSocialUser,
-  setSocialUser,
+  googleSignup
 } from "@/store/slices/authSlice";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import { useGoogleLogin } from "@react-oauth/google";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useSession, signIn, signOut } from "next-auth/react";
+import facebookIcon from "../../../../../public/facebookIcon.svg";
+import googleLogo from "../../../../../public/googleIcon.svg";
+import BasicPlanCard from "./BasicPlanCard";
 
 const RegisterPage = ({ onClick, selectedTab }) => {
   const dispatch: any = useDispatch();
@@ -35,14 +34,23 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
   const router = useRouter();
   const { price, category } = router.query;
-  localStorage.setItem("price", price.toString());
-  localStorage.setItem("category", category.toString());
+  const priceString = Array.isArray(price) ? price.join(', ') : price.toString();
+  const categoryString = Array.isArray(category) ? category.join(', ') : category.toString();
+  localStorage.setItem("price", priceString);
+      localStorage.setItem("category", categoryString);
   const { t } = useTranslation();
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
     onError: () => handleGoogleLoginFailure(),
   });
+
+  useEffect(()=>{
+    if (typeof window != "undefined") {
+      localStorage.setItem("price", priceString);
+      localStorage.setItem("category", categoryString);
+    }
+  },[])
 
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
