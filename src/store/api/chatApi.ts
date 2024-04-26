@@ -470,7 +470,8 @@ export async function stripPaymentApi(data: any) {
       "Content-Type": "application/json",
     };
     const res = await axios.post(
-      "https://api.thelifescript.com/users/stripe/payment",
+      "https://api.thelifescript.com/users/stripe/register-payment",
+      // "https://7a44-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
       data,
       { headers }
     );

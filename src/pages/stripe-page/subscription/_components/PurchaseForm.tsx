@@ -119,6 +119,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
           token: result.token,
           packageName: replaceCategory(category),
           cardHolderName: cardHolderName,
+          numberOfBooks:"2",
+          bookPrice:"120",
+          commission:"10"
         })
       )
         .unwrap()
