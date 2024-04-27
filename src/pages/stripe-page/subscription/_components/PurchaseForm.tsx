@@ -16,8 +16,7 @@ import {
 } from "@stripe/react-stripe-js";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
@@ -66,25 +65,13 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const [loading, setLoading] = useState(false);
   const [commissionState, setCommissionState] = useState(0);
   const stripe = useStripe();
-  const router = useRouter();
   const elements = useElements();
   const { t } = useTranslation();
 
-  // const { price, category } = router.query;
-
-  // const [price, setPrice] = useState("");
-  // const [category, setCategory] = useState("");
 
   const price = localStorage.getItem("price")
   const category = localStorage.getItem("category")
-  // useEffect(()=>{
-  //   if (typeof window != "undefined") {
-  //     const p = localStorage.getItem("price");
-  //     setPrice(p);
-  //     const cat = localStorage.getItem("category");
-  //     setCategory(cat)
-  //   }
-  // },[])
+
 
 
   function replaceCategory(category) {
@@ -224,22 +211,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const handleSubscribeUpdatesChange = (event) => {
     setSubscribeUpdates(event.target.checked);
   };
-
-  // const handleSubmit = async (event) => {
-  //   setOpenModal(true)
-  //   event.preventDefault();
-  //   // Placeholder for API integration
-  //   console.log({
-  //     selectedBooks,
-  //     referralCode,
-  //     cardHolderName,
-  //     cardNumber,
-  //     expiry,
-  //     cvc,
-  //     subscribeUpdates,
-  //   });
-  //   // You can call your API endpoint here and handle the response accordingly
-  // };
 
   return (
     <>
@@ -412,7 +383,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                     </Box>
                     <Box sx={{ border: "1px solid black", padding: "10px", borderRadius: "5px", marginTop: "30px", width: "100%" }}>
                       <FormControlLabel
-                        control={<Checkbox checked={subscribeUpdates} onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }} />}
+                        control={<Checkbox checked={subscribeUpdates} onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }} required />}
                         label="Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers."
                       />
                     </Box>
@@ -453,6 +424,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                 </Box>
               </Box>
 
+
               <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
                 <Typography>Secure Payment with</Typography>
                 <Image
@@ -483,7 +455,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   );
 }
 
-// export default PurchaseForm;
 export default dynamic(() => Promise.resolve(PurchaseForm), {
   ssr: false,
 });

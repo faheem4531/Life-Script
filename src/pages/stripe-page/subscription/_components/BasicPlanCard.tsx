@@ -2,31 +2,130 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import grandmaBookImage from '../../../../../public/grandmaBookImage.svg';
+import standardBookImage from '../../../../../public/standardBookImage.svg';
+import premiumBookImage from '../../../../../public/premiumBookImage.svg';
 import Check from '@/__webAssets/svgs/check.svg';
 import Lock from '@/__webAssets/svgs/lock.svg';
 
 const BasicPlanCard = ({ price, category }) => {
-  const CheckArray = [
+  const BasicArray = [
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: 'Spelling and grammar assistance ',
+      dis: "Spelling and grammar assistance "
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: 'Automatic photo improvement ',
+      dis: "Automatic photo improvement "
     },
 
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: 'Text formatting features  ',
+      dis: "Text formatting features  "
     },
-  ];
+  ]
+  const StandardArray = [
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Spelling and grammar assistance "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Automatic photo improvement "
+    },
+
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Text formatting features  "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Narrative Fusion "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Voice-to-text "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Family Tree"
+    },
+  ]
+  const PremiumArray = [
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Spelling and grammar assistance "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Automatic photo improvement "
+    },
+
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Text formatting features  "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Narrative Fusion "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Voice-to-text "
+    },
+    {
+      standardStatus: true,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Family Tree"
+    },
+    {
+      standardStatus: false,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Premium book covers"
+    },
+    {
+      standardStatus: false,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Priority customer support"
+    },
+    {
+      standardStatus: false,
+      PrimuimStatus: true,
+      basicStatus: true,
+      dis: "Exclusive access to new features "
+    },
+
+  ]
   return (
     <Box
       sx={{
@@ -38,18 +137,45 @@ const BasicPlanCard = ({ price, category }) => {
         marginRight: '20px',
       }}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '10px',
-        }}
-      >
-        <Image src={grandmaBookImage} alt="grandma Book Image " width={250} height={348} />
-      </Box>
-
+      {category == 'Basic' &&
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '10px',
+          }}
+        >
+          <Image src={grandmaBookImage} alt="grandma Book Image " width={250} height={348} />
+        </Box>
+        ||
+        category == 'Standard' &&
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '10px',
+          }}
+        >
+          <Image src={standardBookImage} alt="grandma Book Image " width={250} height={348} />
+        </Box>
+        ||
+        category == 'Premium' &&
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '10px',
+          }}
+        >
+          <Image src={premiumBookImage} alt="grandma Book Image " width={250} height={348} />
+        </Box>
+      }
       <Box sx={{ marginLeft: '20px', marginTop: '20px' }}>
         <Typography
           sx={{
@@ -65,20 +191,54 @@ const BasicPlanCard = ({ price, category }) => {
           <Typography>Includes a premium full-color hardcover book, free shipping and one year LifeScript subscription with:</Typography>
         </Box>
         <Box sx={{ marginTop: '30px' }}>
-          {CheckArray.map((item, index) => (
-            <Box
-              sx={{
-                display: 'flex',
-                columnGap: '25px',
-                alignItems: 'center',
-                marginBottom: '24px',
-              }}
-              key={index}
-            >
-              <Image src={item.basicStatus ? Check : Lock} alt="check" />
-              <Typography sx={{ fontSize: '15px', fontFamily: 'Avenir' }}>{item.dis}</Typography>
+          {category == 'Basic' && <Box>
+            {
+              BasicArray.map((item, index) => <Box
+                sx={{
+                  display: "flex",
+                  columnGap: "25px",
+                  alignItems: "center",
+                  marginBottom: "24px",
+                }}
+                key={index}>
+                <Image src={item.basicStatus ? Check : Lock} alt="check" />
+                <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>{item.dis}</Typography>
+              </Box>
+              )}
+          </Box>
+            ||
+            category == 'Standard' && <Box>
+              {
+                StandardArray.map((item, index) => <Box
+                  sx={{
+                    display: "flex",
+                    columnGap: "25px",
+                    alignItems: "center",
+                    marginBottom: "24px"
+                  }}
+                  key={index}>
+                  <Image src={item.standardStatus ? Check : Lock} alt="check" />
+                  <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>{item.dis}</Typography>
+                </Box>
+                )}
             </Box>
-          ))}
+            ||
+            category == 'Premium' && <Box>
+              {
+                PremiumArray.map((item, index) => <Box
+                  sx={{
+                    display: "flex",
+                    columnGap: "25px",
+                    alignItems: "center",
+                    marginBottom: "24px"
+                  }}
+                  key={index}>
+                  <Image src={item.PrimuimStatus ? Check : Lock} alt="check" />
+                  <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>{item.dis}</Typography>
+                </Box>
+                )}
+            </Box>
+          }
         </Box>
 
         <Box

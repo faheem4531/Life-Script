@@ -99,7 +99,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
         .unwrap()
         .then(() => {
           toast.success(t("signup-page.verificationEmailSent"));
-          onClick(selectedTab + 1)
+          // onClick(selectedTab + 1)
         })
         .catch((error: any) => {
           toast.error(error?.message || t("signup-page.failedSignup"));
@@ -279,7 +279,9 @@ const RegisterPage = ({ onClick, selectedTab }) => {
                   backgroundColor: "#b5522d",
                 },
               }}
-              onClick={(event) => formik.handleSubmit()}>
+              onClick={(event) => formik.handleSubmit()}
+              // onClick={() => onClick(selectedTab + 1)}
+              >
               Continue
             </Button>
           </Box>
