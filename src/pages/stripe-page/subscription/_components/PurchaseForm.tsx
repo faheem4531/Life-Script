@@ -4,10 +4,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
 import BasicPlanCard from './BasicPlanCard';
-// import CustomizationDialog from "@/components/modal/CustomizationDialog";
-// import TransitionsDialog from "@/components/modal/TransitionDialog";
 import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
-import Check from "@/_assets/svg/varifyedCheck.svg";
+import Check from "@/_assets/svg/varifiedCheck.svg";
 import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
 import {
   CardCvcElement,
@@ -51,18 +49,11 @@ const useOptions = () => {
 };
 
 const PurchaseForm = ({ onClick, selectedTab }) => {
-
-
-
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
   const [paymentSucess, setPaymentSucess] = useState(false)
   const [paymentFail, setPaymentFail] = useState(false)
-
-
-
 
   //New Data
   const dispatch: any = useDispatch();
@@ -309,7 +300,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                     onClick={() => { HandleVerifyReferralCode(referralCode) }}>
                     Verify
                   </Button>
-                  {paymentSucess || paymentFail && <Image src={paymentSucess ? Check : UnCheck} alt="checks" />}
+                  {paymentSucess || paymentFail ? (
+                    <Image src={paymentSucess ? Check : UnCheck} alt="checks" />
+                  ) : null}
                 </Box>
               </Box>
 
@@ -377,17 +370,14 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                     <Box
                       sx={{
                         display: "flex",
-                        // gap: "20px",
                         alignItems: "center",
                         width: "100%",
-                        // mb: "20px",
                       }}
                     >
                       <Box sx={{ width: "50%" }}>
                         <Box
                           sx={{
                             width: "100%",
-                            // marginTop: "10px",
                             borderRadius: "3px",
                             backgroundColor: "white",
                             p: "12px 35px",
@@ -397,7 +387,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           <CardExpiryElement
                             options={options}
                             onChange={(event) => {
-                              // console.log("CardExpiryElement [change]", event);
                               setIsError(!event.complete || !!event.error);
                             }}
                           />
@@ -407,7 +396,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                         <Box
                           sx={{
                             width: "100%",
-                            // marginTop: "10px",
                             borderRadius: "3px",
                             backgroundColor: "white",
                             p: "12px 35px",
@@ -417,7 +405,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           <CardCvcElement
                             options={options}
                             onChange={(event) => {
-                              // console.log("CardCvcElement [change]", event);
                               setIsError(!event.complete || !!event.error);
                             }}
                           />

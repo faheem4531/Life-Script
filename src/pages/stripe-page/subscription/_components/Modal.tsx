@@ -32,22 +32,24 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
   const router = useRouter();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Increment the value by 1 every 40 milliseconds (4 seconds / 100)
-      setValue((prevValue) => {
-        // Check if the value has reached 100, if yes, clear the interval
-        if (prevValue === 100) {
-          clearInterval(interval);
-          return prevValue;
-        }
-        // Otherwise, continue incrementing
-        return prevValue + 1;
-      });
-    }, 60);
+    let intervalId;
 
-    // Clear the interval when the component unmounts
-    return () => clearInterval(interval);
-  }, []);
+    if (openModal) {
+      intervalId = setInterval(() => {
+        setValue((prevValue) => {
+          if (prevValue === 100) {
+            clearInterval(intervalId);
+            return prevValue;
+          }
+          return prevValue + 1;
+        });
+      }, 60);
+    }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [openModal]);
+
 
   function handleLetMeIn() {
     const name = localStorage.getItem("username");
@@ -72,13 +74,9 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
         <Box sx={{ ...style, padding: { sm: "40px", xs: "30px" } }}>
           <Image src={Logo} alt="logo" />
           <Typography id="transition-modal-title" sx={{ margin: { sm: "40px 0", xs: "25px 0" }, fontSize: { sm: "32px", xs: "28px" } }}>
-            {/* {value === 100 && selectedTab !== "verify" && stripeSucceed ? 'Transaction Successful!' : selectedTab !== "verify" ? 'Processing..' : ''} */}
-
             {value === 100 && selectedTab !== "verify" && stripeSucceed ? 'Transaction Successful!'
               : selectedTab !== "verify" && stripeFailed ? 'Transaction Failed!'
                 : selectedTab !== "verify" ? 'Processing..' : ''}
-
-
             {selectedTab == "verify" && "Email Verification"}
           </Typography>
           {selectedTab !== "verify" && !stripeFailed &&
