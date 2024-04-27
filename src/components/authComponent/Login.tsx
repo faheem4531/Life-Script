@@ -33,7 +33,7 @@ const Login = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/stripe-page/subscription",
+      callbackUrl: "/stripe-page/sso-redirecting",
     });
   };
 

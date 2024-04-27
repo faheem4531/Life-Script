@@ -54,7 +54,7 @@ const GiftRegisterPage = ({ onClick, selectedTab }) => {
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
         if (res.onBoarding === "false") {
-          router.push("/stripe-page/subscription");
+          router.push("/stripe-page/gift-subscription");
         } else {
           // If onBoarding is false, continue with the existing redirection
           router.push(`/getStarted?userName=${res?.name}`);
