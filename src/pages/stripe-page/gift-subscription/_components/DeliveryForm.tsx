@@ -6,25 +6,13 @@ import GiftPlanCard from './GiftPlanCard';
 import { DatePicker } from '@mui/x-date-pickers';
 const DeliveryForm = ({ onClick, selectedTab }) => {
   const [selectedDate, setSelectedDate] = useState(null);
-  const maxDate = new Date();
   const router = useRouter();
+
+  const minDate = new Date();
+
+  // Calculate maxDate to be one day ahead of the current date
+
   const { price, category } = router.query;
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Placeholder for API integration
-    // console.log({
-    //   selectedBooks,
-    //   referralCode,
-    //   cardHolderName,
-    //   cardNumber,
-    //   expiry,
-    //   cvc,
-    //   subscribeUpdates,
-    // });
-    // You can call your API endpoint here and handle the response accordingly
-  };
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -85,26 +73,6 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                 />
               </Box>
 
-              {/* <Box>
-            <Typography
-              sx={{
-                color: "#30422E",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
-              }}
-            >
-              Send my gift on:
-            </Typography>
-            <TextField
-              variant="outlined"
-              placeholder="MM/DD/YYYY"
-              name="date"
-              sx={{
-                marginBottom: "10px",
-                width: "100%",
-                bgcolor: "white",
-              }}
-            />
-          </Box> */}
               <Box>
                 <Typography
                   sx={{
@@ -117,7 +85,7 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                 <DatePicker
                   value={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
-                  maxDate={maxDate}
+                  minDate={minDate}
                   sx={{
                     width: '100%',
                     backgroundColor: 'white',
