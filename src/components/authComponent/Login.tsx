@@ -10,15 +10,17 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import googleLogo from "../../../public/googleIcon.svg";
+import facebookIcon from "../../../public/facebookIcon.svg";
 
-const Login = ({ signinClick }) => {
+
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -27,6 +29,13 @@ const Login = ({ signinClick }) => {
   const router = useRouter();
   const [loginFailed, setLoginFailed] = useState(false);
   const { t } = useTranslation();
+
+  const handleSignin = async (e) => {
+    e.preventDefault();
+    signIn("facebook", {
+      callbackUrl: "/stripe-page/subscription",
+    });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -97,41 +106,50 @@ const Login = ({ signinClick }) => {
           marginX: { sx: "0 35px" },
         }}
       >
-        <Box>
-          <Typography
-            sx={{
-              // marginRight: "300px",
-              color: "#30422E",
-              fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-            }}
-          >
-            {t("login-page.email")}
+        <Box sx={{ textAlign: "center", m: "50px 0 30px", color: "#30422E" }}>
+          <Typography sx={{ fontSize: "38px", fontWeight: 700, }}>
+            Login to your account
           </Typography>
-          <TextField
-            variant="outlined"
-            placeholder={t("login-page.enter-email")}
-            name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            sx={{
-              marginTop: "10px",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "2px",
-                backgroundColor: "white",
-              },
-              width: "100%",
-              // width: "460px",
-            }}
-          />
+          <Typography>
+            Continue your trip down memory lane
+          </Typography>
         </Box>
-        {formik.touched.email && formik.errors.email && (
-          <span style={{ color: "red" }}>{formik.errors.email}</span>
-        )}
         <Box>
           <Box>
             <Typography
               sx={{
                 // marginRight: "300px",
+                color: "#30422E",
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+              }}
+            >
+              {t("login-page.email")}
+            </Typography>
+            <TextField
+              variant="outlined"
+              placeholder={t("login-page.enter-email")}
+              name="email"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              sx={{
+                m: "10px 0",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "2px",
+                  backgroundColor: "white",
+                },
+                width: "100%",
+                // width: "460px",
+              }}
+            />
+          </Box>
+          {formik.touched.email && formik.errors.email && (
+            <span style={{ color: "red" }}>{formik.errors.email}</span>
+          )}
+        </Box>
+        <Box>
+          <Box>
+            <Typography
+              sx={{
                 marginTop: "24px",
                 color: "#30422E",
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
@@ -141,7 +159,7 @@ const Login = ({ signinClick }) => {
             </Typography>
             <TextField
               sx={{
-                marginTop: "10px",
+                m: "10px 0",
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "2px", // Adjust the border radius as needed
                   backgroundColor: "white",
@@ -316,10 +334,32 @@ const Login = ({ signinClick }) => {
               <Image
                 src={googleLogo}
                 alt="Google Logo"
-              // width={24}
-              // height={24}
               />
               <Typography>Login with Google</Typography>
+            </Button>
+            <Button
+              variant="contained"
+              // type="submit"
+              sx={{
+                borderRadius: "2px",
+                backgroundColor: "#fff",
+                padding: "10px 0",
+                color: "#30422E",
+                width: "100%",
+                gap: "15px",
+                m: "20px 0 10px",
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+                textTransform: "capitalize",
+              }}
+              onClick={handleSignin}
+            >
+              <Image
+                src={facebookIcon}
+                alt="Facebook Logo"
+              />
+              <Typography>Login with Facebook</Typography>
             </Button>
           </Box>
         </Box>
@@ -338,13 +378,12 @@ const Login = ({ signinClick }) => {
               cursor: "pointer",
               marginLeft: "8px",
             }}
-            onClick={signinClick}
+            onClick={() => { }}
           >
             {t("login-page.register-now")}
           </a>
         </Box>
       </Box>
-      {/* </Box> */}
     </Box>
   );
 };

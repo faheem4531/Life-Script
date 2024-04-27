@@ -163,7 +163,7 @@ export default function Register() {
                 // pl: "20px",
               }}
             >
-              <Box
+              {/* <Box
                 sx={{
                   marginTop: "20px",
                   height: "auto",
@@ -209,15 +209,15 @@ export default function Register() {
                     sx={{ textTransform: "capitalize" }}
                   />
                 </Tabs>
-              </Box>
+              </Box> */}
             </Box>
             <Box>
-              <CustomTabPanel value={value} index={0}>
-                <Login signinClick={() => setValue(1)} />
-              </CustomTabPanel>
-              <CustomTabPanel value={value} index={1}>
-                <Signup signupClick={() => setValue(0)} />
-              </CustomTabPanel>
+              {/* <CustomTabPanel value={value} index={0}> */}
+              <Login />
+              {/* </CustomTabPanel> */}
+              {/* <CustomTabPanel value={value} index={1}> */}
+              {/* <Signup signupClick={() => setValue(0)} /> */}
+              {/* </CustomTabPanel> */}
             </Box>
           </Box>
         </Box>
