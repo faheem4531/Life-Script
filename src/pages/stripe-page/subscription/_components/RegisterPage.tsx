@@ -40,11 +40,6 @@ const RegisterPage = ({ onClick, selectedTab }) => {
 
   const router = useRouter();
   const { price, category } = router.query;
-
-  // const priceString = Array.isArray(price) ? price.join(', ') : price.toString();
-  // const categoryString = Array.isArray(category) ? category.join(', ') : category.toString();
-  // localStorage.setItem("price", priceString);
-  //     localStorage.setItem("category", categoryString);
   const { t } = useTranslation();
 
   const handleGoogleLogin = useGoogleLogin({
@@ -52,12 +47,6 @@ const RegisterPage = ({ onClick, selectedTab }) => {
     onError: () => handleGoogleLoginFailure(),
   });
 
-  // useEffect(()=>{
-  //   if (typeof window != "undefined") {
-  //     localStorage.setItem("price", priceString);
-  //     localStorage.setItem("category", categoryString);
-  //   }
-  // },[])
 
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token }))
@@ -99,7 +88,7 @@ const RegisterPage = ({ onClick, selectedTab }) => {
         .unwrap()
         .then(() => {
           toast.success(t("signup-page.verificationEmailSent"));
-          // onClick(selectedTab + 1)
+          onClick(selectedTab + 1)
         })
         .catch((error: any) => {
           toast.error(error?.message || t("signup-page.failedSignup"));

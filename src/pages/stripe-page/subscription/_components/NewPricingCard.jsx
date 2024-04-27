@@ -75,9 +75,7 @@ const NewPricingCard = ({ price, category, card, id, handleHover }) => {
     router.push({
       pathname: '/stripe-page/subscription',
       query: { price, category },
-    });
-    
-    
+    }); 
   };
 
   return (

@@ -78,7 +78,7 @@ const GiftSubscriptionPage = () => {
             marginLeft: { sm: '70px', xs: '20px' },
           }}
         >
-          <GiftTabBar tabs={tabsData} onClick={handleTabClick} />
+          <GiftTabBar tabs={tabsData} onClick={() => { }} />
         </Box>
 
         <Box sx={{ position: 'relative' }}>

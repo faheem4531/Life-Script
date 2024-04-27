@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 
 const NewTabBar = ({ tabs, onClick }) => {
   const { data: session } = useSession();
-  console.log("tabs", tabs);
+  // console.log("tabs", tabs);
   return (
     <Grid
       container
