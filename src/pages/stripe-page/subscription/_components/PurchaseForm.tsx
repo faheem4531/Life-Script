@@ -193,7 +193,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             }
           } else {
             setStripeSucceed(true);
-            // router.push(`/getStarted/getTitle?userName=${res?.name}`);
           }
         })
         .catch((error) => {
@@ -426,51 +425,33 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                   </Box>
                   <Box
                     sx={{
-                      marginTop: "50px",
-                      opacity: loading || isError || !cardHolderName ? 0.6 : 1,
+                      opacity: loading ? 0.6 : 1,
                     }}
                   >
-                    <Box>
-                      <GlobelBtn
-                        bgColor="#b5522d"
-                        color="white"
-                        btnText={
-                          loading
-                            ? "Loading..."
-                            : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
-                        }
-                        // onClick={() => {
-                        //   if (!loading && !isError && cardHolderName) {
-                        //     setConfirmationStripe(true);
-                        //   }
-                        // }}
-                        onClick={handleSubmit}
-
-                        p={"10px 20px"}
-                        width={"200px"}
-                      />
-                    </Box>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      disabled={!cardHolderName || !subscribeUpdates || isError}
+                      onClick={handleSubmit}
+                      sx={{
+                        width: "200px",
+                        marginTop: "50px",
+                        borderRadius: "4px",
+                        p: "12px 20px",
+                        bgcolor: "#e1693b",
+                        "&:hover": {
+                          backgroundColor: "#b5522d",
+                        },
+                      }}>
+                      {
+                        loading
+                          ? "Loading..."
+                          : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
+                      }
+                    </Button>
                   </Box>
                 </Box>
               </Box>
-
-
-
-              {/* <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}
-                sx={{
-                  width: "200px",
-                  marginTop: "50px",
-                  bgcolor: "#e1693b",
-                  "&:hover": {
-                    backgroundColor: "#b5522d",
-                  },
-                }}>
-                Buy for $135
-              </Button> */}
 
               <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
                 <Typography>Secure Payment with</Typography>
@@ -496,104 +477,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
         stripeSucceed={stripeSucceed}
         stripeFailed={stripeFailed}
       />
-      {/* <PaymentProcessingModal
-        openModal={openModal}
-        selectedTab={selectedTab}
-        handleClose={() => setOpenModal(false)}
-      /> */}
-      {/* <TransitionsDialog
-        open={confirmationStripe}
-        heading={`${t("SubsPlan.premPlan")}`}
-        description={`${t("SubsPlan.premPlanDes1")} $${price} ${t(
-          "SubsPlan.premPlanDes2"
-        )}`}
-        cancel={() => {
-          setConfirmationStripe(false);
-        }}
-        closeModal={() => {
-          setConfirmationStripe(false);
-        }}
-        proceed={handleSubmit}
-      /> */}
 
-      {/* <CustomizationDialog
-        open={stripeSucceed || stripeFailed}
-        title=""
-        handleClose={() => {
-          setStripeSucceed(false);
-          setStripeFailed(false);
-          // stripeFailed
-          //   ? router.push("/dashboard/SubscribePlans")
-          //   : router.push("/dashboard/chapters");
-        }}
-        customStyles={{ backgroundColor: "auto" }}
-      >
-        <Box sx={{ textAlign: "center", p: "20px" }}>
-          <Box
-            sx={{
-              width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
-              height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
-              margin: "auto",
-            }}
-          >
-            <Image
-              alt="image"
-              src={ModalImage}
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </Box>
-          <Typography
-            sx={{
-              fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
-              fontWeight: 700,
-              color: "#070707",
-              margin: "15px 0",
-            }}
-          >
-            {stripeFailed ? `${t("SubsPlan.Sorry")}` : `${t("SubsPlan.TY")}`}
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-              color: "#070707",
-              width: { md: "400px", sm: "300px", xs: "180px" },
-              margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
-            }}
-          >
-            {stripeFailed
-              ? `${t("SubsPlan.SorryDes")}`
-              : `${t("SubsPlan.TYDes")}`}
-          </Typography>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              mt: "20px",
-            }}
-          >
-            <GlobelBtn
-              bgColor="#197065"
-              color="white"
-              btnText={
-                stripeFailed
-                  ? `${t("SubsPlan.sorryBtn")}`
-                  : `${t("SubsPlan.TYBtn")}`
-              }
-              onClick={() => {
-                stripeFailed
-                  ? router.push("/dashboard/SubscribePlans")
-                  : router.push("/dashboard/chapters");
-                setStripeSucceed(false);
-                setStripeFailed(false);
-              }}
-            />
-          </Box>
-        </Box>
-      </CustomizationDialog> */}
     </>
 
   );
