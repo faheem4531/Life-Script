@@ -13,8 +13,13 @@ import GiftTabBar from './_components/GiftTabBar';
 import DeliveryForm from './_components/DeliveryForm';
 import Bg from '@/_assets/png/bg-hurt-lite.png';
 
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
+
 const GiftSubscriptionPage = () => {
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
   const { data: session } = useSession();
 
@@ -81,7 +86,11 @@ const GiftSubscriptionPage = () => {
             {selectedTab === 0 && <GiftTabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && <DeliveryForm selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 2 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 3 && <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />}
+            {selectedTab === 3 &&
+              <Elements stripe={stripePromise}>
+                <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
+              </Elements>
+            }
           </Box>
 
           <Box sx={{ position: 'absolute', right: 0, bottom: 0, display: { md: 'block', sm: 'none', xs: 'none' } }}>
