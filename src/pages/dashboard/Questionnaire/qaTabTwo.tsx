@@ -98,7 +98,7 @@ export default function TabTwo({
           </Typography>
 
         </Box>
-        <QaTabBars tabProp={2} />
+        <QaTabBars tabProp={3} />
         <Box sx={{ mt: 10 }}>
           <Typography
             sx={{

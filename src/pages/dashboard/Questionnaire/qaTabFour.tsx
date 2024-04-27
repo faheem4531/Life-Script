@@ -36,7 +36,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
     else {
       dispatch(selectedChapters(checkedIds))
     }
-    onClickNext()
+    setQaTab(3)
   }
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
           Step 4 of 4
         </Typography>
       </Box>
-      <QaTabBars tabProp={4} />
+      <QaTabBars tabProp={2} />
       <Box sx={{ mt: { sm: 10, xs: 5 } }}>
         <Typography
           sx={{

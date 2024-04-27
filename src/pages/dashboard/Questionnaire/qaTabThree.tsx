@@ -48,7 +48,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
           Step 3 of 4
         </Typography>
       </Box>
-      <QaTabBars tabProp={3} />
+      <QaTabBars tabProp={4} />
       <Box sx={{ mt: 10 }}>
         <Typography
           sx={{

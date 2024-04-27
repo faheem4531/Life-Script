@@ -44,7 +44,7 @@ const Questionnaire = () => {
       dateOfBirth: val.dob,
       LanguagePreferences: val.lp,
     });
-    setQaTab(3);
+    setQaTab(4);
   };
 
   const handleTabThreeClick = (val) => {
@@ -55,27 +55,28 @@ const Questionnaire = () => {
       personalizedQuestion: val.personal,
     });
 
-    setQaTab(4);
+    dispatch(
+      updateUserProfile({
+        name: userData?.name,
+        // questionAskType: val.frequency,
+        bookUseFor: userData?.bookUseFor,
+        // personalizedQuestion: val.personal,
+        gender: userData?.gender,
+        martialStatus: userData?.martialStatus,
+        dateOfBirth: userData?.dateOfBirth,
+        language: userData?.LanguagePreferences,
+        onBoarding: true,
+      })
+    )
 
-
-    // dispatch(
-    //   updateUserProfile({
-    //     name: userData?.name,
-    //     questionAskType: val.frequency,
-    //     bookUseFor: userData?.bookUseFor,
-    //     personalizedQuestion: val.personal,
-    //     gender: userData?.gender,
-    //     martialStatus: userData?.martialStatus,
-    //     dateOfBirth: userData?.dateOfBirth,
-    //     language: userData?.LanguagePreferences,
-    //   })
-    // )
-    //   .unwrap()
-    //   .then(() => {
-    //     // const username = localStorage.getItem("username");
-    //     // router.push(`/getStarted/getTitle`);
-    //   })
-    //   .catch(() => { });
+      // dispatch()
+      .unwrap()
+      .then(() => {
+        dispatch(stripeDone())
+        // const username = localStorage.getItem("username");
+        router.push(`/dashboard/chapters`);  // lead this to the dashboard
+      })
+      .catch(() => { });
   };
 
   const handleTabFourClick = (val) => {
@@ -195,24 +196,26 @@ const Questionnaire = () => {
                   setQaTab={setQaTab}
                 />
               ) : qaTab === 2 ? (
-                <TabTwo
+                <TabFour
                   onClickBack={() => setQaTab(1)}
+                  onClickNext={handleTabFourClick}
+                  data={userData}
+                  setQaTab={setQaTab}
+                />
+
+              ) : qaTab === 3 ? (
+                <TabTwo
+                  onClickBack={() => setQaTab(2)}
                   onClickNext={handleTabTwoClick}
                   data={userData}
                   userName={userName}
                   setQaTab={setQaTab}
                 />
-              ) : qaTab === 3 ? (
-                <TabThree
-                  onClickBack={() => setQaTab(2)}
-                  onClickNext={handleTabThreeClick}
-                  data={userData}
-                  setQaTab={setQaTab}
-                />
+
               ) : (
-                <TabFour
+                <TabThree
                   onClickBack={() => setQaTab(3)}
-                  onClickNext={handleTabFourClick}
+                  onClickNext={handleTabThreeClick}
                   data={userData}
                   setQaTab={setQaTab}
                 />
