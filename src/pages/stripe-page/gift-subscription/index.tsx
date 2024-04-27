@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import PurchaseForm from '../subscription/_components/PurchaseForm';
-import RegisterPage from '../subscription/_components/RegisterPage';
+// import RegisterPage from '../subscription/_components/RegisterPage';
 import { useSession } from 'next-auth/react';
 import { facebookLogin } from '@/store/slices/authSlice';
 import { useDispatch } from 'react-redux';
@@ -15,6 +15,7 @@ import Bg from '@/_assets/png/bg-hurt-lite.png';
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import GiftRegisterPage from './_components/GiftRegisterPage';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
@@ -85,7 +86,7 @@ const GiftSubscriptionPage = () => {
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <GiftTabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && <DeliveryForm selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 2 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
+            {selectedTab === 2 && !session && <GiftRegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 3 &&
               <Elements stripe={stripePromise}>
                 <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
