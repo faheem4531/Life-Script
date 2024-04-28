@@ -227,16 +227,16 @@ export default function Questions({
                         color: "#197065",
                         height: "100%",
                         fontSize: "12px",
-                        padding:"20px",
+                        padding: "20px",
                         // px: "16px",
                         // py: "7px",
                         textTransform: "capitalize",
                       }}
                     >
-                      <Box sx={{color: "#30422e",}}>{t("ChName.completed")}</Box>
+                      <Box sx={{ color: "#30422e", }}>{t("ChName.completed")}</Box>
                       <Box>
                         <Image alt="icon" src={CompletedIcon} style={{ color: "#7f886b" }}
-                        width={15}
+                          width={15}
                         />
                       </Box>
                     </Box>
@@ -249,14 +249,14 @@ export default function Questions({
                         columnGap: "15px",
                         color: "#30422e",
                         fontSize: "12px",
-                        padding:"20px",
+                        padding: "20px",
                         // px: "16px",
                         // py: "7px",
                         textTransform: "capitalize",
                       }}
                     >
-                      <Image alt="icon" src={EditGreen} style={{ color: "#7f886b" }} /> 
-                      <Box sx={{color: "#30422e",}}>Edit</Box>
+                      <Image alt="icon" src={EditGreen} style={{ color: "#7f886b" }} />
+                      <Box sx={{ color: "#30422e", }}>Edit</Box>
                     </Box>
                   )}
                 </Button>
