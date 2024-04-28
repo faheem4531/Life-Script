@@ -60,29 +60,15 @@
 
 /* OverView SubComponents  */
 
-.viewBook {
-  background-image: url(../../_assets/png/view-book.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-}
-
-.viewTree {
-  background-image: url(../../_assets/png/view-tree.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-}
-
 .SelBookCoverHeaderBook {
   height: 145px;
   width: 202px;
 }
 
-.nextAero {
+/* .nextAero {
   width: 13px;
   height: 19.603px;
-}
+} */
 
 @media (min-width: 1400px) and (max-width: 1800px) {
   .welcomeImage {
@@ -107,17 +93,7 @@
 }
 
 @media (max-width: 1400px) {
-  /* OverView SubComponents  */
 
-  .viewBook {
-    background-size: 30% 90%;
-    background-position: left bottom;
-  }
-
-  .viewTree {
-    background-size: 30% 90%;
-    background-position: left bottom;
-  }
 
   /* Overview Welcome  */
 

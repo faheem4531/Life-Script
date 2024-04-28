@@ -1,5 +1,6 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
-import NextIcon from "@/_assets/svg/next-icon.svg";
+import Book from "@/_assets/svg/viewbook.svg";
+import NextIcon from "@/_assets/svg/viewbook.svg";
 import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { selectLuluPaymentStatus } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
@@ -61,19 +62,22 @@ export const ViewBook = () => {
           }
         }}
         sx={{
-          bgcolor: "#197065",
+          bgcolor: "#E1683B",
           color: "#fff",
           width: "100%",
-          padding: "16px 0",
-          borderRadius: "14px",
+          height: "50px",
+          borderRadius: "4px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
           cursor: "pointer",
+          columnGap: "16px"
         }}
         className={styles.viewBook}
       >
+
+        <Image alt="next" src={Book} className={styles.nextAero} />
         <Typography
           sx={{
             fontSize: { xl: "21px", sm: "18px", xs: "12px" },
@@ -82,19 +86,8 @@ export const ViewBook = () => {
         >
           {t("overView.ViewBtn")}
         </Typography>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            right: { xs: "10%" },
-            transform: "translateY(-50%)",
-            height: "19.603px",
-            width: "13px",
-          }}
-        >
-          <Image alt="next" src={NextIcon} className={styles.nextAero} />
-        </Box>
       </Box>
+
       <CustomizationDialog
         open={openModal}
         title=""
@@ -184,7 +177,7 @@ export const ViewTree = () => {
   useEffect(() => {
     const lulu = localStorage.getItem('luluStatus');
     setLuluStatus(lulu);
-  },[])
+  }, [])
   return (
     <Box
       onClick={() => router.push("/familyTree")}
