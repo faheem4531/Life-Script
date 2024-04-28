@@ -4,15 +4,35 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import GiftPlanCard from './GiftPlanCard';
 import { DatePicker } from '@mui/x-date-pickers';
+
+
+
 const DeliveryForm = ({ onClick, selectedTab }) => {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [recipientName, setRecipientName] = useState(''); // State for recipient's name
+  const [recipientEmail, setRecipientEmail] = useState(''); // State for recipient's name
+  const [giftMessage, setGiftMessage] = useState('');
+  const [senderName, setSenderName] = useState('');
   const router = useRouter();
 
   const minDate = new Date();
 
-  // Calculate maxDate to be one day ahead of the current date
-
   const { price, category } = router.query;
+
+  const handleRecipientNameChange = (event) => {
+    setRecipientName(event.target.value);
+  };
+  const handleRecipientEmailChange = (event) => {
+    setRecipientEmail(event.target.value);
+  };
+
+  const handleGiftMessageChange = (event) => {
+    setGiftMessage(event.target.value);
+  };
+
+  const handleSenderNameChange = (event) => {
+    setSenderName(event.target.value);
+  };
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -41,15 +61,17 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   Recipient’s Full Name
                 </Typography>
                 <TextField
-                  variant="outlined"
-                  placeholder="Enter Recipient’s full name"
-                  name="name"
-                  sx={{
-                    marginBottom: '30px',
-                    width: '100%',
-                    bgcolor: 'white',
-                  }}
-                />
+                variant="outlined"
+                placeholder="Enter Recipient’s full name"
+                name="name"
+                value={recipientName} // Value from state
+                onChange={handleRecipientNameChange} // State update function
+                sx={{
+                  marginBottom: '30px',
+                  width: '100%',
+                  bgcolor: 'white',
+                }}
+              />
               </Box>
 
               <Box>
@@ -65,6 +87,8 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   variant="outlined"
                   placeholder="Enter Recipient’s email address"
                   name="email"
+                  value={recipientEmail} // Value from state
+                  onChange={handleRecipientEmailChange} // State update function
                   sx={{
                     marginBottom: '30px',
                     width: '100%',
@@ -118,6 +142,8 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   variant="outlined"
                   placeholder="Your name and all others taking part of this gift."
                   name="from"
+                  value={senderName}
+                  onChange={handleSenderNameChange}
                   sx={{
                     marginBottom: '30px',
                     width: '100%',
@@ -139,6 +165,8 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   multiline
                   rows={7}
                   maxRows={10}
+                  value={giftMessage}
+                  onChange={handleGiftMessageChange}
                   sx={{ width: '100%', backgroundColor: '#FAFAFA' }}
                 />
               </Box>
@@ -167,7 +195,13 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
               display: { md: 'block', sm: 'none', xs: 'none' },
             }}
           >
-            <GiftPlanCard price={price} category={category} />
+            <GiftPlanCard
+              price={price}
+              category={category}
+              giftMessage={giftMessage}
+              senderName={senderName}
+              selectedDate={selectedDate}
+            />
           </Box>
         </Box>
       </Box>
