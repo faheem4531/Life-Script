@@ -47,9 +47,10 @@
 
 /* Overview Time Tracker Section  */
 .trackerbg {
-  background-image: url(../../_assets//png//time-tracker-bg.png);
+  background-image: url(../../_assets//png/bg-hunt.png);
   background-repeat: no-repeat;
-  background-position: left left;
+  background-position: left bottom;
+  background-size: contain;
 }
 
 .ClockImage {
