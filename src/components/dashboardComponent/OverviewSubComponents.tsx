@@ -1,6 +1,6 @@
 import ModalImage from "@/_assets/png/view-template-modal.png";
 import Book from "@/_assets/svg/viewbook.svg";
-import NextIcon from "@/_assets/svg/viewbook.svg";
+import FamilyTree from "@/_assets/svg/sidebar/family-tree-white.svg";
 import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { selectLuluPaymentStatus } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
@@ -77,7 +77,7 @@ export const ViewBook = () => {
         className={styles.viewBook}
       >
 
-        <Image alt="next" src={Book} className={styles.nextAero} />
+        <Image alt="next" src={Book} />
         <Typography
           sx={{
             fontSize: { xl: "21px", sm: "18px", xs: "12px" },
@@ -182,19 +182,21 @@ export const ViewTree = () => {
     <Box
       onClick={() => router.push("/familyTree")}
       sx={{
-        bgcolor: "#197065",
+        bgcolor: "#E1683B",
         cursor: "pointer",
         color: "#fff",
         width: "100%",
-        padding: "16px 0",
-        borderRadius: "14px",
+        height: "50px",
+        borderRadius: "4px",
         position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        columnGap: "16px"
       }}
       className={styles.viewTree}
     >
+      <Image alt="next" src={FamilyTree} />
       <Typography
         sx={{
           fontSize: { xl: "21px", sm: "18px", xs: "12px" },
@@ -203,18 +205,6 @@ export const ViewTree = () => {
       >
         {t("overView.famliyTreeBtn")}
       </Typography>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          right: "10%",
-          transform: "translateY(-50%)",
-          height: "19.603px",
-          width: "13px",
-        }}
-      >
-        <Image alt="next" src={NextIcon} className={styles.nextAero} />
-      </Box>
     </Box>
   );
 };
