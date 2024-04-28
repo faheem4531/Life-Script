@@ -216,37 +216,37 @@ export const PrintBook = () => {
   return (
     <Box
       sx={{
-        color: "#197065",
+        color: "#30422E",
         bgcolor: "#fff",
         width: "100%",
         padding: { lg: "30px 30px", xs: "25px" },
-        borderRadius: "19px",
+        borderRadius: "4px",
         display: "flex",
         flexDirection: { sm: "row", xs: "column" },
         justifyContent: "space-between",
+        alignItems: "center",
         gap: "15px",
-        border: "1px solid #197065",
+        border: "1px solid #30422E",
       }}
     >
       <Box sx={{ width: { md: "65%", sm: "85%", xs: "90%" } }}>
         <Typography
           sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
         >
-          Print Status of Lifescript
+          Delivery Tracking
         </Typography>
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
         >
-          Lorem ipsum dolor sit amet consectetur. Morbi eleifend sapien
-          vestibulum ante facilisis. Ultrices tincidunt elit
+          Once you submit your book for printing and delivery, watch the status update in real-time as it makes its way to you.
         </Typography>
       </Box>
       <Box>
         <GlobelBtn
           isLulu={true}
-          bgColor={luluStatus ? "#186F65" : "#A9A9A9"}
+          bgColor={luluStatus ? "#7F886B" : "#A9A9A9"}
           color="white"
-          btnText={luluStatus ? luluStatus : "Printing Status"}
+          btnText={luluStatus ? luluStatus : "Print my Book"}
           // onClick={}
           width={{ xl: "250px", sm: "180px" }}
         />
