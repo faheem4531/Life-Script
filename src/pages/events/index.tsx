@@ -13,7 +13,7 @@ export default function Answers() {
         <Box
           sx={{
             bgcolor: "#fff",
-            m: { sm: "0px", xs: "15px" },
+            m: { sm: "20px 0 0 ", xs: "15px" },
             borderRadius: "34px",
             padding: {
               xl: "30px 70px 100px",

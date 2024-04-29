@@ -4,13 +4,14 @@ import LoadImage from "@/_assets/svg/loading.svg";
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
 import { isChapterLoaded } from "@/store/slices/chatSlice";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import styles from "./Narrative.module.css";
+import animationLogo from "@/_assets/svg/animationLogo.svg";
 
 const Loading = () => {
   const [progress, setProgress] = useState(10);
@@ -39,7 +40,7 @@ const Loading = () => {
           }
         }
       });
-    }, 200);
+    }, 300);
 
     return () => {
       clearInterval(timer);
@@ -51,28 +52,16 @@ const Loading = () => {
       sx={{
         height: "100vh",
         bgcolor: "#FFF9F0",
-        color: "#197065",
+        color: "#30422E",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Typography sx={{ fontSize: "39px", fontWeight: 200 }}>
-        {progress < 100 && `${t("narrativeLoading.ReadingContent")}`}
-        {progress === 100 && !showCompletion && isLoaded === "loaded" && (
-          <a
-            style={{ borderBottom: "3px solid #197065" }}
-            onClick={() =>
-              router.push(
-                `/dashboard/narrative?chapterId=${chapterId}&openai=${openai}`
-              )
-            }
-          >
-            {t("narrativeLoading.viewCh")}
-            <ArrowForwardIcon />
-          </a>
-        )}
+      <Typography sx={{ fontSize: "30px", fontWeight: 300 }}>
+        {progress <= 50 && `${t("narrativeLoading.ReadingContent")}`}
+        {progress > 50 && progress !== 100 && "Analyzing Tones..."}
       </Typography>
       <Box className={styles.loadImageMain}>
         <Image
@@ -80,12 +69,31 @@ const Loading = () => {
           alt="BgLoadImage"
           className={styles.BgloadImage}
         />
-        <Image alt="image" src={LoadImage} className={styles.loadImage} />
+        <Image alt="image" src={animationLogo} className={styles.loadImage} />
       </Box>
       <Box sx={{ width: { xs: "90%", sm: "80%", lg: "60%" } }}>
         <ReloadingBar value={progress} />
       </Box>
-    </Box>
+      {progress === 100 && !showCompletion && isLoaded === "loaded" &&
+        < Button
+          onClick={() =>
+            router.push(
+              `/dashboard/narrative?chapterId=${chapterId}&openai=${openai}`
+            )}
+          sx={{
+            width: "300px",
+            color: "#fff",
+            height: "50px",
+            margin: { sm: "60px 0 50px", xs: "30px 0 20px" },
+            bgcolor: "#e1693b",
+            "&:hover": {
+              backgroundColor: "#b5522d",
+            },
+          }}>
+          {t("narrativeLoading.viewCh")}
+        </Button>
+      }
+    </Box >
   );
 };
 

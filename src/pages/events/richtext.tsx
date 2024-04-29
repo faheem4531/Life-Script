@@ -420,6 +420,7 @@ const RichText = ({ questionId }) => {
             justifyContent: "space-between",
             flexDirection: { xs: "column" },
             rowGap: "30px",
+            pt: "20px",
           }}
         >
           <Box
@@ -436,13 +437,14 @@ const RichText = ({ questionId }) => {
                 router.back();
               }}
               sx={{
-                borderRadius: "50%",
+                borderRadius: "4px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "53.679px",
-                height: "53.679px",
-                bgcolor: "#b5b5be66",
+                width: "48px",
+                height: "36px",
+                bgcolor: "#fff",
+                border: "1px solid #E1683B",
                 flexShrink: "0",
               }}
             >
@@ -473,8 +475,8 @@ const RichText = ({ questionId }) => {
                   detecting
                     ? `${t("richText.detecte")}`
                     : listening
-                    ? `${t("richText.stop")}`
-                    : `${t("richText.STT")}`
+                      ? `${t("richText.stop")}`
+                      : `${t("richText.STT")}`
                 }
                 onClick={handleSpeechtoText}
               />

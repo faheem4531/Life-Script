@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import ClockImage from "../../_assets/svg/clockMain.svg";
+import ClockImage from "@/_assets/svg/clockMain.svg";
 import styles from "./Custom.module.css";
 
 import {
@@ -119,10 +119,10 @@ const TimeTracker = ({ onChange }) => {
   return (
     <Box
       sx={{
-        color: "#197065;",
+        color: "#7F886B;",
+        bgcolor: "#f4f4f4 !important",
         marginTop: "15px",
         borderRadius: "14px",
-        border: "1px solid #197065",
         background: "#FFF",
         height: "auto",
         position: "relative",
@@ -148,13 +148,12 @@ const TimeTracker = ({ onChange }) => {
       >
         <Box
           sx={{
-            border: "3px solid #197065",
+            border: "1px solid #30422E",
             borderRadius: "50%",
             width: { lg: "135px", sm: "110px", xs: "100px" },
             height: { lg: "135px", sm: "110px", xs: "100px" },
             padding: "4px",
-            bgcolor: "#fff",
-            alignSelf: "end",
+            alignSelf: "start",
             mb: "15px",
             mr: { lg: "-10px", xs: "-40px" },
             flexShrink: "0",
@@ -162,7 +161,7 @@ const TimeTracker = ({ onChange }) => {
         >
           <Box
             sx={{
-              border: "3px dashed #197065",
+              border: "1px dashed #30422E",
               borderRadius: "50%",
               width: "100%",
               height: "100%",
@@ -176,7 +175,6 @@ const TimeTracker = ({ onChange }) => {
               sx={{
                 fontSize: { lg: "36px", md: "28px", sm: "26px", xs: "22px" },
                 fontWeight: 500,
-
                 marginBottom: "-7px",
               }}
             >
@@ -184,10 +182,9 @@ const TimeTracker = ({ onChange }) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: { lg: "11px", md: "10px", sm: "8px", xs: "7px" },
+                fontSize: { lg: "25px", md: "10px", sm: "8px", xs: "7px" },
                 fontWeight: 300,
-
-                color: "#000",
+                color: "#7F886B",
               }}
             >
               Words
@@ -197,17 +194,18 @@ const TimeTracker = ({ onChange }) => {
 
         <Box
           sx={{
-            border: "2.5px solid #197065",
+            border: "1px solid #30422E",
             borderRadius: "50%",
             width: { lg: "99px", sm: "80px", xs: "70px" },
             height: { lg: "99px", sm: "80px", xs: "70px" },
             padding: "3px",
+            alignSelf: "end",
             flexShrink: "0",
           }}
         >
           <Box
             sx={{
-              border: "2.5px dashed #197065",
+              border: "1px dashed #30422E",
               borderRadius: "50%",
               width: "100%",
               height: "100%",
@@ -221,7 +219,6 @@ const TimeTracker = ({ onChange }) => {
               sx={{
                 fontSize: { lg: "26px", md: "20px", sm: "18px", xs: "15px" },
                 fontWeight: 500,
-
                 marginBottom: "-7px",
               }}
             >
@@ -229,10 +226,9 @@ const TimeTracker = ({ onChange }) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: { lg: "11px", md: "10px", sm: "8px", xs: "7px" },
+                fontSize: { lg: "15px", md: "10px", sm: "8px", xs: "7px" },
                 fontWeight: 300,
-
-                color: "#000",
+                color: "#7F886B",
               }}
             >
               Questions
@@ -242,19 +238,19 @@ const TimeTracker = ({ onChange }) => {
 
         <Box
           sx={{
-            border: "2.1px solid #197065",
+            border: "1px solid #30422E",
             borderRadius: "50%",
             width: { lg: "99px", sm: "80px", xs: "70px" },
             height: { lg: "99px", sm: "80px", xs: "70px" },
             padding: "3px",
-            alignSelf: "end",
-            ml: { lg: "-40px", xs: "-70px" },
+            alignSelf: "center",
+            ml: { lg: "0px", sm: "-40px", xs: "-70px" },
             flexShrink: "0",
           }}
         >
           <Box
             sx={{
-              border: "2.1px dashed #197065",
+              border: "1px dashed #30422E",
               borderRadius: "50%",
               width: "100%",
               height: "100%",
@@ -268,7 +264,6 @@ const TimeTracker = ({ onChange }) => {
               sx={{
                 fontSize: { lg: "24px", md: "20px", sm: "18px", xs: "15px" },
                 fontWeight: 500,
-
                 marginBottom: "-7px",
               }}
             >
@@ -276,10 +271,9 @@ const TimeTracker = ({ onChange }) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: { lg: "11px", md: "10px", sm: "8px", xs: "7px" },
+                fontSize: { lg: "14px", md: "10px", sm: "8px", xs: "7px" },
                 fontWeight: 300,
-
-                color: "#000",
+                color: "#7F886B",
               }}
             >
               Chapters
@@ -291,6 +285,7 @@ const TimeTracker = ({ onChange }) => {
         sx={{
           position: "relative",
           ml: "20px",
+          alignSelf: "end",
           width: "260px",
         }}
       >
@@ -298,7 +293,7 @@ const TimeTracker = ({ onChange }) => {
           src={ClockImage}
           alt="ClockImage"
           style={{
-            width: "100%",
+            width: "110%",
           }}
         />
         <Box
@@ -307,7 +302,7 @@ const TimeTracker = ({ onChange }) => {
             right: { xs: "0px" },
             bottom: { lg: "40px", md: "50px", xs: "50px" },
             width: "100px",
-            textAlign: "center",
+            textAlign: "center", bgcolor: "grey"
           }}
         >
           <Typography

@@ -1,32 +1,26 @@
 /* Overview Profile  */
 
 .profilePic {
-  outline: 8px solid #197065;
+  outline: 8px solid #E1683B;
   border-radius: 50%;
   padding: 8px;
-  width: 109px;
-  height: 109px;
+  width: 130px;
+  height: 130px;
 }
 
 .profileAchivements {
-  width: 56px;
-  height: 56px;
+  width: 107px;
+  height: 107px;
 }
 
-.SelBookCoverHeaderMain {
-  background-image: url(../../_assets/svg/smallBgTree.svg);
+.welcomeMain{
+  background-image: url(../../_assets//png/bg-hunt.png);
   background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: contain;
+  background-position: right bottom;
+  background-size: 280px 120px;
 }
 
 /* Overview Welcome  */
-.welcomeMain {
-  background-image: url(../../_assets/png/template-tree-bg.png);
-  background-repeat: no-repeat;
-  background-position: left left;
-  background-size: 40% 80%;
-}
 
 .welcomeImage {
   position: relative;
@@ -47,9 +41,10 @@
 
 /* Overview Time Tracker Section  */
 .trackerbg {
-  background-image: url(../../_assets//png//time-tracker-bg.png);
+  background-image: url(../../_assets//png/bg-hunt.png);
   background-repeat: no-repeat;
-  background-position: left left;
+  background-position: left bottom;
+  background-size: contain;
 }
 
 .ClockImage {
@@ -59,28 +54,9 @@
 
 /* OverView SubComponents  */
 
-.viewBook {
-  background-image: url(../../_assets/png/view-book.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-}
-
-.viewTree {
-  background-image: url(../../_assets/png/view-tree.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-}
-
 .SelBookCoverHeaderBook {
   height: 145px;
   width: 202px;
-}
-
-.nextAero {
-  width: 13px;
-  height: 19.603px;
 }
 
 @media (min-width: 1400px) and (max-width: 1800px) {
@@ -96,8 +72,8 @@
   }
 
   .profilePic {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
 
   .bgRounded {
@@ -106,17 +82,7 @@
 }
 
 @media (max-width: 1400px) {
-  /* OverView SubComponents  */
 
-  .viewBook {
-    background-size: 30% 90%;
-    background-position: left bottom;
-  }
-
-  .viewTree {
-    background-size: 30% 90%;
-    background-position: left bottom;
-  }
 
   /* Overview Welcome  */
 

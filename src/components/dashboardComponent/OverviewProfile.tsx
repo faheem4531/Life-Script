@@ -16,7 +16,7 @@ import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
 
-const Profile = ({data}) => {
+const Profile = ({ data }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -66,11 +66,10 @@ const Profile = ({data}) => {
   return (
     <Box
       sx={{
-        bgcolor: "#fff",
-        maxWidth: { lg: "326.25px", xs: "100%" },
+        bgcolor: "#F3ECDA",
+        maxWidth: { xl: "335px", lg: "300px", xs: "100%" },
         width: "100%",
-        borderRadius: "19px",
-        border: "1px solid #186F65",
+        borderRadius: "4px",
         padding: { xs: "32px 28px 44px" },
       }}
     >
@@ -84,80 +83,73 @@ const Profile = ({data}) => {
           margin: "auto",
         }}
       >
-        <Box sx={{ textAlign: "center", marginBottom: { xs: "30px" } }}>
-          {!userImage ? (
-            <Image
-              alt="profile"
-              src={DemoProfile}
-              className={styles.profilePic}
-            />
-          ) : (
-            <img alt="profile" src={userImage} className={styles.profilePic} />
-          )}
-          <Typography
-            sx={{
-              fontSize: "20px",
-              fontWeight: 700,
-              marginTop: "17px",
-            }}
-          >
-            {userName}
-          </Typography>
-        </Box>
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
           {t("overView.achivement")}
         </Typography>
+
+
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             margin: "30px 0 40px",
-            columnGap: { xl: "18px", lg: "4px" },
+            columnGap: { xl: "20px", lg: "15px" },
+            rowGap: "15px"
           }}
         >
-          <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
-              <Image
-                alt="tag"
-                src={data?.words < 499 ? Grey : Bronze}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
+          <Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
+                <Image
+                  alt="tag"
+                  src={data?.words < 499 ? Grey : Bronze}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+            </Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
+                <Image
+                  alt="tag"
+                  src={data?.chapters < 5 ? Grey : Silver}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+
+            </Box>
           </Box>
-          <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
-              <Image
-                alt="tag"
-                src={data?.chapters < 5 ? Grey : Silver}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
-          </Box>
-          <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
-              <Image
-                alt="tag"
-                src={data?.questions < 100 ? Grey : Gold}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
-          </Box>
-          <Box sx={{cursor: "pointer"}}>
-            <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
-              <Image
-                alt="tag"
-                src={data?.words < 5000 ? Grey : Platinum}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
+
+          <Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
+                <Image
+                  alt="tag"
+                  src={data?.questions < 100 ? Grey : Gold}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+            </Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
+                <Image
+                  alt="tag"
+                  src={data?.words < 5000 ? Grey : Platinum}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+            </Box>
           </Box>
         </Box>
+
+
+
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
           {t("overView.RecentCh")}
         </Typography>
         <Box sx={{ marginTop: "20px" }}>
-          {progressChapters?.slice(0, 4).map((chapter) => (
+          {progressChapters?.slice(0, 5).map((chapter) => (
             <RecentChapters
+              key={chapter?._id}
               title={chapter?.title}
               id={chapter?._id}
               percentage={calculateCompletionPercentage(chapter?.questions)}
@@ -168,13 +160,12 @@ const Profile = ({data}) => {
           <Typography
             sx={{
               cursor: "pointer",
-              fontSize: "11.869px",
-              color: "#9B9B9B",
+              fontSize: "12px",
+              color: "#30422E",
               marginTop: "22px",
               textAlign: "center",
             }}
           >
-            {/* {t("overView.viewMore")} */}
             {progressChapters?.length > 3 ? t("overView.viewMore") : "Add More"}
           </Typography>
         </Box>
@@ -194,14 +185,14 @@ export const RecentChapters = ({ title, percentage, id }) => {
       }
       sx={{
         cursor: "pointer",
-        bgcolor: "#F9F9F9",
-        borderRadius: "8px",
+        bgcolor: "#F4F4F4",
+        borderRadius: "4px",
+        height: "40px",
         width: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        borderLeft: "10px solid #186F65",
-        padding: "8px 13px 8px 20px",
+        padding: "8px 11px 8px 25px",
         marginBlock: "11px",
       }}
     >
@@ -217,10 +208,10 @@ export const RecentChapters = ({ title, percentage, id }) => {
 function CircularProgressWithLabel(props) {
   return (
     <Box sx={{ position: "relative", display: "inline-flex", width: "24px" }}>
-      <CircularProgress color="success" variant="determinate" {...props} />
+      <CircularProgress sx={{ color: "#E1683B" }} variant="determinate" {...props} />
       <Box
         sx={{
-          top: 0,
+          top: 2,
           left: -15,
           bottom: 0,
           right: 0,
@@ -233,7 +224,7 @@ function CircularProgressWithLabel(props) {
         <Typography
           variant="caption"
           component="div"
-          color="#197065"
+          color="#E1683B"
           sx={{ fontSize: "6px" }}
         >
           {`${Math.round(props.value)}%`}

@@ -60,25 +60,39 @@ const AddChapterName = ({
         height: "165px",
         overflow: "hidden",
         width: "100%",
+        position: "relative"
       }}
     >
+      <Box sx={{
+        borderRadius: "3px",
+        backgroundColor: "white",
+        position: "absolute",
+        top: 12,
+        left: 12,
+        width: "40px",
+        height: "30px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        cursor: "pointer",
+        border: "1px solid #E1693B",
+        color: "#E1693B"
+      }}
+        onClick={() => router.back()}
+      >
+        {"<--"}
+      </Box>
+
       <Box
         sx={{
           padding: { sm: "10px 15px", xs: "5px 10px" },
-          marginTop: "-50px",
           position: "relative",
           zIndex: "1",
         }}
-        >
-        <Box sx={{borderRadius:"3px", backgroundColor:"white", width:"40px", height:"30px",display:"flex" ,justifyContent:"center", alignItems:"center",cursor:"pointer", border: "1px solid #E1693B", color:"#E1693B"}}
-        onClick={() => router.back()}
-        >
-          {"<--"} 
-        </Box>
-
+      >
         <Box>
-        {title === "templateView" && (
-          <Box sx={{display:"flex", justifyContent:"center", alignItems:"center", marginLeft:"80px"}}>
+          {/* {title === "templateView" && ( */}
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "80px" }}>
             {subTitle && (
               <Typography
                 sx={{
@@ -90,7 +104,7 @@ const AddChapterName = ({
                   },
                 }}
               >
-                {subTitle} 
+                {subTitle}
               </Typography>
             )}
             <Typography
@@ -106,10 +120,10 @@ const AddChapterName = ({
               {chapter}
             </Typography>
           </Box>
-        )}
+          {/* )} */}
         </Box>
-        {title != "templateView" && (
-          <Box>
+        {/* {title != "templateView" && (
+          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "80px" }}>
             <Typography
               sx={{
                 fontSize: {
@@ -121,9 +135,10 @@ const AddChapterName = ({
                 fontWeight: 600,
               }}
             >
+              {chapter}
               {t("ChName.ChName")}
             </Typography>
-            {/* <Box>
+            <Box>
               <TextField
                 variant="outlined"
                 value={chapterName}
@@ -155,9 +170,9 @@ const AddChapterName = ({
                   width: { sm: "300px", lg: "390px" },
                 }}
               />
-            </Box> */}
+            </Box>
           </Box>
-        )}
+        )} */}
       </Box>
       <Box
         sx={{

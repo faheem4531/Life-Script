@@ -310,8 +310,9 @@ const chapterName = () => {
 
   return (
     <>
-      <Box>
-        <Layout>
+      <Layout>
+        <Box >
+
           <Box
             sx={{
               display: { sm: "block", xs: "none" },
@@ -342,7 +343,6 @@ const chapterName = () => {
                 justifyContent: "center",
                 width: "45.679px",
                 height: "45.679px",
-                // bgcolor: "#b5b5be66",
                 flexShrink: "0",
                 border: "1px solid #17645A",
                 position: "absolute",
@@ -411,7 +411,7 @@ const chapterName = () => {
                 sx={{
                   fontSize: "20px",
                   fontWeight: 700,
-                  color: "rgba(0, 0, 0, 0.87)",
+                  color: "#30422E",
                   display: {
                     sm: "block",
                     xs: "none",
@@ -486,7 +486,7 @@ const chapterName = () => {
                   <Box>
                     {allQuestions?.length > 0 ? (
                       allQuestions.map((question, index) => (
-                        <Box>
+                        <Box key={question._id}>
                           <Questions
                             key={question._id}
                             question={question}
@@ -554,8 +554,8 @@ const chapterName = () => {
               )}
             </Box>
           )}
-        </Layout>
-      </Box>
+        </Box>
+      </Layout>
 
       <CustomizationDialog
         open={gptSocket}
@@ -563,10 +563,12 @@ const chapterName = () => {
         handleClose={() => {
           setgptSocket(false);
         }}
-        customStyles={{ backgroundColor: "#f3ecda",
-        textAlign: "center",
-        color: "#30422E",
-        fontSize: "30px",}}
+        customStyles={{
+          backgroundColor: "#f3ecda",
+          textAlign: "center",
+          color: "#30422E",
+          fontSize: "30px",
+        }}
       >
         <Box sx={{ textAlign: "center", p: "20px" }}>
           <Box
@@ -671,9 +673,9 @@ const chapterName = () => {
         <Typography
           sx={{
             fontSize: { md: "24px", sm: "22px", xs: "18px" },
-            fontWeight:"700",
+            fontWeight: "700",
             cursor: "pointer",
-            marginTop:"20px"
+            marginTop: "20px"
           }}
         >
           {t("ChName.AddNewQues")}

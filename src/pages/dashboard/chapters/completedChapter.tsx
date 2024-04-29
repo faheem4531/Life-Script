@@ -21,8 +21,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import bgTree from "../../../_assets/svg/bgTree.svg";
 import AddChapter from "./addChapter";
+import HomeSteps from '@/components/dashboardComponent/HomeSteps';
 
 const CompletedChapters = () => {
   const [chapterModal, setChapterModal] = useState(false);
@@ -125,7 +125,8 @@ const CompletedChapters = () => {
               display: { sm: "block", xs: "none" },
             }}
           >
-            <CompletedChapterHeader />
+            <HomeSteps />
+            {/* <CompletedChapterHeader /> */}
           </Box>
 
           {loading ? (
@@ -226,16 +227,6 @@ const CompletedChapters = () => {
         proceed={handleDeleteChapter}
         closeModal={() => setDeleteChapter(false)}
       />
-      <Box
-        sx={{
-          position: "fixed",
-          bottom: "0px",
-          right: "0px",
-          zIndex: "1",
-        }}
-      >
-        <Image src={bgTree} alt="bgTree" />
-      </Box>
     </>
   );
 };
