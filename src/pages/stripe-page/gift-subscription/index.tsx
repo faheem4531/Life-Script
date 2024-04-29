@@ -3,7 +3,8 @@ import Logo from '@/_assets/svg/logo-dashboard.svg';
 import { Box } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import PurchaseForm from '../subscription/_components/PurchaseForm';
+// import PurchaseForm from '../subscription/_components/PurchaseForm';
+import GiftPurchaseForm from './_components/GiftPurchaseForm';
 // import RegisterPage from '../subscription/_components/RegisterPage';
 // import { useSession } from 'next-auth/react';
 // import { facebookLogin } from '@/store/slices/authSlice';
@@ -89,7 +90,7 @@ const GiftSubscriptionPage = () => {
             {/* {selectedTab === 2 && !session && <GiftRegisterPage selectedTab={selectedTab} onClick={handleTabClick} />} */}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
-                <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
+                <GiftPurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
               </Elements>
             }
           </Box>

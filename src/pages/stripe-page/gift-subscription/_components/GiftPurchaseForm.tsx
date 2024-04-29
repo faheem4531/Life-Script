@@ -48,7 +48,8 @@ const useOptions = () => {
   return options;
 };
 
-const PurchaseForm = ({ onClick, selectedTab }) => {
+
+const GiftPurchaseForm = ({ onClick, selectedTab }) => {
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
@@ -467,6 +468,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   );
 }
 
-export default dynamic(() => Promise.resolve(PurchaseForm), {
+export default dynamic(() => Promise.resolve(GiftPurchaseForm), {
   ssr: false,
 });
