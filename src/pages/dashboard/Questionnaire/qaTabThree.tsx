@@ -45,7 +45,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
             fontWeight: 700,
           }}
         >
-          Step 3 of 4
+          Step 4 of 4
         </Typography>
       </Box>
       <QaTabBars tabProp={4} />

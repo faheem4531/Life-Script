@@ -94,7 +94,7 @@ export default function TabTwo({
               fontWeight: 700,
             }}
           >
-            Step 2 of 4
+            Step 3 of 4
           </Typography>
 
         </Box>
