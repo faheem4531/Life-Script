@@ -86,51 +86,63 @@ const Profile = ({ data }) => {
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
           {t("overView.achivement")}
         </Typography>
+
+
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             margin: "30px 0 40px",
-            columnGap: { xl: "18px", lg: "4px" },
+            columnGap: { xl: "20px", lg: "15px" },
+            rowGap: "15px"
           }}
         >
-          <Box sx={{ cursor: "pointer" }}>
-            <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
-              <Image
-                alt="tag"
-                src={data?.words < 499 ? Grey : Bronze}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
+          <Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
+                <Image
+                  alt="tag"
+                  src={data?.words < 499 ? Grey : Bronze}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+            </Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
+                <Image
+                  alt="tag"
+                  src={data?.chapters < 5 ? Grey : Silver}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+
+            </Box>
           </Box>
-          <Box sx={{ cursor: "pointer" }}>
-            <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
-              <Image
-                alt="tag"
-                src={data?.chapters < 5 ? Grey : Silver}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
-          </Box>
-          <Box sx={{ cursor: "pointer" }}>
-            <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
-              <Image
-                alt="tag"
-                src={data?.questions < 100 ? Grey : Gold}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
-          </Box>
-          <Box sx={{ cursor: "pointer" }}>
-            <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
-              <Image
-                alt="tag"
-                src={data?.words < 5000 ? Grey : Platinum}
-                className={styles.profileAchivements}
-              />
-            </Tooltip>
+
+          <Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
+                <Image
+                  alt="tag"
+                  src={data?.questions < 100 ? Grey : Gold}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+            </Box>
+            <Box sx={{ cursor: "pointer" }}>
+              <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
+                <Image
+                  alt="tag"
+                  src={data?.words < 5000 ? Grey : Platinum}
+                  className={styles.profileAchivements}
+                />
+              </Tooltip>
+            </Box>
           </Box>
         </Box>
+
+
+
         <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
           {t("overView.RecentCh")}
         </Typography>
@@ -154,7 +166,6 @@ const Profile = ({ data }) => {
               textAlign: "center",
             }}
           >
-            {/* {t("overView.viewMore")} */}
             {progressChapters?.length > 3 ? t("overView.viewMore") : "Add More"}
           </Typography>
         </Box>
