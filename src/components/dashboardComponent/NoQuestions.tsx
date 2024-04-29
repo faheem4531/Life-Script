@@ -1,15 +1,16 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import noData from "../../../public/noData.svg";
+// import noData from "../../../public/noData.svg";
+import NoData from "@/_assets/svg/no-data-icon.svg"
 
 export default function NoQuestions() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Typography
+      {/* <Typography
         sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "32px", xs: "22px" }, marginTop: { sm: "30px", xs: "25px" } }}
       >
         Start New Question
-      </Typography>
+      </Typography> */}
       <Box
         sx={{
           display: "flex",
@@ -18,9 +19,9 @@ export default function NoQuestions() {
         }}
       >
         <Image
-          src={noData}
+          src={NoData}
           alt="No Data"
-          height={120}
+          height={150}
         // width={300}
         />
       </Box>

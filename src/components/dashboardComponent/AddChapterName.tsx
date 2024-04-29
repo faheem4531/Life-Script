@@ -63,7 +63,7 @@ const AddChapterName = ({
         position: "relative"
       }}
     >
-      {title !== "profileSetting" && < Box sx={{
+      {title !== "profileSetting" && title !== "tabelOfContent" && < Box sx={{
         borderRadius: "3px",
         backgroundColor: "white",
         position: "absolute",

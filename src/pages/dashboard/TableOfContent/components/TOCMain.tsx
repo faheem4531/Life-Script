@@ -75,7 +75,7 @@ const TOCMain = () => {
               marginTop: { xs: "15px" },
             }}
           >
-            <Typography
+            {/* <Typography
               sx={{
                 fontSize: "20px",
                 fontWeight: 700,
@@ -87,7 +87,7 @@ const TOCMain = () => {
               }}
             >
               {t("TOC.ch")}
-            </Typography>
+            </Typography> */}
             <Box
               sx={{
                 gap: { sm: 4, xs: 2 },
