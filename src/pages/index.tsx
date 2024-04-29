@@ -26,9 +26,18 @@ export default function Home() {
         <meta property="og:image" content="https://github.com/Tayyab-103/JavaScript-103/assets/109760448/26d04d82-e102-4c24-961b-9954303bd1b5" />
       </Head> */}
 
-      
+     {/* Include necessary scripts */}
       {/* <FeaturesPage /> */}
       <HomePage />
+
+        <Script
+          src="https://r.wdfl.co/rw.js"
+          data-rewardful={"797851"}
+        ></Script>
+        <Script id="rewardful-queue" strategy="beforeInteractive">
+          {`(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');`}
+        </Script>
+     
       {/* <AuthPage /> */}
       {/* <BlogPage /> */}
       {/* <BlogDetailPage /> */}
