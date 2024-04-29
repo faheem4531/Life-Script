@@ -118,6 +118,120 @@ const Profile = ({ data }) => {
   }, [userData]);
 
 
+
+  const wordCount = data?.words;
+  const questionsCount = data?.questions
+  const chaptersCount = data?.chapters
+
+
+  const getWordsBadgeAndTooltip = (wordCount) => {
+    let WordbadgeImage, WordtooltipText;
+
+    if (wordCount < 1000) {
+      WordbadgeImage = Grey;
+      WordtooltipText = 'Word Wizard will be opened after writing at least 1000 words';
+    } else if (wordCount >= 1000 && wordCount < 3000) {
+      WordbadgeImage = Word1;
+      WordtooltipText = '  1000 words written';
+    } else if (wordCount >= 3000 && wordCount < 5000) {
+      WordbadgeImage = Word2;
+      WordtooltipText = '  3000 words written';
+    } else if (wordCount >= 5000 && wordCount < 10000) {
+      WordbadgeImage = Word3;
+      WordtooltipText = '  5000 words written';
+    } else if (wordCount >= 10000 && wordCount < 20000) {
+      WordbadgeImage = Word4;
+      WordtooltipText = '  10000 words written';
+    } else if (wordCount >= 20000 && wordCount < 30000) {
+      WordbadgeImage = Word5;
+      WordtooltipText = '  20000 words written';
+    } else if (wordCount >= 30000 && wordCount < 40000) {
+      WordbadgeImage = Word6;
+      WordtooltipText = '  30000 words written';
+    } else if (wordCount >= 40000 && wordCount < 50000) {
+      WordbadgeImage = Word7;
+      WordtooltipText = '  40000 words written';
+    } else if (wordCount >= 50000) {
+      WordbadgeImage = Word8;
+      WordtooltipText = 'Congratulations!   50000 words written';
+    }
+
+    return { WordbadgeImage, WordtooltipText };
+  };
+
+  const getQsBadgeAndTooltip = (questionsCount) => {
+    let QsbadgeImage, QstooltipText;
+
+    if (questionsCount < 5) {
+      QsbadgeImage = Grey;
+      QstooltipText = 'Query Master will be opened after writing at least 5 Questions';
+    } else if (questionsCount >= 5 && questionsCount < 10) {
+      QsbadgeImage = Query1;
+      QstooltipText = '  5 questions answered';
+    } else if (questionsCount >= 10 && questionsCount < 15) {
+      QsbadgeImage = Query2;
+      QstooltipText = '  10 questions answered';
+    } else if (questionsCount >= 15 && questionsCount < 20) {
+      QsbadgeImage = Query3;
+      QstooltipText = '  15 questions answered';
+    } else if (questionsCount >= 20 && questionsCount < 30) {
+      QsbadgeImage = Query4;
+      QstooltipText = '  20 questions answered';
+    } else if (questionsCount >= 30 && questionsCount < 50) {
+      QsbadgeImage = Query5;
+      QstooltipText = '  30 questions answered';
+    } else if (questionsCount >= 50 && questionsCount < 70) {
+      QsbadgeImage = Query6;
+      QstooltipText = '  50 questions answered';
+    } else if (questionsCount >= 70 && questionsCount < 100) {
+      QsbadgeImage = Query7;
+      QstooltipText = '  70 questions answered';
+    } else if (questionsCount >= 100) {
+      QsbadgeImage = Query8;
+      QstooltipText = ' 100 questions answered';
+    }
+
+    return { QsbadgeImage, QstooltipText };
+  };
+
+  const getChaptersBadgeAndTooltip = (chaptersCount) => {
+    let ChapterbadgeImage, ChaptertooltipText;
+
+    if (chaptersCount == 0) {
+      ChapterbadgeImage = Grey;
+      ChaptertooltipText = 'Chapter Champ will be opened after completing at least 1 chapter';
+    } else if (chaptersCount >= 1 && chaptersCount < 3) {
+      ChapterbadgeImage = Chapter1;
+      ChaptertooltipText = '  1 chapter completed';
+    } else if (chaptersCount >= 3 && chaptersCount < 5) {
+      ChapterbadgeImage = Chapter2;
+      ChaptertooltipText = '  3 chapters completed';
+    } else if (chaptersCount >= 5 && chaptersCount < 7) {
+      ChapterbadgeImage = Chapter3;
+      ChaptertooltipText = '  5 chapters completed';
+    } else if (chaptersCount >= 7 && chaptersCount < 10) {
+      ChapterbadgeImage = Chapter4;
+      ChaptertooltipText = '  7 chapters completed';
+    } else if (chaptersCount >= 10 && chaptersCount < 15) {
+      ChapterbadgeImage = Chapter5;
+      ChaptertooltipText = '  10 chapters completed';
+    } else if (chaptersCount >= 15 && chaptersCount < 20) {
+      ChapterbadgeImage = Chapter6;
+      ChaptertooltipText = '  15 chapters completed';
+    } else if (chaptersCount >= 20 && chaptersCount < 25) {
+      ChapterbadgeImage = Chapter7;
+      ChaptertooltipText = '  20 chapters completed';
+    } else if (chaptersCount >= 25) {
+      ChapterbadgeImage = Chapter8;
+      ChaptertooltipText = ' 25 chapters completed';
+    }
+
+    return { ChapterbadgeImage, ChaptertooltipText };
+  };
+  const { WordbadgeImage, WordtooltipText } = getWordsBadgeAndTooltip(wordCount);
+  const { QsbadgeImage, QstooltipText } = getQsBadgeAndTooltip(questionsCount);
+  const { ChapterbadgeImage, ChaptertooltipText } = getChaptersBadgeAndTooltip(chaptersCount);
+
   return (
     <Box
       sx={{
@@ -154,37 +268,38 @@ const Profile = ({ data }) => {
         >
           <Box>
             <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
+              <Tooltip title={WordtooltipText}>
                 <Image
                   alt="tag"
-                  src={data?.words < 499 ? Grey : Word8}
+                  src={WordbadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
             </Box>
-            <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
+            <Box sx={{ cursor: "pointer", mt: "20px" }}>
+              <Tooltip title={QstooltipText}>
                 <Image
                   alt="tag"
-                  src={data?.chapters < 5 ? Grey : Chapter8}
+                  src={QsbadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
-
             </Box>
           </Box>
 
           <Box>
             <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
+              <Tooltip title={ChaptertooltipText}>
                 <Image
                   alt="tag"
-                  src={data?.questions < 100 ? Grey : Query8}
+                  src={ChapterbadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
+
+
             </Box>
-            <Box sx={{ cursor: "pointer" }}>
+            <Box sx={{ cursor: "pointer", mt: "20px" }}>
               <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
                 <Image
                   alt="tag"
