@@ -1,16 +1,3 @@
-import DemoProfile from "@/_assets/svg/profile.svg";
-import Bronze from "@/_assets/svg/bronze-token.svg";
-import Gold from "@/_assets/svg/gold-token.svg";
-import Grey from "@/_assets/svg/Silver Token.svg";
-import Platinum from "@/_assets/svg/platinum-token.svg";
-
-import Word8 from "@/_assets/png/achivments/word-8.png"
-import Chapter8 from "@/_assets/png/achivments/chapter-8.png"
-import Query8 from "@/_assets/png/achivments/query-8.png"
-import Time8 from "@/_assets/png/achivments/time-8.png"
-
-
-import Silver from "@/_assets/svg/silver-token.svg";
 import { Box, Tooltip, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
@@ -18,10 +5,46 @@ import { useTranslation } from "react-i18next";
 import styles from "./Custom.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
 import { getChapters, getHours, selectAllChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
+
+import Grey from "@/_assets/svg/Silver Token.svg";
+import Word8 from "@/_assets/png/achievements/word-8.png"
+import Word7 from "@/_assets/png/achievements/word-7.png"
+import Word6 from "@/_assets/png/achievements/word-6.png"
+import Word5 from "@/_assets/png/achievements/word-5.png"
+import Word4 from "@/_assets/png/achievements/word-4.png"
+import Word3 from "@/_assets/png/achievements/word-3.png"
+import Word2 from "@/_assets/png/achievements/word-2.png"
+import Word1 from "@/_assets/png/achievements/word-1.png"
+import Chapter8 from "@/_assets/png/achievements/chapter-8.png"
+import Chapter7 from "@/_assets/png/achievements/chapter-7.png"
+import Chapter6 from "@/_assets/png/achievements/chapter-6.png"
+import Chapter5 from "@/_assets/png/achievements/chapter-5.png"
+import Chapter4 from "@/_assets/png/achievements/chapter-4.png"
+import Chapter3 from "@/_assets/png/achievements/chapter-3.png"
+import Chapter2 from "@/_assets/png/achievements/chapter-2.png"
+import Chapter1 from "@/_assets/png/achievements/chapter-1.png"
+import Query8 from "@/_assets/png/achievements/query-8.png"
+import Query7 from "@/_assets/png/achievements/query-7.png"
+import Query6 from "@/_assets/png/achievements/query-6.png"
+import Query5 from "@/_assets/png/achievements/query-5.png"
+import Query4 from "@/_assets/png/achievements/query-4.png"
+import Query3 from "@/_assets/png/achievements/query-3.png"
+import Query2 from "@/_assets/png/achievements/query-2.png"
+import Query1 from "@/_assets/png/achievements/query-1.png"
+import Time8 from "@/_assets/png/achievements/time-8.png"
+import Time7 from "@/_assets/png/achievements/time-7.png"
+import Time6 from "@/_assets/png/achievements/time-6.png"
+import Time5 from "@/_assets/png/achievements/time-5.png"
+import Time4 from "@/_assets/png/achievements/time-4.png"
+import Time3 from "@/_assets/png/achievements/time-3.png"
+import Time2 from "@/_assets/png/achievements/time-2.png"
+import Time1 from "@/_assets/png/achievements/time-1.png"
+
+
+
 
 const Profile = ({ data }) => {
   const { t } = useTranslation();
