@@ -8,6 +8,7 @@ interface Props {
   image?: any;
   btnText: string;
   width?: any;
+  fontW?: any;
   borderRadius?: string;
   border?: string;
   fontSize?: any;
@@ -24,6 +25,7 @@ const GlobelBtn = ({
   bgColor = "#E1683B",
   btnText,
   image,
+  fontW,
   color = "#fff",
   width,
   border,
@@ -52,6 +54,7 @@ const GlobelBtn = ({
         color: color,
         textTransform: "capitalize",
         border: border,
+        fontWeight: fontW,
         p: p,
         bgcolor: bgColor,
         "&:hover": {
