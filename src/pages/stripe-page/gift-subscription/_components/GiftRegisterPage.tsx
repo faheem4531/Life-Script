@@ -276,7 +276,8 @@ const GiftRegisterPage = ({ onClick, selectedTab }) => {
           </Box>
 
           <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
-            <GiftPlanCard price={price} category={category} giftMessage={undefined} senderName={undefined} selectedDate={undefined} />
+            <GiftPlanCard price={price} category={category}
+            />
           </Box>
         </Box>
 

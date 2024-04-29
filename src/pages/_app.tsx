@@ -22,6 +22,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { store } from "../store/store";
 import CookieConsent, { Cookies } from "react-cookie-consent";
+import Script from "next/script";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -252,6 +253,13 @@ export default function App({ Component, pageProps }: AppProps) {
           <SessionProvider session={pageProps?.session}>
             <NewApp>
               <Component {...pageProps} />
+              <Script
+                src="https://r.wdfl.co/rw.js"
+                data-rewardful="797851"
+              ></Script>
+              <Script id="rewardful-queue" strategy="beforeInteractive">
+                {`(function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');`}
+              </Script>
             </NewApp>
           </SessionProvider>
         )}

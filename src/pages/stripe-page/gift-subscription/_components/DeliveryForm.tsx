@@ -1,38 +1,69 @@
-'use client';
 import { Box, Button, Divider, TextField, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import GiftPlanCard from './GiftPlanCard';
 import { DatePicker } from '@mui/x-date-pickers';
 
-
+import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { signupWithGift } from '@/store/slices/authSlice';
 
 const DeliveryForm = ({ onClick, selectedTab }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [recipientName, setRecipientName] = useState(''); // State for recipient's name
-  const [recipientEmail, setRecipientEmail] = useState(''); // State for recipient's name
-  const [giftMessage, setGiftMessage] = useState('');
-  const [senderName, setSenderName] = useState('');
+  const dispatch: any = useDispatch();
+  const { t } = useTranslation();
   const router = useRouter();
 
-  const minDate = new Date();
+  // const [sendMessage, setSendMessage] = useState("");
+  // const [receiverName, setReceiverName] = useState("");
+  // const [selectedDate, setSelectedDate] = useState("");
 
-  const { price, category } = router.query;
+  // const minDate = new Date();
+  const minDate = new Date().toISOString();
 
-  const handleRecipientNameChange = (event) => {
-    setRecipientName(event.target.value);
-  };
-  const handleRecipientEmailChange = (event) => {
-    setRecipientEmail(event.target.value);
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      sendGiftDate: "",
+      giftFrom: "",
+      giftMessage: "",
+    },
+    onSubmit: async (values) => {
+      try {
+        await dispatch(signupWithGift(values))
+          .unwrap()
+          .then((res) => {
+            // console.log("API Response", res)
+            // setSendMessage(res?.data?.giftMessage)
+            // setReceiverName(res?.data?.name)
+            // setSelectedDate(res?.data?.sendGiftDate)
 
-  const handleGiftMessageChange = (event) => {
-    setGiftMessage(event.target.value);
-  };
+            // Storing in localStorage
+        localStorage.setItem("sendMessage", res?.data?.giftMessage);
+        localStorage.setItem("receiverName", res?.data?.name);
+        localStorage.setItem("selectedDate", res?.data?.sendGiftDate);
+          });
+        toast.success(t("signup-page.verificationEmailSent"));
+       
+        onClick(selectedTab + 1);
+      } catch (error) {
+        toast.error(error?.message || t("signup-page.failedSignup"));
+      }
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required(t("signup-page.emailRequired")),
+      name: Yup.string().required(t("signup-page.nameRequired")),
+      sendGiftDate: Yup.date().required("Please select a date"),
+      giftFrom: Yup.string().required("From field is required"),
+      giftMessage: Yup.string().required("Gift message is required"),
+      // Add more validation rules as needed
+    }),
+  });
 
-  const handleSenderNameChange = (event) => {
-    setSenderName(event.target.value);
-  };
+ 
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -50,7 +81,7 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
           }}
         >
           <Box sx={{ maxWidth: { sm: '600px', xs: '100%' }, width: '100%' }}>
-            <Box>
+            <form onSubmit={formik.handleSubmit}>
               <Box>
                 <Typography
                   sx={{
@@ -61,19 +92,22 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   Recipient’s Full Name
                 </Typography>
                 <TextField
-                variant="outlined"
-                placeholder="Enter Recipient’s full name"
-                name="name"
-                value={recipientName} // Value from state
-                onChange={handleRecipientNameChange} // State update function
-                sx={{
-                  marginBottom: '30px',
-                  width: '100%',
-                  bgcolor: 'white',
-                }}
-              />
+                  variant="outlined"
+                  placeholder="Enter your full name"
+                  name="name"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.name}
+                  sx={{
+                    marginBottom: "10px",
+                    width: "100%",
+                    bgcolor: "white",
+                  }}
+                />
+                {formik.touched.name && formik.errors.name && (
+                  <span style={{ color: "red" }}>{formik.errors.name}</span>
+                )}
               </Box>
-
               <Box>
                 <Typography
                   sx={{
@@ -85,16 +119,20 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Enter Recipient’s email address"
+                  placeholder="Enter your full name"
                   name="email"
-                  value={recipientEmail} // Value from state
-                  onChange={handleRecipientEmailChange} // State update function
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
                   sx={{
-                    marginBottom: '30px',
-                    width: '100%',
-                    bgcolor: 'white',
+                    marginBottom: "10px",
+                    width: "100%",
+                    bgcolor: "white",
                   }}
                 />
+                {formik.touched.email && formik.errors.email && (
+                  <span style={{ color: "red" }}>{formik.errors.email}</span>
+                )}
               </Box>
 
               <Box>
@@ -106,9 +144,28 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                 >
                   Send my gift on:
                 </Typography>
+                {/* <DatePicker
+                  name='sendGiftDate'
+                  value={formik.values.sendGiftDate}
+                  // onChange={(date) => setSelectedDate(date)}
+                  // onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  minDate={minDate}
+                  sx={{
+                    width: '100%',
+                    backgroundColor: 'white',
+                    borderRadius: '2px',
+                    '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                        borderRadius: '2px',
+                      },
+                    },
+                  }}
+                /> */}
                 <DatePicker
-                  value={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
+                  name='sendGiftDate'
+                  value={formik.values.sendGiftDate}
+                  onChange={(date) => formik.setFieldValue('sendGiftDate', date)}
                   minDate={minDate}
                   sx={{
                     width: '100%',
@@ -122,12 +179,9 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   }}
                 />
               </Box>
-            </Box>
-
-            <Box>
-              <Divider sx={{ width: '100%', marginTop: '30px' }} />
-
-              <Typography sx={{ marginTop: '30px', marginBottom: '30px', fontSize: '20px' }}>Add a gift message!</Typography>
+              {formik.touched.sendGiftDate && formik.errors.sendGiftDate && (
+                <span style={{ color: "red" }}>{formik.errors.sendGiftDate}</span>
+              )}
 
               <Box>
                 <Typography
@@ -140,17 +194,20 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Your name and all others taking part of this gift."
-                  name="from"
-                  value={senderName}
-                  onChange={handleSenderNameChange}
+                  placeholder="Enter your name"
+                  name="giftFrom"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.giftFrom}
                   sx={{
                     marginBottom: '30px',
                     width: '100%',
                     bgcolor: 'white',
                   }}
                 />
+                {/* Validation for 'giftFrom' can be added similarly */}
               </Box>
+
               <Box>
                 <Typography
                   sx={{
@@ -165,30 +222,35 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                   multiline
                   rows={7}
                   maxRows={10}
-                  value={giftMessage}
-                  onChange={handleGiftMessageChange}
+                  name="giftMessage"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.giftMessage}
                   sx={{ width: '100%', backgroundColor: '#FAFAFA' }}
                 />
+                {formik.touched.giftMessage && formik.errors.giftMessage && (
+                  <span style={{ color: "red" }}>{formik.errors.giftMessage}</span>
+                )}
               </Box>
-            </Box>
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              onClick={() => onClick(selectedTab + 1)}
-              sx={{
-                width: '200px',
-                marginTop: '50px',
-                bgcolor: '#e1693b',
-                '&:hover': {
-                  backgroundColor: '#b5522d',
-                },
-              }}
-            >
-              Continue
-            </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                sx={{
+                  width: '200px',
+                  marginTop: '50px',
+                  bgcolor: '#e1693b',
+                  '&:hover': {
+                    backgroundColor: '#b5522d',
+                  },
+                }}
+              >
+                Continue
+              </Button>
+            </form>
           </Box>
+
           <Box
             sx={{
               margin: '0 35px 35px 0',
@@ -196,11 +258,8 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
             }}
           >
             <GiftPlanCard
-              price={price}
-              category={category}
-              giftMessage={giftMessage}
-              senderName={senderName}
-              selectedDate={selectedDate}
+              price={router.query.price}
+              category={router.query.category}
             />
           </Box>
         </Box>

@@ -30,6 +30,7 @@ import {
   stripPaymentLuluApi,
   luluCallApi,
   getBookInteriorApi,
+  signupApiWithGift,
 } from "../api/authApi";
 
 interface State {
@@ -301,6 +302,17 @@ export const signupWithBuy = createAsyncThunk<UserData, SignupData>(
   async (data) => {
     try {
       const response = await signupApiWithBuy(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+export const signupWithGift = createAsyncThunk<UserData, any>(
+  "auth/create/gift",
+  async (data: any) => {
+    try {
+      const response = await signupApiWithGift(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -8,7 +8,13 @@ import Check from '@/__webAssets/svgs/check.svg';
 import Lock from '@/__webAssets/svgs/lock.svg';
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
 
-const GiftPlanCard = ({ price, category, giftMessage, senderName, selectedDate }) => {
+const GiftPlanCard = ({ price, category}) => {
+  // console.log("ansubcascbsabcsahbcsabc",receiverName)
+
+  const receiverName = localStorage.getItem("receiverName")
+  const selectedDate = localStorage.getItem("selectedDate")
+  const sendMessage = localStorage.getItem("sendMessage")
+
   const BasicArray = [
     {
       standardStatus: true,
@@ -127,6 +133,15 @@ const GiftPlanCard = ({ price, category, giftMessage, senderName, selectedDate }
     },
 
   ]
+
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+  };
   return (
     <Box
       sx={{
@@ -242,7 +257,7 @@ const GiftPlanCard = ({ price, category, giftMessage, senderName, selectedDate }
           }
 
           {/* Extra Info */}
-          {/* {giftMessage || senderName || selectedDate &&  */}
+          {receiverName && 
           <Box sx={{
             width: { lg: '380px', md: '350px' },
             height: 'auto',
@@ -259,27 +274,28 @@ const GiftPlanCard = ({ price, category, giftMessage, senderName, selectedDate }
             <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
               <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Deliver to: </Typography>
               <Typography >
-                {/* {senderName} */}
-                John Doe
+                {receiverName && receiverName}
+                {/* John Doe */}
+               
               </Typography>
             </Box>
             <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
               <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Date: </Typography>
               <Typography>
-                {/* {selectedDate} */}
-                29-03-2024
+              {selectedDate && formatDate(selectedDate)}
+                {/* 29-03-2024 */}
               </Typography>
             </Box>
             <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
               <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Gift Message: </Typography>
               <Typography sx={{ width: "300px" }}>
-                {/* {giftMessage} */}
-                “The journey of a thousand miles begins with a single step.”
+                {sendMessage && sendMessage}
+                {/* “The journey of a thousand miles begins with a single step.” */}
               </Typography>
             </Box>
 
           </Box>
-          {/* } */}
+            } 
 
         </Box>
 

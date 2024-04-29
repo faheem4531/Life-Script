@@ -49,7 +49,7 @@ const useOptions = () => {
 };
 
 
-const GiftPurchaseForm = ({ onClick, selectedTab }) => {
+const GiftPurchaseForm = ({ onClick, selectedTab}) => {
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
@@ -214,7 +214,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab }) => {
     setSubscribeUpdates(event.target.checked);
   };
 
-  console.log("commissionState======", commissionState)
+  // console.log("commissionState======", commissionState)
 
 
   return (
@@ -448,7 +448,8 @@ const GiftPurchaseForm = ({ onClick, selectedTab }) => {
             <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
               <GiftPlanCard
                 price={(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}
-                category={category} giftMessage={undefined} senderName={undefined} selectedDate={undefined} />
+                category={category} 
+                />
             </Box>
           </Box>
         </Box>
