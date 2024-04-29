@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import styles from "../../../../__webComponents/ComponentsStyles.module.css";
 import Button from "../../../../__webComponents/button/Button";
 
-const GiftPricingCard = ({ price, category, card, id, handleHover }) => {
+const GiftPricingCard = ({ price, category, card, id, handleHover, selectedTab, onClick  }) => {
   const router = useRouter();
 
   const CheckArray = [
@@ -77,6 +77,7 @@ const GiftPricingCard = ({ price, category, card, id, handleHover }) => {
       pathname: '/stripe-page/gift-subscription',
       query: { price, category },
     }); 
+    onClick(selectedTab + 1)
   };
 
   return (

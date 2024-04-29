@@ -58,10 +58,10 @@ const GiftTabPanel = ({ onClick, selectedTab }) => {
         padding: ' 0 40px 70px',
       }}
       className={styles.cardsMain}
-      onClick={() => onClick(selectedTab + 1)}
+      // onClick={() => onClick(selectedTab + 1)}
     >
       {pricingCard.map((item) => (
-        <GiftPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} handleHover={handleHover}  />
+        <GiftPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} handleHover={handleHover} selectedTab={selectedTab} onClick={onClick} />
       ))}
     </Box>
   </Box>

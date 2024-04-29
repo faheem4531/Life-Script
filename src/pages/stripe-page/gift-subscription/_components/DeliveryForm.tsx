@@ -11,17 +11,20 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { signupWithGift } from '@/store/slices/authSlice';
 
-const DeliveryForm = ({ onClick, selectedTab }) => {
-  const dispatch: any = useDispatch();
-  const { t } = useTranslation();
-  const router = useRouter();
+const DeliveryForm = ({ onClick, selectedTab}) => {
 
   // const [sendMessage, setSendMessage] = useState("");
   // const [receiverName, setReceiverName] = useState("");
   // const [selectedDate, setSelectedDate] = useState("");
+  const dispatch: any = useDispatch();
+  const { t } = useTranslation();
+  const router = useRouter();
+
 
   // const minDate = new Date();
   const minDate = new Date().toISOString();
+
+
 
   const formik = useFormik({
     initialValues: {
@@ -37,17 +40,17 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
           .unwrap()
           .then((res) => {
             // console.log("API Response", res)
-            // setSendMessage(res?.data?.giftMessage)
-            // setReceiverName(res?.data?.name)
-            // setSelectedDate(res?.data?.sendGiftDate)
+            // messageField(res?.giftMessage)
+            // NameField(res?.name)
+            // DateField(res?.sendGiftDate)
 
             // Storing in localStorage
-        localStorage.setItem("sendMessage", res?.data?.giftMessage);
-        localStorage.setItem("receiverName", res?.data?.name);
-        localStorage.setItem("selectedDate", res?.data?.sendGiftDate);
+            localStorage.setItem("sendMessage", res?.giftMessage);
+            localStorage.setItem("receiverName", res?.name);
+            localStorage.setItem("selectedDate", res?.sendGiftDate);
           });
         toast.success(t("signup-page.verificationEmailSent"));
-       
+
         onClick(selectedTab + 1);
       } catch (error) {
         toast.error(error?.message || t("signup-page.failedSignup"));
@@ -63,7 +66,7 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
     }),
   });
 
- 
+
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -220,8 +223,7 @@ const DeliveryForm = ({ onClick, selectedTab }) => {
                 <TextField
                   placeholder="Hello, I've gifted you a LifeScript subscription, allowing you to easily share and preserve your stories in a beautiful hardcover book."
                   multiline
-                  rows={7}
-                  maxRows={10}
+                  rows={7} // This sets the initial number of rows
                   name="giftMessage"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}

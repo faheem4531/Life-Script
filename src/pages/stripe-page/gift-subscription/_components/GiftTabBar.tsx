@@ -24,7 +24,7 @@ const GiftTabBar = ({ tabs, onClick }) => {
               item
               xs={3.5}
               sx={{ padding: "2px" }}
-              onClick={() => onClick(index)}
+              // onClick={() => onClick(index)}
             >
               <Typography
                 sx={{

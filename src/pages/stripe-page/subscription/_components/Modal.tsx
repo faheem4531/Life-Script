@@ -56,6 +56,16 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
     router.push(`/getStarted?userName=${name}`);
   }
 
+  useEffect(() => {
+    if (value === 100 && selectedTab === "gift") {
+      const timeoutId = setTimeout(() => {
+        router.push('/'); // Redirect to home page
+      }, 5000); // 10 seconds in milliseconds
+
+      return () => clearTimeout(timeoutId); // Cleanup function
+    }
+  }, [value, selectedTab, router]);
+
   return (
     <Modal
       aria-labelledby="transition-modal-title"

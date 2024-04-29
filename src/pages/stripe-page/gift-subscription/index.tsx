@@ -21,6 +21,15 @@ import { Elements } from "@stripe/react-stripe-js";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const GiftSubscriptionPage = () => {
+
+// const [sendMessage, setSendMessage] = useState("");
+//   const [receiverName, setReceiverName] = useState("");
+//   const [selectedDate, setSelectedDate] = useState("");
+
+//   console.log("sendMessage-----",sendMessage)
+//   console.log("receiverName-----",receiverName)
+//   console.log("selectedDate-----",selectedDate)
+
   // const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
   // const { data: session } = useSession();
@@ -87,6 +96,7 @@ const GiftSubscriptionPage = () => {
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <GiftTabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && <DeliveryForm selectedTab={selectedTab} onClick={handleTabClick} />}
+
             {/* {selectedTab === 2 && !session && <GiftRegisterPage selectedTab={selectedTab} onClick={handleTabClick} />} */}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
