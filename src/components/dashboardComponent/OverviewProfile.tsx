@@ -3,6 +3,13 @@ import Bronze from "@/_assets/svg/bronze-token.svg";
 import Gold from "@/_assets/svg/gold-token.svg";
 import Grey from "@/_assets/svg/Silver Token.svg";
 import Platinum from "@/_assets/svg/platinum-token.svg";
+
+import Word8 from "@/_assets/png/achivments/word-8.png"
+import Chapter8 from "@/_assets/png/achivments/chapter-8.png"
+import Query8 from "@/_assets/png/achivments/query-8.png"
+import Time8 from "@/_assets/png/achivments/time-8.png"
+
+
 import Silver from "@/_assets/svg/silver-token.svg";
 import { Box, Tooltip, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -102,7 +109,7 @@ const Profile = ({ data }) => {
               <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
                 <Image
                   alt="tag"
-                  src={data?.words < 499 ? Grey : Bronze}
+                  src={data?.words < 499 ? Grey : Word8}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
@@ -111,7 +118,7 @@ const Profile = ({ data }) => {
               <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
                 <Image
                   alt="tag"
-                  src={data?.chapters < 5 ? Grey : Silver}
+                  src={data?.chapters < 5 ? Grey : Chapter8}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
@@ -124,7 +131,7 @@ const Profile = ({ data }) => {
               <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
                 <Image
                   alt="tag"
-                  src={data?.questions < 100 ? Grey : Gold}
+                  src={data?.questions < 100 ? Grey : Query8}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
