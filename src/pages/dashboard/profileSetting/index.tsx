@@ -390,25 +390,18 @@ const ProfileSetting = () => {
                   />
                 </Box>
               </Box>
+              <Box sx={{ m: "40px 80px 0 auto" }}>
+                <GlobelBtn
+                  bgColor="#E1683B"
+                  color="white"
+                  borderRadius='4px'
+                  btnText={`${t("profileSetting.save")}`}
+                  onClick={() => {
+                    setProfile(true);
+                  }}
+                />
+              </Box>
             </Box>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "end",
-            mt: "24px",
-          }}
-        >
-          <Box>
-            <GlobelBtn
-              bgColor="#197065"
-              color="white"
-              btnText={`${t("profileSetting.save")}`}
-              onClick={() => {
-                setProfile(true);
-              }}
-            />
           </Box>
         </Box>
 
