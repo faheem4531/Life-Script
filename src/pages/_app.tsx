@@ -1,12 +1,12 @@
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { SessionProvider } from "next-auth/react";
 import type { AppProps } from "next/app";
 import { Provider as StoreProvider } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import "../styles/globals.css";
 import NewApp from "./_newApp";
-import { SessionProvider } from "next-auth/react";
 
 import {
   Box,
@@ -14,15 +14,14 @@ import {
   Grid,
   Typography,
   useMediaQuery,
-  Theme,
-  useTheme,
+  useTheme
 } from "@mui/material";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { store } from "../store/store";
-import CookieConsent, { Cookies } from "react-cookie-consent";
 import Script from "next/script";
+import { useEffect, useState } from "react";
+import CookieConsent, { Cookies } from "react-cookie-consent";
+import { store } from "../store/store";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -52,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/stripe-page/gift-subscription",
       "/stripe-page/register-free-trial",
       "/stripe-page/sso-redirecting",
+      "/?via=install"
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");

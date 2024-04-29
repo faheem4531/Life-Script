@@ -372,22 +372,18 @@ export async function signupApiWithBuy(data: SignupData) {
 
 export async function signupApiWithGift(data: any) {
   try {
-    const token = localStorage.getItem("token");
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      acceptinternalaccess: "acceptinternalaccess",
-      "Content-Type": "application/json",
-    };
-    const res = await axios.post(
-      "https://api.thelifescript.com/auth/create/gift",
-      data,
-      { headers }
-    );
+    const res = await api.post("/auth/create/gift", data);
+    localStorage.setItem("accessRole", res?.data?.accessRole);
+    localStorage.setItem("token", res?.accessToken);
+    localStorage.setItem("username", res.data.name);
+    localStorage.setItem("userId", res.data._id);
+    localStorage.setItem("userEmail", res.data.email);
+
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
       const errors = error?.response?.data?.message?.message;
-      throw new Error(errors ? errors[0] : "Failed");
+      throw new Error(errors ? errors[0] : "Failed to Sign up");
     } else {
       throw new Error(error.response?.data?.message);
     }
