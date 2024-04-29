@@ -9,18 +9,31 @@ import { useTranslation } from "react-i18next";
 import Button from "../button/Button";
 import styles from "./Custom.module.css";
 import GlobelBtn from '../button/Button';
+import DemoProfile from "@/_assets/svg/profile.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfile, selectUser } from "@/store/slices/authSlice";
 
 const WelcomeOverview = () => {
   const { t } = useTranslation();
   const router = useRouter();
 
   const [userName, setUserName] = useState("");
+  const [userNameFull, setUserNameFull] = useState("");
+  const userData = useSelector(selectUser);
+  const [userImage, setUserImage] = useState("");
 
   useEffect(() => {
     const name = localStorage.getItem("username");
+    setUserNameFull(name)
     const firstName = name ? name.split(' ')[0] : ''; // Get the part before the first space
     setUserName(firstName);
   }, []);
+
+  useEffect(() => {
+    if (userData) {
+      setUserImage(userData?.profileImage);
+    }
+  }, [userData]);
 
   return (
     <Box
@@ -28,15 +41,17 @@ const WelcomeOverview = () => {
         backgroundColor: "#F3ECDA",
         color: "#30422E",
         borderRadius: "4px",
-        padding: { xl: "20px 30px", lg: "15px 25px", xs: "12px 20px" },
+        padding: { xl: "20px 40px", sm: "15px 25px", xs: "12px 20px" },
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         width: "100%",
-        maxHeight: "230px",
+        height: "100%",
+        maxHeight: { xl: "280px", lg: "240px", sm: "280px", xs: "250px" },
         position: "relative",
         overflow: "hidden",
       }}
+      className={styles.welcomeMain}
     >
       <Box>
         <Typography sx={{ fontSize: "18.75px" }}>
@@ -57,6 +72,7 @@ const WelcomeOverview = () => {
             fontSize: { xl: "14px", sm: "12px" },
             fontWeight: 300,
             lineHeight: "150%",
+            width: "90%",
             marginBottom: "20px",
             color: "#30422E",
             marginTop: "10px",
@@ -85,11 +101,36 @@ const WelcomeOverview = () => {
       </Box>
       <Box
         sx={{
-          display: { sm: "block", xs: "none" },
+          display: { sm: "flex", xs: "none" },
+          flexDirection: "column",
+          alignItems: "center",
+          borderLeft: "1px solid #30422E",
+          pl: "50px",
+          bgcolor: ""
         }}
-      >
-        <Image alt="Welcome" src={Welcome} className={styles.welcomeImage} />
-        <Image alt="Welcome" src={BgRounded} className={styles.bgRounded} />
+      > {!userImage ? (
+        <Image
+          alt="profile"
+          src={DemoProfile}
+          className={styles.profilePic}
+        />
+      ) : (
+        <img alt="profile" src={userImage} className={styles.profilePic} />
+      )}
+        <Typography
+          sx={{
+            fontSize: "20px",
+            fontWeight: 700,
+            marginTop: "25px",
+            minWidth: "200px",
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          {userNameFull}
+        </Typography>
+        {/* <Image alt="Welcome" src={Welcome} className={styles.welcomeImage} />
+        <Image alt="Welcome" src={BgRounded} className={styles.bgRounded} /> */}
       </Box>
     </Box>
   );
