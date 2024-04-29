@@ -161,7 +161,7 @@ const TOCMain = () => {
           setOpenModal(false);
         }}
         customStyles={{
-          backgroundColor: "auto",
+          backgroundColor: "#F3ECDA",
           width: "80vw",
           height: "90vh",
           padding: { md: "20px 48px" },

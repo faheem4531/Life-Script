@@ -1,4 +1,4 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import ModalImage from "@/_assets/svg/Frame.svg";
 import { Box, Typography } from "@mui/material"; // Import necessary MUI components
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -100,7 +100,7 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
       <Box>
         <Box
           sx={{
-            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            width: { md: "145px", sm: "66.54px", xs: "41.709px" },
             height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
             margin: "auto",
           }}
@@ -120,7 +120,7 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
             fontWeight: 500,
             color: "#E1683B",
             fontFamily: "Avenir8 !important",
-            margin: { md: "24px 0", sm: "20px 0px", xs: "15px 0px" },
+            margin: { sm: "10px 0 20px ", xs: "10px 0px" },
           }}
         >
           {t("TOC.ch")}
