@@ -1,6 +1,5 @@
 import ProfileAvatar from "@/_assets/svg/ui-user-profile.svg";
 import Layout from "@/components/Layout/Layout";
-import ProfileHeader from "@/components/dashboardComponent/subscriptionHeader";
 import {
   Box,
   FormControl,
@@ -28,6 +27,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const ProfileSetting = () => {
   const userData = useSelector(selectUser);
@@ -125,9 +125,10 @@ const ProfileSetting = () => {
       }}
     >
       <Layout>
-        <ProfileHeader
-          title={`${t("profileSetting.AccountSettings")}`}
-          description=""
+        <AddChapterName
+          chapterId
+          chapter="Profile Settings"
+          title="profileSetting"
         />
         <Box
           sx={{
@@ -342,7 +343,7 @@ const ProfileSetting = () => {
                     borderRadius: "50px",
                     backgroundColor: "#F6F9FB",
                     pl: "20px",
-                    pr:"20px"
+                    pr: "20px"
                   }}
                 >
                   <CountrySelect
