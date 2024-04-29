@@ -417,18 +417,10 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           backgroundColor: "#b5522d",
                         },
                       }}>
-                      {/* {
-                        loading
-                          ? "Loading..."
-                          : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
-                      } */}
                       {
                         loading
                           ? "Loading..."
-                          : `Buy for ${selectedBooks
-                            ? Number(price) + (selectedBooks * 39)
-                            : (Number(price) * 1.1).toFixed(2) // Apply 10% commission if selectedBooks is not present
-                          }`
+                          : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
                       }
                     </Button>
                   </Box>
