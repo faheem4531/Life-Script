@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/stripe-page/gift-subscription",
       "/stripe-page/register-free-trial",
       "/stripe-page/sso-redirecting",
-      "/?via=install"
+      "?via=install"
     ];
 
     //New Code:
