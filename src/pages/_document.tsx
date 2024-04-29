@@ -109,6 +109,16 @@ export default function Document() {
           }}
         />
 
+
+        {/* Rewardful Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');
+            `,
+          }}
+        />
+        <Script async src="https://r.wdfl.co/rw.js" data-rewardful="797851" />
       </Head>
       <body style={{ margin: 0 }}>
         <Main />

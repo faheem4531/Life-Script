@@ -5,9 +5,9 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import PurchaseForm from '../subscription/_components/PurchaseForm';
 // import RegisterPage from '../subscription/_components/RegisterPage';
-import { useSession } from 'next-auth/react';
-import { facebookLogin } from '@/store/slices/authSlice';
-import { useDispatch } from 'react-redux';
+// import { useSession } from 'next-auth/react';
+// import { facebookLogin } from '@/store/slices/authSlice';
+// import { useDispatch } from 'react-redux';
 import GiftTabPanel from './_components/GiftTabPanel';
 import GiftTabBar from './_components/GiftTabBar';
 import DeliveryForm from './_components/DeliveryForm';
@@ -15,27 +15,27 @@ import Bg from '@/_assets/png/bg-hurt-lite.png';
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import GiftRegisterPage from './_components/GiftRegisterPage';
+// import GiftRegisterPage from './_components/GiftRegisterPage';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const GiftSubscriptionPage = () => {
-  const dispatch: any = useDispatch();
+  // const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
-  useEffect(() => {
-    if (session) {
-      if (session.user) {
-        setSelectedTab(3);
-        const payload = {
-          name: session.user.name,
-          email: session.user.email,
-        };
-        dispatch(facebookLogin(payload));
-      }
-    }
-  }, [session, dispatch]);
+  // useEffect(() => {
+  //   if (session) {
+  //     if (session.user) {
+  //       setSelectedTab(2);
+  //       const payload = {
+  //         name: session.user.name,
+  //         email: session.user.email,
+  //       };
+  //       dispatch(facebookLogin(payload));
+  //     }
+  //   }
+  // }, [session, dispatch]);
 
   const handleTabClick = (index) => {
     setSelectedTab(index);
@@ -44,8 +44,8 @@ const GiftSubscriptionPage = () => {
   const tabsData = [
     { label: 'CHOOSE PLAN', active: selectedTab === 0 },
     { label: 'DELIVERY', active: selectedTab === 1 },
-    { label: 'REGISTER', active: selectedTab === 2 && !session },
-    { label: 'PAYMENT', active: selectedTab === 3 },
+    // { label: 'REGISTER', active: selectedTab === 2 && !session },
+    { label: 'PAYMENT', active: selectedTab === 2 },
   ];
 
   return (
@@ -86,8 +86,8 @@ const GiftSubscriptionPage = () => {
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <GiftTabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && <DeliveryForm selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 2 && !session && <GiftRegisterPage selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 3 &&
+            {/* {selectedTab === 2 && !session && <GiftRegisterPage selectedTab={selectedTab} onClick={handleTabClick} />} */}
+            {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
                 <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
               </Elements>
