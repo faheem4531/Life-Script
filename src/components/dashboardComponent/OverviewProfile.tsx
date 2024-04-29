@@ -19,7 +19,7 @@ import styles from "./Custom.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
+import { getChapters, getHours, selectAllChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
 
@@ -32,6 +32,10 @@ const Profile = ({ data }) => {
   const [userImage, setUserImage] = useState("");
   const [progressChapters, setProgressChapters] = useState([]);
   const [userName, setUserName] = useState("");
+  const [hoursCount, setHoursCount] = useState("");
+
+  console.log(hoursCount, "dataaaaaaaa");
+
 
   function calculateCompletionPercentage(array) {
     if (array?.length === 0) {
@@ -47,12 +51,31 @@ const Profile = ({ data }) => {
     return percentage;
   }
 
+  function formatTime(seconds) {
+    if (isNaN(seconds)) {
+      return "Invalid input";
+    }
+
+    if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      return `${minutes} m`;
+    } else {
+      const hours = Math.floor(seconds / 3600);
+      return `${hours} h`;
+    }
+  }
+
+
+
   useEffect(() => {
     const name = localStorage.getItem("username");
     const firstName = name ? name.split(' ')[0] : ''; // Get the part before the first space
     setUserName(firstName);
     dispatch(getChapters());
     dispatch(getUserProfile());
+    dispatch(getHours())
+      .unwrap()
+      .then((res) => console.log(res, "ressssss"));
   }, []);
 
   useEffect(() => {
@@ -70,6 +93,8 @@ const Profile = ({ data }) => {
       setUserImage(userData?.profileImage);
     }
   }, [userData]);
+
+
   return (
     <Box
       sx={{
@@ -140,7 +165,7 @@ const Profile = ({ data }) => {
               <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
                 <Image
                   alt="tag"
-                  src={data?.words < 5000 ? Grey : Platinum}
+                  src={hoursCount ? Grey : Time8}
                   className={styles.profileAchivements}
                 />
               </Tooltip>

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import ClockImage from "@/_assets/svg/clockMain.svg";
+import Calander from "@/_assets/svg/calanderMain.svg";
 import styles from "./Custom.module.css";
 
 import {
@@ -299,21 +300,27 @@ const TimeTracker = ({ onChange }) => {
         <Box
           sx={{
             position: "absolute",
-            right: { xs: "0px" },
+            right: { xs: "-25px" },
             bottom: { lg: "40px", md: "50px", xs: "50px" },
-            width: "100px",
-            textAlign: "center", bgcolor: "grey"
+            width: "68px",
+            textAlign: "center"
           }}
         >
-          <Typography
-            sx={{
-              fontSize: { lg: "27px", md: "23px", sm: "20px", xs: "16px" },
-              fontWeight: 700,
-              color: "white",
-            }}
-          >
-            {hoursCount}
-          </Typography>
+          <Box sx={{ position: "relative" }}>
+            <Image src={Calander} alt="img" />
+            <Box
+              sx={{
+                position: "absolute",
+                top: "20px",
+                left: "10px",
+                fontSize: { sm: "16px", xs: "12px" },
+                fontWeight: 700,
+                color: "white",
+              }}
+            >
+              {hoursCount}<Typography sx={{ fontSize: "10px" }}>of Writing</Typography>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>
