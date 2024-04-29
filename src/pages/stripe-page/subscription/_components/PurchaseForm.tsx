@@ -417,10 +417,16 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           backgroundColor: "#b5522d",
                         },
                       }}>
-                      {
+                      {/* {
                         loading
                           ? "Loading..."
                           : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
+                      } */}
+
+                      {
+                        loading
+                          ? "Loading..."
+                          : `Buy for $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}` // Calculate the discounted price
                       }
                     </Button>
                   </Box>
@@ -438,7 +444,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
             </Box>
 
             <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
-              <BasicPlanCard price={Number(price) + (selectedBooks && selectedBooks * 39)} category={category} />
+              <BasicPlanCard
+               price={(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)} 
+               category={category} />
             </Box>
           </Box>
         </Box>
