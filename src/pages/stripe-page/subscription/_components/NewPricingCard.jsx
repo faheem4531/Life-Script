@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import styles from "../../../../__webComponents/ComponentsStyles.module.css";
 import Button from "../../../../__webComponents/button/Button";
 
-const NewPricingCard = ({ price, category, card, id, handleHover }) => {
+const NewPricingCard = ({ price, category, card, id, handleHover, selectedTab, onClick }) => {
   const router = useRouter();
-
+  // onClick={() => onClick(selectedTab + 1)}
   const CheckArray = [
     {
       standardStatus: true,
@@ -76,6 +76,8 @@ const NewPricingCard = ({ price, category, card, id, handleHover }) => {
       pathname: '/stripe-page/subscription',
       query: { price, category },
     }); 
+    onClick(selectedTab + 1)
+    
   };
 
   return (
