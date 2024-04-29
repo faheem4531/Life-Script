@@ -458,7 +458,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab}) => {
 
       <PaymentProcessingModal
         openModal={confirmationStripe}
-        selectedTab={selectedTab}
+        selectedTab={"gift"}
         handleClose={() => setConfirmationStripe(false)}
         stripeSucceed={stripeSucceed}
         stripeFailed={stripeFailed}

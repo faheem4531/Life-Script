@@ -100,7 +100,7 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
               Let me in
             </Button>
           }
-          {value == 100 && selectedTab == 3 &&
+          {value == 100 && selectedTab == "gift" &&
             <Typography sx={{ marginTop: { sm: "40px", xs: "25px" } }}>
               The gift recipient will receive their gift via email on the date provided. More details about your gift will be emailed to you shortly!</Typography>
           }
