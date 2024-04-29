@@ -16,7 +16,7 @@ import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
 
-const Profile = ({data}) => {
+const Profile = ({ data }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -115,7 +115,7 @@ const Profile = ({data}) => {
             columnGap: { xl: "18px", lg: "4px" },
           }}
         >
-          <Box sx={{cursor: "pointer"}}>
+          <Box sx={{ cursor: "pointer" }}>
             <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
               <Image
                 alt="tag"
@@ -124,7 +124,7 @@ const Profile = ({data}) => {
               />
             </Tooltip>
           </Box>
-          <Box sx={{cursor: "pointer"}}>
+          <Box sx={{ cursor: "pointer" }}>
             <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
               <Image
                 alt="tag"
@@ -133,7 +133,7 @@ const Profile = ({data}) => {
               />
             </Tooltip>
           </Box>
-          <Box sx={{cursor: "pointer"}}>
+          <Box sx={{ cursor: "pointer" }}>
             <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
               <Image
                 alt="tag"
@@ -142,7 +142,7 @@ const Profile = ({data}) => {
               />
             </Tooltip>
           </Box>
-          <Box sx={{cursor: "pointer"}}>
+          <Box sx={{ cursor: "pointer" }}>
             <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
               <Image
                 alt="tag"
@@ -158,6 +158,7 @@ const Profile = ({data}) => {
         <Box sx={{ marginTop: "20px" }}>
           {progressChapters?.slice(0, 4).map((chapter) => (
             <RecentChapters
+              key={chapter?._id}
               title={chapter?.title}
               id={chapter?._id}
               percentage={calculateCompletionPercentage(chapter?.questions)}

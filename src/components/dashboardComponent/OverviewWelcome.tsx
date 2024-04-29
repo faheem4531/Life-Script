@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../button/Button";
 import styles from "./Custom.module.css";
+import GlobelBtn from '../button/Button';
 
 const WelcomeOverview = () => {
   const { t } = useTranslation();
@@ -24,21 +25,18 @@ const WelcomeOverview = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#197065",
-        color: "#fff",
-        borderRadius: "14px",
+        backgroundColor: "#F3ECDA",
+        color: "#30422E",
+        borderRadius: "4px",
         padding: { xl: "20px 30px", lg: "15px 25px", xs: "12px 20px" },
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        // maxWidth: "1149px",
         width: "100%",
         maxHeight: "230px",
-        // minWidth: "700px",
         position: "relative",
         overflow: "hidden",
       }}
-      className={styles.welcomeMain}
     >
       <Box>
         <Typography sx={{ fontSize: "18.75px" }}>
@@ -60,13 +58,13 @@ const WelcomeOverview = () => {
             fontWeight: 300,
             lineHeight: "150%",
             marginBottom: "20px",
-            color: "#a8c9c5",
+            color: "#30422E",
             marginTop: "10px",
           }}
         >
           {t("overView.headerdescription")}
         </Typography>
-        <Button
+        {/* <Button
           onClick={() => router.push("/dashboard/chapters")}
           image={ContineWriting}
           btnText={`${t("overView.headerBtnText")}`}
@@ -76,7 +74,14 @@ const WelcomeOverview = () => {
           color="#186F65"
           fontSize={{ xs: "12px" }}
           border="0px"
-        />
+        /> */}
+        <GlobelBtn
+          image={ContineWriting}
+          bgColor="#FFFFFF"
+          color="#30422E"
+          btnText={`${t("overView.headerBtnText")}`}
+          onClick={() => router.push("/dashboard/chapters")}
+          width={"220px"} />
       </Box>
       <Box
         sx={{
