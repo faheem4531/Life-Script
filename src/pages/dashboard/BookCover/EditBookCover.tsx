@@ -455,24 +455,24 @@ const EditBookCover = () => {
             dispatch(
               coverId
                 ? updateBookCover({
-                    id: coverId,
-                    CoverNumber: CoverNumber,
-                    title: title,
-                    subTitle: subtitle,
-                    byLine: byline,
-                    color: setColorBasedOnCover(CoverNumber),
-                    image: cropper ? res : imageLink,
-                    coverPagePhoto: getImageCover,
-                  })
+                  id: coverId,
+                  CoverNumber: CoverNumber,
+                  title: title,
+                  subTitle: subtitle,
+                  byLine: byline,
+                  color: setColorBasedOnCover(CoverNumber),
+                  image: cropper ? res : imageLink,
+                  coverPagePhoto: getImageCover,
+                })
                 : bookCover({
-                    coverNumber: CoverNumber,
-                    title: title,
-                    subTitle: subtitle,
-                    byLine: "byline",
-                    color: setColorBasedOnCover(CoverNumber),
-                    image: res,
-                    coverPagePhoto: getImageCover,
-                  })
+                  coverNumber: CoverNumber,
+                  title: title,
+                  subTitle: subtitle,
+                  byLine: "byline",
+                  color: setColorBasedOnCover(CoverNumber),
+                  image: res,
+                  coverPagePhoto: getImageCover,
+                })
             )
               .unwrap()
               .then(() => {
@@ -556,7 +556,7 @@ const EditBookCover = () => {
               display: "flex",
               flexWrap: "wrap",
               gap: { xs: "40px", md: "50px", lg: "70px" },
-              mt: "20px",
+              mt: "50px",
               overflowX: "auto",
             }}
           >
@@ -584,7 +584,7 @@ const EditBookCover = () => {
                   sx={{
                     marginTop: "10px",
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "50px",
+                      borderRadius: "4px",
                       backgroundColor: "white",
                     },
                     width: "100%",
@@ -597,7 +597,7 @@ const EditBookCover = () => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  {`${t("BookCoverCard.author")}`}*
+                  {`${t("BookCoverCard.author")}`}
                 </Typography>
                 <TextField
                   variant="outlined"
@@ -608,7 +608,7 @@ const EditBookCover = () => {
                   sx={{
                     marginTop: "10px",
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "50px",
+                      borderRadius: "4px",
                       backgroundColor: "white",
                     },
                     width: "100%",
@@ -632,7 +632,7 @@ const EditBookCover = () => {
                   sx={{
                     marginTop: "10px",
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "50px",
+                      borderRadius: "4px",
                       backgroundColor: "white",
                     },
                     width: "100%",
@@ -643,79 +643,88 @@ const EditBookCover = () => {
                 setSelectedColor={setSelectedColor}
                 selectedColor={selectedColor}
               /> */}
-              <Box
-                sx={{
-                  bgcolor: "white",
-                  width: "100%",
-                  padding: "14px 0px",
-                  textAlign: "center",
-                  fontWeight: "500",
-                  p: "6px",
-                  border: " 0.355px solid #197065",
-                  borderRadius: "7.099px",
-                }}
-              >
-                {droppedImage && (
-                  <Cropper
-                    ref={cropperRef}
-                    src={droppedImage}
-                    style={{ height: 300, width: "100%" }}
-                    aspectRatio={coverAspectRatio()}
-                    guides={false}
-                    // onInitialized={(instance) => setCropper(instance)}
-                    crop={onCrop}
-                    autoCropArea={1}
-                    // Add other cropper options as needed
-                  />
-                )}
-                <div {...getRootProps()} style={{ cursor: "pointer" }}>
-                  <input {...getInputProps()} />
+              <Box>
 
-                  <Box
-                    sx={{
-                      border: "2px dashed #D3D3D3",
-                      borderRadius: "7.099px",
-                      p: "10px 0px",
-                    }}
-                  >
-                    <Box>
-                      <Image src={croppedImage || FileIcon} alt="" />
-                    </Box>
-                    <Typography
-                      sx={{
-                        fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                        color: "#D3D3D3",
-                      }}
-                    >
-                      {t("BookCoverCard.dragOrDrop")}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                        color: "#D3D3D3",
-                      }}
-                    >
-                      {t("BookCoverCard.or")}
-                    </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, mb: "10px"
+                  }}
+                >
+                  Cover Photo
+                </Typography>
+                <Box
+                  sx={{
+                    bgcolor: "white",
+                    width: "100%",
+                    padding: "14px 0px",
+                    textAlign: "center",
+                    fontWeight: "500",
+                    p: "6px",
+                    border: " 0.355px solid #30422E",
+                    borderRadius: "4px",
+                  }}
+                >
+
+                  {droppedImage && (
+                    <Cropper
+                      ref={cropperRef}
+                      src={droppedImage}
+                      style={{ height: 300, width: "100%" }}
+                      aspectRatio={coverAspectRatio()}
+                      guides={false}
+                      // onInitialized={(instance) => setCropper(instance)}
+                      crop={onCrop}
+                      autoCropArea={1}
+                    // Add other cropper options as needed
+                    />
+                  )}
+                  <div {...getRootProps()} style={{ cursor: "pointer" }}>
+                    <input {...getInputProps()} />
+
                     <Box
                       sx={{
-                        display: "flex",
-                        justifyContent: "center",
+                        border: "1px dashed #30422E",
+                        borderRadius: "4px",
+                        p: "10px 0px",
                       }}
                     >
-                      <GlobelBtn
-                        btnText={`${t("BookCoverCard.browserFile")}`}
-                        bgColor="#fff"
-                        borderRadius="23px"
-                        color="#197065"
-                        fontSize={{ sm: "10.6px", xs: "8.542px" }}
-                        border="1px solid #197065"
-                        p="5px 20px"
-                      />
+                      <Box>
+                        <Image src={croppedImage || FileIcon} alt="" />
+                      </Box>
+                      <Typography
+                        sx={{
+                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                          color: "#D3D3D3",
+                        }}
+                      >
+                        {t("BookCoverCard.dragOrDrop")}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                          color: "#D3D3D3",
+                        }}
+                      >
+                        {t("BookCoverCard.or")}
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <GlobelBtn
+                          btnText={`${t("BookCoverCard.browserFile")}`}
+                          fontSize={{ sm: "10.6px", xs: "8.542px" }}
+                          p="5px 20px"
+                          color="#fff"
+                        />
+                      </Box>
                     </Box>
-                  </Box>
-                </div>
+                  </div>
+                </Box>
               </Box>
+
             </Box>
 
             <Box
@@ -726,13 +735,11 @@ const EditBookCover = () => {
               <Box
                 sx={{
                   position: "relative",
-                  backgroundColor: "white",
-                  borderRadius: "6.077px",
-                  border: "0.304px solid rgb(25, 112, 101)",
+                  backgroundColor: "#F4F4F4",
+                  borderRadius: "4px",
                   width: "100%",
                   height: "100%",
                   padding: "53px 20px 0px",
-                  // padding: "0px 0px 0px",
                   overflowX: "auto",
                 }}
               >
@@ -744,7 +751,7 @@ const EditBookCover = () => {
 
               <Box
                 display="flex"
-                columnGap="30px"
+                columnGap="10px"
                 rowGap="10px"
                 mt="30px"
                 justifyContent="flex-end"
@@ -753,9 +760,9 @@ const EditBookCover = () => {
                 <Box>
                   <GlobelBtn
                     btnText={`${t("BookCoverCard.changeCover")}`}
+                    border="1px solid #E1683B"
                     bgColor="transparent"
-                    borderRadius="23px"
-                    color="#197065"
+                    color="#E1683B"
                     fontSize={{ xs: "12px", md: "16px" }}
                     onClick={() => {
                       router.push("/dashboard/BookCover/SelectBookCover");
@@ -774,11 +781,10 @@ const EditBookCover = () => {
                       buttonLoading
                         ? `${t("BookCoverCard.Saving")}`
                         : coverId
-                        ? `${t("BookCoverCard.UpdateCover")}`
-                        : `${t("BookCoverCard.saveCover")}`
+                          ? `${t("BookCoverCard.UpdateCover")}`
+                          : `${t("BookCoverCard.saveCover")}`
                     }
-                    bgColor="#197065"
-                    borderRadius="23px"
+                    bgColor="#30422E"
                     color="#fff"
                     fontSize={{ xs: "12px", md: "16px" }}
                     onClick={() => {
@@ -790,8 +796,8 @@ const EditBookCover = () => {
                         !buttonLoading &&
                         handleSaveCover();
                     }}
-                    width={"max-content"}
                     isLoading={buttonUpDateLoading}
+                    width={"180px"}
                   />
                 </Box>
               </Box>
