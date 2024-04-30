@@ -415,7 +415,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   }, [coverData]);
 
   return (
-    <Box bgcolor={"#FFF9F0"}>
+    <Box>
       <Box
         onClick={(e) => {
           handleClick(e);
@@ -437,8 +437,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
             alignItems: "baseline",
             flexWrap: "wrap",
             gap: 2,
-            pr: "50px",
-            py: "15px",
+            mt: "40px"
           }}
         >
           <Box
@@ -453,19 +452,22 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
             <Box>
               <GlobelBtn
                 btnText="Back"
+                color="#E1683B"
+                bgColor="#fff"
+                border="1px solid #E1683B"
                 onClick={() => {
                   setSelectedTab(0);
                 }}
-                image={backArrow}
+                width="110px"
               />
             </Box>
             <Box>
               <GlobelBtn
-                bgColor="#186F65"
+                bgColor="#E1683B"
                 color="white"
                 btnText={loading ? "Saving..." : "Next"}
-                image2={NextArrow}
                 border="0px"
+                width="110px"
                 onClick={onClickHandler}
               />
             </Box>
