@@ -112,22 +112,32 @@ export default function App({ Component, pageProps }: AppProps) {
     //old code
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
-    const token = queryParams.get("token");
-
-    if (window.location.search.includes(`/verify?token=${token}`)) {
-      setLoading(false);
-      return; // Don't redirect if "?via=install" is present
-    }
+    
+    console.log("Check Path", currentPath)
+    // if (window.location.search.includes(`/verify?token=${token}`)) {
+    //   console.log("Find Bug ", window.location.search.includes(`/verify?token=${token}`))
+    //   setLoading(false);
+    //   return; // Don't redirect if "?via=install" is present
+    // }
 
     if (window.location.search.includes("?via=install")) {
       setLoading(false);
       return; // Don't redirect if "?via=install" is present
     }
 
-    if (currentPath.startsWith("/verify") && userLoggedIn) {
+    // if (currentPath.startsWith("/verify") && userLoggedIn) {
+    //   // If it's a /verify route with a token parameter, continue regardless of login status
+    //   setLoading(false);
+    //   return; // No need to redirect further
+    // }
+    if (currentPath.startsWith("/verify")) {
+      const token = queryParams.get("token");
+      if(token){
+        setLoading(false);
+        return; 
+      }
       // If it's a /verify route with a token parameter, continue regardless of login status
-      setLoading(false);
-      return; // No need to redirect further
+      // No need to redirect further
     }
     if (publicRoutes.some((route) => route.includes(currentPath))) {
       if (!userLoggedIn)
