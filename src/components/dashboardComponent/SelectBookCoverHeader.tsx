@@ -1,4 +1,4 @@
-import Welcome from "@/_assets/png/overview-welcome-card.png";
+import Welcome from "@/_assets/svg/book-cover-header.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./Custom.module.css";
@@ -7,15 +7,15 @@ const SelectBookCoverHeader = ({ discription }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "#197065",
-        color: "#fff",
-        borderRadius: { sm: "24px", xs: "10px" },
+        backgroundColor: "#F3ECDA",
+        color: "#30422E",
+        borderRadius: "4px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         // maxWidth: "1149px",
         width: "100%",
-        height: { xs: "auto", sm: "150px", md: "165px" },
+        height: { xs: "auto", sm: "150px", md: "175px" },
         gap: "30px",
         overflow: "hidden",
       }}
@@ -42,26 +42,24 @@ const SelectBookCoverHeader = ({ discription }) => {
       </Box>
       <Box
         sx={{
-          background: { xs: "transparent", sm: "#17756A" },
+          background: { xs: "transparent", sm: "#babaa7" },
           height: {
             sm: "400px",
           },
           width: {
             xs: "230px",
             sm: "260px",
-            lg: "360px",
           },
           display: { sm: "flex", xs: "none" },
           justifyContent: "center",
           alignItems: "center",
-          borderTopLeftRadius: "50%",
-          borderBottomLeftRadius: "50%",
+          borderTopLeftRadius: "120%",
+          borderBottomLeftRadius: "70%",
         }}
       >
         <Image
           alt="Welcome"
           src={Welcome}
-          className={styles.SelBookCoverHeaderBook}
         />
       </Box>
     </Box>
