@@ -252,7 +252,7 @@ const BasicPlanCard = ({ price, category }) => {
           }}
         >
           {price ? `$${price}` : "$0"}
-          <Typography sx={{ color: 'black', fontSize: '12px', display: 'inline' }}>/ year</Typography>
+          {/* <Typography sx={{ color: 'black', fontSize: '12px', display: 'inline' }}>/ year</Typography> */}
         </Box>
       </Box>
     </Box>
