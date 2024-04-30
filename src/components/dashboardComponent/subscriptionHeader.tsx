@@ -24,9 +24,8 @@ const SubscriptionHeader = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        // maxWidth: "1149px",
         width: "100%",
-        height: { xs: "auto", sm: "150px", md: "165px" },
+        height: { xs: "auto", sm: "150px", md: "140px" },
         gap: "30px",
         overflow: "hidden",
       }}
