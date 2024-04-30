@@ -24,7 +24,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
   border = "1px solid #186F65",
   height = "56px",
   color,
-  onChange = () => {},
+  onChange = () => { },
   disabled = false,
   type,
 }) => {
@@ -33,8 +33,8 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
       <Typography
         sx={{
           fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-          color: "black",
-          ml: "5px",
+          color: "#30422E",
+          mb: "3px",
         }}
       >
         {label}
@@ -51,6 +51,7 @@ const InputWithLabel: React.FC<InputWithLabelProps> = ({
           "& .MuiOutlinedInput-root": {
             borderRadius: borderRadius,
             backgroundColor: bgColor,
+            color: "#30422E",
             border: border,
             height: height,
             pl: "15px",

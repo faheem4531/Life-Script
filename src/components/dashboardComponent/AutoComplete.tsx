@@ -2,7 +2,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
-export default function CountrySelect({ onSelect, value = null, stripe = false, backgroundColor="#F6F9FB" }) {
+export default function CountrySelect({ onSelect, value = null, stripe = false, backgroundColor = "#F6F9FB" }) {
   const [selectedCountry, setSelectedCountry] = useState(value);
 
   useEffect(() => {
@@ -26,7 +26,6 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
     <Box
       sx={{
         width: stripe ? "100%" : "180px",
-        mb: "5px",
       }}
     >
       <Autocomplete
@@ -59,22 +58,20 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
             variant="outlined"
             name="title"
             sx={{
-              marginTop: "10px",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: backgroundColor,
-                height: stripe ? "46px" : "56px",
+                height: stripe ? "46px" : "50px",
                 mb: stripe ? "0px" : "6px",
-                borderRadius: stripe ? "0px" : "50px",
+                borderRadius: stripe ? "0px" : "4px",
                 pt: !stripe ? "6px" : "1.8px",
               },
               ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
                 border: "0px",
               },
               width: "100%",
-              borderRadius: "50px",
+              borderRadius: "4px",
               backgroundColor: backgroundColor,
               border: "0px",
-              px: "15px",
             }}
           />
         )}

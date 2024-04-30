@@ -63,7 +63,7 @@ const AddChapterName = ({
         position: "relative"
       }}
     >
-      <Box sx={{
+      {title !== "profileSetting" && title !== "tabelOfContent" && < Box sx={{
         borderRadius: "3px",
         backgroundColor: "white",
         position: "absolute",
@@ -82,7 +82,7 @@ const AddChapterName = ({
       >
         {"<--"}
       </Box>
-
+      }
       <Box
         sx={{
           padding: { sm: "10px 15px", xs: "5px 10px" },
@@ -194,7 +194,7 @@ const AddChapterName = ({
       >
         <Image src={BookImage} alt="book image" className={styles.bookImage} />
       </Box>
-    </Box>
+    </Box >
   );
 };
 

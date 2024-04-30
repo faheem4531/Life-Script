@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import TOCMain from "./components/TOCMain";
+import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const TableOfContent = () => {
   const dispatch: any = useDispatch();
@@ -21,7 +22,11 @@ const TableOfContent = () => {
               p: { sm: "0px", xs: "20px 15px" },
             }}
           >
-            <SubscriptionHeader title={`${t("TOC.TOCHeader")}`} />
+            <AddChapterName
+              chapterId
+              chapter={`${t("TOC.TOCHeader")}`}
+              title="tabelOfContent"
+            />
             <TOCMain />
           </Box>
         </Box>

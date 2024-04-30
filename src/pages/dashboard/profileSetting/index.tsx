@@ -1,6 +1,5 @@
 import ProfileAvatar from "@/_assets/svg/ui-user-profile.svg";
 import Layout from "@/components/Layout/Layout";
-import ProfileHeader from "@/components/dashboardComponent/subscriptionHeader";
 import {
   Box,
   FormControl,
@@ -28,6 +27,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const ProfileSetting = () => {
   const userData = useSelector(selectUser);
@@ -125,17 +125,17 @@ const ProfileSetting = () => {
       }}
     >
       <Layout>
-        <ProfileHeader
-          title={`${t("profileSetting.AccountSettings")}`}
-          description=""
+        <AddChapterName
+          chapterId
+          chapter="Profile Settings"
+          title="profileSetting"
         />
         <Box
           sx={{
             display: "flex",
             gap: "30px",
             borderRadius: "14.994px",
-            bgcolor: "#FFF",
-            border: " 1.669px solid #E2E7F0",
+            bgcolor: "#F3ECDA",
             p: { md: "26px 30px", sm: "20px 20px", xs: "16px" },
             mt: "26px",
             flexWrap: "wrap",
@@ -148,37 +148,28 @@ const ProfileSetting = () => {
               justifyContent: "space-between",
               flexDirection: "column",
               minWidth: "280px",
-              mt: { xs: "20px", sm: "0px" },
+              mt: { xs: "20px", sm: "40px" },
             }}
           >
             <Box>
-              <Typography
-                sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                  color: "black",
-                }}
-              >
-                {t("profileSetting.SetProImg")}
-              </Typography>
+
               <div style={{ cursor: "pointer" }}>
                 <input {...getInputProps()} />
                 <Box
                   sx={{
-                    borderRadius: "12.737px",
-                    p: "22px",
-                    bgcolor: "#F6F9FB",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    justifyContent: "center",
                     flexWrap: "wrap",
                     gap: "15px",
+                    columnGap: "60px",
                     height: "158px",
                   }}
                 >
                   <Box
                     sx={{
-                      width: "106.812px",
-                      height: "106.812px",
+                      width: "150px",
+                      height: "150px",
                     }}
                   >
                     {userImage ? (
@@ -190,13 +181,14 @@ const ProfileSetting = () => {
                           height: "100%",
                           objectFit: "cover",
                           borderRadius: "50%",
+                          border: "1.6px solid #E1683B"
                         }}
                       />
                     ) : (
                       <Box
                         sx={{
-                          width: "106.812px",
-                          height: "106.812px",
+                          width: "150px",
+                          height: "150px",
                         }}
                       >
                         <Image
@@ -213,6 +205,12 @@ const ProfileSetting = () => {
                   </Box>
                   <Box {...getRootProps()}>
                     <GlobelBtn
+                      bgColor="transparent"
+                      color="#E1683B"
+                      border="1.6px solid #E1683B"
+                      borderRadius='4px'
+                      fontW={500}
+                      p="16px 20px 14px"
                       btnText={`${t("profileSetting.changeProBtn")}`}
                     />
                   </Box>
@@ -224,7 +222,7 @@ const ProfileSetting = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
-                mt: "20px",
+                mt: "50px",
               }}
             >
               <InputWithLabel
@@ -233,7 +231,7 @@ const ProfileSetting = () => {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder={`${t("profileSetting.fullName")}`}
-                borderRadius="47.202px"
+                borderRadius="4px"
                 bgColor="#F6F9FB"
                 border="0px"
               />
@@ -243,7 +241,7 @@ const ProfileSetting = () => {
                 value={userEmail}
                 disabled={true}
                 placeholder={`${t("profileSetting.Email")}`}
-                borderRadius="47.202px"
+                borderRadius="4px"
                 bgColor="#F6F9FB"
                 border="0px"
               />
@@ -257,11 +255,30 @@ const ProfileSetting = () => {
                 gap: "20px",
               }}
             >
+
+              <Box sx={{ bgcolor: "#fff", p: "24px 11px 24px 23px" }}>
+                <Typography sx={{
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 17 },
+                  color: "#30422E",
+                  borderBottom: "1px solid rgba(48, 66, 46, 0.20)",
+                  pb: "12px",
+                  fontFamily: "Avenir8 !important"
+                }}>
+                  Book Credits
+                </Typography>
+                <Typography sx={{
+                  color: "#30422E",
+                  pt: "12px",
+                  fontSize: { xs: 12, sm: 16, lg: 18 },
+                }}>You have 2 book credits.
+                </Typography>
+              </Box>
+
               <Box>
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "black",
+                    color: "#30422E",
                   }}
                 >
                   {`${t("profileSetting.DOB")}`}
@@ -274,10 +291,10 @@ const ProfileSetting = () => {
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "50px",
+                      borderRadius: "4px",
                       backgroundColor: "#F6F9FB",
                       border: "0px",
-                      // height: height,
+                      color: "#30422E",
                       pl: "15px",
                     },
                     ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
@@ -292,7 +309,7 @@ const ProfileSetting = () => {
                 />
               </Box>
 
-              <FormControl fullWidth>
+              {/* <FormControl fullWidth>
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
@@ -325,12 +342,12 @@ const ProfileSetting = () => {
                     {t("profileSetting.other")}
                   </MenuItem>
                 </Select>
-              </FormControl>
+              </FormControl> */}
               <Box>
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "black",
+                    color: "#30422E",
                   }}
                 >
                   {t("profileSetting.Phone")}
@@ -339,10 +356,11 @@ const ProfileSetting = () => {
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    borderRadius: "50px",
-                    backgroundColor: "#F6F9FB",
-                    pl: "20px",
-                    pr:"20px"
+                    borderRadius: "4px",
+                    columnGap: "10px",
+                    color: "#30422E",
+                    height: "56px",
+                    mt: "5px"
                   }}
                 >
                   <CountrySelect
@@ -360,8 +378,9 @@ const ProfileSetting = () => {
                     }
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        borderRadius: "50px",
+                        borderRadius: "4px",
                         backgroundColor: "#F6F9FB",
+                        color: "#30422E",
                       },
                       ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
                         border: "0px",
@@ -371,25 +390,18 @@ const ProfileSetting = () => {
                   />
                 </Box>
               </Box>
+              <Box sx={{ m: "40px 80px 0 auto" }}>
+                <GlobelBtn
+                  bgColor="#E1683B"
+                  color="white"
+                  borderRadius='4px'
+                  btnText={`${t("profileSetting.save")}`}
+                  onClick={() => {
+                    setProfile(true);
+                  }}
+                />
+              </Box>
             </Box>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "end",
-            mt: "24px",
-          }}
-        >
-          <Box>
-            <GlobelBtn
-              bgColor="#197065"
-              color="white"
-              btnText={`${t("profileSetting.save")}`}
-              onClick={() => {
-                setProfile(true);
-              }}
-            />
           </Box>
         </Box>
 

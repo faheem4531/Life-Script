@@ -1,9 +1,3 @@
-import DemoProfile from "@/_assets/svg/profile.svg";
-import Bronze from "@/_assets/svg/bronze-token.svg";
-import Gold from "@/_assets/svg/gold-token.svg";
-import Grey from "@/_assets/svg/Silver Token.svg";
-import Platinum from "@/_assets/svg/platinum-token.svg";
-import Silver from "@/_assets/svg/silver-token.svg";
 import { Box, Tooltip, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
@@ -11,10 +5,46 @@ import { useTranslation } from "react-i18next";
 import styles from "./Custom.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
-import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
+import { getChapters, getHours, selectAllChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
+
+import Grey from "@/_assets/svg/Silver Token.svg";
+import Word8 from "@/_assets/png/achievements/word-8.png"
+import Word7 from "@/_assets/png/achievements/word-7.png"
+import Word6 from "@/_assets/png/achievements/word-6.png"
+import Word5 from "@/_assets/png/achievements/word-5.png"
+import Word4 from "@/_assets/png/achievements/word-4.png"
+import Word3 from "@/_assets/png/achievements/word-3.png"
+import Word2 from "@/_assets/png/achievements/word-2.png"
+import Word1 from "@/_assets/png/achievements/word-1.png"
+import Chapter8 from "@/_assets/png/achievements/chapter-8.png"
+import Chapter7 from "@/_assets/png/achievements/chapter-7.png"
+import Chapter6 from "@/_assets/png/achievements/chapter-6.png"
+import Chapter5 from "@/_assets/png/achievements/chapter-5.png"
+import Chapter4 from "@/_assets/png/achievements/chapter-4.png"
+import Chapter3 from "@/_assets/png/achievements/chapter-3.png"
+import Chapter2 from "@/_assets/png/achievements/chapter-2.png"
+import Chapter1 from "@/_assets/png/achievements/chapter-1.png"
+import Query8 from "@/_assets/png/achievements/query-8.png"
+import Query7 from "@/_assets/png/achievements/query-7.png"
+import Query6 from "@/_assets/png/achievements/query-6.png"
+import Query5 from "@/_assets/png/achievements/query-5.png"
+import Query4 from "@/_assets/png/achievements/query-4.png"
+import Query3 from "@/_assets/png/achievements/query-3.png"
+import Query2 from "@/_assets/png/achievements/query-2.png"
+import Query1 from "@/_assets/png/achievements/query-1.png"
+import Time8 from "@/_assets/png/achievements/time-8.png"
+import Time7 from "@/_assets/png/achievements/time-7.png"
+import Time6 from "@/_assets/png/achievements/time-6.png"
+import Time5 from "@/_assets/png/achievements/time-5.png"
+import Time4 from "@/_assets/png/achievements/time-4.png"
+import Time3 from "@/_assets/png/achievements/time-3.png"
+import Time2 from "@/_assets/png/achievements/time-2.png"
+import Time1 from "@/_assets/png/achievements/time-1.png"
+
+
+
 
 const Profile = ({ data }) => {
   const { t } = useTranslation();
@@ -25,6 +55,10 @@ const Profile = ({ data }) => {
   const [userImage, setUserImage] = useState("");
   const [progressChapters, setProgressChapters] = useState([]);
   const [userName, setUserName] = useState("");
+  const [hoursCount, setHoursCount] = useState("");
+
+  console.log(hoursCount, "dataaaaaaaa");
+
 
   function calculateCompletionPercentage(array) {
     if (array?.length === 0) {
@@ -40,12 +74,31 @@ const Profile = ({ data }) => {
     return percentage;
   }
 
+  function formatTime(seconds) {
+    if (isNaN(seconds)) {
+      return "Invalid input";
+    }
+
+    if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      return `${minutes} m`;
+    } else {
+      const hours = Math.floor(seconds / 3600);
+      return `${hours} h`;
+    }
+  }
+
+
+
   useEffect(() => {
     const name = localStorage.getItem("username");
     const firstName = name ? name.split(' ')[0] : ''; // Get the part before the first space
     setUserName(firstName);
     dispatch(getChapters());
     dispatch(getUserProfile());
+    dispatch(getHours())
+      .unwrap()
+      .then((res) => console.log(res, "ressssss"));
   }, []);
 
   useEffect(() => {
@@ -63,6 +116,122 @@ const Profile = ({ data }) => {
       setUserImage(userData?.profileImage);
     }
   }, [userData]);
+
+
+
+  const wordCount = data?.words;
+  const questionsCount = data?.questions
+  const chaptersCount = data?.chapters
+
+
+  const getWordsBadgeAndTooltip = (wordCount) => {
+    let WordbadgeImage, WordtooltipText;
+
+    if (wordCount < 1000) {
+      WordbadgeImage = Grey;
+      WordtooltipText = 'Word Wizard will be opened after writing at least 1000 words';
+    } else if (wordCount >= 1000 && wordCount < 3000) {
+      WordbadgeImage = Word1;
+      WordtooltipText = '  1000 words written';
+    } else if (wordCount >= 3000 && wordCount < 5000) {
+      WordbadgeImage = Word2;
+      WordtooltipText = '  3000 words written';
+    } else if (wordCount >= 5000 && wordCount < 10000) {
+      WordbadgeImage = Word3;
+      WordtooltipText = '  5000 words written';
+    } else if (wordCount >= 10000 && wordCount < 20000) {
+      WordbadgeImage = Word4;
+      WordtooltipText = '  10000 words written';
+    } else if (wordCount >= 20000 && wordCount < 30000) {
+      WordbadgeImage = Word5;
+      WordtooltipText = '  20000 words written';
+    } else if (wordCount >= 30000 && wordCount < 40000) {
+      WordbadgeImage = Word6;
+      WordtooltipText = '  30000 words written';
+    } else if (wordCount >= 40000 && wordCount < 50000) {
+      WordbadgeImage = Word7;
+      WordtooltipText = '  40000 words written';
+    } else if (wordCount >= 50000) {
+      WordbadgeImage = Word8;
+      WordtooltipText = 'Congratulations!   50000 words written';
+    }
+
+    return { WordbadgeImage, WordtooltipText };
+  };
+
+  const getQsBadgeAndTooltip = (questionsCount) => {
+    let QsbadgeImage, QstooltipText;
+
+    if (questionsCount < 5) {
+      QsbadgeImage = Grey;
+      QstooltipText = 'Query Master will be opened after writing at least 5 Questions';
+    } else if (questionsCount >= 5 && questionsCount < 10) {
+      QsbadgeImage = Query1;
+      QstooltipText = '  5 questions answered';
+    } else if (questionsCount >= 10 && questionsCount < 15) {
+      QsbadgeImage = Query2;
+      QstooltipText = '  10 questions answered';
+    } else if (questionsCount >= 15 && questionsCount < 20) {
+      QsbadgeImage = Query3;
+      QstooltipText = '  15 questions answered';
+    } else if (questionsCount >= 20 && questionsCount < 30) {
+      QsbadgeImage = Query4;
+      QstooltipText = '  20 questions answered';
+    } else if (questionsCount >= 30 && questionsCount < 50) {
+      QsbadgeImage = Query5;
+      QstooltipText = '  30 questions answered';
+    } else if (questionsCount >= 50 && questionsCount < 70) {
+      QsbadgeImage = Query6;
+      QstooltipText = '  50 questions answered';
+    } else if (questionsCount >= 70 && questionsCount < 100) {
+      QsbadgeImage = Query7;
+      QstooltipText = '  70 questions answered';
+    } else if (questionsCount >= 100) {
+      QsbadgeImage = Query8;
+      QstooltipText = ' 100 questions answered';
+    }
+
+    return { QsbadgeImage, QstooltipText };
+  };
+
+  const getChaptersBadgeAndTooltip = (chaptersCount) => {
+    let ChapterbadgeImage, ChaptertooltipText;
+
+    if (chaptersCount == 0) {
+      ChapterbadgeImage = Grey;
+      ChaptertooltipText = 'Chapter Champ will be opened after completing at least 1 chapter';
+    } else if (chaptersCount >= 1 && chaptersCount < 3) {
+      ChapterbadgeImage = Chapter1;
+      ChaptertooltipText = '  1 chapter completed';
+    } else if (chaptersCount >= 3 && chaptersCount < 5) {
+      ChapterbadgeImage = Chapter2;
+      ChaptertooltipText = '  3 chapters completed';
+    } else if (chaptersCount >= 5 && chaptersCount < 7) {
+      ChapterbadgeImage = Chapter3;
+      ChaptertooltipText = '  5 chapters completed';
+    } else if (chaptersCount >= 7 && chaptersCount < 10) {
+      ChapterbadgeImage = Chapter4;
+      ChaptertooltipText = '  7 chapters completed';
+    } else if (chaptersCount >= 10 && chaptersCount < 15) {
+      ChapterbadgeImage = Chapter5;
+      ChaptertooltipText = '  10 chapters completed';
+    } else if (chaptersCount >= 15 && chaptersCount < 20) {
+      ChapterbadgeImage = Chapter6;
+      ChaptertooltipText = '  15 chapters completed';
+    } else if (chaptersCount >= 20 && chaptersCount < 25) {
+      ChapterbadgeImage = Chapter7;
+      ChaptertooltipText = '  20 chapters completed';
+    } else if (chaptersCount >= 25) {
+      ChapterbadgeImage = Chapter8;
+      ChaptertooltipText = ' 25 chapters completed';
+    }
+
+    return { ChapterbadgeImage, ChaptertooltipText };
+  };
+  const { WordbadgeImage, WordtooltipText } = getWordsBadgeAndTooltip(wordCount);
+  const { QsbadgeImage, QstooltipText } = getQsBadgeAndTooltip(questionsCount);
+  const { ChapterbadgeImage, ChaptertooltipText } = getChaptersBadgeAndTooltip(chaptersCount);
+
   return (
     <Box
       sx={{
@@ -99,41 +268,42 @@ const Profile = ({ data }) => {
         >
           <Box>
             <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={data?.words < 500 ? "Bronze badge will be opened after writing 500 words" : "Bronze"}>
+              <Tooltip title={WordtooltipText}>
                 <Image
                   alt="tag"
-                  src={data?.words < 499 ? Grey : Bronze}
+                  src={WordbadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
             </Box>
-            <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={data?.chapters < 5 ? "Silver badge will be opened after completing 5 chapters" : "Silver"}>
+            <Box sx={{ cursor: "pointer", mt: "20px" }}>
+              <Tooltip title={QstooltipText}>
                 <Image
                   alt="tag"
-                  src={data?.chapters < 5 ? Grey : Silver}
+                  src={QsbadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
-
             </Box>
           </Box>
 
           <Box>
             <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={data?.questions < 100 ? "Gold badge will be opened after adding 100 questions" : "Gold"}>
+              <Tooltip title={ChaptertooltipText}>
                 <Image
                   alt="tag"
-                  src={data?.questions < 100 ? Grey : Gold}
+                  src={ChapterbadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
+
+
             </Box>
-            <Box sx={{ cursor: "pointer" }}>
+            <Box sx={{ cursor: "pointer", mt: "20px" }}>
               <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
                 <Image
                   alt="tag"
-                  src={data?.words < 5000 ? Grey : Platinum}
+                  src={hoursCount ? Grey : Time8}
                   className={styles.profileAchivements}
                 />
               </Tooltip>

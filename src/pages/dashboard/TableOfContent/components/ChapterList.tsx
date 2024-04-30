@@ -1,4 +1,4 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import ModalImage from "@/_assets/svg/Frame.svg";
 import { Box, Typography } from "@mui/material"; // Import necessary MUI components
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -100,7 +100,7 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
       <Box>
         <Box
           sx={{
-            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
+            width: { md: "145px", sm: "66.54px", xs: "41.709px" },
             height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
             margin: "auto",
           }}
@@ -116,10 +116,11 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
         </Box>
         <Typography
           sx={{
-            fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
+            fontSize: { md: "32px", sm: "21.679px", xs: "15.508px" },
             fontWeight: 500,
-            color: "#070707",
-            margin: { md: "24px 0", sm: "20px 0px", xs: "15px 0px" },
+            color: "#E1683B",
+            fontFamily: "Avenir8 !important",
+            margin: { sm: "10px 0 20px ", xs: "10px 0px" },
           }}
         >
           {t("TOC.ch")}
@@ -142,13 +143,13 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
               width: "100%",
               bgcolor:
                 getIndexingIfExists(item.chapterId) !== 0
-                  ? "#197065"
+                  ? "#7F886B"
                   : "#F9F9F9",
               color:
-                getIndexingIfExists(item.chapterId) !== 0 ? "white" : "black",
+                getIndexingIfExists(item.chapterId) !== 0 ? "white" : "#30422E",
               borderRadius: "6.091px",
               mb: "10px",
-              borderLeft: "8.25px solid #186F65",
+              borderLeft: "8.25px solid #7F886B",
             }}
           >
             <Box
@@ -159,13 +160,14 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
                 gap: "10px",
                 p: { md: "10px 25px", sm: "8px 20px", xs: "5px 8px" },
                 borderRadius: "6.091px",
+                height: "54px",
                 cursor: "pointer",
               }}
               onClick={() => selectChapter(item)}
             >
               <Typography
                 sx={{
-                  fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
+                  fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" }
                 }}
               >
                 {item.title}
@@ -173,12 +175,12 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
               {getIndexingIfExists(item.chapterId) !== 0 && (
                 <Typography
                   sx={{
-                    border: "1px solid white",
-                    borderRadius: "50%",
-                    color: "white",
+                    borderRadius: "4px",
+                    bgcolor: "#fff",
+                    color: "#30422E",
                     width: "20px",
-                    height: " 20px",
-                    fontSize: "9.754px",
+                    padding: "5px 14px 3px",
+                    fontSize: "16px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -194,11 +196,12 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
 
       <Box m={"24px auto 0px"}>
         <GlobelBtn
-          bgColor="#197065"
+          bgColor="#E1683B"
           color="white"
+          borderRadius="4px"
           btnText={
             !loading
-              ? `${t("TOC.addBtn")}`
+              ? `${t("TOC.addChBtn")}  (${chapterIndexing?.length})`
               : `${t("TOC.adding")} (${chapterIndexing?.length})`
           }
           onClick={!loading && handleChapterIndexing}

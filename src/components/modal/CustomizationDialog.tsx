@@ -66,8 +66,8 @@ export default function CustomizationDialog({
         maxWidth={"xl"}
         // style={{ overflowY: "hidden" }}
         sx={{
-          ".css-2rbg70-MuiPaper-root-MuiDialog-paper":{
-            borderRadius:"5px"
+          ".css-2rbg70-MuiPaper-root-MuiDialog-paper": {
+            borderRadius: "4px"
           }
         }}
       >
