@@ -18,7 +18,8 @@ import OurBooks from "./sections/OurBooks";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 
 import Shape from "@/__webAssets/svgs/input-shape.svg"
-import Logo from "@/__webAssets/svgs/logo.svg"
+// import Logo from "@/__webAssets/svgs/logo.svg"
+import Logo from "../../../public/lifescript-life-story-book-logo.svg"
 import Gift from "@/__webAssets/svgs/gift.svg"
 
 const HomePage = () => {
@@ -55,7 +56,7 @@ const HomePage = () => {
 
 
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <NavBar logo={Logo} color="#3E4F3C" />
+        <NavBar logo={"home"} color="#3E4F3C" />
         <Introduction />
         <Working data={pointsArray} heading=" How it" marked="works" />
         <Suggestion />
