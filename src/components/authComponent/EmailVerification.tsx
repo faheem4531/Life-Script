@@ -45,7 +45,7 @@ const EmailVerification = () => {
 
         toast.success(t("Verify.emailVerifiedSuccessfully"));
         const name = localStorage.getItem("username");
-        router.push(`/getStarted?userName=${name}`);
+        router.push(`/_auth/Auth`);
       })
       .catch((error: any) => {
         toast.error(error || t("Verify.failedVerifyEmail"));

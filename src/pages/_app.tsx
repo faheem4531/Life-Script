@@ -112,6 +112,12 @@ export default function App({ Component, pageProps }: AppProps) {
     //old code
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
+    const token = queryParams.get("token");
+
+    if (window.location.search.includes(`/verify?token=${token}`)) {
+      setLoading(false);
+      return; // Don't redirect if "?via=install" is present
+    }
 
     if (window.location.search.includes("?via=install")) {
       setLoading(false);
