@@ -15,7 +15,7 @@ const BlogPage = () => {
         <title>Blog - Insights, Inspiration, and Practical Guides to Storytelling</title>
         <meta
           name="description"
-          content="Your Guide to Capturing Life's Moments, Unlocking the Secrets of Personal Narratives and Leaving a Legacy Like No Other."
+          discription="Your Guide to Capturing Life's Moments, Unlocking the Secrets of Personal Narratives and Leaving a Legacy Like No Other."
         />
       </Head>
 
