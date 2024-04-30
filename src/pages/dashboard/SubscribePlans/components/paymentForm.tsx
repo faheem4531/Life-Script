@@ -119,10 +119,10 @@ const PaymentForm = ({ packageName, price }) => {
         }}
       >
         <Box>
-          <Box mb="20px">
+          <Box mb="30px">
             <Typography
               sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
               }}
             >
               {t("SubsPlan.CardNum")}
@@ -131,10 +131,10 @@ const PaymentForm = ({ packageName, price }) => {
               sx={{
                 width: "100%",
                 marginTop: "10px",
-                borderRadius: "50px",
+                borderRadius: "4px",
                 backgroundColor: "white",
                 p: "12px 35px",
-                border: "1px solid #186F65",
+                border: "1px solid #30422E",
               }}
             >
               <CardNumberElement
@@ -147,10 +147,10 @@ const PaymentForm = ({ packageName, price }) => {
             </Box>
           </Box>
 
-          <Box mb="20px">
+          <Box mb="30px">
             <Typography
               sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
               }}
             >
               {t("SubsPlan.CardholderName")}
@@ -163,9 +163,9 @@ const PaymentForm = ({ packageName, price }) => {
               sx={{
                 marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px",
+                  borderRadius: "4px",
                   backgroundColor: "white",
-                  border: "1px solid #186F65",
+                  border: "1px solid #30422E",
                   height: "46px",
                 },
                 width: "100%",
@@ -179,13 +179,13 @@ const PaymentForm = ({ packageName, price }) => {
               gap: "20px",
               alignItems: "center",
               width: "100%",
-              mb: "20px",
+              mb: "30px",
             }}
           >
             <Box flex={1}>
               <Typography
                 sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
                 }}
               >
                 {t("SubsPlan.ExpDate")}
@@ -194,10 +194,10 @@ const PaymentForm = ({ packageName, price }) => {
                 sx={{
                   width: "100%",
                   marginTop: "10px",
-                  borderRadius: "50px",
+                  borderRadius: "4px",
                   backgroundColor: "white",
                   p: "12px 35px",
-                  border: "1px solid #186F65",
+                  border: "1px solid #30422E",
                 }}
               >
                 <CardExpiryElement
@@ -212,7 +212,7 @@ const PaymentForm = ({ packageName, price }) => {
             <Box flex={1}>
               <Typography
                 sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
                 }}
               >
                 {t("SubsPlan.cvc")}
@@ -221,10 +221,10 @@ const PaymentForm = ({ packageName, price }) => {
                 sx={{
                   width: "100%",
                   marginTop: "10px",
-                  borderRadius: "50px",
+                  borderRadius: "4px",
                   backgroundColor: "white",
                   p: "12px 35px",
-                  border: "1px solid #186F65",
+                  border: "1px solid #30422E",
                 }}
               >
                 <CardCvcElement
@@ -240,18 +240,18 @@ const PaymentForm = ({ packageName, price }) => {
         </Box>
         <Box
           sx={{
-            marginTop: "50px",
+            marginTop: "40px",
             opacity: loading || isError || !cardHolderName ? 0.6 : 1,
           }}
         >
           <Box>
             <GlobelBtn
-              bgColor="#197065"
+              bgColor="#E1683B"
               color="white"
               btnText={
                 loading
                   ? "Loading..."
-                  : "Buy Plan"
+                  : "Subscribe"
               }
               onClick={() => {
                 if (!loading && !isError && cardHolderName) {
