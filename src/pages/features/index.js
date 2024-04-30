@@ -12,7 +12,7 @@ const FeaturesPage = () => {
     <>
       <Head>
         <title>Features That Make Your Storytelling Fun and Easy</title>
-        <meta name="description" content="Take advantage of our assisted editing, text formatting features, voice-to-text, family tree, automatic photo improvement, premium book covers and more." />
+        <meta name="description" discription="Take advantage of our assisted editing, text formatting features, voice-to-text, family tree, automatic photo improvement, premium book covers and more." />
       </Head>
 
 

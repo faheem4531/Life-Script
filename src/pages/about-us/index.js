@@ -7,27 +7,40 @@ import FeaturesIntroduction from "@/__webComponents/Introduction/Introduction";
 import Mission from "./sections/Mission";
 import Story from "./sections/Stories";
 import Values from "./sections/Values";
+import Head from 'next/head';
 
 const AboutUs = () => {
   return (
-    <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
 
-      <FeaturesIntroduction heading="Empowering people to create a timeless legacy, resonating across" width="75%" keyWorld=" generations." />
-      <Mission />
-      <Story />
-      <Values />
-      <ContactFooter
-        title="Still confused? Ask"
-        marked=" away!"
-        lineWidth={150}
-        subTitle="Contact us Now!!!"
-        input1="Your name"
-        input2="Your email address"
-        input3="What’s on your mind?"
-        button="Get in touch!"
-      />
-      <Footer />
-    </Box>
+    <>
+      <Head>
+        <title>About us</title>
+        <meta
+          name="description"
+          discription="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
+        />
+      </Head>
+
+
+      <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
+        <FeaturesIntroduction heading="Empowering people to create a timeless legacy, resonating across" width="75%" keyWorld=" generations." />
+        <Mission />
+        <Story />
+        <Values />
+        <ContactFooter
+          title="Still confused? Ask"
+          marked=" away!"
+          lineWidth={150}
+          subTitle="Contact us Now!!!"
+          input1="Your name"
+          input2="Your email address"
+          input3="What’s on your mind?"
+          button="Get in touch!"
+        />
+        <Footer />
+      </Box>
+    </>
+
   )
 }
 
