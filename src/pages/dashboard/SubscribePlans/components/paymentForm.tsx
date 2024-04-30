@@ -115,7 +115,11 @@ const PaymentForm = ({ packageName, price }) => {
           display: "flex",
           justifyContent: "space-between",
           height: "100%",
-          flexDirection: "column",
+          flexDirection: "column", bgcolor: "#F8F6F9",
+          p: "28px 35px",
+          borderRadius: "4px",
+          maxHeight: "480px",
+          width: "100%",
         }}
       >
         <Box>
@@ -240,11 +244,11 @@ const PaymentForm = ({ packageName, price }) => {
         </Box>
         <Box
           sx={{
-            marginTop: "40px",
+            margin: "40px 0",
             opacity: loading || isError || !cardHolderName ? 0.6 : 1,
           }}
         >
-          <Box>
+          <Box >
             <GlobelBtn
               bgColor="#E1683B"
               color="white"

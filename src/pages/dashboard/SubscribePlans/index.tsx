@@ -103,11 +103,9 @@ const SubscribePlan = () => {
           >
             <SubscriptionCard
               subList={subBasicList}
-              mainTitle="Basic Package"
+              mainTitle="Basic"
               category="BasicPlan"
               card="1"
-              mainDescription="Access to basic features of lifescript."
-              offerTitle="Basic Plan Offerings"
               price={planPrices.basic}
               buttonDisable={disableButton.basic}
               onClick={(pkgPrice) => {
@@ -121,11 +119,9 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subStandardList}
-              mainTitle="Standard Package"
+              mainTitle="Standard"
               category="GoldPlan"
               card="2"
-              mainDescription="Access to smart generative features of lifescript."
-              offerTitle="Standard Plan Offerings"
               CurrentPlan={planCheck}
               price={planPrices?.standard}
               buttonDisable={disableButton.standard}
@@ -139,12 +135,10 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subPremiumList}
-              mainTitle="Premium Package"
+              mainTitle="Premium"
               card="3"
               CurrentPlan={planCheck}
               category="PremiumPlan"
-              mainDescription="Access to premium features of lifescript."
-              offerTitle="Premium Plan Offerings"
               price={planPrices?.premium}
               buttonDisable={disableButton.premium}
               onClick={(pkgPrice) => {
