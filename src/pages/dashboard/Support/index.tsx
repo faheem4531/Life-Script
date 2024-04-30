@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const SupportScreen = () => {
   const dispatch: any = useDispatch();
@@ -38,18 +39,18 @@ const SupportScreen = () => {
             p: { sm: "0px", xs: "10px 10px" },
           }}
         >
-          <SubscriptionHeader
-            title={`${t("support.supHeading")}`}
-            description=""
+          <AddChapterName
+            chapterId
+            chapter={`${t("support.supHeading")}`}
+            title="support"
           />
           <Box
             sx={{
               display: "flex",
               gap: "30px",
-              borderRadius: "14.994px",
-              bgcolor: "#FFF",
-              border: " 1.669px solid #E2E7F0",
-              p: { md: "26px 30px", sm: "20px 20px", xs: "16px" },
+              borderRadius: "4x",
+              bgcolor: "#F3ECDA",
+              p: { md: "30px", sm: "20px 20px", xs: "16px" },
               mt: "26px",
               flexWrap: "wrap",
             }}
@@ -69,13 +70,13 @@ const SupportScreen = () => {
                   display: "flex",
                   flexDirection: "column",
                   gap: "10px",
-                  mt: "20px",
+                  // mt: "20px",
                 }}
               >
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "#30422E",
                     ml: "5px",
                   }}
                 >
@@ -90,7 +91,7 @@ const SupportScreen = () => {
                   maxRows={1}
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "20.202px",
+                      borderRadius: "4px",
                       backgroundColor: "#F6F9FB",
                       border: "0px",
                       pl: "15px",
@@ -117,7 +118,7 @@ const SupportScreen = () => {
                 <Typography
                   sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                    color: "#474E60",
+                    color: "#30422E",
                     ml: "5px",
                   }}
                 >
@@ -132,7 +133,7 @@ const SupportScreen = () => {
                   maxRows={8}
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "20.202px",
+                      borderRadius: "4px",
                       backgroundColor: "#F6F9FB",
                       border: "0px",
                       pl: "15px",
@@ -150,13 +151,13 @@ const SupportScreen = () => {
               </Box>
               <Box
                 sx={{
-                  mt: "20px",
+                  mt: "45px",
                 }}
               >
                 <Box>
                   <GlobelBtn
                     btnText={`${t("support.subBtn")}`}
-                    width="200px"
+                    width="210px"
                     onClick={handleComplaint}
                     disabled={!subject || !description}
                   />
