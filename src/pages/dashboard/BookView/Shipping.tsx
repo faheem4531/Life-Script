@@ -52,15 +52,15 @@ const Shipping = ({
     } else {
       shippingDataId
         ? dispatch(updateLuluShipping(shippingData))
-            .unwrap()
-            .then((res) => {
-              setSelectedTab(4);
-            })
+          .unwrap()
+          .then((res) => {
+            setSelectedTab(4);
+          })
         : dispatch(createLuluShipping(shippingData))
-            .unwrap()
-            .then((res) => {
-              setSelectedTab(4);
-            });
+          .unwrap()
+          .then((res) => {
+            setSelectedTab(4);
+          });
     }
   };
 
@@ -69,86 +69,93 @@ const Shipping = ({
   }, [shippingData]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        bgcolor: "white",
-        borderRadius: "4.164px",
-        p: "20px 24px",
-        gap: "20px",
-        flexDirection: { md: "row", xs: " column" },
-      }}
-    >
+    <Box>
+
       <Box
         sx={{
-          flex: 1,
-          minWidth: "300px",
-        }}
-      >
-        <ShippingForm
-          onChange={(obj) => setShippingData(obj)}
-          data={shippingData}
-          setShippingDataId={setShippingDataId}
-        />
-      </Box>
-      <Box
-        sx={{
-          flex: 1,
           display: "flex",
-          justifyContent: { md: "end", xs: "center" },
+          bgcolor: "#F3ECDA",
+          borderRadius: "4px",
+          p: "30px",
+          gap: "20px",
+          flexDirection: { md: "row", xs: " column" },
         }}
       >
         <Box
           sx={{
-            width: { md: "auto", xs: "100%" },
-            p: {
-              sm: "0px",
-              xs: "10px",
-            },
+            flex: 1,
+            minWidth: "300px",
           }}
         >
-          <ShippingCard
-            setCount={setCount}
-            count={count}
-            QuantityCheck={true}
-            amount={luluBalance?.amount}
+          <ShippingForm
+            onChange={(obj) => setShippingData(obj)}
+            data={shippingData}
+            setShippingDataId={setShippingDataId}
           />
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            justifyContent: { md: "end", xs: "center" },
+          }}
+        >
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "end",
-              alignItems: "center",
-              gap: 2,
-              my: "20px",
+              width: { md: "auto", xs: "100%" },
+              p: {
+                sm: "0px",
+                xs: "10px",
+              },
             }}
+          >
+            <ShippingCard
+              setPayment={() => { }}
+              setCount={setCount}
+              count={count}
+              QuantityCheck={true}
+              amount={luluBalance?.amount}
+            />
+
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "end",
+          alignItems: "center",
+          gap: 2,
+          mt: "30px",
+        }}
+      >
+        <Box>
+          <GlobelBtn
+            btnText="Back"
+            bgColor='#fff'
+            color="#E1683B"
+            border="1px solid #E1683B"
+            onClick={() => {
+              setSelectedTab(2);
+            }}
+          />
+        </Box>
+        <Box>
+          <Tooltip
+            title="Please fill in all fields"
+            open={tooltip}
+            onClose={() => setTooltip(false)}
           >
             <Box>
               <GlobelBtn
-                btnText="Back"
-                onClick={() => {
-                  setSelectedTab(2);
-                }}
-                image={backArrow}
+                bgColor="#E1683B"
+                color="white"
+                btnText="Next"
+                border="0px"
+                onClick={handleNext}
               />
             </Box>
-            <Box>
-              <Tooltip
-                title="Please fill in all fields"
-                open={tooltip}
-                onClose={() => setTooltip(false)}
-              >
-                <Box>
-                  <GlobelBtn
-                    bgColor="#186F65"
-                    color="white"
-                    btnText="Next"
-                    border="0px"
-                    onClick={handleNext}
-                  />
-                </Box>
-              </Tooltip>
-            </Box>
-          </Box>
+          </Tooltip>
         </Box>
       </Box>
     </Box>
