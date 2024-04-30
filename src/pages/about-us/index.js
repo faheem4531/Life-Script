@@ -8,7 +8,7 @@ import Mission from "./sections/Mission";
 import Story from "./sections/Stories";
 import Values from "./sections/Values";
 import Head from 'next/head';
-
+import { NextSeo } from "next-seo";
 const AboutUs = () => {
   return (
 
@@ -16,9 +16,22 @@ const AboutUs = () => {
       <Head>
         <title>About us</title>
         <meta
+          property="og:title"
+          content="About us"
+        />
+        <meta
+          property="og:description"
+          content="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
+        />
+        <NextSeo
+          title="About us"
+          description="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
+          canonical="https://www.thelifescript.com/about-us"
+        />
+        {/* <meta
           name="description"
           discription="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
-        />
+        /> */}
       </Head>
 
 
@@ -29,7 +42,8 @@ const AboutUs = () => {
         <Values />
         <ContactFooter
           title="Still confused? Ask"
-          marked=" away!"
+          marked=" awayyyy!"
+          // marked=" away!"
           lineWidth={150}
           subTitle="Contact us Now!!!"
           input1="Your name"

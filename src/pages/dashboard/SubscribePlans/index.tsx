@@ -88,7 +88,7 @@ const SubscribePlan = () => {
         >
           <SubscriptionHeader
             title={`${t("SubsPlan.SubsHeaderTitle")}`}
-            description="Each package includes 1 year access to Lifescript with 1 high-quality full-color printed book."
+            description="Each plan comes with lifetime access to LifeScript, premium full-color hardcover book, and free shipping."
           />
           <Box
             sx={{

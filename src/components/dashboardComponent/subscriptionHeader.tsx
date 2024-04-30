@@ -18,9 +18,9 @@ const SubscriptionHeader = ({
   return (
     <Box
       sx={{
-        backgroundColor: "#197065",
+        backgroundColor: "#30422E",
         color: "#fff",
-        borderRadius: { sm: "24px", xs: "10px" },
+        borderRadius: "4px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -34,9 +34,9 @@ const SubscriptionHeader = ({
     >
       <Box
         sx={{
-          width: "65%",
+          width: "90%",
           gap: "20px",
-          padding: { md: "15px 50px", sm: "15px 35px", xs: "15px 30px" },
+          padding: { md: "0px 40px", sm: "15px 35px", xs: "15px 30px" },
         }}
       >
         <Typography
