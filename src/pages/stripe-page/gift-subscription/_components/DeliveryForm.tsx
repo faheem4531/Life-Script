@@ -49,7 +49,7 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
             localStorage.setItem("receiverName", res?.name);
             localStorage.setItem("selectedDate", res?.sendGiftDate);
           });
-        toast.success(t("signup-page.verificationEmailSent"));
+        // toast.success(t("signup-page.verificationEmailSent"));
 
         onClick(selectedTab + 1);
       } catch (error) {
