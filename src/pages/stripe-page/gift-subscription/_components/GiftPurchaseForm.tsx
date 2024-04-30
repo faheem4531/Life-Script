@@ -1,11 +1,9 @@
 "use client"
-import GlobelBtn from "@/components/button/Button";
-import CheckIcon from '@mui/icons-material/Check';
-import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import stripeLogo from "../../../../../public/stripeLogo.svg";
 import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
 import Check from "@/_assets/svg/varifiedCheck.svg";
 import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
+import CheckIcon from '@mui/icons-material/Check';
+import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -19,6 +17,7 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
+import stripeLogo from "../../../../../public/stripeLogo.svg";
 // import PaymentProcessingModal from './Modal';
 import PaymentProcessingModal from '../../subscription/_components/Modal';
 import GiftPlanCard from "./GiftPlanCard";
@@ -118,6 +117,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab}) => {
   }
 
   const handleSubmit = async (event) => {
+    const giftFrom = localStorage.getItem("sendMessage");
     setConfirmationStripe(true); //open the modal
 
     const subscriptionPrice = Number(price);
@@ -160,7 +160,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab}) => {
           numberOfBooks: selectedBooks && selectedBooks,
           bookPrice: selectedBooks && selectedBooks * 39,
           commission: commissionState,
-          processFrom: "register"
+          processFrom: giftFrom && giftFrom ? "gift" :"register"
         })
       )
         .unwrap()
@@ -458,6 +458,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab}) => {
 
       <PaymentProcessingModal
         openModal={confirmationStripe}
+        // selectedTab={"gift"}
         selectedTab={"gift"}
         handleClose={() => setConfirmationStripe(false)}
         stripeSucceed={stripeSucceed}

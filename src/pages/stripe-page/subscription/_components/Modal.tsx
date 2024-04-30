@@ -54,15 +54,19 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
   function handleLetMeIn() {
     const name = localStorage.getItem("username");
     router.push(`/getStarted?userName=${name}`);
-  }
 
+  }
   useEffect(() => {
     if (value === 100 && selectedTab === "gift") {
       const timeoutId = setTimeout(() => {
         router.push('/'); // Redirect to home page
-      }, 5000); // 10 seconds in milliseconds
-
-      return () => clearTimeout(timeoutId); // Cleanup function
+      }, 5000); // 5 seconds in milliseconds
+  
+      // Cleanup function
+      return () => {
+        clearTimeout(timeoutId);
+        localStorage.clear(); 
+      };
     }
   }, [value, selectedTab, router]);
 

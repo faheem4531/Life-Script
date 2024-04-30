@@ -60,7 +60,7 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
       email: Yup.string().email().required(t("signup-page.emailRequired")),
       name: Yup.string().required(t("signup-page.nameRequired")),
       sendGiftDate: Yup.date().required("Please select a date"),
-      giftFrom: Yup.string().required("From field is required"),
+      giftFrom: Yup.string().email().required("Enter your email"),
       giftMessage: Yup.string().required("Gift message is required"),
       // Add more validation rules as needed
     }),
@@ -96,7 +96,7 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Enter your full name"
+                  placeholder="Recipient’s Full Name"
                   name="name"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -122,7 +122,7 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Enter your full name"
+                  placeholder="Recipient’s Email"
                   name="email"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -197,18 +197,20 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Enter your name"
+                  placeholder="Enter your Email"
                   name="giftFrom"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.giftFrom}
                   sx={{
-                    marginBottom: '30px',
-                    width: '100%',
-                    bgcolor: 'white',
+                    marginBottom: "10px",
+                    width: "100%",
+                    bgcolor: "white",
                   }}
                 />
-                {/* Validation for 'giftFrom' can be added similarly */}
+              {formik.touched.giftFrom && formik.errors.giftFrom && (
+                  <span style={{ color: "red" }}>{formik.errors.giftFrom}</span>
+                )}
               </Box>
 
               <Box>
