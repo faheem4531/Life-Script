@@ -5,7 +5,7 @@ import Logo from '@/_assets/svg/logo-dashboard.svg';
 import { Box, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
-import BgLogo from '.@/_assets/svg/BgLogo.svg';
+import BgLogo from '@/_assets/svg/BgLogo.svg';
 import { useRouter } from 'next/router';
 
 const StripePage = () => {
