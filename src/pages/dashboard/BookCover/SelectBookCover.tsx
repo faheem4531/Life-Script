@@ -52,8 +52,8 @@ const SelectBookCover = () => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundColor: "rgba(0, 0, 0, 0.5)",
-                        borderRadius: "6.077px",
+                        backgroundColor: "#30422ED9",
+                        borderRadius: "4px",
                         zIndex: 1,
                       },
                       "& p": {
