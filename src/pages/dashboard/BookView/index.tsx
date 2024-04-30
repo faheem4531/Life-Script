@@ -9,6 +9,8 @@ import Shipping from "./Shipping";
 import TableOfContentTab from "./TableOfContentTab";
 import ReviewInterior from "./ViewBookTab";
 import TabBars from "./components/TabBars";
+import AddChapterName from '@/components/dashboardComponent/AddChapterName';
+
 
 const BookView = () => {
   const router = useRouter();
@@ -47,20 +49,22 @@ const BookView = () => {
             },
           }}
         >
-          <SubscriptionHeader
-            title={
+          <AddChapterName
+            chapterId
+            chapter={
               selectedTab === 0
                 ? "Review Table of Content"
                 : selectedTab === 1
-                ? "Book Cover"
-                : selectedTab === 2
-                ? "Review Interior"
-                : selectedTab === 3
-                ? "Shipping"
-                : selectedTab === 4 && "Checkout"
+                  ? "Book Cover"
+                  : selectedTab === 2
+                    ? "Review Interior"
+                    : selectedTab === 3
+                      ? "Shipping"
+                      : selectedTab === 4 && "Checkout"
             }
-            description=""
+            title="support"
           />
+
           <Box
             sx={{
               my: "20px",
@@ -79,10 +83,10 @@ const BookView = () => {
               }} />
             )}
             {selectedTab === 1 && (
-              <BookCoverTab setSelectedTab={setSelectedTab} pages = {bookInterior?.pages} />
+              <BookCoverTab setSelectedTab={setSelectedTab} pages={bookInterior?.pages} />
             )}
             {selectedTab === 2 && (
-              <ReviewInterior setSelectedTab={setSelectedTab} interior = {bookInterior?.link}/>
+              <ReviewInterior setSelectedTab={setSelectedTab} interior={bookInterior?.link} />
             )}
             {selectedTab === 3 && (
               <Shipping
@@ -97,7 +101,7 @@ const BookView = () => {
                 setSelectedTab={setSelectedTab}
                 count={count}
                 setCount={setCount}
-                remainingPayment = {remainingPayment}
+                remainingPayment={remainingPayment}
               />
             )}
           </Box>
