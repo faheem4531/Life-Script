@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout/Layout";
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,6 +10,8 @@ import {
   subStandardList,
 } from "../../../utils/subscriptionLists";
 import SubscriptionCard from "./components/SubscriptionCard";
+import stripeLogo from "../../../../public/stripeLogo.svg";
+import Image from "next/image";
 
 const SubscribePlan = () => {
   const { t } = useTranslation();
@@ -102,6 +104,8 @@ const SubscribePlan = () => {
             <SubscriptionCard
               subList={subBasicList}
               mainTitle="Basic Package"
+              category="BasicPlan"
+              card="1"
               mainDescription="Access to basic features of lifescript."
               offerTitle="Basic Plan Offerings"
               price={planPrices.basic}
@@ -112,13 +116,17 @@ const SubscribePlan = () => {
                     `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
                   );
               }}
+              CurrentPlan={planCheck}
               plan={planCheck !== "FreePlan"}
             />
             <SubscriptionCard
               subList={subStandardList}
               mainTitle="Standard Package"
+              category="GoldPlan"
+              card="2"
               mainDescription="Access to smart generative features of lifescript."
               offerTitle="Standard Plan Offerings"
+              CurrentPlan={planCheck}
               price={planPrices?.standard}
               buttonDisable={disableButton.standard}
               onClick={(pkgPrice) => {
@@ -132,6 +140,9 @@ const SubscribePlan = () => {
             <SubscriptionCard
               subList={subPremiumList}
               mainTitle="Premium Package"
+              card="3"
+              CurrentPlan={planCheck}
+              category="PremiumPlan"
               mainDescription="Access to premium features of lifescript."
               offerTitle="Premium Plan Offerings"
               price={planPrices?.premium}
@@ -147,6 +158,13 @@ const SubscribePlan = () => {
                 planCheck !== "BasicPlan" &&
                 planCheck !== "GoldPlan"
               }
+            />
+          </Box>
+          <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
+            <Typography>Secure Payment with</Typography>
+            <Image
+              src={stripeLogo}
+              alt='Stripe logo Image'
             />
           </Box>
         </Box>
