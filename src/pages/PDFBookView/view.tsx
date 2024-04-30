@@ -41,17 +41,17 @@ export default function PDFViewer(pdfUrl) {
   }
 
   function goToPage(number) {
-    if(number <= numPages){
+    if (number <= numPages) {
       setPageNumber(number);
     }
   }
 
   return (
     <>
-      <Box hidden={false} sx={{ height: "calc(100vh)", position: "relative" }}>
+      <Box hidden={false} sx={{ height: "calc(50vh)", position: "relative" }}>
         <Box
           position="absolute"
-          top={"30%"}
+          top={"100%"}
           left="20px"
           display="flex"
           alignItems="center"
@@ -60,7 +60,7 @@ export default function PDFViewer(pdfUrl) {
             onClick={() => setPageNumber(pageNumber - 1)}
             disabled={pageNumber <= 1}
             color="primary"
-            sx={{opacity: pageNumber <= 1 ? 0.2 : 1}}
+            sx={{ opacity: pageNumber <= 1 ? 0.2 : 1 }}
           >
             <Image alt="icon" src={PreviousIcon} />
           </Button>
@@ -69,7 +69,7 @@ export default function PDFViewer(pdfUrl) {
         <Box
           position="absolute"
           right="20px"
-          top={"30%"}
+          top={"100%"}
           display="flex"
           alignItems="center"
         >
@@ -77,7 +77,7 @@ export default function PDFViewer(pdfUrl) {
             onClick={() => setPageNumber(pageNumber + 1)}
             color="primary"
             disabled={pageNumber >= numPages}
-            sx={{opacity: pageNumber >= numPages ? 0.2 : 1}}
+            sx={{ opacity: pageNumber >= numPages ? 0.2 : 1 }}
           >
             <Image alt="icon" src={NextIcon} />
           </Button>
@@ -121,7 +121,7 @@ export default function PDFViewer(pdfUrl) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            mt: "20px",
+            m: "20px 0",
           }}
         >
           <Box>
@@ -129,7 +129,7 @@ export default function PDFViewer(pdfUrl) {
             <input
               type="number"
               style={{
-                background: "transparent",
+                background: "#fff",
                 border: "1.5px solid gray",
                 outline: "0px",
                 color: "black",

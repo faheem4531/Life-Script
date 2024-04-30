@@ -6,7 +6,7 @@ import CountrySelect from "@/components/dashboardComponent/AutoComplete";
 
 import { useDispatch, useSelector } from "react-redux";
 
-const ShippingForm = ({onChange, data, setShippingDataId}) => {
+const ShippingForm = ({ onChange, data, setShippingDataId }) => {
   const dispatch: any = useDispatch();
   const luluData = useSelector(selectLuluData);
   const [shippingData, setShippingData] = useState({
@@ -22,18 +22,18 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
 
   useEffect(() => {
     onChange(shippingData);
-  },[shippingData])
+  }, [shippingData])
 
   useEffect(() => {
     data && setShippingData(shippingData);
-  },[data]);
+  }, [data]);
 
   useEffect(() => {
     dispatch(getLuluShipping());
-  },[]);
+  }, []);
 
   useEffect(() => {
-    if(luluData){
+    if (luluData) {
       setShippingData((prevData) => ({
         ...prevData,
         email: luluData?.email,
@@ -47,7 +47,7 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
       }));
       setShippingDataId(luluData?._id);
     }
-  },[luluData])
+  }, [luluData])
 
   return (
     <Box
@@ -55,7 +55,7 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
         flex: 1,
         p: { md: "30px 24px", sm: "25px 18px", xs: "20px 10px" },
         bgcolor: "#F8F6F9",
-        borderRadius: "6px",
+        borderRadius: "4px",
         display: "flex",
         flexDirection: "column",
         gap: "20px",
@@ -72,9 +72,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
           }))
         }
         placeholder="Name"
-        borderRadius="47.202px"
+        borderRadius="4px"
         bgColor="white"
-        border="1px solid #186F65"
+        border="1px solid #30422E"
       />
       <InputWithLabel
         color="#474E60"
@@ -87,9 +87,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
           }))
         }
         placeholder="Email"
-        borderRadius="47.202px"
+        borderRadius="4px"
         bgColor="white"
-        border="1px solid #186F65"
+        border="1px solid #30422E"
       />
       <Box
         sx={{
@@ -112,9 +112,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
               }))
             }
             placeholder="City"
-            borderRadius="47.202px"
+            borderRadius="4px"
             bgColor="white"
-            border="1px solid #186F65"
+            border="1px solid #30422E"
           />
         </Box>
 
@@ -122,8 +122,8 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
           <Typography
             sx={{
               fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              color: "black",
-              ml: "5px",
+              color: " #30422E",
+              mb: "5px",
             }}
           >
             Country Code
@@ -131,9 +131,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
           <Box
             sx={{
               height: "56px",
-              border: "1px solid #186F65",
+              border: "1px solid #30422E",
               bgcolor: "white",
-              borderRadius: "47.202px",
+              borderRadius: "4px",
             }}
           >
             <CountrySelect
@@ -161,9 +161,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
             phone_number: e.target.value,
           }))
         }
-        borderRadius="47.202px"
+        borderRadius="4px"
         bgColor="white"
-        border="1px solid #186F65"
+        border="1px solid #30422E"
         type="number"
       />
 
@@ -189,9 +189,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
               }))
             }
             placeholder="State Code"
-            borderRadius="47.202px"
+            borderRadius="4px"
             bgColor="white"
-            border="1px solid #186F65"
+            border="1px solid #30422E"
             type="number"
           />
         </Box>
@@ -207,9 +207,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
               }))
             }
             placeholder="Post Code"
-            borderRadius="47.202px"
+            borderRadius="4px"
             bgColor="white"
-            border="1px solid #186F65"
+            border="1px solid #30422E"
             type="number"
           />
         </Box>
@@ -225,9 +225,9 @@ const ShippingForm = ({onChange, data, setShippingDataId}) => {
           }))
         }
         placeholder="Street"
-        borderRadius="47.202px"
+        borderRadius="4px"
         bgColor="white"
-        border="1px solid #186F65"
+        border="1px solid #30422E"
       />
     </Box>
   );
