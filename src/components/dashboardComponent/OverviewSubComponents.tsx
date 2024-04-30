@@ -1,4 +1,4 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import ModalImage from "@/_assets/svg/Frame.svg";
 import Book from "@/_assets/svg/viewbook.svg";
 import FamilyTree from "@/_assets/svg/sidebar/family-tree-white.svg";
 import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
@@ -100,7 +100,7 @@ export const ViewBook = () => {
         <Box sx={{ textAlign: "center" }}>
           <Box
             sx={{
-              width: { md: "91.555px", sm: "66.161px", xs: "47px" },
+              width: { md: "120px", sm: "66.161px", xs: "47px" },
               margin: "auto",
             }}
           >
@@ -142,7 +142,6 @@ export const ViewBook = () => {
           >
             <GlobelBtn
               btnText="Edit"
-              bgColor="#197065"
               color="white"
               onClick={() => {
                 router.push("/dashboard/chapters");
