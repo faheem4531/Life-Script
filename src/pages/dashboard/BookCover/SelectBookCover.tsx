@@ -14,7 +14,7 @@ const SelectBookCover = () => {
     return `/covers/Cover${coverNumber}.png`;
   };
   const myArray = [...Array(Object.keys(Img).length)].map((_, i) => i + 1)
-  
+
 
   return (
     <div>
@@ -36,12 +36,13 @@ const SelectBookCover = () => {
                 <Box
                   sx={{
                     position: "relative",
-                    backgroundColor: "white",
-                    borderRadius: "6.077px",
-                    border: "0.304px solid rgb(25, 112, 101)",
+                    backgroundColor: "#F4F4F4",
+                    borderRadius: "4px",
                     width: "100%",
+                    maxWidth: "375px",
+                    maxHeight: "500px",
                     height: "100%",
-                    padding: "53px 20px",
+                    padding: "22px",
                     cursor: 'pointer',
                     "&:hover": {
                       "&::before": {
@@ -62,8 +63,7 @@ const SelectBookCover = () => {
                   }}
                   onClick={() =>
                     router.push(
-                      `/dashboard/BookCover/EditBookCover?CoverNumber=${
-                        index + 1
+                      `/dashboard/BookCover/EditBookCover?CoverNumber=${index + 1
                       }`
                     )
                   }
@@ -99,7 +99,6 @@ const SelectBookCover = () => {
           <Box display="flex" justifyContent="flex-end" mt="40px">
             <GlobelBtn
               btnText={`${t("BookCover.viewMore")}`}
-              border="1px solid #197065"
               width={"180px"}
             />
           </Box>
