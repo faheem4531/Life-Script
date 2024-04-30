@@ -1,26 +1,24 @@
 "use client";
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import { verifyEmail } from "@/store/slices/authSlice";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import Email from "../../../public/Sign-up.png";
-import Logo from "@/_assets/svg/lifeScript-logo.svg";
-import Carousel from "./Carousel";
-import Carousel1 from "../../../public/carousel1.png";
-import Carousel2 from "../../../public/carousel.png";
-import Carousel3 from "../../../public/carousel3.png";
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import { useFormik } from "formik";
-import { VerifyEmail } from "@/interface/authInterface";
 import * as Yup from "yup";
+import Carousel2 from "../../../public/carousel.png";
+import Carousel1 from "../../../public/carousel1.png";
+import Carousel3 from "../../../public/carousel3.png";
+import Carousel from "./Carousel";
 
 
 
@@ -39,12 +37,12 @@ const EmailVerification = () => {
     dispatch(verifyEmail({ email: pass.email, otp: pass.otp, password: pass.password }))
 
       .unwrap()
-      .then(() => {
-        console.log(pass, "verifyEmail dataaaaa");
+      .then((res) => {
+        console.log(res, "verifyEmail dataaaaa");
         // console.log({ userEmail, otp, pass }, " dataa");
 
         toast.success(t("Verify.emailVerifiedSuccessfully"));
-        const name = localStorage.getItem("username");
+        // const name = localStorage.getItem("username");
         router.push(`/_auth/Auth`);
       })
       .catch((error: any) => {
@@ -63,9 +61,9 @@ const EmailVerification = () => {
   const toggleCPasswordVisibility = () => {
     setShowCPassword((prevShowPassword) => !prevShowPassword);
   };
-  const handleRememberMeChange = (event: any) => {
-    setRememberMe(event.target.checked);
-  };
+  // const handleRememberMeChange = (event: any) => {
+  //   setRememberMe(event.target.checked);
+  // };
 
   const router = useRouter();
   const currentUrl = router.asPath;
@@ -98,7 +96,7 @@ const EmailVerification = () => {
       confirmPassword: "",
       otp: otp
     },
-    onSubmit: async (data: VerifyEmail) => {
+    onSubmit: async (data: any) => {
       console.log(data, "  verify data");
       const newData = {
         email: userEmail,
@@ -109,13 +107,12 @@ const EmailVerification = () => {
       handleVerifyEmail(newData)
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required(t("signup-page.emailRequired")),
       password: Yup.string()
         .min(8, t("signup-page.passwordLength"))
         .required(t("signup-page.passwordRequired")),
-      confirmPassword: Yup.string() // Define confirmPassword validation
-        .oneOf([Yup.ref('password'), null], "Password doesnot matches") // Ensure it matches the password
-        .required(t("signup-page.passwordRequired")),
+      confirmPassword: Yup.string()
+      .min(8, t("signup-page.passwordLength"))
+      .required(t("signup-page.passwordRequired")),
     }),
   });
 
@@ -172,7 +169,7 @@ const EmailVerification = () => {
             Secure your account with a strong password.
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "70px" }}>
+        <form onSubmit={formik.handleBlur} style={{ marginTop: "70px" }}>
           {/* Email  */}
           <Box>
             <Typography
@@ -241,9 +238,9 @@ const EmailVerification = () => {
               }}
             />
           </Box>
-          {formik.touched.password && formik.errors.password && (
+          {/* {formik.touched.password && formik.errors.password && (
             <span style={{ color: "red" }}>{formik.errors.password}</span>
-          )}
+          )} */}
 
           {/* Confirm passowrd  */}
           <Box>
@@ -286,9 +283,9 @@ const EmailVerification = () => {
               }}
             />
           </Box>
-          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+          {/* {formik.touched.confirmPassword && formik.errors.confirmPassword && (
             <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
-          )}
+          )} */}
           {/* Lets begin btn  */}
           <Box
             sx={{
@@ -299,8 +296,11 @@ const EmailVerification = () => {
           >
             <Button
               variant="contained"
-              disabled={!userEmail}
-              onClick={(event) => formik.handleSubmit()}
+              // disabled={!userEmail}
+              onClick={(event) => {
+                console.log('event')
+                formik.handleSubmit()
+              }}
               sx={{
                 borderRadius: "2px",
                 padding: "10px 0",
@@ -317,7 +317,7 @@ const EmailVerification = () => {
               {t("Verify.letsBegin")}{" "}
             </Button>
           </Box>
-        </Box>
+        </form>
       </Box>
     </Box>
   );
