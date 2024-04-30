@@ -31,15 +31,14 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
           sx={{
             display: "flex",
             justifyContent: "end",
-            py: "15px",
-            mr: "50px",
+            mt: "40px"
           }}
         >
           <GlobelBtn
-            bgColor="#186F65"
+            bgColor="#E1683B"
             color="white"
             btnText={loading ? "Loading..." : "Next"}
-            image2={NextArrow}
+            width="110px"
             onClick={() => {
               if (!loading) {
                 setLoading(true);

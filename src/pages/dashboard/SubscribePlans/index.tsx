@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout/Layout";
 import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -10,6 +10,9 @@ import {
   subStandardList,
 } from "../../../utils/subscriptionLists";
 import SubscriptionCard from "./components/SubscriptionCard";
+import stripeLogo from "../../../../public/stripeLogo.svg";
+import Image from "next/image";
+import BgLogo from "@/_assets/png/bg-steps.png"
 
 const SubscribePlan = () => {
   const { t } = useTranslation();
@@ -79,11 +82,11 @@ const SubscribePlan = () => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       <Layout>
         <Box
           sx={{
-            p: { xs: "15px 10px", sm: "0px" },
+            p: { xs: "15px 10px", sm: "0px" }, position: "relative", zIndex: 2
           }}
         >
           <SubscriptionHeader
@@ -101,9 +104,9 @@ const SubscribePlan = () => {
           >
             <SubscriptionCard
               subList={subBasicList}
-              mainTitle="Basic Package"
-              mainDescription="Access to basic features of lifescript."
-              offerTitle="Basic Plan Offerings"
+              mainTitle="Basic"
+              category="BasicPlan"
+              card="1"
               price={planPrices.basic}
               buttonDisable={disableButton.basic}
               onClick={(pkgPrice) => {
@@ -112,13 +115,15 @@ const SubscribePlan = () => {
                     `/dashboard/SubscribePlans/SubscriptionPayment?Subscription=BasicPlan&price=${pkgPrice}`
                   );
               }}
+              CurrentPlan={planCheck}
               plan={planCheck !== "FreePlan"}
             />
             <SubscriptionCard
               subList={subStandardList}
-              mainTitle="Standard Package"
-              mainDescription="Access to smart generative features of lifescript."
-              offerTitle="Standard Plan Offerings"
+              mainTitle="Standard"
+              category="GoldPlan"
+              card="2"
+              CurrentPlan={planCheck}
               price={planPrices?.standard}
               buttonDisable={disableButton.standard}
               onClick={(pkgPrice) => {
@@ -131,9 +136,10 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subPremiumList}
-              mainTitle="Premium Package"
-              mainDescription="Access to premium features of lifescript."
-              offerTitle="Premium Plan Offerings"
+              mainTitle="Premium"
+              card="3"
+              CurrentPlan={planCheck}
+              category="PremiumPlan"
               price={planPrices?.premium}
               buttonDisable={disableButton.premium}
               onClick={(pkgPrice) => {
@@ -149,8 +155,26 @@ const SubscribePlan = () => {
               }
             />
           </Box>
+          <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
+            <Typography>Secure Payment with</Typography>
+            <Image
+              src={stripeLogo}
+              alt='Stripe logo Image'
+            />
+          </Box>
+
         </Box>
       </Layout>
+      <Box sx={{ position: "absolute", right: 0, bottom: 0 }}>
+        <Image
+          src={BgLogo}
+          alt="Giving Tree Logo"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </Box>
     </Box>
   );
 };

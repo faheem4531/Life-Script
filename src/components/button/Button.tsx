@@ -29,7 +29,7 @@ const GlobelBtn = ({
   color = "#fff",
   width,
   border,
-  borderRadius = "8px",
+  borderRadius = "4px",
   fontSize = {
     md: "16px",
     sm: "13.6px",

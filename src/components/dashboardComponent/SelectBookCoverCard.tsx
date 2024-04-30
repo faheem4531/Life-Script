@@ -287,38 +287,34 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
         },
       }}
     >
+      {currentPath === "/dashboard/BookView" && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            m: "30px 0 20px"
+          }}
+        >
+          <GlobelBtn
+            btnText="Edit"
+            onClick={() => {
+              router.push("/dashboard/BookCover/SelectBookCover");
+            }}
+          />
+        </Box>
+      )}
       <Box
         sx={{
-          bgcolor: "white",
-          borderRadius: "6.077px",
-          border: " 0.304px solid #197065",
+          bgcolor: "#F3ECDA",
+          borderRadius: "4px",
           width: "100%",
           height: "100%",
-          p: "53px 20px",
+          p: "30px 20px",
           overflowX: "auto",
         }}
       >
-        {currentPath === "/dashboard/BookView" && (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "end",
-              alignItems: "center",
-              pb: "20px",
-              mt: "-27px",
-              mr: "25px",
-            }}
-          >
-            <Box>
-              <GlobelBtn
-                btnText="Edit"
-                onClick={() => {
-                  router.push("/dashboard/BookCover/SelectBookCover");
-                }}
-              />
-            </Box>
-          </Box>
-        )}
+
 
         <Box
           sx={{

@@ -1,4 +1,4 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import ModalImage from "@/_assets/svg/Frame.svg";
 import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { getLuluBalance } from "@/store/slices/authSlice";
@@ -25,6 +25,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
   const router = useRouter();
+  const [payment, setPayment] = useState(0)
 
   const handleFinish = () => {
     if (isChecked === true) {
@@ -83,7 +84,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             as it is.
           </Typography>
         </Box>
-        <Box display={"flex"}>
+        <Box display={"flex"} sx={{ bgcolor: "#F3ECDA", borderRadius: "4px", p: "20px 0" }}>
           {remainingPayment > 0 && (
             <Box
               sx={{
@@ -112,43 +113,45 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
                   justifyContent: remainingPayment > 0 ? "end" : "center",
                 }}
               >
-                <ShippingCard setCount={setCount} count={count} />
+                <ShippingCard setPayment={setPayment} setCount={setCount} count={count} />
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "end",
-                  alignItems: "center",
-                  gap: 2,
-                  my: "20px",
-                }}
-              >
-                <Box>
-                  <GlobelBtn
-                    btnText="Back"
-                    onClick={() => {
-                      setSelectedTab(3);
-                    }}
-                    image={backArrow}
-                  />
-                </Box>
-                <Box
-                  sx={{
-                    opacity: !isChecked ? "0.5" : "1",
-                  }}
-                >
-                  <GlobelBtn
-                    bgColor="#186F65"
-                    color="white"
-                    btnText={loading ? "Loading..." : "Finish"}
-                    image2={NextArrow}
-                    disabled={!isChecked}
-                    border="0px"
-                    onClick={!loading && handleFinish}
-                  />
-                </Box>
-              </Box>
+
             </Box>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            gap: 2,
+            my: "20px",
+          }}
+        >
+          <Box>
+            <GlobelBtn
+              btnText="Back"
+              color="#E1683B"
+              border="1px solid #E1683B"
+              bgColor="#fff"
+              onClick={() => {
+                setSelectedTab(3);
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              opacity: !isChecked ? "0.5" : "1",
+            }}
+          >
+            <GlobelBtn
+              bgColor="#E1683B"
+              color="white"
+              btnText={loading ? "Loading..." : `${"Buy for $"} ${payment}`}
+              disabled={!isChecked}
+              border="0px"
+              onClick={!loading && handleFinish}
+            />
           </Box>
         </Box>
       </Box>
@@ -166,7 +169,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
         <Box sx={{ textAlign: "center" }}>
           <Box
             sx={{
-              width: { md: "91.555px", sm: "66.161px", xs: "47px" },
+              width: { md: "120px", sm: "66.161px", xs: "47px" },
               margin: "auto",
             }}
           >
@@ -183,7 +186,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             sx={{
               fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
-              color: "#070707",
+              color: "#30422E",
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
@@ -192,7 +195,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
           <Typography
             sx={{
               fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-              color: "#070707",
+              color: "#30422E",
               width: { md: "400px", sm: "300px", xs: "180px" },
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
@@ -209,7 +212,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
           >
             <GlobelBtn
               btnText={"Continue"}
-              bgColor="#197065"
+              bgColor="#E1683B"
               color="white"
               onClick={() => {
                 router.push("/dashboard/overview");

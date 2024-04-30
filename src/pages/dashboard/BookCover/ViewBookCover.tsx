@@ -367,7 +367,7 @@ const ViewBookCover = () => {
             display="flex"
             columnGap="30px"
             rowGap="10px"
-            mt="10px"
+            mt="40px"
             mb="20px"
             justifyContent="flex-end"
             flexWrap="wrap"
@@ -376,7 +376,9 @@ const ViewBookCover = () => {
               <GlobelBtn
                 btnText={`${t("BookCoverCard.viewPdf")}`}
                 fontSize={{ xs: "12px", md: "16px" }}
-                border="1px solid #197065"
+                border="1px solid #E1683B"
+                color="#E1683B"
+                bgColor="transparent"
                 onClick={
                   () =>
                     generatePDFOne(
@@ -410,8 +412,7 @@ const ViewBookCover = () => {
             <Box>
               <GlobelBtn
                 btnText={`${t("BookCoverCard.editCover")}`}
-                bgColor="#197065"
-                borderRadius="23px"
+                bgColor="#30422E"
                 color="#fff"
                 fontSize={{ xs: "12px", md: "16px" }}
                 border="1px solid #197065"

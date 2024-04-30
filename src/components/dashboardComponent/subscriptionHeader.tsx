@@ -24,9 +24,8 @@ const SubscriptionHeader = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        // maxWidth: "1149px",
         width: "100%",
-        height: { xs: "auto", sm: "150px", md: "165px" },
+        height: { xs: "auto", sm: "150px" },
         gap: "30px",
         overflow: "hidden",
       }}
@@ -41,7 +40,7 @@ const SubscriptionHeader = ({
       >
         <Typography
           sx={{
-            fontSize: { xs: "20px", sm: "28px", md: "32px", lg: "39.75px" },
+            fontSize: { xs: "20px", sm: "28px", md: "30px" },
             fontWeight: 700,
           }}
         >

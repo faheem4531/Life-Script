@@ -12,60 +12,48 @@ import {
 } from "../../../utils/subscriptionLists";
 import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./components/paymentForm";
+import Image from "next/image";
+import BgLogo from "@/_assets/png/bg-steps.png"
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
-
 const CreditCard = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const { Subscription, price } = router.query;
 
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       <Layout>
         <SubscriptionHeader
           title={`${t("SubsPlan.SubsHeaderTitle")}`}
-          description=""
+          description="Each plan comes with lifetime access to LifeScript, premium full-color hardcover book, and free shipping."
         />
 
         <Box
           sx={{
-            bgcolor: "white",
             borderRadius: " 16.148px",
-            p: { xs: "15px 20px", lg: "26px 48px" },
-            mt: "28px",
-            height: "100%",
+            mt: "55px",
+            height: "100%", position: "relative", zIndex: 2
           }}
         >
-          <Typography
-            sx={{
-              color: "#081131",
-              fontSize: " 16.498px",
-              fontWeight: 600,
-              letterSpacing: "0.458px",
-              mb: "26px",
-              textAlign: "center",
-            }}
-          >
-            Each package includes 1 year access to Lifescript with 1 high-quality full-color printed book.
-          </Typography>
           <Box
             sx={{
               display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
               gap: "50px",
               mt: "25px",
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: { xs: "column", md: "row" }
             }}
           >
             <Box flex={1}>
               {Subscription === "BasicPlan" && (
                 <SubscriptionCard
                   subList={subBasicList}
-                  mainTitle={`${t("SubsPlan.SubsCardBasic.SubsCardHeading")}`}
-                  mainDescription="Lorem ipsum dolor sit amet consectetur."
-                  offerTitle={`${t(
-                    "SubsPlan.SubsCardBasic.SubsCardHeadingOffer"
-                  )}`}
+                  category="BasicPlan"
+                  card="1"
+                  mainTitle="Basic"
+                  CurrentPlan={null}
                   price={Number(price)}
                   btnCheck={false}
                 />
@@ -73,19 +61,21 @@ const CreditCard = () => {
               {Subscription === "GoldPlan" && (
                 <SubscriptionCard
                   subList={subStandardList}
-                  mainTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
-                  mainDescription="Lorem ipsum dolor sit amet consectetur."
-                  offerTitle={`${t("SubsPlan.SubsCardStand.SubsCardHeading")}`}
+                  category="GoldPlan"
+                  card="2"
+                  CurrentPlan={null}
+                  mainTitle="Standard"
                   price={Number(price)}
                   btnCheck={false}
                 />
               )}
               {Subscription === "PremiumPlan" && (
                 <SubscriptionCard
+                  category="PremiumPlan"
+                  CurrentPlan={null}
+                  card="3"
                   subList={subPremiumList}
-                  mainTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
-                  mainDescription="Lorem ipsum dolor sit amet consectetur."
-                  offerTitle={`${t("SubsPlan.SubsCardPrem.SubsCardHeading")}`}
+                  mainTitle="Premium"
                   price={Number(price)}
                   btnCheck={false}
                 />
@@ -96,23 +86,28 @@ const CreditCard = () => {
             <Box flex={1}>
               <Box
                 sx={{
-                  bgcolor: "#F8F6F9",
-                  borderRadius: "5px",
                   width: "100%",
                   height: "100%",
-                  p: "28px 35px",
                 }}
               >
-                <Box>
-                  <Elements stripe={stripePromise}>
-                    <PaymentForm packageName={Subscription} price={price} />
-                  </Elements>
-                </Box>
+                <Elements stripe={stripePromise}>
+                  <PaymentForm packageName={Subscription} price={price} />
+                </Elements>
               </Box>
             </Box>
           </Box>
         </Box>
       </Layout>
+      <Box sx={{ position: "absolute", right: 0, bottom: 0 }}>
+        <Image
+          src={BgLogo}
+          alt="Giving Tree Logo"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </Box>
     </Box>
   );
 };
