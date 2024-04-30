@@ -12,16 +12,17 @@ import {
 } from "../../../utils/subscriptionLists";
 import SubscriptionCard from "../SubscribePlans/components/SubscriptionCard";
 import PaymentForm from "./components/paymentForm";
+import Image from "next/image";
+import BgLogo from "@/_assets/png/bg-steps.png"
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
-
 const CreditCard = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const { Subscription, price } = router.query;
 
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       <Layout>
         <SubscriptionHeader
           title={`${t("SubsPlan.SubsHeaderTitle")}`}
@@ -30,10 +31,9 @@ const CreditCard = () => {
 
         <Box
           sx={{
-            bgcolor: "white",
             borderRadius: " 16.148px",
             mt: "55px",
-            height: "100%",
+            height: "100%", position: "relative", zIndex: 2
           }}
         >
           <Box
@@ -98,6 +98,16 @@ const CreditCard = () => {
           </Box>
         </Box>
       </Layout>
+      <Box sx={{ position: "absolute", right: 0, bottom: 0 }}>
+        <Image
+          src={BgLogo}
+          alt="Giving Tree Logo"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </Box>
     </Box>
   );
 };

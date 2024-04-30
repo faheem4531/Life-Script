@@ -12,6 +12,7 @@ import {
 import SubscriptionCard from "./components/SubscriptionCard";
 import stripeLogo from "../../../../public/stripeLogo.svg";
 import Image from "next/image";
+import BgLogo from "@/_assets/png/bg-steps.png"
 
 const SubscribePlan = () => {
   const { t } = useTranslation();
@@ -81,11 +82,11 @@ const SubscribePlan = () => {
   }, []);
 
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       <Layout>
         <Box
           sx={{
-            p: { xs: "15px 10px", sm: "0px" },
+            p: { xs: "15px 10px", sm: "0px" }, position: "relative", zIndex: 2
           }}
         >
           <SubscriptionHeader
@@ -161,8 +162,19 @@ const SubscribePlan = () => {
               alt='Stripe logo Image'
             />
           </Box>
+
         </Box>
       </Layout>
+      <Box sx={{ position: "absolute", right: 0, bottom: 0 }}>
+        <Image
+          src={BgLogo}
+          alt="Giving Tree Logo"
+          style={{
+            width: '100%',
+            height: '100%',
+          }}
+        />
+      </Box>
     </Box>
   );
 };
