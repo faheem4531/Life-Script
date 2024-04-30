@@ -158,3 +158,29 @@
     right: 16px;
   }
 }
+
+.google select{
+  background-color: #FAFAFA;
+  color: #E1683B;
+  width: 130px;
+  height: 40px;
+  border-radius: 2px;
+  border-color: #E1683B;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+.google img{
+  display: none;
+}
+
+.google span{
+  display: none;
+}
+
+.google div{ 
+color: #f3ecda;
+margin: 0;
+padding-bottom: 2px;
+}
+
