@@ -12,11 +12,11 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
     <Box>
       <Box
         sx={{
-          p: "26px 28px",
-          bgcolor: "white",
-          borderRadius: "7.348px",
-          border: "0.367px solid #197065",
-          height: "1100px",
+          p: "30px 28px",
+          bgcolor: "#F3ECDA",
+          borderRadius: "4",
+          height: "1120px",
+          mt: "50px"
         }}
       >
         <Box>
@@ -29,25 +29,27 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
           justifyContent: "end",
           alignItems: "center",
           flexWrap: "wrap",
-          gap: 2,
-          py: "20px",
+          gap: 2, mt: "30px"
         }}
       >
         <Box>
           <GlobelBtn
             btnText="Back"
+            color="#E1683B"
+            border="1px solid #E1683B"
+            bgColor='#fff'
+            width="110px"
             onClick={() => {
               setSelectedTab(1);
             }}
-            image={backArrow}
           />
         </Box>
         <Box>
           <GlobelBtn
-            bgColor="#186F65"
+            bgColor="#E1683B"
             color="white"
+            width="110px"
             btnText="Next"
-            image2={NextArrow}
             onClick={() => {
               setSelectedTab(3);
             }}
