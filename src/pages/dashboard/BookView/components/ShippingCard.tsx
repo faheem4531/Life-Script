@@ -1,33 +1,34 @@
 import Counter from "@/components/dashboardComponent/QuantityInput";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import HalfBook from "../../../../_assets/png/halfBook.png";
+import HalfBook from "@/_assets/png/halfBook.png";
 
-const ShippingCard = ({ setCount, count, QuantityCheck = false, amount = 39 }) => {
+const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount = 39 }) => {
+  setPayment(count * 39 - amount)
   return (
     <Box
       sx={{
         width: { md: "393px", sm: "360px", xs: "100%" },
-        bgcolor: "#FFF9F0",
+        bgcolor: "#FFFFFF",
         borderRadius: "10px",
-        p: "17px 21px",
+        p: "28px 21px 40px 23px",
         m: { md: "0px", xs: "auto" },
       }}
     >
       <Typography
         sx={{
-          fontSize: { md: "18.752px", sm: "16px", xs: "14px" },
+          fontSize: { md: "20px", sm: "16px", xs: "14px" },
           fontWeight: 400,
           textTransform: "uppercase",
-          mb: "30px",
+          mb: "30px", color: "#30422E"
         }}
       >
         Order Summary
       </Typography>
       <Box
         sx={{
-          height: { md: "283.9px", sm: "260px", xs: "240px" },
-          width: { md: "246.977px", sm: "220px", xs: "200px" },
+          height: { md: "290px", sm: "260px", xs: "240px" },
+          width: { md: "210px", sm: "220px", xs: "200px" },
           margin: "auto",
         }}
       >
@@ -64,8 +65,8 @@ const ShippingCard = ({ setCount, count, QuantityCheck = false, amount = 39 }) =
             pb: "8px",
           }}
         >
-          <Typography>Quantity</Typography>
-          <Typography>{count}</Typography>
+          <Typography sx={{ color: "#30422E" }}>Quantity</Typography>
+          <Typography sx={{ color: "#30422E" }}>{count}</Typography>
         </Box>
         <Box
           sx={{
@@ -79,8 +80,8 @@ const ShippingCard = ({ setCount, count, QuantityCheck = false, amount = 39 }) =
             mt: "5px",
           }}
         >
-          <Typography>Price</Typography>
-          <Typography>{count * 39 - amount} $</Typography>
+          <Typography sx={{ color: "#30422E" }}>Price</Typography>
+          <Typography sx={{ color: "#30422E" }}>{count * 39 - amount} $</Typography>
         </Box>
         {!QuantityCheck && (
           <Box
@@ -97,8 +98,8 @@ const ShippingCard = ({ setCount, count, QuantityCheck = false, amount = 39 }) =
               pt: "5px",
             }}
           >
-            <Typography>Total:</Typography>
-            <Typography>{count * 39 - 39} $</Typography>
+            <Typography sx={{ color: "#30422E" }}>Total:</Typography>
+            <Typography sx={{ color: "#30422E" }}>{count * 39 - 39} $</Typography>
           </Box>
         )}
       </Box>
@@ -113,7 +114,7 @@ const ShippingCard = ({ setCount, count, QuantityCheck = false, amount = 39 }) =
             }}
           >
             <Typography
-              sx={{ fontSize: { md: "18.752px", sm: "16px", xs: "14px" } }}
+              sx={{ fontSize: { md: "18.752px", sm: "16px", xs: "14px" }, color: "#30422E" }}
             >
               Order Additional Books
             </Typography>
