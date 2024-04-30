@@ -54,11 +54,6 @@ const TOCMain = () => {
         <Box
           sx={{
             backgroundColor: "#fff",
-            padding: {
-              md: "5px 46px 16px 37px",
-              sm: "5px 30px 10px 30px",
-              xs: "10px 10px 85px",
-            },
             marginTop: "10px",
             height: { sm: "calc(100vh - 280px)", xs: "calc(100vh - 160px)" },
             borderRadius: {
@@ -75,11 +70,12 @@ const TOCMain = () => {
               marginTop: { xs: "15px" },
             }}
           >
-            {/* <Typography
+            <Typography
               sx={{
-                fontSize: "20px",
+                fontSize: "23px",
                 fontWeight: 700,
-                color: "rgba(0, 0, 0, 0.87)",
+                color: "#30422E",
+                mt: "40px",
                 display: {
                   sm: "block",
                   xs: "none",
@@ -87,7 +83,7 @@ const TOCMain = () => {
               }}
             >
               {t("TOC.ch")}
-            </Typography> */}
+            </Typography>
             <Box
               sx={{
                 gap: { sm: 4, xs: 2 },
@@ -125,23 +121,21 @@ const TOCMain = () => {
               flexDirection: "column",
               gap: "11px",
               height: { sm: "80%", xs: "100%" },
-              overflowY: "auto",
+              overflowY: "auto", bgcolor: "#F3ECDA",
+              mt: "20px",
+              borderRadius: "4px",
               "&::-webkit-scrollbar": { display: "none" },
             }}
           >
             {selectedItems?.length > 0 ? (
-              <DraggableList data={selectedItems} />
+              <Box sx={{ p: { sm: "25px 40px", xs: "15px 20px" }, }}>
+                <DraggableList data={selectedItems} />
+              </Box>
             ) : (
               <Box
                 sx={{
                   backgroundColor: "#fff",
-                  padding: {
-                    sm: "30px 46px 16px 37px",
-                    xs: "25px 20px 100px",
-                  },
-                  marginTop: "10px",
                   height: "calc(100vh - 357px)",
-                  borderRadius: { sm: "18px", xs: "5px" },
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
