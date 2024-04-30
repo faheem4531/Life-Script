@@ -32,6 +32,7 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
       email: "",
       sendGiftDate: "",
       giftFrom: "",
+      giftFromName:"",
       giftMessage: "",
     },
     onSubmit: async (values) => {
@@ -61,6 +62,7 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
       name: Yup.string().required(t("signup-page.nameRequired")),
       sendGiftDate: Yup.date().required("Please select a date"),
       giftFrom: Yup.string().email().required("Enter your email"),
+      giftFromName: Yup.string().required("Enter your name"),
       giftMessage: Yup.string().required("Gift message is required"),
       // Add more validation rules as needed
     }),
@@ -210,6 +212,32 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
                 />
               {formik.touched.giftFrom && formik.errors.giftFrom && (
                   <span style={{ color: "red" }}>{formik.errors.giftFrom}</span>
+                )}
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: '#30422E',
+                    fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
+                  }}
+                >
+                  From Name
+                </Typography>
+                <TextField
+                  variant="outlined"
+                  placeholder="Enter your Name"
+                  name="giftFromName"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values.giftFromName}
+                  sx={{
+                    marginBottom: "10px",
+                    width: "100%",
+                    bgcolor: "white",
+                  }}
+                />
+              {formik.touched.giftFromName && formik.errors.giftFromName && (
+                  <span style={{ color: "red" }}>{formik.errors.giftFromName}</span>
                 )}
               </Box>
 
