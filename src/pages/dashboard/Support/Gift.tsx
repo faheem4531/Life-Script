@@ -1,39 +1,13 @@
 import Pack from "@/_assets/svg/gift-pack.svg";
 import Refer from "@/_assets/svg/refer-link.svg";
 import Layout from "@/components/Layout/Layout";
-import GlobelBtn from "@/components/button/Button";
-import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
-import CustomizationDialog from "@/components/modal/CustomizationDialog";
-import { customerSupport } from "@/store/slices/chatSlice";
-import { Box, TextField, Typography } from "@mui/material";
-import Image from "next/image";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import { Box, Typography } from "@mui/material";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 import GiftCard from './components/GiftCard';
 import { useRouter } from "next/router";
 
 const Gift = () => {
   const router = useRouter();
-  // const dispatch: any = useDispatch();
-  // const [subject, setSubject] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [showTooltip, setShowTooltip] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
-  // const { t } = useTranslation();
-
-  // const handleComplaint = () => {
-  //   dispatch(customerSupport({ subject: subject, description: description }))
-  //     .unwrap()
-  //     .then(() => {
-  //       setShowModal(true);
-  //       setDescription("");
-  //       setSubject("");
-  //     })
-  //     .catch(() => toast.error("Failed to create your ticket"));
-  // };
 
   return (
     <Box>
