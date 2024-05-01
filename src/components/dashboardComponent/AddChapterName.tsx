@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "@/_assets/png/hero-book.png";
 import Check from "../../_assets/svg/bgTickIcon.svg";
+import Book from "../../_assets/svg/gift-book.svg";
 import styles from "./AddChapterName.module.css";
 import { useRouter } from "next/router";
 
@@ -174,7 +175,7 @@ const AddChapterName = ({
           </Box>
         )} */}
       </Box>
-      <Box
+      {title !== "gift" && title !== "refer" && <Box
         sx={{
           background: { xs: "transparent", sm: "#d6d3c1" },
           height: {
@@ -193,7 +194,29 @@ const AddChapterName = ({
         }}
       >
         <Image src={BookImage} alt="book image" className={styles.bookImage} />
-      </Box>
+      </Box>}
+      {(title === "gift" || title === "refer") && <Box
+        sx={{
+          background: { xs: "transparent", sm: "#babaa7" },
+          height: {
+            sm: "400px",
+          },
+          width: {
+            xs: "230px",
+            sm: "260px",
+          },
+          display: { sm: "flex", xs: "none" },
+          justifyContent: "center",
+          alignItems: "center",
+          borderTopLeftRadius: "120%",
+          borderBottomLeftRadius: "70%",
+        }}
+      >
+        <Image
+          alt="Book"
+          src={Book}
+        />
+      </Box >}
     </Box >
   );
 };
