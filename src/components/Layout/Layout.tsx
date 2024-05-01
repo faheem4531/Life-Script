@@ -60,10 +60,13 @@ const Layout = ({ children }: { children?: any }) => {
             sx={{
               width: "220px",
               backgroundColor: "#F3ECDA",
-              position: "fixed",
-              bottom: "0",
-              top: "0px",
+              minHeight: "100vh",
+              height: "100%",
+              position: "relative", overflowY: "auto",
+              // bottom: "0",
+              // top: "0px",
               zIndex: "2",
+              pb: "100px",
             }}
             onClick={(event) => {
               event.stopPropagation();

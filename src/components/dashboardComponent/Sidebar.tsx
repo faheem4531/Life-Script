@@ -34,6 +34,7 @@ import TransitionsDialog from "../modal/TransitionDialog";
 
 const SideBar = ({ menuClick, handleSideCheck }) => {
   const [childsOpen, setChilsdOpen] = useState(false);
+  const [supportChildsOpen, setSupportChilsdOpen] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
   const [coverNumber, setCoverNumber] = useState(null);
@@ -41,6 +42,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
   const currentRoute = router.pathname;
+
   const childsOpenCheck = () => {
     if (
       currentRoute === "/dashboard/chapters" ||
@@ -53,8 +55,24 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     }
   };
 
+  const supportChildsOpenCheck = () => {
+    if (
+      currentRoute === "/dashboard/Support" ||
+      currentRoute === "/dashboard/Support/Gift" ||
+      currentRoute === "/dashboard/Support/Tutorials"
+    ) {
+      setSupportChilsdOpen(true);
+    } else if (
+      currentRoute === "/dashboard/Support/ReferAFriend" ||
+      currentRoute === "/dashboard/Support/TutorialsDetail"
+    ) {
+      setSupportChilsdOpen(true);
+    }
+  };
+
   useEffect(() => {
     childsOpenCheck();
+    supportChildsOpenCheck();
   }, []);
 
   useEffect(() => {
@@ -76,7 +94,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     <>
       <Box sx={{ color: "#30422E" }}>
         {!handleSideCheck && (
-          <Box sx={{ display: "flex", alignItems: "center", padding: "0 0 0 20px", height: "70px", bgcolor: "#30422E" }}>
+          <Box sx={{ display: "flex", position: "fixed", width: "220px", zIndex: "10", alignItems: "center", padding: "0 0 0 20px", height: "70px", bgcolor: "#30422E" }}>
             <Image src={Logo} alt="logo" className={styles.logo} />
           </Box>
         )}
@@ -337,26 +355,155 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.account")}
             </a>
           </Box>
-          <Box>
+
+
+
+
+
+
+
+
+
+
+
+          <Box sx={{ borderTop: "1px solid rgba(48, 66, 46, 0.30)", mt: "-15px ", p: "15px 0 0" }}>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/Support" && styles.active
+              className={`${styles.link} ${currentRoute === "/dashboard/Support" ||
+                currentRoute === "/dashboard/Support/Gift"
+                ? styles.active
+                : currentRoute === "/dashboard/Support/Tutorials" &&
+                styles.active
                 }`}
-              onClick={() => router.push("/dashboard/Support")}
+              onClick={() => {
+                setSupportChilsdOpen(!supportChildsOpen);
+              }}
             >
               <Image
                 alt="icon"
+                className={styles.sidebarIcon}
                 src={
-                  currentRoute === "/dashboard/Support"
+                  currentRoute === "/dashboard/Support" ||
+                    currentRoute === "/dashboard/Support/Gift" ||
+                    currentRoute === "/dashboard/Support/Tutorials"
                     ? SuportWhite
                     : SuportGreen
                 }
-                className={styles.sidebarIcon}
               />
               {t("sideBar.Support")}
+              {supportChildsOpen ? (
+                <KeyboardArrowUpIcon
+                  sx={{
+                    width: { xs: "15px", md: "24px" },
+                    ml: "5px",
+                  }}
+                />
+              ) : (
+                <KeyboardArrowDownIcon
+                  sx={{
+                    width: { xs: "15px", md: "24px" },
+                    ml: "5px",
+                  }}
+                />
+              )}
             </a>
+            {supportChildsOpen && (
+              <Box>
+                <Box sx={{ marginLeft: "20px" }}>
+                  <a
+                    className={`${styles.link} ${currentRoute === "/dashboard/Support/Tutorials" ||
+                      currentRoute === "/dashboard/Support/TutorialsDetail"
+                      ? styles.active
+                      : ""
+                      }`}
+                    onClick={() => {
+                      router.push("/dashboard/Support/Tutorials");
+                    }}
+                  >
+                    {/* Add your icon and text for the first new option */}
+                    <Image
+                      alt="icon"
+                      className={styles.sidebarIcon}
+                      src={
+                        currentRoute === "/dashboard/Support/Tutorials" ||
+                          currentRoute === "/dashboard/Support/TutorialsDetail"
+                          ? ProgressWhite
+                          : ProgressGreen
+                      }
+                    />
+                    Tutorials and Tips
+                  </a>
+                </Box>
+                <Box sx={{ marginLeft: "20px" }}>
+                  <a
+                    className={`${styles.link} ${currentRoute === "/dashboard/Support" &&
+                      styles.active
+                      }`}
+                    onClick={() => {
+                      router.push("/dashboard/Support");
+                    }}
+                  >
+                    <Image
+                      alt="icon"
+                      className={styles.sidebarIcon}
+                      src={
+                        currentRoute === "/dashboard/Support"
+                          ? CompletedWhite
+                          : CompletedGreen
+                      }
+                    />
+                    Contact Support
+                  </a>
+                </Box>
+                <Box sx={{ marginLeft: "20px" }}>
+                  <a
+                    className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
+                      currentRoute === "/dashboard/Support/ReferAFriend"
+                      ? styles.active
+                      : ""
+                      }`}
+                    onClick={() => {
+                      router.push("/dashboard/Support/Gift");
+                    }}
+                  >
+                    {/* Add your icon and text for the first new option */}
+                    <Image
+                      alt="icon"
+                      className={styles.sidebarIcon}
+                      src={
+                        currentRoute === "/dashboard/Support/Gift" ||
+                          currentRoute === "/dashboard/Support/ReferAFriend"
+                          ? ProgressWhite
+                          : ProgressGreen
+                      }
+                    />
+                    Gift a Book
+                  </a>
+                </Box>
+              </Box>
+            )}
           </Box>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </Box>
       </Box>
+
+
+
+
       <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
