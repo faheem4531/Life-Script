@@ -14,10 +14,19 @@ import MenuIcon from "@/_assets/svg/sidebar/menuIcon.svg";
 import MenuIconGreen from "@/_assets/svg/sidebar/menu-green.svg";
 import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
 import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
+import EmailGreen from "@/_assets/svg/sidebar/email-green.svg";
+import EmailWhite from "@/_assets/svg/sidebar/email-white.svg";
 import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
+import SuportGreen from "@/_assets/svg/sidebar/support-green.svg";
+import TutorialGreen from "@/_assets/svg/sidebar/tutorial-green.svg";
+import TutorialWhite from "@/_assets/svg/sidebar/tutorial-white.svg";
+import GiftWhite from "@/_assets/svg/sidebar/gift-white.svg";
+import GiftGreen from "@/_assets/svg/sidebar/gift-green.svg";
+import ContactGreen from "@/_assets/svg/sidebar/contact-support-green.svg";
+import ContactWhite from "@/_assets/svg/sidebar/contact-support-white.svg";
+
 import SubsWhite from "@/_assets/svg/subWhite.svg";
 import Subs from "@/_assets/svg/subs.svg";
-import SuportGreen from "@/_assets/svg/sidebar/support-green.svg";
 import Logo from "@/_assets/svg/logo-dashboard.svg";
 import { getBookCover } from "@/store/slices/chatSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -113,7 +122,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
         )}
         <Box
           sx={{
-            padding: "35px 29px 0 11px",
+            padding: "105px 29px 0 11px",
           }}
         >
           <Box>
@@ -357,14 +366,24 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </Box>
 
 
-
-
-
-
-
-
-
-
+          <Box>
+            <a
+              className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
+                }`}
+              onClick={() => router.push("/dashboard/emailPreference")}
+            >
+              <Image
+                alt="icon"
+                src={
+                  currentRoute === "/dashboard/emailPreference"
+                    ? EmailWhite
+                    : EmailGreen
+                }
+                className={styles.sidebarIcon}
+              />
+              Email Preferences
+            </a>
+          </Box>
 
           <Box sx={{ borderTop: "1px solid rgba(48, 66, 46, 0.30)", mt: "-15px ", p: "15px 0 0" }}>
             <a
@@ -426,8 +445,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       src={
                         currentRoute === "/dashboard/Support/Tutorials" ||
                           currentRoute === "/dashboard/Support/TutorialsDetail"
-                          ? ProgressWhite
-                          : ProgressGreen
+                          ? TutorialWhite
+                          : TutorialGreen
                       }
                     />
                     Tutorials and Tips
@@ -447,8 +466,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/Support"
-                          ? CompletedWhite
-                          : CompletedGreen
+                          ? ContactWhite
+                          : ContactGreen
                       }
                     />
                     Contact Support
@@ -472,8 +491,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       src={
                         currentRoute === "/dashboard/Support/Gift" ||
                           currentRoute === "/dashboard/Support/ReferAFriend"
-                          ? ProgressWhite
-                          : ProgressGreen
+                          ? GiftWhite
+                          : GiftGreen
                       }
                     />
                     Gift a Book
@@ -482,21 +501,6 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               </Box>
             )}
           </Box>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </Box>
       </Box>
