@@ -67,6 +67,10 @@ const Layout = ({ children }: { children?: any }) => {
               // top: "0px",
               zIndex: "2",
               pb: "100px",
+              "&::-webkit-scrollbar": {
+                display: "none", // WebKit browsers (Chrome, Safari, etc.)
+              },
+              scrollbarWidth: "none", // Firefox
             }}
             onClick={(event) => {
               event.stopPropagation();
