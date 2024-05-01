@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
+import ReferAdvertise from './components/ReferAdvertise';
 
 const ReferAFriend = () => {
   // const dispatch: any = useDispatch();
@@ -42,8 +43,10 @@ const ReferAFriend = () => {
           <AddChapterName
             chapterId
             chapter="Refer a Friend"
-            title="support"
+            title="refer"
           />
+          <ReferAdvertise />
+
           <Box
             sx={{
               display: "flex",
