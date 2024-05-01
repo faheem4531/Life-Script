@@ -77,7 +77,7 @@ const GlobelBtn = ({
             style={{
               width: "100%",
               height: "100%",
-              filter: "brightness(0) invert(1)",
+              // filter: "brightness(0) invert(1)",
             }}
           />
         </Box>
