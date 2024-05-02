@@ -51,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/stripe-page/gift-subscription",
       "/stripe-page/register-free-trial",
       "/stripe-page/sso-redirecting",
+      "/_auth/fb-redirecting"
     ];
     // new1 code
     // const queryParams = new URLSearchParams(window.location.search);
