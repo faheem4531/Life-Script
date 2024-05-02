@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  selectSocialUser,
-  setSocialUser,
+  // selectSocialUser,
+  // setSocialUser,
   signupWithBuy,
-  googleSignup
+  // googleSignup
 } from "@/store/slices/authSlice";
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
-import { useGoogleLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -22,7 +22,7 @@ import facebookIcon from "../../../../../public/facebookIcon.svg";
 import googleLogo from "../../../../../public/googleIcon.svg";
 import BasicPlanCard from "./BasicPlanCard";
 
-const RegisterPage = ({ onClick, selectedTab }) => {
+const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
   const dispatch: any = useDispatch();
   const { data: session } = useSession();
 
@@ -42,39 +42,46 @@ const RegisterPage = ({ onClick, selectedTab }) => {
   const { price, category } = router.query;
   const { t } = useTranslation();
 
-  const handleGoogleLogin = useGoogleLogin({
-    onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
-    onError: () => handleGoogleLoginFailure(),
-  });
+  // const handleGoogleLogin = useGoogleLogin({
+  //   onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
+  //   onError: () => handleGoogleLoginFailure(),
+  // });
 
+  // const paymentType = localStorage.getItem("paymentType")
+  // console.log("acnascascb ascubajscb bacsucabc",paymentType)
+  // const handleGoogleLoginSuccess = (e: any) => {
+  //   dispatch(googleSignup({ credential: e.access_token }))
+  //     .unwrap()
+  //     .then((res: any) => {
+  //       toast.success(t("signup-page.signedUpSuccessfully"));
+  //       if (res.onBoarding === "false") {
+  //         router.push("/stripe-page/subscription");
+  //       } else {
+  //         // If onBoarding is false, continue with the existing redirection
+  //         router.push(`/getStarted?userName=${res?.name}`);
+  //       }
+  //       // if (paymentType === "buynow") {
+  //       //   router.push("/stripe-page/subscription");
+  //       // } else {
+  //       //   // If onBoarding is false, continue with the existing redirection
+  //       //   router.push(`/getStarted?userName=${res?.name}`);
+  //       // }
+  //     })
+  //   // .then((res:any) => {
+  //   //   toast.success(t("signup-page.signedUpSuccessfully"));
 
-  const handleGoogleLoginSuccess = (e: any) => {
-    dispatch(googleSignup({ credential: e.access_token }))
-      .unwrap()
-      .then((res: any) => {
-        toast.success(t("signup-page.signedUpSuccessfully"));
-        if (res.onBoarding === "false") {
-          router.push("/stripe-page/subscription");
-        } else {
-          // If onBoarding is false, continue with the existing redirection
-          router.push(`/getStarted?userName=${res?.name}`);
-        }
-      })
-    // .then((res:any) => {
-    //   toast.success(t("signup-page.signedUpSuccessfully"));
+  //   //     router.push("/stripe-page/subscription");
+  //   //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
 
-    //     router.push("/stripe-page/subscription");
-    //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
+  //   // })
+  //   // .catch((error: any) => {
+  //   //   toast.error(error.message);
+  //   // });
+  // };
 
-    // })
-    // .catch((error: any) => {
-    //   toast.error(error.message);
-    // });
-  };
-
-  const handleGoogleLoginFailure = () => {
-    toast.error(t("signup-page.failedSignupGoogle"));
-  };
+  // const handleGoogleLoginFailure = () => {
+  //   toast.error(t("signup-page.failedSignupGoogle"));
+  // };
 
 
   const formik = useFormik({

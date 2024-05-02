@@ -26,6 +26,7 @@ const StripePage = () => {
     if (paymentType === 'free-trial') {
       router.push('/stripe-page/register-free-trial');
     } else {
+      localStorage.setItem("paymentType", paymentType);
       router.push('/stripe-page/subscription');
     }
   };
