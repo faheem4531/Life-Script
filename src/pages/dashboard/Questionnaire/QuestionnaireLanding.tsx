@@ -60,7 +60,7 @@ const Questionnaire = () => {
     dispatch(
       updateUserProfile({
         name: userData?.name,
-        // questionAskType: val.frequency,
+        questionAskType: val.frequency,
         bookUseFor: userData?.bookUseFor,
         // personalizedQuestion: val.personal,
         gender: userData?.gender,
@@ -70,8 +70,6 @@ const Questionnaire = () => {
         onBoarding: true,
       })
     )
-
-      // dispatch()
       .unwrap()
       .then(() => {
         dispatch(stripeDone())
@@ -81,47 +79,6 @@ const Questionnaire = () => {
       .catch(() => { });
   };
 
-  const handleTabFourClick = (val) => {
-    // setUserData({
-    //   ...userData,
-    //   name: val.name,
-    //   gender: val.gender,
-    //   martialStatus: val.maritalStatus,
-    //   dateOfBirth: val.dob,
-    //   LanguagePreferences: val.lp,
-    // });
-
-    //spread operator use in setUserData
-    setUserData({
-      ...userData,
-      questionAskType: val?.frequency,
-      personalizedQuestion: val?.personal,
-    });
-
-    dispatch(
-      updateUserProfile({
-        name: userData?.name,
-        // questionAskType: val.frequency,
-        bookUseFor: userData?.bookUseFor,
-        // personalizedQuestion: val.personal,
-        gender: userData?.gender,
-        martialStatus: userData?.martialStatus,
-        dateOfBirth: userData?.dateOfBirth,
-        language: userData?.LanguagePreferences,
-        onBoarding: true,
-      })
-    )
-
-      // dispatch()
-      .unwrap()
-      .then(() => {
-        dispatch(stripeDone())
-        // const username = localStorage.getItem("username");
-        router.push(`/dashboard/chapters`);  // lead this to the dashboard
-      })
-      .catch(() => { });
-
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -200,7 +157,7 @@ const Questionnaire = () => {
               ) : qaTab === 2 ? (
                 <TabFour
                   onClickBack={() => setQaTab(1)}
-                  onClickNext={handleTabFourClick}
+                  onClickNext={() => { }}
                   data={userData}
                   setQaTab={setQaTab}
                 />

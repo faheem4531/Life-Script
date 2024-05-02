@@ -31,20 +31,11 @@ export default function TabOne({ onClick, data, setQaTab }) {
   const handleButtonClick = () => {
     setShowTooltip(false);
     if (
-      // !name ||
-      // maritalStatus === "" ||
-      // gender === "" ||
-      // !selectedDate
       langPre === ""
     ) {
       setShowTooltip(true);
     } else {
-      // Continue with your button click logic
       onClick({
-        // name: name,
-        // maritalStatus: maritalStatus,
-        // gender: gender,
-        // dob: selectedDate,
         value: selectedValue,
         lp: langPre,
       });

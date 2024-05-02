@@ -110,7 +110,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  Once in 2 days
+                  Every other day
                 </Typography>
               }
             />
@@ -135,7 +135,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  Once in 5 days
+                  Once in 3 days
                 </Typography>
               }
             />
