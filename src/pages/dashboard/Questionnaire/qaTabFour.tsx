@@ -40,8 +40,10 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   }
 
   useEffect(() => {
-    dispatch(getTemplates());
-  }, []);
+    if (data?.LanguagePreferences) {
+      dispatch(getTemplates(data));
+    }
+  }, [data.LanguagePreferences]);
 
 
   return (

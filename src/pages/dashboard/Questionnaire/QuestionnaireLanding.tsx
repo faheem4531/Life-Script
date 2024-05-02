@@ -30,8 +30,10 @@ const Questionnaire = () => {
   const handleTabOneClick = (val) => {
     setUserData({
       ...userData,
-      bookUseFor: val,
+      bookUseFor: val.value,
+      LanguagePreferences: val.lp,
     });
+
     setQaTab(2);
   };
 
@@ -42,7 +44,7 @@ const Questionnaire = () => {
       gender: val.gender,
       martialStatus: val.maritalStatus,
       dateOfBirth: val.dob,
-      LanguagePreferences: val.lp,
+
     });
     setQaTab(4);
   };

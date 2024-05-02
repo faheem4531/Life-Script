@@ -1,12 +1,19 @@
 import GlobelBtn from "@/components/button/Button";
-import { Box, FormControlLabel, RadioGroup, Typography } from "@mui/material";
+import {
+  Box, FormControlLabel, MenuItem, Tooltip,
+  Select, RadioGroup, Typography
+} from "@mui/material";
 import Radio from "@mui/material/Radio";
 import { useEffect, useState } from "react";
+import i18n from "i18next";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
 
 export default function TabOne({ onClick, data, setQaTab }) {
   const [selectedValue, setSelectedValue] = useState();
+  const [langPre, setLangPre] = useState("");
+  const [showTooltip, setShowTooltip] = useState(false);
+
   console.log("333344", selectedValue);
 
   useEffect(() => {
@@ -16,6 +23,34 @@ export default function TabOne({ onClick, data, setQaTab }) {
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+
+  const handleButtonClick = () => {
+    setShowTooltip(false);
+    if (
+      // !name ||
+      // maritalStatus === "" ||
+      // gender === "" ||
+      // !selectedDate
+      langPre === ""
+    ) {
+      setShowTooltip(true);
+    } else {
+      // Continue with your button click logic
+      onClick({
+        // name: name,
+        // maritalStatus: maritalStatus,
+        // gender: gender,
+        // dob: selectedDate,
+        value: selectedValue,
+        lp: langPre,
+      });
+    }
+  };
+
 
   return (
     <Box
@@ -115,6 +150,62 @@ export default function TabOne({ onClick, data, setQaTab }) {
               />
             </RadioGroup>
           </Box>
+          <Box width="50%" mt="30px">
+            <Typography
+              sx={{
+                fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
+                fontWeight: 500,
+                color: "#30422E",
+              }}
+            >
+              Language Preference
+            </Typography>
+            <Box
+              sx={{
+                position: "relative",
+              }}
+            >
+              <Select
+                placeholder="Language Preference"
+                value={langPre}
+                onChange={(e) => setLangPre(e.target.value)}
+                sx={{
+                  width: "100%",
+                  borderRadius: "2px",
+                  backgroundColor: "white",
+                }}
+              >
+                <MenuItem
+                  value="English"
+                  onClick={() => {
+                    changeLanguage("en");
+                  }}
+                >
+                  English
+                </MenuItem>
+                <MenuItem
+                  value="Spanish"
+                  onClick={() => {
+                    changeLanguage("sp");
+                  }}
+                >
+                  Spanish
+                </MenuItem>
+              </Select>
+              {langPre === "" && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "18px",
+                    left: "20px",
+                    color: "gray",
+                  }}
+                >
+                  Language Preference
+                </Box>
+              )}
+            </Box>
+          </Box>
         </Box>
       </Box>
 
@@ -127,14 +218,20 @@ export default function TabOne({ onClick, data, setQaTab }) {
           gap: 2,
         }}
       >
-        <GlobelBtn
-          bgColor="#E1683B"
-          color="white"
-          btnText="Next"
-          onClick={() => onClick(selectedValue)}
-          image2={NextArrow}
-        />
+        <Tooltip
+          open={showTooltip}
+          onClose={() => setShowTooltip(false)}
+          title="Please fill in all fields before proceeding."
+        >
+          <GlobelBtn
+            bgColor="#E1683B"
+            color="white"
+            btnText="Next"
+            onClick={handleButtonClick}
+            image2={NextArrow}
+          />
+        </Tooltip>
       </Box>
-    </Box>
+    </Box >
   );
 }

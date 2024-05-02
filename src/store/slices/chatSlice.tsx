@@ -637,11 +637,11 @@ export const getBookTitle = createAsyncThunk<any, void>(
   }
 );
 
-export const getTemplates = createAsyncThunk<any[], void>(
+export const getTemplates = createAsyncThunk<any[], any>(
   "chat/get-templates",
-  async () => {
+  async (data: { lang: string }) => {
     try {
-      const response = await getTemplatesApi();
+      const response = await getTemplatesApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

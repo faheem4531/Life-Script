@@ -35,7 +35,7 @@ export default function TabTwo({
       setMaritalStatus(data.martialStatus);
       setSelectedDate(data.dateOfBirth);
       setName(data.name);
-      setLangPre(data.LanguagePreferences);
+      // setLangPre(data.LanguagePreferences);
     }
   }, [data]);
 
@@ -44,9 +44,9 @@ export default function TabTwo({
     setName(userName.toString());
   }, [])
 
-  const changeLanguage = (language) => {
-    i18n.changeLanguage(language);
-  };
+  // const changeLanguage = (language) => {
+  //   i18n.changeLanguage(language);
+  // };
 
   const handleButtonClick = () => {
     setShowTooltip(false);
@@ -54,8 +54,8 @@ export default function TabTwo({
       !name ||
       maritalStatus === "" ||
       gender === "" ||
-      !selectedDate ||
-      langPre === ""
+      !selectedDate
+      // langPre === ""
     ) {
       setShowTooltip(true);
     } else {
@@ -65,7 +65,7 @@ export default function TabTwo({
         maritalStatus: maritalStatus,
         gender: gender,
         dob: selectedDate,
-        lp: langPre,
+        // lp: langPre,
       });
     }
   };
@@ -275,7 +275,7 @@ export default function TabTwo({
             }}
           >
             {/* Second row with two text fields */}
-            <Box flex={1}>
+            {/* <Box flex={1}>
               <Typography
                 sx={{
                   fontSize: { md: "20.142px", sm: "18px", xs: "16px" },
@@ -330,7 +330,7 @@ export default function TabTwo({
                   </Box>
                 )}
               </Box>
-            </Box>
+            </Box> */}
             <Box flex={1}></Box>
           </Box>
         </Box>

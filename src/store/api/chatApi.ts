@@ -693,9 +693,9 @@ export async function getChaptersApi() {
   }
 }
 
-export async function getTemplatesApi() {
+export async function getTemplatesApi(data: any) {
   try {
-    const res = await api.get("/default-chapter");
+    const res: any = await api.get(`/default-chapter/language/${data.LanguagePreferences}`);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
