@@ -1,12 +1,9 @@
 "use client"
-import GlobelBtn from "@/components/button/Button";
-import CheckIcon from '@mui/icons-material/Check';
-import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import stripeLogo from "../../../../../public/stripeLogo.svg";
-import BasicPlanCard from './BasicPlanCard';
 import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
 import Check from "@/_assets/svg/varifiedCheck.svg";
 import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
+import CheckIcon from '@mui/icons-material/Check';
+import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -20,6 +17,8 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
+import stripeLogo from "../../../../../public/stripeLogo.svg";
+import BasicPlanCard from './BasicPlanCard';
 import PaymentProcessingModal from './Modal';
 
 const useOptions = () => {
@@ -64,6 +63,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const [stripeFailed, setStripeFailed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [commissionState, setCommissionState] = useState(0);
+  const [referralValidCode, setReferralValidCode] = useState("");
   const stripe = useStripe();
   const elements = useElements();
   const { t } = useTranslation();
@@ -94,8 +94,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     )
       .unwrap()
       .then((res) => {
-
-        setCommissionState(res.commission_percent);
+        console.log("RESPONSE =======", res)
+        setCommissionState(res?.commission_percent);
+        setReferralValidCode(res?.referralCode)
         // Show toast message when referral code is verified
         setPaymentSucess(true)
         setPaymentFail(false)
@@ -105,7 +106,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
         // Handle error
         setPaymentSucess(false)
         setPaymentFail(true)
-        toast.error("Error verifying referral code!");
+        toast.error("Invalid Referral Code!");
       });
   }
 
@@ -158,7 +159,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
           numberOfBooks: selectedBooks && selectedBooks,
           bookPrice: selectedBooks && selectedBooks * 39,
           commission: commissionState,
-          processFrom: "register"
+          processFrom: "register",
+          referralValidCode: referralValidCode
         })
       )
         .unwrap()
@@ -445,8 +447,8 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
             <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
               <BasicPlanCard
-               price={(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)} 
-               category={category} />
+                price={(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}
+                category={category} />
             </Box>
           </Box>
         </Box>
