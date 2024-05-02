@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
-import { getTemplates, selectTemplates, selectedChapters } from "@/store/slices/chatSlice";
+import { getTemplatesMain, selectTemplates, selectedChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
@@ -41,7 +41,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
 
   useEffect(() => {
     if (data?.LanguagePreferences) {
-      dispatch(getTemplates(data));
+      dispatch(getTemplatesMain(data));
     }
   }, [data.LanguagePreferences]);
 

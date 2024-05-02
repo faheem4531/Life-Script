@@ -715,9 +715,23 @@ export async function getChaptersApi() {
   }
 }
 
-export async function getTemplatesApi(data: any) {
+export async function getTemplatesApiMain(data: any) {
   try {
     const res: any = await api.get(`/default-chapter/language/${data.LanguagePreferences}`);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+export async function getTemplatesApi() {
+  try {
+    const res = await api.get("/default-chapter");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

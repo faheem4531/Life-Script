@@ -13,6 +13,7 @@ import {
   chapterResponseApi,
   chatApi,
   cloneTemplateApi,
+  GetReferralCodeApi,
   compiledChapterApi,
   createChapterApi,
   createQuestionApi,
@@ -26,6 +27,7 @@ import {
   getQuestionbyIdApi,
   getQuestionsApi,
   getTemplatesApi,
+  getTemplatesApiMain,
   selectedChaptersApi,
   isTemplateClonedApi,
   narrativeFusionApi,
@@ -55,7 +57,6 @@ import {
   luluPrintingApi,
   stripPaymentRegisterApi,
   VerifyReferralCodeApi,
-  GetReferralCodeApi,
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -162,18 +163,6 @@ export const VerifyReferralCode = createAsyncThunk<UserData, any>(
   async (data: any) => {
     try {
       const response = await VerifyReferralCodeApi(data);
-      return response;
-    } catch (error: any) {
-      throw new Error(error.props);
-    }
-  }
-);
-
-  export const GetReferralCode = createAsyncThunk<any, void>(
-  "chat/users/getReferralCode",
-  async () => {
-    try {
-      const response = await GetReferralCodeApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -650,17 +639,30 @@ export const getBookTitle = createAsyncThunk<any, void>(
   }
 );
 
-export const getTemplates = createAsyncThunk<any[], any>(
+export const getTemplatesMain = createAsyncThunk<any[], any>(
   "chat/get-templates",
   async (data: { lang: string }) => {
     try {
-      const response = await getTemplatesApi(data);
+      const response = await getTemplatesApiMain(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
     }
   }
 );
+
+export const getTemplates = createAsyncThunk<any[], void>(
+  "chat/get-templates",
+  async () => {
+    try {
+      const response = await getTemplatesApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 
 export const cloneTemplate = createAsyncThunk<UserData, any>(
   "chat/get-template",
@@ -691,6 +693,18 @@ export const getChapterbyId = createAsyncThunk<UserData, { id: string }>(
   async (data: { id: any }) => {
     try {
       const response = await getChapterbyIdApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const GetReferralCode = createAsyncThunk<any, void>(
+  "chat/users/getReferralCode",
+  async () => {
+    try {
+      const response = await GetReferralCodeApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
