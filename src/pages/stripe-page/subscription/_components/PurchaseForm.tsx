@@ -395,7 +395,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
                     <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: "100%", marginTop: "20px" }}>
                       <Typography sx={{ fontSize: "14px" }}>
-                        We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&rsquos terms and conditions and privacy policy.
+                      We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&apos;s terms and conditions and privacy policy.
                       </Typography>
                     </Box>
                   </Box>
