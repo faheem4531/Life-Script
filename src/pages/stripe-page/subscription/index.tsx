@@ -37,6 +37,7 @@ const SubscriptionPage = () => {
         const payload = {
           name: session.user.name,
           email: session.user.email,
+          type:"register"
         };
         dispatch(facebookLogin(payload));
       }
@@ -55,7 +56,7 @@ const SubscriptionPage = () => {
   const paymentType = localStorage.getItem("paymentType")
   console.log("acnascascb ascubajscb bacsucabc",paymentType)
   const handleGoogleLoginSuccess = (e: any) => {
-    dispatch(googleSignup({ credential: e.access_token }))
+    dispatch(googleSignup({ credential: e.access_token, type:"register" }))
       .unwrap()
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
