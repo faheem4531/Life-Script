@@ -55,6 +55,7 @@ import {
   luluPrintingApi,
   stripPaymentRegisterApi,
   VerifyReferralCodeApi,
+  GetReferralCodeApi,
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -161,6 +162,18 @@ export const VerifyReferralCode = createAsyncThunk<UserData, any>(
   async (data: any) => {
     try {
       const response = await VerifyReferralCodeApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+  export const GetReferralCode = createAsyncThunk<any, void>(
+  "chat/users/getReferralCode",
+  async () => {
+    try {
+      const response = await GetReferralCodeApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -2,12 +2,15 @@ import GlobelBtn from "@/components/button/Button";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Refer from "@/_assets/svg/refer-advertise.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Fb from "@/_assets/svg/fb-orange.svg"
 import Email from "@/_assets/svg/email-orange.svg"
+import { useDispatch } from "react-redux";
+import { GetReferralCode } from "@/store/slices/chatSlice";
 
 const CopyReferal = () => {
-  const [textToCopy, setTextToCopy] = useState('427Xde33d4');
+  const dispatch: any = useDispatch();
+  const [textToCopy, setTextToCopy] = useState('');
   const handleCopyText = () => {
     const textarea = document.createElement('textarea');
     textarea.value = textToCopy;
@@ -17,6 +20,16 @@ const CopyReferal = () => {
     document.body.removeChild(textarea);
     alert('Text copied to clipboard!');
   };
+
+
+  useEffect(() => {
+    dispatch(GetReferralCode())
+      .unwrap()
+      .then((res) => {
+      //  console.log(res);
+        setTextToCopy(res?.referralCode);
+      })
+  }, []);
 
   return (
     <Box sx={{
@@ -72,7 +85,6 @@ const CopyReferal = () => {
           width="270px"
         />
       </Box>
-      {/* <Image src={Refer} alt="image" /> */}
     </Box>
 
   );

@@ -534,6 +534,28 @@ export async function VerifyReferralCodeApi(data: {
   }
 }
 
+export async function GetReferralCodeApi() {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      "Content-Type": "application/json",
+    };
+    const res = await axios.get("https://api.thelifescript.com/users/getReferralCode", {
+      headers,
+    });
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function bookTitleApi(data: { title: string }) {
   try {
     const token = localStorage.getItem("token");
