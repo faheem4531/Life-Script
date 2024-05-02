@@ -55,7 +55,7 @@ export async function stripeDoneApi() {
   }
 }
 
-export async function googleLoginApi(data: { credential: string }) {
+export async function googleLoginApi(data: { credential: string, type:string }) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/google/callback/sign-in", data);
@@ -99,9 +99,10 @@ export async function facebookLoginApi(data: { credential: string }) {
   }
 }
 
-export async function googleSignupApi(data: { credential: string }) {
+export async function googleSignupApi(data: { credential: string, type:string }) {
   // localStorage.clear();
   try {
+    console.log("Sinageyabb--------",data)
     const res = await api.post("/auth/google/callback/sign-up", data);
     localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("token", res.token);

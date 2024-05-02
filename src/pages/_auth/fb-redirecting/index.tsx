@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-const SsoRedirecting = () => {
+const FbRedirecting = () => {
     const [loading, setLoading] = useState(false);
     const dispatch:any = useDispatch();
     const router = useRouter()
@@ -19,7 +19,7 @@ const SsoRedirecting = () => {
             const payload = {
               name: session.user.name,
               email: session.user.email,
-              type: "register"
+              type: "login"
             };
             dispatch(facebookLogin(payload))
             .unwrap() 
@@ -43,4 +43,4 @@ const SsoRedirecting = () => {
   return <Box>{loading && <CircularProgress />}</Box>;
 };
 
-export default SsoRedirecting;
+export default FbRedirecting;

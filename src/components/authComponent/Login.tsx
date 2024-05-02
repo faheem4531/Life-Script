@@ -33,7 +33,7 @@ const Login = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/stripe-page/sso-redirecting",
+      callbackUrl: "/_auth/fb-redirecting",
     });
   };
 
@@ -51,7 +51,7 @@ const Login = () => {
   });
 
   const handleGoogleLoginSuccess = (e: any) => {
-    dispatch(googleLogin({ credential: e.access_token }))
+    dispatch(googleLogin({ credential: e.access_token, type:"login" }))
       .unwrap()
       .then((res) => {
         toast.success(t("login-page.loggedIn"));

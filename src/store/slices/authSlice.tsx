@@ -238,7 +238,7 @@ export const stripeDone = createAsyncThunk<any[], void>(
 
 export const googleLogin = createAsyncThunk<UserData, any>(
   "auth/googleLogin",
-  async (data: { credential: string }) => {
+  async (data: { credential: string ,type:string }) => {
     try {
       const response = await googleLoginApi(data);
       return response;
