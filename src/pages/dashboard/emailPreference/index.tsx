@@ -9,14 +9,15 @@ import Radio from "@mui/material/Radio";
 import Image from "next/image";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
-import { getUserProfile, updateUserProfile } from "@/store/slices/authSlice";
+import { selectUser, updateUserProfile } from "@/store/slices/authSlice";
 
 
 const EmailPreference = () => {
-  const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
+  const userData = useSelector(selectUser);
+  const [questionFrequency, setQuestionFrequency] = useState(userData?.questionAskType);
 
   const handleQuestionFrequency = (event) => {
     setQuestionFrequency(event.target.value);
@@ -27,12 +28,14 @@ const EmailPreference = () => {
 
 
   const handleSubmit = () => {
-    dispatch(
-      updateUserProfile({
-        questionAskType: questionFrequency,
-      }))
+    if (questionFrequency !== userData?.questionAskType) {
+      dispatch(
+        updateUserProfile({
+          questionAskType: questionFrequency,
+        }))
       .then(() => toast.success("updated successfully"))
       .catch(() => toast.error("Failed to update"));
+    }
   }
 
   return (
@@ -264,7 +267,7 @@ const EmailPreference = () => {
               borderRadius="4px"
               bgColor="#E1683B"
               color="white"
-              btnText="Next"
+              btnText="Submit"
               onClick={handleSubmit}
             />
           </Box>
