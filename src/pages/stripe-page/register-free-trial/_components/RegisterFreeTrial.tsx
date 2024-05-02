@@ -77,7 +77,7 @@ const RegisterFreeTrial = () => {
   });
 
   const handleGoogleLoginSuccess = (e) => {
-    dispatch(googleSignup({ credential: e.access_token }))
+    dispatch(googleSignup({ credential: e.access_token, type: "register" }))
       .unwrap()
       .then((res) => {
         console.log("Res Console", res)
