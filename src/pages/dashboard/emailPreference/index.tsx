@@ -1,9 +1,5 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
 import Layout from "@/components/Layout/Layout";
 import GlobelBtn from "@/components/button/Button";
-import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
-import CustomizationDialog from "@/components/modal/CustomizationDialog";
-import { customerSupport } from "@/store/slices/chatSlice";
 import { Box, Checkbox, FormControlLabel, RadioGroup, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import Image from "next/image";
@@ -17,13 +13,13 @@ import { selectUser, updateUserProfile } from "@/store/slices/authSlice";
 
 const EmailPreference = () => {
   const userData = useSelector(selectUser);
+  const dispatch: any = useDispatch();
   const [questionFrequency, setQuestionFrequency] = useState(userData?.questionAskType);
 
   const handleQuestionFrequency = (event) => {
     setQuestionFrequency(event.target.value);
   };
 
-  const dispatch: any = useDispatch();
   // const { t } = useTranslation();;
 
 
@@ -33,8 +29,8 @@ const EmailPreference = () => {
         updateUserProfile({
           questionAskType: questionFrequency,
         }))
-      .then(() => toast.success("updated successfully"))
-      .catch(() => toast.error("Failed to update"));
+        .then(() => toast.success("updated successfully"))
+        .catch(() => toast.error("Failed to update"));
     }
   }
 
