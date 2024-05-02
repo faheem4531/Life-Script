@@ -4,33 +4,32 @@ import {
   LoginData,
   SignupData,
   UpdatePasswordData,
-  UserData,
-  VerifyEmail,
+  UserData
 } from "@/interface/authInterface";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   changePasswordApi,
+  createLuluShippingApi,
   facebookLoginApi,
   facebookSignupApi,
   forgetPasswordApi,
+  getBookInteriorApi,
+  getLuluBalanceApi,
+  getLuluShippingApi,
+  getUserProfileApi,
   googleLoginApi,
   googleSignupApi,
   loginApi,
+  luluCallApi,
   signupApi,
   signupApiWithBuy,
-  updatePasswordApi,
-  verifyEmailApi,
-  stripeDoneApi,
-  updateUserProfileApi,
-  getUserProfileApi,
-  getLuluBalanceApi,
-  getLuluShippingApi,
-  createLuluShippingApi,
-  updateLuluShippingApi,
-  stripPaymentLuluApi,
-  luluCallApi,
-  getBookInteriorApi,
   signupApiWithGift,
+  stripeDoneApi,
+  stripPaymentLuluApi,
+  updateLuluShippingApi,
+  updatePasswordApi,
+  updateUserProfileApi,
+  verifyEmailApi,
 } from "../api/authApi";
 
 interface State {
@@ -251,7 +250,7 @@ export const googleLogin = createAsyncThunk<UserData, any>(
 
 export const googleSignup = createAsyncThunk<UserData, any>(
   "auth/googleSignup",
-  async (data: { credential: string }) => {
+  async (data: { credential: string, type:string }) => {
     try {
       const response = await googleSignupApi(data);
       return response;
