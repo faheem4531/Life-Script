@@ -3,24 +3,31 @@ import GlobelBtn from "@/components/button/Button";
 import { Box, Checkbox, FormControlLabel, RadioGroup, Typography } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
-import { selectUser, updateUserProfile } from "@/store/slices/authSlice";
+import { selectUser, getUserProfile, updateUserProfile } from "@/store/slices/authSlice";
 
 
 const EmailPreference = () => {
   const userData = useSelector(selectUser);
   const dispatch: any = useDispatch();
-  const [questionFrequency, setQuestionFrequency] = useState(userData?.questionAskType);
+  // const { t } = useTranslation();
+  const [questionFrequency, setQuestionFrequency] = useState('');
 
   const handleQuestionFrequency = (event) => {
     setQuestionFrequency(event.target.value);
   };
 
-  // const { t } = useTranslation();;
+
+  useEffect(() => {
+    if (userData?.questionAskType) {
+      setQuestionFrequency(userData?.questionAskType)
+    }
+  }, [userData?.questionAskType]);
+
 
 
   const handleSubmit = () => {
@@ -33,6 +40,11 @@ const EmailPreference = () => {
         .catch(() => toast.error("Failed to update"));
     }
   }
+
+  useEffect(() => {
+    dispatch(getUserProfile());
+  }, [dispatch]);
+
 
   return (
     <Box>
