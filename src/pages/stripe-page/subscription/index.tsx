@@ -34,25 +34,25 @@ const SubscriptionPage = () => {
     if (session) {
       if (session.user) {
         // console.log('session data subscription', session)
-        setSelectedTab(2);
+        // setSelectedTab(2);
         const payload = {
           name: session.user.name,
           email: session.user.email,
           type: "register"
         };
         dispatch(facebookLogin(payload))
-        //   .unwrap() 
-        //   .then((res)=>{
-        //     console.log("Res Console Subscription" ,res)
-        //     setSelectedTab(2);
-        //     toast.success("login with facebook");
-        //   })
-        //   .catch((error) => {
-        //     signOut();
-        //     toast.error("User Already Exist");
-        //     // setSelectedTab(1);
-        //     // router.push("/")
-        // });
+          .unwrap() 
+          .then((res)=>{
+            console.log("Res Console Subscription" ,res)
+            setSelectedTab(2);
+            toast.success("login with facebook");
+          })
+          .catch((error) => {
+            // signOut();
+            toast.error("User Already Exist");
+            // setSelectedTab(1);
+            // router.push("/")
+        });
       }
     }
   }, [session, dispatch]);
