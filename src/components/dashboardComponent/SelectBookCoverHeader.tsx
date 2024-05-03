@@ -1,9 +1,8 @@
-import Welcome from "@/_assets/svg/book-cover-header.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "./Custom.module.css";
 
-const SelectBookCoverHeader = ({ discription }) => {
+const SelectBookCoverHeader = ({ discription, img }) => {
   return (
     <Box
       sx={{
@@ -33,8 +32,8 @@ const SelectBookCoverHeader = ({ discription }) => {
       >
         <Typography
           sx={{
-            fontSize: { xs: "20px", sm: "28px", md: "32px", lg: "39.75px" },
-            fontWeight: 700,
+            fontSize: { xs: "20px", sm: "28px", md: "32px", lg: "45px" },
+            fontFamily: "Avenir8 !important"
           }}
         >
           {discription}
@@ -58,8 +57,8 @@ const SelectBookCoverHeader = ({ discription }) => {
         }}
       >
         <Image
-          alt="Welcome"
-          src={Welcome}
+          alt="BookCover"
+          src={img}
         />
       </Box>
     </Box>

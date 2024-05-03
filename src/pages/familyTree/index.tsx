@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import FamilyTree from "./tree";
 import Layout from '@/components/Layout/Layout';
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
+import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
+import FamilyTreeImage from "@/_assets/svg/family-tree-header.svg";
 
 const Home = () => {
   const dispatch: any = useDispatch();
@@ -89,11 +91,8 @@ const Home = () => {
 
   return (
     <Layout>
-      <AddChapterName
-        chapterId
-        chapter="Family Tree"
-        title="noBack"
-      />
+
+      <SelectBookCoverHeader img={FamilyTreeImage} discription="Family Tree" />
       <Box
         sx={{
           p: { sm: "0", xs: "10px" },

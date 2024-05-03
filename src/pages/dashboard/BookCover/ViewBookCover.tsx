@@ -3,6 +3,7 @@ import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
+import BookCover from "@/_assets/svg/book-cover-header.svg";
 
 import { font } from "../../../styles/font";
 import { Box, CircularProgress } from "@mui/material";
@@ -361,7 +362,7 @@ const ViewBookCover = () => {
             p: { md: "0px", xs: "10px 20px" },
           }}
         >
-          <SelectBookCoverHeader discription={`${t("BookCover.BookCover")}`} />
+          <SelectBookCoverHeader img={BookCover} discription={`${t("BookCover.BookCover")}`} />
 
           <Box
             display="flex"

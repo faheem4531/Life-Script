@@ -93,7 +93,12 @@ const AddChapterName = ({
       >
         <Box>
           {/* {title === "templateView" && ( */}
-          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "80px" }}>
+          <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginLeft: title !== "noBack" ? "80px" : "30px"
+          }}>
             {subTitle && (
               <Typography
                 sx={{
@@ -114,8 +119,9 @@ const AddChapterName = ({
                   xs: "25px",
                   sm: "28.707px",
                   md: "32px",
-                  lg: "39.707px",
+                  lg: "45px",
                 },
+                fontFamily: "Avenir8 !important"
               }}
             >
               {chapter}
@@ -175,48 +181,52 @@ const AddChapterName = ({
           </Box>
         )} */}
       </Box>
-      {title !== "gift" && title !== "refer" && <Box
-        sx={{
-          background: { xs: "transparent", sm: "#d6d3c1" },
-          height: {
-            sm: "400px",
-          },
-          width: {
-            xs: "230px",
-            sm: "260px",
-            lg: "360px",
-          },
-          display: "flex",
-          justifyContent: "end",
-          alignItems: "center",
-          borderTopLeftRadius: "50%",
-          borderBottomLeftRadius: "50%",
-        }}
-      >
-        <Image src={BookImage} alt="book image" className={styles.bookImage} />
-      </Box>}
-      {(title === "gift" || title === "refer") && <Box
-        sx={{
-          background: { xs: "transparent", sm: "#babaa7" },
-          height: {
-            sm: "400px",
-          },
-          width: {
-            xs: "230px",
-            sm: "260px",
-          },
-          display: { sm: "flex", xs: "none" },
-          justifyContent: "center",
-          alignItems: "center",
-          borderTopLeftRadius: "120%",
-          borderBottomLeftRadius: "70%",
-        }}
-      >
-        <Image
-          alt="Book"
-          src={Book}
-        />
-      </Box >}
+      {
+        title !== "gift" && title !== "refer" && <Box
+          sx={{
+            background: { xs: "transparent", sm: "#d6d3c1" },
+            height: {
+              sm: "400px",
+            },
+            width: {
+              xs: "230px",
+              sm: "260px",
+              lg: "360px",
+            },
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            borderTopLeftRadius: "50%",
+            borderBottomLeftRadius: "50%",
+          }}
+        >
+          <Image src={BookImage} alt="book image" className={styles.bookImage} />
+        </Box>
+      }
+      {
+        (title === "gift" || title === "refer") && <Box
+          sx={{
+            background: { xs: "transparent", sm: "#babaa7" },
+            height: {
+              sm: "400px",
+            },
+            width: {
+              xs: "230px",
+              sm: "260px",
+            },
+            display: { sm: "flex", xs: "none" },
+            justifyContent: "center",
+            alignItems: "center",
+            borderTopLeftRadius: "120%",
+            borderBottomLeftRadius: "70%",
+          }}
+        >
+          <Image
+            alt="Book"
+            src={Book}
+          />
+        </Box >
+      }
     </Box >
   );
 };
