@@ -33,6 +33,17 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
     });
   };
  
+  // const handleSignin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await signIn("facebook", {
+  //       callbackUrl: "/stripe-page/subscription",
+  //     });
+  //   } catch (error) {
+  //     toast.error("User Already Exist");
+  //     router.push("/")
+  //   }
+  // };
   // console.log("data", session);
   const handleSignout = (e) => {
     e.preventDefault();

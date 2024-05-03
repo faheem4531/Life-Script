@@ -51,10 +51,10 @@ const SubscriptionPage = () => {
         })
         .catch((error) => {
           setLoading(false)
-          // setSelectedTab(1);
-          signOut();
-        toast.error("User Already Exist");
-        // router.push("/stripe-page/subscription")
+          toast.error("User Already Exist");
+          setSelectedTab(1);
+          // signOut();
+          // router.push("/")
       });
       }
     }
