@@ -14,22 +14,8 @@ import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const TutorialsDetail = () => {
   // const dispatch: any = useDispatch();
-  // const [subject, setSubject] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [showTooltip, setShowTooltip] = useState(false);
-  // const [showModal, setShowModal] = useState(false);
   // const { t } = useTranslation();
 
-  // const handleComplaint = () => {
-  //   dispatch(customerSupport({ subject: subject, description: description }))
-  //     .unwrap()
-  //     .then(() => {
-  //       setShowModal(true);
-  //       setDescription("");
-  //       setSubject("");
-  //     })
-  //     .catch(() => toast.error("Failed to create your ticket"));
-  // };
 
   return (
     <Box>
