@@ -51,10 +51,10 @@ const SubscriptionPage = () => {
         })
         .catch((error) => {
           setLoading(false)
-          setSelectedTab(1);
+          // setSelectedTab(1);
           signOut();
         toast.error("User Already Exist");
-        router.push("/stripe-page/subscription")
+        // router.push("/stripe-page/subscription")
       });
       }
     }
@@ -116,7 +116,6 @@ const SubscriptionPage = () => {
 
   return (
     <>
-     <Box>{loading && <CircularProgress />}</Box>;
       <Box
         sx={{
           bgcolor: '#f3ecda',
