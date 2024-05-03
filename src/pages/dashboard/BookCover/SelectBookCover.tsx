@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import Img from "@/_assets/book-cover";
 import Cover1 from "@/_assets/book-cover/Cover1.png";
+import BookCover from "@/_assets/svg/book-cover-header.svg";
 
 const SelectBookCover = () => {
   const router = useRouter();
@@ -27,9 +28,8 @@ const SelectBookCover = () => {
             },
           }}
         >
-          <SelectBookCoverHeader
-            discription={`${t("BookCover.SelectBookCover")}`}
-          />
+          <SelectBookCoverHeader img={BookCover} discription={`${t("BookCover.BookCover")}`} />
+
           <Grid container spacing={3} paddingTop={3}>
             {myArray.map((_, index) => (
               <Grid item xs={12} sm={6} md={4} key={index + 1}>

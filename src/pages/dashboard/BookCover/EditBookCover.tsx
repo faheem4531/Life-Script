@@ -26,6 +26,7 @@ import htmlToImage from "html-to-image";
 import Cover1 from "@/_assets/book-cover/Cover1";
 import { jsPDF } from "jspdf";
 import axios from "axios";
+import BookCover from "@/_assets/svg/book-cover-header.svg";
 
 const EditBookCover = () => {
   const router = useRouter();
@@ -548,9 +549,8 @@ const EditBookCover = () => {
             },
           }}
         >
-          <SelectBookCoverHeader
-            discription={`${t("BookCover.EditBookCover")}`}
-          />
+          <SelectBookCoverHeader img={BookCover} discription={`${t("BookCover.BookCover")}`} />
+
           <Box
             sx={{
               display: "flex",
