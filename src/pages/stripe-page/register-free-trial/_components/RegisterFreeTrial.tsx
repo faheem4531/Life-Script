@@ -51,12 +51,23 @@ const RegisterFreeTrial = () => {
   //   }
   // }, [session]);
 
+  // const handleSignin = async (e) => {
+  //   e.preventDefault();
+  //   signIn("facebook", {
+  //     // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
+  //     callbackUrl: `/stripe-page/sso-redirecting`,
+  //   });
+  // };
+
   const handleSignin = async (e) => {
     e.preventDefault();
-    signIn("facebook", {
-      // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
-      callbackUrl: `/stripe-page/sso-redirecting`,
-    });
+    try {
+      await signIn("facebook", {
+        callbackUrl: "/stripe-page/sso-redirecting`",
+      });
+    } catch (error) {
+      console.error("Uesr Already Exist", error);
+    }
   };
 
 
@@ -84,8 +95,8 @@ const RegisterFreeTrial = () => {
         toast.success(t("signup-page.signedUpSuccessfully"));
         router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
-      .catch((error) => {
-        toast.error(error.message);
+      .catch(() => {
+        toast.error("User Already Exsit");
       });
   };
 

@@ -81,9 +81,9 @@ const SubscriptionPage = () => {
     //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
 
     // })
-    // .catch((error: any) => {
-    //   toast.error(error.message);
-    // });
+    .catch(() => {
+      toast.error("User Already Exsit");
+    });
   };
 
   const handleGoogleLoginFailure = () => {
