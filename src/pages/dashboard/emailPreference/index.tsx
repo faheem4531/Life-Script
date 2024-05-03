@@ -57,7 +57,7 @@ const EmailPreference = () => {
           <AddChapterName
             chapterId
             chapter="Email Preferences"
-            title="support"
+            title="noBack"
           />
           <Box sx={{
             borderRadius: "4x",

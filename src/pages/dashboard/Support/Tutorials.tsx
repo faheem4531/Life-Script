@@ -88,7 +88,7 @@ const Tutorials = () => {
           <AddChapterName
             chapterId
             chapter="Tutorials & Tips"
-            title="support"
+            title="noBack"
           />
           <Box
             sx={{

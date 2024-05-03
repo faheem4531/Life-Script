@@ -63,8 +63,6 @@ const Layout = ({ children }: { children?: any }) => {
               minHeight: "100vh",
               height: "100%",
               position: "relative", overflowY: "auto",
-              // bottom: "0",
-              // top: "0px",
               zIndex: "2",
               pb: "100px",
               "&::-webkit-scrollbar": {

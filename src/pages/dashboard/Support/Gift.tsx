@@ -20,7 +20,7 @@ const Gift = () => {
           <AddChapterName
             chapterId
             chapter="Gift a Book"
-            title="gift"
+            title="noBack"
           />
           <Box
             sx={{

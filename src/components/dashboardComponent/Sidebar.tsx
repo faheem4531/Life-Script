@@ -24,6 +24,8 @@ import GiftWhite from "@/_assets/svg/sidebar/gift-white.svg";
 import GiftGreen from "@/_assets/svg/sidebar/gift-green.svg";
 import ContactGreen from "@/_assets/svg/sidebar/contact-support-green.svg";
 import ContactWhite from "@/_assets/svg/sidebar/contact-support-white.svg";
+import FamilyTree from "../../_assets/svg/sidebar/family-tree.svg";
+import FamilyTreeWhite from "../../_assets/svg/sidebar/family-tree-white.svg";
 
 import SubsWhite from "@/_assets/svg/subWhite.svg";
 import Subs from "@/_assets/svg/subs.svg";
@@ -37,7 +39,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import FamilyTree from "../../_assets/svg/sidebar/family-tree.svg";
 import styles from "./Sidebar.module.css";
 import TransitionsDialog from "../modal/TransitionDialog";
 
@@ -275,7 +276,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             >
               <Image
                 alt="icon"
-                src={FamilyTree}
+                src={currentRoute === "/familyTree"
+                  ? FamilyTreeWhite
+                  : FamilyTree}
               />
               {t("sideBar.FamilyTree")}
             </a>

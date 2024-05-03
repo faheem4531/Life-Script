@@ -128,7 +128,7 @@ const ProfileSetting = () => {
         <AddChapterName
           chapterId
           chapter="Profile Settings"
-          title="profileSetting"
+          title="noBack"
         />
         <Box
           sx={{

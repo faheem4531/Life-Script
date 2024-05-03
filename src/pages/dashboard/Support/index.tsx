@@ -42,7 +42,7 @@ const SupportScreen = () => {
           <AddChapterName
             chapterId
             chapter={`${t("support.supHeading")}`}
-            title="support"
+            title="noBack"
           />
           <Box
             sx={{

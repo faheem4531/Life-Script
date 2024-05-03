@@ -25,7 +25,7 @@ const TableOfContent = () => {
             <AddChapterName
               chapterId
               chapter={`${t("TOC.TOCHeader")}`}
-              title="tabelOfContent"
+              title="noBack"
             />
             <TOCMain />
           </Box>

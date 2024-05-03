@@ -62,7 +62,7 @@ const BookView = () => {
                       ? "Shipping"
                       : selectedTab === 4 && "Checkout"
             }
-            title="support"
+            title="noBack"
           />
 
           <Box
