@@ -34,6 +34,7 @@ const ProfileSetting = () => {
   const [gender, setGender] = useState("");
   const [droppedImage, setDroppedImage] = useState(null);
   const [profile, setProfile] = useState(false);
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [userImage, setUserImage] = useState(null);
   const [fullName, setFullName] = useState("");
@@ -270,7 +271,7 @@ const ProfileSetting = () => {
                   color: "#30422E",
                   pt: "12px",
                   fontSize: { xs: 12, sm: 16, lg: 18 },
-                }}>You have 2 book credits.
+                }}>You have {userData?.bookCredit} book credits.
                 </Typography>
               </Box>
 
