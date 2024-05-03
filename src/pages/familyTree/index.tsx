@@ -6,6 +6,8 @@ import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FamilyTree from "./tree";
+import Layout from '@/components/Layout/Layout';
+import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const Home = () => {
   const dispatch: any = useDispatch();
@@ -86,25 +88,28 @@ const Home = () => {
   };
 
   return (
-    <Box>
-      <FamilyTreeLayout>
+    <Layout>
+      <AddChapterName
+        chapterId
+        chapter="Family Tree"
+        title="noBack"
+      />
+      <Box
+        sx={{
+          p: { sm: "0", xs: "10px" },
+        }}
+      >
         <Box
           sx={{
-            p: { sm: "0", xs: "10px" },
+            position: "relative",
+            zIndex: "1",
           }}
         >
-          <Box
-            sx={{
-              position: "relative",
-              zIndex: "1",
-            }}
-          >
-            {/* <SubscriptionHeader title="Family Tree" description="" /> */}
-          </Box>
-          <FamilyTree familyTreeData={familyTreeData} />
+          {/* <SubscriptionHeader title="Family Tree" description="" /> */}
         </Box>
-      </FamilyTreeLayout>
-    </Box>
+        <FamilyTree familyTreeData={familyTreeData} />
+      </Box>
+    </Layout>
   );
 };
 
