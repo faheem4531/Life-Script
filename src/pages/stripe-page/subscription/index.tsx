@@ -46,7 +46,7 @@ const SubscriptionPage = () => {
         .catch((error) => {
           // setLoading(false)
         toast.error("User Already Exist");
-        router.push("/stripe-page/register-free-trial")
+        // router.push("/stripe-page/register-free-trial")
       });
       }
     }
