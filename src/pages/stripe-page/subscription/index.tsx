@@ -50,8 +50,8 @@ const SubscriptionPage = () => {
           })
           .catch((error) => {
             signOut();
-            setSelectedTab(1);
             toast.error("User Already Exist");
+            // setSelectedTab(1);
             // router.push("/")
         });
       }
