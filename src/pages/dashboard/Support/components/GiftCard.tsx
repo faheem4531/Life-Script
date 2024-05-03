@@ -2,7 +2,7 @@ import GlobelBtn from "@/components/button/Button";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 
-const GiftCard = ({ image, info, btntext, onClick }) => {
+const GiftCard = ({ image, info, btntext, onClick ,disabled}) => {
 
   return (
     <Box sx={{
@@ -26,6 +26,7 @@ const GiftCard = ({ image, info, btntext, onClick }) => {
         btnText={btntext}
         onClick={onClick}
         width="300px"
+        disabled={disabled}
       />
     </Box>
   );

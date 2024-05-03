@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 const Gift = () => {
   const router = useRouter();
 
+  const accessRole = localStorage.getItem("accessRole")
+
   return (
     <Box>
       <Layout>
@@ -39,8 +41,7 @@ const Gift = () => {
               image={Pack}
               info="Give a truly meaningful gift to a friend that will be cherished for generations."
               btntext="Send as a gift"
-              onClick={() => { }}
-            />
+              onClick={() => { } } disabled={undefined}            />
             <GiftCard
               image={Refer}
               info="Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!"
@@ -48,6 +49,7 @@ const Gift = () => {
               onClick={() => {
                 router.push("/dashboard/Support/ReferAFriend");
               }}
+              disabled={accessRole}
             />
           </Box>
         </Box>
