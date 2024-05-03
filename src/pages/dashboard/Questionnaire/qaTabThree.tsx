@@ -190,7 +190,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
           borderRadius="4px"
           bgColor="#E1683B"
           color="white"
-          btnText="Next"
+          btnText="Take me in"
           onClick={() =>
             onClickNext({
               personal: personalQuestion,

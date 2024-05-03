@@ -388,7 +388,11 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                     </Box>
                     <Box sx={{ border: "1px solid black", padding: "10px", borderRadius: "5px", marginTop: "30px", width: "100%" }}>
                       <FormControlLabel
-                        control={<Checkbox checked={subscribeUpdates} onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }} required />}
+                        control={<Checkbox 
+                          checked={subscribeUpdates} 
+                          onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }} 
+                        // required 
+                        />}
                         label="Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers."
                       />
                     </Box>
@@ -407,7 +411,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                     <Button
                       variant="contained"
                       color="primary"
-                      disabled={!cardHolderName || !subscribeUpdates || isError}
+                      disabled={!cardHolderName 
+                        // || !subscribeUpdates 
+                        || isError}
                       onClick={handleSubmit}
                       sx={{
                         width: "200px",

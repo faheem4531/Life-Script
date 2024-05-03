@@ -144,7 +144,6 @@ const GiftPricingCard = ({ price, category, card, id, handleHover, selectedTab, 
         <Typography
           sx={{ color: "#BFC4B5", fontSize: "14px", display: "inline" }}
         >
-          / year
         </Typography>
       </Box>
 

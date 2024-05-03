@@ -41,10 +41,10 @@ const TabPanel = ({ onClick, selectedTab }) => {
             fontFamily: 'Avenir5 !important',
           }}
         >
-          Choose a Subscription Plan
+          Choose a Plan
         </Typography>
         <Typography sx={{ margin: { sm: '40px 0 20px', xs: '20px 0' } }}>
-          Each package comes with a one-year LifeScript subscription, a premium full-color hardcover book, and free shipping.
+        Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.
         </Typography>
       </Box>
       <Box

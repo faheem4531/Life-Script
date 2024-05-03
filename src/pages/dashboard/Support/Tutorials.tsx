@@ -34,6 +34,7 @@ const Tutorials = () => {
 
 
             <iframe width="340" height="190" src="https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe width="340" height="190" src="https://www.youtube.com/embed/FKEFgm0R0Sc?si=1hrpUY8HRmhX_FUF" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <iframe width="340" height="190" src="https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <iframe width="340" height="190" src="https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           </Box>

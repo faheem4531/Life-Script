@@ -123,7 +123,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             borderRadius="4px"
             bgColor="#E1683B"
             color="white"
-            btnText="Take me in"
+            btnText="Next"
             onClick={handleNext}
             image2={NextArrow}
           />
