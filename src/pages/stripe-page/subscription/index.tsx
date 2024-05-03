@@ -28,34 +28,31 @@ const SubscriptionPage = () => {
   const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
-  const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
 
   useEffect(() => {
-    setLoading(true)
     if (session) {
       if (session.user) {
-        console.log('session data subscription', session)
+        // console.log('session data subscription', session)
+        setSelectedTab(2);
         const payload = {
           name: session.user.name,
           email: session.user.email,
-          type:"register"
+          type: "register"
         };
         dispatch(facebookLogin(payload))
-        .unwrap() 
-        .then((res)=>{
-          setLoading(false)
-          console.log("Res Console Subscription" ,res)
-          setSelectedTab(2);
-          toast.success("login with facebook");
-        })
-        .catch((error) => {
-          setLoading(false)
-          // toast.error("User Already Exist");
-          // setSelectedTab(1);
-          // signOut();
-          // router.push("/")
-      });
+        //   .unwrap() 
+        //   .then((res)=>{
+        //     console.log("Res Console Subscription" ,res)
+        //     setSelectedTab(2);
+        //     toast.success("login with facebook");
+        //   })
+        //   .catch((error) => {
+        //     signOut();
+        //     toast.error("User Already Exist");
+        //     // setSelectedTab(1);
+        //     // router.push("/")
+        // });
       }
     }
   }, [session, dispatch]);
@@ -64,15 +61,15 @@ const SubscriptionPage = () => {
     setSelectedTab(index);
   };
 
-    const handleGoogleLogin = useGoogleLogin({
+  const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
     onError: () => handleGoogleLoginFailure(),
   });
 
   const paymentType = localStorage.getItem("paymentType")
-  console.log("acnascascb ascubajscb bacsucabc",paymentType)
+  console.log("acnascascb ascubajscb bacsucabc", paymentType)
   const handleGoogleLoginSuccess = (e: any) => {
-    dispatch(googleSignup({ credential: e.access_token, type:"register" }))
+    dispatch(googleSignup({ credential: e.access_token, type: "register" }))
       .unwrap()
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
@@ -90,16 +87,9 @@ const SubscriptionPage = () => {
           router.push(`/getStarted?userName=${res?.name}`);
         }
       })
-    // .then((res:any) => {
-    //   toast.success(t("signup-page.signedUpSuccessfully"));
-
-    //     router.push("/stripe-page/subscription");
-    //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-
-    // })
-    .catch(() => {
-      toast.error("User Already Exsit");
-    });
+      .catch(() => {
+        toast.error("User Already Exsit");
+      });
   };
 
   const handleGoogleLoginFailure = () => {
@@ -109,7 +99,7 @@ const SubscriptionPage = () => {
 
   const tabsData = [
     { label: 'CHOOSE PLAN', active: selectedTab === 0 },
-    { label: 'REGISTER', active: selectedTab === 1 && !session && handleGoogleLogin  },
+    { label: 'REGISTER', active: selectedTab === 1 && !session && handleGoogleLogin },
     // { label: 'REGISTER', active: selectedTab === 1 && session && handleGoogleLogin  },
     { label: 'PAYMENT', active: selectedTab === 2 },
   ];
