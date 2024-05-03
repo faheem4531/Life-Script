@@ -1,8 +1,8 @@
 import { Grid, Typography } from "@mui/material";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 
-const NewTabBar = ({ tabs, onClick, handleGoogleLogin }) => {
-  const { data: session } = useSession();
+const NewTabBar = ({ tabs, onClick, handleGoogleLogin, session }) => {
+  // const { data: session } = useSession();
   // console.log("tabs", tabs);
   return (
     <Grid

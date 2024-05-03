@@ -7,7 +7,7 @@ import PurchaseForm from './_components/PurchaseForm';
 import RegisterPage from './_components/RegisterPage';
 import TabPanel from './_components/TabPanel';
 import NewTabBar from './_components/NewTabBar';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import { facebookLogin, googleSignup } from '@/store/slices/authSlice';
 import { useDispatch } from 'react-redux';
 import Bg from '@/_assets/png/bg-hurt-lite.png';
@@ -45,6 +45,7 @@ const SubscriptionPage = () => {
         })
         .catch((error) => {
           // setLoading(false)
+          signOut();
         toast.error("User Already Exist");
         // router.push("/stripe-page/register-free-trial")
       });
@@ -101,7 +102,8 @@ const SubscriptionPage = () => {
 
   const tabsData = [
     { label: 'CHOOSE PLAN', active: selectedTab === 0 },
-    { label: 'REGISTER', active: selectedTab === 1 && !session && handleGoogleLogin  },
+    // { label: 'REGISTER', active: selectedTab === 1 && !session && handleGoogleLogin  },
+    { label: 'REGISTER', active: selectedTab === 1 && session && handleGoogleLogin  },
     { label: 'PAYMENT', active: selectedTab === 2 },
   ];
 
@@ -136,13 +138,14 @@ const SubscriptionPage = () => {
             marginLeft: { sm: '70px', xs: '20px' },
           }}
         >
-          <NewTabBar tabs={tabsData} handleGoogleLogin={handleGoogleLogin} onClick={() => { }} />
+          <NewTabBar tabs={tabsData} handleGoogleLogin={handleGoogleLogin} session={session} onClick={() => { }} />
         </Box>
 
         <Box sx={{ position: 'relative' }}>
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />}
+            {/* {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />} */}
+            {selectedTab === 1 && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
                 <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
