@@ -43,9 +43,11 @@ const SubscriptionPage = () => {
         .then((res)=>{
           setSelectedTab(2);
         })
-        .catch(() => {
-          toast.error("User Already Exsit");
-        });
+        .catch((error) => {
+          // setLoading(false)
+        toast.error("User Already Exist");
+        router.push("/stripe-page/register-free-trial")
+      });
       }
     }
   }, [session, dispatch]);
