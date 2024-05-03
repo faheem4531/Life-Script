@@ -1,13 +1,9 @@
-// pages/index.js
-import FamilyTreeLayout from "@/components/Layout/FamilyTreeLayout";
-import SubscriptionHeader from "@/components/dashboardComponent/subscriptionHeader";
 import { getTreeData, selectTreeData } from "@/store/slices/chatSlice";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FamilyTree from "./tree";
 import Layout from '@/components/Layout/Layout';
-import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import FamilyTreeImage from "@/_assets/svg/family-tree-header.svg";
 
@@ -91,21 +87,14 @@ const Home = () => {
 
   return (
     <Layout>
-
       <SelectBookCoverHeader img={FamilyTreeImage} discription="Family Tree" />
       <Box
         sx={{
+          position: "relative",
+          zIndex: "1",
           p: { sm: "0", xs: "10px" },
         }}
       >
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: "1",
-          }}
-        >
-          {/* <SubscriptionHeader title="Family Tree" description="" /> */}
-        </Box>
         <FamilyTree familyTreeData={familyTreeData} />
       </Box>
     </Layout>
