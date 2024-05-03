@@ -51,7 +51,7 @@ const SubscriptionPage = () => {
         })
         .catch((error) => {
           setLoading(false)
-          toast.error("User Already Exist");
+          // toast.error("User Already Exist");
           // setSelectedTab(1);
           // signOut();
           // router.push("/")
