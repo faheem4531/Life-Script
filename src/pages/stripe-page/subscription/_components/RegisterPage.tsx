@@ -32,7 +32,8 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
       callbackUrl: "/stripe-page/subscription",
     });
   };
-  console.log("data", session);
+ 
+  // console.log("data", session);
   const handleSignout = (e) => {
     e.preventDefault();
     signOut();

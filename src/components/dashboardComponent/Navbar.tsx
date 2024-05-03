@@ -68,7 +68,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
       dispatch(resetChatState());
       localStorage.clear();
       signOut();
-      router.push("/");
+      // router.push("/");
     }
     handleMoreClose();
   };

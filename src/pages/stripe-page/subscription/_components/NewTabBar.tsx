@@ -4,6 +4,8 @@ import { useSession } from "next-auth/react";
 const NewTabBar = ({ tabs, onClick, handleGoogleLogin }) => {
   const { data: session } = useSession();
   // console.log("tabs", tabs);
+
+  // const paymentType = localStorage.getItem("paymentType")
   return (
     <Grid
       container
@@ -16,7 +18,7 @@ const NewTabBar = ({ tabs, onClick, handleGoogleLogin }) => {
       {tabs?.map(
         (tab, index) =>
           // Render the registration tab only if it's not the second tab and there's no session
-          (index !== 1 || !session || !handleGoogleLogin) && (
+          (index !== 1 || !session || handleGoogleLogin) && (
             <Grid
               key={index}
               item

@@ -101,30 +101,15 @@ const Tutorials = () => {
               flexWrap: "wrap",
             }}
           >
-            <div className="embed-responsive embed-responsive-16by9">
+            {/* <div className="embed-responsive embed-responsive-16by9">
               <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
-            <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-            </div>
+            </div> */}
+          
+
+
+            <iframe width="340" height="190" src="https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe width="340" height="190"   src="https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe width="340" height="190"  src="https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           </Box>
         </Box>
       </Layout>

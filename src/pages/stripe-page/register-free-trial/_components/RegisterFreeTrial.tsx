@@ -61,6 +61,8 @@ const RegisterFreeTrial = () => {
 
 
 
+
+
   console.log("data", session);
 
 
@@ -84,8 +86,8 @@ const RegisterFreeTrial = () => {
         toast.success(t("signup-page.signedUpSuccessfully"));
         router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
-      .catch((error) => {
-        toast.error(error.message);
+      .catch(() => {
+        toast.error("User Already Exsit");
       });
   };
 

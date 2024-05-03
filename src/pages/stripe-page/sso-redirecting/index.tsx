@@ -33,7 +33,8 @@ const SsoRedirecting = () => {
             
             .catch((error) => {
                 setLoading(false)
-              toast.error(error.message);
+              toast.error("User Already Exist");
+              router.push("/stripe-page/register-free-trial")
             });
           }
         }
