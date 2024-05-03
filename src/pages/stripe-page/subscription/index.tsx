@@ -1,6 +1,6 @@
 'use client';
 import Logo from '@/_assets/svg/logo-dashboard.svg';
-import { Box } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import PurchaseForm from './_components/PurchaseForm';
@@ -28,23 +28,29 @@ const SubscriptionPage = () => {
   const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
+  const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
 
   useEffect(() => {
+    setLoading(true)
     if (session) {
       if (session.user) {
-        
+        console.log('session data subscription', session)
         const payload = {
           name: session.user.name,
           email: session.user.email,
           type:"register"
         };
         dispatch(facebookLogin(payload))
+        .unwrap() 
         .then((res)=>{
+          setLoading(false)
+          console.log("Res Console Subscription" ,res)
           setSelectedTab(2);
+          toast.success("login with facebook");
         })
         .catch((error) => {
-          // setLoading(false)
+          setLoading(false)
           setSelectedTab(1);
           signOut();
         toast.error("User Already Exist");
@@ -110,6 +116,7 @@ const SubscriptionPage = () => {
 
   return (
     <>
+     <Box>{loading && <CircularProgress />}</Box>;
       <Box
         sx={{
           bgcolor: '#f3ecda',
@@ -146,7 +153,6 @@ const SubscriptionPage = () => {
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
             {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />}
-            {/* {selectedTab === 1 && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />} */}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
                 <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
