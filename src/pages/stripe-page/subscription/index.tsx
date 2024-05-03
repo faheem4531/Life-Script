@@ -1,21 +1,21 @@
 'use client';
+import Bg from '@/_assets/png/bg-hurt-lite.png';
 import Logo from '@/_assets/svg/logo-dashboard.svg';
-import { Box, CircularProgress } from '@mui/material';
+import { facebookLogin, googleSignup } from '@/store/slices/authSlice';
+import { Box } from '@mui/material';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import NewTabBar from './_components/NewTabBar';
 import PurchaseForm from './_components/PurchaseForm';
 import RegisterPage from './_components/RegisterPage';
 import TabPanel from './_components/TabPanel';
-import NewTabBar from './_components/NewTabBar';
-import { useSession, signOut } from 'next-auth/react';
-import { facebookLogin, googleSignup } from '@/store/slices/authSlice';
-import { useDispatch } from 'react-redux';
-import Bg from '@/_assets/png/bg-hurt-lite.png';
 
 
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import { useGoogleLogin } from "@react-oauth/google";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
@@ -31,6 +31,7 @@ const SubscriptionPage = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
+    console.log('session', session)
     if (session) {
       if (session.user) {
         // console.log('session data subscription', session)
@@ -48,7 +49,7 @@ const SubscriptionPage = () => {
             toast.success("login with facebook");
           })
           .catch((error) => {
-            // signOut();
+            signOut();
             toast.error("User Already Exist");
             // setSelectedTab(1);
             // router.push("/")
