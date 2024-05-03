@@ -51,24 +51,15 @@ const RegisterFreeTrial = () => {
   //   }
   // }, [session]);
 
-  // const handleSignin = async (e) => {
-  //   e.preventDefault();
-  //   signIn("facebook", {
-  //     // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
-  //     callbackUrl: `/stripe-page/sso-redirecting`,
-  //   });
-  // };
-
   const handleSignin = async (e) => {
     e.preventDefault();
-    try {
-      await signIn("facebook", {
-        callbackUrl: "/stripe-page/sso-redirecting`",
-      });
-    } catch (error) {
-      console.error("Uesr Already Exist", error);
-    }
+    signIn("facebook", {
+      // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
+      callbackUrl: `/stripe-page/sso-redirecting`,
+    });
   };
+
+
 
 
 

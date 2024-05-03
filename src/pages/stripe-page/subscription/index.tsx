@@ -33,13 +33,19 @@ const SubscriptionPage = () => {
   useEffect(() => {
     if (session) {
       if (session.user) {
-        setSelectedTab(2);
+        
         const payload = {
           name: session.user.name,
           email: session.user.email,
           type:"register"
         };
-        dispatch(facebookLogin(payload));
+        dispatch(facebookLogin(payload))
+        .then((res)=>{
+          setSelectedTab(2);
+        })
+        .catch(() => {
+          toast.error("User Already Exsit");
+        });
       }
     }
   }, [session, dispatch]);

@@ -26,22 +26,13 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
   const dispatch: any = useDispatch();
   const { data: session } = useSession();
 
-  // const handleSignin = async (e) => {
-  //   e.preventDefault();
-  //   signIn("facebook", {
-  //     callbackUrl: "/stripe-page/subscription",
-  //   });
-  // };
   const handleSignin = async (e) => {
     e.preventDefault();
-    try {
-      await signIn("facebook", {
-        callbackUrl: "/stripe-page/subscription",
-      });
-    } catch (error) {
-      console.error("User Already Exist", error);
-    }
+    signIn("facebook", {
+      callbackUrl: "/stripe-page/subscription",
+    });
   };
+ 
   // console.log("data", session);
   const handleSignout = (e) => {
     e.preventDefault();
