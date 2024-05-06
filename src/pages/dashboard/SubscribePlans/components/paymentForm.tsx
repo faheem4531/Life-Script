@@ -1,4 +1,4 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import ModalImage from "@/_assets/svg/Frame.svg";
 import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
@@ -297,8 +297,7 @@ const PaymentForm = ({ packageName, price }) => {
         <Box sx={{ textAlign: "center", p: "20px" }}>
           <Box
             sx={{
-              width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
-              height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+              width: { md: "120px", sm: "66.54px", xs: "41.709px" },
               margin: "auto",
             }}
           >
@@ -315,7 +314,7 @@ const PaymentForm = ({ packageName, price }) => {
             sx={{
               fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
               fontWeight: 700,
-              color: "#070707",
+              color: "#30422E",
               margin: "15px 0",
             }}
           >
@@ -324,7 +323,7 @@ const PaymentForm = ({ packageName, price }) => {
           <Typography
             sx={{
               fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-              color: "#070707",
+              color: "#30422E",
               width: { md: "400px", sm: "300px", xs: "180px" },
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
@@ -342,7 +341,7 @@ const PaymentForm = ({ packageName, price }) => {
             }}
           >
             <GlobelBtn
-              bgColor="#197065"
+              bgColor="#30422E"
               color="white"
               btnText={
                 stripeFailed
