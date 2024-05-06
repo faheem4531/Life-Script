@@ -2,6 +2,7 @@ import EditIcon from "@/_assets/svg/edit-icon-green.svg";
 // import NextIcon from "@/_assets/svg/next-iconX.svg";
 // import PreviousIcon from "@/_assets/svg/previous-icon.svg";
 import RevertIcon from "@/_assets/svg/revert-response-icon.svg";
+import BgLogo from '@/_assets/svg/BgLogo.svg';
 import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
 import Title from "@/_assets/svg/topic-title.svg";
 import Layout from "@/components/Layout/Layout";
@@ -90,7 +91,7 @@ const NarrativeResponse = () => {
 
   return (
     <>
-      <Box sx={{ height: "100vh" }}>
+      <Box sx={{ height: "100vh", bgcolor: "red !important", position: "relative" }}>
         <Layout>
           {loading ? (
             <Box
@@ -108,7 +109,7 @@ const NarrativeResponse = () => {
             <Box
               sx={{
                 position: "relative",
-                p: { xs: "15px", sm: "0px" },
+                p: { xs: "15px", sm: "0px" }
               }}
             >
               <Box
@@ -118,7 +119,7 @@ const NarrativeResponse = () => {
                   height: "100%",
                   mb: { xs: "20px", sm: "0px" },
                 }}
-                className={styles.nativeMainBg}
+              // className={styles.nativeMainBg}
               >
                 <Box
                   sx={{
@@ -137,7 +138,7 @@ const NarrativeResponse = () => {
                         sx={{
                           fontSize: { md: "20px", sm: "17px", xs: "14.945px" },
                           display: "block",
-                          color: "#171725",
+                          color: "#30422E",
                           fontWeight: 600,
                           // mt: "2px",
                         }}
@@ -162,45 +163,42 @@ const NarrativeResponse = () => {
                     <GlobelBtn
                       bgColor="#ffff"
                       btnText={`${t("narrative.editRes")}`}
-                      borderRadius="27px"
-                      color="#197065"
+                      color="#E1683B"
                       onClick={() =>
                         router.push(
                           `/events?compileChapterId=${chapterId}&openai=${responseType}`
                         )
                       }
                       image={EditIcon}
-                      border="1px solid #197065"
+                      border="1px solid #E1683B"
                       fontSize={{ xs: "12px" }}
-                      p="4px 20px"
+                      p="5px 15px"
                     />
                   </Box>
 
                   <Box>
                     <GlobelBtn
-                      bgColor="#197065"
+                      bgColor="#E1683B"
                       btnText={`${t("narrative.saveRes")}`}
-                      borderRadius="27px"
                       color="#fff"
                       onClick={() => setSaveResponseModal(true)}
                       image={SaveIcon}
-                      border="1px solid #197065"
+                      border="1px solid #E1683B"
                       fontSize={{ xs: "12px" }}
-                      p="4px 20px"
+                      p="5px 15px"
                     />
                   </Box>
                   <Box>
                     {pdfUrl && (
                       <GlobelBtn
-                        bgColor="#197065"
+                        bgColor="#E1683B"
                         // btnText={`${t("narrative.pdfdownload")}`}
                         btnText={`PDF Download`}
-                        borderRadius="27px"
                         color="#fff"
                         image={SaveIcon}
                         onClick={() => window.open(pdfUrl, '_blank')}
                         fontSize="12px"
-                        p="4px 20px"
+                        p="5px 15px"
                       />
                     )}
                   </Box>
@@ -216,7 +214,7 @@ const NarrativeResponse = () => {
               >
                 <Box
                   sx={{
-                    position: "relative",
+                    position: "relative", zIndex: "10"
                   }}
                 >
                   <YourSliderComponent
@@ -232,7 +230,7 @@ const NarrativeResponse = () => {
                           sm: "30px 35px",
                           xs: "15px 20px",
                         },
-                        bgcolor: "#fff",
+                        bgcolor: "#30422E1A",
                         position: "relative",
                         height: "calc(100vh - 145px)",
                         overflowY: "auto",
@@ -245,7 +243,7 @@ const NarrativeResponse = () => {
                           textAlign: "center",
                           fontSize: { sm: "20px", xs: "14px" },
                           fontWeight: 600,
-                          color: "#171725",
+                          color: "#30422E",
                           marginBottom: { sm: "35px", xs: "20px" },
                         }}
                       >
@@ -296,7 +294,7 @@ const NarrativeResponse = () => {
                   <Typography
                     sx={{
                       fontSize: { xl: "15px", sm: "15.001px", xs: "8.906px" },
-                      fontWeight: 300,
+                      fontWeight: 300, color: "#30422E",
                       marginBottom: "8px",
                     }}
                   >
@@ -327,12 +325,11 @@ const NarrativeResponse = () => {
                       <GlobelBtn
                         bgColor="#fff"
                         btnText={`${t("narrative.RevertRes")}`}
-                        borderRadius="27px"
-                        color="#197065"
+                        color="#E1683B"
                         onClick={() => setRevertModal(true)}
                         image={RevertIcon}
-                        border="1px solid #197065"
-                        p="4px 20px"
+                        border="1px solid #E1683B"
+                        p="5px 15px"
                       />
                     </Box>
                   </Box>
@@ -341,6 +338,24 @@ const NarrativeResponse = () => {
             </Box>
           )}
         </Layout>
+        {/* padding: { sm: "10px 33px 30px" }, */}
+        <Box
+          sx={{
+            position: 'absolute',
+            right: '0px',
+            // ml: "-220px",
+            bottom: '0px',
+            zIndex: 1,
+            maxWidth: '400px',
+            width: '100%',
+          }}
+        >
+          <Image src={BgLogo} alt={"image"}
+            style={{
+              width: '100%',
+              height: '100%',
+            }} />
+        </Box>
       </Box>
 
       {/* Revert changes Modal  */}
