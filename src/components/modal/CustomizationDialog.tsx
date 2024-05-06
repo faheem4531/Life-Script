@@ -6,6 +6,7 @@ import {
   DialogTitle,
   IconButton,
 } from "@mui/material";
+import Backdrop from '@mui/material/Backdrop';
 import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
@@ -57,7 +58,7 @@ export default function CustomizationDialog({
   customStyles,
 }) {
   return (
-    <Box sx={{ bgcolor: "white", maxWidth: "80vw" }}>
+    <Box sx={{ bgcolor: "#F3ECDA", maxWidth: "80vw" }}>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -65,9 +66,16 @@ export default function CustomizationDialog({
         // fullWidth={fullWidth}
         maxWidth={"xl"}
         // style={{ overflowY: "hidden" }}
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500, style: { backgroundColor: 'rgba(48, 66, 46, 0.85)' },
+          },
+        }}
         sx={{
           ".css-2rbg70-MuiPaper-root-MuiDialog-paper": {
-            borderRadius: "4px"
+            borderRadius: "4px",
+            bgcolor: "#F3ECDA"
           }
         }}
       >
