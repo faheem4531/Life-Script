@@ -57,8 +57,6 @@ const Profile = ({ data }) => {
   const [userName, setUserName] = useState("");
   const [hoursCount, setHoursCount] = useState("");
 
-  console.log(hoursCount, "dataaaaaaaa");
-
 
   function calculateCompletionPercentage(array) {
     if (array?.length === 0) {
@@ -98,7 +96,7 @@ const Profile = ({ data }) => {
     dispatch(getUserProfile());
     dispatch(getHours())
       .unwrap()
-      .then((res) => console.log(res, "ressssss"));
+      .then((res) => setHoursCount(formatTime(Number(res))));
   }, []);
 
   useEffect(() => {
@@ -122,6 +120,7 @@ const Profile = ({ data }) => {
   const wordCount = data?.words;
   const questionsCount = data?.questions
   const chaptersCount = data?.chapters
+  const timeCount = hoursCount
 
 
   const getWordsBadgeAndTooltip = (wordCount) => {
@@ -228,9 +227,49 @@ const Profile = ({ data }) => {
 
     return { ChapterbadgeImage, ChaptertooltipText };
   };
+
+  const getTimeBadgeAndTooltip = (timeCount) => {
+    let timebadgeImage, timetooltipText;
+
+    if (timeCount.includes('m')) {
+      timebadgeImage = Grey;
+      timetooltipText = 'Time Tracker will be opened after writing for at least 1 hour';
+    } else if (timeCount.includes('h')) {
+      const hours = parseInt(timeCount);
+      if (hours >= 1 && hours <= 4) {
+        timebadgeImage = Time1;
+        timetooltipText = '1 hour of writing';
+      } else if (hours >= 5 && hours <= 9) {
+        timebadgeImage = Time2;
+        timetooltipText = '5 hours of writing';
+      } else if (hours >= 10 && hours <= 19) {
+        timebadgeImage = Time3;
+        timetooltipText = '10 hours of writing';
+      } else if (hours >= 20 && hours <= 29) {
+        timebadgeImage = Time4;
+        timetooltipText = '20 hours of writing';
+      } else if (hours >= 30 && hours <= 49) {
+        timebadgeImage = Time5;
+        timetooltipText = '30 hours of writing';
+      } else if (hours >= 50 && hours <= 69) {
+        timebadgeImage = Time6;
+        timetooltipText = '50 hours of writing';
+      } else if (hours >= 70 && hours <= 99) {
+        timebadgeImage = Time7;
+        timetooltipText = '70 hours of writing';
+      } else if (hours >= 100) {
+        timebadgeImage = Time8;
+        timetooltipText = '100 hours of writing';
+      }
+    }
+
+    return { timebadgeImage, timetooltipText };
+  };
+
   const { WordbadgeImage, WordtooltipText } = getWordsBadgeAndTooltip(wordCount);
   const { QsbadgeImage, QstooltipText } = getQsBadgeAndTooltip(questionsCount);
   const { ChapterbadgeImage, ChaptertooltipText } = getChaptersBadgeAndTooltip(chaptersCount);
+  const { timebadgeImage, timetooltipText } = getTimeBadgeAndTooltip(timeCount);
 
   return (
     <Box
@@ -300,10 +339,10 @@ const Profile = ({ data }) => {
 
             </Box>
             <Box sx={{ cursor: "pointer", mt: "20px" }}>
-              <Tooltip title={data?.words < 5000 ? "Platinum badge will be opened after writing 5000 words" : "Platinum"}>
+              <Tooltip title={timetooltipText}>
                 <Image
                   alt="tag"
-                  src={hoursCount ? Grey : Time8}
+                  src={timebadgeImage}
                   className={styles.profileAchivements}
                 />
               </Tooltip>
