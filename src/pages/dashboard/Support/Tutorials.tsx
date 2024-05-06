@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 const videoData = [
   {
@@ -52,6 +52,7 @@ const videoData = [
 ];
 
 const Tutorials = () => {
+  const [loading, setLoading] = useState(false);
 
   return (
     <Box>
@@ -66,34 +67,42 @@ const Tutorials = () => {
             chapter="Tutorials & Tips"
             title="noBack"
           />
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-              gap: "30px",
-              borderRadius: "4x",
-              bgcolor: "#F3ECDA",
-              p: { md: "30px", sm: "20px 20px", xs: "16px" },
-              mt: "26px",
-            }}
-          >
-            {videoData && videoData.map((video) => (
-              <Box key={video.id} sx={{ cursor: 'pointer' }}>
-                <iframe
-                  width={340}
-                  height={190}
-                  src={video.src}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-                <Typography sx={{width: "340px" }}
-                 >{video.title}</Typography>
-              </Box>
-            ))}
-          </Box>
+
+          {loading ? (
+            // Show loader while loading
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+                gap: "30px",
+                borderRadius: "4x",
+                bgcolor: "#F3ECDA",
+                p: { md: "30px", sm: "20px 20px", xs: "16px" },
+                mt: "26px",
+              }}
+            >
+              {videoData && videoData.map((video) => (
+                <Box key={video.id} sx={{ cursor: 'pointer' }}>
+                  <iframe
+                    width={340}
+                    height={190}
+                    src={video.src}
+                    title={video.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
+                  <Typography sx={{ width: "340px" }}
+                  >{video.title}</Typography>
+                </Box>
+              ))}
+            </Box>
+          )}
         </Box>
       </Layout>
     </Box>
