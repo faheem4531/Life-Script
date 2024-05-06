@@ -13,21 +13,24 @@ import styles from "./NavBar.module.css";
 import Script from "next/script";
 
 export default function LanguageOption() {
-  const [selectedValue, setSelectedValue] = React.useState(10); // Initial selected value
-  const [open, setOpen] = React.useState(false);
+  // const [selectedValue, setSelectedValue] = React.useState(10); // Initial selected value
+  // const [open, setOpen] = React.useState(false);
 
-  const handleChange = (event, value) => {
-    setSelectedValue(value);
-  };
+  // const handleChange = (event, value) => {
+  //   setSelectedValue(value);
+  // };
 
-  const handleToggle = () => {
-    setOpen(!open);
-  };
+  // const handleToggle = () => {
+  //   setOpen(!open);
+  // };
 
   return (
-    <Box sx={{ position: "relative" }} onClick={handleToggle}>
+    <Box
+      sx={{ position: "relative" }}
+      // onClick={handleToggle}
+    >
       {/* Google Translate script */}
-      <Script
+      {/* <Script
         id="google_translate_element"
         type="text/javascript"
         dangerouslySetInnerHTML={{
@@ -36,6 +39,22 @@ export default function LanguageOption() {
               new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
             }
           `,
+        }}
+      /> */}
+
+      {/* Only show two language English and Spanish */}
+      <Script
+        id="google_translate_element"
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,es', // Include English and Spanish
+        }, 'google_translate_element');
+      }
+    `,
         }}
       />
       <Script
@@ -48,7 +67,7 @@ export default function LanguageOption() {
         className={styles.google}
         sx={{ backgroundColor: "#f3ecda" }}
       >
-        <Box id="goog-gt-tt" class="goog-tooltip skiptranslate" ></Box>
+        <Box id="goog-gt-tt" class="goog-tooltip skiptranslate"></Box>
       </Box>
     </Box>
   );
