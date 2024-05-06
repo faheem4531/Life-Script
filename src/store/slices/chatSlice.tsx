@@ -57,6 +57,7 @@ import {
   luluPrintingApi,
   stripPaymentRegisterApi,
   VerifyReferralCodeApi,
+  stripPaymentInAppGiftFlowApi,
 } from "../api/chatApi";
 import { staticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
 
@@ -152,6 +153,17 @@ export const stripePaymentRegister = createAsyncThunk<UserData, any>(
   async (data: any) => {
     try {
       const response = await stripPaymentRegisterApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+export const stripePaymentInAppGiftFlow = createAsyncThunk<UserData, any>(
+  "chat/stripe-payment-In-APP-Gift-Flow",
+  async (data: any) => {
+    try {
+      const response = await stripPaymentInAppGiftFlowApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

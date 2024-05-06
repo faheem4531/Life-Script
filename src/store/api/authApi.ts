@@ -390,6 +390,26 @@ export async function signupApiWithGift(data: any) {
     }
   }
 }
+export async function signupApiWithInAppGiftApi(data: any) {
+  try {
+    const res = await api.post("/auth/create/gift/in-App", {...data, inAppGiftFlow:true});
+    console.log("signupApiWithInAppGiftApi",res)
+    // localStorage.setItem("accessRole", res?.data?.accessRole);
+    // localStorage.setItem("token", res?.accessToken);
+    // localStorage.setItem("username", res.data.name);
+    // localStorage.setItem("userId", res.data._id);
+    // localStorage.setItem("userEmail", res.data.email);
+
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed to Sign up");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
 
 export async function verifyEmailApi(data: VerifyEmail) {
   localStorage.clear();
