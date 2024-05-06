@@ -9,7 +9,7 @@ const SelectRelationModal = ({
   setFamilyModal,
 }) => {
   return (
-    <Box>
+    <Box sx={{ bgcolor: "" }}>
       <CustomizationDialog
         open={familyRelationModal}
         title="Select Family Member"
@@ -19,6 +19,7 @@ const SelectRelationModal = ({
         customStyles={{
           width: { md: "500px", sm: "400px", xs: "100%" },
           p: { md: "20px", sm: "15px", xs: "10px" },
+          color: "#30422E"
         }}
       >
         <Box
@@ -34,11 +35,11 @@ const SelectRelationModal = ({
                 key={index}
                 sx={{
                   width: "100%",
-                  bgcolor: "#F9F9F9",
-                  color: "black",
+                  bgcolor: "#FFFFFF",
+                  color: "#30422E",
                   borderRadius: "6.091px",
                   mb: "10px",
-                  borderLeft: "8.25px solid #186F65",
+                  borderLeft: "8.25px solid #7F886B",
                 }}
                 onClick={() => {
                   setFamilyRelationModal(false);

@@ -344,9 +344,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const elbow = (d, i) => {
       const yOffset = d.target.data.spouseName ? -55 : 0;
-      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${
-        d.target.x + yOffset
-      }H${d.target.y + 10}`;
+      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${d.target.x + yOffset
+        }H${d.target.y + 10}`;
     };
 
     const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
@@ -431,7 +430,7 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("y1", y1)
         .attr("x2", x2)
         .attr("y2", y2)
-        .style("stroke", "black")
+        .style("stroke", "#30422E")
         .style("stroke-width", 2);
     };
 
@@ -446,10 +445,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-          ? "b. " + born
-          : died
-          ? "d. " + died
-          : "b. Not Known";
+            ? "b. " + born
+            : died
+              ? "d. " + died
+              : "b. Not Known";
       renderText(76, -50, age || "", `${styles.dateLocation}`);
       renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
@@ -462,10 +461,10 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
-          ? "b. " + spouseBorn
-          : spouseDied
-          ? "d. " + spouseDied
-          : "b. Not Known";
+            ? "b. " + spouseBorn
+            : spouseDied
+              ? "d. " + spouseDied
+              : "b. Not Known";
       renderText(76, 60, spouseAge || "", `${styles.dateLocation}`);
       renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
@@ -560,10 +559,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-          ? "b. " + born
-          : died
-          ? "d. " + died
-          : "b. Not Known";
+            ? "b. " + born
+            : died
+              ? "d. " + died
+              : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, true);
       renderImage(14, -45, d.data.image || profileIcon);
       renderText(76, -20, d.data.name || "", `${styles.name}`);
@@ -631,7 +630,6 @@ const FamilyTree = ({ familyTreeData }) => {
           position: "absolute",
           top: "0%",
           left: "0%",
-          // background: "red",
           transform: {
             md: "translate(-0%, -25%)",
             sm: "translate(-5%, -25%)",
@@ -643,7 +641,7 @@ const FamilyTree = ({ familyTreeData }) => {
           id="familyTree"
           style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
-          // style={{ maxWidth: "1000px", maxHeight: "600px" }}
+        // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
 

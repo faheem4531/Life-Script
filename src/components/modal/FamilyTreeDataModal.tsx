@@ -193,7 +193,7 @@ const FamilyTreeDataModal = ({
                 width: { md: "100px", sm: "90px", xs: "80px" },
                 height: { md: "100px", sm: "90px", xs: "80px" },
                 borderRadius: "50%",
-                border: "1px solid #186F65",
+                border: "1px solid #30422E",
                 position: "relative",
                 flexShrink: "0",
               }}
@@ -255,7 +255,7 @@ const FamilyTreeDataModal = ({
               sx={{
                 mt: "20px",
                 fontSize: { md: "16.06px", sm: "14px", xs: "12px" },
-                color: "#171725",
+                color: "#30422E",
               }}
             >
               Gender
@@ -274,7 +274,7 @@ const FamilyTreeDataModal = ({
                     <Radio
                       sx={{
                         "&.Mui-checked .MuiSvgIcon-root": {
-                          fill: "rgba(25, 112, 101, 1)",
+                          fill: "#30422E",
                         },
                       }}
                     />
@@ -285,7 +285,7 @@ const FamilyTreeDataModal = ({
                         ml: { md: 0.6, sm: 0.5, xs: 0.25 },
                         fontSize: { md: "15px", sm: "14px", xs: "12px" },
                         fontWeight: 400,
-                        color: "rgba(0, 0, 0, 0.6)",
+                        color: "#30422E",
                       }}
                     >
                       Male
@@ -301,7 +301,7 @@ const FamilyTreeDataModal = ({
                     <Radio
                       sx={{
                         "&.Mui-checked .MuiSvgIcon-root": {
-                          fill: "rgba(25, 112, 101, 1)",
+                          fill: "#30422E",
                         },
                       }}
                     />
@@ -310,7 +310,7 @@ const FamilyTreeDataModal = ({
                     <Typography
                       sx={{
                         fontWeight: 400,
-                        color: "rgba(0, 0, 0, 0.6)",
+                        color: "#30422E",
                         ml: { md: 0.6, sm: 0.5, xs: 0.25 },
                         fontSize: { md: "15px", sm: "14px", xs: "12px" },
                       }}
@@ -328,7 +328,7 @@ const FamilyTreeDataModal = ({
                     <Radio
                       sx={{
                         "&.Mui-checked .MuiSvgIcon-root": {
-                          fill: "rgba(25, 112, 101, 1)",
+                          fill: "#30422E",
                         },
                       }}
                     />
@@ -339,7 +339,7 @@ const FamilyTreeDataModal = ({
                         ml: { md: 0.6, sm: 0.5, xs: 0.25 },
                         fontSize: { md: "15px", sm: "14px", xs: "12px" },
                         fontWeight: 400,
-                        color: "rgba(0, 0, 0, 0.6)",
+                        color: "#30422E",
                       }}
                     >
                       Unknown
@@ -356,7 +356,7 @@ const FamilyTreeDataModal = ({
           >
             <Typography
               sx={{
-                color: "#171725",
+                color: "#30422E",
                 fontSiz: { md: "16.06px", sm: "14px", xs: "12px" },
                 mb: "10px",
               }}
@@ -364,15 +364,16 @@ const FamilyTreeDataModal = ({
               Full Name
             </Typography>
             <TextField
-              placeholder="* Enter text (20 characters limit)"
+              placeholder="Enter full name"
               value={inputValueName}
               onChange={handleInputChangeName}
               inputProps={{ maxLength: 20 }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "17px",
-                  border: "1px solid #186F65",
-                  height: "35px",
+                  borderRadius: "4px",
+                  border: "1px solid #30422E",
+                  height: "45px",
+                  bgcolor: "#fff",
                   pl: "5px",
                   fontSize: "14px",
                 },
@@ -395,7 +396,7 @@ const FamilyTreeDataModal = ({
           >
             <Typography
               sx={{
-                color: "#171725",
+                color: "#30422E",
                 fontSiz: { md: "16.06px", sm: "14px", xs: "12px" },
                 mb: "10px",
               }}
@@ -403,15 +404,16 @@ const FamilyTreeDataModal = ({
               Location of Birth
             </Typography>
             <TextField
-              placeholder="Enter text (20 characters limit)"
+              placeholder="Enter the location of birth"
               value={inputValueLocation}
               onChange={handleInputChangeLocation}
               inputProps={{ maxLength: 20 }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "17px",
-                  border: "1px solid #186F65",
-                  height: "35px",
+                  borderRadius: "4px",
+                  border: "1px solid #30422E",
+                  height: "45px",
+                  bgcolor: "#fff",
                   pl: "5px",
                   fontSize: "14px",
                 },
@@ -430,7 +432,7 @@ const FamilyTreeDataModal = ({
           <Box mt={"20px"}>
             <Typography
               sx={{
-                color: "#171725",
+                color: "#30422E",
                 fontSiz: { md: "16.06px", sm: "14px", xs: "12px" },
                 mb: "10px",
                 mt: "20px",
@@ -445,9 +447,10 @@ const FamilyTreeDataModal = ({
               // shouldDisableDate={(date) => !isDateOfBirthValid(date)}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "17px",
-                  border: "1px solid #186F65",
-                  height: "35px",
+                  borderRadius: "4px",
+                  border: "1px solid #30422E",
+                  height: "45px",
+                  bgcolor: "#fff",
                   pl: "5px",
                   fontSize: "14px",
                 },
@@ -471,7 +474,7 @@ const FamilyTreeDataModal = ({
               sx={{
                 mt: "20px",
                 fontSize: "16.06px",
-                color: "#171725",
+                color: "#30422E",
               }}
             >
               Living
@@ -489,7 +492,7 @@ const FamilyTreeDataModal = ({
                     <Radio
                       sx={{
                         "&.Mui-checked .MuiSvgIcon-root": {
-                          fill: "rgba(25, 112, 101, 1)",
+                          fill: "#30422E",
                         },
                       }}
                     />
@@ -500,7 +503,7 @@ const FamilyTreeDataModal = ({
                         ml: { md: 0.6, sm: 0.5, xs: 0.25 },
                         fontSize: { md: "15px", sm: "14px", xs: "12px" },
                         fontWeight: 400,
-                        color: "rgba(0, 0, 0, 0.6)",
+                        color: "#30422E",
                       }}
                     >
                       Living
@@ -516,7 +519,7 @@ const FamilyTreeDataModal = ({
                     <Radio
                       sx={{
                         "&.Mui-checked .MuiSvgIcon-root": {
-                          fill: "rgba(25, 112, 101, 1)",
+                          fill: "#30422E",
                         },
                       }}
                     />
@@ -525,7 +528,7 @@ const FamilyTreeDataModal = ({
                     <Typography
                       sx={{
                         fontWeight: 400,
-                        color: "rgba(0, 0, 0, 0.6)",
+                        color: "#30422E",
                         ml: { md: 0.6, sm: 0.5, xs: 0.25 },
                         fontSize: { md: "15px", sm: "14px", xs: "12px" },
                       }}
@@ -542,7 +545,7 @@ const FamilyTreeDataModal = ({
             <Box mt={"20px"}>
               <Typography
                 sx={{
-                  color: "#171725",
+                  color: "#30422E",
                   fontSiz: { md: "16.06px", sm: "14px", xs: "12px" },
                   mb: "10px",
                 }}
@@ -557,9 +560,10 @@ const FamilyTreeDataModal = ({
                 // shouldDisableDate={(date) => !isDateOfDeathValid(date)}
                 sx={{
                   "& .MuiOutlinedInput-root": {
-                    borderRadius: "17px",
-                    border: "1px solid #186F65",
-                    height: "35px",
+                    borderRadius: "4px",
+                    border: "1px solid #30422E",
+                    height: "45px",
+                    bgcolor: "#fff",
                     pl: "5px",
                     fontSize: "14px",
                   },
@@ -576,11 +580,20 @@ const FamilyTreeDataModal = ({
             </Box>
           )}
 
-          <Box mt={"20px"}>
+          <Box mt={"30px"} sx={{ display: "flex", columnGap: "20px" }}>
             <GlobelBtn
-              btnText="Submit"
+              btnText="Delete"
+              color="#E1683B"
+              bgColor="transparent"
+              border="1px solid #E1683B"
+              // onClick={handleSubmit}
+              // disabled={!inputValueName}
+              width="100%"
+            />
+            <GlobelBtn
+              btnText="Save"
               color="white"
-              bgColor="#197065"
+              bgColor="#30422E"
               onClick={handleSubmit}
               disabled={!inputValueName}
               width="100%"
