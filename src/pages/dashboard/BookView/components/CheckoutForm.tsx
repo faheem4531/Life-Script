@@ -68,8 +68,8 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
   }, [luluPaymentStatus]);
 
   useEffect(() => {
-      dispatch(updateLuluPaymentStatus(" "));
-      setStripeSucceed(false);
+    dispatch(updateLuluPaymentStatus(" "));
+    setStripeSucceed(false);
   }, []);
 
   const handleSubmit = async (event) => {
@@ -123,12 +123,13 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
       {stripeFailed ? (
         <Box
           sx={{
-            bgcolor: "#F8F6F9",
-            borderRadius: "6px",
+            bgcolor: "rgba(244, 244, 244, 0.90)",
+            borderRadius: "4px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "90%",
+            color: "#30422E"
           }}
         >
           <Box>
@@ -164,12 +165,14 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
       ) : !stripeSucceed ? (
         <Box
           sx={{
-            bgcolor: "#F8F6F9",
-            borderRadius: "6px",
+            bgcolor: "rgba(244, 244, 244, 0.90)",
+            borderRadius: "4px",
             display: "flex",
             flexDirection: "column",
             gap: "20px",
             p: "30px 24px",
+            color: "#30422E"
+
           }}
         >
           <Typography
@@ -202,7 +205,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
               sx={{
                 width: "100%",
                 marginTop: "10px",
-                borderRadius: "50px",
+                borderRadius: "4px",
                 backgroundColor: "white",
                 p: "12px 35px",
                 border: "1px solid #186F65",
@@ -232,7 +235,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
               sx={{
                 marginTop: "10px",
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px",
+                  borderRadius: "4px",
                   backgroundColor: "white",
                   border: "1px solid #186F65",
                   height: "46px",
@@ -262,7 +265,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
                 sx={{
                   width: "100%",
                   marginTop: "10px",
-                  borderRadius: "50px",
+                  borderRadius: "4px",
                   backgroundColor: "white",
                   p: "12px 35px",
                   border: "1px solid #186F65",
@@ -288,7 +291,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
                 sx={{
                   width: "100%",
                   marginTop: "10px",
-                  borderRadius: "50px",
+                  borderRadius: "4px",
                   backgroundColor: "white",
                   p: "12px 35px",
                   border: "1px solid #186F65",
@@ -307,8 +310,8 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
             sx={{ opacity: loading || isError || !cardHolderName ? 0.6 : 1 }}
           ></Box>
           <GlobelBtn
-            btnText="Proceed to pay"
-            bgColor=" #197065"
+            btnText={loading ? "Loading..." : `${"Buy for $"} ${remainingPayment}`}
+            bgColor=" #E1683B"
             color="white"
             p="10px 0px"
             onClick={() => {

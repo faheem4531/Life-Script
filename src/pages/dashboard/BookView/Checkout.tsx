@@ -66,7 +66,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             mb: "40px",
           }}
         >
-          <Box mt="-7px">
+          <Box >
             <Checkbox
               color="success"
               checked={isChecked}
@@ -84,8 +84,8 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             as it is.
           </Typography>
         </Box>
-        <Box display={"flex"} sx={{ bgcolor: "#F3ECDA", borderRadius: "4px", p: "20px 0" }}>
-          {remainingPayment > 0 && (
+        <Box display={"flex"} sx={{ flexDirection: { md: "row", xs: "column", sm: "column" }, gap: "30px", bgcolor: "#F3ECDA", borderRadius: "4px", p: "20px 30px" }}>
+          {payment > 0 && (
             <Box
               sx={{
                 flex: 1,
@@ -94,7 +94,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
               <Elements stripe={stripePromise}>
                 <CheckoutForm
                   quantity={count}
-                  remainingPayment={remainingPayment}
+                  remainingPayment={payment}
                 />
               </Elements>
             </Box>
@@ -103,7 +103,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             sx={{
               flex: 1,
               display: "flex",
-              justifyContent: remainingPayment > 0 ? "end" : "center",
+              justifyContent: payment > 0 ? "end" : "center",
             }}
           >
             <Box width={"100%"}>
@@ -147,7 +147,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             <GlobelBtn
               bgColor="#E1683B"
               color="white"
-              btnText={loading ? "Loading..." : `${"Buy for $"} ${payment}`}
+              btnText={"Finish"}
               disabled={!isChecked}
               border="0px"
               onClick={!loading && handleFinish}
