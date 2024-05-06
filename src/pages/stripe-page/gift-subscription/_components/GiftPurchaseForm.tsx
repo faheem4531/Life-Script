@@ -1,7 +1,7 @@
 "use client"
 import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
 import Check from "@/_assets/svg/varifiedCheck.svg";
-import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
+import { stripePaymentInAppGiftFlow, stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
 import CheckIcon from '@mui/icons-material/Check';
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import {
@@ -48,7 +48,8 @@ const useOptions = () => {
 };
 
 
-const GiftPurchaseForm = ({ onClick, selectedTab}) => {
+const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) => {
+  // console.log("ans giftToUser====",giftToUser)
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
@@ -150,18 +151,45 @@ const GiftPurchaseForm = ({ onClick, selectedTab}) => {
       // };
 
       // console.log("Payload:", payload);
+      // dispatch(
+      //   stripePaymentRegister({
+      //     country: "USA",
+      //     amount: totalPrice,
+      //     token: result.token,
+      //     packageName: replaceCategory(category),
+      //     cardHolderName: cardHolderName,
+      //     numberOfBooks: selectedBooks && selectedBooks,
+      //     bookPrice: selectedBooks && selectedBooks * 39,
+      //     commission: commissionState,
+      //     processFrom: giftFrom && giftFrom ? "gift" :"register"
+      //   })
+      // )
+
       dispatch(
-        stripePaymentRegister({
-          country: "USA",
-          amount: totalPrice,
-          token: result.token,
-          packageName: replaceCategory(category),
-          cardHolderName: cardHolderName,
-          numberOfBooks: selectedBooks && selectedBooks,
-          bookPrice: selectedBooks && selectedBooks * 39,
-          commission: commissionState,
-          processFrom: giftFrom && giftFrom ? "gift" :"register"
-        })
+        inAppGiftFlow === "true"
+          ? stripePaymentInAppGiftFlow({
+              country: "USA",
+              amount: totalPrice,
+              token: result.token,
+              packageName: replaceCategory(category),
+              cardHolderName: cardHolderName,
+              numberOfBooks: selectedBooks && selectedBooks,
+              bookPrice: selectedBooks && selectedBooks * 39,
+              commission: commissionState,
+              processFrom: "inAppGiftFlow",
+              user_id: giftToUser
+            })
+          : stripePaymentRegister({
+              country: "USA",
+              amount: totalPrice,
+              token: result.token,
+              packageName: replaceCategory(category),
+              cardHolderName: cardHolderName,
+              numberOfBooks: selectedBooks && selectedBooks,
+              bookPrice: selectedBooks && selectedBooks * 39,
+              commission: commissionState,
+              processFrom: giftFrom && giftFrom ? "gift" : "register"
+            })
       )
         .unwrap()
         .then(async (res) => {
@@ -182,6 +210,10 @@ const GiftPurchaseForm = ({ onClick, selectedTab}) => {
             }
           } else {
             setStripeSucceed(true);
+          }
+          //localStorage clear
+            if (giftFrom === "gift") {
+              localStorage.clear();
           }
         })
         .catch((error) => {

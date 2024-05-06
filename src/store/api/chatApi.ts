@@ -468,10 +468,11 @@ export async function stripPaymentApi(data: any) {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
+      // "ngrok-skip-browser-warning": true,
     };
     const res = await axios.post(
-      "https://api.thelifescript.com/users/stripe/payment",
-      // "https://7a44-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
+      // "https://api.thelifescript.com/users/stripe/payment",
+      "https://eab8-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
       data,
       { headers }
     );
@@ -492,10 +493,36 @@ export async function stripPaymentRegisterApi(data: any) {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
+      // "ngrok-skip-browser-warning": true,
     };
     const res = await axios.post(
       "https://api.thelifescript.com/users/stripe/register-payment",
-      // "https://7a44-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
+      // "https://eab8-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
+      data,
+      { headers }
+    );
+    return res.data;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+export async function stripPaymentInAppGiftFlowApi(data: any) {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      acceptinternalaccess: "acceptinternalaccess",
+      "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": true,
+    };
+    const res = await axios.post(
+      "https://api.thelifescript.com/users/stripe/gift-payment/in-app",
+      // "https://eab8-116-58-9-130.ngrok-free.app/users/stripe/gift-payment/in-app",
       data,
       { headers }
     );

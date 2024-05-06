@@ -1,17 +1,28 @@
-import { Box, Button, Divider, TextField, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import GiftPlanCard from './GiftPlanCard';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
+import { useRouter } from 'next/router';
+import GiftPlanCard from './GiftPlanCard';
 
-import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { signupWithGift, signupWithInAppGift } from '@/store/slices/authSlice';
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
-import { signupWithGift } from '@/store/slices/authSlice';
+import { useState } from 'react';
 
-const DeliveryForm = ({ onClick, selectedTab}) => {
+const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToUser}) => {
+
+  // const [giftToUser, setGiftToUser] = useState('')
+
+  console.log("inAppGiftFlow-------",inAppGiftFlow )
+  console.log("newData",newData )
+  
+  // if(inAppGiftFlow && inAppGiftFlow){
+  //   console.log("DeliveryForm====inAppGiftFlow",inAppGiftFlow)
+  // }
+
+  
 
   // const [sendMessage, setSendMessage] = useState("");
   // const [receiverName, setReceiverName] = useState("");
@@ -20,12 +31,52 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
   const { t } = useTranslation();
   const router = useRouter();
 
-
   // const minDate = new Date();
   const minDate = new Date().toISOString();
 
 
 
+  // const formik = useFormik({
+  //   initialValues: {
+  //     name: "",
+  //     email: "",
+  //     sendGiftDate: "",
+  //     giftFrom: "",
+  //     giftFromName:"",
+  //     giftMessage: "",
+  //   },
+  //   onSubmit: async (values) => {
+  //     try {
+  //       await dispatch(signupWithGift(values))
+  //         .unwrap()
+  //         .then((res) => {
+  //           // console.log("API Response", res)
+  //           // messageField(res?.giftMessage)
+  //           // NameField(res?.name)
+  //           // DateField(res?.sendGiftDate)
+
+  //           // Storing in localStorage
+  //           localStorage.setItem("sendMessage", res?.giftMessage);
+  //           localStorage.setItem("receiverName", res?.name);
+  //           localStorage.setItem("selectedDate", res?.sendGiftDate);
+  //         });
+  //       // toast.success(t("signup-page.verificationEmailSent"));
+
+  //       onClick(selectedTab + 1);
+  //     } catch (error) {
+  //       toast.error(error?.message || t("signup-page.failedSignup"));
+  //     }
+  //   },
+  //   validationSchema: Yup.object({
+  //     email: Yup.string().email().required(t("signup-page.emailRequired")),
+  //     name: Yup.string().required(t("signup-page.nameRequired")),
+  //     sendGiftDate: Yup.date().required("Please select a date"),
+  //     giftFrom: Yup.string().email().required("Enter your email"),
+  //     giftFromName: Yup.string().required("Enter your name"),
+  //     giftMessage: Yup.string().required("Gift message is required"),
+  //     // Add more validation rules as needed
+  //   }),
+  // });
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -35,23 +86,58 @@ const DeliveryForm = ({ onClick, selectedTab}) => {
       giftFromName:"",
       giftMessage: "",
     },
+    // onSubmit: async (values) => {
+    //   try {
+    //     if(inAppGiftFlow && inAppGiftFlow){
+    //       console.log("inAppGiftFlowinAppGiftFlowinAppGiftFlowinAppGiftFlow====",inAppGiftFlow )
+      
+    //       await dispatch(signupWithInAppGift(values))
+    //     }
+
+    //     await dispatch(signupWithGift(values))
+    //       .unwrap()
+    //       .then((res) => {
+    //         // console.log("API Response", res)
+    //         // messageField(res?.giftMessage)
+    //         // NameField(res?.name)
+    //         // DateField(res?.sendGiftDate)
+
+    //         // Storing in localStorage
+    //         localStorage.setItem("sendMessage", res?.giftMessage);
+    //         localStorage.setItem("receiverName", res?.name);
+    //         localStorage.setItem("selectedDate", res?.sendGiftDate);
+    //       });
+    //     // toast.success(t("signup-page.verificationEmailSent"));
+
+    //     onClick(selectedTab + 1);
+    //   } catch (error) {
+    //     toast.error(error?.message || t("signup-page.failedSignup"));
+    //   }
+    // },
     onSubmit: async (values) => {
       try {
-        await dispatch(signupWithGift(values))
-          .unwrap()
+        if (inAppGiftFlow === "true") {
+          await dispatch(signupWithInAppGift(values)).unwrap()
           .then((res) => {
-            // console.log("API Response", res)
-            // messageField(res?.giftMessage)
-            // NameField(res?.name)
-            // DateField(res?.sendGiftDate)
-
-            // Storing in localStorage
+            console.log("response",res)
+            setGiftToUser(res?._id)
             localStorage.setItem("sendMessage", res?.giftMessage);
             localStorage.setItem("receiverName", res?.name);
             localStorage.setItem("selectedDate", res?.sendGiftDate);
           });
-        // toast.success(t("signup-page.verificationEmailSent"));
-
+        } else {
+          // console.log("inAppGiftFlow not present, dispatching signupWithGift");
+          await dispatch(signupWithGift(values))
+            .unwrap()
+            .then((res) => {
+              // Store response in localStorage
+              localStorage.setItem("sendMessage", res?.giftMessage);
+              localStorage.setItem("receiverName", res?.name);
+              localStorage.setItem("selectedDate", res?.sendGiftDate);
+            });
+        }
+    
+        // Increment selectedTab
         onClick(selectedTab + 1);
       } catch (error) {
         toast.error(error?.message || t("signup-page.failedSignup"));

@@ -24,6 +24,7 @@ import {
   signupApi,
   signupApiWithBuy,
   signupApiWithGift,
+  signupApiWithInAppGiftApi,
   stripeDoneApi,
   stripPaymentLuluApi,
   updateLuluShippingApi,
@@ -312,6 +313,17 @@ export const signupWithGift = createAsyncThunk<UserData, any>(
   async (data: any) => {
     try {
       const response = await signupApiWithGift(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+export const signupWithInAppGift = createAsyncThunk<UserData, any>(
+  "auth/create/gift/in-App",
+  async (data: any) => {
+    try {
+      const response = await signupApiWithInAppGiftApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);

@@ -53,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/stripe-page/sso-redirecting",
       "/_auth/fb-redirecting"
     ];
+
     // new1 code
     // const queryParams = new URLSearchParams(window.location.search);
     //     const id = queryParams.get("id");
@@ -143,6 +144,11 @@ export default function App({ Component, pageProps }: AppProps) {
     if (publicRoutes.some((route) => route.includes(currentPath))) {
       if (!userLoggedIn)
         id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
+      else if(currentPath === "/stripe-page/gift-subscription") {
+        // Handle the case when user is logged in and accessing gift-subscription page
+        // Here you can decide whether to redirect or not based on your requirements
+        setLoading(false);
+      }
       else router.push("/dashboard/chapters");
       setLoading(false);
     } else if (currentPath == "/" && userLoggedIn) {
