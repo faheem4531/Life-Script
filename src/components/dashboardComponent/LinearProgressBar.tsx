@@ -10,19 +10,18 @@ function LinearProgressWithLabel(
     <Box
       sx={{
         display: "flex",
-        padding: "6px 3px",
+        // padding: "6px 3px",
         alignItems: "center",
         position: "relative",
-        border: "2px solid #7f886b",
-        height: "35px",
-        bgcolor: "#F9F9F9",
-        borderRadius: "10px",
+        height: "29px",
+        bgcolor: "rgba(127, 136, 107, 0.30)",
+        borderRadius: "4px",
       }}
     >
       <Stack sx={{ width: "100%", color: "#7f886b" }} spacing={2}>
         <LinearProgress
           sx={{
-            height: "27px", bgcolor: "#F9F9F9", borderRadius: "30px", "& .MuiLinearProgress-bar": {
+            height: "27px", bgcolor: "rgba(127, 136, 107, 0.30)", borderRadius: "2px", "& .MuiLinearProgress-bar": {
               backgroundColor: "#7f886b", // Custom color for the progress bar
             },
           }}
