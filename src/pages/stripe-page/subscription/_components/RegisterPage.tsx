@@ -106,7 +106,7 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
       dispatch(signupWithBuy(data))
         .unwrap()
         .then(() => {
-          toast.success(t("signup-page.verificationEmailSent"));
+          // toast.success(t("signup-page.verificationEmailSent"));
           onClick(selectedTab + 1)
         })
         .catch((error: any) => {
