@@ -491,6 +491,16 @@ const RichText = ({ questionId }) => {
                   btnText={`${t("richText.MAC")}`}
                 />
               )}
+              {true && (
+                <GlobelBtn
+                  onClick={saveUserAnswer}
+                  disabled={
+                    draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                      .length < 9
+                  }
+                  btnText={"Save"}
+                />
+              )}
             </Box>
           </Box>
         </Box>
