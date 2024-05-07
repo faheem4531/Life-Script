@@ -13,7 +13,7 @@ import {
 } from "@stripe/react-stripe-js";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
@@ -21,6 +21,7 @@ import stripeLogo from "../../../../../public/stripeLogo.svg";
 // import PaymentProcessingModal from './Modal';
 import PaymentProcessingModal from '../../subscription/_components/Modal';
 import GiftPlanCard from "./GiftPlanCard";
+import { useRouter } from 'next/router';
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -69,6 +70,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
   const stripe = useStripe();
   const elements = useElements();
   const { t } = useTranslation();
+  const router = useRouter();
 
 
   const price = localStorage.getItem("price")
@@ -248,7 +250,19 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
 
   // console.log("commissionState======", commissionState)
 
-
+  useEffect(() => {
+    const handleRouteChange = () => {
+      // Clear localStorage and sign out logic here
+      localStorage.clear();// Clear localStorage
+      // Your sign out logic goes here, such as dispatching an action to clear the session
+    };
+    // Listen for route changes
+    router.events.on('beforeHistoryChange', handleRouteChange);
+    // Clean up the event listener when the component unmounts
+    return () => {
+      router.events.off('beforeHistoryChange', handleRouteChange);
+    };
+  }, [router]);
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>

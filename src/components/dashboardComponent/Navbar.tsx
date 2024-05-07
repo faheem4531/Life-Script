@@ -65,12 +65,12 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
 
   const handleClickOption = (option) => {
     if (option.id === 1) {
-      dispatch(resetChatState());
       localStorage.clear();
       signOut();
+      handleMoreClose();
+      dispatch(resetChatState());
       // router.push("/");
     }
-    handleMoreClose();
   };
 
   let buttonsHide;
