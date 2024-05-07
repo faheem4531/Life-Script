@@ -468,11 +468,9 @@ export async function stripPaymentApi(data: any) {
       Authorization: `Bearer ${token}`,
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
-      // "ngrok-skip-browser-warning": true,
     };
     const res = await axios.post(
-      // "https://api.thelifescript.com/users/stripe/payment",
-      "https://eab8-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
+      "https://api.thelifescript.com/users/stripe/payment",
       data,
       { headers }
     );
