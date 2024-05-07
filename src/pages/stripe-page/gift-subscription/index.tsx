@@ -25,10 +25,10 @@ const GiftSubscriptionPage = () => {
 
   const [giftToUser, setGiftToUser] = useState('')
   const router = useRouter();
-  const { inAppGiftFlow} = router.query;
+  const { inAppGiftFlow } = router.query;
   const [giftParams, setGiftParams] = useState(inAppGiftFlow)
-  console.log("inAppGiftFlow",inAppGiftFlow)
-  console.log("giftParams",giftParams )
+  console.log("inAppGiftFlow", inAppGiftFlow)
+  console.log("giftParams", giftParams)
 
   // const [inAppGift, setInAppGift] = useState(null);
 
@@ -40,13 +40,13 @@ const GiftSubscriptionPage = () => {
   // console.log("inAppGift", inAppGift);
 
 
-// const [sendMessage, setSendMessage] = useState("");
-//   const [receiverName, setReceiverName] = useState("");
-//   const [selectedDate, setSelectedDate] = useState("");
+  // const [sendMessage, setSendMessage] = useState("");
+  //   const [receiverName, setReceiverName] = useState("");
+  //   const [selectedDate, setSelectedDate] = useState("");
 
-//   console.log("sendMessage-----",sendMessage)
-//   console.log("receiverName-----",receiverName)
-//   console.log("selectedDate-----",selectedDate)
+  //   console.log("sendMessage-----",sendMessage)
+  //   console.log("receiverName-----",receiverName)
+  //   console.log("selectedDate-----",selectedDate)
 
   // const dispatch: any = useDispatch();
   const [selectedTab, setSelectedTab] = useState(0);
@@ -70,8 +70,8 @@ const GiftSubscriptionPage = () => {
   };
 
   const tabsData = [
-    { label: 'CHOOSE PLAN', active: selectedTab === 0 },
-    { label: 'DELIVERY', active: selectedTab === 1 },
+    { label: 'CHOOSE PLAN', active: selectedTab >= 0 },
+    { label: 'DELIVERY', active: selectedTab >= 1 },
     // { label: 'REGISTER', active: selectedTab === 2 && !session },
     { label: 'PAYMENT', active: selectedTab === 2 },
   ];
@@ -113,7 +113,7 @@ const GiftSubscriptionPage = () => {
         <Box sx={{ position: 'relative' }}>
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <GiftTabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 1 && <DeliveryForm selectedTab={selectedTab} onClick={handleTabClick} inAppGiftFlow={giftParams} newData="newDara" setGiftToUser={setGiftToUser}/>}
+            {selectedTab === 1 && <DeliveryForm selectedTab={selectedTab} onClick={handleTabClick} inAppGiftFlow={giftParams} newData="newDara" setGiftToUser={setGiftToUser} />}
 
             {/* {selectedTab === 2 && !session && <GiftRegisterPage selectedTab={selectedTab} onClick={handleTabClick} />} */}
             {selectedTab === 2 &&

@@ -42,9 +42,9 @@ const SubscriptionPage = () => {
           type: "register"
         };
         dispatch(facebookLogin(payload))
-          .unwrap() 
-          .then((res)=>{
-            console.log("Res Console Subscription" ,res)
+          .unwrap()
+          .then((res) => {
+            console.log("Res Console Subscription", res)
             setSelectedTab(2);
             toast.success("login with facebook");
           })
@@ -53,7 +53,7 @@ const SubscriptionPage = () => {
             toast.error("User Already Exist");
             // setSelectedTab(1);
             // router.push("/")
-        });
+          });
       }
     }
   }, [session, dispatch]);
@@ -99,8 +99,8 @@ const SubscriptionPage = () => {
 
 
   const tabsData = [
-    { label: 'CHOOSE PLAN', active: selectedTab === 0 },
-    { label: 'REGISTER', active: selectedTab === 1 && !session && handleGoogleLogin },
+    { label: 'CHOOSE PLAN', active: selectedTab >= 0 },
+    { label: 'REGISTER', active: selectedTab >= 1 && !session && handleGoogleLogin },
     // { label: 'REGISTER', active: selectedTab === 1 && session && handleGoogleLogin  },
     { label: 'PAYMENT', active: selectedTab === 2 },
   ];
