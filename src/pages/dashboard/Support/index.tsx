@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
+import FrameImage from "@/_assets/svg/Frame.svg";
 
 const SupportScreen = () => {
   const dispatch: any = useDispatch();
@@ -173,7 +174,8 @@ const SupportScreen = () => {
         handleClose={() => {
           setShowModal(false);
         }}
-        customStyles={{ backgroundColor: "auto" }}
+        // customStyles={{ backgroundColor: "auto" }}
+        customStyles={{ backgroundColor: "#f3ecda", borderRadius: "5px" }}
       >
         <Box sx={{ textAlign: "center", p: "20px" }}>
           <Box
@@ -185,7 +187,8 @@ const SupportScreen = () => {
           >
             <Image
               alt="image"
-              src={ModalImage}
+              // src={ModalImage}
+              src={FrameImage}
               style={{
                 width: "100%",
                 height: "100%",
@@ -195,8 +198,8 @@ const SupportScreen = () => {
           <Typography
             sx={{
               fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
-              fontWeight: 700,
-              color: "#070707",
+              fontWeight: 900,
+              color: "#30422e",
               margin: "15px 0",
             }}
           >
@@ -205,7 +208,7 @@ const SupportScreen = () => {
           <Typography
             sx={{
               fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
-              color: "#070707",
+              color: "#30422e",
               // width: "400px",
             }}
           >
@@ -220,12 +223,12 @@ const SupportScreen = () => {
           >
             <GlobelBtn
               btnText={`${t("support.ok")}`}
-              bgColor="#197065"
-              borderRadius="23px"
+              bgColor="#e1693b"
+              // borderRadius="23px"
               color="#fff"
               // width={{ md: "234px", sm: "153px", xs: "103px" }}
               // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
-              border="1px solid #197065"
+              border="1px solid #e1693b"
               onClick={() => {
                 setShowModal(false);
               }}
