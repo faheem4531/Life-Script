@@ -218,19 +218,19 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
 
   // console.log("commissionState======", commissionState)
 
-  useEffect(() => {
-    const handleRouteChange = () => {
-      // Clear localStorage and sign out logic here
-      localStorage.clear();// Clear localStorage
-      // Your sign out logic goes here, such as dispatching an action to clear the session
-    };
-    // Listen for route changes
-    router.events.on('beforeHistoryChange', handleRouteChange);
-    // Clean up the event listener when the component unmounts
-    return () => {
-      router.events.off('beforeHistoryChange', handleRouteChange);
-    };
-  }, [router]);
+  // useEffect(() => {
+  //   const handleRouteChange = () => {
+  //     // Clear localStorage and sign out logic here
+  //     localStorage.clear();// Clear localStorage
+  //     // Your sign out logic goes here, such as dispatching an action to clear the session
+  //   };
+  //   // Listen for route changes
+  //   router.events.on('beforeHistoryChange', handleRouteChange);
+  //   // Clean up the event listener when the component unmounts
+  //   return () => {
+  //     router.events.off('beforeHistoryChange', handleRouteChange);
+  //   };
+  // }, [router]);
 
 
   return (
