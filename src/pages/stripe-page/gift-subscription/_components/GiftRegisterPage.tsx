@@ -95,8 +95,8 @@ const GiftRegisterPage = ({ onClick, selectedTab }) => {
         });
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required(t("signup-page.emailRequired")),
-      name: Yup.string().required(t("signup-page.nameRequired")),
+      email: Yup.string().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, "Invalid email format").required(t("signup-page.emailRequired")),
+      name: Yup.string().matches(/^[A-Za-z\s]+$/, "Name must contain only letters").required("Name is required"),
     }),
   });
 
@@ -269,8 +269,8 @@ const GiftRegisterPage = ({ onClick, selectedTab }) => {
                 },
               }}
               onClick={(event) => formik.handleSubmit()}
-              // onClick={() => onClick(selectedTab + 1)}
-              >
+            // onClick={() => onClick(selectedTab + 1)}
+            >
               Continue
             </Button>
           </Box>

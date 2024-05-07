@@ -22,7 +22,7 @@ import facebookIcon from "../../../../../public/facebookIcon.svg";
 import googleLogo from "../../../../../public/googleIcon.svg";
 import BasicPlanCard from "./BasicPlanCard";
 
-const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
+const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
   const dispatch: any = useDispatch();
   const { data: session } = useSession();
 
@@ -32,7 +32,7 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
       callbackUrl: "/stripe-page/subscription",
     });
   };
- 
+
   // const handleSignin = async (e) => {
   //   e.preventDefault();
   //   try {
@@ -114,8 +114,9 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
         });
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required(t("signup-page.emailRequired")),
-      name: Yup.string().required(t("signup-page.nameRequired")),
+      email: Yup.string().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, "Invalid email format").required(t("signup-page.emailRequired")),
+      name: Yup.string().matches(/^[A-Za-z\s]+$/, "Name must contain only letters").required("Name is required"),
+
     }),
   });
 
@@ -288,8 +289,8 @@ const RegisterPage = ({ onClick, selectedTab , handleGoogleLogin }) => {
                 },
               }}
               onClick={(event) => formik.handleSubmit()}
-              // onClick={() => onClick(selectedTab + 1)}
-              >
+            // onClick={() => onClick(selectedTab + 1)}
+            >
               Continue
             </Button>
           </Box>
