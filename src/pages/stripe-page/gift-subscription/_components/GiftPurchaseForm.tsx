@@ -48,7 +48,7 @@ const useOptions = () => {
 };
 
 
-const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) => {
+const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) => {
   // console.log("ans giftToUser====",giftToUser)
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
@@ -168,28 +168,28 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) =>
       dispatch(
         inAppGiftFlow === "true"
           ? stripePaymentInAppGiftFlow({
-              country: "USA",
-              amount: totalPrice,
-              token: result.token,
-              packageName: replaceCategory(category),
-              cardHolderName: cardHolderName,
-              numberOfBooks: selectedBooks && selectedBooks,
-              bookPrice: selectedBooks && selectedBooks * 39,
-              commission: commissionState,
-              processFrom: "inAppGiftFlow",
-              user_id: giftToUser
-            })
+            country: "USA",
+            amount: totalPrice,
+            token: result.token,
+            packageName: replaceCategory(category),
+            cardHolderName: cardHolderName,
+            numberOfBooks: selectedBooks && selectedBooks,
+            bookPrice: selectedBooks && selectedBooks * 39,
+            commission: commissionState,
+            processFrom: "inAppGiftFlow",
+            user_id: giftToUser
+          })
           : stripePaymentRegister({
-              country: "USA",
-              amount: totalPrice,
-              token: result.token,
-              packageName: replaceCategory(category),
-              cardHolderName: cardHolderName,
-              numberOfBooks: selectedBooks && selectedBooks,
-              bookPrice: selectedBooks && selectedBooks * 39,
-              commission: commissionState,
-              processFrom: giftFrom && giftFrom ? "gift" : "register"
-            })
+            country: "USA",
+            amount: totalPrice,
+            token: result.token,
+            packageName: replaceCategory(category),
+            cardHolderName: cardHolderName,
+            numberOfBooks: selectedBooks && selectedBooks,
+            bookPrice: selectedBooks && selectedBooks * 39,
+            commission: commissionState,
+            processFrom: giftFrom && giftFrom ? "gift" : "register"
+          })
       )
         .unwrap()
         .then(async (res) => {
@@ -212,8 +212,8 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) =>
             setStripeSucceed(true);
           }
           //localStorage clear
-            if (giftFrom === "gift") {
-              localStorage.clear();
+          if (giftFrom === "gift") {
+            localStorage.clear();
           }
         })
         .catch((error) => {
@@ -427,7 +427,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) =>
 
                     <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: "100%", marginTop: "20px" }}>
                       <Typography sx={{ fontSize: "14px" }}>
-                        We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&rsquos terms and conditions and privacy policy.
+                        We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&apos;s terms and conditions and privacy policy.
                       </Typography>
                     </Box>
                   </Box>
@@ -439,7 +439,9 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) =>
                     <Button
                       variant="contained"
                       color="primary"
-                      disabled={!cardHolderName || !subscribeUpdates || isError}
+                      disabled={!cardHolderName 
+                        // || !subscribeUpdates 
+                        || isError}
                       onClick={handleSubmit}
                       sx={{
                         width: "200px",
@@ -480,8 +482,8 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser}) =>
             <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
               <GiftPlanCard
                 price={(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}
-                category={category} 
-                />
+                category={category}
+              />
             </Box>
           </Box>
         </Box>
