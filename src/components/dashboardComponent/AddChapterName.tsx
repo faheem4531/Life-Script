@@ -121,7 +121,8 @@ const AddChapterName = ({
                   md: "32px",
                   lg: "45px",
                 },
-                fontFamily: "Avenir8 !important"
+                fontWeight: 700
+                // fontFamily: "Avenir8 !important"
               }}
             >
               {chapter}
