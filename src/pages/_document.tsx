@@ -26,8 +26,11 @@ export default function Document() {
             `,
           }}
         />
+
+
+
         {/* Google Analytics Code */}
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-RGM8D41H5K"
         />
@@ -40,7 +43,22 @@ export default function Document() {
           
             gtag('config', 'G-RGM8D41H5K');
           `}
-        </Script>
+        </Script> */}
+
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JE728HQH09"></script>
+        <script>
+          {
+            `  window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-JE728HQH09');`
+          }
+        </script>
+
+
+
 
         <Script
           async
@@ -112,7 +130,7 @@ export default function Document() {
 
         {/* Rewardful Script */}
         <Script
-        id="Rewardful"
+          id="Rewardful"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,r){w._rwq=r;w[r]=w[r]||function(){(w[r].q=w[r].q||[]).push(arguments)}})(window,'rewardful');
