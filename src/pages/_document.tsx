@@ -46,20 +46,6 @@ export default function Document() {
         </Script>
 
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JE728HQH09"></script>
-        <script>
-          {
-            `  window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-JE728HQH09');`
-          }
-        </script>
-
-
-
-
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"
