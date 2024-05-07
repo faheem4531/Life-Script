@@ -11,18 +11,19 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useState } from 'react';
 
-const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToUser}) => {
+const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToUser }) => {
+  // const [minDate, setMinDate] = useState(new Date());
 
   // const [giftToUser, setGiftToUser] = useState('')
 
-  console.log("inAppGiftFlow-------",inAppGiftFlow )
-  console.log("newData",newData )
-  
+  console.log("inAppGiftFlow-------", inAppGiftFlow)
+  console.log("newData", newData)
+
   // if(inAppGiftFlow && inAppGiftFlow){
   //   console.log("DeliveryForm====inAppGiftFlow",inAppGiftFlow)
   // }
 
-  
+
 
   // const [sendMessage, setSendMessage] = useState("");
   // const [receiverName, setReceiverName] = useState("");
@@ -83,14 +84,14 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToU
       email: "",
       sendGiftDate: "",
       giftFrom: "",
-      giftFromName:"",
+      giftFromName: "",
       giftMessage: "",
     },
     // onSubmit: async (values) => {
     //   try {
     //     if(inAppGiftFlow && inAppGiftFlow){
     //       console.log("inAppGiftFlowinAppGiftFlowinAppGiftFlowinAppGiftFlow====",inAppGiftFlow )
-      
+
     //       await dispatch(signupWithInAppGift(values))
     //     }
 
@@ -118,13 +119,13 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToU
       try {
         if (inAppGiftFlow === "true") {
           await dispatch(signupWithInAppGift(values)).unwrap()
-          .then((res) => {
-            console.log("response",res)
-            setGiftToUser(res?._id)
-            localStorage.setItem("sendMessage", res?.giftMessage);
-            localStorage.setItem("receiverName", res?.name);
-            localStorage.setItem("selectedDate", res?.sendGiftDate);
-          });
+            .then((res) => {
+              console.log("response", res)
+              setGiftToUser(res?._id)
+              localStorage.setItem("sendMessage", res?.giftMessage);
+              localStorage.setItem("receiverName", res?.name);
+              localStorage.setItem("selectedDate", res?.sendGiftDate);
+            });
         } else {
           // console.log("inAppGiftFlow not present, dispatching signupWithGift");
           await dispatch(signupWithGift(values))
@@ -136,7 +137,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToU
               localStorage.setItem("selectedDate", res?.sendGiftDate);
             });
         }
-    
+
         // Increment selectedTab
         onClick(selectedTab + 1);
       } catch (error) {
@@ -144,11 +145,11 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToU
       }
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required(t("signup-page.emailRequired")),
-      name: Yup.string().required(t("signup-page.nameRequired")),
-      sendGiftDate: Yup.date().required("Please select a date"),
-      giftFrom: Yup.string().email().required("Enter your email"),
-      giftFromName: Yup.string().required("Enter your name"),
+      email: Yup.string().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, "Invalid email format").required(t("signup-page.emailRequired")),
+      name: Yup.string().matches(/^[A-Za-z\s]+$/, "Name must contain only letters").required("Name is required"),
+      sendGiftDate: Yup.date().min(new Date(), "Please select a future date").required("Please select a date"),
+      giftFrom: Yup.string().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, "Invalid email format").required("Sender's email is required"),
+      giftFromName: Yup.string().matches(/^[A-Za-z\s]+$/, "Sender's name must contain only letters").required("Sender's name is required"),
       giftMessage: Yup.string().required("Gift message is required"),
       // Add more validation rules as needed
     }),
@@ -296,7 +297,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToU
                     bgcolor: "white",
                   }}
                 />
-              {formik.touched.giftFrom && formik.errors.giftFrom && (
+                {formik.touched.giftFrom && formik.errors.giftFrom && (
                   <span style={{ color: "red" }}>{formik.errors.giftFrom}</span>
                 )}
               </Box>
@@ -322,7 +323,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, newData, setGiftToU
                     bgcolor: "white",
                   }}
                 />
-              {formik.touched.giftFromName && formik.errors.giftFromName && (
+                {formik.touched.giftFromName && formik.errors.giftFromName && (
                   <span style={{ color: "red" }}>{formik.errors.giftFromName}</span>
                 )}
               </Box>
