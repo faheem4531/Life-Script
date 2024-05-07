@@ -33,7 +33,8 @@ const SelectBookCoverHeader = ({ discription, img }) => {
         <Typography
           sx={{
             fontSize: { xs: "20px", sm: "28px", md: "32px", lg: "45px" },
-            fontFamily: "Avenir8 !important"
+            fontWeight: 700
+            // fontFamily: "Avenir8 !important"
           }}
         >
           {discription}
