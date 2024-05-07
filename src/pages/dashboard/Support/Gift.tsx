@@ -54,7 +54,7 @@ const Gift = () => {
               onClick={() => {
                 router.push("/dashboard/Support/ReferAFriend");
               }}
-              disabled={accessRole}
+              disabled={accessRole === "FreePlan"}
             />
           </Box>
         </Box>
