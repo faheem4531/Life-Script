@@ -227,12 +227,12 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
 
 
   const dropDownOptions = [
-    { value: 0, label: 'Included with Subscription', hidden: true },
-    { value: 1, label: "(1 extra books)", price: "+ $78", color: "#e1693b" },
-    { value: 2, label: "(2 extra books)", price: "+ $138", color: "#e1693b" },
-    { value: 3, label: "(3 extra books)", price: "+ $679", color: "#e1693b" },
-    { value: 4, label: "(4 extra books)", price: "+ $378", color: "#e1693b" },
-    { value: 5, label: "(5 extra books)", price: "+ $455", color: "#e1693b" }
+    { value: 0, label: '1 book Included with Subscription', hidden: true },
+    { value: 1, label: "(1 extra books)", price: "+ $39", color: "#e1693b" },
+    { value: 2, label: "(2 extra books)", price: "+ $78", color: "#e1693b" },
+    { value: 3, label: "(3 extra books)", price: "+ $117", color: "#e1693b" },
+    { value: 4, label: "(4 extra books)", price: "+ $156", color: "#e1693b" },
+    { value: 5, label: "(5 extra books)", price: "+ $195", color: "#e1693b" }
   ];
 
   const handleChange = (event) => {
@@ -291,7 +291,8 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
                   {dropDownOptions.map((option, index) => (
                     <MenuItem key={option.value} value={option.value} hidden={option.hidden}>
                       {selectedBooks === option.value && <CheckIcon sx={{ marginRight: '8px', color: "#e1693b" }} />} {/* Conditional rendering */}
-                      <span>{`${index + 1}. ${option.label}`}</span>
+                      {/* <span>{`${index + 1}. ${option.label}`}</span> */}
+                      <span>{`${option.label}`}</span>
                       <span style={{ color: option.color, marginLeft: "10px" }}>{option.price}</span>
                     </MenuItem>
                   ))}
