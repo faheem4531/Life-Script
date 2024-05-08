@@ -19,6 +19,7 @@ import {
 import styles from "./styles.module.css";
 import MicListing from "@/_assets/svg/mic-listing.svg";
 import MicOff from "@/_assets/svg/mic-off.svg";
+import TextSave from "@/_assets/svg/save-text-icon.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
 import { default as GlobelBtn } from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
@@ -478,6 +479,10 @@ const RichText = ({ questionId }) => {
                       ? `${t("richText.stop")}`
                       : `${t("richText.STT")}`
                 }
+                color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
+
+                bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
+                border="1px solid #E1683B"
                 onClick={handleSpeechtoText}
               />
 
@@ -489,6 +494,9 @@ const RichText = ({ questionId }) => {
                       .length < 9
                   }
                   btnText={`${t("richText.MAC")}`}
+                  color="#E1683B"
+                  bgColor="#fff"
+                  border="1px solid #E1683B"
                 />
               )}
               {true && (
@@ -498,7 +506,11 @@ const RichText = ({ questionId }) => {
                     draftToHtml(convertToRaw(editorState.getCurrentContent()))
                       .length < 9
                   }
+                  image={TextSave}
                   btnText={"Save"}
+                  bgColor="#30422E"
+                  color="#fff"
+                  width="150px"
                 />
               )}
             </Box>
