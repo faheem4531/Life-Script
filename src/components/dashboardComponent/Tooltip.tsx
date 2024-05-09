@@ -50,3 +50,28 @@ export default function Tooltip({
     </Box>
   );
 }
+
+
+export function TooltipMsg({ width, left, top, bottom, right }) {
+  return (
+    <Box sx={{
+      bgcolor: "#fff",
+      border: "1px solid #30422E",
+      borderRadius: "4px",
+      boxShadow: "7px 10px 50px rgba(0, 0, 0, 0.25)",
+      zIndex: "5",
+      padding: "15px 15px",
+      position: "absolute",
+      color: "#30422E",
+      fontSize: { sm: "14px", xs: "10px" },
+      lineHeight: "20px",
+      width: width,
+      left: left,
+      top: top,
+      bottom: bottom,
+      right: right
+    }}>
+      you cannot slect more than 2 chapters in free trail
+    </Box>
+  )
+}

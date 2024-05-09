@@ -7,6 +7,7 @@ import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
 import { getTemplatesMain, selectTemplates, selectedChapters } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { TooltipMsg } from '@/components/dashboardComponent/Tooltip';
 
 export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const dispatch: any = useDispatch();
@@ -126,8 +127,17 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             justifyContent: "flex-end",
             alignItems: "end",
             gap: 2,
+            position: "relative"
           }}
         >
+          {!isPremium && (markAllChecked || checkedIds.length > 2) && <TooltipMsg
+            width="240px"
+            bottom="80px"
+            left=""
+            right="40px"
+            top=""
+          />
+          }
           <GlobelBtn
             bgColor="#ffffff"
             border='1px solid #E1683B'
@@ -137,17 +147,16 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             onClick={onClickBack}
             image={backArrow}
           />
-          <Tooltip title={!isPremium && markAllChecked || checkedIds.length > 2 ? " you can clone only 2 chapters" : ""}>
-            <GlobelBtn
-              disabled={!isPremium && (markAllChecked || checkedIds.length > 2)}
-              borderRadius="4px"
-              bgColor="#E1683B"
-              color="white"
-              btnText="Next"
-              onClick={handleNext}
-              image2={NextArrow}
-            />
-          </Tooltip>
+
+          <GlobelBtn
+            disabled={!isPremium && (markAllChecked || checkedIds.length > 2)}
+            borderRadius="4px"
+            bgColor="#E1683B"
+            color="white"
+            btnText="Next"
+            onClick={handleNext}
+            image2={NextArrow}
+          />
         </Box>
       </Box>
 
