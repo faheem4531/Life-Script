@@ -344,7 +344,7 @@ export default function TabTwo({
           gap: 2,
         }}
       >
-        <GlobelBtn
+        {/* <GlobelBtn
           bgColor="#ffffff"
           border='1px solid #E1683B'
           borderRadius="4px"
@@ -352,7 +352,7 @@ export default function TabTwo({
           btnText="Back"
           onClick={onClickBack}
           image={backArrow}
-        />
+        /> */}
         <Tooltip
           open={showTooltip}
           onClose={() => setShowTooltip(false)}

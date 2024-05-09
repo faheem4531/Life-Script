@@ -1,5 +1,5 @@
 import GlobelBtn from "@/components/button/Button";
-import { Box, Checkbox, Typography } from "@mui/material";
+import { Box, Checkbox, Tooltip, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
@@ -14,6 +14,8 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const [checkedIds, setCheckedIds] = useState([]);
   const [checkedIdsAll, setCheckedIdsAll] = useState([]);
   const [markAllChecked, setMarkAllChecked] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
+
   const router = useRouter();
 
   const handleCheckboxChange = (id, isChecked) => {
@@ -29,7 +31,24 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
     }
   };
 
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      const jwt = require("jsonwebtoken");
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwt.decode(token);
+        console.log("decodedToke", decodedToken);
+        const accessRole = decodedToken?.accessRole;
+
+        if (accessRole !== "FreePlan") {
+          setIsPremium(true);
+        }
+      }
+    }
+  }, []);
+
   function handleNext() {
+
     if (markAllChecked) {
       dispatch(selectedChapters(markAllChecked ? templates.map((template) => template._id) : []))
     }
@@ -118,15 +137,17 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             onClick={onClickBack}
             image={backArrow}
           />
-
-          <GlobelBtn
-            borderRadius="4px"
-            bgColor="#E1683B"
-            color="white"
-            btnText="Next"
-            onClick={handleNext}
-            image2={NextArrow}
-          />
+          <Tooltip title={!isPremium && markAllChecked || checkedIds.length > 2 ? " you can clone only 2 chapters" : ""}>
+            <GlobelBtn
+              disabled={!isPremium && (markAllChecked || checkedIds.length > 2)}
+              borderRadius="4px"
+              bgColor="#E1683B"
+              color="white"
+              btnText="Next"
+              onClick={handleNext}
+              image2={NextArrow}
+            />
+          </Tooltip>
         </Box>
       </Box>
 

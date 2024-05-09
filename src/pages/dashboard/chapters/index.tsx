@@ -213,6 +213,7 @@ const Dashboard = () => {
                   }
                 }}
                 chapters={chapters}
+                isPremium={isPremium}
               />
             </Box>
           ) : (
@@ -254,7 +255,7 @@ const Dashboard = () => {
           />
         </Box>
         <Typography
-          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px", color:"#30422e" } }}
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px", color: "#30422e" } }}
         >
           {updateChapterModal
             ? `${t("ChModals.updateChName")}`
