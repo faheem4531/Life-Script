@@ -18,6 +18,7 @@ import Word4 from "@/_assets/png/achievements/word-4.png"
 import Word3 from "@/_assets/png/achievements/word-3.png"
 import Word2 from "@/_assets/png/achievements/word-2.png"
 import Word1 from "@/_assets/png/achievements/word-1.png"
+import Word0 from "@/_assets/png/achievements/word-0.png"
 import Chapter8 from "@/_assets/png/achievements/chapter-8.png"
 import Chapter7 from "@/_assets/png/achievements/chapter-7.png"
 import Chapter6 from "@/_assets/png/achievements/chapter-6.png"
@@ -26,6 +27,7 @@ import Chapter4 from "@/_assets/png/achievements/chapter-4.png"
 import Chapter3 from "@/_assets/png/achievements/chapter-3.png"
 import Chapter2 from "@/_assets/png/achievements/chapter-2.png"
 import Chapter1 from "@/_assets/png/achievements/chapter-1.png"
+import Chapter0 from "@/_assets/png/achievements/chapter-0.png"
 import Query8 from "@/_assets/png/achievements/query-8.png"
 import Query7 from "@/_assets/png/achievements/query-7.png"
 import Query6 from "@/_assets/png/achievements/query-6.png"
@@ -34,6 +36,7 @@ import Query4 from "@/_assets/png/achievements/query-4.png"
 import Query3 from "@/_assets/png/achievements/query-3.png"
 import Query2 from "@/_assets/png/achievements/query-2.png"
 import Query1 from "@/_assets/png/achievements/query-1.png"
+import Query0 from "@/_assets/png/achievements/query-0.png"
 import Time8 from "@/_assets/png/achievements/time-8.png"
 import Time7 from "@/_assets/png/achievements/time-7.png"
 import Time6 from "@/_assets/png/achievements/time-6.png"
@@ -42,6 +45,7 @@ import Time4 from "@/_assets/png/achievements/time-4.png"
 import Time3 from "@/_assets/png/achievements/time-3.png"
 import Time2 from "@/_assets/png/achievements/time-2.png"
 import Time1 from "@/_assets/png/achievements/time-1.png"
+import Time0 from "@/_assets/png/achievements/time-0.png"
 
 
 
@@ -127,7 +131,7 @@ const Profile = ({ data }) => {
     let WordbadgeImage, WordtooltipText;
 
     if (wordCount < 1000) {
-      WordbadgeImage = Grey;
+      WordbadgeImage = Word0;
       WordtooltipText = 'Word Wizard will be opened after writing at least 1000 words';
     } else if (wordCount >= 1000 && wordCount < 3000) {
       WordbadgeImage = Word1;
@@ -162,7 +166,7 @@ const Profile = ({ data }) => {
     let QsbadgeImage, QstooltipText;
 
     if (questionsCount < 5) {
-      QsbadgeImage = Grey;
+      QsbadgeImage = Query0;
       QstooltipText = 'Query Master will be opened after writing at least 5 Questions';
     } else if (questionsCount >= 5 && questionsCount < 10) {
       QsbadgeImage = Query1;
@@ -197,7 +201,7 @@ const Profile = ({ data }) => {
     let ChapterbadgeImage, ChaptertooltipText;
 
     if (chaptersCount == 0) {
-      ChapterbadgeImage = Grey;
+      ChapterbadgeImage = Chapter0;
       ChaptertooltipText = 'Chapter Champ will be opened after completing at least 1 chapter';
     } else if (chaptersCount >= 1 && chaptersCount < 3) {
       ChapterbadgeImage = Chapter1;
@@ -232,7 +236,7 @@ const Profile = ({ data }) => {
     let timebadgeImage, timetooltipText;
 
     if (timeCount.includes('m')) {
-      timebadgeImage = Grey;
+      timebadgeImage = Time0;
       timetooltipText = 'Time Tracker will be opened after writing for at least 1 hour';
     } else if (timeCount.includes('h')) {
       const hours = parseInt(timeCount);
