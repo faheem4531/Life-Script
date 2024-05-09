@@ -44,6 +44,19 @@ export default function NewApp({ children }) {
     });
   }, []);
 
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      const jwt = require("jsonwebtoken");
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwt.decode(token);
+        console.log("decodedToke", decodedToken);
+        const accessRole = decodedToken?.accessRole;
+        socket.emit("joinRoom", decodedToken._id);
+      }
+    }
+  }, []);
+
   return (
     <>
       <I18nextProvider i18n={i18n}>

@@ -21,6 +21,7 @@ export async function loginApi(data: LoginData) {
     localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    localStorage.setItem("onBoarding", res.data.onBoarding);
 
     return res.data;
   } catch (error: any) {
@@ -65,6 +66,7 @@ export async function googleLoginApi(data: { credential: string, type:string }) 
     localStorage.setItem("language", res.data.language);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    localStorage.setItem("onBoarding", res.data.onBoarding);
     socket.emit("joinRoom", res.data._id);
 
     return res.data;
@@ -87,6 +89,7 @@ export async function facebookLoginApi(data: { credential: string }) {
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    localStorage.setItem("onBoarding", res.data.onBoarding);
 
     return res.data;
   } catch (error: any) {
@@ -109,6 +112,7 @@ export async function googleSignupApi(data: { credential: string, type:string })
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    localStorage.setItem("onBoarding", res.data.onBoarding);
 
     return res.data;
   } catch (error: any) {
@@ -130,6 +134,7 @@ export async function facebookSignupApi(data: { credential: string }) {
     localStorage.setItem("username", res.data.name);
     localStorage.setItem("userId", res.data._id);
     localStorage.setItem("userEmail", res.data.email);
+    localStorage.setItem("onBoarding", res.data.onBoarding);
 
     return res.data;
   } catch (error: any) {
