@@ -1,6 +1,7 @@
 import BgRounded from "@/_assets/png/overview-welcome-bg.png";
 import Welcome from "@/_assets/png/overview-welcome-card.png";
 import ContineWriting from "@/_assets/svg/continue-writing.svg";
+import Radius from "@/_assets/svg/profile-radius.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -97,7 +98,7 @@ const WelcomeOverview = () => {
           color="#30422E"
           btnText={`${t("overView.headerBtnText")}`}
           onClick={() => router.push("/dashboard/chapters")}
-          width={"220px"} />
+          width={"225px"} />
       </Box>
       <Box
         sx={{
@@ -108,15 +109,20 @@ const WelcomeOverview = () => {
           pl: "50px",
           bgcolor: ""
         }}
-      > {!userImage ? (
-        <Image
-          alt="profile"
-          src={DemoProfile}
-          className={styles.profilePic}
-        />
-      ) : (
-        <img alt="profile" src={userImage} className={styles.profilePic} />
-      )}
+      >
+        <Box sx={{ position: "relative", width: "150px", height: "150px", display: "flex", justifyContent: "center", alignItems: "center" }} >
+
+          {!userImage ? (
+            <Image
+              alt="profile"
+              src={DemoProfile}
+              className={styles.profilePic}
+            />
+          ) : (
+            <img alt="profile" src={userImage} className={styles.profilePic} />
+          )}
+          <Image src={Radius} alt='img' className={styles.profileBox} />
+        </Box>
         <Typography
           sx={{
             fontSize: "20px",

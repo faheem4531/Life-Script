@@ -31,8 +31,8 @@ const GlobelBtn = ({
   border,
   borderRadius = "4px",
   fontSize = {
-    md: "20px",
-    sm: "15px",
+    md: "18px",
+    sm: "14px",
     xs: "12.827px",
   },
   p = "10px 24px",
