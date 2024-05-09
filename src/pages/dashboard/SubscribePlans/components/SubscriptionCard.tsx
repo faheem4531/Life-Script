@@ -97,7 +97,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     <Box
       sx={{
         borderRadius: "8px",
-        maxWidth: btnCheck ? "300px" : "500px",
+        maxWidth: btnCheck ? "420px" : "600px",
         height: btnCheck ? "660px" : "575px",
         width: "100%",
         position: "relative",

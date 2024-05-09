@@ -98,8 +98,9 @@ const SubscribePlan = () => {
               display: "flex",
               gap: { xs: "15px", md: "20px", lg: "40px" },
               mt: "20px",
-              flexWrap: "wrap",
-              justifyContent: { sm: "start", xs: "center" },
+              flexDirection: { md: "row", sm: "column", xs: "column" },
+              justifyContent: { md: "center" },
+              alignItems: "center"
             }}
           >
             <SubscriptionCard
