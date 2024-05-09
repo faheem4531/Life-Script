@@ -21,7 +21,7 @@ const FloatButton = ({ onClick, narrativeRefuse }) => {
             alt="BgLoadImage"
             className={narrativeRefuse ? styles.BgloadImage : styles.BgLoad}
           />
-          <Image alt="image" src={animationLogo} className={styles.loadImage} />
+          {/* <Image alt="image" src={animationLogo} className={styles.loadImage} /> */}
         </Box>
       </Fab>
     </div>

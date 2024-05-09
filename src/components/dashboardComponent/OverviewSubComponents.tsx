@@ -1,6 +1,6 @@
 import ModalImage from "@/_assets/svg/Frame.svg";
 import Book from "@/_assets/svg/viewbook.svg";
-import FamilyTree from "@/_assets/svg/sidebar/family-tree-white.svg";
+import FamilyTree from "@/_assets/svg/overview-family-tree.svg";
 import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
 import { selectLuluPaymentStatus } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
