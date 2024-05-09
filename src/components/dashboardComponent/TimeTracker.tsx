@@ -130,9 +130,11 @@ const TimeTracker = ({ onChange }) => {
         width: "100%",
         display: "flex",
         justifyContent: { md: "space-between", xs: "center" },
-        alignItems: "center",
-        flexWrap: "wrap",
-        pr: "30px",
+        alignItems: { md: "end", sm: "center", xs: "center" },
+        // flexWrap: "wrap",
+        pr: "20px",
+        gap: "20px",
+        flexDirection: { md: "row", sm: "column", xs: "column" }
       }}
       className={styles.trackerbg}
     >
@@ -144,7 +146,7 @@ const TimeTracker = ({ onChange }) => {
           display: "flex",
           justifyContent: "space-around",
           p: "15px 0px",
-          ml: "30px",
+          ml: "12px",
         }}
       >
         <Box
@@ -285,23 +287,26 @@ const TimeTracker = ({ onChange }) => {
       <Box
         sx={{
           position: "relative",
-          ml: "20px",
-          alignSelf: "end",
-          width: "260px",
+          ml: "0px",
+          // alignSelf: "end",
+          width: "340px",
         }}
+
+        className={styles.clockContainer}
       >
         <Image
           src={ClockImage}
           alt="ClockImage"
           style={{
-            width: "110%",
+            width: "100%",
+            height: "100%"
           }}
         />
         <Box
           sx={{
             position: "absolute",
-            right: { xs: "-25px" },
-            bottom: { lg: "40px", md: "50px", xs: "50px" },
+            right: { xs: "13px" },
+            bottom: "25px",
             width: "68px",
             textAlign: "center"
           }}
@@ -323,7 +328,7 @@ const TimeTracker = ({ onChange }) => {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Box >
   );
 };
 

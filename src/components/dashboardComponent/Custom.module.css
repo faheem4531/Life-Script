@@ -16,6 +16,7 @@ top: 0;
 }
 
 
+
 .profileAchivements {
   width: 107px;
   height: 107px;
@@ -105,3 +106,10 @@ top: 0;
     width: 180px;
   }
 }
+
+/* @media (min-width: 1000px) and (max-width: 1300px) {
+
+  .clockContainer {
+    width: 260px;
+  }
+} */
