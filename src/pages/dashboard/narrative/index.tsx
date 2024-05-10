@@ -1,5 +1,6 @@
-import EditIcon from "@/_assets/svg/edit-icon-green.svg";
+import EditIcon from "@/_assets/svg/edit-icon-orange.svg";
 // import NextIcon from "@/_assets/svg/next-iconX.svg";
+import Back from "@/_assets/svg/back-icon.svg";
 // import PreviousIcon from "@/_assets/svg/previous-icon.svg";
 import RevertIcon from "@/_assets/svg/revert-response-icon.svg";
 import BgLogo from '@/_assets/svg/BgLogo.svg';
@@ -128,11 +129,23 @@ const NarrativeResponse = () => {
                   }}
                 >
                   <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Image
-                      alt="image"
-                      src={Title}
-                      className={styles.titleIcon}
-                    />
+                    < Box sx={{
+                      borderRadius: "3px",
+                      backgroundColor: "white",
+                      marginRight: "15px",
+                      width: "48px",
+                      height: "36px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      border: "1px solid #E1693B",
+                      color: "#E1693B"
+                    }}
+                      onClick={() => router.back()}
+                    >
+                      <Image src={Back} alt="back icon" />
+                    </Box>
                     <Box>
                       <Typography
                         sx={{
@@ -171,8 +184,8 @@ const NarrativeResponse = () => {
                       }
                       image={EditIcon}
                       border="1px solid #E1683B"
-                      fontSize={{ xs: "12px" }}
-                      p="5px 15px"
+                      fontSize="14px"
+                      p="7px 15px"
                     />
                   </Box>
 
@@ -184,8 +197,8 @@ const NarrativeResponse = () => {
                       onClick={() => setSaveResponseModal(true)}
                       image={SaveIcon}
                       border="1px solid #E1683B"
-                      fontSize={{ xs: "12px" }}
-                      p="5px 15px"
+                      fontSize="14px"
+                      p="7px 15px"
                     />
                   </Box>
                   <Box>
@@ -197,8 +210,8 @@ const NarrativeResponse = () => {
                         color="#fff"
                         image={SaveIcon}
                         onClick={() => window.open(pdfUrl, '_blank')}
-                        fontSize="12px"
-                        p="5px 15px"
+                        fontSize="14px"
+                        p="8px 15px"
                       />
                     )}
                   </Box>
@@ -208,7 +221,7 @@ const NarrativeResponse = () => {
                 sx={{
                   maxWidth: "632px",
                   height: "100%",
-                  margin: "auto",
+                  margin: "25px auto 0",
                   width: "90%",
                 }}
               >
