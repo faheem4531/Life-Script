@@ -14,6 +14,7 @@ import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import AddQuestion from "@/pages/events/addQuestion";
 import RichTextViewer from "@/pages/events/response";
+import { toast } from "react-toastify";
 import socket from "@/services/socketManager";
 import {
   createQuestion,
@@ -37,9 +38,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Check from "../../../../public/checkIcon.png";
-import addIcon from "../../../_assets/svg/AddIcon.svg";
-import backArrow from "../../../_assets/svg/left.svg";
-import suggestionIcon from "../../../_assets/svg/suggestionsIcon.svg";
+import addIcon from "@/_assets/svg/AddIcon.svg";
+import backArrow from "@/_assets/svg/left.svg";
+import suggestionIcon from "@/_assets/svg/suggestionsIcon.svg";
 import QuestionComponent from "./components/AIGeneration";
 import AddChapter from "./addChapter";
 
@@ -56,6 +57,8 @@ const chapterName = () => {
   const [showFusion, setShowFusion] = useState(false);
   const [questionChanged, setQuestionChanged] = useState(false);
   const [chapterName, setChapterName] = useState("");
+  const [chapterNameModal, setChapterNameModal] = useState("");
+
   const [aiGeneration, setAiGeneration] = useState(false);
   const [emailQuestion, setEmailQuestion] = useState({
     questionTitle: "",
@@ -213,6 +216,7 @@ const chapterName = () => {
     setAllQuestions(question?.questions);
     setaiQuestions(question?.openAiQuestion);
     setChapterName(question?.title);
+    setChapterNameModal(question?.title);
 
     // if (startDefaultChapter && introductionChapter) {}
     // setShowFusion(startDefaultChapter && introductionChapter)
@@ -314,49 +318,19 @@ const chapterName = () => {
       }
     }
   }, []);
-  // console.log("HHHHHHHHH", allQuestions);
 
-  // const submitChapter = (chapter: string) => {
-  //   const actionToDispatch = !updateChapterModal
-  //     ? createChapter({ title: chapter })
-  //     : updateChapter({ id: selectedChapterId, title: chapter });
+  const saveChapterName = () => {
+    dispatch(updateChapter({ title: chapterNameModal, id: chapterId }))
+      .then(() => {
+        toast.success("Chapter name updated successfully");
+      })
+      .catch(() => {
+        toast.error("Failed to update chapter name");
+      });
 
-  //   dispatch(actionToDispatch)
-  //     .unwrap()
-  //     .then(() => {
-  //       const toastMessage = !updateChapterModal
-  //         ? "Chapter created successfully"
-  //         : "Chapter updated successfully";
-
-  //       // toast.success(toastMessage);
-  //       dispatch(getChapters());
-  //     })
-  //     .catch(() => {
-  //       const toastMessage = !updateChapterModal
-  //         ? "Failed to add chapter"
-  //         : "Failed to update chapter";
-
-  //       // toast.error(toastMessage);
-  //     });
-  // };
-
-
-  // const handleCardClick = (data: {
-  //   option: string;
-  //   chapterData: any;
-  //   percentValue: any;
-  // }) => {
-  //   console.log("data.option", data.option);
-  //   if (data?.option === "Edit") {
-  //     setChapterTitle(data?.chapterData?.title);
-  //     setSelectedChapterId(data?.chapterData?._id);
-  //     setUpdateChapterModal(true);
-  //   } else {
-  //     router.push(
-  //       `/dashboard/chapters/chapterName?chapterId=${data?.chapterData?._id}`
-  //     );
-  //   }
-  // };
+    setChapterName(chapterNameModal)
+    setUpdateChapterModal(false);
+  };
 
   return (
     <>
@@ -370,6 +344,7 @@ const chapterName = () => {
           >
 
             <AddChapterName
+              editChapter={setUpdateChapterModal}
               title="chapterName"
               chapter={chapterName}
               chapterId={chapterId}
@@ -811,14 +786,14 @@ const chapterName = () => {
       {/* edit chapter name Modal */}
 
       <CustomizationDialog
-        open={chapterModal || updateChapterModal}
+        open={updateChapterModal}
         title={""}
         handleClose={() => {
-          setChapterModal(false);
           setUpdateChapterModal(false);
         }}
         customStyles={{ backgroundColor: "#f3ecda", textAlign: "center" }}
       >
+        {/* <Box></Box> */}
         <Box
           sx={{
             width: { md: "130px", sm: "100px", xs: "70px" },
@@ -837,23 +812,35 @@ const chapterName = () => {
         <Typography
           sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" }, color: "#30422e", mt: "15px" }}
         >
-          {updateChapterModal
-            ? `${t("ChModals.updateChName")}`
-            : `${t("ChModals.addNewCh")}`}
+          {t("ChModals.updateChName")}
         </Typography>
-        <AddChapter
-          chapterData={(chapter: string) => {
-            setChapterModal(false);
-            submitChapter(chapter);
-            setUpdateChapterModal(false);
+
+        <TextField
+          variant="outlined"
+          value={chapterNameModal}
+          onChange={(e: any) => setChapterNameModal(e.target.value)}
+          disabled={StarterChapter}
+          placeholder="My Adventurous Life"
+          sx={{
+            margin: "10px 0 30px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "4px",
+              backgroundColor: "white",
+            },
+            width: { sm: "300px", lg: "390px" },
           }}
-          data={chapterTitle}
-          btnText={
-            updateChapterModal
-              ? "`${t("ChModals.updateChName")}`"
-        : `${t("ChModals.addNewCh")}`
-          }
         />
+        <Box sx={{ margin: "0 auto 20px", width: "180px" }}>
+          <GlobelBtn
+            disabled={!chapterNameModal || chapterNameModal === chapterName}
+            btnText={"Save"}
+            bgColor="#e1693b"
+            color="#fff"
+            width="180px"
+            onClick={saveChapterName}
+          />
+        </Box>
+
       </CustomizationDialog>
     </>
   );

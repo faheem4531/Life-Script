@@ -14,6 +14,7 @@ import Book from "../../_assets/svg/gift-book.svg";
 import styles from "./AddChapterName.module.css";
 import { useRouter } from "next/router";
 
+import Edit from "@/_assets/svg/edit-chapter.svg";
 
 
 const AddChapterName = ({
@@ -22,12 +23,14 @@ const AddChapterName = ({
   title,
   subTitle,
   StarterChapter,
+  editChapter,
 }: {
   chapter: string;
   chapterId: any;
   title?: string;
   subTitle?: string;
   StarterChapter?: boolean;
+  editChapter: (value: boolean) => void;
 }) => {
   const [chapterName, setChapterName] = useState("");
   const dispatch: any = useDispatch();
@@ -127,61 +130,16 @@ const AddChapterName = ({
               }}
             >
               {chapter}
+
+              {title === "chapterName" && <Image src={Edit}
+                style={{ margin: "0 0 10px 15px", cursor: "pointer" }}
+                alt="back icon"
+                onClick={() => editChapter(true)} />}
+
             </Typography>
           </Box>
-          {/* )} */}
         </Box>
-        {/* {title != "templateView" && (
-          <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginLeft: "80px" }}>
-            <Typography
-              sx={{
-                fontSize: {
-                  xs: "22px",
-                  sm: "24.707px",
-                  md: "28px",
-                  lg: "39.707px",
-                },
-                fontWeight: 600,
-              }}
-            >
-              {chapter}
-              {t("ChName.ChName")}
-            </Typography>
-            <Box>
-              <TextField
-                variant="outlined"
-                value={chapterName}
-                onChange={(e: any) => setChapterName(e.target.value)}
-                disabled={StarterChapter}
-                placeholder="My Adventurous Life"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Box sx={{ cursor: "pointer", mb: "-6px" }}>
-                        <Image
-                          onClick={saveChapterName}
-                          src={Check}
-                          alt="check-icon"
-                          style={{
-                            width: "22.259px",
-                          }}
-                        />
-                      </Box>
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  marginTop: "10px",
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: { sm: "50px", md: "20px" },
-                    backgroundColor: "white",
-                  },
-                  width: { sm: "300px", lg: "390px" },
-                }}
-              />
-            </Box>
-          </Box>
-        )} */}
+
       </Box>
       {
         title !== "gift" && title !== "refer" && <Box
