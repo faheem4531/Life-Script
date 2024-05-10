@@ -177,9 +177,9 @@
     "no": "No"
   },
   "richText": {
-    "detecte": "Detecting...",
+    "detecte": "Detecting",
     "stop": "Stop",
-    "STT": "Speech-to-text",
+    "STT": "Voice-to-text",
     "MAC": "Mark As Complete",
     "ByPreHeading": "Buy Premium",
     "PreDes": "Speech to Text is  only available for Standard and Premium users. Want to buy now?"
