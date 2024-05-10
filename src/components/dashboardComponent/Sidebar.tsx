@@ -388,10 +388,38 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             </a>
           </Box>
 
+
+
+          <Box>
+            <a
+              className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
+                currentRoute === "/dashboard/Support/ReferAFriend"
+                ? styles.active
+                : ""
+                }`}
+              onClick={() => {
+                router.push("/dashboard/Support/Gift");
+              }}
+            >
+              {/* Add your icon and text for the first new option */}
+              <Image
+                alt="icon"
+                className={styles.sidebarIcon}
+                src={
+                  currentRoute === "/dashboard/Support/Gift" ||
+                    currentRoute === "/dashboard/Support/ReferAFriend"
+                    ? GiftWhite
+                    : GiftGreen
+                }
+              />
+              Gift a Book
+            </a>
+          </Box>
+
+
           <Box sx={{ borderTop: "1px solid rgba(48, 66, 46, 0.30)", mt: "-15px ", p: "15px 0 0" }}>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/Support" ||
-                currentRoute === "/dashboard/Support/Gift"
+              className={`${styles.link} ${currentRoute === "/dashboard/Support"
                 ? styles.active
                 : currentRoute === "/dashboard/Support/Tutorials" &&
                 styles.active
@@ -405,7 +433,6 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support" ||
-                    currentRoute === "/dashboard/Support/Gift" ||
                     currentRoute === "/dashboard/Support/Tutorials"
                     ? SuportWhite
                     : SuportGreen
@@ -476,31 +503,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                     Contact Support
                   </a>
                 </Box>
-                <Box sx={{ marginLeft: "20px" }}>
-                  <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
-                      currentRoute === "/dashboard/Support/ReferAFriend"
-                      ? styles.active
-                      : ""
-                      }`}
-                    onClick={() => {
-                      router.push("/dashboard/Support/Gift");
-                    }}
-                  >
-                    {/* Add your icon and text for the first new option */}
-                    <Image
-                      alt="icon"
-                      className={styles.sidebarIcon}
-                      src={
-                        currentRoute === "/dashboard/Support/Gift" ||
-                          currentRoute === "/dashboard/Support/ReferAFriend"
-                          ? GiftWhite
-                          : GiftGreen
-                      }
-                    />
-                    Gift a Book
-                  </a>
-                </Box>
+
               </Box>
             )}
           </Box>
