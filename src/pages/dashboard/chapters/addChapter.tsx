@@ -45,8 +45,8 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
       >
         <GlobelBtn
           disabled={!chapter}
-          // btnText={btnText}
-          btnText={"Add Chapter"}
+          btnText={btnText}
+          // btnText={"Add Chapter"}
           bgColor="#e1693b"
           color="#fff"
           // width={{ md: "234px", sm: "153px", xs: "103px" }}
