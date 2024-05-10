@@ -1,61 +1,179 @@
 export const subBasicList = [
-    {
-      label: "Spelling and grammar assistance",
-    },
-    {
-      label: "Automatic Photo Improvement",
-    },
-    {
-      label: "Text Formatting Features",
-    },
-  ];
-  export  const subStandardList = [
-    {
-      label: "Spelling and grammar assistance",
-    },
-    {
-      label: "Automatic Photo Improvement",
-    },
-    {
-      label: "Text Formatting Features",
-    },
-    {
-      label: "Narrative fusion",
-    },
-    {
-      label: "Voice-to-text ",
-    },
-    {
-      label: "Family Tree ",
-    },
-  ];
+  {
+    label: "Spelling and grammar assistance",
+  },
+  {
+    label: "Automatic Photo Improvement",
+  },
+  {
+    label: "Text Formatting Features",
+  },
+];
+export const subStandardList = [
+  {
+    label: "Spelling and grammar assistance",
+  },
+  {
+    label: "Automatic Photo Improvement",
+  },
+  {
+    label: "Text Formatting Features",
+  },
+  {
+    label: "Narrative fusion",
+  },
+  {
+    label: "Voice-to-text ",
+  },
+  {
+    label: "Family Tree ",
+  },
+];
 
-  export  const subPremiumList = [
-    {
-      label: "Spelling and grammar assistance",
-    },
-    {
-      label: "Automatic Photo Improvement",
-    },
-    {
-      label: "Text Formatting Features",
-    },
-    {
-      label: "Narrative fusion",
-    },
-    {
-      label: "Voice-to-text",
-    },
-    {
-      label: "Family Tree",
-    },
-    {
-      label: "Premium Book Covers",
-    },
-    {
-      label: "Priority Customer Support",
-    },
-    {
-      label: "Exclusive access to new features",
-    },
-  ];
+export const subPremiumList = [
+  {
+    label: "Spelling and grammar assistance",
+  },
+  {
+    label: "Automatic Photo Improvement",
+  },
+  {
+    label: "Text Formatting Features",
+  },
+  {
+    label: "Narrative fusion",
+  },
+  {
+    label: "Voice-to-text",
+  },
+  {
+    label: "Family Tree",
+  },
+  {
+    label: "Premium Book Covers",
+  },
+  {
+    label: "Priority Customer Support",
+  },
+  {
+    label: "Exclusive access to new features",
+  },
+];
+
+
+
+
+export const quotes = [
+
+  "The secret of getting ahead is getting started. - Mark Twain",
+  "Success is the sum of small efforts, repeated day in and day out. - Robert Collier",
+  "The journey of a thousand miles begins with one step. - Lao Tzu",
+  "Small disciplines repeated with consistency every day lead to great achievements gained slowly over time. - John C. Maxwell",
+  "The best time to plant a tree was 20 years ago. The second best time is now. – Chinese Proverb",
+  "The future depends on what you do today. – Mahatma Gandhi",
+  "Don’t wait. The time will never be just right. – Napoleon Hill",
+  "A year from now you will wish you had started today. – Karen Lamb",
+  "Small deeds done are better than great deeds planned. – Peter Marshall",
+  "Consistency is the key to achievement. – Mary McLeod Bethune",
+  "It's not what we do once in a while that shapes our lives, but what we do consistently. – Tony Robbins",
+  "Consistency is what transforms average into excellence. – Unknown",
+  "Share your knowledge. It is a way to achieve immortality. – Dalai Lama XIV",
+  "Wisdom is not a product of schooling but of the lifelong attempt to acquire it. – Albert Einstein",
+  "The wise man does not lay up his own treasures. The more he gives to others, the more he has for his own. – Lao Tzu",
+  "Knowledge that is hoarded is wasted. – Samson Raphael Hirsch",
+  "The sharing of wisdom is greater than any material wealth. – Unknown",
+  "Wisdom is meant to be shared, for wisdom that is hoarded is not wisdom at all. – Unknown",
+  "When you learn, teach. When you get, give. – Maya Angelou",
+  "Teaching is the greatest act of optimism. – Colleen Wilcox",
+  "A good life is a collection of happy memories. – Denis Waitley",
+  "Memories are the architecture of our identity. – Unknown",
+  "We do not remember days, we remember moments. – Cesare Pavese",
+  "The life given us, by nature is short; but the memory of a well-spent life is eternal. – Cicero",
+  "Take care of all your memories. For you cannot relive them. – Bob Dylan",
+  "Memory is the diary we all carry about with us. – Oscar Wilde",
+  "Memories of our lives, of our works and our deeds will continue in others. – Rosa Parks",
+  "The heart that truly loves never forgets. – Proverb",
+  "People won't remember what you said or did, they will remember how you made them feel. – Maya Angelou",
+  "A moment lasts all of a second, but the memory lives on forever. – Unknown",
+  "Stories make us human. We form bonds by swapping personal stories with others, and we cultivate our own humanity in the process. – Dean Koontz",
+  "Your story could be the key that unlocks someone else’s prison. – Unknown",
+  "There is no greater agony than bearing an untold story inside you. – Maya Angelou",
+  "Tell your story. Shout it. Write it. Whisper it if you have to. But tell it. – Emma Jones",
+  "Everyone has a story to tell. Everyone is a writer, some are written in the books and some are confined to hearts. – Savi Sharma",
+  "Your life is your story. Write well. Edit often. – Susan Statham",
+  "If stories come to you, care for them. And learn to give them away where they are needed. – Barry Lopez",
+  "In the end, we'll all become stories. – Margaret Atwood",
+  "Other things may change us, but we start and end with the family. – Anthony Brandt",
+  "In every conceivable manner, the family is link to our past, bridge to our future. – Alex Haley",
+  "Family: where life begins and love never ends. – Unknown",
+  "The unexamined life is not worth living. – Socrates",
+  "There is no greater sorrow than to recall happiness in times of misery. – Dante Alighieri",
+  "Fill your paper with the breathings of your heart. – William Wordsworth",
+  "I am a part of all that I have met. – Alfred Lord Tennyson",
+  "The only real treasure is in your head. Memories are better than diamonds and nobody can steal them from you. – Rodolfo",
+  "All life is an experiment. The more experiments you make the better. – Ralph Waldo Emerson",
+  "Life is really simple, but we insist on making it complicated. – Confucius",
+  "A man's real possession is his memory. In nothing else is he rich, in nothing else is he poor. – Alexander Smith",
+  "Life can only be understood backwards; but it must be lived forwards. – Søren Kierkegaard",
+  "We must always have old memories and young hopes. – Arsène Houssaye",
+  "It is not true that people stop pursuing dreams because they grow old, they grow old because they stop pursuing dreams. – Gabriel García Márquez",
+  "The only real voyage of discovery consists not in seeking new landscapes, but in having new eyes. – Marcel Proust",
+  "Memory is the treasury and guardian of all things. – Cicero",
+  "The palest ink is better than the best memory. – Chinese Proverb",
+  "Setting an example is not the main means of influencing others; it is the only means. – Albert Einstein",
+  "A good example has twice the value of good advice. – Unknown",
+  "What you do has far greater impact than what you say. – Stephen Covey",
+  "Be the change that you wish to see in the world. – Mahatma Gandhi",
+  "No man was ever wise by chance. – Seneca",
+  "Wisdom is the reward you get for a lifetime of listening when you'd have preferred to talk. – Doug Larson",
+  "Education is the kindling of a flame, not the filling of a vessel. – Socrates",
+  "Legacy is not leaving something for people, it's leaving something in people. – Peter Strople",
+  "The greatest use of a life is to spend it on something that will outlast it. – William James",
+  "We do not inherit the Earth from our ancestors; we borrow it from our children. – Native American Proverb",
+  "Live as if you were to die tomorrow. Learn as if you were to live forever. – Mahatma Gandhi",
+  "The future belongs to those who prepare for it today. – Malcolm X",
+  "A generation which ignores history has no past and no future. – Robert Heinlein",
+  "The legacy of heroes is the memory of a great name and the inheritance of a great example. – Benjamin Disraeli",
+  "Every action of our lives touches on some chord that will vibrate in eternity. – Edwin Hubbel Chapin",
+  "We make a living by what we get, but we make a life by what we give. – Winston Churchill",
+  "It is better to light a candle than curse the darkness. – Eleanor Roosevelt",
+  "The work will wait while you show the child the rainbow, but the rainbow won't wait while you do the work. – Patricia Clafford",
+  "You cannot push anyone up a ladder unless he is willing to climb a little. – Andrew Carnegie",
+  "What you leave behind is not what is engraved in stone monuments, but what is woven into the lives of others. – Pericles",
+  "Life is a succession of lessons which must be lived to be understood. – Ralph Waldo Emerson",
+  "The best way to find yourself is to lose yourself in the service of others. – Mahatma Gandhi",
+  "He who plants trees loves others besides himself. – Thomas Fuller",
+  "You teach a little by what you say, more by what you do, but most by what you are. – Anonymous",
+  "To know even one life has breathed easier because you have lived, this is to have succeeded. – Ralph Waldo Emerson",
+  "Footprints on the sands of time are not made by sitting down. – Unknown",
+  "To carry forward a legacy, one must first appreciate the weight of it. – Unknown",
+  "Each generation takes the earth as trustees. – J. Sterling Morton",
+  "Teach the children so it will not be necessary to teach the adults. – Abraham Lincoln",
+  "The key to immortality is first living a life worth remembering. – Bruce Lee",
+  "I believe that every human mind feels pleasure in doing good to another. – Thomas Jefferson",
+  "The proper function of man is to live, not to exist. I shall not waste my days in trying to prolong them. I shall use my time. – Jack London",
+  "What we do for ourselves dies with us. What we do for others and the world remains and is immortal. – Albert Pike",
+  "One generation plants the trees; another gets the shade. – Chinese Proverb",
+  "I am more interested in the legacy of my work than the effect of my existence. – Georges Braque",
+  "The ultimate test of man's conscience may be his willingness to sacrifice something today for future generations whose words of thanks will not be heard. – Gaylord Nelson",
+  "The best way to predict the future is to create it. – Peter Drucker",
+  "A life is not important except in the impact it has on other lives. – Jackie Robinson",
+  "Your story is the greatest legacy that you will leave to your friends. It’s the longest-lasting legacy you will leave to your heirs. – Steve Saint",
+  "Your descendants shall gather your fruits. – Virgil",
+  "When you teach your son, you teach your son's son. – The Talmud",
+  "A book is like a garden carried in the pocket. - Chinese proverb",
+  "When you drink the water, remember the spring. - Chinese proverb",
+  "A single conversation with a wise man is worth a month’s study of books. - Chinese proverb",
+  "To know the road ahead, ask those coming back. - Chinese proverb",
+  "If you want happiness for a lifetime, help the next generation. - Chinese proverb",
+  "A gem is not polished without rubbing, nor a man perfected without trials. - Chinese proverb",
+  "Teach a man to fish and you feed him for a lifetime. - Chinese proverb",
+  "Learning is a treasure that will follow its owner everywhere. - Chinese proverb",
+  "Each generation will reap what the former generation has sown. - Chinese proverb",
+  "Dig the well before you are thirsty. - Chinese proverb",
+  "Do not confine your children to your own learning, for they were born in another time. - Chinese proverb",
+  "If your vision is for a year, plant wheat. If your vision is for ten years, plant trees. If your vision is for a lifetime, plant people. - Chinese proverb",
+  "The ink of the scholar is more sacred than the blood of the martyr. - Chinese proverb",
+  "He who asks a question is a fool for five minutes; he who does not ask a question remains a fool forever. - Chinese proverb",
+
+]

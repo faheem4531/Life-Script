@@ -13,6 +13,7 @@ import GlobelBtn from '../button/Button';
 import DemoProfile from "@/_assets/svg/profile.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
+import { quotes } from '@/utils/subscriptionLists';
 
 const WelcomeOverview = () => {
   const { t } = useTranslation();
@@ -54,6 +55,8 @@ const WelcomeOverview = () => {
       }}
       className={styles.welcomeMain}
     >
+      {/* {t("overView.headerdescription")} */}
+
       <Box>
         <Typography sx={{ fontSize: "18.75px" }}>
           {t("overView.headerWelcome")}
@@ -68,30 +71,7 @@ const WelcomeOverview = () => {
           {" "}
           {userName}
         </Typography>
-        <Typography
-          sx={{
-            fontSize: { xl: "14px", sm: "12px" },
-            fontWeight: 300,
-            lineHeight: "150%",
-            width: "90%",
-            marginBottom: "20px",
-            color: "#30422E",
-            marginTop: "10px",
-          }}
-        >
-          {t("overView.headerdescription")}
-        </Typography>
-        {/* <Button
-          onClick={() => router.push("/dashboard/chapters")}
-          image={ContineWriting}
-          btnText={`${t("overView.headerBtnText")}`}
-          // btnText="| Continue Writing"
-          bgColor="#fff"
-          borderRadius="23px"
-          color="#186F65"
-          fontSize={{ xs: "12px" }}
-          border="0px"
-        /> */}
+        <QuoteRotator />
         <GlobelBtn
           image={ContineWriting}
           bgColor="#FFFFFF"
@@ -135,11 +115,44 @@ const WelcomeOverview = () => {
         >
           {userNameFull}
         </Typography>
-        {/* <Image alt="Welcome" src={Welcome} className={styles.welcomeImage} />
-        <Image alt="Welcome" src={BgRounded} className={styles.bgRounded} /> */}
       </Box>
     </Box>
   );
 };
 
 export default WelcomeOverview;
+
+
+
+
+const QuoteRotator = () => {
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+    }, 10000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [quotes.length]);
+
+  return (
+    <Typography
+      sx={{
+        fontSize: { xl: "14px", sm: "12px" },
+        fontWeight: 300,
+        lineHeight: "150%",
+        width: "90%",
+        marginBottom: "20px",
+        color: "#30422E",
+        marginTop: "10px",
+        transition: 'opacity 1s ease-in-out',
+        opacity: 1,
+      }}
+    >
+      {quotes[currentQuoteIndex]}
+    </Typography>
+  );
+};
