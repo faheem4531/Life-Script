@@ -163,6 +163,10 @@ a {
 .rdw-image-modal-upload-option-label{
   word-break: break-all !important;
 }
+
+.rdw-image-modal-upload-option-image-preview {
+  display: block !important;
+}
 /* .rdw-image-modal-upload-option-label:after{
   position: absolute;
   top: 5px;
