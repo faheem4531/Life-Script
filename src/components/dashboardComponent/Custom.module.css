@@ -13,9 +13,8 @@ top: 0;
   padding: 8px;
   width: 125px;
   height: 125px;
+  object-fit: cover; 
 }
-
-
 
 .profileAchivements {
   width: 107px;
