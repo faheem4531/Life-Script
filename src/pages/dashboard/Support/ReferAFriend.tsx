@@ -40,7 +40,7 @@ const ReferAFriend = () => {
           p: { sm: "0px", xs: "10px 10px" },
         }}
       >
-        <AddChapterName
+        <AddChapterName editChapter={() => { }}
           chapterId
           chapter="Refer a Friend"
           title="refer"

@@ -22,7 +22,7 @@ const TableOfContent = () => {
               p: { sm: "0px", xs: "20px 15px" },
             }}
           >
-            <AddChapterName
+            <AddChapterName editChapter={() => { }}
               chapterId
               chapter={`${t("TOC.TOCHeader")}`}
               title="noBack"

@@ -133,7 +133,7 @@ const chapterName = () => {
             display: { sm: "block", xs: "none" },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId={templateData?._id}
             chapter={templateTitle}
             title="templateView"
@@ -235,7 +235,7 @@ const chapterName = () => {
               </Box>
             ) : (
               // <Loading isLoaded={isLoaded} />
-              <Box sx={{ marginTop: "60px", bgcolor: "#f3ecda", padding: "10px 0 30px", borderRadius:"5px" }}>
+              <Box sx={{ marginTop: "60px", bgcolor: "#f3ecda", padding: "10px 0 30px", borderRadius: "5px" }}>
                 {allQuestions?.length > 0 ? (
                   allQuestions.map((question, index) => (
                     <Questions
@@ -265,7 +265,7 @@ const chapterName = () => {
         }}
         customStyles={{ backgroundColor: "#f3ecda", borderRadius: "5px" }}
       >
-        <Box sx={{ textAlign: "center"}}>
+        <Box sx={{ textAlign: "center" }}>
           <Box
             sx={{
               width: { md: "91.555px", sm: "66.161px", xs: "47px" },

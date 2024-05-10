@@ -27,7 +27,7 @@ const Template = () => {
             display: { sm: "block", xs: "none" },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId
             chapter={`${t("template.temp")}`}
             title="templateView"

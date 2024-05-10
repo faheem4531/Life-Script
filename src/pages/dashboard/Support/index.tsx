@@ -40,7 +40,7 @@ const SupportScreen = () => {
             p: { sm: "0px", xs: "10px 10px" },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId
             chapter={`${t("support.supHeading")}`}
             title="noBack"

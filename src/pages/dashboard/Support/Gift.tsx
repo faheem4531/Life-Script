@@ -19,7 +19,7 @@ const Gift = () => {
             p: { sm: "0px", xs: "10px 10px" },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId
             chapter="Gift a Book"
             title="noBack"
@@ -41,12 +41,12 @@ const Gift = () => {
               image={Pack}
               info="Give a truly meaningful gift to a friend that will be cherished for generations."
               btntext="Send as a gift"
-              onClick={() => { 
+              onClick={() => {
                 router.push({
-                    pathname: "/stripe-page/gift-subscription",
-                    query: { inAppGiftFlow: "true" }
+                  pathname: "/stripe-page/gift-subscription",
+                  query: { inAppGiftFlow: "true" }
                 });
-            }} disabled={undefined}            />
+              }} disabled={undefined} />
             <GiftCard
               image={Refer}
               info="Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!"

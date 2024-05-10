@@ -62,7 +62,7 @@ const Tutorials = () => {
             p: { sm: "0px", xs: "10px 10px" },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId
             chapter="Tutorials & Tips"
             title="noBack"
@@ -128,7 +128,7 @@ export default Tutorials;
 //             p: { sm: "0px", xs: "10px 10px" },
 //           }}
 //         >
-//           <AddChapterName
+//           <AddChapterName editChapter={()=>{}}
 //             chapterId
 //             chapter="Tutorials & Tips"
 //             title="noBack"

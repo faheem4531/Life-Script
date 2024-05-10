@@ -126,7 +126,7 @@ const ProfileSetting = () => {
       }}
     >
       <Layout>
-        <AddChapterName
+        <AddChapterName editChapter={() => { }}
           chapterId
           chapter="Profile Settings"
           title="noBack"

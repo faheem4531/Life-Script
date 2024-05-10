@@ -49,7 +49,7 @@ const BookView = () => {
             },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId
             chapter={
               selectedTab === 0

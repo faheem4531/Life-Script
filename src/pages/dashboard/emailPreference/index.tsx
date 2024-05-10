@@ -54,7 +54,7 @@ const EmailPreference = () => {
             p: { sm: "0px", xs: "10px 10px" },
           }}
         >
-          <AddChapterName
+          <AddChapterName editChapter={() => { }}
             chapterId
             chapter="Email Preferences"
             title="noBack"
