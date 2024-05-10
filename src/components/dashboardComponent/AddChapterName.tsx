@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import BookImage from "@/_assets/png/hero-book.png";
+import Back from "@/_assets/svg/back-icon.svg";
 import Check from "../../_assets/svg/bgTickIcon.svg";
 import Book from "../../_assets/svg/gift-book.svg";
 import styles from "./AddChapterName.module.css";
@@ -70,8 +71,8 @@ const AddChapterName = ({
         position: "absolute",
         top: 12,
         left: 12,
-        width: "40px",
-        height: "30px",
+        width: "48px",
+        height: "36px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -81,7 +82,7 @@ const AddChapterName = ({
       }}
         onClick={() => router.back()}
       >
-        {"<--"}
+        <Image src={Back} alt="back icon" />
       </Box>
       }
       <Box

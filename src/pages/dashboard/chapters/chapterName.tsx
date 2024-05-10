@@ -422,7 +422,7 @@ const chapterName = () => {
               </Typography>
               <Box
                 sx={{
-                  gap: { sm: 4, xs: 2 },
+                  gap: "7px",
                   display: "flex",
                   justifyContent: { xs: "space-between", sm: "end" },
                   width: "100%",
@@ -435,7 +435,8 @@ const chapterName = () => {
                     image={suggestionIcon}
                     btnText={`${t("ChName.Suggestion")}`}
                     onClick={() => !StarterChapter && setAiGeneration(true)}
-                    // width={"180px"}
+                    width={"165px"}
+                    p="11px 0"
                     disabled={StarterChapter}
                   />
                 )}
@@ -444,7 +445,8 @@ const chapterName = () => {
                     image={addIcon}
                     btnText={`${t("ChName.AddQuestions")}`}
                     onClick={() => !StarterChapter && setOpenModal(true)}
-                    // width={"180px"}
+                    width={"190px"}
+                    p="11px 0"
                     disabled={StarterChapter}
                   />
                 </Box>

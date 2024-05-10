@@ -134,13 +134,12 @@ export default function Questions({
             sx={{
               cursor: "pointer",
               borderRadius: "8px",
-              height: expanded ? "auto" : { sm: "50px", xs: "50px" },
+              height: expanded ? "auto" : { sm: "55px", xs: "50px" },
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
               overflowX: "hidden",
-              // border:"2px solid red"
               marginLeft: "15px"
             }}
           >
@@ -149,19 +148,16 @@ export default function Questions({
                 display: "flex",
                 alignItems: "center",
                 width: "100%",
-                // border:"2px solid red"
               }}
             >
               <Typography
                 sx={{
-                  // marginLeft: { sm: "15px", xs: "10px" },
                   color: "rgba(22, 22, 22, 0.90)",
                   fontSize: { sm: "22px", xs: "15px" },
                   fontWeight: 400,
-                  width: { xs: "48vw", sm: "55vw", md: "52vw", lg: "64vw" },
+                  width: { xs: "48vw", sm: "55vw", md: "50vw", lg: "60vw" },
                   textOverflow: expanded ? "clip" : "ellipsis",
                   overflow: "hidden",
-                  // whiteSpace: expanded ? "wrap" : "nowrap",
                   padding: expanded && "10px 0px",
                   display: "flex",
                   alignItems: "center",
@@ -203,8 +199,6 @@ export default function Questions({
             {title != "templateView" && (
               <Box sx={{ textAlign: "center", width: "max-content" }}>
                 <Button
-                  // variant="contained"
-                  // disabled={question?.status === "Completed"}
                   type="submit"
                   sx={{
                     borderRadius: " 0px 8px 8px 0px",
@@ -215,29 +209,24 @@ export default function Questions({
                     "&:hover": {
                       backgroundColor: "#white",
                     },
-                    width: "90px",
+                    width: "130px",
                   }}
                 >
                   {question.status === "Completed" && (
                     <Box
                       sx={{
                         display: "flex",
-                        flexDirection: "row",
-                        columnGap: "10px",
+                        alignItems: "center",
+                        columnGap: { sm: "15px", xs: "6px" },
                         color: "#197065",
                         height: "100%",
-                        fontSize: "12px",
-                        padding: "20px",
-                        // px: "16px",
-                        // py: "7px",
+                        fontSize: { md: "15px", xs: "14px", sm: "14px" },
                         textTransform: "capitalize",
                       }}
                     >
                       <Box sx={{ color: "#30422e", }}>{t("ChName.completed")}</Box>
-                      <Box>
-                        <Image alt="icon" src={CompletedIcon} style={{ color: "#7f886b" }}
-                          width={15}
-                        />
+                      <Box sx={{ width: { md: "36px", sm: "24px", xs: "20px" } }}>
+                        <Image alt="icon" src={CompletedIcon} style={{ width: "100%", height: "100%" }} />
                       </Box>
                     </Box>
                   )}
@@ -246,17 +235,15 @@ export default function Questions({
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        columnGap: "15px",
+                        columnGap: "6px",
                         color: "#30422e",
-                        fontSize: "12px",
+                        fontSize: { md: "18px", xs: "14px", sm: "14px" },
                         padding: "20px",
-                        // px: "16px",
-                        // py: "7px",
                         textTransform: "capitalize",
                       }}
                     >
                       <Image alt="icon" src={EditGreen} style={{ color: "#7f886b" }} />
-                      <Box sx={{ color: "#30422e", }}>Edit</Box>
+                      <Box sx={{ color: "#30422e", }}>Answer</Box>
                     </Box>
                   )}
                 </Button>
@@ -264,7 +251,6 @@ export default function Questions({
             )}
           </Box>
 
-          {/* More option :start */}
           {title != "templateView" ? (
             <>
               {!StarterChapter && (
@@ -314,7 +300,6 @@ export default function Questions({
             <Box
               sx={{
                 textAlign: "center",
-                // mr: { md: "20px", sm: "15px", xs: "10px" },
               }}
             >
               <Checkbox

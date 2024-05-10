@@ -12,7 +12,7 @@ export default function Tooltip({
     <Box
       sx={{
         bgcolor: "#fff",
-        border: "2px solid #30422E",
+        border: "2px solid #E1683B",
         borderRadius: "4px",
         width: "360px",
         height: "160px",
@@ -56,7 +56,7 @@ export function TooltipMsg({ width, left, top, bottom, right }) {
   return (
     <Box sx={{
       bgcolor: "#fff",
-      border: "1px solid #30422E",
+      border: "1px solid #E1683B",
       borderRadius: "4px",
       boxShadow: "7px 10px 50px rgba(0, 0, 0, 0.25)",
       zIndex: "5",
