@@ -167,7 +167,7 @@ export default function Questions({
                 <Typography
                   sx={{
                     color: "rgba(22, 22, 22, 0.90)",
-                    fontSize: "14px",
+                    fontSize: { lg: "16px", sm: "14px", xs: "14px" },
                     fontWeight: 400,
                     width: "100vw",
                     textOverflow: expanded ? "clip" : "ellipsis",
@@ -209,7 +209,7 @@ export default function Questions({
                     "&:hover": {
                       backgroundColor: "#white",
                     },
-                    width: "130px",
+                    width: { sm: "150px", xs: "100px" },
                   }}
                 >
                   {question.status === "Completed" && (
@@ -217,15 +217,14 @@ export default function Questions({
                       sx={{
                         display: "flex",
                         alignItems: "center",
-                        columnGap: { sm: "15px", xs: "6px" },
+                        columnGap: { sm: "10px", xs: "6px" },
                         color: "#197065",
                         height: "100%",
-                        fontSize: { md: "15px", xs: "14px", sm: "14px" },
-                        textTransform: "capitalize",
+                        fontSize: { md: "16px", xs: "12px", sm: "14px" },
                       }}
                     >
                       <Box sx={{ color: "#30422e", }}>{t("ChName.completed")}</Box>
-                      <Box sx={{ width: { md: "36px", sm: "24px", xs: "20px" } }}>
+                      <Box sx={{ width: { md: "36px", sm: "24px", xs: "15px" } }}>
                         <Image alt="icon" src={CompletedIcon} style={{ width: "100%", height: "100%" }} />
                       </Box>
                     </Box>
@@ -237,9 +236,8 @@ export default function Questions({
                         alignItems: "center",
                         columnGap: "6px",
                         color: "#30422e",
-                        fontSize: { md: "18px", xs: "14px", sm: "14px" },
+                        fontSize: { md: "16px", xs: "12px", sm: "14px" },
                         padding: "20px",
-                        textTransform: "capitalize",
                       }}
                     >
                       <Image alt="icon" src={EditGreen} style={{ color: "#7f886b" }} />
