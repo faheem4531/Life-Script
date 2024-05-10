@@ -9,8 +9,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "../../narrative/Narrative.module.css";
 import AnimationLogo from "../../../../_assets/svg/animationLogo.svg"
+import Logo from "@/_assets/svg/Frame.svg";
 
-const Loading = ({progressCompleted, completed}) => {
+const Loading = ({ progressCompleted, completed }) => {
   const [progress, setProgress] = useState(10);
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
@@ -36,11 +37,11 @@ const Loading = ({progressCompleted, completed}) => {
     };
   }, []);
 
-  useEffect(()=>{
-    if(progress === 100 && progressCompleted){
+  useEffect(() => {
+    if (progress === 100 && progressCompleted) {
       completed();
     }
-  },[progress, progressCompleted]);
+  }, [progress, progressCompleted]);
 
   return (
     <Box
@@ -54,10 +55,10 @@ const Loading = ({progressCompleted, completed}) => {
         alignItems: "center",
       }}
     >
-      <Typography sx={{ fontSize: "34px", fontWeight: 200, mb:'50px', color:"#7f886b" }}>
+      <Typography sx={{ fontSize: "34px", fontWeight: 200, mb: '50px', color: "#7f886b" }}>
         {progress < 50 && "Reading Content...."}
         {progress <= 90 && progress >= 50 && "Analyzing Tones..."}
-        {progress > 90  && "Finalizing"}
+        {progress > 90 && "Finalizing"}
       </Typography>
       <Box className={styles.loadImageTemp}>
         <Image
@@ -67,7 +68,8 @@ const Loading = ({progressCompleted, completed}) => {
           className={styles.BgloadImage}
           width={322.512}
         />
-        {/* <Image alt="image" src={LoadImage} className={styles.loadImage} /> */}
+        <Image alt="image" src={Logo} className={styles.logoImage} />
+
       </Box>
       <Box sx={{ width: { xs: "90%", sm: "80%", lg: "60%" } }}>
         <ReloadingBar value={progress} />

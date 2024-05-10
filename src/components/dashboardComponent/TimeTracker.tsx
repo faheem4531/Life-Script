@@ -131,7 +131,6 @@ const TimeTracker = ({ onChange }) => {
         display: "flex",
         justifyContent: { md: "space-between", xs: "center" },
         alignItems: { md: "end", sm: "center", xs: "center" },
-        // flexWrap: "wrap",
         pr: "20px",
         gap: "20px",
         flexDirection: { md: "row", sm: "column", xs: "column" }
@@ -288,7 +287,6 @@ const TimeTracker = ({ onChange }) => {
         sx={{
           position: "relative",
           ml: "0px",
-          // alignSelf: "end",
           width: "340px",
         }}
 

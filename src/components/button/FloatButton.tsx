@@ -5,6 +5,8 @@ import FloatImage from "@/_assets/svg/float-btn.svg";
 import Image from "next/image";
 // import LoadImage from "@/_assets/svg/loading.svg";
 import animationLogo from "@/_assets/svg/animationLogo.svg";
+import logo from "@/_assets/svg/Frame.svg";
+
 // import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
 
 
@@ -21,7 +23,7 @@ const FloatButton = ({ onClick, narrativeRefuse }) => {
             alt="BgLoadImage"
             className={narrativeRefuse ? styles.BgloadImage : styles.BgLoad}
           />
-          {/* <Image alt="image" src={animationLogo} className={styles.loadImage} /> */}
+          <Image alt="image" src={logo} className={styles.loadImage} />
         </Box>
       </Fab>
     </div>

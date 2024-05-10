@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import styles from "./Narrative.module.css";
 import animationLogo from "@/_assets/svg/animationLogo.svg";
+import Logo from "@/_assets/svg/Frame.svg";
 
 const Loading = () => {
   const [progress, setProgress] = useState(10);
@@ -63,13 +64,14 @@ const Loading = () => {
         {progress <= 50 && `${t("narrativeLoading.ReadingContent")}`}
         {progress > 50 && progress !== 100 && "Analyzing Tones..."}
       </Typography>
-      <Box className={styles.loadImageMain}>
+      <Box className={styles.loadImageMain} sx={{ bgcolor: "re" }}>
         <Image
           src={BgLoadImage}
           alt="BgLoadImage"
           className={styles.BgloadImage}
         />
         <Image alt="image" src={animationLogo} className={styles.loadImage} />
+        <Image alt="image" src={Logo} className={styles.logoImage} />
       </Box>
       <Box sx={{ width: { xs: "90%", sm: "80%", lg: "60%" } }}>
         <ReloadingBar value={progress} />
