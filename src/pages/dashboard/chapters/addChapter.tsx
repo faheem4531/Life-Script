@@ -26,7 +26,7 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
-              borderRadius: "50px",
+              borderRadius: "4px",
               backgroundColor: "white",
               height: { md: "50px", sm: "45px", xs: "40px" },
             },

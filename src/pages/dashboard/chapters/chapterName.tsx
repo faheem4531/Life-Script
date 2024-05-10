@@ -618,7 +618,6 @@ const chapterName = () => {
             <GlobelBtn
               btnText={`${t("ChName.ok")}`}
               bgColor="#e1693b"
-              borderRadius="23px"
               color="#fff"
               // border="1px solid #197065"
               onClick={() => {
@@ -664,7 +663,6 @@ const chapterName = () => {
         >
           <Image
             alt="image"
-            // src={ModalImage}
             src={Frame}
             style={{
               width: "100%",

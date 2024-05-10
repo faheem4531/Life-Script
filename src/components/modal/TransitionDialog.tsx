@@ -20,7 +20,7 @@ export default function TransitionsDialog({
   open,
   cancel,
   proceed,
-  closeModal = () => {},
+  closeModal = () => { },
   proceedText = "",
   cancelText = "",
 }) {
@@ -37,19 +37,17 @@ export default function TransitionsDialog({
         sx={{
           textAlign: "center",
           padding: "50px 20px 35px",
-          backgroundColor: "#f3ecda",
+          backgroundColor: "#f3ecda"
         }}
       >
         <Box
           sx={{
-            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
-            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            width: { md: "130px", sm: "100px", xs: "70px" },
             margin: "auto",
           }}
         >
           <Image
             alt="image"
-            // src={ModalImage}
             src={FrameImage}
             style={{
               width: "100%",
@@ -62,7 +60,7 @@ export default function TransitionsDialog({
             fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
             fontWeight: 700,
             color: "#30422e",
-            margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
+            margin: { md: "20px 0", sm: "15px 0px", xs: "5px" },
           }}
         >
           {heading}
@@ -89,13 +87,10 @@ export default function TransitionsDialog({
           <Box flex={1}>
             <GlobelBtn
               btnText={proceedText ? proceedText : `${t("modals.yes")}`}
-              bgColor=""
-              // borderRadius="23px"
+              bgColor="transparent"
               border="1px solid #e1693b"
-              color="#e1693b" 
+              color="#e1693b"
               width="100%"
-              // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
-              // border="1px solid #197065"
               onClick={proceed}
             />
           </Box>
@@ -103,11 +98,8 @@ export default function TransitionsDialog({
             <GlobelBtn
               btnText={cancelText ? cancelText : `${t("modals.no")}`}
               bgColor="#e1693b"
-              // borderRadius="23px"
               color="#fff"
               width="100%"
-              // fontSize={{ md: "18px", sm: "13.627px", xs: "8.542px" }}
-              // border="1px solid #197065"
               onClick={cancel}
             />
           </Box>

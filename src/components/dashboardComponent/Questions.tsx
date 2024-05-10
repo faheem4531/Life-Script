@@ -1,6 +1,6 @@
 "use client";
 import Option from "@/_assets/png/X-menu.png";
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import Frame from "@/_assets/svg/Frame.svg";
 // import Completed from "@/_assets/svg/completed-icon.svg";
 import CompletedIcon from "@/_assets/svg/CompletedIcon.svg";
 import EditGreen from "@/_assets/svg/edit-icon-green.svg";
@@ -326,9 +326,9 @@ export default function Questions({
         customStyles={{ backgroundColor: "auto", textAlign: "center" }}
       >
         <Box>
-          <Image src={ModalImage} width={91} height={60} alt="logo" />
+          <Image src={Frame} width={130} alt="logo" />
         </Box>
-        <Typography sx={{ fontSize: { md: "24px", sm: "22px", xs: "18px" } }}>
+        <Typography sx={{ fontSize: { md: "24px", sm: "22px", xs: "18px" }, mt: "15px", color: "#30422E" }}>
           {t("ChName.UQ")}
         </Typography>
         <AddQuestion

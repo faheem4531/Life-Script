@@ -36,7 +36,7 @@ export default function AddQuestion({
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
-              borderRadius: "5px",
+              borderRadius: "4px",
               backgroundColor: "white",
               height: { md: "50px", sm: "45px", xs: "40px" },
             },
@@ -58,7 +58,6 @@ export default function AddQuestion({
             disabled={!question}
             btnText={btnText}
             bgColor="#e1693b"
-            borderRadius="23px"
             color="#fff"
             // width={{ md: "234px", sm: "153px", xs: "103px" }}
             // border="1px solid #197065"

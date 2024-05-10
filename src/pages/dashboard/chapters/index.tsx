@@ -239,14 +239,12 @@ const Dashboard = () => {
       >
         <Box
           sx={{
-            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
-            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            width: { md: "130px", sm: "100px", xs: "70px" },
             margin: "auto",
           }}
         >
           <Image
             alt="image"
-            // src={ModalImage}
             src={FrameImage}
             style={{
               width: "100%",
@@ -255,7 +253,7 @@ const Dashboard = () => {
           />
         </Box>
         <Typography
-          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px", color: "#30422e" } }}
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" }, color: "#30422e", mt: "15px" }}
         >
           {updateChapterModal
             ? `${t("ChModals.updateChName")}`

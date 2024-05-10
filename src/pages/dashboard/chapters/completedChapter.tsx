@@ -1,4 +1,4 @@
-import ModalImage from "@/_assets/png/view-template-modal.png";
+import Frame from "@/_assets/svg/Frame.svg";
 import Layout from "@/components/Layout/Layout";
 import CompletedChapterHeader from "@/components/dashboardComponent/CompletedChapterHeader";
 import DetailCard from "@/components/dashboardComponent/DetailCard";
@@ -184,14 +184,13 @@ const CompletedChapters = () => {
       >
         <Box
           sx={{
-            width: { md: "91.562px", sm: "66.54px", xs: "41.709px" },
-            height: { md: "60.005px", sm: "43.607px", xs: "27.334px" },
+            width: { md: "130px", sm: "100px", xs: "70px" },
             margin: "auto",
           }}
         >
           <Image
             alt="image"
-            src={ModalImage}
+            src={Frame}
             style={{
               width: "100%",
               height: "100%",
@@ -199,7 +198,7 @@ const CompletedChapters = () => {
           />
         </Box>
         <Typography
-          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" } }}
+          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" }, color: "#30422e", mt: "15px" }}
         >
           {updateChapterModal
             ? `${t("ChModals.updateChName")}`
