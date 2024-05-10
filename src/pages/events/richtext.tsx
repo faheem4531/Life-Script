@@ -547,7 +547,7 @@ const RichText = ({ questionId }) => {
                 "textAlign",
                 "link",
                 "colorPicker",
-                "emoji",
+                // "emoji",
                 "image",
                 "history",
               ],
@@ -600,7 +600,7 @@ const RichText = ({ questionId }) => {
                 previewImage: false,
                 inputAccept: "image/jpeg,image/jpg,image/png",
                 uploadCallback: uploadCallback,
-                alt: { present: true, mandatory: true },
+                alt: { present: true, mandatory: false },
                 defaultSize: {
                   height: "auto",
                   width: "400px",
