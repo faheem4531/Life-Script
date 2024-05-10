@@ -1,8 +1,8 @@
+import Img from "@/_assets/book-cover";
+import BookCover from "@/_assets/svg/book-cover-header.svg";
 import FileIcon from "@/_assets/svg/fileIcon.svg";
 import Layout from "@/components/Layout/Layout";
 import GlobelBtn from "@/components/button/Button";
-import ColorPickerComponent from "@/components/dashboardComponent/ColorPicker";
-import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import {
   bookCover,
@@ -12,21 +12,17 @@ import {
   uploadImage,
 } from "@/store/slices/chatSlice";
 import { Box, TextField, Typography } from "@mui/material";
+import axios from "axios";
+import "cropperjs/dist/cropper.css";
+import { jsPDF } from "jspdf";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Cropper from "react-cropper";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import Img from "@/_assets/book-cover";
-import Cropper from "react-cropper";
-import "cropperjs/dist/cropper.css";
-import htmlToImage from "html-to-image";
-import Cover1 from "@/_assets/book-cover/Cover1";
-import { jsPDF } from "jspdf";
-import axios from "axios";
-import BookCover from "@/_assets/svg/book-cover-header.svg";
 
 const EditBookCover = () => {
   const router = useRouter();
@@ -61,8 +57,8 @@ const EditBookCover = () => {
     [key: string]: string[];
   }>({});
 
-  const onCrop = () => {
-    if (cropperRef.current) {
+  const onCrop = async () => {
+    if (cropperRef.current?.cropper) {
       const croppedCanvas: any = cropperRef.current.cropper.getCroppedCanvas();
       // console.log("cropperCna", croppedCanvas);
       const croppedImageBase64 = croppedCanvas.toDataURL();
@@ -665,18 +661,121 @@ const EditBookCover = () => {
                   }}
                 >
 
-                  {droppedImage && (
+                  {droppedImage && CoverNumber === "1" && (
                     <Cropper
                       ref={cropperRef}
                       src={droppedImage}
                       style={{ height: 300, width: "100%" }}
                       // aspectRatio={coverAspectRatio()}
-                      initialAspectRatio={16 / 9}
+                      // initialAspectRatio={16 / 9}
+                      initialAspectRatio={5/2}
+                      // aspectRatio={2/1}
+                      background={false}
+                      zoomTo={0}
+                      viewMode={1}
+                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                      // minCropBoxHeight={10}
                       guides={false}
-                      // onInitialized={(instance) => setCropper(instance)}
+                      // dragMode="move"
+                      onInitialized={(instance) => setCropper(instance)}
+                      crop={onCrop}
+                      // autoCropArea={1}
+                      responsive={true}
+                      cropBoxResizable={true} 
+                    />
+                  )}
+                      {droppedImage && CoverNumber === "2" && (
+                    <Cropper
+                      ref={cropperRef}
+                      src={droppedImage}
+                      style={{ height: 300, width: "100%" }}
+                      // aspectRatio={coverAspectRatio()}
+                      // initialAspectRatio={16 / 9}
+                      // initialAspectRatio={5/2}
+                      // aspectRatio={1/3}
+                      aspectRatio={1/2}
+                      background={false}
+                      zoomTo={0}
+                      viewMode={1}
+                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                      // minCropBoxHeight={10}
+                      guides={false}
+                      dragMode="move"
+                      onInitialized={(instance) => setCropper(instance)}
                       crop={onCrop}
                       autoCropArea={1}
-                    // Add other cropper options as needed
+                      responsive={true}
+                      cropBoxResizable={false} 
+                    />
+                  )}
+                      {droppedImage && CoverNumber === "3" && (
+                    <Cropper
+                      ref={cropperRef}
+                      src={droppedImage}
+                      style={{ height: 300, width: "100%" }}
+                      // aspectRatio={coverAspectRatio()}
+                      // initialAspectRatio={16 / 9}
+                      initialAspectRatio={1/2}
+                      // aspectRatio={2/5}
+                      background={false}
+                      zoomTo={0}
+                      viewMode={1}
+                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                      // minCropBoxHeight={10}
+                      guides={false}
+                      dragMode="move"
+                      onInitialized={(instance) => setCropper(instance)}
+                      crop={onCrop}
+                      autoCropArea={1}
+                      responsive={true}
+                      cropBoxResizable={false} 
+                    />
+                  )}
+                      {droppedImage && CoverNumber === "4" && (
+                    <Cropper
+                      ref={cropperRef}
+                      src={droppedImage}
+                      style={{ height: 300, width: "100%" }}
+                      // aspectRatio={coverAspectRatio()}
+                      // initialAspectRatio={16 / 9}
+                      // initialAspectRatio={5/2}
+                      aspectRatio={1/2}
+                      background={false}
+                      zoomTo={0}
+                      viewMode={1}
+                      minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                      minCropBoxHeight={10}
+                      guides={false}
+                      dragMode="move"
+                      onInitialized={(instance) => setCropper(instance)}
+                      crop={onCrop}
+                      autoCropArea={1}
+                      responsive={true}
+                      cropBoxResizable={false} 
+                    />
+                  )}
+                     {droppedImage && CoverNumber === "5" && (
+                    <Cropper
+                      ref={cropperRef}
+                      src={droppedImage}
+                      style={{ height: 300, width: "100%" }}
+                      // aspectRatio={coverAspectRatio()}
+                      // initialAspectRatio={16 / 9}
+                      // initialAspectRatio={5/2}
+                      // aspectRatio={1/3}
+                      aspectRatio={1/2}
+                      background={false}
+                      zoomTo={0}
+                      viewMode={1}
+                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                      // minCropBoxHeight={10}
+                      guides={false}
+                      dragMode="move"
+                      onInitialized={(instance) => setCropper(instance)}
+                      crop={onCrop}
+                      autoCropArea={1}
+                      responsive={true}
+                      cropBoxResizable={false} 
                     />
                   )}
                   <div {...getRootProps()} style={{ cursor: "pointer" }}>
