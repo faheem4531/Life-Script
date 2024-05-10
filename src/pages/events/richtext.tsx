@@ -480,7 +480,6 @@ const RichText = ({ questionId }) => {
                       : `${t("richText.STT")}`
                 }
                 color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
-
                 bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
                 border="1px solid #E1683B"
                 onClick={handleSpeechtoText}
