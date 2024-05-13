@@ -396,20 +396,48 @@ const RichText = ({ questionId }) => {
   };
 
   //for uploadin image
-  const uploadCallback = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new window.FileReader();
-      reader.onloadend = async () => {
-        const form_data = new FormData();
-        form_data.append("image", file);
+//   const uploadCallback = (file) => {
+//     return new Promise((resolve, reject) => {
+//       const reader = new window.FileReader();
+//       reader.onloadend = async () => {
+//         const form_data = new FormData();
+//         form_data.append("image", file);
 
+//         const res = await dispatch(uploadImage(form_data));
+// console.log("Responsisbdbab-----378787",res)
+//         resolve({ data: { link: res.payload } });
+//       };
+//       reader.readAsDataURL(file);
+//     });
+//   };
+const uploadCallback = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new window.FileReader();
+    reader.onloadend = async () => {
+      const form_data = new FormData();
+      form_data.append("image", file);
+
+      try {
         const res = await dispatch(uploadImage(form_data));
+        console.log("Response from uploadImage:", res);
 
-        resolve({ data: { link: res.payload } });
-      };
-      reader.readAsDataURL(file);
-    });
-  };
+        if (res && res.payload) {
+          const caption = `Caption: ${file.name}`;
+          const imageData = { data: { link: res.payload, caption: caption } };
+          console.log("Image data:", imageData); // Log the image data for debugging
+          resolve(imageData);
+        } else {
+          reject("Failed to upload image or get image URL.");
+        }
+      } catch (error) {
+        reject(error.message || "An error occurred while uploading the image.");
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+};
+
+
 
   return (
     <>
@@ -604,6 +632,10 @@ const RichText = ({ questionId }) => {
                 defaultSize: {
                   height: "auto",
                   width: "400px",
+                },
+                caption: {
+                  show: true, // Show image caption
+                  text: 'bottom', 
                 },
               },
               history: {

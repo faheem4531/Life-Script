@@ -164,6 +164,13 @@ a {
   word-break: break-all !important;
 }
 
+/* GG */
+/* .rdw-image-modal-upload-option-label {
+  display: block !important;
+  text-align: center !important;
+  margin-top: 10px !important;
+  color: black !important;
+} */
 .rdw-image-modal-upload-option-image-preview {
   display: block !important;
 }
