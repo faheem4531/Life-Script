@@ -24,7 +24,7 @@ const TabPanel = ({ onClick, selectedTab }) => {
       card: '3',
     },
   ];
-  function handleHover(id) {}
+  function handleHover(id) { }
 
   return (
     <Box>
@@ -41,10 +41,10 @@ const TabPanel = ({ onClick, selectedTab }) => {
             fontFamily: 'Avenir5 !important',
           }}
         >
-          Choose a Plan
+          Choose a Payment Plan
         </Typography>
         <Typography sx={{ margin: { sm: '40px 0 20px', xs: '20px 0' } }}>
-        Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.
+          Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.
         </Typography>
       </Box>
       <Box
@@ -58,7 +58,7 @@ const TabPanel = ({ onClick, selectedTab }) => {
           padding: ' 0 40px 70px',
         }}
         className={styles.cardsMain}
-        // onClick={() => onClick(selectedTab + 1)}
+      // onClick={() => onClick(selectedTab + 1)}
       >
         {pricingCard.map((item) => (
           <NewPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} handleHover={handleHover} selectedTab={selectedTab} onClick={onClick} />

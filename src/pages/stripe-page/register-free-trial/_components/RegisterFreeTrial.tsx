@@ -132,7 +132,7 @@ const RegisterFreeTrial = () => {
         sx={{ border: "2px soild green", width: "100%" }}
       >
         <Typography variant="h4" sx={{ marginBottom: "60px" }}>
-          Register LifeScript
+          Register For LifeScript
         </Typography>
 
         <Box sx={{ maxWidth: "600px", width: "100%" }}>

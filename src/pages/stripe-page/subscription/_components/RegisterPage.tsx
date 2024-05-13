@@ -126,7 +126,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
         sx={{ margin: { sm: "0 0 0 70px", xs: "0 20px" }, border: "2px soild green", width: "100%", maxWidth: "1370px" }}
       >
         <Typography variant="h4" sx={{ marginBottom: { sm: "60px", xs: "30px" } }}>
-          Register LifeScript
+          Register For LifeScript
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", columnGap: "50px" }}>
