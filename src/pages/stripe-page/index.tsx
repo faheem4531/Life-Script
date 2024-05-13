@@ -118,7 +118,7 @@ const StripePage = () => {
                         }}
                       />
                     }
-                    label="A gift of someone else"
+                    label="A gift for someone else"
                     sx={{ marginLeft: '10px' }}
                   />
                 </Box>
