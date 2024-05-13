@@ -132,7 +132,7 @@ function QuestionNo({ qs, ans, index }) {
         columnGap: "10px"
       }}>
         <Typography sx={{
-          fontSize: { sm: "24px", xs: "20px" }, fontFamily: "Avenir5 !important"
+          fontSize: { sm: "24px", xs: "20px" }, fontFamily: "Avenir5 !important", width: { sm: "30px", xs: "20px" },
         }}>
           {index + 1}{"."}
         </Typography>
@@ -142,7 +142,7 @@ function QuestionNo({ qs, ans, index }) {
           <h3>{qs}</h3>
         </Typography>
       </Box>
-      <Typography sx={{ fontSize: "16px", padding: { sm: "20px 0 0 35px", xs: "15px 0 0 27px" } }}>{ans}</Typography>
+      <Typography sx={{ fontSize: "16px", padding: { sm: "20px 0 0 40px", xs: "15px 0 0 30px" } }}>{ans}</Typography>
     </Box>
   )
 }
