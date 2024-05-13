@@ -91,10 +91,14 @@ const NavBar = ({ color, logo }) => {
           flexDirection: { md: "row", sm: "column", xs: "column" },
         }}
         color={mobileState ? "" : color}
-        className={`${
-          mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide
-        }`}
+        className={`${mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide
+          }`}
       >
+
+        {mobileState && (
+          <Image src="/lifescript-life-story-book-logo.svg" alt="Logo" width={230} height={150} className={styles.logoMenu} />
+        )}
+
         <Link href="/">
           <Typography
             sx={{
@@ -107,9 +111,8 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${pathname === "/" ? styles.underLine : ""} ${
-              styles.hoverLinks
-            }`}
+            className={`${pathname === "/" ? styles.underLine : ""} ${styles.hoverLinks
+              }`}
           >
             Home
           </Typography>
@@ -127,9 +130,8 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${pathname === "/features" ? styles.underLine : ""}  ${
-              styles.hoverLinks
-            }`}
+            className={`${pathname === "/features" ? styles.underLine : ""}  ${styles.hoverLinks
+              }`}
           >
             Features
           </Typography>
@@ -147,11 +149,10 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${
-              pathname === "/blog" || pathname === "/blog/blog-details"
-                ? styles.underLine
-                : ""
-            }  ${styles.hoverLinks}`}
+            className={`${pathname === "/blog" || pathname === "/blog/blog-details"
+              ? styles.underLine
+              : ""
+              }  ${styles.hoverLinks}`}
           >
             Blog
           </Typography>
@@ -169,9 +170,8 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${pathname === "/about-us" ? styles.underLine : ""}  ${
-              styles.hoverLinks
-            }`}
+            className={`${pathname === "/about-us" ? styles.underLine : ""}  ${styles.hoverLinks
+              }`}
           >
             About Us
           </Typography>
@@ -189,9 +189,8 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${pathname === "/pricing" ? styles.underLine : ""}  ${
-              styles.hoverLinks
-            }`}
+            className={`${pathname === "/pricing" ? styles.underLine : ""}  ${styles.hoverLinks
+              }`}
           >
             Pricing
           </Typography>
@@ -209,9 +208,8 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${pathname === "/faqs" ? styles.underLine : ""}  ${
-              styles.hoverLinks
-            }`}
+            className={`${pathname === "/faqs" ? styles.underLine : ""}  ${styles.hoverLinks
+              }`}
           >
             FAQ&apos;s
           </Typography>
