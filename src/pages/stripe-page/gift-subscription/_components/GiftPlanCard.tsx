@@ -8,8 +8,7 @@ import Check from '@/__webAssets/svgs/check.svg';
 import Lock from '@/__webAssets/svgs/lock.svg';
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
 
-const GiftPlanCard = ({ price, category}) => {
-  // console.log("ansubcascbsabcsahbcsabc",receiverName)
+const GiftPlanCard = ({ price, category }) => {
 
   const receiverName = localStorage.getItem("receiverName")
   const selectedDate = localStorage.getItem("selectedDate")
@@ -146,11 +145,11 @@ const GiftPlanCard = ({ price, category}) => {
     <Box
       sx={{
         borderRadius: '3px',
-        width: { lg: '445px', md: '400px' },
+        width: { lg: '445px', md: '400px', sm: "500px", xs: "100%" },
         height: 'auto',
         backgroundColor: '#c5c4ae',
         float: 'right',
-        marginRight: '20px',
+        marginRight: { md: '20px', sm: "0", xs: "0" },
       }}
     >
       {category == 'Basic' &&
@@ -257,45 +256,45 @@ const GiftPlanCard = ({ price, category}) => {
           }
 
           {/* Extra Info */}
-          {receiverName && 
-          <Box sx={{
-            width: { lg: '380px', md: '350px' },
-            height: 'auto',
-          }}>
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <Typography sx={{ fontSize: "24px", fontWeight: "600" }}>
-                Details:
-              </Typography>
-              <Image alt="icon" src={EditIconPriceCard} style={{ color: "#293624" }} />
+          {receiverName &&
+            <Box sx={{
+              width: { lg: '380px', md: '350px' },
+              height: 'auto',
+            }}>
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "600" }}>
+                  Details:
+                </Typography>
+                <Image alt="icon" src={EditIconPriceCard} style={{ color: "#293624" }} />
+
+              </Box>
+              <Divider sx={{ marginTop: "5px", marginBottom: "15px" }} />
+
+              <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Deliver to: </Typography>
+                <Typography >
+                  {receiverName && receiverName}
+                  {/* John Doe */}
+
+                </Typography>
+              </Box>
+              <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Date: </Typography>
+                <Typography>
+                  {selectedDate && formatDate(selectedDate)}
+                  {/* 29-03-2024 */}
+                </Typography>
+              </Box>
+              <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Gift Message: </Typography>
+                <Typography sx={{ width: "300px" }}>
+                  {sendMessage && sendMessage}
+                  {/* “The journey of a thousand miles begins with a single step.” */}
+                </Typography>
+              </Box>
 
             </Box>
-            <Divider sx={{ marginTop: "5px", marginBottom: "15px" }} />
-
-            <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
-              <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Deliver to: </Typography>
-              <Typography >
-                {receiverName && receiverName}
-                {/* John Doe */}
-               
-              </Typography>
-            </Box>
-            <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
-              <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Date: </Typography>
-              <Typography>
-              {selectedDate && formatDate(selectedDate)}
-                {/* 29-03-2024 */}
-              </Typography>
-            </Box>
-            <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
-              <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>Gift Message: </Typography>
-              <Typography sx={{ width: "300px" }}>
-                {sendMessage && sendMessage}
-                {/* “The journey of a thousand miles begins with a single step.” */}
-              </Typography>
-            </Box>
-
-          </Box>
-            } 
+          }
 
         </Box>
 

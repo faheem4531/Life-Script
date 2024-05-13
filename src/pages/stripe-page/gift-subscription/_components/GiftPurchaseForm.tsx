@@ -248,21 +248,18 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
     setSubscribeUpdates(event.target.checked);
   };
 
-  // console.log("commissionState======", commissionState)
 
   useEffect(() => {
     const handleRouteChange = () => {
-      // Clear localStorage and sign out logic here
       localStorage.clear();// Clear localStorage
-      // Your sign out logic goes here, such as dispatching an action to clear the session
     };
-    // Listen for route changes
     router.events.on('beforeHistoryChange', handleRouteChange);
-    // Clean up the event listener when the component unmounts
     return () => {
       router.events.off('beforeHistoryChange', handleRouteChange);
     };
   }, [router]);
+
+
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -271,7 +268,14 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
             <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>Purchase LifeScript</Typography>
           </Box>
 
-          <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", columnGap: "50px" }}>
+          <Box sx={{
+            display: "flex",
+            justifyContent: { md: "space-between" },
+            flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
+            alignItems: "center",
+            width: "100%",
+            columnGap: "50px",
+          }}>
 
             <Box sx={{ maxWidth: { sm: "600px", xs: "100%" }, width: "100%" }}>
               <Box>
@@ -454,7 +458,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
                     <Button
                       variant="contained"
                       color="primary"
-                      disabled={!cardHolderName 
+                      disabled={!cardHolderName
                         // || !subscribeUpdates 
                         || isError}
                       onClick={handleSubmit}
@@ -494,7 +498,7 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
               </Box>
             </Box>
 
-            <Box sx={{ margin: "0 35px 35px 0", display: { md: "block", sm: "none", xs: "none" } }}>
+            <Box sx={{ margin: { md: "0 35px 35px 0", sm: "0 0 30px", xs: "0 0 30px" } }}>
               <GiftPlanCard
                 price={(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}
                 category={category}
