@@ -130,11 +130,11 @@ const BasicPlanCard = ({ price, category }) => {
     <Box
       sx={{
         borderRadius: '3px',
-        width: { lg: '445px', md: '400px' },
+        width: { lg: '445px', md: '400px', sm: "500px", xs: "100%" },
         height: 'auto',
         backgroundColor: '#c5c4ae',
         float: 'right',
-        marginRight: '20px',
+        marginRight: { md: '20px', sm: "0", xs: "0" },
       }}
     >
       {category == 'Basic' &&
