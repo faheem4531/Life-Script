@@ -639,52 +639,149 @@ const EditBookCover = () => {
                 setSelectedColor={setSelectedColor}
                 selectedColor={selectedColor}
               /> */}
-              <Box>
 
-                <Typography
-                  sx={{
-                    fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, mb: "10px"
-                  }}
-                >
-                  Cover Photo
-                </Typography>
-                <Box
-                  sx={{
-                    bgcolor: "white",
-                    width: "100%",
-                    padding: "14px 0px",
-                    textAlign: "center",
-                    fontWeight: "500",
-                    p: "6px",
-                    border: " 0.355px solid #30422E",
-                    borderRadius: "4px",
-                  }}
-                >
+              {CoverNumber != "6" &&
 
-                  {droppedImage && CoverNumber === "1" && (
-                    <Cropper
-                      ref={cropperRef}
-                      src={droppedImage}
-                      style={{ height: 300, width: "100%" }}
-                      // aspectRatio={coverAspectRatio()}
-                      // initialAspectRatio={16 / 9}
-                      // initialAspectRatio={1/2}
-                      aspectRatio={1.7/2.5}
-                      background={false}
-                      zoomTo={0}
-                      viewMode={1}
-                      minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      minCropBoxHeight={10}
-                      guides={false}
-                      dragMode="move"
-                      onInitialized={(instance) => setCropper(instance)}
-                      crop={onCrop}
-                      autoCropArea={1}
-                      responsive={true}
-                      cropBoxResizable={false} 
-                    />
-                  )}
-                      {droppedImage && CoverNumber === "2" && (
+                <Box>
+
+                  <Typography
+                    sx={{
+                      fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, mb: "10px"
+                    }}
+                  >
+                    Cover Photo
+                  </Typography>
+                  <Box
+                    sx={{
+                      bgcolor: "white",
+                      width: "100%",
+                      padding: "14px 0px",
+                      textAlign: "center",
+                      fontWeight: "500",
+                      p: "6px",
+                      border: " 0.355px solid #30422E",
+                      borderRadius: "4px",
+                    }}
+                  >
+
+                    {droppedImage && CoverNumber === "1" && (
+                      <Cropper
+                        ref={cropperRef}
+                        src={droppedImage}
+                        style={{ height: 300, width: "100%" }}
+                        // aspectRatio={coverAspectRatio()}
+                        // initialAspectRatio={16 / 9}
+                        // initialAspectRatio={1/2}
+                        aspectRatio={1.7 / 2.5}
+                        background={false}
+                        zoomTo={0}
+                        viewMode={1}
+                        minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                        minCropBoxHeight={10}
+                        guides={false}
+                        dragMode="move"
+                        onInitialized={(instance) => setCropper(instance)}
+                        crop={onCrop}
+                        autoCropArea={1}
+                        responsive={true}
+                        cropBoxResizable={false}
+                      />
+                    )}
+                    {droppedImage && CoverNumber === "2" && (
+                      <Cropper
+                        ref={cropperRef}
+                        src={droppedImage}
+                        style={{ height: 300, width: "100%" }}
+                        // aspectRatio={coverAspectRatio()}
+                        // initialAspectRatio={16 / 9}
+                        // initialAspectRatio={5/2}
+                        // aspectRatio={1/3}
+                        aspectRatio={1 / 2}
+                        background={false}
+                        zoomTo={0}
+                        viewMode={1}
+                        // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                        // minCropBoxHeight={10}
+                        guides={false}
+                        dragMode="move"
+                        onInitialized={(instance) => setCropper(instance)}
+                        crop={onCrop}
+                        autoCropArea={1}
+                        responsive={true}
+                        cropBoxResizable={false}
+                      />
+                    )}
+                    {droppedImage && CoverNumber === "3" && (
+                      <Cropper
+                        ref={cropperRef}
+                        src={droppedImage}
+                        style={{ height: 300, width: "100%" }}
+                        // aspectRatio={coverAspectRatio()}
+                        // initialAspectRatio={16 / 9}
+                        initialAspectRatio={1.7 / 2.6}
+                        // aspectRatio={1.6/2.6}
+                        background={false}
+                        zoomTo={0}
+                        viewMode={1}
+                        minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                        minCropBoxHeight={10}
+                        guides={false}
+                        dragMode="move"
+                        onInitialized={(instance) => setCropper(instance)}
+                        crop={onCrop}
+                        autoCropArea={1}
+                        responsive={true}
+                        cropBoxResizable={false}
+                      />
+                    )}
+                    {droppedImage && CoverNumber === "4" && (
+                      <Cropper
+                        ref={cropperRef}
+                        src={droppedImage}
+                        style={{ height: 300, width: "100%" }}
+                        // aspectRatio={coverAspectRatio()}
+                        // initialAspectRatio={16 / 9}
+                        // initialAspectRatio={1.5/2}
+                        aspectRatio={1.4 / 2}
+                        background={false}
+                        zoomTo={0}
+                        viewMode={1}
+                        minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                        minCropBoxHeight={10}
+                        guides={false}
+                        dragMode="move"
+                        onInitialized={(instance) => setCropper(instance)}
+                        crop={onCrop}
+                        autoCropArea={1}
+                        responsive={true}
+                        cropBoxResizable={false}
+                      />
+                    )}
+                    {droppedImage && CoverNumber === "5" && (
+                      <Cropper
+                        ref={cropperRef}
+                        src={droppedImage}
+                        style={{ height: 300, width: "100%" }}
+                        // aspectRatio={coverAspectRatio()}
+                        // initialAspectRatio={16 / 9}
+                        // initialAspectRatio={5/2}
+                        // aspectRatio={1/3}
+                        aspectRatio={1.7 / 2.6}
+                        background={false}
+                        zoomTo={0}
+                        viewMode={1}
+                        minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                        minCropBoxHeight={10}
+                        guides={false}
+                        dragMode="move"
+                        onInitialized={(instance) => setCropper(instance)}
+                        crop={onCrop}
+                        autoCropArea={1}
+                        responsive={true}
+                        cropBoxResizable={false}
+                      />
+                    )}
+                    {/* {droppedImage && CoverNumber === "6" && (
                     <Cropper
                       ref={cropperRef}
                       src={droppedImage}
@@ -707,148 +804,54 @@ const EditBookCover = () => {
                       responsive={true}
                       cropBoxResizable={false} 
                     />
-                  )}
-                      {droppedImage && CoverNumber === "3" && (
-                    <Cropper
-                      ref={cropperRef}
-                      src={droppedImage}
-                      style={{ height: 300, width: "100%" }}
-                      // aspectRatio={coverAspectRatio()}
-                      // initialAspectRatio={16 / 9}
-                      initialAspectRatio={1.7/2.6}
-                      // aspectRatio={1.6/2.6}
-                      background={false}
-                      zoomTo={0}
-                      viewMode={1}
-                      minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      minCropBoxHeight={10}
-                      guides={false}
-                      dragMode="move"
-                      onInitialized={(instance) => setCropper(instance)}
-                      crop={onCrop}
-                      autoCropArea={1}
-                      responsive={true}
-                      cropBoxResizable={false} 
-                    />
-                  )}
-                      {droppedImage && CoverNumber === "4" && (
-                    <Cropper
-                      ref={cropperRef}
-                      src={droppedImage}
-                      style={{ height: 300, width: "100%" }}
-                      // aspectRatio={coverAspectRatio()}
-                      // initialAspectRatio={16 / 9}
-                      // initialAspectRatio={1.5/2}
-                      aspectRatio={1.4/2}
-                      background={false}
-                      zoomTo={0}
-                      viewMode={1}
-                      minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      minCropBoxHeight={10}
-                      guides={false}
-                      dragMode="move"
-                      onInitialized={(instance) => setCropper(instance)}
-                      crop={onCrop}
-                      autoCropArea={1}
-                      responsive={true}
-                      cropBoxResizable={false} 
-                    />
-                  )}
-                     {droppedImage && CoverNumber === "5" && (
-                    <Cropper
-                      ref={cropperRef}
-                      src={droppedImage}
-                      style={{ height: 300, width: "100%" }}
-                      // aspectRatio={coverAspectRatio()}
-                      // initialAspectRatio={16 / 9}
-                      // initialAspectRatio={5/2}
-                      // aspectRatio={1/3}
-                      aspectRatio={1.7/2.6}
-                      background={false}
-                      zoomTo={0}
-                      viewMode={1}
-                      minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      minCropBoxHeight={10}
-                      guides={false}
-                      dragMode="move"
-                      onInitialized={(instance) => setCropper(instance)}
-                      crop={onCrop}
-                      autoCropArea={1}
-                      responsive={true}
-                      cropBoxResizable={false} 
-                    />
-                  )}
-                  {droppedImage && CoverNumber === "6" && (
-                    <Cropper
-                      ref={cropperRef}
-                      src={droppedImage}
-                      style={{ height: 300, width: "100%" }}
-                      // aspectRatio={coverAspectRatio()}
-                      // initialAspectRatio={16 / 9}
-                      // initialAspectRatio={5/2}
-                      // aspectRatio={1/3}
-                      aspectRatio={1/2}
-                      background={false}
-                      zoomTo={0}
-                      viewMode={1}
-                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      // minCropBoxHeight={10}
-                      guides={false}
-                      dragMode="move"
-                      onInitialized={(instance) => setCropper(instance)}
-                      crop={onCrop}
-                      autoCropArea={1}
-                      responsive={true}
-                      cropBoxResizable={false} 
-                    />
-                  )}
-                  <div {...getRootProps()} style={{ cursor: "pointer" }}>
-                    <input {...getInputProps()} />
+                  )} */}
+                    <div {...getRootProps()} style={{ cursor: "pointer" }}>
+                      <input {...getInputProps()} />
 
-                    <Box
-                      sx={{
-                        border: "1px dashed #30422E",
-                        borderRadius: "4px",
-                        p: "10px 0px",
-                      }}
-                    >
-                      <Box>
-                        <Image src={croppedImage || FileIcon} alt="" />
-                      </Box>
-                      <Typography
-                        sx={{
-                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                          color: "#D3D3D3",
-                        }}
-                      >
-                        {t("BookCoverCard.dragOrDrop")}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-                          color: "#D3D3D3",
-                        }}
-                      >
-                        {t("BookCoverCard.or")}
-                      </Typography>
                       <Box
                         sx={{
-                          display: "flex",
-                          justifyContent: "center",
+                          border: "1px dashed #30422E",
+                          borderRadius: "4px",
+                          p: "10px 0px",
                         }}
                       >
-                        <GlobelBtn
-                          btnText={`${t("BookCoverCard.browserFile")}`}
-                          fontSize={{ sm: "10.6px", xs: "8.542px" }}
-                          p="5px 20px"
-                          color="#fff"
-                        />
+                        <Box>
+                          <Image src={croppedImage || FileIcon} alt="" />
+                        </Box>
+                        <Typography
+                          sx={{
+                            fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                            color: "#D3D3D3",
+                          }}
+                        >
+                          {t("BookCoverCard.dragOrDrop")}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                            color: "#D3D3D3",
+                          }}
+                        >
+                          {t("BookCoverCard.or")}
+                        </Typography>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <GlobelBtn
+                            btnText={`${t("BookCoverCard.browserFile")}`}
+                            fontSize={{ sm: "10.6px", xs: "8.542px" }}
+                            p="5px 20px"
+                            color="#fff"
+                          />
+                        </Box>
                       </Box>
-                    </Box>
-                  </div>
+                    </div>
+                  </Box>
                 </Box>
-              </Box>
-
+              }
             </Box>
 
             <Box
@@ -926,6 +929,7 @@ const EditBookCover = () => {
                 </Box>
               </Box>
             </Box>
+
           </Box>
         </Box>
         {/* <div ref={containerRef}>
