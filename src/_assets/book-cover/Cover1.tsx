@@ -38,7 +38,7 @@ function Cover1(props: any) {
             ALEXANDER ARONOWITZ
           </tspan>
         </text>
-        <rect x="-5" y="888" width="1782" height="1701" fill="url(#pattern0)" />
+        <rect x="-5" y="800" width="1782" height="1701" fill="url(#pattern0)" />
         <text
           id="heading-text"
           x="50%"

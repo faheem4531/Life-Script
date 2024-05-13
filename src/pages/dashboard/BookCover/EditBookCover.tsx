@@ -668,20 +668,20 @@ const EditBookCover = () => {
                       style={{ height: 300, width: "100%" }}
                       // aspectRatio={coverAspectRatio()}
                       // initialAspectRatio={16 / 9}
-                      initialAspectRatio={5/2}
-                      // aspectRatio={2/1}
+                      // initialAspectRatio={1/2}
+                      aspectRatio={1.7/2.5}
                       background={false}
                       zoomTo={0}
                       viewMode={1}
-                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      // minCropBoxHeight={10}
+                      minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                      minCropBoxHeight={10}
                       guides={false}
-                      // dragMode="move"
+                      dragMode="move"
                       onInitialized={(instance) => setCropper(instance)}
                       crop={onCrop}
-                      // autoCropArea={1}
+                      autoCropArea={1}
                       responsive={true}
-                      cropBoxResizable={true} 
+                      cropBoxResizable={false} 
                     />
                   )}
                       {droppedImage && CoverNumber === "2" && (
@@ -715,8 +715,8 @@ const EditBookCover = () => {
                       style={{ height: 300, width: "100%" }}
                       // aspectRatio={coverAspectRatio()}
                       // initialAspectRatio={16 / 9}
-                      // initialAspectRatio={1/2}
-                      aspectRatio={1.9/2.9}
+                      initialAspectRatio={1.7/2.6}
+                      // aspectRatio={1.6/2.6}
                       background={false}
                       zoomTo={0}
                       viewMode={1}
