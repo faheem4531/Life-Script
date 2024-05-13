@@ -109,6 +109,10 @@ background-color: #a5a19737 !important;
 }
 
 /* Footer  */
+.hoverLinks{
+  color: #fff;
+}
+
 .hoverLinks:hover{
   color: #E1683B;
 }

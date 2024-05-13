@@ -105,7 +105,7 @@ function GetDate() {
   }
 
   return (
-    <Box sx={{ position: "relative" }} onCli>
+    <Box sx={{ position: "relative" }} onClick={handleCalander}>
       <Box sx={{
         bgcolor: "#f5f5f5",
         position: "absolute",
@@ -123,10 +123,10 @@ function GetDate() {
         bgcolor: "#f5f5f5",
         borderRadius: "2px",
         width: "100%",
-        color: "#7e7e7e"
+        color: "#7e7e7e",
+        border: "none"
       }}
         open={isOpen}
-        label="When it's happening?"
 
       />
     </Box>

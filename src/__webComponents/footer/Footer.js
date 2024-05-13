@@ -7,6 +7,8 @@ import Insta from "@/__webAssets/svgs/insta.svg";
 import Fb from "@/__webAssets/svgs/fb.svg";
 import Li from "@/__webAssets/svgs/li.svg";
 import X from "@/__webAssets/svgs/x.svg";
+import Tiktok from "@/__webAssets/svgs/tiktok.svg";
+
 // import Link from "next/link"
 
 const Footer = () => {
@@ -61,7 +63,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Li} alt="logo" style={logo} />
+              <Image src={Tiktok} alt="logo" style={logo} />
             </a>
 
             <a
