@@ -69,7 +69,7 @@ const Values = () => {
           />)}
         </Box>
         <Box sx={{ margin: "30px 0 0 40px", display: { md: "block", sm: "none", xs: "none" } }}>
-          <Link href="/_auth/Auth">
+          <Link href="/stripe-page">
             <Button
               title='Get Started'
               width='210px'

@@ -26,28 +26,6 @@ const Pricing = () => {
       card: "3"
     },
   ]
-  function handleHover(id) {
-
-    // if (id == 'basic') {
-    //   const basicCard = document.getElementById('basic')
-    //   basicCard.classList.remove("sideCard");
-    // }
-    // if (id == 'standard') {
-    //   const standardCard = document.getElementById('standard')
-    //   standardCard.classList.remove("sideCard");
-    // }
-    // if (id == 'primium') {
-    //   const primiumCard = document.getElementById('primium')
-    //   primiumCard.classList.remove("sideCard");
-    // }
-
-    // const hoveredCard = document.getElementById(id)
-    // hoveredCard.classList.add("midCard");
-
-    // console.log(hoveredCard.classList, 'basic')
-    // console.log(standardCard.classList, 'standard')
-    // console.log(primiumCard.classList, 'primiumCard')
-  }
 
   return (
     <Box sx={{
@@ -69,7 +47,6 @@ const Pricing = () => {
           price={item.price}
           card={item.card}
           id={item.id}
-          handleHover={handleHover}
         />)}
       </Box>
       <Typography sx={{ marginTop: "20px", fontSize: "24px", fontWeight: 900, color: "#495845", textAlign: "center", fontFamily: "Avenir8 !important" }}>30 days money back guarantee </Typography>

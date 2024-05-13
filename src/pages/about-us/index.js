@@ -42,8 +42,7 @@ const AboutUs = () => {
         <Values />
         <ContactFooter
           title="Still confused? Ask"
-          marked=" awayyyy!"
-          // marked=" away!"
+          marked=" away!"
           lineWidth={150}
           subTitle="Contact us Now!!!"
           input1="Your name"

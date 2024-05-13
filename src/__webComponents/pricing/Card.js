@@ -8,7 +8,7 @@ import Lock from "@/__webAssets/svgs/lock.svg"
 import NextIcon from '@/__webAssets/svgs/next.svg'
 import Link from "next/link";
 
-const PricingCard = ({ price, category, card, id, handleHover }) => {
+const PricingCard = ({ price, category, card, id }) => {
 
   const CheckArray = [
     {
@@ -79,7 +79,6 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
       backgroundColor={card == "2" ? "#30422E" : "#F4F4F4"}
       color={card == "2" && "#f4f4f4"}
       id={id}
-      onMouseOver={() => handleHover(id)}
     >
       <Box sx={{ padding: { lg: "39px 30px 85px 45px", md: "35px 20px 85px", sm: "39px 45px 85px", xs: "35px 25px 80px" } }}>
         <Box sx={{
@@ -165,7 +164,7 @@ const PricingCard = ({ price, category, card, id, handleHover }) => {
         }
       </Box>
       <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
-        <Link href="/_auth/Auth">
+        <Link href="/stripe-page">
           <Button
             title='Get Started'
             width='100%'

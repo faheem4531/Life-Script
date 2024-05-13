@@ -166,7 +166,7 @@ function DetailFeature({ logo, altLogo, titleLogo, heading, details, flex, gif, 
           />
           {button && <Box sx={{ marginTop: "50px" }} className={styles.buttonBox}>
             <Box sx={{ width: { sm: "200px", xs: "100%" }, padding: "0 20px 0 0" }}>
-              <Link href="/_auth/Auth">
+              <Link href="/stripe-page">
                 <Button
                   title='Get Started'
                   width='100%'
