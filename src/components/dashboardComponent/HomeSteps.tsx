@@ -45,9 +45,9 @@ const HomeSteps = () => {
       </Box>
       <Divider
         sx={{
-          height: "1px",
+          height: "1.28px",
           width: "23%",
-          bgcolor: "#fff",
+          bgcolor: "#BFC4B5",
           margin: "0 -10px",
         }}
       />
@@ -74,9 +74,9 @@ const HomeSteps = () => {
       </Box>
       <Divider
         sx={{
-          height: "1px",
+          height: "1.28px",
           width: "23%",
-          bgcolor: "#fff",
+          bgcolor: "#BFC4B5",
           margin: "0 -10px",
         }}
       />
@@ -103,9 +103,9 @@ const HomeSteps = () => {
       </Box>
       <Divider
         sx={{
-          height: "1px",
+          height: "1.28px",
           width: "23%",
-          bgcolor: "#fff",
+          bgcolor: "#BFC4B5",
           margin: "0 -10px",
         }}
       />

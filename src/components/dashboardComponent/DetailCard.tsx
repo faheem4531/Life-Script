@@ -96,7 +96,7 @@ export default function DetailCard({
     <Box
       bgcolor={"white"}
       borderRadius={"8px"}
-      boxShadow={"4.715px 4.042px 11.519px 0px rgba(0, 0, 0, 0.14)"}
+      boxShadow="4px 4px 11.9px 0px rgba(0, 0, 0, 0.10)"
     >
       <Card
         className="container-fontfamily"
@@ -338,14 +338,14 @@ function CircularProgressWithLabel(props) {
         // marginBottom: { sm: "-8px", xs: "-20px" },
         // width: { md: "30px", sm: "26.015px", xs: "20px" },
         // backgroundColor:"#7f886b",
-        borderRadius:"50px"
+        borderRadius: "50px"
       }}
     >
       <CircularProgress sx={{ color: "#E1683B" }} variant="determinate" {...props} />
       <Box
         sx={{
-          top: { sm: "-7px", xs: "-20px",md:"0px" },
-          left: { sm: "2px", xs: "2px",md:"0px" },
+          top: { sm: "-7px", xs: "-20px", md: "0px" },
+          left: { sm: "2px", xs: "2px", md: "0px" },
           bottom: 0,
           right: 0,
           position: "absolute",

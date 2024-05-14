@@ -61,7 +61,6 @@ export const StartNewChapter = ({
     <Box
       bgcolor={"white"}
       borderRadius={"8px"}
-      boxShadow={"4.715px 4.042px 11.519px 0px rgba(0, 0, 0, 0.14)"}
     >
       <Card
         className="container-fontfamily"
