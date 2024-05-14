@@ -1,5 +1,6 @@
 import CoverImg from "@/_assets/png/selectBookCover.png";
-import logo from "@/_assets/svg/SmallLogoWhite.svg";
+// import logo from "@/_assets/svg/SmallLogoWhite.svg";
+import logo from "@/_assets/svg/Frame.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -129,7 +130,7 @@ const SelectBookCoverCardSvg: React.FC<SelectBookCoverCardProps> = ({
                 )}
               </Box>
               <Box>
-                <Image src={logo} alt="" />
+                <Image src={logo} alt=""/>
               </Box>
             </Box>
           </Box>

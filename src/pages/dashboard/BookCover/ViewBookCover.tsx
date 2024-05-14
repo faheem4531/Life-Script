@@ -40,8 +40,10 @@ const ViewBookCover = () => {
     finalCover,
     spine = 6
   ) => {
+    // const logo =
+    //   "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const logo =
-      "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
+      "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
     const pdfHeight = 255;
     const pageWidth = 170; //prev was 169.5
     const tail = spine;
