@@ -42,9 +42,9 @@ const PricingPage = () => {
       bgColor: "#E1683B",
       data: [
         "Free trial",
-        "Annual subscription with full-color hardcover book",
+        "Lifetime access with full-color hardcover book",
         "No additional cost for gift receiver",
-        "Annual subscription with full-color hardcover book",
+        "Price for additional full-color hardcover book",
         "Free worldwide Shipping",
         "Language supported",
         "Book page limit",
@@ -59,7 +59,7 @@ const PricingPage = () => {
       bgColor: "#30422E",
       data: [
         "Yes",
-        "139$",
+        "Yes, for 139$",
         "Yes",
         "39$ (up to 600 pages)",
         "Yes",
@@ -98,7 +98,7 @@ const PricingPage = () => {
         "Narrative Fusion Format",
         "Formatting Features (bold, italics and more)",
         "Assisted Editing and Grammar Check",
-        "Voice Over Text",
+        "Voice-To-Text",
         "Family Tree",
         "Auto Photo Improvement",
         "Mobile and Tablet-friendly"

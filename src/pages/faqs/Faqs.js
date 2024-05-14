@@ -11,19 +11,19 @@ const Faqs = () => {
   const QAs = [
     {
       question: "Can I purchase extra books?",
-      answer: "Yes, additional full-color hardcover books are available for 39$ each during or after your subscription period.",
+      answer: "Yes, additional full-color hardcover books are available for 39$ each.",
     },
     {
       question: "How long will it take?",
       answer: "Your book, your pace! Some people finish their book in 2-3 sittings while others prefer to enjoy the process and continually polish their answers for months. However you choose, enjoy revisiting your unique memories!",
     },
     {
-      question: "Can I gift a subscription and how does that work?",
-      answer: "Absolutely, gifting a subscription is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch.",
+      question: "Can I gift a LifeScript and how does that work?",
+      answer: "Absolutely, gifting a LifeScript is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch.",
     },
     {
-      question: "What is included in each subscription?",
-      answer: "Full year of access to our platform, full-color hardcover printed book and free delivery.",
+      question: "What is included in each plan?",
+      answer: "Lifetime access to our platform, full-color hardcover printed book and free delivery.",
     },
     {
       question: "Is international shipping available and how much does it cost?",
