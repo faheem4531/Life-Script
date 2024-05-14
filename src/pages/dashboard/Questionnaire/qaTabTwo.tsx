@@ -171,6 +171,8 @@ export default function TabTwo({
                 >
                   <MenuItem value="Single">Single</MenuItem>
                   <MenuItem value="Married">Married</MenuItem>
+                  <MenuItem value="Divorced">Divorced</MenuItem>
+                  <MenuItem value="Widowed">Widowed</MenuItem>
                 </Select>
                 {maritalStatus === "" && (
                   <Box
@@ -223,7 +225,7 @@ export default function TabTwo({
                 >
                   <MenuItem value="Male">Male</MenuItem>
                   <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Special</MenuItem>
+                  <MenuItem value="Other">Prefer not to tell</MenuItem>
                 </Select>
                 {gender === "" && (
                   <Box
