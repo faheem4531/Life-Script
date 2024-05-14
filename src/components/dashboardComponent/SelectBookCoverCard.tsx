@@ -1,5 +1,6 @@
 import CoverImg from "@/_assets/png/selectBookCover.png";
-import logo from "@/_assets/svg/SmallLogoWhite.svg";
+// import logo from "@/_assets/svg/SmallLogoWhite.svg";
+import logo from "@/_assets/svg/Frame.svg";
 import { Box, CircularProgress, colors } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -386,9 +387,12 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
               <Box
                 sx={{
                   color: landScape === "5" ? "white" : "black",
+                  transform: "rotate(90deg)",
+                  marginBottom:"10px" 
                 }}
               >
-                <Image src={logo} alt="" />
+                <Image src={logo} alt="" width={25}
+                />
               </Box>
             </Box>
           </Box>

@@ -897,7 +897,7 @@ const EditBookCover = () => {
                     width={"180px"}
                   />
                 </Box>
-                <Box
+                {/* <Box
                   sx={{
                     opacity:
                       (title && subtitle && imageLink) || cropper ? "1" : "0.5",
@@ -926,7 +926,69 @@ const EditBookCover = () => {
                     isLoading={buttonUpDateLoading}
                     width={"180px"}
                   />
-                </Box>
+                </Box> */}
+                {CoverNumber === "6" ? (
+                  <Box
+                    sx={{
+                      opacity: (title && subtitle),
+                    }}
+                  >
+                    <GlobelBtn
+                      btnText={
+                        buttonLoading
+                          ? `${t("BookCoverCard.Saving")}`
+                          : coverId
+                            ? `${t("BookCoverCard.UpdateCover")}`
+                            : `${t("BookCoverCard.saveCover")}`
+                      }
+                      bgColor="#30422E"
+                      color="#fff"
+                      fontSize={{ xs: "12px", md: "16px" }}
+                      onClick={() => {
+                        title &&
+                          subtitle &&
+                          //   byline &&
+                          //   selectedColor &&
+                          // imageLink &&
+                          !buttonLoading &&
+                          handleSaveCover();
+                      }}
+                      isLoading={buttonUpDateLoading}
+                      width={"180px"}
+                    />
+                  </Box>
+                ) : (
+                  <Box
+                    sx={{
+                      opacity: (title && subtitle && imageLink) || cropper ? "1" : "0.5",
+                    }}
+                  >
+                    <GlobelBtn
+                      btnText={
+                        buttonLoading
+                          ? `${t("BookCoverCard.Saving")}`
+                          : coverId
+                            ? `${t("BookCoverCard.UpdateCover")}`
+                            : `${t("BookCoverCard.saveCover")}`
+                      }
+                      bgColor="#30422E"
+                      color="#fff"
+                      fontSize={{ xs: "12px", md: "16px" }}
+                      onClick={() => {
+                        title &&
+                          subtitle &&
+                          //   byline &&
+                          //   selectedColor &&
+                          // imageLink &&
+                          !buttonLoading &&
+                          handleSaveCover();
+                      }}
+                      isLoading={buttonUpDateLoading}
+                      width={"180px"}
+                    />
+                  </Box>
+                )}
+
               </Box>
             </Box>
 
