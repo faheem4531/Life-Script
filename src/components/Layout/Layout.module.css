@@ -2,12 +2,6 @@
   display: block;
 }
 
-.nativeMainBg {
-  background-image: url(../../_assets/png/native-response-bg.png);
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: auto;
-}
 .displayBg {
   width: 100vw;
 }

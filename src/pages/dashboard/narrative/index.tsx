@@ -243,8 +243,10 @@ const NarrativeResponse = () => {
                           sm: "30px 35px",
                           xs: "15px 20px",
                         },
-                        bgcolor: "#30422E1A",
+                        border: "1px solid #30422E1A",
+                        bgcolor: " #f5f6f6",
                         position: "relative",
+                        color: "#30422E",
                         height: "calc(100vh - 145px)",
                         overflowY: "auto",
                         "&::-webkit-scrollbar": { display: "none" },
@@ -352,13 +354,13 @@ const NarrativeResponse = () => {
           )}
         </Layout>
         {/* padding: { sm: "10px 33px 30px" }, */}
-        <Box
+        {/* <Box
           sx={{
             position: 'absolute',
             right: '0px',
             // ml: "-220px",
             bottom: '0px',
-            zIndex: 1,
+            zIndex: 10,
             maxWidth: '400px',
             width: '100%',
           }}
@@ -368,7 +370,7 @@ const NarrativeResponse = () => {
               width: '100%',
               height: '100%',
             }} />
-        </Box>
+        </Box> */}
       </Box>
 
       {/* Revert changes Modal  */}

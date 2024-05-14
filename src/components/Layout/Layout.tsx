@@ -20,10 +20,6 @@ const Layout = ({ children }: { children?: any }) => {
         overflowX: "hidden",
         minHeight: "100vh",
       }}
-      // className="container-fontfamily"
-      className={
-        router.asPath === "/dashboard/narrative" && styles.nativeMainBg
-      }
     >
       <Box
         sx={{
