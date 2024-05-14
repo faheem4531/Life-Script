@@ -325,3 +325,10 @@ li{
   .css-1xylxj1-MuiTypography-root-MuiLink-root {
     text-decoration: none !important;
   }
+  
+  .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+    /* display: none !important; */
+    color: #fff !important;
+    margin-top: -8px;
+    margin-left: -14px;
+  }
