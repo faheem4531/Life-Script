@@ -5,7 +5,7 @@
     "InPro": "In Progress",
     "Com": "Completed",
     "bookCover": "Book Cover",
-    "SubPlan": "Subscription Plan",
+    "SubPlan": "Payment Plan",
     "toc": "Table of contents",
     "FamilyTree": "Family Tree",
     "account": "Account",
@@ -237,8 +237,8 @@
     "editCover": "Edit Cover"
   },
   "SubsPlan": {
-    "SubsHeaderTitle": "Subscription Plan",
-    "SubsHeaderDes": "Choose a subscription plan below before Aug30th,2023 to unlock this special offer.",
+    "SubsHeaderTitle": "Payment Plan",
+    "SubsHeaderDes": "Choose a payment plan below before Aug30th,2023 to unlock this special offer.",
     "cardBtn": "Choose Plan",
     "cardProBtn": "Processing...",
     "SubsCardBasic": {
