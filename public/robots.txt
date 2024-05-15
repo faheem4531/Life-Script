@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
-Disallow: /cgi-bin/
-Sitemap: https://www.thelifescript.com
+
+Sitemap: https://www.thelifescript.com/sitemap.xml
