@@ -137,7 +137,7 @@ export default function Document() {
 
 
         {/* JSON-LD script for structured data */}
-        <script type="application/ld+json">
+        {/* <script type="application/ld+json">
           {`
     {
       "@context": "https://schema.org",
@@ -163,29 +163,79 @@ export default function Document() {
       ]
     }
     `}
-        </script>
+        </script> */}
+          <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "LifeScript",
+        "url": "https://www.thelifescript.com",
+        "logo": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
+        "alternateName": "the lifescript",
+        "sameAs": [
+          "https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr",
+          "https://www.facebook.com/profile.php?id=61554559332668",
+          "https://twitter.com/thelifescript",
+          "https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "",
+            "contactType": "customer service",
+            "email": "info@thelifescript.com",
+            "availableLanguage": "en"
+          }
+        ]
+      })
+    }}
+  />
 
 
         {/* JSON-LD script for Product */}
-        <script type="application/ld+json">
+        {/* <script type="application/ld+json">
           {`
-    {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "LifeScript",
-      "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-      "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
-      "brand": "LifeScript",
-      "offers": {
-        "@type": "AggregateOffer",
-        "url": "https://www.thelifescript.com/pricing",
-        "priceCurrency": "USD",
-        "lowPrice": "139",
-        "highPrice": "239"
-      }
-    }
-    `}
-        </script>
+          {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "LifeScript",
+            "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
+            "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
+            "brand": "LifeScript",
+            "offers": {
+              "@type": "AggregateOffer",
+              "url": "https://www.thelifescript.com/pricing",
+              "priceCurrency": "USD",
+              "lowPrice": "139",
+              "highPrice": "239"
+            }
+          }
+          `}
+        </script> */}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": "LifeScript",
+              "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
+              "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
+              "brand": "LifeScript",
+              "offers": {
+                "@type": "AggregateOffer",
+                "url": "https://www.thelifescript.com/pricing",
+                "priceCurrency": "USD",
+                "lowPrice": "139",
+                "highPrice": "239"
+              }
+            })
+          }}
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet" />
