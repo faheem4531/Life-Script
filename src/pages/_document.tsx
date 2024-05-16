@@ -27,7 +27,9 @@ export default function Document() {
           }}
         /> */}
 
-        <script type="text/javascript">
+
+        {/* Old Code Clarity */}
+        {/* <script type="text/javascript">
           {`
           (function(c,l,a,r,i,t,y){
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -35,9 +37,21 @@ export default function Document() {
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "lpnt5cc9c6");
           `}
-        </script>
+        </script> */}
 
 
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+                                (function(c,l,a,r,i,t,y){
+                                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                                })(window, document, "clarity", "script", "lpnt5cc9c6");
+                            `,
+          }}
+        />
 
         {/* Google Analytics Code */}
         <Script
@@ -164,34 +178,34 @@ export default function Document() {
     }
     `}
         </script> */}
-          <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "LifeScript",
-        "url": "https://www.thelifescript.com",
-        "logo": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-        "alternateName": "the lifescript",
-        "sameAs": [
-          "https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr",
-          "https://www.facebook.com/profile.php?id=61554559332668",
-          "https://twitter.com/thelifescript",
-          "https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1"
-        ],
-        "contactPoint": [
-          {
-            "@type": "ContactPoint",
-            "telephone": "",
-            "contactType": "customer service",
-            "email": "info@thelifescript.com",
-            "availableLanguage": "en"
-          }
-        ]
-      })
-    }}
-  />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "LifeScript",
+              "url": "https://www.thelifescript.com",
+              "logo": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
+              "alternateName": "the lifescript",
+              "sameAs": [
+                "https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr",
+                "https://www.facebook.com/profile.php?id=61554559332668",
+                "https://twitter.com/thelifescript",
+                "https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1"
+              ],
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "",
+                  "contactType": "customer service",
+                  "email": "info@thelifescript.com",
+                  "availableLanguage": "en"
+                }
+              ]
+            })
+          }}
+        />
 
 
         {/* JSON-LD script for Product */}
