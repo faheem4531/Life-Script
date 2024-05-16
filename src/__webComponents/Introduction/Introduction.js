@@ -21,23 +21,22 @@ const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "
       }}
         width={width}
       >
-        <Box sx={{
+        <Typography sx={{
           fontSize: { md: "55px", sm: "44px", xs: "32px" },
           padding: "0 20px",
           fontWeight: 500,
           margin: { md: " 0 auto 30px", sx: "20px", xs: "0px" },
           color: "#F3ECDA",
           fontFamily: "Besley !important",
-        }}>
-          {/* <h1> */}
-
+        }}
+          variant="h1"
+        >
           {heading}{" "}
           <span className={styles.lineBox}>
             {keyWorld}
             <Image src={Line} alt="img" className={styles.line} />
           </span>
-          {/* </h1> */}
-        </Box>
+        </Typography>
       </Box>
     </Box >
   )
