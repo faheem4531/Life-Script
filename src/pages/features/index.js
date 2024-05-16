@@ -12,14 +12,14 @@ const FeaturesPage = () => {
     <>
       <Head>
         <title>Features That Make Your Storytelling Fun and Easy</title>
-        <meta name="description" discription="Take advantage of our assisted editing, text formatting features, voice-to-text, family tree, automatic photo improvement, premium book covers and more." />
+        <meta name="description" content="Take advantage of our assisted editing, text formatting features, voice-to-text, family tree, automatic photo improvement, premium book covers and more." />
       </Head>
 
 
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <FeaturesIntroduction
           heading="Features That Make Your Storytelling Experience Fun and  "
-          keyWorld="Easyyy"
+          keyWorld="Easy"
         />
         <FeaturesItems />
         <ContactFooter
