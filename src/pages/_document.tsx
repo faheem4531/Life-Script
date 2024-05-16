@@ -9,7 +9,7 @@ export default function Document() {
 
         <meta
           name="description"
-          content="Turn memories into a stunning hardcover book. Cherish connections across generations. Ideal gift for loved ones."
+          content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent. "
         />
 
         {/* Clarity Analytics Code */}
