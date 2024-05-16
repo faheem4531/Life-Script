@@ -30,6 +30,7 @@ const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "
           fontFamily: "Besley !important",
         }}>
           {/* <h1> */}
+
           {heading}{" "}
           <span className={styles.lineBox}>
             {keyWorld}

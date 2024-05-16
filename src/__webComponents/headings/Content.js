@@ -16,11 +16,13 @@ export function Content({ heading, subHeading, marginB, subWidth, width, align, 
         marginBottom: { lg: "20px", md: "10px", xs: "10px" },
         fontFamily: "Besley !important",
         lineHeight: { sm: "50px", xs: "36px" }
-      }}>
-        <h3>{heading}</h3>
+      }}
+        variant="h3"
+      >
+        {heading}
       </Typography>
-      <Typography sx={{ maxWidth: { lg: subWidth || "420px", }, fontFamily: "Avenir" }} fontSize={subFonts || "16px"} >
-        <h4> {subHeading} </h4>
+      <Typography variant="h4" sx={{ maxWidth: { lg: subWidth || "420px", }, fontFamily: "Avenir" }} fontSize={subFonts || "16px"} >
+        {subHeading}
       </Typography>
     </Box >
   )

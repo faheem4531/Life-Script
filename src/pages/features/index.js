@@ -19,7 +19,7 @@ const FeaturesPage = () => {
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <FeaturesIntroduction
           heading="Features That Make Your Storytelling Experience Fun and  "
-          keyWorld="Easy"
+          keyWorld="Easyyy"
         />
         <FeaturesItems />
         <ContactFooter
