@@ -21,6 +21,17 @@ import Shape from "@/__webAssets/svgs/input-shape.svg"
 // import Logo from "@/__webAssets/svgs/logo.svg"
 import Logo from "../../../public/lifescript-life-story-book-logo.svg"
 import Gift from "@/__webAssets/svgs/gift.svg"
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: 'Easily Create or Gift a Personal Autobiography Book - LifeScript',
+    default: 'LifeScript',
+  },
+  description: 'Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.',
+  metadataBase: new URL('https://thelifescript.com/'),
+};
+
 
 const HomePage = () => {
 
