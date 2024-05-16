@@ -28,7 +28,7 @@ export default function Home() {
 
       
         {/* Clarity Analytics Code */}
-        <Script
+        {/* <Script
           id="clarity"
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -40,7 +40,7 @@ export default function Home() {
               })(window, document, "clarity", "script", "lpnt5cc9c6");
             `,
           }}
-        />
+        /> */}
 
 
 
