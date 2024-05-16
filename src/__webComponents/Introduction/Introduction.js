@@ -29,13 +29,13 @@ const FeaturesIntroduction = ({ heading, keyWorld, subHeading = false, width = "
           color: "#F3ECDA",
           fontFamily: "Besley !important",
         }}>
-          <h1>
-            {heading}{" "}
-            <span className={styles.lineBox}>
-              {keyWorld}
-              <Image src={Line} alt="img" className={styles.line} />
-            </span>
-          </h1>
+          {/* <h1> */}
+          {heading}{" "}
+          <span className={styles.lineBox}>
+            {keyWorld}
+            <Image src={Line} alt="img" className={styles.line} />
+          </span>
+          {/* </h1> */}
         </Box>
       </Box>
     </Box >
