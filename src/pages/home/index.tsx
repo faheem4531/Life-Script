@@ -69,13 +69,13 @@ const HomePage = () => {
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C" />
         <Introduction />
-        <Working data={pointsArray} heading=" How it" marked="works" />
+        {/* <Working data={pointsArray} heading=" How it" marked="works" /> */}
         <Suggestion />
-        <GifTab
+        {/* <GifTab
           heading="Surprise your loved one with LifeScript and let them transform their memories into a keepsake book."
           button="Gift Now!!"
           icon={Gift}
-        />
+        /> */}
         <StoryTelling />
         <Reviews />
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
@@ -85,7 +85,7 @@ const HomePage = () => {
         <OurBooks />
         <Testimonial />
         <GotQuestions />
-        <ContactFooter
+        {/* <ContactFooter
           title="Missed the moment? Set a"
           marked="reminder!"
           date={true}
@@ -95,7 +95,7 @@ const HomePage = () => {
           input3="When it’s happening?"
           button="Remind Me"
           shape={Shape}
-        />
+        /> */}
         <Footer />
       </Box >
     </>
