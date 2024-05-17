@@ -13,8 +13,12 @@ const AboutUs = () => {
   return (
 
     <>
-      <Head>
+       <Head>
         <title>About us</title>
+        <meta
+          name="description"
+          content="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
+        />
         <meta
           property="og:title"
           content="About us"
@@ -23,15 +27,15 @@ const AboutUs = () => {
           property="og:description"
           content="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
         />
+        <meta
+          property="og:url"
+          content="https://www.thelifescript.com/about-us"
+        />
         <NextSeo
           title="About us"
           description="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
           canonical="https://www.thelifescript.com/about-us"
         />
-        {/* <meta
-          name="description"
-          discription="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
-        /> */}
       </Head>
 
 
