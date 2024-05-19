@@ -228,11 +228,15 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
 
   const dropDownOptions = [
     { value: 0, label: '1 book Included with Subscription', hidden: true },
-    { value: 1, label: "(1 extra books)", price: "+ $39", color: "#e1693b" },
-    { value: 2, label: "(2 extra books)", price: "+ $78", color: "#e1693b" },
-    { value: 3, label: "(3 extra books)", price: "+ $117", color: "#e1693b" },
-    { value: 4, label: "(4 extra books)", price: "+ $156", color: "#e1693b" },
-    { value: 5, label: "(5 extra books)", price: "+ $195", color: "#e1693b" }
+    { value: 1, label: "(2 books)", price: "+ $39", color: "#e1693b" },
+    { value: 2, label: "(3 books)", price: "+ $78", color: "#e1693b" },
+    { value: 3, label: "(4 books)", price: "+ $117", color: "#e1693b" },
+    { value: 4, label: "(5 books)", price: "+ $156", color: "#e1693b" },
+    { value: 5, label: "(6 books)", price: "+ $195", color: "#e1693b" },
+    { value: 6, label: "(7 books)", price: "+ $234", color: "#e1693b" },
+    { value: 7, label: "(8 books)", price: "+ $273", color: "#e1693b" },
+    { value: 8, label: "(9 books)", price: "+ $312", color: "#e1693b" },
+    { value: 9, label: "(10 books)", price: "+ $351", color: "#e1693b" },
   ];
 
   const handleChange = (event) => {
@@ -292,14 +296,18 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
                   onChange={handleChange}
                   sx={{ width: "100%", backgroundColor: "white", marginBottom: "50px" }}
                 >
+                  {/* <Box sx={{ height: "200px" ,bgcolor:"red"}}> */}
+
                   {dropDownOptions.map((option, index) => (
-                    <MenuItem key={option.value} value={option.value} hidden={option.hidden}>
+                    <MenuItem key={option.value} value={option.value} hidden={option.hidden} >
                       {selectedBooks === option.value && <CheckIcon sx={{ marginRight: '8px', color: "#e1693b" }} />} {/* Conditional rendering */}
                       {/* <span>{`${index + 1}. ${option.label}`}</span> */}
                       <span>{`${option.label}`}</span>
                       <span style={{ color: option.color, marginLeft: "10px" }}>{option.price}</span>
                     </MenuItem>
                   ))}
+                  {/* </Box> */}
+
                 </Select>
               </Box>
 
