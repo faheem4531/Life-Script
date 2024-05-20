@@ -115,7 +115,8 @@ const PaymentForm = ({ packageName, price }) => {
           display: "flex",
           justifyContent: "space-between",
           height: "100%",
-          flexDirection: "column", bgcolor: "#F8F6F9",
+          flexDirection: "column",
+          bgcolor: "#F8F6F9",
           p: "28px 35px",
           borderRadius: "4px",
           maxHeight: "480px",
@@ -126,7 +127,8 @@ const PaymentForm = ({ packageName, price }) => {
           <Box mb="30px">
             <Typography
               sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                color: "#30422E",
               }}
             >
               {t("SubsPlan.CardNum")}
@@ -154,7 +156,8 @@ const PaymentForm = ({ packageName, price }) => {
           <Box mb="30px">
             <Typography
               sx={{
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
+                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                color: "#30422E",
               }}
             >
               {t("SubsPlan.CardholderName")}
@@ -189,7 +192,8 @@ const PaymentForm = ({ packageName, price }) => {
             <Box flex={1}>
               <Typography
                 sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                  color: "#30422E",
                 }}
               >
                 {t("SubsPlan.ExpDate")}
@@ -216,7 +220,8 @@ const PaymentForm = ({ packageName, price }) => {
             <Box flex={1}>
               <Typography
                 sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 }, color: "#30422E"
+                  fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
+                  color: "#30422E",
                 }}
               >
                 {t("SubsPlan.cvc")}
@@ -248,15 +253,11 @@ const PaymentForm = ({ packageName, price }) => {
             opacity: loading || isError || !cardHolderName ? 0.6 : 1,
           }}
         >
-          <Box >
+          <Box>
             <GlobelBtn
               bgColor="#E1683B"
               color="white"
-              btnText={
-                loading
-                  ? "Loading..."
-                  : "Subscribe"
-              }
+              btnText={loading ? "Loading..." : "Buy Now"}
               onClick={() => {
                 if (!loading && !isError && cardHolderName) {
                   setConfirmationStripe(true);

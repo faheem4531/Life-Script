@@ -396,48 +396,48 @@ const RichText = ({ questionId }) => {
   };
 
   //for uploadin image
-//   const uploadCallback = (file) => {
-//     return new Promise((resolve, reject) => {
-//       const reader = new window.FileReader();
-//       reader.onloadend = async () => {
-//         const form_data = new FormData();
-//         form_data.append("image", file);
+  //   const uploadCallback = (file) => {
+  //     return new Promise((resolve, reject) => {
+  //       const reader = new window.FileReader();
+  //       reader.onloadend = async () => {
+  //         const form_data = new FormData();
+  //         form_data.append("image", file);
 
-//         const res = await dispatch(uploadImage(form_data));
-// console.log("Responsisbdbab-----378787",res)
-//         resolve({ data: { link: res.payload } });
-//       };
-//       reader.readAsDataURL(file);
-//     });
-//   };
-const uploadCallback = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new window.FileReader();
-    reader.onloadend = async () => {
-      const form_data = new FormData();
-      form_data.append("image", file);
+  //         const res = await dispatch(uploadImage(form_data));
+  // console.log("Responsisbdbab-----378787",res)
+  //         resolve({ data: { link: res.payload } });
+  //       };
+  //       reader.readAsDataURL(file);
+  //     });
+  //   };
+  const uploadCallback = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new window.FileReader();
+      reader.onloadend = async () => {
+        const form_data = new FormData();
+        form_data.append("image", file);
 
-      try {
-        const res = await dispatch(uploadImage(form_data));
-        console.log("Response from uploadImage:", res);
+        try {
+          const res = await dispatch(uploadImage(form_data));
+          console.log("Response from uploadImage:", res);
 
-        if (res && res.payload) {
-          const caption = `Caption: ${file.name}`;
-          const imageData = { data: { link: res.payload, caption: caption } };
-          console.log("Image data:", imageData); // Log the image data for debugging
-          resolve(imageData);
-        } else {
-          reject("Failed to upload image or get image URL.");
+          if (res && res.payload) {
+            const caption = `Caption: ${file.name}`;
+            const imageData = { data: { link: res.payload, caption: caption } };
+            console.log("Image data:", imageData); // Log the image data for debugging
+            resolve(imageData);
+          } else {
+            reject("Failed to upload image or get image URL.");
+          }
+        } catch (error) {
+          reject(
+            error.message || "An error occurred while uploading the image."
+          );
         }
-      } catch (error) {
-        reject(error.message || "An error occurred while uploading the image.");
-      }
-    };
-    reader.readAsDataURL(file);
-  });
-};
-
-
+      };
+      reader.readAsDataURL(file);
+    });
+  };
 
   return (
     <>
@@ -496,6 +496,7 @@ const uploadCallback = (file) => {
                 alignItems: "center",
                 gap: "10px",
                 flexWrap: { xs: "wrap", lg: "nowrap" },
+                ml: { sm: "70px", xs: "0" },
               }}
             >
               <GlobelBtn
@@ -504,8 +505,8 @@ const uploadCallback = (file) => {
                   detecting
                     ? `${t("richText.detecte")}`
                     : listening
-                      ? `${t("richText.stop")}`
-                      : `${t("richText.STT")}`
+                    ? `${t("richText.stop")}`
+                    : `${t("richText.STT")}`
                 }
                 color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
                 bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
@@ -547,6 +548,7 @@ const uploadCallback = (file) => {
           <Editor
             editorState={editorState}
             onEditorStateChange={setEditorState}
+            placeholder="Click here to start typing.."
             wrapperClassName="wrapper-class"
             editorClassName="editor-class"
             toolbarClassName="toolbar-class"
@@ -635,7 +637,7 @@ const uploadCallback = (file) => {
                 },
                 caption: {
                   show: true, // Show image caption
-                  text: 'bottom', 
+                  text: "bottom",
                 },
               },
               history: {
