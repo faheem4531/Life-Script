@@ -1,7 +1,12 @@
 import GlobelBtn from "@/components/button/Button";
 import {
-  Box, FormControlLabel, MenuItem, Tooltip,
-  Select, RadioGroup, Typography
+  Box,
+  FormControlLabel,
+  MenuItem,
+  Tooltip,
+  Select,
+  RadioGroup,
+  Typography,
 } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import { useEffect, useState } from "react";
@@ -30,9 +35,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
 
   const handleButtonClick = () => {
     setShowTooltip(false);
-    if (
-      langPre === ""
-    ) {
+    if (langPre === "") {
       setShowTooltip(true);
     } else {
       onClick({
@@ -41,7 +44,6 @@ export default function TabOne({ onClick, data, setQaTab }) {
       });
     }
   };
-
 
   return (
     <Box
@@ -78,7 +80,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
               color: "#30422E",
             }}
           >
-            Who will use lifescript?
+            Who will use LifeScript?
           </Typography>
           <Box
             sx={{
@@ -223,6 +225,6 @@ export default function TabOne({ onClick, data, setQaTab }) {
           />
         </Tooltip>
       </Box>
-    </Box >
+    </Box>
   );
 }

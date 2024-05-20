@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../button/Button";
 import styles from "./Custom.module.css";
-import GlobelBtn from '../button/Button';
+import GlobelBtn from "../button/Button";
 import DemoProfile from "@/_assets/svg/profile.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile, selectUser } from "@/store/slices/authSlice";
-import { quotes } from '@/utils/subscriptionLists';
+import { quotes } from "@/utils/subscriptionLists";
 
 const WelcomeOverview = () => {
   const { t } = useTranslation();
@@ -26,8 +26,8 @@ const WelcomeOverview = () => {
 
   useEffect(() => {
     const name = localStorage.getItem("username");
-    setUserNameFull(name)
-    const firstName = name ? name.split(' ')[0] : ''; // Get the part before the first space
+    setUserNameFull(name);
+    const firstName = name ? name.split(" ")[0] : ""; // Get the part before the first space
     setUserName(firstName);
   }, []);
 
@@ -78,7 +78,8 @@ const WelcomeOverview = () => {
           color="#30422E"
           btnText={`${t("overView.headerBtnText")}`}
           onClick={() => router.push("/dashboard/chapters")}
-          width={"225px"} />
+          width={"225px"}
+        />
       </Box>
       <Box
         sx={{
@@ -87,11 +88,19 @@ const WelcomeOverview = () => {
           alignItems: "center",
           borderLeft: "1px solid #30422E",
           pl: "50px",
-          bgcolor: ""
+          bgcolor: "",
         }}
       >
-        <Box sx={{ position: "relative", width: "150px", height: "150px", display: "flex", justifyContent: "center", alignItems: "center" }} >
-
+        <Box
+          sx={{
+            position: "relative",
+            width: "150px",
+            height: "150px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           {!userImage ? (
             <Image
               alt="profile"
@@ -101,7 +110,7 @@ const WelcomeOverview = () => {
           ) : (
             <img alt="profile" src={userImage} className={styles.profilePic} />
           )}
-          <Image src={Radius} alt='img' className={styles.profileBox} />
+          <Image src={Radius} alt="img" className={styles.profileBox} />
         </Box>
         <Typography
           sx={{
@@ -110,7 +119,7 @@ const WelcomeOverview = () => {
             marginTop: "25px",
             minWidth: "200px",
             width: "100%",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           {userNameFull}
@@ -122,16 +131,13 @@ const WelcomeOverview = () => {
 
 export default WelcomeOverview;
 
-
-
-
 const QuoteRotator = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    }, 10000);
+    }, 86400000);
 
     return () => {
       clearInterval(intervalId);
@@ -148,7 +154,7 @@ const QuoteRotator = () => {
         marginBottom: "20px",
         color: "#30422E",
         marginTop: "10px",
-        transition: 'opacity 1s ease-in-out',
+        transition: "opacity 1s ease-in-out",
         opacity: 1,
       }}
     >
