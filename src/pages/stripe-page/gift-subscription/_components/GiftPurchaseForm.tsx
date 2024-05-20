@@ -264,6 +264,21 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
   }, [router]);
 
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      // Close the dropdown when the user scrolls
+      setIsDropdownOpen(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -294,6 +309,9 @@ const GiftPurchaseForm = ({ onClick, selectedTab, inAppGiftFlow, giftToUser }) =
                 <Select
                   value={selectedBooks}
                   onChange={handleChange}
+                  open={isDropdownOpen}
+                  onClose={() => setIsDropdownOpen(false)}
+                  onOpen={() => setIsDropdownOpen(true)}
                   sx={{ width: "100%", backgroundColor: "white", marginBottom: "50px" }}
                 >
                   {/* <Box sx={{ height: "200px" ,bgcolor:"red"}}> */}

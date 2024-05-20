@@ -228,6 +228,21 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     setSubscribeUpdates(event.target.checked);
   };
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      // Close the dropdown when the user scrolls
+      setIsDropdownOpen(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   return (
     <>
@@ -259,6 +274,9 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                 <Select
                   value={selectedBooks}
                   onChange={handleChange}
+                  open={isDropdownOpen}
+                  onClose={() => setIsDropdownOpen(false)}
+                  onOpen={() => setIsDropdownOpen(true)}
                   sx={{ width: "100%", backgroundColor: "white", marginBottom: "50px" }}
                 >
                   {dropDownOptions.map((option, index) => (
