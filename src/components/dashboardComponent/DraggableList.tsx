@@ -26,7 +26,7 @@ const DraggableList = ({ data }) => {
     dispatch(createToc({ tableOfContent: updatedItemsWithIndex }))
       .unwrap()
       .then(() => dispatch(getToc()))
-      .catch(() => { });
+      .catch(() => {});
 
     setItems(updatedItems);
   };
@@ -51,7 +51,7 @@ const DraggableList = ({ data }) => {
                     <Box
                       sx={{
                         width: "100%",
-                        p: "15px 29px",
+                        p: { sm: "15px 29px", xs: "12px 15px" },
                         bgcolor: "#F9F9F9",
                         borderRadius: "4px",
                         borderLeft: "8.25px solid #7F886B",
@@ -68,16 +68,17 @@ const DraggableList = ({ data }) => {
                         <Typography
                           sx={{
                             color: "#30422E",
-                            fontSize: "18px",
+                            fontSize: { sm: "18px", xs: "16px" },
                           }}
                         >
-                          {item?.index}{"."}
+                          {item?.index}
+                          {"."}
                         </Typography>
                         <Typography
                           sx={{
-                            fontSize: "18px",
-                            lineHeight: "14.539px",
-                            color: "#30422E"
+                            fontSize: { sm: "18px", xs: "16px" },
+                            lineHeight: "20px",
+                            color: "#30422E",
                           }}
                         >
                           {item?.title}
