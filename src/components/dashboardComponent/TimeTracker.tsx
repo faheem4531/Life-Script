@@ -133,7 +133,7 @@ const TimeTracker = ({ onChange }) => {
         alignItems: { md: "end", sm: "center", xs: "center" },
         pr: "20px",
         gap: "20px",
-        flexDirection: { md: "row", sm: "column", xs: "column" }
+        flexDirection: { md: "row", sm: "column", xs: "column" },
       }}
       className={styles.trackerbg}
     >
@@ -157,7 +157,7 @@ const TimeTracker = ({ onChange }) => {
             padding: "4px",
             alignSelf: "start",
             mb: "15px",
-            mr: { lg: "-10px", xs: "-40px" },
+            mr: { lg: "-10px", sm: "-40px", xs: "-90px" },
             flexShrink: "0",
           }}
         >
@@ -289,7 +289,6 @@ const TimeTracker = ({ onChange }) => {
           ml: "0px",
           width: "340px",
         }}
-
         className={styles.clockContainer}
       >
         <Image
@@ -297,7 +296,7 @@ const TimeTracker = ({ onChange }) => {
           alt="ClockImage"
           style={{
             width: "100%",
-            height: "100%"
+            height: "100%",
           }}
         />
         <Box
@@ -306,7 +305,7 @@ const TimeTracker = ({ onChange }) => {
             right: { xs: "13px" },
             bottom: "25px",
             width: "68px",
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           <Box sx={{ position: "relative" }}>
@@ -321,12 +320,13 @@ const TimeTracker = ({ onChange }) => {
                 color: "white",
               }}
             >
-              {hoursCount}<Typography sx={{ fontSize: "10px" }}>of Writing</Typography>
+              {hoursCount}
+              <Typography sx={{ fontSize: "10px" }}>of Writing</Typography>
             </Box>
           </Box>
         </Box>
       </Box>
-    </Box >
+    </Box>
   );
 };
 

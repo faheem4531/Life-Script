@@ -72,15 +72,14 @@ export const ViewBook = () => {
           alignItems: "center",
           position: "relative",
           cursor: "pointer",
-          columnGap: "16px"
+          columnGap: "16px",
         }}
         className={styles.viewBook}
       >
-
         <Image alt="next" src={Book} />
         <Typography
           sx={{
-            fontSize: { xl: "21px", sm: "18px", xs: "12px" },
+            fontSize: { xl: "21px", sm: "18px", xs: "14px" },
             fontWeight: 500,
           }}
         >
@@ -174,9 +173,9 @@ export const ViewTree = () => {
   const router = useRouter();
   const [luluStatus, setLuluStatus] = useState("");
   useEffect(() => {
-    const lulu = localStorage.getItem('luluStatus');
+    const lulu = localStorage.getItem("luluStatus");
     setLuluStatus(lulu);
-  }, [])
+  }, []);
   return (
     <Box
       onClick={() => router.push("/familyTree")}
@@ -191,14 +190,14 @@ export const ViewTree = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        columnGap: "16px"
+        columnGap: "16px",
       }}
       className={styles.viewTree}
     >
       <Image alt="next" src={FamilyTree} />
       <Typography
         sx={{
-          fontSize: { xl: "21px", sm: "18px", xs: "12px" },
+          fontSize: { xl: "21px", sm: "18px", xs: "14px" },
           fontWeight: 500,
         }}
       >
@@ -237,7 +236,8 @@ export const PrintBook = () => {
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
         >
-          Once you submit your book for printing and delivery, watch the status update in real-time as it makes its way to you.
+          Once you submit your book for printing and delivery, watch the status
+          update in real-time as it makes its way to you.
         </Typography>
       </Box>
       <Box>
