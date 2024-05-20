@@ -133,7 +133,8 @@ const chapterName = () => {
             display: { sm: "block", xs: "none" },
           }}
         >
-          <AddChapterName editChapter={() => { }}
+          <AddChapterName
+            editChapter={() => {}}
             chapterId={templateData?._id}
             chapter={templateTitle}
             title="templateView"
@@ -152,10 +153,13 @@ const chapterName = () => {
             <CircularProgress />
           </Box>
         ) : isLoaded ? (
-          <Loading progressCompleted={openModal} completed={() => {
-            setCompletionModal(true);
-            setIsloaded(false);
-          }} />
+          <Loading
+            progressCompleted={openModal}
+            completed={() => {
+              setCompletionModal(true);
+              setIsloaded(false);
+            }}
+          />
         ) : (
           <Box
             sx={{
@@ -177,7 +181,6 @@ const chapterName = () => {
                 alignItems: "center",
                 marginBottom: "10px",
                 mt: { sm: "10px", xs: "0px" },
-                opacity: tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
               }}
             >
               <Box
@@ -208,7 +211,13 @@ const chapterName = () => {
               >
                 {t("template.Questions")}
               </Typography>
-              <Box>
+
+              <Box
+                sx={{
+                  opacity:
+                    tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
+                }}
+              >
                 <GlobelBtn
                   image={UseTemplate}
                   btnText={`${t("template.useTemBtn")}`}
@@ -235,7 +244,14 @@ const chapterName = () => {
               </Box>
             ) : (
               // <Loading isLoaded={isLoaded} />
-              <Box sx={{ marginTop: "60px", bgcolor: "#f3ecda", padding: "10px 0 30px", borderRadius: "5px" }}>
+              <Box
+                sx={{
+                  marginTop: "60px",
+                  bgcolor: "#f3ecda",
+                  padding: "10px 0 30px",
+                  borderRadius: "5px",
+                }}
+              >
                 {allQuestions?.length > 0 ? (
                   allQuestions.map((question, index) => (
                     <Questions

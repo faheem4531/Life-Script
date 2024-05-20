@@ -104,27 +104,25 @@ export default function Questions({
   const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
 
   return (
-    <Box
-    //  sx={{ position: "relative", bgcolor: "#F4F4F4" }}
-    >
+    <>
       <Box
         sx={{
           padding: { sm: "10px 30px 0", xs: "10px 15px 0" },
-          // margin:"20px",
-          // backgroundColor:"white"
         }}
       >
-        <Box sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          width: "100%",
-          bgcolor: title == "templateView" && "#F4F4F4",
-          margin: "2px",
-          borderLeft: "6px solid #7f886b",
-          borderRadius: "5px",
-          backgroundColor: "white"
-        }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            width: "100%",
+            bgcolor: title == "templateView" && "#F4F4F4",
+            margin: "2px",
+            borderLeft: "6px solid #7f886b",
+            borderRadius: "5px",
+            backgroundColor: "white",
+          }}
+        >
           <Box
             onClick={() => {
               if (title !== "templateView") {
@@ -140,7 +138,7 @@ export default function Questions({
               justifyContent: "space-between",
               width: "100%",
               overflowX: "hidden",
-              marginLeft: "15px"
+              marginLeft: "15px",
             }}
           >
             <Box
@@ -155,7 +153,7 @@ export default function Questions({
                   color: "rgba(22, 22, 22, 0.90)",
                   fontSize: { sm: "22px", xs: "15px" },
                   fontWeight: 400,
-                  width: { xs: "48vw", sm: "55vw", md: "50vw", lg: "60vw" },
+                  width: { xs: "48vw", sm: "55vw", md: "90%", lg: "60vw" },
                   textOverflow: expanded ? "clip" : "ellipsis",
                   overflow: "hidden",
                   padding: expanded && "10px 0px",
@@ -169,7 +167,7 @@ export default function Questions({
                     color: "rgba(22, 22, 22, 0.90)",
                     fontSize: { lg: "16px", sm: "14px", xs: "14px" },
                     fontWeight: 400,
-                    width: "100vw",
+                    width: "100%",
                     textOverflow: expanded ? "clip" : "ellipsis",
                     overflow: "hidden",
                     whiteSpace: expanded ? "wrap" : "nowrap",
@@ -185,7 +183,7 @@ export default function Questions({
                     onClick={handleSeeMoreClick}
                     sx={{
                       fontSize: "10px",
-                      color: "#197065",
+                      color: "rgba(22, 22, 22, 0.50)",
                       width: "80px",
                       mt: "5px",
                     }}
@@ -223,9 +221,17 @@ export default function Questions({
                         fontSize: { md: "16px", xs: "12px", sm: "14px" },
                       }}
                     >
-                      <Box sx={{ color: "#30422e", }}>{t("ChName.completed")}</Box>
-                      <Box sx={{ width: { md: "36px", sm: "24px", xs: "15px" } }}>
-                        <Image alt="icon" src={CompletedIcon} style={{ width: "100%", height: "100%" }} />
+                      <Box sx={{ color: "#30422e" }}>
+                        {t("ChName.completed")}
+                      </Box>
+                      <Box
+                        sx={{ width: { md: "36px", sm: "24px", xs: "15px" } }}
+                      >
+                        <Image
+                          alt="icon"
+                          src={CompletedIcon}
+                          style={{ width: "100%", height: "100%" }}
+                        />
                       </Box>
                     </Box>
                   )}
@@ -240,8 +246,12 @@ export default function Questions({
                         padding: "20px",
                       }}
                     >
-                      <Image alt="icon" src={EditGreen} style={{ color: "#7f886b" }} />
-                      <Box sx={{ color: "#30422e", }}>Answer</Box>
+                      <Image
+                        alt="icon"
+                        src={EditGreen}
+                        style={{ color: "#7f886b" }}
+                      />
+                      <Box sx={{ color: "#30422e" }}>Answer</Box>
                     </Box>
                   )}
                 </Button>
@@ -326,7 +336,13 @@ export default function Questions({
         <Box>
           <Image src={Frame} width={130} alt="logo" />
         </Box>
-        <Typography sx={{ fontSize: { md: "24px", sm: "22px", xs: "18px" }, mt: "15px", color: "#30422E" }}>
+        <Typography
+          sx={{
+            fontSize: { md: "24px", sm: "22px", xs: "18px" },
+            mt: "15px",
+            color: "#30422E",
+          }}
+        >
           {t("ChName.UQ")}
         </Typography>
         <AddQuestion
@@ -346,6 +362,6 @@ export default function Questions({
         proceed={handleDeleteQuestion}
         closeModal={() => setDeleteQuestionModal(false)}
       />
-    </Box>
+    </>
   );
 }
