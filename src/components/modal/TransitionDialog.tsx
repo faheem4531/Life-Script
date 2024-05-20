@@ -79,6 +79,7 @@ export default function TransitionsDialog({
           sx={{
             display: "flex",
             gap: "15px",
+            flexDirection: { sm: "row", xs: "column" },
             justifyContent: "center",
             mt: "20px",
             flexWrap: "wrap",

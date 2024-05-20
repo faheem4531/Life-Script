@@ -16,7 +16,6 @@ import { useRouter } from "next/router";
 
 import Edit from "@/_assets/svg/edit-chapter.svg";
 
-
 const AddChapterName = ({
   chapter,
   chapterId,
@@ -52,7 +51,6 @@ const AddChapterName = ({
 
   const router = useRouter();
 
-
   return (
     <Box
       sx={{
@@ -65,29 +63,31 @@ const AddChapterName = ({
         height: "165px",
         overflow: "hidden",
         width: "100%",
-        position: "relative"
+        position: "relative",
       }}
     >
-      {title !== "noBack" && < Box sx={{
-        borderRadius: "3px",
-        backgroundColor: "white",
-        position: "absolute",
-        top: 12,
-        left: 12,
-        width: "48px",
-        height: "36px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        cursor: "pointer",
-        border: "1px solid #E1693B",
-        color: "#E1693B"
-      }}
-        onClick={() => router.back()}
-      >
-        <Image src={Back} alt="back icon" />
-      </Box>
-      }
+      {title !== "noBack" && (
+        <Box
+          sx={{
+            borderRadius: "3px",
+            backgroundColor: "white",
+            position: "absolute",
+            top: 12,
+            left: 12,
+            width: "48px",
+            height: "36px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            border: "1px solid #E1693B",
+            color: "#E1693B",
+          }}
+          onClick={() => router.back()}
+        >
+          <Image src={Back} alt="back icon" />
+        </Box>
+      )}
       <Box
         sx={{
           padding: { sm: "10px 15px", xs: "5px 10px" },
@@ -97,12 +97,14 @@ const AddChapterName = ({
       >
         <Box>
           {/* {title === "templateView" && ( */}
-          <Box sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginLeft: title !== "noBack" ? "80px" : "30px"
-          }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: title !== "noBack" ? "80px" : "30px",
+            }}
+          >
             {subTitle && (
               <Typography
                 sx={{
@@ -125,31 +127,32 @@ const AddChapterName = ({
                   md: "32px",
                   lg: "45px",
                 },
-                fontWeight: 700
-                // fontFamily: "Avenir8 !important"
+                fontWeight: 700,
               }}
             >
               {chapter}
 
-              {title === "chapterName" && <Image src={Edit}
-                style={{ margin: "0 0 10px 15px", cursor: "pointer" }}
-                alt="back icon"
-                onClick={() => editChapter(true)} />}
-
+              {title === "chapterName" && (
+                <Image
+                  src={Edit}
+                  style={{ margin: "0 0 10px 15px", cursor: "pointer" }}
+                  alt="back icon"
+                  onClick={() => editChapter(true)}
+                />
+              )}
             </Typography>
           </Box>
         </Box>
-
       </Box>
-      {
-        title !== "gift" && title !== "refer" && <Box
+      {title !== "gift" && title !== "refer" && (
+        <Box
           sx={{
             background: { xs: "transparent", sm: "#d6d3c1" },
             height: {
               sm: "400px",
             },
             width: {
-              xs: "230px",
+              xs: "0px",
               sm: "260px",
               lg: "360px",
             },
@@ -160,11 +163,16 @@ const AddChapterName = ({
             borderBottomLeftRadius: "50%",
           }}
         >
-          <Image src={BookImage} alt="book image" className={styles.bookImage} />
+          <Image
+            src={BookImage}
+            alt="book image"
+            className={styles.bookImage}
+            style={{ width: "100%", height: "auto" }}
+          />
         </Box>
-      }
-      {
-        (title === "gift" || title === "refer") && <Box
+      )}
+      {(title === "gift" || title === "refer") && (
+        <Box
           sx={{
             background: { xs: "transparent", sm: "#babaa7" },
             height: {
@@ -181,14 +189,10 @@ const AddChapterName = ({
             borderBottomLeftRadius: "70%",
           }}
         >
-          <Image
-            alt="Book"
-            src={Book}
-          />
-        </Box >
-      }
-    </Box >
-
+          <Image alt="Book" src={Book} />
+        </Box>
+      )}
+    </Box>
   );
 };
 

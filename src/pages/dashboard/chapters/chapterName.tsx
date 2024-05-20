@@ -328,21 +328,20 @@ const chapterName = () => {
         toast.error("Failed to update chapter name");
       });
 
-    setChapterName(chapterNameModal)
+    setChapterName(chapterNameModal);
     setUpdateChapterModal(false);
   };
 
   return (
     <>
       <Layout>
-        <Box >
-
+        <Box>
           <Box
             sx={{
-              display: { sm: "block", xs: "none" },
+              display: { sm: "block", xs: "" },
+              m: { sm: "0", xs: "20px 20px 0" },
             }}
           >
-
             <AddChapterName
               editChapter={setUpdateChapterModal}
               title="chapterName"
@@ -352,61 +351,7 @@ const chapterName = () => {
             />
             <LinearProgressBar percentage={percentage} />
           </Box>
-          <Box
-            sx={{
-              display: { sm: "none", xs: "flex" },
-              justifyContent: "center",
-            }}
-          >
-            <Box
-              onClick={() => {
-                router.back();
-              }}
-              sx={{
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "45.679px",
-                height: "45.679px",
-                flexShrink: "0",
-                border: "1px solid #17645A",
-                position: "absolute",
-                left: "8px",
-                top: "63px",
-              }}
-            >
-              <Image src={backArrow} alt="backArrow" />
-            </Box>
-            <TextField
-              variant="outlined"
-              value={chapterName}
-              onChange={(e: any) => setChapterName(e.target.value)}
-              placeholder="My Adventurous Life"
-              disabled={StarterChapter}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Box sx={{ cursor: "pointer" }}>
-                      <Image
-                        // onClick={saveChapterName}
-                        src={Check}
-                        alt="check-icon"
-                      />
-                    </Box>
-                  </InputAdornment>
-                ),
-              }}
-              sx={{
-                marginTop: "10px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px",
-                  backgroundColor: "white",
-                },
-                width: { sm: "300px", lg: "390px" },
-              }}
-            />
-          </Box>
+
           <Box
             sx={{
               backgroundColor: "#fff",
@@ -454,6 +399,7 @@ const chapterName = () => {
                   width: "100%",
                   flexWrap: "wrap",
                   pb: "10px",
+                  m: { sm: "0", xs: "20px 20px 0" },
                 }}
               >
                 {aiQuestions?.length > 0 && (
@@ -701,7 +647,7 @@ const chapterName = () => {
             fontSize: { md: "24px", sm: "22px", xs: "18px" },
             fontWeight: "700",
             cursor: "pointer",
-            marginTop: "20px"
+            marginTop: "20px",
           }}
         >
           {t("ChName.AddNewQues")}
@@ -810,7 +756,11 @@ const chapterName = () => {
           />
         </Box>
         <Typography
-          sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" }, color: "#30422e", mt: "15px" }}
+          sx={{
+            fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
+            color: "#30422e",
+            mt: "15px",
+          }}
         >
           {t("ChModals.updateChName")}
         </Typography>
@@ -840,7 +790,6 @@ const chapterName = () => {
             onClick={saveChapterName}
           />
         </Box>
-
       </CustomizationDialog>
     </>
   );
