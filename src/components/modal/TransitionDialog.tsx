@@ -1,5 +1,5 @@
 // import ModalImage from "@/_assets/png/view-template-modal.png";
-import FrameImage from "@/_assets/svg/Frame.svg"
+import FrameImage from "@/_assets/svg/Frame.svg";
 import { Box, Typography } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Slide, { SlideProps } from "@mui/material/Slide";
@@ -20,7 +20,7 @@ export default function TransitionsDialog({
   open,
   cancel,
   proceed,
-  closeModal = () => { },
+  closeModal = () => {},
   proceedText = "",
   cancelText = "",
 }) {
@@ -37,7 +37,7 @@ export default function TransitionsDialog({
         sx={{
           textAlign: "center",
           padding: "50px 20px 35px",
-          backgroundColor: "#f3ecda"
+          backgroundColor: "#f3ecda",
         }}
       >
         <Box
@@ -86,21 +86,21 @@ export default function TransitionsDialog({
         >
           <Box flex={1}>
             <GlobelBtn
-              btnText={proceedText ? proceedText : `${t("modals.yes")}`}
+              btnText={cancelText ? cancelText : `${t("modals.no")}`}
               bgColor="transparent"
               border="1px solid #e1693b"
               color="#e1693b"
               width="100%"
-              onClick={proceed}
+              onClick={cancel}
             />
           </Box>
           <Box flex={1}>
             <GlobelBtn
-              btnText={cancelText ? cancelText : `${t("modals.no")}`}
+              btnText={proceedText ? proceedText : `${t("modals.yes")}`}
               bgColor="#e1693b"
               color="#fff"
               width="100%"
-              onClick={cancel}
+              onClick={proceed}
             />
           </Box>
         </Box>
