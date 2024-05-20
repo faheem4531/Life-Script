@@ -256,7 +256,7 @@ export default function App({ Component, pageProps }: AppProps) {
               buttonText="Accept"
               flipButtons
               onDecline={() => {
-                alert("Are you Sure!");
+                // alert("Are you Sure!");
               }}
               setDeclineCookie={false}
               style={{
