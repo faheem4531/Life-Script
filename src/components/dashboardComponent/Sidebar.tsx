@@ -104,7 +104,18 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     <>
       <Box sx={{ color: "#30422E" }}>
         {!handleSideCheck && (
-          <Box sx={{ display: "flex", position: "fixed", width: "220px", zIndex: "10", alignItems: "center", padding: "0 0 0 20px", height: "70px", bgcolor: "#30422E" }}>
+          <Box
+            sx={{
+              display: "flex",
+              position: "fixed",
+              width: "220px",
+              zIndex: "10",
+              alignItems: "center",
+              padding: "0 0 0 20px",
+              height: "70px",
+              bgcolor: "#30422E",
+            }}
+          >
             <Image src={Logo} alt="logo" className={styles.logo} />
           </Box>
         )}
@@ -118,21 +129,29 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             }}
             onClick={menuClick}
           >
-            <Image src={handleSideCheck ? MenuIconGreen : MenuIcon} alt="MenuIcon" />
+            <Image
+              src={handleSideCheck ? MenuIconGreen : MenuIcon}
+              alt="MenuIcon"
+            />
           </Box>
         )}
         <Box
           sx={{
-            padding: "105px 29px 0 11px",
+            padding: {
+              lg: "105px 29px 0 11px",
+              sm: "30px 29px 0 11px",
+              xs: "20px 29px 0 11px",
+            },
           }}
         >
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/overview" ||
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/overview" ||
                 currentRoute === "/dashboard/BookView"
-                ? styles.active
-                : ""
-                }`}
+                  ? styles.active
+                  : ""
+              }`}
               onClick={() => {
                 router.push("/dashboard/overview");
               }}
@@ -142,7 +161,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/overview" ||
-                    currentRoute === "/dashboard/BookView"
+                  currentRoute === "/dashboard/BookView"
                     ? OverViewWhite
                     : OverViewGreen
                 }
@@ -152,13 +171,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </Box>
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/chapters" ||
                 currentRoute === "/dashboard/chapters/chapterName" ||
                 currentRoute === "/events"
-                ? styles.active
-                : currentRoute === "/dashboard/chapters/completedChapter" &&
-                styles.active
-                }`}
+                  ? styles.active
+                  : currentRoute === "/dashboard/chapters/completedChapter" &&
+                    styles.active
+              }`}
               onClick={() => {
                 setChilsdOpen(!childsOpen);
               }}
@@ -168,9 +188,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/chapters" ||
-                    currentRoute === "/dashboard/chapters/completedChapter" ||
-                    currentRoute === "/dashboard/chapters/chapterName" ||
-                    currentRoute === "/events"
+                  currentRoute === "/dashboard/chapters/completedChapter" ||
+                  currentRoute === "/dashboard/chapters/chapterName" ||
+                  currentRoute === "/events"
                     ? HomeWhite
                     : HomeGreen
                 }
@@ -196,12 +216,13 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               <Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/chapters" ||
                       currentRoute === "/dashboard/chapters/chapterName" ||
                       currentRoute === "/events"
-                      ? styles.active
-                      : ""
-                      }`}
+                        ? styles.active
+                        : ""
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/chapters");
                     }}
@@ -212,8 +233,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/chapters" ||
-                          currentRoute === "/dashboard/chapters/chapterName" ||
-                          currentRoute === "/events"
+                        currentRoute === "/dashboard/chapters/chapterName" ||
+                        currentRoute === "/events"
                           ? ProgressWhite
                           : ProgressGreen
                       }
@@ -223,9 +244,10 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/chapters/completedChapter" &&
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/chapters/completedChapter" &&
                       styles.active
-                      }`}
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/chapters/completedChapter");
                     }}
@@ -247,8 +269,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </Box>
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/TableOfContent" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/TableOfContent" && styles.active
+              }`}
               onClick={() => router.push("/dashboard/TableOfContent")}
             >
               <Image
@@ -264,8 +287,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </Box>
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/familyTree" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/familyTree" && styles.active
+              }`}
               onClick={() => {
                 if (isPremium) {
                   router.push("/familyTree");
@@ -276,9 +300,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             >
               <Image
                 alt="icon"
-                src={currentRoute === "/familyTree"
-                  ? FamilyTreeWhite
-                  : FamilyTree}
+                src={
+                  currentRoute === "/familyTree" ? FamilyTreeWhite : FamilyTree
+                }
               />
               {t("sideBar.FamilyTree")}
             </a>
@@ -286,13 +310,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
 
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/BookCover/SelectBookCover"
-                ? styles.active
-                : currentRoute === "/dashboard/BookCover/ViewBookCover"
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/BookCover/SelectBookCover"
+                  ? styles.active
+                  : currentRoute === "/dashboard/BookCover/ViewBookCover"
                   ? styles.active
                   : currentRoute === "/dashboard/BookCover/EditBookCover" &&
-                  styles.active
-                }`}
+                    styles.active
+              }`}
               onClick={() => {
                 dispatch(getBookCover())
                   .unwrap()
@@ -316,8 +341,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/BookCover/SelectBookCover" ||
-                    currentRoute === "/dashboard/BookCover/EditBookCover" ||
-                    currentRoute === "/dashboard/BookCover/ViewBookCover"
+                  currentRoute === "/dashboard/BookCover/EditBookCover" ||
+                  currentRoute === "/dashboard/BookCover/ViewBookCover"
                     ? BookCoverWhite
                     : BookCoverGreen
                 }
@@ -327,12 +352,13 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </Box>
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/SubscribePlans"
-                ? styles.active
-                : currentRoute ===
-                "/dashboard/SubscribePlans/SubscriptionPayment" &&
-                styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/SubscribePlans"
+                  ? styles.active
+                  : currentRoute ===
+                      "/dashboard/SubscribePlans/SubscriptionPayment" &&
+                    styles.active
+              }`}
               onClick={() => router.push("/dashboard/SubscribePlans")}
             >
               <Image
@@ -340,7 +366,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/SubscribePlans" ||
-                    currentRoute ===
+                  currentRoute ===
                     "/dashboard/SubscribePlans/SubscriptionPayment"
                     ? SubsWhite
                     : Subs
@@ -351,8 +377,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
           </Box>
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/profileSetting" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/profileSetting" && styles.active
+              }`}
               onClick={() => router.push("/dashboard/profileSetting")}
             >
               <Image
@@ -368,11 +395,11 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             </a>
           </Box>
 
-
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/emailPreference" && styles.active
+              }`}
               onClick={() => router.push("/dashboard/emailPreference")}
             >
               <Image
@@ -388,15 +415,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             </a>
           </Box>
 
-
-
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/Support/Gift" ||
                 currentRoute === "/dashboard/Support/ReferAFriend"
-                ? styles.active
-                : ""
-                }`}
+                  ? styles.active
+                  : ""
+              }`}
               onClick={() => {
                 router.push("/dashboard/Support/Gift");
               }}
@@ -407,7 +433,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support/Gift" ||
-                    currentRoute === "/dashboard/Support/ReferAFriend"
+                  currentRoute === "/dashboard/Support/ReferAFriend"
                     ? GiftWhite
                     : GiftGreen
                 }
@@ -416,14 +442,20 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             </a>
           </Box>
 
-
-          <Box sx={{ borderTop: "1px solid rgba(48, 66, 46, 0.30)", mt: "-15px ", p: "15px 0 0" }}>
+          <Box
+            sx={{
+              borderTop: "1px solid rgba(48, 66, 46, 0.30)",
+              mt: "-15px ",
+              p: "15px 0 0",
+            }}
+          >
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/Support"
-                ? styles.active
-                : currentRoute === "/dashboard/Support/Tutorials" &&
-                styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/Support"
+                  ? styles.active
+                  : currentRoute === "/dashboard/Support/Tutorials" &&
+                    styles.active
+              }`}
               onClick={() => {
                 setSupportChilsdOpen(!supportChildsOpen);
               }}
@@ -433,7 +465,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support" ||
-                    currentRoute === "/dashboard/Support/Tutorials"
+                  currentRoute === "/dashboard/Support/Tutorials"
                     ? SuportWhite
                     : SuportGreen
                 }
@@ -459,11 +491,12 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               <Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/Support/Tutorials" ||
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/Support/Tutorials" ||
                       currentRoute === "/dashboard/Support/TutorialsDetail"
-                      ? styles.active
-                      : ""
-                      }`}
+                        ? styles.active
+                        : ""
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/Support/Tutorials");
                     }}
@@ -474,7 +507,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/Support/Tutorials" ||
-                          currentRoute === "/dashboard/Support/TutorialsDetail"
+                        currentRoute === "/dashboard/Support/TutorialsDetail"
                           ? TutorialWhite
                           : TutorialGreen
                       }
@@ -484,9 +517,9 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/Support" &&
-                      styles.active
-                      }`}
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/Support" && styles.active
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/Support");
                     }}
@@ -503,16 +536,11 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                     Contact Support
                   </a>
                 </Box>
-
               </Box>
             )}
           </Box>
-
         </Box>
       </Box>
-
-
-
 
       <TransitionsDialog
         open={buyPremium}

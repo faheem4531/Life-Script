@@ -58,9 +58,10 @@ const Layout = ({ children }: { children?: any }) => {
               backgroundColor: "#F3ECDA",
               minHeight: "100vh",
               height: "100%",
-              position: "relative", overflowY: "auto",
+              position: "relative",
+              overflowY: "auto",
               zIndex: "2",
-              pb: "100px",
+              pb: { lg: "100px", sm: "20px" },
               "&::-webkit-scrollbar": {
                 display: "none", // WebKit browsers (Chrome, Safari, etc.)
               },
@@ -69,8 +70,9 @@ const Layout = ({ children }: { children?: any }) => {
             onClick={(event) => {
               event.stopPropagation();
             }}
-            className={`${styles.display} ${handleSideBar && styles.displayShow
-              }`}
+            className={`${styles.display} ${
+              handleSideBar && styles.displayShow
+            }`}
           >
             <SideBar
               handleSideCheck={handleSideBar}
