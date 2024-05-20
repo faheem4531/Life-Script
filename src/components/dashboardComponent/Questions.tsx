@@ -218,7 +218,11 @@ export default function Questions({
                         columnGap: { sm: "10px", xs: "6px" },
                         color: "#197065",
                         height: "100%",
-                        fontSize: { md: "16px", xs: "12px", sm: "14px" },
+                        fontSize: {
+                          lg: "16px",
+                          xs: "12px",
+                          sm: "14px",
+                        },
                       }}
                     >
                       <Box sx={{ color: "#30422e" }}>
@@ -242,7 +246,11 @@ export default function Questions({
                         alignItems: "center",
                         columnGap: "6px",
                         color: "#30422e",
-                        fontSize: { md: "16px", xs: "12px", sm: "14px" },
+                        fontSize: {
+                          lg: "16px",
+                          xs: "12px",
+                          sm: "14px",
+                        },
                         padding: "20px",
                       }}
                     >
