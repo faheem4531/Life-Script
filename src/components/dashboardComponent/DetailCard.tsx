@@ -45,7 +45,11 @@ export default function DetailCard({
   const open = Boolean(anchorEl);
   const percentage = calculateCompletionPercentage(chapter?.questions);
   const handleClickOption = (opt) => {
-    deleteFunc({ option: opt === 1 ? "Delete" : "Edit", chapterData: chapter, percentValue: percentage });
+    deleteFunc({
+      option: opt === 1 ? "Delete" : "Edit",
+      chapterData: chapter,
+      percentValue: percentage,
+    });
     setAnchorEl(null);
   };
   const handleClick = (event: any) => {
@@ -82,15 +86,19 @@ export default function DetailCard({
     if (timeDifferenceInDays === 0) {
       return "Last edited Today";
     } else {
-      return `Last edited ${timeDifferenceInDays} day${timeDifferenceInDays !== 1 ? "s" : ""
-        } ago`;
+      return `Last edited ${timeDifferenceInDays} day${
+        timeDifferenceInDays !== 1 ? "s" : ""
+      } ago`;
     }
   }
   // const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
 
   // const options = ["Delete", "Edit"];
 
-  const options = [{ id: 1, title: "Delete" }, { id: 2, title: "Edit" }];
+  const options = [
+    { id: 1, title: "Delete" },
+    { id: 2, title: "Edit" },
+  ];
 
   return (
     <Box
@@ -239,23 +247,20 @@ export default function DetailCard({
                         alignItems: "flex-start",
                       }}
                     >
-                      <Image
-                        alt="check"
-                        src={Tick}
-                        width={15}
-                      />
-                      <Typography sx={{
-                        whiteSpace: "nowrap",
-                        width: { xl: "360px" },
-                        paddingRight: "20px",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        fontSize: {
-                          md: "11px",
-                          sm: "8.803px",
-                          xs: "7.332px",
-                        },
-                      }}
+                      <Image alt="check" src={Tick} width={15} />
+                      <Typography
+                        sx={{
+                          whiteSpace: "nowrap",
+                          width: { xl: "360px" },
+                          paddingRight: "20px",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          fontSize: {
+                            md: "11px",
+                            sm: "8.803px",
+                            xs: "7.332px",
+                          },
+                        }}
                         className={styles.questionWidth}
                       >
                         {question.text}
@@ -289,7 +294,7 @@ export default function DetailCard({
                 ? ""
                 : ""}
               {isChapter &&
-                router.asPath === "/dashboard/chapters/completedChapter" ? (
+              router.asPath === "/dashboard/chapters/completedChapter" ? (
                 ""
               ) : (
                 <Box>
@@ -338,13 +343,17 @@ function CircularProgressWithLabel(props) {
         // marginBottom: { sm: "-8px", xs: "-20px" },
         // width: { md: "30px", sm: "26.015px", xs: "20px" },
         // backgroundColor:"#7f886b",
-        borderRadius: "50px"
+        borderRadius: "50px",
       }}
     >
-      <CircularProgress sx={{ color: "#E1683B" }} variant="determinate" {...props} />
+      <CircularProgress
+        sx={{ color: "#E1683B" }}
+        variant="determinate"
+        {...props}
+      />
       <Box
         sx={{
-          top: { sm: "-7px", xs: "-20px", md: "0px" },
+          top: { sm: "-7px", xs: "-0px", md: "0px" },
           left: { sm: "2px", xs: "2px", md: "0px" },
           bottom: 0,
           right: 0,

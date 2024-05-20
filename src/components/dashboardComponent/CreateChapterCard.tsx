@@ -58,15 +58,12 @@ export const StartNewChapter = ({
   console.log("chapters", chapters);
 
   return (
-    <Box
-      bgcolor={"white"}
-      borderRadius={"8px"}
-    >
+    <Box bgcolor={"white"} borderRadius={"8px"}>
       <Card
         className="container-fontfamily"
         sx={{
           borderRadius: "6.5px",
-          height: { sm: "250px", xs: "129px" },
+          height: { sm: "250px", xs: "150px" },
           boxShadow: "none",
         }}
       >
@@ -80,7 +77,7 @@ export const StartNewChapter = ({
               gap: "17px",
               justifyContent: "center",
               border: "1.6px dashed #CDCDCD",
-              borderRadius: "4px"
+              borderRadius: "4px",
             }}
             onClick={() => setNewChapter(false)}
           >
@@ -88,7 +85,7 @@ export const StartNewChapter = ({
               sx={{
                 width: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
                 height: { md: "68.25px", sm: "61.3px", xs: "47.868px" },
-                cursor: "pointer"
+                cursor: "pointer",
               }}
             >
               <Image
@@ -110,7 +107,7 @@ export const StartNewChapter = ({
           </Box>
         )}
         {!newChapter && (
-          <Box sx={{ height: "100%" }}>
+          <Box sx={{ height: { md: "99%", sm: "98%", xs: "96.5%" } }}>
             <Box
               sx={{
                 height: "48.5%",
@@ -140,9 +137,7 @@ export const StartNewChapter = ({
               >
                 <Image
                   alt="image"
-                  src={
-                    hoverStartNewChapter ? AddChapterImage : AddChapterWhite
-                  }
+                  src={hoverStartNewChapter ? AddChapterImage : AddChapterWhite}
                   style={{ width: "100%", height: "100%" }}
                 />
               </Box>
