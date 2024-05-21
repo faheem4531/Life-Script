@@ -36,8 +36,10 @@ const FamilyTree = ({ familyTreeData }) => {
   const [selectedRelation, setSelectedRelation] = useState(undefined);
   const [relations, setRelations] = useState(["Sibling", "Child"]);
   const [personData, setPersonData] = useState({});
-  const profileIcon =
-    "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
+  // const profileIcon =
+  //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
+
+  const profileIcon = "./familyTreeRelations/child-boy.svg";
 
   const handleAddedPerson = (data) => {
     setFamilyModal(false);
@@ -344,8 +346,9 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const elbow = (d, i) => {
       const yOffset = d.target.data.spouseName ? -55 : 0;
-      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${d.target.x + yOffset
-        }H${d.target.y + 10}`;
+      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${
+        d.target.x + yOffset
+      }H${d.target.y + 10}`;
     };
 
     const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
@@ -435,9 +438,9 @@ const FamilyTree = ({ familyTreeData }) => {
     };
 
     if (d.data.spouseName) {
-      renderRect(10, -105, 100, `${styles.nameRect}`, true);
-      renderImage(14, -100, d.data.image || profileIcon);
-      renderText(76, -75, d.data.name || "", `${styles.name}`);
+      renderRect(10, -5, 100, `${styles.nameRect}`, true);
+      renderImage(40, -120, d.data.image || profileIcon);
+      renderText(45, -45, d.data.name || "", `${styles.name}`);
       //age
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
@@ -445,28 +448,28 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-            ? "b. " + born
-            : died
-              ? "d. " + died
-              : "b. Not Known";
-      renderText(76, -50, age || "", `${styles.dateLocation}`);
-      renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
+          ? "b. " + born
+          : died
+          ? "d. " + died
+          : "b. Not Known";
+      renderText(45, -25, age || "", `${styles.dateLocation}`);
+      // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`, true);
       renderImage(14, 10, d.data.spouseImage || profileIcon);
-      renderText(76, 35, d.data.spouseName || "", `${styles.name}`);
+      renderText(23, 80, d.data.spouseName || "", `${styles.name}`);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
       const spouseDied = d.data.spouseDied?.slice(0, 4);
       let spouseAge =
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
-            ? "b. " + spouseBorn
-            : spouseDied
-              ? "d. " + spouseDied
-              : "b. Not Known";
-      renderText(76, 60, spouseAge || "", `${styles.dateLocation}`);
-      renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
+          ? "b. " + spouseBorn
+          : spouseDied
+          ? "d. " + spouseDied
+          : "b. Not Known";
+      renderText(23, 100, spouseAge || "", `${styles.dateLocation}`);
+      // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
         {
           x: 20,
@@ -500,16 +503,16 @@ const FamilyTree = ({ familyTreeData }) => {
         },
       ];
 
-      iconPositions.forEach(({ x, y, icon, type }) => {
-        renderForeignObject(
-          x,
-          y,
-          (data, iconType) => handleIconClick(data.data.name, iconType, d),
-          icon,
-          d,
-          type
-        );
-      });
+      // iconPositions.forEach(({ x, y, icon, type }) => {
+      //   renderForeignObject(
+      //     x,
+      //     y,
+      //     (data, iconType) => handleIconClick(data.data.name, iconType, d),
+      //     icon,
+      //     d,
+      //     type
+      //   );
+      // });
 
       const iconPosition2 = [
         {
@@ -529,17 +532,17 @@ const FamilyTree = ({ familyTreeData }) => {
         },
       ];
 
-      iconPosition2.forEach(({ x, y, icon, type }) => {
-        renderForeignObject(
-          x,
-          y,
-          (data, iconType) =>
-            handleIconClick(data.data.spouseName, iconType, d),
-          icon,
-          d,
-          type
-        );
-      });
+      // iconPosition2.forEach(({ x, y, icon, type }) => {
+      //   renderForeignObject(
+      //     x,
+      //     y,
+      //     (data, iconType) =>
+      //       handleIconClick(data.data.spouseName, iconType, d),
+      //     icon,
+      //     d,
+      //     type
+      //   );
+      // });
 
       const personBottomCenterX = 10 + 200 / 2;
       const personBottomCenterY = -105 + 100;
@@ -559,20 +562,19 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-            ? "b. " + born
-            : died
-              ? "d. " + died
-              : "b. Not Known";
+          ? "b. " + born
+          : died
+          ? "d. " + died
+          : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, true);
       renderImage(14, -45, d.data.image || profileIcon);
-      renderText(76, -20, d.data.name || "", `${styles.name}`);
-      renderText(76, 5, age || "", `${styles.dateLocation}`);
-      renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
-
+      renderText(20, 25, d.data.name || "", `${styles.name}`);
+      renderText(20, 45, age || "", `${styles.dateLocation}`);
+      // renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
       const iconPositions = [
         {
           x: 20,
-          y: 20,
+          y: 25,
           icon: (
             <EditIcon
               style={{
@@ -602,16 +604,16 @@ const FamilyTree = ({ familyTreeData }) => {
         },
       ];
 
-      iconPositions.forEach(({ x, y, icon, type }) => {
-        renderForeignObject(
-          x,
-          y,
-          (data, iconType) => handleIconClick(data.data.name, iconType, data),
-          icon,
-          d,
-          type
-        );
-      });
+      // iconPositions.forEach(({ x, y, icon, type }) => {
+      //   renderForeignObject(
+      //     x,
+      //     y,
+      //     (data, iconType) => handleIconClick(data.data.name, iconType, data),
+      //     icon,
+      //     d,
+      //     type
+      //   );
+      // });
     }
   };
 
@@ -641,7 +643,7 @@ const FamilyTree = ({ familyTreeData }) => {
           id="familyTree"
           style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
-        // style={{ maxWidth: "1000px", maxHeight: "600px" }}
+          // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
 

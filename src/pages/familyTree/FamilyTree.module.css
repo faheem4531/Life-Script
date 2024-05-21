@@ -19,13 +19,15 @@
 }
 
 .name {
-  fill: black !important;
-  font-size: 10px
+  fill: #30422E !important;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .dateLocation {
-  fill: black !important;
-  font-size: 7px
+  fill: #30422E !important;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .about {
@@ -49,7 +51,7 @@
 
 .nameRect {
   fill: white;
-  stroke: #6495ED; 
+  /* stroke: #6495ED;  */
   stroke-width: 2; 
   border-radius: 10;
 }
