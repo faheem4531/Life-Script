@@ -20,32 +20,21 @@ const FamilyTreeAddModal = ({
     type: "",
     spouse: false,
   });
-  // console.log(nodeData, "nodeData");
+  console.log(nodeData, "nodeData");
 
   useEffect(() => {
-    // if (nodeData.spouseName) {
-    //   setInfo({
-    //     name: nodeData.spouseName,
-    //     image: nodeData.spouseImage
-    //       ? nodeData.spouseImage
-    //       : nodeData.spouseGender == "Male"
-    //       ? Male
-    //       : Female,
-    //     type: "editspouse",
-    //     spouse: true,
-    //   });
-    // } else {
-    // setInfo({
-    //   name: nodeData.data.name,
-    //   image: nodeData.data.image
-    //     ? nodeData.data.image
-    //     : nodeData.data.gender == "Male"
-    //       ? Male
-    //       : Female,
-    //   type: "edit",
-    //   spouse: false,
-    // });
-    // }
+    if (nodeData.data) {
+      setInfo({
+        name: nodeData.data.name,
+        image: nodeData.data.image
+          ? nodeData.data.image
+          : nodeData.data.gender == "Male"
+            ? Male
+            : Female,
+        type: "edit",
+        spouse: false,
+      });
+    }
   }, [nodeData]);
 
   return (
@@ -71,7 +60,7 @@ const FamilyTreeAddModal = ({
             textAlign: "center",
           }}
         >
-          {/* <Image src={info.image} alt="img" width={120} height={120} />
+          <Image src={info.image} alt="img" width={120} height={120} />
           <Typography
             sx={{
               fontSize: "14px",
@@ -106,7 +95,7 @@ const FamilyTreeAddModal = ({
               color="#E1683B"
               onClick={() => onClick(info.name, "edit", nodeData)}
             />
-          </Box> */}
+          </Box>
         </Box>
       </CustomizationDialog>
     </Box>
