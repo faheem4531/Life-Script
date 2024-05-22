@@ -40,10 +40,10 @@ const FamilyTreeDataModal = ({
   );
   const maxDate = new Date();
 
-  console.log(selectedRelation, "selectedRelation selectedRelation");
+  // console.log(selectedRelation, "selectedRelation selectedRelation");
 
-  const Boy = "./familyTreeRelations/child-boy.svg";
-  const Girl = "./familyTreeRelations/child-girl.svg";
+  const Male = "./familyTreeRelations/male.svg";
+  const Female = "./familyTreeRelations/female.svg";
   const Father = "./familyTreeRelations/father.svg";
   const Mother = "./familyTreeRelations/mother.svg";
   const GFather = "./familyTreeRelations/g-father.svg";
@@ -110,16 +110,7 @@ const FamilyTreeDataModal = ({
   };
 
   useEffect(() => {
-    // setSelectedValueGender( || "MySelf");
-
-    if (selectedRelation == "Child") {
-      setImageLink(selectedValueGender == "Male" ? Boy : Girl);
-    } else if (selectedRelation == "Parent") {
-      setImageLink(selectedValueGender == "Male" ? GFather : GMother);
-    }
-    // else if (selectedRelation == "Partner") {
-    // setImageLink(selectedValueGender == "Male" ? GFather : GMother);
-    // }
+    setImageLink(selectedValueGender == "Male" ? Male : Female);
   }, [selectedValueGender]);
 
   const handleChange = (event) => {

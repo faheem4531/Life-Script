@@ -23,11 +23,13 @@ import FamilyTreeSVG from "@/_assets/svg/family-tree-svg.svg";
 import { toast } from "react-toastify";
 
 import CircularProgress from "@mui/material/CircularProgress";
+import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
   const dispatch: any = useDispatch();
   const [familyModal, setFamilyModal] = useState(false);
+  const [familyEditModal, setFamilyEditModal] = useState(false);
   const [familyRelationModal, setFamilyRelationModal] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -36,16 +38,13 @@ const FamilyTree = ({ familyTreeData }) => {
   const [selectedRelation, setSelectedRelation] = useState(undefined);
   const [relations, setRelations] = useState(["Sibling", "Child"]);
   const [personData, setPersonData] = useState({});
+  const [dd, setDd] = useState({});
+
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
-  const profileIcon = "./familyTreeRelations/child-boy.svg";
-  const Boy = "./familyTreeRelations/child-boy.svg";
-  const Girl = "./familyTreeRelations/child-girl.svg";
-  const Father = "./familyTreeRelations/father.svg";
-  const Mother = "./familyTreeRelations/mother.svg";
-  const GFather = "./familyTreeRelations/g-father.svg";
-  const GMother = "./familyTreeRelations/g-mother.svg";
+  const Male = "./familyTreeRelations/male.svg";
+  const Female = "./familyTreeRelations/female.svg";
   // console.log(relations, "family data familyTreeData");
 
   const handleAddedPerson = (data) => {
@@ -169,16 +168,22 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const handleIconClick = (name, iconType, d) => {
+    console.log(d, "logggggg dataa");
+
     setUpdatedNode({});
+    setFamilyEditModal(false);
     setRelations(["Sibling", "Child"]);
     if (iconType === "editspouse") {
+      console.log("editspouse");
+
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
-      console.log("Reached");
+      console.log("add");
 
       handleAdd(name, d);
     } else if (iconType === "edit") {
       handleEdit(name, d);
+      console.log("edit");
     }
   };
 
@@ -386,6 +391,14 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const renderNode = (personNode, d) => {
+    const handleNodeClick = () => {
+      setDd(d);
+      setFamilyEditModal(true);
+
+      console.log("Node clicked:", d.data);
+      // Add your custom logic here
+    };
+
     const renderRect = (x, y, height, className, isSpouse) => {
       personNode
         .append("rect")
@@ -395,9 +408,10 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("y", y)
         .attr("width", 200)
         .attr("height", height)
-        .on("click", () => {
-          console.log("Clicked on rect:", d.data?.image, "33rr", className);
-        });
+        // .on("click", () => {
+        //   console.log("Clicked on rect:", d.data?.image, "33rr", className);
+        // });
+        .on("click", handleNodeClick);
     };
 
     const renderText = (x, y, text, className) => {
@@ -406,7 +420,8 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("class", className)
         .attr("x", x)
         .attr("y", y)
-        .text(text);
+        .text(text)
+        .on("click", handleNodeClick);
     };
 
     const renderImage = (x, y, image) => {
@@ -418,7 +433,8 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("x", x)
         .attr("rx", 10)
         .attr("y", y)
-        .attr("class", `${styles.circularImage}`);
+        .attr("class", `${styles.circularImage}`)
+        .on("click", handleNodeClick);
     };
 
     const renderForeignObject = (x, y, onClick, icon, d, iconType) => {
@@ -451,7 +467,7 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         20,
         -120,
-        d.data.image || (d.data.gender == "Male" ? Father : Mother)
+        d.data.image || (d.data.gender == "Male" ? Male : Female)
       );
       renderText(30, -42, d.data.name || "", `${styles.name}`);
       //age
@@ -472,7 +488,7 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         14,
         10,
-        d.data.spouseImage || d.data.gender == "Male" ? Mother : Father
+        d.data.spouseImage || d.data.gender == "Male" ? Female : Male
       );
       renderText(23, 87, d.data.spouseName || "", `${styles.name}`);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
@@ -587,7 +603,7 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         14,
         -45,
-        d.data.image || (d.data.gender == "Male" ? Father : Mother)
+        d.data.image || (d.data.gender == "Male" ? Male : Female)
       );
       renderText(20, 33, d.data.name || "", `${styles.name}`);
       renderText(20, 50, age || "", `${styles.dateLocation}`);
@@ -693,6 +709,13 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyModal={setFamilyModal}
         selectedRelation={selectedRelation}
         onSubmit={handleAddedPerson}
+      />
+
+      <FamilyTreeAddModal
+        familyEditModal={familyEditModal}
+        setFamilyEditModal={setFamilyEditModal}
+        nodeData={dd}
+        onClick={handleIconClick}
       />
     </>
   );
