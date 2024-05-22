@@ -449,11 +449,11 @@ const FamilyTree = ({ familyTreeData }) => {
 
       renderRect(10, -5, 100, `${styles.nameRect}`, true);
       renderImage(
-        40,
+        20,
         -120,
         d.data.image || (d.data.gender == "Male" ? Father : Mother)
       );
-      renderText(45, -45, d.data.name || "", `${styles.name}`);
+      renderText(30, -42, d.data.name || "", `${styles.name}`);
       //age
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
@@ -465,7 +465,7 @@ const FamilyTree = ({ familyTreeData }) => {
           : died
           ? "d. " + died
           : "b. Not Known";
-      renderText(45, -25, age || "", `${styles.dateLocation}`);
+      renderText(30, -25, age || "", `${styles.dateLocation}`);
       // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`, true);
@@ -474,7 +474,7 @@ const FamilyTree = ({ familyTreeData }) => {
         10,
         d.data.spouseImage || d.data.gender == "Male" ? Mother : Father
       );
-      renderText(23, 80, d.data.spouseName || "", `${styles.name}`);
+      renderText(23, 87, d.data.spouseName || "", `${styles.name}`);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
       const spouseDied = d.data.spouseDied?.slice(0, 4);
       let spouseAge =
@@ -485,7 +485,7 @@ const FamilyTree = ({ familyTreeData }) => {
           : spouseDied
           ? "d. " + spouseDied
           : "b. Not Known";
-      renderText(23, 100, spouseAge || "", `${styles.dateLocation}`);
+      renderText(23, 106, spouseAge || "", `${styles.dateLocation}`);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
         {
@@ -589,8 +589,8 @@ const FamilyTree = ({ familyTreeData }) => {
         -45,
         d.data.image || (d.data.gender == "Male" ? Father : Mother)
       );
-      renderText(20, 25, d.data.name || "", `${styles.name}`);
-      renderText(20, 45, age || "", `${styles.dateLocation}`);
+      renderText(20, 33, d.data.name || "", `${styles.name}`);
+      renderText(20, 50, age || "", `${styles.dateLocation}`);
       // renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
       const iconPositions = [
         {
