@@ -1,3 +1,5 @@
+'use client'
+
 import { Box, Typography } from "@mui/material";
 import CustomizationDialog from "./CustomizationDialog";
 import Image from "next/image";
@@ -38,8 +40,8 @@ const FamilyTreeAddModal = ({
       image: nodeData.data.image
         ? nodeData.data.image
         : nodeData.data.gender == "Male"
-        ? Male
-        : Female,
+          ? Male
+          : Female,
       type: "edit",
       spouse: false,
     });
