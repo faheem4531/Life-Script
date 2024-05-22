@@ -17,6 +17,7 @@ import CameraIcon from "../../_assets/svg/cameraIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
 import GlobelBtn from "../button/Button";
 import CustomizationDialog from "./CustomizationDialog";
+
 const FamilyTreeDataModal = ({
   familyModal,
   setFamilyModal,
@@ -38,6 +39,15 @@ const FamilyTreeDataModal = ({
     null
   );
   const maxDate = new Date();
+
+  console.log(selectedRelation, "selectedRelation selectedRelation");
+
+  const Boy = "./familyTreeRelations/child-boy.svg";
+  const Girl = "./familyTreeRelations/child-girl.svg";
+  const Father = "./familyTreeRelations/father.svg";
+  const Mother = "./familyTreeRelations/mother.svg";
+  const GFather = "./familyTreeRelations/g-father.svg";
+  const GMother = "./familyTreeRelations/g-mother.svg";
 
   useEffect(() => {
     if (selectedRelation) {
@@ -101,7 +111,16 @@ const FamilyTreeDataModal = ({
 
   useEffect(() => {
     // setSelectedValueGender( || "MySelf");
-  }, []);
+
+    if (selectedRelation == "Child") {
+      setImageLink(selectedValueGender == "Male" ? Boy : Girl);
+    } else if (selectedRelation == "Parent") {
+      setImageLink(selectedValueGender == "Male" ? GFather : GMother);
+    }
+    // else if (selectedRelation == "Partner") {
+    // setImageLink(selectedValueGender == "Male" ? GFather : GMother);
+    // }
+  }, [selectedValueGender]);
 
   const handleChange = (event) => {
     setSelectedValueGender(event.target.value);
