@@ -35,16 +35,16 @@ const FamilyTreeAddModal = ({
     //     spouse: true,
     //   });
     // } else {
-    setInfo({
-      name: nodeData.data.name,
-      image: nodeData.data.image
-        ? nodeData.data.image
-        : nodeData.data.gender == "Male"
-          ? Male
-          : Female,
-      type: "edit",
-      spouse: false,
-    });
+    // setInfo({
+    //   name: nodeData.data.name,
+    //   image: nodeData.data.image
+    //     ? nodeData.data.image
+    //     : nodeData.data.gender == "Male"
+    //       ? Male
+    //       : Female,
+    //   type: "edit",
+    //   spouse: false,
+    // });
     // }
   }, [nodeData]);
 
@@ -71,7 +71,7 @@ const FamilyTreeAddModal = ({
             textAlign: "center",
           }}
         >
-          <Image src={info.image} alt="img" width={120} height={120} />
+          {/* <Image src={info.image} alt="img" width={120} height={120} />
           <Typography
             sx={{
               fontSize: "14px",
@@ -83,7 +83,8 @@ const FamilyTreeAddModal = ({
           </Typography>
           <Box
             sx={{
-              width: "420px",
+              maxWidth: "420px",
+              width: "100%",
               mt: "40px",
               display: "flex",
               flexDirection: "column",
@@ -105,7 +106,7 @@ const FamilyTreeAddModal = ({
               color="#E1683B"
               onClick={() => onClick(info.name, "edit", nodeData)}
             />
-          </Box>
+          </Box> */}
         </Box>
       </CustomizationDialog>
     </Box>

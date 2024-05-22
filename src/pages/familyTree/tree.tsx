@@ -358,9 +358,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const elbow = (d, i) => {
       const yOffset = d.target.data.spouseName ? -55 : 0;
-      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${
-        d.target.x + yOffset
-      }H${d.target.y + 10}`;
+      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${d.target.x + yOffset
+        }H${d.target.y + 10}`;
     };
 
     const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
@@ -477,10 +476,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-          ? "b. " + born
-          : died
-          ? "d. " + died
-          : "b. Not Known";
+            ? "b. " + born
+            : died
+              ? "d. " + died
+              : "b. Not Known";
       renderText(30, -25, age || "", `${styles.dateLocation}`);
       // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
@@ -497,10 +496,10 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
-          ? "b. " + spouseBorn
-          : spouseDied
-          ? "d. " + spouseDied
-          : "b. Not Known";
+            ? "b. " + spouseBorn
+            : spouseDied
+              ? "d. " + spouseDied
+              : "b. Not Known";
       renderText(23, 106, spouseAge || "", `${styles.dateLocation}`);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
@@ -595,10 +594,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-          ? "b. " + born
-          : died
-          ? "d. " + died
-          : "b. Not Known";
+            ? "b. " + born
+            : died
+              ? "d. " + died
+              : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, true);
       renderImage(
         14,
@@ -680,7 +679,7 @@ const FamilyTree = ({ familyTreeData }) => {
           id="familyTree"
           style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
-          // style={{ maxWidth: "1000px", maxHeight: "600px" }}
+        // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
 
