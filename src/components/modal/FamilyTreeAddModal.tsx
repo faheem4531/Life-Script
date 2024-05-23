@@ -60,7 +60,7 @@ const FamilyTreeAddModal = ({
             textAlign: "center",
           }}
         >
-          <Image src={info.image} alt="img" width={120} height={120} />
+          <Image src={info.image} alt="img" width={120} height={120} style={{ borderRadius: "50%", objectFit: "cover" }} />
           <Typography
             sx={{
               fontSize: "14px",

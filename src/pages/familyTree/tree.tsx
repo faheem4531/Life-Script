@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
+import { ClassNames } from '@emotion/react';
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -423,16 +424,26 @@ const FamilyTree = ({ familyTreeData }) => {
         .on("click", handleNodeClick);
     };
 
-    const renderImage = (x, y, image) => {
+    const renderImage = (x, y, image, className) => {
       personNode
-        .append("image")
-        .attr("xlink:href", image)
-        .attr("width", 60)
-        .attr("height", 60)
+        // .append("image")
+        // .attr("class", className)
+        // .attr("xlink:href", image)
+        // .attr("width", 60)
+        // .attr("height", 60)
+        // .attr("x", x)
+        // .attr("rx", 10)
+        // .attr("y", y)
+        // // .attr("class", `${styles.circularImage}`)
+        // .on("click", handleNodeClick);
+
+        .append("foreignObject")
         .attr("x", x)
-        .attr("rx", 10)
         .attr("y", y)
-        .attr("class", `${styles.circularImage}`)
+        .attr("width", 70)
+        .attr("height", 70)
+        .append("xhtml:div")
+        .html(`<img src="${image}" class="${className}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" />`)
         .on("click", handleNodeClick);
     };
 
@@ -466,7 +477,8 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         20,
         -120,
-        d.data.image || (d.data.gender == "Male" ? Male : Female)
+        d.data.image || (d.data.gender == "Male" ? Male : Female),
+        `${styles.circularImage}`
       );
       renderText(30, -42, d.data.name || "", `${styles.name}`);
       //age
@@ -487,7 +499,8 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         14,
         10,
-        d.data.spouseImage || d.data.gender == "Male" ? Female : Male
+        d.data.spouseImage || d.data.gender == "Male" ? Female : Male,
+        `${styles.circularImage}`
       );
       renderText(23, 87, d.data.spouseName || "", `${styles.name}`);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
@@ -535,16 +548,16 @@ const FamilyTree = ({ familyTreeData }) => {
         },
       ];
 
-      iconPositions.forEach(({ x, y, icon, type }) => {
-        renderForeignObject(
-          x,
-          y,
-          (data, iconType) => handleIconClick(data.data.name, iconType, d),
-          icon,
-          d,
-          type
-        );
-      });
+      // iconPositions.forEach(({ x, y, icon, type }) => {
+      //   renderForeignObject(
+      //     x,
+      //     y,
+      //     (data, iconType) => handleIconClick(data.data.name, iconType, d),
+      //     icon,
+      //     d,
+      //     type
+      //   );
+      // });
 
       const iconPosition2 = [
         {
@@ -602,7 +615,8 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         14,
         -45,
-        d.data.image || (d.data.gender == "Male" ? Male : Female)
+        d.data.image || (d.data.gender == "Male" ? Male : Female),
+        `${styles.circularImage}`
       );
       renderText(20, 33, d.data.name || "", `${styles.name}`);
       renderText(20, 50, age || "", `${styles.dateLocation}`);
@@ -640,16 +654,16 @@ const FamilyTree = ({ familyTreeData }) => {
         },
       ];
 
-      iconPositions.forEach(({ x, y, icon, type }) => {
-        renderForeignObject(
-          x,
-          y,
-          (data, iconType) => handleIconClick(data.data.name, iconType, data),
-          icon,
-          d,
-          type
-        );
-      });
+      // iconPositions.forEach(({ x, y, icon, type }) => {
+      //   renderForeignObject(
+      //     x,
+      //     y,
+      //     (data, iconType) => handleIconClick(data.data.name, iconType, data),
+      //     icon,
+      //     d,
+      //     type
+      //   );
+      // });
     }
   };
 
