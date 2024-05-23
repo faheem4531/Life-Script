@@ -5,6 +5,8 @@ import CustomizationDialog from "./CustomizationDialog";
 import Image from "next/image";
 import GlobelBtn from "../button/Button";
 import { useEffect, useState } from "react";
+import addIcon from "@/_assets/svg/AddIcon.svg";
+import EditIcon from "@/_assets/svg/edit-icon-orange-family.svg";
 
 const FamilyTreeAddModal = ({
   setFamilyEditModal,
@@ -82,12 +84,14 @@ const FamilyTreeAddModal = ({
           >
             {info.spouse == false && (
               <GlobelBtn
+                image={addIcon}
                 width="100%"
                 btnText="Add New Family Member"
                 onClick={() => onClick(info.name, "add", nodeData)}
               />
             )}
             <GlobelBtn
+              image={EditIcon}
               width="100%"
               btnText="Edit This Family Member"
               bgColor="transparnet"
