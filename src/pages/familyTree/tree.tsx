@@ -399,57 +399,50 @@ const FamilyTree = ({ familyTreeData }) => {
       // Add your custom logic here
     };
 
+
     const renderRect = (x, y, height, className, isSpouse) => {
-      personNode
-        .append("rect")
+      const rect = personNode.append("rect")
         .attr("class", className)
         .attr("x", x)
         .attr("rx", 10)
         .attr("y", y)
-        .attr("width", 200)
-        .attr("height", height)
-        // .on("click", () => {
-        //   console.log("Clicked on rect:", d.data?.image, "33rr", className);
-        // });
-        .on("click", handleNodeClick);
+        .attr("width", 150)
+        .attr("height", height);
+
+      if (!isSpouse) {
+        rect.on("click", handleNodeClick);
+      }
     };
 
-    const renderText = (x, y, text, className) => {
-      personNode
-        .append("text")
+    const renderText = (x, y, text, className, isSpouse) => {
+      const textElement = personNode.append("text")
         .attr("class", className)
         .attr("x", x)
         .attr("y", y)
-        .text(text)
-        .on("click", handleNodeClick);
+        .text(text);
+
+      if (!isSpouse) {
+        textElement.on("click", handleNodeClick);
+      }
     };
 
-    const renderImage = (x, y, image, className) => {
-      personNode
-        // .append("image")
-        // .attr("class", className)
-        // .attr("xlink:href", image)
-        // .attr("width", 60)
-        // .attr("height", 60)
-        // .attr("x", x)
-        // .attr("rx", 10)
-        // .attr("y", y)
-        // // .attr("class", `${styles.circularImage}`)
-        // .on("click", handleNodeClick);
 
-        .append("foreignObject")
+    const renderImage = (x, y, image, className, isSpouse) => {
+      const imgElement = personNode.append("foreignObject")
         .attr("x", x)
         .attr("y", y)
         .attr("width", 70)
         .attr("height", 70)
         .append("xhtml:div")
-        .html(`<img src="${image}" class="${className}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" />`)
-        .on("click", handleNodeClick);
+        .html(`<img src="${image}" class="${className}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" />`);
+
+      if (!isSpouse) {
+        imgElement.on("click", handleNodeClick);
+      }
     };
 
     const renderForeignObject = (x, y, onClick, icon, d, iconType) => {
-      personNode
-        .append("foreignObject")
+      personNode.append("foreignObject")
         .attr("width", 20)
         .attr("height", 20)
         .attr("x", x)
@@ -473,14 +466,14 @@ const FamilyTree = ({ familyTreeData }) => {
     if (d.data.spouseName) {
       // console.log(d.data, "dataaaaaa d.data.spouseName");
 
-      renderRect(10, -5, 100, `${styles.nameRect}`, true);
+      renderRect(10, -5, 100, `${styles.nameRect}`, false);
       renderImage(
         20,
         -120,
         d.data.image || (d.data.gender == "Male" ? Male : Female),
-        `${styles.circularImage}`
+        `${styles.circularImage}`, false
       );
-      renderText(30, -42, d.data.name || "", `${styles.name}`);
+      renderText(30, -42, d.data.name || "", `${styles.name}`, false);
       //age
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
@@ -492,7 +485,7 @@ const FamilyTree = ({ familyTreeData }) => {
             : died
               ? "d. " + died
               : "b. Not Known";
-      renderText(30, -25, age || "", `${styles.dateLocation}`);
+      renderText(30, -25, age || "", `${styles.dateLocation}`, false);
       // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`, true);
@@ -500,9 +493,9 @@ const FamilyTree = ({ familyTreeData }) => {
         14,
         10,
         d.data.spouseImage || d.data.gender == "Male" ? Female : Male,
-        `${styles.circularImage}`
+        `${styles.circularImage}`, true
       );
-      renderText(23, 87, d.data.spouseName || "", `${styles.name}`);
+      renderText(23, 87, d.data.spouseName || "", `${styles.name}`, true);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
       const spouseDied = d.data.spouseDied?.slice(0, 4);
       let spouseAge =
@@ -513,7 +506,7 @@ const FamilyTree = ({ familyTreeData }) => {
             : spouseDied
               ? "d. " + spouseDied
               : "b. Not Known";
-      renderText(23, 106, spouseAge || "", `${styles.dateLocation}`);
+      renderText(23, 106, spouseAge || "", `${styles.dateLocation}`, true);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
       const iconPositions = [
         {
@@ -561,12 +554,12 @@ const FamilyTree = ({ familyTreeData }) => {
 
       const iconPosition2 = [
         {
-          x: 20,
-          y: 75,
+          x: 70,
+          y: 50,
           icon: (
             <EditIcon
               style={{
-                fill: "black",
+                fill: "#30422E",
                 cursor: "pointer",
                 maxWidth: 20,
                 maxHeight: 20,
@@ -611,15 +604,15 @@ const FamilyTree = ({ familyTreeData }) => {
             : died
               ? "d. " + died
               : "b. Not Known";
-      renderRect(10, -50, 100, `${styles.nameRect}`, true);
+      renderRect(10, -50, 100, `${styles.nameRect}`, false);
       renderImage(
         14,
         -45,
         d.data.image || (d.data.gender == "Male" ? Male : Female),
-        `${styles.circularImage}`
+        `${styles.circularImage}`, false
       );
-      renderText(20, 33, d.data.name || "", `${styles.name}`);
-      renderText(20, 50, age || "", `${styles.dateLocation}`);
+      renderText(20, 33, d.data.name || "", `${styles.name}`, false);
+      renderText(20, 50, age || "", `${styles.dateLocation}`, false);
       // renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
       const iconPositions = [
         {
