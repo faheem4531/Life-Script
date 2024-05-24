@@ -394,9 +394,6 @@ const FamilyTree = ({ familyTreeData }) => {
     const handleNodeClick = () => {
       setDd(d);
       setFamilyEditModal(true);
-
-      console.log("Node clicked:", d.data);
-      // Add your custom logic here
     };
 
 
@@ -428,18 +425,32 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
     const renderImage = (x, y, image, className, isSpouse) => {
-      const imgElement = personNode.append("foreignObject")
+      // Create a unique ID for the clipPath
+      const clipPathId = `clipPath-${x}-${y}`;
+
+      // Define the clipPath
+      personNode.append("clipPath")
+        .attr("id", clipPathId)
+        .append("circle")
+        .attr("cx", x + 30) // Center of the circle is at (x + radius)
+        .attr("cy", y + 30) // Center of the circle is at (y + radius)
+        .attr("r", 30); // Radius of the circle
+
+      const imgElement = personNode.append("image")
+        .attr("xlink:href", image)
+        .attr("width", 60)
+        .attr("height", 60)
         .attr("x", x)
         .attr("y", y)
-        .attr("width", 70)
-        .attr("height", 70)
-        .append("xhtml:div")
-        .html(`<img src="${image}" class="${className}" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" />`);
+        .attr("class", className)
+        .attr("clip-path", `url(#${clipPathId})`) // Apply the clipPath
+        .attr("preserveAspectRatio", "xMidYMid slice"); // Preserve aspect ratio and slice to cover
 
       if (!isSpouse) {
         imgElement.on("click", handleNodeClick);
       }
     };
+
 
     const renderForeignObject = (x, y, onClick, icon, d, iconType) => {
       personNode.append("foreignObject")
@@ -460,7 +471,7 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("x2", x2)
         .attr("y2", y2)
         .style("stroke", "#30422E")
-        .style("stroke-width", 2);
+        .style("stroke-width", 2)
     };
 
     if (d.data.spouseName) {
@@ -508,38 +519,38 @@ const FamilyTree = ({ familyTreeData }) => {
               : "b. Not Known";
       renderText(23, 106, spouseAge || "", `${styles.dateLocation}`, true);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
-      const iconPositions = [
-        {
-          x: 20,
-          y: -35,
-          icon: (
-            <EditIcon
-              style={{
-                fill: "black",
-                cursor: "pointer",
-                maxWidth: 20,
-                maxHeight: 20,
-              }}
-            />
-          ),
-          type: "edit",
-        },
-        {
-          x: 50,
-          y: -35,
-          icon: (
-            <AddIcon
-              style={{
-                fill: "black",
-                cursor: "pointer",
-                maxWidth: 20,
-                maxHeight: 20,
-              }}
-            />
-          ),
-          type: "add",
-        },
-      ];
+      // const iconPositions = [
+      //   {
+      //     x: 20,
+      //     y: -35,
+      //     icon: (
+      //       <EditIcon
+      //         style={{
+      //           fill: "black",
+      //           cursor: "pointer",
+      //           maxWidth: 20,
+      //           maxHeight: 20,
+      //         }}
+      //       />
+      //     ),
+      //     type: "edit",
+      //   },
+      //   {
+      //     x: 50,
+      //     y: -35,
+      //     icon: (
+      //       <AddIcon
+      //         style={{
+      //           fill: "black",
+      //           cursor: "pointer",
+      //           maxWidth: 20,
+      //           maxHeight: 20,
+      //         }}
+      //       />
+      //     ),
+      //     type: "add",
+      //   },
+      // ];
 
       // iconPositions.forEach(({ x, y, icon, type }) => {
       //   renderForeignObject(
@@ -583,9 +594,9 @@ const FamilyTree = ({ familyTreeData }) => {
       });
 
       const personBottomCenterX = 10 + 200 / 2;
-      const personBottomCenterY = -105 + 100;
+      const personBottomCenterY = -115 + 100;
       const spouseTopCenterX = 10 + 200 / 2;
-      const spouseTopCenterY = 5;
+      const spouseTopCenterY = 15;
 
       renderLine(
         personBottomCenterX,
@@ -614,38 +625,38 @@ const FamilyTree = ({ familyTreeData }) => {
       renderText(20, 33, d.data.name || "", `${styles.name}`, false);
       renderText(20, 50, age || "", `${styles.dateLocation}`, false);
       // renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
-      const iconPositions = [
-        {
-          x: 20,
-          y: 25,
-          icon: (
-            <EditIcon
-              style={{
-                fill: "black",
-                cursor: "pointer",
-                maxWidth: 20,
-                maxHeight: 20,
-              }}
-            />
-          ),
-          type: "edit",
-        },
-        {
-          x: 50,
-          y: 20,
-          icon: (
-            <AddIcon
-              style={{
-                fill: "black",
-                cursor: "pointer",
-                maxWidth: 25,
-                maxHeight: 20,
-              }}
-            />
-          ),
-          type: "add",
-        },
-      ];
+      // const iconPositions = [
+      //   {
+      //     x: 20,
+      //     y: 25,
+      //     icon: (
+      //       <EditIcon
+      //         style={{
+      //           fill: "black",
+      //           cursor: "pointer",
+      //           maxWidth: 20,
+      //           maxHeight: 20,
+      //         }}
+      //       />
+      //     ),
+      //     type: "edit",
+      //   },
+      //   {
+      //     x: 50,
+      //     y: 20,
+      //     icon: (
+      //       <AddIcon
+      //         style={{
+      //           fill: "black",
+      //           cursor: "pointer",
+      //           maxWidth: 25,
+      //           maxHeight: 20,
+      //         }}
+      //       />
+      //     ),
+      //     type: "add",
+      //   },
+      // ];
 
       // iconPositions.forEach(({ x, y, icon, type }) => {
       //   renderForeignObject(
