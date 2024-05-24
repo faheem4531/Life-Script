@@ -307,7 +307,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
       )}
       <Box
         sx={{
-          bgcolor: "#F3ECDA",
+          bgcolor: "#dededd",
           borderRadius: "4px",
           width: "100%",
           height: "100%",
