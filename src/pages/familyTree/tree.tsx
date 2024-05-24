@@ -401,9 +401,9 @@ const FamilyTree = ({ familyTreeData }) => {
       const rect = personNode.append("rect")
         .attr("class", className)
         .attr("x", x)
-        .attr("rx", 10)
+        .attr("rx", 60)
         .attr("y", y)
-        .attr("width", 150)
+        .attr("width", 130)
         .attr("height", height);
 
       if (!isSpouse) {
@@ -466,9 +466,9 @@ const FamilyTree = ({ familyTreeData }) => {
       personNode
         .append("line")
         .attr("class", `${styles.connectionLine}`)
-        .attr("x1", x1)
+        .attr("x1", x1 - 20)
         .attr("y1", y1)
-        .attr("x2", x2)
+        .attr("x2", x2 - 20)
         .attr("y2", y2)
         .style("stroke", "#30422E")
         .style("stroke-width", 2)
