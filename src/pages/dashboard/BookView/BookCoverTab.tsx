@@ -6,7 +6,7 @@ import {
   updateBook,
   uploadImage,
 } from "@/store/slices/chatSlice";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -416,65 +416,73 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
   return (
     <Box>
+    {loading ? (
       <Box
-        onClick={(e) => {
-          handleClick(e);
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <CircularProgress />
+    </Box>
+   ) : (
+
+    <Box onClick={(e) => handleClick(e)}>
+      <SelectBookCoverCard
+        landScape={coverData.coverNumber?.toString()}
+        title={title}
+        subtitle={subtitle}
+        Byline={byline}
+        droppedImage={imageLink}
+        ColourPalette={selectedColor}
+        finalCover={finalCover}
+      />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'end',
+          alignItems: 'baseline',
+          flexWrap: 'wrap',
+          gap: 2,
+          mt: '40px',
         }}
       >
-        <SelectBookCoverCard
-          landScape={coverData.coverNumber?.toString()}
-          title={title}
-          subtitle={subtitle}
-          Byline={byline}
-          droppedImage={imageLink}
-          ColourPalette={selectedColor}
-          finalCover={finalCover}
-        />
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "end",
-            alignItems: "baseline",
-            flexWrap: "wrap",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
             gap: 2,
-            mt: "40px"
+            pb: '20px',
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 2,
-              pb: "20px",
-            }}
-          >
-            <Box>
-              <GlobelBtn
-                btnText="Back"
-                color="#E1683B"
-                bgColor="#fff"
-                border="1px solid #E1683B"
-                onClick={() => {
-                  setSelectedTab(0);
-                }}
-                width="110px"
-              />
-            </Box>
-            <Box>
-              <GlobelBtn
-                bgColor="#E1683B"
-                color="white"
-                btnText={loading ? "Saving..." : "Next"}
-                border="0px"
-                width="110px"
-                onClick={onClickHandler}
-              />
-            </Box>
+          <Box>
+            <GlobelBtn
+              btnText="Back"
+              color="#E1683B"
+              bgColor="#fff"
+              border="1px solid #E1683B"
+              onClick={() => setSelectedTab(0)}
+              width="110px"
+            />
+          </Box>
+          <Box>
+            <GlobelBtn
+              bgColor="#E1683B"
+              color="white"
+              btnText={loading ? "Saving..." : "Next"}
+              border="0px"
+              width="110px"
+              onClick={onClickHandler}
+            />
           </Box>
         </Box>
       </Box>
     </Box>
+    )}
+  </Box>
   );
 };
 
