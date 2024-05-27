@@ -207,6 +207,26 @@ export async function getTreeDataApi() {
   }
 }
 
+export async function resetTreeDataApi() {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    const res = await api.delete(`family-module/delete-family-tree`, {
+      headers,
+    });
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function updatePartnerApi(data: {
   spouseDied?: string;
   spouseBorn?: string;
