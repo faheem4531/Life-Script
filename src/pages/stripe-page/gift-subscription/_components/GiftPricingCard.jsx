@@ -1,79 +1,29 @@
-'use client';
-import Check from '@/__webAssets/svgs/check.svg';
-import Lock from '@/__webAssets/svgs/lock.svg';
-import NextIcon from '@/__webAssets/svgs/next.svg';
-import { Box, Typography } from '@mui/material';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import styles from '../../../../__webComponents/ComponentsStyles.module.css';
-import Button from '../../../../__webComponents/button/Button';
+"use client";
+import Check from "@/__webAssets/svgs/check.svg";
+import Lock from "@/__webAssets/svgs/lock.svg";
+import NextIcon from "@/__webAssets/svgs/next.svg";
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import styles from "../../../../__webComponents/ComponentsStyles.module.css";
+import Button from "../../../../__webComponents/button/Button";
+import { CheckArray } from "../../../../utils/stripeFlowObjects";
 
-const GiftPricingCard = ({ price, category, card, id, handleHover, selectedTab, onClick }) => {
+const GiftPricingCard = ({
+  price,
+  category,
+  card,
+  id,
+  selectedTab,
+  onClick,
+}) => {
   const router = useRouter();
 
-  const CheckArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Spelling and grammar assistance ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Automatic photo improvement ',
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Text formatting features  ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Narrative Fusion ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Voice-to-text ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Family Tree',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Premium book covers',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Priority customer support',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Exclusive access to new features ',
-    },
-  ];
-
   const handleButtonClick = () => {
-    localStorage.setItem('price', price);
-    localStorage.setItem('category', category);
+    localStorage.setItem("price", price);
+    localStorage.setItem("category", category);
     router.push({
-      pathname: '/stripe-page/gift-subscription',
+      pathname: "/stripe-page/gift-subscription",
       query: { price, category },
     });
     onClick(selectedTab + 1);
@@ -82,48 +32,47 @@ const GiftPricingCard = ({ price, category, card, id, handleHover, selectedTab, 
   return (
     <Box
       sx={{
-        borderRadius: '8px',
-        width: { sm: '350px', xs: '340px' },
-        height: { lg: '700px' },
-        position: 'relative',
+        borderRadius: "8px",
+        width: { sm: "350px", xs: "340px" },
+        height: { lg: "700px" },
+        position: "relative",
       }}
-      backgroundColor={card == '2' ? '#30422E' : '#F4F4F4'}
-      color={card == '2' && '#f4f4f4'}
+      backgroundColor={card == "2" ? "#30422E" : "#F4F4F4"}
+      color={card == "2" && "#f4f4f4"}
       id={id}
-      onMouseOver={() => handleHover(id)}
     >
       <Box
         sx={{
           padding: {
-            lg: '39px 30px 85px 45px',
-            md: '35px 20px 85px',
-            sm: '39px 45px 85px',
-            xs: '35px 25px 80px',
+            lg: "39px 30px 85px 45px",
+            md: "35px 20px 85px",
+            sm: "39px 45px 85px",
+            xs: "35px 25px 80px",
           },
         }}
       >
         <Box
           sx={{
-            borderRadius: '4px',
-            backgroundColor: '#E7E7E7',
-            padding: '4px 8px',
-            display: 'inline',
-            color: '#3E4F3C',
-            fontFamily: 'Avenir5',
+            borderRadius: "4px",
+            backgroundColor: "#E7E7E7",
+            padding: "4px 8px",
+            display: "inline",
+            color: "#3E4F3C",
+            fontFamily: "Avenir5",
           }}
         >
           {category}
         </Box>
-        {category == 'Standard' && (
+        {category == "Standard" && (
           <Box
             sx={{
-              borderRadius: '4px',
-              backgroundColor: '#E1683B',
-              padding: '4px 8px',
-              color: '#F4F4F4',
-              marginLeft: '6px',
-              display: 'inline',
-              fontFamily: 'Avenir LT Std',
+              borderRadius: "4px",
+              backgroundColor: "#E1683B",
+              padding: "4px 8px",
+              color: "#F4F4F4",
+              marginLeft: "6px",
+              display: "inline",
+              fontFamily: "Avenir LT Std",
             }}
           >
             Popular
@@ -131,74 +80,88 @@ const GiftPricingCard = ({ price, category, card, id, handleHover, selectedTab, 
         )}
         <Typography
           sx={{
-            fontSize: '36px',
-            fontWeight: '400',
-            borderBottom: '1px solid #BFC4B5',
-            padding: '10px 0',
-            marginBottom: '34px',
+            fontSize: "36px",
+            fontWeight: "400",
+            borderBottom: "1px solid #BFC4B5",
+            padding: "10px 0",
+            marginBottom: "34px",
           }}
           className={styles.price}
         >
           ${price}
         </Typography>
 
-        {(category == 'Basic' && (
+        {(category == "Basic" && (
           <Box>
             {CheckArray.map((item, index) => (
               <Box
                 sx={{
-                  display: 'flex',
-                  columnGap: '25px',
-                  alignItems: 'center',
-                  marginBottom: '24px',
+                  display: "flex",
+                  columnGap: "25px",
+                  alignItems: "center",
+                  marginBottom: "24px",
                 }}
                 key={index}
               >
                 <Image src={item.basicStatus ? Check : Lock} alt="check" />
-                <Typography sx={{ fontSize: '15px', fontFamily: 'Avenir' }}>{item.dis}</Typography>
+                <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                  {item.dis}
+                </Typography>
               </Box>
             ))}
           </Box>
         )) ||
-          (category == 'Standard' && (
+          (category == "Standard" && (
             <Box>
               {CheckArray.map((item, index) => (
                 <Box
                   sx={{
-                    display: 'flex',
-                    columnGap: '25px',
-                    alignItems: 'center',
-                    marginBottom: '24px',
+                    display: "flex",
+                    columnGap: "25px",
+                    alignItems: "center",
+                    marginBottom: "24px",
                   }}
                   key={index}
                 >
                   <Image src={item.standardStatus ? Check : Lock} alt="check" />
-                  <Typography sx={{ fontSize: '15px', fontFamily: 'Avenir' }}>{item.dis}</Typography>
+                  <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                    {item.dis}
+                  </Typography>
                 </Box>
               ))}
             </Box>
           )) ||
-          (category == 'Premium' && (
+          (category == "Premium" && (
             <Box>
               {CheckArray.map((item, index) => (
                 <Box
                   sx={{
-                    display: 'flex',
-                    columnGap: '25px',
-                    alignItems: 'center',
-                    marginBottom: '24px',
+                    display: "flex",
+                    columnGap: "25px",
+                    alignItems: "center",
+                    marginBottom: "24px",
                   }}
                   key={index}
                 >
                   <Image src={item.PrimuimStatus ? Check : Lock} alt="check" />
-                  <Typography sx={{ fontSize: '15px', fontFamily: 'Avenir' }}>{item.dis}</Typography>
+                  <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                    {item.dis}
+                  </Typography>
                 </Box>
               ))}
             </Box>
           ))}
       </Box>
-      <Box sx={{ position: 'absolute', bottom: '0', left: '0', right: '0' }}>
-        <Button title="Get Started" width="100%" height="75px" font="24px" borderRadius="0px 0px 8px 8px" img2={NextIcon} onClick={() => handleButtonClick()} />
+      <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
+        <Button
+          title="Get Started"
+          width="100%"
+          height="75px"
+          font="24px"
+          borderRadius="0px 0px 8px 8px"
+          img2={NextIcon}
+          onClick={() => handleButtonClick()}
+        />
       </Box>
     </Box>
   );
