@@ -4,76 +4,236 @@ import Lock from "@/__webAssets/svgs/lock.svg";
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
 import { Box, Divider, Typography } from "@mui/material";
 import Image from "next/image";
-import { categoryArrayMapping, imageMapping } from '../../../../utils/constants/constants';
+import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
+import premiumBookImage from "../../../../../public/premiumBookImage.svg";
+import standardBookImage from "../../../../../public/standardBookImage.svg";
 import { formatDate } from "../../../../utils/highOrderFunctions";
-import styles from "./GiftPlanCard.module.css";
+import { BasicArray, PremiumArray, StandardArray } from "../../../../utils/stripeFlowObjects";
 
 const GiftPlanCard = ({ price, category }) => {
   const receiverName = localStorage.getItem("receiverName");
   const selectedDate = localStorage.getItem("selectedDate");
   const sendMessage = localStorage.getItem("sendMessage");
 
-  const renderFeatureList = (array) => (
-    array?.map((item, index) => (
-      <Box
-        className={styles.featureItem}
-        key={index}
-      >
-        <Image src={item[`${category.toLowerCase()}Status`] ? Check : Lock} alt="status icon" />
-        <Typography className={styles.featureText}>{item.dis}</Typography>
-      </Box>
-    ))
-  );
-
   return (
-    <Box className={styles.container}>
-      <Box className={styles.imageContainer}>
-        <Image
-          src={imageMapping[category]}
-          alt={`${category} Book Image`}
-          width={250}
-          height={348}
-        />
-      </Box>
-
-      <Box className={styles.detailsContainer}>
-        <Typography className={styles.planTitle}>
+    <Box
+      sx={{
+        borderRadius: "3px",
+        width: { lg: "445px", md: "400px", sm: "500px", xs: "100%" },
+        height: "auto",
+        backgroundColor: "#c5c4ae",
+        float: "right",
+        marginRight: { md: "20px", sm: "0", xs: "0" },
+      }}
+    >
+      {(category == "Basic" && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "10px",
+          }}
+        >
+          <Image
+            src={grandmaBookImage}
+            alt="grandma Book Image "
+            width={250}
+            height={348}
+          />
+        </Box>
+      )) ||
+        (category == "Standard" && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "10px",
+            }}
+          >
+            <Image
+              src={standardBookImage}
+              alt="grandma Book Image "
+              width={250}
+              height={348}
+            />
+          </Box>
+        )) ||
+        (category == "Premium" && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "10px",
+            }}
+          >
+            <Image
+              src={premiumBookImage}
+              alt="grandma Book Image "
+              width={250}
+              height={348}
+            />
+          </Box>
+        ))}
+      <Box sx={{ marginLeft: "20px", marginTop: "20px" }}>
+        <Typography
+          sx={{
+            color: "#30422e",
+            fontSize: "30px",
+            fontWeight: "700",
+          }}
+        >
           {category ? `${category} Plan` : "Choose Plan"}
         </Typography>
-        <Typography>Includes a premium full-color hardcover book, free shipping and one year LifeScript subscription with:</Typography>
 
-        <Box className={styles.featureList}>
-          {renderFeatureList(categoryArrayMapping[category] || [])}
+        <Box>
+          <Typography>
+            Includes a premium full-color hardcover book, free shipping and one
+            year LifeScript subscription with:
+          </Typography>
+        </Box>
+        <Box sx={{ marginTop: "30px" }}>
+          {(category == "Basic" && (
+            <Box>
+              {BasicArray.map((item, index) => (
+                <Box
+                  sx={{
+                    display: "flex",
+                    columnGap: "25px",
+                    alignItems: "center",
+                    marginBottom: "24px",
+                  }}
+                  key={index}
+                >
+                  <Image src={item.basicStatus ? Check : Lock} alt="check" />
+                  <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                    {item.dis}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          )) ||
+            (category == "Standard" && (
+              <Box>
+                {StandardArray.map((item, index) => (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      columnGap: "25px",
+                      alignItems: "center",
+                      marginBottom: "24px",
+                    }}
+                    key={index}
+                  >
+                    <Image
+                      src={item.standardStatus ? Check : Lock}
+                      alt="check"
+                    />
+                    <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                      {item.dis}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            )) ||
+            (category == "Premium" && (
+              <Box>
+                {PremiumArray.map((item, index) => (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      columnGap: "25px",
+                      alignItems: "center",
+                      marginBottom: "24px",
+                    }}
+                    key={index}
+                  >
+                    <Image
+                      src={item.PrimuimStatus ? Check : Lock}
+                      alt="check"
+                    />
+                    <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                      {item.dis}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            ))}
+
+          {/* Extra Info */}
+          {receiverName && (
+            <Box
+              sx={{
+                width: { lg: "380px", md: "350px" },
+                height: "auto",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Typography sx={{ fontSize: "24px", fontWeight: "600" }}>
+                  Details:
+                </Typography>
+                <Image
+                  alt="icon"
+                  src={EditIconPriceCard}
+                  style={{ color: "#293624" }}
+                />
+              </Box>
+              <Divider sx={{ marginTop: "5px", marginBottom: "15px" }} />
+
+              <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>
+                  Deliver to:{" "}
+                </Typography>
+                <Typography>
+                  {receiverName && receiverName}
+                </Typography>
+              </Box>
+              <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>
+                  Date:{" "}
+                </Typography>
+                <Typography>
+                  {selectedDate && formatDate(selectedDate)}
+                </Typography>
+              </Box>
+              <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
+                <Typography sx={{ fontSize: "24px", fontWeight: "800" }}>
+                  Gift Message:{" "}
+                </Typography>
+                <Typography sx={{ width: "300px" }}>
+                  {sendMessage && sendMessage}
+                </Typography>
+              </Box>
+            </Box>
+          )}
         </Box>
 
-        {receiverName && (
-          <Box className={styles.extraInfoContainer}>
-            <Box className={styles.extraInfoHeader}>
-              <Typography className={styles.extraInfoTitle}>Details:</Typography>
-              <Image alt="icon" src={EditIconPriceCard} className={styles.editIcon} />
-            </Box>
-            <Divider className={styles.divider} />
-
-            <Box className={styles.infoItem}>
-              <Typography className={styles.infoTitle}>Deliver to:</Typography>
-              <Typography>{receiverName}</Typography>
-            </Box>
-            <Box className={styles.infoItem}>
-              <Typography className={styles.infoTitle}>Date:</Typography>
-              <Typography>{formatDate(selectedDate)}</Typography>
-            </Box>
-            <Box className={styles.infoItem}>
-              <Typography className={styles.infoTitle}>Gift Message:</Typography>
-              <Typography className={styles.messageText}>{sendMessage}</Typography>
-            </Box>
-          </Box>
-        )}
-
-        <Typography className={styles.priceText}>
+        <Typography
+          sx={{
+            fontSize: "40px",
+            fontWeight: "700",
+            borderBottom: "1px solid #BFC4B5",
+            padding: "10px 0",
+            marginBottom: "34px",
+            fontFamily: "Avenir8",
+          }}
+        >
           {price ? `$${price}` : "$0"}
         </Typography>
       </Box>
     </Box>
   );
 };
+
 export default GiftPlanCard;
