@@ -22,7 +22,7 @@ const FamilyTreeAddModal = ({
     type: "",
     spouse: false,
   });
-  console.log(nodeData, "nodeData");
+  // console.log(nodeData, "nodeData");
 
   useEffect(() => {
     if (nodeData.data) {
