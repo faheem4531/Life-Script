@@ -6,6 +6,9 @@ import {
   addParent,
   uploadImage,
   uploadImageFamilyTree,
+  getTreeData,
+  resetTreeData,
+
 } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
@@ -25,6 +28,7 @@ import { toast } from "react-toastify";
 import CircularProgress from "@mui/material/CircularProgress";
 import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
 import { ClassNames } from '@emotion/react';
+import GlobelBtn from '@/components/button/Button';
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -46,7 +50,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
-  // console.log(relations, "family data familyTreeData");
+  console.log(familyTreeData, "familyTreeData");
 
   const handleAddedPerson = (data) => {
     setFamilyModal(false);
@@ -218,8 +222,12 @@ const FamilyTree = ({ familyTreeData }) => {
 
   useEffect(() => {
     if (!familyTreeData) {
+      console.log("no dataa fount");
+
       return;
     } else {
+      console.log("dataa found");
+
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
         setLoading(true);
@@ -273,7 +281,7 @@ const FamilyTree = ({ familyTreeData }) => {
               scale: 1,
               backgroundColor: "#FFFFFF",
             }).then((data) => {
-              console.log("data", data);
+              // console.log("data", data);
               // uploadImageonCloud(data);
               setLoading(false);
               familyTreeGroup.remove();
@@ -286,12 +294,12 @@ const FamilyTree = ({ familyTreeData }) => {
               // height: "auto",
               // width: "100%",
             }).then((uri) => {
-              console.log("data", uri);
+              // console.log("data", uri);
 
               fetch(uri)
                 .then((response) => response.blob())
                 .then((imgBlob) => {
-                  console.log("imgBlob", imgBlob);
+                  // console.log("imgBlob", imgBlob);
                   const formData = new FormData();
                   setLoading(false);
                   formData.append("image", imgBlob);
@@ -313,7 +321,7 @@ const FamilyTree = ({ familyTreeData }) => {
       .unwrap()
       .then((res) => {
         toast.success("image uploaded successfully");
-        console.log("resssssssss", res);
+        // console.log("resssssssss", res);
       })
       .catch(() => toast.error("Failed to upload image"));
   };
@@ -671,6 +679,10 @@ const FamilyTree = ({ familyTreeData }) => {
     }
   };
 
+  function handleResetFamily() {
+    dispatch(resetTreeData())
+    dispatch(getTreeData())
+  }
   return (
     <>
       <Box>
@@ -719,6 +731,10 @@ const FamilyTree = ({ familyTreeData }) => {
         <CloudDownloadIcon fontSize="large" />
       </IconButton>
       {/* <Button id="download">Download as PNG</Button> */}
+      <GlobelBtn
+        btnText='Reset Family'
+        onClick={handleResetFamily}
+      />
 
       <FamilyTreeDataModal
         nodeData={updatedNode}
