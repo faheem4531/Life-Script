@@ -37,6 +37,7 @@ import {
   getTemplatesApiMain,
   getTocApi,
   getTreeDataApi,
+  resetTreeDataApi,
   getaiQuestionsApi,
   isTemplateClonedApi,
   luluPrintingApi,
@@ -521,6 +522,18 @@ export const getTreeData = createAsyncThunk<any[], void>(
   async () => {
     try {
       const response = await getTreeDataApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const resetTreeData = createAsyncThunk<any[], void>(
+  "chat/tree-data",
+  async () => {
+    try {
+      const response = await resetTreeDataApi();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
