@@ -1,145 +1,20 @@
 "use client";
-import { Box, Divider, Typography } from "@mui/material";
-import Image from "next/image";
-import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
-import standardBookImage from "../../../../../public/standardBookImage.svg";
-import premiumBookImage from "../../../../../public/premiumBookImage.svg";
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
+import { Box, Divider, Typography } from "@mui/material";
+import Image from "next/image";
+import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
+import premiumBookImage from "../../../../../public/premiumBookImage.svg";
+import standardBookImage from "../../../../../public/standardBookImage.svg";
+import { formatDate } from "../../../../utils/highOrderFunctions";
+import { BasicArray, PremiumArray, StandardArray } from "../../../../utils/stripeFlowObjects";
 
 const GiftPlanCard = ({ price, category }) => {
   const receiverName = localStorage.getItem("receiverName");
   const selectedDate = localStorage.getItem("selectedDate");
   const sendMessage = localStorage.getItem("sendMessage");
 
-  const BasicArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-  ];
-  const StandardArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Narrative Fusion ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Voice-to-text ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Family Tree",
-    },
-  ];
-  const PremiumArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Narrative Fusion ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Voice-to-text ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Family Tree",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Premium book covers",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Priority customer support",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Exclusive access to new features ",
-    },
-  ];
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear();
-    return `${month.toString().padStart(2, "0")}-${day
-      .toString()
-      .padStart(2, "0")}-${year}`;
-  };
   return (
     <Box
       sx={{
@@ -322,7 +197,6 @@ const GiftPlanCard = ({ price, category }) => {
                 </Typography>
                 <Typography>
                   {receiverName && receiverName}
-                  {/* John Doe */}
                 </Typography>
               </Box>
               <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
@@ -331,7 +205,6 @@ const GiftPlanCard = ({ price, category }) => {
                 </Typography>
                 <Typography>
                   {selectedDate && formatDate(selectedDate)}
-                  {/* 29-03-2024 */}
                 </Typography>
               </Box>
               <Box sx={{ marginTop: "5px", marginBottom: "10px" }}>
@@ -340,7 +213,6 @@ const GiftPlanCard = ({ price, category }) => {
                 </Typography>
                 <Typography sx={{ width: "300px" }}>
                   {sendMessage && sendMessage}
-                  {/* “The journey of a thousand miles begins with a single step.” */}
                 </Typography>
               </Box>
             </Box>

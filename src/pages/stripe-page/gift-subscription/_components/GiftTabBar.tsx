@@ -1,9 +1,7 @@
 import { Grid, Typography } from "@mui/material";
-// import { useSession } from "next-auth/react";
 
-const GiftTabBar = ({ tabs, onClick }) => {
-  // const { data: session } = useSession();
-  // console.log("tabs", tabs);
+const GiftTabBar = ({ tabs }) => {
+
   return (
     <Grid
       container
@@ -13,18 +11,14 @@ const GiftTabBar = ({ tabs, onClick }) => {
         maxWidth: "1500px",
       }}
     >
-      {tabs?.map(
+      {tabs && tabs?.map(
         (tab, index) =>
-          // Render the registration tab only if it's not the second tab and there's no session
-          (index !== 3 
-            // || !session
-          ) && (
+          (index !== 3) && (
             <Grid
               key={index}
               item
               xs={3.5}
               sx={{ padding: "2px" }}
-              // onClick={() => onClick(index)}
             >
               <Typography
                 sx={{
