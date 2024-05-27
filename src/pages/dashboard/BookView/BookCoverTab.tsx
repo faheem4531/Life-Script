@@ -5,13 +5,12 @@ import {
   selectCoverData,
   updateBook,
   uploadImage,
+  uploadImageWithCloudinary
 } from "@/store/slices/chatSlice";
 import { Box, CircularProgress } from "@mui/material";
 import jsPDF from "jspdf";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import backArrow from "../../../_assets/svg/left.svg";
-import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import { font } from "../../../styles/font";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
@@ -159,7 +158,10 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     pdf.setFillColor(bgcolor);
     pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
     const centerX = pageWidth + tail + pageWidth / 2;
-    pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
+    const newImage = coverData && coverData?.coverPagePhoto;
+    const newData = {imageUrl:newImage}
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    pdf.addImage(newImageLink?.payload, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
 
     const pdfContent = pdf.output("datauristring"); // Get the PDF content as a data URI
 
@@ -416,73 +418,73 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
   return (
     <Box>
-    {loading ? (
-      <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <CircularProgress />
-    </Box>
-   ) : (
-
-    <Box onClick={(e) => handleClick(e)}>
-      <SelectBookCoverCard
-        landScape={coverData.coverNumber?.toString()}
-        title={title}
-        subtitle={subtitle}
-        Byline={byline}
-        droppedImage={imageLink}
-        ColourPalette={selectedColor}
-        finalCover={finalCover}
-      />
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'end',
-          alignItems: 'baseline',
-          flexWrap: 'wrap',
-          gap: 2,
-          mt: '40px',
-        }}
-      >
+      {loading ? (
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: 2,
-            pb: '20px',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
           }}
         >
-          <Box>
-            <GlobelBtn
-              btnText="Back"
-              color="#E1683B"
-              bgColor="#fff"
-              border="1px solid #E1683B"
-              onClick={() => setSelectedTab(0)}
-              width="110px"
-            />
-          </Box>
-          <Box>
-            <GlobelBtn
-              bgColor="#E1683B"
-              color="white"
-              btnText={loading ? "Saving..." : "Next"}
-              border="0px"
-              width="110px"
-              onClick={onClickHandler}
-            />
+          <CircularProgress />
+        </Box>
+      ) : (
+
+        <Box onClick={(e) => handleClick(e)}>
+          <SelectBookCoverCard
+            landScape={coverData.coverNumber?.toString()}
+            title={title}
+            subtitle={subtitle}
+            Byline={byline}
+            droppedImage={imageLink}
+            ColourPalette={selectedColor}
+            finalCover={finalCover}
+          />
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'end',
+              alignItems: 'baseline',
+              flexWrap: 'wrap',
+              gap: 2,
+              mt: '40px',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 2,
+                pb: '20px',
+              }}
+            >
+              <Box>
+                <GlobelBtn
+                  btnText="Back"
+                  color="#E1683B"
+                  bgColor="#fff"
+                  border="1px solid #E1683B"
+                  onClick={() => setSelectedTab(0)}
+                  width="110px"
+                />
+              </Box>
+              <Box>
+                <GlobelBtn
+                  bgColor="#E1683B"
+                  color="white"
+                  btnText={loading ? "Saving..." : "Next"}
+                  border="0px"
+                  width="110px"
+                  onClick={onClickHandler}
+                />
+              </Box>
+            </Box>
           </Box>
         </Box>
-      </Box>
+      )}
     </Box>
-    )}
-  </Box>
   );
 };
 

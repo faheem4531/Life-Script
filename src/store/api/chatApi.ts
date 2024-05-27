@@ -399,6 +399,20 @@ export async function uploadImageApi(data) {
   }
 }
 
+export async function uploadImageCloudinaryApi(data) {
+  try {
+    const res = await api.post("/users/cloudinary/upload-image", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function uploadImageApiFamilyTree(data) {
   try {
     const res = await api.post("/users/upload-image/familyTree", data);

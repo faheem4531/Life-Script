@@ -37,13 +37,13 @@ import {
   getTemplatesApiMain,
   getTocApi,
   getTreeDataApi,
-  resetTreeDataApi,
   getaiQuestionsApi,
   isTemplateClonedApi,
   luluPrintingApi,
   narrativeFusionApi,
   openaiQuestionApi,
   readNotificationApi,
+  resetTreeDataApi,
   saveAnswerApi,
   selectedChaptersApi,
   simpleChapterApi,
@@ -59,6 +59,7 @@ import {
   uploadAudioApi,
   uploadImageApi,
   uploadImageApiFamilyTree,
+  uploadImageCloudinaryApi,
 } from "../api/chatApi";
 
 interface State {
@@ -319,6 +320,18 @@ export const uploadImage = createAsyncThunk<UserData, any>(
   async (data) => {
     try {
       const response = await uploadImageApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const uploadImageWithCloudinary = createAsyncThunk<UserData, any>(
+  "chat/upload-image",
+  async (data) => {
+    try {
+      const response = await uploadImageCloudinaryApi(data);
       return response;
     } catch (error: any) {
       throw new Error(error.props);
@@ -794,6 +807,8 @@ export const getQuestionbyId = createAsyncThunk<UserData, { id: string }>(
     }
   }
 );
+
+
 
 export const chatSlice = createSlice({
   name: "chat",
