@@ -44,7 +44,8 @@ const FamilyTree = ({ familyTreeData }) => {
   const [relations, setRelations] = useState(["Sibling", "Child"]);
   const [personData, setPersonData] = useState({});
   const [dd, setDd] = useState({});
-
+  const [isPanning, setIsPanning] = useState(false);
+  const [lastMousePosition, setLastMousePosition] = useState(null);
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
@@ -227,7 +228,7 @@ const FamilyTree = ({ familyTreeData }) => {
       return;
     } else {
       console.log("dataa found");
-
+      const svgElement = d3.select(svgRef.current);
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
         setLoading(true);
@@ -312,8 +313,54 @@ const FamilyTree = ({ familyTreeData }) => {
         });
       });
       drawTree();
+      // Ensure the viewBox is set
+      if (!svgElement.attr("viewBox")) {
+        svgElement.attr("viewBox", "0 0 1000 1000"); // Set an initial viewBox
+      }
     }
   }, [familyTreeData]);
+
+  // Separate effect for panning functionality
+  useEffect(() => {
+    const svgElement = d3.select(svgRef.current);
+    const scaleFactor = 0.3;
+
+    const handleMouseMove = (event) => {
+      if (isPanning && lastMousePosition) {
+        const dx = (event.clientX - lastMousePosition.x) * scaleFactor;
+        const dy = (event.clientY - lastMousePosition.y) * scaleFactor;
+        const viewBox = svgElement.attr("viewBox") ? svgElement.attr("viewBox").split(" ").map(Number) : [0, 0, 1000, 1000];
+        svgElement.attr("viewBox", `${viewBox[0] - dx} ${viewBox[1] - dy} ${viewBox[2]} ${viewBox[3]}`);
+        setLastMousePosition({ x: event.clientX, y: event.clientY });
+      }
+    };
+
+    const handleMouseEnter = (event) => {
+      if (isPanning) {
+        setLastMousePosition({ x: event.clientX, y: event.clientY });
+      }
+    };
+
+    const handleMouseLeave = () => {
+      setLastMousePosition(null);
+    };
+
+    if (isPanning) {
+      svgElement.on("mousemove", handleMouseMove);
+      svgElement.on("mouseenter", handleMouseEnter);
+      svgElement.on("mouseleave", handleMouseLeave);
+    } else {
+      svgElement.on("mousemove", null);
+      svgElement.on("mouseenter", null);
+      svgElement.on("mouseleave", null);
+    }
+
+    return () => {
+      svgElement.on("mousemove", null);
+      svgElement.on("mouseenter", null);
+      svgElement.on("mouseleave", null);
+    };
+  }, [isPanning, lastMousePosition]);
 
   const uploadImageonCloud = (formData) => {
     console.log("formData", formData);
@@ -683,6 +730,7 @@ const FamilyTree = ({ familyTreeData }) => {
     dispatch(resetTreeData())
     dispatch(getTreeData())
   }
+
   return (
     <>
       <Box>
@@ -709,6 +757,7 @@ const FamilyTree = ({ familyTreeData }) => {
           id="familyTree"
           style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
+          viewBox="0 0 1000 1000"
         // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
@@ -734,6 +783,11 @@ const FamilyTree = ({ familyTreeData }) => {
       <GlobelBtn
         btnText='Reset Family'
         onClick={handleResetFamily}
+      />
+
+      <GlobelBtn
+        btnText={isPanning ? "Disable Pan" : "Enable Pan"}
+        onClick={() => setIsPanning(!isPanning)}
       />
 
       <FamilyTreeDataModal
