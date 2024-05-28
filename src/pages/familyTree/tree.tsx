@@ -323,46 +323,29 @@ const FamilyTree = ({ familyTreeData }) => {
   }, [familyTreeData]);
 
   // Separate effect for panning functionality
-  useEffect(() => {
-    const svgElement = d3.select(svgRef.current);
+  const panCanvas = (direction) => {
     const scaleFactor = 0.3;
+    const svgElement = d3.select(svgRef.current);
+    const viewBox = svgElement.attr("viewBox") ? svgElement.attr("viewBox").split(" ").map(Number) : [0, 0, 1000, 1000];
+    const moveDistance = 100 * scaleFactor; // Adjust this value to control the panning speed
 
-    const handleMouseMove = (event) => {
-      if (isPanning && lastMousePosition) {
-        const dx = (event.clientX - lastMousePosition.x) * scaleFactor;
-        const dy = (event.clientY - lastMousePosition.y) * scaleFactor;
-        const viewBox = svgElement.attr("viewBox") ? svgElement.attr("viewBox").split(" ").map(Number) : [0, 0, 1000, 1000];
-        svgElement.attr("viewBox", `${viewBox[0] - dx} ${viewBox[1] - dy} ${viewBox[2]} ${viewBox[3]}`);
-        setLastMousePosition({ x: event.clientX, y: event.clientY });
-      }
-    };
-
-    const handleMouseEnter = (event) => {
-      if (isPanning) {
-        setLastMousePosition({ x: event.clientX, y: event.clientY });
-      }
-    };
-
-    const handleMouseLeave = () => {
-      setLastMousePosition(null);
-    };
-
-    if (isPanning) {
-      svgElement.on("mousemove", handleMouseMove);
-      svgElement.on("mouseenter", handleMouseEnter);
-      svgElement.on("mouseleave", handleMouseLeave);
-    } else {
-      svgElement.on("mousemove", null);
-      svgElement.on("mouseenter", null);
-      svgElement.on("mouseleave", null);
+    switch (direction) {
+      case 'top':
+        svgElement.attr("viewBox", `${viewBox[0]} ${viewBox[1] - moveDistance} ${viewBox[2]} ${viewBox[3]}`);
+        break;
+      case 'left':
+        svgElement.attr("viewBox", `${viewBox[0] - moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
+        break;
+      case 'bottom':
+        svgElement.attr("viewBox", `${viewBox[0]} ${viewBox[1] + moveDistance} ${viewBox[2]} ${viewBox[3]}`);
+        break;
+      case 'right':
+        svgElement.attr("viewBox", `${viewBox[0] + moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
+        break;
+      default:
+        break;
     }
-
-    return () => {
-      svgElement.on("mousemove", null);
-      svgElement.on("mouseenter", null);
-      svgElement.on("mouseleave", null);
-    };
-  }, [isPanning, lastMousePosition]);
+  };
 
   const uploadImageonCloud = (formData) => {
     console.log("formData", formData);
@@ -761,10 +744,49 @@ const FamilyTree = ({ familyTreeData }) => {
           style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
           viewBox="0 0 1000 1000"
-        // style={{ maxWidth: "1000px", maxHeight: "600px" }}
         ></svg>
       </Box>
+      <IconButton id="download" aria-label="download">
+        <CloudDownloadIcon fontSize="large" />
+      </IconButton>
 
+      <Box>
+        <GlobelBtn
+          btnText='Bottom'
+          onClick={() => panCanvas('top')}
+        />
+        <GlobelBtn
+          btnText='Right'
+          onClick={() => panCanvas('left')}
+        />
+        <GlobelBtn
+          btnText='Top'
+          onClick={() => panCanvas('bottom')}
+        />
+        <GlobelBtn
+          btnText='Left'
+          onClick={() => panCanvas('right')}
+        />
+        {/* <button onClick={() => panCanvas('top')}>Top</button>
+        <button onClick={() => panCanvas('left')}>Left</button>
+        <button onClick={() => panCanvas('bottom')}>Bottom</button>
+        <button onClick={() => panCanvas('right')}>Right</button> */}
+      </Box>
+
+
+      {/* <Button id="download">Download as PNG</Button> */}
+      <GlobelBtn
+        btnText='Reset Family'
+        onClick={() => setResetModal(true)}
+      />
+
+      {/* <GlobelBtn
+        btnText={isPanning ? "Disable Pan" : "Enable Pan"}
+        onClick={() => setIsPanning(!isPanning)}
+      /> */}
+
+
+      {/* Modals  */}
       <SelectRelationModal
         relations={relations}
         familyRelationModal={familyRelationModal}
@@ -778,19 +800,6 @@ const FamilyTree = ({ familyTreeData }) => {
             setUpdatedNode({ isSpouse: true });
           }
         }}
-      />
-      <IconButton id="download" aria-label="download">
-        <CloudDownloadIcon fontSize="large" />
-      </IconButton>
-      {/* <Button id="download">Download as PNG</Button> */}
-      <GlobelBtn
-        btnText='Reset Family'
-        onClick={() => setResetModal(true)}
-      />
-
-      <GlobelBtn
-        btnText={isPanning ? "Disable Pan" : "Enable Pan"}
-        onClick={() => setIsPanning(!isPanning)}
       />
 
       <FamilyTreeDataModal
