@@ -332,6 +332,7 @@ const FamilyTree = ({ familyTreeData }) => {
     switch (direction) {
       case 'top':
         svgElement.attr("viewBox", `${viewBox[0]} ${viewBox[1] - moveDistance} ${viewBox[2]} ${viewBox[3]}`);
+
         break;
       case 'left':
         svgElement.attr("viewBox", `${viewBox[0] - moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
@@ -346,6 +347,26 @@ const FamilyTree = ({ familyTreeData }) => {
         break;
     }
   };
+
+  const zoomCanvas = (zoomIn) => {
+    const svgElement = d3.select(svgRef.current);
+    const viewBox = svgElement.attr("viewBox") ? svgElement.attr("viewBox").split(" ").map(Number) : [0, 0, 1000, 1000];
+    const zoomFactor = zoomIn ? 0.9 : 1.1; // Adjust these values to control the zoom speed
+
+    const currentWidth = viewBox[2];
+    const currentHeight = viewBox[3];
+    const newWidth = currentWidth * zoomFactor;
+    const newHeight = currentHeight * zoomFactor;
+
+    const deltaX = (newWidth - currentWidth) / 8;
+    const deltaY = (newHeight - currentHeight) / 8;
+
+    const newX = viewBox[0] - deltaX;
+    const newY = viewBox[1] - deltaY;
+
+    svgElement.attr("viewBox", `${newX} ${newY} ${newWidth} ${newHeight}`);
+  };
+
 
   const uploadImageonCloud = (formData) => {
     console.log("formData", formData);
@@ -767,11 +788,21 @@ const FamilyTree = ({ familyTreeData }) => {
           btnText='Left'
           onClick={() => panCanvas('right')}
         />
-        {/* <button onClick={() => panCanvas('top')}>Top</button>
-        <button onClick={() => panCanvas('left')}>Left</button>
-        <button onClick={() => panCanvas('bottom')}>Bottom</button>
-        <button onClick={() => panCanvas('right')}>Right</button> */}
       </Box>
+
+      <GlobelBtn
+        btnText='Zoom in'
+        onClick={() => zoomCanvas(true)}
+      />
+      <GlobelBtn
+        btnText='Zoom out'
+        onClick={() => zoomCanvas(false)}
+      />
+
+      {/* <button onClick={() => zoomCanvas(true)}>Zoom In</button>
+      <button onClick={() => zoomCanvas(false)}>Zoom Out</button> */}
+
+
 
 
       {/* <Button id="download">Download as PNG</Button> */}
