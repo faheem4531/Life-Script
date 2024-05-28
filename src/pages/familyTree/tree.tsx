@@ -29,6 +29,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
 import { ClassNames } from '@emotion/react';
 import GlobelBtn from '@/components/button/Button';
+import TransitionsDialog from '@/components/modal/TransitionDialog';
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -46,6 +47,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const [dd, setDd] = useState({});
   const [isPanning, setIsPanning] = useState(false);
   const [lastMousePosition, setLastMousePosition] = useState(null);
+  const [resetModal, setResetModal] = useState(false)
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
@@ -729,6 +731,7 @@ const FamilyTree = ({ familyTreeData }) => {
   function handleResetFamily() {
     dispatch(resetTreeData())
     dispatch(getTreeData())
+    setResetModal(false)
   }
 
   return (
@@ -782,7 +785,7 @@ const FamilyTree = ({ familyTreeData }) => {
       {/* <Button id="download">Download as PNG</Button> */}
       <GlobelBtn
         btnText='Reset Family'
-        onClick={handleResetFamily}
+        onClick={() => setResetModal(true)}
       />
 
       <GlobelBtn
@@ -803,6 +806,15 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyEditModal={setFamilyEditModal}
         nodeData={dd}
         onClick={handleIconClick}
+      />
+
+      <TransitionsDialog
+        open={resetModal}
+        heading={"Delete Family Tree"}
+        description="Do you want to delete the family?"
+        cancel={() => setResetModal(false)}
+        proceed={handleResetFamily}
+        closeModal={() => setResetModal(false)}
       />
     </>
   );
