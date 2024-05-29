@@ -12,34 +12,6 @@ export default function Document() {
           content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent. "
         />
 
-        {/* Clarity Analytics Code */}
-        {/* <Script
-          id="clarity"
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/lpnt5cc9c6";
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "lpnt5cc9c6");
-            `,
-          }}
-        /> */}
-
-
-        {/* Old Code Clarity */}
-        {/* <script type="text/javascript">
-          {`
-          (function(c,l,a,r,i,t,y){
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "lpnt5cc9c6");
-          `}
-        </script> */}
-
-
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -99,11 +71,6 @@ export default function Document() {
         {/* Google Search Console */}
         <meta name="google-site-verification" content="wt1qy_zKsDB3gvsPGfgbQoo0d3yvcUK4tOd9wkwSnJE" />
 
-        {/* second */}
-        {/* <meta
-          name="google-site-verification"
-          content="FLQHtOf63xbf907IegSWlW9Gj9H_9x1bckZb-9r9EFw"
-        /> */}
 
         <script
           dangerouslySetInnerHTML={{
@@ -148,36 +115,7 @@ export default function Document() {
           }}
         />
         <Script async src="https://r.wdfl.co/rw.js" data-rewardful="797851" />
-
-
-        {/* JSON-LD script for structured data */}
-        {/* <script type="application/ld+json">
-          {`
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "LifeScript",
-      "url": "www.thelifescript.com",
-      "logo": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-      "alternateName": "the lifescript",
-      "sameAs": [
-        "https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr",
-        "https://www.facebook.com/profile.php?id=61554559332668",
-        "https://twitter.com/thelifescript",
-        "https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1"
-      ],
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "",
-          "contactType": "customer service",
-          "email": "info@thelifescript.com",
-          "availableLanguage": "en"
-        }
-      ]
-    }
-    `}
-        </script> */}
+        {/* Schema ORG */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -207,28 +145,6 @@ export default function Document() {
           }}
         />
 
-
-        {/* JSON-LD script for Product */}
-        {/* <script type="application/ld+json">
-          {`
-          {
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            "name": "LifeScript",
-            "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-            "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
-            "brand": "LifeScript",
-            "offers": {
-              "@type": "AggregateOffer",
-              "url": "https://www.thelifescript.com/pricing",
-              "priceCurrency": "USD",
-              "lowPrice": "139",
-              "highPrice": "239"
-            }
-          }
-          `}
-        </script> */}
-
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -254,11 +170,6 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet" />
 
-
-
-      </Head>
-      <body style={{ margin: 0 }}>
-        <Main />
         {/* Paste the Plerdy tracking script here */}
         <Script
           id="plerdy"
@@ -275,6 +186,10 @@ export default function Document() {
             `,
           }}
         />
+
+      </Head>
+      <body style={{ margin: 0 }}>
+        <Main />
         <NextScript />
       </body>
     </Html>
