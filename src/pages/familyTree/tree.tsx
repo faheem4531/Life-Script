@@ -233,6 +233,8 @@ const FamilyTree = ({ familyTreeData }) => {
       const svgElement = d3.select(svgRef.current);
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
+        svgElement.attr("viewBox", "0 0 0 0");
+
         setLoading(true);
 
         const { src, height } = LogoSvg;
@@ -302,23 +304,20 @@ const FamilyTree = ({ familyTreeData }) => {
               fetch(uri)
                 .then((response) => response.blob())
                 .then((imgBlob) => {
-                  // console.log("imgBlob", imgBlob);
                   const formData = new FormData();
                   setLoading(false);
                   formData.append("image", imgBlob);
                   uploadImageonCloud(formData);
                   familyTreeGroup.remove();
                   familyTreeGroupFamily.remove();
+                  window.location.href = "/familyTree"
                 });
             });
           });
         });
       });
       drawTree();
-      // Ensure the viewBox is set
-      if (!svgElement.attr("viewBox")) {
-        svgElement.attr("viewBox", "0 0 1000 1000"); // Set an initial viewBox
-      }
+
     }
   }, [familyTreeData]);
 
@@ -358,13 +357,15 @@ const FamilyTree = ({ familyTreeData }) => {
     const newWidth = currentWidth * zoomFactor;
     const newHeight = currentHeight * zoomFactor;
 
-    const deltaX = (newWidth - currentWidth) / 8;
-    const deltaY = (newHeight - currentHeight) / 8;
+    const deltaX = (newWidth - currentWidth) / 20;
+    const deltaY = (newHeight - currentHeight) / 20;
 
     const newX = viewBox[0] - deltaX;
     const newY = viewBox[1] - deltaY;
 
-    svgElement.attr("viewBox", `${newX} ${newY} ${newWidth} ${newHeight}`);
+    const finalX = zoomIn ? newX - 10 : newX
+
+    svgElement.attr("viewBox", `${finalX} ${newY} ${newWidth} ${newHeight}`);
   };
 
 
