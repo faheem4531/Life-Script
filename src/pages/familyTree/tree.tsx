@@ -363,7 +363,7 @@ const FamilyTree = ({ familyTreeData }) => {
     const newX = viewBox[0] - deltaX;
     const newY = viewBox[1] - deltaY;
 
-    const finalX = zoomIn ? newX - 10 : newX
+    const finalX = zoomIn ? newX - 5 : newX
 
     svgElement.attr("viewBox", `${finalX} ${newY} ${newWidth} ${newHeight}`);
   };
