@@ -396,6 +396,16 @@ const FamilyTree = ({ familyTreeData }) => {
     const width = fullWidth - margin.left - margin.right;
     const height = fullHeight - margin.top - margin.bottom;
 
+    // // const treeHeight = totalNodes?.height;
+    // // const rightMargin = 2400 - (treeHeight - 1) * 200;
+    // // const margin = { top: 10, right: rightMargin, bottom: 10, left: 10 };
+    // const fullWidth = 3000;
+    // const fullHeight = 1650;
+    // const width = fullWidth;
+    // const height = fullHeight;
+
+
+
     const tree = d3
       .tree()
       .separation((a, b) => {
@@ -771,7 +781,7 @@ const FamilyTree = ({ familyTreeData }) => {
           id="familyTree"
           style={{ position: "absolute", top: "20px", left: "20px" }}
           ref={svgRef}
-          viewBox="0 0 1000 1000"
+          viewBox="1000 600 2800 2800"
         ></svg>
       </Box>
 
