@@ -396,15 +396,6 @@ const FamilyTree = ({ familyTreeData }) => {
     const width = fullWidth - margin.left - margin.right;
     const height = fullHeight - margin.top - margin.bottom;
 
-    // // const treeHeight = totalNodes?.height;
-    // // const rightMargin = 2400 - (treeHeight - 1) * 200;
-    // // const margin = { top: 10, right: rightMargin, bottom: 10, left: 10 };
-    // const fullWidth = 3000;
-    // const fullHeight = 1650;
-    // const width = fullWidth;
-    // const height = fullHeight;
-
-
 
     const tree = d3
       .tree()
@@ -787,7 +778,12 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <IconButton id="download" aria-label="download">
+        <IconButton id="download" aria-label="download" sx={{
+          '&:hover': {
+            backgroundColor: 'transparent',
+            boxShadow: 'none',
+          },
+        }} >
           <Box sx={{ width: "140px", border: "1px solid #e1693b", borderRadius: "4px", display: "flex", justifyContent: "center" }}>
             <ButtonIcons
               onClick={() => { }}
@@ -921,6 +917,10 @@ export const ButtonIcons = ({ onClick, iconSize, img, btnText }) => {
         justifyContent: "center",
         alignItems: "center",
         columnGap: "8px",
+        '&:hover': {
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+        },
       }}>
       <Image
         src={img}
