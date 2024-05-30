@@ -594,15 +594,6 @@ const FamilyTreeDataModal = ({
 
           <Box mt={"30px"} sx={{ display: "flex", columnGap: "20px" }}>
             <GlobelBtn
-              btnText="Delete"
-              color="#E1683B"
-              bgColor="transparent"
-              border="1px solid #E1683B"
-              // onClick={handleSubmit}
-              // disabled={!inputValueName}
-              width="100%"
-            />
-            <GlobelBtn
               btnText="Save"
               color="white"
               bgColor="#30422E"
