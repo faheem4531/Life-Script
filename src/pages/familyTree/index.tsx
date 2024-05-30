@@ -87,12 +87,16 @@ const Home = () => {
 
   return (
     <Layout>
-      <SelectBookCoverHeader img={FamilyTreeImage} discription="Family Tree" />
+      <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
+        <SelectBookCoverHeader img={FamilyTreeImage} discription="Family Tree" />
+      </Box>
       <Box
         sx={{
           position: "relative",
           zIndex: "1",
           p: { sm: "0", xs: "10px" },
+          height: { lg: "65vh", xl: "70vh", md: "70vh", sm: "90vh", xs: "94vh" },
+          overflow: "hidden"
         }}
       >
         <FamilyTree familyTreeData={familyTreeData} />
