@@ -823,7 +823,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
       <Box sx={{ position: "absolute", right: "0", top: "50%", transform: "translateY(-50%)" }}>
         <ButtonIcons
-          onClick={() => panCanvas('left')}
+          onClick={() => panCanvas('right')}
           img={Right}
           iconSize={30}
           btnText=""
@@ -832,7 +832,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
       <Box sx={{ position: "absolute", left: "50%", top: "0", transform: "translateX(-50%) rotate(-90deg)" }}>
         <ButtonIcons
-          onClick={() => panCanvas('bottom')}
+          onClick={() => panCanvas('top')}
           img={Right}
           iconSize={30}
           btnText=""
@@ -841,7 +841,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
       <Box sx={{ position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%) rotate(90deg)" }}>
         <ButtonIcons
-          onClick={() => panCanvas('top')}
+          onClick={() => panCanvas('bottom')}
           img={Right}
           iconSize={30}
           btnText=""
@@ -850,7 +850,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
       <Box sx={{ position: "absolute", left: "0", top: "50%", transform: "translateY(-50%) rotate(180deg)" }}>
         <ButtonIcons
-          onClick={() => panCanvas('right')}
+          onClick={() => panCanvas('left')}
           img={Right}
           iconSize={30}
           btnText=""
