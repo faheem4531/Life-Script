@@ -801,6 +801,24 @@ const FamilyTree = ({ familyTreeData }) => {
             btnText="Reset Tree"
           />
         </Box>
+
+        <Box sx={{ marginLeft: "20px" }}>
+          <ButtonIcons
+            onClick={() => zoomCanvas(false)}
+            img={ZoomOut}
+            iconSize={40}
+            btnText=""
+          />
+        </Box>
+        <Box sx={{ marginLeft: "-15px" }}>
+          <ButtonIcons
+            onClick={() => zoomCanvas(true)}
+            img={ZoomIn}
+            iconSize={40}
+            btnText=""
+          />
+        </Box>
+
       </Box>
 
       <Box sx={{ position: "absolute", right: "0", top: "50%", transform: "translateY(-50%)" }}>
@@ -839,22 +857,7 @@ const FamilyTree = ({ familyTreeData }) => {
         />
       </Box>
 
-      <Box sx={{ position: "absolute", right: "170px", top: "0", }}>
-        <ButtonIcons
-          onClick={() => zoomCanvas(false)}
-          img={ZoomOut}
-          iconSize={40}
-          btnText=""
-        />
-      </Box>
-      <Box sx={{ position: "absolute", right: "120px", top: "0", }}>
-        <ButtonIcons
-          onClick={() => zoomCanvas(true)}
-          img={ZoomIn}
-          iconSize={40}
-          btnText=""
-        />
-      </Box>
+
 
 
 
