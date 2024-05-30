@@ -12,7 +12,7 @@ import {
 } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
-import { Backdrop, Box, Button, IconButton } from "@mui/material";
+import { Backdrop, Box, Button, IconButton, Typography } from "@mui/material";
 import * as d3 from "d3";
 import { zoom } from "d3";
 import { useEffect, useRef, useState } from "react";
@@ -30,6 +30,12 @@ import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
 import { ClassNames } from '@emotion/react';
 import GlobelBtn from '@/components/button/Button';
 import TransitionsDialog from '@/components/modal/TransitionDialog';
+import Right from "@/_assets/svg/arrow-right.svg"
+import Reset from "@/_assets/svg/reset-family.svg"
+import DownloadFamily from "@/_assets/svg/download-family.svg"
+import ZoomIn from "@/_assets/svg/zoomin.svg"
+import ZoomOut from "@/_assets/svg/zoom-out.svg"
+import Image from 'next/image';
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -740,7 +746,7 @@ const FamilyTree = ({ familyTreeData }) => {
   }
 
   return (
-    <>
+    <Box sx={{ position: "relative", bgcolor: "", height: "100%" }}>
       <Box>
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -768,54 +774,86 @@ const FamilyTree = ({ familyTreeData }) => {
           viewBox="0 0 1000 1000"
         ></svg>
       </Box>
-      <IconButton id="download" aria-label="download">
-        <CloudDownloadIcon fontSize="large" />
-      </IconButton>
 
-      <Box>
-        <GlobelBtn
-          btnText='Bottom'
-          onClick={() => panCanvas('top')}
-        />
-        <GlobelBtn
-          btnText='Right'
+
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <IconButton id="download" aria-label="download">
+          <Box sx={{ width: "140px", border: "1px solid #e1693b", borderRadius: "4px", display: "flex", justifyContent: "center" }}>
+            <ButtonIcons
+              onClick={() => { }}
+              img={DownloadFamily}
+              iconSize={20}
+              btnText="PDF"
+            />
+          </Box>
+        </IconButton>
+        <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
+          <ButtonIcons
+            onClick={() => setResetModal(true)}
+            img={Reset}
+            iconSize={20}
+            btnText="Reset Tree"
+          />
+        </Box>
+      </Box>
+
+      <Box sx={{ position: "absolute", right: "0", top: "50%", transform: "translateY(-50%)" }}>
+        <ButtonIcons
           onClick={() => panCanvas('left')}
-        />
-        <GlobelBtn
-          btnText='Top'
-          onClick={() => panCanvas('bottom')}
-        />
-        <GlobelBtn
-          btnText='Left'
-          onClick={() => panCanvas('right')}
+          img={Right}
+          iconSize={30}
+          btnText=""
         />
       </Box>
 
-      <GlobelBtn
-        btnText='Zoom in'
-        onClick={() => zoomCanvas(true)}
-      />
-      <GlobelBtn
-        btnText='Zoom out'
-        onClick={() => zoomCanvas(false)}
-      />
+      <Box sx={{ position: "absolute", left: "50%", top: "0", transform: "translateX(-50%) rotate(-90deg)" }}>
+        <ButtonIcons
+          onClick={() => panCanvas('bottom')}
+          img={Right}
+          iconSize={30}
+          btnText=""
+        />
+      </Box>
 
-      {/* <button onClick={() => zoomCanvas(true)}>Zoom In</button>
-      <button onClick={() => zoomCanvas(false)}>Zoom Out</button> */}
+      <Box sx={{ position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%) rotate(90deg)" }}>
+        <ButtonIcons
+          onClick={() => panCanvas('top')}
+          img={Right}
+          iconSize={30}
+          btnText=""
+        />
+      </Box>
+
+      <Box sx={{ position: "absolute", left: "0", top: "50%", transform: "translateY(-50%) rotate(180deg)" }}>
+        <ButtonIcons
+          onClick={() => panCanvas('right')}
+          img={Right}
+          iconSize={30}
+          btnText=""
+        />
+      </Box>
+
+      <Box sx={{ position: "absolute", right: "170px", top: "0", }}>
+        <ButtonIcons
+          onClick={() => zoomCanvas(false)}
+          img={ZoomOut}
+          iconSize={40}
+          btnText=""
+        />
+      </Box>
+      <Box sx={{ position: "absolute", right: "120px", top: "0", }}>
+        <ButtonIcons
+          onClick={() => zoomCanvas(true)}
+          img={ZoomIn}
+          iconSize={40}
+          btnText=""
+        />
+      </Box>
 
 
 
 
-      {/* <Button id="download">Download as PNG</Button> */}
-      <GlobelBtn
-        btnText='Reset Family'
-        onClick={() => setResetModal(true)}
-      />
 
-      {/* <GlobelBtn
-        btnText={isPanning ? "Disable Pan" : "Enable Pan"}
-        onClick={() => setIsPanning(!isPanning)}
-      /> */}
 
 
       {/* Modals  */}
@@ -857,8 +895,35 @@ const FamilyTree = ({ familyTreeData }) => {
         proceed={handleResetFamily}
         closeModal={() => setResetModal(false)}
       />
-    </>
+    </Box>
   );
 };
 
 export default FamilyTree;
+
+
+export const ButtonIcons = ({ onClick, iconSize, img, btnText }) => {
+  return (
+    <Button
+      onClick={onClick}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        columnGap: "8px",
+      }}>
+      <Image
+        src={img}
+        alt="icon"
+        width={iconSize}
+      />
+      {btnText &&
+        <Typography sx={{
+          fontSize: "16px",
+          color: "#e1693b"
+        }}>
+          {btnText}
+        </Typography>}
+    </Button>
+  )
+}
