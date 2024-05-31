@@ -51,7 +51,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const [relations, setRelations] = useState(["Sibling", "Child"]);
   const [personData, setPersonData] = useState({});
   const [dd, setDd] = useState({});
-  const [isPanning, setIsPanning] = useState(false);
+  const [isPartner, setIsPartner] = useState(false);
   const [lastMousePosition, setLastMousePosition] = useState(null);
   const [resetModal, setResetModal] = useState(false)
   // const profileIcon =
@@ -59,7 +59,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
-  console.log(familyTreeData, "familyTreeData");
+  // console.log(familyTreeData, "familyTreeData");
 
   const handleAddedPerson = (data) => {
     setFamilyModal(false);
@@ -327,7 +327,6 @@ const FamilyTree = ({ familyTreeData }) => {
     }
   }, [familyTreeData]);
 
-  // Separate effect for panning functionality
   const panCanvas = (direction) => {
     const scaleFactor = 0.3;
     const svgElement = d3.select(svgRef.current);
@@ -460,7 +459,8 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const renderNode = (personNode, d) => {
-    const handleNodeClick = () => {
+    const handleNodeClick = (isSpouse) => {
+      setIsPartner(isSpouse)
       setDd(d);
       setFamilyEditModal(true);
     };
@@ -472,12 +472,9 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("x", x)
         .attr("rx", 60)
         .attr("y", y)
-        .attr("width", 130)
-        .attr("height", height);
-
-      if (!isSpouse) {
-        rect.on("click", handleNodeClick);
-      }
+        .attr("width", 100)
+        .attr("height", height)
+        .on("click", () => handleNodeClick(isSpouse));
     };
 
     const renderText = (x, y, text, className, isSpouse) => {
@@ -485,19 +482,14 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("class", className)
         .attr("x", x)
         .attr("y", y)
-        .text(text);
-
-      if (!isSpouse) {
-        textElement.on("click", handleNodeClick);
-      }
+        .text(text)
+        .on("click", () => handleNodeClick(isSpouse));
     };
 
 
     const renderImage = (x, y, image, className, isSpouse) => {
-      // Create a unique ID for the clipPath
       const clipPathId = `clipPath-${x}-${y}`;
 
-      // Define the clipPath
       personNode.append("clipPath")
         .attr("id", clipPathId)
         .append("circle")
@@ -513,11 +505,8 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("y", y)
         .attr("class", className)
         .attr("clip-path", `url(#${clipPathId})`) // Apply the clipPath
-        .attr("preserveAspectRatio", "xMidYMid slice"); // Preserve aspect ratio and slice to cover
-
-      if (!isSpouse) {
-        imgElement.on("click", handleNodeClick);
-      }
+        .attr("preserveAspectRatio", "xMidYMid slice") // Preserve aspect ratio and slice to cover
+        .on("click", () => handleNodeClick(isSpouse));
     };
 
 
@@ -535,16 +524,16 @@ const FamilyTree = ({ familyTreeData }) => {
       personNode
         .append("line")
         .attr("class", `${styles.connectionLine}`)
-        .attr("x1", x1 - 20)
+        .attr("x1", x1 - 50)
         .attr("y1", y1)
-        .attr("x2", x2 - 20)
+        .attr("x2", x2 - 50)
         .attr("y2", y2)
         .style("stroke", "#30422E")
         .style("stroke-width", 2)
     };
 
     if (d.data.spouseName) {
-      // console.log(d.data, "dataaaaaa d.data.spouseName");
+      console.log(d.data, "dataaaaaa d.data.spouseName");
 
       renderRect(10, -5, 100, `${styles.nameRect}`, false);
       renderImage(
@@ -572,7 +561,7 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         14,
         10,
-        d.data.spouseImage || d.data.gender == "Male" ? Female : Male,
+        d.data.spouseImage || d.data.spouseGender == "Female" ? Female : Male,
         `${styles.circularImage}`, true
       );
       renderText(23, 87, d.data.spouseName || "", `${styles.name}`, true);
@@ -632,40 +621,40 @@ const FamilyTree = ({ familyTreeData }) => {
       //   );
       // });
 
-      const iconPosition2 = [
-        {
-          x: 70,
-          y: 50,
-          icon: (
-            <EditIcon
-              style={{
-                fill: "#30422E",
-                cursor: "pointer",
-                maxWidth: 20,
-                maxHeight: 20,
-              }}
-            />
-          ),
-          type: "editspouse",
-        },
-      ];
+      // const iconPosition2 = [
+      //   {
+      //     x: 70,
+      //     y: 50,
+      //     icon: (
+      //       <EditIcon
+      //         style={{
+      //           fill: "#30422E",
+      //           cursor: "pointer",
+      //           maxWidth: 20,
+      //           maxHeight: 20,
+      //         }}
+      //       />
+      //     ),
+      //     type: "editspouse",
+      //   },
+      // ];
 
-      iconPosition2.forEach(({ x, y, icon, type }) => {
-        renderForeignObject(
-          x,
-          y,
-          (data, iconType) =>
-            handleIconClick(data.data.spouseName, iconType, d),
-          icon,
-          d,
-          type
-        );
-      });
+      // iconPosition2.forEach(({ x, y, icon, type }) => {
+      //   renderForeignObject(
+      //     x,
+      //     y,
+      //     (data, iconType) =>
+      //       handleIconClick(data.data.spouseName, iconType, d),
+      //     icon,
+      //     d,
+      //     type
+      //   );
+      // });
 
       const personBottomCenterX = 10 + 200 / 2;
       const personBottomCenterY = -115 + 100;
       const spouseTopCenterX = 10 + 200 / 2;
-      const spouseTopCenterY = 15;
+      const spouseTopCenterY = 10;
 
       renderLine(
         personBottomCenterX,
@@ -894,6 +883,7 @@ const FamilyTree = ({ familyTreeData }) => {
         setFamilyEditModal={setFamilyEditModal}
         nodeData={dd}
         onClick={handleIconClick}
+        isSpouse={isPartner}
       />
 
       <TransitionsDialog

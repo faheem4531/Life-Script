@@ -13,6 +13,7 @@ const FamilyTreeAddModal = ({
   familyEditModal,
   nodeData,
   onClick,
+  isSpouse
 }) => {
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
@@ -20,24 +21,41 @@ const FamilyTreeAddModal = ({
     name: "",
     image: Male,
     type: "",
-    spouse: false,
   });
   // console.log(nodeData, "nodeData");
 
   useEffect(() => {
     if (nodeData.data) {
-      setInfo({
-        name: nodeData.data.name,
-        image: nodeData.data.image
-          ? nodeData.data.image
-          : nodeData.data.gender == "Male"
-            ? Male
-            : Female,
-        type: "edit",
-        spouse: false,
-      });
+      console.log(nodeData.data, "nodeData.data");
+
+      if (isSpouse) {
+        console.log(isSpouse, "isSpouse");
+
+        setInfo({
+          name: nodeData.data.spouseName,
+          image: nodeData.data.spouseImage
+            ? nodeData.data.spouseImage
+            : nodeData.data.spouseGender == "Male"
+              ? Male
+              : Female,
+          type: "editspouse",
+        })
+      }
+      else {
+        console.log(isSpouse, "isSpousenot");
+
+        setInfo({
+          name: nodeData.data.name,
+          image: nodeData.data.image
+            ? nodeData.data.image
+            : nodeData.data.gender == "Male"
+              ? Male
+              : Female,
+          type: "edit",
+        });
+      }
     }
-  }, [nodeData]);
+  }, [nodeData, isSpouse]);
 
   return (
     <Box sx={{ bgcolor: "" }}>
@@ -82,7 +100,7 @@ const FamilyTreeAddModal = ({
               gap: "10px",
             }}
           >
-            {info.spouse == false && (
+            {isSpouse == false && (
               <GlobelBtn
                 image={addIcon}
                 width="100%"
@@ -97,7 +115,7 @@ const FamilyTreeAddModal = ({
               bgColor="transparnet"
               border="1px solid #E1683B"
               color="#E1683B"
-              onClick={() => onClick(info.name, "edit", nodeData)}
+              onClick={() => onClick(info.name, info.type, nodeData)}
             />
           </Box>
         </Box>

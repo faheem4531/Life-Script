@@ -17,6 +17,7 @@ import CameraIcon from "../../_assets/svg/cameraIcon.svg";
 import Profile from "../../_assets/svg/profile.svg";
 import GlobelBtn from "../button/Button";
 import CustomizationDialog from "./CustomizationDialog";
+import { profile } from 'console';
 
 const FamilyTreeDataModal = ({
   familyModal,
@@ -35,6 +36,7 @@ const FamilyTreeDataModal = ({
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [dateOfDeath, setDateOfDeath] = useState(null);
   const [imageLink, setImageLink] = useState(null);
+  const [profieImage, setProfileImage] = useState(Profile)
   const [droppedImage, setDroppedImage] = useState<string | ArrayBuffer | null>(
     null
   );
@@ -42,12 +44,9 @@ const FamilyTreeDataModal = ({
 
   // console.log(selectedRelation, "selectedRelation selectedRelation");
 
+  let ProfileImage = Profile
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
-  const Father = "./familyTreeRelations/father.svg";
-  const Mother = "./familyTreeRelations/mother.svg";
-  const GFather = "./familyTreeRelations/g-father.svg";
-  const GMother = "./familyTreeRelations/g-mother.svg";
 
   useEffect(() => {
     if (selectedRelation) {
@@ -108,9 +107,15 @@ const FamilyTreeDataModal = ({
       setInputValueLocation(event.target.value);
     }
   };
-
   useEffect(() => {
-    setImageLink(selectedValueGender == "Male" ? Male : Female);
+    if (selectedValueGender == "Male") {
+      setProfileImage(Male)
+    } else if (selectedValueGender == "Female") {
+      setProfileImage(Female)
+    }
+    else {
+      setProfileImage(Profile)
+    }
   }, [selectedValueGender]);
 
   const handleChange = (event) => {
@@ -212,7 +217,7 @@ const FamilyTreeDataModal = ({
               {imageLink ? (
                 <img
                   // src={Profile}
-                  src={imageLink || Profile}
+                  src={imageLink || profieImage}
                   alt=""
                   style={{
                     width: "100%",
@@ -223,8 +228,10 @@ const FamilyTreeDataModal = ({
                 />
               ) : (
                 <Image
-                  src={Profile}
+                  src={profieImage}
                   alt=""
+                  height={90}
+                  width={90}
                   style={{
                     width: "100%",
                     height: "100%",
