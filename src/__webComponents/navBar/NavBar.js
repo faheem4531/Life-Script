@@ -13,8 +13,9 @@ import LanguageOption from "./Language";
 
 import Menu from "@/__webAssets/svgs/mobile-menu.svg";
 import MenuW from "@/__webAssets/svgs/mobile-menu-white.svg";
-
+import { useTranslation } from "react-i18next";
 const NavBar = ({ color, logo }) => {
+  const { t } = useTranslation();
   const [mobileState, setMobileState] = useState(false);
   const router = useRouter();
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -126,7 +127,7 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            Home
+            {t("landingPage.navBar.home")}
           </Typography>
         </Link>
 
@@ -146,7 +147,7 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            Features
+            {t("landingPage.navBar.features")}
           </Typography>
         </Link>
 
@@ -168,7 +169,7 @@ const NavBar = ({ color, logo }) => {
                 : ""
             }  ${styles.hoverLinks}`}
           >
-            Blog
+            {t("landingPage.navBar.blog")}
           </Typography>
         </Link>
 
@@ -188,7 +189,9 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            About Us
+            {/* About Us */}
+            {t("landingPage.navBar.about-us")}
+            
           </Typography>
         </Link>
 
@@ -208,7 +211,8 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            Pricing
+            {/* Pricing */}
+            {t("landingPage.navBar.pricing")}
           </Typography>
         </Link>
 
@@ -228,14 +232,16 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            FAQ&apos;s
+            {/* FAQ&apos;s */}
+            {t("landingPage.navBar.faq")}
+
           </Typography>
         </Link>
 
         <Box sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}>
           <Link href="/_auth/Auth">
             <Button
-              title="Log In"
+              title={t("landingPage.navBar.login")}
               width="140px"
               height="45px"
               img2={NextIcon}

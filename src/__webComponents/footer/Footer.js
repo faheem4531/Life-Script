@@ -8,10 +8,11 @@ import Fb from "@/__webAssets/svgs/fb.svg";
 import Li from "@/__webAssets/svgs/li.svg";
 import X from "@/__webAssets/svgs/x.svg";
 import Tiktok from "@/__webAssets/svgs/tiktok.svg";
-
+import { useTranslation } from "react-i18next";
 // import Link from "next/link"
 
 const Footer = () => {
+  const { t } = useTranslation();
   const logo = {
     width: "25px",
     height: "auto",
@@ -41,7 +42,7 @@ const Footer = () => {
               textAlign: { xs: "center", sm: "start" },
             }}
           >
-            Echoes of the past, blueprint for the future.
+           {t("landingPage.footerSection.title")}
           </Typography>
           <Box
             sx={{
@@ -93,14 +94,14 @@ const Footer = () => {
                 fontFamily: "Avenir8 !important",
               }}
             >
-              COMPANY
+              {t("landingPage.footerSection.heading1.title")}
             </Typography>
             <Link href="/about-us">
               <Typography
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-                About Us
+                {t("landingPage.footerSection.heading1.text1")}
               </Typography>
             </Link>
             <Link href="/features">
@@ -108,7 +109,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-                Features
+                {t("landingPage.footerSection.heading1.text2")}
               </Typography>
             </Link>
             <Link href="/pricing">
@@ -116,7 +117,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-                Pricing
+              {t("landingPage.footerSection.heading1.text3")}
               </Typography>
             </Link>
             <Link href="/blog">
@@ -124,7 +125,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px" }}
                 className={styles.hoverLinks}
               >
-                Blog
+                {t("landingPage.footerSection.heading1.text4")}
               </Typography>
             </Link>
           </Box>
@@ -136,14 +137,14 @@ const Footer = () => {
                 fontFamily: "Avenir8 !important",
               }}
             >
-              HELP
+             {t("landingPage.footerSection.heading2.title")}
             </Typography>
             <Link href="/about-us#ContactUs">
               <Typography
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-                Contact Us
+                {t("landingPage.footerSection.heading2.text1")}
               </Typography>
             </Link>
             <Link href="/faqs">
@@ -151,7 +152,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-                FAQ
+                {t("landingPage.footerSection.heading2.text2")}
               </Typography>
             </Link>
             <Link href="/terms-of-use">
@@ -159,7 +160,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-                Terms and conditions
+               {t("landingPage.footerSection.heading2.text3")}
               </Typography>
             </Link>
             <Link href="/privacy-policy">
@@ -167,7 +168,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px" }}
                 className={styles.hoverLinks}
               >
-                Privacy Policy
+                {t("landingPage.footerSection.heading2.text4")}
               </Typography>
             </Link>
           </Box>
@@ -182,7 +183,7 @@ const Footer = () => {
           fontFamily: "Avenir",
         }}
       >
-        © Copyright 2024 LifeScript
+        {t("landingPage.footerSection.copyrightText")}
       </Box>
     </Box>
   );

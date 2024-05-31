@@ -7,10 +7,11 @@ import * as React from "react";
 // import EN from "@/__webAssets/svgs/EN.svg";
 // import SP from "@/__webAssets/svgs/SP.svg";
 // import Image from "next/image";
-import { Box } from "@mui/material";
+import { Box, MenuItem, Select, Typography } from "@mui/material";
 import styles from "./NavBar.module.css";
 // import Check from "@/__webAssets/svgs/check.svg";
 import Script from "next/script";
+import i18n from "i18next";
 
 export default function LanguageOption() {
   // const [selectedValue, setSelectedValue] = React.useState(10); // Initial selected value
@@ -24,50 +25,121 @@ export default function LanguageOption() {
   //   setOpen(!open);
   // };
 
+  const [langPre, setLangPre] = React.useState("");
+  const [selectWidth, setSelectWidth] = React.useState("100%");
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setLangPre(value);
+    setSelectWidth(value ? "50%" : "100%");
+  };
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
+  // const handleButtonClick = () => {
+  //   setShowTooltip(false);
+  //   if (langPre === "") {
+  //     setShowTooltip(true);
+  //   } else {
+  //     onClick({
+  //       value: selectedValue,
+  //       lp: langPre,
+  //     });
+  //   }
+  // };
+
   return (
-    <Box
-      sx={{ position: "relative" }}
-      // onClick={handleToggle}
-    >
-      {/* Google Translate script */}
-      {/* <Script
-        id="google_translate_element"
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html: `
-            function googleTranslateElementInit() {
-              new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-            }
-          `,
-        }}
-      /> */}
+    // <Box
+    //   sx={{ position: "relative" }}
+    //   // onClick={handleToggle}
+    // >
+    //   {/* Google Translate script */}
+    //   {/* <Script
+    //     id="google_translate_element"
+    //     type="text/javascript"
+    //     dangerouslySetInnerHTML={{
+    //       __html: `
+    //         function googleTranslateElementInit() {
+    //           new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    //         }
+    //       `,
+    //     }}
+    //   /> */}
 
-      {/* Only show two language English and Spanish */}
-      <Script
-        id="google_translate_element"
-        type="text/javascript"
-        dangerouslySetInnerHTML={{
-          __html: `
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,es', // Include English and Spanish
-        }, 'google_translate_element');
-      }
-    `,
-        }}
-      />
-      <Script
-        type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-      />
+    //   {/* Only show two language English and Spanish */}
+    //   <Script
+    //     id="google_translate_element"
+    //     type="text/javascript"
+    //     dangerouslySetInnerHTML={{
+    //       __html: `
+    //   function googleTranslateElementInit() {
+    //     new google.translate.TranslateElement({
+    //       pageLanguage: 'en',
+    //       includedLanguages: 'en,es', // Include English and Spanish
+    //     }, 'google_translate_element');
+    //   }
+    // `,
+    //     }}
+    //   />
+    //   <Script
+    //     type="text/javascript"
+    //     src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    //   />
 
+    //   <Box
+    //     id="google_translate_element"
+    //     className={styles.google}
+    //     sx={{ backgroundColor: "#f3ecda" }}
+    //   >
+    //     <Box id="goog-gt-tt" class="goog-tooltip skiptranslate"></Box>
+    //   </Box>
+    // </Box>
+
+    <Box width="270%" mt="0px">
       <Box
-        id="google_translate_element"
-        className={styles.google}
-        sx={{ backgroundColor: "#f3ecda" }}
+        sx={{
+          position: "relative",
+        }}
       >
-        <Box id="goog-gt-tt" class="goog-tooltip skiptranslate"></Box>
+         <Select
+          placeholder="Select Language"
+          value={langPre}
+          onChange={handleChange}
+          sx={{
+            width: selectWidth,
+            borderRadius: "2px",
+            backgroundColor: "white",
+          }}
+        >
+          <MenuItem
+            value="English"
+            onClick={() => {
+              changeLanguage("en");
+            }}
+          >
+            English
+          </MenuItem>
+          <MenuItem
+            value="Spanish"
+            onClick={() => {
+              changeLanguage("sp");
+            }}
+          >
+            Spanish
+          </MenuItem>
+        </Select>
+        {langPre === "" && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: "18px",
+              left: "20px",
+              color: "gray",
+            }}
+          >
+            Language
+          </Box>
+        )}
       </Box>
     </Box>
   );

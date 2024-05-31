@@ -6,8 +6,10 @@ import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import BgImage from "@/__webAssets/pngs/bg-blog.png"
 import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const IntroductionBlog = () => {
+  const { t } = useTranslation();
   return (
     <Box sx={{ position: "relative" }} >
 
@@ -27,14 +29,15 @@ const IntroductionBlog = () => {
           fontWeight: 500, marginBottom: "30px", fontFamily: "Besley !important"
         }}>
           <h2>
-            Exploring the World of Storytelling: Insights, Inspiration, and Practical {" "}
+            {t("blogSection.title")}
+            {" "}
             <span className={styles.lineBox}>
-              Tips
+            {t("blogSection.subTitle")}
               <Image src={Line} alt="img" className={styles.line} />
             </span>
           </h2>
         </Box>
-        <Typography x={{ fontSize: "16px" }}>Your Guide to Capturing Life&apos;s Moments: Unlocking the Secrets of Personal Narratives and Legacy Building</Typography>
+        <Typography x={{ fontSize: "16px" }}>{t("blogSection.description")}</Typography>
       </Box>
     </Box>
   )

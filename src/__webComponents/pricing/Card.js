@@ -7,64 +7,64 @@ import Check from "@/__webAssets/svgs/check.svg"
 import Lock from "@/__webAssets/svgs/lock.svg"
 import NextIcon from '@/__webAssets/svgs/next.svg'
 import Link from "next/link";
-
+import { useTranslation } from "react-i18next";
 const PricingCard = ({ price, category, card, id }) => {
-
+  const { t } = useTranslation();
   const CheckArray = [
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: "Spelling and grammar assistance "
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis1")
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: "Automatic photo improvement "
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis2")
     },
 
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: "Text formatting features  "
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis3")
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Narrative Fusion "
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis4")
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Voice-to-text "
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis5")
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Family Tree"
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis6")
     },
     {
       standardStatus: false,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Premium book covers"
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis7")
     },
     {
       standardStatus: false,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Priority customer support"
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis8")
     },
     {
       standardStatus: false,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Exclusive access to new features "
+      dis:  t("landingPage.pricingSection.pricingCardMapArray.dis9")
     },
 
   ]
@@ -96,7 +96,7 @@ const PricingCard = ({ price, category, card, id }) => {
           display: "inline",
           fontFamily: "Avenir5"
         }}>
-          Popular
+          {t("landingPage.pricingSection.popular")}
         </Box>}
         <Box sx={{
           fontSize: "60px",
@@ -163,7 +163,7 @@ const PricingCard = ({ price, category, card, id }) => {
       <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
         <Link href="/stripe-page">
           <Button
-            title='Get Started'
+            title={t("landingPage.pricingSection.btnText")}
             width='100%'
             height='75px'
             font="24px"

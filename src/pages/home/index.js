@@ -20,29 +20,30 @@ import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Shape from "@/__webAssets/svgs/input-shape.svg"
 import Logo from "../../../public/lifescript-life-story-book-logo.svg"
 import Gift from "@/__webAssets/svgs/gift.svg"
-
+import { useTranslation } from "react-i18next";
 const HomePage = () => {
+  const { t } = useTranslation();
 
   const pointsArray = [
     {
       no: "01",
-      title: "Answer questions weekly",
-      discription: "Or as often as you like"
+      title: t("landingPage.howItWorks.step1.title"),
+      discription: t("landingPage.howItWorks.step1.description")
     },
     {
       no: "02",
-      title: "Turn answers into a chapter with a click",
-      discription: "No writing experience needed."
+      title: t("landingPage.howItWorks.step2.title"),
+      discription: t("landingPage.howItWorks.step2.description")
     },
     {
       no: "03",
-      title: "Repeat for all chapters",
-      discription: "As many as you like."
+      title: t("landingPage.howItWorks.step3.title"),
+      discription: t("landingPage.howItWorks.step3.description")
     },
     {
       no: "04",
-      title: "Receive a beautiful hardcover book",
-      discription: "With free shipping."
+      title: t("landingPage.howItWorks.step4.title"),
+      discription: t("landingPage.howItWorks.step4.description")
     }
   ]
 
@@ -57,11 +58,11 @@ const HomePage = () => {
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C" />
         <Introduction />
-        <Working data={pointsArray} heading=" How it" marked="works" />
+        <Working data={pointsArray} heading={t("landingPage.howItWorks.heading")}marked={t("landingPage.howItWorks.subHeading")} />
         <Suggestion />
         <GifTab
-          heading="Surprise your loved one with LifeScript and let them transform their memories into a keepsake book."
-          button="Gift Now!!"
+          heading={t("landingPage.perfectSection.content5.cardText")}
+          button={t("landingPage.perfectSection.content5.btntext")}
           icon={Gift}
         />
         <StoryTelling />
@@ -74,14 +75,14 @@ const HomePage = () => {
         <Testimonial />
         <GotQuestions />
         <ContactFooter
-          title="Missed the moment? Set a"
-          marked="reminder!"
+          title={t("landingPage.reminderSection.title")}
+          marked={t("landingPage.reminderSection.subTitle")}
           date={true}
-          subTitle="Complete the form, and we'll send you a reminder as your loved one's special day approaches."
-          input1="Your email address"
-          input2="What’s the occasion?"
-          input3="When it’s happening?"
-          button="Remind Me"
+          subTitle={t("landingPage.reminderSection.description")}
+          input1={t("landingPage.reminderSection.input1")}
+          input2={t("landingPage.reminderSection.input2")}
+          input3={t("landingPage.reminderSection.input3")}
+          button={t("landingPage.reminderSection.btnText")}
           shape={Shape}
         />
         <Footer />

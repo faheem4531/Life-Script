@@ -3,8 +3,9 @@ import Image from "next/image";
 import styles from "./AboutUs.module.css"
 
 import StoryImg from "@/__webAssets/webp/about-story.webp"
-
+import { useTranslation } from "react-i18next";
 const Story = () => {
+  const { t } = useTranslation();
   return (
     <Box sx={{
       display: "flex",
@@ -22,11 +23,11 @@ const Story = () => {
           marginBottom: "20px",
           fontFamily: "Besley !important"
         }}>
-          <h2> Our Story...</h2>
+          <h2> {t("aboutSection.ourStory.title")}</h2>
         </Typography>
-        <Typography sx={{ fontSize: "16px", marginTop: { md: "0", sm: "20px", xs: "20px" }, fontFamily: "Avenir" }}>A couple of years ago, our founder, Angel, accidentally found a dusty, forgotten book that turned out to be a portal to the past. It was written by his great grandfather who passed away shortly after Angel was born, and chronicled his personal experiences and memories from the harsh 20th century communist regime in his home country - Bulgaria. After reading the book, Angel felt a deep connection to his great grandfather, as if they had known each other well, despite never having met.</Typography>
-        <Typography sx={{ fontSize: "16px", margin: "15px 0", fontFamily: "Avenir" }}>This experience sparked a realization that personal stories have the power to inspire us, to heal us, and to bring us together across time and space.</Typography>
-        <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>Embracing this insight, Angel took on a journey to make autobiography book creation not just as a service, but as a mission to keep our joys, our struggles and our stories alive. That journey is what we now call Lifescript.</Typography>
+        <Typography sx={{ fontSize: "16px", marginTop: { md: "0", sm: "20px", xs: "20px" }, fontFamily: "Avenir" }}>{t("aboutSection.ourStory.description")}</Typography>
+        <Typography sx={{ fontSize: "16px", margin: "15px 0", fontFamily: "Avenir" }}>{t("aboutSection.ourStory.discription1")}</Typography>
+        <Typography sx={{ fontSize: "16px", fontFamily: "Avenir" }}>{t("aboutSection.ourStory.discription2")}</Typography>
       </Box>
       <Image src={StoryImg} alt="img" className={styles.storyImage} />
       <Typography sx={{ fontSize: { md: "52px", sm: "44px", xs: "32px" }, display: { md: "none", sm: "block", xs: "block" }, fontWeight: 500, marginBottom: "20px", fontFamily: "Besley !important" }}>Our Story...</Typography>

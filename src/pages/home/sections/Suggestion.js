@@ -5,25 +5,26 @@ import styles from "./HomeSections.module.css"
 import Content from "@/__webComponents/headings/Content";
 import Heroimage from "@/__webAssets/webp/family-collage-life-story-books.webp"
 import ListPoints from "@/__webAssets/svgs/curved-list.svg"
+import { useTranslation } from "react-i18next";
 
 const Suggestion = () => {
-
+  const { t } = useTranslation();
   const content = [
     {
-      title: "Give a truly meaningful gift",
-      subTitle: "For mother’s day, dad’s birthday, grandparents anniversary or just as a random heartfelt gesture and a chance to learn about them. The result is not only a book but an unparalleled experience to be cherished for years to come."
+      title: t("landingPage.perfectSection.content1.title"),
+      subTitle: t("landingPage.perfectSection.content1.subTitle")
     },
     {
-      title: "Share your Story and Wisdom",
-      subTitle: "From your earliest memories to the lessons of adulthood, every story you share matters. Let your triumphs and trials inspire and guide the generations after you."
+      title: t("landingPage.perfectSection.content2.title"),
+      subTitle: t("landingPage.perfectSection.content2.subTitle")
     },
     {
-      title: "Connect with your Family",
-      subTitle: "Uncover the stories of those who hold a special place in your heart, revealing hidden treasures about your family and forging deeper connections through stories that bring you closer together."
+      title: t("landingPage.perfectSection.content3.title"),
+      subTitle: t("landingPage.perfectSection.content3.subTitle")
     },
     {
-      title: "Reflect on your journey",
-      subTitle: "Documenting personal challenges, triumphs, and growth serves as a therapeutic journey, encouraging self-reflection and possibly igniting resilience and appreciation within you and your family."
+      title: t("landingPage.perfectSection.content4.title"),
+      subTitle: t("landingPage.perfectSection.content4.subTitle")
     },
   ]
 
@@ -45,7 +46,8 @@ const Suggestion = () => {
           fontFamily: "Besley !important"
         }}>
           <h2>
-            Perfect for when you want to
+           
+           {t("landingPage.perfectSection.title")}
           </h2>
         </Typography>
         <Image src={FlowerLine} alt="logo" className={styles.fullStyle} />

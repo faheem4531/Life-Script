@@ -3,9 +3,9 @@ import { Box, Typography } from "@mui/material";
 import PricingCard from "./Card";
 import styles from "../ComponentsStyles.module.css"
 import PrimaryHeading from "../headings/PrimaryHeading";
-
+import { useTranslation } from "react-i18next";
 const Pricing = () => {
-
+  const { t } = useTranslation();
   const pricingCard = [
     {
       id: "basic",
@@ -32,11 +32,13 @@ const Pricing = () => {
       margin: { lg: '170px 95px  130px', sm: "150px 30px", xs: "80px 20px 100px" },
     }}>
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", marginBottom: "60px" }}>
-        <PrimaryHeading lineWidth="140px" heading="Our Pricing" marked="Plan" showStyle={false} />
+        <PrimaryHeading lineWidth="140px"
+         heading={t("landingPage.pricingSection.title")}
+          marked={t("landingPage.pricingSection.subTitle")}
+          showStyle={false} />
 
         <Box sx={{ marginTop: { xs: "15px" }, fontSize: { sm: "24px", xs: "16px" }, width: { sm: "60%", xs: "90%" }, fontFamily: "Avenir" }}>
-          Each plan includes a one-time payment for lifetime access,
-          a premium full-color hardcover book, and <Typography sx={{ fontSize: { sm: "24px", xs: "16px" }, fontWeight: 900, display: "inline" }}>free shipping.</Typography>
+        {t("landingPage.pricingSection.description")}<Typography sx={{ fontSize: { sm: "24px", xs: "16px" }, fontWeight: 900, display: "inline" }}>{t("landingPage.pricingSection.subDescription")}</Typography>
         </Box>
       </Box>
 
@@ -49,7 +51,7 @@ const Pricing = () => {
           id={item.id}
         />)}
       </Box>
-      <Typography sx={{ marginTop: "20px", fontSize: "24px", fontWeight: 900, color: "#495845", textAlign: "center", fontFamily: "Avenir8 !important" }}>30 days money back guarantee </Typography>
+      <Typography sx={{ marginTop: "20px", fontSize: "24px", fontWeight: 900, color: "#495845", textAlign: "center", fontFamily: "Avenir8 !important" }}>{t("landingPage.pricingSection.pricingBelowText")}</Typography>
 
     </Box >
   )

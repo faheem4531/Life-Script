@@ -9,7 +9,9 @@ import Story from "./sections/Stories";
 import Values from "./sections/Values";
 import Head from 'next/head';
 import { NextSeo } from "next-seo";
+import { useTranslation } from "react-i18next";
 const AboutUs = () => {
+  const { t } = useTranslation();
   return (
 
     <>
@@ -40,19 +42,19 @@ const AboutUs = () => {
 
 
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <FeaturesIntroduction heading="Empowering people to create a timeless legacy, resonating across" width="75%" keyWorld=" generations." />
+        <FeaturesIntroduction heading={t("aboutSection.title")}width="75%" keyWorld={t("aboutSection.subTitle")} />
         <Mission />
         <Story />
         <Values />
         <ContactFooter
-          title="Still confused? Ask"
-          marked=" away!"
+          title={t("aboutSection.stillConfusedSection.title")}
+          marked={t("aboutSection.stillConfusedSection.title2")}
           lineWidth={150}
-          subTitle="Contact us Now!!!"
-          input1="Your name"
-          input2="Your email address"
-          input3="What’s on your mind?"
-          button="Get in touch!"
+          subTitle={t("aboutSection.stillConfusedSection.subTitle")}
+          input1={t("aboutSection.stillConfusedSection.input1")}
+          input2={t("aboutSection.stillConfusedSection.input2")}
+          input3={t("aboutSection.stillConfusedSection.input3")}
+          button={t("aboutSection.stillConfusedSection.btnText")}
         />
         <Footer />
       </Box>

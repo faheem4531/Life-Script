@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Stars from "@/__webAssets/pngs/review-stars.png"
-
+import { useTranslation } from "react-i18next";
 const Reviews = () => {
-
+  const { t } = useTranslation();
 
   return (
     <Box sx={{
@@ -19,8 +19,8 @@ const Reviews = () => {
       <Box sx={{ display: "flex", margin: { sm: "40px", xs: "40px 0 40px" }, justifyContent: "center" }}>
         <Typography sx={{ fontSize: { sm: "128px", xs: "96px" }, bgcolor: "red", alignSelf: "start", rotate: "12deg", lineHeight: "0" }}>&#34;</Typography>
         <Box sx={{ maxWidth: "850px", }}>
-          <Typography sx={{ fontFamily: "Avenir" }}>I created my life story with LifeScript and it was so easy and rewarding. Adding pictures and talking directly into the computer made everything simple. My stories turned into a beautiful book and my family loves it! It feels great to share my memories with them. The customer service was really helpful too. I recommend it to anyone wanting to leave something special for their family.</Typography>
-          <Typography sx={{ fontWeight: 900, marginTop: "20px" }}>Emma Collins - Retired Teacher</Typography>
+          <Typography sx={{ fontFamily: "Avenir" }}>{ t("landingPage.reviewSection.Description")}</Typography>
+          <Typography sx={{ fontWeight: 900, marginTop: "20px" }}>{ t("landingPage.reviewSection.author")}</Typography>
         </Box>
         <Typography sx={{ fontSize: { sm: "128px", xs: "96px" }, rotate: "12deg", lineHeight: "0", alignSelf: "end" }}>&#34;</Typography>
       </Box>

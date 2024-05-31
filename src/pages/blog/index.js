@@ -6,8 +6,9 @@ import Footer from "@/__webComponents/footer/Footer";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import IntroductionBlog from "./sections/Introduction";
 import Blogs from "./sections/Blog";
-
+import { useTranslation } from "react-i18next";
 const BlogPage = () => {
+  const { t } = useTranslation();
   return (
 
     <>
@@ -23,15 +24,16 @@ const BlogPage = () => {
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <IntroductionBlog />
         <Blogs />
+
         <ContactFooter
-          title="Still confused? Ask"
-          marked=" away!"
+          title={t("blogSection.stillConfusedSection.title")}
+          marked={t("blogSection.stillConfusedSection.title2")}
           lineWidth={150}
-          subTitle="Contact us Now!!!"
-          input1="Your name"
-          input2="Your email address"
-          input3="What’s on your mind?"
-          button="Get in touch!"
+          subTitle={t("blogSection.stillConfusedSection.subTitle")}
+          input1={t("blogSection.stillConfusedSection.input1")}
+          input2={t("blogSection.stillConfusedSection.input2")}
+          input3={t("blogSection.stillConfusedSection.input3")}
+          button={t("blogSection.stillConfusedSection.btnText")}
         />
         <Footer />
       </Box>

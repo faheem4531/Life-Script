@@ -1,4 +1,484 @@
 {
+  "landingPage": {
+    "navBar": {
+      "home": "Home",
+      "features": "Features",
+      "blog": "Blog",
+      "about-us": "About Us",
+      "pricing": "Pricing",
+      "faq": "FAQ's",
+      "login": "Log In"
+    },
+    "hero": {
+      "animationText1": "Create",
+      "animationText2": "Gift",
+      "mainHeading": "a Personal Autobiography Book Easily",
+      "mainDescription": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent",
+      "mainButton": "Start 7-Day Free Trial",
+      "buttonDescription": "No credit card required"
+    },
+    "howItWorks": {
+      "heading": "How it",
+      "subHeading": "Works",
+      "step1": {
+        "title": "Answer questions weekly",
+        "description": "Or as often as you like"
+      },
+      "step2": {
+        "title": "Turn answers into a chapter with a click",
+        "description": "No writing experience needed."
+      },
+      "step3": {
+        "title": "Repeat for all chapters",
+        "description": "As many as you like."
+      },
+      "step4": {
+        "title": "Receive a beautiful hardcover book",
+        "description": "With free shipping."
+      }
+    },
+    "perfectSection": {
+      "title": "Perfect for when you want to",
+      "content1": {
+        "title": "Give a truly meaningful gift",
+        "subTitle": "For mother’s day, dad’s birthday, grandparents anniversary or just as a random heartfelt gesture and a chance to learn about them. The result is not only a book but an unparalleled experience to be cherished for years to come."
+      },
+      "content2": {
+        "title": "Share your Story and Wisdom",
+        "subTitle": "From your earliest memories to the lessons of adulthood, every story you share matters. Let your triumphs and trials inspire and guide the generations after you."
+      },
+      "content3": {
+        "title": "Connect with your Family",
+        "subTitle": "Uncover the stories of those who hold a special place in your heart, revealing hidden treasures about your family and forging deeper connections through stories that bring you closer together."
+      },
+      "content4": {
+        "title": "Reflect on your journey",
+        "subTitle": "Documenting personal challenges, triumphs, and growth serves as a therapeutic journey, encouraging self-reflection and possibly igniting resilience and appreciation within you and your family."
+      },
+      "content5": {
+        "cardText": "Surprise your loved one with LifeScript and let them transform their memories into a keepsake book.",
+        "btntext": "Gift Now !"
+      }
+    },
+    "storyTelling": {
+      "heading": "Your storytelling journey is",
+      "subHeading": "now:",
+      "story1": {
+        "heading": "Easy and Time-saving",
+        "content": "Tell your story by simply answering thought-provoking questions and have fun while you reflect along the way. Save valuable time and avoid the hassle of years of writing, extensive interviews, and proofreading for typos.",
+        "alt": "A picture of a happy grandma holding her granddaughter who is kissing her on the cheek in the forest - LifeScript",
+        "title": "Happy grandma with granddaughter",
+        "direction": "row"
+      },
+      "story2": {
+        "heading": "Supported",
+        "content": "Enjoy a stress-free experience with our support through live chat, video tutorials, FAQs, and more. Our dedicated team is here to guide you at every step of your storytelling journey, ensuring you have the resources and assistance needed to effortlessly bring your story to life.",
+        "alt": "A close-up photo of the hands of a grandpa who is writing his memoir book by hand - LifeScript ",
+        "title": "Grandpa writing his memoir",
+        "direction": "row-reverse"
+      },
+      "story3": {
+        "heading": "Flexible",
+        "content": " Your story is unique, and so is the way you tell it. If you don't feel like writing, feel free to speak your mind! Choose your own pace down memory lane on any device, anytime, anywhere.",
+        "alt": "A photo of an old lady who is recording her memories over the phone - LifeScript",
+        "title": "Grandma recording memories over the phone",
+        "direction": "row"
+      },
+      "story4": {
+        "heading": "Connected",
+        "content": "Safeguard your legacy with our Family Tree feature, capturing your lineage from parents and great-grandparents to distant ancestors by visualizing them at the end of your book.",
+        "alt": "Three generation family together in a circle smiling at the camera - LifeScript",
+        "title": "Three generation family smiling at the camera",
+        "direction": "row-reverse"
+      }
+    },
+    "reviewSection": {
+      "Description": "I created my life story with LifeScript and it was so easy and rewarding. Adding pictures and talking directly into the computer made everything simple. My stories turned into a beautiful book and my family loves it! It feels great to share my memories with them. The customer service was really helpful too. I recommend it to anyone wanting to leave something special for their family.",
+      "author": "Emma Collins - Retired Teacher"
+    },
+    "featureSection": {
+      "title": "Get a Feel for LifeScript’s",
+      "subTitle": "Features",
+      "btnText": "See More",
+      "accordion1": {
+        "heading": "1. Narrative Fusion",
+        "description": "Turns your answers into beautifully written chapters with a single click. No writing experience needed."
+      },
+      "accordion2": {
+        "heading": "2. Assisted Editing ",
+        "description": "Automatically edits and proofreads your text with real-time suggestions. No typos anymore."
+      },
+      "accordion3": {
+        "heading": "3. Voice-to-Text",
+        "description": "Captures your spoken words, transforming them into written text if you don’t feel like typing."
+      },
+      "accordion4": {
+        "heading": "4. Family Tree ",
+        "description": "Visually represents your ancestry from parents to distant ancestors at the end of your book."
+      },
+      "accordion5": {
+        "heading": "5. Formatting Features",
+        "description": "Allows you to customize your text and its font, style, size, color, layout and more."
+      },
+      "accordion6": {
+        "heading": "6. Auto Photo Improvement",
+        "description": "Automatically adjusts your photos for high-quality printing by managing size, resolution, and more."
+      }
+    },
+    "pricingSection": {
+      "title": "Our Pricing",
+      "subTitle": "Plans",
+      "description": "Each plan includes a one-time payment for lifetime access, a premium full-color hardcover book, and ",
+      "subDescription": "free shipping.",
+      "pricingCardMapArray": {
+        "dis1": "Spelling and grammar assistance",
+        "dis2": "Automatic photo improvement",
+        "dis3": "Text formatting features ",
+        "dis4": "Narrative Fusion",
+        "dis5": "Voice-to-text",
+        "dis6": "Family Tree",
+        "dis7": "Premium book covers",
+        "dis8": "Priority customer support",
+        "dis9": "Exclusive access to new features "
+      },
+      "popular": "Popular",
+      "btnText": "Get Started",
+      "pricingBelowText": "30 days money back guarantee"
+    },
+    "bookSection": {
+      "title": "Our",
+      "subTitle": "Books"
+    },
+    "testimonialSection": {
+      "title": "Testimonials",
+      "subTitle": "What Our Customers Say",
+      "testimonial1": {
+        "name": "Arthur Thompson, ",
+        "age": "67",
+        "location": "US",
+        "details": "Compiling my life stories in chronological order offered me a unique perspective on my journey. The insightful questions and the option to add my own made the experience very personal. It’s been a fascinating trip down memory lane and most importantly made me re-connect with my daughters on topics never discussed before."
+      },
+      "testimonial2": {
+        "name": "Eleanor Rodriguez, ",
+        "age": "79",
+        "location": "US",
+        "details": "It took me about 4 months to complete this wonderful gift from my granddaughter. I'm 84 years old and I relived my life during this project. I decided not to share with my extended family about this until I gifted each of them a book. They have now also received a copy and their reactions are heartwarming!"
+      },
+      "testimonial3": {
+        "name": "Margaret Campbell, ",
+        "age": "78",
+        "location": "US",
+        "details": "Received LifeScript as a gift from my grandkids. Delving into my past, sharing stories, and connecting dots I hadn't in years was enlightening. As I'm 86, I hope this book lets future generations say, 'Wow, I wish I'd known her!' It's a bridge to me for them, and that's priceless."
+      },
+      "testimonial4": {
+        "name": "George Watkins, ",
+        "age": "80",
+        "location": "UK",
+        "details": "Reflecting on my life was a humbling experience. I never imagined I had a story worth sharing. Family means the world to me, and with so much of our family history fading away, my story together with the family tree could serve as information for my grandkids and their kids."
+      },
+      "testimonial5": {
+        "name": "Linda Morris, ",
+        "age": "65",
+        "location": "AU",
+        "details": "Starting this project, I really didn't know much about writing but the how-to videos made everything so much simpler. Anytime I got stuck, the support team helped me out with so much patience and kindness. They really helped me through it. The book turned out great and feels high quality. I've even told my sister to try it!"
+      },
+      "testimonial6": {
+        "name": "Derek Lee, ",
+        "age": "61",
+        "location": "CA",
+        "details": "This was a really interesting experience. I liked that my normal answers were transformed into professional written text. I don’t have writing experience so narrative fusion and the auto grammar check really helped me get this done. Overall, I enjoyed the experience"
+      },
+      "testimonial7": {
+        "name": "Samantha Jones, ",
+        "age": "53",
+        "location": "US",
+        "details": "I loved picking out the font size and style for my book – it made it feel so personal. And the whole idea? Genius. Hats off to the people behind this. They've made sharing my story not just easy, but really special."
+      },
+      "testimonial8": {
+        "name": "Carlos Martinez, ",
+        "age": "70",
+        "location": "US",
+        "details": "I was worried it would take forever, but I finished in just 2 months without hurrying. Adding photos was simple, and they turned out even better in print. P.S. The paper in the printed version feels really good. Thanks!"
+      },
+      "testimonial9": {
+        "name": "Rachel Nguyen, ",
+        "age": "47",
+        "location": "US",
+        "details": "First time writing and this was fun! Most of the questions felt adequate and provoked some nice memories, glad that I could pen them down before I forget them. Hardcover book looks professional!"
+      }
+    },
+    "questionSection": {
+      "title": "Got Questions?",
+      "subTitle": "We've Got Answers!",
+      "btnText": "See More",
+      "question1": {
+        "qs": "What is included in each subscription?",
+        "ans": "Full year of access to our platform, full-color hardcover printed book and free delivery."
+      },
+      "question2": {
+        "qs": "Can I gift a subscription and how does that work?",
+        "ans": "Absolutely, gifting a subscription is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch."
+      },
+      "question3": {
+        "qs": "Is Lifescript available in other languages?",
+        "ans": "Yes, it is also available in Spanish, and we are excited to expand to more languages soon. We believe that everyones deserves to have their story told regardless of their language."
+      },
+      "question4": {
+        "qs": "Can I add photos?",
+        "ans": "Yes, we encourage adding as many photos as you like. You don’t have to worry about photo quality as we automatically upscale and fit your photos within printing requirements!"
+      },
+      "question5": {
+        "qs": "Can I purchase extra books?",
+        "ans": "Yes, additional full-color hardcover books are available for 39$ each during or after your subscription period."
+      },
+      "question6": {
+        "qs": "How long will it take?",
+        "ans": "Your book, your pace! Some people finish their book in 2-3 sittings while others prefer to enjoy the process and continually polish their answers for months. However you choose, enjoy revisiting your unique memories!"
+      },
+      "question7": {
+        "qs": "What is your refund policy?",
+        "ans": "If you are not entirely satisfied with your Lifescript experience, we offer an easy, no-questions-asked refund within 30 days of purchase, as long as no books have been printed. Your happiness is our highest priority."
+      },
+      "question8": {
+        "qs": "What happens when my subscription ends?",
+        "ans": "You will receive a reminder a month before the subscription ends. You will have a chance to complete your stories and order your book. If needed, we offer an additional month for free or to renew the subscription for another year."
+      }
+    },
+    "reminderSection": {
+      "title": "Missed the moment? Set a",
+      "subTitle": "reminder!",
+      "description": "Complete the form, and we'll send you a reminder as your loved one's special day approaches.",
+      "input1": "Your email address",
+      "input2": "What’s the occasion?",
+      "input3": "When it’s happening?",
+      "btnText": "Remind Me"
+    },
+    "footerSection": {
+      "title": "Echoes of the past, blueprint for the future.",
+      "heading1": {
+        "title": "COMPANY",
+        "text1": "About Us",
+        "text2": "Features",
+        "text3": "Pricing",
+        "text4": "Blog"
+      },
+      "heading2": {
+        "title": "Help",
+        "text1": "Contact Us",
+        "text2": "FAQ",
+        "text3": "Terms and conditions",
+        "text4": " Privacy Policy"
+      },
+      "copyrightText": "© Copyright 2024 LifeScript"
+    }
+  },
+  "featurePage": {
+    "headerSection": {
+      "title": "Features That Make Your Storytelling Experience Fun and  ",
+      "subTitle": "Easy"
+    },
+    "Section1": {
+      "heading": "Narrative Fusion",
+      "details": "Eliminates the need to write complex texts. Simply answer as many questions as you like and fuse these answers into a cohesive, captivating and chronologically-organized chapter with a single click."
+    },
+    "Section2": {
+      "heading": "Assisted Editing",
+      "details": "Automatically edits and proofreads your text with real-time suggestions. From grammatical errors to sentence structure, it ensures a polished and professional narrative, saving you time and effort in the editing process."
+    },
+    "Section3": {
+      "heading": "Voice-to-Text",
+      "details": "Captures your spoken words, transforming them into written text. Ideal for the storyteller on the move, those who prefer speaking to typing, or anyone who loves to tell their tales out loud. Just press to start, speak your heart, and click to finish. It's that simple."
+    },
+    "Section4": {
+      "heading": "Family Tree",
+      "details": "Visually represents your ancestry at the end of your book. You simply add picture, name and age for the family members you wish to include. With family tree, you provide a rich personal and historical context to your story."
+    },
+    "Section5": {
+      "heading": "Formatting Features",
+      "details": "Allows you to customise your text and its font, style, size, color, layout and more. This empowers you to create a book as unique and beautiful as your own story."
+    },
+    "Section6": {
+      "heading": "Auto Photo Improvement",
+      "details": "Automatically adjusts your photos for high-quality printing by managing size, resolution, and aspect ratio. This eliminates manual editing, saving you time and effort in meeting printing requirements."
+    },
+    "btnText": "Get Started",
+    "btnBelowText": "Start Free Trial (no credit card required)",
+    "stillConfusedSection": {
+      "title": "Still confused? Ask",
+      "subTitle": "away!",
+      "input1": "Your name",
+      "input2": "Your email address",
+      "input3": "What’s on your mind?",
+      "btnText": "Get in touch!"
+    }
+  },
+  "blogSection": {
+    "title": "Exploring the World of Storytelling: Insights, Inspiration, and Practical",
+    "subTitle": "Tips",
+    "description": "Your Guide to Capturing Life's Moments: Unlocking the Secrets of Personal Narratives and Legacy Building",
+    "stillConfusedSection": {
+      "title": "Still confused? Ask",
+      "title2": "away!",
+      "subTitle": "Contact us Now!!!",
+      "input1": "Your name",
+      "input2": "Your email address",
+      "input3": "What’s on your mind?",
+      "btnText": "Get in touch!"
+    }
+  },
+  "aboutSection": {
+    "title": "Empowering people to create a timeless legacy, resonating across",
+    "subTitle": "generations",
+    "ourMission": {
+      "title": "Our",
+      "subtitle": "Mission",
+      "description": "There is this notion that to have your own autobiography book, you need to be either rich or famous. But we believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories, rediscover their roots, and create a deeper connection with themselves and their families."
+    },
+    "ourStory": {
+      "title": "Our Story...",
+      "description": "A couple of years ago, our founder, Angel, accidentally found a dusty, forgotten book that turned out to be a portal to the past. It was written by his great grandfather who passed away shortly after Angel was born, and chronicled his personal experiences and memories from the harsh 20th century communist regime in his home country - Bulgaria. After reading the book, Angel felt a deep connection to his great grandfather, as if they had known each other well, despite never having met.",
+      "discription1": "This experience sparked a realization that personal stories have the power to inspire us, to heal us, and to bring us together across time and space.",
+      "discription2": "Embracing this insight, Angel took on a journey to make autobiography book creation not just as a service, but as a mission to keep our joys, our struggles and our stories alive. That journey is what we now call Lifescript."
+    },
+    "ourValues": {
+      "title": "Our Values",
+      "valueData1": {
+        "title": "Empowerment & Accessibility:",
+        "detail": "We empower individuals with an accessible platform for capturing and celebrating unique life stories, designed for all ages and abilities."
+      },
+      "valueData2": {
+        "title": "Family Legacy: ",
+        "detail": "We empower intergenerational connections through sharing and safeguarding personal stories, fostering a deeper family identity and sense of belonging."
+      },
+      "valueData3": {
+        "title": "Personal Growth: ",
+        "detail": "We champion self-discovery, self-reflection, and personal evolution that comes from revisiting and sharing life's moments."
+      },
+      "valueData4": {
+        "title": "Inspiration:",
+        "detail": "Personal stories are wellsprings of motivation, lessons, wisdom, and encouragement for others to navigate their own paths in life."
+      },
+      "valueData5": {
+        "title": "Empathy & Insight:",
+        "detail": "Our journey into personal stories cultivates profound empathy and a richer human experience."
+      },
+      "valueData6": {
+        "title": "Inclusivity & Diversity:",
+        "detail": "Our platform honors and preserves the diversity of all life stories, ensuring each narrative is valued and celebrated."
+      },
+      "btnText": "Get Started"
+    },
+    "stillConfusedSection": {
+      "title": "Still confused? Ask",
+      "title2": "away!",
+      "subTitle": "Contact us Now!!!",
+      "input1": "Your name",
+      "input2": "Your email address",
+      "input3": "What’s on your mind?",
+      "btnText": "Get in touch!"
+    }
+  },
+  "pricingSection": {
+    "title": "Lifescript vs Storyworth",
+    "subTitle": "How we’re different:",
+    "pointsArray1":{
+      "title":"Autobiography, Not Just Q&A",
+      "description":"Lifescript enables users to craft a book with chapters, reflecting their lives with depth and professionalism, all while keeping it simple and engaging."
+    },
+    "pointsArray2":{
+      "title":"Ease of Use and Support",
+      "description":"Our platform is user-friendly and comes with comprehensive support like FAQs, instructional videos, and live chat. Our users spend less time proofreading and editing, zero time configuring photos, and plenty of time on the voice-to-text feature when they don't feel like typing."
+    },
+    "pointsArray3":{
+      "title":"Understanding Ancestry",
+      "description":"If we know who we came from, we may better understand who we are. Lifescript helps users build their family tree with photos, names, and birthplaces, making it easy to see the connections between the different generations."
+    },
+    "bookDetails": {
+      "title": "Pricing and Book",
+      "subTitle": "Details",
+      "pricingDetailObject1": {
+        "header": "Benefits",
+        "data": {
+          "freeTrial": "Free trial",
+          "lifetimeAccess": "Lifetime access with full-color hardcover book",
+          "noAdditionalCost": "No additional cost for gift receiver",
+          "priceForAdditional": "Price for additional full-color hardcover book",
+          "freeShipping": "Free worldwide Shipping",
+          "languageSupported": "Language supported",
+          "bookPageLimit": "Book page limit",
+          "unlimitedPhotoUploads": "Unlimited photo uploads",
+          "videoTutorials": "Video tutorials and live chat support"
+        }
+      },
+      "additionalDetails": {
+        "alt": "the logo of LifeScript that represents a grandpa telling stories to his grandson under the cover of a book",
+        "title": "LifeScript logo",
+        "data": {
+          "yes": "Yes",
+          "yesFor139": "Yes, for 139$",
+          "priceForAdditional": "39$ (up to 600 pages)",
+          "languagesSupported": "English and Spanish",
+          "pageLimit": "600",
+          "unlimitedPhotoUploads": "Yes",
+          "videoTutorials": "Yes"
+        }
+      },
+      "additionalDetails2": {
+        "alt": "the logo icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
+        "title": "Storyworth",
+        "data": {
+          "no": "No",
+          "priceFor139": "139$",
+          "priceForFullColorBook": "For a full-color book, 40$ additional. Cannot be prepaid by gifter",
+          "priceForAdditionalBook": "79$ (up to 300 pages) ,99$ (up to 480 pages)",
+          "noShippingOutsideUS": "No, only for US.",
+          "languageSupported": "English",
+          "bookPageLimit": "300 (480 if you pay 20$ additionally)",
+          "unlimitedPhotoUploads": "Yes",
+          "noVideoTutorials": "No"
+        }
+      }
+    },
+    "featureComparison":{
+      "title": "Feature",
+      "subTitle":"Comparison",
+      "featuresDetails":{
+        "header": "Features",
+        "data": {
+          "questionAnswerFormat": "Question and Answer Format",
+          "narrativeFusionFormat": "Narrative Fusion Format",
+          "formattingFeatures": "Formatting Features (bold, italics and more)",
+          "assistedEditing": "Assisted Editing and Grammar Check",
+          "voiceToText": "Voice-To-Text",
+          "familyTree": "Family Tree",
+          "autoPhotoImprovement": "Auto Photo Improvement",
+          "mobileTabletFriendly": "Mobile and Tablet-friendly"
+        }
+      },
+      "featuresDetails2":{
+        "data": {
+          "yes": "Yes",
+          "yesInStandardPremium": "Yes, in Standard and Premium"
+        }
+      },
+      "featuresDetails3":{
+        "data": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      }
+    },
+    "stillConfusedSection": {
+      "title": "Still confused? Ask",
+      "title2": "away!",
+      "subTitle": "Contact us Now!!!",
+      "input1": "Your name",
+      "input2": "Your email address",
+      "input3": "What’s on your mind?",
+      "btnText": "Get in touch!"
+    }
+
+  },
   "sideBar": {
     "Overview": "Overview",
     "AllCh": "Chapters",

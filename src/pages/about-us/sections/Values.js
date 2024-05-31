@@ -11,38 +11,39 @@ import Growth from "@/__webAssets/svgs/values/growth.svg"
 import Inspiration from "@/__webAssets/svgs/values/inspiration.svg"
 import Power from "@/__webAssets/svgs/values/power.svg"
 import Link from "next/link";
-
+import { useTranslation } from "react-i18next";
 const Values = () => {
+  const { t } = useTranslation();
   const ValueData = [
     {
-      title: "Empowerment & Accessibility:",
-      detail: "We empower individuals with an accessible platform for capturing and celebrating unique life stories, designed for all ages and abilities.",
+      title: t("aboutSection.ourValues.valueData1.title"),
+      detail: t("aboutSection.ourValues.valueData1.detail"),
       icon: Power
     },
     {
-      title: "Family Legacy: ",
-      detail: "We empower intergenerational connections through sharing and safeguarding personal stories, fostering a deeper family identity and sense of belonging.",
+      title: t("aboutSection.ourValues.valueData2.title"),
+      detail: t("aboutSection.ourValues.valueData2.detail"),
       icon: Family
     },
     {
-      title: "Personal Growth: ",
-      detail: "We champion self-discovery, self-reflection, and personal evolution that comes from revisiting and sharing life's moments.",
+      title: t("aboutSection.ourValues.valueData3.title"),
+      detail: t("aboutSection.ourValues.valueData3.detail"),
       icon: Growth
     },
 
     {
-      title: "Inspiration:",
-      detail: " Personal stories are wellsprings of motivation, lessons, wisdom, and encouragement for others to navigate their own paths in life.",
+      title: t("aboutSection.ourValues.valueData4.title"),
+      detail: t("aboutSection.ourValues.valueData4.detail"),
       icon: Inspiration
     },
     {
-      title: "Empathy & Insight:",
-      detail: "Our journey into personal stories cultivates profound empathy and a richer human experience.",
+      title: t("aboutSection.ourValues.valueData5.title"),
+      detail: t("aboutSection.ourValues.valueData5.detail"),
       icon: Empathy
     },
     {
-      title: "Inclusivity & Diversity:",
-      detail: "Our platform honors and preserves the diversity of all life stories, ensuring each narrative is valued and celebrated.",
+      title: t("aboutSection.ourValues.valueData6.title"),
+      detail: t("aboutSection.ourValues.valueData6.detail"),
       icon: Diversity
     },
   ]
@@ -59,7 +60,7 @@ const Values = () => {
         <Typography sx={{
           fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, paddingBottom: "20px", borderBottom: "1px solid #E1683B", fontFamily: "Besley !important"
         }}>
-          <h2>Our Values</h2></Typography>
+          <h2>{t("aboutSection.ourValues.title")}</h2></Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", maxWidth: "1100px" }}>
           {ValueData.map((item, index) => <Value
             key={index}
@@ -71,7 +72,7 @@ const Values = () => {
         <Box sx={{ margin: "30px 0 0 40px", display: { md: "block", sm: "none", xs: "none" } }}>
           <Link href="/stripe-page">
             <Button
-              title='Get Started'
+              title={t("aboutSection.ourValues.btnText")}
               width='210px'
               height='55px'
               img2={NextIcon}

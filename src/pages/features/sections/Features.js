@@ -19,10 +19,10 @@ import FamilyLogo from "@/__webAssets/pngs/featuresLogos/family-tree-feature-ico
 import Formatting from "@/__webAssets/pngs/featuresLogos/formatting-features-icon.png"
 import VoiceLogo from "@/__webAssets/pngs/featuresLogos/voice-to-text-feature-icon.png"
 import Pen from "@/__webAssets/svgs/writing-pen.svg"
-
+import { useTranslation } from "react-i18next";
 
 const FeaturesItems = () => {
-
+  const { t } = useTranslation();
   const Data = [
     {
       logo: NarrativeLogo,
@@ -31,8 +31,8 @@ const FeaturesItems = () => {
       gif: Narrative,
       alt: "Narrative fusion feature demo animation showing how it works - LifeScript",
       title: "Narrative Fusion demo animation",
-      heading: "Narrative Fusion",
-      details: "Eliminates the need to write complex texts. Simply answer as many questions as you like and fuse these answers into a cohesive, captivating and chronologically-organized chapter with a single click.",
+      heading: t("featurePage.Section1.heading"),
+      details: t("featurePage.Section1.details"),
       flex: "row"
     },
     {
@@ -42,8 +42,8 @@ const FeaturesItems = () => {
       gif: AssistedEditing,
       alt: "Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript",
       title: "Assisted Editing demo animation",
-      heading: "Assisted Editing",
-      details: "Automatically edits and proofreads your text with real-time suggestions. From grammatical errors to sentence structure, it ensures a polished and professional narrative, saving you time and effort in the editing process.",
+      heading: t("featurePage.Section2.heading"),
+      details: t("featurePage.Section2.details"),
       flex: "row-reverse",
       bg: true
     },
@@ -54,8 +54,8 @@ const FeaturesItems = () => {
       gif: VoiceToText,
       alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript",
       title: "Voice-to-text demo animation",
-      heading: "Voice-to-Text",
-      details: "Captures your spoken words, transforming them into written text. Ideal for the storyteller on the move, those who prefer speaking to typing, or anyone who loves to tell their tales out loud. Just press to start, speak your heart, and click to finish. It's that simple.",
+      heading: t("featurePage.Section3.heading"),
+      details: t("featurePage.Section3.details"),
       flex: "row"
     },
     {
@@ -65,8 +65,8 @@ const FeaturesItems = () => {
       gif: FamilyTree,
       alt: "Family Tree feature demo animation showing how your family members visualize across generations - LifeScript",
       title: "Family tree demo animation",
-      heading: "Family Tree",
-      details: "Visually represents your ancestry at the end of your book. You simply add picture, name and age for the family members you wish to include. With family tree, you provide a rich personal and historical context to your story.",
+      heading: t("featurePage.Section4.heading"),
+      details: t("featurePage.Section4.details"),
       flex: "row-reverse",
       bg: true
     },
@@ -78,8 +78,8 @@ const FeaturesItems = () => {
       gif: FormattingFeatures,
       alt: "Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript",
       title: "Formatting features demo animation",
-      heading: "Formatting Features",
-      details: "Allows you to customise your text and its font, style, size, color, layout and more. This empowers you to create a book as unique and beautiful as your own story.",
+      heading: t("featurePage.Section5.heading"),
+      details: t("featurePage.Section5.details"),
       flex: "row"
 
     },
@@ -90,8 +90,8 @@ const FeaturesItems = () => {
       gif: AutoPhoto,
       alt: "Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript",
       title: "Auto photo improvement feature demo animation",
-      heading: "Auto Photo Improvement",
-      details: "Automatically adjusts your photos for high-quality printing by managing size, resolution, and aspect ratio. This eliminates manual editing, saving you time and effort in meeting printing requirements.",
+      heading: t("featurePage.Section6.heading"),
+      details: t("featurePage.Section6.details"),
       flex: "row-reverse",
       button: true,
       bg: "half"
@@ -129,7 +129,7 @@ export default FeaturesItems
 
 
 function DetailFeature({ logo, altLogo, titleLogo, heading, details, flex, gif, alt, title, button, bg = false }) {
-
+  const { t } = useTranslation();
   const bgWidthLg = bg == true ? "800px" : "700px"
   const bgWidthMd = bg == true ? "750px" : "700px"
 
@@ -168,7 +168,7 @@ function DetailFeature({ logo, altLogo, titleLogo, heading, details, flex, gif, 
             <Box sx={{ width: { sm: "200px", xs: "100%" }, padding: "0 20px 0 0" }}>
               <Link href="/stripe-page">
                 <Button
-                  title='Get Started'
+                  title={t("featurePage.btnText")}
                   width='100%'
                   height='55px'
                   img1={Pen}
@@ -177,7 +177,7 @@ function DetailFeature({ logo, altLogo, titleLogo, heading, details, flex, gif, 
             </Box>
             <Typography
               sx={{ fontSize: '11px', lineHeight: '24px', fontWeight: 500, margin: '10px 0 0' }}
-            >Start Free Trial (no credit card required)
+            >{t("featurePage.btnBelowText")}
             </Typography>
           </Box>
           }

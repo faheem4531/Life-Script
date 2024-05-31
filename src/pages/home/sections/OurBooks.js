@@ -16,11 +16,11 @@ import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.w
 import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp"
 import Left from "@/__webAssets/pngs/aero-left.png"
 import Right from "@/__webAssets/pngs/aero-right.png"
-
+import { useTranslation } from "react-i18next";
 import { useRef, useState } from "react";
 
 const OurBooks = () => {
-
+  const { t } = useTranslation();
   const sliderRef = useRef(null);
 
   const settings = {
@@ -83,7 +83,7 @@ const OurBooks = () => {
       }}
       className={styles.bookBox}
     >
-      <PrimaryHeading lineWidth="160px" showStyle={true} heading="Our " marked="Books" color="#F3ECDA" />
+      <PrimaryHeading lineWidth="160px" showStyle={true} heading={t("landingPage.bookSection.title")} marked={t("landingPage.bookSection.subTitle")} color="#F3ECDA" />
 
       <Box position="relative" sx={{ marginTop: { sm: "120px", xs: "70px" }, width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Slider {...settings} className={styles.slider} ref={sliderRef}>

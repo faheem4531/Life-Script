@@ -12,42 +12,43 @@ import Button from "@/__webComponents/button/Button";
 import NextIcon from '@/__webAssets/svgs/next.svg'
 import Line from "@/__webAssets/svgs/line-orange.svg"
 import Bg from "@/__webAssets/pngs/bg-story-telling.png"
-
+import { useTranslation } from "react-i18next";
 const StoryTelling = () => {
+  const { t } = useTranslation();
   const stories = [
     {
-      heading: "Easy and Time-saving",
-      content: "Tell your story by simply answering thought-provoking questions and have fun while you reflect along the way. Save valuable time and avoid the hassle of years of writing, extensive interviews, and proofreading for typos.",
+      heading: t("landingPage.storyTelling.story1.heading"),
+      content: t("landingPage.storyTelling.story1.content"),
       image: StoryImage1,
-      alt: "A picture of a happy grandma holding her granddaughter who is kissing her on the cheek in the forest - LifeScript",
-      title: "Happy grandma with granddaughter",
-      direction: "row"
+      alt: t("landingPage.storyTelling.story1.alt"),
+      title: t("landingPage.storyTelling.story1.title"),
+      direction: t("landingPage.storyTelling.story1.direction"),
     },
     {
-      heading: "Supported",
-      content: "Enjoy a stress-free experience with our support through live chat, video tutorials, FAQs, and more. Our dedicated team is here to guide you at every step of your storytelling journey, ensuring you have the resources and assistance needed to effortlessly bring your story to life.",
+      heading: t("landingPage.storyTelling.story2.heading"),
+      content: t("landingPage.storyTelling.story2.content"),
       image: StoryImage2,
-      alt: "A close-up photo of the hands of a grandpa who is writing his memoir book by hand - LifeScript ",
-      title: "Grandpa writing his memoir",
-      direction: "row-reverse"
+      alt: t("landingPage.storyTelling.story2.alt"),
+      title: t("landingPage.storyTelling.story2.title"),
+      direction: t("landingPage.storyTelling.story2.direction"),
     },
     {
-      heading: "Flexible",
-      content: " Your story is unique, and so is the way you tell it. If you don't feel like writing, feel free to speak your mind! Choose your own pace down memory lane on any device, anytime, anywhere.",
+      heading: t("landingPage.storyTelling.story3.heading"),
+      content: t("landingPage.storyTelling.story3.content"),
       image: StoryImage3,
-      alt: "A photo of an old lady who is recording her memories over the phone - LifeScript",
-      title: "Grandma recording memories over the phone",
-      direction: "row"
+      alt: t("landingPage.storyTelling.story3.alt"),
+      title: t("landingPage.storyTelling.story3.title"),
+      direction: t("landingPage.storyTelling.story3.direction"),
     },
     {
-      heading: "Connected",
-      content: "Safeguard your legacy with our Family Tree feature, capturing your lineage from parents and great-grandparents to distant ancestors by visualizing them at the end of your book.",
+      heading: t("landingPage.storyTelling.story4.heading"),
+      content: t("landingPage.storyTelling.story4.content"),
       image: StoryImage4,
-      alt: "Three generation family together in a circle smiling at the camera - LifeScript",
-      title: "Three generation family smiling at the camera",
-      direction: "row-reverse",
-      button: true
+      alt: t("landingPage.storyTelling.story4.alt"),
+      title: t("landingPage.storyTelling.story4.title"),
+      direction: t("landingPage.storyTelling.story4.direction"),
     },
+   
   ]
 
   return (
@@ -60,9 +61,9 @@ const StoryTelling = () => {
         fontFamily: "Besley !important",
         textAlign: { sm: "center", xs: "left" }
       }}>
-        Your storytelling journey is{" "}
+       { t("landingPage.storyTelling.heading")}{" "}
         <span className={styles.marked}>
-          now:
+        { t("landingPage.storyTelling.subHeading")}
           <Image src={Line} alt="mark" className={styles.line} />
         </span>
       </Box>
