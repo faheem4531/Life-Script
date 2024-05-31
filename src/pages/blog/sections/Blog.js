@@ -2,9 +2,9 @@ import { Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import MapCard from "./MapCard";
 import { Circles } from "react-loader-spinner";
-
-
+import { useTranslation } from "react-i18next";
 const Blogs = () => {
+  const { t } = useTranslation();
   const [blogsData, setBlogsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [blogsPerPage] = useState(5);
@@ -121,7 +121,7 @@ const Blogs = () => {
           {/* Pagination */}
           <Box mt={2} display="flex" justifyContent="center">
             <Button sx={{color:"black"}} onClick={prevPage} disabled={currentPage === 1}>
-              Previous
+            {t("blogSection.previous")}
             </Button>
             {[...Array(paginateData.pageCount)].map((_, index) => (
               <Button
@@ -148,7 +148,7 @@ const Blogs = () => {
               onClick={nextPage}
               disabled={currentPage === paginateData.pageCount}
             >
-              Next
+              {t("blogSection.next")}
             </Button>
           </Box>
         </>

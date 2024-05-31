@@ -14,8 +14,9 @@ import Head from "next/head";
 import Image from "next/image";
 import BgLogo from "@/_assets/svg/BgLogo.svg";
 import { useRouter } from "next/router";
-
+import { useTranslation } from "react-i18next";
 const StripePage = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const [userType, setUserType] = useState("myself");
   const [paymentType, setPaymentType] = useState("buynow");
@@ -78,7 +79,7 @@ const StripePage = () => {
           >
             <FormControl sx={{ display: showSecondForm ? "none" : "block" }}>
               <Typography sx={{ color: "#30422E", fontSize: "30px" }}>
-                Who is LifeScript for?
+                { t("stripeFlow.stripePage.title")}
               </Typography>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -108,7 +109,8 @@ const StripePage = () => {
                         }}
                       />
                     }
-                    label="Myself"
+                    // label="Myself"
+                    label={ t("stripeFlow.stripePage.mySelf")}
                     sx={{
                       marginLeft: "10px",
                       width: "100%",
@@ -138,7 +140,7 @@ const StripePage = () => {
                         }}
                       />
                     }
-                    label="A gift for someone else"
+                    label={ t("stripeFlow.stripePage.giftForSomeoneElse")}
                     sx={{ marginLeft: "10px", width: "100%" }}
                   />
                 </Box>
@@ -168,7 +170,7 @@ const StripePage = () => {
             {showSecondForm && (
               <FormControl sx={{ display: "block" }}>
                 <Typography sx={{ color: "#30422E", fontSize: "30px" }}>
-                  Select Your Preference
+                { t("stripeFlow.stripePage.preference")}
                 </Typography>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
@@ -197,7 +199,7 @@ const StripePage = () => {
                           }}
                         />
                       }
-                      label="Buy Now"
+                      label={ t("stripeFlow.stripePage.buyNow")}
                       sx={{ marginLeft: "10px", width: "100%" }}
                     />
                   </Box>
@@ -224,7 +226,7 @@ const StripePage = () => {
                           }}
                         />
                       }
-                      label="Start 7-Day Free Trial"
+                      label={ t("stripeFlow.stripePage.freeTrial")}
                       sx={{ marginLeft: "10px", width: "100%" }}
                     />
                   </Box>
@@ -240,7 +242,7 @@ const StripePage = () => {
                     width="100%"
                     height="50px"
                     backgroundColor="#E1693B"
-                    title={"Continue"}
+                    title={ t("stripeFlow.stripePage.btnText")}
                     bgHover="#B5522D"
                     onClick={handleContinueNext}
                     img1={undefined}
