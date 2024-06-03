@@ -1,77 +1,45 @@
 "use client";
-
-import { Box, Button, Divider, TextField, Typography } from "@mui/material";
-import Image from "next/image";
-import facebookIcon from "../../../../../public/facebookIcon.svg";
-import googleLogo from "../../../../../public/googleIcon.svg";
+import { SignupData } from "@/interface/authInterface";
 import {
   googleSignup,
   signup
 } from "@/store/slices/authSlice";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
 import { useGoogleLogin } from "@react-oauth/google";
+import { useFormik } from "formik";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { toast } from "react-toastify";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { SignupData } from "@/interface/authInterface";
+import { toast } from "react-toastify";
+import facebookIcon from "../../../../../public/facebookIcon.svg";
+import googleLogo from "../../../../../public/googleIcon.svg";
 import PaymentProcessingModal from '../../subscription/_components/Modal';
 
-const RegisterFreeTrial = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const router = useRouter();
-  const { t } = useTranslation();
-  const dispatch: any = useDispatch();
-  const { data: session } = useSession();
-  console.log("Session Check ", session)
+import { RegisterFormValues } from "@/utils/interface/interface";
+import { RegisterFormSchema } from "../../../../schema/registerFormSchema";
 
-  // useEffect(() => {
-  //   if (session) {
-  //     if (session.user) {
-  //       const payload = {
-  //         name: session.user.name,
-  //         email: session.user.email
-  //       };
-  //       dispatch(facebookLogin(payload))
-  //       .unwrap() 
-  //       .then((res) => {
-  //         console.log("Res Console" ,res)
-  //         alert(res?.data?.name)
-  //         alert(res?.data?.token)
-  //         toast.success(t("login with facebook"));
-  //         router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-  //       })
-  //       .catch((error) => {
-  //         toast.error(error.message);
-  //       });
-  //     }
-  //   }
-  // }, [session]);
+const RegisterFreeTrial = () => {
+  const dispatch: any = useDispatch();
+  const { t } = useTranslation();
+  const router = useRouter();
+  const [openModal, setOpenModal] = useState(false);
+  const { data: session } = useSession();
+  const validationSchema = RegisterFormSchema();
 
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      // callbackUrl: `/getStarted/getTitle?userName=${session?.user?.name ?? 'test-user'}`,
       callbackUrl: `/stripe-page/sso-redirecting`,
     });
   };
-
-
-
-
-
-  console.log("data", session);
-
 
   const handleSignout = (e) => {
     e.preventDefault();
     signOut();
   };
-
-
 
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
@@ -82,7 +50,6 @@ const RegisterFreeTrial = () => {
     dispatch(googleSignup({ credential: e.access_token, type: "register" }))
       .unwrap()
       .then((res) => {
-        console.log("Res Console", res)
         toast.success(t("signup-page.signedUpSuccessfully"));
         router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
@@ -95,34 +62,31 @@ const RegisterFreeTrial = () => {
     toast.error(t("signup-page.failedSignupGoogle"));
   };
 
-  const formik = useFormik({
+  const handleSubmit = async (data: SignupData) => {
+    dispatch(signup(data))
+      .unwrap()
+      .then(() => {
+        toast.success(t("signup-page.verificationEmailSent"));
+        setTimeout(() => {
+          setOpenModal(true);
+        }, 3000);
+        setTimeout(() => {
+          const name = localStorage.getItem("username");
+          router.push(`/getStarted?userName=${name}`);
+        }, 3000);
+      })
+      .catch((error) => {
+        toast.error(error?.message || t("signup-page.failedSignup"));
+      });
+  };
+
+  const formik = useFormik<RegisterFormValues>({
     initialValues: {
       email: "",
       name: "",
     },
-    onSubmit: async (data: SignupData) => {
-      console.log(data, "dataaaaa");
-
-      dispatch(signup(data))
-        .unwrap()
-        .then(() => {
-          toast.success(t("signup-page.verificationEmailSent"));
-          setTimeout(() => {
-            setOpenModal(true);
-          }, 3000);
-          setTimeout(() => {
-            const name = localStorage.getItem("username");
-            router.push(`/getStarted?userName=${name}`);
-          }, 3000);
-        })
-        .catch((error: any) => {
-          toast.error(error?.message || t("signup-page.failedSignup"));
-        });
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, "Invalid email format").required(t("signup-page.emailRequired")),
-      name: Yup.string().matches(/^[A-Za-z\s]+$/, "Name must contain only letters").required("Name is required"),
-    }),
+    onSubmit: handleSubmit,
+    validationSchema: validationSchema,
   });
 
   return (
@@ -262,7 +226,6 @@ const RegisterFreeTrial = () => {
             <Box>
               <Button
                 variant="contained"
-                // type="submit"
                 sx={{
                   borderRadius: "2px",
                   backgroundColor: "#fff",
