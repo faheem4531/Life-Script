@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 
-const useValidationSchema = () => {
+export const DeliveryFormSchema = () => {
   const { t } = useTranslation();
   
   const validationSchema = Yup.object({
@@ -20,5 +20,3 @@ const useValidationSchema = () => {
 
   return validationSchema;
 };
-
-export default useValidationSchema;
