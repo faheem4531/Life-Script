@@ -1,130 +1,13 @@
 "use client";
+import Check from "@/__webAssets/svgs/check.svg";
+import Lock from "@/__webAssets/svgs/lock.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
-import standardBookImage from "../../../../../public/standardBookImage.svg";
 import premiumBookImage from "../../../../../public/premiumBookImage.svg";
-import Check from "@/__webAssets/svgs/check.svg";
-import Lock from "@/__webAssets/svgs/lock.svg";
-
+import standardBookImage from "../../../../../public/standardBookImage.svg";
+import { BasicArray, PremiumArray, StandardArray } from "../../../../utils/stripeFlowObjects";
 const BasicPlanCard = ({ price, category }) => {
-  const BasicArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-  ];
-  const StandardArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Narrative Fusion ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Voice-to-text ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Family Tree",
-    },
-  ];
-  const PremiumArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Narrative Fusion ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Voice-to-text ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Family Tree",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Premium book covers",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Priority customer support",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Exclusive access to new features ",
-    },
-  ];
   return (
     <Box
       sx={{
@@ -287,7 +170,6 @@ const BasicPlanCard = ({ price, category }) => {
           }}
         >
           {price ? `$${price}` : "$0"}
-          {/* <Typography sx={{ color: 'black', fontSize: '12px', display: 'inline' }}>/ year</Typography> */}
         </Box>
       </Box>
     </Box>

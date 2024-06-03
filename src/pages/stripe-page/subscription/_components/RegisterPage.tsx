@@ -1,30 +1,27 @@
 "use client";
-
-import {
-  // selectSocialUser,
-  // setSocialUser,
-  signupWithBuy,
-  // googleSignup
-} from "@/store/slices/authSlice";
+import { SignupData } from "@/interface/authInterface";
+import { signupWithBuy } from "@/store/slices/authSlice";
+import { RegisterFormValues } from "@/utils/interface/interface";
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
-// import { useGoogleLogin } from "@react-oauth/google";
+import { useFormik } from "formik";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-// import { useSession, signIn, signOut } from "next-auth/react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { SignupData } from "@/interface/authInterface";
 import facebookIcon from "../../../../../public/facebookIcon.svg";
 import googleLogo from "../../../../../public/googleIcon.svg";
+import { RegisterFormSchema } from "../../../../schema/registerFormSchema";
 import BasicPlanCard from "./BasicPlanCard";
 
 const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
   const dispatch: any = useDispatch();
+  const router = useRouter();
+  const { price, category } = router.query;
+  const { t } = useTranslation();
   const { data: session } = useSession();
+  const validationSchema = RegisterFormSchema();
 
   const handleSignin = async (e) => {
     e.preventDefault();
@@ -33,91 +30,29 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
     });
   };
 
-  // const handleSignin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await signIn("facebook", {
-  //       callbackUrl: "/stripe-page/subscription",
-  //     });
-  //   } catch (error) {
-  //     toast.error("User Already Exist");
-  //     router.push("/")
-  //   }
-  // };
-  // console.log("data", session);
   const handleSignout = (e) => {
     e.preventDefault();
     signOut();
   };
 
-  const router = useRouter();
-  const { price, category } = router.query;
-  const { t } = useTranslation();
+  const handleSubmit = async (data: SignupData) => {
+    dispatch(signupWithBuy(data))
+      .unwrap()
+      .then(() => {
+        onClick(selectedTab + 1)
+      })
+      .catch((error: any) => {
+        toast.error(error?.message || t("signup-page.failedSignup"));
+      });
+  };
 
-  // const handleGoogleLogin = useGoogleLogin({
-  //   onSuccess: (tokenResponse) => handleGoogleLoginSuccess(tokenResponse),
-  //   onError: () => handleGoogleLoginFailure(),
-  // });
-
-  // const paymentType = localStorage.getItem("paymentType")
-  // console.log("acnascascb ascubajscb bacsucabc",paymentType)
-  // const handleGoogleLoginSuccess = (e: any) => {
-  //   dispatch(googleSignup({ credential: e.access_token }))
-  //     .unwrap()
-  //     .then((res: any) => {
-  //       toast.success(t("signup-page.signedUpSuccessfully"));
-  //       if (res.onBoarding === "false") {
-  //         router.push("/stripe-page/subscription");
-  //       } else {
-  //         // If onBoarding is false, continue with the existing redirection
-  //         router.push(`/getStarted?userName=${res?.name}`);
-  //       }
-  //       // if (paymentType === "buynow") {
-  //       //   router.push("/stripe-page/subscription");
-  //       // } else {
-  //       //   // If onBoarding is false, continue with the existing redirection
-  //       //   router.push(`/getStarted?userName=${res?.name}`);
-  //       // }
-  //     })
-  //   // .then((res:any) => {
-  //   //   toast.success(t("signup-page.signedUpSuccessfully"));
-
-  //   //     router.push("/stripe-page/subscription");
-  //   //     // router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-
-  //   // })
-  //   // .catch((error: any) => {
-  //   //   toast.error(error.message);
-  //   // });
-  // };
-
-  // const handleGoogleLoginFailure = () => {
-  //   toast.error(t("signup-page.failedSignupGoogle"));
-  // };
-
-
-  const formik = useFormik({
+  const formik = useFormik<RegisterFormValues>({
     initialValues: {
       email: "",
       name: "",
     },
-    onSubmit: async (data: SignupData) => {
-
-      dispatch(signupWithBuy(data))
-        .unwrap()
-        .then(() => {
-          // toast.success(t("signup-page.verificationEmailSent"));
-          onClick(selectedTab + 1)
-        })
-        .catch((error: any) => {
-          toast.error(error?.message || t("signup-page.failedSignup"));
-        });
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/, "Invalid email format").required(t("signup-page.emailRequired")),
-      name: Yup.string().matches(/^[A-Za-z\s]+$/, "Name must contain only letters").required("Name is required"),
-
-    }),
+    onSubmit: handleSubmit,
+    validationSchema: validationSchema,
   });
 
   return (
@@ -252,7 +187,6 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
               <Box>
                 <Button
                   variant="contained"
-                  // type="submit"
                   sx={{
                     borderRadius: "2px",
                     backgroundColor: "#fff",
@@ -289,7 +223,6 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
                 },
               }}
               onClick={(event) => formik.handleSubmit()}
-            // onClick={() => onClick(selectedTab + 1)}
             >
               Continue
             </Button>
@@ -299,10 +232,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
             <BasicPlanCard price={price} category={category} />
           </Box>
         </Box>
-
       </Box>
-
-
     </Box>
   );
 };

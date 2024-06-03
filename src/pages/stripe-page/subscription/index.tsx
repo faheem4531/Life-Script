@@ -3,23 +3,20 @@ import Bg from '@/_assets/png/bg-hurt-lite.png';
 import Logo from '@/_assets/svg/logo-dashboard.svg';
 import { facebookLogin, googleSignup } from '@/store/slices/authSlice';
 import { Box } from '@mui/material';
+import { useGoogleLogin } from "@react-oauth/google";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
+import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
+import { useTranslation } from "react-i18next";
 import { useDispatch } from 'react-redux';
+import { toast } from "react-toastify";
 import NewTabBar from './_components/NewTabBar';
 import PurchaseForm from './_components/PurchaseForm';
 import RegisterPage from './_components/RegisterPage';
 import TabPanel from './_components/TabPanel';
-
-
-import { useGoogleLogin } from "@react-oauth/google";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
-import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
@@ -31,11 +28,8 @@ const SubscriptionPage = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    console.log('session', session)
     if (session) {
       if (session.user) {
-        // console.log('session data subscription', session)
-        // setSelectedTab(2);
         const payload = {
           name: session.user.name,
           email: session.user.email,
@@ -44,15 +38,12 @@ const SubscriptionPage = () => {
         dispatch(facebookLogin(payload))
           .unwrap()
           .then((res) => {
-            console.log("Res Console Subscription", res)
             setSelectedTab(2);
             toast.success("login with facebook");
           })
           .catch((error) => {
             signOut();
             toast.error("User Already Exist");
-            // setSelectedTab(1);
-            // router.push("/")
           });
       }
     }
@@ -68,23 +59,16 @@ const SubscriptionPage = () => {
   });
 
   const paymentType = localStorage.getItem("paymentType")
-  console.log("acnascascb ascubajscb bacsucabc", paymentType)
+
   const handleGoogleLoginSuccess = (e: any) => {
     dispatch(googleSignup({ credential: e.access_token, type: "register" }))
       .unwrap()
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        // if (res.onBoarding === "false") {
-        //   router.push("/stripe-page/subscription");
-        // } else {
-        //   // If onBoarding is false, continue with the existing redirection
-        //   router.push(`/getStarted?userName=${res?.name}`);
-        // }
         if (paymentType === "buynow") {
           router.push("/stripe-page/subscription");
           setSelectedTab(2);
         } else {
-          // If onBoarding is false, continue with the existing redirection
           router.push(`/getStarted?userName=${res?.name}`);
         }
       })
@@ -101,7 +85,6 @@ const SubscriptionPage = () => {
   const tabsData = [
     { label: 'CHOOSE PLAN', active: selectedTab >= 0 },
     { label: 'REGISTER', active: selectedTab >= 1 && !session && handleGoogleLogin },
-    // { label: 'REGISTER', active: selectedTab === 1 && session && handleGoogleLogin  },
     { label: 'PAYMENT', active: selectedTab === 2 },
   ];
 
@@ -136,7 +119,7 @@ const SubscriptionPage = () => {
             marginLeft: { sm: '70px', xs: '20px' },
           }}
         >
-          <NewTabBar tabs={tabsData} handleGoogleLogin={handleGoogleLogin} onClick={() => { }} />
+          <NewTabBar tabs={tabsData} handleGoogleLogin={handleGoogleLogin} />
         </Box>
 
         <Box sx={{ position: 'relative' }}>

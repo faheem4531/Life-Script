@@ -5,11 +5,7 @@ import { stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSl
 import CheckIcon from '@mui/icons-material/Check';
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import {
-  CardCvcElement,
-  CardExpiryElement,
-  CardNumberElement,
-  useElements,
-  useStripe,
+  CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe,
 } from "@stripe/react-stripe-js";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -20,7 +16,7 @@ import { toast } from 'react-toastify';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
 import BasicPlanCard from './BasicPlanCard';
 import PaymentProcessingModal from './Modal';
-import { useRouter } from 'next/router';
+import { dropDownOptions } from "../../../../utils/stripeFlowObjects";
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -47,16 +43,17 @@ const useOptions = () => {
   return options;
 };
 
-const PurchaseForm = ({ onClick, selectedTab }) => {
+const PurchaseForm = ({ selectedTab }) => {
+  const dispatch: any = useDispatch();
+  const options = useOptions();
+  const stripe = useStripe();
+  const elements = useElements();
+  const { t } = useTranslation();
   const [selectedBooks, setSelectedBooks] = useState(0);
   const [referralCode, setReferralCode] = useState('');
   const [subscribeUpdates, setSubscribeUpdates] = useState(false);
   const [paymentSucess, setPaymentSucess] = useState(false)
   const [paymentFail, setPaymentFail] = useState(false)
-
-  //New Data
-  const dispatch: any = useDispatch();
-  const options = useOptions();
   const [isError, setIsError] = useState(false);
   const [cardHolderName, setCardHolderName] = useState("");
   const [confirmationStripe, setConfirmationStripe] = useState(false);
@@ -65,16 +62,24 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const [loading, setLoading] = useState(false);
   const [commissionState, setCommissionState] = useState(0);
   const [referralValidCode, setReferralValidCode] = useState("");
-  const stripe = useStripe();
-  const elements = useElements();
-  const { t } = useTranslation();
-  const router = useRouter();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
   const price = localStorage.getItem("price")
   const category = localStorage.getItem("category")
 
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsDropdownOpen(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   function replaceCategory(category) {
     switch (category) {
@@ -87,7 +92,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     }
   }
 
-
   const HandleVerifyReferralCode = async (id) => {
     dispatch(
       VerifyReferralCode({
@@ -96,16 +100,14 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     )
       .unwrap()
       .then((res) => {
-        console.log("RESPONSE =======", res)
         setCommissionState(res?.commission_percent);
         setReferralValidCode(res?.referralCode)
-        // Show toast message when referral code is verified
+
         setPaymentSucess(true)
         setPaymentFail(false)
         toast.success("Referral code verified successfully!");
       })
       .catch(() => {
-        // Handle error
         setPaymentSucess(false)
         setPaymentFail(true)
         toast.error("Invalid Referral Code!");
@@ -119,7 +121,7 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   }
 
   const handleSubmit = async (event) => {
-    setConfirmationStripe(true); //open the modal
+    setConfirmationStripe(true);
 
     const subscriptionPrice = Number(price);
     event.preventDefault();
@@ -136,21 +138,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     } else {
       const totalPrice = totalPriceCalculation(subscriptionPrice, selectedBooks)
 
-      // console.log("Total Price:", totalPrice);
-
-      // const payload = {
-      //   country: "USA",
-      //   amount: totalPrice,
-      //   token: result.token,
-      //   packageName: replaceCategory(category),
-      //   cardHolderName: cardHolderName,
-      //   numberOfBooks: selectedBooks && selectedBooks,
-      //   bookPrice: selectedBooks && selectedBooks * 39,
-      //   commission: commissionState,
-      //   processFrom: "register"
-      // };
-
-      // console.log("Payload:", payload);
       dispatch(
         stripePaymentRegister({
           country: "USA",
@@ -193,28 +180,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
     }
   };
 
-
-  // const dropDownOptions = [
-  //   { value: 0, label: '1 book Included with Subscription', hidden: true },
-  //   { value: 1, label: "(1 extra books)", price: "+ $78", color: "#e1693b" },
-  //   { value: 2, label: "(2 extra books)", price: "+ $138", color: "#e1693b" },
-  //   { value: 3, label: "(3 extra books)", price: "+ $679", color: "#e1693b" },
-  //   { value: 4, label: "(4 extra books)", price: "+ $378", color: "#e1693b" },
-  //   { value: 5, label: "(5 extra books)", price: "+ $455", color: "#e1693b" }
-  // ];
-  const dropDownOptions = [
-    { value: 0, label: '1 book Included with Subscription', hidden: true },
-    { value: 1, label: "(2 books)", price: "+ $39", color: "#e1693b" },
-    { value: 2, label: "(3 books)", price: "+ $78", color: "#e1693b" },
-    { value: 3, label: "(4 books)", price: "+ $117", color: "#e1693b" },
-    { value: 4, label: "(5 books)", price: "+ $156", color: "#e1693b" },
-    { value: 5, label: "(6 books)", price: "+ $195", color: "#e1693b" },
-    { value: 6, label: "(7 books)", price: "+ $234", color: "#e1693b" },
-    { value: 7, label: "(8 books)", price: "+ $273", color: "#e1693b" },
-    { value: 8, label: "(9 books)", price: "+ $312", color: "#e1693b" },
-    { value: 9, label: "(10 books)", price: "+ $351", color: "#e1693b" },
-  ];
-
   const handleChange = (event) => {
     setSelectedBooks(event.target.value);
   };
@@ -227,22 +192,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
   const handleSubscribeUpdatesChange = (event) => {
     setSubscribeUpdates(event.target.checked);
   };
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      // Close the dropdown when the user scrolls
-      setIsDropdownOpen(false);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
 
   return (
     <>
@@ -357,28 +306,23 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                       <Box
                         sx={{
                           width: "100%",
-                          // marginTop: "10px",
                           borderRadius: "3px",
                           backgroundColor: "white",
                           p: "12px 35px",
-                          // border: "1px solid #186F65",
                           border: "1px solid gray",
                         }}
                       >
                         <CardNumberElement
                           options={{
                             ...options,
-                            placeholder: 'Card Number', // Placeholder text
+                            placeholder: 'Card Number',
                           }}
                           onChange={(event) => {
-                            // console.log("CardNumberElement [change]", event);
                             setIsError(!event.complete || !!event.error);
                           }}
                         />
                       </Box>
                     </Box>
-
-
 
                     <Box
                       sx={{
@@ -450,7 +394,6 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                       variant="contained"
                       color="primary"
                       disabled={!cardHolderName
-                        // || !subscribeUpdates 
                         || isError}
                       onClick={handleSubmit}
                       sx={{
@@ -463,16 +406,11 @@ const PurchaseForm = ({ onClick, selectedTab }) => {
                           backgroundColor: "#b5522d",
                         },
                       }}>
-                      {/* {
-                        loading
-                          ? "Loading..."
-                          : `Buy for $${Number(price) + (selectedBooks && selectedBooks * 39)}`
-                      } */}
 
                       {
                         loading
                           ? "Loading..."
-                          : `Buy for $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}` // Calculate the discounted price
+                          : `Buy for $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}`
                       }
                     </Button>
                   </Box>

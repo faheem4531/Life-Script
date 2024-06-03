@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
 import Button from "@/__webComponents/button/Button";
+import BgLogo from "@/_assets/svg/BgLogo.svg";
 import Logo from "@/_assets/svg/logo-dashboard.svg";
 import {
   Box,
@@ -12,8 +12,8 @@ import {
 } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
-import BgLogo from "@/_assets/svg/BgLogo.svg";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 const StripePage = () => {
   const { t } = useTranslation();
@@ -28,7 +28,6 @@ const StripePage = () => {
     } else {
       setShowSecondForm(true);
     }
-    // router.push("/stripe-page/subscription");
   };
   const handleContinueNext = () => {
     if (paymentType === "free-trial") {
@@ -93,7 +92,6 @@ const StripePage = () => {
                     height: "68px",
                     display: "flex",
                     alignItems: "center",
-                    // marginLeft: '-10px',
                     border: "1px solid black",
                     borderRadius: "4px",
                   }}
@@ -109,7 +107,6 @@ const StripePage = () => {
                         }}
                       />
                     }
-                    // label="Myself"
                     label={ t("stripeFlow.stripePage.mySelf")}
                     sx={{
                       marginLeft: "10px",
@@ -120,8 +117,6 @@ const StripePage = () => {
                 <Box
                   sx={{
                     backgroundColor: "white",
-                    // margin: '10px',
-                    // marginLeft: '-10px',
                     height: "68px",
                     display: "flex",
                     alignItems: "center",
@@ -206,8 +201,6 @@ const StripePage = () => {
                   <Box
                     sx={{
                       backgroundColor: "white",
-                      // margin: '10px',
-                      // marginLeft: '-10px',
                       height: "68px",
                       display: "flex",
                       alignItems: "center",

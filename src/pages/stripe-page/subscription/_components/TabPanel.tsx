@@ -1,30 +1,10 @@
 'use client';
 import { Box, Typography } from '@mui/material';
 import styles from '../../../../__webComponents/ComponentsStyles.module.css';
+import { pricingCard } from '../../../../utils/stripeFlowObjects';
 import NewPricingCard from './NewPricingCard';
 
 const TabPanel = ({ onClick, selectedTab }) => {
-  const pricingCard = [
-    {
-      id: 'basic',
-      category: 'Basic',
-      price: '139',
-      card: '1',
-    },
-    {
-      id: 'standard',
-      category: 'Standard',
-      price: '179',
-      card: '2',
-    },
-    {
-      id: 'primium',
-      category: 'Premium',
-      price: '239',
-      card: '3',
-    },
-  ];
-  function handleHover(id) { }
 
   return (
     <Box>
@@ -58,10 +38,9 @@ const TabPanel = ({ onClick, selectedTab }) => {
           padding: ' 0 40px 70px',
         }}
         className={styles.cardsMain}
-      // onClick={() => onClick(selectedTab + 1)}
       >
         {pricingCard.map((item) => (
-          <NewPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} handleHover={handleHover} selectedTab={selectedTab} onClick={onClick} />
+          <NewPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} selectedTab={selectedTab} onClick={onClick} />
         ))}
       </Box>
     </Box>

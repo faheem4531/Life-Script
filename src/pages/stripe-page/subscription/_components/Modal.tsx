@@ -1,5 +1,4 @@
 'use client'
-
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
@@ -59,10 +58,9 @@ export default function PaymentProcessingModal({ openModal, handleClose, selecte
   useEffect(() => {
     if (value === 100 && selectedTab === "gift") {
       const timeoutId = setTimeout(() => {
-        router.push('/'); // Redirect to home page
-      }, 5000); // 5 seconds in milliseconds
+        router.push('/');
+      }, 5000); 
   
-      // Cleanup function
       return () => {
         clearTimeout(timeoutId);
         localStorage.clear(); 

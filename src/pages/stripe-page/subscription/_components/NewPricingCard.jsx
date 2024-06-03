@@ -7,67 +7,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styles from '../../../../__webComponents/ComponentsStyles.module.css';
 import Button from '../../../../__webComponents/button/Button';
+import { CheckArray } from "../../../../utils/stripeFlowObjects";
 
-const NewPricingCard = ({ price, category, card, id, handleHover, selectedTab, onClick }) => {
+const NewPricingCard = ({ price, category, card, id, selectedTab, onClick }) => {
   const router = useRouter();
-  // onClick={() => onClick(selectedTab + 1)}
-  const CheckArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Spelling and grammar assistance ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Automatic photo improvement ',
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Text formatting features  ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Narrative Fusion ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Voice-to-text ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Family Tree',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Premium book covers',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Priority customer support',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Exclusive access to new features ',
-    },
-  ];
 
   const handleButtonClick = () => {
     localStorage.setItem('price', price);
@@ -90,7 +33,6 @@ const NewPricingCard = ({ price, category, card, id, handleHover, selectedTab, o
       backgroundColor={card == '2' ? '#30422E' : '#F4F4F4'}
       color={card == '2' && '#f4f4f4'}
       id={id}
-      onMouseOver={() => handleHover(id)}
     >
       <Box
         sx={{
