@@ -14,7 +14,6 @@ const SsoRedirecting = () => {
     useEffect(() => {
         setLoading(true)
         if (session) {
-            console.log('session data', session)
           if (session.user) {
             const payload = {
               name: session.user.name,
@@ -28,9 +27,7 @@ const SsoRedirecting = () => {
               console.log("Res Console" ,res)
               toast.success("login with facebook");
               router.push(`/getStarted/getTitle?userName=${res?.name}`); 
-            //   window.location.href = `/getStarted/getTitle?userName=${res?.name}`
             })
-            
             .catch((error) => {
                 setLoading(false)
               toast.error("User Already Exist");
