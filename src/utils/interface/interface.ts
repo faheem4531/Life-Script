@@ -6,3 +6,8 @@ export interface FormValues {
     giftFromName: string;
     giftMessage: string;
   }
+
+  export interface RegisterFormValues {
+    name: string;
+    email: string;
+  }
