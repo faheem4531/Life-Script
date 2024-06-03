@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import useValidationSchema from '../../../../schema/validationSchemas';
+import { DeliveryFormSchema } from '../../../../schema/deliveryFormSchema';
 import { FormValues } from '../../../../utils/interface/interface';
 import GiftPlanCard from './GiftPlanCard';
 
@@ -15,7 +15,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
   const { t } = useTranslation();
   const router = useRouter();
   const minDate = new Date().toISOString();
-  const validationSchema = useValidationSchema();
+  const validationSchema = DeliveryFormSchema();
 
   const handleSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     try {
