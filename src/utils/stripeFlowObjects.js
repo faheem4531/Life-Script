@@ -1,209 +1,206 @@
-  export const pricingCard = [
-    {
-      id: 'basic',
-      category: 'Basic',
-      price: '139',
-      card: '1',
-    },
-    {
-      id: 'standard',
-      category: 'Standard',
-      price: '179',
-      card: '2',
-    },
-    {
-      id: 'primium',
-      category: 'Premium',
-      price: '239',
-      card: '3',
-    },
-  ];
 
-  export const BasicArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
+export const createPricingCard = (t) => [
+  {
+    id: "basic",
+    category: t("stripeFlow.pricePlanCard.TabPanel.category1"),
+    price: "139",
+    card: "1",
+  },
+  {
+    id: "standard",
+    category: t("stripeFlow.pricePlanCard.TabPanel.category2"),
+    price: "179",
+    card: "2",
+  },
+  {
+    id: "primium",
+    category: t("stripeFlow.pricePlanCard.TabPanel.category3"),
+    price: "239",
+    card: "3",
+  },
+]
+export const createBasicArray = (t) => [
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis1"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis2"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis3"),
+  },
+];
 
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-  ];
-  export const StandardArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
+export const createStandardArray = (t) => [
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis1"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis2"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis3"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis4"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis5"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis6"),
+  },
+];
 
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Narrative Fusion ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Voice-to-text ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Family Tree",
-    },
-  ];
-  export const PremiumArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Spelling and grammar assistance ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Automatic photo improvement ",
-    },
+export const createPremiumArray = (t) => [
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis1"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis2"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis3"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis4"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis5"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis6"),
+  },
+  {
+    standardStatus: false,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis7"),
+  },
+  {
+    standardStatus: false,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis8"),
+  },
+  {
+    standardStatus: false,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis9"),
+  },
+];
+export const createCheckArray = (t) => [
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis1"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis2"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: true,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis3"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis4"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis5"),
+  },
+  {
+    standardStatus: true,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis6"),
+  },
+  {
+    standardStatus: false,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis7"),
+  },
+  {
+    standardStatus: false,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis8"),
+  },
+  {
+    standardStatus: false,
+    PrimuimStatus: true,
+    basicStatus: false,
+    dis: t("stripeFlow.pricePlanCard.pricingCardMapArray.dis9"),
+  },
+];
 
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Text formatting features  ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Narrative Fusion ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Voice-to-text ",
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Family Tree",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Premium book covers",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Priority customer support",
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: "Exclusive access to new features ",
-    },
-  ];
-
-  export const CheckArray = [
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Spelling and grammar assistance ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Automatic photo improvement ',
-    },
-
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: true,
-      dis: 'Text formatting features  ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Narrative Fusion ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Voice-to-text ',
-    },
-    {
-      standardStatus: true,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Family Tree',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Premium book covers',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Priority customer support',
-    },
-    {
-      standardStatus: false,
-      PrimuimStatus: true,
-      basicStatus: false,
-      dis: 'Exclusive access to new features ',
-    },
-  ];
-
-  export const dropDownOptions = [
-    { value: 0, label: '1 book Included with Subscription', hidden: true },
-    { value: 1, label: "(2 books)", price: "+ $39", color: "#e1693b" },
-    { value: 2, label: "(3 books)", price: "+ $78", color: "#e1693b" },
-    { value: 3, label: "(4 books)", price: "+ $117", color: "#e1693b" },
-    { value: 4, label: "(5 books)", price: "+ $156", color: "#e1693b" },
-    { value: 5, label: "(6 books)", price: "+ $195", color: "#e1693b" },
-    { value: 6, label: "(7 books)", price: "+ $234", color: "#e1693b" },
-    { value: 7, label: "(8 books)", price: "+ $273", color: "#e1693b" },
-    { value: 8, label: "(9 books)", price: "+ $312", color: "#e1693b" },
-    { value: 9, label: "(10 books)", price: "+ $351", color: "#e1693b" },
-  ];
+export const createDropDownOptions = (t) => [
+  { value: 0, label: t("stripeFlow.PurchaseForm.dropDown.value0.label"), hidden: true },
+  { value: 1, label: t("stripeFlow.PurchaseForm.dropDown.value1.label"), price: t("stripeFlow.PurchaseForm.dropDown.value1.price"), color: "#e1693b" },
+  { value: 2, label: t("stripeFlow.PurchaseForm.dropDown.value2.label"), price: t("stripeFlow.PurchaseForm.dropDown.value2.price"), color: "#e1693b" },
+  { value: 3, label: t("stripeFlow.PurchaseForm.dropDown.value3.label"), price: t("stripeFlow.PurchaseForm.dropDown.value3.price"), color: "#e1693b" },
+  { value: 4, label: t("stripeFlow.PurchaseForm.dropDown.value4.label"), price: t("stripeFlow.PurchaseForm.dropDown.value4.price"), color: "#e1693b" },
+  { value: 5, label: t("stripeFlow.PurchaseForm.dropDown.value5.label"), price: t("stripeFlow.PurchaseForm.dropDown.value5.price"), color: "#e1693b" },
+  { value: 6, label: t("stripeFlow.PurchaseForm.dropDown.value6.label"), price: t("stripeFlow.PurchaseForm.dropDown.value6.price"), color: "#e1693b" },
+  { value: 7, label: t("stripeFlow.PurchaseForm.dropDown.value7.label"), price: t("stripeFlow.PurchaseForm.dropDown.value7.price"), color: "#e1693b" },
+  { value: 8, label: t("stripeFlow.PurchaseForm.dropDown.value8.label"), price: t("stripeFlow.PurchaseForm.dropDown.value8.price"), color: "#e1693b" },
+  { value: 9, label: t("stripeFlow.PurchaseForm.dropDown.value9.label"), price: t("stripeFlow.PurchaseForm.dropDown.value9.price"), color: "#e1693b" },
+];

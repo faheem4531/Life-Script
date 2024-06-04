@@ -83,9 +83,9 @@ const SubscriptionPage = () => {
 
 
   const tabsData = [
-    { label: 'CHOOSE PLAN', active: selectedTab >= 0 },
-    { label: 'REGISTER', active: selectedTab >= 1 && !session && handleGoogleLogin },
-    { label: 'PAYMENT', active: selectedTab === 2 },
+    { label: t("stripeFlow.registerSection.tabsData.tab1"), active: selectedTab >= 0 },
+    { label: t("stripeFlow.registerSection.tabsData.tab2"), active: selectedTab >= 1 && !session && handleGoogleLogin },
+    { label: t("stripeFlow.registerSection.tabsData.tab3"), active: selectedTab === 2 },
   ];
 
   return (
@@ -128,7 +128,7 @@ const SubscriptionPage = () => {
             {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
-                <PurchaseForm selectedTab={selectedTab} onClick={handleTabClick} />
+                <PurchaseForm selectedTab={selectedTab} />
               </Elements>
             }
           </Box>

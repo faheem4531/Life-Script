@@ -61,7 +61,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
         sx={{ margin: { sm: "0 0 0 70px", xs: "0 20px" }, border: "2px soild green", width: "100%", maxWidth: "1370px" }}
       >
         <Typography variant="h4" sx={{ marginBottom: { sm: "60px", xs: "30px" } }}>
-          Register For LifeScript
+        {t("stripeFlow.registerSection.title")}
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", columnGap: "50px" }}>
@@ -74,11 +74,11 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
-                Name
+                {t("stripeFlow.registerSection.name")}
               </Typography>
               <TextField
                 variant="outlined"
-                placeholder="Enter your full name"
+                placeholder={t("stripeFlow.registerSection.namePlaceholder")}
                 name="name"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -100,11 +100,11 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
-                Email
+                 {t("stripeFlow.registerSection.email")}
               </Typography>
               <TextField
                 variant="outlined"
-                placeholder="Enter your email address"
+                placeholder={t("stripeFlow.registerSection.emailPlaceholder")}
                 name="email"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -180,7 +180,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
                     src={googleLogo}
                     alt="Google Logo"
                   />
-                  <Typography>Login with Google</Typography>
+                  <Typography>{t("stripeFlow.registerSection.google")}</Typography>
                 </Button>
               </Box>
 
@@ -205,7 +205,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
                     src={facebookIcon}
                     alt="Facebook Logo"
                   />
-                  <Typography>Login with Facebook</Typography>
+                  <Typography>{t("stripeFlow.registerSection.facebook")}</Typography>
                 </Button>
               </Box>
             </Box>
@@ -224,7 +224,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
               }}
               onClick={(event) => formik.handleSubmit()}
             >
-              Continue
+             {t("stripeFlow.stripePage.btnText")}
             </Button>
           </Box>
 

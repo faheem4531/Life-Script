@@ -7,8 +7,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../../../__webComponents/ComponentsStyles.module.css";
 import Button from "../../../../__webComponents/button/Button";
-import { CheckArray } from "../../../../utils/stripeFlowObjects";
-
+import { createCheckArray } from "../../../../utils/stripeFlowObjects";
+import { useTranslation } from "react-i18next";
 const GiftPricingCard = ({
   price,
   category,
@@ -17,6 +17,9 @@ const GiftPricingCard = ({
   selectedTab,
   onClick,
 }) => {
+  const { t } = useTranslation();
+  const CheckArray = createCheckArray(t);
+
   const router = useRouter();
 
   const handleButtonClick = () => {
@@ -63,7 +66,7 @@ const GiftPricingCard = ({
         >
           {category}
         </Box>
-        {category == "Standard" && (
+        {category == t("stripeFlow.pricePlanCard.TabPanel.category2") && (
           <Box
             sx={{
               borderRadius: "4px",
@@ -75,7 +78,7 @@ const GiftPricingCard = ({
               fontFamily: "Avenir LT Std",
             }}
           >
-            Popular
+           { t("stripeFlow.pricePlanCard.popular")}
           </Box>
         )}
         <Typography
@@ -91,7 +94,7 @@ const GiftPricingCard = ({
           ${price}
         </Typography>
 
-        {(category == "Basic" && (
+        {(category == t("stripeFlow.pricePlanCard.TabPanel.category1") && (
           <Box>
             {CheckArray.map((item, index) => (
               <Box
@@ -111,9 +114,9 @@ const GiftPricingCard = ({
             ))}
           </Box>
         )) ||
-          (category == "Standard" && (
+          (category == t("stripeFlow.pricePlanCard.TabPanel.category2") && (
             <Box>
-              {CheckArray.map((item, index) => (
+              {CheckArray && CheckArray?.map((item, index) => (
                 <Box
                   sx={{
                     display: "flex",
@@ -131,7 +134,7 @@ const GiftPricingCard = ({
               ))}
             </Box>
           )) ||
-          (category == "Premium" && (
+          (category == t("stripeFlow.pricePlanCard.TabPanel.category3") && (
             <Box>
               {CheckArray.map((item, index) => (
                 <Box
@@ -154,7 +157,7 @@ const GiftPricingCard = ({
       </Box>
       <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
         <Button
-          title="Get Started"
+          title={ t("stripeFlow.pricePlanCard.btnText")}
           width="100%"
           height="75px"
           font="24px"

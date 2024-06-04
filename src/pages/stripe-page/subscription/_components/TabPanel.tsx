@@ -1,11 +1,13 @@
 'use client';
 import { Box, Typography } from '@mui/material';
 import styles from '../../../../__webComponents/ComponentsStyles.module.css';
-import { pricingCard } from '../../../../utils/stripeFlowObjects';
+import { createPricingCard } from '../../../../utils/stripeFlowObjects';
 import NewPricingCard from './NewPricingCard';
+import { useTranslation } from "react-i18next";
 
 const TabPanel = ({ onClick, selectedTab }) => {
-
+  const { t } = useTranslation();
+  const pricingCard = createPricingCard(t);
   return (
     <Box>
       <Box
@@ -21,10 +23,10 @@ const TabPanel = ({ onClick, selectedTab }) => {
             fontFamily: 'Avenir5 !important',
           }}
         >
-          Choose a Payment Plan
+          {t("stripeFlow.pricePlanCard.TabPanel.title")}
         </Typography>
         <Typography sx={{ margin: { sm: '40px 0 20px', xs: '20px 0' } }}>
-          Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.
+        {t("stripeFlow.pricePlanCard.TabPanel.description")}
         </Typography>
       </Box>
       <Box
@@ -39,7 +41,7 @@ const TabPanel = ({ onClick, selectedTab }) => {
         }}
         className={styles.cardsMain}
       >
-        {pricingCard.map((item) => (
+        {pricingCard && pricingCard?.map((item) => (
           <NewPricingCard key={item.id} category={item.category} price={item.price} card={item.card} id={item.id} selectedTab={selectedTab} onClick={onClick} />
         ))}
       </Box>

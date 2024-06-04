@@ -141,6 +141,9 @@
         "dis8": "Priority customer support",
         "dis9": "Exclusive access to new features "
       },
+      "category1":"Basic",
+      "category2":"Standard",
+      "category3":"Premium",
       "popular": "Popular",
       "btnText": "Get Started",
       "pricingBelowText": "30 days money back guarantee"
@@ -557,7 +560,6 @@
       "btnText": "Get in touch!"
     }
   },
-
   "stripeFlow":{
     "stripePage":{
       "title": "Who is LifeScript for? ",
@@ -567,8 +569,128 @@
       "buyNow":"Buy Now",
       "freeTrial":"Start 7-Day Free Trial",
       "btnText":"Continue"
+    },
+    "pricePlanCard":{
+      "TabPanel":{
+        "title":"Choose a Payment Plan",
+        "description":"  Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.",
+        "category1":"Basic",
+        "category2":"Standard",
+        "category3":"Premium",
+        "plan":"Plan",
+        "choosePlan":"Choose Plan",
+        "commonText":"Includes a premium full-color hardcover book, free shipping and lifetime access to LifeScript with:"
+      },
+      "pricingCardMapArray": {
+        "dis1": "Spelling and grammar assistance",
+        "dis2": "Automatic photo improvement",
+        "dis3": "Text formatting features ",
+        "dis4": "Narrative Fusion",
+        "dis5": "Voice-to-text",
+        "dis6": "Family Tree",
+        "dis7": "Premium book covers",
+        "dis8": "Priority customer support",
+        "dis9": "Exclusive access to new features "
+      },
+      "popular": "Popular",
+      "btnText": "Get Started"
+    },
+    "registerSection": {
+      "title": "Register For LifeScript",
+      "name":"Name",
+      "namePlaceholder":"Enter your full name",
+      "email":"Email",
+      "emailPlaceholder":"Enter your email address",
+      "google":"Login with Google",
+      "facebook":"Login with Facebook",
+      "btnText":"Start 7-Day Free Trial",
+      "tabsData":{
+        "tab1":"CHOOSE PLAN",
+        "tab2":"REGISTER",
+        "tab3":"PAYMENT"
+      }
+    },
+    "PurchaseForm":{
+      "title":"Purchase LifeScript",
+      "numberOfBook":"Number of books",
+      "dropDown":{
+        "value0":{
+          "label":"1 book Included with Subscription"
+        },
+        "value1":{
+          "label":"(2 books)",
+          "price":"+ $39"
+        },
+        "value2":{
+          "label":"(3 books)",
+          "price":"+ $78"
+        },
+        "value3":{
+          "label":"(4 books)",
+          "price":"+ $117"
+        },
+        "value4":{
+          "label":"(5 books)",
+          "price":"+ $156"
+        },
+        "value5":{
+          "label":"(6 books)",
+          "price":"+ $195"
+        },
+        "value6":{
+          "label":"(7 books)",
+          "price":"+ $234"
+        },
+        "value7":{
+          "label":"(8 books)",
+          "price":"+ $273"
+        },
+        "value8":{
+          "label":"(9 books)",
+          "price":"+ $312"
+        },
+        "value9":{
+          "label":"(10 books)",
+          "price":"+ $351"
+        }
+      },
+      "referralCode":{
+        "title":"Referred by a friend? Enter Referral code here",
+        "subTitle":"Referral Code",
+        "btnText":"Verify"
+      },
+      "checkOut":{
+        "title":"Checkout",
+        "subTitle":"Prefer to enter details manually? Please provide your payment info below.",
+        "cardNumber":"Card Number",
+        "discription":"Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers.",
+        "discription2":" We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript's terms and conditions and privacy policy.",
+        "buyFor":"Buy for",
+        "securePaymentWith":"Secure Payment with"
+      }
+    },
+    "giftFlow":{
+      "tabBar":{
+        "tab1":"CHOOSE PLAN",
+        "tab2":"DELIVERY",
+        "tab3":"PAYMENT"
+      },
+      "deliveryForm":{
+        "title":"Personalize Your Gift",
+        "nameField":"Recipient’s Full Name",
+        "emailField":"Recipient’s Email",
+        "sendGift":"Send my gift on:",
+        "from":"From",
+        "fromPlaceholder":"Enter your Email",
+        "fromName":"From Name",
+        "fromNamePlaceholder":"Enter your Name",
+        "yourMessage":"Your Message",
+        "messagePlaceholder":"Hello, I've gifted you a LifeScript subscription, allowing you to easily share and preserve your stories in a beautiful hardcover book.",
+        "btnText":"Continue"
+      }
     }
   },
+
   "sideBar": {
     "Overview": "Overview",
     "AllCh": "Chapters",

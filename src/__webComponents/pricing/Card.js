@@ -87,7 +87,7 @@ const PricingCard = ({ price, category, card, id }) => {
         >
           {category}
         </Box>
-        {category == 'Standard' && <Box sx={{
+        {category == t("landingPage.pricingSection.category2") && <Box sx={{
           borderRadius: "4px",
           backgroundColor: "#E1683B",
           padding: "4px 8px",
@@ -111,7 +111,7 @@ const PricingCard = ({ price, category, card, id }) => {
           {price}
         </Box>
 
-        {category == 'Basic' && <Box>
+        {category == t("landingPage.pricingSection.category1") && <Box>
           {
             CheckArray.map((item, index) => <Box
               sx={{
@@ -127,7 +127,7 @@ const PricingCard = ({ price, category, card, id }) => {
             )}
         </Box>
           ||
-          category == 'Standard' && <Box>
+          category == t("landingPage.pricingSection.category2") && <Box>
             {
               CheckArray.map((item, index) => <Box
                 sx={{
@@ -143,7 +143,7 @@ const PricingCard = ({ price, category, card, id }) => {
               )}
           </Box>
           ||
-          category == 'Premium' && <Box>
+          category == t("landingPage.pricingSection.category3") && <Box>
             {
               CheckArray.map((item, index) => <Box
                 sx={{

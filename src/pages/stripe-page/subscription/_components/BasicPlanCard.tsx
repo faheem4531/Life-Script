@@ -6,8 +6,14 @@ import Image from "next/image";
 import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
 import premiumBookImage from "../../../../../public/premiumBookImage.svg";
 import standardBookImage from "../../../../../public/standardBookImage.svg";
-import { BasicArray, PremiumArray, StandardArray } from "../../../../utils/stripeFlowObjects";
+import { createBasicArray, createPremiumArray, createStandardArray } from "../../../../utils/stripeFlowObjects";
+import { useTranslation } from "react-i18next";
 const BasicPlanCard = ({ price, category }) => {
+  const { t } = useTranslation();
+  const BasicArray = createBasicArray(t);
+  const StandardArray = createStandardArray(t);
+  const PremiumArray = createPremiumArray(t);
+
   return (
     <Box
       sx={{
@@ -19,7 +25,7 @@ const BasicPlanCard = ({ price, category }) => {
         marginRight: { md: "20px", sm: "0", xs: "0" },
       }}
     >
-      {(category == "Basic" && (
+      {(category == t("stripeFlow.pricePlanCard.TabPanel.category1") && (
         <Box
           sx={{
             display: "flex",
@@ -37,7 +43,7 @@ const BasicPlanCard = ({ price, category }) => {
           />
         </Box>
       )) ||
-        (category == "Standard" && (
+        (category == t("stripeFlow.pricePlanCard.TabPanel.category2") && (
           <Box
             sx={{
               display: "flex",
@@ -55,7 +61,7 @@ const BasicPlanCard = ({ price, category }) => {
             />
           </Box>
         )) ||
-        (category == "Premium" && (
+        (category == t("stripeFlow.pricePlanCard.TabPanel.category3") && (
           <Box
             sx={{
               display: "flex",
@@ -81,17 +87,16 @@ const BasicPlanCard = ({ price, category }) => {
             fontWeight: "700",
           }}
         >
-          {category ? `${category} Plan` : "Choose Plan"}
+          {category ? `${category} ${t("stripeFlow.pricePlanCard.TabPanel.plan")}` : `${t("stripeFlow.pricePlanCard.TabPanel.choosePlan")}`}
         </Typography>
 
         <Box>
           <Typography>
-            Includes a premium full-color hardcover book, free shipping and
-            lifetime access to LifeScript with:
+            {t("stripeFlow.pricePlanCard.TabPanel.commonText")}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "30px" }}>
-          {(category == "Basic" && (
+          {(category == t("stripeFlow.pricePlanCard.TabPanel.category1") && (
             <Box>
               {BasicArray.map((item, index) => (
                 <Box
@@ -111,7 +116,7 @@ const BasicPlanCard = ({ price, category }) => {
               ))}
             </Box>
           )) ||
-            (category == "Standard" && (
+            (category == t("stripeFlow.pricePlanCard.TabPanel.category2") && (
               <Box>
                 {StandardArray.map((item, index) => (
                   <Box
@@ -134,7 +139,7 @@ const BasicPlanCard = ({ price, category }) => {
                 ))}
               </Box>
             )) ||
-            (category == "Premium" && (
+            (category == t("stripeFlow.pricePlanCard.TabPanel.category3")&& (
               <Box>
                 {PremiumArray.map((item, index) => (
                   <Box

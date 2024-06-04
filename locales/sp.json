@@ -141,6 +141,9 @@
         "dis8": "Atención al cliente prioritaria",
         "dis9": "Acceso exclusivo a nuevas funciones"
       },
+      "category1": "Básico",
+      "category2": "Estándar",
+      "category3": "Premium",
       "popular": "Más elegido",
       "btnText": "Iniciar ",
       "pricingBelowText": "30 días de garantía de devolución del dinero"
@@ -271,9 +274,6 @@
       },
       "copyrightText": "© Copyright 2024 LifeScript"
     }
-    
-    
-        
   },
   "featurePage": {
     "headerSection": {
@@ -328,8 +328,8 @@
       "input3": "¿Qué estás pensando?",
       "btnText": "¡Contáctanos!"
     },
-    "previous":"Volver",
-    "next":"Siguiente"
+    "previous": "Volver",
+    "next": "Siguiente"
   },
   "aboutSection": {
     "title": "Impulsándote a crear un legado atemporal, que influya en las generaciones",
@@ -561,11 +561,137 @@
     }
   },
   "stripeFlow": {
-    "stripePage":{
-      "title": "¿Para quién es LifeScript?"
-
-    }
+    "stripePage": {
+      "title": "¿Para quién es LifeScript?",
+      "mySelf": "Para mí mismo",
+      "giftForSomeoneElse": "Un regalo para alguien más",
+      "preference": "Selecciona tu preferencia",
+      "buyNow": "Comprar ahora",
+      "freeTrial": "Comienza la prueba gratuita de 7 días",
+      "btnText": "Continuar"
+    },
+    "pricePlanCard": {
+      "TabPanel": {
+        "title": "Elige un Plan de Pago",
+        "description": "Cada paquete viene con acceso de por vida a la plataforma LifeScript, un libro de tapa dura premium a todo color, y envío gratuito.",
+        "category1": "Básico",
+        "category2": "Estándar",
+        "category3": "Premium",
+        "plan": "Plan",
+        "choosePlan": "Elegir Plan",
+        "commonText": "Incluye un libro de tapa dura premium a todo color, envío gratuito y acceso de por vida a LifeScript con:"
+      },
+      "pricingCardMapArray": {
+        "dis1": "Ayuda ortográfica y gramatical",
+        "dis2": "Mejora automática de fotos",
+        "dis3": "Funciones de formateo de texto",
+        "dis4": "Fusión Narrativa",
+        "dis5": "Voz a texto",
+        "dis6": "Árbol Genealógico",
+        "dis7": "Cubiertas de libros premium",
+        "dis8": "Atención al cliente prioritaria",
+        "dis9": "Acceso exclusivo a nuevas funciones"
+      },
+      "popular": "Más elegido",
+      "btnText": "Iniciar "
+    },
+    "registerSection": {
+      "title": "Registrarse en LifeScript",
+      "name": "Nombre",
+      "namePlaceholder": "Ingresa tu nombre completo",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "Ingresa tu dirección de correo electrónico",
+      "google": "Iniciar sesión con Google",
+      "facebook": "Iniciar sesión con Facebook",
+      "btnText": "Prueba gratuita de 7 días",
+      "tabsData": {
+        "tab1": "ELEGIR PLAN",
+        "tab2": "REGISTRARSE",
+        "tab3": "PAGO"
+      }
+    },
+    "PurchaseForm":{
+      "title":"Comprar LifeScript",
+      "numberOfBook":"Número de libros",
+      "dropDown":{
+          "value0":{
+              "label":"1 libro incluido con la suscripción"
+          },
+          "value1":{
+              "label":"(2 libros)",
+              "price":"+ $39"
+          },
+          "value2":{
+              "label":"(3 libros)",
+              "price":"+ $78"
+          },
+          "value3":{
+              "label":"(4 libros)",
+              "price":"+ $117"
+          },
+          "value4":{
+              "label":"(5 libros)",
+              "price":"+ $156"
+          },
+          "value5":{
+              "label":"(6 libros)",
+              "price":"+ $195"
+          },
+          "value6":{
+              "label":"(7 libros)",
+              "price":"+ $234"
+          },
+          "value7":{
+              "label":"(8 libros)",
+              "price":"+ $273"
+          },
+          "value8":{
+              "label":"(9 libros)",
+              "price":"+ $312"
+          },
+          "value9":{
+              "label":"(10 libros)",
+              "price":"+ $351"
+          }
+      },
+      "referralCode":{
+          "title":"¿Recomendado por un amigo? Ingrese el código de referencia aquí",
+          "subTitle":"Código de Referencia",
+          "btnText":"Verificar"
+      },
+      "checkOut":{
+          "title":"Pagar",
+          "subTitle":"¿Prefieres ingresar los detalles manualmente? Por favor, proporciona tu información de pago a continuación.",
+          "cardNumber":"Número de Tarjeta",
+          "discription":"Sí, envíame actualizaciones con técnicas de narración, historias inspiradoras y ofertas exclusivas.",
+          "discription2":"Valoramos tu privacidad y seguridad. Proceder con esta compra significa que estás de acuerdo con los términos y condiciones y la política de privacidad de LifeScript.",
+          "buyFor":"Comprar por",
+          "securePaymentWith":"Pago Seguro con"
+      }
   },
+  "giftFlow": {
+    "tabBar": {
+      "tab1": "ELEGIR PLAN",
+      "tab2": "ENTREGA",
+      "tab3": "PAGO"
+    },
+    "deliveryForm": {
+      "title": "Personaliza Tu Regalo",
+      "nameField": "Nombre Completo del Destinatario",
+      "emailField": "Correo Electrónico del Destinatario",
+      "sendGift": "Enviar mi regalo el:",
+      "from": "De",
+      "fromPlaceholder": "Introduce tu Correo Electrónico",
+      "fromName": "Nombre del Remitente",
+      "fromNamePlaceholder": "Introduce tu Nombre",
+      "yourMessage": "Tu Mensaje",
+      "messagePlaceholder": "Hola, te he regalado una suscripción a LifeScript, que te permite compartir y preservar tus historias fácilmente en un hermoso libro de tapa dura.",
+      "btnText": "Continuar"
+    }
+  }
+
+  },
+
   "sideBar": {
     "Overview": "Resumen",
     "AllCh": "Capítulos",
@@ -890,5 +1016,4 @@
     "RevertResProcBtn": "Aún no",
     "RevertResCancelBtn": "Revertir Cambios"
   }
-
 }

@@ -11,10 +11,12 @@ import DeliveryForm from './_components/DeliveryForm';
 import GiftPurchaseForm from './_components/GiftPurchaseForm';
 import GiftTabBar from './_components/GiftTabBar';
 import GiftTabPanel from './_components/GiftTabPanel';
+import { useTranslation } from "react-i18next";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
 const GiftSubscriptionPage = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const { inAppGiftFlow } = router.query;
   const [giftToUser, setGiftToUser] = useState('')
@@ -26,9 +28,9 @@ const GiftSubscriptionPage = () => {
   };
 
   const tabsData = [
-    { label: 'CHOOSE PLAN', active: selectedTab >= 0 },
-    { label: 'DELIVERY', active: selectedTab >= 1 },
-    { label: 'PAYMENT', active: selectedTab === 2 },
+    { label: t("stripeFlow.giftFlow.tabBar.tab1"), active: selectedTab >= 0 },
+    { label: t("stripeFlow.giftFlow.tabBar.tab2"), active: selectedTab >= 1 },
+    { label: t("stripeFlow.giftFlow.tabBar.tab3"), active: selectedTab === 2 },
   ];
 
   return (

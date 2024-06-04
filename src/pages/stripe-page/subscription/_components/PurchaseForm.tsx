@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
 import BasicPlanCard from './BasicPlanCard';
 import PaymentProcessingModal from './Modal';
-import { dropDownOptions } from "../../../../utils/stripeFlowObjects";
+import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -67,6 +67,7 @@ const PurchaseForm = ({ selectedTab }) => {
 
   const price = localStorage.getItem("price")
   const category = localStorage.getItem("category")
+  const dropDownOptions = createDropDownOptions(t);
 
 
   useEffect(() => {
@@ -198,7 +199,7 @@ const PurchaseForm = ({ selectedTab }) => {
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box className={"Container"} sx={{ width: "100%", maxWidth: "1370px", margin: { sm: "0 0 30px 70px", xs: "0 20px 30px 20px" } }}>
           <Box>
-            <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>Purchase LifeScript</Typography>
+            <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>{t("stripeFlow.PurchaseForm.title")}</Typography>
           </Box>
 
           <Box sx={{
@@ -218,7 +219,7 @@ const PurchaseForm = ({ selectedTab }) => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Number of books
+                  {t("stripeFlow.PurchaseForm.numberOfBook")}
                 </Typography>
                 <Select
                   value={selectedBooks}
@@ -240,11 +241,11 @@ const PurchaseForm = ({ selectedTab }) => {
               </Box>
 
               <Box sx={{ marginBottom: "40px", position: "relative" }}>
-                <Typography>Referred by a friend? Enter Referral code here</Typography>
+                <Typography>{t("stripeFlow.PurchaseForm.referralCode.title")}</Typography>
                 <Divider sx={{ width: "100%" }} />
 
                 <TextField
-                  label="Referral Code"
+                  label={t("stripeFlow.PurchaseForm.referralCode.subTitle")}
                   value={referralCode}
                   onChange={handleReferralCodeChange}
                   sx={{ width: "100%", backgroundColor: "white", marginTop: "15px", }}
@@ -260,7 +261,7 @@ const PurchaseForm = ({ selectedTab }) => {
                 }}>
                   <Button sx={{ color: paymentSucess || paymentFail ? "#FFF" : "#30422E" }}
                     onClick={() => { HandleVerifyReferralCode(referralCode) }}>
-                    Verify
+                    {t("stripeFlow.PurchaseForm.referralCode.btnText")}
                   </Button>
                   {paymentSucess || paymentFail ? (
                     <Image src={paymentSucess ? Check : UnCheck} alt="checks" />
@@ -269,10 +270,10 @@ const PurchaseForm = ({ selectedTab }) => {
               </Box>
 
               <Box>
-                <Typography>Checkout</Typography>
+                <Typography>{t("stripeFlow.PurchaseForm.checkOut.title")}</Typography>
                 <Divider sx={{ width: "100%", marginBottom: "50px" }} />
 
-                <Typography sx={{ marginBottom: "5px" }}>Prefer to enter details manually? Please provide your payment info below.</Typography>
+                <Typography sx={{ marginBottom: "5px" }}>{t("stripeFlow.PurchaseForm.checkOut.subTitle")}</Typography>
 
                 <Box
                   sx={{
@@ -290,11 +291,9 @@ const PurchaseForm = ({ selectedTab }) => {
                         placeholder={`${t("SubsPlan.CardholderName")}`}
                         name="title"
                         sx={{
-                          // marginTop: "10px",
                           "& .MuiOutlinedInput-root": {
                             borderRadius: "3px",
                             backgroundColor: "white",
-                            // border: "1px solid gray",
                             height: "46px",
                             p: "10px 22px",
                           },
@@ -315,7 +314,7 @@ const PurchaseForm = ({ selectedTab }) => {
                         <CardNumberElement
                           options={{
                             ...options,
-                            placeholder: 'Card Number',
+                            placeholder: t("stripeFlow.PurchaseForm.checkOut.cardNumber"),
                           }}
                           onChange={(event) => {
                             setIsError(!event.complete || !!event.error);
@@ -373,15 +372,14 @@ const PurchaseForm = ({ selectedTab }) => {
                         control={<Checkbox
                           checked={subscribeUpdates}
                           onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }}
-                        // required 
                         />}
-                        label="Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers."
+                        label={t("stripeFlow.PurchaseForm.checkOut.discription")}
                       />
                     </Box>
 
                     <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: "100%", marginTop: "20px" }}>
                       <Typography sx={{ fontSize: "14px" }}>
-                        We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&apos;s terms and conditions and privacy policy.
+                      {t("stripeFlow.PurchaseForm.checkOut.discription2")}
                       </Typography>
                     </Box>
                   </Box>
@@ -410,7 +408,7 @@ const PurchaseForm = ({ selectedTab }) => {
                       {
                         loading
                           ? "Loading..."
-                          : `Buy for $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}`
+                          : `${t("stripeFlow.PurchaseForm.checkOut.buyFor")} $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}`
                       }
                     </Button>
                   </Box>
@@ -419,7 +417,7 @@ const PurchaseForm = ({ selectedTab }) => {
 
 
               <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
-                <Typography>Secure Payment with</Typography>
+                <Typography>{t("stripeFlow.PurchaseForm.checkOut.securePaymentWith")}</Typography>
                 <Image
                   src={stripeLogo}
                   alt='Stripe logo Image'

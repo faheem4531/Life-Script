@@ -97,7 +97,7 @@ const StripePage = () => {
                   }}
                 >
                   <FormControlLabel
-                    value="myself"
+                    value={ t("stripeFlow.stripePage.title")}
                     control={
                       <Radio
                         sx={{
@@ -151,7 +151,7 @@ const StripePage = () => {
                     width="100%"
                     height="50px"
                     backgroundColor="#E1693B"
-                    title={"Continue"}
+                    title={ t("stripeFlow.stripePage.btnText")}
                     bgHover="#B5522D"
                     onClick={handleContinue}
                     img1={undefined}

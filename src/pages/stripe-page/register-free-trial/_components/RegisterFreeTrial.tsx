@@ -96,7 +96,7 @@ const RegisterFreeTrial = () => {
         sx={{ border: "2px soild green", width: "100%" }}
       >
         <Typography variant="h4" sx={{ marginBottom: "60px" }}>
-          Register For LifeScript
+        {t("stripeFlow.registerSection.title")}
         </Typography>
 
         <Box sx={{ maxWidth: "600px", width: "100%" }}>
@@ -107,11 +107,11 @@ const RegisterFreeTrial = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Name
+              {t("stripeFlow.registerSection.name")}
             </Typography>
             <TextField
               variant="outlined"
-              placeholder="Enter your full name"
+              placeholder={t("stripeFlow.registerSection.namePlaceholder")}
               name="name"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -134,11 +134,11 @@ const RegisterFreeTrial = () => {
                 fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
               }}
             >
-              Email
+              {t("stripeFlow.registerSection.email")}
             </Typography>
             <TextField
               variant="outlined"
-              placeholder="Enter your email address"
+              placeholder={t("stripeFlow.registerSection.emailPlaceholder")}
               name="email"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
@@ -218,7 +218,7 @@ const RegisterFreeTrial = () => {
                   src={googleLogo}
                   alt="Google Logo"
                 />
-                <Typography>Login with Google</Typography>
+                <Typography>{t("stripeFlow.registerSection.google")}</Typography>
               </Button>
             </Box>
 
@@ -246,7 +246,7 @@ const RegisterFreeTrial = () => {
                   src={facebookIcon}
                   alt="Facebook Logo"
                 />
-                <Typography>Login with Facebook</Typography>
+                <Typography>{t("stripeFlow.registerSection.facebook")}</Typography>
               </Button>
             </Box>
           </Box>
@@ -266,7 +266,7 @@ const RegisterFreeTrial = () => {
               },
             }}
           >
-            Start 7-Day Free Trial
+            {t("stripeFlow.registerSection.btnText")}
           </Button>
         </Box>
       </Box>

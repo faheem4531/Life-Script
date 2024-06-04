@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import stripeLogo from "../../../../../public/stripeLogo.svg";
-import { dropDownOptions } from "../../../../utils/stripeFlowObjects";
+import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
 import PaymentProcessingModal from '../../subscription/_components/Modal';
 import GiftPlanCard from "./GiftPlanCard";
 
@@ -66,6 +66,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
 
   const price = localStorage.getItem("price")
   const category = localStorage.getItem("category")
+  const dropDownOptions = createDropDownOptions(t);
 
   function replaceCategory(category) {
     switch (category) {
@@ -224,7 +225,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box className={"Container"} sx={{ width: "100%", maxWidth: "1370px", margin: { sm: "0 0 30px 70px", xs: "0 20px 30px 20px" } }}>
           <Box>
-            <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>Purchase LifeScript</Typography>
+            <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>{t("stripeFlow.PurchaseForm.title")}</Typography>
           </Box>
 
           <Box sx={{
@@ -244,7 +245,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                  Number of books
+                 {t("stripeFlow.PurchaseForm.numberOfBook")}
                 </Typography>
                 <Select
                   value={selectedBooks}
@@ -265,11 +266,11 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
               </Box>
 
               <Box sx={{ marginBottom: "40px", position: "relative" }}>
-                <Typography>Referred by a friend? Enter Referral code here</Typography>
+                <Typography>{t("stripeFlow.PurchaseForm.referralCode.title")}</Typography>
                 <Divider sx={{ width: "100%" }} />
 
                 <TextField
-                  label="Referral Code"
+                  label={t("stripeFlow.PurchaseForm.referralCode.subTitle")}
                   value={referralCode}
                   onChange={handleReferralCodeChange}
                   sx={{ width: "100%", backgroundColor: "white", marginTop: "15px", }}
@@ -285,7 +286,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
                 }}>
                   <Button sx={{ color: paymentSucess || paymentFail ? "#FFF" : "#30422E" }}
                     onClick={() => { handleVerifyReferralCode(referralCode) }}>
-                    Verify
+                    {t("stripeFlow.PurchaseForm.referralCode.btnText")}
                   </Button>
                   {paymentSucess || paymentFail ? (
                     <Image src={paymentSucess ? Check : UnCheck} alt="checks" />
@@ -294,10 +295,10 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
               </Box>
 
               <Box>
-                <Typography>Checkout</Typography>
+                <Typography>{t("stripeFlow.PurchaseForm.checkOut.title")}</Typography>
                 <Divider sx={{ width: "100%", marginBottom: "50px" }} />
 
-                <Typography sx={{ marginBottom: "5px" }}>Prefer to enter details manually? Please provide your payment info below.</Typography>
+                <Typography sx={{ marginBottom: "5px" }}>{t("stripeFlow.PurchaseForm.checkOut.subTitle")}</Typography>
 
                 <Box
                   sx={{
@@ -338,7 +339,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
                         <CardNumberElement
                           options={{
                             ...options,
-                            placeholder: 'Card Number',
+                            placeholder: t("stripeFlow.PurchaseForm.checkOut.cardNumber"),
                           }}
                           onChange={(event) => {
                             setIsError(!event.complete || !!event.error);
@@ -394,13 +395,13 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
                     <Box sx={{ border: "1px solid black", padding: "10px", borderRadius: "5px", marginTop: "30px", width: "100%" }}>
                       <FormControlLabel
                         control={<Checkbox checked={subscribeUpdates} onChange={handleSubscribeUpdatesChange} sx={{ color: "black" }} required />}
-                        label="Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers."
+                        label={t("stripeFlow.PurchaseForm.checkOut.discription")}
                       />
                     </Box>
 
                     <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: "100%", marginTop: "20px" }}>
                       <Typography sx={{ fontSize: "14px" }}>
-                        We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript&apos;s terms and conditions and privacy policy.
+                      {t("stripeFlow.PurchaseForm.checkOut.discription2")}
                       </Typography>
                     </Box>
                   </Box>
@@ -427,7 +428,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
                       {
                         loading
                           ? "Loading..."
-                          : `Buy for $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}`
+                          : `${t("stripeFlow.PurchaseForm.checkOut.buyFor")} $${(Number(price) + (selectedBooks && selectedBooks * 39)) * (1 - commissionState / 100)}`
                       }
                     </Button>
                   </Box>
@@ -436,7 +437,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
 
 
               <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
-                <Typography>Secure Payment with</Typography>
+                <Typography>{t("stripeFlow.PurchaseForm.checkOut.securePaymentWith")}</Typography>
                 <Image
                   src={stripeLogo}
                   alt='Stripe logo Image'

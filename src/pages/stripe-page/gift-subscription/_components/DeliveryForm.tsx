@@ -62,7 +62,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
       <Box className={'Container'} sx={{ width: '100%', maxWidth: '1370px', margin: { sm: '0 0 30px 70px', xs: '0 20px 30px 20px' } }}>
         <Box>
-          <Typography sx={{ fontSize: '40px', marginBottom: '20px' }}>Personalize Your Gift</Typography>
+          <Typography sx={{ fontSize: '40px', marginBottom: '20px' }}>{t("stripeFlow.giftFlow.deliveryForm.title")}</Typography>
         </Box>
 
         <Box
@@ -82,11 +82,12 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                  Recipient’s Full Name
+                  {t("stripeFlow.giftFlow.deliveryForm.nameField")}
+
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Recipient’s Full Name"
+                  placeholder={t("stripeFlow.giftFlow.deliveryForm.nameField")}
                   name="name"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -108,11 +109,11 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                  Recipient’s Email
+                  {t("stripeFlow.giftFlow.deliveryForm.emailField")}
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Recipient’s Email"
+                  placeholder={t("stripeFlow.giftFlow.deliveryForm.emailField")}
                   name="email"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -135,7 +136,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                  Send my gift on:
+                  {t("stripeFlow.giftFlow.deliveryForm.sendGift")}
                 </Typography>
                 <DatePicker
                   name='sendGiftDate'
@@ -165,11 +166,11 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                  From
+                   {t("stripeFlow.giftFlow.deliveryForm.from")}
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Enter your Email"
+                  placeholder={t("stripeFlow.giftFlow.deliveryForm.fromPlaceholder")}
                   name="giftFrom"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -191,11 +192,11 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                  From Name
+                  {t("stripeFlow.giftFlow.deliveryForm.fromName")}
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder="Enter your Name"
+                  placeholder={t("stripeFlow.giftFlow.deliveryForm.fromNamePlaceholder")}
                   name="giftFromName"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -218,10 +219,10 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                  Your Message
+                  {t("stripeFlow.giftFlow.deliveryForm.yourMessage")}
                 </Typography>
                 <TextField
-                  placeholder="Hello, I've gifted you a LifeScript subscription, allowing you to easily share and preserve your stories in a beautiful hardcover book."
+                  placeholder= {t("stripeFlow.giftFlow.deliveryForm.messagePlaceholder")}
                   multiline
                   rows={7} 
                   name="giftMessage"
@@ -248,7 +249,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                   },
                 }}
               >
-                Continue
+                {t("stripeFlow.giftFlow.deliveryForm.btnText")}
               </Button>
             </form>
           </Box>
