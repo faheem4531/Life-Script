@@ -191,7 +191,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
               color: "#171725",
             }}
           >
-            {remainingPayment}
+            {remainingPayment}{" $"}
           </Typography>
           <Box mb="20px">
             <Typography
