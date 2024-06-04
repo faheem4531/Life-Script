@@ -86,9 +86,8 @@ export default function DetailCard({
     if (timeDifferenceInDays === 0) {
       return "Last edited Today";
     } else {
-      return `Last edited ${timeDifferenceInDays} day${
-        timeDifferenceInDays !== 1 ? "s" : ""
-      } ago`;
+      return `Last edited ${timeDifferenceInDays} day${timeDifferenceInDays !== 1 ? "s" : ""
+        } ago`;
     }
   }
   // const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
@@ -120,7 +119,8 @@ export default function DetailCard({
             height: { xs: "22px", sm: "32px", md: "36px" },
             display: "flex",
             alignItems: "center",
-            pl: { md: "13px", xs: "11px" },
+            justifyContent: "end",
+            pr: { md: "13px", xs: "11px" },
           }}
         >
           <Box>
@@ -294,7 +294,7 @@ export default function DetailCard({
                 ? ""
                 : ""}
               {isChapter &&
-              router.asPath === "/dashboard/chapters/completedChapter" ? (
+                router.asPath === "/dashboard/chapters/completedChapter" ? (
                 ""
               ) : (
                 <Box>
