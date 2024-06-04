@@ -25,7 +25,7 @@ const Introduction = () => {
     if (element) {
       const typed = new Typed(element, {
         // strings: ["Create", "Gift"],
-        strings: [ t("landingPage.hero.animationText1"),
+        strings: [t("landingPage.hero.animationText1"),
         t("landingPage.hero.animationText2")],
         typeSpeed: 100,
         backSpeed: 100,
@@ -66,15 +66,12 @@ const Introduction = () => {
           width: { sm: '70%', xs: "100%" }
         }}
         >
-          {/* {"Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent."} */}
           {t("landingPage.hero.mainDescription")}
-         
-          
         </Typography>
         <Box sx={{ width: { sm: "250px", xs: "100%" }, height: "55px" }}>
           <Link href="/stripe-page">
             <Button
-              title= {t("landingPage.hero.mainButton")}
+              title={t("landingPage.hero.mainButton")}
               width="100%"
               height="100%"
               img1={Pen}
@@ -84,7 +81,7 @@ const Introduction = () => {
         <Typography
           sx={{
             fontSize: '11px', lineHeight: '24px', fontWeight: 500, fontFamily: "Avenir",
-            margin: { lg: '10px 0 100px', md: "10px 0 70px", sm: "10px 0 40px" }
+            margin: { lg: '10px 0 100px', md: "10px 0 0px", sm: "10px 0 40px" }
           }}
         >{t("landingPage.hero.buttonDescription")}
         </Typography>

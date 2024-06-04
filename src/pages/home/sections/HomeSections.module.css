@@ -260,7 +260,7 @@
 @media screen and (min-width: 899px) and (max-width: 1200px) {
 /* Introduction sec*/
 .bookImg {
-  bottom: -180px;
+  bottom: -80px;
   width: 550px;
   height: 240px;
 }
@@ -268,7 +268,7 @@
 .image1 {
   right: 210px;
   top: initial;
-  bottom: 70px;
+  bottom: 120px;
   width: 170px;
   height: 200px;
 }
@@ -283,14 +283,14 @@
 
 .image3 {
   top: initial;   
-  bottom: 70px;
+  bottom: 120px;
   width: 170px;
   height: 200px;
 }
 
 .image4 {
   right: 100px;
-  bottom: -10px;
+  bottom: 70px;
   top: initial;
  width: 200px;
   height: 180px;
@@ -304,7 +304,7 @@
 
   100% {
     right: 210px;
-    bottom: 70px;
+    bottom: 120px;
   }
 }
 
@@ -313,7 +313,7 @@
     bottom: -600px;
   }
   100% {
-    bottom: 120px;
+    bottom: 170px;
   }
 
 }
@@ -323,7 +323,7 @@
     bottom: -600px;
   }
   100% {
-    bottom: 70px;
+    bottom: 120px;
   }
 }
 
@@ -332,7 +332,7 @@
     bottom: -600px;
   }
   100% {
-  bottom: -10px;
+  bottom: 70px;
   }
 }
 
