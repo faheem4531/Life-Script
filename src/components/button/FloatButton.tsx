@@ -12,7 +12,7 @@ import logo from "@/_assets/svg/Frame.svg";
 
 const FloatButton = ({ onClick, narrativeRefuse }) => {
   return (
-    <div className={styles.floatButton}>
+    <Box className={styles.floatButton}>
       <Fab
         sx={{ height: "100px", width: "100px" }}
         onClick={onClick} // Handle the click event
@@ -26,7 +26,7 @@ const FloatButton = ({ onClick, narrativeRefuse }) => {
           <Image alt="image" src={logo} className={styles.loadImage} />
         </Box>
       </Fab>
-    </div>
+    </Box>
   );
 };
 
