@@ -58,11 +58,11 @@ const QuestionComponent = ({
       </Typography>
       <Box>
         <Box sx={{ margin: "auto" }}>
-          <Typography sx={{ fontSize: { md: "18px", sm: "16px", xs: "14px" } }}>
+          <Typography sx={{ fontSize: { md: "18px", sm: "16px", xs: "14px" }, maxWidth: "700px" }}>
             {questions && questions[currentQuestionIndex]?.title}
           </Typography>
         </Box>
-        <Typography sx={{ fontSize: "14px" }}>
+        <Typography sx={{ fontSize: "14px" }} >
           {t("ChName.SugQuesRemain")}
           <span style={{ fontWeight: "bold" }}>{remainingQuestions}</span>
         </Typography>
@@ -75,34 +75,32 @@ const QuestionComponent = ({
             flexWrap: "wrap",
           }}
         >
-          <Box flex={1}>
-            <GlobelBtn
-              btnText={`${t("ChName.SugQuesAddBtn")}`}
-              bgColor="#fff"
-              borderRadius="23px"
-              color="#30422e"
-              width="100%"
-              // border="1px solid #197065"
-              onClick={() => Proceed(questions[currentQuestionIndex].id)}
-            />
-          </Box>
-          <Box flex={1}>
+          <Box flex={1} sx={{ maxWidth: "350px" }} >
             <GlobelBtn
               btnText={
                 questions?.length === currentQuestionIndex + 1
                   ? `${t("ChName.SugQuesCloseBtn")}`
                   : `${t("ChName.SugQuesSkipBtn")}`
               }
-              bgColor="#e1693b"
+              bgColor="#fff"
+              color="#30422e"
               borderRadius="23px"
-              color="#fff"
               width="100%"
-              // border="1px solid #197065"
               onClick={
                 questions?.length === currentQuestionIndex + 1
                   ? handleEnd
                   : handleNext
               }
+            />
+          </Box>
+          <Box flex={1} sx={{ maxWidth: "350px" }}>
+            <GlobelBtn
+              btnText={`${t("ChName.SugQuesAddBtn")}`}
+              bgColor="#e1693b"
+              color="#fff"
+              borderRadius="23px"
+              width="100%"
+              onClick={() => Proceed(questions[currentQuestionIndex].id)}
             />
           </Box>
         </Box>

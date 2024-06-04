@@ -140,7 +140,7 @@ export const ViewBook = () => {
             }}
           >
             <GlobelBtn
-              btnText="Edit"
+              btnText="Okay"
               color="white"
               onClick={() => {
                 router.push("/dashboard/chapters");
