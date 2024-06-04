@@ -27,7 +27,7 @@ const Layout = ({ children }: { children?: any }) => {
           right: "0",
           left: { lg: "220px", sm: 0, xs: 0 },
           top: "0",
-          zIndex: "3",
+          zIndex: "3000",
         }}
       >
         <NavBar sideBarHandle={() => setHandleSideBar(true)} />
@@ -70,9 +70,8 @@ const Layout = ({ children }: { children?: any }) => {
             onClick={(event) => {
               event.stopPropagation();
             }}
-            className={`${styles.display} ${
-              handleSideBar && styles.displayShow
-            }`}
+            className={`${styles.display} ${handleSideBar && styles.displayShow
+              }`}
           >
             <SideBar
               handleSideCheck={handleSideBar}

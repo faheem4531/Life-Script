@@ -141,9 +141,9 @@
         "dis8": "Priority customer support",
         "dis9": "Exclusive access to new features "
       },
-      "category1":"Basic",
-      "category2":"Standard",
-      "category3":"Premium",
+      "category1": "Basic",
+      "category2": "Standard",
+      "category3": "Premium",
       "popular": "Popular",
       "btnText": "Get Started",
       "pricingBelowText": "30 days money back guarantee"
@@ -328,8 +328,8 @@
       "input3": "What’s on your mind?",
       "btnText": "Get in touch!"
     },
-    "previous":"Previous",
-    "next":"Next"
+    "previous": "Previous",
+    "next": "Next"
   },
   "aboutSection": {
     "title": "Empowering people to create a timeless legacy, resonating across",
@@ -485,70 +485,70 @@
   },
   "faqsSections": {
     "title": "FAQs",
-    "description":"Want to know more about Lifescript? Here, you’ll find answers to the questions we get asked the most about.",
-    "question1":{
-      "question":"Can I purchase extra books?",
-      "answer":"Yes, additional full-color hardcover books are available for 39$ each."
+    "description": "Want to know more about Lifescript? Here, you’ll find answers to the questions we get asked the most about.",
+    "question1": {
+      "question": "Can I purchase extra books?",
+      "answer": "Yes, additional full-color hardcover books are available for 39$ each."
     },
-    "question2":{
-      "question":"How long will it take?",
-      "answer":"Your book, your pace! Some people finish their book in 2-3 sittings while others prefer to enjoy the process and continually polish their answers for months. However you choose, enjoy revisiting your unique memories!"
+    "question2": {
+      "question": "How long will it take?",
+      "answer": "Your book, your pace! Some people finish their book in 2-3 sittings while others prefer to enjoy the process and continually polish their answers for months. However you choose, enjoy revisiting your unique memories!"
     },
-    "question3":{
-      "question":"Can I gift a LifeScript and how does that work?",
-      "answer":"Absolutely, gifting a LifeScript is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch."
+    "question3": {
+      "question": "Can I gift a LifeScript and how does that work?",
+      "answer": "Absolutely, gifting a LifeScript is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch."
     },
-    "question4":{
-      "question":"What is included in each plan?",
-      "answer":"Lifetime access to our platform, full-color hardcover printed book and free delivery."
+    "question4": {
+      "question": "What is included in each plan?",
+      "answer": "Lifetime access to our platform, full-color hardcover printed book and free delivery."
     },
-    "question5":{
-      "question":"Is international shipping available and how much does it cost?",
-      "answer":"We ship internationally and provide delivery tracking. Oh, and it’s free."
+    "question5": {
+      "question": "Is international shipping available and how much does it cost?",
+      "answer": "We ship internationally and provide delivery tracking. Oh, and it’s free."
     },
-    "question6":{
-      "question":"Is Lifescript available in other languages?",
-      "answer":"Yes, it is also available in Spanish, and we are excited to expand to more languages soon. We believe that everyones deserves to have their story told regardless of their language."
+    "question6": {
+      "question": "Is Lifescript available in other languages?",
+      "answer": "Yes, it is also available in Spanish, and we are excited to expand to more languages soon. We believe that everyones deserves to have their story told regardless of their language."
     },
-    "question7":{
-      "question":"What is your refund policy?",
-      "answer":"If you are not entirely satisfied with your Lifescript experience, we offer an easy, no-questions-asked refund within 30 days of purchase, as long as no books have been printed. Your happiness is our highest priority."
+    "question7": {
+      "question": "What is your refund policy?",
+      "answer": "If you are not entirely satisfied with your Lifescript experience, we offer an easy, no-questions-asked refund within 30 days of purchase, as long as no books have been printed. Your happiness is our highest priority."
     },
-    "question8":{
-      "question":"What customization options are available for my book?",
-      "answer":"The exterior consists of durable, premium A5 size cover (148mm x 210mm or 5.83in x 8.27in) with professional, customizable designs. On the inside, enjoy premium 80p paper and tailor the text to your preference - font, size, bold, italics, underline and more."
+    "question8": {
+      "question": "What customization options are available for my book?",
+      "answer": "The exterior consists of durable, premium A5 size cover (148mm x 210mm or 5.83in x 8.27in) with professional, customizable designs. On the inside, enjoy premium 80p paper and tailor the text to your preference - font, size, bold, italics, underline and more."
     },
-    "question9":{
-      "question":"Can I add photos?",
-      "answer":"Yes, we encourage adding as many photos as you like. You don’t have to worry about photo quality as we automatically upscale and fit your photos within printing requirements!"
+    "question9": {
+      "question": "Can I add photos?",
+      "answer": "Yes, we encourage adding as many photos as you like. You don’t have to worry about photo quality as we automatically upscale and fit your photos within printing requirements!"
     },
-    "question10":{
-      "question":"How can I ensure my book and information remain private?",
-      "answer":"Your privacy is our top priority. We use the latest security technologies to protect your personal stories and information."
+    "question10": {
+      "question": "How can I ensure my book and information remain private?",
+      "answer": "Your privacy is our top priority. We use the latest security technologies to protect your personal stories and information."
     },
-    "question11":{
-      "question":"What happens when my subscription ends?",
-      "answer":"You will receive a reminder a month before the subscription ends. You will have a chance to complete your stories and order your book. If needed, we offer an additional month for free or to renew the subscription for another year."
+    "question11": {
+      "question": "What happens when my subscription ends?",
+      "answer": "You will receive a reminder a month before the subscription ends. You will have a chance to complete your stories and order your book. If needed, we offer an additional month for free or to renew the subscription for another year."
     },
-    "question12":{
-      "question":"Is there a word or page limit to my stories?",
-      "answer":"There is a 600 page limit but in practice books are around 100-150 pages."
+    "question12": {
+      "question": "Is there a word or page limit to my stories?",
+      "answer": "There is a 600 page limit but in practice books are around 100-150 pages."
     },
-    "question13":{
-      "question":"Can I specify when the gift email is sent to my recipient?",
-      "answer":"There is a 600 page liYes, you will be able to choose the date that the gift email is sent when you purchase the gift subscription. Gift emails are sent in the early morning on the chosen date.mit but in practice books are around 100-150 pages."
+    "question13": {
+      "question": "Can I specify when the gift email is sent to my recipient?",
+      "answer": "There is a 600 page liYes, you will be able to choose the date that the gift email is sent when you purchase the gift subscription. Gift emails are sent in the early morning on the chosen date.mit but in practice books are around 100-150 pages."
     },
-    "question14":{
-      "question":"Can I add or edit questions?",
-      "answer":"You can do both whenever you want until you order the physical book."
+    "question14": {
+      "question": "Can I add or edit questions?",
+      "answer": "You can do both whenever you want until you order the physical book."
     },
-    "question15":{
-      "question":"How long does book delivery take?",
-      "answer":"It usually takes 10-15 business days."
+    "question15": {
+      "question": "How long does book delivery take?",
+      "answer": "It usually takes 10-15 business days."
     },
-    "question16":{
-      "question":"Can I customize the frequency of questions I receive?",
-      "answer":"Yes, you have full control over how often you receive questions."
+    "question16": {
+      "question": "Can I customize the frequency of questions I receive?",
+      "answer": "Yes, you have full control over how often you receive questions."
     },
     "stillConfusedSection": {
       "title": "Still confused? Ask",
@@ -560,26 +560,26 @@
       "btnText": "Get in touch!"
     }
   },
-  "stripeFlow":{
-    "stripePage":{
+  "stripeFlow": {
+    "stripePage": {
       "title": "Who is LifeScript for? ",
-      "mySelf":"Myself",
-      "giftForSomeoneElse":"A gift for someone else",
-      "preference":"Select Your Preference",
-      "buyNow":"Buy Now",
-      "freeTrial":"Start 7-Day Free Trial",
-      "btnText":"Continue"
+      "mySelf": "Myself",
+      "giftForSomeoneElse": "A gift for someone else",
+      "preference": "Select Your Preference",
+      "buyNow": "Buy Now",
+      "freeTrial": "Start 7-Day Free Trial",
+      "btnText": "Continue"
     },
-    "pricePlanCard":{
-      "TabPanel":{
-        "title":"Choose a Payment Plan",
-        "description":"  Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.",
-        "category1":"Basic",
-        "category2":"Standard",
-        "category3":"Premium",
-        "plan":"Plan",
-        "choosePlan":"Choose Plan",
-        "commonText":"Includes a premium full-color hardcover book, free shipping and lifetime access to LifeScript with:"
+    "pricePlanCard": {
+      "TabPanel": {
+        "title": "Choose a Payment Plan",
+        "description": "  Each package comes with a lifetime access to LifeScript platform, one premium full-colour hardcover book, and free shipping.",
+        "category1": "Basic",
+        "category2": "Standard",
+        "category3": "Premium",
+        "plan": "Plan",
+        "choosePlan": "Choose Plan",
+        "commonText": "Includes a premium full-color hardcover book, free shipping and lifetime access to LifeScript with:"
       },
       "pricingCardMapArray": {
         "dis1": "Spelling and grammar assistance",
@@ -597,100 +597,99 @@
     },
     "registerSection": {
       "title": "Register For LifeScript",
-      "name":"Name",
-      "namePlaceholder":"Enter your full name",
-      "email":"Email",
-      "emailPlaceholder":"Enter your email address",
-      "google":"Login with Google",
-      "facebook":"Login with Facebook",
-      "btnText":"Start 7-Day Free Trial",
-      "tabsData":{
-        "tab1":"CHOOSE PLAN",
-        "tab2":"REGISTER",
-        "tab3":"PAYMENT"
+      "name": "Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email address",
+      "google": "Login with Google",
+      "facebook": "Login with Facebook",
+      "btnText": "Start 7-Day Free Trial",
+      "tabsData": {
+        "tab1": "CHOOSE PLAN",
+        "tab2": "REGISTER",
+        "tab3": "PAYMENT"
       }
     },
-    "PurchaseForm":{
-      "title":"Purchase LifeScript",
-      "numberOfBook":"Number of books",
-      "dropDown":{
-        "value0":{
-          "label":"1 book Included with Subscription"
+    "PurchaseForm": {
+      "title": "Purchase LifeScript",
+      "numberOfBook": "Number of books",
+      "dropDown": {
+        "value0": {
+          "label": "1 book Included with Subscription"
         },
-        "value1":{
-          "label":"(2 books)",
-          "price":"+ $39"
+        "value1": {
+          "label": "(2 books)",
+          "price": "+ $39"
         },
-        "value2":{
-          "label":"(3 books)",
-          "price":"+ $78"
+        "value2": {
+          "label": "(3 books)",
+          "price": "+ $78"
         },
-        "value3":{
-          "label":"(4 books)",
-          "price":"+ $117"
+        "value3": {
+          "label": "(4 books)",
+          "price": "+ $117"
         },
-        "value4":{
-          "label":"(5 books)",
-          "price":"+ $156"
+        "value4": {
+          "label": "(5 books)",
+          "price": "+ $156"
         },
-        "value5":{
-          "label":"(6 books)",
-          "price":"+ $195"
+        "value5": {
+          "label": "(6 books)",
+          "price": "+ $195"
         },
-        "value6":{
-          "label":"(7 books)",
-          "price":"+ $234"
+        "value6": {
+          "label": "(7 books)",
+          "price": "+ $234"
         },
-        "value7":{
-          "label":"(8 books)",
-          "price":"+ $273"
+        "value7": {
+          "label": "(8 books)",
+          "price": "+ $273"
         },
-        "value8":{
-          "label":"(9 books)",
-          "price":"+ $312"
+        "value8": {
+          "label": "(9 books)",
+          "price": "+ $312"
         },
-        "value9":{
-          "label":"(10 books)",
-          "price":"+ $351"
+        "value9": {
+          "label": "(10 books)",
+          "price": "+ $351"
         }
       },
-      "referralCode":{
-        "title":"Referred by a friend? Enter Referral code here",
-        "subTitle":"Referral Code",
-        "btnText":"Verify"
+      "referralCode": {
+        "title": "Referred by a friend? Enter Referral code here",
+        "subTitle": "Referral Code",
+        "btnText": "Verify"
       },
-      "checkOut":{
-        "title":"Checkout",
-        "subTitle":"Prefer to enter details manually? Please provide your payment info below.",
-        "cardNumber":"Card Number",
-        "discription":"Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers.",
-        "discription2":" We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript's terms and conditions and privacy policy.",
-        "buyFor":"Buy for",
-        "securePaymentWith":"Secure Payment with"
+      "checkOut": {
+        "title": "Checkout",
+        "subTitle": "Prefer to enter details manually? Please provide your payment info below.",
+        "cardNumber": "Card Number",
+        "discription": "Yes, send me updates with storytelling techniques, inspirational stories, and exclusive offers.",
+        "discription2": " We treasure your privacy and security. Proceeding with this purchase means you’re okay with LifeScript's terms and conditions and privacy policy.",
+        "buyFor": "Buy for",
+        "securePaymentWith": "Secure Payment with"
       }
     },
-    "giftFlow":{
-      "tabBar":{
-        "tab1":"CHOOSE PLAN",
-        "tab2":"DELIVERY",
-        "tab3":"PAYMENT"
+    "giftFlow": {
+      "tabBar": {
+        "tab1": "CHOOSE PLAN",
+        "tab2": "DELIVERY",
+        "tab3": "PAYMENT"
       },
-      "deliveryForm":{
-        "title":"Personalize Your Gift",
-        "nameField":"Recipient’s Full Name",
-        "emailField":"Recipient’s Email",
-        "sendGift":"Send my gift on:",
-        "from":"From",
-        "fromPlaceholder":"Enter your Email",
-        "fromName":"From Name",
-        "fromNamePlaceholder":"Enter your Name",
-        "yourMessage":"Your Message",
-        "messagePlaceholder":"Hello, I've gifted you a LifeScript subscription, allowing you to easily share and preserve your stories in a beautiful hardcover book.",
-        "btnText":"Continue"
+      "deliveryForm": {
+        "title": "Personalize Your Gift",
+        "nameField": "Recipient’s Full Name",
+        "emailField": "Recipient’s Email",
+        "sendGift": "Send my gift on:",
+        "from": "From",
+        "fromPlaceholder": "Enter your Email",
+        "fromName": "From Name",
+        "fromNamePlaceholder": "Enter your Name",
+        "yourMessage": "Your Message",
+        "messagePlaceholder": "Hello, I've gifted you a LifeScript subscription, allowing you to easily share and preserve your stories in a beautiful hardcover book.",
+        "btnText": "Continue"
       }
     }
   },
-
   "sideBar": {
     "Overview": "Overview",
     "AllCh": "Chapters",
@@ -1012,9 +1011,9 @@
     "saveResDes": "Once saved, you will find the chapter in completed chapters tab.",
     "saveResProcBtn": "Not Yet",
     "saveResCancelBtn": "Keep Changes",
-    "RevertRes": "Revert Response",
+    "RevertRes": "Revert Changes",
     "RevertResDes": "This will undo all narrative fusion changes. You will be redirected to the original content compiled chapter for editing.",
-    "dontLike": "Doesn’t like the narrative fusion response?",
+    "dontLike": "Don’t like narrative fusion result?",
     "RevertResProcBtn": "Not Yet",
     "RevertResCancelBtn": "Revert Changes"
   }
