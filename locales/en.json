@@ -243,8 +243,8 @@
         "ans": "If you are not entirely satisfied with your Lifescript experience, we offer an easy, no-questions-asked refund within 30 days of purchase, as long as no books have been printed. Your happiness is our highest priority."
       },
       "question8": {
-        "qs": "What happens when my subscription ends?",
-        "ans": "You will receive a reminder a month before the subscription ends. You will have a chance to complete your stories and order your book. If needed, we offer an additional month for free or to renew the subscription for another year."
+        "qs": "Do you have any tutorials or instructions on how to use the platform and create my book?",
+        "ans": "Absolutely! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have."
       }
     },
     "reminderSection": {
@@ -528,7 +528,7 @@
     },
     "question11": {
       "question": "What happens when my subscription ends?",
-      "answer": "You will receive a reminder a month before the subscription ends. You will have a chance to complete your stories and order your book. If needed, we offer an additional month for free or to renew the subscription for another year."
+      "answer": "Absolutely! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have."
     },
     "question12": {
       "question": "Is there a word or page limit to my stories?",
@@ -536,7 +536,7 @@
     },
     "question13": {
       "question": "Can I specify when the gift email is sent to my recipient?",
-      "answer": "There is a 600 page liYes, you will be able to choose the date that the gift email is sent when you purchase the gift subscription. Gift emails are sent in the early morning on the chosen date.mit but in practice books are around 100-150 pages."
+      "answer": "You will be able to choose the date that the gift email is sent when you purchase the gift subscription. Gift emails are sent in the early morning on the chosen date."
     },
     "question14": {
       "question": "Can I add or edit questions?",
