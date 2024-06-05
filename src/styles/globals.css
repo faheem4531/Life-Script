@@ -272,21 +272,26 @@ a {
   -moz-appearance: textfield;
 }
 
+.rdw-image-modal-size-input{
+  background-color: #FAFAFA;
+  color: black;
+}
+
 .rdw-image-modal-btn:disabled,
 .rdw-embedded-modal-btn:disabled,
 .rdw-link-modal-btn:disabled {
-  background: #197065 !important;
+  background: #e1693b !important;
   color: white !important;
-  border-radius: 30px !important;
+  border-radius: 2px !important;
 }
 
 .rdw-image-modal-btn,
 .rdw-embedded-modal-btn,
 .rdw-link-modal-btn {
   background: transparent !important;
-  color: #197065 !important;
-  border-radius: 30px !important;
-  border: 1px solid #197065 !important;
+  color: #e1693b !important;
+  border-radius: 2px !important;
+  border: 1px solid #e1693b !important;
 }
 
 button{

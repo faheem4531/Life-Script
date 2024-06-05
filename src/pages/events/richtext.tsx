@@ -630,7 +630,7 @@ const RichText = ({ questionId }) => {
                 previewImage: true,
                 inputAccept: "image/jpeg,image/jpg,image/png",
                 uploadCallback: uploadCallback,
-                alt: { present: true, mandatory: false },
+                alt: { present: false, mandatory: false },
                 defaultSize: {
                   height: "auto",
                   width: "400px",
