@@ -54,6 +54,13 @@
   width: 100vw;
   z-index: -10;
 }
+.pureHeadings{
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  display: inherit;
+}
 
 @media screen and (max-width:899px) {
   .bgImage {

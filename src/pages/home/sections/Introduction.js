@@ -53,7 +53,7 @@ const Introduction = () => {
           position: "relative"
         }}
         >
-          <h1>
+          <h1 className={styles.pureHeadings}>
             <span className="multiple-text" style={color}></span> {t("landingPage.hero.mainHeading")}
           </h1>
         </Typography>

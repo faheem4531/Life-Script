@@ -44,6 +44,20 @@
   height: 290px;
   animation: image4 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
+/* h1, h2,h3,h4,h5,h6{
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  display: inherit;
+} */
+.pureHeadings{
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  display: inherit;
+}
 
 @keyframes slideIn {
   0% {

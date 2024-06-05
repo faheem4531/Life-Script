@@ -23,7 +23,7 @@ const Story = () => {
           marginBottom: "20px",
           fontFamily: "Besley !important"
         }}>
-          <h2> {t("aboutSection.ourStory.title")}</h2>
+          <h2 className={styles.pureHeadings}> {t("aboutSection.ourStory.title")}</h2>
         </Typography>
         <Typography sx={{ fontSize: "16px", marginTop: { md: "0", sm: "20px", xs: "20px" }, fontFamily: "Avenir" }}>{t("aboutSection.ourStory.description")}</Typography>
         <Typography sx={{ fontSize: "16px", margin: "15px 0", fontFamily: "Avenir" }}>{t("aboutSection.ourStory.discription1")}</Typography>

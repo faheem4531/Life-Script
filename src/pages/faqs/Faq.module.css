@@ -18,6 +18,14 @@
   background-position: bottom right;
 }
 
+.pureHeadings{
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  display: inherit;
+}
+
 @media screen and (max-width: 899px)  {
   .faqPage {
     background-size: 100% 150px;

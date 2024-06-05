@@ -27,7 +27,7 @@ const Working = ({ data, heading, subHeading = false, marked = false }) => {
           color: "#F3ECDA",
           position: "relative",
         }}>
-          <h3>{subHeading}</h3>
+          <h3 className={styles.pureHeadings}>{subHeading}</h3>
           <Image src={Line} style={styleLine} alt="mark" />
         </Typography>}
       </Box>

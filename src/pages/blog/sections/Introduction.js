@@ -28,7 +28,7 @@ const IntroductionBlog = () => {
           fontSize: { md: "52px", sm: "44px", xs: "32px" },
           fontWeight: 500, marginBottom: "30px", fontFamily: "Besley !important"
         }}>
-          <h2>
+          <h2 className={styles.pureHeadings}>
             {t("blogSection.title")}
             {" "}
             <span className={styles.lineBox}>

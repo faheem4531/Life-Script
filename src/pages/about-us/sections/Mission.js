@@ -2,7 +2,7 @@
 
 import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 import { Box, Typography } from "@mui/material";
-
+import styles from "./AboutUs.module.css"
 import LeftStyle from "@/__webAssets/pngs/left-style2.png"
 import RightStyle from "@/__webAssets/pngs/right-style2.png"
 import { useTranslation } from "react-i18next";
@@ -18,7 +18,7 @@ const Mission = () => {
         borderBottom: "1px solid #E1683B",
         fontFamily: "Avenir"
       }}>
-        <h3>{t("aboutSection.ourMission.description")}</h3>
+        <h3 className={styles.pureHeadings}>{t("aboutSection.ourMission.description")}</h3>
       </Typography>
     </Box>
   )

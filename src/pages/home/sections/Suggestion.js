@@ -45,7 +45,7 @@ const Suggestion = () => {
           fontWeight: 500,
           fontFamily: "Besley !important"
         }}>
-          <h2>
+          <h2 className={styles.pureHeadings}>
            
            {t("landingPage.perfectSection.title")}
           </h2>

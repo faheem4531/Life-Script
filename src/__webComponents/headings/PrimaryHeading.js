@@ -41,10 +41,10 @@ const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showS
           flexDirection: { sm: "row", md: mdDirection, lg: "row", xs: direction },
           columnGap: { md: "15px", sm: "10px", xs: "10px" }
         }}>
-        <h2>{heading}</h2>
+        <h2 className={styles.pureHeadings}>{heading}</h2>
         {marked && <Box>
           <Box display="inline-block" position="relative">
-            <h2>{marked}</h2>
+            <h2 className={styles.pureHeadings}>{marked}</h2>
             <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
           </Box>
         </Box>}

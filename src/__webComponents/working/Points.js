@@ -32,7 +32,7 @@ const Points = ({ no = false, icon, title, discription }) => {
         minHeight: { lg: icon ? "100px" : "140px", md: icon ? "75px" : "110px" },
         fontFamily: "Besley !important",
       }}>
-        <h4>{title}</h4>
+        <h4 className={styles.pureHeadings}>{title}</h4>
       </Typography>
 
       <Typography sx={{
@@ -41,7 +41,7 @@ const Points = ({ no = false, icon, title, discription }) => {
         marginTop: { md: "0", sm: "20px", xs: "20px" },
         fontFamily: "Avenir"
       }}>
-        <h5>{discription}</h5>
+        <h5 className={styles.pureHeadings}>{discription}</h5>
       </Typography>
     </Box >
   )

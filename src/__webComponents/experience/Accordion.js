@@ -124,7 +124,7 @@ export default function CustomizedAccordions() {
         <Accordion expanded={expanded === 'panel1'} onChange={() => { handleChange('panel1'); setCurrentPanel(0) }} open={expanded === 'panel1'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel1 ? "#3E4F3C" : ""}>
-              <h3>{t("landingPage.featureSection.accordion1.heading")}</h3>
+              <h3 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion1.heading")}</h3>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -135,14 +135,14 @@ export default function CustomizedAccordions() {
               maxWidth: "370px",
               fontFamily: "Avenir"
             }}>
-              <h4>{t("landingPage.featureSection.accordion1.description")}</h4>
+              <h4 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion1.description")}</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel2'} onChange={() => { handleChange('panel2'); setCurrentPanel(1) }} open={expanded === 'panel2'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel2 ? "#3E4F3C" : ""}>
-              <h3>{t("landingPage.featureSection.accordion2.heading")} </h3>
+              <h3 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion2.heading")} </h3>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -153,14 +153,14 @@ export default function CustomizedAccordions() {
               maxWidth: "370px",
               fontFamily: "Avenir"
             }}>
-              <h4>{t("landingPage.featureSection.accordion2.description")}</h4>
+              <h4 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion2.description")}</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel3'} onChange={() => { handleChange('panel3'); setCurrentPanel(2) }} open={expanded === 'panel3'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel3 ? "#3E4F3C" : ""}>
-              <h3>{t("landingPage.featureSection.accordion3.heading")}</h3>
+              <h3 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion3.heading")}</h3>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -171,14 +171,14 @@ export default function CustomizedAccordions() {
               maxWidth: "370px",
               fontFamily: "Avenir"
             }}>
-              <h4>{t("landingPage.featureSection.accordion3.description")}</h4>
+              <h4 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion3.description")}</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel4'} onChange={() => { handleChange('panel4'); setCurrentPanel(3) }} open={expanded === 'panel4'}>
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel4 ? "#3E4F3C" : ""}>
-              <h3>{t("landingPage.featureSection.accordion4.heading")} </h3>
+              <h3 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion4.heading")} </h3>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -189,14 +189,14 @@ export default function CustomizedAccordions() {
               maxWidth: "370px",
               fontFamily: "Avenir"
             }}>
-              <h4>{t("landingPage.featureSection.accordion4.description")}</h4>
+              <h4 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion4.description")}</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel5'} onChange={() => { handleChange('panel5'); setCurrentPanel(4) }} open={expanded === 'panel5'}>
           <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel5 ? "#3E4F3C" : ""}>
-              <h3>{t("landingPage.featureSection.accordion5.heading")}</h3>
+              <h3 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion5.heading")}</h3>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -207,14 +207,14 @@ export default function CustomizedAccordions() {
               maxWidth: "370px",
               fontFamily: "Avenir"
             }}>
-              <h4> {t("landingPage.featureSection.accordion5.description")}</h4>
+              <h4 className={styles.pureHeadings}> {t("landingPage.featureSection.accordion5.description")}</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
         <Accordion expanded={expanded === 'panel6'} onChange={() => { handleChange('panel6'); setCurrentPanel(5) }} open={expanded === 'panel6'}>
           <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
             <Typography sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }} color={panelActive.panel6 ? "#3E4F3C" : ""}>
-              <h3>{t("landingPage.featureSection.accordion6.heading")}</h3>
+              <h3 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion6.heading")}</h3>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -225,7 +225,7 @@ export default function CustomizedAccordions() {
               maxWidth: "370px",
               fontFamily: "Avenir"
             }}>
-              <h4>{t("landingPage.featureSection.accordion6.description")}</h4>
+              <h4 className={styles.pureHeadings}>{t("landingPage.featureSection.accordion6.description")}</h4>
             </Typography>
           </AccordionDetails>
         </Accordion>
