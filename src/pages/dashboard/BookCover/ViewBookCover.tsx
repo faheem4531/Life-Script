@@ -1,17 +1,17 @@
+import BookCover from "@/_assets/svg/book-cover-header.svg";
 import Layout from "@/components/Layout/Layout";
 import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
-import BookCover from "@/_assets/svg/book-cover-header.svg";
 
-import { font } from "../../../styles/font";
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import { font } from "../../../styles/font";
 
 const ViewBookCover = () => {
   const { t } = useTranslation();
@@ -31,6 +31,189 @@ const ViewBookCover = () => {
 
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
 
+  // const generatePDFOne = async (
+  //   title,
+  //   subtitle,
+  //   name,
+  //   imgUrl,
+  //   color,
+  //   finalCover,
+  //   spine = 6
+  // ) => {
+  //   // const logo =
+  //   //   "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
+  //   const logo =
+  //     "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
+  //   const pdfHeight = 255;
+  //   const pageWidth = 170; //prev was 169.5
+  //   const tail = spine;
+  //   const pdfWidth = pageWidth + pageWidth + spine;
+  //   const pdf = new jsPDF({
+  //     unit: "mm", // Set the unit to millimeters
+  //     format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
+  //     orientation: "landscape",
+  //   });
+
+  //   pdf.addFileToVFS("WorkSans-normal.ttf", font);
+
+  //   pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
+
+  //   // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
+
+  //   const text2 = subtitle?.toUpperCase(); //bookName
+  //   const text1 = title?.toUpperCase();
+  //   const writter = name?.toUpperCase(); //Author name
+  //   const bgcolor = color?.toString();
+  //   const imageUrl = imgUrl;
+  //   // Section 1:
+  //   pdf.setFillColor(bgcolor);
+  //   pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
+
+  //   // Section 2:
+  //   pdf.setFillColor(255, 255, 255);
+  //   pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // spine first border
+  //   pdf.setFillColor(bgcolor);
+  //   pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
+  //   pdf.setFillColor(255, 255, 255);
+  //   const spineBorder2 = pageWidth + spine - 1;
+  //   pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
+
+  //   let y = 5; // Initial y-coordinate
+  //   const fontSize = 10; //prev was minus 3
+  //   // const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
+  //   const textCenter = pageWidth + tail / 2 - 1.3;
+
+  //   //bookName
+  //   for (let i = 0; i < text2.length; i++) {
+  //     const char = text2[i];
+  //     pdf.setFont("WorkSans");
+  //     pdf.setFontSize(fontSize);
+  //     // pdf.setTextColor(255, 255, 255);
+  //     if (CoverNumber === "5") {
+  //       pdf.setTextColor(255, 255, 255);
+  //     } else {
+  //       pdf.setTextColor(0, 0, 0);
+  //     }
+
+  //     pdf.text(char, textCenter, y, { angle: 270 });
+  //     y = y + 3; // Move to the next line for each character
+  //   }
+
+  //   pdf.setFont("WorkSans");
+  //   pdf.setFontSize(fontSize);
+  //   pdf.setTextColor(0, 0, 0);
+  //   pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
+
+  //   y = y + 6;
+
+  //   for (let i = 0; i < writter.length; i++) {
+  //     const char = writter[i];
+  //     pdf.setFont("WorkSans");
+  //     pdf.setFontSize(fontSize);
+  //     // pdf.setTextColor(255, 255, 255);
+  //     if (CoverNumber === "5") {
+  //       pdf.setTextColor(255, 255, 255);
+  //     } else {
+  //       pdf.setTextColor(0, 0, 0);
+  //     }
+  //     // pdf.setTextColor(0, 0, 0);
+  //     pdf.text(char, textCenter, y, { angle: 270 });
+  //     y = y + 3; // Move to the next line for each character
+  //   }
+
+  //   const logoSize = tail < 22 ? tail - 3 : 20;
+  //   const tailcenter = pageWidth + (tail - logoSize) / 2;
+  //   pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
+
+  //   // Section 3:
+  //   // pdf.setFillColor(bgcolor);
+  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+  //   // const centerX = pageWidth + tail + pageWidth / 2;
+
+  //   // // 1st Text: "A good book" with font size 16px
+  //   // pdf.setFontSize(16);
+  //   // pdf.setFont("WorkSans");
+  //   // pdf.setTextColor(255, 255, 255);
+  //   // pdf.text(text1, centerX, 50.8, { align: "center" });
+
+  //   // // 2nd Text: "New Book" font size 22px, bold, and underlined
+  //   // pdf.setFontSize(30);
+  //   // pdf.setFont("WorkSans");
+  //   // pdf.setTextColor(255, 255, 255);
+  //   // pdf.text(text2, centerX, 66.04, {
+  //   //   align: "center",
+  //   // }); // Convert inches to millimeters
+
+  //   // const imgWidth = 140; // Convert inches to millimeters
+  //   // const imgHeight = 80; // Convert inches to millimeters
+  //   // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+  //   // const yPos = 87; // Convert inches to millimeters
+  //   // pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
+
+  //   // // 4th Text: "- good book -" font size 16px
+  //   // pdf.setFont("WorkSans");
+  //   // pdf.setTextColor(255, 255, 255);
+  //   // pdf.setFontSize(16);
+  //   // pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
+
+  //   //Mypdf section4
+  //   // const svgComponentWidth = pageWidth;
+  //   // const svgComponentHeight = pdfHeight;
+
+  //   // // Calculate the position to center the SVG component within Section 3
+  //   // const svgComponentX = pageWidth + tail;
+  //   // const svgComponentY = 0;
+
+  //   // // Call the function to add your SVG component to the PDF
+  //   // await addSvgComponentToPdf(
+  //   //   pdf,
+  //   //   svgComponentX,
+  //   //   svgComponentY,
+  //   //   svgComponentWidth,
+  //   //   svgComponentHeight
+  //   // );
+
+  //   // pdf.setFillColor(bgcolor);
+  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+  //   // const centerX = pageWidth + tail + pageWidth / 2;
+  //   // const yPos = 20;
+
+  //   // const svgElement = renderToStaticMarkup(<Cover1 />);
+
+  //   // saveSvgAsPng(svgElement, "familytree.png", {
+  //   //   scale: 1,
+  //   //   backgroundColor: "#FFFFFF",
+  //   // }).then((data) => {
+  //   //   console.log("data", data);
+  //   //   // uploadImageonCloud(data);
+  //   // });
+
+  //   // const svgImage = await convertSvgToImage();
+
+  //   // pdf.setFillColor(bgcolor);
+  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+  //   // const centerX = pageWidth + tail + pageWidth / 2;
+
+  //   // const imgWidth = pageWidth; // Convert inches to millimeters
+  //   // const imgHeight = pageWidth; // Convert inches to millimeters
+  //   // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
+  //   // const yPos = 87; // Convert inches to millimeters
+  //   // pdf.addImage(svgPng, "png", centerX, 0, imgWidth, imgHeight);
+  //   // console.log("svg", svgPng);
+  //   // pdf.addImage(svgPng, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
+
+  //   // pdf.setFillColor(bgcolor);
+  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+
+  //   pdf.setFillColor(bgcolor);
+  //   pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
+  //   const centerX = pageWidth + tail + pageWidth / 2;
+  //   pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
+
+  //   pdf.save("my_document2.pdf");
+  // };
+
+
   const generatePDFOne = async (
     title,
     subtitle,
@@ -38,181 +221,99 @@ const ViewBookCover = () => {
     imgUrl,
     color,
     finalCover,
-    spine = 6
+    spine = 11.5
   ) => {
-    // const logo =
-    //   "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
     const logo =
       "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
-    const pdfHeight = 255;
-    const pageWidth = 170; //prev was 169.5
-    const tail = spine;
-    const pdfWidth = pageWidth + pageWidth + spine;
+    const pdfHeight = 269; // Height in millimeters
+    const pageWidth = (355.5 - spine) / 2; // Adjusted pageWidth based on the total width minus the spine
+    const pdfWidth = 2 * pageWidth + spine; // Total width in millimeters
+    const offset = 20; // Offset for all sides
+  
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
-      format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
+      format: [pdfWidth + 2 * offset, pdfHeight + 2 * offset], // Set the dimensions of the PDF
       orientation: "landscape",
     });
-
+  
     pdf.addFileToVFS("WorkSans-normal.ttf", font);
-
     pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
-
-    // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
-
-    const text2 = subtitle?.toUpperCase(); //bookName
+  
+    const text2 = subtitle?.toUpperCase(); // Book name
     const text1 = title?.toUpperCase();
-    const writter = name?.toUpperCase(); //Author name
+    const writter = name?.toUpperCase(); // Author name
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
+  
+    // Fill the entire background with bgcolor
+    pdf.setFillColor(bgcolor);
+    pdf.rect(0, 0, pdfWidth + 2 * offset, pdfHeight + 2 * offset, "F");
+  
     // Section 1:
     pdf.setFillColor(bgcolor);
-    pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
-
+    pdf.rect(offset, offset, pageWidth, pdfHeight, "F");
+  
     // Section 2:
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // spine first border
+    pdf.rect(offset + pageWidth, offset, 1, pdfHeight, "F"); // Spine first border
     pdf.setFillColor(bgcolor);
-    pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
+    pdf.rect(offset + pageWidth + 1, offset, spine - 2, pdfHeight, "F"); // Inner spine
     pdf.setFillColor(255, 255, 255);
-    const spineBorder2 = pageWidth + spine - 1;
-    pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
-
-    let y = 5; // Initial y-coordinate
-    const fontSize = 10; //prev was minus 3
-    // const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
-    const textCenter = pageWidth + tail / 2 - 1.3;
-
-    //bookName
+    pdf.rect(offset + pageWidth + spine - 1, offset, 1, pdfHeight, "F"); // Spine second border
+  
+    let y = offset + 5; // Initial y-coordinate
+    const fontSize = 10; // Font size
+  
+    const textCenter = offset + pageWidth + spine / 2 - 1.3;
+  
+    // Book name on spine
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      // pdf.setTextColor(255, 255, 255);
       if (CoverNumber === "5") {
         pdf.setTextColor(255, 255, 255);
       } else {
         pdf.setTextColor(0, 0, 0);
       }
-
       pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3; // Move to the next line for each character
+      y = y + 3;
     }
-
+  
     pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
     pdf.setTextColor(0, 0, 0);
-    pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
-
+    pdf.text("  |  ", offset + pageWidth + spine / 2 - 1, y, { angle: 270 });
     y = y + 6;
-
+  
+    // Author name on spine
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      // pdf.setTextColor(255, 255, 255);
       if (CoverNumber === "5") {
         pdf.setTextColor(255, 255, 255);
       } else {
         pdf.setTextColor(0, 0, 0);
       }
-      // pdf.setTextColor(0, 0, 0);
       pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3; // Move to the next line for each character
+      y = y + 3;
     }
-
-    const logoSize = tail < 22 ? tail - 3 : 20;
-    const tailcenter = pageWidth + (tail - logoSize) / 2;
-    pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
-
+  
+    const logoSize = spine < 22 ? spine - 3 : 20;
+    const spineCenter = offset + pageWidth + (spine - logoSize) / 2;
+    pdf.addImage(logo, "png", spineCenter, offset + 225, logoSize, logoSize);
+  
     // Section 3:
-    // pdf.setFillColor(bgcolor);
-    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-    // const centerX = pageWidth + tail + pageWidth / 2;
-
-    // // 1st Text: "A good book" with font size 16px
-    // pdf.setFontSize(16);
-    // pdf.setFont("WorkSans");
-    // pdf.setTextColor(255, 255, 255);
-    // pdf.text(text1, centerX, 50.8, { align: "center" });
-
-    // // 2nd Text: "New Book" font size 22px, bold, and underlined
-    // pdf.setFontSize(30);
-    // pdf.setFont("WorkSans");
-    // pdf.setTextColor(255, 255, 255);
-    // pdf.text(text2, centerX, 66.04, {
-    //   align: "center",
-    // }); // Convert inches to millimeters
-
-    // const imgWidth = 140; // Convert inches to millimeters
-    // const imgHeight = 80; // Convert inches to millimeters
-    // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-    // const yPos = 87; // Convert inches to millimeters
-    // pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
-
-    // // 4th Text: "- good book -" font size 16px
-    // pdf.setFont("WorkSans");
-    // pdf.setTextColor(255, 255, 255);
-    // pdf.setFontSize(16);
-    // pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
-
-    //Mypdf section4
-    // const svgComponentWidth = pageWidth;
-    // const svgComponentHeight = pdfHeight;
-
-    // // Calculate the position to center the SVG component within Section 3
-    // const svgComponentX = pageWidth + tail;
-    // const svgComponentY = 0;
-
-    // // Call the function to add your SVG component to the PDF
-    // await addSvgComponentToPdf(
-    //   pdf,
-    //   svgComponentX,
-    //   svgComponentY,
-    //   svgComponentWidth,
-    //   svgComponentHeight
-    // );
-
-    // pdf.setFillColor(bgcolor);
-    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-    // const centerX = pageWidth + tail + pageWidth / 2;
-    // const yPos = 20;
-
-    // const svgElement = renderToStaticMarkup(<Cover1 />);
-
-    // saveSvgAsPng(svgElement, "familytree.png", {
-    //   scale: 1,
-    //   backgroundColor: "#FFFFFF",
-    // }).then((data) => {
-    //   console.log("data", data);
-    //   // uploadImageonCloud(data);
-    // });
-
-    // const svgImage = await convertSvgToImage();
-
-    // pdf.setFillColor(bgcolor);
-    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-    // const centerX = pageWidth + tail + pageWidth / 2;
-
-    // const imgWidth = pageWidth; // Convert inches to millimeters
-    // const imgHeight = pageWidth; // Convert inches to millimeters
-    // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-    // const yPos = 87; // Convert inches to millimeters
-    // pdf.addImage(svgPng, "png", centerX, 0, imgWidth, imgHeight);
-    // console.log("svg", svgPng);
-    // pdf.addImage(svgPng, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
-
-    // pdf.setFillColor(bgcolor);
-    // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-
     pdf.setFillColor(bgcolor);
-    pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-    const centerX = pageWidth + tail + pageWidth / 2;
-    pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
-
+    pdf.rect(offset + pageWidth + spine, offset, pageWidth, pdfHeight, "F");
+    pdf.addImage(finalCover, "png", offset + pageWidth + spine, offset, pageWidth, pdfHeight);
+  
     pdf.save("my_document2.pdf");
   };
-
+  
+  
+  
   const generatePDFTwo = async (
     title,
     subtitle,
