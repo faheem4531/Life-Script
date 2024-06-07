@@ -180,90 +180,95 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   ) => {
     const logo =
       "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
-    const pageWidth = 153; //prev was 169.5
-    const tail = spine;
-    const offset = 20; // 20mm offset
-    const pdfHeight = 229 + 2 * offset;
-    const pdfWidth = pageWidth + pageWidth + spine + 2 * offset;
+    const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
+    const pageWidth = 153; // prev was 169.5
+    const tail = spine < 6 ? 6 : spine;
+    const pdfWidth = pageWidth + pageWidth + tail + 40; // Adding 20mm offset for left and right
     const pdf = new jsPDF({
-      unit: "mm",
-      format: [pdfWidth, pdfHeight],
+      unit: "mm", // Set the unit to millimeters
+      format: [pdfWidth, pdfHeight], // Updated format with offset
       orientation: "landscape",
     });
-
+  
     pdf.addFileToVFS("WorkSans-normal.ttf", font);
-    // pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
-
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
+  
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
     const writter = name?.toUpperCase();
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
-
-    // Fill the entire background with bgcolor
+  
+    // Full background color including the offset area
     pdf.setFillColor(bgcolor);
     pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
-     
-    // Section 1:
-    pdf.setFillColor(bgcolor);
-    pdf.rect(offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
-
   
-    // Section 2:
-    pdf.setFillColor(255, 255, 255);
-    pdf.rect(pageWidth + offset, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
+    // Section 1: Main content area
     pdf.setFillColor(bgcolor);
-    pdf.rect(pageWidth + 1 + offset, offset, tail - 2, pdfHeight - 2 * offset, "F"); // inner spine
-    pdf.setFillColor(255, 255, 255);
-    const spineBorder2 = pageWidth + spine - 1 + offset;
-    pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
+    pdf.rect(20, 20, pageWidth, pdfHeight - 40, "F");
   
-    let y = offset + 5; // Initial y-coordinate
-    const fontSize = 10; 
-    const textCenter = pageWidth + tail / 2 - 1.3 + offset;
-
-     // bookName
-     for (let i = 0; i < text2.length; i++) {
+    // Section 2: Spine and inner spine
+    pdf.setFillColor(bgcolor);
+    pdf.rect(20 + pageWidth, 20, 1, pdfHeight - 40, "F"); // spine first border
+    pdf.setFillColor(bgcolor);
+    pdf.rect(21 + pageWidth, 20, tail - 2, pdfHeight - 40, "F"); // inner spine
+    pdf.setFillColor(bgcolor);
+    const spineBorder2 = 20 + pageWidth + tail - 1;
+    pdf.rect(spineBorder2, 20, 1, pdfHeight - 40, "F"); // spine second border
+  
+    let y = 25; // Initial y-coordinate with offset
+    const fontSize = 10; // prev was minus 3
+    const textCenter = 20 + pageWidth + tail / 2 - 1.3;
+  
+    for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
-      pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 255 : 0, 0, 0);
+      pdf.setFont("WorkSans");
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255);
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
       pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3;
+      y = y + 3; // Move to the next line for each character
     }
   
-    pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
-    pdf.setTextColor(0, 0, 0);
-    pdf.text("  |  ", textCenter , y, { angle: 270 });
+    pdf.setFont("WorkSans");
+    pdf.setTextColor(255, 255, 255);
+    pdf.text("  |  ", 20 + pageWidth + tail / 2 - 1, y, { angle: 270 });
   
     y = y + 6;
-
+  
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
-      pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 255 : 0, 0, 0);
+      pdf.setFont("WorkSans");
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255);
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
       pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3;
+      y = y + 3; // Move to the next line for each character
     }
     const logoSize = tail < 22 ? tail - 3 : 20;
-    const tailcenter = pageWidth + (tail - logoSize) / 2 + offset;
-    pdf.addImage(logo, "png", tailcenter, pdfHeight - 30 - offset, logoSize, logoSize);
-
-
-       pdf.setFillColor(bgcolor);
-    pdf.rect(pageWidth + tail + offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
-    const centerX = pageWidth + spine + pageWidth / 2;
+    const tailcenter = 20 + pageWidth + (tail - logoSize) / 2;
+    pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
+  
+    pdf.setFillColor(bgcolor);
+    pdf.rect(20 + pageWidth + tail, 20, pageWidth, pdfHeight - 40, "F");
+    const centerX = 20 + pageWidth + tail + pageWidth / 2;
     const newImage = coverData && coverData?.coverPagePhoto;
-    const newData = {imageUrl:newImage}
+    const newData = { imageUrl: newImage };
     const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
-    pdf.addImage(newImageLink?.payload, "png", pageWidth + tail + offset, offset, pageWidth, pdfHeight - 2 * offset);
-
-    const pdfContent = pdf.output("datauristring"); 
-
+    pdf.addImage(newImageLink?.payload, "png", 20 + pageWidth + tail, 20, pageWidth, pdfHeight - 40);
+  
+    const pdfContent = pdf.output("datauristring"); // Get the PDF content as a data URI
+  
     return pdfContent;
   };
+  
   
 
   const generateAndUploadPDF = async () => {
