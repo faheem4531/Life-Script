@@ -223,7 +223,7 @@ const ViewBookCover = () => {
     imgUrl,
     color,
     finalCover,
-    spine = 11.5
+    spine = 20
   ) => {
     const logo =
       "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
@@ -256,11 +256,13 @@ const ViewBookCover = () => {
     pdf.rect(offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
   
     // Section 2:
-    pdf.setFillColor(255, 255, 255);
+    // pdf.setFillColor(255, 255, 255);
+    pdf.setFillColor(bgcolor);
     pdf.rect(pageWidth + offset, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
     pdf.setFillColor(bgcolor);
     pdf.rect(pageWidth + 1 + offset, offset, tail - 2, pdfHeight - 2 * offset, "F"); // inner spine
-    pdf.setFillColor(255, 255, 255);
+    // pdf.setFillColor(255, 255, 255);
+    pdf.setFillColor(bgcolor);
     const spineBorder2 = pageWidth + spine - 1 + offset;
     pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
   
@@ -273,7 +275,7 @@ const ViewBookCover = () => {
       const char = text2[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 255 : 0, 0, 0);
+      pdf.setTextColor(CoverNumber === "5" ? 230 : 0, 0, 0);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
@@ -289,7 +291,7 @@ const ViewBookCover = () => {
       const char = writter[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 255 : 0, 0, 0);
+      pdf.setTextColor(CoverNumber === "5" ? 230 : 0, 0, 0);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
