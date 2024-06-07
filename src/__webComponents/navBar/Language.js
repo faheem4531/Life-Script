@@ -1,84 +1,98 @@
 "use client";
+
 import * as React from "react";
-import { Box, MenuItem, Select } from "@mui/material";
+import { Select as BaseSelect } from "@mui/base/Select";
+import { Option as BaseOption } from "@mui/base/Option";
+import DownAero from "@/__webAssets/svgs/dropdown.svg";
+import EN from "@/__webAssets/svgs/EN.svg";
+import SP from "@/__webAssets/svgs/SP.svg";
+import Image from "next/image";
+import { Box } from "@mui/material";
+import styles from "./NavBar.module.css";
+import Check from "@/__webAssets/svgs/check.svg";
 import i18n from "i18next";
 
 export default function LanguageOption() {
-  const [langPre, setLangPre] = React.useState("");
-  const [selectWidth, setSelectWidth] = React.useState("100%");
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(10);
+  const [open, setOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsDropdownOpen(false);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setLangPre(value);
-    setSelectWidth(value ? "50%" : "100%");
+  const handleChange = (event, value) => {
+    setSelectedValue(value);
+    changeLanguage(value === 10 ? "en" : "sp");
   };
+
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
   };
 
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
-    <Box width="270%" mt="0px">
-      <Box
-        sx={{
-          position: "relative",
-        }}
+    <Box
+      sx={{ position: "relative" }}
+      onClick={handleToggle}
+    >
+      <BaseSelect
+        value={selectedValue}
+        className={styles.selector}
+        onChange={handleChange}
+        open={open}
+        onClose={() => setOpen(false)}
       >
-        <Select
-          placeholder="Select Language"
-          value={langPre}
-          onChange={handleChange}
-          open={isDropdownOpen}
-          onClose={() => setIsDropdownOpen(false)}
-          onOpen={() => setIsDropdownOpen(true)}
-          sx={{
-            width: selectWidth,
-            borderRadius: "2px",
-            backgroundColor: "white",
-          }}
+        <BaseOption
+          value={10}
+          className={`${styles.option} ${styles.optiontop} ${
+            selectedValue === 10 && styles.optionsBg
+          }`}
         >
-          <MenuItem
-            value="English"
-            onClick={() => {
-              changeLanguage("en");
-            }}
-          >
-            English
-          </MenuItem>
-          <MenuItem
-            value="Spanish"
-            onClick={() => {
-              changeLanguage("sp");
-            }}
-          >
-            Spanish
-          </MenuItem>
-        </Select>
-        {langPre === "" && (
+          EN
           <Box
             sx={{
+              borderRadius: "50%",
+              width: "36px",
+              height: "36px",
               position: "absolute",
-              top: "18px",
-              left: "20px",
-              color: "gray",
+              left: "15px",
+              top: "17px",
             }}
           >
-            Language
+            <Image src={EN} alt="English" width={25} height={25} />
           </Box>
-        )}
-      </Box>
+          {selectedValue === 10 && (
+            <Box sx={{ position: "absolute", right: "15px", bottom: "20px" }}>
+              <Image src={Check} alt="check" width={17} />
+            </Box>
+          )}
+        </BaseOption>
+        <BaseOption
+          value={20}
+          className={`${styles.option} ${
+            selectedValue === 20 && styles.optionsBg
+          }`}
+        >
+          ES
+          <Box
+            sx={{
+              borderRadius: "50%",
+              width: "36px",
+              height: "36px",
+              position: "absolute",
+              left: "15px",
+              bottom: "8px",
+            }}
+          >
+            <Image src={SP} alt="Spanish" width={25} height={25} />
+          </Box>
+          {selectedValue === 20 && (
+            <Box sx={{ position: "absolute", right: "15px", bottom: "20px" }}>
+              <Image src={Check} alt="check" width={17} />
+            </Box>
+          )}
+        </BaseOption>
+      </BaseSelect>
+      <Image src={DownAero} alt="aero" width={13} className={styles.downAero} onClick={handleToggle} />
     </Box>
   );
 }
