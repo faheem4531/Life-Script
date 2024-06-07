@@ -3,7 +3,7 @@ import Layout from "@/components/Layout/Layout";
 import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
-import { getBookCover, selectCoverData } from "@/store/slices/chatSlice";
+import { getBookCover, selectCoverData, uploadImageWithCloudinary } from "@/store/slices/chatSlice";
 
 import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
@@ -208,11 +208,13 @@ const ViewBookCover = () => {
   //   pdf.setFillColor(bgcolor);
   //   pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
   //   const centerX = pageWidth + tail + pageWidth / 2;
-  //   pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
+  //   const newData = {imageUrl:finalCover}
+  //   const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+  //   pdf.addImage(newImageLink?.payload, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
+  //   // pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
 
   //   pdf.save("my_document2.pdf");
   // };
-
 
   const generatePDFOne = async (
     title,
@@ -225,57 +227,53 @@ const ViewBookCover = () => {
   ) => {
     const logo =
       "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
-    const pdfHeight = 269; // Height in millimeters
-    const pageWidth = (355.5 - spine) / 2; // Adjusted pageWidth based on the total width minus the spine
-    const pdfWidth = 2 * pageWidth + spine; // Total width in millimeters
-    const offset = 20; // Offset for all sides
-  
+    const pageWidth = 154.8; //prev was 169.5
+    const tail = spine;
+    const offset = 20; // 20mm offset
+    const pdfHeight = 230 + 2 * offset;
+    const pdfWidth = pageWidth + pageWidth + spine + 2 * offset;
     const pdf = new jsPDF({
-      unit: "mm", // Set the unit to millimeters
-      format: [pdfWidth + 2 * offset, pdfHeight + 2 * offset], // Set the dimensions of the PDF
+      unit: "mm",
+      format: [pdfWidth, pdfHeight],
       orientation: "landscape",
     });
   
     pdf.addFileToVFS("WorkSans-normal.ttf", font);
-    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
+    // pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
   
-    const text2 = subtitle?.toUpperCase(); // Book name
+    const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
-    const writter = name?.toUpperCase(); // Author name
+    const writter = name?.toUpperCase();
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
   
     // Fill the entire background with bgcolor
     pdf.setFillColor(bgcolor);
-    pdf.rect(0, 0, pdfWidth + 2 * offset, pdfHeight + 2 * offset, "F");
+    pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
   
     // Section 1:
     pdf.setFillColor(bgcolor);
-    pdf.rect(offset, offset, pageWidth, pdfHeight, "F");
+    pdf.rect(offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
   
     // Section 2:
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(offset + pageWidth, offset, 1, pdfHeight, "F"); // Spine first border
+    pdf.rect(pageWidth + offset, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
     pdf.setFillColor(bgcolor);
-    pdf.rect(offset + pageWidth + 1, offset, spine - 2, pdfHeight, "F"); // Inner spine
+    pdf.rect(pageWidth + 1 + offset, offset, tail - 2, pdfHeight - 2 * offset, "F"); // inner spine
     pdf.setFillColor(255, 255, 255);
-    pdf.rect(offset + pageWidth + spine - 1, offset, 1, pdfHeight, "F"); // Spine second border
+    const spineBorder2 = pageWidth + spine - 1 + offset;
+    pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
   
     let y = offset + 5; // Initial y-coordinate
-    const fontSize = 10; // Font size
+    const fontSize = 10; 
+    const textCenter = pageWidth + tail / 2 - 1.3 + offset;
   
-    const textCenter = offset + pageWidth + spine / 2 - 1.3;
-  
-    // Book name on spine
+    // bookName
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      if (CoverNumber === "5") {
-        pdf.setTextColor(255, 255, 255);
-      } else {
-        pdf.setTextColor(0, 0, 0);
-      }
+      pdf.setTextColor(CoverNumber === "5" ? 255 : 0, 0, 0);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
@@ -283,31 +281,30 @@ const ViewBookCover = () => {
     pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
     pdf.setTextColor(0, 0, 0);
-    pdf.text("  |  ", offset + pageWidth + spine / 2 - 1, y, { angle: 270 });
+    pdf.text("  |  ", textCenter , y, { angle: 270 });
+  
     y = y + 6;
   
-    // Author name on spine
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      if (CoverNumber === "5") {
-        pdf.setTextColor(255, 255, 255);
-      } else {
-        pdf.setTextColor(0, 0, 0);
-      }
+      pdf.setTextColor(CoverNumber === "5" ? 255 : 0, 0, 0);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
   
-    const logoSize = spine < 22 ? spine - 3 : 20;
-    const spineCenter = offset + pageWidth + (spine - logoSize) / 2;
-    pdf.addImage(logo, "png", spineCenter, offset + 225, logoSize, logoSize);
+    const logoSize = tail < 22 ? tail - 3 : 20;
+    const tailcenter = pageWidth + (tail - logoSize) / 2 + offset;
+    pdf.addImage(logo, "png", tailcenter, pdfHeight - 30 - offset, logoSize, logoSize);
   
-    // Section 3:
     pdf.setFillColor(bgcolor);
-    pdf.rect(offset + pageWidth + spine, offset, pageWidth, pdfHeight, "F");
-    pdf.addImage(finalCover, "png", offset + pageWidth + spine, offset, pageWidth, pdfHeight);
+    pdf.rect(pageWidth + tail + offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
+  
+    const centerX = pageWidth + tail + pageWidth / 2 + offset;
+    const newData = { imageUrl: finalCover };
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    pdf.addImage(newImageLink?.payload, "png", pageWidth + tail + offset, offset, pageWidth, pdfHeight - 2 * offset);
   
     pdf.save("my_document2.pdf");
   };
