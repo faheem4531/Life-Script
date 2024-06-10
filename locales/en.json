@@ -608,7 +608,8 @@
         "tab1": "CHOOSE PLAN",
         "tab2": "REGISTER",
         "tab3": "PAYMENT"
-      }
+      },
+      "userExist":"User already exist"
     },
     "PurchaseForm": {
       "title": "Purchase LifeScript",

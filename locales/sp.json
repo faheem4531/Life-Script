@@ -608,7 +608,8 @@
         "tab1": "ELEGIR PLAN",
         "tab2": "REGISTRARSE",
         "tab3": "PAGO"
-      }
+      },
+      "userExist": "El usuario ya existe"
     },
     "PurchaseForm":{
       "title":"Comprar LifeScript",

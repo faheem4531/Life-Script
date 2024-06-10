@@ -5,8 +5,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const SsoRedirecting = () => {
+  const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
     const dispatch:any = useDispatch();
     const router = useRouter()
@@ -30,7 +32,7 @@ const SsoRedirecting = () => {
             })
             .catch((error) => {
                 setLoading(false)
-              toast.error("User Already Exist");
+              toast.error(t("stripeFlow.registerSection.userExist"));
               router.push("/stripe-page/register-free-trial")
             });
           }

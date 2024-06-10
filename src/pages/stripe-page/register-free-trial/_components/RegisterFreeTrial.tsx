@@ -54,7 +54,7 @@ const RegisterFreeTrial = () => {
         router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
       .catch(() => {
-        toast.error("User Already Exsit");
+        toast.error(t("stripeFlow.registerSection.userExist"));
       });
   };
 
