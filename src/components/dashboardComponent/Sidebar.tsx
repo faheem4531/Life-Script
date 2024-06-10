@@ -462,24 +462,6 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               <Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
-                      }`}
-                    onClick={() => router.push("/dashboard/emailPreference")}
-                  >
-                    <Image
-                      alt="icon"
-                      src={
-                        currentRoute === "/dashboard/emailPreference"
-                          ? EmailWhite
-                          : EmailGreen
-                      }
-                      className={styles.sidebarIcon}
-                    />
-                    Email Preferences
-                  </a>
-                </Box>
-                <Box sx={{ marginLeft: "20px" }}>
-                  <a
                     className={`${styles.link} ${currentRoute === "/dashboard/Support/Tutorials" ||
                         currentRoute === "/dashboard/Support/TutorialsDetail"
                         ? styles.active
@@ -501,6 +483,24 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       }
                     />
                     Tutorials and Tips
+                  </a>
+                </Box>
+                <Box sx={{ marginLeft: "20px" }}>
+                  <a
+                    className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
+                      }`}
+                    onClick={() => router.push("/dashboard/emailPreference")}
+                  >
+                    <Image
+                      alt="icon"
+                      src={
+                        currentRoute === "/dashboard/emailPreference"
+                          ? EmailWhite
+                          : EmailGreen
+                      }
+                      className={styles.sidebarIcon}
+                    />
+                    Email Preferences
                   </a>
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
