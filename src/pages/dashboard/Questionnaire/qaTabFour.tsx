@@ -137,12 +137,12 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
         flex={1}
       >
         <Box sx={{ margin: { sm: "auto 0 -30px", xs: "0 0 10px" } }}>
-          <Chapters
+          {/* <Chapters
             title="Mark All"
             id="mark_all"
             handleCheckboxChange={handleCheckboxChange}
             markAllChecked={markAllChecked}
-          />
+          /> */}
         </Box>
         <Box
           sx={{
