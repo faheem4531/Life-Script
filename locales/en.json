@@ -1006,8 +1006,8 @@
     "viewCh": "View chapters"
   },
   "narrative": {
-    "editRes": "Edit Response",
-    "saveRes": "Save Response",
+    "editRes": "Edit Changes",
+    "saveRes": "Save Changes",
     "pdfdownload": "PDF Download",
     "saveResDes": "Once saved, you will find the chapter in completed chapters tab.",
     "saveResProcBtn": "Not Yet",

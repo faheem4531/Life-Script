@@ -1006,8 +1006,8 @@
     "viewCh": "Ver capítulos"
   },
   "narrative": {
-    "editRes": "Editar Respuesta",
-    "saveRes": "Guardar Respuesta",
+    "editRes": "Editar Cambios",
+    "saveRes": "Guardar Cambios",
     "saveResDes": "Una vez guardado, encontrarás el capítulo en la pestaña de capítulos completados.",
     "saveResProcBtn": "Aún no",
     "saveResCancelBtn": "Conservar Cambios",

@@ -252,11 +252,11 @@ export default function App({ Component, pageProps }: AppProps) {
           {showCookieBar && (
             <CookieConsent
               enableDeclineButton
-              declineButtonText="Customize"
+              declineButtonText="Decline"
               buttonText="Accept"
               flipButtons
               onDecline={() => {
-                // alert("Are you Sure!");
+                // alert("Are you sure");
               }}
               setDeclineCookie={false}
               style={{
