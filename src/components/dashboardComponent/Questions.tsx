@@ -207,6 +207,7 @@ export default function Questions({
                     "&:hover": {
                       backgroundColor: "#white",
                     },
+                    textTransform: "capitalize",
                     width: { sm: "150px", xs: "100px" },
                   }}
                 >
@@ -259,7 +260,7 @@ export default function Questions({
                         src={EditGreen}
                         style={{ color: "#7f886b" }}
                       />
-                      <Box sx={{ color: "#30422e" }}>Answer</Box>
+                      <Box sx={{ color: "#30422e", fontSize:"16px" }}>Answer</Box>
                     </Box>
                   )}
                 </Button>
