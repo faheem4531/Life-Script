@@ -781,7 +781,7 @@ const EditBookCover = () => {
                         cropBoxResizable={false}
                       />
                     )}
-                    {/* {droppedImage && CoverNumber === "6" && (
+                    {droppedImage && CoverNumber === "6" && (
                     <Cropper
                       ref={cropperRef}
                       src={droppedImage}
@@ -804,7 +804,7 @@ const EditBookCover = () => {
                       responsive={true}
                       cropBoxResizable={false} 
                     />
-                  )} */}
+                  )}
                     <div {...getRootProps()} style={{ cursor: "pointer" }}>
                       <input {...getInputProps()} />
 
