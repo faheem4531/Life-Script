@@ -19,7 +19,7 @@ function Cover4(props: any) {
       // }}
     >
       <g clip-path="url(#clip0_2029_37)">
-        <rect width="1772" height="2480" fill="url(#pattern00)" />
+        <rect width="1772" height="2480" fill="url(#pattern11)" />
         <rect x="7" y="-3" width="1772" height="2483" fill="url(#pattern11)" />
         <rect
           x="470"
