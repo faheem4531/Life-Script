@@ -616,43 +616,43 @@
       "numberOfBook": "Number of books",
       "dropDown": {
         "value0": {
-          "label": "1 book Included with Subscription"
+          "label": "1 book (included in plan)"
         },
         "value1": {
-          "label": "(2 books)",
-          "price": "+ $39"
+          "label": "2 books",
+          "price": "(+39$)"
         },
         "value2": {
-          "label": "(3 books)",
-          "price": "+ $78"
+          "label": "3 books",
+          "price": "(+78$)"
         },
         "value3": {
-          "label": "(4 books)",
-          "price": "+ $117"
+          "label": "4 books",
+          "price": "(+117)"
         },
         "value4": {
-          "label": "(5 books)",
-          "price": "+ $156"
+          "label": "5 books",
+          "price": "(+156$)"
         },
         "value5": {
-          "label": "(6 books)",
-          "price": "+ $195"
+          "label": "6 books",
+          "price": "(+1$95)"
         },
         "value6": {
-          "label": "(7 books)",
-          "price": "+ $234"
+          "label": "7 books",
+          "price": "(+234$)"
         },
         "value7": {
-          "label": "(8 books)",
-          "price": "+ $273"
+          "label": "8 books",
+          "price": "(+273$)"
         },
         "value8": {
-          "label": "(9 books)",
-          "price": "+ $312"
+          "label": "9 books",
+          "price": "(+312$)"
         },
         "value9": {
-          "label": "(10 books)",
-          "price": "+ $351"
+          "label": "10 books",
+          "price": "(+351$)"
         }
       },
       "referralCode": {

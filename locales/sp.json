@@ -614,46 +614,46 @@
     "PurchaseForm":{
       "title":"Comprar LifeScript",
       "numberOfBook":"Número de libros",
-      "dropDown":{
-          "value0":{
-              "label":"1 libro incluido con la suscripción"
-          },
-          "value1":{
-              "label":"(2 libros)",
-              "price":"+ $39"
-          },
-          "value2":{
-              "label":"(3 libros)",
-              "price":"+ $78"
-          },
-          "value3":{
-              "label":"(4 libros)",
-              "price":"+ $117"
-          },
-          "value4":{
-              "label":"(5 libros)",
-              "price":"+ $156"
-          },
-          "value5":{
-              "label":"(6 libros)",
-              "price":"+ $195"
-          },
-          "value6":{
-              "label":"(7 libros)",
-              "price":"+ $234"
-          },
-          "value7":{
-              "label":"(8 libros)",
-              "price":"+ $273"
-          },
-          "value8":{
-              "label":"(9 libros)",
-              "price":"+ $312"
-          },
-          "value9":{
-              "label":"(10 libros)",
-              "price":"+ $351"
-          }
+      "dropDown": {
+        "value0": {
+          "label": "1 libro (incluido en el plan)"
+        },
+        "value1": {
+          "label": "2 libros",
+          "price": "(+39$)"
+        },
+        "value2": {
+          "label": "3 libros",
+          "price": "(+78$)"
+        },
+        "value3": {
+          "label": "4 libros",
+          "price": "(+117$)"
+        },
+        "value4": {
+          "label": "5 libros",
+          "price": "(+156$)"
+        },
+        "value5": {
+          "label": "6 libros",
+          "price": "(+195$)"
+        },
+        "value6": {
+          "label": "7 libros",
+          "price": "(+234$)"
+        },
+        "value7": {
+          "label": "8 libros",
+          "price": "(+273$)"
+        },
+        "value8": {
+          "label": "9 libros",
+          "price": "(+312$)"
+        },
+        "value9": {
+          "label": "10 libros",
+          "price": "(+351$)"
+        }
       },
       "referralCode":{
           "title":"¿Recomendado por un amigo? Ingrese el código de referencia aquí",
