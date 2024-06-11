@@ -275,14 +275,14 @@ const ViewBookCover = () => {
       const char = text2[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 230 : 0, 0, 0);
+      pdf.setTextColor(CoverNumber === "5" ? 230 : 255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
   
     pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
-    pdf.setTextColor(0, 0, 0);
+    pdf.setTextColor(255, 255, 255);
     pdf.text("  |  ", textCenter , y, { angle: 270 });
   
     y = y + 6;
@@ -291,7 +291,7 @@ const ViewBookCover = () => {
       const char = writter[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 230 : 0, 0, 0);
+      pdf.setTextColor(CoverNumber === "5" ? 230 : 255, 255, 255);
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }

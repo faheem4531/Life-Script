@@ -359,7 +359,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const char = writter[i];
       pdf.setFontSize(fontSize);
       pdf.setFont("WorkSans");
-      pdf.setTextColor(0, 0, 0); // Default text color
+      pdf.setTextColor(255, 255, 255); // Default text color
   
       if (coverData?.coverNumber === "5") {
         pdf.setTextColor(255, 255, 255); // White text for cover number 5
