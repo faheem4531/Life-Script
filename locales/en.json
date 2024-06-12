@@ -628,7 +628,7 @@
         },
         "value3": {
           "label": "4 books",
-          "price": "(+117)"
+          "price": "(+117$)"
         },
         "value4": {
           "label": "5 books",
@@ -636,7 +636,7 @@
         },
         "value5": {
           "label": "6 books",
-          "price": "(+1$95)"
+          "price": "(+195$)"
         },
         "value6": {
           "label": "7 books",
