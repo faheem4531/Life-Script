@@ -25,6 +25,8 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import backArrow from "../../../_assets/svg/left.svg";
 import Loading from "./components/loading";
+import informationIcon from "../../../_assets/svg/informationIcon.svg"
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -42,6 +44,7 @@ const chapterName = () => {
   const [templateState, setTemplateState] = useState(false);
   const [isLoaded, setIsloaded] = useState(false);
   const { t } = useTranslation();
+  const [hover, setHover] = useState(false);
   let templateData;
 
   const handleChapterClone = () => {
@@ -134,7 +137,7 @@ const chapterName = () => {
           }}
         >
           <AddChapterName
-            editChapter={() => {}}
+            editChapter={() => { }}
             chapterId={templateData?._id}
             chapter={templateTitle}
             title="templateView"
@@ -216,8 +219,38 @@ const chapterName = () => {
                 sx={{
                   opacity:
                     tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
+                  display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"
                 }}
               >
+                <Box>
+                  <Box
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                  // sx={{ display: 'inline-block' }} 
+                  >
+                    <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                  </Box>
+
+                  {hover && (
+                    <Box
+                      sx={{
+                        display: {
+                          md: "block",
+                          xs: "none",
+                        },
+                        // position: "absolute", 
+                        // mt: 1 
+                      }}
+                    >
+                      <TooltipTab
+                        title="Use the Template"
+                        text="Mark the questions you'd like to include in this chapter. You can mark as many as you like and later delete or add your own questions."
+                        transform="none" // adjust transform if needed
+                        top={undefined} left={undefined} bottom={"220px"} right={"340px"} position={"absolute"} />
+
+                    </Box>
+                  )}
+                </Box>
                 <GlobelBtn
                   image={UseTemplate}
                   btnText={`${t("template.useTemBtn")}`}

@@ -36,6 +36,8 @@ import DownloadFamily from "@/_assets/svg/download-family.svg"
 import ZoomIn from "@/_assets/svg/zoomin.svg"
 import ZoomOut from "@/_assets/svg/zoom-out.svg"
 import Image from 'next/image';
+import informationIcon from "../../_assets/svg/informationIcon.svg"
+import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip"
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -54,6 +56,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const [isPartner, setIsPartner] = useState(false);
   const [lastMousePosition, setLastMousePosition] = useState(null);
   const [resetModal, setResetModal] = useState(false)
+  const [hover, setHover] = useState(false);
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
@@ -735,38 +738,17 @@ const FamilyTree = ({ familyTreeData }) => {
     setResetModal(false)
   }
 
+  const content = [
+    { title: "Add/Edit:", text: "Click an avatar to add or update information. " },
+    { title: "Zoom:", text: "Use the + and - buttons for better view." },
+    { title: "Preview:", text: "  Download the PDF to preview the family tree layout." },
+    { title: "Note: ", text: " Deleting a member requires resetting the entire family tree." },
+  ];
+
   return (
-    <Box sx={{ position: "relative", bgcolor: "", height: "100%" }}>
-      <Box>
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={loading}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </Box>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "0%",
-          left: "0%",
-          transform: {
-            md: "translate(-0%, -25%)",
-            sm: "translate(-5%, -25%)",
-            xs: "translate(-8%, -30%)",
-          },
-        }}
-      >
-        <svg
-          id="familyTree"
-          style={{ position: "absolute", top: "20px", left: "20px" }}
-          ref={svgRef}
-          viewBox="1000 600 2800 2800"
-        ></svg>
-      </Box>
-
-
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+    <>
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent:"space-between" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
         <IconButton id="download" aria-label="download" sx={{
           '&:hover': {
             backgroundColor: 'transparent',
@@ -782,119 +764,185 @@ const FamilyTree = ({ familyTreeData }) => {
             />
           </Box>
         </IconButton>
-        <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
-          <ButtonIcons
-            onClick={() => setResetModal(true)}
-            img={Reset}
-            iconSize={20}
-            btnText="Reset Tree"
-          />
+        <Box sx={{ display: "flex", alignItems: "center", gap:"10px" }}>
+          <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
+            <ButtonIcons
+              onClick={() => setResetModal(true)}
+              img={Reset}
+              iconSize={20}
+              btnText="Reset Tree"
+            />
+          </Box>
+          <Box>
+            <Box
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            // sx={{ display: 'inline-block' }} 
+            >
+              <Image src={informationIcon} width={20} alt="Info Tooltip" />
+            </Box>
+
+            {hover && (
+              <Box
+                sx={{
+                  display: {
+                    md: "block",
+                    xs: "none",
+                  },
+                  // position: "absolute", 
+                  // mt: 1 
+                }}
+              >
+                <MultiToolTip
+                  content={content}
+                  position="absolute"
+                  bottom={"190px"} right={undefined} top={undefined} left={"455px"} />
+
+              </Box>
+            )}
+          </Box>
         </Box>
 
-        <Box sx={{ marginLeft: "20px" }}>
+        </Box>
+
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ marginLeft: "20px" }}>
+            <ButtonIcons
+              onClick={() => zoomCanvas(false)}
+              img={ZoomOut}
+              iconSize={40}
+              btnText=""
+            />
+          </Box>
+          <Box sx={{ marginLeft: "-15px" }}>
+            <ButtonIcons
+              onClick={() => zoomCanvas(true)}
+              img={ZoomIn}
+              iconSize={40}
+              btnText=""
+            />
+          </Box>
+        </Box>
+      </Box>
+      <Box sx={{ position: "relative", bgcolor: "", height: "100%" }}>
+        <Box>
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={loading}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        </Box>
+
+        <Box
+          sx={{
+            position: "absolute",
+            top: "0%",
+            left: "0%",
+            transform: {
+              md: "translate(-0%, -25%)",
+              sm: "translate(-5%, -25%)",
+              xs: "translate(-8%, -30%)",
+            },
+          }}
+        >
+          <svg
+            id="familyTree"
+            style={{ position: "absolute", top: "20px", left: "20px" }}
+            ref={svgRef}
+            viewBox="1000 600 2800 2800"
+          ></svg>
+        </Box>
+
+
+
+
+        <Box sx={{ position: "absolute", right: "0", top: "50%", transform: "translateY(-50%)" }}>
           <ButtonIcons
-            onClick={() => zoomCanvas(false)}
-            img={ZoomOut}
-            iconSize={40}
+            onClick={() => panCanvas('right')}
+            img={Right}
+            iconSize={30}
             btnText=""
           />
         </Box>
-        <Box sx={{ marginLeft: "-15px" }}>
+
+        <Box sx={{ position: "absolute", left: "50%", top: "0", transform: "translateX(-50%) rotate(-90deg)" }}>
           <ButtonIcons
-            onClick={() => zoomCanvas(true)}
-            img={ZoomIn}
-            iconSize={40}
+            onClick={() => panCanvas('top')}
+            img={Right}
+            iconSize={30}
             btnText=""
           />
         </Box>
 
-      </Box>
+        <Box sx={{ position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%) rotate(90deg)" }}>
+          <ButtonIcons
+            onClick={() => panCanvas('bottom')}
+            img={Right}
+            iconSize={30}
+            btnText=""
+          />
+        </Box>
 
-      <Box sx={{ position: "absolute", right: "0", top: "50%", transform: "translateY(-50%)" }}>
-        <ButtonIcons
-          onClick={() => panCanvas('right')}
-          img={Right}
-          iconSize={30}
-          btnText=""
+        <Box sx={{ position: "absolute", left: "0", top: "50%", transform: "translateY(-50%) rotate(180deg)" }}>
+          <ButtonIcons
+            onClick={() => panCanvas('left')}
+            img={Right}
+            iconSize={30}
+            btnText=""
+          />
+        </Box>
+
+
+
+
+
+
+
+
+
+        {/* Modals  */}
+        <SelectRelationModal
+          relations={relations}
+          familyRelationModal={familyRelationModal}
+          setFamilyRelationModal={setFamilyRelationModal}
+          setFamilyModal={setFamilyModal}
+          onClick={(item) => {
+            setFamilyRelationModal(false);
+
+            setSelectedRelation(item);
+            if (item === "Partner") {
+              setUpdatedNode({ isSpouse: true });
+            }
+          }}
+        />
+
+        <FamilyTreeDataModal
+          nodeData={updatedNode}
+          familyModal={familyModal}
+          setFamilyModal={setFamilyModal}
+          selectedRelation={selectedRelation}
+          onSubmit={handleAddedPerson}
+        />
+
+        <FamilyTreeAddModal
+          familyEditModal={familyEditModal}
+          setFamilyEditModal={setFamilyEditModal}
+          nodeData={dd}
+          onClick={handleIconClick}
+          isSpouse={isPartner}
+        />
+
+        <TransitionsDialog
+          open={resetModal}
+          heading={"Delete Family Tree"}
+          description="Do you want to delete the family?"
+          cancel={() => setResetModal(false)}
+          proceed={handleResetFamily}
+          closeModal={() => setResetModal(false)}
         />
       </Box>
-
-      <Box sx={{ position: "absolute", left: "50%", top: "0", transform: "translateX(-50%) rotate(-90deg)" }}>
-        <ButtonIcons
-          onClick={() => panCanvas('top')}
-          img={Right}
-          iconSize={30}
-          btnText=""
-        />
-      </Box>
-
-      <Box sx={{ position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%) rotate(90deg)" }}>
-        <ButtonIcons
-          onClick={() => panCanvas('bottom')}
-          img={Right}
-          iconSize={30}
-          btnText=""
-        />
-      </Box>
-
-      <Box sx={{ position: "absolute", left: "0", top: "50%", transform: "translateY(-50%) rotate(180deg)" }}>
-        <ButtonIcons
-          onClick={() => panCanvas('left')}
-          img={Right}
-          iconSize={30}
-          btnText=""
-        />
-      </Box>
-
-
-
-
-
-
-
-
-
-      {/* Modals  */}
-      <SelectRelationModal
-        relations={relations}
-        familyRelationModal={familyRelationModal}
-        setFamilyRelationModal={setFamilyRelationModal}
-        setFamilyModal={setFamilyModal}
-        onClick={(item) => {
-          setFamilyRelationModal(false);
-
-          setSelectedRelation(item);
-          if (item === "Partner") {
-            setUpdatedNode({ isSpouse: true });
-          }
-        }}
-      />
-
-      <FamilyTreeDataModal
-        nodeData={updatedNode}
-        familyModal={familyModal}
-        setFamilyModal={setFamilyModal}
-        selectedRelation={selectedRelation}
-        onSubmit={handleAddedPerson}
-      />
-
-      <FamilyTreeAddModal
-        familyEditModal={familyEditModal}
-        setFamilyEditModal={setFamilyEditModal}
-        nodeData={dd}
-        onClick={handleIconClick}
-        isSpouse={isPartner}
-      />
-
-      <TransitionsDialog
-        open={resetModal}
-        heading={"Delete Family Tree"}
-        description="Do you want to delete the family?"
-        cancel={() => setResetModal(false)}
-        proceed={handleResetFamily}
-        closeModal={() => setResetModal(false)}
-      />
-    </Box>
+    </>
   );
 };
 

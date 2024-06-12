@@ -28,6 +28,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
+import informationIcon from "../../../_assets/svg/informationIcon.svg"
 
 const ProfileSetting = () => {
   const userData = useSelector(selectUser);
@@ -41,6 +43,7 @@ const ProfileSetting = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [countryValue, setCountryValue] = useState("92");
+  const [hover, setHover] = useState(false);
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
 
@@ -258,15 +261,46 @@ const ProfileSetting = () => {
             >
 
               <Box sx={{ bgcolor: "#fff", p: "24px 11px 24px 23px" }}>
-                <Typography sx={{
-                  fontSize: { xs: 12, sm: 14, md: 16, lg: 17 },
-                  color: "#30422E",
-                  borderBottom: "1px solid rgba(48, 66, 46, 0.20)",
-                  pb: "12px",
-                  fontFamily: "Avenir8 !important"
-                }}>
-                  Book Credits
-                </Typography>
+                <Box sx={{display:"flex", alignItems:"center", gap:"10px"}}>
+                  <Typography sx={{
+                    fontSize: { xs: 12, sm: 14, md: 16, lg: 17 },
+                    color: "#30422E",
+                    borderBottom: "1px solid rgba(48, 66, 46, 0.20)",
+                    // pb: "12px",
+                    fontFamily: "Avenir8 !important"
+                  }}>
+                    Book Credits
+                  </Typography>
+                  <Box >
+                    <Box
+                      onMouseEnter={() => setHover(true)}
+                      onMouseLeave={() => setHover(false)}
+                    // sx={{ display: 'inline-block' }} 
+                    >
+                      <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                    </Box>
+
+                    {hover && (
+                      <Box
+                        sx={{
+                          display: {
+                            md: "block",
+                            xs: "none",
+                          },
+                          // position: "absolute", 
+                          // mt: 1 
+                        }}
+                      >
+                        <TooltipTab
+                          title="Book Credits"
+                          text={`One book credit equals one physical book. Increase your credits by adding additional books during checkout from the "View Book" section on the Overview page or get free ones by referring a friend through the "Gift a Book" section on the left.`}
+                          transform="none"
+                          top={undefined} left={undefined} bottom={"130px"} right={"75px"} position={"absolute"} />
+
+                      </Box>
+                    )}
+                  </Box>
+                </Box>
                 <Typography sx={{
                   color: "#30422E",
                   pt: "12px",

@@ -43,6 +43,8 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
 import backArrow from "../../_assets/svg/left.svg";
+import informationIcon from "../../_assets/svg/informationIcon.svg"
+import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip"
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -71,6 +73,7 @@ const RichText = ({ questionId }) => {
   const [seconds, setSeconds] = useState(0);
   const { compileChapterId, openai } = router.query;
   const { t } = useTranslation();
+  const [hover, setHover] = useState(false);
 
   const startRecording = async () => {
     try {
@@ -439,6 +442,13 @@ const RichText = ({ questionId }) => {
     });
   };
 
+  const content = [
+    { title: "Narrative Fusion:", text: "All formatting (bold, size, font, bullets) will be removed when you apply Narrative Fusion after all questions have been answered. Make sure you leave formatting for when all your answers have been fused into a chapter. " },
+    { title: "Copy-Pasting with Formatting:", text: "To retain formatting when copying text from another source, right-click - > ‘’paste and match style’’ or just paste by pressing Shift + V + Ctrl/⌘" },
+    { title: "Typing Special Characters:", text: " For special letters, including Spanish characters, hold the key and select the desired character from the popup menu." },
+    { title: "Grammar and Style Suggestions:", text: " Click on any underlined words to see suggestions for grammar, spelling, or style corrections" },
+  ];
+
   return (
     <>
       <Box className="rich-editor">
@@ -505,8 +515,8 @@ const RichText = ({ questionId }) => {
                   detecting
                     ? `${t("richText.detecte")}`
                     : listening
-                    ? `${t("richText.stop")}`
-                    : `${t("richText.STT")}`
+                      ? `${t("richText.stop")}`
+                      : `${t("richText.STT")}`
                 }
                 color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
                 bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
@@ -541,6 +551,34 @@ const RichText = ({ questionId }) => {
                   width="150px"
                 />
               )}
+              <Box>
+                <Box
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+                // sx={{ display: 'inline-block' }} 
+                >
+                  <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                </Box>
+
+                {hover && (
+                  <Box
+                    sx={{
+                      display: {
+                        md: "block",
+                        xs: "none",
+                      },
+                      // position: "absolute", 
+                      // mt: 1 
+                    }}
+                  >
+                    <MultiToolTip
+                      content={content}
+                      position="absolute"
+                      bottom={undefined} right={"5px"} top={undefined} left={undefined}                    />
+
+                  </Box>
+                )}
+              </Box>
             </Box>
           </Box>
         </Box>

@@ -832,7 +832,7 @@
     "completed": "Completado",
     "Del": "Eliminar",
     "tooltip": "Fusión Narrativa",
-    "description": "No puedes usar esta función hasta que todas las preguntas estén completadas",
+    "description": "Esta función solo se puede usar una vez que todas las preguntas del capítulo hayan sido marcadas como completadas.",
     "UQ": "Actualizar Pregunta",
     "DelText": "Eliminar",
     "DelDescri": "¿Estás seguro de que quieres eliminar esta pregunta?",

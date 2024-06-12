@@ -11,6 +11,9 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import addIcon from "../../../../_assets/svg/AddIcon.svg";
 import ChaptersList from "./ChapterList";
+import Image from "next/image";
+import informationIcon from "../../../../_assets/svg/informationIcon.svg"
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
 
 const TOCMain = () => {
   const router = useRouter();
@@ -22,6 +25,7 @@ const TOCMain = () => {
   const [listItems, setListItems] = useState<
     Array<{ id: number; name: string; chapterId: string }>
   >([]);
+  const [hover, setHover] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -86,14 +90,45 @@ const TOCMain = () => {
             </Typography>
             <Box
               sx={{
-                gap: { sm: 4, xs: 2 },
+                gap: { sm: 2, xs: 2 },
                 display: "flex",
                 justifyContent: { xs: "space-between", sm: "end" },
+                alignItems:"center",
                 width: "100%",
                 flexWrap: "wrap",
                 pb: "10px",
               }}
             >
+               <Box >
+                <Box
+                  onMouseEnter={() => setHover(true)}
+                  onMouseLeave={() => setHover(false)}
+                // sx={{ display: 'inline-block' }} 
+                >
+                  <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                </Box>
+
+                {hover && (
+                  <Box
+                    sx={{
+                      display: {
+                        md: "block",
+                        xs: "none",
+                      },
+                      // position: "absolute", 
+                      // mt: 1 
+                    }}
+                  >
+                    <TooltipTab
+                      title="Table of Contents"
+                      text=" Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.
+                      Tip: Click, hold, and drag to reorder chapters."
+                      transform="none" 
+                      top={undefined} left={undefined} bottom={"210px"} right={"266px"} position={"absolute"}  />
+
+                  </Box>
+                )}
+              </Box>
               <Box>
                 {currentUrl === "/dashboard/BookView" ? (
                   <GlobelBtn

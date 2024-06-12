@@ -43,6 +43,9 @@ import backArrow from "@/_assets/svg/left.svg";
 import suggestionIcon from "@/_assets/svg/suggestionsIcon.svg";
 import QuestionComponent from "./components/AIGeneration";
 import AddChapter from "./addChapter";
+import informationIcon from "../../../_assets/svg/informationIcon.svg"
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
+
 
 const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -78,6 +81,7 @@ const chapterName = () => {
   const [StarterChapter, setStarterChapter] = useState(false);
   const percentage = calculateCompletionPercentage(question?.questions);
   const { t } = useTranslation();
+  const [hover, setHover] = useState(false);
 
   function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
     const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
@@ -396,12 +400,44 @@ const chapterName = () => {
                   gap: "7px",
                   display: "flex",
                   justifyContent: { xs: "space-between", sm: "end" },
+                  alignItems: "center",
                   width: "100%",
                   flexWrap: "wrap",
                   pb: "10px",
                   m: { sm: "0", xs: "20px 20px 0" },
                 }}
               >
+                 {aiQuestions?.length > 0 && (
+                <Box>
+                  <Box
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                  // sx={{ display: 'inline-block' }} 
+                  >
+                    <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                  </Box>
+
+                  {hover && (
+                    <Box
+                      sx={{
+                        display: {
+                          md: "block",
+                          xs: "none",
+                        },
+                        // position: "absolute", 
+                        // mt: 1 
+                      }}
+                    >
+                      <TooltipTab
+                        title="Suggested Questions"
+                        text="Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible."
+                        transform="none" // adjust transform if needed
+                        top={undefined} left={undefined} bottom={"150px"} right={"424px"} position={"fixed"} />
+
+                    </Box>
+                  )}
+                </Box>
+                 )}
                 {aiQuestions?.length > 0 && (
                   <GlobelBtn
                     image={suggestionIcon}

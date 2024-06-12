@@ -13,6 +13,9 @@ import GlobelBtn from "../button/Button";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
 import styles from "./Custom.module.css";
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
+import informationIcon from "../../_assets/svg/informationIcon.svg"
+
 
 export const ViewBook = () => {
   const dispatch: any = useDispatch();
@@ -21,6 +24,7 @@ export const ViewBook = () => {
   const [openModal, setOpenModal] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     const jwt = require("jsonwebtoken");
@@ -75,6 +79,8 @@ export const ViewBook = () => {
           columnGap: "16px",
         }}
         className={styles.viewBook}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
         <Image alt="next" src={Book} />
         <Typography
@@ -86,6 +92,25 @@ export const ViewBook = () => {
           {t("overView.ViewBtn")}
         </Typography>
       </Box>
+      {hover && (
+        <Box
+          sx={{
+            display: {
+              md: "block",
+              xs: "none",
+            },
+            // position: "absolute", 
+            // mt: 1 
+          }}
+        >
+          <TooltipTab
+            title="Preview book and order hardcover"
+            text=""
+            transform="none" // adjust transform if needed
+            top={undefined} left={"268px"} bottom={"80px"} right={undefined} position={"absolute"} />
+
+        </Box>
+      )}
 
       <CustomizationDialog
         open={openModal}
@@ -210,6 +235,7 @@ export const ViewTree = () => {
 export const PrintBook = () => {
   const { t } = useTranslation();
   const [luluStatus, setLuluStatus] = useState("");
+  const [hover, setHover] = useState(false);
   console.log("111luluuu", luluStatus);
   return (
     <Box
@@ -228,11 +254,45 @@ export const PrintBook = () => {
       }}
     >
       <Box sx={{ width: { md: "65%", sm: "85%", xs: "90%" } }}>
-        <Typography
-          sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
-        >
-          Delivery Tracking
-        </Typography>
+
+        <Box sx={{display:"flex", alignItems:"center", gap:"10px"}}>
+
+          <Typography
+            sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
+          >
+            Delivery Tracking
+          </Typography>
+          <Box >
+            <Box
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            // sx={{ display: 'inline-block' }} 
+            >
+              <Image src={informationIcon} width={20} alt="Info Tooltip" />
+            </Box>
+
+            {hover && (
+              <Box
+                sx={{
+                  display: {
+                    md: "block",
+                    xs: "none",
+                  },
+                  // position: "absolute", 
+                  // mt: 1 
+                }}
+              >
+                <TooltipTab
+                  title="Table of Contents"
+                  text=" Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.
+                      Tip: Click, hold, and drag to reorder chapters."
+                  transform="none"
+                  top={"545px"} left={"535px"} bottom={undefined} right={undefined} position={"absolute"} />
+
+              </Box>
+            )}
+          </Box>
+        </Box>
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
         >
