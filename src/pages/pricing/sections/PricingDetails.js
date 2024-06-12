@@ -79,7 +79,7 @@ function DetailCard({ header, logo = false, alt, title, points, bgColor, sCase }
           ) : (
             <span>{item}</span>
           )}
-          {index === 1 && sCase && <Typography sx={{ fontSize: "14px", marginLeft: "5px", lineHeight: "15px" }}> (initially 99$ but additional 40$ if you want full-color book)</Typography>}
+          {/* {index === 1 && sCase && <Typography sx={{ fontSize: "14px", marginLeft: "5px", lineHeight: "15px" }}> (initially 99$ but additional 40$ if you want full-color book)</Typography>} */}
         </Box>)}
 
 

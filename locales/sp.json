@@ -215,7 +215,7 @@
       "subTitle": "¡Te la contestamos!",
       "btnText": "Ver Más",
       "question1": {
-        "qs": "¿Qué incluye cada suscripción?",
+        "qs": "¿Qué incluye cada plan?",
         "ans": "Un año completo de acceso a nuestra plataforma, un libro impreso de tapa dura a todo color y entrega gratuita."
       },
       "question2": {
@@ -433,7 +433,7 @@
         "title": "Storyworth",
         "data": {
           "no": "No",
-          "priceFor139": "139$",
+          "priceFor139": "No. 12 meses de acceso para 139$ (inicialmente $99 + $40 para libro a todo color)",
           "priceForFullColorBook": "Para un libro a todo color, 40$ adicionales. El autor del regalo no puede pagarlo por adelantado",
           "priceForAdditionalBook": "79$ (hasta 300 páginas), 99$ (hasta 480 páginas)",
           "noShippingOutsideUS": "No, solo para EE.UU.",
@@ -821,7 +821,7 @@
     "step1": "Comenzar capítulo",
     "step2": "Responder preguntas",
     "step3": "Utilice la fusión narrativa",
-    "step4": "Vista previa y finalizar"
+    "step4": "Editar y finalizar"
   },
   "ChName": {
     "ChName": "Nombre del Capítulo",
