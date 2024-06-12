@@ -283,11 +283,10 @@ export const PrintBook = () => {
                 }}
               >
                 <TooltipTab
-                  title="Table of Contents"
-                  text=" Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.
-                      Tip: Click, hold, and drag to reorder chapters."
+                  title=""
+                  text= {`The delivery tracking status will update once you order your physical book from "View Book" steps.`}
                   transform="none"
-                  top={"545px"} left={"535px"} bottom={undefined} right={undefined} position={"absolute"} />
+                  top={"615px"} left={"535px"} bottom={undefined} right={undefined} position={"absolute"} />
 
               </Box>
             )}

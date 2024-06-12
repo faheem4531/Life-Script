@@ -74,6 +74,7 @@ interface State {
   chapterLoading: any;
   tocData: any;
   treeData: any;
+  loading: boolean;
 }
 
 const initialState: State = {
@@ -88,6 +89,7 @@ const initialState: State = {
   tocData: {},
   treeData: {},
   chapterLoading: "",
+  loading: null,
 };
 
 export const gptChat = createAsyncThunk<UserData, chatWithgpt>(
@@ -862,6 +864,17 @@ export const chatSlice = createSlice({
     });
     builder.addCase(addParent.fulfilled, (state, action) => {
       state.treeData = action.payload;
+    });
+
+    builder.addCase(compiledChapter.pending, (state, action) => {
+      state.loading = true
+    });
+    builder.addCase(compiledChapter.fulfilled, (state, action) => {
+      state.loading = false
+    });
+
+    builder.addCase(compiledChapter.rejected, (state, action) => {
+      state.loading = false
     });
   },
 });

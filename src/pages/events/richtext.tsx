@@ -5,7 +5,7 @@ import {
   simpleChapter,
   uploadImage,
 } from "@/store/slices/chatSlice"; //uploadImage
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import {
   ContentState,
   //ContentState,
@@ -16,11 +16,11 @@ import {
   convertToRaw,
 } from "draft-js";
 
-import styles from "./styles.module.css";
+import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip";
 import MicListing from "@/_assets/svg/mic-listing.svg";
 import MicOff from "@/_assets/svg/mic-off.svg";
-import TextSave from "@/_assets/svg/save-text-icon.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
+import TextSave from "@/_assets/svg/save-text-icon.svg";
 import { default as GlobelBtn } from "@/components/button/Button";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
@@ -39,12 +39,12 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
+import informationIcon from "../../_assets/svg/informationIcon.svg";
 import backArrow from "../../_assets/svg/left.svg";
-import informationIcon from "../../_assets/svg/informationIcon.svg"
-import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip"
+import styles from "./styles.module.css";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -74,6 +74,7 @@ const RichText = ({ questionId }) => {
   const { compileChapterId, openai } = router.query;
   const { t } = useTranslation();
   const [hover, setHover] = useState(false);
+  const loading = useSelector((state: any) => state.chat.loading);
 
   const startRecording = async () => {
     try {
@@ -273,19 +274,32 @@ const RichText = ({ questionId }) => {
   //for grammar
   useEffect(() => {
     if (typeof window !== "undefined") {
-      import("@webspellchecker/wproofreader-sdk-js").then(
-        ({ default: WProofreaderSDK }) => {
-          // Assuming the library has a different initialization method
-          WProofreaderSDK.init({
-            container: document.getElementById("draftjs-rich-text-editor"),
-            autoSearch: true,
-            lang: "auto",
-            serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
-          });
-        }
-      );
+      if(loading === false) {
+        import("@webspellchecker/wproofreader-sdk-js").then(
+          ({ default: WProofreaderSDK }) => {
+            // Assuming the library has a different initialization method
+            // WProofreaderSDK.init({
+            //   container: document.getElementById("draftjs-rich-text-editor"),
+            //   autoSearch: true,
+            //   lang: "auto",
+            //   serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
+            // });
+            const container = document.getElementById("draftjs-rich-text-editor");
+            if (container) {
+              WProofreaderSDK.init({
+                container,
+                autoSearch: true,
+                lang: "auto",
+                serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
+              });
+            } else {
+              console.error("Container not found");
+            }
+          }
+        );
+      }
     }
-  }, []); //to import webspellcheckr
+  }, [loading]); //to import webspellcheckr
 
   //autosave answer
   useEffect(() => {
@@ -450,7 +464,18 @@ const RichText = ({ questionId }) => {
   ];
 
   return (
-    <>
+    <Box>
+      {loading ? (
+        <Box sx={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 6,
+        }}>
+          <CircularProgress />
+        </Box>
+      ) : (
       <Box className="rich-editor">
         <Box
           sx={{
@@ -689,6 +714,7 @@ const RichText = ({ questionId }) => {
           />
         </Box>
       </Box>
+      )}
 
       <TransitionsDialog
         open={buyPremium}
@@ -702,7 +728,7 @@ const RichText = ({ questionId }) => {
         }}
         proceed={() => router.push("/dashboard/SubscribePlans")}
       />
-    </>
+    </Box>
   );
 };
 
