@@ -215,11 +215,11 @@
       "subTitle": "We've Got Answers!",
       "btnText": "See More",
       "question1": {
-        "qs": "What is included in each subscription?",
+        "qs": "What is included in each plan?",
         "ans": "Full year of access to our platform, full-color hardcover printed book and free delivery."
       },
       "question2": {
-        "qs": "Can I gift a subscription and how does that work?",
+        "qs": "Can I gift a LifeScript and how does that work?",
         "ans": "Absolutely, gifting a subscription is an easy, thoughtful and one of the best last-minute presents. You simply provide the email of the fortunate recipient and choose the date when you’d like the gift card to be sent. Once your purchase is complete, you’ll receive a confirmation email with a link to print out a beautiful gift card. You have the flexibility to email it right away, schedule a time when you want us to send it or print it out for a more personal touch."
       },
       "question3": {
@@ -433,7 +433,7 @@
         "title": "Storyworth",
         "data": {
           "no": "No",
-          "priceFor139": "139$",
+          "priceFor139": "No. 12 months access for 139$ (intiailly 99S but additional 40$ if you want full-color book)",
           "priceForFullColorBook": "For a full-color book, 40$ additional. Cannot be prepaid by gifter",
           "priceForAdditionalBook": "79$ (up to 300 pages) ,99$ (up to 480 pages)",
           "noShippingOutsideUS": "No, only for US.",
@@ -528,7 +528,7 @@
     },
     "question11": {
       "question": "What happens when my subscription ends?",
-      "answer": "Absolutely! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have."
+      "answer": "You will receive a reminder a month before the subscription ends. You will have a chance to complete your stories and order your book. If needed, we offer an additional month for free or to renew the subscription for another year."
     },
     "question12": {
       "question": "Is there a word or page limit to my stories?",
@@ -821,7 +821,7 @@
     "step1": "Begin chapter",
     "step2": "Answer questions",
     "step3": "Use Narrative Fusion",
-    "step4": "Preview and Finish"
+    "step4": "Edit and Finish"
   },
   "ChName": {
     "ChName": "Chapter Name",
