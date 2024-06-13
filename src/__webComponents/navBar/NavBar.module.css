@@ -25,13 +25,13 @@
   font-family: Avenir5;
   box-sizing: border-box;
   width: 70px;
-  padding: 11px 10px;
+  
   border-radius: 2px;
   text-align: left;
   background-color: #FBFBFB;
   color:#E1683B ;
   border:1px solid #E1683B ;
-  position: relative;
+ 
 }
 
 .selector:hover{
@@ -73,6 +73,7 @@
 .optionsBg{
   background-color: #fcf0eb ; 
 }
+
 
 @keyframes slideIn {
   0% {
@@ -184,4 +185,3 @@ color: #f3ecda;
 margin: 0;
 padding-bottom: 2px;
 }
-
