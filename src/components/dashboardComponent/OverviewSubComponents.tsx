@@ -91,26 +91,28 @@ export const ViewBook = () => {
         >
           {t("overView.ViewBtn")}
         </Typography>
-      </Box>
-      {hover && (
+
+        {hover && (
         <Box
           sx={{
             display: {
               md: "block",
-              xs: "none",
+              xs: "block",
             },
             // position: "absolute", 
             // mt: 1 
           }}
         >
           <TooltipTab
-            title="Preview book and order hardcover"
-            text=""
+            title=""
+            text="Preview book and order hardcover"
             transform="none" // adjust transform if needed
-            top={undefined} left={"268px"} bottom={"80px"} right={undefined} position={"absolute"} />
+            top={undefined} left={undefined} bottom={"55px"} right={undefined} position={"absolute"} />
 
         </Box>
       )}
+      </Box>
+      
 
       <CustomizationDialog
         open={openModal}
@@ -255,7 +257,7 @@ export const PrintBook = () => {
     >
       <Box sx={{ width: { md: "65%", sm: "85%", xs: "90%" } }}>
 
-        <Box sx={{display:"flex", alignItems:"center", gap:"10px"}}>
+        <Box sx={{display:"flex", alignItems:"center", gap:"10px",position:"relative"}}>
 
           <Typography
             sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
@@ -268,7 +270,7 @@ export const PrintBook = () => {
               onMouseLeave={() => setHover(false)}
             // sx={{ display: 'inline-block' }} 
             >
-              <Image src={informationIcon} width={20} alt="Info Tooltip" />
+              <Image src={informationIcon} width={20} color="#7F886B" alt="Info Tooltip" />
             </Box>
 
             {hover && (
@@ -276,7 +278,7 @@ export const PrintBook = () => {
                 sx={{
                   display: {
                     md: "block",
-                    xs: "none",
+                    xs: "block",
                   },
                   // position: "absolute", 
                   // mt: 1 
@@ -286,7 +288,7 @@ export const PrintBook = () => {
                   title=""
                   text= {`The delivery tracking status will update once you order your physical book from "View Book" steps.`}
                   transform="none"
-                  top={"615px"} left={"535px"} bottom={undefined} right={undefined} position={"absolute"} />
+                  top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"}  />
 
               </Box>
             )}

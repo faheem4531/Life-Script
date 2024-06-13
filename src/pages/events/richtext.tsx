@@ -530,6 +530,7 @@ const RichText = ({ questionId }) => {
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
+                position:"relative",
                 flexWrap: { xs: "wrap", lg: "nowrap" },
                 ml: { sm: "70px", xs: "0" },
               }}
@@ -590,7 +591,7 @@ const RichText = ({ questionId }) => {
                     sx={{
                       display: {
                         md: "block",
-                        xs: "none",
+                        xs: "block",
                       },
                       // position: "absolute", 
                       // mt: 1 
@@ -599,7 +600,7 @@ const RichText = ({ questionId }) => {
                     <MultiToolTip
                       content={content}
                       position="absolute"
-                      bottom={undefined} right={"5px"} top={undefined} left={undefined}                    />
+                      bottom={undefined} right={undefined} top={undefined} left={undefined}                    />
 
                   </Box>
                 )}

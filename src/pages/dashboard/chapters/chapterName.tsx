@@ -405,39 +405,40 @@ const chapterName = () => {
                   flexWrap: "wrap",
                   pb: "10px",
                   m: { sm: "0", xs: "20px 20px 0" },
+                  position: "relative"
                 }}
               >
-                 {aiQuestions?.length > 0 && (
-                <Box>
-                  <Box
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                  // sx={{ display: 'inline-block' }} 
-                  >
-                    <Image src={informationIcon} width={20} alt="Info Tooltip" />
-                  </Box>
-
-                  {hover && (
+                
+                  <Box>
                     <Box
-                      sx={{
-                        display: {
-                          md: "block",
-                          xs: "none",
-                        },
-                        // position: "absolute", 
-                        // mt: 1 
-                      }}
+                      onMouseEnter={() => setHover(true)}
+                      onMouseLeave={() => setHover(false)}
+                    // sx={{ display: 'inline-block' }} 
                     >
-                      <TooltipTab
-                        title="Suggested Questions"
-                        text="Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible."
-                        transform="none" // adjust transform if needed
-                        top={undefined} left={undefined} bottom={"150px"} right={"424px"} position={"fixed"} />
-
+                      <Image src={informationIcon} width={20} alt="Info Tooltip" />
                     </Box>
-                  )}
-                </Box>
-                 )}
+
+                    {hover && (
+                      <Box
+                        sx={{
+                          display: {
+                            md: "block",
+                            xs: "block",
+                          },
+                          // position: "absolute", 
+                          // mt: 1 
+                        }}
+                      >
+                        <TooltipTab
+                          title="Suggested Questions"
+                          text={`Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible.`}
+                          transform="none"
+                          top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
+
+                      </Box>
+                    )}
+                  </Box>
+          
                 {aiQuestions?.length > 0 && (
                   <GlobelBtn
                     image={suggestionIcon}

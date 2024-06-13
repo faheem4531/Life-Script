@@ -748,7 +748,7 @@ const FamilyTree = ({ familyTreeData }) => {
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", justifyContent:"space-between" }}>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box sx={{ display: "flex", alignItems: "center"}}>
         <IconButton id="download" aria-label="download" sx={{
           '&:hover': {
             backgroundColor: 'transparent',
@@ -764,7 +764,7 @@ const FamilyTree = ({ familyTreeData }) => {
             />
           </Box>
         </IconButton>
-        <Box sx={{ display: "flex", alignItems: "center", gap:"10px" }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap:"10px",position:"relative" }}>
           <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
             <ButtonIcons
               onClick={() => setResetModal(true)}
@@ -787,7 +787,7 @@ const FamilyTree = ({ familyTreeData }) => {
                 sx={{
                   display: {
                     md: "block",
-                    xs: "none",
+                    xs: "block",
                   },
                   // position: "absolute", 
                   // mt: 1 
@@ -795,8 +795,7 @@ const FamilyTree = ({ familyTreeData }) => {
               >
                 <MultiToolTip
                   content={content}
-                  position="absolute"
-                  bottom={"190px"} right={undefined} top={undefined} left={"455px"} />
+                  top={undefined} left={"115px"} bottom={undefined} right={undefined} position={"absolute"} />
 
               </Box>
             )}

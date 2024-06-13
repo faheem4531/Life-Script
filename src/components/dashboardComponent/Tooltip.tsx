@@ -15,22 +15,23 @@ export default function Tooltip({
         border: "2px solid #E1683B",
         borderRadius: "4px",
         width: "360px",
-        height: "160px",
+        // width: "auto",
+        height: "auto",
         position: position,
         bottom: "30px",
         left: left,
         transform: transform,
         boxShadow: "7px 10px 50px rgba(0, 0, 0, 0.25)",
         zIndex: "3",
-        padding: "30px 10px 0 30px",
+        padding: "12px",
       }}
     >
       <Typography
         sx={{
-          fontSize: "22px",
+          fontSize: "17px",
           fontWeight: 500,
-          color: "#30422E",
-          marginBottom: "15px",
+          color: "#7F886B",
+          // marginBottom: "15px",
         }}
       >
         {title}
@@ -39,7 +40,7 @@ export default function Tooltip({
         sx={{
           fontSize: "12px",
           fontWeight: 300,
-          color: "#30422E",
+          color: "#7F886B",
           lineHeight: "150%",
           whiteSpace: "wrap",
           width: "90%",

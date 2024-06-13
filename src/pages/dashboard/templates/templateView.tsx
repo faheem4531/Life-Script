@@ -219,7 +219,7 @@ const chapterName = () => {
                 sx={{
                   opacity:
                     tempQuestionIds?.length && buttonLoading ? "1" : "0.6",
-                  display: "flex", justifyContent: "center", alignItems: "center", gap: "20px"
+                  display: "flex", justifyContent: "center", alignItems: "center", gap: "20px", position: "relative"
                 }}
               >
                 <Box>
@@ -236,7 +236,7 @@ const chapterName = () => {
                       sx={{
                         display: {
                           md: "block",
-                          xs: "none",
+                          xs: "block",
                         },
                         // position: "absolute", 
                         // mt: 1 
@@ -244,9 +244,9 @@ const chapterName = () => {
                     >
                       <TooltipTab
                         title="Use the Template"
-                        text="Mark the questions you'd like to include in this chapter. You can mark as many as you like and later delete or add your own questions."
-                        transform="none" // adjust transform if needed
-                        top={undefined} left={undefined} bottom={"220px"} right={"340px"} position={"absolute"} />
+                        text={`Mark the questions you'd like to include in this chapter. You can mark as many as you like and later delete or add your own questions.`}
+                        transform="none"
+                        top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
 
                     </Box>
                   )}

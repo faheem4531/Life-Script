@@ -15,7 +15,8 @@ export default function MultiToolTip({
         bgcolor: "#fff",
         border: "2px solid #E1683B",
         borderRadius: "4px",
-        width: "360px",
+        width: "300px",
+        // width: "100%",
         height: "auto",
         position: position,
         top: top,
@@ -25,17 +26,17 @@ export default function MultiToolTip({
         transform: transform,
         boxShadow: "7px 10px 50px rgba(0, 0, 0, 0.25)",
         zIndex: "3",
-        padding: "30px 10px 0 30px",
+        padding: "12px",
       }}
     >
       {content.map((item, index) => (
-        <Box key={index} sx={{ marginBottom: "10px" }}>
+        <Box key={index} >
           <Box sx={{ display: "flex", alignItems: "center"}}>
             <Box
               sx={{
-                width: "6px",
-                height: "6px",
-                bgcolor: "#30422E",
+                width: "4px",
+                height: "4px",
+                bgcolor: "#7F886B",
                 borderRadius: "50%",
                 marginRight: "10px",
               }}
@@ -44,7 +45,7 @@ export default function MultiToolTip({
               sx={{
                 fontSize: "12px",
                 fontWeight: "700",
-                color: "#30422E",
+                color: "#7F886B",
               }}
             >
               {item.title}
@@ -54,7 +55,7 @@ export default function MultiToolTip({
             sx={{
               fontSize: "10px",
               fontWeight: 500,
-              color: "#30422E",
+              color: "#7F886B",
               marginLeft: "30px",
             }}
           >
@@ -62,7 +63,6 @@ export default function MultiToolTip({
           </Typography>
         </Box>
       ))}
-      <Box sx={{marginBottom:"30px"}}></Box>
     </Box>
   );
 }

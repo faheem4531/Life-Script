@@ -16,7 +16,8 @@ export default function TooltipTab({
         bgcolor: "#fff",
         border: "2px solid #E1683B",
         borderRadius: "4px",
-        width: "360px",
+        // width: "360px",
+        width: "auto",
         height: "auto",
         position: position,
         top: top,
@@ -26,19 +27,20 @@ export default function TooltipTab({
         transform: transform,
         boxShadow: "7px 10px 50px rgba(0, 0, 0, 0.25)",
         zIndex: "3",
-        padding: "30px 10px 0 30px",
+        padding: "12px",
       }}
     >
-      <Typography
-        sx={{
-          fontSize: "22px",
-          fontWeight: 500,
-          color: "#30422E",
-          marginBottom: "15px",
-        }}
-      >
-        {title}
-      </Typography>
+      {title && (
+        <Typography
+          sx={{
+            fontSize: "17px",
+            fontWeight: 800,
+            color: "#7F886B",
+          }}
+        >
+          {title}
+        </Typography>
+      )}
       <Typography
         sx={{
           fontSize: "12px",
@@ -46,8 +48,12 @@ export default function TooltipTab({
           color: "#30422E",
           lineHeight: "150%",
           whiteSpace: "wrap",
-          width: "90%",
-          paddingBottom:"25px"
+          // width: "90%",
+          // paddingBottom:"25px",
+          display:"flex",
+          justifyContent:"center",
+          alignItems:"center",
+          color:"#7F886B"
         }}
       >
         {text}

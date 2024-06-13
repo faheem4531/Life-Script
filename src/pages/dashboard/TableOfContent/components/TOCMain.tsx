@@ -93,13 +93,14 @@ const TOCMain = () => {
                 gap: { sm: 2, xs: 2 },
                 display: "flex",
                 justifyContent: { xs: "space-between", sm: "end" },
-                alignItems:"center",
+                alignItems: "center",
                 width: "100%",
                 flexWrap: "wrap",
                 pb: "10px",
+                position: "relative"
               }}
             >
-               <Box >
+              <Box >
                 <Box
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
@@ -113,7 +114,7 @@ const TOCMain = () => {
                     sx={{
                       display: {
                         md: "block",
-                        xs: "none",
+                        xs: "block",
                       },
                       // position: "absolute", 
                       // mt: 1 
@@ -121,11 +122,10 @@ const TOCMain = () => {
                   >
                     <TooltipTab
                       title="Table of Contents"
-                      text=" Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.
-                      Tip: Click, hold, and drag to reorder chapters."
-                      transform="none" 
-                      top={undefined} left={undefined} bottom={"210px"} right={"266px"} position={"absolute"}  />
-
+                      text={`Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.
+                          Tip: Click, hold, and drag to reorder chapters.`}
+                      transform="none"
+                      top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
                   </Box>
                 )}
               </Box>

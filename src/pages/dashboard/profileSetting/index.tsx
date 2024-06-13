@@ -261,7 +261,8 @@ const ProfileSetting = () => {
             >
 
               <Box sx={{ bgcolor: "#fff", p: "24px 11px 24px 23px" }}>
-                <Box sx={{display:"flex", alignItems:"center", gap:"10px"}}>
+                <Box sx={{display:"flex", alignItems:"center", gap:"10px",position:"relative"}}>
+
                   <Typography sx={{
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 17 },
                     color: "#30422E",
@@ -285,9 +286,9 @@ const ProfileSetting = () => {
                         sx={{
                           display: {
                             md: "block",
-                            xs: "none",
+                            xs: "block",
                           },
-                          // position: "absolute", 
+                          // position: "relative", 
                           // mt: 1 
                         }}
                       >
@@ -295,7 +296,7 @@ const ProfileSetting = () => {
                           title="Book Credits"
                           text={`One book credit equals one physical book. Increase your credits by adding additional books during checkout from the "View Book" section on the Overview page or get free ones by referring a friend through the "Gift a Book" section on the left.`}
                           transform="none"
-                          top={undefined} left={undefined} bottom={"130px"} right={"75px"} position={"absolute"} />
+                          top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
 
                       </Box>
                     )}
