@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
+import Link from 'next/link';
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -63,7 +64,9 @@ const StripePage = () => {
               padding: "26px 0 26px 17px",
             }}
           >
-            <Image src={Logo} alt="Logo" />
+            <Link href={"./"}>
+              <Image src={Logo} alt="Logo" />
+            </Link>
           </Box>
 
           <Box
@@ -78,7 +81,7 @@ const StripePage = () => {
           >
             <FormControl sx={{ display: showSecondForm ? "none" : "block" }}>
               <Typography sx={{ color: "#30422E", fontSize: "30px" }}>
-                { t("stripeFlow.stripePage.title")}
+                {t("stripeFlow.stripePage.title")}
               </Typography>
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -97,7 +100,7 @@ const StripePage = () => {
                   }}
                 >
                   <FormControlLabel
-                    value={ t("stripeFlow.stripePage.title")}
+                    value={t("stripeFlow.stripePage.title")}
                     control={
                       <Radio
                         sx={{
@@ -107,7 +110,7 @@ const StripePage = () => {
                         }}
                       />
                     }
-                    label={ t("stripeFlow.stripePage.mySelf")}
+                    label={t("stripeFlow.stripePage.mySelf")}
                     sx={{
                       marginLeft: "10px",
                       width: "100%",
@@ -135,7 +138,7 @@ const StripePage = () => {
                         }}
                       />
                     }
-                    label={ t("stripeFlow.stripePage.giftForSomeoneElse")}
+                    label={t("stripeFlow.stripePage.giftForSomeoneElse")}
                     sx={{ marginLeft: "10px", width: "100%" }}
                   />
                 </Box>
@@ -151,7 +154,7 @@ const StripePage = () => {
                     width="100%"
                     height="50px"
                     backgroundColor="#E1693B"
-                    title={ t("stripeFlow.stripePage.btnText")}
+                    title={t("stripeFlow.stripePage.btnText")}
                     bgHover="#B5522D"
                     onClick={handleContinue}
                     img1={undefined}
@@ -165,7 +168,7 @@ const StripePage = () => {
             {showSecondForm && (
               <FormControl sx={{ display: "block" }}>
                 <Typography sx={{ color: "#30422E", fontSize: "30px" }}>
-                { t("stripeFlow.stripePage.preference")}
+                  {t("stripeFlow.stripePage.preference")}
                 </Typography>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
@@ -194,7 +197,7 @@ const StripePage = () => {
                           }}
                         />
                       }
-                      label={ t("stripeFlow.stripePage.buyNow")}
+                      label={t("stripeFlow.stripePage.buyNow")}
                       sx={{ marginLeft: "10px", width: "100%" }}
                     />
                   </Box>
@@ -219,7 +222,7 @@ const StripePage = () => {
                           }}
                         />
                       }
-                      label={ t("stripeFlow.stripePage.freeTrial")}
+                      label={t("stripeFlow.stripePage.freeTrial")}
                       sx={{ marginLeft: "10px", width: "100%" }}
                     />
                   </Box>
@@ -235,7 +238,7 @@ const StripePage = () => {
                     width="100%"
                     height="50px"
                     backgroundColor="#E1693B"
-                    title={ t("stripeFlow.stripePage.btnText")}
+                    title={t("stripeFlow.stripePage.btnText")}
                     bgHover="#B5522D"
                     onClick={handleContinueNext}
                     img1={undefined}
