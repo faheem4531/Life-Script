@@ -114,6 +114,25 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             gap: { sm: 2, xs: 0 },
             height: "45vh",
             overflowY: "scroll",
+            overflowX: "hidden",
+            direction: "rtl", // This flips the scrollbar to the left
+            '& > *': {
+              direction: "ltr", // This ensures the content is still left-to-right
+            },
+            '&::-webkit-scrollbar': {
+              display: 'block !important',
+              width: '8px',
+            },
+            '&::-webkit-scrollbar-track': {
+              backgroundColor: '#f1f1f1',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: '#888',
+              borderRadius: '4px',
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+              backgroundColor: '#555',
+            },
           }}
         >
           {templates.map((item, index) => (
@@ -214,7 +233,7 @@ function Chapters({
   };
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
+    <Box sx={{ display: "flex", alignItems: "center", ml: "20px" }}>
       {title === "Mark All" ? (
         <FormControlLabel
           control={
