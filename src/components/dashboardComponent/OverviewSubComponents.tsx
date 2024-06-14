@@ -14,7 +14,8 @@ import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
 import styles from "./Custom.module.css";
 import TooltipTab from "@/__webComponents/tooltip/Tooltip";
-import informationIcon from "../../_assets/svg/informationIcon.svg"
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 
 
 export const ViewBook = () => {
@@ -270,7 +271,7 @@ export const PrintBook = () => {
               onMouseLeave={() => setHover(false)}
             // sx={{ display: 'inline-block' }} 
             >
-              <Image src={informationIcon} width={20} color="#7F886B" alt="Info Tooltip" />
+              <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
             </Box>
 
             {hover && (

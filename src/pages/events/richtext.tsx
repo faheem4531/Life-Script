@@ -42,7 +42,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
-import informationIcon from "../../_assets/svg/informationIcon.svg";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import backArrow from "../../_assets/svg/left.svg";
 import styles from "./styles.module.css";
 
@@ -581,9 +581,8 @@ const RichText = ({ questionId }) => {
                 <Box
                   onMouseEnter={() => setHover(true)}
                   onMouseLeave={() => setHover(false)}
-                // sx={{ display: 'inline-block' }} 
                 >
-                  <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                   <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
                 </Box>
 
                 {hover && (

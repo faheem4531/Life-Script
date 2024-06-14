@@ -43,7 +43,7 @@ import backArrow from "@/_assets/svg/left.svg";
 import suggestionIcon from "@/_assets/svg/suggestionsIcon.svg";
 import QuestionComponent from "./components/AIGeneration";
 import AddChapter from "./addChapter";
-import informationIcon from "../../../_assets/svg/informationIcon.svg"
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import TooltipTab from "@/__webComponents/tooltip/Tooltip";
 
 
@@ -397,7 +397,7 @@ const chapterName = () => {
               </Typography>
               <Box
                 sx={{
-                  gap: "7px",
+                  gap: "10px",
                   display: "flex",
                   justifyContent: { xs: "space-between", sm: "end" },
                   alignItems: "center",
@@ -413,9 +413,8 @@ const chapterName = () => {
                     <Box
                       onMouseEnter={() => setHover(true)}
                       onMouseLeave={() => setHover(false)}
-                    // sx={{ display: 'inline-block' }} 
                     >
-                      <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                       <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
                     </Box>
 
                     {hover && (

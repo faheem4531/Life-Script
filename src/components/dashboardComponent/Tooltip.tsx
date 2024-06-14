@@ -30,7 +30,7 @@ export default function Tooltip({
         sx={{
           fontSize: "17px",
           fontWeight: 500,
-          color: "#7F886B",
+          color: "#3e4f3c",
           // marginBottom: "15px",
         }}
       >
@@ -40,7 +40,7 @@ export default function Tooltip({
         sx={{
           fontSize: "12px",
           fontWeight: 300,
-          color: "#7F886B",
+          color: "#3E4F3C",
           lineHeight: "150%",
           whiteSpace: "wrap",
           width: "90%",

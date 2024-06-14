@@ -35,7 +35,7 @@ export default function TooltipTab({
           sx={{
             fontSize: "17px",
             fontWeight: 800,
-            color: "#7F886B",
+            color: "#3E4F3C",
           }}
         >
           {title}
@@ -45,7 +45,7 @@ export default function TooltipTab({
         sx={{
           fontSize: "12px",
           fontWeight: 300,
-          color: "#30422E",
+          // color: "#30422E",
           lineHeight: "150%",
           whiteSpace: "wrap",
           // width: "90%",
@@ -53,7 +53,7 @@ export default function TooltipTab({
           display:"flex",
           justifyContent:"center",
           alignItems:"center",
-          color:"#7F886B"
+          color:"#3E4F3C"
         }}
       >
         {text}

@@ -36,7 +36,7 @@ export default function MultiToolTip({
               sx={{
                 width: "4px",
                 height: "4px",
-                bgcolor: "#7F886B",
+                bgcolor: "#3E4F3C",
                 borderRadius: "50%",
                 marginRight: "10px",
               }}
@@ -45,7 +45,7 @@ export default function MultiToolTip({
               sx={{
                 fontSize: "12px",
                 fontWeight: "700",
-                color: "#7F886B",
+                color: "#3E4F3C",
               }}
             >
               {item.title}
@@ -55,7 +55,7 @@ export default function MultiToolTip({
             sx={{
               fontSize: "10px",
               fontWeight: 500,
-              color: "#7F886B",
+              color: "#3E4F3C",
               marginLeft: "30px",
             }}
           >

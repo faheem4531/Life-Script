@@ -29,7 +29,8 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 import TooltipTab from "@/__webComponents/tooltip/Tooltip";
-import informationIcon from "../../../_assets/svg/informationIcon.svg"
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 
 const ProfileSetting = () => {
   const userData = useSelector(selectUser);
@@ -276,9 +277,8 @@ const ProfileSetting = () => {
                     <Box
                       onMouseEnter={() => setHover(true)}
                       onMouseLeave={() => setHover(false)}
-                    // sx={{ display: 'inline-block' }} 
                     >
-                      <Image src={informationIcon} width={20} alt="Info Tooltip" />
+                      <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
                     </Box>
 
                     {hover && (
