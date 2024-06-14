@@ -63,7 +63,7 @@ const WelcomeOverview = () => {
         </Typography>
         <Typography
           sx={{
-            fontSize: { xl: "33px", sm: "28px" },
+            fontSize: { xl: "33px", sm: "28px", xs: "24px" },
             lineHeight: "120%",
             fontWeight: 700,
           }}
