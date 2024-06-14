@@ -609,7 +609,7 @@
         "tab2": "REGISTER",
         "tab3": "PAYMENT"
       },
-      "userExist":"User already exist"
+      "userExist":"User already existS"
     },
     "PurchaseForm": {
       "title": "Purchase LifeScript",
@@ -874,7 +874,7 @@
     "STT": "Voice-to-text",
     "MAC": "Mark As Complete",
     "ByPreHeading": "Buy Premium",
-    "PreDes": "Speech to Text is  only available for Standard and Premium users. Want to buy now?"
+    "PreDes": "Narrative Fusion is only available for Standard and Premium users. Want to buy now?"
   },
   "StartNewTem": {
     "StartNewTem": "Start new chapter",

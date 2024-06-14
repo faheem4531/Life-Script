@@ -265,6 +265,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 fontSize: isMobile ? "10px" : isTablet ? "16px" : "18px",
                 padding: "1px",
                 // width: isMobile ? "90%" : "30%",
+                display:"inline-block",
                 width: isMobile ? "90%" : isTablet ? "50%" : "40%",
                 borderRadius: "10px",
               }}
@@ -311,11 +312,8 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Typography
                   variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}
                 >
-                  LifeScript uses cookies to ensure you get the best possible
-                  experience and to optimize our website. By clicking
-                  &apos;Accept&apos;, you consent to our use of cookies. If you
-                  wish to manage your preferences or learn more, please visit
-                  our Privacy Policy or select &lsquo;Customize&rsquo;.
+                   This website uses cookies to ensure you get the best possible experience. By clicking &apos;Accept&apos;, you agree to our use of cookies.
+
                 </Typography>
               </div>
             </CookieConsent>
