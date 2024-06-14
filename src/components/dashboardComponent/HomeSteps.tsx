@@ -120,8 +120,9 @@ const HomeSteps = () => {
           sx={{
             fontSize: { md: "12px", sm: "10px" },
             position: "absolute",
-            left: "-40px",
-            width: "200px",
+            left: { md: "-60px", sm: "-60px", xs: "-55px" },
+            width: "180px",
+            textAlign: "center",
           }}
           className={styles.typo}
         >

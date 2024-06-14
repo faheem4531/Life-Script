@@ -86,21 +86,20 @@ export default function TransitionsDialog({
           }}
         >
           <Box flex={1}>
-          <GlobelBtn
+            <GlobelBtn
               btnText={proceedText ? proceedText : `${t("modals.yes")}`}
-              bgColor="#e1693b"
-              color="#fff"
+              bgColor="transparent"
+              color="#e1693b"
+              border="1px solid #e1693b"
               width="100%"
               onClick={proceed}
             />
-
           </Box>
           <Box flex={1}>
-          <GlobelBtn
+            <GlobelBtn
               btnText={cancelText ? cancelText : `${t("modals.no")}`}
-              bgColor="transparent"
-              border="1px solid #e1693b"
-              color="#e1693b"
+              bgColor="#e1693b"
+              color="#fff"
               width="100%"
               onClick={cancel}
             />
@@ -110,4 +109,3 @@ export default function TransitionsDialog({
     </Dialog>
   );
 }
-

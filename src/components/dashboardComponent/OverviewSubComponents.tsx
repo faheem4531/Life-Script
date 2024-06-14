@@ -158,7 +158,7 @@ export const ViewBook = () => {
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
-            Complete all chapters before View Book
+            Complete all in progress chapters to view your book and order it’
           </Typography>
           <Box
             sx={{
