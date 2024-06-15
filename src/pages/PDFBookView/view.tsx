@@ -5,30 +5,43 @@ import Button from "@mui/material/Button";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import { default as GlobelBtn } from "@/components/button/Button";
+import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-export default function PDFViewer(pdfUrl) {
+interface PDFViewerProps {
+  pdfUrl: string;
+}
+
+const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [numPages, setNumPages] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [pageWidth, setPageWidth] = useState(0);
+  const [pageWidth, setPageWidth] = useState(450);
+  const [pageHeight, setPageHeight] = useState(550);
   const [goToPageNumber, setGoToPageNumber] = useState("1");
 
-  function onPageLoadSuccess() {
-    setPageWidth(900);
-    setLoading(false);
-  }
   useEffect(() => {
-    onPageLoadSuccess();
     if (numPages === 0) {
       setPageNumber(1); // Reset page number when a new document is loaded
     }
-
-    return () => {
-      // Clean up any necessary resources
-    };
   }, [numPages]);
+
+  const onPageLoadSuccess = (page) => {
+    // Calculate the scale based on desired dimensions
+    const originalPageWidth = page.originalWidth;
+    const originalPageHeight = page.originalHeight;
+
+    const scaleX = 450 / originalPageWidth;
+    const scaleY = 550 / originalPageHeight;
+
+    const scale = Math.min(scaleX, scaleY);
+
+    setPageWidth(originalPageWidth * scale);
+    setPageHeight(originalPageHeight * scale);
+    setLoading(false);
+  };
 
   const options = {
     cMapUrl: "cmaps/",
@@ -36,18 +49,40 @@ export default function PDFViewer(pdfUrl) {
     standardFontDataUrl: "standard_fonts/",
   };
 
-  function onDocumentLoadSuccess({ numPages: nextNumPages }) {
+  const onDocumentLoadSuccess = ({ numPages: nextNumPages }) => {
     setNumPages(nextNumPages);
-  }
+  };
 
-  function goToPage(number) {
+  const goToPage = (number: number) => {
     if (number <= numPages) {
       setPageNumber(number);
     }
-  }
+  };
 
   return (
     <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: { sm: "10px", xs: "5px" },
+          mt: "2px",
+          mb: "20px",
+          justifyContent: { sm: "flex-end", xs: "flex-start" },
+          flexWrap: "wrap",
+        }}
+      >
+        <GlobelBtn
+          bgColor="#E1683B"
+          btnText={`PDF Download`}
+          color="#fff"
+          image={SaveIcon}
+          onClick={() => window.open(pdfUrl, "_blank")}
+          fontSize="14px"
+          p="8px 15px"
+        />
+      </Box>
+
       <Box hidden={false} sx={{ height: "calc(50vh)", position: "relative" }}>
         <Box
           position="absolute"
@@ -82,27 +117,24 @@ export default function PDFViewer(pdfUrl) {
             <Image alt="icon" src={NextIcon} />
           </Button>
         </Box>
+
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{
-            // height: "500px",
-            // overflowY: "scroll",
-          }}
+          sx={{}}
         >
           <Box
             sx={{
-              boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             }}
           >
             <Document
-              file={{
-                url: pdfUrl?.pdfUrl,
-                size: 300,
-              }}
+              file={pdfUrl}
               onLoadSuccess={onDocumentLoadSuccess}
-              onLoadError={(error) => console.error("PDF loading error:", error)}
+              onLoadError={(error) =>
+                console.error("PDF loading error:", error)
+              }
               options={options}
               renderMode="canvas"
             >
@@ -111,11 +143,13 @@ export default function PDFViewer(pdfUrl) {
                 renderAnnotationLayer={false}
                 renderTextLayer={false}
                 onLoadSuccess={onPageLoadSuccess}
-                width={Math.max(pageWidth * 0.8, 390)}
+                width={pageWidth}
+                height={pageHeight}
               />
             </Document>
           </Box>
         </Box>
+
         <Box
           sx={{
             display: "flex",
@@ -149,4 +183,6 @@ export default function PDFViewer(pdfUrl) {
       </Box>
     </>
   );
-}
+};
+
+export default PDFViewer;

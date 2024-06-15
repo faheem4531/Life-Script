@@ -15,7 +15,8 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
           p: "30px 28px",
           bgcolor: "#F3ECDA",
           borderRadius: "4",
-          height: "1120px",
+          // height: "1120px",
+          height: "750px",
           mt: "50px"
         }}
       >

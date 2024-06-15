@@ -227,7 +227,7 @@ const EditBookCover = () => {
   }
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length <= 37) {
+    if (event.target.value.length <= 30) {
       appendTitleToSVG(event.target.value, "heading-text");
       setTitle(event.target.value);
     }
@@ -855,19 +855,22 @@ const EditBookCover = () => {
             </Box>
 
             <Box
-              sx={{
-                flex: "1",
-              }}
+              // sx={{
+              //   flex: "1",
+              // }}
             >
               <Box
                 sx={{
                   position: "relative",
                   backgroundColor: "#F4F4F4",
                   borderRadius: "4px",
-                  width: "100%",
-                  height: "100%",
-                  padding: "53px 20px 0px",
+                  // width: "100%",
+                  // height: "100%",
+                  padding: "20px",
                   overflowX: "auto",
+                  display:"flex",
+                  justifyContent:"center",
+                  alignItems:"center"
                 }}
               >
                 {CoverNumber &&
