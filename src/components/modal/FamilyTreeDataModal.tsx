@@ -407,7 +407,7 @@ const FamilyTreeDataModal = ({
               }}
             />
           </Box>
-
+          {/* 
           <Box
             sx={{
               mt: "20px",
@@ -446,8 +446,7 @@ const FamilyTreeDataModal = ({
                 },
               }}
             />
-          </Box>
-
+          </Box> */}
           <Box mt={"20px"}>
             <Typography
               sx={{
