@@ -433,7 +433,8 @@
         "title": "Storyworth",
         "data": {
           "no": "No",
-          "priceFor139": "No. 12 months access for 139$ (intiailly 99S but additional 40$ if you want full-color book)",
+          "priceFor139": "No, only 12 months access for $139",
+          "priceFor139Coment": "($99 + $40 for full-color book)",
           "priceForFullColorBook": "For a full-color book, 40$ additional. Cannot be prepaid by gifter",
           "priceForAdditionalBook": "79$ (up to 300 pages) ,99$ (up to 480 pages)",
           "noShippingOutsideUS": "No, only for US.",
@@ -609,7 +610,7 @@
         "tab2": "REGISTER",
         "tab3": "PAYMENT"
       },
-      "userExist":"User already existS"
+      "userExist": "User already existS"
     },
     "PurchaseForm": {
       "title": "Purchase LifeScript",

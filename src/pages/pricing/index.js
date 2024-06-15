@@ -15,6 +15,7 @@ import Check from "@/__webAssets/svgs/check-square.svg";
 import PricingDetails from "./sections/PricingDetails";
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import { useTranslation } from "react-i18next";
+
 const PricingPage = () => {
   const { t } = useTranslation();
   const pointsArray = [
@@ -219,16 +220,6 @@ const PricingPage = () => {
           />
         </Box>
         <GotQuestions />
-        {/* <ContactFooter
-          title="Still confused? Ask"
-          marked=" away!"
-          lineWidth={150}
-          subTitle="Contact us Now!!!"
-          input1="Your name"
-          input2="Your email address"
-          input3="What’s on your mind?"
-          button="Get in touch!"
-        /> */}
         <ContactFooter
           title={t("pricingSection.stillConfusedSection.title")}
           marked={t("pricingSection.stillConfusedSection.title2")}

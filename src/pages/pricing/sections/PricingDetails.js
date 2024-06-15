@@ -7,8 +7,10 @@ import RightStyle from "@/__webAssets/pngs/right-style2.png"
 import LeftStyle from "@/__webAssets/pngs/left-style2.png"
 import Yes from "@/__webAssets/svgs/tick.svg"
 import No from "@/__webAssets/svgs/cross.svg"
+import { useTranslation } from "react-i18next";
 
 const PricingDetails = ({ heading, cardsDetail, marked }) => {
+
 
   return (
     <Box>
@@ -32,6 +34,8 @@ const PricingDetails = ({ heading, cardsDetail, marked }) => {
 export default PricingDetails;
 
 function DetailCard({ header, logo = false, alt, title, points, bgColor, sCase }) {
+  const { t } = useTranslation();
+
   return (
     <Box sx={{
       maxWidth: { lg: "405px", md: "320px", sm: "405px", xs: "325px" },
@@ -62,15 +66,17 @@ function DetailCard({ header, logo = false, alt, title, points, bgColor, sCase }
         {points.map((item, index) => <Box
           key={index}
           sx={{
-            padding: "20px 0 20px 5px",
+            padding: "0px 0 0px 5px",
             height: "58px",
             display: "flex",
-            justifyContent: logo ? "center" : "start",
+            flexDirection: "column",
+            alignItems: logo ? "center" : "start",
             fontSize: { lg: "16px", md: "14px", sm: "16px", xs: "16px" },
             fontWeight: 800,
-            fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important"
+            fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important",
+            justifyContent: "center",
+
           }}
-          alignItems={index === 1 && sCase ? "" : "center"}
         >
           {item === "Yes" ? (
             <Image src={Yes} alt="tick" />
@@ -79,8 +85,11 @@ function DetailCard({ header, logo = false, alt, title, points, bgColor, sCase }
           ) : (
             <span>{item}</span>
           )}
-          {/* {index === 1 && sCase && <Typography sx={{ fontSize: "14px", marginLeft: "5px", lineHeight: "15px" }}> (initially 99$ but additional 40$ if you want full-color book)</Typography>} */}
-        </Box>)}
+          {index === 1 && sCase && <Typography sx={{ fontSize: "14px", m: "5px 0 0 5px", lineHeight: "15px", display: "block" }}>
+            {t("pricingSection.bookDetails.additionalDetails2.data.priceFor139Coment")}
+          </Typography>}
+        </Box>
+        )}
 
 
       </Box>

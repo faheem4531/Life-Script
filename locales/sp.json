@@ -433,7 +433,8 @@
         "title": "Storyworth",
         "data": {
           "no": "No",
-          "priceFor139": "No. 12 meses de acceso para 139$ (inicialmente $99 + $40 para libro a todo color)",
+          "priceFor139": "No, 12 meses de acceso para 139$",
+          "priceFor139Coment": "($99 + $40 para libro a todo color)",
           "priceForFullColorBook": "Para un libro a todo color, 40$ adicionales. El autor del regalo no puede pagarlo por adelantado",
           "priceForAdditionalBook": "79$ (hasta 300 páginas), 99$ (hasta 480 páginas)",
           "noShippingOutsideUS": "No, solo para EE.UU.",
@@ -611,9 +612,9 @@
       },
       "userExist": "El usuario ya existe"
     },
-    "PurchaseForm":{
-      "title":"Comprar LifeScript",
-      "numberOfBook":"Número de libros",
+    "PurchaseForm": {
+      "title": "Comprar LifeScript",
+      "numberOfBook": "Número de libros",
       "dropDown": {
         "value0": {
           "label": "1 libro (incluido en el plan)"
@@ -655,44 +656,42 @@
           "price": "(+351$)"
         }
       },
-      "referralCode":{
-          "title":"¿Recomendado por un amigo? Ingrese el código de referencia aquí",
-          "subTitle":"Código de Referencia",
-          "btnText":"Verificar"
+      "referralCode": {
+        "title": "¿Recomendado por un amigo? Ingrese el código de referencia aquí",
+        "subTitle": "Código de Referencia",
+        "btnText": "Verificar"
       },
-      "checkOut":{
-          "title":"Pagar",
-          "subTitle":"¿Prefieres ingresar los detalles manualmente? Por favor, proporciona tu información de pago a continuación.",
-          "cardNumber":"Número de Tarjeta",
-          "discription":"Sí, envíame actualizaciones con técnicas de narración, historias inspiradoras y ofertas exclusivas.",
-          "discription2":"Valoramos tu privacidad y seguridad. Proceder con esta compra significa que estás de acuerdo con los términos y condiciones y la política de privacidad de LifeScript.",
-          "buyFor":"Comprar por",
-          "securePaymentWith":"Pago Seguro con"
+      "checkOut": {
+        "title": "Pagar",
+        "subTitle": "¿Prefieres ingresar los detalles manualmente? Por favor, proporciona tu información de pago a continuación.",
+        "cardNumber": "Número de Tarjeta",
+        "discription": "Sí, envíame actualizaciones con técnicas de narración, historias inspiradoras y ofertas exclusivas.",
+        "discription2": "Valoramos tu privacidad y seguridad. Proceder con esta compra significa que estás de acuerdo con los términos y condiciones y la política de privacidad de LifeScript.",
+        "buyFor": "Comprar por",
+        "securePaymentWith": "Pago Seguro con"
       }
-  },
-  "giftFlow": {
-    "tabBar": {
-      "tab1": "ELEGIR PLAN",
-      "tab2": "ENTREGA",
-      "tab3": "PAGO"
     },
-    "deliveryForm": {
-      "title": "Personaliza Tu Regalo",
-      "nameField": "Nombre Completo del Destinatario",
-      "emailField": "Correo Electrónico del Destinatario",
-      "sendGift": "Enviar mi regalo el:",
-      "from": "De",
-      "fromPlaceholder": "Introduce tu Correo Electrónico",
-      "fromName": "Nombre del Remitente",
-      "fromNamePlaceholder": "Introduce tu Nombre",
-      "yourMessage": "Tu Mensaje",
-      "messagePlaceholder": "Hola, te he regalado una suscripción a LifeScript, que te permite compartir y preservar tus historias fácilmente en un hermoso libro de tapa dura.",
-      "btnText": "Continuar"
+    "giftFlow": {
+      "tabBar": {
+        "tab1": "ELEGIR PLAN",
+        "tab2": "ENTREGA",
+        "tab3": "PAGO"
+      },
+      "deliveryForm": {
+        "title": "Personaliza Tu Regalo",
+        "nameField": "Nombre Completo del Destinatario",
+        "emailField": "Correo Electrónico del Destinatario",
+        "sendGift": "Enviar mi regalo el:",
+        "from": "De",
+        "fromPlaceholder": "Introduce tu Correo Electrónico",
+        "fromName": "Nombre del Remitente",
+        "fromNamePlaceholder": "Introduce tu Nombre",
+        "yourMessage": "Tu Mensaje",
+        "messagePlaceholder": "Hola, te he regalado una suscripción a LifeScript, que te permite compartir y preservar tus historias fácilmente en un hermoso libro de tapa dura.",
+        "btnText": "Continuar"
+      }
     }
-  }
-
   },
-
   "sideBar": {
     "Overview": "Resumen",
     "AllCh": "Capítulos",
