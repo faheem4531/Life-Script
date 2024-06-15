@@ -204,49 +204,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider store={store}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        {/* {showCookieBar && (
-          <CookieConsent
-            enableDeclineButton
-            declineButtonText="Customize"
-            buttonText="Accept"
-            flipButtons
-            onDecline={() => {
-              alert("Are you Sure!");
-            }}
-            setDeclineCookie={false}
-            style={{
-              background: "#2A3724",
-              color: "#fff",
-              fontSize: "16px",
-              padding: "20px",
-              width: "30%",
-              borderRadius: "10px"
-            }}
-            buttonStyle={{
-              background: "#ff5722",
-              color: "#fff",
-              fontSize: "16px",
-              padding: "10px 20px",
-              borderRadius: "5px",
-              cursor: "pointer",
-              marginLeft: "15px"
-            }}
-            declineButtonStyle={{
-              background: "#777",
-              color: "#fff",
-              fontSize: "16px",
-              padding: "10px 20px",
-              borderRadius: "5px",
-              cursor: "pointer"
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-              <Typography sx={{ marginBottom: "15px", fontWeight: "700", fontSize: "20px" }}>We Value Your Privacy</Typography>
-              <Typography>LifeScript uses cookies to ensure you get the best possible experience and to optimize our website. By clicking &apos;Accept&apos;, you consent to our use of cookies. If you wish to manage your preferences or learn more, please visit our Privacy Policy or select &lsquo;Customize&rsquo;.</Typography>
-
-            </div>
-          </CookieConsent>
-        )} */}
 
         <Grid container justifyContent="center">
           {showCookieBar && (
@@ -265,9 +222,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 fontSize: isMobile ? "10px" : isTablet ? "16px" : "18px",
                 padding: "1px",
                 // width: isMobile ? "90%" : "30%",
-                display:"inline-block",
-                width: isMobile ? "90%" : isTablet ? "50%" : "40%",
-                borderRadius: "10px",
+                display: "inline-block",
+                width: isMobile ? "85%" : isTablet ? "50%" : "400px",
+                borderRadius: "0px 5px 0px 0px ",
               }}
               buttonStyle={{
                 background: "#ff5722",
@@ -276,7 +233,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 padding: "10px 20px",
                 borderRadius: "5px",
                 cursor: "pointer",
-                marginLeft: "15px",
+                marginLeft: "23px",
+                textAlign: "center",
+                width: isMobile ? "100px" : isTablet ? "100px" : "150px",
               }}
               declineButtonStyle={{
                 background: "#777",
@@ -285,18 +244,18 @@ export default function App({ Component, pageProps }: AppProps) {
                 padding: "10px 20px",
                 borderRadius: "5px",
                 cursor: "pointer",
+                width: isMobile ? "100px" : isTablet ? "100px" : "150px",
               }}
             >
-              {/* <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-          <Typography sx={{ marginBottom: "15px", fontWeight: "700", fontSize: "15px" }}>We Value Your Privacy</Typography>
-          <Typography>LifeScript uses cookies to ensure you get the best possible experience and to optimize our website. By clicking &apos;Accept&apos;, you consent to our use of cookies. If you wish to manage your preferences or learn more, please visit our Privacy Policy or select &lsquo;Customize&rsquo;.</Typography>
-        </div> */}
 
               <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "flex-start",
+                  padding: "2px",
+                  width: isMobile? "81%":isTablet? "90%":"90%",
+                  justifyContent: "center",
+                  marginLeft: "2%",
                 }}
               >
                 <Typography
@@ -312,8 +271,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Typography
                   variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}
                 >
-                   This website uses cookies to ensure you get the best possible experience. By clicking &apos;Accept&apos;, you agree to our use of cookies.
-
+                  This website uses cookies to ensure you get the best possible
+                  experience. By clicking &apos;Accept&apos;, you agree to our
+                  use of cookies.
                 </Typography>
               </div>
             </CookieConsent>
