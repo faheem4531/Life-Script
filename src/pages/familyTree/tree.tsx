@@ -396,7 +396,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
     // Define the height per sibling
     const heightPerSibling = 300;  // Adjust as needed
-    const baseHeight = 700;  // Minimum base height
+    const baseHeight = 500;  // Minimum base height
 
     // Calculate the dynamic height
     const dynamicHeight = Math.max(baseHeight, maxSiblings * heightPerSibling);
