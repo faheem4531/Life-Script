@@ -246,6 +246,16 @@ const FamilyTree = ({ familyTreeData }) => {
 
         setLoading(true);
 
+        // Clear previous tree
+        svgElement.selectAll("*").remove();
+
+        // Reset any transformations
+        svgElement.attr("transform", "translate(0,0) scale(1)");
+
+        // Redraw the tree
+        drawTree();
+
+
         const { src, height } = LogoSvg;
         const { src: srcFamily, width: widthFamily } = FamilyTreeSVG;
         const mainSvg = d3.select(svgRef.current);
@@ -290,6 +300,17 @@ const FamilyTree = ({ familyTreeData }) => {
               .style("font-weight", "140px")
               .style("color", "#1D2D20")
               .text(`${name} Family Tree`);
+
+            // Calculate bounding box
+            const bbox = mainSvg.node().getBBox();
+            const bboxWidth = bbox.width;
+            const bboxHeight = bbox.height;
+
+            // Center the SVG content
+            mainSvg.attr(
+              "viewBox",
+              `${bbox.x - 20} ${bbox.y - 20} ${bboxWidth + 40} ${bboxHeight + 40}`
+            );
 
             saveSvgAsPng(mainSvg.node(), "familytree.png", {
               scale: 1,
@@ -395,7 +416,7 @@ const FamilyTree = ({ familyTreeData }) => {
     const maxSiblings = Math.max(...totalNodes.descendants().map(d => d.children ? d.children.length : 0));
 
     // Define the height per sibling
-    const heightPerSibling = 300;  // Adjust as needed
+    const heightPerSibling = 350;  // Adjust as needed
     const baseHeight = 500;  // Minimum base height
 
     // Calculate the dynamic height
