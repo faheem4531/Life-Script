@@ -390,14 +390,23 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const drawTree = () => {
     const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
-    const treeHeight = totalNodes?.height;
-    const rightMargin = 1100 - (treeHeight - 1) * 200;
+
+    // Calculate the maximum number of siblings in any generation
+    const maxSiblings = Math.max(...totalNodes.descendants().map(d => d.children ? d.children.length : 0));
+
+    // Define the height per sibling
+    const heightPerSibling = 200;  // Adjust as needed
+    const baseHeight = 500;  // Minimum base height
+
+    // Calculate the dynamic height
+    const dynamicHeight = Math.max(baseHeight, maxSiblings * heightPerSibling);
+
+    const rightMargin = 1100 - (totalNodes.height - 1) * 200;
     const margin = { top: 10, right: rightMargin, bottom: 10, left: 10 };
     const fullWidth = 1200;
-    const fullHeight = 800;
+    const fullHeight = dynamicHeight + margin.top + margin.bottom;
     const width = fullWidth - margin.left - margin.right;
     const height = fullHeight - margin.top - margin.bottom;
-
 
     const tree = d3
       .tree()
