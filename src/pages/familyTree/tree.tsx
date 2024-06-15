@@ -391,10 +391,10 @@ const FamilyTree = ({ familyTreeData }) => {
   const drawTree = () => {
     const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
     const treeHeight = totalNodes?.height;
-    const rightMargin = 2400 - (treeHeight - 1) * 200;
+    const rightMargin = 1100 - (treeHeight - 1) * 200;
     const margin = { top: 10, right: rightMargin, bottom: 10, left: 10 };
-    const fullWidth = 3000;
-    const fullHeight = 1650;
+    const fullWidth = 1200;
+    const fullHeight = 800;
     const width = fullWidth - margin.left - margin.right;
     const height = fullHeight - margin.top - margin.bottom;
 
@@ -430,7 +430,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const elbow = (d, i) => {
       const yOffset = d.target.data.spouseName ? -55 : 0;
-      return `M${d.source.y + 110},${d.source.x}H${d.target.y}V${d.target.x + yOffset
+      return `M${d.source.y + 50},${d.source.x}H${d.target.y}V${d.target.x + yOffset
         }H${d.target.y + 10}`;
     };
 
@@ -496,14 +496,14 @@ const FamilyTree = ({ familyTreeData }) => {
       personNode.append("clipPath")
         .attr("id", clipPathId)
         .append("circle")
-        .attr("cx", x + 30) // Center of the circle is at (x + radius)
-        .attr("cy", y + 30) // Center of the circle is at (y + radius)
-        .attr("r", 30); // Radius of the circle
+        .attr("cx", x + 40) // Center of the circle is at (x + radius)
+        .attr("cy", y + 40) // Center of the circle is at (y + radius)
+        .attr("r", 40); // Radius of the circle
 
       const imgElement = personNode.append("image")
         .attr("xlink:href", image)
-        .attr("width", 60)
-        .attr("height", 60)
+        .attr("width", 70)
+        .attr("height", 70)
         .attr("x", x)
         .attr("y", y)
         .attr("class", className)
@@ -527,9 +527,9 @@ const FamilyTree = ({ familyTreeData }) => {
       personNode
         .append("line")
         .attr("class", `${styles.connectionLine}`)
-        .attr("x1", x1 - 50)
+        .attr("x1", x1 - 60)
         .attr("y1", y1)
-        .attr("x2", x2 - 50)
+        .attr("x2", x2 - 60)
         .attr("y2", y2)
         .style("stroke", "#30422E")
         .style("stroke-width", 2)
@@ -545,7 +545,7 @@ const FamilyTree = ({ familyTreeData }) => {
         d.data.image || (d.data.gender == "Male" ? Male : Female),
         `${styles.circularImage}`, false
       );
-      renderText(30, -42, d.data.name || "", `${styles.name}`, false);
+      renderText(30, -32, d.data.name || "", `${styles.name}`, false);
       //age
       const born = d.data.born?.slice(0, 4);
       const died = d.data.died?.slice(0, 4);
@@ -557,7 +557,7 @@ const FamilyTree = ({ familyTreeData }) => {
             : died
               ? "d. " + died
               : "b. Not Known";
-      renderText(30, -25, age || "", `${styles.dateLocation}`, false);
+      renderText(30, -18, age || "", `${styles.dateLocation}`, false);
       // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
       renderRect(10, 5, 100, `${styles.spouseRect}`, true);
@@ -567,7 +567,7 @@ const FamilyTree = ({ familyTreeData }) => {
         d.data.spouseImage || d.data.spouseGender == "Female" ? Female : Male,
         `${styles.circularImage}`, true
       );
-      renderText(23, 87, d.data.spouseName || "", `${styles.name}`, true);
+      renderText(23, 94, d.data.spouseName || "", `${styles.name}`, true);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
       const spouseDied = d.data.spouseDied?.slice(0, 4);
       let spouseAge =
@@ -578,81 +578,8 @@ const FamilyTree = ({ familyTreeData }) => {
             : spouseDied
               ? "d. " + spouseDied
               : "b. Not Known";
-      renderText(23, 106, spouseAge || "", `${styles.dateLocation}`, true);
+      renderText(23, 110, spouseAge || "", `${styles.dateLocation}`, true);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
-      // const iconPositions = [
-      //   {
-      //     x: 20,
-      //     y: -35,
-      //     icon: (
-      //       <EditIcon
-      //         style={{
-      //           fill: "black",
-      //           cursor: "pointer",
-      //           maxWidth: 20,
-      //           maxHeight: 20,
-      //         }}
-      //       />
-      //     ),
-      //     type: "edit",
-      //   },
-      //   {
-      //     x: 50,
-      //     y: -35,
-      //     icon: (
-      //       <AddIcon
-      //         style={{
-      //           fill: "black",
-      //           cursor: "pointer",
-      //           maxWidth: 20,
-      //           maxHeight: 20,
-      //         }}
-      //       />
-      //     ),
-      //     type: "add",
-      //   },
-      // ];
-
-      // iconPositions.forEach(({ x, y, icon, type }) => {
-      //   renderForeignObject(
-      //     x,
-      //     y,
-      //     (data, iconType) => handleIconClick(data.data.name, iconType, d),
-      //     icon,
-      //     d,
-      //     type
-      //   );
-      // });
-
-      // const iconPosition2 = [
-      //   {
-      //     x: 70,
-      //     y: 50,
-      //     icon: (
-      //       <EditIcon
-      //         style={{
-      //           fill: "#30422E",
-      //           cursor: "pointer",
-      //           maxWidth: 20,
-      //           maxHeight: 20,
-      //         }}
-      //       />
-      //     ),
-      //     type: "editspouse",
-      //   },
-      // ];
-
-      // iconPosition2.forEach(({ x, y, icon, type }) => {
-      //   renderForeignObject(
-      //     x,
-      //     y,
-      //     (data, iconType) =>
-      //       handleIconClick(data.data.spouseName, iconType, d),
-      //     icon,
-      //     d,
-      //     type
-      //   );
-      // });
 
       const personBottomCenterX = 10 + 200 / 2;
       const personBottomCenterY = -115 + 100;
@@ -683,52 +610,8 @@ const FamilyTree = ({ familyTreeData }) => {
         d.data.image || (d.data.gender == "Male" ? Male : Female),
         `${styles.circularImage}`, false
       );
-      renderText(20, 33, d.data.name || "", `${styles.name}`, false);
-      renderText(20, 50, age || "", `${styles.dateLocation}`, false);
-      // renderText(76, 15, d.data.location || "", `${styles.dateLocation}`);
-      // const iconPositions = [
-      //   {
-      //     x: 20,
-      //     y: 25,
-      //     icon: (
-      //       <EditIcon
-      //         style={{
-      //           fill: "black",
-      //           cursor: "pointer",
-      //           maxWidth: 20,
-      //           maxHeight: 20,
-      //         }}
-      //       />
-      //     ),
-      //     type: "edit",
-      //   },
-      //   {
-      //     x: 50,
-      //     y: 20,
-      //     icon: (
-      //       <AddIcon
-      //         style={{
-      //           fill: "black",
-      //           cursor: "pointer",
-      //           maxWidth: 25,
-      //           maxHeight: 20,
-      //         }}
-      //       />
-      //     ),
-      //     type: "add",
-      //   },
-      // ];
-
-      // iconPositions.forEach(({ x, y, icon, type }) => {
-      //   renderForeignObject(
-      //     x,
-      //     y,
-      //     (data, iconType) => handleIconClick(data.data.name, iconType, data),
-      //     icon,
-      //     d,
-      //     type
-      //   );
-      // });
+      renderText(20, 39, d.data.name || "", `${styles.name}`, false);
+      renderText(20, 55, age || "", `${styles.dateLocation}`, false);
     }
   };
 
@@ -747,59 +630,59 @@ const FamilyTree = ({ familyTreeData }) => {
 
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent:"space-between" }}>
-        <Box sx={{ display: "flex", alignItems: "center"}}>
-        <IconButton id="download" aria-label="download" sx={{
-          '&:hover': {
-            backgroundColor: 'transparent',
-            boxShadow: 'none',
-          },
-        }} >
-          <Box sx={{ width: "140px", border: "1px solid #e1693b", borderRadius: "4px", display: "flex", justifyContent: "center" }}>
-            <ButtonIcons
-              onClick={() => { }}
-              img={DownloadFamily}
-              iconSize={20}
-              btnText="PDF"
-            />
-          </Box>
-        </IconButton>
-        <Box sx={{ display: "flex", alignItems: "center", gap:"10px",position:"relative" }}>
-          <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
-            <ButtonIcons
-              onClick={() => setResetModal(true)}
-              img={Reset}
-              iconSize={20}
-              btnText="Reset Tree"
-            />
-          </Box>
-          <Box>
-            <Box
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-            >
-               <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <IconButton id="download" aria-label="download" sx={{
+            '&:hover': {
+              backgroundColor: 'transparent',
+              boxShadow: 'none',
+            },
+          }} >
+            <Box sx={{ width: "140px", border: "1px solid #e1693b", borderRadius: "4px", display: "flex", justifyContent: "center" }}>
+              <ButtonIcons
+                onClick={() => { }}
+                img={DownloadFamily}
+                iconSize={20}
+                btnText="PDF"
+              />
             </Box>
-
-            {hover && (
+          </IconButton>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "10px", position: "relative" }}>
+            <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
+              <ButtonIcons
+                onClick={() => setResetModal(true)}
+                img={Reset}
+                iconSize={20}
+                btnText="Reset Tree"
+              />
+            </Box>
+            <Box>
               <Box
-                sx={{
-                  display: {
-                    md: "block",
-                    xs: "block",
-                  },
-                  // position: "absolute", 
-                  // mt: 1 
-                }}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
               >
-                <MultiToolTip
-                  content={content}
-                  top={undefined} left={"115px"} bottom={undefined} right={undefined} position={"absolute"} />
-
+                <InfoOutlinedIcon sx={{ color: "#7F886B" }} />
               </Box>
-            )}
+
+              {hover && (
+                <Box
+                  sx={{
+                    display: {
+                      md: "block",
+                      xs: "block",
+                    },
+                    // position: "absolute", 
+                    // mt: 1 
+                  }}
+                >
+                  <MultiToolTip
+                    content={content}
+                    top={undefined} left={"115px"} bottom={undefined} right={undefined} position={"absolute"} />
+
+                </Box>
+              )}
+            </Box>
           </Box>
-        </Box>
 
         </Box>
 
