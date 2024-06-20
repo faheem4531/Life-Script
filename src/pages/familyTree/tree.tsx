@@ -416,7 +416,7 @@ const FamilyTree = ({ familyTreeData }) => {
     const maxSiblings = Math.max(...totalNodes.descendants().map(d => d.children ? d.children.length : 0));
 
     // Define the height per sibling
-    const heightPerSibling = 350;  // Adjust as needed
+    const heightPerSibling = 300;  // Adjust as needed
     const baseHeight = 500;  // Minimum base height
 
     // Calculate the dynamic height
@@ -712,6 +712,7 @@ const FamilyTree = ({ familyTreeData }) => {
                 </Box>
               )}
             </Box>
+
           </Box>
 
         </Box>
@@ -761,7 +762,7 @@ const FamilyTree = ({ familyTreeData }) => {
             id="familyTree"
             style={{ position: "absolute", top: "20px", left: "20px" }}
             ref={svgRef}
-            viewBox="1000 600 2800 2800"
+            viewBox="0 0 1800 1800"
           ></svg>
         </Box>
 
@@ -777,7 +778,7 @@ const FamilyTree = ({ familyTreeData }) => {
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "50%", top: "0", transform: "translateX(-50%) rotate(-90deg)" }}>
+        <Box sx={{ position: "absolute", left: "50%", top: "-65px", transform: "translateX(-50%) rotate(-90deg)" }}>
           <ButtonIcons
             onClick={() => panCanvas('top')}
             img={Right}
@@ -786,7 +787,7 @@ const FamilyTree = ({ familyTreeData }) => {
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "50%", bottom: "0", transform: "translateX(-50%) rotate(90deg)" }}>
+        <Box sx={{ position: "absolute", left: "50%", bottom: "12%", transform: "translateX(-50%) rotate(90deg)" }}>
           <ButtonIcons
             onClick={() => panCanvas('bottom')}
             img={Right}
