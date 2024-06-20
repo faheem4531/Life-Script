@@ -69,11 +69,13 @@ const RegisterFreeTrial = () => {
         toast.success(t("signup-page.verificationEmailSent"));
         setTimeout(() => {
           setOpenModal(true);
-        }, 3000);
+        }, 1000);
+        localStorage.clear();
         setTimeout(() => {
-          const name = localStorage.getItem("username");
-          router.push(`/getStarted?userName=${name}`);
-        }, 3000);
+          // const name = localStorage.getItem("username");
+          // router.push(`/getStarted?userName=${name}`);
+          router.push(`/`)
+        }, 7000);
       })
       .catch((error) => {
         toast.error(error?.message || t("signup-page.failedSignup"));
@@ -96,7 +98,7 @@ const RegisterFreeTrial = () => {
         sx={{ border: "2px soild green", width: "100%" }}
       >
         <Typography variant="h4" sx={{ marginBottom: "60px" }}>
-        {t("stripeFlow.registerSection.title")}
+          {t("stripeFlow.registerSection.title")}
         </Typography>
 
         <Box sx={{ maxWidth: "600px", width: "100%" }}>
