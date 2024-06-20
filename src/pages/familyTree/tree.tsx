@@ -257,12 +257,12 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
         const { src, height } = LogoSvg;
-        const { src: srcFamily, width: widthFamily } = FamilyTreeSVG;
+        // const { src: srcFamily, width: widthFamily } = FamilyTreeSVG;
         const mainSvg = d3.select(svgRef.current);
         const familyTreeGroup = mainSvg
           .append("g")
           .attr("id", "familyTreeGroup")
-          .attr("transform", "scale(2)");
+          .attr("transform", "scale(1.8)");
         const familyTreeGroupFamily = mainSvg
           .append("g")
           .attr("id", "familyTreeGroupFamily")
@@ -288,8 +288,7 @@ const FamilyTree = ({ familyTreeData }) => {
           const firstName = fullName ? fullName.split(" ")[0] : null;
 
           // Add a separation between the two external SVGs
-          const separation = 20;
-          const newY = height + 100 + separation;
+          const newY = height + 60;
 
           // Append the second external SVG below the first one
           familyTreeGroupFamily.append("g").attr("id", "secondExternalSvg");
@@ -298,10 +297,10 @@ const FamilyTree = ({ familyTreeData }) => {
           familyTreeGroupFamily
             .append("text")
             // .attr("x", widthFamily + 180) // Adjust the x-coordinate as needed
-            .attr("y", newY + height) // Adjust the y-coordinate as needed
+            .attr("y", newY) // Adjust the y-coordinate as needed
             .attr("text-anchor", "start") // Adjust text-anchor as needed (start, middle, end)
             .attr("fill", "black") // Adjust the text color
-            .style("font-size", "140px")
+            .style("font-size", "110px")
             .style("font-weight", "140px")
             .style("color", "#1D2D20")
             .text(`${firstName} Family Tree`);
@@ -774,7 +773,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
 
-        <Box sx={{ position: "absolute", right: "0", top: "50%", transform: "translateY(-50%)" }}>
+        <Box sx={{ position: "absolute", right: "0", top: "45%", transform: "translateY(-45%)" }}>
           <ButtonIcons
             onClick={() => panCanvas('right')}
             img={Right}
@@ -801,7 +800,7 @@ const FamilyTree = ({ familyTreeData }) => {
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "0", top: "50%", transform: "translateY(-50%) rotate(180deg)" }}>
+        <Box sx={{ position: "absolute", left: "0", top: "45%", transform: "translateY(-45%) rotate(180deg)" }}>
           <ButtonIcons
             onClick={() => panCanvas('left')}
             img={Right}
