@@ -23,7 +23,7 @@ function Cover4(props: any) {
         <rect x="7" y="-3" width="1772" height="2483" fill="url(#pattern11)" />
         <rect
           x="470"
-          y="278"
+          y="290"
           width="854.102"
           height="1137.5"
           fill="url(#coverImage34)"
