@@ -1015,5 +1015,55 @@
     "dontLike": "¿No te gusta la respuesta de la fusión narrativa?",
     "RevertResProcBtn": "Aún no",
     "RevertResCancelBtn": "Revertir Cambios"
+  },
+  "onboarding": {
+    "step2":{
+      "step":"Paso 2 de 4",
+      "question":"¿Qué capítulos le gustaría incluir en su libro?",
+      "buttonText":{
+        "next":"Próximo",
+        "back":"Atrás",
+        "takemein":"Llévame adentro"
+      }
+    },
+    "step3":{
+      "step":"Paso 3 de 4",
+      "heading":"Cuéntanos acerca de tí",
+      "fullName":"Nombre completo",
+     
+      "status":{
+        "title":"Estado civil",
+        "options": {
+          "option1":"Soltero",
+          "option2":"Casado",
+          "option3":"Divorciado",
+          "option4":"Viudo"
+        }
+      },
+      "gender":{
+        "title":"Género",
+        "options": {
+          "option1":"Masculino",
+          "option2":"Femenino",
+          "option3":"Prefiero no decirlo"
+        }
+      },
+      "DOB":"Fecha de nacimiento"
+    },
+    "step4":{
+      "step":"Paso 4 de 4",
+      "question":{
+        "statement":"¿Con qué frecuencia le gustaría recibir preguntas por correo electrónico?",
+        "options": {
+          "option1": "Una vez al dia",
+          "option2": "Día por medio",
+          "option3": "Una vez en 3 días",
+          "option4": "Una vez a la semana"
+        }
+      }
+    }
+
+    
+    
   }
 }

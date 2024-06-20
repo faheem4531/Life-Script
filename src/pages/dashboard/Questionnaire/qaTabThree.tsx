@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
+import { useTranslation } from "react-i18next";
 
 export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
   const [personalQuestion, setPersonalQuestion] =
     useState("ChronologicalOrder");
   const [questionFrequency, setQuestionFrequency] = useState("ONEDAY");
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (data?.personalizedQuestion) {
@@ -45,7 +47,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
             fontWeight: 700,
           }}
         >
-          Step 4 of 4
+          {t("onboarding.step4.step")}
         </Typography>
       </Box>
       <QaTabBars tabProp={4} />
@@ -57,7 +59,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
             color: "#30422E",
           }}
         >
-          How often would you like to receive questions via email?
+          {t("onboarding.step4.question.statement")}
         </Typography>
         <Box sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 2 }}>
           <RadioGroup
@@ -85,7 +87,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  Once in a day
+                   {t("onboarding.step4.question.options.option1")}
                 </Typography>
               }
             />
@@ -110,7 +112,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  Every other day
+                 {t("onboarding.step4.question.options.option2")}
                 </Typography>
               }
             />
@@ -135,7 +137,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  Once in 3 days
+                {t("onboarding.step4.question.options.option3")}
                 </Typography>
               }
             />
@@ -160,7 +162,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
                     color: "rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  Once in a week
+                  {t("onboarding.step4.question.options.option4")}
                 </Typography>
               }
             />
@@ -181,7 +183,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
           border='1px solid #E1683B'
           borderRadius="4px"
           color="#E1683B"
-          btnText="Back"
+          btnText={t("onboarding.step2.buttonText.back")}
           onClick={onClickBack}
           image={backArrow}
         />
@@ -190,7 +192,7 @@ export default function TabThree({ onClickBack, onClickNext, data, setQaTab }) {
           borderRadius="4px"
           bgColor="#E1683B"
           color="white"
-          btnText="Take me in"
+          btnText={t("onboarding.step2.buttonText.takemein")}
           onClick={() =>
             onClickNext({
               personal: personalQuestion,

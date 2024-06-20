@@ -118,6 +118,7 @@ export const ViewBook = () => {
       <CustomizationDialog
         open={openModal}
         title=""
+        marginTop={0}
         handleClose={() => {
           setOpenModal(false);
           router.push("/dashboard/chapters");

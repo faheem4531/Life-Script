@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
+import { useTranslation } from "react-i18next";
 
 export default function TabTwo({
   onClickBack,
@@ -27,6 +28,7 @@ export default function TabTwo({
   const [selectedDate, setSelectedDate] = useState(null);
   const [showTooltip, setShowTooltip] = useState(false);
   const [name, setName] = useState("");
+  const { t } = useTranslation();
   const maxDate = new Date();
 
   useEffect(() => {
@@ -42,7 +44,7 @@ export default function TabTwo({
   useEffect(() => {
     const userName = localStorage.getItem("username");
     setName(userName.toString());
-  }, [])
+  }, []);
 
   // const changeLanguage = (language) => {
   //   i18n.changeLanguage(language);
@@ -85,7 +87,7 @@ export default function TabTwo({
             color: "#30422E",
             alignItems: "center",
             gap: "8px",
-            mt: "20px"
+            mt: "20px",
           }}
         >
           <Typography
@@ -94,9 +96,8 @@ export default function TabTwo({
               fontWeight: 700,
             }}
           >
-            Step 3 of 4
+            {t("onboarding.step3.step")}
           </Typography>
-
         </Box>
         <QaTabBars tabProp={3} />
         <Box sx={{ mt: 10 }}>
@@ -107,7 +108,7 @@ export default function TabTwo({
               color: "#30422E",
             }}
           >
-            Tell us about yourself
+            {t("onboarding.step3.heading")}
           </Typography>
         </Box>
         <Box sx={{ p: 2 }}>
@@ -127,7 +128,7 @@ export default function TabTwo({
                   color: "#30422E",
                 }}
               >
-                Full Name
+                {t("onboarding.step3.fullName")}
               </Typography>
               <TextField
                 variant="outlined"
@@ -152,7 +153,7 @@ export default function TabTwo({
                   color: "#30422E",
                 }}
               >
-                Marital Status
+{t("onboarding.step3.status.title")}
               </Typography>
               <Box
                 sx={{
@@ -160,7 +161,7 @@ export default function TabTwo({
                 }}
               >
                 <Select
-                  placeholder="Marital Status"
+                  placeholder= {t("onboarding.step3.status.title")}
                   value={maritalStatus}
                   onChange={(e) => setMaritalStatus(e.target.value)}
                   sx={{
@@ -169,10 +170,10 @@ export default function TabTwo({
                     backgroundColor: "white",
                   }}
                 >
-                  <MenuItem value="Single">Single</MenuItem>
-                  <MenuItem value="Married">Married</MenuItem>
-                  <MenuItem value="Divorced">Divorced</MenuItem>
-                  <MenuItem value="Widowed">Widowed</MenuItem>
+                  <MenuItem value="Single">{t("onboarding.step3.status.options.option1")}</MenuItem>
+                  <MenuItem value="Married">{t("onboarding.step3.status.options.option2")}</MenuItem>
+                  <MenuItem value="Divorced">{t("onboarding.step3.status.options.option3")}</MenuItem>
+                  <MenuItem value="Widowed">{t("onboarding.step3.status.options.option4")}</MenuItem>
                 </Select>
                 {maritalStatus === "" && (
                   <Box
@@ -183,7 +184,7 @@ export default function TabTwo({
                       color: "gray",
                     }}
                   >
-                    Marital Status
+{t("onboarding.step3.status.title")}
                   </Box>
                 )}
               </Box>
@@ -206,7 +207,7 @@ export default function TabTwo({
                   color: "#30422E",
                 }}
               >
-                Gender
+                {t("onboarding.step3.gender.title")}
               </Typography>
               <Box
                 sx={{
@@ -214,7 +215,7 @@ export default function TabTwo({
                 }}
               >
                 <Select
-                  placeholder="Gender"
+                  placeholder={t("onboarding.step3.gender.title")}
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                   sx={{
@@ -223,9 +224,9 @@ export default function TabTwo({
                     backgroundColor: "white",
                   }}
                 >
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Prefer not to tell</MenuItem>
+                  <MenuItem value="Male">{t("onboarding.step3.gender.options.option1")}</MenuItem>
+                  <MenuItem value="Female">{t("onboarding.step3.gender.options.option2")}</MenuItem>
+                  <MenuItem value="Other">{t("onboarding.step3.gender.options.option3")}</MenuItem>
                 </Select>
                 {gender === "" && (
                   <Box
@@ -236,7 +237,7 @@ export default function TabTwo({
                       color: "gray",
                     }}
                   >
-                    Gender
+                    {t("onboarding.step3.gender.title")}
                   </Box>
                 )}
               </Box>
@@ -249,7 +250,7 @@ export default function TabTwo({
                   color: "#30422E",
                 }}
               >
-                Date of Birth
+                {t("onboarding.step3.DOB")}
               </Typography>
               <DatePicker
                 value={selectedDate}
@@ -364,7 +365,7 @@ export default function TabTwo({
             borderRadius="4px"
             bgColor="#E1683B"
             color="white"
-            btnText="Next"
+            btnText={t("onboarding.step2.buttonText.next")}
             onClick={handleButtonClick}
             image2={NextArrow}
           />

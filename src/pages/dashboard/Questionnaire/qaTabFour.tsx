@@ -12,6 +12,7 @@ import {
 } from "@/store/slices/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { TooltipMsg } from "@/components/dashboardComponent/Tooltip";
+import { useTranslation } from "react-i18next";
 
 export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const dispatch: any = useDispatch();
@@ -20,6 +21,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
   const [checkedIdsAll, setCheckedIdsAll] = useState([]);
   const [markAllChecked, setMarkAllChecked] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
+  const { t } = useTranslation();
 
   const router = useRouter();
 
@@ -92,7 +94,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             fontWeight: 700,
           }}
         >
-          Step 2 of 4
+          {t("onboarding.step2.step")}
         </Typography>
       </Box>
       <QaTabBars tabProp={2} />
@@ -104,7 +106,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             color: "#30422E",
           }}
         >
-          What are some of the chapters you&apos;d like to have in your book?
+          {t("onboarding.step2.question")}
         </Typography>
         <Box
           sx={{
@@ -187,7 +189,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             border="1px solid #E1683B"
             borderRadius="4px"
             color="#E1683B"
-            btnText="Back"
+            btnText={t("onboarding.step2.buttonText.back")}
             onClick={onClickBack}
             image={backArrow}
           />
@@ -197,7 +199,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             borderRadius="4px"
             bgColor="#E1683B"
             color="white"
-            btnText="Next"
+            btnText={t("onboarding.step2.buttonText.next")}
             onClick={handleNext}
             image2={NextArrow}
           />

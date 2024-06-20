@@ -1018,5 +1018,53 @@
     "dontLike": "Don’t like narrative fusion result?",
     "RevertResProcBtn": "Not Yet",
     "RevertResCancelBtn": "Revert Changes"
+  },
+  "onboarding": {
+    "step2":{
+      "step":"Step 2 of 4",
+    "question":"What are some of the chapters you'd like to have in your book?",
+    "buttonText":{
+      "next":"Next",
+      "back":"Back",
+      "takemein":"Take me in"
+    }
+
+    },
+    "step3":{
+      "step":"Step 3 of 4",
+      "heading":"Tell us about yourself",
+      "fullName":"Full Name",
+      "status":{
+        "title":"Marital Status",
+        "options": {
+          "option1":"Single",
+          "option2":"Married",
+          "option3":"Divorced",
+          "option4":"Widowed"
+        }
+      },
+      "gender":{
+        "title":"Gender",
+        "options": {
+          "option1":"Male",
+          "option2":"Female",
+          "option3":"Prefer not to tell"
+        }
+      },
+      "DOB":"Date of Birth"
+    },
+    "step4":{
+      "step":"Step 4 of 4",
+      "question":{
+        "statement":"How often would you like to receive questions via email?",
+        "options": {
+          "option1": "Once in a day",
+          "option2": "Every other day",
+          "option3": "Once in 3 days",
+          "option4": "Once in a week"
+        }
+      }
+    }
+
   }
 }
