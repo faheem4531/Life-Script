@@ -594,7 +594,7 @@ const FamilyTree = ({ familyTreeData }) => {
       renderImage(
         14,
         10,
-        d.data.spouseImage || d.data.spouseGender == "Female" ? Female : Male,
+        d.data.spouseImage || (d.data.spouseGender == "Female" ? Female : Male),
         `${styles.circularImage}`, true
       );
       renderText(23, 94, d.data.spouseName || "", `${styles.name}`, true);
