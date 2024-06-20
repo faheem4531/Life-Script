@@ -27,7 +27,7 @@ const Layout = ({ children }: { children?: any }) => {
           right: "0",
           left: { lg: "220px", sm: 0, xs: 0 },
           top: "0",
-          zIndex: "3000",
+          zIndex: "10",
         }}
       >
         <NavBar sideBarHandle={() => setHandleSideBar(true)} />

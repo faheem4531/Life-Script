@@ -227,7 +227,7 @@ const NarrativeResponse = () => {
               >
                 <Box
                   sx={{
-                    position: "relative", zIndex: "10"
+                    position: "relative", zIndex: "7"
                   }}
                 >
                   <YourSliderComponent
