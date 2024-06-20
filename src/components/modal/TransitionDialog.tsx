@@ -20,7 +20,7 @@ export default function TransitionsDialog({
   open,
   cancel,
   proceed,
-  closeModal = () => {},
+  closeModal = () => { },
   proceedText = "",
   cancelText = "",
 }) {
@@ -87,21 +87,21 @@ export default function TransitionsDialog({
         >
           <Box flex={1}>
             <GlobelBtn
-              btnText={proceedText ? proceedText : `${t("modals.yes")}`}
+              btnText={cancelText ? cancelText : `${t("modals.no")}`}
               bgColor="transparent"
               color="#e1693b"
               border="1px solid #e1693b"
               width="100%"
-              onClick={proceed}
+              onClick={cancel}
             />
           </Box>
           <Box flex={1}>
             <GlobelBtn
-              btnText={cancelText ? cancelText : `${t("modals.no")}`}
+              btnText={proceedText ? proceedText : `${t("modals.yes")}`}
               bgColor="#e1693b"
               color="#fff"
               width="100%"
-              onClick={cancel}
+              onClick={proceed}
             />
           </Box>
         </Box>
