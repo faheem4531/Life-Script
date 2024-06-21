@@ -181,6 +181,7 @@ const CompletedChapters = () => {
           setUpdateChapterModal(false);
         }}
         customStyles={{ backgroundColor: "auto", textAlign: "center" }}
+        marginTop={0}
       >
         <Box
           sx={{

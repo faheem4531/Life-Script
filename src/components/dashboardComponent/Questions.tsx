@@ -260,7 +260,7 @@ export default function Questions({
                         src={EditGreen}
                         style={{ color: "#7f886b" }}
                       />
-                      <Box sx={{ color: "#30422e", fontSize:"16px" }}>Answer</Box>
+                      <Box sx={{ color: "#30422e", fontSize:"16px" }}>{t("ChName.Answer")}</Box>
                     </Box>
                   )}
                 </Button>
@@ -336,6 +336,7 @@ export default function Questions({
 
       <CustomizationDialog
         open={updateQuestionModal}
+        marginTop={0}
         title=""
         handleClose={() => {
           setUpdateQuestionModal(false);

@@ -110,7 +110,7 @@ const ProfileSetting = () => {
 
   useEffect(() => {
     if (userData?._id) {
-      setSelectedDate(new Date(userData?.dateOfBirth.toString()));
+      setSelectedDate(new Date(userData?.dateOfBirth?.toString()));
       setGender(userData?.gender);
       setFullName(userData?.name);
       setUserEmail(userData?.email);
@@ -132,7 +132,7 @@ const ProfileSetting = () => {
       <Layout>
         <AddChapterName editChapter={() => { }}
           chapterId
-          chapter="Profile Settings"
+          chapter={t("profileSetting.chapter")}
           title="noBack"
         />
         <Box
@@ -271,7 +271,7 @@ const ProfileSetting = () => {
                     // pb: "12px",
                     fontFamily: "Avenir8 !important"
                   }}>
-                    Book Credits
+                    {t("profileSetting.bookCredit.title")}
                   </Typography>
                   <Box >
                     <Box
@@ -293,8 +293,8 @@ const ProfileSetting = () => {
                         }}
                       >
                         <TooltipTab
-                          title="Book Credits"
-                          text={`One book credit equals one physical book. Increase your credits by adding additional books during checkout from the "View Book" section on the Overview page or get free ones by referring a friend through the "Gift a Book" section on the left.`}
+                          title={t("profileSetting.bookCredit.title")}
+                          text={t("profileSetting.suggestionIcon")}
                           transform="none"
                           top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
 
@@ -306,7 +306,7 @@ const ProfileSetting = () => {
                   color: "#30422E",
                   pt: "12px",
                   fontSize: { xs: 12, sm: 16, lg: 18 },
-                }}>You have {userData?.bookCredit} book credits.
+                }}>{t("profileSetting.bookCredit.description1")} {userData?.bookCredit} {t("profileSetting.bookCredit.description2")}
                 </Typography>
               </Box>
 

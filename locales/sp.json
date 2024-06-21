@@ -146,7 +146,8 @@
       "category3": "Premium",
       "popular": "Más elegido",
       "btnText": "Iniciar ",
-      "pricingBelowText": "30 días de garantía de devolución del dinero"
+      "pricingBelowText": "30 días de garantía de devolución del dinero",
+       "upgradeBtn":"Mejora"
     },
     "bookSection": {
       "title": "Nuestros",
@@ -702,7 +703,8 @@
     "toc": "Tabla de Contenidos",
     "FamilyTree": "Árbol Genealógico",
     "account": "Cuenta",
-    "Support": "Soporte"
+    "Support": "Soporte",
+    "giftaBook":"Regalar un libro"
   },
   "login-page": {
     "email": "Correo electrónico",
@@ -814,7 +816,17 @@
     "continue": "Continuar",
     "achivement": "Logro",
     "RecentCh": "Capítulos recientes",
-    "viewMore": "Ver más"
+    "viewMore": "Ver más",
+    "word":"Palabras",
+    "chapter": "Capítulos",
+    "question":"Preguntas",
+     "minutes":"de escritura",
+     "deliveryTracker":"Seguimiento de entrega",
+    "deliveryDescription":"Una vez que envíe su libro para impresión y entrega, observe la actualización del estado en tiempo real a medida que llega a usted.",
+    "printBtnText":"imprimir mi libro",
+    "suggestionIcon":"El estado de seguimiento de la entrega se actualizará una vez que solicite su libro físico desde los pasos Ver libro.",
+    "addMore":"Añadir más"
+
   },
   "ChapterSteps": {
     "step1": "Comenzar capítulo",
@@ -854,7 +866,8 @@
     "SugQuesRemain": "Preguntas restantes:",
     "SugQuesAddBtn": "Agregar",
     "SugQuesSkipBtn": "Saltar",
-    "SugQuesCloseBtn": "Cerrar"
+    "SugQuesCloseBtn": "Cerrar",
+    "Answer":"Respuesta"
   },
   "ChModals": {
     "addNewCh": "Agregar nuevo capítulo",
@@ -873,11 +886,13 @@
     "STT": "Texto a Voz",
     "MAC": "Marcar como Completado",
     "ByPreHeading": "Comprar Premium",
-    "PreDes": "El texto de Fusión Narrativa solo está disponible para usuarios Estándar y Premium. ¿Quieres comprarlo ahora?"
+    "PreDes": "El texto de Fusión Narrativa solo está disponible para usuarios Estándar y Premium. ¿Quieres comprarlo ahora?",
+     "description":"Family Tree sólo está disponible para usuarios Estándar y Premium. ¿Quieres hacerlo ahora?"
   },
   "StartNewChapter": {
     "StartNewChapter": "Iniciar nuevo capítulo",
-    "useTem": "Usar plantilla"
+    "useTem": "Usar plantilla",
+    "startFromScratch":"Empezar desde el principio"
   },
   "StartNewTem": {
     "StartNewTem": "Iniciar nuevo capítulo",
@@ -929,6 +944,7 @@
   },
   "SubsPlan": {
     "SubsHeaderTitle": "Plan de Suscripción",
+    "SubsHeaderDescription":"Cada plan incluye acceso de por vida a LifeScript, un libro premium de tapa dura a todo color y envío gratuito.",
     "SubsHeaderDes": "Elige un plan de suscripción a continuación antes del 30 de agosto de 2023 para desbloquear esta oferta especial.",
     "cardBtn": "Elegir Plan",
     "cardProBtn": "Procesando...",
@@ -987,7 +1003,16 @@
     "saveDes": "¿Quieres guardar los cambios?",
     "SaveChBtn": "Guardar Cambios",
     "DelBtn": "No Guardar",
-    "changeProBtn": "Cambiar el perfil"
+    "changeProBtn": "Cambiar el perfil",
+    "chapter":"Configuración de perfil",
+    "suggestionIcon":"Un crédito de libro equivale a un libro físico. Aumente sus créditos agregando libros adicionales durante el proceso de pago desde la sección Ver libro en la página Descripción general u obtenga libros gratis recomendando a un amigo a través de la sección Regalar un libro a la izquierda.",
+    "bookCredit":{
+      "title":"Crédito de libro",
+      "description1":"tienes",
+      "description2":"créditos del libro"
+
+    }
+
   },
   "support": {
     "supHeading": "Soporte",
@@ -1065,5 +1090,23 @@
 
     
     
+  },
+  "emailpreference":{    
+    "title":"Preferencias de correo electrónico",      
+    "question":"¿Con qué frecuencia le gustaría recibir preguntas por correo electrónico?",
+    "q1Options":{
+      "option1": "Una vez al dia",
+      "option2": "Día por medio",
+      "option3": "Una vez en 3 días",
+      "option4": "Una vez a la semana"
+    },
+    "question2": "Qué correos electrónicos desea recibir",
+    "q2Options":{
+      "option1":"Confirmaciones de finalización del capítulo.",
+      "option2":"Logros importantes",
+      "option3":"Boletín LifeScript",
+      "option4":"Promociones ocasionales"
+    },
+    "btnText":"Entregar"
   }
 }

@@ -165,6 +165,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
           router.push("/dashboard/overview");
         }}
         customStyles={{ backgroundColor: "auto", borderRadius: "22px" }}
+        marginTop={0}
       >
         <Box sx={{ textAlign: "center" }}>
           <Box

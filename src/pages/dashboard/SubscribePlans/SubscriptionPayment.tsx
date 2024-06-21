@@ -26,7 +26,7 @@ const CreditCard = () => {
       <Layout>
         <SubscriptionHeader
           title={`${t("SubsPlan.SubsHeaderTitle")}`}
-          description="Each plan comes with lifetime access to LifeScript, premium full-color hardcover book, and free shipping."
+          description={t("SubsPlan.SubsHeaderDescription")}
         />
 
         <Box

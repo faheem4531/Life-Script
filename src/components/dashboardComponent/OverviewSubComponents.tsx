@@ -264,7 +264,7 @@ export const PrintBook = () => {
           <Typography
             sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
           >
-            Delivery Tracking
+            {t("overView.deliveryTracker")}
           </Typography>
           <Box >
             <Box
@@ -288,7 +288,7 @@ export const PrintBook = () => {
               >
                 <TooltipTab
                   title=""
-                  text={`The delivery tracking status will update once you order your physical book from "View Book" steps.`}
+                  text={t("overView.suggestionIcon")}
                   transform="none"
                   top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
 
@@ -299,8 +299,7 @@ export const PrintBook = () => {
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
         >
-          Once you submit your book for printing and delivery, watch the status
-          update in real-time as it makes its way to you.
+         {t("overView.deliveryDescription")}
         </Typography>
       </Box>
       <Box>
@@ -308,7 +307,7 @@ export const PrintBook = () => {
           isLulu={true}
           bgColor={luluStatus ? "#7F886B" : "#A9A9A9"}
           color="white"
-          btnText={luluStatus ? luluStatus : "Print my Book"}
+          btnText={luluStatus ? luluStatus : t("overView.printBtnText")}
           // onClick={}
           width={{ xl: "250px", sm: "180px" }}
         />

@@ -286,11 +286,11 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               className={`${styles.link} ${currentRoute === "/familyTree" && styles.active
                 }`}
               onClick={() => {
-                // if (isPremium) {
-                router.push("/familyTree");
-                // } else {
-                // setBuyPremium(true);
-                // }
+                if (isPremium) {
+                  router.push("/familyTree");
+                } else {
+                  setBuyPremium(true);
+                }
               }}
             >
               <Image
@@ -410,7 +410,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                     : GiftGreen
                 }
               />
-              Gift a Book
+              {t("sideBar.giftaBook")}
             </a>
           </Box>
 
@@ -532,7 +532,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
       <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
-        description="Family Tree is only available for Standard and Premium users. Want to buy now?"
+        description={t("richText.description")}
         cancel={() => {
           setBuyPremium(false);
         }}

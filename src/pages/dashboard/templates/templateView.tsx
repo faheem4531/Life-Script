@@ -312,6 +312,7 @@ const chapterName = () => {
           router.push("/dashboard/chapters");
         }}
         customStyles={{ backgroundColor: "#f3ecda", borderRadius: "5px" }}
+        marginTop={0}
       >
         <Box sx={{ textAlign: "center" }}>
           <Box

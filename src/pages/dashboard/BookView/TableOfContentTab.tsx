@@ -68,6 +68,7 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
           router.push("/dashboard/chapters");
         }}
         customStyles={{ backgroundColor: "auto", borderRadius: "22px" }}
+        marginTop={0}
       >
         <Box sx={{ textAlign: "center" }}>
           <Box

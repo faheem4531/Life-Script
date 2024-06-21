@@ -236,6 +236,7 @@ const Dashboard = () => {
           setUpdateChapterModal(false);
         }}
         customStyles={{ backgroundColor: "#f3ecda", textAlign: "center" }}
+        marginTop={0}
       >
         <Box
           sx={{

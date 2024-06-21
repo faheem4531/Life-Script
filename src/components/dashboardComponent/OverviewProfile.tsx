@@ -375,7 +375,7 @@ const Profile = ({ data }) => {
               textAlign: "center",
             }}
           >
-            {progressChapters?.length > 3 ? t("overView.viewMore") : "Add More"}
+            {progressChapters?.length > 3 ? t("overView.viewMore") :t("overView.addMore") }
           </Typography>
         </Box>
       </Box>

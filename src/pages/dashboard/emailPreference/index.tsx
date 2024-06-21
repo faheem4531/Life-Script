@@ -23,7 +23,7 @@ import {
 const EmailPreference = () => {
   const userData = useSelector(selectUser);
   const dispatch: any = useDispatch();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const [questionFrequency, setQuestionFrequency] = useState("");
   const [checked, setChecked] = useState({
     chapter: false,
@@ -76,7 +76,7 @@ const EmailPreference = () => {
           <AddChapterName
             editChapter={() => {}}
             chapterId
-            chapter="Email Preferences"
+            chapter= {t("emailpreference.title")}
             title="noBack"
           />
           <Box
@@ -94,7 +94,7 @@ const EmailPreference = () => {
                 color: "#30422E",
               }}
             >
-              How often would you like to receive questions via email?
+              {t("emailpreference.question")}
             </Typography>
             <Box sx={{ mt: 2, gap: 2 }}>
               <RadioGroup
@@ -126,7 +126,7 @@ const EmailPreference = () => {
                         color: "rgba(0, 0, 0, 0.6)",
                       }}
                     >
-                      Once in a day
+                     {t("emailpreference.q1Options.option1")}
                     </Typography>
                   }
                 />
@@ -150,7 +150,7 @@ const EmailPreference = () => {
                         color: "rgba(0, 0, 0, 0.6)",
                       }}
                     >
-                      Every other day
+                     {t("emailpreference.q1Options.option2")}
                     </Typography>
                   }
                 />
@@ -174,7 +174,7 @@ const EmailPreference = () => {
                         color: "rgba(0, 0, 0, 0.6)",
                       }}
                     >
-                      Once in 3 days
+                      {t("emailpreference.q1Options.option3")}
                     </Typography>
                   }
                 />
@@ -198,7 +198,7 @@ const EmailPreference = () => {
                         color: "rgba(0, 0, 0, 0.6)",
                       }}
                     >
-                      Once in a week
+                      {t("emailpreference.q1Options.option4")}
                     </Typography>
                   }
                 />
@@ -213,7 +213,7 @@ const EmailPreference = () => {
                   mb: "20px",
                 }}
               >
-                Which Emails you want to receive
+                {t("emailpreference.question2")}
               </Typography>
               <Box>
                 <Box
@@ -243,7 +243,7 @@ const EmailPreference = () => {
                           fontSize: { sm: "20px", xs: "16px" },
                         }}
                       >
-                        Chapter completion confirmations
+                        {t("emailpreference.q2Options.option1")}
                       </Typography>
                     }
                   />
@@ -275,7 +275,7 @@ const EmailPreference = () => {
                           fontSize: { sm: "20px", xs: "16px" },
                         }}
                       >
-                        Milestone achievements
+                         {t("emailpreference.q2Options.option2")}
                       </Typography>
                     }
                   />
@@ -307,7 +307,7 @@ const EmailPreference = () => {
                           fontSize: { sm: "20px", xs: "16px" },
                         }}
                       >
-                        LifeScript newsletter
+                         {t("emailpreference.q2Options.option3")}
                       </Typography>
                     }
                   />
@@ -339,7 +339,7 @@ const EmailPreference = () => {
                           fontSize: { sm: "20px", xs: "16px" },
                         }}
                       >
-                        Occasional promotions
+                         {t("emailpreference.q2Options.option4")}
                       </Typography>
                     }
                   />
@@ -350,7 +350,7 @@ const EmailPreference = () => {
               borderRadius="4px"
               bgColor="#E1683B"
               color="white"
-              btnText="Submit"
+              btnText={t("emailpreference.btnText")}
               onClick={handleSubmit}
             />
           </Box>

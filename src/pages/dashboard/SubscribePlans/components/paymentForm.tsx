@@ -294,6 +294,7 @@ const PaymentForm = ({ packageName, price }) => {
             : router.push("/dashboard/chapters");
         }}
         customStyles={{ backgroundColor: "auto" }}
+        marginTop={0}
       >
         <Box sx={{ textAlign: "center", p: "20px" }}>
           <Box

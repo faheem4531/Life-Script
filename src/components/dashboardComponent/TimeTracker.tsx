@@ -13,6 +13,7 @@ import {
 } from "@/store/slices/chatSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const TimeTracker = ({ onChange }) => {
   const dispatch: any = useDispatch();
@@ -22,6 +23,7 @@ const TimeTracker = ({ onChange }) => {
   const [hoursCount, setHoursCount] = useState("");
   const [chapterCount, setChapterCount] = useState(0);
   const [questionCount, setQuestionCount] = useState(0);
+  const { t } = useTranslation();
 
   const countQuestions = () => {
     let totalQuestions = 0;
@@ -189,7 +191,7 @@ const TimeTracker = ({ onChange }) => {
                 color: "#7F886B",
               }}
             >
-              Words
+              {t("overView.word")}
             </Typography>
           </Box>
         </Box>
@@ -233,7 +235,7 @@ const TimeTracker = ({ onChange }) => {
                 color: "#7F886B",
               }}
             >
-              Questions
+              {t("overView.question")}
             </Typography>
           </Box>
         </Box>
@@ -278,7 +280,7 @@ const TimeTracker = ({ onChange }) => {
                 color: "#7F886B",
               }}
             >
-              Chapters
+              {t("overView.chapter")}
             </Typography>
           </Box>
         </Box>
@@ -321,7 +323,7 @@ const TimeTracker = ({ onChange }) => {
               }}
             >
               {hoursCount}
-              <Typography sx={{ fontSize: "10px" }}>of Writing</Typography>
+              <Typography sx={{ fontSize: "10px" }}>{t("overView.minutes")}</Typography>
             </Box>
           </Box>
         </Box>

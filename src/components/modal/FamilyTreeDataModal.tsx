@@ -185,6 +185,7 @@ const FamilyTreeDataModal = ({
         customStyles={{
           width: { md: "500px", sm: "400px", xs: "100%" },
         }}
+        marginTop={0}
       >
         <Box
           sx={{

@@ -176,6 +176,7 @@ const SupportScreen = () => {
         }}
         // customStyles={{ backgroundColor: "auto" }}
         customStyles={{ backgroundColor: "#f3ecda", borderRadius: "5px" }}
+        marginTop={0}
       >
         <Box sx={{ textAlign: "center", p: "20px" }}>
           <Box

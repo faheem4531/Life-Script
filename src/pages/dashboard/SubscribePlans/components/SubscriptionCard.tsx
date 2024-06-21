@@ -41,56 +41,56 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: "Spelling and grammar assistance ",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis1"),
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: "Automatic photo improvement ",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis2"),
     },
 
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: true,
-      dis: "Text formatting features  ",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis3"),
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Narrative Fusion ",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis4"),
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Voice-to-text ",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis5"),
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Family Tree",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis6"),
     },
     {
       standardStatus: false,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Premium book covers",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis7"),
     },
     {
       standardStatus: false,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Priority customer support",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis8"),
     },
     {
       standardStatus: false,
       PrimuimStatus: true,
       basicStatus: false,
-      dis: "Exclusive access to new features ",
+      dis: t("landingPage.pricingSection.pricingCardMapArray.dis9"),
     },
   ];
   return (
@@ -218,7 +218,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           borderRadius="0px 0px 8px 8px"
           color="white"
           btnText={
-            !plan ? "Upgrade" :
+            !plan ? t("landingPage.pricingSection.upgradeBtn") :
               (CurrentPlan === category) ? "Current" :
                 (CurrentPlan === category) ? "Current" :
                   (CurrentPlan === category) ? "Current" :

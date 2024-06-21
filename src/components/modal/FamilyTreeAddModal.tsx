@@ -70,6 +70,7 @@ const FamilyTreeAddModal = ({
           p: { md: "20px", sm: "15px", xs: "10px" },
           color: "#30422E",
         }}
+        marginTop={0}
       >
         <Box
           sx={{
