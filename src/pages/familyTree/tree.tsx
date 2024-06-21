@@ -57,12 +57,26 @@ const FamilyTree = ({ familyTreeData }) => {
   const [lastMousePosition, setLastMousePosition] = useState(null);
   const [resetModal, setResetModal] = useState(false)
   const [hover, setHover] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
   // console.log(familyTreeData, "familyTreeData");
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken.accessRole;
+      if (accessRole !== "FreePlan") {
+        setIsPremium(true);
+      }
+    }
+  }, []);
+
 
   const handleAddedPerson = (data) => {
     setFamilyModal(false);
@@ -666,7 +680,7 @@ const FamilyTree = ({ familyTreeData }) => {
     <>
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <IconButton id="download" aria-label="download" sx={{
+          {isPremium && <IconButton id="download" aria-label="download" sx={{
             '&:hover': {
               backgroundColor: 'transparent',
               boxShadow: 'none',
@@ -680,7 +694,7 @@ const FamilyTree = ({ familyTreeData }) => {
                 btnText="PDF"
               />
             </Box>
-          </IconButton>
+          </IconButton>}
           <Box sx={{ display: "flex", alignItems: "center", gap: "10px", position: "relative" }}>
             <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
               <ButtonIcons
