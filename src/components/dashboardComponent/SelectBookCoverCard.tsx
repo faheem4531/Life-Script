@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { uploadImage } from "@/store/slices/chatSlice";
 import axios from "axios";
 import GlobelBtn from "../button/Button";
+import { styled } from '@mui/material/styles';
 
 interface SelectBookCoverCardProps {
   landScape?: string;
@@ -39,7 +40,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
-
+const { CoverNumber } = router.query;
   const [initialStates, setInitialStates] = useState<{
     [key: string]: string[];
   }>({});
@@ -277,6 +278,10 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   //   return imgArray[coverNumber - 1];
   // };
 
+  const WhiteLogo = styled('img')({
+    filter: 'invert(70%) brightness(200%)', // Inverts black to white
+  });
+
   return (
     <Box
       sx={{
@@ -387,12 +392,22 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
               <Box
                 sx={{
                   color: landScape === "5" ? "white" : "black",
-                  transform: "rotate(90deg)",
-                  marginBottom:"10px" 
+                  transform: "rotate(0deg)",
+                  marginBottom: "10px"
                 }}
               >
-                <Image src={logo} alt="" width={25}
-                />
+                {/* <Image src={logo} alt="" width={25}
+                /> */}
+                {/* <Image src={"https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"} alt="" width={25} height={60}
+                /> */}
+                {CoverNumber === "5" ? <WhiteLogo
+                  src="https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"
+                  alt="Logo"
+                  width={25}
+                  height={60}
+                /> : <Image src={"https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"} alt="" width={25} height={60}
+                />}
+
               </Box>
             </Box>
           </Box>

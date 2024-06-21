@@ -168,38 +168,7 @@ export default function Document() {
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet" />
-
-        {/* Paste the Plerdy tracking script here
-        <Script
-          id="plerdy"
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              var _protocol="https:"==document.location.protocol?"https://":"http://";
-              _site_hash_code = "ec5ed5a2ee310ca961dd1dff624c8bee",_suid=50160, plerdyScript=document.createElement("script");
-              plerdyScript.setAttribute("defer",""),plerdyScript.dataset.plerdymainscript="plerdymainscript",
-              plerdyScript.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
-              var plerdymainscript=document.querySelector("[data-plerdymainscript='plerdymainscript']");
-              plerdymainscript&&plerdymainscript.parentNode.removeChild(plerdymainscript);
-              try{document.head.appendChild(plerdyScript)}catch(t){console.log(t,"unable add script tag")}
-            `,
-          }}
-        /> */}
-
-        {/* Google Tag Manager */}
-        {/* <Script
-          id="plerdy"
-          dangerouslySetInnerHTML={{
-            __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-WK6GF7G6');
-              `,
-          }}
-        /> */}
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet" />
 
                {/* Plerdy Script */}
                <script
@@ -224,18 +193,6 @@ export default function Document() {
       <body style={{ margin: 0 }}>
         <Main />
         <NextScript />
-
-        {/* Google Tag Manager (noscript) */}
-        {/* <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-WK6GF7G6"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          ></iframe>
-        </noscript> */}
-        {/* End Google Tag Manager (noscript) */}
-
 
             {/* BEGIN PLERDY A/B TESTING CODE */}
             <script

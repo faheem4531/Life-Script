@@ -569,6 +569,7 @@ const chapterName = () => {
 
       <CustomizationDialog
         open={gptSocket}
+        marginTop={0}
         title=""
         handleClose={() => {
           setgptSocket(false);
@@ -651,6 +652,7 @@ const chapterName = () => {
       {/* Add new Question  */}
       <CustomizationDialog
         open={openModal}
+        marginTop={0}
         title=""
         handleClose={() => {
           setOpenModal(false);
@@ -701,6 +703,7 @@ const chapterName = () => {
 
       <CustomizationDialog
         open={aiGeneration}
+        marginTop={0}
         title=""
         handleClose={() => {
           setAiGeneration(false);
@@ -769,6 +772,7 @@ const chapterName = () => {
 
       <CustomizationDialog
         open={updateChapterModal}
+        marginTop={0}
         title={""}
         handleClose={() => {
           setUpdateChapterModal(false);

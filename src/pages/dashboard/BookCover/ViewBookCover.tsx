@@ -31,202 +31,18 @@ const ViewBookCover = () => {
 
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
 
-  // const generatePDFOne = async (
-  //   title,
-  //   subtitle,
-  //   name,
-  //   imgUrl,
-  //   color,
-  //   finalCover,
-  //   spine = 6
-  // ) => {
-  //   // const logo =
-  //   //   "https://lifescript-media.s3.eu-north-1.amazonaws.com/0c666ff5-3889-47f1-9727-901ad3995330-Screen%20Shot%202024-01-19%20at%206.49.32%20PM.png";
-  //   const logo =
-  //     "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
-  //   const pdfHeight = 255;
-  //   const pageWidth = 170; //prev was 169.5
-  //   const tail = spine;
-  //   const pdfWidth = pageWidth + pageWidth + spine;
-  //   const pdf = new jsPDF({
-  //     unit: "mm", // Set the unit to millimeters
-  //     format: [pdfWidth, pdfHeight], // Convert inches to millimeters (15 inches x 10 inches)
-  //     orientation: "landscape",
-  //   });
-
-  //   pdf.addFileToVFS("WorkSans-normal.ttf", font);
-
-  //   pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
-
-  //   // pdf.addFont("Helvetica-Bold.ttf", "Helvetica", "bold");
-
-  //   const text2 = subtitle?.toUpperCase(); //bookName
-  //   const text1 = title?.toUpperCase();
-  //   const writter = name?.toUpperCase(); //Author name
-  //   const bgcolor = color?.toString();
-  //   const imageUrl = imgUrl;
-  //   // Section 1:
-  //   pdf.setFillColor(bgcolor);
-  //   pdf.rect(0, 0, pageWidth, pdfHeight, "F"); // Convert inches to millimeters
-
-  //   // Section 2:
-  //   pdf.setFillColor(255, 255, 255);
-  //   pdf.rect(pageWidth, 0, 1, pdfHeight, "F"); // spine first border
-  //   pdf.setFillColor(bgcolor);
-  //   pdf.rect(171, 0, tail - 2, pdfHeight, "F"); // inner spine
-  //   pdf.setFillColor(255, 255, 255);
-  //   const spineBorder2 = pageWidth + spine - 1;
-  //   pdf.rect(spineBorder2, 0, 1, pdfHeight, "F"); // spine second border
-
-  //   let y = 5; // Initial y-coordinate
-  //   const fontSize = 10; //prev was minus 3
-  //   // const textCenter = pageWidth + (tail - (tail - fontSize) / 2) / 2;
-  //   const textCenter = pageWidth + tail / 2 - 1.3;
-
-  //   //bookName
-  //   for (let i = 0; i < text2.length; i++) {
-  //     const char = text2[i];
-  //     pdf.setFont("WorkSans");
-  //     pdf.setFontSize(fontSize);
-  //     // pdf.setTextColor(255, 255, 255);
-  //     if (CoverNumber === "5") {
-  //       pdf.setTextColor(255, 255, 255);
-  //     } else {
-  //       pdf.setTextColor(0, 0, 0);
-  //     }
-
-  //     pdf.text(char, textCenter, y, { angle: 270 });
-  //     y = y + 3; // Move to the next line for each character
-  //   }
-
-  //   pdf.setFont("WorkSans");
-  //   pdf.setFontSize(fontSize);
-  //   pdf.setTextColor(0, 0, 0);
-  //   pdf.text("  |  ", pageWidth + tail / 2 - 1, y, { angle: 270 });
-
-  //   y = y + 6;
-
-  //   for (let i = 0; i < writter.length; i++) {
-  //     const char = writter[i];
-  //     pdf.setFont("WorkSans");
-  //     pdf.setFontSize(fontSize);
-  //     // pdf.setTextColor(255, 255, 255);
-  //     if (CoverNumber === "5") {
-  //       pdf.setTextColor(255, 255, 255);
-  //     } else {
-  //       pdf.setTextColor(0, 0, 0);
-  //     }
-  //     // pdf.setTextColor(0, 0, 0);
-  //     pdf.text(char, textCenter, y, { angle: 270 });
-  //     y = y + 3; // Move to the next line for each character
-  //   }
-
-  //   const logoSize = tail < 22 ? tail - 3 : 20;
-  //   const tailcenter = pageWidth + (tail - logoSize) / 2;
-  //   pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
-
-  //   // Section 3:
-  //   // pdf.setFillColor(bgcolor);
-  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-  //   // const centerX = pageWidth + tail + pageWidth / 2;
-
-  //   // // 1st Text: "A good book" with font size 16px
-  //   // pdf.setFontSize(16);
-  //   // pdf.setFont("WorkSans");
-  //   // pdf.setTextColor(255, 255, 255);
-  //   // pdf.text(text1, centerX, 50.8, { align: "center" });
-
-  //   // // 2nd Text: "New Book" font size 22px, bold, and underlined
-  //   // pdf.setFontSize(30);
-  //   // pdf.setFont("WorkSans");
-  //   // pdf.setTextColor(255, 255, 255);
-  //   // pdf.text(text2, centerX, 66.04, {
-  //   //   align: "center",
-  //   // }); // Convert inches to millimeters
-
-  //   // const imgWidth = 140; // Convert inches to millimeters
-  //   // const imgHeight = 80; // Convert inches to millimeters
-  //   // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-  //   // const yPos = 87; // Convert inches to millimeters
-  //   // pdf.addImage(imageUrl, "JPEG", xPos, yPos, imgWidth, imgHeight);
-
-  //   // // 4th Text: "- good book -" font size 16px
-  //   // pdf.setFont("WorkSans");
-  //   // pdf.setTextColor(255, 255, 255);
-  //   // pdf.setFontSize(16);
-  //   // pdf.text(`-   ${writter}   -`, centerX, 178.4, { align: "center" }); // Convert inches to millimeters
-
-  //   //Mypdf section4
-  //   // const svgComponentWidth = pageWidth;
-  //   // const svgComponentHeight = pdfHeight;
-
-  //   // // Calculate the position to center the SVG component within Section 3
-  //   // const svgComponentX = pageWidth + tail;
-  //   // const svgComponentY = 0;
-
-  //   // // Call the function to add your SVG component to the PDF
-  //   // await addSvgComponentToPdf(
-  //   //   pdf,
-  //   //   svgComponentX,
-  //   //   svgComponentY,
-  //   //   svgComponentWidth,
-  //   //   svgComponentHeight
-  //   // );
-
-  //   // pdf.setFillColor(bgcolor);
-  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-  //   // const centerX = pageWidth + tail + pageWidth / 2;
-  //   // const yPos = 20;
-
-  //   // const svgElement = renderToStaticMarkup(<Cover1 />);
-
-  //   // saveSvgAsPng(svgElement, "familytree.png", {
-  //   //   scale: 1,
-  //   //   backgroundColor: "#FFFFFF",
-  //   // }).then((data) => {
-  //   //   console.log("data", data);
-  //   //   // uploadImageonCloud(data);
-  //   // });
-
-  //   // const svgImage = await convertSvgToImage();
-
-  //   // pdf.setFillColor(bgcolor);
-  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-  //   // const centerX = pageWidth + tail + pageWidth / 2;
-
-  //   // const imgWidth = pageWidth; // Convert inches to millimeters
-  //   // const imgHeight = pageWidth; // Convert inches to millimeters
-  //   // const xPos = pageWidth + tail + (pageWidth - imgWidth) / 2; // Convert inches to millimeters
-  //   // const yPos = 87; // Convert inches to millimeters
-  //   // pdf.addImage(svgPng, "png", centerX, 0, imgWidth, imgHeight);
-  //   // console.log("svg", svgPng);
-  //   // pdf.addImage(svgPng, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
-
-  //   // pdf.setFillColor(bgcolor);
-  //   // pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-
-  //   pdf.setFillColor(bgcolor);
-  //   pdf.rect(pageWidth + tail, 0, pageWidth, pdfHeight, "F");
-  //   const centerX = pageWidth + tail + pageWidth / 2;
-  //   const newData = {imageUrl:finalCover}
-  //   const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
-  //   pdf.addImage(newImageLink?.payload, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
-  //   // pdf.addImage(finalCover, "png", pageWidth + tail, 0, pageWidth, pdfHeight);
-
-  //   pdf.save("my_document2.pdf");
-  // };
-
-  const generatePDFOne = async (
+  const generatePDFOneT = async (
     title,
     subtitle,
     name,
     imgUrl,
     color,
     finalCover,
-    spine = 20
+    spine = 10.2
   ) => {
     const logo =
-      "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
+      // "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo2.png";
+      "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png"
     const pageWidth = 154.8; //prev was 169.5
     const tail = spine;
     const offset = 20; // 20mm offset
@@ -237,24 +53,24 @@ const ViewBookCover = () => {
       format: [pdfWidth, pdfHeight],
       orientation: "landscape",
     });
-  
+
     pdf.addFileToVFS("WorkSans-normal.ttf", font);
     // pdf.addFont("WorkSans-normal.ttf", "WorkSans", "bold");
-  
+
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
     const writter = name?.toUpperCase();
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
-  
+
     // Fill the entire background with bgcolor
     pdf.setFillColor(bgcolor);
     pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
-  
+
     // Section 1:
     pdf.setFillColor(bgcolor);
     pdf.rect(offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
-  
+
     // Section 2:
     // pdf.setFillColor(255, 255, 255);
     pdf.setFillColor(bgcolor);
@@ -265,54 +81,185 @@ const ViewBookCover = () => {
     pdf.setFillColor(bgcolor);
     const spineBorder2 = pageWidth + spine - 1 + offset;
     pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
-  
+
     let y = offset + 5; // Initial y-coordinate
-    const fontSize = 10; 
+    const fontSize = 10;
     const textCenter = pageWidth + tail / 2 - 1.3 + offset;
-  
+
     // bookName
     for (let i = 0; i < text2.length; i++) {
       const char = text2[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 230 : 255, 255, 255);
+      if (CoverNumber === "5") {
+        pdf.setTextColor(255, 255, 255); // Set text color to white
+      } else {
+        pdf.setTextColor(0, 0, 0); // Set text color to black
+      }
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
-  
+
     pdf.setFont("WorkSans");
     pdf.setFontSize(fontSize);
-    pdf.setTextColor(255, 255, 255);
-    pdf.text("  |  ", textCenter , y, { angle: 270 });
-  
+    pdf.setTextColor(0, 0, 0);
+    // pdf.setTextColor(CoverNumber === "5" ? 230 : 255, 255, 255);
+    pdf.text("  |  ", textCenter, y, { angle: 270 });
+
     y = y + 6;
-  
+
     for (let i = 0; i < writter.length; i++) {
       const char = writter[i];
       pdf.setFont("WorkSans");
       pdf.setFontSize(fontSize);
-      pdf.setTextColor(CoverNumber === "5" ? 230 : 255, 255, 255);
+
+      if (CoverNumber === "5") {
+        pdf.setTextColor(255, 255, 255); // Set text color to white
+      } else {
+        pdf.setTextColor(0, 0, 0); // Set text color to black
+      }
+
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3;
     }
-  
+
     const logoSize = tail < 22 ? tail - 3 : 20;
     const tailcenter = pageWidth + (tail - logoSize) / 2 + offset;
     pdf.addImage(logo, "png", tailcenter, pdfHeight - 30 - offset, logoSize, logoSize);
-  
+
     pdf.setFillColor(bgcolor);
     pdf.rect(pageWidth + tail + offset, offset, pageWidth, pdfHeight - 2 * offset, "F");
-  
+
     const centerX = pageWidth + tail + pageWidth / 2 + offset;
     const newData = { imageUrl: finalCover };
     const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
     pdf.addImage(newImageLink?.payload, "png", pageWidth + tail + offset, offset, pageWidth, pdfHeight - 2 * offset);
-  
+
     pdf.save("my_document2.pdf");
   };
+  const generatePDFOne = async (
+    title,
+    subtitle,
+    name,
+    imgUrl,
+    color,
+    finalCover,
+    spine = 10.2
+  ) => {
+    const logo = "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo2.png";
+    // const logo = CoverNumber === "5" 
+    // ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png" 
+    // : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo2.png";
+    const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
+    const leftContentWidth = 144; // Width of the left content area
+    const rightContentWidth = 144; // Width of the right content area
+    const gutterWidth = 8; // Gutter width on both sides
+    const spineWidth = spine;
+    const offset = 20; // 20 mm on each side for the offset
+    const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
+    const pdf = new jsPDF({
+      unit: "mm", // Set the unit to millimeters
+      format: [pdfWidth, pdfHeight], // Updated format with offset
+      orientation: "landscape",
+    });
+
+    pdf.addFileToVFS("WorkSans-normal.ttf", font);
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
+
+    const text2 = subtitle?.toUpperCase();
+    const text1 = title?.toUpperCase();
+    const writter = name?.toUpperCase();
+    const bgcolor = color?.toString();
+    const imageUrl = imgUrl;
+
+    // Full background color including the offset area
+    pdf.setFillColor(bgcolor);
+    pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
+
+    // Section 1: Left content area
+    pdf.setFillColor(bgcolor);
+    pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
+
+    // Section 2: Left gutter
+    pdf.setFillColor(bgcolor);
+    pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+
+    // Section 3: Spine and inner spine
+    pdf.setFillColor(bgcolor);
+    pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
+    pdf.setFillColor(bgcolor);
+    pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); // inner spine
+    pdf.setFillColor(bgcolor);
+    const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
+    pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
+
+    // Section 4: Right gutter
+    pdf.setFillColor(bgcolor);
+    pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+
+    // Section 5: Right content area
+    pdf.setFillColor(bgcolor);
+    pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
+
+    let y = 25; // Initial y-coordinate with offset
+    const fontSize = 10; // Font size
+    const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
+
+    for (let i = 0; i < text2.length; i++) {
+      const char = text2[i];
+      pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
+      pdf.setTextColor(0, 0, 0); // Default text color
+
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255); // White text for cover number 5
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      pdf.text(char, textCenter, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+
+    pdf.setFontSize(fontSize);
+    pdf.setFont("WorkSans");
+    if (coverData?.coverNumber === "5") {
+      pdf.setTextColor(255, 255, 255); // White text for cover number 5
+    } else {
+      pdf.setTextColor(0, 0, 0);
+    } // Separator color
+    pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
+
+    y = y + 6;
+
+    for (let i = 0; i < writter.length; i++) {
+      const char = writter[i];
+      pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255); // White text for cover number 5
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      pdf.text(char, textCenter, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+
+    const logoSize = spineWidth < 22 ? spineWidth - 3 : 20;
+    const tailcenter = offset + leftContentWidth + gutterWidth + (spineWidth - logoSize) / 2;
+    pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
+    
+
+    const centerX = offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth / 2;
+    const newData = { imageUrl: finalCover };
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    pdf.addImage(newImageLink?.payload, "png", offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset);
+
+    pdf.save("my_document2.pdf");
+  };
+
   
-  
-  
+
+
   const generatePDFTwo = async (
     title,
     subtitle,

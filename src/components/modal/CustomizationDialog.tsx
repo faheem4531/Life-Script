@@ -56,6 +56,7 @@ export default function CustomizationDialog({
   title,
   handleClose,
   customStyles,
+  marginTop
 }) {
   return (
     <Box sx={{ bgcolor: "#F3ECDA", maxWidth: "80vw" }}>
@@ -75,7 +76,8 @@ export default function CustomizationDialog({
         sx={{
           ".css-2rbg70-MuiPaper-root-MuiDialog-paper": {
             borderRadius: "4px",
-            bgcolor: "#F3ECDA"
+            bgcolor: "#F3ECDA",
+            mt:marginTop? marginTop:0
           }
         }}
       >

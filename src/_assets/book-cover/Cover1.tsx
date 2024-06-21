@@ -42,7 +42,7 @@ function Cover1(props: any) {
         <text
           id="heading-text"
           x="50%"
-          y="8%"
+          y="3%"
           fontWeight="bolder"
           dominantBaseline="middle"
           textAnchor="middle"

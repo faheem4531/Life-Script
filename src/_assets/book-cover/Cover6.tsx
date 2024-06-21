@@ -49,7 +49,7 @@ function Cover6(props: any) {
           // font-weight="bolder"
           dominant-baseline="middle"
           text-anchor="middle"
-          font-family="Homemade Apple, cursive"
+          font-family="Satisfy, cursive"
           font-weight="400"
           font-style="normal"
           font-size="100px"
@@ -57,7 +57,7 @@ function Cover6(props: any) {
           width="80%"
         >
           <tspan x="20%" dy="1.2em">
-            <tspan style={{fontSize:"70px",fontFamily:"Arial", color:"black !important"}}>THE BEAUTY OF</tspan> <tspan x="55%" y="25%" style={{fontSize:"130px", fontFamily:"Homemade Apple"}}>SIMPLICITY</tspan>
+            <tspan style={{fontSize:"70px",fontFamily:"Satisfy", color:"black !important"}}>THE BEAUTY OF</tspan> <tspan x="55%" y="25%" style={{fontSize:"130px", fontFamily:"Satisfy"}}>SIMPLICITY</tspan>
           </tspan>
         </text>
 

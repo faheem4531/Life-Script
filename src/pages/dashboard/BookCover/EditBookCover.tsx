@@ -134,29 +134,149 @@ const EditBookCover = () => {
     });
   }, []); // Run this effect only once when the component mounts
 
-  function appendTitleToSVG(title: string, elmId: string) {
-    const headingText = document.getElementById(elmId);
+  // function appendTitleToSVG(title: string, elmId: string) {
+  //   const headingText = document.getElementById(elmId);
 
+  //   if (headingText) {
+  //     // Clear existing content
+  //     headingText.innerHTML = "";
+
+  //       // Set default y-axis offset
+  //   let yAxisOffset = "80%";
+  //   if (CoverNumber === "5" && elmId === "author-text") {
+  //     yAxisOffset = "84%"; // Add 3% to the y-axis offset
+  //   }
+
+  //     if (title.trim() === "") {
+  //       // If the title is empty, show predefined text spans
+  //       const defaultTexts = initialStates[elmId];
+
+  //       defaultTexts && defaultTexts?.forEach((defaultText) => {
+  //         const defaultTspan = document.createElementNS(
+  //           "http://www.w3.org/2000/svg",
+  //           "tspan"
+  //         );
+  //         if (
+  //           !(CoverNumber === "2" && elmId === "author-text") &&
+  //           !(CoverNumber === "6" && elmId === "author-text") &&
+  //           !(CoverNumber === "5" && elmId === "heading-text") &&
+  //           !(CoverNumber === "5" && elmId === "author-text") &&
+  //           !(CoverNumber === "4" && elmId === "author-text")
+  //           // !(CoverNumber === "6" && elmId === "heading-text")
+  //         ) {
+  //           defaultTspan.setAttribute("x", "50%");
+  //           defaultTspan.setAttribute("dy", "1.2em");
+  //         }
+  //         defaultTspan.appendChild(document.createTextNode(`${defaultText}`));
+  //         headingText.appendChild(defaultTspan);
+  //       });
+  //     } else {
+  //       const words = title.split(" ");
+  //       let currentTspan: SVGTSpanElement | null = null;
+
+  //       words.forEach((word) => {
+  //         if (
+  //           !currentTspan ||
+  //           (currentTspan.innerHTML.length + word.length > 12 &&
+  //             CoverNumber !== "6")
+  //         ) {
+  //           // Create a new tspan if not exists or the current one is full
+  //           currentTspan = document.createElementNS(
+  //             "http://www.w3.org/2000/svg",
+  //             "tspan"
+  //           );
+  //           if (
+  //             !(CoverNumber === "2" && elmId === "author-text") &&
+  //             !(CoverNumber === "6" && elmId === "author-text") &&
+  //             !(CoverNumber === "5" && elmId === "heading-text") &&
+  //             !(CoverNumber === "5" && elmId === "author-text") &&
+  //             !(CoverNumber === "4" && elmId === "author-text")
+  //             // !(CoverNumber === "6" && elmId === "heading-text")
+  //           ) {
+  //             console.log("Reached");
+
+  //             currentTspan.setAttribute("x", "50%");
+  //             currentTspan.setAttribute("dy", "1.2em");
+  //           }
+  //           headingText.appendChild(currentTspan);
+  //         } else if (
+  //           !currentTspan ||
+  //           (currentTspan.innerHTML.length + word.length > 25 &&
+  //             CoverNumber === "6")
+  //         ) {
+  //           // Create a new tspan if not exists or the current one is full
+  //           currentTspan = document.createElementNS(
+  //             "http://www.w3.org/2000/svg",
+  //             "tspan"
+  //           );
+  //           if (
+  //             !(CoverNumber === "2" && elmId === "author-text") &&
+  //             !(CoverNumber === "6" && elmId === "author-text") &&
+  //             !(CoverNumber === "5" && elmId === "heading-text") &&
+  //             !(CoverNumber === "5" && elmId === "author-text") &&
+  //             !(CoverNumber === "4" && elmId === "author-text")
+  //             // !(CoverNumber === "6" && elmId === "heading-text")
+  //           ) {
+  //             console.log("Reached if else");
+
+  //             currentTspan.setAttribute("x", "50%");
+  //             currentTspan.setAttribute("dy", "1.2em");
+  //           }
+  //           headingText.appendChild(currentTspan);
+  //         }
+
+  //         // Append the word to the current tspan
+  //         currentTspan?.appendChild(document.createTextNode(`${word} `));
+  //       });
+
+  //        // Adjust y attribute for author name when CoverNumber is 5
+  //     if (CoverNumber === "5" && elmId === "author-text") {
+  //       headingText.setAttribute("y", yAxisOffset);
+  //     }
+  //     }
+  //   }
+  // }
+
+  function appendTitleToSVG(title, elmId) {
+    const headingText = document.getElementById(elmId);
+  
     if (headingText) {
       // Clear existing content
       headingText.innerHTML = "";
-
+  
+      // Set default y-axis offset
+      let yAxisOffsetOne = "10%";
+      if (CoverNumber === "1" && elmId === "heading-text") {
+        yAxisOffsetOne = "13%"; 
+      }
+      // Set default y-axis offset
+      let yAxisOffsetFour = "62%";
+      if (CoverNumber === "4" && elmId === "heading-text") {
+        yAxisOffsetFour = "67%"; 
+      }
+      // Set default y-axis offset
+      let yAxisOffsetThree = "62%";
+      if (CoverNumber === "3" && elmId === "heading-text") {
+        yAxisOffsetThree = "72%"; 
+      }
+      // Set default y-axis offset
+      let yAxisOffset = "80%";
+      if (CoverNumber === "5" && elmId === "author-text") {
+        yAxisOffset = "84%"; // Add 4% to the y-axis offset
+      }
+  
       if (title.trim() === "") {
         // If the title is empty, show predefined text spans
         const defaultTexts = initialStates[elmId];
-
-        defaultTexts && defaultTexts?.forEach((defaultText) => {
-          const defaultTspan = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "tspan"
-          );
+  
+        defaultTexts && defaultTexts.forEach((defaultText) => {
+          const defaultTspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
           if (
             !(CoverNumber === "2" && elmId === "author-text") &&
             !(CoverNumber === "6" && elmId === "author-text") &&
             !(CoverNumber === "5" && elmId === "heading-text") &&
             !(CoverNumber === "5" && elmId === "author-text") &&
             !(CoverNumber === "4" && elmId === "author-text")
-            // !(CoverNumber === "6" && elmId === "heading-text")
           ) {
             defaultTspan.setAttribute("x", "50%");
             defaultTspan.setAttribute("dy", "1.2em");
@@ -165,66 +285,50 @@ const EditBookCover = () => {
           headingText.appendChild(defaultTspan);
         });
       } else {
-        const words = title.split(" ");
-        let currentTspan: SVGTSpanElement | null = null;
-
-        words.forEach((word) => {
+        let lines = [title];
+        // Check for specific covers to split the title into two lines
+        if ([1, 3, 4, 5,6].includes(Number(CoverNumber)) && elmId === "heading-text") {
+          const words = title.split(" ");
+          const mid = Math.ceil(words.length / 2);
+          lines = [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
+        }
+  
+        lines.forEach((line, index) => {
+          const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
           if (
-            !currentTspan ||
-            (currentTspan.innerHTML.length + word.length > 12 &&
-              CoverNumber !== "6")
+            !(CoverNumber === "2" && elmId === "author-text") &&
+            !(CoverNumber === "6" && elmId === "author-text") &&
+            !(CoverNumber === "5" && elmId === "heading-text") &&
+            !(CoverNumber === "5" && elmId === "author-text") &&
+            !(CoverNumber === "4" && elmId === "author-text")
           ) {
-            // Create a new tspan if not exists or the current one is full
-            currentTspan = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "tspan"
-            );
-            if (
-              !(CoverNumber === "2" && elmId === "author-text") &&
-              !(CoverNumber === "6" && elmId === "author-text") &&
-              !(CoverNumber === "5" && elmId === "heading-text") &&
-              !(CoverNumber === "5" && elmId === "author-text") &&
-              !(CoverNumber === "4" && elmId === "author-text")
-              // !(CoverNumber === "6" && elmId === "heading-text")
-            ) {
-              console.log("Reached");
-
-              currentTspan.setAttribute("x", "50%");
-              currentTspan.setAttribute("dy", "1.2em");
-            }
-            headingText.appendChild(currentTspan);
-          } else if (
-            !currentTspan ||
-            (currentTspan.innerHTML.length + word.length > 25 &&
-              CoverNumber === "6")
-          ) {
-            // Create a new tspan if not exists or the current one is full
-            currentTspan = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "tspan"
-            );
-            if (
-              !(CoverNumber === "2" && elmId === "author-text") &&
-              !(CoverNumber === "6" && elmId === "author-text") &&
-              !(CoverNumber === "5" && elmId === "heading-text") &&
-              !(CoverNumber === "5" && elmId === "author-text") &&
-              !(CoverNumber === "4" && elmId === "author-text")
-              // !(CoverNumber === "6" && elmId === "heading-text")
-            ) {
-              console.log("Reached if else");
-
-              currentTspan.setAttribute("x", "50%");
-              currentTspan.setAttribute("dy", "1.2em");
-            }
-            headingText.appendChild(currentTspan);
+            tspan.setAttribute("x", "50%");
+            tspan.setAttribute("dy", index === 0 ? "0em" : "1.2em");
           }
-
-          // Append the word to the current tspan
-          currentTspan?.appendChild(document.createTextNode(`${word} `));
+          tspan.appendChild(document.createTextNode(line));
+          headingText.appendChild(tspan);
         });
+  
+        // Adjust y attribute for author name when CoverNumber is 1
+        if (CoverNumber === "1" && elmId === "heading-text") {
+          headingText.setAttribute("y", yAxisOffsetOne);
+        }
+        // Adjust y attribute for author name when CoverNumber is 4
+        if (CoverNumber === "4" && elmId === "heading-text") {
+          headingText.setAttribute("y", yAxisOffsetFour);
+        }
+        // Adjust y attribute for author name when CoverNumber is 3
+        if (CoverNumber === "3" && elmId === "heading-text") {
+          headingText.setAttribute("y", yAxisOffsetThree);
+        }
+        // Adjust y attribute for author name when CoverNumber is 5
+        if (CoverNumber === "5" && elmId === "author-text") {
+          headingText.setAttribute("y", yAxisOffset);
+        }
       }
     }
   }
+  
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value.length <= 30) {
@@ -234,7 +338,7 @@ const EditBookCover = () => {
   };
 
   const handleSubtitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.length <= 25) {
+    if (event.target.value.length <= 17) {
       appendTitleToSVG(event.target.value, "author-text");
       setSubtitle(event.target.value);
     }

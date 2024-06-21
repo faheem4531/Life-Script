@@ -185,6 +185,7 @@ const TOCMain = () => {
 
       <CustomizationDialog
         open={openModal}
+        marginTop={13}
         title=""
         handleClose={() => {
           setOpenModal(false);
@@ -193,6 +194,7 @@ const TOCMain = () => {
           backgroundColor: "#F3ECDA",
           width: "80vw",
           height: "90vh",
+          
           padding: { md: "20px 48px" },
         }}
       >
