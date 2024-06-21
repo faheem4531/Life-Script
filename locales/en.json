@@ -1110,5 +1110,19 @@
     },
     "btnText":"Submit"
     
+  },
+  "giftABook":{
+    "title":"Gift a Book",
+    "giftCard1Description":{
+      "description":"Give a truly meaningful gift to a friend that will be cherished for generations.",
+      "textBtn":"Send as a gift"
+
+    },
+    "giftCard2Description":{
+      "description":"Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!",
+      "textBtn":"Refer a friend"
+
+    }
+
   }
 }

@@ -5,10 +5,11 @@ import { Box, Typography } from "@mui/material";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 import GiftCard from './components/GiftCard';
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 const Gift = () => {
   const router = useRouter();
-
+  const { t } = useTranslation();
   const accessRole = localStorage.getItem("accessRole")
 
   return (
@@ -21,7 +22,7 @@ const Gift = () => {
         >
           <AddChapterName editChapter={() => { }}
             chapterId
-            chapter="Gift a Book"
+            chapter={t("giftABook.title")}
             title="noBack"
           />
           <Box
@@ -39,8 +40,8 @@ const Gift = () => {
           >
             <GiftCard
               image={Pack}
-              info="Give a truly meaningful gift to a friend that will be cherished for generations."
-              btntext="Send as a gift"
+              info={t("giftABook.giftCard1Description.description")}
+              btntext={t("giftABook.giftCard1Description.textBtn")}
               onClick={() => {
                 router.push({
                   pathname: "/stripe-page/gift-subscription",
@@ -49,8 +50,8 @@ const Gift = () => {
               }} disabled={undefined} />
             <GiftCard
               image={Refer}
-              info="Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!"
-              btntext="Refer a friend"
+              info={t("giftABook.giftCard2Description.description")}
+              btntext={t("giftABook.giftCard2Description.textBtn")}
               onClick={() => {
                 router.push("/dashboard/Support/ReferAFriend");
               }}

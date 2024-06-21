@@ -1108,5 +1108,17 @@
       "option4":"Promociones ocasionales"
     },
     "btnText":"Entregar"
+  },
+  "giftABook": {
+  "title": "Regala un Libro",
+  "giftCard1Description": {
+    "description": "Regala a un amigo un obsequio verdaderamente significativo que será atesorado por generaciones.",
+    "textBtn": "Enviar como regalo"
+  },
+  "giftCard2Description": {
+    "description": "Obtén un libro de bonificación por referir a un amigo, además, ellos disfrutarán de un descuento del 10% al registrarse.",
+    "textBtn": "Referir a un amigo"
   }
+}
+
 }
