@@ -249,6 +249,11 @@ const EditBookCover = () => {
       if (CoverNumber === "1" && elmId === "heading-text") {
         yAxisOffsetOne = "13%"; 
       }
+       // Set default y-axis offset
+       let yAxisOffsetOneauth = "24%";
+       if (CoverNumber === "1" && elmId === "author-text") {
+        yAxisOffsetOneauth = "27%"; 
+       }
       // Set default y-axis offset
       let yAxisOffsetFour = "62%";
       if (CoverNumber === "4" && elmId === "heading-text") {
@@ -310,14 +315,18 @@ const EditBookCover = () => {
         });
   
         // Adjust y attribute for author name when CoverNumber is 1
+        if (CoverNumber === "1" && elmId === "author-text") {
+          headingText.setAttribute("y", yAxisOffsetOneauth);
+        }
+        // Adjust y attribute for title name when CoverNumber is 1
         if (CoverNumber === "1" && elmId === "heading-text") {
           headingText.setAttribute("y", yAxisOffsetOne);
         }
-        // Adjust y attribute for author name when CoverNumber is 4
+        // Adjust y attribute for title name when CoverNumber is 4
         if (CoverNumber === "4" && elmId === "heading-text") {
           headingText.setAttribute("y", yAxisOffsetFour);
         }
-        // Adjust y attribute for author name when CoverNumber is 3
+        // Adjust y attribute for title name when CoverNumber is 3
         if (CoverNumber === "3" && elmId === "heading-text") {
           headingText.setAttribute("y", yAxisOffsetThree);
         }

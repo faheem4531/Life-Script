@@ -277,8 +277,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     color,
     spine = 10.2 // Updated spine width
   ) => {
-    const logo =
-      "https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
+    const logo = CoverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
+      :"https://res.cloudinary.com/dchdhz06m/image/upload/a_90/v1715681713/Frame_jgcftx.png";
     const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
     const leftContentWidth = 144; // Width of the left content area
     const rightContentWidth = 144; // Width of the right content area
