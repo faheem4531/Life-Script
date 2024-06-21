@@ -206,7 +206,7 @@ const Dashboard = () => {
             >
               <StartNewChapter
                 addChapterClick={() => {
-                  if (!isPremium && chapters.length > 4) {
+                  if (!isPremium && chapters.length > 6) {
                     setBuyPremium(true);
                   } else {
                     setChapterModal(true);
