@@ -148,12 +148,12 @@ const RichText = ({ questionId }) => {
   };
 
   const handleSpeechtoText = () => {
-    if (isPremium) {
-      setDetecting(true);
-      handleToggleRecording();
-    } else {
-      setBuyPremium(true);
-    }
+    // if (isPremium) {
+    setDetecting(true);
+    handleToggleRecording();
+    // } else {
+    // setBuyPremium(true);
+    // }
   };
 
   useEffect(() => {
@@ -274,7 +274,7 @@ const RichText = ({ questionId }) => {
   //for grammar
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if(loading === false) {
+      if (loading === false) {
         import("@webspellchecker/wproofreader-sdk-js").then(
           ({ default: WProofreaderSDK }) => {
             // Assuming the library has a different initialization method
@@ -476,246 +476,246 @@ const RichText = ({ questionId }) => {
           <CircularProgress />
         </Box>
       ) : (
-      <Box className="rich-editor">
-        <Box
-          sx={{
-            display: "flex",
-            // alignItems: { md: "center" },
-            justifyContent: "space-between",
-            flexDirection: { xs: "column" },
-            rowGap: "30px",
-            pt: "20px",
-          }}
-        >
+        <Box className="rich-editor">
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
-              marginRight: "10px",
+              // alignItems: { md: "center" },
+              justifyContent: "space-between",
+              flexDirection: { xs: "column" },
+              rowGap: "30px",
+              pt: "20px",
             }}
           >
-            {/* <Image alt="icon" src={PIcon} /> */}
-
             <Box
-              onClick={() => {
-                router.back();
-              }}
               sx={{
-                borderRadius: "4px",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                width: "48px",
-                height: "36px",
-                bgcolor: "#fff",
-                border: "1px solid #E1683B",
-                flexShrink: "0",
+                marginRight: "10px",
               }}
             >
-              <Image src={backArrow} alt="backArrow" />
+              {/* <Image alt="icon" src={PIcon} /> */}
+
+              <Box
+                onClick={() => {
+                  router.back();
+                }}
+                sx={{
+                  borderRadius: "4px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "48px",
+                  height: "36px",
+                  bgcolor: "#fff",
+                  border: "1px solid #E1683B",
+                  flexShrink: "0",
+                }}
+              >
+                <Image src={backArrow} alt="backArrow" />
+              </Box>
+              <div className={styles.overflowQuestionText}>
+                {questionData?.text ? questionData?.text : compileChapter}
+              </div>
             </Box>
-            <div className={styles.overflowQuestionText}>
-              {questionData?.text ? questionData?.text : compileChapter}
-            </div>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              columnGap: "10px",
-            }}
-          >
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-                position:"relative",
-                flexWrap: { xs: "wrap", lg: "nowrap" },
-                ml: { sm: "70px", xs: "0" },
+                columnGap: "10px",
               }}
             >
-              <GlobelBtn
-                image={detecting ? MicRegular : listening ? MicListing : MicOff}
-                btnText={
-                  detecting
-                    ? `${t("richText.detecte")}`
-                    : listening
-                      ? `${t("richText.stop")}`
-                      : `${t("richText.STT")}`
-                }
-                color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
-                bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
-                border="1px solid #E1683B"
-                onClick={handleSpeechtoText}
-              />
-
-              {true && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  position: "relative",
+                  flexWrap: { xs: "wrap", lg: "nowrap" },
+                  ml: { sm: "70px", xs: "0" },
+                }}
+              >
                 <GlobelBtn
-                  onClick={handleCompleteAnswer}
-                  disabled={
-                    draftToHtml(convertToRaw(editorState.getCurrentContent()))
-                      .length < 9
+                  image={detecting ? MicRegular : listening ? MicListing : MicOff}
+                  btnText={
+                    detecting
+                      ? `${t("richText.detecte")}`
+                      : listening
+                        ? `${t("richText.stop")}`
+                        : `${t("richText.STT")}`
                   }
-                  btnText={`${t("richText.MAC")}`}
-                  color="#E1683B"
-                  bgColor="#fff"
+                  color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
+                  bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
                   border="1px solid #E1683B"
+                  onClick={handleSpeechtoText}
                 />
-              )}
-              {true && (
-                <GlobelBtn
-                  onClick={saveUserAnswer}
-                  disabled={
-                    draftToHtml(convertToRaw(editorState.getCurrentContent()))
-                      .length < 9
-                  }
-                  image={TextSave}
-                  btnText={"Save"}
-                  bgColor="#30422E"
-                  color="#fff"
-                  width="150px"
-                />
-              )}
-              <Box>
-                <Box
-                  onMouseEnter={() => setHover(true)}
-                  onMouseLeave={() => setHover(false)}
-                >
-                   <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
-                </Box>
 
-                {hover && (
-                  <Box
-                    sx={{
-                      display: {
-                        md: "block",
-                        xs: "block",
-                      },
-                      // position: "absolute", 
-                      // mt: 1 
-                    }}
-                  >
-                    <MultiToolTip
-                      content={content}
-                      position="absolute"
-                      bottom={undefined} right={undefined} top={undefined} left={undefined}                    />
-
-                  </Box>
+                {true && (
+                  <GlobelBtn
+                    onClick={handleCompleteAnswer}
+                    disabled={
+                      draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                        .length < 9
+                    }
+                    btnText={`${t("richText.MAC")}`}
+                    color="#E1683B"
+                    bgColor="#fff"
+                    border="1px solid #E1683B"
+                  />
                 )}
+                {true && (
+                  <GlobelBtn
+                    onClick={saveUserAnswer}
+                    disabled={
+                      draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                        .length < 9
+                    }
+                    image={TextSave}
+                    btnText={"Save"}
+                    bgColor="#30422E"
+                    color="#fff"
+                    width="150px"
+                  />
+                )}
+                <Box>
+                  <Box
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                  >
+                    <InfoOutlinedIcon sx={{ color: "#7F886B" }} />
+                  </Box>
+
+                  {hover && (
+                    <Box
+                      sx={{
+                        display: {
+                          md: "block",
+                          xs: "block",
+                        },
+                        // position: "absolute", 
+                        // mt: 1 
+                      }}
+                    >
+                      <MultiToolTip
+                        content={content}
+                        position="absolute"
+                        bottom={undefined} right={undefined} top={undefined} left={undefined} />
+
+                    </Box>
+                  )}
+                </Box>
               </Box>
             </Box>
           </Box>
-        </Box>
-        <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
-          <Editor
-            editorState={editorState}
-            onEditorStateChange={setEditorState}
-            placeholder="Click here to start typing.."
-            wrapperClassName="wrapper-class"
-            editorClassName="editor-class"
-            toolbarClassName="toolbar-class"
-            editorStyle={{
-              borderRadius: "10px",
-              minHeight: "65vh",
-              maxHeight: "68vh",
-              backgroundColor: "white",
-              overflowY: "auto",
-              padding: "20px",
-            }}
-            toolbarStyle={{
-              minHeight: "50px",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "center", // Center-align toolbar items horizontally
-              alignItems: "center",
-            }}
-            toolbar={{
-              options: [
-                "inline",
-                "blockType",
-                "fontSize",
-                "fontFamily",
-                "list",
-                "textAlign",
-                "link",
-                "colorPicker",
-                // "emoji",
-                "image",
-                "history",
-              ],
-              inline: {
-                options: ["bold", "italic", "underline"],
-              },
-              blockType: {
+          <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
+            <Editor
+              editorState={editorState}
+              onEditorStateChange={setEditorState}
+              placeholder="Click here to start typing.."
+              wrapperClassName="wrapper-class"
+              editorClassName="editor-class"
+              toolbarClassName="toolbar-class"
+              editorStyle={{
+                borderRadius: "10px",
+                minHeight: "65vh",
+                maxHeight: "68vh",
+                backgroundColor: "white",
+                overflowY: "auto",
+                padding: "20px",
+              }}
+              toolbarStyle={{
+                minHeight: "50px",
+                borderRadius: "10px",
+                display: "flex",
+                justifyContent: "center", // Center-align toolbar items horizontally
+                alignItems: "center",
+              }}
+              toolbar={{
                 options: [
-                  "Normal",
-                  "H1",
-                  "H2",
-                  "H3",
-                  "H4",
-                  "H5",
-                  "H6",
-                  "Blockquote",
-                  "Code",
+                  "inline",
+                  "blockType",
+                  "fontSize",
+                  "fontFamily",
+                  "list",
+                  "textAlign",
+                  "link",
+                  "colorPicker",
+                  // "emoji",
+                  "image",
+                  "history",
                 ],
-              },
-              fontSize: {
-                options: [
-                  8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
-                ],
-              },
-              fontFamily: {
-                options: [
-                  "Garamond",
-                  "Georgia",
-                  "Arial",
-                  "Times New Roman",
-                  "Verdana",
-                  "Merriweather",
-                ],
-              },
-              list: {
-                options: ["unordered", "ordered"],
-              },
-              textAlign: {
-                options: ["left", "center", "right"],
-              },
-              link: {
-                showOpenOptionOnHover: true,
-                defaultTargetOption: "_self",
-                options: ["link"],
-              },
-              image: {
-                urlEnabled: true,
-                uploadEnabled: true,
-                alignmentEnabled: false,
-                previewImage: true,
-                inputAccept: "image/jpeg,image/jpg,image/png",
-                uploadCallback: uploadCallback,
-                alt: { present: false, mandatory: false },
-                defaultSize: {
-                  height: "auto",
-                  width: "400px",
+                inline: {
+                  options: ["bold", "italic", "underline"],
                 },
-                caption: {
-                  show: true, // Show image caption
-                  text: "bottom",
+                blockType: {
+                  options: [
+                    "Normal",
+                    "H1",
+                    "H2",
+                    "H3",
+                    "H4",
+                    "H5",
+                    "H6",
+                    "Blockquote",
+                    "Code",
+                  ],
                 },
-              },
-              history: {
-                inDropdown: false,
-                className: undefined,
-                component: undefined,
-                dropdownClassName: undefined,
-                options: ["undo", "redo"],
-              },
-            }}
-          />
+                fontSize: {
+                  options: [
+                    8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96,
+                  ],
+                },
+                fontFamily: {
+                  options: [
+                    "Garamond",
+                    "Georgia",
+                    "Arial",
+                    "Times New Roman",
+                    "Verdana",
+                    "Merriweather",
+                  ],
+                },
+                list: {
+                  options: ["unordered", "ordered"],
+                },
+                textAlign: {
+                  options: ["left", "center", "right"],
+                },
+                link: {
+                  showOpenOptionOnHover: true,
+                  defaultTargetOption: "_self",
+                  options: ["link"],
+                },
+                image: {
+                  urlEnabled: true,
+                  uploadEnabled: true,
+                  alignmentEnabled: false,
+                  previewImage: true,
+                  inputAccept: "image/jpeg,image/jpg,image/png",
+                  uploadCallback: uploadCallback,
+                  alt: { present: false, mandatory: false },
+                  defaultSize: {
+                    height: "auto",
+                    width: "400px",
+                  },
+                  caption: {
+                    show: true, // Show image caption
+                    text: "bottom",
+                  },
+                },
+                history: {
+                  inDropdown: false,
+                  className: undefined,
+                  component: undefined,
+                  dropdownClassName: undefined,
+                  options: ["undo", "redo"],
+                },
+              }}
+            />
+          </Box>
         </Box>
-      </Box>
       )}
-
+      {/* 
       <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
@@ -727,7 +727,7 @@ const RichText = ({ questionId }) => {
           setBuyPremium(false);
         }}
         proceed={() => router.push("/dashboard/SubscribePlans")}
-      />
+      /> */}
     </Box>
   );
 };
