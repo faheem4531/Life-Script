@@ -287,7 +287,7 @@ const EditBookCover = () => {
       } else {
         let lines = [title];
         // Check for specific covers to split the title into two lines
-        if ([1, 3, 4, 5].includes(Number(CoverNumber)) && elmId === "heading-text") {
+        if ([1, 3, 4, 5,6].includes(Number(CoverNumber)) && elmId === "heading-text") {
           const words = title.split(" ");
           const mid = Math.ceil(words.length / 2);
           lines = [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
