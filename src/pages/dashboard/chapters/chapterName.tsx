@@ -82,6 +82,9 @@ const chapterName = () => {
   const percentage = calculateCompletionPercentage(question?.questions);
   const { t } = useTranslation();
   const [hover, setHover] = useState(false);
+  const [completedChaptersStatus, setCompletedChaptersStatus] = useState(false);
+
+  const chapters = useSelector(selectAllChapters);
 
   function isNotOlderThan7DaysFromCurrentDate(timeString: string): boolean {
     const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
@@ -113,15 +116,15 @@ const chapterName = () => {
   }, [openAiQuestionId]);
 
   const handleCancel = () => {
-    if (!isPremium) {
-      setBuyPremium(true);
+    // if (!isPremium) {
+    //   setBuyPremium(true);
+    //   setOpenCustomizationDialog(false);
+    // } else {
+    if (areAllCompleted(allQuestions) === true) {
+      gptSocketCall();
       setOpenCustomizationDialog(false);
-    } else {
-      if (areAllCompleted(allQuestions) === true) {
-        gptSocketCall();
-        setOpenCustomizationDialog(false);
-      }
     }
+    // }
   };
 
   const proceedFusion = () => {
@@ -211,10 +214,19 @@ const chapterName = () => {
     // console.log("KKK", fff, chapters);
   }, [chapterId, questionChanged]);
 
-  // useEffect(()=> {
-  //   // setShowFusion()
+  useEffect(() => {
+    if (chapters && !isPremium) {
+      const inProgressChapters = chapters.filter(
+        (chapter) => chapter.status === true
+      );
 
-  // }, [chapters])
+      if (inProgressChapters.length >= 6) {
+        setCompletedChaptersStatus(true)
+      }
+
+    }
+  }, [chapters]);
+
 
   useEffect(() => {
     setAllQuestions(question?.questions);
@@ -408,36 +420,36 @@ const chapterName = () => {
                   position: "relative"
                 }}
               >
-                
-                  <Box>
-                    <Box
-                      onMouseEnter={() => setHover(true)}
-                      onMouseLeave={() => setHover(false)}
-                    >
-                       <InfoOutlinedIcon sx={{color:"#7F886B"}}/>
-                    </Box>
 
-                    {hover && (
-                      <Box
-                        sx={{
-                          display: {
-                            md: "block",
-                            xs: "block",
-                          },
-                          // position: "absolute", 
-                          // mt: 1 
-                        }}
-                      >
-                        <TooltipTab
-                          title="Suggested Questions"
-                          text={`Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible.`}
-                          transform="none"
-                          top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
-
-                      </Box>
-                    )}
+                <Box>
+                  <Box
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                  >
+                    <InfoOutlinedIcon sx={{ color: "#7F886B" }} />
                   </Box>
-          
+
+                  {hover && (
+                    <Box
+                      sx={{
+                        display: {
+                          md: "block",
+                          xs: "block",
+                        },
+                        // position: "absolute", 
+                        // mt: 1 
+                      }}
+                    >
+                      <TooltipTab
+                        title="Suggested Questions"
+                        text={`Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible.`}
+                        transform="none"
+                        top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
+
+                    </Box>
+                  )}
+                </Box>
+
                 {aiQuestions?.length > 0 && (
                   <GlobelBtn
                     image={suggestionIcon}
@@ -755,7 +767,7 @@ const chapterName = () => {
         }}
         proceed={() => handleAddQuestion(emailQuestion.questionId)}
       />
-      <TransitionsDialog
+      {/* <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
         description={`${t("richText.PreDes")}`}
@@ -766,7 +778,7 @@ const chapterName = () => {
           setBuyPremium(false);
         }}
         proceed={() => router.push("/dashboard/SubscribePlans")}
-      />
+      /> */}
 
       {/* edit chapter name Modal */}
 
