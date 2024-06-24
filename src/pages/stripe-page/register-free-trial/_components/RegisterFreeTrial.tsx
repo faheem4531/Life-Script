@@ -66,7 +66,7 @@ const RegisterFreeTrial = () => {
     dispatch(signup(data))
       .unwrap()
       .then(() => {
-        toast.success(t("signup-page.verificationEmailSent"));
+        // toast.success(t("signup-page.verificationEmailSent"));
         setTimeout(() => {
           setOpenModal(true);
         }, 1000);

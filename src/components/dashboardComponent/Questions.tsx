@@ -137,7 +137,7 @@ export default function Questions({
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
-              overflowX: "hidden",
+              // overflowX: "hidden",
               marginLeft: "15px",
             }}
           >
