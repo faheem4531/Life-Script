@@ -27,9 +27,10 @@ import fbLogo from "../../../public/fbIcon.svg";
 import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
 import styles from "./Login.module.css";
+import { useTranslation } from "react-i18next";
 
 const EmailVerificationLink = () => {
-  
+  const { t } = useTranslation();
 
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -57,44 +58,29 @@ const EmailVerificationLink = () => {
   });
 
   return (
-  
     <Box sx={{ display: "flex", justifyContent: "space-around" }}>
       <Box sx={{ margin: 0 }}>
-        <Image
-          src={Email}
-          alt="image of login"
-          width={650}
-          height={700}
-         
-        />
-
-       
+        <Image src={Email} alt="image of login" width={650} height={700} />
       </Box>
-    
-      <Box
 
-      >
+      <Box>
         <Box textAlign={"center"}>
           <Image src={Logo} width={184} height={100} alt="Logo Image" />
           <Typography
             sx={{ color: "#000000", fontSize: "30px", marginTop: "37.84" }}
           >
-            Email Verification{" "}
+            {t("VerificationSent.emailVerification")}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "291px" }}>
-         
-          <Typography sx={{ marginTop: "23px" , color :'#5B5B5B', fontSize:'21px'}}>
-          We've sent a verification link to JohnDoe01@gmail.com. <br/> Kindly click on the link to verify.
+          <Typography
+            sx={{ marginTop: "23px", color: "#5B5B5B", fontSize: "21px" }}
+          >
+            {t("VerificationSent.description")} <br /> {t("VerificationSent.description1")}
           </Typography>
-
-          
-
-           
-          </Box>
         </Box>
       </Box>
-   
+    </Box>
   );
 };
 

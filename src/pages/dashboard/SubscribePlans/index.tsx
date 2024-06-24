@@ -105,7 +105,7 @@ const SubscribePlan = () => {
           >
             <SubscriptionCard
               subList={subBasicList}
-              mainTitle="Basic"
+              mainTitle= {t("landingPage.pricingSection.category1")}
               category="BasicPlan"
               card="1"
               price={planPrices.basic}
@@ -121,7 +121,7 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subStandardList}
-              mainTitle="Standard"
+              mainTitle={t("landingPage.pricingSection.category2")}
               category="GoldPlan"
               card="2"
               CurrentPlan={planCheck}
@@ -137,7 +137,7 @@ const SubscribePlan = () => {
             />
             <SubscriptionCard
               subList={subPremiumList}
-              mainTitle="Premium"
+              mainTitle={t("landingPage.pricingSection.category3")}
               card="3"
               CurrentPlan={planCheck}
               category="PremiumPlan"
@@ -157,7 +157,7 @@ const SubscribePlan = () => {
             />
           </Box>
           <Box sx={{ marginTop: "50px", display: "flex", columnGap: "10px", alignItems: "center" }}>
-            <Typography>Secure Payment with</Typography>
+            <Typography> {t("stripeFlow.PurchaseForm.checkOut.securePaymentWith")}</Typography>
             <Image
               src={stripeLogo}
               alt='Stripe logo Image'

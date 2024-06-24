@@ -183,8 +183,8 @@ export const ViewBook = () => {
 
       <TransitionsDialog
         open={buyPremium}
-        heading="Buy Premium"
-        description="This feature is not avaiable in Free trial."
+        heading={t("overView.buyPremiumModal.title")}
+        description={t("overView.buyPremiumModal.description")}
         cancel={() => {
           setBuyPremium(false);
         }}

@@ -13,7 +13,7 @@
       "animationText1": "Create",
       "animationText2": "Gift",
       "mainHeading": "a Personal Autobiography Book Easily",
-      "mainDescription": "TurnX your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent",
+      "mainDescription": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent",
       "mainButton": "Start 7-Day Free Trial",
       "buttonDescription": "No credit card required"
     },
@@ -570,7 +570,18 @@
       "preference": "Select Your Preference",
       "buyNow": "Buy Now",
       "freeTrial": "Start 7-Day Free Trial",
-      "btnText": "Continue"
+      "btnText": "Continue",
+      "emailVerificationModal":{
+        "verify":"verify",
+        "transactionSuccessful":"Transaction Successful!",
+        "transactionFailed":"Transaction Failed",
+        "Processing":"Processing..",
+        "emailVerification":"Email Verification",
+        "letMeIn":"Let me in",
+        "giftRecipient":" The gift recipient will receive their gift via email on the date provided. More details about your gift will be emailed to you shortly!",
+        "emailVerficationDescription":"Please check your email to set-up password and start writing your LifeScript."
+
+      }
     },
     "pricePlanCard": {
       "TabPanel": {
@@ -704,7 +715,13 @@
     "FamilyTree": "Family Tree",
     "account": "Account",
     "Support": "Support",
-    "giftaBook": "Gift a Book"
+    "giftaBook": "Gift a Book",
+    "supportDropDown":{
+      "category1":"Tutorials and Tips",
+      "category2":" Email Preferences",
+      "category3":"Contact Support"
+    }
+
   },
   "login-page": {
     "email": "Email",
@@ -722,7 +739,12 @@
     "passwordLength": "Password must be 8 characters long",
     "loggedIn": "Signed in successfully",
     "failedSignupGoogle": "Failed to sign up with Google",
-    "IncorrectEmail": "Incorrect password or email"
+    "IncorrectEmail": "Incorrect password or email",
+    "loginToYourAccount":"Login to your Account",
+    "continueToYourTrip":"Continue your trip down memory lane",
+    "loginWithGoogle":"Login with Google",
+    "loginWithFaceBook":"Login with Facebook"
+
   },
   "signup-page": {
     "email": "Email",
@@ -768,7 +790,9 @@
   "VerificationSent": {
     "emailVerification": "Email Verification",
     "verifcationLink": "We've sent a verification link to",
-    "clicktoVerify": "Kindly click on the link to verify."
+    "clicktoVerify": "Kindly click on the link to verify.",
+    "description":"We've sent a verification link to JohnDoe01@gmail.com.",
+    "description1":"Kindly click on the link to verify."
   },
   "ResetPassword": {
     "resetPassword": "Reset Password",
@@ -831,12 +855,17 @@
     "printBtnText": "Print my Book",
     "suggestionIcon": "The delivery tracking status will update once you order your physical book from View Book steps.",
     "addMore": "Add More",
-    "viewBtnSuggestion": "Preview book and order hardcover",
-    "viewBookModal": {
-      "title": "Sorry",
-      "description": "Complete all in progress chapters to view your book and order it.",
-      "okayBtn": "Okay"
+    "viewBtnSuggestion":"Preview book and order hardcover",
+    "viewBookModal":{
+      "title":"Sorry",
+      "description":"Complete all in progress chapters to view your book and order it.",
+      "okayBtn":"Okay"
+    },
+    "buyPremiumModal":{
+      "title":"Buy Premium",
+      "description":"This feature is not avaiable in Free trial."
     }
+
   },
   "ChapterSteps": {
     "step1": "Begin chapter",
@@ -886,7 +915,7 @@
       "day": "day",
       "ago": "ago"
     },
-    "suggestionBox": {
+    "suggestionBox":{
       "title": "Suggested Questions",
       "text": "Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible."
     }
@@ -898,7 +927,8 @@
     "Del": "Delete Chapter",
     "DelDescri": "Are you sure you want to delete this chapter?",
     "heading": "Buy Premium",
-    "description": "Only 5 chapters can be added in free trial. Buy premium to add more"
+    "description": "Only 5 chapters can be added in free trial. Buy premium to add more",
+    "placeHolder":"My Life Journey"
   },
   "modals": {
     "yes": "Yes",
@@ -929,11 +959,13 @@
   },
   "completedCh": {
     "com": "Completed"
+    
   },
   "noChapters": {
     "startNewChapter": "Start New Chapter",
     "noDataFound": "No Data found"
   },
+
   "template": {
     "choose": "Choose a",
     "temp": "Template",
@@ -1006,7 +1038,8 @@
     "TY": "Thank You!",
     "TYDes": "Your Package has been Upgraded",
     "sorryBtn": "Try Later",
-    "TYBtn": "Start Using"
+    "TYBtn": "Start Using",
+    "buyNow": "Buy Now"
   },
   "TOC": {
     "TOCHeader": "Table of Content",
@@ -1015,7 +1048,7 @@
     "editChBtn": "Edit Chapters",
     "addBtn": "Add",
     "adding": "Adding...",
-    "suggestionBox": {
+    "suggestionBox":{
       "title": "Table of Contents",
       "text": "Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.Tip: Click, hold, and drag to reorder chapters."
     }

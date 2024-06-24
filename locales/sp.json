@@ -147,7 +147,7 @@
       "popular": "Más elegido",
       "btnText": "Iniciar ",
       "pricingBelowText": "30 días de garantía de devolución del dinero",
-      "upgradeBtn": "Mejora"
+      "upgradeBtn": "Iniciar"
     },
     "bookSection": {
       "title": "Nuestros",
@@ -570,7 +570,17 @@
       "preference": "Selecciona tu preferencia",
       "buyNow": "Comprar ahora",
       "freeTrial": "Comienza la prueba gratuita de 7 días",
-      "btnText": "Continuar"
+      "btnText": "Continuar",
+      "emailVerificationModal": {
+        "verify": "verificar",
+        "transactionSuccessful": "¡Transacción Exitosa!",
+        "transactionFailed": "Transacción Fallida",
+        "Processing": "Procesando..",
+        "emailVerification": "Verificación de Correo Electrónico",
+        "letMeIn": "Déjame entrar",
+        "giftRecipient": "El destinatario del regalo recibirá su regalo por correo electrónico en la fecha proporcionada. ¡Más detalles sobre su regalo le serán enviados por correo electrónico en breve!",
+        "emailVerficationDescription": "Por favor, revise su correo electrónico para configurar su contraseña y comenzar a escribir su LifeScript."
+      }
     },
     "pricePlanCard": {
       "TabPanel": {
@@ -704,7 +714,13 @@
     "FamilyTree": "Árbol Genealógico",
     "account": "Cuenta",
     "Support": "Soporte",
-    "giftaBook": "Regalar un libro"
+    "giftaBook": "Regalar un libro",
+    "supportDropDown": {
+      "category1": "Tutoriales y Consejos",
+      "category2": "Preferencias de Correo Electrónico",
+      "category3": "Contactar Soporte"
+    }
+
   },
   "login-page": {
     "email": "Correo electrónico",
@@ -722,7 +738,11 @@
     "passwordLength": "La contraseña debe tener 8 caracteres",
     "loggedIn": "Iniciado sesión correctamente",
     "IncorrectEmail": "Contraseña o correo electrónico incorrecto",
-    "failedSignupGoogle": "No se pudo registrar con Google"
+    "failedSignupGoogle": "No se pudo registrar con Google",
+    "loginToYourAccount": "Inicia sesión en tu cuenta",
+    "continueToYourTrip": "Continúa tu viaje por el carril de los recuerdos",
+    "loginWithGoogle": "Iniciar sesión con Google",
+    "loginWithFaceBook": "Iniciar sesión con Facebook"
   },
   "signup-page": {
     "email": "Correo electrónico",
@@ -766,7 +786,9 @@
   "VerificationSent": {
     "emailVerification": "Verificacion de email",
     "verifcationLink": "Hemos enviado un enlace de verificación a",
-    "clicktoVerify": "Por favor haga clic en el enlace para verificar."
+    "clicktoVerify": "Por favor haga clic en el enlace para verificar.",
+    "description": "Hemos enviado un enlace de verificación a JohnDoe01@gmail.com",
+    "description1": "Haga clic en el enlace para verificar."
   },
   "ResetPassword": {
     "resetPassword": "Restablecer la contraseña",
@@ -831,10 +853,15 @@
     "addMore": "Añadir más",
     "viewBtnSuggestion": "Vista previa del libro y ordenar tapa dura",
     "viewBookModal": {
-    "title": "Lo siento",
-    "description": "Completa todos los capítulos en progreso para ver tu libro y ordenarlo.",
-    "okayBtn":"Bueno"
-  }
+      "title": "Lo siento",
+      "description": "Completa todos los capítulos en progreso para ver tu libro y ordenarlo.",
+      "okayBtn": "Bueno"
+    },
+    "buyPremiumModal": {
+      "title": "Comprar Premium",
+      "description": "Esta función no está disponible en la prueba gratuita."
+    }
+
   },
   "ChapterSteps": {
     "step1": "Comenzar capítulo",
@@ -884,10 +911,10 @@
       "day": "día",
       "ago": "hace"
     },
-   "suggestionBox": {
-    "title": "Preguntas Sugeridas",
-    "text": "Las sugerencias de preguntas aparecerán una vez que hayas agregado 2 preguntas propias. Para obtener las mejores sugerencias, asegúrate de que el nombre de tu capítulo y las primeras dos preguntas sean lo más detalladas y relevantes posible para el capítulo."
-  }
+    "suggestionBox": {
+      "title": "Preguntas Sugeridas",
+      "text": "Las sugerencias de preguntas aparecerán una vez que hayas agregado 2 preguntas propias. Para obtener las mejores sugerencias, asegúrate de que el nombre de tu capítulo y las primeras dos preguntas sean lo más detalladas y relevantes posible para el capítulo."
+    }
   },
   "ChModals": {
     "addNewCh": "Agregar nuevo capítulo",
@@ -896,7 +923,9 @@
     "Del": "Eliminar",
     "DelDescri": "¿Estás seguro de que quieres eliminar este capítulo?",
     "heading": "Comprar Premium",
-    "description": "Solo se pueden agregar 5 capítulos en la prueba gratuita. Compre premium para agregar más"
+    "description": "Solo se pueden agregar 5 capítulos en la prueba gratuita. Compre premium para agregar más",
+    "placeHolder": "Mi Viaje de Vida"
+
   },
   "modals": {
     "yes": "Sí",
@@ -1004,7 +1033,8 @@
     "TY": "¡Gracias!",
     "TYDes": "Tu paquete ha sido actualizado",
     "sorryBtn": "Intentar más tarde",
-    "TYBtn": "Comenzar a usar"
+    "TYBtn": "Comenzar a usar",
+    "buyNow": "Comprar ahora"
   },
   "TOC": {
     "TOCHeader": "Tabla de Contenido",

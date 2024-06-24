@@ -482,14 +482,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                           : TutorialGreen
                       }
                     />
-                    Tutorials and Tips
+                   {t("sideBar.supportDropDown.category1")} 
                   </a>
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
                     className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
                       }`}
-                    onClick={() => router.push("/dashboard/emailPreference")}
+                    onClick={() => router.push("/dashboard/emailPreference")}  
                   >
                     <Image
                       alt="icon"
@@ -500,7 +500,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       }
                       className={styles.sidebarIcon}
                     />
-                    Email Preferences
+                   {t("sideBar.supportDropDown.category2")} 
                   </a>
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
@@ -520,7 +520,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                           : ContactGreen
                       }
                     />
-                    Contact Support
+                    {t("sideBar.supportDropDown.category3")} 
                   </a>
                 </Box>
               </Box>

@@ -108,10 +108,10 @@ const Login = () => {
       >
         <Box sx={{ textAlign: "center", m: "50px 0 30px", color: "#30422E" }}>
           <Typography sx={{ fontSize: "38px", fontWeight: 700, }}>
-            Login to your account
+          {t("login-page.loginToYourAccount") }
           </Typography>
           <Typography>
-            Continue your trip down memory lane
+          {t("login-page.continueToYourTrip") }
           </Typography>
         </Box>
         <Box>
@@ -335,7 +335,7 @@ const Login = () => {
                 src={googleLogo}
                 alt="Google Logo"
               />
-              <Typography>Login with Google</Typography>
+              <Typography> {t("login-page.loginWithGoogle") }</Typography>
             </Button>
             <Button
               variant="contained"
@@ -359,7 +359,7 @@ const Login = () => {
                 src={facebookIcon}
                 alt="Facebook Logo"
               />
-              <Typography>Login with Facebook</Typography>
+              <Typography>{t("login-page.loginWithFaceBook") }</Typography>
             </Button>
           </Box>
         </Box>

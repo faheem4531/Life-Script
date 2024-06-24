@@ -19,8 +19,8 @@ export default function AddChapter({ chapterData, data, btnText = "Submit" }) {
       <Box>
         <TextField
           variant="outlined"
-          // placeholder={`${t("ChModals.addtextCh")}`}
-          placeholder="My Life Journey"
+          placeholder={`${t("ChModals.placeHolder")}`}
+        
           value={chapter}
           onChange={(e) => setChapter(e.target.value)}
           sx={{

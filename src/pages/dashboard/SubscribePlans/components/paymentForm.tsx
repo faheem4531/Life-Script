@@ -257,7 +257,7 @@ const PaymentForm = ({ packageName, price }) => {
             <GlobelBtn
               bgColor="#E1683B"
               color="white"
-              btnText={loading ? "Loading..." : "Buy Now"}
+              btnText={loading ? "Loading..." :  t("SubsPlan.buyNow")}
               onClick={() => {
                 if (!loading && !isError && cardHolderName) {
                   setConfirmationStripe(true);

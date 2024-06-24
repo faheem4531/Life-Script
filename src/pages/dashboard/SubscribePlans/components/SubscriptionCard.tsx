@@ -135,7 +135,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
               fontFamily: "Avenir LT Std",
             }}
           >
-            Popular
+            {t("landingPage.pricingSection.popular")}
           </Box>
         )}
         <Box
