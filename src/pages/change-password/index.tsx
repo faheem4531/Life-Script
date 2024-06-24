@@ -15,7 +15,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
-import Logo from "../../../public/logo.svg";
+import Logo from "@/_assets/svg/logo.svg";
 import { useTranslation } from "react-i18next";
 import { ChangePassword } from "@/interface/authInterface";
 import { toast } from "react-toastify";
@@ -122,9 +122,9 @@ const ResetPassword = () => {
 
       <Box>
         <Box textAlign={"center"}>
-          <Image src={Logo} width={223} height={135} alt="Logo Image" />
+          <Image src={Logo} width={330} height={125} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "30px" }}
+            sx={{ color: "#3e4f3c", fontSize: "30px", marginTop: "25px" }}
           >
             {t("ResetPassword.resetPassword")}
           </Typography>
@@ -138,7 +138,7 @@ const ResetPassword = () => {
 
                 marginTop: "34px",
                 fontSize: "21px",
-                color: 'black'
+                color: '#3e4f3c'
               }}
             >
               {t("ResetPassword.password")}
@@ -184,7 +184,7 @@ const ResetPassword = () => {
 
                 marginTop: "40px",
                 fontSize: "21px",
-                color: 'black'
+                color: '#3e4f3c'
 
               }}
             >
@@ -237,14 +237,14 @@ const ResetPassword = () => {
             disabled={!formik.values.email}
             sx={{
               borderRadius: "4px",
-              backgroundColor: "#186F65",
+              backgroundColor: "#3e4f3c",
               color: "white",
               width: "404px",
               pt: "16px",
               pb: "16px",
 
               "&:hover": {
-                backgroundColor: "#186F65",
+                backgroundColor: "#3e4f3c",
               },
               textTransform: "none",
             }}
