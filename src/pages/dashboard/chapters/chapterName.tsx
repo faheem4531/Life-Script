@@ -441,8 +441,8 @@ const chapterName = () => {
                       }}
                     >
                       <TooltipTab
-                        title="Suggested Questions"
-                        text={`Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible.`}
+                        title={t("ChName.suggestionBox.title")}
+                        text={t("ChName.suggestionBox.text")}
                         transform="none"
                         top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
 

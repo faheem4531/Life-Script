@@ -1,8 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import noData from "../../../public/noData.svg";
+import { useTranslation } from "react-i18next";
 
 export default function NoChapters() {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -26,7 +28,7 @@ export default function NoChapters() {
             fontSize: { sm: "32px", xs: "22px" },
           }}
         >
-          Start New Chapter
+         {t("noChapters.startNewChapter")}
         </Typography>
         <Box
           sx={{
@@ -45,7 +47,7 @@ export default function NoChapters() {
           }}
         >
           {" "}
-          No Data found
+          {t("noChapters.noDataFound")}
         </Typography>
       </Box>
     </Box>

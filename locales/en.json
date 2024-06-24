@@ -147,7 +147,7 @@
       "popular": "Popular",
       "btnText": "Get Started",
       "pricingBelowText": "30 days money back guarantee",
-      "upgradeBtn":"Upgrade"
+      "upgradeBtn": "Upgrade"
     },
     "bookSection": {
       "title": "Our",
@@ -704,7 +704,7 @@
     "FamilyTree": "Family Tree",
     "account": "Account",
     "Support": "Support",
-    "giftaBook":"Gift a Book"
+    "giftaBook": "Gift a Book"
 
   },
   "login-page": {
@@ -747,7 +747,10 @@
     "verificationEmailSent": "Verification email sent",
     "failedSignup": "Failed to sign up",
     "signedUpSuccessfully": "Signed up successfully",
-    "failedSignupGoogle": "Failed to sign up with Google"
+    "failedSignupGoogle": "Failed to sign up with Google",
+    "passwordSpecialChar": "Password should have special character",
+    "passwordNumber": "Password have numeric character",
+    "passwordsMustMatch": "Password must match"
   },
   "Register": {
     "Login": "Login",
@@ -820,15 +823,22 @@
     "achivement": "Achievement",
     "RecentCh": "Recent Chapters",
     "viewMore": "View More",
-    "word":"Words",
+    "word": "Words",
     "chapter": "Chapters",
-    "question":"Questions",
-    "minutes":"of Writing",
-    "deliveryTracker":"Delivery Tracking",
-    "deliveryDescription":"Once you submit your book for printing and delivery, watch the status update in real-time as it makes its way to you.",
-    "printBtnText":"Print my Book",
-    "suggestionIcon":"The delivery tracking status will update once you order your physical book from View Book steps.",
-    "addMore":"Add More"
+    "question": "Questions",
+    "minutes": "of Writing",
+    "deliveryTracker": "Delivery Tracking",
+    "deliveryDescription": "Once you submit your book for printing and delivery, watch the status update in real-time as it makes its way to you.",
+    "printBtnText": "Print my Book",
+    "suggestionIcon": "The delivery tracking status will update once you order your physical book from View Book steps.",
+    "addMore": "Add More",
+    "viewBtnSuggestion":"Preview book and order hardcover",
+    "viewBookModal":{
+      "title":"Sorry",
+      "description":"Complete all in progress chapters to view your book and order it.",
+      "okayBtn":"Okay"
+    }
+
   },
   "ChapterSteps": {
     "step1": "Begin chapter",
@@ -869,14 +879,28 @@
     "SugQuesAddBtn": "Add",
     "SugQuesSkipBtn": "Skip",
     "SugQuesCloseBtn": "Close",
-     "Answer":"Answer"
+    "Answer": "Answer",
+    "chaptersCard": {
+      "editBtn": "Edit",
+      "deleteBtn": "Delete",
+      "lastEditedToday": "Last edited Today",
+      "lastEdited": "Last edited",
+      "day": "day",
+      "ago": "ago"
+    },
+    "suggestionBox":{
+      "title": "Suggested Questions",
+      "text": "Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible."
+    }
   },
   "ChModals": {
     "addNewCh": "Add new chapter",
     "addNewChBtn": "Add new chapter",
     "updateChName": "Update Chapter",
     "Del": "Delete Chapter",
-    "DelDescri": "Are you sure you want to delete this chapter?"
+    "DelDescri": "Are you sure you want to delete this chapter?",
+    "heading": "Buy Premium",
+    "description": "Only 5 chapters can be added in free trial. Buy premium to add more"
   },
   "modals": {
     "yes": "Yes",
@@ -889,7 +913,7 @@
     "MAC": "Mark As Complete",
     "ByPreHeading": "Buy Premium",
     "PreDes": "Narrative Fusion is only available for Standard and Premium users. Want to buy now?",
-    "description":"Family Tree is only available for Standard and Premium users. Want to  now?"
+    "description": "Family Tree is only available for Standard and Premium users. Want to  now?"
   },
   "StartNewTem": {
     "StartNewTem": "Start new chapter",
@@ -903,11 +927,17 @@
   "StartNewChapter": {
     "StartNewChapter": "Start New Chapter",
     "useTem": "Use template",
-    "startFromScratch":"Start from Scratch"
+    "startFromScratch": "Start from Scratch"
   },
   "completedCh": {
     "com": "Completed"
+    
   },
+  "noChapters": {
+    "startNewChapter": "Start New Chapter",
+    "noDataFound": "No Data found"
+  },
+
   "template": {
     "choose": "Choose a",
     "temp": "Template",
@@ -946,7 +976,7 @@
   },
   "SubsPlan": {
     "SubsHeaderTitle": "Payment Plan",
-    "SubsHeaderDescription":"Each plan comes with lifetime access to LifeScript, premium full-color hardcover book, and free shipping.",
+    "SubsHeaderDescription": "Each plan comes with lifetime access to LifeScript, premium full-color hardcover book, and free shipping.",
     "SubsHeaderDes": "Choose a payment plan below before Aug30th,2023 to unlock this special offer.",
     "cardBtn": "Choose Plan",
     "cardProBtn": "Processing...",
@@ -988,7 +1018,11 @@
     "addChBtn": "Add Chapters",
     "editChBtn": "Edit Chapters",
     "addBtn": "Add",
-    "adding": "Adding..."
+    "adding": "Adding...",
+    "suggestionBox":{
+      "title": "Table of Contents",
+      "text": "Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.Tip: Click, hold, and drag to reorder chapters."
+    }
   },
   "profileSetting": {
     "AccountSettings": "Account Settings",
@@ -1006,15 +1040,13 @@
     "SaveChBtn": "Save Changes",
     "DelBtn": "Don’t Save",
     "changeProBtn": "Change Profile",
-    "chapter":"Profile Settings",
-    "suggestionIcon":"One book credit equals one physical book. Increase your credits by adding additional books during checkout from the View Book section on the Overview page or get free ones by referring a friend through the Gift a Book section on the left.",
-    "bookCredit":{
-      "title":"Book Credit",
-      "description1":"You have",
-      "description2":"book credits"
-
+    "chapter": "Profile Settings",
+    "suggestionIcon": "One book credit equals one physical book. Increase your credits by adding additional books during checkout from the View Book section on the Overview page or get free ones by referring a friend through the Gift a Book section on the left.",
+    "bookCredit": {
+      "title": "Book Credit",
+      "description1": "You have",
+      "description2": "book credits"
     }
-
   },
   "support": {
     "supHeading": "Support",
@@ -1045,43 +1077,42 @@
     "RevertResCancelBtn": "Revert Changes"
   },
   "onboarding": {
-    "step2":{
-      "step":"Step 2 of 4",
-    "question":"What are some of the chapters you'd like to have in your book?",
-    "buttonText":{
-      "next":"Next",
-      "back":"Back",
-      "takemein":"Take me in"
-    }
-
+    "step2": {
+      "step": "Step 2 of 4",
+      "question": "What are some of the chapters you'd like to have in your book?",
+      "buttonText": {
+        "next": "Next",
+        "back": "Back",
+        "takemein": "Take me in"
+      }
     },
-    "step3":{
-      "step":"Step 3 of 4",
-      "heading":"Tell us about yourself",
-      "fullName":"Full Name",
-      "status":{
-        "title":"Marital Status",
+    "step3": {
+      "step": "Step 3 of 4",
+      "heading": "Tell us about yourself",
+      "fullName": "Full Name",
+      "status": {
+        "title": "Marital Status",
         "options": {
-          "option1":"Single",
-          "option2":"Married",
-          "option3":"Divorced",
-          "option4":"Widowed"
+          "option1": "Single",
+          "option2": "Married",
+          "option3": "Divorced",
+          "option4": "Widowed"
         }
       },
-      "gender":{
-        "title":"Gender",
+      "gender": {
+        "title": "Gender",
         "options": {
-          "option1":"Male",
-          "option2":"Female",
-          "option3":"Prefer not to tell"
+          "option1": "Male",
+          "option2": "Female",
+          "option3": "Prefer not to tell"
         }
       },
-      "DOB":"Date of Birth"
+      "DOB": "Date of Birth"
     },
-    "step4":{
-      "step":"Step 4 of 4",
-      "question":{
-        "statement":"How often would you like to receive questions via email?",
+    "step4": {
+      "step": "Step 4 of 4",
+      "question": {
+        "statement": "How often would you like to receive questions via email?",
         "options": {
           "option1": "Once in a day",
           "option2": "Every other day",
@@ -1090,38 +1121,34 @@
         }
       }
     }
-
   },
-  "emailpreference":{      
-    "title":"Email Preferences",   
-    "question":"How often would you like to receive questions via email?",
-    "q1Options":{
+  "emailpreference": {
+    "title": "Email Preferences",
+    "question": "How often would you like to receive questions via email?",
+    "q1Options": {
       "option1": "Once in a day",
       "option2": "Every other day",
       "option3": "Once in 3 days",
       "option4": "Once in a week"
     },
     "question2": "Which Emails you want to receive",
-    "q2Options":{
-      "option1":"Chapter completion confirmations",
-      "option2":" Milestone achievements",
-      "option3":"LifeScript newsletter",
-      "option4":"Occasional promotions"
+    "q2Options": {
+      "option1": "Chapter completion confirmations",
+      "option2": " Milestone achievements",
+      "option3": "LifeScript newsletter",
+      "option4": "Occasional promotions"
     },
-    "btnText":"Submit"
-    
+    "btnText": "Submit"
   },
-  "giftABook":{
-    "title":"Gift a Book",
-    "giftCard1Description":{
-      "description":"Give a truly meaningful gift to a friend that will be cherished for generations.",
-      "textBtn":"Send as a gift"
-
+  "giftABook": {
+    "title": "Gift a Book",
+    "giftCard1Description": {
+      "description": "Give a truly meaningful gift to a friend that will be cherished for generations.",
+      "textBtn": "Send as a gift"
     },
-    "giftCard2Description":{
-      "description":"Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!",
-      "textBtn":"Refer a friend"
-
+    "giftCard2Description": {
+      "description": "Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!",
+      "textBtn": "Refer a friend"
     }
 
   }

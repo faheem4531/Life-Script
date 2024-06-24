@@ -106,7 +106,7 @@ export const ViewBook = () => {
           >
             <TooltipTab
               title=""
-              text="Preview book and order hardcover"
+              text={t("overView.viewBtnSuggestion")}
               transform="none" // adjust transform if needed
               top={undefined} left={undefined} bottom={"55px"} right={undefined} position={"absolute"} />
 
@@ -149,7 +149,7 @@ export const ViewBook = () => {
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
-            Sorry!
+           {t("overView.viewBookModal.title")}
           </Typography>
           <Typography
             sx={{
@@ -159,7 +159,7 @@ export const ViewBook = () => {
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
-            Complete all in progress chapters to view your book and order it.
+            {t("overView.viewBookModal.description")}
           </Typography>
           <Box
             sx={{
@@ -169,7 +169,7 @@ export const ViewBook = () => {
             }}
           >
             <GlobelBtn
-              btnText="Okay"
+              btnText={t("overView.viewBookModal.okayBtn")}
               color="white"
               onClick={() => {
                 router.push("/dashboard/chapters");

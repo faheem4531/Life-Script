@@ -147,7 +147,7 @@
       "popular": "Más elegido",
       "btnText": "Iniciar ",
       "pricingBelowText": "30 días de garantía de devolución del dinero",
-       "upgradeBtn":"Mejora"
+      "upgradeBtn": "Mejora"
     },
     "bookSection": {
       "title": "Nuestros",
@@ -704,7 +704,7 @@
     "FamilyTree": "Árbol Genealógico",
     "account": "Cuenta",
     "Support": "Soporte",
-    "giftaBook":"Regalar un libro"
+    "giftaBook": "Regalar un libro"
   },
   "login-page": {
     "email": "Correo electrónico",
@@ -744,7 +744,10 @@
     "verificationEmailSent": "El mensaje de verificación ha sido enviado",
     "failedSignup": "No se pudo registrar",
     "signedUpSuccessfully": "registrado exitosamente",
-    "failedSignupGoogle": "No se pudo registrar con Google"
+    "failedSignupGoogle": "No se pudo registrar con Google",
+    "passwordSpecialChar": "La contraseña debe tener un carácter especial",
+    "passwordNumber": "La contraseña debe tener un carácter numérico",
+    "passwordsMustMatch": "Las contraseñas deben coincidir"
   },
   "Register": {
     "Login": "Acceso",
@@ -817,16 +820,21 @@
     "achivement": "Logro",
     "RecentCh": "Capítulos recientes",
     "viewMore": "Ver más",
-    "word":"Palabras",
+    "word": "Palabras",
     "chapter": "Capítulos",
-    "question":"Preguntas",
-     "minutes":"de escritura",
-     "deliveryTracker":"Seguimiento de entrega",
-    "deliveryDescription":"Una vez que envíe su libro para impresión y entrega, observe la actualización del estado en tiempo real a medida que llega a usted.",
-    "printBtnText":"imprimir mi libro",
-    "suggestionIcon":"El estado de seguimiento de la entrega se actualizará una vez que solicite su libro físico desde los pasos Ver libro.",
-    "addMore":"Añadir más"
-
+    "question": "Preguntas",
+    "minutes": "de escritura",
+    "deliveryTracker": "Seguimiento de entrega",
+    "deliveryDescription": "Una vez que envíe su libro para impresión y entrega, observe la actualización del estado en tiempo real a medida que llega a usted.",
+    "printBtnText": "imprimir mi libro",
+    "suggestionIcon": "El estado de seguimiento de la entrega se actualizará una vez que solicite su libro físico desde los pasos Ver libro.",
+    "addMore": "Añadir más",
+    "viewBtnSuggestion": "Vista previa del libro y ordenar tapa dura",
+    "viewBookModal": {
+    "title": "Lo siento",
+    "description": "Completa todos los capítulos en progreso para ver tu libro y ordenarlo.",
+    "okayBtn":"Bueno"
+  }
   },
   "ChapterSteps": {
     "step1": "Comenzar capítulo",
@@ -867,14 +875,28 @@
     "SugQuesAddBtn": "Agregar",
     "SugQuesSkipBtn": "Saltar",
     "SugQuesCloseBtn": "Cerrar",
-    "Answer":"Respuesta"
+    "Answer": "Respuesta",
+    "chaptersCard": {
+      "editBtn": "Editar",
+      "deleteBtn": "Eliminar",
+      "lastEditedToday": "Última edición hoy",
+      "lastEdited": "Última edición",
+      "day": "día",
+      "ago": "hace"
+    },
+   "suggestionBox": {
+    "title": "Preguntas Sugeridas",
+    "text": "Las sugerencias de preguntas aparecerán una vez que hayas agregado 2 preguntas propias. Para obtener las mejores sugerencias, asegúrate de que el nombre de tu capítulo y las primeras dos preguntas sean lo más detalladas y relevantes posible para el capítulo."
+  }
   },
   "ChModals": {
     "addNewCh": "Agregar nuevo capítulo",
     "addNewChBtn": "Agregar nuevo capítulo",
     "updateChName": "Actualizar",
     "Del": "Eliminar",
-    "DelDescri": "¿Estás seguro de que quieres eliminar este capítulo?"
+    "DelDescri": "¿Estás seguro de que quieres eliminar este capítulo?",
+    "heading": "Comprar Premium",
+    "description": "Solo se pueden agregar 5 capítulos en la prueba gratuita. Compre premium para agregar más"
   },
   "modals": {
     "yes": "Sí",
@@ -887,12 +909,12 @@
     "MAC": "Marcar como Completado",
     "ByPreHeading": "Comprar Premium",
     "PreDes": "El texto de Fusión Narrativa solo está disponible para usuarios Estándar y Premium. ¿Quieres comprarlo ahora?",
-     "description":"Family Tree sólo está disponible para usuarios Estándar y Premium. ¿Quieres hacerlo ahora?"
+    "description": "Family Tree sólo está disponible para usuarios Estándar y Premium. ¿Quieres hacerlo ahora?"
   },
   "StartNewChapter": {
     "StartNewChapter": "Iniciar nuevo capítulo",
     "useTem": "Usar plantilla",
-    "startFromScratch":"Empezar desde el principio"
+    "startFromScratch": "Empezar desde el principio"
   },
   "StartNewTem": {
     "StartNewTem": "Iniciar nuevo capítulo",
@@ -920,6 +942,10 @@
   "completedCh": {
     "com": "Completados"
   },
+  "noChapters": {
+    "startNewChapter": "Comenzar Nuevo Capítulo",
+    "noDataFound": "No se encontraron datos"
+  },
   "BookCover": {
     "SelectBookCover": "Seleccionar Portada del Libro",
     "EditBookCover": "Editar Portada del Libro",
@@ -944,7 +970,7 @@
   },
   "SubsPlan": {
     "SubsHeaderTitle": "Plan de Suscripción",
-    "SubsHeaderDescription":"Cada plan incluye acceso de por vida a LifeScript, un libro premium de tapa dura a todo color y envío gratuito.",
+    "SubsHeaderDescription": "Cada plan incluye acceso de por vida a LifeScript, un libro premium de tapa dura a todo color y envío gratuito.",
     "SubsHeaderDes": "Elige un plan de suscripción a continuación antes del 30 de agosto de 2023 para desbloquear esta oferta especial.",
     "cardBtn": "Elegir Plan",
     "cardProBtn": "Procesando...",
@@ -986,7 +1012,11 @@
     "addChBtn": "Agregar Capítulos",
     "editChBtn": "Editar Capítulos",
     "addBtn": "Agregar",
-    "adding": "Añadiendo..."
+    "adding": "Añadiendo...",
+    "suggestionBox": {
+      "title": "Tabla de Contenidos",
+      "text": "Agrega los capítulos que deseas incluir en tu libro. Solo los capítulos añadidos a la tabla de contenidos aparecerán en tu libro. Consejo: Haz clic, mantén presionado y arrastra para reordenar los capítulos."
+    }
   },
   "profileSetting": {
     "AccountSettings": "Configuración de la Cuenta",
@@ -1004,15 +1034,13 @@
     "SaveChBtn": "Guardar Cambios",
     "DelBtn": "No Guardar",
     "changeProBtn": "Cambiar el perfil",
-    "chapter":"Configuración de perfil",
-    "suggestionIcon":"Un crédito de libro equivale a un libro físico. Aumente sus créditos agregando libros adicionales durante el proceso de pago desde la sección Ver libro en la página Descripción general u obtenga libros gratis recomendando a un amigo a través de la sección Regalar un libro a la izquierda.",
-    "bookCredit":{
-      "title":"Crédito de libro",
-      "description1":"tienes",
-      "description2":"créditos del libro"
-
+    "chapter": "Configuración de perfil",
+    "suggestionIcon": "Un crédito de libro equivale a un libro físico. Aumente sus créditos agregando libros adicionales durante el proceso de pago desde la sección Ver libro en la página Descripción general u obtenga libros gratis recomendando a un amigo a través de la sección Regalar un libro a la izquierda.",
+    "bookCredit": {
+      "title": "Crédito de libro",
+      "description1": "tienes",
+      "description2": "créditos del libro"
     }
-
   },
   "support": {
     "supHeading": "Soporte",
@@ -1042,43 +1070,43 @@
     "RevertResCancelBtn": "Revertir Cambios"
   },
   "onboarding": {
-    "step2":{
-      "step":"Paso 2 de 4",
-      "question":"¿Qué capítulos le gustaría incluir en su libro?",
-      "buttonText":{
-        "next":"Próximo",
-        "back":"Atrás",
-        "takemein":"Llévame adentro"
+    "step2": {
+      "step": "Paso 2 de 4",
+      "question": "¿Qué capítulos le gustaría incluir en su libro?",
+      "buttonText": {
+        "next": "Próximo",
+        "back": "Atrás",
+        "takemein": "Llévame adentro"
       }
     },
-    "step3":{
-      "step":"Paso 3 de 4",
-      "heading":"Cuéntanos acerca de tí",
-      "fullName":"Nombre completo",
-     
-      "status":{
-        "title":"Estado civil",
+    "step3": {
+      "step": "Paso 3 de 4",
+      "heading": "Cuéntanos acerca de tí",
+      "fullName": "Nombre completo",
+
+      "status": {
+        "title": "Estado civil",
         "options": {
-          "option1":"Soltero",
-          "option2":"Casado",
-          "option3":"Divorciado",
-          "option4":"Viudo"
+          "option1": "Soltero",
+          "option2": "Casado",
+          "option3": "Divorciado",
+          "option4": "Viudo"
         }
       },
-      "gender":{
-        "title":"Género",
+      "gender": {
+        "title": "Género",
         "options": {
-          "option1":"Masculino",
-          "option2":"Femenino",
-          "option3":"Prefiero no decirlo"
+          "option1": "Masculino",
+          "option2": "Femenino",
+          "option3": "Prefiero no decirlo"
         }
       },
-      "DOB":"Fecha de nacimiento"
+      "DOB": "Fecha de nacimiento"
     },
-    "step4":{
-      "step":"Paso 4 de 4",
-      "question":{
-        "statement":"¿Con qué frecuencia le gustaría recibir preguntas por correo electrónico?",
+    "step4": {
+      "step": "Paso 4 de 4",
+      "question": {
+        "statement": "¿Con qué frecuencia le gustaría recibir preguntas por correo electrónico?",
         "options": {
           "option1": "Una vez al dia",
           "option2": "Día por medio",
@@ -1087,38 +1115,34 @@
         }
       }
     }
-
-    
-    
   },
-  "emailpreference":{    
-    "title":"Preferencias de correo electrónico",      
-    "question":"¿Con qué frecuencia le gustaría recibir preguntas por correo electrónico?",
-    "q1Options":{
+  "emailpreference": {
+    "title": "Preferencias de correo electrónico",
+    "question": "¿Con qué frecuencia le gustaría recibir preguntas por correo electrónico?",
+    "q1Options": {
       "option1": "Una vez al dia",
       "option2": "Día por medio",
       "option3": "Una vez en 3 días",
       "option4": "Una vez a la semana"
     },
     "question2": "Qué correos electrónicos desea recibir",
-    "q2Options":{
-      "option1":"Confirmaciones de finalización del capítulo.",
-      "option2":"Logros importantes",
-      "option3":"Boletín LifeScript",
-      "option4":"Promociones ocasionales"
+    "q2Options": {
+      "option1": "Confirmaciones de finalización del capítulo.",
+      "option2": "Logros importantes",
+      "option3": "Boletín LifeScript",
+      "option4": "Promociones ocasionales"
     },
-    "btnText":"Entregar"
+    "btnText": "Entregar"
   },
   "giftABook": {
-  "title": "Regala un Libro",
-  "giftCard1Description": {
-    "description": "Regala a un amigo un obsequio verdaderamente significativo que será atesorado por generaciones.",
-    "textBtn": "Enviar como regalo"
-  },
-  "giftCard2Description": {
-    "description": "Obtén un libro de bonificación por referir a un amigo, además, ellos disfrutarán de un descuento del 10% al registrarse.",
-    "textBtn": "Referir a un amigo"
+    "title": "Regala un Libro",
+    "giftCard1Description": {
+      "description": "Regala a un amigo un obsequio verdaderamente significativo que será atesorado por generaciones.",
+      "textBtn": "Enviar como regalo"
+    },
+    "giftCard2Description": {
+      "description": "Obtén un libro de bonificación por referir a un amigo, además, ellos disfrutarán de un descuento del 10% al registrarse.",
+      "textBtn": "Referir a un amigo"
+    }
   }
-}
-
 }
