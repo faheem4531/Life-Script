@@ -79,20 +79,20 @@ const ResetPassword = () => {
         .unwrap()
         .then(() => {
           toast.success(t("ResetPassword.passwordChangedSuccessfully"));
-          router.push("/");
+          router.push("/_auth/Auth");
         })
         .catch((error: any) => {
           toast.error(error.message);
         });
     },
     validationSchema: Yup.object({
-      password: Yup.string().required( t("ResetPassword.passwordRequired")),
+      password: Yup.string().required(t("ResetPassword.passwordRequired")),
       confirmPassword: Yup.string()
         .required(t("ResetPassword.confirmPasswordRequired"))
         .oneOf([Yup.ref("password")], t("ResetPassword.passwordDoesn'tMatch")),
     }),
   });
-const carouselItems = [
+  const carouselItems = [
     { path: Carousel1, alt: "Login Image" },
     { path: Carousel2, alt: "Signup Image" },
     { path: Carousel3, alt: "Signup Image" },
@@ -100,7 +100,7 @@ const carouselItems = [
     // Add more images as needed
   ];
   return (
-    
+
     <Box
       sx={{
         display: "grid",
@@ -138,7 +138,7 @@ const carouselItems = [
 
                 marginTop: "34px",
                 fontSize: "21px",
-                color:'black'
+                color: 'black'
               }}
             >
               {t("ResetPassword.password")}
@@ -149,7 +149,7 @@ const carouselItems = [
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
-                borderRadius: "50px", // Adjust the border radius as needed
+                borderRadius: "4px", // Adjust the border radius as needed
               },
               width: "580px",
             }}
@@ -184,7 +184,7 @@ const carouselItems = [
 
                 marginTop: "40px",
                 fontSize: "21px",
-                color:'black'
+                color: 'black'
 
               }}
             >
@@ -196,7 +196,7 @@ const carouselItems = [
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
-                borderRadius: "50px", // Adjust the border radius as needed
+                borderRadius: "4px", // Adjust the border radius as needed
               },
               width: "580px",
             }}
@@ -236,7 +236,7 @@ const carouselItems = [
             type="submit"
             disabled={!formik.values.email}
             sx={{
-              borderRadius: "48px",
+              borderRadius: "4px",
               backgroundColor: "#186F65",
               color: "white",
               width: "404px",
@@ -249,7 +249,7 @@ const carouselItems = [
               textTransform: "none",
             }}
           >
-               {t("ResetPassword.confirm")}
+            {t("ResetPassword.confirm")}
           </Button>
 
           <Typography
