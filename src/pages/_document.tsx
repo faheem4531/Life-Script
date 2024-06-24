@@ -7,10 +7,10 @@ export default function Document() {
       <Head>
         <title>LifeScript</title>
 
-        <meta
+        {/* <meta
           name="description"
           content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent. "
-        />
+        /> */}
 
         <script
           type="text/javascript"
@@ -170,13 +170,13 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet" />
 
-               {/* Plerdy Script */}
-               <script
-            type="text/javascript"
-            defer
-            data-plerdy_code='1'
-            dangerouslySetInnerHTML={{
-              __html: `
+        {/* Plerdy Script */}
+        <script
+          type="text/javascript"
+          defer
+          data-plerdy_code='1'
+          dangerouslySetInnerHTML={{
+            __html: `
                 var _protocol = "https:" == document.location.protocol ? "https://" : "http://";
                 _site_hash_code = "ec5ed5a2ee310ca961dd1dff624c8bee", _suid = 50160, plerdyScript = document.createElement("script");
                 plerdyScript.setAttribute("defer", ""), plerdyScript.dataset.plerdymainscript = "plerdymainscript",
@@ -185,28 +185,28 @@ export default function Document() {
                 plerdymainscript && plerdymainscript.parentNode.removeChild(plerdymainscript);
                 try { document.head.appendChild(plerdyScript) } catch (t) { console.log(t, "unable add script tag") }
               `,
-            }}
-          />
-          {/* End Plerdy Script */}
+          }}
+        />
+        {/* End Plerdy Script */}
 
       </Head>
       <body style={{ margin: 0 }}>
         <Main />
         <NextScript />
 
-            {/* BEGIN PLERDY A/B TESTING CODE */}
-            <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{
-              __html: 'var _suid=50160;',
-            }}
-          />
-          <script
-            async
-            type="text/javascript"
-            src="https://a.plerdy.com/public/js/click/plerdy_ab-min.js?v=ff6570f"
-          />
-          {/* END PLERDY A/B TESTING CODE */}
+        {/* BEGIN PLERDY A/B TESTING CODE */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: 'var _suid=50160;',
+          }}
+        />
+        <script
+          async
+          type="text/javascript"
+          src="https://a.plerdy.com/public/js/click/plerdy_ab-min.js?v=ff6570f"
+        />
+        {/* END PLERDY A/B TESTING CODE */}
       </body>
     </Html>
   );
