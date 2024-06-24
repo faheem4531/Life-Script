@@ -13,7 +13,7 @@
       "animationText1": "Create",
       "animationText2": "Gift",
       "mainHeading": "a Personal Autobiography Book Easily",
-      "mainDescription": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent",
+      "mainDescription": "Turnnns your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent",
       "mainButton": "Start 7-Day Free Trial",
       "buttonDescription": "No credit card required"
     },
@@ -705,7 +705,6 @@
     "account": "Account",
     "Support": "Support",
     "giftaBook": "Gift a Book"
-
   },
   "login-page": {
     "email": "Email",
@@ -832,13 +831,12 @@
     "printBtnText": "Print my Book",
     "suggestionIcon": "The delivery tracking status will update once you order your physical book from View Book steps.",
     "addMore": "Add More",
-    "viewBtnSuggestion":"Preview book and order hardcover",
-    "viewBookModal":{
-      "title":"Sorry",
-      "description":"Complete all in progress chapters to view your book and order it.",
-      "okayBtn":"Okay"
+    "viewBtnSuggestion": "Preview book and order hardcover",
+    "viewBookModal": {
+      "title": "Sorry",
+      "description": "Complete all in progress chapters to view your book and order it.",
+      "okayBtn": "Okay"
     }
-
   },
   "ChapterSteps": {
     "step1": "Begin chapter",
@@ -888,7 +886,7 @@
       "day": "day",
       "ago": "ago"
     },
-    "suggestionBox":{
+    "suggestionBox": {
       "title": "Suggested Questions",
       "text": "Question suggestions will appear once you have added 2 questions of your own. To get the best suggestions, make sure that the name of your chapter and the first two questions are as detailed and as relevant to the chapter as possible."
     }
@@ -931,13 +929,11 @@
   },
   "completedCh": {
     "com": "Completed"
-    
   },
   "noChapters": {
     "startNewChapter": "Start New Chapter",
     "noDataFound": "No Data found"
   },
-
   "template": {
     "choose": "Choose a",
     "temp": "Template",
@@ -1019,7 +1015,7 @@
     "editChBtn": "Edit Chapters",
     "addBtn": "Add",
     "adding": "Adding...",
-    "suggestionBox":{
+    "suggestionBox": {
       "title": "Table of Contents",
       "text": "Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.Tip: Click, hold, and drag to reorder chapters."
     }
@@ -1150,6 +1146,5 @@
       "description": "Get a bonus book for referring a friend, plus they'll enjoy a 10% sign-up discount!",
       "textBtn": "Refer a friend"
     }
-
   }
 }
