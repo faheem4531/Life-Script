@@ -335,32 +335,33 @@ const { CoverNumber } = router.query;
         >
           {ColourPalette && (
             <Box
-              sx={{
-                width: { xs: "260px", md: "240px", lg: "287.611px" },
-                height: "414.319px",
-                bgcolor: ColourPalette.length == 0 ? "#197065" : ColourPalette,
-                color: "white",
-                textAlign: "center",
-                p: "10px",
-              }}
+            sx={{
+              width: { xs: "260px", md: "240px", lg: "287.611px" },
+              height: "414.319px",
+              bgcolor: CoverNumber === "2" ? "#FAFAFA" : (ColourPalette.length === 0 ? "#197065" : ColourPalette),
+              color: "white",
+              textAlign: "center",
+              p: "10px",
+            }}
             ></Box>
           )}
 
           {/* <Image src={svgIcon} alt="My SVG" width={200} height={200} />  Spain Start*/}
 
           <Box
-            sx={{
-              bgcolor:
-                ColourPalette && ColourPalette.length == 0
-                  ? "#197065"
-                  : ColourPalette,
-              color: "white",
-              fontSize: "9.924px",
-              fontWeight: "300",
-              padding: "5px 8px",
-              display: "flex",
-              height: "415px",
-            }}
+           sx={{
+            bgcolor: CoverNumber === "2"
+              ? "#FAFAFA"
+              : ColourPalette && ColourPalette.length === 0
+              ? "#197065"
+              : ColourPalette,
+            color: "white",
+            fontSize: "9.924px",
+            fontWeight: "300",
+            padding: "5px 8px",
+            display: "flex",
+            height: "415px",
+          }}
           >
             <Box
               sx={{
