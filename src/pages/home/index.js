@@ -51,14 +51,14 @@ const HomePage = () => {
     <>
       <Head>
         <title>Easily Create or Gift a Personal Autobiography Book - LifeScript</title>
-        <meta name="description" content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent." />
+        <meta name="description" content="Turnnnnnn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent." />
       </Head>
 
 
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C" />
         <Introduction />
-        <Working data={pointsArray} heading={t("landingPage.howItWorks.heading")}marked={t("landingPage.howItWorks.subHeading")} />
+        <Working data={pointsArray} heading={t("landingPage.howItWorks.heading")} marked={t("landingPage.howItWorks.subHeading")} />
         <Suggestion />
         <GifTab
           heading={t("landingPage.perfectSection.content5.cardText")}
