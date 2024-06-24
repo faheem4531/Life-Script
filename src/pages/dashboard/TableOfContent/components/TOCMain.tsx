@@ -121,9 +121,8 @@ const TOCMain = () => {
                     }}
                   >
                     <TooltipTab
-                      title="Table of Contents"
-                      text={`Add the chapters you want to include in your book. Only the chapters added to the table of contents will appear in your book.
-                          Tip: Click, hold, and drag to reorder chapters.`}
+                      title={t("TOC.suggestionBox.title")}
+                      text={t("TOC.suggestionBox.text")}
                       transform="none"
                       top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
                   </Box>

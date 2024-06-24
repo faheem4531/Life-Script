@@ -108,11 +108,14 @@ const EmailVerification = () => {
     },
     validationSchema: Yup.object({
       password: Yup.string()
-        .min(8, t("signup-page.passwordLength"))
-        .required(t("signup-page.passwordRequired")),
-      confirmPassword: Yup.string()
       .min(8, t("signup-page.passwordLength"))
+      .matches(/[!@#$%^&*(),.?":{}|<>]/, t("signup-page.passwordSpecialChar"))
+      .matches(/\d/, t("signup-page.passwordNumber"))
       .required(t("signup-page.passwordRequired")),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('password'), null], t("signup-page.passwordsMustMatch"))
+        .min(8,t("signup-page.passwordSpecialChar"))
+        .required(t("signup-page.passwordRequired"))
     }),
   });
 
@@ -209,34 +212,42 @@ const EmailVerification = () => {
               {t("signup-page.password")}
             </Typography>
             <TextField
-              sx={{
-                margin: "10px 0",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "2px",
-                  backgroundColor: "white",
-                },
-                width: "100%",
-              }}
-              placeholder={t("signup-page.enter-password")}
-              name="password"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              type={showPassword ? "text" : "password"}
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={togglePasswordVisibility} edge="end">
-                      {showPassword ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
+        sx={{
+          margin: "10px 0",
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "2px",
+            backgroundColor: "white",
+          },
+          width: "100%",
+        }}
+        placeholder="Enter your password"
+        name="password"
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        value={formik.values.password}
+        type={showPassword ? "text" : "password"}
+        variant="outlined"
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={togglePasswordVisibility} edge="end">
+                {showPassword ? (
+                  <VisibilityOffIcon />
+                ) : (
+                  <VisibilityIcon />
+                )}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+        error={formik.touched.password && Boolean(formik.errors.password)}
+        helperText={
+          formik.touched.password && formik.errors.password
+            ? String(formik.errors.password)
+            : ''
+        }
+      />
+        
           </Box>
           {/* {formik.touched.password && formik.errors.password && (
             <span style={{ color: "red" }}>{formik.errors.password}</span>
@@ -281,6 +292,12 @@ const EmailVerification = () => {
                   </InputAdornment>
                 ),
               }}
+              error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+              helperText={
+                formik.touched.confirmPassword && formik.errors.confirmPassword
+                  ? String(formik.errors.confirmPassword)
+                  : ''
+              }
             />
           </Box>
           {/* {formik.touched.confirmPassword && formik.errors.confirmPassword && (
@@ -309,7 +326,7 @@ const EmailVerification = () => {
                 width: "310px",
                 marginTop: "20px",
                 "&:hover": {
-                  backgroundColor: "#186F65",
+                  backgroundColor: "#374b34",
                 },
                 textTransform: "none",
               }}

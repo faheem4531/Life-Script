@@ -84,10 +84,10 @@ export default function DetailCard({
     );
 
     if (timeDifferenceInDays === 0) {
-      return "Last edited Today";
+      return t("ChName.chaptersCard.lastEditedToday");
     } else {
-      return `Last edited ${timeDifferenceInDays} day${timeDifferenceInDays !== 1 ? "s" : ""
-        } ago`;
+      return `${t("ChName.chaptersCard.lastEdited")} ${timeDifferenceInDays} ${t("ChName.chaptersCard.day")}${timeDifferenceInDays !== 1 ? "s" : ""
+        } ${t("ChName.chaptersCard.ago")}`;
     }
   }
   // const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
@@ -95,8 +95,8 @@ export default function DetailCard({
   // const options = ["Delete", "Edit"];
 
   const options = [
-    { id: 1, title: "Delete" },
-    { id: 2, title: "Edit" },
+    { id: 1, title: t("ChName.chaptersCard.deleteBtn")  },
+    { id: 2, title: t("ChName.chaptersCard.editBtn") },
   ];
 
   return (

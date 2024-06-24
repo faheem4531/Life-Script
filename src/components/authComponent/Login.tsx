@@ -261,7 +261,7 @@ const Login = () => {
               width: { md: "60%", sm: "70%", xs: "70%" },
               marginTop: { xs: "60px", sm: "30px" },
               "&:hover": {
-                backgroundColor: "#186F65",
+                backgroundColor: "#374b34",
               },
               textTransform: "capitalize",
             }}

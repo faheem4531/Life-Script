@@ -284,8 +284,8 @@ const Dashboard = () => {
       />
       <TransitionsDialog
         open={buyPremium}
-        heading="Buy Premium"
-        description="Only 5 chapters can be added in free trial. Buy premium to add more"
+        heading={t("ChModals.heading")}
+        description={t("ChModals.description")}
         cancel={() => {
           setBuyPremium(false);
         }}
