@@ -60,7 +60,7 @@ export default function Document() {
         <meta property="og:url" content="https://www.thelifescript.com/" />
         <meta
           property="og:description"
-          content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent"
+          content="Turn1 your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent"
         />
         <meta property="og:type" content="website" />
         <meta
@@ -153,7 +153,7 @@ export default function Document() {
               "@type": "Product",
               "name": "LifeScript",
               "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-              "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
+              "description": "Turn4 your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
               "brand": "LifeScript",
               "offers": {
                 "@type": "AggregateOffer",
