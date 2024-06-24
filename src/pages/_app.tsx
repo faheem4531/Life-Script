@@ -36,6 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/verify/verificationSent",
       "/verify",
       "/verify/forgetPassword",
+      "/change-password",
       "/home",
       "/blog",
       "/blog/blog-details",
@@ -53,6 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/stripe-page/sso-redirecting",
       "/_auth/fb-redirecting",
     ];
+    // https://www.thelifescript.com/change-password?token=U2FsdGVkX18qqtr5TmL8yLSfoVYggs+I2iZZM1rfwh24YJ+eMujLug49LPJOKasGxd0yBxTzr1U4ZGu75e1NI1idlJZ3hLRToj8aoEMCFQReE/iR/boX2kbyVjbtHroL
 
     // new1 code
     // const queryParams = new URLSearchParams(window.location.search);
@@ -253,7 +255,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   display: "flex",
                   flexDirection: "column",
                   padding: "2px",
-                  width: isMobile? "81%":isTablet? "90%":"90%",
+                  width: isMobile ? "81%" : isTablet ? "90%" : "90%",
                   justifyContent: "center",
                   marginLeft: "2%",
                 }}
