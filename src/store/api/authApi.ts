@@ -16,12 +16,12 @@ export async function loginApi(data: LoginData) {
   try {
     const res = await api.post("/auth/login", data);
     console.log("res login", res);
-    localStorage.setItem("token", res.token);
-    localStorage.setItem("username", res.data.name);
-    localStorage.setItem("language", res.data.language);
-    localStorage.setItem("userId", res.data._id);
-    localStorage.setItem("userEmail", res.data.email);
-    localStorage.setItem("onBoarding", res.data.onBoarding);
+    localStorage.setItem("token", res?.token);
+    localStorage.setItem("username", res?.data?.name);
+    localStorage.setItem("language", res?.data?.language);
+    localStorage.setItem("userId", res?.data._id);
+    localStorage.setItem("userEmail", res?.data?.email);
+    localStorage.setItem("onBoarding", res?.data?.onBoarding);
 
     return res.data;
   } catch (error: any) {
@@ -178,6 +178,7 @@ export async function updateUserProfileApi(data: any) {
       { headers }
     );
     res?.data?.name && localStorage.setItem("username", res?.data?.name);
+    res?.data?.language && localStorage.setItem("language", res?.data?.langugae);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
