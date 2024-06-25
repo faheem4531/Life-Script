@@ -720,7 +720,6 @@
       "category2": "Preferencias de Correo Electrónico",
       "category3": "Contactar Soporte"
     }
-
   },
   "login-page": {
     "email": "Correo electrónico",
@@ -858,10 +857,9 @@
       "okayBtn": "Bueno"
     },
     "buyPremiumModal": {
-      "title": "Comprar Premium",
+      "title": "Mejora",
       "description": "Esta función no está disponible en la prueba gratuita."
     }
-
   },
   "ChapterSteps": {
     "step1": "Comenzar capítulo",
@@ -889,7 +887,7 @@
     "NFdescPremium": "Esta función es solo para usuarios Premium y Estándar",
     "NFDes": "Es una función de uso único del capítulo. ¿Quieres conservar tu texto original? ¿Proceder con 'Compilar texto original'?",
     "NFOriginBtn": "Compilar Texto Original",
-    "NFBuyPrBtn": "Comprar Premium",
+    "NFBuyPrBtn": "Upgrade",
     "NFuseBtn": "Usar Fusión Narrativa",
     "GPTRes": "Respuesta de GPT",
     "AddNewQues": "Agregar Nueva Pregunta",
@@ -922,10 +920,9 @@
     "updateChName": "Actualizar",
     "Del": "Eliminar",
     "DelDescri": "¿Estás seguro de que quieres eliminar este capítulo?",
-    "heading": "Comprar Premium",
+    "heading": "Mejora",
     "description": "Solo se pueden agregar 5 capítulos en la prueba gratuita. Compre premium para agregar más",
     "placeHolder": "Mi Viaje de Vida"
-
   },
   "modals": {
     "yes": "Sí",
@@ -936,7 +933,7 @@
     "stop": "Detener",
     "STT": "Texto a Voz",
     "MAC": "Marcar como Completado",
-    "ByPreHeading": "Comprar Premium",
+    "ByPreHeading": "Mejora",
     "PreDes": "El texto de Fusión Narrativa solo está disponible para usuarios Estándar y Premium. ¿Quieres comprarlo ahora?",
     "description": "Family Tree sólo está disponible para usuarios Estándar y Premium. ¿Quieres hacerlo ahora?"
   },
@@ -1113,7 +1110,6 @@
       "step": "Paso 3 de 4",
       "heading": "Cuéntanos acerca de tí",
       "fullName": "Nombre completo",
-
       "status": {
         "title": "Estado civil",
         "options": {

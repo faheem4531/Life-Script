@@ -859,7 +859,7 @@
       "okayBtn": "Okay"
     },
     "buyPremiumModal": {
-      "title": "Buy Premium",
+      "title": "Upgrade",
       "description": "This feature is not avaiable in Free trial."
     }
   },
@@ -889,7 +889,7 @@
     "NFdescPremium": "This feature is only for Premium and Standard users",
     "NFDes": "Choose a format for your chapter.",
     "NFOriginBtn": "Compile in Q&A",
-    "NFBuyPrBtn": "Buy Premium",
+    "NFBuyPrBtn": "Upgrade",
     "NFuseBtn": "Use Narrative Fusion",
     "GPTRes": "GPT Response",
     "AddNewQues": "Add New Question",
@@ -922,8 +922,8 @@
     "updateChName": "Update Chapter",
     "Del": "Delete Chapter",
     "DelDescri": "Are you sure you want to delete this chapter?",
-    "heading": "Buy Premium",
-    "description": "Only 5 chapters can be added in free trial. Buy premium to add more",
+    "heading": "Upgrade",
+    "description": "Only 5 chapters can be added in free trial. Upgrade to add more",
     "placeHolder": "My Life Journey"
   },
   "modals": {
@@ -935,7 +935,7 @@
     "stop": "Stop",
     "STT": "Voice-to-text",
     "MAC": "Mark As Complete",
-    "ByPreHeading": "Buy Premium",
+    "ByPreHeading": "Upgrade",
     "PreDes": "Narrative Fusion is only available for Standard and Premium users. Want to buy now?",
     "description": "Family Tree is only available for Standard and Premium users. Want to  now?"
   },
