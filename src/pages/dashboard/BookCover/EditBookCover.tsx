@@ -374,6 +374,11 @@ const EditBookCover = () => {
       if (CoverNumber === "2" && elmId === "author-text") {
         yAxisOffsetTwoAuth = "95%"; 
       }
+
+      if (CoverNumber === "6" && elmId === "heading-text") {
+        // Set font size for heading-text to 180px for CoverNumber 6
+        headingText.setAttribute("font-size", "180px");
+      }
   
       if (title.trim() === "") {
         // If the title is empty, show predefined text spans
