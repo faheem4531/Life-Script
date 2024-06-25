@@ -90,9 +90,9 @@ const Faqs = () => {
         <Typography sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>
           <h1 className={styles.pureHeadings}>{t("faqsSections.title")}</h1>
         </Typography>
-        <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>
-          <h2 className={styles.pureHeadings} >{t("faqsSections.description")}</h2>
-        </Typography>
+        {/* <Typography sx={{ fontSize: "16px", fontWeight: 500 }}> */}
+        <h2 className={styles.pureHeadings} >{t("faqsSections.description")}</h2>
+        {/* </Typography> */}
       </Box>
       <Box sx={{ marginTop: { md: "120px", sx: "80px", xs: "50px" }, display: "flex", position: "relative" }}>
         <Image
