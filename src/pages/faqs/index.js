@@ -19,7 +19,7 @@ const FaqPage = () => {
         <title>Frequently Asked Questions </title>
         <meta
           name="description"
-          discription="Want to know more about Lifescript? Here, you’ll find answers to the questions we get asked the most about."
+          content="Want to know more about Lifescript? Here, you’ll find answers to the questions we get asked the most about."
         />
       </Head>
 

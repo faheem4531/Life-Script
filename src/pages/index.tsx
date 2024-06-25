@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: 'Easily Create or Gift a Personal Autobiography Book - LifeScript',
     default: 'LifeScript',
   },
-  description: 'Turn2 your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.',
+  description: 'Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.',
   metadataBase: new URL('https://thelifescript.com/'),
 };
 
