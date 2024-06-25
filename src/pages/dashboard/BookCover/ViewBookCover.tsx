@@ -478,8 +478,7 @@ const ViewBookCover = () => {
               display: "flex",
               flexWrap: "wrap",
               gap: "20px",
-              mt: "20px",
-              overflowX: "scroll",
+              mt: "20px"
             }}
           >
             <Box flex={"auto"}>
