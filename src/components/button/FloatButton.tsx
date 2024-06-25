@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 import FloatImage from "@/_assets/svg/float-btn.svg";
 import Image from "next/image";
 // import LoadImage from "@/_assets/svg/loading.svg";
-import animationLogo from "@/_assets/svg/animationLogo.svg";
+import animationLogo from "@/_assets/svg/animationLogo.png";
 import logo from "@/_assets/svg/Frame.svg";
 
 // import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";

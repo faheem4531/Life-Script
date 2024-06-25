@@ -1,6 +1,6 @@
-<svg width="115" height="115" viewBox="0 0 115 115" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="57.5" cy="57.5" r="57.5" fill="white"/>
-<circle cx="56.9349" cy="57.7741" r="35.6752" transform="rotate(1.76741 56.9349 57.7741)" stroke="#E1683B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.5 10"/>
-<circle cx="56.9353" cy="57.7735" r="42.7131" transform="rotate(1.9878 56.9353 57.7735)" stroke="#E1683B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.5 10"/>
-<circle cx="56.9352" cy="57.7741" r="50.9374" transform="rotate(1.53309 56.9352 57.7741)" stroke="#E1683B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.5 10"/>
+<svg width="325" height="324" viewBox="0 0 325 324" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="162.496" cy="162.018" r="161.983" fill="white"/>
+<circle cx="160.904" cy="162.79" r="100.5" transform="rotate(-2.93416 160.904 162.79)" stroke="#E1683B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.5 15"/>
+<circle cx="160.9" cy="162.79" r="120.327" transform="rotate(-0.80687 160.9 162.79)" stroke="#E1683B" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.5 23"/>
+<circle cx="160.905" cy="162.79" r="143.495" transform="rotate(5.95962 160.905 162.79)" stroke="#E1683B" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0.5 30"/>
 </svg>

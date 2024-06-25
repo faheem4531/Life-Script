@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "../../narrative/Narrative.module.css";
-import AnimationLogo from "../../../../_assets/svg/animationLogo.svg"
+import AnimationLogo from "../../../../_assets/svg/animationLogo.png"
 import Logo from "@/_assets/svg/Frame.svg";
 
 const Loading = ({ progressCompleted, completed }) => {

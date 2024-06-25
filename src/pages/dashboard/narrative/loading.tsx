@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import styles from "./Narrative.module.css";
-import animationLogo from "@/_assets/svg/animationLogo.svg";
+import animationLogo from "@/_assets/svg/animationLogo.png";
 import Logo from "@/_assets/svg/Frame.svg";
 
 const Loading = () => {
