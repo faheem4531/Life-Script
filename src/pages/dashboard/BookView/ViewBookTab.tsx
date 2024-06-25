@@ -27,10 +27,10 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "end",
           alignItems: "center",
           flexWrap: "wrap",
-          gap: 2, mt: "30px", bgcolor: "red"
+          gap: 2, mt: "30px",
         }}
       >
         <Box sx={{}}>
