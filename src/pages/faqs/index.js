@@ -12,6 +12,7 @@ import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 import { useTranslation } from "react-i18next";
 const FaqPage = () => {
   const { t } = useTranslation();
+
   return (
     <>
       <Head>
@@ -25,15 +26,7 @@ const FaqPage = () => {
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }} className={styles.faqPage}>
         <NavBar color="#F3ECDA" logo={Logo} />
         <Faqs />
-        {/* <ContactFooter
-          title="Still have any questions?"
-          subTitle="Contact us Now!!!"
-          input1="Your name"
-          input2="Your email address"
-          input3="What’s on your mind?"
-          button="Get in touch!"
-        /> */}
-         <ContactFooter
+        <ContactFooter
           title={t("faqsSections.stillConfusedSection.title")}
           marked={t("faqsSections.stillConfusedSection.title2")}
           lineWidth={150}
