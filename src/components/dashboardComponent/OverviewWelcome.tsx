@@ -133,16 +133,18 @@ export default WelcomeOverview;
 
 const QuoteRotator = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const { t } = useTranslation();
+  const allQuotes = quotes(t);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    }, 86400000);
+    const today = new Date();
+    const start = new Date(today.getFullYear(), 0, 0);
+    const diff = today.getTime() - start.getTime();
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [quotes.length]);
+    setCurrentQuoteIndex(dayOfYear % allQuotes.length);
+  }, [allQuotes.length]);
 
   return (
     <Typography
@@ -158,7 +160,7 @@ const QuoteRotator = () => {
         opacity: 1,
       }}
     >
-      {quotes[currentQuoteIndex]}
+      {allQuotes[currentQuoteIndex]}
     </Typography>
   );
 };
