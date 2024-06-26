@@ -1,10 +1,15 @@
 import GlobelBtn from "@/components/button/Button";
+import { useState } from "react";
 import PDFViewer from "@/pages/PDFBookView/view";
 import { Box } from "@mui/material";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
+import ShippingModal from "@/components/modal/ShippingModal";
+import { useTranslation } from "react-i18next";
 
 const ReviewInterior = ({ setSelectedTab, interior }) => {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
   // const pdfUrl =
   // "https://lifescript-media.s3.eu-north-1.amazonaws.com/36453ad9-3feb-47e1-acd9-ee754be5a7e9.pdf";
   const pdfUrl = interior;
@@ -35,7 +40,7 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
       >
         <Box sx={{}}>
           <GlobelBtn
-            btnText="Back"
+            btnText={t("reviewBook.backBtn")}
             color="#E1683B"
             border="1px solid #E1683B"
             bgColor='#fff'
@@ -45,18 +50,21 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
             }}
           />
         </Box>
+     
         <Box>
           <GlobelBtn
             bgColor="#E1683B"
             color="white"
             width="110px"
-            btnText="Next"
+            btnText={t("reviewBook.nextBtn")}
             onClick={() => {
-              setSelectedTab(3);
+              setOpen(true);
+             
             }}
           />
         </Box>
       </Box>
+      <ShippingModal open={open} setOpen={setOpen}  setSelectedTab= {setSelectedTab}/>
     </Box>
   );
 };

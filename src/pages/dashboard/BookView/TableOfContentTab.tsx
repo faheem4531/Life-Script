@@ -9,9 +9,11 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import TOCMain from "../TableOfContent/components/TOCMain";
+import { useTranslation } from "next-i18next";
 
 const TableOfContentTab = ({ setSelectedTab, bookData }) => {
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -37,7 +39,7 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
           <GlobelBtn
             bgColor="#E1683B"
             color="white"
-            btnText={loading ? "Loading..." : "Next"}
+            btnText={loading ? "Loading..." : t("reviewBook.nextBtn")}
             width="110px"
             onClick={() => {
               if (!loading) {

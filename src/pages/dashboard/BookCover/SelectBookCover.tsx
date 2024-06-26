@@ -90,7 +90,7 @@ const SelectBookCover = () => {
                       zIndex: 2,
                     }}
                   >
-                    USE THIS COVER
+                    {t("BookCoverCard.UseThisCover")}
                   </Typography>
                 </Box>
               </Grid>

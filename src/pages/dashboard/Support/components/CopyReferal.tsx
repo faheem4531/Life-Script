@@ -7,9 +7,11 @@ import Fb from "@/_assets/svg/fb-orange.svg"
 import Email from "@/_assets/svg/email-orange.svg"
 import { useDispatch } from "react-redux";
 import { GetReferralCode } from "@/store/slices/chatSlice";
+import { useTranslation } from "react-i18next";
 
 const CopyReferal = () => {
   const dispatch: any = useDispatch();
+  const {t}=useTranslation();
   const [textToCopy, setTextToCopy] = useState('');
   const handleCopyText = () => {
     const textarea = document.createElement('textarea');
@@ -40,7 +42,7 @@ const CopyReferal = () => {
     >
       <Typography
         sx={{ fontSize: { sm: "22px", xs: "16px" }, color: "#30422E" }}>
-        Referral Code
+       {t("referAFriend.imageText.referalCode")}
       </Typography>
       <Box sx={{
         display: "flex",
@@ -56,7 +58,7 @@ const CopyReferal = () => {
 
         </Typography>
         <GlobelBtn
-          btnText="Copy Code"
+          btnText={t("referAFriend.imageText.copyCodeBtn")}
           onClick={handleCopyText}
           width="180px"
         />
@@ -67,7 +69,7 @@ const CopyReferal = () => {
         flexDirection: { sm: "row", xs: "column" }
       }}>
         <GlobelBtn
-          btnText="Share via Email"
+          btnText={t("referAFriend.imageText.shareViaEmail")}
           color="#E1683B"
           bgColor="transparent"
           border='1px solid #E1683B'
@@ -76,7 +78,7 @@ const CopyReferal = () => {
           width="270px"
         />
         <GlobelBtn
-          btnText="Share via Facebook"
+          btnText={t("referAFriend.imageText.shareViaFacebook")}
           color="#E1683B"
           bgColor="transparent"
           image={Fb}

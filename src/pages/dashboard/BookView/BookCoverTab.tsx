@@ -13,8 +13,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { font } from "../../../styles/font";
+import { useTranslation } from "next-i18next";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
+  const {t}=useTranslation();
   const [title, setTitle] = useState("");
   const [buttonLoading, setButtonLoading] = useState(false);
   const [subtitle, setSubtitle] = useState("");
@@ -557,7 +559,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
             >
               <Box>
                 <GlobelBtn
-                  btnText="Back"
+                  btnText={t("reviewBook.backBtn")}
                   color="#E1683B"
                   bgColor="#fff"
                   border="1px solid #E1683B"
@@ -569,7 +571,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
                 <GlobelBtn
                   bgColor="#E1683B"
                   color="white"
-                  btnText={loading ? "Saving..." : "Next"}
+                  btnText={loading ? "Saving..." : t("reviewBook.nextBtn")}
                   border="0px"
                   width="110px"
                   onClick={onClickHandler}

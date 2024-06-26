@@ -52,7 +52,7 @@ const CreditCard = () => {
                   subList={subBasicList}
                   category="BasicPlan"
                   card="1"
-                  mainTitle="Basic"
+                  mainTitle={t("landingPage.pricingSection.category1")}
                   CurrentPlan={null}
                   price={Number(price)}
                   btnCheck={false}
@@ -64,7 +64,7 @@ const CreditCard = () => {
                   category="GoldPlan"
                   card="2"
                   CurrentPlan={null}
-                  mainTitle="Standard"
+                  mainTitle={t("landingPage.pricingSection.category2")}
                   price={Number(price)}
                   btnCheck={false}
                 />
@@ -75,7 +75,7 @@ const CreditCard = () => {
                   CurrentPlan={null}
                   card="3"
                   subList={subPremiumList}
-                  mainTitle="Premium"
+                  mainTitle={t("landingPage.pricingSection.category3")}
                   price={Number(price)}
                   btnCheck={false}
                 />

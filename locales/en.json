@@ -1,4 +1,5 @@
 {
+ 
   "landingPage": {
     "navBar": {
       "home": "Home",
@@ -1174,6 +1175,17 @@
       "textBtn": "Refer a friend"
     }
   },
+  "referAFriend":{
+    "title":"Refer a friend",
+    "imageText":{
+      "text1":"They get $10 off their order",
+      "text2":"You get a free book",
+      "description":"Gift your friends a 10% discount and for every successful referral, you'll earn a free full-color hardcover copy of your autobiography. Start sharing and let's eternalise memories!",
+      "referalCode":"Referral Code",
+      "copyCodeBtn":"Copy Code",
+      "shareViaEmail":"Share via Email",
+      "shareViaFacebook":"Share via Facebook"
+    }},
   "quotes": {
     "quote1": "The secret of getting ahead is getting started. - Mark Twain",
     "quote2": "Success is the sum of small efforts, repeated day in and day out. - Robert Collier",
@@ -1285,5 +1297,53 @@
     "quote108": "If your vision is for a year, plant wheat. If your vision is for ten years, plant trees. If your vision is for a lifetime, plant people. - Chinese proverb",
     "quote109": "The ink of the scholar is more sacred than the blood of the martyr. - Chinese proverb",
     "quote110": "He who asks a question is a fool for five minutes; he who does not ask a question remains a fool forever. - Chinese proverb"
+  },
+  "shippingModal":{
+    "title": "Can you confirm that your book is ready to be Printed?",
+    "info":" We don't review your book, so what you see is what will be printed.",
+    "info2":"Ensure your masterpiece is flawless by going through this checklist:",
+    "info3":"Remember, this is YOUR book. Make sure it's exactly what you want it to be.",
+    "info4":"I can confirm this book is ready to be printed as is.",
+      "list1": {
+        "title": "Typos and Grammar Mistakes:",
+        "description": "Look for underlined errors in blue and red."
+      },
+      "list2": {
+        "title": "Formatting Issues:",
+        "description": "Check font sizes, styles, and spacing for consistency."
+      },
+      "list3": {
+        "title": "Missing Images:",
+        "description": "Ensure all visuals are correctly placed to maintain the flow."
+      },
+      "list4": {
+        "title": "Missing or Duplicate Stories:",
+        "description": "Verify each story is unique and complete."
+      },
+      "list5": {
+        "title": "Correct Chapter Order:",
+        "description": "Confirm the Table of Contents is accurate."
+      },
+      "list6": {
+        "title": "Book Cover Title and Author:",
+        "description": "Make sure they are exactly as you want."
+      },
+      "continueBtn":"Continue",
+      "cancelBtn":"Cancel"
+    
+    
+  },
+  "reviewBook":{
+   "labels": {
+      "label1": "1. Review TOC",
+      "label2": "2. Cover Design",
+      "label3": "3. Review Interior",
+      "label4": "4. Shipping",
+      "label5": "5. Checkout"
+    },
+    "nextBtn":"Next",
+    "backBtn":"Back"
+    
   }
+
 }

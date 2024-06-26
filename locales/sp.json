@@ -1171,6 +1171,18 @@
       "textBtn": "Referir a un amigo"
     }
   },
+  "referAFriend": {
+    "title": "Recomienda a un amigo",
+    "imageText": {
+      "text1": "Ellos obtienen $10 de descuento en su pedido",
+      "text2": "Tú obtienes un libro gratis",
+      "description": "Regala a tus amigos un 10% de descuento y por cada referencia exitosa, ganarás una copia gratuita de tapa dura y a todo color de tu autobiografía. ¡Empieza a compartir y eternicemos los recuerdos!",
+      "referalCode": "Código de Referencia",
+      "copyCodeBtn": "Copiar Código",
+      "shareViaEmail": "Compartir por Email",
+      "shareViaFacebook": "Compartir por Facebook"
+    }
+  },
   "quotes": {
     "quote1": "El secreto para avanzar es comenzar. - Mark Twain",
     "quote2": "El éxito es la suma de pequeños esfuerzos, repetidos día tras día. - Robert Collier",
@@ -1282,5 +1294,51 @@
     "quote108": "Si tu visión es para un año, planta trigo. Si tu visión es para diez años, planta árboles. Si tu visión es para toda la vida, planta personas. - Chinese proverb",
     "quote109": "La tinta del erudito es más sagrada que la sangre del mártir. - Chinese proverb",
     "quote110": "El que hace una pregunta es tonto por cinco minutos; el que no hace una pregunta sigue siendo tonto para siempre. - Chinese proverb"
+  },
+
+  "shippingModal": {
+    "title": "¿Puedes confirmar que tu libro está listo para ser impreso?",
+    "info": "Nosotros no revisamos tu libro, así que lo que ves es lo que se imprimirá.",
+    "info2": "Asegura que tu obra maestra sea impecable revisando esta lista de verificación:",
+    "info3": "Recuerda, este es TU libro. Asegúrate de que sea exactamente lo que deseas.",
+    "info4": "Puedo confirmar que este libro está listo para ser impreso tal como está.",
+    "list1": {
+      "title": "Errores de ortografía y gramática:",
+      "description": "Busca errores subrayados en azul y rojo."
+    },
+    "list2": {
+      "title": "Problemas de formato:",
+      "description": "Verifica tamaños de fuente, estilos y espaciado para asegurar consistencia."
+    },
+    "list3": {
+      "title": "Imágenes faltantes:",
+      "description": "Asegura que todas las imágenes estén colocadas correctamente para mantener el flujo."
+    },
+    "list4": {
+      "title": "Historias faltantes o duplicadas:",
+      "description": "Verifica que cada historia sea única y completa."
+    },
+    "list5": {
+      "title": "Orden correcto de capítulos:",
+      "description": "Confirma que el índice sea preciso."
+    },
+    "list6": {
+      "title": "Título y autor de la portada del libro:",
+      "description": "Asegúrate de que sean exactamente como deseas."
+    },
+    "continueBtn": "Continuar",
+    "cancelBtn": "Cancelar"
+  },
+
+  "reviewBook": {
+    "labels": {
+      "label1": "1. Revisar Índice",
+      "label2": "2. Diseño de Portada",
+      "label3": "3. Revisar Interior",
+      "label4": "4. Envío",
+      "label5": "5. Pago"
+    },
+    "nextBtn": "Siguiente",
+    "backBtn": "Atrás"
   }
 }

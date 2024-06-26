@@ -654,10 +654,10 @@ const chapterName = () => {
         open={openCustomizationDialog}
         heading={`${t("ChName.NF")}`}
         description={`${t("ChName.NFDes")}`}
-        cancel={handleCancel}
-        proceed={proceedFusion}
-        proceedText={`${t("ChName.NFOriginBtn")}`} // Customize the text for the "Yes" button
-        cancelText={`${t("ChName.NFuseBtn")}`} // Customize the text for the "No" button
+        cancel={proceedFusion}
+        proceed={handleCancel}
+        proceedText= {`${t("ChName.NFuseBtn")}`}// Customize the text for the "Yes" button
+        cancelText={`${t("ChName.NFOriginBtn")}`} // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
 

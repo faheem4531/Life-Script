@@ -14,13 +14,14 @@ import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 import ReferAdvertise from './components/ReferAdvertise';
 import CopyReferal from './components/CopyReferal';
 
+
 const ReferAFriend = () => {
   // const dispatch: any = useDispatch();
   // const [subject, setSubject] = useState("");
   // const [description, setDescription] = useState("");
   // const [showTooltip, setShowTooltip] = useState(false);
   // const [showModal, setShowModal] = useState(false);
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   // const handleComplaint = () => {
   //   dispatch(customerSupport({ subject: subject, description: description }))
@@ -42,7 +43,7 @@ const ReferAFriend = () => {
       >
         <AddChapterName editChapter={() => { }}
           chapterId
-          chapter="Refer a Friend"
+          chapter={t("referAFriend.title")}
           title="refer"
         />
         <ReferAdvertise />

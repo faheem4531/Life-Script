@@ -6,6 +6,7 @@ import ShippingCard from "./components/ShippingCard";
 import ShippingForm from "./components/ShippingForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   createLuluShipping,
   getLuluBalance,
@@ -19,6 +20,7 @@ const Shipping = ({
   count,
   setRemainingPaymenmt,
 }) => {
+  const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const [shippingDataId, setShippingDataId] = useState(null);
   const [shippingData, setShippingData] = useState({
@@ -131,7 +133,7 @@ const Shipping = ({
       >
         <Box>
           <GlobelBtn
-            btnText="Back"
+            btnText={t("reviewBook.backBtn")}
             bgColor='#fff'
             color="#E1683B"
             border="1px solid #E1683B"
@@ -150,7 +152,7 @@ const Shipping = ({
               <GlobelBtn
                 bgColor="#E1683B"
                 color="white"
-                btnText="Next"
+                btnText={t("reviewBook.nextBtn")}
                 border="0px"
                 onClick={handleNext}
               />

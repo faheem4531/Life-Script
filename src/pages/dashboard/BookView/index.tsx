@@ -10,10 +10,12 @@ import TableOfContentTab from "./TableOfContentTab";
 import ReviewInterior from "./ViewBookTab";
 import TabBars from "./components/TabBars";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
+import { useTranslation } from "next-i18next";
 
 
 const BookView = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   const [selectedTab, setSelectedTab] = useState(0);
   const [count, setCount] = useState(1);
   const [remainingPayment, setRemainingPayment] = useState(0);
@@ -30,12 +32,13 @@ const BookView = () => {
     }
   };
   const tabs = [
-    { label: "1. Review TOC", active: selectedTab >= 0 },
-    { label: "2. Cover Design", active: selectedTab >= 1 },
-    { label: "3. Review Interior", active: selectedTab >= 2 },
-    { label: "4. Shipping", active: selectedTab >= 3 },
-    { label: "5. Checkout", active: selectedTab === 4 },
+    { label: t("reviewBook.labels.label1"), active: selectedTab >= 0 },
+    { label: t("reviewBook.labels.label2"), active: selectedTab >= 1 },
+    { label: t("reviewBook.labels.label3"), active: selectedTab >= 2 },
+    { label: t("reviewBook.labels.label4"), active: selectedTab >= 3 },
+    { label: t("reviewBook.labels.label5"), active: selectedTab === 4 },
   ];
+  
 
 
   return (

@@ -101,7 +101,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         }}
       >
         <Box
-          sx={{ display: { xs: "block", lg: "none" } }}
+          sx={{ display: { xs: "block", lg: "none" } ,cursor:"pointer"}}
           onClick={sideBarHandle}
         >
           <Image src={NavMenu} alt="logo" />
