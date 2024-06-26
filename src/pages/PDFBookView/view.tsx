@@ -3,7 +3,7 @@ import PreviousIcon from "@/_assets/svg/previous-icon.svg";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { default as GlobelBtn } from "@/components/button/Button";
 import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
@@ -21,6 +21,30 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [pageWidth, setPageWidth] = useState(450);
   const [pageHeight, setPageHeight] = useState(550);
   const [goToPageNumber, setGoToPageNumber] = useState("1");
+  const [scale, setScale] = useState(1.0);
+
+  const scaleRef = useRef(scale);
+
+  const changeScale = (offset: number) => {
+    const newScale = Math.max(0.5, Math.min(scaleRef.current + offset, 2.0));
+    scaleRef.current = newScale;
+    setScale(newScale);
+  };
+  // const debounce = (func, wait) => {
+  //   let timeout;
+  //   return (...args) => {
+  //     clearTimeout(timeout);
+  //     timeout = setTimeout(() => func(...args), wait);
+  //   };
+  // };
+
+
+
+  // const changeScale = useCallback(debounce((offset: number) => {
+  //   setScale((prevScale) => Math.min(Math.max(prevScale + offset, 0.5), 2.0));
+  // }, 200), []);
+
+
 
   useEffect(() => {
     if (numPages === 0) {
@@ -42,6 +66,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
     setPageHeight(originalPageHeight * scale);
     setLoading(false);
   };
+
 
   const options = {
     cMapUrl: "cmaps/",
@@ -83,13 +108,18 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
         />
       </Box>
 
-      <Box hidden={false} sx={{ height: "calc(50vh)", position: "relative" }}>
+
+
+      <Box hidden={false} sx={{ height: "100%", position: "relative" }}>
         <Box
-          position="absolute"
-          top={"100%"}
-          left="20px"
-          display="flex"
-          alignItems="center"
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "20px",
+            transform: "translateY(-50%)",
+            display: "flex",
+            alignItems: "center",
+          }}
         >
           <Button
             onClick={() => setPageNumber(pageNumber - 1)}
@@ -101,12 +131,17 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
           </Button>
         </Box>
 
+
+
         <Box
-          position="absolute"
-          right="20px"
-          top={"100%"}
-          display="flex"
-          alignItems="center"
+          sx={{
+            position: "absolute",
+            right: "20px",
+            top: "50%",
+            display: "flex",
+            alignItems: "center",
+            transform: "translateY(-50%)"
+          }}
         >
           <Button
             onClick={() => setPageNumber(pageNumber + 1)}
@@ -118,17 +153,10 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
           </Button>
         </Box>
 
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          sx={{}}
-        >
-          <Box
-            sx={{
-              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-            }}
-          >
+
+
+        <Box display="flex" justifyContent="center" alignItems="center" sx={{}}>
+          <Box sx={{ overflow: 'scroll', border: '1px solid #ddd', height: '550px', display: "flex", alignItems: "centerx" }}>
             <Document
               file={pdfUrl}
               onLoadSuccess={onDocumentLoadSuccess}
@@ -145,11 +173,17 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
                 onLoadSuccess={onPageLoadSuccess}
                 width={pageWidth}
                 height={pageHeight}
+                scale={scale}
               />
             </Document>
           </Box>
         </Box>
-
+        <Button onClick={() => changeScale(-0.1)} disabled={scale <= 0.5}>
+          Zoom Out
+        </Button>
+        <Button onClick={() => changeScale(0.1)} disabled={scale >= 2.0}>
+          Zoom In
+        </Button>
         <Box
           sx={{
             display: "flex",
@@ -184,5 +218,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
     </>
   );
 };
+
+
 
 export default PDFViewer;
