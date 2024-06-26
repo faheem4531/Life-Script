@@ -8,6 +8,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Checkbox from "@mui/material/Checkbox";
 import { grey } from "@mui/material/colors";
 import { useTranslation } from "react-i18next";
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const style = {
   position: "absolute",
@@ -24,7 +25,13 @@ const style = {
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function ShippingModal({ open, setOpen, setSelectedTab }) {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
 
   const handleContinue = () => {
     setSelectedTab(3);
@@ -43,50 +50,59 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
       >
         <Box sx={style}>
           <Typography
-            
-            sx={{ color: "#30422E", fontSize: { xs: "13px", sm: "15px",lg:"25px" } }}
+            sx={{
+              color: "#30422E",
+              fontSize: { xs: "13px", sm: "15px", lg: "25px" },
+            }}
           >
             {t("shippingModal.title")}
           </Typography>
-          <Typography sx={{ mt: 2, fontSize: { xs: "10px", sm: "12px",md:"15px",lg:"17px" } }}>
-          {t("shippingModal.info")}
+          <Typography
+            sx={{
+              mt: 2,
+              fontSize: { xs: "10px", sm: "12px", md: "15px", lg: "17px" },
+            }}
+          >
+            {t("shippingModal.info")}
           </Typography>
           <Typography
-            sx={{ mt: 2, fontSize: { xs: "10px", sm: "12px",lg:"17px" } }}
+            sx={{ mt: 2, fontSize: { xs: "10px", sm: "12px", lg: "17px" } }}
             variant="body1"
           >
-           {t("shippingModal.info2")}
+            {t("shippingModal.info2")}
           </Typography>
           <Box>
             <List>
               {[
                 {
                   title: t("shippingModal.list1.title"),
-                  description:t("shippingModal.list1.description")
-
+                  description: t("shippingModal.list1.description"),
                 },
                 {
-                    title: t("shippingModal.list2.title"),
-                    description:t("shippingModal.list2.description")
+                  title: t("shippingModal.list2.title"),
+                  description: t("shippingModal.list2.description"),
                 },
                 {
-                    title: t("shippingModal.list3.title"),
-                    description:t("shippingModal.list3.description")
+                  title: t("shippingModal.list3.title"),
+                  description: t("shippingModal.list3.description"),
                 },
                 {
-                    title: t("shippingModal.list4.title"),
-                    description:t("shippingModal.list4.description")
+                  title: t("shippingModal.list4.title"),
+                  description: t("shippingModal.list4.description"),
                 },
                 {
-                    title: t("shippingModal.list5.title"),
-                    description:t("shippingModal.list5.description")
+                  title: t("shippingModal.list5.title"),
+                  description: t("shippingModal.list5.description"),
                 },
                 {
-                    title: t("shippingModal.list6.title"),
-                    description:t("shippingModal.list6.description")
+                  title: t("shippingModal.list6.title"),
+                  description: t("shippingModal.list6.description"),
                 },
               ].map((item, index) => (
-                <ListItem key={index} sx={{ marginBottom: "0px", paddingY: "0px" }}>
+                <ListItem
+                  key={index}
+                  sx={{ marginBottom: "0px", paddingY: "0px" }}
+                >
                   <ListItemIcon sx={{ minWidth: "30px" }}>
                     <FiberManualRecordIcon
                       style={{ fontSize: 10, color: "gray" }}
@@ -98,12 +114,12 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                         sx={{
                           display: "flex",
                           alignItems: "center",
-                        //   flexWrap: "wrap",
+                          //   flexWrap: "wrap",
                         }}
                       >
                         <Typography
                           sx={{
-                            fontSize: { xs: "8px", sm: "10px",lg:"17px"},
+                            fontSize: { xs: "8px", sm: "10px", lg: "17px" },
                             fontWeight: "bold",
                           }}
                         >
@@ -113,7 +129,7 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                           ml={"5px"}
                           variant="body1"
                           sx={{
-                            fontSize: { xs: "8px", sm: "10px",lg:"17px" },
+                            fontSize: { xs: "8px", sm: "10px", lg: "17px" },
                           }}
                         >
                           {item.description}
@@ -125,10 +141,10 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
               ))}
             </List>
             <Typography
-              sx={{ mt: 1, fontSize: { xs: "10px", sm: "12px",lg:"17px" } }}
+              sx={{ mt: 1, fontSize: { xs: "10px", sm: "12px", lg: "17px" } }}
               variant="body1"
             >
-           {t("shippingModal.info3")}
+              {t("shippingModal.info3")}
             </Typography>
           </Box>
 
@@ -141,10 +157,21 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
               display: "flex",
               alignItems: "center",
               padding: "4px",
+              
             }}
           >
-            <Checkbox
+            <FormControlLabel
+              label={<Typography
+                onClick={handleChange}
+                sx={{ fontSize: { xs: "10px", sm: "12px", lg: "17px" } }}
+              >
+                {t("shippingModal.info4")}
+              </Typography>}
+              control={
+                <Checkbox
+              onChange={handleChange}
               sx={{
+                ml:"5px",
                 backgroundColor: "transparent",
                 "&.Mui-checked": {
                   color: grey[600],
@@ -152,11 +179,10 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
               }}
               {...label}
             />
-            <Typography
-              sx={{ fontSize: { xs: "10px", sm: "12px",lg:"17px" } }}
-            >
-              {t("shippingModal.info4")}
-            </Typography>
+              }
+            />
+            
+            
           </Box>
 
           <Box
@@ -177,21 +203,21 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                 bgcolor: "transparent",
               }}
             >
-             {t("shippingModal.cancelBtn")}
+              {t("shippingModal.cancelBtn")}
             </Button>
             <Button
               onClick={handleContinue}
-             
+              disabled={!checked}
               sx={{
                 width: { xs: "100px", sm: "125px" },
                 backgroundColor: "#E1683B",
-                color:"white",
+                color: "white",
                 ":hover": {
                   backgroundColor: "#E1683B",
                 },
               }}
             >
-             {t("shippingModal.continueBtn")}
+              {t("shippingModal.continueBtn")}
             </Button>
           </Box>
         </Box>
