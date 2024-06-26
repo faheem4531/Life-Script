@@ -14,7 +14,7 @@ import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 
 const TutorialsDetail = () => {
   // const dispatch: any = useDispatch();
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
 
   return (
@@ -27,7 +27,7 @@ const TutorialsDetail = () => {
         >
           <AddChapterName editChapter={() => { }}
             chapterId
-            chapter="Tutorials & Tips"
+            chapter={t("tutorialAndTips.title")}
             title="back"
           />
           <Box

@@ -3,10 +3,12 @@ import { getLuluBalance, getLuluShipping, selectLuluData } from "@/store/slices/
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CountrySelect from "@/components/dashboardComponent/AutoComplete";
+import { useTranslation } from "react-i18next";
 
 import { useDispatch, useSelector } from "react-redux";
 
 const ShippingForm = ({ onChange, data, setShippingDataId }) => {
+  const { t } = useTranslation();
   const dispatch: any = useDispatch();
   const luluData = useSelector(selectLuluData);
   const [shippingData, setShippingData] = useState({
@@ -63,7 +65,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
     >
       <InputWithLabel
         color="#474E60"
-        label="Name"
+        label={t("shippingPage.name")}
         value={shippingData?.name}
         onChange={(e) =>
           setShippingData((prevData) => ({
@@ -71,14 +73,14 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
             name: e.target.value,
           }))
         }
-        placeholder="Name"
+        placeholder={t("shippingPage.name")}
         borderRadius="4px"
         bgColor="white"
         border="1px solid #30422E"
       />
       <InputWithLabel
         color="#474E60"
-        label="Email"
+        label={t("shippingPage.email")}
         value={shippingData?.email}
         onChange={(e) =>
           setShippingData((prevData) => ({
@@ -86,7 +88,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
             email: e.target.value,
           }))
         }
-        placeholder="Email"
+        placeholder={t("shippingPage.email")}
         borderRadius="4px"
         bgColor="white"
         border="1px solid #30422E"
@@ -103,7 +105,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
         <Box flex={1} width={"100%"}>
           <InputWithLabel
             color="#474E60"
-            label="City"
+            label={t("shippingPage.city")}
             value={shippingData?.city}
             onChange={(e) =>
               setShippingData((prevData) => ({
@@ -111,7 +113,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
                 city: e.target.value,
               }))
             }
-            placeholder="City"
+            placeholder={t("shippingPage.city")}
             borderRadius="4px"
             bgColor="white"
             border="1px solid #30422E"
@@ -126,7 +128,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
               mb: "5px",
             }}
           >
-            Country Code
+           {t("shippingPage.countryCode")}
           </Typography>
           <Box
             sx={{
@@ -152,8 +154,8 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
       </Box>
       <InputWithLabel
         color="#474E60"
-        label="Phone Number"
-        placeholder="Phone Number"
+        label={t("shippingPage.phoneNumber")}
+        placeholder={t("shippingPage.phoneNumber")}
         value={shippingData?.phone_number}
         onChange={(e) =>
           setShippingData((prevData) => ({
@@ -180,7 +182,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
         <Box flex={1} width={"100%"}>
           <InputWithLabel
             color="#474E60"
-            label="State Code"
+            label={t("shippingPage.stateCode")}
             value={shippingData?.state_code}
             onChange={(e) =>
               setShippingData((prevData) => ({
@@ -188,7 +190,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
                 state_code: e.target.value,
               }))
             }
-            placeholder="State Code"
+            placeholder={t("shippingPage.stateCode")}
             borderRadius="4px"
             bgColor="white"
             border="1px solid #30422E"
@@ -198,7 +200,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
         <Box flex={1} width={"100%"}>
           <InputWithLabel
             color="#474E60"
-            label="Post Code"
+            label={t("shippingPage.postCode")}
             value={shippingData?.postcode}
             onChange={(e) =>
               setShippingData((prevData) => ({
@@ -206,7 +208,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
                 postcode: e.target.value,
               }))
             }
-            placeholder="Post Code"
+            placeholder={t("shippingPage.postCode")}
             borderRadius="4px"
             bgColor="white"
             border="1px solid #30422E"
@@ -216,7 +218,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
       </Box>
       <InputWithLabel
         color="#474E60"
-        label="Street"
+        label={t("shippingPage.street")}
         value={shippingData?.street1}
         onChange={(e) =>
           setShippingData((prevData) => ({
@@ -224,7 +226,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
             street1: e.target.value,
           }))
         }
-        placeholder="Street"
+        placeholder={t("shippingPage.street")}
         borderRadius="4px"
         bgColor="white"
         border="1px solid #30422E"

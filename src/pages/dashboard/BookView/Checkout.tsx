@@ -15,6 +15,7 @@ import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import CheckoutForm from "./components/CheckoutForm";
 import ShippingCard from "./components/ShippingCard";
+import { useTranslation } from "react-i18next";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
@@ -24,6 +25,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   const [luluFailed, setLuluFailed] = useState(false);
   const [loading, setLoading] = useState(false);
   const dispatch: any = useDispatch();
+  const { t } = useTranslation();
   const router = useRouter();
   const [payment, setPayment] = useState(0)
 
@@ -79,9 +81,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
               width: "70%",
             }}
           >
-            I acknowledge that I have input all the information on my behalf and
-            has reviewed the interior and book cover. I want to print the book
-            as it is.
+            {t("checkout.description")}
           </Typography>
         </Box>
         <Box display={"flex"} sx={{ flexDirection: { md: "row", xs: "column", sm: "column" }, gap: "30px", bgcolor: "#F3ECDA", borderRadius: "4px", p: "20px 30px" }}>
@@ -130,7 +130,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
         >
           <Box>
             <GlobelBtn
-              btnText="Back"
+              btnText= {t("checkout.backBtn")}
               color="#E1683B"
               border="1px solid #E1683B"
               bgColor="#fff"
@@ -147,7 +147,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             <GlobelBtn
               bgColor="#E1683B"
               color="white"
-              btnText={"Finish"}
+              btnText={t("checkout.finishBtn")}
               disabled={!isChecked}
               border="0px"
               onClick={!loading && handleFinish}
@@ -202,8 +202,8 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             }}
           ></Typography>
           {luluSuccess
-            ? "Your Printing Call has been dispatched. You can check status in Overview page"
-            : "Your Printing Call has been Failed. Try again with valid inputs"}
+            ?  t("checkout.luluPrintingModal.dipatchedText")
+            : t("checkout.luluPrintingModal.failedText")}
           <Box
             sx={{
               margin: { md: "40px 0 30px", sm: "22px 0", xs: "16px 0" },
@@ -212,7 +212,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             }}
           >
             <GlobelBtn
-              btnText={"Continue"}
+              btnText={ t("checkout.luluPrintingModal.continueBtn")}
               bgColor="#E1683B"
               color="white"
               onClick={() => {

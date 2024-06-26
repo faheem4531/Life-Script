@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image"
 import Question from "./Question.js"
@@ -9,57 +9,63 @@ import Link from "next/link.js";
 import { useTranslation } from "react-i18next";
 const GotQuestions = () => {
   const { t } = useTranslation();
-  const [DumyQs1, setDummyQ] = useState([
-    {
-      qs: t("landingPage.questionSection.question1.qs"),
-      ans: t("landingPage.questionSection.question1.ans"),
-      panel: "panel1",
-      isexpanded: false,
-    },
-    {
-      qs: t("landingPage.questionSection.question2.qs"),
-      ans: t("landingPage.questionSection.question2.ans"),
-      panel: "panel2",
-      isexpanded: false,
-    },
-    {
-      qs: t("landingPage.questionSection.question3.qs"),
-      ans: t("landingPage.questionSection.question3.ans"),
-      panel: "panel3",
-      isexpanded: false,
 
-    },
-    {
-      qs: t("landingPage.questionSection.question4.qs"),
-      ans: t("landingPage.questionSection.question4.ans"),
-      panel: "panel4",
-      isexpanded: false,
-    },
-    {
-      qs: t("landingPage.questionSection.question5.qs"),
-      ans: t("landingPage.questionSection.question5.ans"),
-      panel: "panel5",
-      isexpanded: false,
-    },
-    {
-      qs: t("landingPage.questionSection.question6.qs"),
-      ans: t("landingPage.questionSection.question6.ans"),
-      panel: "panel6",
-      isexpanded: false,
-    },
-    {
-      qs: t("landingPage.questionSection.question7.qs"),
-      ans: t("landingPage.questionSection.question7.ans"),
-      panel: "panel7",
-      isexpanded: false,
-    },
-    {
-      qs: t("landingPage.questionSection.question8.qs"),
-      ans: t("landingPage.questionSection.question8.ans"),
-      panel: "panel8",
-      isexpanded: false,
-    },
-  ]);
+
+  const [DumyQs1, setDummyQ] = useState([]);
+
+  useEffect(()=>{
+    setDummyQ([
+      {
+        qs: t("landingPage.questionSection.question1.qs"),
+        ans: t("landingPage.questionSection.question1.ans"),
+        panel: "panel1",
+        isexpanded: false,
+      },
+      {
+        qs: t("landingPage.questionSection.question2.qs"),
+        ans: t("landingPage.questionSection.question2.ans"),
+        panel: "panel2",
+        isexpanded: false,
+      },
+      {
+        qs: t("landingPage.questionSection.question3.qs"),
+        ans: t("landingPage.questionSection.question3.ans"),
+        panel: "panel3",
+        isexpanded: false,
+  
+      },
+      {
+        qs: t("landingPage.questionSection.question4.qs"),
+        ans: t("landingPage.questionSection.question4.ans"),
+        panel: "panel4",
+        isexpanded: false,
+      },
+      {
+        qs: t("landingPage.questionSection.question5.qs"),
+        ans: t("landingPage.questionSection.question5.ans"),
+        panel: "panel5",
+        isexpanded: false,
+      },
+      {
+        qs: t("landingPage.questionSection.question6.qs"),
+        ans: t("landingPage.questionSection.question6.ans"),
+        panel: "panel6",
+        isexpanded: false,
+      },
+      {
+        qs: t("landingPage.questionSection.question7.qs"),
+        ans: t("landingPage.questionSection.question7.ans"),
+        panel: "panel7",
+        isexpanded: false,
+      },
+      {
+        qs: t("landingPage.questionSection.question8.qs"),
+        ans: t("landingPage.questionSection.question8.ans"),
+        panel: "panel8",
+        isexpanded: false,
+      },
+    ])
+  },[t])
 
   const handleExpands = (panel) => {
     setDummyQ(prev => {

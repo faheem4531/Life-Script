@@ -1340,5 +1340,39 @@
     },
     "nextBtn": "Siguiente",
     "backBtn": "Atrás"
-  }
+  },
+  "shippingPage": {
+    "orderSummary": "RESUMEN DEL PEDIDO",
+    "orderAdditionalBook": "Pedir Libros Adicionales",
+    "quantity": "Cantidad",
+    "price": "Precio",
+    "total": "Total",
+    "name": "Nombre",
+    "email": "Correo Electrónico",
+    "city": "Ciudad",
+    "countryCode": "Código del País",
+    "phoneNumber": "Número de Teléfono",
+    "stateCode": "Código del Estado",
+    "postCode": "Código Postal",
+    "street": "Calle"
+  },
+  "checkout": {
+    "description": "Reconozco que he ingresado toda la información en mi nombre y he revisado el interior y la portada del libro. Quiero imprimir el libro tal como está.",
+    "total": "Total",
+    "backBtn": "Atrás",
+    "finishBtn": "Terminar",
+    "luluPrintingModal": {
+      "dispatchedText": "Su solicitud de impresión ha sido enviada. Puede verificar el estado en la página de Resumen",
+      "failedText": "Su solicitud de impresión ha fallado. Inténtelo de nuevo con datos válidos",
+      "continueBtn": "Continuar"
+    }
+  },
+  "tutorialAndTips": {
+    "title": "Tutoriales y Consejos"
+},
+"familyTree": {
+    "title": "Árbol de familia"
+}
+
+
 }
