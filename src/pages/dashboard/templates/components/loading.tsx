@@ -46,7 +46,7 @@ const Loading = ({ progressCompleted, completed }) => {
   return (
     <Box
       sx={{
-        height: "80vh",
+        height: "70vh",
         bgcolor: "#FFF9F0",
         color: "#197065",
         display: "flex",
@@ -55,7 +55,7 @@ const Loading = ({ progressCompleted, completed }) => {
         alignItems: "center",
       }}
     >
-      <Typography sx={{ fontSize: "34px", fontWeight: 200, mb: '50px', color: "#7f886b" }}>
+      <Typography sx={{ fontSize: "34px", fontWeight: 200,  color: "#7f886b" }}>
         {progress < 50 && "Reading Content...."}
         {progress <= 90 && progress >= 50 && "Analyzing Tones..."}
         {progress > 90 && "Finalizing"}
