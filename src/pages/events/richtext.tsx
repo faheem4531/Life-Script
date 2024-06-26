@@ -476,7 +476,15 @@ const RichText = ({ questionId }) => {
           <CircularProgress />
         </Box>
       ) : (
-        <Box className="rich-editor">
+        <Box className="rich-editor" sx={{
+          border: "1px solid #197065", m: { sm: "20px 0 0 ", xs: "15px" },
+          borderRadius: "34px",
+          padding: {
+            xl: "30px 70px 100px",
+            sm: "20px 40px 80px",
+            xs: "20px 20px 50px",
+          },
+        }}>
           <Box
             sx={{
               display: "flex",
