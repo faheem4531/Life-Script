@@ -338,7 +338,7 @@ const { CoverNumber } = router.query;
             sx={{
               width: { xs: "260px", md: "240px", lg: "287.611px" },
               height: "414.319px",
-              bgcolor: CoverNumber === "2" ? "#FAFAFA" : (ColourPalette.length === 0 ? "#197065" : ColourPalette),
+              bgcolor: CoverNumber === "2" || landScape === "2" ? "#FAFAFA" : (ColourPalette.length === 0 ? "#197065" : ColourPalette),
               color: "white",
               textAlign: "center",
               p: "10px",
@@ -350,7 +350,7 @@ const { CoverNumber } = router.query;
 
           <Box
            sx={{
-            bgcolor: CoverNumber === "2"
+            bgcolor: CoverNumber === "2" || landScape === "2"
               ? "#FAFAFA"
               : ColourPalette && ColourPalette.length === 0
               ? "#197065"
@@ -401,7 +401,7 @@ const { CoverNumber } = router.query;
                 /> */}
                 {/* <Image src={"https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"} alt="" width={25} height={60}
                 /> */}
-                {CoverNumber === "5" ? <WhiteLogo
+                {landScape === "5" ? <WhiteLogo
                   src="https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"
                   alt="Logo"
                   width={25}
