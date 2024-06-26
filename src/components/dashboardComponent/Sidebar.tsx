@@ -286,11 +286,11 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               className={`${styles.link} ${currentRoute === "/familyTree" && styles.active
                 }`}
               onClick={() => {
-                if (isPremium) {
-                  router.push("/familyTree");
-                } else {
-                  setBuyPremium(true);
-                }
+                //   if (isPremium) {
+                router.push("/familyTree");
+                //   } else {
+                //     setBuyPremium(true);
+                //   }
               }}
             >
               <Image
@@ -482,14 +482,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                           : TutorialGreen
                       }
                     />
-                   {t("sideBar.supportDropDown.category1")} 
+                    {t("sideBar.supportDropDown.category1")}
                   </a>
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
                     className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
                       }`}
-                    onClick={() => router.push("/dashboard/emailPreference")}  
+                    onClick={() => router.push("/dashboard/emailPreference")}
                   >
                     <Image
                       alt="icon"
@@ -500,7 +500,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                       }
                       className={styles.sidebarIcon}
                     />
-                   {t("sideBar.supportDropDown.category2")} 
+                    {t("sideBar.supportDropDown.category2")}
                   </a>
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
@@ -520,14 +520,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
                           : ContactGreen
                       }
                     />
-                    {t("sideBar.supportDropDown.category3")} 
+                    {t("sideBar.supportDropDown.category3")}
                   </a>
                 </Box>
               </Box>
             )}
           </Box>
         </Box>
-      </Box>
+      </Box >
 
       <TransitionsDialog
         open={buyPremium}
