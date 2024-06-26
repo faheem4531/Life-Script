@@ -1,18 +1,22 @@
 import NextIcon from "@/_assets/svg/next-iconX.svg";
 import PreviousIcon from "@/_assets/svg/previous-icon.svg";
-import Box from "@mui/material/Box";
+import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Image from "next/image";
 import { useEffect, useState, useCallback, useRef } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { default as GlobelBtn } from "@/components/button/Button";
 import SaveIcon from "@/_assets/svg/save-response-white-icon.svg";
+import debounce from "lodash/debounce";
+import ZoomIn from "@/_assets/svg/zoomin.svg"
+import ZoomOut from "@/_assets/svg/zoom-out.svg"
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 interface PDFViewerProps {
   pdfUrl: string;
 }
+
 
 const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [numPages, setNumPages] = useState(0);
@@ -23,13 +27,17 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [goToPageNumber, setGoToPageNumber] = useState("1");
   const [scale, setScale] = useState(1.0);
 
-  const scaleRef = useRef(scale);
+  let zoomValue = scale;
 
-  const changeScale = (offset: number) => {
-    const newScale = Math.max(0.5, Math.min(scaleRef.current + offset, 2.0));
-    scaleRef.current = newScale;
-    setScale(newScale);
-  };
+  console.log(scale, 'scale');
+
+  // const scaleRef = useRef(scale);
+
+  // const changeScale = (offset: number) => {
+  //   const newScale = Math.max(0.5, Math.min(scaleRef.current + offset, 2.0));
+  //   scaleRef.current = newScale;
+  //   setScale(newScale);
+  // };
   // const debounce = (func, wait) => {
   //   let timeout;
   //   return (...args) => {
@@ -37,6 +45,17 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   //     timeout = setTimeout(() => func(...args), wait);
   //   };
   // };
+
+
+  console.log(zoomValue, 'zoomValue')
+  const changeScale = useCallback(
+    debounce((offset: number) => {
+      console.log(offset, 'offset');
+      console.log(zoomValue, 'zoomValue1');
+      setScale(offset);
+    }, 300),
+    []
+  );
 
 
 
@@ -97,6 +116,31 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
           flexWrap: "wrap",
         }}
       >
+        <Box sx={{ mr: "-20px" }}>
+
+          <ButtonIcons
+            onClick={() => {
+              zoomValue = zoomValue - 0.1;
+              changeScale(zoomValue)
+            }}
+            disabled={scale <= 1}
+            img={ZoomOut}
+            iconSize={35}
+          />
+        </Box>
+
+        <ButtonIcons
+          onClick={() => {
+            zoomValue = zoomValue + 0.1;
+            changeScale(zoomValue)
+          }}
+          disabled={scale >= 2.0}
+          img={ZoomIn}
+          iconSize={35}
+        />
+
+
+
         <GlobelBtn
           bgColor="#E1683B"
           btnText={`PDF Download`}
@@ -111,52 +155,23 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
 
       <Box hidden={false} sx={{ height: "100%", position: "relative" }}>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "20px",
-            transform: "translateY(-50%)",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            onClick={() => setPageNumber(pageNumber - 1)}
-            disabled={pageNumber <= 1}
-            color="primary"
-            sx={{ opacity: pageNumber <= 1 ? 0.2 : 1 }}
+        <Box display="flex" justifyContent="center" alignItems="center">
+          <Box
+            sx={{
+              mr: "30px"
+            }}
           >
-            <Image alt="icon" src={PreviousIcon} />
-          </Button>
-        </Box>
+            <Button
+              onClick={() => setPageNumber(pageNumber - 1)}
+              disabled={pageNumber <= 1}
+              color="primary"
+              sx={{ opacity: pageNumber <= 1 ? 0.2 : 1 }}
+            >
+              <Image alt="icon" src={PreviousIcon} />
+            </Button>
+          </Box>
 
-
-
-        <Box
-          sx={{
-            position: "absolute",
-            right: "20px",
-            top: "50%",
-            display: "flex",
-            alignItems: "center",
-            transform: "translateY(-50%)"
-          }}
-        >
-          <Button
-            onClick={() => setPageNumber(pageNumber + 1)}
-            color="primary"
-            disabled={pageNumber >= numPages}
-            sx={{ opacity: pageNumber >= numPages ? 0.2 : 1 }}
-          >
-            <Image alt="icon" src={NextIcon} />
-          </Button>
-        </Box>
-
-
-
-        <Box display="flex" justifyContent="center" alignItems="center" sx={{}}>
-          <Box sx={{ overflow: 'scroll', border: '1px solid #ddd', height: '550px', display: "flex", alignItems: "centerx" }}>
+          <Box sx={{ overflow: 'scroll', border: '1px solid #ddd', height: '550px', width: "390px", display: "flex", alignItems: "center" }}>
             <Document
               file={pdfUrl}
               onLoadSuccess={onDocumentLoadSuccess}
@@ -177,13 +192,25 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
               />
             </Document>
           </Box>
+
+
+          <Box
+            sx={{
+              ml: "30px"
+            }}
+          >
+            <Button
+              onClick={() => setPageNumber(pageNumber + 1)}
+              color="primary"
+              disabled={pageNumber >= numPages}
+              sx={{ opacity: pageNumber >= numPages ? 0.2 : 1 }}
+            >
+              <Image alt="icon" src={NextIcon} />
+            </Button>
+          </Box>
+
+
         </Box>
-        <Button onClick={() => changeScale(-0.1)} disabled={scale <= 0.5}>
-          Zoom Out
-        </Button>
-        <Button onClick={() => changeScale(0.1)} disabled={scale >= 2.0}>
-          Zoom In
-        </Button>
         <Box
           sx={{
             display: "flex",
@@ -222,3 +249,32 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
 
 export default PDFViewer;
+
+
+
+
+
+
+export const ButtonIcons = ({ onClick, iconSize, img, disabled }) => {
+  return (
+    <Button
+      onClick={onClick}
+      disabled={disabled}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        columnGap: "8px",
+        '&:hover': {
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+        },
+      }}>
+      <Image
+        src={img}
+        alt="icon"
+        width={iconSize}
+      />
+    </Button>
+  )
+}
