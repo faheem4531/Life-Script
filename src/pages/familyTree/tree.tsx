@@ -787,7 +787,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
 
-        <Box sx={{ position: "absolute", right: "0", top: "45%", transform: "translateY(-45%)" }}>
+        <Box sx={{ position: "absolute", right: "0", top: "40%", transform: "translateY(-40%)" }}>
           <ButtonIcons
             onClick={() => panCanvas('right')}
             img={Right}
@@ -814,7 +814,7 @@ const FamilyTree = ({ familyTreeData }) => {
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "0", top: "45%", transform: "translateY(-45%) rotate(180deg)" }}>
+        <Box sx={{ position: "absolute", left: "0", top: "40%", transform: "translateY(-40%) rotate(180deg)" }}>
           <ButtonIcons
             onClick={() => panCanvas('left')}
             img={Right}
