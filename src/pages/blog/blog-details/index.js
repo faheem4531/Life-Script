@@ -60,7 +60,7 @@ const BlogDetailPage = () => {
     );
   }
 
-  // console.log(blogsDetailsData, "Testing Heja");
+
 
   const imageUrl =
     blogsDetailsData?.data?.attributes?.image?.data[0] &&

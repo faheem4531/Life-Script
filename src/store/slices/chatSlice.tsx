@@ -421,7 +421,7 @@ export const updateBookCover = createAsyncThunk<UserData, any>(
     image: string;
     coverPagePhoto: string;
   }) => {
-    console.log("Updatetetetetetettedata", data);
+
     try {
       const response = await updateBookCoverApi(data);
       return response;

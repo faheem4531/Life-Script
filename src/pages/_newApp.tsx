@@ -30,7 +30,7 @@ export default function NewApp({ children }) {
 
     socket.on("error", (message) => {
       toast.error(message);
-      console.log("socket failed");
+
     });
 
     socket.on("error", (message) => { });
@@ -50,7 +50,7 @@ export default function NewApp({ children }) {
       const token = localStorage.getItem("token");
       if (token) {
         const decodedToken = jwt.decode(token);
-        console.log("decodedToke", decodedToken);
+
         const accessRole = decodedToken?.accessRole;
         socket.emit("joinRoom", decodedToken._id);
       }

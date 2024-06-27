@@ -14,7 +14,7 @@ const FbRedirecting = () => {
     useEffect(() => {
         setLoading(true)
         if (session) {
-            console.log('session data', session)
+
           if (session.user) {
             const payload = {
               name: session.user.name,
@@ -25,7 +25,7 @@ const FbRedirecting = () => {
             .unwrap() 
             .then((res) => {
                 setLoading(false)
-              console.log("Res Console" ,res)
+
               toast.success("login with facebook");
               router.push(`/getStarted/getTitle?userName=${res?.name}`); 
             //   window.location.href = `/getStarted/getTitle?userName=${res?.name}`

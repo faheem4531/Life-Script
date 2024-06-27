@@ -38,8 +38,8 @@ const EmailVerification = () => {
 
       .unwrap()
       .then((res) => {
-        console.log(res, "verifyEmail dataaaaa");
-        // console.log({ userEmail, otp, pass }, " dataa");
+
+
 
         toast.success(t("Verify.emailVerifiedSuccessfully"));
         // const name = localStorage.getItem("username");
@@ -69,7 +69,7 @@ const EmailVerification = () => {
   const currentUrl = router.asPath;
   const token = getTokenFromURL(currentUrl);
   const ciphertext = token?.replace(/ /g, "+");
-  console.log("token", token, typeof token);
+
 
   useEffect(() => {
     if (ciphertext) {
@@ -97,7 +97,7 @@ const EmailVerification = () => {
       otp: otp
     },
     onSubmit: async (data: any) => {
-      console.log(data, "  verify data");
+
       const newData = {
         email: userEmail,
         password: data.password,
@@ -315,7 +315,7 @@ const EmailVerification = () => {
               variant="contained"
               // disabled={!userEmail}
               onClick={(event) => {
-                console.log('event')
+
                 formik.handleSubmit()
               }}
               sx={{

@@ -240,7 +240,7 @@ export const PrintBook = () => {
   const { t } = useTranslation();
   const [luluStatus, setLuluStatus] = useState("");
   const [hover, setHover] = useState(false);
-  console.log("111luluuu", luluStatus);
+
   return (
     <Box
       sx={{

@@ -28,7 +28,7 @@ const CopyReferal = () => {
     dispatch(GetReferralCode())
       .unwrap()
       .then((res) => {
-      //  console.log(res);
+
         setTextToCopy(res?.referralCode);
       })
   }, []);

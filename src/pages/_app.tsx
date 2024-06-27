@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
   // verify auth
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
-    console.log("userLoggedIn", userLoggedIn);
+
     const publicRoutes = [
       "/pricing",
       "/verify/verificationSent",
@@ -117,9 +117,9 @@ export default function App({ Component, pageProps }: AppProps) {
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
 
-    console.log("Check Path", currentPath);
+
     // if (window.location.search.includes(`/verify?token=${token}`)) {
-    //   console.log("Find Bug ", window.location.search.includes(`/verify?token=${token}`))
+
     //   setLoading(false);
     //   return; // Don't redirect if "?via=install" is present
     // }
@@ -173,18 +173,18 @@ export default function App({ Component, pageProps }: AppProps) {
     //   currentPath !== "website/about-us" &&
     //   currentPath !== "website/gifting"
     // ) {
-    //   console.log("1");
+
     //   // router.push("/");
     //   setLoading(false);
     // } else if (currentPath == "/") {
-    //   console.log("2");
+
     //   setTimeout(() => {
     //     setLoading(false);
     //     router.push("/dashboard/chapters");
     //   }, 1000);
     //   // router.push("/dashboard/chapters");
     // } else {
-    //   console.log("3");
+
     //   setLoading(false);
     //   // router.push("/dashboard/chapters");
     // }
@@ -195,9 +195,9 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     let testCookieName = "test";
     Cookies.remove(testCookieName);
-    console.log("cookie: ", Cookies.get(testCookieName));
+
     Cookies.set(testCookieName, 500);
-    console.log("cookie: ", Cookies.get(testCookieName));
+
   }, []);
 
   const theme = useTheme();

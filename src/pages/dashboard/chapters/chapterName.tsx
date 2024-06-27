@@ -51,7 +51,7 @@ const chapterName = () => {
   const [openModal, setOpenModal] = useState(false);
   const [gptSocket, setgptSocket] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
-  // console.log("ispremium", isPremium);
+
   const [buyPremium, setBuyPremium] = useState(false);
   const [loading, setLoading] = useState(true);
   const [allQuestionsLoading, setAllQuestionsLoading] = useState(true);
@@ -208,10 +208,10 @@ const chapterName = () => {
         setShowFusion(true);
       }
 
-      // console.log("JKJE", chatpter);
+
     });
     // const fff = chapters.filter((chapter)=> chapter._id === chapterId?.toString() )
-    // console.log("KKK", fff, chapters);
+
   }, [chapterId, questionChanged]);
 
   useEffect(() => {

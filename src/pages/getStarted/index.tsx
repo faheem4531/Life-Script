@@ -40,7 +40,7 @@ const getStarted = () => {
       })
       .catch(() =>
         setTimeout(() => {
-          console.log("fail");
+
           router.push(`/dashboard/Questionnaire`);
         }, 3000)
       );

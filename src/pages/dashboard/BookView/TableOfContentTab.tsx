@@ -53,7 +53,7 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
                   })
                   .catch((error) => {
                     setLoading(false);
-                    console.log("errorrr", error);
+
                     setOpenModal(true);
                   });
               }

@@ -35,7 +35,7 @@ const ResetPassword = () => {
   const currentUrl = router.asPath;
   const token = getTokenFromURL(currentUrl);
   const ciphertext = token?.replace(/ /g, "+");
-  console.log("token", token, typeof token);
+
 
   function getTokenFromURL(url: any) {
     var queryString = url.split("?")[1];
@@ -72,7 +72,7 @@ const ResetPassword = () => {
       otp: "",
     },
     onSubmit: async (data: ChangePassword) => {
-      console.log("data", data);
+
       const newData = data;
       delete newData["confirmPassword"];
       dispatch(changePassword(newData))

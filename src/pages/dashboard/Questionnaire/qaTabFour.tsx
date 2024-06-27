@@ -43,7 +43,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
       const token = localStorage.getItem("token");
       if (token) {
         const decodedToken = jwt.decode(token);
-        console.log("decodedToke", decodedToken);
+
         const accessRole = decodedToken?.accessRole;
 
         if (accessRole !== "FreePlan") {

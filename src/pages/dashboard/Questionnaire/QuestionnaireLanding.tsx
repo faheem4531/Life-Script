@@ -104,7 +104,7 @@ const Questionnaire = () => {
       })
       .catch(() =>
         setTimeout(() => {
-          console.log("fail");
+
           router.push(`/dashboard/Questionnaire`);
           setLoading(false);
         }, 3000)

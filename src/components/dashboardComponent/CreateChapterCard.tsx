@@ -55,7 +55,7 @@ export const StartNewChapter = ({
     }
   };
 
-  console.log("chapters", chapters);
+
 
   return (
     <Box bgcolor={"white"} borderRadius={"8px"}>

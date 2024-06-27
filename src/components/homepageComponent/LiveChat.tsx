@@ -20,7 +20,7 @@ interface ExtendedWindow extends Window {
 
 const LiveChat: React.FC = () => {
   useEffect(() => {
-    console.log("testingggggg Live");
+
     const extendedWindow: any = window as unknown as ExtendedWindow;
 
     extendedWindow.__lc = extendedWindow.__lc || {};

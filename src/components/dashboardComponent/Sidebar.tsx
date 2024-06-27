@@ -91,7 +91,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken?.accessRole;
-      console.log("111acccrole", accessRole);
+
       if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
         setIsPremium(true);
       } else {

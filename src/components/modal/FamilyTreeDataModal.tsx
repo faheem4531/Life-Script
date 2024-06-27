@@ -42,7 +42,7 @@ const FamilyTreeDataModal = ({
   );
   const maxDate = new Date();
 
-  // console.log(selectedRelation, "selectedRelation selectedRelation");
+
 
   let ProfileImage = Profile
   const Male = "./familyTreeRelations/male.svg";

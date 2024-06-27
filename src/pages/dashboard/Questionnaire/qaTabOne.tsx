@@ -19,7 +19,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
   const [langPre, setLangPre] = useState("");
   const [showTooltip, setShowTooltip] = useState(false);
 
-  console.log("333344", selectedValue);
+
 
   useEffect(() => {
     setSelectedValue(data || "MySelf");

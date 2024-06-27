@@ -146,7 +146,7 @@ const PaymentForm = ({ packageName, price }) => {
               <CardNumberElement
                 options={options}
                 onChange={(event) => {
-                  console.log("CardNumberElement [change]", event);
+
                   setIsError(!event.complete || !!event.error);
                 }}
               />
@@ -211,7 +211,7 @@ const PaymentForm = ({ packageName, price }) => {
                 <CardExpiryElement
                   options={options}
                   onChange={(event) => {
-                    console.log("CardExpiryElement [change]", event);
+
                     setIsError(!event.complete || !!event.error);
                   }}
                 />
@@ -239,7 +239,7 @@ const PaymentForm = ({ packageName, price }) => {
                 <CardCvcElement
                   options={options}
                   onChange={(event) => {
-                    console.log("CardCvcElement [change]", event);
+
                     setIsError(!event.complete || !!event.error);
                   }}
                 />

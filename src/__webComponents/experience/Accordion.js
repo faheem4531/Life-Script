@@ -105,8 +105,6 @@ export default function CustomizedAccordions() {
     const currentPanelIndex = currentPanel % panels.length;
 
 
-    console.log(currentPanelIndex, "currentPanelIndex");
-    console.log(currentPanel, "currentPanel");
     const timeoutId = setTimeout(() => {
       // Calculate the index of the next panel
       const nextPanelIndex = (currentPanel + 1) % panels.length;

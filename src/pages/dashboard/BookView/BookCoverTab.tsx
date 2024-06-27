@@ -413,7 +413,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     dispatch(uploadImage(formData))
       .unwrap()
       .then((pdfUrl) => {
-        console.log("Uploaded PDF URL:", pdfUrl);
+
         dispatch(updateBook({ coverPdf: pdfUrl }))
           .unwrap()
           .then(() => {

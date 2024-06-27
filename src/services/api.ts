@@ -42,7 +42,7 @@ class API {
   }
 
   private responseErrorInterceptor(error: any) {
-    console.log("error api", error.response.status);
+
     // const router = useRouter();
     if (error.response.status === 401) {
       toast.error(error.response.data.message);
@@ -56,8 +56,7 @@ class API {
       if (window.location.href !== `${baseLink}/dashboard/SubscribePlans`) {
         toast.error(error.response.data.message);
       }
-      console.log("location", window.location.href);
-      console.log("baseLink", typeof window.location.origin);
+      
       if (window.location.href !== `${baseLink}/dashboard/SubscribePlans`) {
         window.location.href = `${baseLink}/dashboard/SubscribePlans`;
       }

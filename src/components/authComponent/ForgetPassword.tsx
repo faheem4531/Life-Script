@@ -34,7 +34,7 @@ const ForgetPassword = () => {
       type: "password",
     },
     onSubmit: async (data: ForgetPass) => {
-      console.log("data", data);
+
       dispatch(forgetPassword(data))
         .unwrap()
         .then(() => {

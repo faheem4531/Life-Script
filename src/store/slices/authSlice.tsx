@@ -205,7 +205,7 @@ export const verifyEmail = createAsyncThunk<UserData, any>(
   async (data) => {
     try {
       const response = await verifyEmailApi(data);
-      console.log(response, "api response ");
+
       return response;
     } catch (error: any) {
       throw new Error(error.props);

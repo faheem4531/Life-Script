@@ -15,7 +15,7 @@ export async function loginApi(data: LoginData) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/login", data);
-    console.log("res login", res);
+
     localStorage.setItem("token", res?.token);
     localStorage.setItem("username", res?.data?.name);
     localStorage.setItem("language", res?.data?.language);
@@ -105,7 +105,7 @@ export async function facebookLoginApi(data: { credential: string }) {
 export async function googleSignupApi(data: { credential: string, type:string }) {
   // localStorage.clear();
   try {
-    console.log("Sinageyabb--------",data)
+
     const res = await api.post("/auth/google/callback/sign-up", data);
     localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("token", res.token);
@@ -399,7 +399,7 @@ export async function signupApiWithGift(data: any) {
 export async function signupApiWithInAppGiftApi(data: any) {
   try {
     const res = await api.post("/auth/create/gift/in-App", {...data, inAppGiftFlow:true});
-    console.log("signupApiWithInAppGiftApi",res)
+
     // localStorage.setItem("accessRole", res?.data?.accessRole);
     // localStorage.setItem("token", res?.accessToken);
     // localStorage.setItem("username", res.data.name);

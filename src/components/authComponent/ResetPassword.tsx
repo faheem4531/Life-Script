@@ -53,7 +53,7 @@ const ResetPassword = () => {
       password: "",
     },
     onSubmit: async (data: LoginData) => {
-      console.log("data", data);
+
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required("Email is required"),

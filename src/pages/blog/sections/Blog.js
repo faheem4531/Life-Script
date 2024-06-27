@@ -58,7 +58,7 @@ const Blogs = () => {
     fetchData();
   }, [currentPage]);
 
-  // console.log(blogsData, "Hello");
+
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -74,7 +74,7 @@ const Blogs = () => {
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      {/* {console.log("bbbbbbbb", blogsData)} */}
+
       {/* Loader */}
       {loading && (
         <Box sx={{

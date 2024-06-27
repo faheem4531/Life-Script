@@ -63,7 +63,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
-  // console.log(familyTreeData, "familyTreeData");
+
 
   useEffect(() => {
     const jwt = require("jsonwebtoken");
@@ -199,22 +199,22 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const handleIconClick = (name, iconType, d) => {
-    console.log(d, "logggggg dataa");
+
 
     setUpdatedNode({});
     setFamilyEditModal(false);
     setRelations(["Sibling", "Child"]);
     if (iconType === "editspouse") {
-      console.log("editspouse");
+
 
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
-      console.log("add");
+
 
       handleAdd(name, d);
     } else if (iconType === "edit") {
       handleEdit(name, d);
-      console.log("edit");
+
     }
   };
 
@@ -248,11 +248,11 @@ const FamilyTree = ({ familyTreeData }) => {
 
   useEffect(() => {
     if (!familyTreeData) {
-      console.log("no dataa fount");
+
 
       return;
     } else {
-      console.log("dataa found");
+
       const svgElement = d3.select(svgRef.current);
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
@@ -334,7 +334,7 @@ const FamilyTree = ({ familyTreeData }) => {
             scale: 1,
             backgroundColor: "#FFFFFF",
           }).then((data) => {
-            // console.log("data", data);
+
             // uploadImageonCloud(data);
             setLoading(false);
             familyTreeGroup.remove();
@@ -347,7 +347,7 @@ const FamilyTree = ({ familyTreeData }) => {
             // height: "auto",
             // width: "100%",
           }).then((uri) => {
-            // console.log("data", uri);
+
 
             fetch(uri)
               .then((response) => response.blob())
@@ -417,12 +417,12 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
   const uploadImageonCloud = (formData) => {
-    console.log("formData", formData);
+
     dispatch(uploadImageFamilyTree(formData))
       .unwrap()
       .then((res) => {
         toast.success("image uploaded successfully");
-        // console.log("resssssssss", res);
+
       })
       .catch(() => toast.error("Failed to upload image"));
   };
@@ -584,7 +584,7 @@ const FamilyTree = ({ familyTreeData }) => {
     };
 
     if (d.data.spouseName) {
-      console.log(d.data, "dataaaaaa d.data.spouseName");
+
 
       renderRect(10, -5, 100, `${styles.nameRect}`, false);
       renderImage(

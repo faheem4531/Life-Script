@@ -22,14 +22,14 @@ const FamilyTreeAddModal = ({
     image: Male,
     type: "",
   });
-  // console.log(nodeData, "nodeData");
+
 
   useEffect(() => {
     if (nodeData.data) {
-      console.log(nodeData.data, "nodeData.data");
+
 
       if (isSpouse) {
-        console.log(isSpouse, "isSpouse");
+
 
         setInfo({
           name: nodeData.data.spouseName,
@@ -42,7 +42,7 @@ const FamilyTreeAddModal = ({
         })
       }
       else {
-        console.log(isSpouse, "isSpousenot");
+
 
         setInfo({
           name: nodeData.data.name,

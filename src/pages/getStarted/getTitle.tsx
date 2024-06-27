@@ -42,7 +42,7 @@ const getTitle = () => {
         toast.error("Failed to save book title");
       });
 
-    console.log("text", text);
+
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const getTitle = () => {
       })
       .catch(() =>
         setTimeout(() => {
-          console.log("fail");
+
           router.push(`/dashboard/Questionnaire?userName=${userName}`);
           setLoading(false);
         }, 3000)

@@ -73,7 +73,7 @@ const SubscribePlan = () => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken?.accessRole;
-      console.log("acccedfgdj", accessRole);
+
 
       if (accessRole) {
         setPlanCheck(accessRole);

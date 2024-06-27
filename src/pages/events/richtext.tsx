@@ -96,12 +96,12 @@ const RichText = ({ questionId }) => {
       });
 
       mediaRecorderRef.current.addEventListener("start", () => {
-        console.log("MediaRecorder started");
+
         setRecording(true);
       });
 
       mediaRecorderRef.current.addEventListener("stop", () => {
-        console.log("MediaRecorder stopped");
+
         setRecording(false);
         setTranscript("");
         setDetecting(false);
@@ -120,11 +120,11 @@ const RichText = ({ questionId }) => {
       socket.onopen = () => {
         setDetecting(false);
         setListening(true);
-        console.log("WebSocket open");
+
       };
 
       socket.onclose = () => {
-        console.log("WebSocket closed");
+
       };
 
       socket.onerror = (error) => {
@@ -352,10 +352,10 @@ const RichText = ({ questionId }) => {
       //   (chapter) => chapter.introductionChapter || chapter.startDefaultChapter
       // );
 
-      // console.log("chapter????????", chapter);
+
       // if (chapter.introductionChapter || chapter.startDefaultChapter) {
-      //   console.log("into completed", chapter);
-      //   console.log("into completed", chapter.startDefaultChapter);
+
+
       //   dispatch(simpleChapter({ chapterId: chapter?._id }));
       // }
 
@@ -421,7 +421,7 @@ const RichText = ({ questionId }) => {
   //         form_data.append("image", file);
 
   //         const res = await dispatch(uploadImage(form_data));
-  // console.log("Responsisbdbab-----378787",res)
+
   //         resolve({ data: { link: res.payload } });
   //       };
   //       reader.readAsDataURL(file);
@@ -436,12 +436,12 @@ const RichText = ({ questionId }) => {
 
         try {
           const res = await dispatch(uploadImage(form_data));
-          console.log("Response from uploadImage:", res);
+
 
           if (res && res.payload) {
             const caption = `Caption: ${file.name}`;
             const imageData = { data: { link: res.payload, caption: caption } };
-            console.log("Image data:", imageData); // Log the image data for debugging
+
             resolve(imageData);
           } else {
             reject("Failed to upload image or get image URL.");

@@ -323,7 +323,7 @@ const ProfileSetting = () => {
                   value={selectedDate}
                   onChange={(date) => {
                     setSelectedDate(date);
-                    console.log("date", date);
+
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {

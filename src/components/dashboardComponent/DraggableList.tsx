@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 const DraggableList = ({ data }) => {
   const dispatch: any = useDispatch();
   const [items, setItems] = useState([]);
-  console.log("items", items);
+
   useEffect(() => {
     data && setItems(data);
   }, [data]);

@@ -165,9 +165,7 @@ export default function VerticalTabs() {
     setClickCheck(newValue)
   };
 
-  console.log("value", value);
-  console.log("clickCheck", clickCheck === value );
-  
+
 
   return (
     <Box

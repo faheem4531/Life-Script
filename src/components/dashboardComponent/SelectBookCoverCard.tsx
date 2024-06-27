@@ -54,7 +54,7 @@ const { CoverNumber } = router.query;
         dispatch(uploadImage(formData))
           .unwrap()
           .then((res) => {
-            console.log("resssssssss", res);
+
             // setSvgPng(res);
           });
       });
@@ -69,7 +69,7 @@ const { CoverNumber } = router.query;
       // 3. Extract SVG data (optional, for more control):
       const svgData = new XMLSerializer().serializeToString(svgElement);
 
-      console.log("svgDataaaa", svgData);
+
 
       // **Choose the appropriate method based on your preference:**
 
@@ -89,17 +89,17 @@ const { CoverNumber } = router.query;
       const img = document.createElement("img");
       //  const img = img.setAttribute("img");
       img.onload = () => {
-        console.log("into hereeeee");
+
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0);
 
         const imgData = canvas.toDataURL("image/png"); // Convert to PNG for compatibility
-        console.log("imgData", imgData);
-        uploadImageonCloud(imgData);
-        // console.log("before", imgData);
 
-        // console.log("imagData", imgData);
+        uploadImageonCloud(imgData);
+
+
+
         doc.addImage(imgData, "PNG", 0, 0); // Adjust coordinates as needed
       };
       img.src = `data:image/svg+xml;base64,${btoa(svgData)}`; // Encode SVG data
@@ -110,10 +110,10 @@ const { CoverNumber } = router.query;
       // const formData = new FormData();
       // formData.append("image", pdfBlob);
       // uploadImageonCloud(formData);
-      // console.log("pdfBlob", pdfBlob);
+
       // const blobUrl = URL.createObjectURL(pdfBlob);
-      // console.log("blobUrl", blobUrl);
-      // // 5. Create a download link:
+
+
       // const link = document.createElement("a");
       // link.download = "your_filename.pdf";
       // link.href = blobUrl;
@@ -179,7 +179,7 @@ const { CoverNumber } = router.query;
   //   ) as HTMLImageElement;
   //   if (coverImageElement) {
   //     convertUrlToBase64(droppedImage).then((result) => {
-  //       console.log("result", result);
+
   //       coverImageElement.setAttribute(
   //         "xlink:href",
   //         `data:image/png;base64,${result}`
@@ -195,7 +195,7 @@ const { CoverNumber } = router.query;
   //   try {
   //     const response = await axios.get(url, { responseType: "arraybuffer" });
   //     const base64 = Buffer.from(response.data, "binary").toString("base64");
-  //     console.log("base64", base64);
+
   //     return base64;
   //   } catch (error) {
   //     console.error("Error converting URL to base64:", error.message);
@@ -255,7 +255,7 @@ const { CoverNumber } = router.query;
   //             !(CoverNumber === "5" && elmId === "author-text") &&
   //             !(CoverNumber === "6" && elmId === "heading-text")
   //           ) {
-  //             console.log("Reached");
+
 
   //             currentTspan.setAttribute("x", "50%");
   //             currentTspan.setAttribute("dy", "1.2em");

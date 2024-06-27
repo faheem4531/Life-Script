@@ -60,9 +60,9 @@ const EditBookCover = () => {
   const onCrop = async () => {
     if (cropperRef.current?.cropper) {
       const croppedCanvas: any = cropperRef.current.cropper.getCroppedCanvas();
-      // console.log("cropperCna", croppedCanvas);
+
       const croppedImageBase64 = croppedCanvas.toDataURL();
-      // console.log("croppedImageBase64", croppedImageBase64);
+
 
       const coverImageElement = document.getElementById(
         "coverImage"
@@ -89,7 +89,7 @@ const EditBookCover = () => {
       // context?.drawImage(croppedCanvas, 0, 0, canvas.width, canvas.height);
 
       // const croppedImageBase64 = canvas.toDataURL();
-      // console.log("croppedImageBase64", croppedImageBase64);
+
 
       // const coverImageElement = document.getElementById(
       //   "coverImage"
@@ -193,7 +193,7 @@ const EditBookCover = () => {
               !(CoverNumber === "4" && elmId === "author-text")
               // !(CoverNumber === "6" && elmId === "heading-text")
             ) {
-              console.log("Reached");
+
 
               currentTspan.setAttribute("x", "50%");
               currentTspan.setAttribute("dy", "1.2em");
@@ -217,7 +217,7 @@ const EditBookCover = () => {
               !(CoverNumber === "4" && elmId === "author-text")
               // !(CoverNumber === "6" && elmId === "heading-text")
             ) {
-              console.log("Reached if else");
+
 
               currentTspan.setAttribute("x", "50%");
               currentTspan.setAttribute("dy", "1.2em");
@@ -565,7 +565,7 @@ const EditBookCover = () => {
   });
 
   const uploadImageonCloud = (formData) => {
-    console.log("formData", formData);
+
     dispatch(uploadImage(formData))
       .unwrap()
       .then((res) => {
@@ -587,7 +587,7 @@ const EditBookCover = () => {
       return; // Do nothing if coverData is an empty array
     }
     if (typeof coverData === "object" && coverData !== null) {
-      console.log("into if of useEffect");
+
       setByline(coverData?.byLine);
       setTitle(coverData?.title);
       setSubtitle(coverData?.subTitle);
@@ -628,7 +628,7 @@ const EditBookCover = () => {
       const doc: any = new jsPDF();
       const svgData = new XMLSerializer().serializeToString(svgElement);
 
-      console.log("svgData", svgData);
+
 
       if (doc.addSVG) {
         await doc.addSVG(svgData, 0, 0); // Adjust coordinates as needed
@@ -642,7 +642,7 @@ const EditBookCover = () => {
       const canvas = document.createElement("canvas");
       const context = canvas.getContext("2d");
 
-      console.log("context", context);
+
 
       // const img = new Image(0, 0);
       const img = document.createElement("img");
@@ -655,7 +655,7 @@ const EditBookCover = () => {
       //     context.drawImage(img, 0, 0);
 
       //     const imgData = canvas.toDataURL("image/png");
-      //     console.log("ImageOn Load???????????", imgData);
+
       //     uploadImageonCloudNew(imgData);
       //     doc.addImage(imgData, "PNG", 0, 0);
 
@@ -667,7 +667,7 @@ const EditBookCover = () => {
 
       // // Wait for the image loading operation to complete before moving on
       // await imgLoadPromise;
-      // console.log("imgLoadPromise", imgLoadPromise);
+
 
       // return true;
 
@@ -748,7 +748,7 @@ const EditBookCover = () => {
         const formData = new FormData();
         formData.append("image", imgBlob);
         const res = await dispatch(uploadImage(formData)).unwrap();
-        console.log("into local storage", res);
+
         localStorage.removeItem("image1");
         localStorage.setItem("image1", res);
         if (res) {
@@ -771,12 +771,12 @@ const EditBookCover = () => {
   }
 
   const getCoverImage = (coverNumber: number) => {
-    console.log("cOverNumber", coverNumber);
+
     const imgArray = [];
     for (let i = 1; i <= coverNumber; i++) {
       imgArray.push(Img[`Cover${i}`]);
     }
-    console.log("imgeArray", imgArray);
+
     return imgArray[coverNumber - 1];
   };
 

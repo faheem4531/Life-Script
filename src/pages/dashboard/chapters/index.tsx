@@ -84,7 +84,7 @@ const Dashboard = () => {
     chapterData: any;
     percentValue: any;
   }) => {
-    console.log("data.option", data.option);
+
     if (data?.option === "Delete") {
       setSelectedChapterId(data?.chapterData?._id);
       setDeleteChapter(true);
@@ -117,7 +117,7 @@ const Dashboard = () => {
     }
   }, [chapters]);
 
-  console.log("allChapters", allChapters);
+
 
   useEffect(() => {
     if (typeof window != "undefined") {
@@ -125,7 +125,7 @@ const Dashboard = () => {
       const token = localStorage.getItem("token");
       if (token) {
         const decodedToken = jwt.decode(token);
-        console.log("decodedToke", decodedToken);
+
         const accessRole = decodedToken?.accessRole;
 
         if (accessRole !== "FreePlan") {
