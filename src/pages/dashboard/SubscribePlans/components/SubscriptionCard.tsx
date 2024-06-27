@@ -59,19 +59,19 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     {
       standardStatus: true,
       PrimuimStatus: true,
-      basicStatus: false,
+      basicStatus: true,
       dis: t("landingPage.pricingSection.pricingCardMapArray.dis4"),
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
-      basicStatus: false,
+      basicStatus: true,
       dis: t("landingPage.pricingSection.pricingCardMapArray.dis5"),
     },
     {
       standardStatus: true,
       PrimuimStatus: true,
-      basicStatus: false,
+      basicStatus: true,
       dis: t("landingPage.pricingSection.pricingCardMapArray.dis6"),
     },
     {
@@ -92,6 +92,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
       basicStatus: false,
       dis: t("landingPage.pricingSection.pricingCardMapArray.dis9"),
     },
+   
   ];
   return (
     <Box

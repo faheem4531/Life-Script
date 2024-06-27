@@ -16,6 +16,7 @@ import AddQuestion from "@/pages/events/addQuestion";
 import RichTextViewer from "@/pages/events/response";
 import { toast } from "react-toastify";
 import socket from "@/services/socketManager";
+
 import {
   createQuestion,
   getChapterbyId,
@@ -350,12 +351,14 @@ const chapterName = () => {
 
   return (
     <>
-      <Layout>
+      <Layout marginLeft={"200px"}>
         <Box>
           <Box
             sx={{
               display: { sm: "block", xs: "" },
               m: { sm: "0", xs: "20px 20px 0" },
+              marginRight:"20px"
+           
             }}
           >
             <AddChapterName
@@ -364,6 +367,7 @@ const chapterName = () => {
               chapter={chapterName}
               chapterId={chapterId}
               StarterChapter={StarterChapter}
+              backButton={() => router.push('/dashboard/chapters')}
             />
             <LinearProgressBar percentage={percentage} />
           </Box>

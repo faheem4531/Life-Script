@@ -29,7 +29,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
   let zoomValue = scale;
 
-  console.log(zoomValue, 'zoomValue')
+
   const changeScale = useCallback(
     debounce((offset: number) => {
 

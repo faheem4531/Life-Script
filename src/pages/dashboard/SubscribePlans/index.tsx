@@ -49,7 +49,7 @@ const SubscribePlan = () => {
         });
         setPlanPrices({
           ...planPrices,
-          premium: planPrices?.premium / 2,
+          premium: planPrices?.premium ,
         });
       } else if (accessRole === "BasicPlan") {
         setDisableButton({
@@ -58,8 +58,8 @@ const SubscribePlan = () => {
         });
         setPlanPrices({
           ...planPrices,
-          standard: planPrices?.standard / 2,
-          premium: planPrices?.premium / 2,
+          standard: planPrices?.standard,
+          premium: planPrices?.premium
         });
       } else {
         //do nothing

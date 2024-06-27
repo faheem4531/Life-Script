@@ -7,7 +7,11 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import styles from "./Layout.module.css";
 
-const Layout = ({ children }: { children?: any }) => {
+interface LayoutProps {
+  children?: React.ReactNode;
+  marginLeft?: string;
+}
+const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
   const [handleSideBar, setHandleSideBar] = useState(false);
 
   const router = useRouter();
@@ -87,7 +91,7 @@ const Layout = ({ children }: { children?: any }) => {
             height: "100%",
             minHeight: "calc(100vh - 70px)",
             padding: { sm: "10px 33px 30px" },
-            marginLeft: { lg: "220px", md: "0px", sm: 0, xs: 0 },
+            marginLeft: { lg: marginLeft?marginLeft:"220px", md: "0px", sm: 0, xs: 0 },
           }}
           onClick={() => setHandleSideBar(false)}
         >

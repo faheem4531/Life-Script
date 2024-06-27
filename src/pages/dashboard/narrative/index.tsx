@@ -256,7 +256,7 @@ const NarrativeResponse = () => {
                       <Typography
                         sx={{
                           textAlign: "center",
-                          fontSize: { sm: "20px", xs: "14px" },
+                          fontSize: { lg:"22px",sm: "20px", xs: "14px" },
                           fontWeight: 600,
                           color: "#30422E",
                           marginBottom: { sm: "35px", xs: "20px" },

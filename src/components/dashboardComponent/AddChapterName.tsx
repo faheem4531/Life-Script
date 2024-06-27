@@ -23,12 +23,14 @@ const AddChapterName = ({
   subTitle,
   StarterChapter,
   editChapter,
+  backButton
 }: {
   chapter: string;
   chapterId: any;
   title?: string;
   subTitle?: string;
   StarterChapter?: boolean;
+  backButton?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   editChapter: (value: boolean) => void;
 }) => {
   const [chapterName, setChapterName] = useState("");
@@ -83,7 +85,8 @@ const AddChapterName = ({
             border: "1px solid #E1693B",
             color: "#E1693B",
           }}
-          onClick={() => router.back()}
+          onClick={backButton ? backButton : () => router.back()}
+
         >
           <Image src={Back} alt="back icon" />
         </Box>
