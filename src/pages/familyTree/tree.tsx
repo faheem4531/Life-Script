@@ -358,7 +358,7 @@ const FamilyTree = ({ familyTreeData }) => {
                 uploadImageonCloud(formData);
                 familyTreeGroup.remove();
                 familyTreeGroupFamily.remove();
-                window.location.href = "/familyTree"
+                // window.location.href = "/familyTree"
               });
           });
           // });
