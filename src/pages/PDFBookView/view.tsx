@@ -29,24 +29,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
   let zoomValue = scale;
 
-  console.log(scale, 'scale');
-
-  // const scaleRef = useRef(scale);
-
-  // const changeScale = (offset: number) => {
-  //   const newScale = Math.max(0.5, Math.min(scaleRef.current + offset, 2.0));
-  //   scaleRef.current = newScale;
-  //   setScale(newScale);
-  // };
-  // const debounce = (func, wait) => {
-  //   let timeout;
-  //   return (...args) => {
-  //     clearTimeout(timeout);
-  //     timeout = setTimeout(() => func(...args), wait);
-  //   };
-  // };
-
-
   console.log(zoomValue, 'zoomValue')
   const changeScale = useCallback(
     debounce((offset: number) => {
@@ -58,16 +40,9 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   );
 
 
-
-  // const changeScale = useCallback(debounce((offset: number) => {
-  //   setScale((prevScale) => Math.min(Math.max(prevScale + offset, 0.5), 2.0));
-  // }, 200), []);
-
-
-
   useEffect(() => {
     if (numPages === 0) {
-      setPageNumber(1); // Reset page number when a new document is loaded
+      setPageNumber(1);
     }
   }, [numPages]);
 
@@ -171,7 +146,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             </Button>
           </Box>
 
-          <Box sx={{ overflow: 'scroll', border: '1px solid #ddd', height: '550px', width: "390px", display: "flex", alignItems: "center" }}>
+          <Box sx={{ overflow: 'scroll', border: '1px solid #ddd', height: '550px', width: "auto", maxWidth: "400px", display: "flex", alignItems: "center" }}>
             <Document
               file={pdfUrl}
               onLoadSuccess={onDocumentLoadSuccess}

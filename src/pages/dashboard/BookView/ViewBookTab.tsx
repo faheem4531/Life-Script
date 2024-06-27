@@ -20,7 +20,6 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
           p: "30px 28px",
           bgcolor: "#F3ECDA",
           borderRadius: "4",
-          // height: "1120px",
           height: "750px",
           mt: "50px"
         }}
@@ -50,7 +49,7 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
             }}
           />
         </Box>
-     
+
         <Box>
           <GlobelBtn
             bgColor="#E1683B"
@@ -59,12 +58,12 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
             btnText={t("reviewBook.nextBtn")}
             onClick={() => {
               setOpen(true);
-             
+
             }}
           />
         </Box>
       </Box>
-      <ShippingModal open={open} setOpen={setOpen}  setSelectedTab= {setSelectedTab}/>
+      <ShippingModal open={open} setOpen={setOpen} setSelectedTab={setSelectedTab} />
     </Box>
   );
 };
