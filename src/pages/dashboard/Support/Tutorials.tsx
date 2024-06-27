@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from "@/components/Layout/Layout";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
 import { Box, CircularProgress, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 const videoData = [
   {
@@ -53,6 +54,7 @@ const videoData = [
 
 const Tutorials = () => {
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <Box>
@@ -64,7 +66,7 @@ const Tutorials = () => {
         >
           <AddChapterName editChapter={() => { }}
             chapterId
-            chapter="Tutorials & Tips"
+            chapter={t("tutorialAndTips.title")}
             title="noBack"
           />
 

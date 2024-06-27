@@ -6,11 +6,13 @@ import FamilyTree from "./tree";
 import Layout from '@/components/Layout/Layout';
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import FamilyTreeImage from "@/_assets/svg/family-tree-header.svg";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const dispatch: any = useDispatch();
   const treeData = useSelector(selectTreeData);
   const [familyTreeData, setFamilyTreeData] = useState({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getTreeData())
@@ -88,7 +90,7 @@ const Home = () => {
   return (
     <Layout>
       <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-        <SelectBookCoverHeader img={FamilyTreeImage} discription="Family Tree" />
+        <SelectBookCoverHeader img={FamilyTreeImage} discription={t("familyTree.title")} />
       </Box>
       <Box
         sx={{

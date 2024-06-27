@@ -38,7 +38,7 @@ const Introduction = () => {
         typed.destroy();
       };
     }
-  }, []);
+  }, [t]);
 
   return (
     <Box sx={{ padding: { md: "90px 0 0 75px", sm: "100px 0 0 50px", xs: "40px 16px 40px" }, position: "relative" }}>

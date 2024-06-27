@@ -2,9 +2,11 @@ import Counter from "@/components/dashboardComponent/QuantityInput";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import HalfBook from "@/_assets/png/halfBook.png";
+import { useTranslation } from "react-i18next";
 
 const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount = 39 }) => {
   setPayment(count * 39 - amount)
+  const {t}= useTranslation();
   return (
     <Box
       sx={{
@@ -23,7 +25,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
           mb: "30px", color: "#30422E"
         }}
       >
-        Order Summary
+      {t("shippingPage.orderSummary")}
       </Typography>
       <Box
         sx={{
@@ -65,7 +67,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
             pb: "8px",
           }}
         >
-          <Typography sx={{ color: "#30422E" }}>Quantity</Typography>
+          <Typography sx={{ color: "#30422E" }}> {t("shippingPage.quantity")}</Typography>
           <Typography sx={{ color: "#30422E" }}>{count}</Typography>
         </Box>
         <Box
@@ -80,7 +82,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
             mt: "5px",
           }}
         >
-          <Typography sx={{ color: "#30422E" }}>Price</Typography>
+          <Typography sx={{ color: "#30422E" }}> {t("shippingPage.price")}</Typography>
           <Typography sx={{ color: "#30422E" }}>{count * 39 - amount} $</Typography>
         </Box>
         {!QuantityCheck && (
@@ -98,7 +100,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
               pt: "5px",
             }}
           >
-            <Typography sx={{ color: "#30422E" }}>Total:</Typography>
+            <Typography sx={{ color: "#30422E" }}> {t("shippingPage.total")}</Typography>
             <Typography sx={{ color: "#30422E" }}>{count * 39 - 39} $</Typography>
           </Box>
         )}
@@ -116,7 +118,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
             <Typography
               sx={{ fontSize: { md: "18.752px", sm: "16px", xs: "14px" }, color: "#30422E" }}
             >
-              Order Additional Books
+              {t("shippingPage.orderAdditionalBook")}
             </Typography>
           </Box>
           <Box
