@@ -141,11 +141,11 @@ const EditBookCover = () => {
       // Clear existing content
       headingText.innerHTML = "";
 
-        // Set default y-axis offset
-    let yAxisOffset = "80%";
-    if (CoverNumber === "5" && elmId === "author-text") {
-      yAxisOffset = "84%"; // Add 3% to the y-axis offset
-    }
+      // Set default y-axis offset
+      let yAxisOffset = "80%";
+      if (CoverNumber === "5" && elmId === "author-text") {
+        yAxisOffset = "84%"; // Add 3% to the y-axis offset
+      }
 
       if (title.trim() === "") {
         // If the title is empty, show predefined text spans
@@ -229,51 +229,51 @@ const EditBookCover = () => {
           currentTspan?.appendChild(document.createTextNode(`${word} `));
         });
 
-         // Adjust y attribute for author name when CoverNumber is 5
-      if (CoverNumber === "5" && elmId === "author-text") {
-        headingText.setAttribute("y", yAxisOffset);
-      }
+        // Adjust y attribute for author name when CoverNumber is 5
+        if (CoverNumber === "5" && elmId === "author-text") {
+          headingText.setAttribute("y", yAxisOffset);
+        }
       }
     }
   }
 
   function appendTitleToSVG0(title, elmId) {
     const headingText = document.getElementById(elmId);
-  
+
     if (headingText) {
       // Clear existing content
       headingText.innerHTML = "";
-  
+
       // Set default y-axis offset
       let yAxisOffsetOne = "10%";
       if (CoverNumber === "1" && elmId === "heading-text") {
-        yAxisOffsetOne = "13%"; 
+        yAxisOffsetOne = "13%";
       }
-       // Set default y-axis offset
-       let yAxisOffsetOneauth = "24%";
-       if (CoverNumber === "1" && elmId === "author-text") {
-        yAxisOffsetOneauth = "27%"; 
-       }
+      // Set default y-axis offset
+      let yAxisOffsetOneauth = "24%";
+      if (CoverNumber === "1" && elmId === "author-text") {
+        yAxisOffsetOneauth = "27%";
+      }
       // Set default y-axis offset
       let yAxisOffsetFour = "62%";
       if (CoverNumber === "4" && elmId === "heading-text") {
-        yAxisOffsetFour = "67%"; 
+        yAxisOffsetFour = "67%";
       }
       // Set default y-axis offset
       let yAxisOffsetThree = "62%";
       if (CoverNumber === "3" && elmId === "heading-text") {
-        yAxisOffsetThree = "72%"; 
+        yAxisOffsetThree = "72%";
       }
       // Set default y-axis offset
       let yAxisOffset = "80%";
       if (CoverNumber === "5" && elmId === "author-text") {
         yAxisOffset = "84%"; // Add 4% to the y-axis offset
       }
-  
+
       if (title.trim() === "") {
         // If the title is empty, show predefined text spans
         const defaultTexts = initialStates[elmId];
-  
+
         defaultTexts && defaultTexts.forEach((defaultText) => {
           const defaultTspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
           if (
@@ -292,12 +292,12 @@ const EditBookCover = () => {
       } else {
         let lines = [title];
         // Check for specific covers to split the title into two lines
-        if ([1, 3, 4, 5,6].includes(Number(CoverNumber)) && elmId === "heading-text") {
+        if ([1, 3, 4, 5, 6].includes(Number(CoverNumber)) && elmId === "heading-text") {
           const words = title.split(" ");
           const mid = Math.ceil(words.length / 2);
           lines = [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
         }
-  
+
         lines.forEach((line, index) => {
           const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
           if (
@@ -313,7 +313,7 @@ const EditBookCover = () => {
           tspan.appendChild(document.createTextNode(line));
           headingText.appendChild(tspan);
         });
-  
+
         // Adjust y attribute for author name when CoverNumber is 1
         if (CoverNumber === "1" && elmId === "author-text") {
           headingText.setAttribute("y", yAxisOffsetOneauth);
@@ -340,50 +340,50 @@ const EditBookCover = () => {
 
   function appendTitleToSVG(title: string, elmId: string) {
     const headingText = document.getElementById(elmId);
-  
+
     if (headingText) {
       // Clear existing content
       headingText.innerHTML = "";
-  
+
       // Set default y-axis offsets
       let yAxisOffsetOne = "10%";
       if (CoverNumber === "1" && elmId === "heading-text") {
-        yAxisOffsetOne = "13%"; 
+        yAxisOffsetOne = "13%";
       }
       let yAxisOffsetOneauth = "24%";
       if (CoverNumber === "1" && elmId === "author-text") {
-        yAxisOffsetOneauth = "27%"; 
+        yAxisOffsetOneauth = "27%";
       }
       let yAxisOffsetFour = "62%";
       if (CoverNumber === "4" && elmId === "heading-text") {
-        yAxisOffsetFour = "67%"; 
+        yAxisOffsetFour = "67%";
       }
       let yAxisOffsetThree = "62%";
       if (CoverNumber === "3" && elmId === "heading-text") {
-        yAxisOffsetThree = "72%"; 
+        yAxisOffsetThree = "72%";
       }
       let yAxisOffset = "80%";
       if (CoverNumber === "5" && elmId === "author-text") {
-        yAxisOffset = "84%"; 
+        yAxisOffset = "84%";
       }
       let yAxisOffsetTwo = "40%"; // Default for CoverNumber 2
       if (CoverNumber === "2" && elmId === "heading-text") {
-        yAxisOffsetTwo = "44%"; 
+        yAxisOffsetTwo = "44%";
       }
       let yAxisOffsetTwoAuth = "80%"; // Default for CoverNumber 2 author
       if (CoverNumber === "2" && elmId === "author-text") {
-        yAxisOffsetTwoAuth = "95%"; 
+        yAxisOffsetTwoAuth = "95%";
       }
 
       if (CoverNumber === "6" && elmId === "heading-text") {
         // Set font size for heading-text to 180px for CoverNumber 6
         headingText.setAttribute("font-size", "180px");
       }
-  
+
       if (title.trim() === "") {
         // If the title is empty, show predefined text spans
         const defaultTexts = initialStates[elmId];
-  
+
         defaultTexts && defaultTexts.forEach((defaultText) => {
           const defaultTspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
           if (
@@ -415,7 +415,7 @@ const EditBookCover = () => {
             words.slice(2 * third).join(" ")
           ];
         }
-  
+
         lines.forEach((line, index) => {
           const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
           if (
@@ -431,7 +431,7 @@ const EditBookCover = () => {
           tspan.appendChild(document.createTextNode(line));
           headingText.appendChild(tspan);
         });
-  
+
         // Adjust y attribute for author name when CoverNumber is 1
         if (CoverNumber === "1" && elmId === "author-text") {
           headingText.setAttribute("y", yAxisOffsetOneauth);
@@ -464,9 +464,9 @@ const EditBookCover = () => {
       }
     }
   }
-  
-  
-  
+
+
+
 
   // const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   if (event.target.value.length <= 30) {
@@ -477,11 +477,11 @@ const EditBookCover = () => {
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let maxLength = 30; // Default max length
-  
+
     if (CoverNumber === "5") {
       maxLength = 18; // Adjust max length for CoverNumber 5
     }
-  
+
     if (event.target.value.length <= maxLength) {
       appendTitleToSVG(event.target.value, "heading-text");
       setTitle(event.target.value);
@@ -787,6 +787,12 @@ const EditBookCover = () => {
     else return 1772 / 2480;
   };
 
+  const stylesCover = {
+    color: 'blue',
+    backgroundColor: 'lightgray',
+    padding: '10px',
+  };
+
   return (
     <div>
       <></>
@@ -919,6 +925,7 @@ const EditBookCover = () => {
                     }}
                   >
 
+
                     {droppedImage && CoverNumber === "1" && (
                       <Cropper
                         ref={cropperRef}
@@ -1037,29 +1044,29 @@ const EditBookCover = () => {
                       />
                     )}
                     {droppedImage && CoverNumber === "6" && (
-                    <Cropper
-                      ref={cropperRef}
-                      src={droppedImage}
-                      style={{ height: 300, width: "100%" }}
-                      // aspectRatio={coverAspectRatio()}
-                      // initialAspectRatio={16 / 9}
-                      // initialAspectRatio={5/2}
-                      // aspectRatio={1/3}
-                      aspectRatio={1/2}
-                      background={false}
-                      zoomTo={0}
-                      viewMode={1}
-                      // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
-                      // minCropBoxHeight={10}
-                      guides={false}
-                      dragMode="move"
-                      onInitialized={(instance) => setCropper(instance)}
-                      crop={onCrop}
-                      autoCropArea={1}
-                      responsive={true}
-                      cropBoxResizable={false} 
-                    />
-                  )}
+                      <Cropper
+                        ref={cropperRef}
+                        src={droppedImage}
+                        style={{ height: 300, width: "100%" }}
+                        // aspectRatio={coverAspectRatio()}
+                        // initialAspectRatio={16 / 9}
+                        // initialAspectRatio={5/2}
+                        // aspectRatio={1/3}
+                        aspectRatio={1 / 2}
+                        background={false}
+                        zoomTo={0}
+                        viewMode={1}
+                        // minCropBoxWidth={10} // Set minCropBoxWidth to match the custom width
+                        // minCropBoxHeight={10}
+                        guides={false}
+                        dragMode="move"
+                        onInitialized={(instance) => setCropper(instance)}
+                        crop={onCrop}
+                        autoCropArea={1}
+                        responsive={true}
+                        cropBoxResizable={false}
+                      />
+                    )}
                     <div {...getRootProps()} style={{ cursor: "pointer" }}>
                       <input {...getInputProps()} />
 
@@ -1070,7 +1077,7 @@ const EditBookCover = () => {
                           p: "10px 0px",
                         }}
                       >
-                        <Box>
+                        <Box >
                           <Image src={croppedImage || FileIcon} alt="" />
                         </Box>
                         <Typography
@@ -1110,9 +1117,9 @@ const EditBookCover = () => {
             </Box>
 
             <Box
-              // sx={{
-              //   flex: "1",
-              // }}
+            // sx={{
+            //   flex: "1",
+            // }}
             >
               <Box
                 sx={{
@@ -1123,15 +1130,54 @@ const EditBookCover = () => {
                   // height: "100%",
                   padding: "20px",
                   overflowX: "auto",
-                  display:"flex",
-                  justifyContent:"center",
-                  alignItems:"center"
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
                 }}
               >
-                {CoverNumber &&
-                  getCoverImage(
-                    parseInt(typeof CoverNumber === "string" && CoverNumber)
-                  )({ id: "mysvg", sx: { fontSize: "450px" } })}
+
+                <Box sx={{ position: "relative", }}>
+                  {CoverNumber &&
+                    getCoverImage(
+                      parseInt(typeof CoverNumber === "string" && CoverNumber)
+                    )({ id: "mysvg", sx: { fontSize: "450px" } })}
+
+                  {CoverNumber === "1" &&
+                    <Box sx={{
+                      position: "absolute",
+                      bottom: "18px",
+                      right: "75px",
+                      width: "310.8px",
+                      height: "435px",
+                      zIndex: 2,
+                      borderRight: "2px dotted grey",
+                      borderBottom: "2px dotted grey"
+                    }}></Box>}
+                  {CoverNumber === "2" &&
+                    <Box sx={{
+                      position: "absolute",
+                      right: "65px",
+                      top: "11px",
+                      width: "320px",
+                      height: "429px",
+                      zIndex: 2,
+                      borderTop: "2px dotted grey",
+                      borderBottom: "2px dotted grey"
+                    }}></Box>}
+                  {CoverNumber === "3" &&
+                    <Box sx={{
+                      position: "absolute",
+                      right: "75px",
+                      top: "11px",
+                      width: "310px",
+                      height: "429px",
+                      zIndex: 2,
+                      borderRight: "2px dotted grey",
+                      borderTop: "2px dotted grey",
+                      borderBottom: "2px dotted grey"
+                    }}></Box>}
+                </Box>
+
               </Box>
 
               <Box
@@ -1258,7 +1304,7 @@ const EditBookCover = () => {
           <button onClick={handleConvertToPNG}>Convert to PNG</button>
         </div> */}
       </Layout>
-    </div>
+    </div >
   );
 };
 
