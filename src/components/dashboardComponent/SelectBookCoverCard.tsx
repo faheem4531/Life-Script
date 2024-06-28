@@ -338,7 +338,7 @@ const { CoverNumber } = router.query;
             sx={{
               width: { xs: "260px", md: "240px", lg: "287.611px" },
               height: "414.319px",
-              bgcolor: CoverNumber === "2" || landScape === "2" ? "#FAFAFA" : (ColourPalette.length === 0 ? "#197065" : ColourPalette),
+              bgcolor: CoverNumber === "2" || landScape === "2" ? "#fafafa" : (ColourPalette.length === 0 ? "#197065" : ColourPalette),
               color: "white",
               textAlign: "center",
               p: "10px",
@@ -351,7 +351,7 @@ const { CoverNumber } = router.query;
           <Box
            sx={{
             bgcolor: CoverNumber === "2" || landScape === "2"
-              ? "#FAFAFA"
+              ? "#fafafa"
               : ColourPalette && ColourPalette.length === 0
               ? "#197065"
               : ColourPalette,
