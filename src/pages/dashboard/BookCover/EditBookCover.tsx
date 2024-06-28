@@ -944,12 +944,6 @@ const EditBookCover = () => {
     else return 1772 / 2480;
   };
 
-  const stylesCover = {
-    color: 'blue',
-    backgroundColor: 'lightgray',
-    padding: '10px',
-  };
-
   return (
     <div>
       <></>
@@ -1081,7 +1075,6 @@ const EditBookCover = () => {
                       borderRadius: "4px",
                     }}
                   >
-
 
                     {droppedImage && CoverNumber === "1" && (
                       <Cropper
@@ -1234,7 +1227,7 @@ const EditBookCover = () => {
                           p: "10px 0px",
                         }}
                       >
-                        <Box >
+                        <Box>
                           <Image src={croppedImage || FileIcon} alt="" />
                         </Box>
                         <Typography
@@ -1461,7 +1454,7 @@ const EditBookCover = () => {
           <button onClick={handleConvertToPNG}>Convert to PNG</button>
         </div> */}
       </Layout>
-    </div >
+    </div>
   );
 };
 
