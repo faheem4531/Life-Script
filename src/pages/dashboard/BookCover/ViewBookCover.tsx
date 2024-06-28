@@ -256,7 +256,8 @@ const ViewBookCover = () => {
     pdf.save("my_document2.pdf");
   };
 
-  const generatePDFOne = async (
+  // without Set Logo and All are set  
+  const generatePDFOneP1 = async (
     title,
     subtitle,
     name,
@@ -410,7 +411,7 @@ const ViewBookCover = () => {
         imageWidth,
         imageHeight
       );
-    }else if(CoverNumber === "2"){
+    } else if (CoverNumber === "2") {
       const imageWidth = 150; // Width of the image in mm
       const imageHeight = 242;
       const imageY = 14;
@@ -424,7 +425,7 @@ const ViewBookCover = () => {
         imageHeight
       );
     }
-    else if(CoverNumber === "1"){
+    else if (CoverNumber === "1") {
       const imageWidth = 150; // Width of the image in mm
       const imageHeight = 242;
       const imageY = 14;
@@ -437,7 +438,7 @@ const ViewBookCover = () => {
         imageWidth,
         imageHeight
       );
-    } 
+    }
     else {
       pdf.addImage(
         newImageLink?.payload,
@@ -453,7 +454,219 @@ const ViewBookCover = () => {
     pdf.save("my_document2.pdf");
   };
 
+  //Set Image Logo 
+  const generatePDFOne = async (
+    title,
+    subtitle,
+    name,
+    imgUrl,
+    color,
+    finalCover,
+    spine = 10.2
+  ) => {
+    const logo = CoverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
+      : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
+    const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
+    const leftContentWidth = 144; // Width of the left content area
+    const rightContentWidth = 144; // Width of the right content area
+    const gutterWidth = 8; // Gutter width on both sides
+    const spineWidth = spine;
+    const offset = 20; // 20 mm on each side for the offset
+    const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
+    const pdf = new jsPDF({
+      unit: "mm", // Set the unit to millimeters
+      format: [pdfWidth, pdfHeight], // Updated format with offset
+      orientation: "landscape",
+    });
 
+    pdf.addFileToVFS("WorkSans-normal.ttf", font);
+    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
+
+    const text2 = subtitle?.toUpperCase();
+    const text1 = title?.toUpperCase();
+    const writter = name?.toUpperCase();
+    const bgcolor = color?.toString();
+    const imageUrl = imgUrl;
+
+    // Full background color including the offset area
+    pdf.setFillColor(bgcolor);
+    pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
+
+    if (CoverNumber === "2") {
+      // Full background color including the offset area
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
+
+      // Section 1: Left content area
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
+
+      // Section 2: Left gutter
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+
+      // Section 3: Spine and inner spine
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); // inner spine
+      pdf.setFillColor("#FAFAFA");
+      const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
+      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
+
+      // Section 4: Right gutter
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+
+      // Section 5: Right content area
+      pdf.setFillColor("#FAFAFA");
+      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
+
+
+    } else {
+      // Section 1: Left content area
+      pdf.setFillColor(bgcolor);
+      pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
+
+      // Section 2: Left gutter
+      pdf.setFillColor(bgcolor);
+      pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+
+      // Section 3: Spine and inner spine
+      pdf.setFillColor(bgcolor);
+      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
+      pdf.setFillColor(bgcolor);
+      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); // inner spine
+      pdf.setFillColor(bgcolor);
+      const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
+      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
+
+      // Section 4: Right gutter
+      pdf.setFillColor(bgcolor);
+      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+      // Section 5: Right content area
+      pdf.setFillColor(bgcolor);
+      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
+
+    }
+
+    let y = 25; // Initial y-coordinate with offset
+    const fontSize = 10; // Font size
+    const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
+
+    for (let i = 0; i < text2.length; i++) {
+      const char = text2[i];
+      pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
+      pdf.setTextColor(0, 0, 0); // Default text color
+
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255); // White text for cover number 5
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      pdf.text(char, textCenter, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+
+    pdf.setFontSize(fontSize);
+    pdf.setFont("WorkSans");
+    if (coverData?.coverNumber === "5") {
+      pdf.setTextColor(255, 255, 255); // White text for cover number 5
+    } else {
+      pdf.setTextColor(0, 0, 0);
+    } // Separator color
+    pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
+
+    y = y + 6;
+
+    for (let i = 0; i < writter.length; i++) {
+      const char = writter[i];
+      pdf.setFontSize(fontSize);
+      pdf.setFont("WorkSans");
+      if (coverData?.coverNumber === "5") {
+        pdf.setTextColor(255, 255, 255); // White text for cover number 5
+      } else {
+        pdf.setTextColor(0, 0, 0);
+      }
+      pdf.text(char, textCenter, y, { angle: 270 });
+      y = y + 3; // Move to the next line for each character
+    }
+
+    const originalLogoWidth = 100; // replace with the original width of the logo
+    const originalLogoHeight = 300; // replace with the original height of the logo
+    const logoSize = spineWidth < 22 ? spineWidth - 3 : 20;
+
+    // Calculate the new height to maintain aspect ratio
+    const logoAspectRatio = originalLogoWidth / originalLogoHeight;
+    const newLogoHeight = logoSize / logoAspectRatio;
+
+    // Position the logo slightly above the bottom of the spine
+    const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoSize) / 2;
+    const verticalOffset = 10; // Adjust this value to move the logo up or down
+    const tailcenterY = pdfHeight - newLogoHeight - offset - verticalOffset; // slightly above the bottom
+
+    pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoSize, newLogoHeight);
+
+
+    const newData = { imageUrl: finalCover };
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+
+    if (CoverNumber === "3") {
+      const imageWidth = 150; // Width of the image in mm
+      const imageHeight = 240;
+      const imageY = 14;
+
+      pdf.addImage(
+        newImageLink?.payload,
+        "png",
+        offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
+        imageY,
+        imageWidth,
+        imageHeight
+      );
+    } else if (CoverNumber === "2") {
+      const imageWidth = 150; // Width of the image in mm
+      const imageHeight = 242;
+      const imageY = 14;
+
+      pdf.addImage(
+        newImageLink?.payload,
+        "png",
+        offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
+        imageY,
+        imageWidth,
+        imageHeight
+      );
+    }
+    else if (CoverNumber === "1") {
+      const imageWidth = 150; // Width of the image in mm
+      const imageHeight = 242;
+      const imageY = 14;
+
+      pdf.addImage(
+        newImageLink?.payload,
+        "png",
+        offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
+        imageY,
+        imageWidth,
+        imageHeight
+      );
+    }
+    else {
+      pdf.addImage(
+        newImageLink?.payload,
+        "png",
+        offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
+        offset,
+        rightContentWidth,
+        pdfHeight - 2 * offset
+      );
+    }
+
+
+    pdf.save("my_document2.pdf");
+  };
 
   const generatePDFTwo = async (
     title,
