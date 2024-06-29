@@ -401,7 +401,7 @@ const { CoverNumber } = router.query;
                 /> */}
                 {/* <Image src={"https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"} alt="" width={25} height={60}
                 /> */}
-                {landScape === "5" ? <WhiteLogo
+                {landScape === "5" || CoverNumber === "5"  ? <WhiteLogo
                   src="https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"
                   alt="Logo"
                   width={25}

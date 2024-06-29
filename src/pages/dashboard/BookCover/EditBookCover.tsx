@@ -633,7 +633,7 @@ const EditBookCover = () => {
     let maxLength = 30; // Default max length
 
     if (CoverNumber === "5") {
-      maxLength = 18; // Adjust max length for CoverNumber 5
+      maxLength = 25; // Adjust max length for CoverNumber 5
     }
     if (CoverNumber === "2") {
       maxLength = 25; // Adjust max length for CoverNumber 5
