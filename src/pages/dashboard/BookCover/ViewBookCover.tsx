@@ -466,12 +466,35 @@ const ViewBookCover = () => {
   ) => {
     const logo = CoverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
       : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
-    const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
+    // const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
+    let pdfHeight: any;
+    if (
+      coverData?.coverNumber === "1" ||
+      coverData?.coverNumber === "3"
+    ) {
+      pdfHeight = 229 + 30;
+    }else if (coverData?.coverNumber === "2"){
+      pdfHeight = 229 + 30;
+    } else {
+      pdfHeight = 229 + 40;  // 20 mm on each side for the offset
+    }
     const leftContentWidth = 144; // Width of the left content area
     const rightContentWidth = 144; // Width of the right content area
     const gutterWidth = 8; // Gutter width on both sides
     const spineWidth = spine;
-    const offset = 20; // 20 mm on each side for the offset
+    // const offset = 20; // 20 mm on each side for the offset
+
+    let offset: any;
+    if (
+      coverData?.coverNumber === "1" ||
+      coverData?.coverNumber === "3"
+    ) {
+      offset = 12;
+    } else if (coverData?.coverNumber === "2" ){
+      offset = 8;
+    }else {
+      offset = 20; // 20 mm on each side for the offset
+    }
     const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
     const pdf = new jsPDF({
       unit: "mm", // Set the unit to millimeters
@@ -612,10 +635,10 @@ const ViewBookCover = () => {
     const newData = { imageUrl: finalCover };
     const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
-    if (CoverNumber === "3") {
+    if (coverData?.coverNumber === "3") {
       const imageWidth = 150; // Width of the image in mm
-      const imageHeight = 240;
-      const imageY = 14;
+      const imageHeight = 250;
+      const imageY = 4.5;
 
       pdf.addImage(
         newImageLink?.payload,
@@ -625,10 +648,10 @@ const ViewBookCover = () => {
         imageWidth,
         imageHeight
       );
-    } else if (CoverNumber === "2") {
-      const imageWidth = 150; // Width of the image in mm
-      const imageHeight = 242;
-      const imageY = 14;
+    } else if (coverData?.coverNumber === "2") {
+      const imageWidth = 140; // Width of the image in mm
+      const imageHeight = 250;
+      const imageY = 4.5;
 
       pdf.addImage(
         newImageLink?.payload,
@@ -639,7 +662,7 @@ const ViewBookCover = () => {
         imageHeight
       );
     }
-    else if (CoverNumber === "1") {
+    else if (coverData?.coverNumber === "1") {
       const imageWidth = 150; // Width of the image in mm
       const imageHeight = 242;
       const imageY = 14;
