@@ -1,17 +1,27 @@
 'use client';
-import Bg from '@/_assets/png/bg-hurt-lite.png';
-import Logo from '@/_assets/svg/logo-dashboard.svg';
-import { Box } from '@mui/material';
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+// External libraries and frameworks
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+// Next.js modules
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+
+// UI libraries or component libraries
+import { Box } from '@mui/material';
+
+// Custom components and modules
 import DeliveryForm from './_components/DeliveryForm';
 import GiftPurchaseForm from './_components/GiftPurchaseForm';
 import GiftTabBar from './_components/GiftTabBar';
 import GiftTabPanel from './_components/GiftTabPanel';
-import { useTranslation } from "react-i18next";
+
+// Assets
+import Bg from '@/_assets/png/bg-hurt-lite.png';
+import Logo from '@/_assets/svg/logo-dashboard.svg';
+
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
