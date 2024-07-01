@@ -26,18 +26,25 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [pageHeight, setPageHeight] = useState(550);
   const [goToPageNumber, setGoToPageNumber] = useState("1");
   const [scale, setScale] = useState(1.0);
+  const [paddTop, setPaddTop] = useState(0);
 
   let zoomValue = scale;
+  let topPading = paddTop;
 
 
   const changeScale = useCallback(
     debounce((offset: number) => {
-
       setScale(offset);
     }, 300),
     []
   );
 
+  const changePadding = useCallback(
+    debounce((offset: number) => {
+      setPaddTop(offset);
+    }, 300),
+    []
+  );
 
   useEffect(() => {
     if (numPages === 0) {
@@ -95,7 +102,9 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
           <ButtonIcons
             onClick={() => {
               zoomValue = zoomValue - 0.1;
+              topPading = topPading - 6;
               changeScale(zoomValue)
+              changePadding(topPading)
             }}
             disabled={scale <= 1}
             img={ZoomOut}
@@ -106,9 +115,11 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
         <ButtonIcons
           onClick={() => {
             zoomValue = zoomValue + 0.1;
+            topPading = topPading + 6;
             changeScale(zoomValue)
+            changePadding(topPading)
           }}
-          disabled={scale >= 2.0}
+          disabled={scale >= 1.4}
           img={ZoomIn}
           iconSize={35}
         />
@@ -145,7 +156,17 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             </Button>
           </Box>
 
-          <Box sx={{ overflow: 'scroll', border: '1px solid #ddd', height: '550px', width: "auto", maxWidth: "400px", display: "flex", alignItems: "center" }}>
+          <Box sx={{
+            overflow: 'scroll',
+            maxHeight: '600px',
+            height: "550px",
+            width: "400px",
+            maxWidth: "400px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: paddTop
+          }}>
             <Document
               file={pdfUrl}
               onLoadSuccess={onDocumentLoadSuccess}
