@@ -27,6 +27,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [goToPageNumber, setGoToPageNumber] = useState("1");
   const [scale, setScale] = useState(1.0);
   const [paddTop, setPaddTop] = useState(0);
+  const [scaleChange, setScaleChange] = useState(false);
 
   let zoomValue = scale;
   let topPading = paddTop;
@@ -34,8 +35,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
   const changeScale = useCallback(
     debounce((offset: number) => {
+      setScaleChange(true);
       setScale(offset);
+      setTimeout(() => {
+        setScaleChange(false)
+      }, 1000);
     }, 300),
+
     []
   );
 
@@ -106,7 +112,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
               changeScale(zoomValue)
               changePadding(topPading)
             }}
-            disabled={scale <= 1}
+            disabled={scale <= 1 || scaleChange}
             img={ZoomOut}
             iconSize={35}
           />
@@ -119,7 +125,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             changeScale(zoomValue)
             changePadding(topPading)
           }}
-          disabled={scale >= 1.4}
+          disabled={scale >= 1.7 || scaleChange}
           img={ZoomIn}
           iconSize={35}
         />
@@ -160,8 +166,8 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             overflow: 'scroll',
             maxHeight: '600px',
             height: "550px",
-            width: "400px",
-            maxWidth: "400px",
+            width: "500px",
+            maxWidth: "550px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
