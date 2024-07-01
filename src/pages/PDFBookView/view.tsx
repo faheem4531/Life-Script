@@ -1,3 +1,5 @@
+'use client'
+
 import NextIcon from "@/_assets/svg/next-iconX.svg";
 import PreviousIcon from "@/_assets/svg/previous-icon.svg";
 import { Box, Typography } from "@mui/material";
@@ -27,7 +29,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const [goToPageNumber, setGoToPageNumber] = useState("1");
   const [scale, setScale] = useState(1.0);
   const [paddTop, setPaddTop] = useState(0);
-  const [scaleChange, setScaleChange] = useState(false);
 
   let zoomValue = scale;
   let topPading = paddTop;
@@ -35,13 +36,8 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
   const changeScale = useCallback(
     debounce((offset: number) => {
-      setScaleChange(true);
       setScale(offset);
-      setTimeout(() => {
-        setScaleChange(false)
-      }, 1000);
     }, 300),
-
     []
   );
 
@@ -112,7 +108,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
               changeScale(zoomValue)
               changePadding(topPading)
             }}
-            disabled={scale <= 1 || scaleChange}
+            disabled={scale <= 1}
             img={ZoomOut}
             iconSize={35}
           />
@@ -125,7 +121,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             changeScale(zoomValue)
             changePadding(topPading)
           }}
-          disabled={scale >= 1.7 || scaleChange}
+          disabled={scale >= 1.7}
           img={ZoomIn}
           iconSize={35}
         />
