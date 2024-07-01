@@ -628,7 +628,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       coverData.subTitle,
       coverData.image,
       coverData.color,
-      spineSize
+      // spineSize
     );
 
     // Convert data URI to Blob
@@ -661,6 +661,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const spineSize = (pages * 0.5 / 10) + 1.2 + 4;
     return spineSize;
   }
+
+  console.log("spineSize--------------=====", spineSize)
 
   useEffect(() => {
     if (pages) {
