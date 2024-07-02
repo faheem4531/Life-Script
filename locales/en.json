@@ -1299,7 +1299,7 @@
     "quote110": "He who asks a question is a fool for five minutes; he who does not ask a question remains a fool forever. - Chinese proverb"
   },
   "shippingModal": {
-    "title": "Can you confirm that your book is ready to be Printed?",
+    "title": "Can you confirm that your book is ready to be printed?",
     "info": " We don't review your book, so what you see is what will be printed.",
     "info2": "Ensure your masterpiece is flawless by going through this checklist:",
     "info3": "Remember, this is YOUR book. Make sure it's exactly what you want it to be.",
@@ -1347,31 +1347,31 @@
     "orderAdditionalBook": "Order Additional Books",
     "quantity": "Quantity",
     "price": "Price",
-    "total":"Total",
+    "total": "Total",
     "name": "Name",
-    "email":"Email",
-    "city":"City",
-    "countryCode":"Country Code",
-    "phoneNumber":"Phone Number",
-    "stateCode":"State Code",
-    "postCode":"Post Code",
-    "street":"Street"
+    "email": "Email",
+    "city": "City",
+    "countryCode": "Country Code",
+    "phoneNumber": "Phone Number",
+    "stateCode": "State Code",
+    "postCode": "Post Code",
+    "street": "Street"
   },
-  "checkout":{
-    "description":"I acknowledge that I have input all the information on my behalf andhas reviewed the interior and book cover. I want to print the bookas it is.",
-    "total":"Total",
-    "backBtn":"Back",
-    "finishBtn":"Finish",
-    "luluPrintingModal":{
-      "dipatchedText":"Your Printing Call has been dispatched. You can check status in Overview page",
-      "failedText":"Your Printing Call has been Failed. Try again with valid inputs",
-      "continueBtn":"Continue"
+  "checkout": {
+    "description": "I acknowledge that I have input all the information on my behalf andhas reviewed the interior and book cover. I want to print the bookas it is.",
+    "total": "Total",
+    "backBtn": "Back",
+    "finishBtn": "Finish",
+    "luluPrintingModal": {
+      "dipatchedText": "Your Printing Call has been dispatched. You can check status in Overview page",
+      "failedText": "Your Printing Call has been Failed. Try again with valid inputs",
+      "continueBtn": "Continue"
     }
   },
-  "tutorialAndTips":{
-    "title":"Tutorials & Tips"
+  "tutorialAndTips": {
+    "title": "Tutorials & Tips"
   },
-  "familyTree":{
-    "title":"Family Tree"
+  "familyTree": {
+    "title": "Family Tree"
   }
 }

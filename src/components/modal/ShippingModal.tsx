@@ -16,6 +16,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: { xs: "100%", sm: "90%", md: "70%", lg: "60%" },
+  maxWidth: "750px",
   bgcolor: "#F3ECDA",
   border: "2px solid #F3ECDA",
   p: 4,
@@ -53,6 +54,7 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
             sx={{
               color: "#30422E",
               fontSize: { xs: "13px", sm: "15px", lg: "25px" },
+              fontWeight: 700
             }}
           >
             {t("shippingModal.title")}
@@ -60,13 +62,13 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
           <Typography
             sx={{
               mt: 2,
-              fontSize: { xs: "10px", sm: "12px", md: "15px", lg: "17px" },
+              fontSize: { xs: "10px", sm: "12px", md: "15px", lg: "17px" }, color: "#30422E"
             }}
           >
             {t("shippingModal.info")}
           </Typography>
           <Typography
-            sx={{ mt: 2, fontSize: { xs: "10px", sm: "12px", lg: "17px" } }}
+            sx={{ mt: 2, fontSize: { xs: "10px", sm: "12px", lg: "17px" }, color: "#30422E" }}
             variant="body1"
           >
             {t("shippingModal.info2")}
@@ -99,14 +101,9 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                   description: t("shippingModal.list6.description"),
                 },
               ].map((item, index) => (
-                <ListItem
-                  key={index}
-                  sx={{ marginBottom: "0px", paddingY: "0px" }}
-                >
+                <ListItem key={index} sx={{ marginBottom: "0px", paddingY: "0px" }}>
                   <ListItemIcon sx={{ minWidth: "30px" }}>
-                    <FiberManualRecordIcon
-                      style={{ fontSize: 10, color: "gray" }}
-                    />
+                    <FiberManualRecordIcon style={{ fontSize: 10, color: "#30422E" }} />
                   </ListItemIcon>
                   <ListItemText
                     primary={
@@ -114,13 +111,14 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                         sx={{
                           display: "flex",
                           alignItems: "center",
-                          //   flexWrap: "wrap",
+                          // flexWrap: "wrap",
                         }}
                       >
                         <Typography
                           sx={{
-                            fontSize: { xs: "8px", sm: "10px", lg: "17px" },
-                            fontWeight: "bold",
+                            fontSize: { xs: "8px", sm: "10px", lg: "19px" },
+                            fontWeight: 800,
+                            color: "#30422E",
                           }}
                         >
                           {item.title}
@@ -130,6 +128,7 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                           variant="body1"
                           sx={{
                             fontSize: { xs: "8px", sm: "10px", lg: "17px" },
+                            color: "#30422E",
                           }}
                         >
                           {item.description}
@@ -140,8 +139,9 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                 </ListItem>
               ))}
             </List>
+
             <Typography
-              sx={{ mt: 1, fontSize: { xs: "10px", sm: "12px", lg: "17px" } }}
+              sx={{ mt: 1, fontSize: { xs: "10px", sm: "12px", lg: "17px" }, color: "#30422E" }}
               variant="body1"
             >
               {t("shippingModal.info3")}
@@ -157,32 +157,32 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
               display: "flex",
               alignItems: "center",
               padding: "4px",
-              
+
             }}
           >
             <FormControlLabel
               label={<Typography
                 onClick={handleChange}
-                sx={{ fontSize: { xs: "10px", sm: "12px", lg: "17px" } }}
+                sx={{ fontSize: { xs: "10px", sm: "12px", lg: "17px" }, color: "#30422E" }}
               >
                 {t("shippingModal.info4")}
               </Typography>}
               control={
                 <Checkbox
-              onChange={handleChange}
-              sx={{
-                ml:"5px",
-                backgroundColor: "transparent",
-                "&.Mui-checked": {
-                  color: grey[600],
-                },
-              }}
-              {...label}
-            />
+                  onChange={handleChange}
+                  sx={{
+                    ml: "5px",
+                    backgroundColor: "transparent",
+                    "&.Mui-checked": {
+                      color: grey[600],
+                    },
+                  }}
+                  {...label}
+                />
               }
             />
-            
-            
+
+
           </Box>
 
           <Box
@@ -201,6 +201,7 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                 color: "#E1683B",
                 border: "1px solid #E1683B",
                 bgcolor: "transparent",
+                textTransform: "none",
               }}
             >
               {t("shippingModal.cancelBtn")}
@@ -212,6 +213,7 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                 width: { xs: "100px", sm: "125px" },
                 backgroundColor: "#E1683B",
                 color: "white",
+                textTransform: "none",
                 ":hover": {
                   backgroundColor: "#E1683B",
                 },
