@@ -1,15 +1,20 @@
 "use client";
+// External libraries and frameworks
+import { Box, Divider, Typography } from "@mui/material";
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
+
+// Custom components and modules
+import { formatDate } from "../../../../utils/highOrderFunctions";
+import { createBasicArray, createPremiumArray, createStandardArray } from "../../../../utils/stripeFlowObjects";
+
+// Assets
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
-import { Box, Divider, Typography } from "@mui/material";
-import Image from "next/image";
 import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
 import premiumBookImage from "../../../../../public/premiumBookImage.svg";
 import standardBookImage from "../../../../../public/standardBookImage.svg";
-import { formatDate } from "../../../../utils/highOrderFunctions";
-import { createBasicArray, createPremiumArray, createStandardArray } from "../../../../utils/stripeFlowObjects";
-import { useTranslation } from "react-i18next";
 
 const GiftPlanCard = ({ price, category }) => {
   const { t } = useTranslation();

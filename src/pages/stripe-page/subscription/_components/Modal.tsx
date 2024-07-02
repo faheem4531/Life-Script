@@ -1,17 +1,25 @@
 "use client";
+// External libraries and frameworks
 import * as React from "react";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
+
+// UI libraries or component libraries
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+
+// Assets
 import Logo from "@/_assets/svg/Frame.svg";
-import Image from "next/image";
+
+// Custom components or modules
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
-import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",

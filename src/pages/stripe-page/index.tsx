@@ -1,21 +1,22 @@
 "use client";
-import Button from "@/__webComponents/button/Button";
-import BgLogo from "@/_assets/svg/BgLogo.svg";
-import Logo from "@/_assets/svg/logo-dashboard.svg";
-import {
-  Box,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
-import Head from "next/head";
+// External libraries and frameworks
+import { Box, FormControl, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+
+// UI components from custom components
+import Button from "@/__webComponents/button/Button";
+
+// Assets
+import BgLogo from "@/_assets/svg/BgLogo.svg";
+import Logo from "@/_assets/svg/logo-dashboard.svg";
+
+// Next.js specific component
+import Head from "next/head";
+
 const StripePage = () => {
   const { t } = useTranslation();
   const router = useRouter();

@@ -1,9 +1,17 @@
 'use client';
+// External libraries and frameworks
 import { Box, Typography } from '@mui/material';
-import styles from '../../../../__webComponents/ComponentsStyles.module.css';
-import { createPricingCard } from '../../../../utils/stripeFlowObjects';
-import GiftPricingCard from './GiftPricingCard';
 import { useTranslation } from "react-i18next";
+
+// Custom components and modules
+import GiftPricingCard from './GiftPricingCard';
+
+// Stylesheets or CSS modules
+import styles from '../../../../__webComponents/ComponentsStyles.module.css';
+
+// Utility functions or helpers
+import { createPricingCard } from '../../../../utils/stripeFlowObjects';
+
 const GiftTabPanel = ({ onClick, selectedTab }) => {
   const { t } = useTranslation();
   const pricingCard = createPricingCard(t);

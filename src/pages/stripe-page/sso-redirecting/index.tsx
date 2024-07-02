@@ -1,4 +1,4 @@
-import { facebookLogin } from "@/store/slices/authSlice";
+// External libraries and frameworks
 import { Box, CircularProgress } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+
+// Custom Redux actions
+import { facebookLogin } from "@/store/slices/authSlice";
 
 const SsoRedirecting = () => {
   const { t } = useTranslation();

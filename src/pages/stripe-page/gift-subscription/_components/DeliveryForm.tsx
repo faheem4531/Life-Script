@@ -1,4 +1,4 @@
-import { signupWithGift, signupWithInAppGift } from '@/store/slices/authSlice';
+// 3rd party libraries
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import { FormikHelpers, useFormik } from "formik";
@@ -6,6 +6,11 @@ import { useRouter } from 'next/router';
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+
+// Absolute imports
+import { signupWithGift, signupWithInAppGift } from '@/store/slices/authSlice';
+
+// Relative imports
 import { DeliveryFormSchema } from '../../../../schema/deliveryFormSchema';
 import { FormValues } from '../../../../utils/interface/interface';
 import GiftPlanCard from './GiftPlanCard';

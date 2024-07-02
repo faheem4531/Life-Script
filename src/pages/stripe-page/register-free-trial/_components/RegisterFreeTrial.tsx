@@ -1,25 +1,30 @@
 "use client";
-import { SignupData } from "@/interface/authInterface";
-import {
-  googleSignup,
-  signup
-} from "@/store/slices/authSlice";
+// External libraries and frameworks
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
-import { useGoogleLogin } from "@react-oauth/google";
-import { useFormik } from "formik";
-import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import facebookIcon from "../../../../../public/facebookIcon.svg";
-import googleLogo from "../../../../../public/googleIcon.svg";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useFormik } from "formik";
+import { signIn, signOut, useSession } from "next-auth/react";
+
+// Custom components and modules
 import PaymentProcessingModal from '../../subscription/_components/Modal';
 
+// Assets
+import facebookIcon from "../../../../../public/facebookIcon.svg";
+import googleLogo from "../../../../../public/googleIcon.svg";
+
+// Utility functions or helpers
 import { RegisterFormValues } from "@/utils/interface/interface";
 import { RegisterFormSchema } from "../../../../schema/registerFormSchema";
+
+// Interfaces and Redux actions
+import { SignupData } from "@/interface/authInterface";
+import { googleSignup, signup } from "@/store/slices/authSlice";
 
 const RegisterFreeTrial = () => {
   const dispatch: any = useDispatch();

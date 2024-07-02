@@ -1,19 +1,27 @@
 "use client";
-import { SignupData } from "@/interface/authInterface";
-import { signupWithBuy } from "@/store/slices/authSlice";
-import { RegisterFormValues } from "@/utils/interface/interface";
+// External libraries and frameworks
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
-import { useFormik } from "formik";
-import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { useFormik } from "formik";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+
+// Custom components and modules
+import BasicPlanCard from "./BasicPlanCard";
+
+// Assets
 import facebookIcon from "../../../../../public/facebookIcon.svg";
 import googleLogo from "../../../../../public/googleIcon.svg";
+
+// Utility functions or schemas
+import { SignupData } from "@/interface/authInterface";
+import { signupWithBuy } from "@/store/slices/authSlice";
+import { RegisterFormValues } from "@/utils/interface/interface";
 import { RegisterFormSchema } from "../../../../schema/registerFormSchema";
-import BasicPlanCard from "./BasicPlanCard";
+
 
 const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
   const dispatch: any = useDispatch();

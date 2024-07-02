@@ -1,14 +1,21 @@
 "use client";
-import Check from "@/__webAssets/svgs/check.svg";
-import Lock from "@/__webAssets/svgs/lock.svg";
-import NextIcon from "@/__webAssets/svgs/next.svg";
+// External libraries and frameworks
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import styles from "../../../../__webComponents/ComponentsStyles.module.css";
+import { useTranslation } from "react-i18next";
+
+// Custom components and modules
 import Button from "../../../../__webComponents/button/Button";
 import { createCheckArray } from "../../../../utils/stripeFlowObjects";
-import { useTranslation } from "react-i18next";
+
+// Assets
+import Check from "@/__webAssets/svgs/check.svg";
+import Lock from "@/__webAssets/svgs/lock.svg";
+import NextIcon from "@/__webAssets/svgs/next.svg";
+
+// Stylesheets or CSS modules
+import styles from "../../../../__webComponents/ComponentsStyles.module.css";
 const GiftPricingCard = ({
   price,
   category,

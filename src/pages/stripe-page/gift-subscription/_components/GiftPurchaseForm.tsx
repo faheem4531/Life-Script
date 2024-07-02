@@ -1,12 +1,7 @@
 "use client"
-import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
-import Check from "@/_assets/svg/varifiedCheck.svg";
-import { stripePaymentInAppGiftFlow, stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
-import CheckIcon from '@mui/icons-material/Check';
+// External libraries and frameworks
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-import {
-  CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe,
-} from "@stripe/react-stripe-js";
+import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from 'next/router';
@@ -14,10 +9,22 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
-import stripeLogo from "../../../../../public/stripeLogo.svg";
-import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
-import PaymentProcessingModal from '../../subscription/_components/Modal';
+
+// Custom components and modules
 import GiftPlanCard from "./GiftPlanCard";
+import PaymentProcessingModal from '../../subscription/_components/Modal';
+
+// Assets
+import stripeLogo from "../../../../../public/stripeLogo.svg";
+import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
+import Check from "@/_assets/svg/varifiedCheck.svg";
+
+// Utility functions or helpers
+import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
+import { stripePaymentInAppGiftFlow, stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
+
+// Icons or specific components
+import CheckIcon from '@mui/icons-material/Check';
 
 const useOptions = () => {
   const fontSize = "16px";

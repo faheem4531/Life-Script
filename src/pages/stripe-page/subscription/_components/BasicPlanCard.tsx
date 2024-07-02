@@ -1,13 +1,19 @@
 "use client";
-import Check from "@/__webAssets/svgs/check.svg";
-import Lock from "@/__webAssets/svgs/lock.svg";
+// External libraries and frameworks
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
+
+// Assets
+import Check from "@/__webAssets/svgs/check.svg";
+import Lock from "@/__webAssets/svgs/lock.svg";
 import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
 import premiumBookImage from "../../../../../public/premiumBookImage.svg";
 import standardBookImage from "../../../../../public/standardBookImage.svg";
+
+// Utility functions or helpers
 import { createBasicArray, createPremiumArray, createStandardArray } from "../../../../utils/stripeFlowObjects";
-import { useTranslation } from "react-i18next";
+
 const BasicPlanCard = ({ price, category }) => {
   const { t } = useTranslation();
   const BasicArray = createBasicArray(t);

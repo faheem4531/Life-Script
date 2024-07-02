@@ -1,9 +1,15 @@
 "use client";
-import Logo from "@/_assets/svg/logo-dashboard.svg";
+// External libraries and frameworks
 import { Box } from "@mui/material";
 import Image from "next/image";
+
+// Assets
+import Logo from "@/_assets/svg/logo-dashboard.svg";
 import BgLogo from "../../../_assets/svg/BgLogo.svg";
+
+// Custom components and modules
 import RegisterFreeTrial from "./_components/RegisterFreeTrial";
+
 
 const RegisterTrialPage = () => {
 

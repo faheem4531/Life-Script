@@ -1,22 +1,30 @@
 'use client';
-import Bg from '@/_assets/png/bg-hurt-lite.png';
-import Logo from '@/_assets/svg/logo-dashboard.svg';
-import { facebookLogin, googleSignup } from '@/store/slices/authSlice';
+// External libraries and frameworks
 import { Box } from '@mui/material';
-import { useGoogleLogin } from "@react-oauth/google";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
+import { useGoogleLogin } from '@react-oauth/google';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { signOut, useSession } from 'next-auth/react';
+
+// Custom components and modules
 import NewTabBar from './_components/NewTabBar';
 import PurchaseForm from './_components/PurchaseForm';
 import RegisterPage from './_components/RegisterPage';
 import TabPanel from './_components/TabPanel';
+
+// Assets
+import Bg from '@/_assets/png/bg-hurt-lite.png';
+import Logo from '@/_assets/svg/logo-dashboard.svg';
+
+// Redux actions
+import { facebookLogin, googleSignup } from '@/store/slices/authSlice';
+
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
 
