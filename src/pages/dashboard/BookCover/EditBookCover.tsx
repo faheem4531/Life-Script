@@ -1072,31 +1072,27 @@ const EditBookCover = () => {
                       width: "310.8px",
                       height: "435px",
                       zIndex: 2,
-                      borderRight: "2px dotted grey",
-                      borderBottom: "2px dotted grey"
+                      border: "2px dotted grey",
                     }}></Box>}
                   {CoverNumber === "2" &&
                     <Box sx={{
                       position: "absolute",
-                      right: "65px",
+                      right: "64px",
                       top: "11px",
-                      width: "320px",
+                      width: "321.5px",
                       height: "429px",
                       zIndex: 2,
-                      borderTop: "2px dotted grey",
-                      borderBottom: "2px dotted grey"
+                      border: "2px dotted grey",
                     }}></Box>}
                   {CoverNumber === "3" &&
                     <Box sx={{
                       position: "absolute",
                       right: "75px",
                       top: "11px",
-                      width: "310px",
+                      width: "311px",
                       height: "429px",
                       zIndex: 2,
-                      borderRight: "2px dotted grey",
-                      borderTop: "2px dotted grey",
-                      borderBottom: "2px dotted grey"
+                      border: "2px dotted grey",
                     }}></Box>}
                 </Box>
 
