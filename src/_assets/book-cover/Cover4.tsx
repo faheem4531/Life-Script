@@ -14,9 +14,9 @@ function Cover4(props: any) {
       style={{
         filter: { newStyle },
       }}
-      // style={{
-      //   filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
-      // }}
+    // style={{
+    //   filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
+    // }}
     >
       <g clip-path="url(#clip0_2029_37)">
         <rect width="1772" height="2480" fill="url(#pattern11)" />
@@ -26,6 +26,8 @@ function Cover4(props: any) {
           y="290"
           width="854.102"
           height="1137.5"
+          stroke="#f3ecda"
+          stroke-width="2"
           fill="url(#coverImage34)"
         />
         {/* <path
