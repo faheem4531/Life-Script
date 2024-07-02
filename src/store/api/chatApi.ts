@@ -415,7 +415,25 @@ export async function uploadImageCloudinaryApi(data) {
 
 export async function uploadImageApiFamilyTree(data) {
   try {
+
     const res = await api.post("/users/upload-image/familyTree", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+
+export async function saveTreeOnBookApi(data: {
+  isInclude: boolean;
+}) {
+  try {
+    const res = await api.patch("/book", { isInclude: data.isInclude });
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

@@ -8,6 +8,7 @@ import {
   uploadImageFamilyTree,
   getTreeData,
   resetTreeData,
+  saveTreeOnBook,
 
 } from "@/store/slices/chatSlice";
 import AddIcon from "@mui/icons-material/Add";
@@ -56,6 +57,7 @@ const FamilyTree = ({ familyTreeData }) => {
   const [isPartner, setIsPartner] = useState(false);
   const [lastMousePosition, setLastMousePosition] = useState(null);
   const [resetModal, setResetModal] = useState(false)
+  const [saveTreeModal, setSaveTreeModal] = useState(false)
   const [hover, setHover] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   // const profileIcon =
@@ -335,7 +337,6 @@ const FamilyTree = ({ familyTreeData }) => {
             backgroundColor: "#FFFFFF",
           }).then((data) => {
 
-            // uploadImageonCloud(data);
             setLoading(false);
             familyTreeGroup.remove();
             familyTreeGroupFamily.remove();
@@ -344,8 +345,6 @@ const FamilyTree = ({ familyTreeData }) => {
           svgAsPngUri(mainSvg.node(), "familytree.png", {
             scale: 1,
             backgroundColor: "#FFFFFF",
-            // height: "auto",
-            // width: "100%",
           }).then((uri) => {
 
 
@@ -355,10 +354,9 @@ const FamilyTree = ({ familyTreeData }) => {
                 const formData = new FormData();
                 setLoading(false);
                 formData.append("image", imgBlob);
-                uploadImageonCloud(formData);
+                // uploadImageonCloud(formData);
                 familyTreeGroup.remove();
                 familyTreeGroupFamily.remove();
-                // window.location.href = "/familyTree"
               });
           });
           // });
@@ -414,6 +412,131 @@ const FamilyTree = ({ familyTreeData }) => {
 
     svgElement.attr("viewBox", `${finalX} ${newY} ${newWidth} ${newHeight}`);
   };
+
+  const AddTreeHandler = () => {
+
+    const svgElement = d3.select(svgRef.current);
+    d3.select(svgRef.current).selectAll("*").remove();
+    svgElement.attr("viewBox", "0 0 0 0");
+
+    setLoading(true);
+
+    // Clear previous tree
+    svgElement.selectAll("*").remove();
+
+    // Reset any transformations
+    svgElement.attr("transform", "translate(0,0) scale(1)");
+
+    // Redraw the tree
+    drawTree();
+
+
+    const { src, height } = LogoSvg;
+    // const { src: srcFamily, width: widthFamily } = FamilyTreeSVG;
+    const mainSvg = d3.select(svgRef.current);
+    const familyTreeGroup = mainSvg
+      .append("g")
+      .attr("id", "familyTreeGroup")
+      .attr("transform", "scale(1.8)");
+    const familyTreeGroupFamily = mainSvg
+      .append("g")
+      .attr("id", "familyTreeGroupFamily")
+      .attr("transform", `translate(0, ${60}) scale(0.2)`);
+
+    d3.xml(src).then((data) => {
+      const externalSvgContent = d3.select(data).select("svg");
+
+      familyTreeGroup.html(externalSvgContent.html());
+
+      // d3.xml(srcFamily).then((dataFamily) => {
+      // const externalSvgContentFamily = d3
+      //   .select(dataFamily)
+      //   .select("svg");
+      // familyTreeGroupFamily.html(externalSvgContentFamily.html());
+
+
+      const fullName =
+        typeof window !== "undefined"
+          ? localStorage.getItem("username")
+          : null;
+
+      const firstName = fullName ? fullName.split(" ")[0] : null;
+
+      // Add a separation between the two external SVGs
+      const newY = height + 60;
+
+      // Append the second external SVG below the first one
+      familyTreeGroupFamily.append("g").attr("id", "secondExternalSvg");
+
+      // Add dynamic text below the second logo
+      familyTreeGroupFamily
+        .append("text")
+        // .attr("x", widthFamily + 180) // Adjust the x-coordinate as needed
+        .attr("y", newY) // Adjust the y-coordinate as needed
+        .attr("text-anchor", "start") // Adjust text-anchor as needed (start, middle, end)
+        .attr("fill", "black") // Adjust the text color
+        .style("font-size", "110px")
+        .style("font-weight", "140px")
+        .style("color", "#1D2D20")
+        .text(`${firstName} Family Tree`);
+
+      // Calculate bounding box
+      const bbox = mainSvg.node().getBBox();
+      const bboxWidth = bbox.width;
+      const bboxHeight = bbox.height;
+
+      // Center the SVG content
+      mainSvg.attr(
+        "viewBox",
+        `${bbox.x - 20} ${bbox.y - 20} ${bboxWidth + 40} ${bboxHeight + 40}`
+      );
+
+      // saveSvgAsPng(mainSvg.node(), "familytree.png", {
+      //   scale: 1,
+      //   backgroundColor: "#FFFFFF",
+      // }).then((data) => {
+
+      //   setLoading(false);
+      //   familyTreeGroup.remove();
+      //   familyTreeGroupFamily.remove();
+      // });
+
+      svgAsPngUri(mainSvg.node(), "familytree.png", {
+        scale: 1,
+        backgroundColor: "#FFFFFF",
+      }).then((uri) => {
+
+
+        fetch(uri)
+          .then((response) => response.blob())
+          .then((imgBlob) => {
+            const formData = new FormData();
+            setLoading(false);
+            formData.append("image", imgBlob);
+            uploadImageonCloud(formData);
+            familyTreeGroup.remove();
+            familyTreeGroupFamily.remove();
+          });
+      });
+    });
+    drawTree();
+
+    dispatch(saveTreeOnBook({ isInclude: true }))
+      .unwrap()
+
+    setSaveTreeModal(false)
+
+  }
+
+  const cancleTreeHandler = () => {
+    dispatch(saveTreeOnBook({ isInclude: false }))
+      .unwrap()
+      .then((res) => {
+        toast.success("Remove Tree from the book");
+
+      })
+      .catch(() => toast.error("Failed to remove tree from the book "));
+  }
 
 
   const uploadImageonCloud = (formData) => {
@@ -752,7 +875,14 @@ const FamilyTree = ({ familyTreeData }) => {
               btnText=""
             />
           </Box>
+          <Box>
+            <GlobelBtn
+              onClick={() => setSaveTreeModal(true)}
+              btnText='Add in book'
+            />
+          </Box>
         </Box>
+
       </Box>
       <Box sx={{ position: "relative", bgcolor: "", height: "100%" }}>
         <Box>
@@ -871,6 +1001,19 @@ const FamilyTree = ({ familyTreeData }) => {
           proceed={handleResetFamily}
           closeModal={() => setResetModal(false)}
         />
+
+        <TransitionsDialog
+          open={saveTreeModal}
+          heading={"Add Family Tree"}
+          description="Are you sure that you want to add your family tree in your book?"
+          cancel={() => {
+            setSaveTreeModal(false)
+            cancleTreeHandler()
+          }}
+          proceed={AddTreeHandler}
+          closeModal={() => setSaveTreeModal(false)}
+        />
+
       </Box>
     </>
   );

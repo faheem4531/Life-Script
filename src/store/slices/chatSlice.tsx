@@ -59,6 +59,7 @@ import {
   uploadAudioApi,
   uploadImageApi,
   uploadImageApiFamilyTree,
+  saveTreeOnBookApi,
   uploadImageCloudinaryApi,
 } from "../api/chatApi";
 
@@ -352,6 +353,21 @@ export const uploadImageFamilyTree = createAsyncThunk<UserData, any>(
     }
   }
 );
+
+
+
+export const saveTreeOnBook = createAsyncThunk<UserData, any>(
+  "chat/book",
+  async (data: { isInclude: boolean }) => {
+    try {
+      const response = await saveTreeOnBookApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 
 export const uploadAudio = createAsyncThunk<UserData, any>(
   "chat/upload-audio",
