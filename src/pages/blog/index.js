@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import Head from 'next/head';
+import Head from "next/head";
 import { Box } from "@mui/material";
 import Footer from "@/__webComponents/footer/Footer";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
@@ -10,16 +10,16 @@ import { useTranslation } from "react-i18next";
 const BlogPage = () => {
   const { t } = useTranslation();
   return (
-
     <>
       <Head>
-        <title>Blog - Insights, Inspiration, and Practical Guides to Storytelling</title>
+        <title>
+          Blog - Insights, Inspiration, and Practical Guides to Storytelling
+        </title>
         <meta
           name="description"
-          discription="Your Guide to Capturing Life's Moments, Unlocking the Secrets of Personal Narratives and Leaving a Legacy Like No Other."
+          content="Your Guide to Capturing Life's Moments, Unlocking the Secrets of Personal Narratives and Leaving a Legacy Like No Other."
         />
       </Head>
-
 
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <IntroductionBlog />
