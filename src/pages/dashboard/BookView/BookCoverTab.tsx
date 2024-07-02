@@ -9,11 +9,10 @@ import {
 } from "@/store/slices/chatSlice";
 import { Box, CircularProgress } from "@mui/material";
 import jsPDF from "jspdf";
-import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { font } from "../../../styles/font";
-import { useTranslation } from "next-i18next";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
   const { t } = useTranslation();
@@ -658,12 +657,17 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   }, []);
 
   // Calculate spine size based on the number of pages
-  function calculatePageSize(pages) {
-    const spineSize = (pages * 0.5 / 10) + 1.2 + 4;
-    return spineSize;
-  }
+  // function calculatePageSize(pages) {
+  //   const spineSize = ((pages /10) + 0.5) + 1.2 + 4;
+  //   return spineSize;
+  // }
 
-  console.log("spineSize--------------=====", spineSize)
+  function calculatePageSize(pages:number) {
+    // Calculate dynamic value based on the number of pages
+    let dynamicValue = Math.min(Math.floor(pages / 100) * 0.6, 3.0); // Max value of 3.0 for 500 pages
+    const spineSize = (pages / 10) * 0.5 + dynamicValue + 4;
+    return spineSize;
+}
 
   useEffect(() => {
     if (pages) {
