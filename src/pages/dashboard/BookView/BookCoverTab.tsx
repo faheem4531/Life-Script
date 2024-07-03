@@ -499,7 +499,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     }
 
-    let y = 25; // Initial y-coordinate with offset
+    let y = 30; // Initial y-coordinate with offset
     const fontSize = 10; // Font size
     const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
@@ -544,16 +544,18 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     const originalLogoWidth = 100; // replace with the original width of the logo
     const originalLogoHeight = 300; // replace with the original height of the logo
-    const logoSize = spineWidth < 22 ? spineWidth - 3 : 20;
+    // const logoSize = spineWidth < 22 ? spineWidth - 3 : 20;
+    const logoSize = spineWidth < 22 ? (spineWidth - 3) * 0.8 : 17; // Adjust the multiplier (0.8) and default size (17) as needed
 
     // Calculate the new height to maintain aspect ratio
     const logoAspectRatio = originalLogoWidth / originalLogoHeight;
     const newLogoHeight = logoSize / logoAspectRatio;
 
     // Position the logo slightly above the bottom of the spine
+    const logoUp = 5
     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoSize) / 2;
-    const verticalOffset = 10; // Adjust this value to move the logo up or down
-    const tailcenterY = pdfHeight - newLogoHeight - offset - verticalOffset; // slightly above the bottom
+    const verticalOffset = 8; // Adjust this value to move the logo up or down
+    const tailcenterY = pdfHeight - newLogoHeight - offset - verticalOffset - gutterWidth - logoUp; // slightly above the bottom
 
     pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoSize, newLogoHeight);
 
@@ -562,9 +564,9 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
-      const imageWidth = 150; // Width of the image in mm
-      const imageHeight = 250;
-      const imageY = 4.5;
+      const imageWidth = 159; // Width of the image in mm
+      const imageHeight = 259;
+      const imageY = 0;
 
       pdf.addImage(
         newImageLink?.payload,
@@ -576,8 +578,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       );
     } else if (coverData?.coverNumber === "2") {
       const imageWidth = 140; // Width of the image in mm
-      const imageHeight = 250;
-      const imageY = 4.5;
+      const imageHeight = 259;
+      const imageY = 0;
 
       pdf.addImage(
         newImageLink?.payload,
@@ -589,8 +591,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       );
     }
     else if (coverData?.coverNumber === "1") {
-      const imageWidth = 150; // Width of the image in mm
-      const imageHeight = 242;
+      const imageWidth = 156; // Width of the image in mm
+      const imageHeight = 250;
       const imageY = 14;
 
       pdf.addImage(

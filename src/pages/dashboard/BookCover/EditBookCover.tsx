@@ -271,7 +271,7 @@ const EditBookCover = () => {
       }
       let yAxisOffsetTwoAuth = "80%"; // Default for CoverNumber 2 author
       if (CoverNumber === "2" && elmId === "author-text") {
-        yAxisOffsetTwoAuth = "95%";
+        yAxisOffsetTwoAuth = "90%";
       }
 
       if (CoverNumber === "6" && elmId === "heading-text") {
