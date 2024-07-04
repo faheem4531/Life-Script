@@ -559,7 +559,7 @@ const FamilyTree = ({ familyTreeData }) => {
     dispatch(uploadImageFamilyTree(formData))
       .unwrap()
       .then((res) => {
-        toast.success("Tree added successfully");
+        toast.success("Family tree added successfully");
 
       })
       .catch(() => toast.error("Failed to upload image"));
@@ -1031,7 +1031,7 @@ const FamilyTree = ({ familyTreeData }) => {
         <TransitionsDialog
           open={removeTreeModal}
           heading={"Remove Family Tree"}
-          description="Are you sure that you want to Remove your family tree from your book?"
+          description="Are you sure that you want to remove your family tree from your book?"
           cancel={() => {
             setRemoveTreeModal(false)
           }}
