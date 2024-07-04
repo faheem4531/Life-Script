@@ -144,16 +144,16 @@ export default function Document() {
             })
           }}
         />
-        {/* 
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Product",
-              "name": "LifeScript",
+              "name": "Pricing Plans and Competitor Comparison",
               "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-              "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
+              "description": " Each package includes lifetime access to our platform, premium full-color hardcover book and free shipping.",
               "brand": "LifeScript",
               "offers": {
                 "@type": "AggregateOffer",
@@ -164,7 +164,7 @@ export default function Document() {
               }
             })
           }}
-        /> */}
+        />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
