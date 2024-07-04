@@ -42,6 +42,7 @@ export default function PaymentProcessingModal({
   stripeFailed,
 }) {
   const [value, setValue] = useState(0);
+  const [emailVerify, setEmailVerication] = useState(false);
   const router = useRouter();
   const { t } = useTranslation();
 
@@ -65,8 +66,15 @@ export default function PaymentProcessingModal({
   }, [openModal]);
 
   function handleLetMeIn() {
-    const name = localStorage.getItem("username");
-    router.push(`/getStarted?userName=${name}`);
+    
+    setEmailVerication(true);
+    localStorage.clear();
+    setTimeout(()=>{
+      router.push(`/`);
+    },4000)
+    
+    
+    // router.push(`/getStarted?userName=${name}`);
   }
   useEffect(() => {
     if (value === 100 && selectedTab === "gift") {
@@ -106,15 +114,15 @@ export default function PaymentProcessingModal({
               fontSize: { sm: "32px", xs: "28px" },
             }}
           >
-            {value === 100 && selectedTab !== "verify" && stripeSucceed
+            {!emailVerify && value === 100 && selectedTab !== "verify" && stripeSucceed
               ? t(
                   "stripeFlow.stripePage.emailVerificationModal.transactionSuccessful"
                 )
-              : selectedTab !== "verify" && stripeFailed
+              :!emailVerify &&  selectedTab !== "verify" && stripeFailed
               ? t(
                   "stripeFlow.stripePage.emailVerificationModal.transactionFailed"
                 )
-              : selectedTab !== "verify"
+              :!emailVerify && selectedTab !== "verify"
               ? t("stripeFlow.stripePage.emailVerificationModal.Processing")
               : ""}
             {selectedTab == "verify" &&
@@ -122,12 +130,12 @@ export default function PaymentProcessingModal({
                 "stripeFlow.stripePage.emailVerificationModal.emailVerification"
               )}
           </Typography>
-          {selectedTab !== "verify" && !stripeFailed && (
+          {!emailVerify && selectedTab !== "verify" && !stripeFailed && (
             <Box sx={{ width: { xs: "300px", sm: "470px" } }}>
               <ReloadingBar value={value} />
             </Box>
           )}
-          {value == 100 && selectedTab == 2 && !stripeFailed && (
+          {!emailVerify && value == 100 && selectedTab == 2 && !stripeFailed && (
             <Button
               type="submit"
               variant="contained"
@@ -145,12 +153,31 @@ export default function PaymentProcessingModal({
               {t("stripeFlow.stripePage.emailVerificationModal.letMeIn")}
             </Button>
           )}
-          {value == 100 && selectedTab == "gift" && (
+          {!emailVerify && value == 100 && selectedTab == "gift" && (
+            
             <Typography sx={{ marginTop: { sm: "40px", xs: "25px" } }}>
-              {t("stripeFlow.stripePage.emailVerificationModal.giftRecipient")}
+              {!emailVerify && t("stripeFlow.stripePage.emailVerificationModal.giftRecipient")}
             </Typography>
           )}
-          {selectedTab === "verify" && (
+          {emailVerify  &&(
+            <Box textAlign={"center"}>
+             
+            
+             {selectedTab=="verify"?(null):(<Typography
+               sx={{ color: "#000000", fontSize: "30px"}}
+             >
+               {t("VerificationSent.emailVerification")}
+             </Typography>)}
+           
+            
+            <Typography sx={{ maxWidth: "400px" }}>
+              {t(
+                "stripeFlow.stripePage.emailVerificationModal.emailVerficationDescription"
+              )}
+            </Typography>
+           </Box>
+          )}
+           {selectedTab === "verify" && (
             <Typography sx={{ maxWidth: "400px" }}>
               {t(
                 "stripeFlow.stripePage.emailVerificationModal.emailVerficationDescription"
