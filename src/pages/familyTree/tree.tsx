@@ -11,6 +11,7 @@ import {
   saveTreeOnBook,
 
 } from "@/store/slices/chatSlice";
+import { getBookInterior } from "@/store/slices/authSlice";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import { Backdrop, Box, Button, IconButton, Typography } from "@mui/material";
@@ -58,8 +59,10 @@ const FamilyTree = ({ familyTreeData }) => {
   const [lastMousePosition, setLastMousePosition] = useState(null);
   const [resetModal, setResetModal] = useState(false)
   const [saveTreeModal, setSaveTreeModal] = useState(false)
+  const [removeTreeModal, setRemoveTreeModal] = useState(false)
   const [hover, setHover] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
+  const [isShown, setIsShown] = useState(false)
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
@@ -79,6 +82,14 @@ const FamilyTree = ({ familyTreeData }) => {
     }
   }, []);
 
+  useEffect(() => {
+    dispatch(getBookInterior())
+      .unwrap()
+      .then((res) => {
+        setIsShown(res.isInclude);
+      })
+
+  }, [dispatch])
 
   const handleAddedPerson = (data) => {
     setFamilyModal(false);
@@ -525,7 +536,7 @@ const FamilyTree = ({ familyTreeData }) => {
       .unwrap()
 
     setSaveTreeModal(false)
-
+    setIsShown(true);
   }
 
   const cancleTreeHandler = () => {
@@ -536,6 +547,10 @@ const FamilyTree = ({ familyTreeData }) => {
 
       })
       .catch(() => toast.error("Failed to remove tree from the book "));
+
+    setRemoveTreeModal(false);
+    setIsShown(false);
+
   }
 
 
@@ -544,7 +559,7 @@ const FamilyTree = ({ familyTreeData }) => {
     dispatch(uploadImageFamilyTree(formData))
       .unwrap()
       .then((res) => {
-        toast.success("image uploaded successfully");
+        toast.success("Tree added successfully");
 
       })
       .catch(() => toast.error("Failed to upload image"));
@@ -877,8 +892,8 @@ const FamilyTree = ({ familyTreeData }) => {
           </Box>
           <Box>
             <GlobelBtn
-              onClick={() => setSaveTreeModal(true)}
-              btnText='Add in book'
+              onClick={() => { !isShown ? setSaveTreeModal(true) : setRemoveTreeModal(true) }}
+              btnText={!isShown ? 'Add in book' : "Remove from book"}
             />
           </Box>
         </Box>
@@ -1008,11 +1023,22 @@ const FamilyTree = ({ familyTreeData }) => {
           description="Are you sure that you want to add your family tree in your book?"
           cancel={() => {
             setSaveTreeModal(false)
-            cancleTreeHandler()
           }}
           proceed={AddTreeHandler}
           closeModal={() => setSaveTreeModal(false)}
         />
+
+        <TransitionsDialog
+          open={removeTreeModal}
+          heading={"Remove Family Tree"}
+          description="Are you sure that you want to Remove your family tree from your book?"
+          cancel={() => {
+            setRemoveTreeModal(false)
+          }}
+          proceed={cancleTreeHandler}
+          closeModal={() => setRemoveTreeModal(false)}
+        />
+
 
       </Box>
     </>
