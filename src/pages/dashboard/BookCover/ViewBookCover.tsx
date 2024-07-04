@@ -753,32 +753,32 @@ const ViewBookCover = () => {
 
     if (CoverNumber === "2") {
       // Full background color including the offset area
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
 
       // Section 1: Left content area
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
 
       // Section 2: Left gutter
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
 
       // Section 3: Spine and inner spine
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); // inner spine
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
       pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
 
       // Section 4: Right gutter
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
 
       // Section 5: Right content area
-      pdf.setFillColor("#FAFAFA");
+      pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
 
 
