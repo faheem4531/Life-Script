@@ -149,7 +149,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           }}
           className={styles.price}
         >
-          ${price}
+          ${price.toFixed(2)}
         </Box>
 
         {(category == "BasicPlan" && (
