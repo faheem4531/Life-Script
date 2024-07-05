@@ -542,22 +542,17 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       y = y + 3; // Move to the next line for each character
     }
 
-    const originalLogoWidth = 100; // replace with the original width of the logo
-    const originalLogoHeight = 300; // replace with the original height of the logo
-    // const logoSize = spineWidth < 22 ? spineWidth - 3 : 20;
-    const logoSize = spineWidth < 22 ? (spineWidth - 3) * 0.8 : 17; // Adjust the multiplier (0.8) and default size (17) as needed
-
-    // Calculate the new height to maintain aspect ratio
-    const logoAspectRatio = originalLogoWidth / originalLogoHeight;
-    const newLogoHeight = logoSize / logoAspectRatio;
-
-    // Position the logo slightly above the bottom of the spine
-    const logoUp = 5
-    const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoSize) / 2;
-    const verticalOffset = 8; // Adjust this value to move the logo up or down
-    const tailcenterY = pdfHeight - newLogoHeight - offset - verticalOffset - gutterWidth - logoUp; // slightly above the bottom
-
-    pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoSize, newLogoHeight);
+     // Set fixed logo size
+     const logoWidth = 5; // Fixed width for the logo
+     const logoHeight = 20; // Fixed height for the logo
+   
+     // Position the logo slightly above the bottom of the spine
+     const logoUp = 5;
+     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
+     const verticalOffset = 8; // Adjust this value to move the logo up or down
+     const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp; // slightly above the bottom
+   
+     pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
 
     const newImage = coverData && coverData?.coverPagePhoto;
     const newData = { imageUrl: newImage };
