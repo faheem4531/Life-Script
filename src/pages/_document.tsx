@@ -151,9 +151,9 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Product",
-              "name": "Pricing Plans and Competitor Comparison",
+              "name": "LifeScript",
               "image": "https://www.thelifescript.com/lifescript-life-story-book-logo.svg",
-              "description": " Each package includes lifetime access to our platform, premium full-color hardcover book and free shipping.",
+              "description": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent.",
               "brand": "LifeScript",
               "offers": {
                 "@type": "AggregateOffer",
