@@ -388,8 +388,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     name,
     imgUrl,
     color,
-    // spine = 10.2 // Updated spine width
-    spine = spineSize
+    spine = 10.2 // Updated spine width
   ) => {
     const logo = coverData?.coverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
       : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
