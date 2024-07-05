@@ -149,7 +149,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           }}
           className={styles.price}
         >
-          ${price.toFixed(2)}
+          ${Math.round(price)}
         </Box>
 
         {(category == "BasicPlan" && (

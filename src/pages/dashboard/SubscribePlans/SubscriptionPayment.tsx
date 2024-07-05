@@ -91,7 +91,7 @@ const CreditCard = () => {
                 }}
               >
                 <Elements stripe={stripePromise}>
-                  <PaymentForm packageName={Subscription} price={price} />
+                  <PaymentForm packageName={Subscription} price={Math.round(Number(price))} />
                 </Elements>
               </Box>
             </Box>
