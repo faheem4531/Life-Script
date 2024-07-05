@@ -11,14 +11,14 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
 
   const handleCountryChange = (event, newValue) => {
     if (newValue) {
-      setSelectedCountry(newValue.phone);
-      onSelect(newValue.phone);
+      setSelectedCountry(newValue.label);
+      onSelect(newValue.label);
     }
   };
 
   const filterOptions = (options, { inputValue }) => {
     return options.filter((option) => {
-      return option.phone.includes(inputValue); // Change to phone property
+      return option.label.includes(inputValue); // Change to phone property
     });
   };
 
@@ -49,7 +49,7 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
               src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
               alt=""
             />
-            ({option.phone})
+            ({option?.label})
           </Box>
         )}
         renderInput={(params) => (

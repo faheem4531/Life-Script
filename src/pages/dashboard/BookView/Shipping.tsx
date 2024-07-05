@@ -1,7 +1,5 @@
 import GlobelBtn from "@/components/button/Button";
 import { Box, Tooltip } from "@mui/material";
-import backArrow from "../../../_assets/svg/left.svg";
-import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import ShippingCard from "./components/ShippingCard";
 import ShippingForm from "./components/ShippingForm";
 import { useEffect, useState } from "react";
@@ -32,6 +30,7 @@ const Shipping = ({
     postcode: "",
     state_code: "",
     street1: "",
+    apt:""
   });
 
   const [tooltip, setTooltip] = useState(false);
