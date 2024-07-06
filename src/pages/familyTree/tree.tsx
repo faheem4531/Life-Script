@@ -653,9 +653,9 @@ const FamilyTree = ({ familyTreeData }) => {
       personNode.append("clipPath")
         .attr("id", clipPathId)
         .append("circle")
-        .attr("cx", x + 40) // Center of the circle is at (x + radius)
-        .attr("cy", y + 40) // Center of the circle is at (y + radius)
-        .attr("r", 40); // Radius of the circle
+        .attr("cx", x + 35) // Center of the circle is at (x + radius)
+        .attr("cy", y + 35) // Center of the circle is at (y + radius)
+        .attr("r", 35); // Radius of the circle
 
       const imgElement = personNode.append("image")
         .attr("xlink:href", image)
