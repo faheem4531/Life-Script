@@ -147,7 +147,9 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
         <Box display="flex" justifyContent={{ lg: "center", xs: "center" }} alignItems="center">
           <Box>
             <Button
-              onClick={() => setPageNumber(pageNumber - 1)}
+              onClick={() => {setTimeout(()=>{
+                setPageNumber(pageNumber - 1)
+              },500)}}
               disabled={pageNumber <= 1}
               color="primary"
               sx={{ opacity: pageNumber <= 1 ? 0.2 : 1 }}
@@ -194,7 +196,9 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
           >
             <Button
-              onClick={() => setPageNumber(pageNumber + 1)}
+                onClick={() => {setTimeout(()=>{
+                  setPageNumber(pageNumber +1 )
+                },1000)}}
               color="primary"
               disabled={pageNumber >= numPages}
               sx={{ opacity: pageNumber >= numPages ? 0.2 : 1 }}

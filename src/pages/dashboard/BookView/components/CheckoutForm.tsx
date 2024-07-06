@@ -93,6 +93,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
           token: result.token,
           quantity: quantity,
           cardHolderName: cardHolderName,
+          processFrom: "printing"
         })
       )
         .unwrap()

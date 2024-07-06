@@ -1341,7 +1341,7 @@
     "nextBtn": "Siguiente",
     "backBtn": "Atrás"
   },
-  "shippingPage": {
+ "shippingPage": {
     "orderSummary": "RESUMEN DEL PEDIDO",
     "orderAdditionalBook": "Pedir Libros Adicionales",
     "quantity": "Cantidad",
@@ -1350,12 +1350,14 @@
     "name": "Nombre",
     "email": "Correo Electrónico",
     "city": "Ciudad",
-    "countryCode": "Código del País",
+    "countryCode": "País",
     "phoneNumber": "Número de Teléfono",
-    "stateCode": "Código del Estado",
+    "stateCode": "Estado",
     "postCode": "Código Postal",
-    "street": "Calle"
-  },
+    "street": "Calle",
+    "apt": "Departamento"
+  }
+,
   "checkout": {
     "description": "Reconozco que he ingresado toda la información en mi nombre y he revisado el interior y la portada del libro. Quiero imprimir el libro tal como está.",
     "total": "Total",

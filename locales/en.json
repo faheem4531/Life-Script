@@ -1351,11 +1351,12 @@
     "name": "Name",
     "email": "Email",
     "city": "City",
-    "countryCode": "Country Code",
+    "countryCode": "Country",
     "phoneNumber": "Phone Number",
-    "stateCode": "State Code",
+    "stateCode": "State",
     "postCode": "Post Code",
-    "street": "Street"
+    "street": "Street",
+    "apt":"Department"
   },
   "checkout": {
     "description": "I acknowledge that I have input all the information on my behalf andhas reviewed the interior and book cover. I want to print the bookas it is.",

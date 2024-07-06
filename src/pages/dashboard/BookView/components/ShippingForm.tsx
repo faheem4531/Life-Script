@@ -20,6 +20,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
     postcode: "",
     state_code: "",
     street1: "",
+    apt:""
   });
 
   useEffect(() => {
@@ -46,6 +47,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
         postcode: luluData?.postcode,
         state_code: luluData?.state_code,
         street1: luluData?.street1,
+        apt:luluData?.apt
       }));
       setShippingDataId(luluData?._id);
     }
@@ -194,7 +196,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
             borderRadius="4px"
             bgColor="white"
             border="1px solid #30422E"
-            type="number"
+            type="text"
           />
         </Box>
         <Box flex={1} width={"100%"}>
@@ -227,6 +229,21 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
           }))
         }
         placeholder={t("shippingPage.street")}
+        borderRadius="4px"
+        bgColor="white"
+        border="1px solid #30422E"
+      />
+      <InputWithLabel
+        color="#474E60"
+        label={t("shippingPage.apt")}
+        value={shippingData?.apt}
+        onChange={(e) =>
+          setShippingData((prevData) => ({
+            ...prevData,
+            apt: e.target.value,
+          }))
+        }
+        placeholder={t("shippingPage.apt")}
         borderRadius="4px"
         bgColor="white"
         border="1px solid #30422E"

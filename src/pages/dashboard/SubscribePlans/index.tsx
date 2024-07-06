@@ -29,6 +29,11 @@ const SubscribePlan = () => {
     premium: false,
   });
 
+  function percentage(num, per)
+  {
+    return (num/100)*per;
+  }
+
   useEffect(() => {
     const jwt = require("jsonwebtoken");
     const token = localStorage.getItem("token");
@@ -49,7 +54,7 @@ const SubscribePlan = () => {
         });
         setPlanPrices({
           ...planPrices,
-          premium: planPrices?.premium ,
+          premium:(planPrices?.premium - percentage(planPrices?.premium ,75))
         });
       } else if (accessRole === "BasicPlan") {
         setDisableButton({
@@ -58,8 +63,8 @@ const SubscribePlan = () => {
         });
         setPlanPrices({
           ...planPrices,
-          standard: planPrices?.standard,
-          premium: planPrices?.premium
+          standard:planPrices?.standard -percentage(planPrices?.standard ,78),
+          premium: planPrices?.premium-percentage(planPrices?.premium ,58),
         });
       } else {
         //do nothing
