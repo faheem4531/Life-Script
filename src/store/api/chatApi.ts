@@ -445,6 +445,21 @@ export async function saveTreeOnBookApi(data: {
   }
 }
 
+export async function getBookDataApi() {
+  try {
+    const res = await api.get("/book");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
+
 export async function uploadAudioApi(data) {
   try {
     const res = await api.post("/questions/speech-to-text", data);
