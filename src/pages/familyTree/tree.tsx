@@ -428,78 +428,78 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const AddTreeHandler = () => {
-    // const svgElement = d3.select(svgRef.current);
+    const svgElement = d3.select(svgRef.current);
 
-    // // Clear any existing SVG content
-    // d3.select(svgRef.current).selectAll("*").remove();
-    // svgElement.attr("viewBox", "0 0 0 0");
+    // Clear any existing SVG content
+    d3.select(svgRef.current).selectAll("*").remove();
+    svgElement.attr("viewBox", "0 0 0 0");
 
-    // setLoading(true);
+    setLoading(true);
 
-    // // Clear any existing SVG content again
-    // svgElement.selectAll("*").remove();
-    // svgElement.attr("transform", "translate(0,0) scale(1)");
+    // Clear any existing SVG content again
+    svgElement.selectAll("*").remove();
+    svgElement.attr("transform", "translate(0,0) scale(1)");
 
-    // // Generate the tree without displaying it
-    // drawTree();
+    // Generate the tree without displaying it
+    drawTree();
 
-    // const { src, height } = LogoSvg;
-    // const mainSvg = d3.select(svgRef.current);
-    // const familyTreeGroup = mainSvg.append("g").attr("id", "familyTreeGroup").attr("transform", "scale(1.8)");
-    // const familyTreeGroupFamily = mainSvg.append("g").attr("id", "familyTreeGroupFamily").attr("transform", `translate(0, ${60}) scale(0.2)`);
+    const { src, height } = LogoSvg;
+    const mainSvg = d3.select(svgRef.current);
+    const familyTreeGroup = mainSvg.append("g").attr("id", "familyTreeGroup").attr("transform", "scale(1.8)");
+    const familyTreeGroupFamily = mainSvg.append("g").attr("id", "familyTreeGroupFamily").attr("transform", `translate(0, ${60}) scale(0.2)`);
 
-    // d3.xml(src).then((data) => {
-    //   const externalSvgContent = d3.select(data).select("svg");
+    d3.xml(src).then((data) => {
+      const externalSvgContent = d3.select(data).select("svg");
 
-    //   // Add external SVG content to the group
-    //   familyTreeGroup.html(externalSvgContent.html());
+      // Add external SVG content to the group
+      familyTreeGroup.html(externalSvgContent.html());
 
-    //   const fullName = typeof window !== "undefined" ? localStorage.getItem("username") : null;
-    //   const firstName = fullName ? fullName.split(" ")[0] : null;
+      const fullName = typeof window !== "undefined" ? localStorage.getItem("username") : null;
+      const firstName = fullName ? fullName.split(" ")[0] : null;
 
-    //   const newY = height + 60;
+      const newY = height + 60;
 
-    //   // Append the second external SVG below the first one
-    //   familyTreeGroupFamily.append("g").attr("id", "secondExternalSvg");
+      // Append the second external SVG below the first one
+      familyTreeGroupFamily.append("g").attr("id", "secondExternalSvg");
 
-    //   // Add dynamic text below the second logo
-    //   familyTreeGroupFamily
-    //     .append("text")
-    //     .attr("y", newY)
-    //     .attr("text-anchor", "start")
-    //     .attr("fill", "black")
-    //     .style("font-size", "110px")
-    //     .style("font-weight", "140px")
-    //     .style("color", "#1D2D20")
-    //     .text(`${firstName} Family Tree`);
+      // Add dynamic text below the second logo
+      familyTreeGroupFamily
+        .append("text")
+        .attr("y", newY)
+        .attr("text-anchor", "start")
+        .attr("fill", "black")
+        .style("font-size", "110px")
+        .style("font-weight", "140px")
+        .style("color", "#1D2D20")
+        .text(`${firstName} Family Tree`);
 
-    //   // Calculate bounding box
-    //   const bbox = mainSvg.node().getBBox();
-    //   const bboxWidth = bbox.width;
-    //   const bboxHeight = bbox.height;
+      // Calculate bounding box
+      const bbox = mainSvg.node().getBBox();
+      const bboxWidth = bbox.width;
+      const bboxHeight = bbox.height;
 
-    //   // Center the SVG content
-    //   mainSvg.attr("viewBox", `${bbox.x - 20} ${bbox.y - 20} ${bboxWidth + 40} ${bboxHeight + 40}`);
+      // Center the SVG content
+      mainSvg.attr("viewBox", `${bbox.x - 20} ${bbox.y - 20} ${bboxWidth + 40} ${bboxHeight + 40}`);
 
-    //   svgAsPngUri(mainSvg.node(), "familytree.png", {
-    //     scale: 1,
-    //     backgroundColor: "#FFFFFF",
-    //   }).then((uri) => {
-    //     fetch(uri)
-    //       .then((response) => response.blob())
-    //       .then((imgBlob) => {
-    //         const formData = new FormData();
-    //         formData.append("image", imgBlob);
-    //         uploadImageonCloud(formData);
+      svgAsPngUri(mainSvg.node(), "familytree.png", {
+        scale: 1,
+        backgroundColor: "#FFFFFF",
+      }).then((uri) => {
+        fetch(uri)
+          .then((response) => response.blob())
+          .then((imgBlob) => {
+            const formData = new FormData();
+            formData.append("image", imgBlob);
+            uploadImageonCloud(formData);
 
-    //         // Clear the SVG groups after uploading
-    //         familyTreeGroup.remove();
-    //         familyTreeGroupFamily.remove();
+            // Clear the SVG groups after uploading
+            familyTreeGroup.remove();
+            familyTreeGroupFamily.remove();
 
-    //         setLoading(false);
-    //       });
-    //   });
-    // });
+            setLoading(false);
+          });
+      });
+    });
 
     dispatch(saveTreeOnBook({ isInclude: true }))
       .unwrap()
