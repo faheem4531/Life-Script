@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  updatePartner,
-  addChildren,
-  addParent,
-  uploadImage,
-  uploadImageFamilyTree,
-  getTreeData,
-  resetTreeData,
   setBookData,
   getBookData
 
@@ -14,7 +7,7 @@ import {
 
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
-import { Box } from "@mui/material";
+import { Box, useTheme, useMediaQuery, } from "@mui/material";
 import { useDispatch } from "react-redux";
 import styles from "./Layout.module.css";
 import Joyride from 'react-joyride';
@@ -27,6 +20,12 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
   const [stepIndex, setStepIndex] = useState(1);
   const [handleSideBar, setHandleSideBar] = useState(false);
   const dispatch: any = useDispatch();
+
+  const theme = useTheme();
+  const lg = useMediaQuery(theme.breakpoints.up("lg"));
+  const md = useMediaQuery(theme.breakpoints.up("md"));
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const xs = useMediaQuery(theme.breakpoints.down("xs"));
 
 
   const steps = [
@@ -90,10 +89,22 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     const { status, action, type, index } = data;
 
     if (type === "step:after" && action === "next") {
+      switch (index) {
+        case 5:
+          if (md || sm || xs) {
+            setHandleSideBar(true)
+          }
+          break;
+        default:
+          break;
+      }
+
       setStepIndex((prevIndex) => prevIndex + 1);
+
     } else if (type === "step:after" && action === "prev" && index > 1) {
       setStepIndex((prevIndex) => prevIndex - 1);
     } else if (status === "finished" || status === "skipped") {
+      setHandleSideBar(false)
       dispatch(setBookData({ isWelcome: true }))
         .unwrap()
     }
