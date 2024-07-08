@@ -271,35 +271,62 @@ const RichText = ({ questionId }) => {
     );
     setEditorState(newEditorState);
   };
-  //for grammar
+  // //for grammar
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     if (loading === false) {
+  //       import("@webspellchecker/wproofreader-sdk-js").then(
+  //         ({ default: WProofreaderSDK }) => {
+  //           // Assuming the library has a different initialization method
+  //           // WProofreaderSDK.init({
+  //           //   container: document.getElementById("draftjs-rich-text-editor"),
+  //           //   autoSearch: true,
+  //           //   lang: "auto",
+  //           //   serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
+  //           // });
+  //           const container = document.getElementById("draftjs-rich-text-editor");
+  //           if (container) {
+  //             WProofreaderSDK.init({
+  //               container,
+  //               autoSearch: true,
+  //               lang: "auto",
+  //               serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
+  //             });
+  //           } else {
+  //             console.error("Container not found");
+  //           }
+  //         }
+  //       );
+  //     }
+  //   }
+  // }, [loading]); //to import webspellcheckr
+
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (loading === false) {
-        import("@webspellchecker/wproofreader-sdk-js").then(
-          ({ default: WProofreaderSDK }) => {
-            // Assuming the library has a different initialization method
-            // WProofreaderSDK.init({
-            //   container: document.getElementById("draftjs-rich-text-editor"),
-            //   autoSearch: true,
-            //   lang: "auto",
-            //   serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
-            // });
-            const container = document.getElementById("draftjs-rich-text-editor");
-            if (container) {
-              WProofreaderSDK.init({
-                container,
-                autoSearch: true,
-                lang: "auto",
-                serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
-              });
-            } else {
-              console.error("Container not found");
-            }
+    if (typeof window !== "undefined" && !loading) {
+      const initializeWProofreader = async () => {
+        try {
+          const { default: WProofreaderSDK } = await import("@webspellchecker/wproofreader-sdk-js");
+          const container = document.getElementById("draftjs-rich-text-editor");
+          if (container) {
+            WProofreaderSDK.init({
+              container,
+              autoSearch: true,
+              lang: "auto",
+              serviceId: process.env.NEXT_PUBLIC_SPELL_CHECKER_API_KEY,
+            });
+          } else {
+            console.error("Container not found");
           }
-        );
-      }
+        } catch (error) {
+          console.error("Failed to initialize WProofreaderSDK:", error);
+        }
+      };
+
+      initializeWProofreader();
     }
-  }, [loading]); //to import webspellcheckr
+  }, [loading]);
+
 
   //autosave answer
   useEffect(() => {
