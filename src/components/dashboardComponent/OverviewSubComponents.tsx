@@ -79,7 +79,7 @@ export const ViewBook = () => {
           cursor: "pointer",
           columnGap: "16px",
         }}
-        className={styles.viewBook}
+        className={`${styles.viewBook} ${"step5"}`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
@@ -149,7 +149,7 @@ export const ViewBook = () => {
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
-           {t("overView.viewBookModal.title")}
+            {t("overView.viewBookModal.title")}
           </Typography>
           <Typography
             sx={{
@@ -299,7 +299,7 @@ export const PrintBook = () => {
         <Typography
           sx={{ fontSize: { xl: "14px", sm: "12px" }, marginTop: "15px" }}
         >
-         {t("overView.deliveryDescription")}
+          {t("overView.deliveryDescription")}
         </Typography>
       </Box>
       <Box>

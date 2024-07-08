@@ -72,14 +72,16 @@ const WelcomeOverview = () => {
           {userName}
         </Typography>
         <QuoteRotator />
-        <GlobelBtn
-          image={ContineWriting}
-          bgColor="#FFFFFF"
-          color="#30422E"
-          btnText={`${t("overView.headerBtnText")}`}
-          onClick={() => router.push("/dashboard/chapters")}
-          width={"225px"}
-        />
+        <Box className="step3" sx={{ maxWidth: "225px" }}>
+          <GlobelBtn
+            image={ContineWriting}
+            bgColor="#FFFFFF"
+            color="#30422E"
+            btnText={`${t("overView.headerBtnText")}`}
+            onClick={() => router.push("/dashboard/chapters")}
+            width={"225px"}
+          />
+        </Box>
       </Box>
       <Box
         sx={{

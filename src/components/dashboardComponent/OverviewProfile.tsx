@@ -51,7 +51,7 @@ import Time2 from "@/_assets/png/achievements/time-2.png";
 import Time1 from "@/_assets/png/achievements/time-1.png";
 import Time0 from "@/_assets/png/achievements/time-0.png";
 
-const Profile = ({ data }) => {
+const Profile = ({ data}) => {
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch: any = useDispatch();
@@ -296,87 +296,91 @@ const Profile = ({ data }) => {
           margin: "auto",
         }}
       >
-        <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
-          {t("overView.achivement")}
-        </Typography>
+        <Box className="step2">
+          <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
+            {t("overView.achivement")}
+          </Typography>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "30px 0 40px",
-            columnGap: { xl: "20px", lg: "15px", sm: "20px", xs: "20px" },
-            rowGap: "15px",
-          }}
-        >
-          <Box>
-            <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={WordtooltipText}>
-                <Image
-                  alt="tag"
-                  src={WordbadgeImage}
-                  className={styles.profileAchivements}
-                />
-              </Tooltip>
-            </Box>
-            <Box sx={{ cursor: "pointer", mt: "20px" }}>
-              <Tooltip title={QstooltipText}>
-                <Image
-                  alt="tag"
-                  src={QsbadgeImage}
-                  className={styles.profileAchivements}
-                />
-              </Tooltip>
-            </Box>
-          </Box>
-
-          <Box>
-            <Box sx={{ cursor: "pointer" }}>
-              <Tooltip title={ChaptertooltipText}>
-                <Image
-                  alt="tag"
-                  src={ChapterbadgeImage}
-                  className={styles.profileAchivements}
-                />
-              </Tooltip>
-            </Box>
-            <Box sx={{ cursor: "pointer", mt: "20px" }}>
-              <Tooltip title={timetooltipText}>
-                <Image
-                  alt="tag"
-                  src={timebadgeImage}
-                  className={styles.profileAchivements}
-                />
-              </Tooltip>
-            </Box>
-          </Box>
-        </Box>
-
-        <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
-          {t("overView.RecentCh")}
-        </Typography>
-        <Box sx={{ marginTop: "20px" }}>
-          {progressChapters?.slice(0, 5).map((chapter) => (
-            <RecentChapters
-              key={chapter?._id}
-              title={chapter?.title}
-              id={chapter?._id}
-              percentage={calculateCompletionPercentage(chapter?.questions)}
-            />
-          ))}
-        </Box>
-        <Box onClick={() => router.push("/dashboard/chapters")}>
-          <Typography
+          <Box
             sx={{
-              cursor: "pointer",
-              fontSize: "12px",
-              color: "#30422E",
-              marginTop: "22px",
-              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              margin: "30px 0 40px",
+              columnGap: { xl: "20px", lg: "15px", sm: "20px", xs: "20px" },
+              rowGap: "15px",
             }}
           >
-            {progressChapters?.length > 3 ? t("overView.viewMore") :t("overView.addMore") }
+            <Box>
+              <Box sx={{ cursor: "pointer" }}>
+                <Tooltip title={WordtooltipText}>
+                  <Image
+                    alt="tag"
+                    src={WordbadgeImage}
+                    className={styles.profileAchivements}
+                  />
+                </Tooltip>
+              </Box>
+              <Box sx={{ cursor: "pointer", mt: "20px" }}>
+                <Tooltip title={QstooltipText}>
+                  <Image
+                    alt="tag"
+                    src={QsbadgeImage}
+                    className={styles.profileAchivements}
+                  />
+                </Tooltip>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box sx={{ cursor: "pointer" }}>
+                <Tooltip title={ChaptertooltipText}>
+                  <Image
+                    alt="tag"
+                    src={ChapterbadgeImage}
+                    className={styles.profileAchivements}
+                  />
+                </Tooltip>
+              </Box>
+              <Box sx={{ cursor: "pointer", mt: "20px" }}>
+                <Tooltip title={timetooltipText}>
+                  <Image
+                    alt="tag"
+                    src={timebadgeImage}
+                    className={styles.profileAchivements}
+                  />
+                </Tooltip>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box className="step4">
+          <Typography sx={{ fontSize: "14px", fontWeight: 700 }}>
+            {t("overView.RecentCh")}
           </Typography>
+          <Box sx={{ marginTop: "20px" }}>
+            {progressChapters?.slice(0, 5).map((chapter) => (
+              <RecentChapters
+                key={chapter?._id}
+                title={chapter?.title}
+                id={chapter?._id}
+                percentage={calculateCompletionPercentage(chapter?.questions)}
+              />
+            ))}
+          </Box>
+          <Box onClick={() => router.push("/dashboard/chapters")}>
+            <Typography
+              sx={{
+                cursor: "pointer",
+                fontSize: "12px",
+                color: "#30422E",
+                marginTop: "22px",
+                textAlign: "center",
+              }}
+            >
+              {progressChapters?.length > 3 ? t("overView.viewMore") : t("overView.addMore")}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>

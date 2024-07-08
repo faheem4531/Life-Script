@@ -13,9 +13,16 @@ const TableOfContent = () => {
   const tocData = useSelector(selectTocData);
   const { t } = useTranslation();
 
+  const classes = {
+    TableOfContentC: "step6-TableOfContent",
+    FamilyTreeC: "step7-FamilyTree",
+    BookCoversC: "step8-BookCovers",
+    Tutorials: "step9-tutorials"
+  }
+
   return (
     <div>
-      <Layout>
+      <Layout >
         <Box className={styles.subContainer}>
           <Box
             sx={{

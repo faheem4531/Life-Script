@@ -5,7 +5,7 @@ import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
 import FaqGreen from "@/_assets/svg/TableOfContentIcon.svg";
-import FaqWhite from "@/_assets/svg/TableOfContentIcon.svg";
+import FaqWhite from "@/_assets/svg/sidebar/tableOfContent.svg";
 import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
 import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
 import ProgressGreen from "@/_assets/svg/sidebar/in-progress-green.svg";
@@ -42,7 +42,13 @@ import { useDispatch } from "react-redux";
 import styles from "./Sidebar.module.css";
 import TransitionsDialog from "../modal/TransitionDialog";
 
-const SideBar = ({ menuClick, handleSideCheck }) => {
+interface SideBarProps {
+  menuClick: () => void;
+  handleSideCheck: any;
+}
+
+const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
+
   const [childsOpen, setChilsdOpen] = useState(false);
   const [supportChildsOpen, setSupportChilsdOpen] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
@@ -100,6 +106,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
     }
   }, []);
 
+
+
   return (
     <>
       <Box sx={{ color: "#30422E" }}>
@@ -144,6 +152,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             },
           }}
         >
+          {/* Overview  */}
           <Box>
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/overview" ||
@@ -168,7 +177,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.Overview")}
             </a>
           </Box>
-          <Box>
+          {/* chapters */}
+          <Box className="step6-Chapters">
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
                 currentRoute === "/dashboard/chapters/chapterName" ||
@@ -212,7 +222,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             </a>
             {childsOpen && (
               <Box>
-                <Box sx={{ marginLeft: "20px" }}>
+                <Box sx={{ marginLeft: "20px" }} className={"step6-Chapters"}>
                   <a
                     className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
                       currentRoute === "/dashboard/chapters/chapterName" ||
@@ -263,7 +273,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               </Box>
             )}
           </Box>
-          <Box>
+          {/* TableOfContent */}
+          <Box className="step7-TableOfContent" >
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/TableOfContent" && styles.active
                 }`}
@@ -281,7 +292,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.toc")}
             </a>
           </Box>
-          <Box>
+          {/* familyTree */}
+          <Box className="step8-FamilyTree">
             <a
               className={`${styles.link} ${currentRoute === "/familyTree" && styles.active
                 }`}
@@ -303,8 +315,8 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.FamilyTree")}
             </a>
           </Box>
-
-          <Box>
+          {/* BookCover */}
+          <Box className="step9-BookCovers">
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/BookCover/SelectBookCover"
                 ? styles.active
@@ -345,6 +357,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.bookCover")}
             </a>
           </Box>
+          {/* SubscribePlans */}
           <Box>
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/SubscribePlans"
@@ -369,6 +382,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.SubPlan")}
             </a>
           </Box>
+          {/* profileSetting */}
           <Box>
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/profileSetting" && styles.active
@@ -387,7 +401,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.account")}
             </a>
           </Box>
-
+          {/* ReferAFriend */}
           <Box>
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
@@ -413,13 +427,14 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
               {t("sideBar.giftaBook")}
             </a>
           </Box>
-
+          {/* Tutorials - Email preferences - Contact Support */}
           <Box
             sx={{
               borderTop: "1px solid rgba(48, 66, 46, 0.30)",
               mt: "-15px ",
               p: "15px 0 0",
             }}
+            className="step10-tutorials"
           >
             <a
               className={`${styles.link} ${currentRoute === "/dashboard/Support"
@@ -460,7 +475,7 @@ const SideBar = ({ menuClick, handleSideCheck }) => {
             </a>
             {supportChildsOpen && (
               <Box>
-                <Box sx={{ marginLeft: "20px" }}>
+                <Box sx={{ marginLeft: "20px" }} >
                   <a
                     className={`${styles.link} ${currentRoute === "/dashboard/Support/Tutorials" ||
                       currentRoute === "/dashboard/Support/TutorialsDetail"

@@ -11,11 +11,13 @@ import { Box } from "@mui/material";
 import { useState } from "react";
 
 const OverView = () => {
+
   const [achievements, setAchievements] = useState({
     words: 0,
     questions: 0,
     chapters: 0,
-  })
+  });
+
 
   return (
     <Layout>
@@ -29,18 +31,22 @@ const OverView = () => {
       >
         <Box sx={{ width: "100%" }}>
           <WelcomeOverview />
-          <TimeTracker
-            onChange={(obj) =>
-              setAchievements(obj)
-            }
-          />
+          <Box className="step1">
+            <TimeTracker
+              onChange={(obj) => setAchievements(obj)}
+            />
+          </Box>
           <Box sx={{ margin: "20px 0", display: "flex", gap: "17px" }}>
             <ViewBook />
             <ViewTree />
           </Box>
-          <PrintBook />
+          <Box >
+            <PrintBook />
+          </Box>
         </Box>
-        <Profile data={achievements} />
+        <Box >
+          <Profile data={achievements} />
+        </Box>
       </Box>
     </Layout>
   );
