@@ -73,7 +73,7 @@ const Questionnaire = () => {
       .unwrap()
       .then(() => {
         dispatch(stripeDone()).then(() => {
-          router.push(`/dashboard/chapters`);  // lead this to the dashboard
+          router.push(`/dashboard/overview`);  // lead this to the dashboard
         })
         // const username = localStorage.getItem("username");
       })
