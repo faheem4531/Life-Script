@@ -8,7 +8,7 @@ import {
   uploadImageFamilyTree,
   getTreeData,
   resetTreeData,
-  saveTreeOnBook,
+  setBookData,
   getBookData
 
 } from "@/store/slices/chatSlice";
@@ -88,10 +88,7 @@ const FamilyTree = ({ familyTreeData }) => {
       .unwrap()
       .then((res) => {
         setIsShown(res[0]?.isInclude);
-
       })
-
-
   }, [])
 
   const handleAddedPerson = (data) => {
@@ -501,7 +498,7 @@ const FamilyTree = ({ familyTreeData }) => {
       });
     });
 
-    dispatch(saveTreeOnBook({ isInclude: true }))
+    dispatch(setBookData({ isInclude: true }))
       .unwrap()
       .then(() => {
         setSaveTreeModal(false);
@@ -511,7 +508,7 @@ const FamilyTree = ({ familyTreeData }) => {
 
 
   const cancleTreeHandler = () => {
-    dispatch(saveTreeOnBook({ isInclude: false }))
+    dispatch(setBookData({ isInclude: false }))
       .unwrap()
       .then((res) => {
         toast.success("Remove Tree from the book");

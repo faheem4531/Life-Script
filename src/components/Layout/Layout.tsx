@@ -1,4 +1,16 @@
 import { useState, useEffect } from "react";
+import {
+  updatePartner,
+  addChildren,
+  addParent,
+  uploadImage,
+  uploadImageFamilyTree,
+  getTreeData,
+  resetTreeData,
+  setBookData,
+  getBookData
+
+} from "@/store/slices/chatSlice";
 
 import NavBar from "@/components/dashboardComponent/Navbar";
 import SideBar from "@/components/dashboardComponent/Sidebar";
@@ -11,7 +23,7 @@ interface LayoutProps {
   marginLeft?: string;
 }
 const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
-  const [run, setRun] = useState(false);
+  const [run, setRun] = useState(true);
   const [stepIndex, setStepIndex] = useState(1);
   const [handleSideBar, setHandleSideBar] = useState(false);
   const dispatch: any = useDispatch();
@@ -74,7 +86,6 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     },
   ];
 
-
   const handleJoyrideCallback = (data) => {
     const { status, action, type, index } = data;
 
@@ -83,7 +94,8 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     } else if (type === "step:after" && action === "prev" && index > 1) {
       setStepIndex((prevIndex) => prevIndex - 1);
     } else if (status === "finished" || status === "skipped") {
-      setRun(false);
+      dispatch(setBookData({ isWelcome: true }))
+        .unwrap()
     }
   };
 
@@ -104,12 +116,15 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     return stepElements.every((selector) => document.querySelector(selector));
   };
 
-
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (checkElementsExist()) {
-        setRun(true);
+        dispatch(getBookData())
+          .unwrap()
+          .then((res) => {
+            setRun(res[0]?.isWelcome);
+          })
+
         clearInterval(intervalId);
       }
     }, 500);
@@ -158,7 +173,7 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     <Box>
       <Joyride
         steps={steps}
-        run={run}
+        run={!run}
         stepIndex={stepIndex}
         callback={handleJoyrideCallback}
         continuous

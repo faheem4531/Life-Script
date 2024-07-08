@@ -429,11 +429,12 @@ export async function uploadImageApiFamilyTree(data) {
 }
 
 
-export async function saveTreeOnBookApi(data: {
+export async function setBookDataApi(data: {
   isInclude: boolean;
+  isWelcome: boolean;
 }) {
   try {
-    const res = await api.patch("/book", { isInclude: data.isInclude });
+    const res = await api.patch("/book", data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
