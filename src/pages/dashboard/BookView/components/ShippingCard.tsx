@@ -3,8 +3,16 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import HalfBook from "@/_assets/png/halfBook.png";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import {
+  
+  selectCoverData,
+  
+} from "@/store/slices/chatSlice";
 
 const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount = 39 }) => {
+  const coverData = useSelector(selectCoverData);
+
   setPayment(count * 39 - amount)
   const {t}= useTranslation();
   return (
@@ -35,7 +43,9 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
         }}
       >
         <Image
-          src={HalfBook}
+          src={coverData?.coverPagePhoto}
+          width={100}
+          height={100}
           alt="book"
           style={{
             width: "100%",

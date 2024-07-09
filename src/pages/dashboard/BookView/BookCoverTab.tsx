@@ -13,8 +13,9 @@ import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { font } from "../../../styles/font";
+import Loading from "./components/Loading"
 
-const BookCoverTab = ({ setSelectedTab, pages }) => {
+const BookCoverTab = ({ setSelectedTab, pages}) => {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -554,6 +555,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
      pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
 
     const newImage = coverData && coverData?.coverPagePhoto;
+
     const newData = { imageUrl: newImage };
     const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
@@ -742,6 +744,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       setImageLink(coverData.image);
       setSelectedColor(coverData.color);
       setFinalCover(coverData.coverPagePhoto);
+
     }
   }, [coverData]);
 
@@ -756,7 +759,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
             height: "100vh",
           }}
         >
-          <CircularProgress />
+         <Loading/>
         </Box>
       ) : (
 

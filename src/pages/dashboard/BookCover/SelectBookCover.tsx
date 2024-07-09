@@ -96,12 +96,12 @@ const SelectBookCover = () => {
               </Grid>
             ))}
           </Grid>
-          <Box display="flex" justifyContent="flex-end" mt="40px">
+          {/* <Box display="flex" justifyContent="flex-end" mt="40px">
             <GlobelBtn
               btnText={`${t("BookCover.viewMore")}`}
               width={"180px"}
             />
-          </Box>
+          </Box> */}
         </Box>
       </Layout>
     </div>

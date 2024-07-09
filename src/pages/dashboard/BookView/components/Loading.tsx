@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import styles from "./Narrative.module.css";
+import styles from "./Loader.module.css"
 import animationLogo from "@/_assets/svg/animationLogo.png";
 import Logo from "@/_assets/svg/Frame.svg";
 
@@ -32,12 +32,12 @@ const Loading = () => {
           setTimeout(() => {
             setShowCompletion(false);
           }, 1000);
-          return 100;
+          return 99;
         } else {
           if (prevProgress === 99) {
-            return isLoaded === "loaded" ? prevProgress + 1 : prevProgress + 0;
+            return isLoaded === "loaded" ? prevProgress + 0 : prevProgress + 0;
           } else {
-            return prevProgress + 10;
+            return prevProgress + 5;
           }
         }
       });
@@ -62,8 +62,8 @@ const Loading = () => {
       }}
     >
       <Typography sx={{ fontSize: "30px", fontWeight: 300 }}>
-        {progress <= 50 && `${t("narrativeLoading.ReadingContent")}`}
-        {progress > 50 && progress !== 100 && "Analyzing Tones..."}
+        {progress <= 50 && `Reading Content `}
+        {progress > 50 && progress !== 100 && "Preparing PDF"}
       </Typography>
 
 

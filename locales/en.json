@@ -726,7 +726,7 @@
     "enter-email": "Enter your email address",
     "password": "Password",
     "enter-password": "Enter your password",
-    "forget-password": "Forget password?",
+    "forget-password": "Forgot password?",
     "login": "Login",
     "login-with": "Or",
     "not-member": "Not a member yet?",
@@ -1359,7 +1359,7 @@
     "apt":"Department"
   },
   "checkout": {
-    "description": "I acknowledge that I have input all the information on my behalf andhas reviewed the interior and book cover. I want to print the bookas it is.",
+    "description": "I acknowledge that I have input all the information on my behalf and has reviewed the interior and book cover. I want to print the book as it is.",
     "total": "Total",
     "backBtn": "Back",
     "finishBtn": "Finish",

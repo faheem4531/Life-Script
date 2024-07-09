@@ -130,10 +130,18 @@ const ChaptersList = ({ listItems, selectedItems, handleItemClick }) => {
       <Box
         sx={{
           flex: "1",
-          overflowY: "auto",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
+          overflowY: "scroll",
+          '&::-webkit-scrollbar': {
+          width: '10px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: '#7F886B',
+          borderRadius: '10px',
+        },
+        '&::-webkit-scrollbar-thumb:hover': {
+          backgroundColor: '#7F886B',
+        },
+          
         }}
       >
         {listItems?.map((item) => (

@@ -113,7 +113,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
                   justifyContent: remainingPayment > 0 ? "end" : "center",
                 }}
               >
-                <ShippingCard setPayment={setPayment} setCount={setCount} count={count} />
+                <ShippingCard setPayment={setPayment} setCount={setCount} count={count}  />
               </Box>
 
             </Box>
@@ -177,6 +177,8 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             <Image
               alt="image"
               src={ModalImage}
+              width={100}
+              height={100}
               style={{
                 width: "100%",
                 height: "100%",
