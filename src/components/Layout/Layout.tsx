@@ -22,6 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
   const dispatch: any = useDispatch();
 
   const theme = useTheme();
+  const xl = useMediaQuery(theme.breakpoints.up("xl"));
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
   const sm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -89,20 +90,25 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     const { status, action, type, index } = data;
 
     if (type === "step:after" && action === "next") {
-      switch (index) {
-        case 5:
-          if (md || sm || xs) {
-            setHandleSideBar(true)
-          }
-          break;
-        default:
-          break;
+      if (index === 5) {
+        if (lg || xl) {
+          setHandleSideBar(false);
+        }
+        else if (md || sm || xs) {
+          setHandleSideBar(true);
+        }
       }
-
       setStepIndex((prevIndex) => prevIndex + 1);
 
-    } else if (type === "step:after" && action === "prev" && index > 1) {
-      setStepIndex((prevIndex) => prevIndex - 1);
+    } else if (type === "step:after" && action === "prev") {
+      if (index === 6) {
+        if (md || sm || xs) {
+          setHandleSideBar(false);
+        }
+      }
+      if (index > 1) {
+        setStepIndex((prevIndex) => prevIndex - 1);
+      }
     } else if (status === "finished" || status === "skipped") {
       setHandleSideBar(false)
       dispatch(setBookData({ isWelcome: true }))
@@ -184,7 +190,7 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     <Box>
       <Joyride
         steps={steps}
-        run={!run}
+        run={run}
         stepIndex={stepIndex}
         callback={handleJoyrideCallback}
         continuous
