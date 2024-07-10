@@ -267,7 +267,14 @@ const EditBookCover = () => {
       }
       let yAxisOffsetTwo = "35%"; // Default for CoverNumber 2
       if (CoverNumber === "2" && elmId === "heading-text") {
-        yAxisOffsetTwo = "44%";
+        yAxisOffsetTwo = "38%";
+        if (title.length !== 0) {
+          yAxisOffsetTwo = "44%";
+        }
+        else {
+          yAxisOffsetTwo = "38%";
+          console.log(yAxisOffsetTwo, "notitle");
+        }
       }
       let yAxisOffsetTwoAuth = "80%"; // Default for CoverNumber 2 author
       if (CoverNumber === "2" && elmId === "author-text") {
@@ -298,6 +305,11 @@ const EditBookCover = () => {
           defaultTspan.appendChild(document.createTextNode(`${defaultText}`));
           headingText.appendChild(defaultTspan);
         });
+        // Reset y attribute for default text for CoverNumber 2
+        if (CoverNumber === "2" && elmId === "heading-text") {
+          headingText.setAttribute("y", yAxisOffsetTwo);
+        }
+
       } else {
         let lines = [title];
         // Check for specific covers to split the title into multiple lines
@@ -855,7 +867,7 @@ const EditBookCover = () => {
                         style={{ height: 300, width: "100%" }}
                         // aspectRatio={coverAspectRatio()}
                         // initialAspectRatio={16 / 9}
-                        initialAspectRatio={1/2}
+                        initialAspectRatio={1 / 2}
                         // aspectRatio={1.7 / 2.5}
                         background={false}
                         zoomTo={0}
