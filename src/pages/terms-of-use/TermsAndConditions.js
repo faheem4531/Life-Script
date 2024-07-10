@@ -13,7 +13,7 @@ const TermsAndConditions = () => {
     },
     {
       title: "Company:",
-      text: "LifeScript Ltd., which refers to 'we,' 'us, ' or 'our' in these Terms. Country: Bulgaria, where LifeScript Ltd.is based."
+      text: "LifeScript Ltd., which refers to 'we,' 'us, ' or 'our' in these Terms."
     },
     {
       title: "Country: ",
@@ -113,9 +113,9 @@ const TermsAndConditions = () => {
 
 
           <PHeading text="Definitions and Key Terms" />
-          <Typography sx={{ margin: "10px 0" }}>To ensure clarity, the following terms are defined as follows:</Typography>
+          <Typography sx={{ margin: { sm: "0 0 10px 20px"}}}>To ensure clarity, the following terms are defined as follows:</Typography>
           <Box sx={{ maxWidth: "900px" }}>
-            <Box sx={{ maxWidth: "90%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 20px" } }}>
+            <Box sx={{ maxWidth: "100%", margin: { sm: "0 0 50px 20px", xs: "0 0 30px 20px" } }}>
               {keyTerms.map((item, index) => <Point
                 key={index}
                 title={item.title}
