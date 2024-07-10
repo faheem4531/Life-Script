@@ -6,10 +6,11 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import TOCMain from "../TableOfContent/components/TOCMain";
 import { useTranslation } from "next-i18next";
+import {selectTocData}from "@/store/slices/chatSlice";
 
 const TableOfContentTab = ({ setSelectedTab, bookData }) => {
   const dispatch: any = useDispatch();
@@ -17,6 +18,8 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const data= useSelector(selectTocData)
+
 
   const handleClick = (event: any) => {
     event.stopPropagation();
@@ -39,6 +42,7 @@ const TableOfContentTab = ({ setSelectedTab, bookData }) => {
           <GlobelBtn
             bgColor="#E1683B"
             color="white"
+            disabled={data?.tableOfContent?.length === 0}
             btnText={loading ? "Loading..." : t("reviewBook.nextBtn")}
             width="110px"
             onClick={() => {
