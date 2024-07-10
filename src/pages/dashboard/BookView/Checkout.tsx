@@ -113,7 +113,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
                   justifyContent: remainingPayment > 0 ? "end" : "center",
                 }}
               >
-                <ShippingCard setPayment={setPayment} setCount={setCount} count={count}  />
+                <ShippingCard setPayment={setPayment} setCount={setCount} count={count} quantity />
               </Box>
 
             </Box>
