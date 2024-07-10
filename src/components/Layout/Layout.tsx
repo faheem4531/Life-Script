@@ -190,7 +190,7 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
     <Box>
       <Joyride
         steps={steps}
-        run={run}
+        run={!run}
         stepIndex={stepIndex}
         callback={handleJoyrideCallback}
         continuous
