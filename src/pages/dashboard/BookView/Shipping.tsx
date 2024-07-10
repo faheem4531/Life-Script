@@ -115,6 +115,7 @@ const Shipping = ({
               setCount={setCount}
               count={count}
               QuantityCheck={true}
+              quantity={luluBalance?.quantity}
               amount={luluBalance?.amount}
             />
 
