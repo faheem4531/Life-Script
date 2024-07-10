@@ -10,7 +10,7 @@ import {
   
 } from "@/store/slices/chatSlice";
 
-const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount = 39 }) => {
+const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount=39, quantity  }) => {
   const coverData = useSelector(selectCoverData);
 
   setPayment(count * 39 - amount)
@@ -53,6 +53,24 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
           }}
         />
       </Box>
+      <Box mt={2} sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      
+        <Typography
+          sx={{
+            fontSize: {
+              lg: "18px",
+              md: "18.752px",
+              sm: "16.752px",
+              xs: "14px",
+            },
+            color: "#30422E",
+            fontWeight: 'bold'
+          }}
+        >
+          You can buy {quantity} Book
+        </Typography>
+    
+    </Box>
       <Box
         sx={{
           mt: {

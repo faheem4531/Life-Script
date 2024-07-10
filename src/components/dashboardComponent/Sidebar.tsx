@@ -42,6 +42,7 @@ import { useDispatch } from "react-redux";
 import styles from "./Sidebar.module.css";
 import TransitionsDialog from "../modal/TransitionDialog";
 
+
 interface SideBarProps {
   menuClick: () => void;
   handleSideCheck: any;
@@ -122,7 +123,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
               padding: "0 0 0 20px",
               height: "70px",
               bgcolor: "#30422E",
+              cursor: "pointer"
             }}
+            onClick={() => { router.push("/dashboard/overview")}}
           >
             <Image src={Logo} alt="logo" className={styles.logo} />
           </Box>
