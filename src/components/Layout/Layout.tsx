@@ -195,6 +195,7 @@ const Layout: React.FC<LayoutProps> = ({ children, marginLeft }) => {
         callback={handleJoyrideCallback}
         continuous
         scrollToFirstStep
+        disableScrolling
         scrollOffset={10000}
         scrollDuration={1000}
         showSkipButton
