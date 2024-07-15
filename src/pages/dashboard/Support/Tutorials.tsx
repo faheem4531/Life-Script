@@ -7,49 +7,35 @@ import { useTranslation } from "react-i18next";
 const videoData = [
   {
     id: 1,
-    src: "https://www.youtube.com/embed/AGoN0oeuZ2k?si=Bjpwh7mv_dzgLMG6",
-    title: "Gemini for Social Posts: Game Edition"
+    src:"https://www.youtube.com/embed/f29JtN4LN_k?si=rPRX0eNyBFjRsWx5" ,
+    title: "Creating a chapter using a template"
   },
   {
     id: 2,
-    src: "https://www.youtube.com/embed/FKEFgm0R0Sc?si=1hrpUY8HRmhX_FUF",
-    title: "Transactional Analysis Life Script Explained (TA)"
+    src: "https://www.youtube.com/embed/CyysiUG7wp8?si=M6OOpFWRyHMDpGIh",
+    title: "Creating a chapter from scratch"
   },
   {
     id: 3,
-    src: "https://www.youtube.com/embed/K75wXRTpM_Y?si=cudgL5ws3dn0PQu_",
-    title: "How to Script Research Any Topic And Storytelling: Masterclass"
+    src: "https://www.youtube.com/embed/RO1S5znApIE?si=1IlNXwT7X30LU_7n",
+    title: "How to add, edit or delete questions"
   },
   {
     id: 4,
-    src: "https://www.youtube.com/embed/2r9lLY0h9Ew?si=diGXDv2t5zDCUEYe",
-    title: "How to change your Script"
+    src: "https://www.youtube.com/embed/TuL8vHfDB90?si=qPcZ9ZdHcFXOo46o",
+    title: "How to answer questions and complete a chapter"
   },
   {
     id: 5,
-    src: "https://www.youtube.com/embed/4KbSRXP0wik?si=i0CXoYA-Wh11MyMX",
-    title: "Emotion, Stress, and Health: Crash Course Psychology"
+    src: "https://www.youtube.com/embed/MF0VPpe5B-k?si=EHo9jeb7rEfq6Kqu",
+    title: "How to use Table of Contents"
   },
   {
     id: 6,
-    src: "https://www.youtube.com/embed/jjUxcLkxNfk?si=Z2ZxABIjTxMIxMRv",
-    title: "Psychologist vs Psychiatrist vs Doctors: What You Need to Know | MedCircle Series"
+    src: "https://www.youtube.com/embed/sVlwD5XxAY4?si=Ojch-HTuL-Cy_GXn",
+    title: "How to create your Family Tree"
   },
-  {
-    id: 7,
-    src: "https://www.youtube.com/embed/2H0bdfG-jm0?si=Q6lVOumIh4yZ5Kk1",
-    title: "THE POWER OF KNOWLEDGE"
-  },
-  {
-    id: 8,
-    src: "https://www.youtube.com/embed/sLP9L-qJqcI?si=YH3NuaG5MJ3LVW-d",
-    title: "What If You Fell Into Jupiter?"
-  },
-  {
-    id: 9,
-    src: "https://www.youtube.com/embed/Lsim6FYtXSw?si=BBJL2ML40U2j-I0X",
-    title: "Universe Size Comparison | Planet Size Comparison | Stars Size Comparison"
-  }
+  
 ];
 
 const Tutorials = () => {
