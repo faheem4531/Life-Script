@@ -621,7 +621,7 @@
         "tab2": "REGISTER",
         "tab3": "PAYMENT"
       },
-      "userExist": "User already existS"
+      "userExist": "User already exists"
     },
     "PurchaseForm": {
       "title": "Purchase LifeScript",
@@ -1356,7 +1356,7 @@
     "stateCode": "State",
     "postCode": "Post Code",
     "street": "Street",
-    "apt":"Department"
+    "apt": "Department"
   },
   "checkout": {
     "description": "I acknowledge that I have input all the information on my behalf and has reviewed the interior and book cover. I want to print the book as it is.",

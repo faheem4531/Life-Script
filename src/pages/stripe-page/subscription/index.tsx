@@ -81,7 +81,7 @@ const SubscriptionPage = () => {
         }
       })
       .catch(() => {
-        toast.error("User Already Exsit");
+        toast.error("User Already Exist");
       });
   };
 
