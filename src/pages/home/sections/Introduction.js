@@ -88,30 +88,35 @@ const Introduction = () => {
       </Box>
 
       <Image
+      loading="lazy"
         src={Image1}
         alt="Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript"
         title="A happy family on the beach"
         className={styles.image1}
       />
       <Image
+      loading="lazy"
         src={Image3}
         alt="Children dancing and having fun with bubbles on a vintage photograph - LifeScript"
         title="Kids dancing and having fun with bubbles"
         className={styles.image3}
       />
       <Image
+      loading="lazy"
         src={Image2}
         alt="childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript"
         title="A happy kid and a cat in a vintage photograph"
         className={styles.image2}
       />
       <Image
+      loading="lazy"
         src={Image4}
         alt="Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript"
         title="An old couple laughing and eating ice-cream"
         className={styles.image4}
       />
       <Image
+      loading="lazy"
         src={Book}
         alt="An old opened autobiography book - LifeScript"
         title="An old autobiography book"

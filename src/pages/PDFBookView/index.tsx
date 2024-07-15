@@ -1,6 +1,6 @@
-// pages/index.js
-// pages/index.js
-import PDFViewer from "./view";
+import { lazy, Suspense } from "react";
+
+const PDFViewer = lazy(() => import("./view"));
 
 const PdfPage = () => {
   const pdfUrl =
@@ -8,7 +8,9 @@ const PdfPage = () => {
 
   return (
     <div>
-      <PDFViewer pdfUrl={pdfUrl} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <PDFViewer pdfUrl={pdfUrl} />
+      </Suspense>
     </div>
   );
 };

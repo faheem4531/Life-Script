@@ -8,7 +8,7 @@ const Points = ({ no = false, icon, title, discription }) => {
       padding: { lg: '20px 30px 40px', md: "15px 8px 20px 15px", sm: "20px 30px 40px ", xs: "24px 15px 28px 25px" },
       borderRadius: '4px',
       display: "inline-block",
-      maxWidth: { md: "350px", sm: "450px", xs: "100%" },
+      maxWidth: { md: "290px", sm: "450px", xs: "100%" },
       minHeight: { lg: "260px", md: "220px", xs: "" },
       height: { lg: icon && "380px", md: icon && "340px" },
       width: "100%"
