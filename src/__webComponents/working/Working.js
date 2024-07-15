@@ -5,7 +5,7 @@ import Points from "./Points";
 import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
 
-const Working = ({ data, heading, subHeading = false, marked = false }) => {
+const Working = ({ data, heading, subHeading = false, marked = false,width}) => {
   const styleLine = {
     width: "120px",
     position: "absolute",
@@ -44,6 +44,8 @@ const Working = ({ data, heading, subHeading = false, marked = false }) => {
       }}>
 
         {data.map((item, index) => <Points
+
+          width={width}
           key={index}
           no={item.no}
           icon={item.icon}

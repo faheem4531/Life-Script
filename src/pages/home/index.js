@@ -58,7 +58,7 @@ const HomePage = () => {
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C" />
         <Introduction />
-        <Working data={pointsArray} heading={t("landingPage.howItWorks.heading")} marked={t("landingPage.howItWorks.subHeading")} />
+        <Working data={pointsArray} heading={t("landingPage.howItWorks.heading")} marked={t("landingPage.howItWorks.subHeading")} width={"290px"} />
         <Suggestion />
         <GifTab
           heading={t("landingPage.perfectSection.content5.cardText")}

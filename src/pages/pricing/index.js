@@ -204,6 +204,7 @@ const PricingPage = () => {
         <Pricing />
         <Working
           data={pointsArray}
+          width="340px"
           heading={t("pricingSection.title")}
           subHeading={t("pricingSection.subTitle")}
         />
