@@ -1,5 +1,5 @@
 'use client '
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, TextField } from "@mui/material"
 import Image from "next/image"
 import styles from "../ComponentsStyles.module.css"
 import Smily from "@/__webAssets/svgs/smily.svg"
@@ -10,7 +10,81 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Shape from "@/__webAssets/svgs/input-shape.svg"
 import { useState } from "react"
 
+import { toast, ToastContainer } from "react-toastify"
+import { useDispatch } from "react-redux"
+import { contact } from "@/store/slices/authSlice"
+
+
+
+
+
+
 const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, button, shape, marked, lineWidth }) => {
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    description: ''
+  });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    description: ''
+  });
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues(prevValues => ({ ...prevValues, [name]: value }));
+  };
+
+  const validate = () => {
+    const newErrors = {};
+
+    // Check for required fields
+    if (!formValues.name.trim()) newErrors.name = 'Name is required';
+
+    // Email validation for input2
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formValues.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!emailRegex.test(formValues.email)) {
+      newErrors.email = 'Email must be a valid email address';
+    }
+
+    // Check for required fields
+    if (!date && !formValues.description.trim()) newErrors.description = 'Date is required';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async () => {
+
+    
+    if (validate()) {
+      try {
+
+     
+        const res =  await dispatch(contact(formValues)).unwrap()
+        if(res){
+          toast.success(res);
+          setFormValues({
+            name: '',
+            email: '',
+            description: ''
+          });
+          
+        }
+
+      } catch (error) {
+        console.error('Error:', error);
+        toast.error(error.message || 'Failed to submit the form');
+      }
+    }
+  };
+
+
+
   return (
     <Box
       sx={{
@@ -39,8 +113,6 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
             <Image src={Line} alt="line" className={styles.footerLine} width={lineWidth} />
           </Box>
         </Box>
-
-
       </Box>
 
       <Typography sx={{ fontSize: "16px", textAlign: "center", fontWeight: 500, marginTop: "30px", fontFamily: "Avenir" }}>
@@ -55,24 +127,60 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
         margin: { sm: "55px 0 40px", xs: "35px 0 20px" },
         width: "100%",
         justifyContent: "center"
-      }}>
-
+      }} >
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
-          <Input
-            placeHolder={input1}
+          <TextField
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+            placeholder={input1}
+            error={!!errors.name}
+            helperText={errors.name}
+            fullWidth
+            sx={{
+                '& .MuiInputBase-root': {
+                  backgroundColor: 'white',
+                }, borderRadius: "5px"
+              }}
+
+
           />
         </Box>
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
-          <Input
-            placeHolder={input2}
+          <TextField
+            name="email"
+            value={formValues.email}
+            onChange={handleChange}
+            placeholder={input2}
+            error={!!errors.email}
+            helperText={errors.email}
+            fullWidth
+            sx={{
+                '& .MuiInputBase-root': {
+                  backgroundColor: 'white',
+                }, borderRadius: "5px"
+              }}
+
           />
         </Box>
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
           {date ?
             <GetDate />
             :
-            <Input
-              placeHolder={input3}
+            <TextField
+              name="description"
+              value={formValues.description}
+              onChange={handleChange}
+              placeholder={input3}
+              error={!!errors.description}
+              helperText={errors.description}
+              fullWidth
+              sx={{
+                '& .MuiInputBase-root': {
+                  backgroundColor: 'white',
+                }, borderRadius: "5px"
+              }}
+
             />
           }
         </Box>
@@ -86,13 +194,19 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
           backgroundColor="#30422E"
           img2={Smily}
           bgHover="#1D291C"
+          onClick={handleSubmit}
+
         />
       </Box>
+      <ToastContainer />
     </Box>
-  )
+  );
 }
 
-export default ContactFooter
+export default ContactFooter;
+
+
+
 
 
 

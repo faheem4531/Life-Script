@@ -461,3 +461,16 @@ export async function changePasswordApi(data: ChangePassword) {
     }
   }
 }
+
+export async function contactUs(data:Object){
+  try {
+    const res = await api.post('/auth/lifescript/contact-us',data);
+    return res;
+
+  } catch (error) {
+    throw new Error(error.response?.data?.message);
+
+  }
+
+
+}

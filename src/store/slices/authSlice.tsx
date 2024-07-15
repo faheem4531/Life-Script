@@ -31,6 +31,7 @@ import {
   updatePasswordApi,
   updateUserProfileApi,
   verifyEmailApi,
+  contactUs
 } from "../api/authApi";
 
 interface State {
@@ -93,6 +94,19 @@ export const updateUserProfile = createAsyncThunk<any, any>(
       return response;
     } catch (error: any) {
       throw new Error(error.props);
+    }
+  }
+);
+
+export const contact = createAsyncThunk<any, object>(
+  "user/contactUs",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await contactUs(data);
+      return response;
+    } catch (error: any) {
+
+      return rejectWithValue(error.message);
     }
   }
 );
