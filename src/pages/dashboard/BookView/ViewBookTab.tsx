@@ -1,18 +1,18 @@
+import { lazy, Suspense, useState } from "react";
 import GlobelBtn from "@/components/button/Button";
-import { useState } from "react";
-import PDFViewer from "@/pages/PDFBookView/view";
 import { Box } from "@mui/material";
 import backArrow from "../../../_assets/svg/left.svg";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import ShippingModal from "@/components/modal/ShippingModal";
 import { useTranslation } from "react-i18next";
 
+const PDFViewer = lazy(() => import("@/pages/PDFBookView/view"));
+
 const ReviewInterior = ({ setSelectedTab, interior }) => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
-  // const pdfUrl =
-  // "https://lifescript-media.s3.eu-north-1.amazonaws.com/36453ad9-3feb-47e1-acd9-ee754be5a7e9.pdf";
   const pdfUrl = interior;
+
   return (
     <Box>
       <Box
@@ -25,7 +25,9 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
         }}
       >
         <Box>
-          <PDFViewer pdfUrl={pdfUrl} />
+          <Suspense fallback={<div>Loading PDF Viewer...</div>}>
+            <PDFViewer pdfUrl={pdfUrl} />
+          </Suspense>
         </Box>
       </Box>
       <Box
@@ -58,7 +60,6 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
             btnText={t("reviewBook.nextBtn")}
             onClick={() => {
               setOpen(true);
-
             }}
           />
         </Box>
