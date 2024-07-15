@@ -873,7 +873,7 @@ const EditBookCover = () => {
                         // aspectRatio={coverAspectRatio()}
                         // initialAspectRatio={16 / 9}
                         initialAspectRatio={1 / 2}
-                        // aspectRatio={1.7 / 2.5}
+                        aspectRatio={1.7 / 2.5}
                         background={false}
                         zoomTo={0}
                         viewMode={1}
