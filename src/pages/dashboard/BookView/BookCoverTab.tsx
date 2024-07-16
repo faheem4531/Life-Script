@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { font } from "../../../styles/font";
 import Loading from "./components/Loading"
 
-const BookCoverTab = ({ setSelectedTab, pages}) => {
+const BookCoverTab = ({ setSelectedTab, pages }) => {
   const { t } = useTranslation();
   const [title, setTitle] = useState("");
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -393,38 +393,34 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
   ) => {
     const logo = coverData?.coverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
       : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
-    // const pdfHeight = 229 + 40; // Adding 20mm offset for top and bottom
-    let pdfHeight: any;
-    if (
-      coverData?.coverNumber === "1" ||
-      coverData?.coverNumber === "3"
-    ) {
+
+    let pdfHeight;
+    if (coverData?.coverNumber === "1" || coverData?.coverNumber === "3") {
       pdfHeight = 229 + 30;
     } else if (coverData?.coverNumber === "2") {
       pdfHeight = 229 + 30;
     } else {
-      pdfHeight = 229 + 40;  // 20 mm on each side for the offset
+      pdfHeight = 229 + 40; // 20 mm on each side for the offset
     }
-    const leftContentWidth = 144; // Width of the left content area
-    const rightContentWidth = 144; // Width of the right content area
-    const gutterWidth = 8; // Gutter width on both sides
+
+    const leftContentWidth = 144;
+    const rightContentWidth = 144;
+    const gutterWidth = 8;
     const spineWidth = spine;
-    let offset: any;
-    if (
-      coverData?.coverNumber === "1" ||
-      coverData?.coverNumber === "3"
-    ) {
+    let offset;
+    if (coverData?.coverNumber === "1" || coverData?.coverNumber === "3") {
       offset = 12;
     } else if (coverData?.coverNumber === "2") {
       offset = 8;
     } else {
       offset = 20; // 20 mm on each side for the offset
     }
+
     const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
 
     const pdf = new jsPDF({
-      unit: "mm", // Set the unit to millimeters
-      format: [pdfWidth, pdfHeight], // Updated format with offset
+      unit: "mm",
+      format: [pdfWidth, pdfHeight],
       orientation: "landscape",
     });
 
@@ -437,122 +433,106 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
     const bgcolor = color?.toString();
     const imageUrl = imgUrl;
 
-    // Full background color including the offset area
     pdf.setFillColor(bgcolor);
     pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
 
     if (coverData?.coverNumber === "2") {
-      // Full background color including the offset area
       pdf.setFillColor("#FFFFFF");
       pdf.rect(0, 0, pdfWidth, pdfHeight, "F");
 
-      // Section 1: Left content area
       pdf.setFillColor("#FFFFFF");
       pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
 
-      // Section 2: Left gutter
       pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
 
-      // Section 3: Spine and inner spine
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
+      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F");
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); // inner spine
+      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F");
       pdf.setFillColor("#FFFFFF");
       const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
-      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
+      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F");
 
-      // Section 4: Right gutter
       pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
 
-      // Section 5: Right content area
       pdf.setFillColor("#FFFFFF");
       pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
-
 
     } else {
-      // Section 1: Left content area
       pdf.setFillColor(bgcolor);
       pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
 
-      // Section 2: Left gutter
       pdf.setFillColor(bgcolor);
       pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
 
-      // Section 3: Spine and inner spine
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); // spine first border
+      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F");
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); // inner spine
+      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F");
       pdf.setFillColor(bgcolor);
       const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
-      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); // spine second border
+      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F");
 
-      // Section 4: Right gutter
       pdf.setFillColor(bgcolor);
       pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
-      // Section 5: Right content area
+
       pdf.setFillColor(bgcolor);
       pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
-
     }
 
-    let y = 30; // Initial y-coordinate with offset
-    const fontSize = 10; // Font size
+    let y = 30;
+    const fontSize = 10;
     const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
-    for (let i = 0; i < text2.length; i++) {
-      const char = text2[i];
-      pdf.setFontSize(fontSize);
-      pdf.setFont("WorkSans");
-      pdf.setTextColor(0, 0, 0); // Default text color
-
-      if (coverData?.coverNumber === "5") {
-        pdf.setTextColor(255, 255, 255); // White text for cover number 5
-      } else {
+    // Adjusted vertical spacing
+    const charSpacing = 3;
+    const drawTextVertically = (text) => {
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        pdf.setFontSize(fontSize);
+        pdf.setFont("WorkSans");
         pdf.setTextColor(0, 0, 0);
+
+        if (coverData?.coverNumber === "5") {
+          pdf.setTextColor(255, 255, 255);
+        } else {
+          pdf.setTextColor(0, 0, 0);
+        }
+        // pdf.text(char, textCenter, y + .8, { angle: 270 });
+        pdf.text(char, textCenter, y, { angle: 270 });
+        if (char === 'i' || char === "I") {
+          y = y + 1.5;
+        } else {
+          y = y + charSpacing;
+        }
       }
-      pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3; // Move to the next line for each character
     }
 
+    drawTextVertically(text2);
     pdf.setFontSize(fontSize);
     pdf.setFont("WorkSans");
     if (coverData?.coverNumber === "5") {
-      pdf.setTextColor(255, 255, 255); // White text for cover number 5
+      pdf.setTextColor(255, 255, 255);
     } else {
       pdf.setTextColor(0, 0, 0);
-    } // Separator color
+    }
     pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
 
-    y = y + 6;
+    y = y + 6; // Reduced spacing after the separator
 
-    for (let i = 0; i < writter.length; i++) {
-      const char = writter[i];
-      pdf.setFontSize(fontSize);
-      pdf.setFont("WorkSans");
-      if (coverData?.coverNumber === "5") {
-        pdf.setTextColor(255, 255, 255); // White text for cover number 5
-      } else {
-        pdf.setTextColor(0, 0, 0);
-      }
-      pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3; // Move to the next line for each character
-    }
+    drawTextVertically(writter);
 
-     // Set fixed logo size
-     const logoWidth = 5; // Fixed width for the logo
-     const logoHeight = 20; // Fixed height for the logo
-   
-     // Position the logo slightly above the bottom of the spine
-     const logoUp = 5;
-     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
-     const verticalOffset = 8; // Adjust this value to move the logo up or down
-     const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp; // slightly above the bottom
-   
-     pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
+    const logoWidth = 5;
+    const logoHeight = 20;
+
+    const logoUp = 5;
+    const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
+    const verticalOffset = 8;
+    const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp;
+
+    pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
 
     const newImage = coverData && coverData?.coverPagePhoto;
 
@@ -560,7 +540,7 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
     const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
-      const imageWidth = 159; // Width of the image in mm
+      const imageWidth = 159;
       const imageHeight = 259;
       const imageY = 0;
 
@@ -573,7 +553,7 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
         imageHeight
       );
     } else if (coverData?.coverNumber === "2") {
-      const imageWidth = 140; // Width of the image in mm
+      const imageWidth = 140;
       const imageHeight = 259;
       const imageY = 0;
 
@@ -585,9 +565,8 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
         imageWidth,
         imageHeight
       );
-    }
-    else if (coverData?.coverNumber === "1") {
-      const imageWidth = 156; // Width of the image in mm
+    } else if (coverData?.coverNumber === "1") {
+      const imageWidth = 156;
       const imageHeight = 250;
       const imageY = 14;
 
@@ -599,8 +578,7 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
         imageWidth,
         imageHeight
       );
-    }
-    else {
+    } else {
       pdf.addImage(
         newImageLink?.payload,
         "png",
@@ -611,7 +589,7 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
       );
     }
 
-    const pdfContent = pdf.output("datauristring"); // Get the PDF content as a data URI
+    const pdfContent = pdf.output("datauristring");
 
     return pdfContent;
   };
@@ -660,12 +638,12 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
   //   return spineSize;
   // }
 
-  function calculatePageSize(pages:number) {
+  function calculatePageSize(pages: number) {
     // Calculate dynamic value based on the number of pages
     let dynamicValue = Math.min(Math.floor(pages / 100) * 0.6, 3.0); // Max value of 3.0 for 500 pages
     const spineSize = (pages / 10) * 0.5 + dynamicValue + 4;
     return spineSize;
-}
+  }
 
   useEffect(() => {
     if (pages) {
@@ -759,7 +737,7 @@ const BookCoverTab = ({ setSelectedTab, pages}) => {
             height: "100vh",
           }}
         >
-         <Loading/>
+          <Loading />
         </Box>
       ) : (
 
