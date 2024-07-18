@@ -487,7 +487,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
     // Adjusted vertical spacing
-    const charSpacing = 3;
+    const charSpacing = 2.8;
     const drawTextVertically = (text) => {
       for (let i = 0; i < text.length; i++) {
         const char = text[i];
@@ -503,9 +503,16 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
         // pdf.text(char, textCenter, y + .8, { angle: 270 });
         pdf.text(char, textCenter, y, { angle: 270 });
         if (char === 'i' || char === "I") {
-          y = y + 1.5;
+          y = y + 1.25;
+        } else if (char === "F" || char === "Y") {
+          y = y + 2.2;
         } else {
-          y = y + charSpacing;
+          if (text[i + 1] === "O") {
+            y = y + 2.5
+          }
+          else {
+            y = y + charSpacing;
+          }
         }
       }
     }
