@@ -33,7 +33,7 @@ const Footer = () => {
         }}
       >
         <Box>
-          <Image src={Logo} alt="logo" />
+          <Image src={Logo} alt="logo" loading='lazy'/>
           <Typography
             sx={{
               width: "210px",
@@ -64,7 +64,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Tiktok} alt="logo" style={logo} />
+              <Image src={Tiktok} alt="logo" style={logo} loading='lazy'/>
             </a>
 
             <a
@@ -72,7 +72,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Fb} alt="logo" style={logo} />
+              <Image src={Fb} alt="logo" style={logo} loading='lazy'/>
             </a>
 
             <a
@@ -80,7 +80,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={X} alt="logo" style={logo} />
+              <Image src={X} alt="logo" style={logo} loading='lazy'/>
             </a>
           </Box>
         </Box>

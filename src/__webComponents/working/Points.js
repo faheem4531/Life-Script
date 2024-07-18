@@ -23,7 +23,7 @@ const Points = ({ no = false, icon, title, discription,width }) => {
       }}>
         {no}
       </Typography>}
-      {icon && <Image src={icon} alt="icon" className={styles.check} />}
+      {icon && <Image src={icon} alt="icon" className={styles.check} loading="lazy" />}
 
       <Typography sx={{
         color: "#F3ECDA",

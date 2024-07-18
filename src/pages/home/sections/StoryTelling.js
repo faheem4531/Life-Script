@@ -64,7 +64,7 @@ const StoryTelling = () => {
        { t("landingPage.storyTelling.heading")}{" "}
         <span className={styles.marked}>
         { t("landingPage.storyTelling.subHeading")}
-          <Image src={Line} alt="mark" className={styles.line} />
+          <Image src={Line} alt="mark" className={styles.line} loading="lazy"/>
         </span>
       </Box>
 
@@ -125,7 +125,7 @@ function StoryWraper({ direction, heading, content, image, alt, button = false, 
         </Box>}
       </Box>
 
-      <Image src={image} alt={alt} title={title} className={`${styles.stroyImages} ${cardNo == '1' && styles.index}`} />
+      <Image loading="lazy" src={image} alt={alt} title={title} className={`${styles.stroyImages} ${cardNo == '1' && styles.index}`} />
     </Box>
   )
 }

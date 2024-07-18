@@ -110,7 +110,7 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
         <Box sx={{ display: "inline", position: "relative" }}>
           {marked}
           <Box sx={{ maxWidth: "180px", position: "absolute", right: { sm: "-10px", xs: "-10px" }, bottom: { sm: "-30px", xs: "-20px" } }}>
-            <Image src={Line} alt="line" className={styles.footerLine} width={lineWidth} />
+            <Image src={Line} alt="line" className={styles.footerLine} width={lineWidth} loading='lazy' />
           </Box>
         </Box>
       </Box>

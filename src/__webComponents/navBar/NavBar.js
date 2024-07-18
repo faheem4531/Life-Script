@@ -64,7 +64,7 @@ const NavBar = ({ color, logo }) => {
       {logo !== "home" && (
         <Link href="/">
           {!mobileState && (
-            <Image src={logo} alt="Logo" className={styles.logo} />
+            <Image src={logo} alt="Logo" className={styles.logo} loading="lazy"/>
           )}
         </Link>
       )}
@@ -74,6 +74,7 @@ const NavBar = ({ color, logo }) => {
           {!mobileState && (
             <Image
               src="/lifescript-life-story-book-logo.svg"
+              loading="lazy"
               alt="Logo"
               width={200}
               height={200}
@@ -86,6 +87,7 @@ const NavBar = ({ color, logo }) => {
       <Image
         src={pathname === "/" ? Menu : MenuW && (mobileState ? Menu : MenuW)}
         alt="icon"
+        loading="lazy"
         onClick={handleMenu}
         className={styles.menu}
       />
@@ -104,6 +106,7 @@ const NavBar = ({ color, logo }) => {
         {mobileState && (
           <Image
             src="/lifescript-life-story-book-logo.svg"
+            loading="lazy"
             alt="Logo"
             width={230}
             height={150}

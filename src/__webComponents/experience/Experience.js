@@ -16,7 +16,7 @@ const Experience = () => {
         <PrimaryHeading lineWidth="180px" lineHeight="60px" mdDirection="column" showStyle={false} 
         // heading="Get a Feel for LifeScript’s" marked="Features" />
         heading={t("landingPage.featureSection.title")}marked={t("landingPage.featureSection.subTitle")} />
-        <Image src={FlowerLine} alt="logo" className={styles.fullStyle} />
+        <Image src={FlowerLine} alt="logo" className={styles.fullStyle} loading="lazy" />
       </Box>
 
       <Box sx={{

@@ -129,6 +129,7 @@ function ReviewCard({ profile, name, location, details, age }) {
         borderBottom: "1px solid #BFC4B5"
       }}>
         <Image
+        loading='lazy'
           src={profile}
           alt="image"
           className={styles.clientImg}
@@ -138,7 +139,7 @@ function ReviewCard({ profile, name, location, details, age }) {
             {name} <Typography sx={{ display: "inline", fontSize: "20px", fontWeight: 500 }}>{age}</Typography>
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", marginTop: "5px", columnGap: "4px" }}>
-            <Image src={Pin} alt="pin" />
+            <Image src={Pin} alt="pin" loading='lazy' />
             <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, marginTop: "4px", lineHeight: "18px", color: "#BFC4B5", fontFamily: "Avenir" }}>
               {location}
             </Typography>

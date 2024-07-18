@@ -2,7 +2,7 @@
 
 import {  useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image"
+
 import Question from "./Question.js"
 import styles from "../ComponentsStyles.module.css"
 import Link from "next/link.js";

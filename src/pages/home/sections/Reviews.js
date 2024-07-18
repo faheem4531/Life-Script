@@ -15,7 +15,7 @@ const Reviews = () => {
       position: 'relative',
       zIndex: "10"
     }}>
-      <Image src={Stars} alt="rating" />
+      <Image src={Stars} alt="rating" loading="lazy" />
       <Box sx={{ display: "flex", margin: { sm: "40px", xs: "40px 0 40px" }, justifyContent: "center" }}>
         <Typography sx={{ fontSize: { sm: "128px", xs: "96px" }, bgcolor: "red", alignSelf: "start", rotate: "12deg", lineHeight: "0" }}>&#34;</Typography>
         <Box sx={{ maxWidth: "850px", }}>

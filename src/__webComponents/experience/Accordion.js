@@ -231,38 +231,45 @@ export default function CustomizedAccordions() {
 
       <Box sx={{ position: "relative" }}>
         {panelActive.panel1 && <Image
+        loading='lazy'
           src={Narrative}
           alt="Narrative fusion feature demo animation showing how it works - LifeScript"
           title='Narrative Fusion demo animation'
           className={styles.gif}
         />}
         {panelActive.panel2 && <Image
+        loading='lazy'
           src={AssistedEditing}
           alt="Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript"
           title='Assisted Editing demo animation'
           className={styles.gif} />}
         {panelActive.panel3 && <Image
+        loading='lazy'
           src={VoiceToText}
           alt="Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript"
           title='Voice-to-text demo animation'
           className={styles.gif} />}
         {panelActive.panel4 && <Image
+        loading='lazy'
           src={FamilyTree}
           alt="Family Tree feature demo animation showing how your family members visualize across generations - LifeScript"
           title='Family tree demo animation'
           className={styles.gif} />}
         {panelActive.panel5 && <Image
+        loading='lazy'
           src={FormattingFeatures}
           alt="Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript"
           title=' Formatting features demo animation'
           className={styles.gif} />}
         {panelActive.panel6 && <Image
+        loading='lazy'
           src={AutoPhoto}
           alt="Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript"
           title='Auto photo improvement feature demo animation'
           className={styles.gif} />}
 
         <Image src={Bandage}
+        loading='lazy'
           alt="image"
           className={styles.bandage} />
       </Box>

@@ -22,7 +22,7 @@ const GifTab = ({ heading, subHeading, icon, button }) => {
     }}
       className={styles.gifTabBox}
     >
-      <Image src={Bandage} alt="bandage" className={styles.bandage} />
+      <Image src={Bandage} alt="bandage" className={styles.bandage} loading="lazy" />
 
       <Box sx={{
         display: "flex",
@@ -55,7 +55,7 @@ const GifTab = ({ heading, subHeading, icon, button }) => {
 
         </Box>
       </Box>
-      <Image src={Hurt} alt="img" className={styles.bgHurt} />
+      <Image src={Hurt} alt="img" className={styles.bgHurt} loading="lazy" />
     </Box >
   )
 }

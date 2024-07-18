@@ -25,7 +25,7 @@ const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showS
           xs: removeStyleMbl && "none"
         }
       }} >
-        {showStyle && <Image src={left} alt="logo" className={styles.headingStyles} />}
+        {showStyle && <Image src={left} alt="logo" className={styles.headingStyles}  loading="lazy"/>}
       </Box>
       <Box
         color={color}
@@ -45,7 +45,7 @@ const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showS
         {marked && <Box>
           <Box display="inline-block" position="relative">
             <h2 className={styles.pureHeadings}>{marked}</h2>
-            <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} />
+            <Image src={Line} style={styleLine} alt="mark" className={styles.headingLine} loading="lazy"/>
           </Box>
         </Box>}
       </Box>
@@ -56,7 +56,7 @@ const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showS
           xs: removeStyleMbl && "none"
         }
       }} >
-        {showStyle && <Image src={right} alt="logo" className={styles.headingStyles} />}
+        {showStyle && <Image src={right} alt="logo" className={styles.headingStyles} loading="lazy" />}
       </Box >
     </Box >
   )

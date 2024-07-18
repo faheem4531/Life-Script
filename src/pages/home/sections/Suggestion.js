@@ -50,7 +50,7 @@ const Suggestion = () => {
            {t("landingPage.perfectSection.title")}
           </h2>
         </Typography>
-        <Image src={FlowerLine} alt="logo" className={styles.fullStyle} />
+        <Image src={FlowerLine} alt="logo" className={styles.fullStyle} loading="lazy"/>
       </Box >
       <Box sx={{
         margin: {
@@ -67,7 +67,7 @@ const Suggestion = () => {
       }}>
         {/* left Section  */}
         <Box sx={{ display: "flex", alignItems: "center ", marginTop: { sm: "50px", md: "0", xs: "60px" } }}>
-          <Image src={ListPoints} alt="points" className={styles.pointsLine} />
+          <Image src={ListPoints} alt="points" className={styles.pointsLine} loading="lazy" />
           <Box sx={{ marginLeft: { md: "30px", }, }}>
             {
               content.map((item, index) => <Content
@@ -79,6 +79,7 @@ const Suggestion = () => {
           </Box>
         </Box>
         <Image
+        loading="lazy"
           src={Heroimage}
           alt="A collage of a dad with kids and a grandpa sitting on top of life story books packaged as a gift - LifeScript"
           title="Family collage photo"

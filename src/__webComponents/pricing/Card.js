@@ -121,7 +121,7 @@ const PricingCard = ({ price, category, card, id }) => {
                 marginBottom: "24px",
               }}
               key={index}>
-              <Image src={item.basicStatus ? Check : Lock} alt="check" />
+              <Image src={item.basicStatus ? Check : Lock} alt="check"  loading="lazy"/>
               <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>{item.dis}</Typography>
             </Box>
             )}
@@ -137,7 +137,7 @@ const PricingCard = ({ price, category, card, id }) => {
                   marginBottom: "24px"
                 }}
                 key={index}>
-                <Image src={item.standardStatus ? Check : Lock} alt="check" />
+                <Image src={item.standardStatus ? Check : Lock} alt="check" loading='lazy'/>
                 <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>{item.dis}</Typography>
               </Box>
               )}
@@ -153,7 +153,7 @@ const PricingCard = ({ price, category, card, id }) => {
                   marginBottom: "24px"
                 }}
                 key={index}>
-                <Image src={item.PrimuimStatus ? Check : Lock} alt="check" />
+                <Image src={item.PrimuimStatus ? Check : Lock} alt="check" loading='lazy'/>
                 <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>{item.dis}</Typography>
               </Box>
               )}

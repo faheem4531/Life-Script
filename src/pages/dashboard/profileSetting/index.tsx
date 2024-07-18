@@ -178,8 +178,9 @@ const ProfileSetting = () => {
                     }}
                   >
                     {userImage ? (
-                      <img
+                      <Image
                         src={userImage}
+                        loading="lazy"
                         alt=""
                         style={{
                           width: "100%",
