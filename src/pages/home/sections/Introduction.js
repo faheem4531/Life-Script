@@ -9,12 +9,18 @@ import Typed from "typed.js";
 import styles from "./HomeSections.module.css";
 
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
-import Image3 from "@/__webAssets/webp/heroImages/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp";
-import Image4 from "@/__webAssets/webp/heroImages/grandma-and-grandpa-laughing-and-eating-ice cream-happy-memories.webp";
-import Image1 from "@/__webAssets/webp/heroImages/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp";
-import Image2 from "@/__webAssets/webp/heroImages/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp";
-import Book from "@/__webAssets/webp/heroImages/old-opened-autobiography-book.webp";
+// import Image3 from "@/__webAssets/webp/heroImages/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp";
+// import Image4 from "@/__webAssets/webp/heroImages/grandma-and-grandpa-laughing-and-eating-ice cream-happy-memories.webp";
+// import Image1 from "@/__webAssets/webp/heroImages/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp";
+// import Image2 from "@/__webAssets/webp/heroImages/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp";
+// import Book from "@/__webAssets/webp/heroImages/old-opened-autobiography-book.webp";
 import { useTranslation } from "react-i18next";
+
+const Image1 = "https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp"
+const Book = "https://lifescript-media.s3.eu-north-1.amazonaws.com/old-opened-autobiography-book.webp"
+const Image4 = "https://lifescript-media.s3.eu-north-1.amazonaws.com/grandma-and-grandpa-laughing-and-eating-ice+cream-happy-memories.webp"
+const Image3 = "https://lifescript-media.s3.eu-north-1.amazonaws.com/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp"
+const Image2 = "https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp"
 
 const Introduction = () => {
   const { t } = useTranslation();
@@ -88,39 +94,49 @@ const Introduction = () => {
       </Box>
 
       <Image
-      loading="lazy"
+        loading="lazy"
         src={Image1}
         alt="Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript"
         title="A happy family on the beach"
         className={styles.image1}
+        width={260}
+        height={290}
       />
       <Image
-      loading="lazy"
+        loading="lazy"
         src={Image3}
         alt="Children dancing and having fun with bubbles on a vintage photograph - LifeScript"
         title="Kids dancing and having fun with bubbles"
         className={styles.image3}
+        width={275}
+        height={330}
       />
       <Image
-      loading="lazy"
+        loading="lazy"
         src={Image2}
         alt="childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript"
         title="A happy kid and a cat in a vintage photograph"
         className={styles.image2}
+        width={225}
+        height={245}
       />
       <Image
-      loading="lazy"
+        loading="lazy"
         src={Image4}
         alt="Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript"
         title="An old couple laughing and eating ice-cream"
         className={styles.image4}
+        width={322}
+        height={290}
       />
       <Image
-      loading="lazy"
+        loading="lazy"
         src={Book}
         alt="An old opened autobiography book - LifeScript"
         title="An old autobiography book"
         className={styles.bookImg}
+        width={870}
+        height={380}
       />
     </Box>
   )
