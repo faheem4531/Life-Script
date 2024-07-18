@@ -65,8 +65,8 @@ const Tutorials = () => {
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-                gap: "30px",
+                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                gap: "10px",
                 borderRadius: "4x",
                 bgcolor: "#F3ECDA",
                 p: { md: "30px", sm: "20px 20px", xs: "16px" },
@@ -76,7 +76,7 @@ const Tutorials = () => {
               {videoData && videoData.map((video) => (
                 <Box key={video.id} sx={{ cursor: 'pointer' }}>
                   <iframe
-                    width={340}
+                    width={300}
                     height={190}
                     src={video.src}
                     title={video.title}
