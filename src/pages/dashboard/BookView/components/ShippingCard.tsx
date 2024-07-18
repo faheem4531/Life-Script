@@ -9,11 +9,14 @@ import {
   selectCoverData,
   
 } from "@/store/slices/chatSlice";
+import { useEffect } from "react";
 
 const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount=39, quantity  }) => {
   const coverData = useSelector(selectCoverData);
 
-  setPayment(count * 39 - amount)
+  useEffect(() => {
+    setPayment(count * 39 - amount);
+  }, []);
   const {t}= useTranslation();
   return (
     <Box
