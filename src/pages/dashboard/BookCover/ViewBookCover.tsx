@@ -890,7 +890,7 @@ const ViewBookCover = () => {
         imageHeight
       );
     } else if (coverData?.coverNumber === "2") {
-      const imageWidth = 140; // Width of the image in mm
+      const imageWidth = 155; // Width of the image in mm 
       const imageHeight = 259;
       const imageY = 0;
 

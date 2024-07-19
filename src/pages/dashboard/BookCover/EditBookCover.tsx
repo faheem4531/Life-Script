@@ -402,7 +402,7 @@ const EditBookCover = () => {
         // Adjust y attribute for author name when CoverNumber is 2
         if (CoverNumber === "2" && elmId === "author-text") {
           headingText.setAttribute("y", yAxisOffsetTwoAuth);
-          headingText.setAttribute("x", "72%");
+          headingText.setAttribute("x", "69%");
         }
       }
     }
