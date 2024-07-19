@@ -562,7 +562,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
         imageHeight
       );
     } else if (coverData?.coverNumber === "2") {
-      const imageWidth = 140;
+      const imageWidth = 155;
       const imageHeight = 259;
       const imageY = 0;
 
