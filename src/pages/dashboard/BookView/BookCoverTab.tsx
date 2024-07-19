@@ -12,7 +12,7 @@ import jsPDF from "jspdf";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { font } from "../../../styles/font";
+import { font } from "../../../styles/Besley";
 import Loading from "./components/Loading"
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
@@ -424,8 +424,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       orientation: "landscape",
     });
 
-    pdf.addFileToVFS("WorkSans-normal.ttf", font);
-    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
+    pdf.addFileToVFS("Besley-Regular.ttf", font);
+    pdf.addFont("Besley-Regular.ttf", "Besley", "normal");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -487,12 +487,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
     // Adjusted vertical spacing
-    const charSpacing = 2.8;
+    const charSpacing = 3.1;
     const drawTextVertically = (text) => {
       for (let i = 0; i < text.length; i++) {
         const char = text[i];
         pdf.setFontSize(fontSize);
-        pdf.setFont("WorkSans");
+        pdf.setFont("Besley");
         pdf.setTextColor(0, 0, 0);
 
         if (coverData?.coverNumber === "5") {
@@ -502,10 +502,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
         }
         // pdf.text(char, textCenter, y + .8, { angle: 270 });
         pdf.text(char, textCenter, y, { angle: 270 });
-        if (char === 'i' || char === "I") {
-          y = y + 1.25;
+        if (char === "I") {
+          y = y + 1.7;
         } else if (char === "F" || char === "Y") {
-          y = y + 2.2;
+          y = y + 2.5;
+        } else if (char === "M") {
+          y = y + 3.7;
         } else {
           if (text[i + 1] === "O") {
             y = y + 2.5
@@ -519,7 +521,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     drawTextVertically(text2);
     pdf.setFontSize(fontSize);
-    pdf.setFont("WorkSans");
+    pdf.setFont("Besley");
     if (coverData?.coverNumber === "5") {
       pdf.setTextColor(255, 255, 255);
     } else {
@@ -532,7 +534,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     drawTextVertically(writter);
 
     const logoWidth = 5;
-    const logoHeight = 20;
+    const logoHeight = 32;
 
     const logoUp = 5;
     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
@@ -543,8 +545,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     const newImage = coverData && coverData?.coverPagePhoto;
 
-    const newData = { imageUrl: newImage };
-    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    // const newData = { imageUrl: newImage };
+    // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
@@ -552,7 +554,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const imageY = 0;
 
       pdf.addImage(
-        newImageLink?.payload,
+        newImage,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -565,7 +567,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const imageY = 0;
 
       pdf.addImage(
-        newImageLink?.payload,
+        newImage,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -578,7 +580,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const imageY = 14;
 
       pdf.addImage(
-        newImageLink?.payload,
+        newImage,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -587,7 +589,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       );
     } else {
       pdf.addImage(
-        newImageLink?.payload,
+        newImage,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         offset,

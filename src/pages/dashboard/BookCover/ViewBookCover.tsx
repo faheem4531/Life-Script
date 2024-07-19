@@ -246,7 +246,7 @@ const ViewBookCover = () => {
     const logoSize = spineWidth < 22 ? spineWidth - 3 : 20;
     const tailcenter = offset + leftContentWidth + gutterWidth + (spineWidth - logoSize) / 2;
     pdf.addImage(logo, "png", tailcenter, 225, logoSize, logoSize);
-    
+
 
     const centerX = offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth / 2;
     const newData = { imageUrl: finalCover };
@@ -473,7 +473,7 @@ const ViewBookCover = () => {
       coverData?.coverNumber === "3"
     ) {
       pdfHeight = 229 + 30;
-    }else if (coverData?.coverNumber === "2"){
+    } else if (coverData?.coverNumber === "2") {
       pdfHeight = 229 + 30;
     } else {
       pdfHeight = 229 + 40;  // 20 mm on each side for the offset
@@ -490,9 +490,9 @@ const ViewBookCover = () => {
       coverData?.coverNumber === "3"
     ) {
       offset = 12;
-    } else if (coverData?.coverNumber === "2" ){
+    } else if (coverData?.coverNumber === "2") {
       offset = 8;
-    }else {
+    } else {
       offset = 20; // 20 mm on each side for the offset
     }
     const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
@@ -709,7 +709,7 @@ const ViewBookCover = () => {
       coverData?.coverNumber === "3"
     ) {
       pdfHeight = 229 + 30;
-    }else if (coverData?.coverNumber === "2"){
+    } else if (coverData?.coverNumber === "2") {
       pdfHeight = 229 + 30;
     } else {
       pdfHeight = 229 + 40;  // 20 mm on each side for the offset
@@ -726,9 +726,9 @@ const ViewBookCover = () => {
       coverData?.coverNumber === "3"
     ) {
       offset = 12;
-    } else if (coverData?.coverNumber === "2" ){
+    } else if (coverData?.coverNumber === "2") {
       offset = 8;
-    }else {
+    } else {
       offset = 20; // 20 mm on each side for the offset
     }
     const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
@@ -851,24 +851,24 @@ const ViewBookCover = () => {
       pdf.text(char, textCenter, y, { angle: 270 });
       y = y + 3; // Move to the next line for each character
     }
-  
+
     // Set fixed logo size
     const logoWidth = 5; // Fixed width for the logo
     const logoHeight = 20; // Fixed height for the logo
-  
+
     // Position the logo slightly above the bottom of the spine
     const logoUp = 5;
     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
     const verticalOffset = 8; // Adjust this value to move the logo up or down
     const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp; // slightly above the bottom
-  
+
     pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
-  
-    
 
 
-    const newData = { imageUrl: finalCover };
-    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+
+
+    // const newData = { imageUrl: finalCover };
+    // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159; // Width of the image in mm
@@ -876,7 +876,7 @@ const ViewBookCover = () => {
       const imageY = 0;
 
       pdf.addImage(
-        newImageLink?.payload,
+        finalCover,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -889,7 +889,7 @@ const ViewBookCover = () => {
       const imageY = 0;
 
       pdf.addImage(
-        newImageLink?.payload,
+        finalCover,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -903,7 +903,7 @@ const ViewBookCover = () => {
       const imageY = 14;
 
       pdf.addImage(
-        newImageLink?.payload,
+        finalCover,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -913,7 +913,7 @@ const ViewBookCover = () => {
     }
     else {
       pdf.addImage(
-        newImageLink?.payload,
+        finalCover,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         offset,
