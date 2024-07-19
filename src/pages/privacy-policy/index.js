@@ -6,10 +6,16 @@ import Policy from "./Policy";
 
 const PrivacyPolicy = () => {
   return (
+    <>
+    <Head>
+        <title>Privacy Policy - The Lifescript</title>
+        <meta name="description" content="We are committed to protecting your privacy. Here you can learn how your personal information is collected, used, and disclosed by LifeScript." />
+      </Head>
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <Policy />
       <Footer />
     </Box>
+    </>
   )
 }
 
