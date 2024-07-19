@@ -192,7 +192,7 @@ const PricingPage = () => {
         <title>Pricing Plans and Competitor Comparison</title>
         <meta
           name="description"
-          content=" Each package includes a full year of access to our platform, a premium full-color hardcover book and free shipping."
+          content="Each package includes lifetime access to our platform, premium full-color hardcover book and free shipping."
         />
       </Head>
 
