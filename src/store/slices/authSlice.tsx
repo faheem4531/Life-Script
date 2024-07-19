@@ -31,7 +31,7 @@ import {
   updatePasswordApi,
   updateUserProfileApi,
   verifyEmailApi,
-  contactUs
+  contactUs,reminder
 } from "../api/authApi";
 
 interface State {
@@ -103,6 +103,19 @@ export const contact = createAsyncThunk<any, object>(
   async (data, { rejectWithValue }) => {
     try {
       const response = await contactUs(data);
+      return response;
+    } catch (error: any) {
+
+      return rejectWithValue(error.message);
+    }
+  }
+);
+export const reminderForm = createAsyncThunk<any, object>(
+  "user/reminder",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await reminder(data);
+      console.log(response)
       return response;
     } catch (error: any) {
 

@@ -1,89 +1,117 @@
-'use client '
+'use client'
 import { Box, Typography, TextField } from "@mui/material"
 import Image from "next/image"
 import styles from "../ComponentsStyles.module.css"
 import Smily from "@/__webAssets/svgs/smily.svg"
 import Button from "../button/Button"
-import Input from "../input/Input"
 import Line from "@/__webAssets/svgs/line-white.svg"
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import Shape from "@/__webAssets/svgs/input-shape.svg"
 import { useState } from "react"
-
 import { toast, ToastContainer } from "react-toastify"
 import { useDispatch } from "react-redux"
-import { contact } from "@/store/slices/authSlice"
+import { contact, reminderForm } from "@/store/slices/authSlice"
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Shape from "@/__webAssets/svgs/input-shape.svg"
 
-
-
-
-
-
-const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, button, shape, marked, lineWidth }) => {
+const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, button, marked, lineWidth }) => {
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
     description: ''
   });
+
+  const [reminderData, setReminderData] = useState({
+    email: "",
+    occasionMessage: "",
+    sendDate: ""
+  });
+
   const [errors, setErrors] = useState({
     name: '',
     email: '',
     description: ''
   });
+
+  const [errorsReminder, setErrorReminder] = useState({
+    email: "",
+    occasionMessage: "",
+    sendDate: ""
+  });
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormValues(prevValues => ({ ...prevValues, [name]: value }));
+    if (!date) {
+      setFormValues(prevValues => ({ ...prevValues, [name]: value }));
+    } else {
+      setReminderData(prevValues => ({ ...prevValues, [name]: value }));
+    }
   };
 
   const validate = () => {
     const newErrors = {};
+    if (!date) {
+      if (!formValues.name.trim()) newErrors.name = 'Name is required';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!formValues.email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!emailRegex.test(formValues.email)) {
+        newErrors.email = 'Email must be a valid email address';
+      }
+      if (!formValues.description.trim()) newErrors.description = 'Description is required';
 
-    // Check for required fields
-    if (!formValues.name.trim()) newErrors.name = 'Name is required';
+      setErrors(newErrors);
+      return Object.keys(newErrors).length === 0;
+    } else {
+      if (!reminderData.occasionMessage.trim()) newErrors.occasionMessage = 'Type a message';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!reminderData.email.trim()) {
+        newErrors.email = 'Email is required';
+      } else if (!emailRegex.test(reminderData.email)) {
+        newErrors.email = 'Email must be a valid email address';
+      }
+      if (!reminderData.sendDate) newErrors.sendDate = 'Date is required';
 
-    // Email validation for input2
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formValues.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!emailRegex.test(formValues.email)) {
-      newErrors.email = 'Email must be a valid email address';
+      setErrorReminder(newErrors);
+      return Object.keys(newErrors).length === 0;
     }
-
-    // Check for required fields
-    if (!date && !formValues.description.trim()) newErrors.description = 'Date is required';
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async () => {
+  const getDate = (date) => {
 
-    
+    setReminderData(prevValues => ({ ...prevValues, sendDate: date }));
+  };
+
+
+  const handleSubmit = async () => {
     if (validate()) {
       try {
-
-     
-        const res =  await dispatch(contact(formValues)).unwrap()
-        if(res){
+        const data = date ? reminderData : formValues;
+        const res = date ? await dispatch(reminderForm(data)).unwrap() : await dispatch(contact(data)).unwrap();
+        if (!date) {
           toast.success(res);
           setFormValues({
             name: '',
             email: '',
             description: ''
           });
-          
-        }
 
+
+        }
+        else {
+          toast.success("Reminder set For You");
+          setReminderData({
+            email: "",
+            occasionMessage: "",
+            sendDate: ""
+          });
+        }
       } catch (error) {
         console.error('Error:', error);
         toast.error(error.message || 'Failed to submit the form');
       }
     }
   };
-
-
 
   return (
     <Box
@@ -104,9 +132,8 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
         textAlign: "center",
         fontWeight: 500,
         fontFamily: "Besley !important",
-      }}
-      >
-        {title} {" "}
+      }}>
+        {title}{" "}
         <Box sx={{ display: "inline", position: "relative" }}>
           {marked}
           <Box sx={{ maxWidth: "180px", position: "absolute", right: { sm: "-10px", xs: "-10px" }, bottom: { sm: "-30px", xs: "-20px" } }}>
@@ -127,45 +154,42 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
         margin: { sm: "55px 0 40px", xs: "35px 0 20px" },
         width: "100%",
         justifyContent: "center"
-      }} >
+      }}>
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
           <TextField
-            name="name"
-            value={formValues.name}
+            name={date ? "email" : "name"}
+            value={date ? reminderData.email : formValues.name}
             onChange={handleChange}
             placeholder={input1}
-            error={!!errors.name}
-            helperText={errors.name}
+            error={date ? !!errorsReminder.email : !!errors.name}
+            helperText={date ? errorsReminder.email : errors.name}
             fullWidth
             sx={{
-                '& .MuiInputBase-root': {
-                  backgroundColor: 'white',
-                }, borderRadius: "5px"
-              }}
-
-
+              '& .MuiInputBase-root': {
+                backgroundColor: 'white',
+              }, borderRadius: "5px"
+            }}
           />
         </Box>
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
           <TextField
-            name="email"
-            value={formValues.email}
+            name={date ? "occasionMessage" : "email"}
+            value={date ? reminderData.occasionMessage : formValues.email}
             onChange={handleChange}
             placeholder={input2}
-            error={!!errors.email}
-            helperText={errors.email}
+            error={date ? !!errorsReminder.occasionMessage : !!errors.email}
+            helperText={date ? errorsReminder.occasionMessage : errors.email}
             fullWidth
             sx={{
-                '& .MuiInputBase-root': {
-                  backgroundColor: 'white',
-                }, borderRadius: "5px"
-              }}
-
+              '& .MuiInputBase-root': {
+                backgroundColor: 'white',
+              }, borderRadius: "5px"
+            }}
           />
         </Box>
         <Box sx={{ width: { sm: "375px", xs: "100%" } }}>
           {date ?
-            <GetDate />
+            <GetDate getDate={getDate} value={reminderData.sendDate} error={errorsReminder.sendDate} />
             :
             <TextField
               name="description"
@@ -180,7 +204,6 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
                   backgroundColor: 'white',
                 }, borderRadius: "5px"
               }}
-
             />
           }
         </Box>
@@ -195,7 +218,6 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
           img2={Smily}
           bgHover="#1D291C"
           onClick={handleSubmit}
-
         />
       </Box>
       <ToastContainer />
@@ -205,48 +227,61 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
 
 export default ContactFooter;
 
-
-
-
-
-
-
-function GetDate() {
+function GetDate({ getDate, value, error }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleCalander() {
-    setIsOpen((pre) => !pre)
+    setIsOpen((prev) => !prev);
   }
 
   return (
-    <Box sx={{ position: "relative" }} onClick={handleCalander}>
-      <Box sx={{
-        bgcolor: "#f5f5f5",
-        position: "absolute",
-        right: "10px",
-        zIndex: "100",
-        top: "15px",
-        cursor: "pointer",
-      }}
-        onClick={handleCalander}
-      >
-        <CustomCalendarIcon />
+    <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative" }} onClick={handleCalander}>
+        <Box sx={{
+          bgcolor: "#f5f5f5",
+          position: "absolute",
+          right: "10px",
+          zIndex: "100",
+          top: "15px",
+          cursor: "pointer",
+        }} onClick={handleCalander}>
+          <CustomCalendarIcon />
+        </Box>
+        <DatePicker
+          sx={{
+            bgcolor: "#f5f5f5",
+            borderRadius: "2px",
+            width: "100%",
+            color: "#7e7e7e",
+            border: "none"
+          }}
+          value={value}
+          onChange={(date) => getDate(date)}
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              error={!!error}
+              helperText={error}
+              sx={{
+                '& .MuiInputBase-root': {
+                  backgroundColor: 'white',
+                },
+                borderRadius: "5px"
+              }}
+            />
+          )}
+        />
       </Box>
-
-      <DatePicker sx={{
-        bgcolor: "#f5f5f5",
-        borderRadius: "2px",
-        width: "100%",
-        color: "#7e7e7e",
-        border: "none"
-      }}
-        open={isOpen}
-        label="When it's happening?"
-      />
+      {error && (
+        <Typography variant="caption" color="error" sx={{ position: "absolute", bottom: -20 }}>
+          {error}
+        </Typography>
+      )}
     </Box>
   );
 }
-
 
 const CustomCalendarIcon = () => (
   <Image src={Shape} alt="Calendar" width={26} height={24} />

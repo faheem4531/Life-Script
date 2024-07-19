@@ -474,3 +474,16 @@ export async function contactUs(data:Object){
 
 
 }
+
+export async function reminder(data:Object){
+  try {
+    const res = await api.post('/auth/lifescripe/reminder-moment',data);
+    return res;
+
+  } catch (error) {
+    throw new Error(error.response?.data?.message);
+
+  }
+
+
+}
