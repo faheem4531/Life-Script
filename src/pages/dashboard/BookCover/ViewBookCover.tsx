@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { font } from "../../../styles/font";
+import { font } from "../../../styles/Besley";
 
 const ViewBookCover = () => {
   const { t } = useTranslation();
@@ -738,8 +738,8 @@ const ViewBookCover = () => {
       orientation: "landscape",
     });
 
-    pdf.addFileToVFS("WorkSans-normal.ttf", font);
-    pdf.addFont("WorkSans-normal.ttf", "WorkSans", "normal");
+    pdf.addFileToVFS("Besley-Regular.ttf", font);
+    pdf.addFont("Besley-Regular.ttf", "Besley", "normal");
 
     const text2 = subtitle?.toUpperCase();
     const text1 = title?.toUpperCase();
@@ -813,49 +813,55 @@ const ViewBookCover = () => {
     const fontSize = 10; // Font size
     const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
-    for (let i = 0; i < text2.length; i++) {
-      const char = text2[i];
-      pdf.setFontSize(fontSize);
-      pdf.setFont("WorkSans");
-      pdf.setTextColor(0, 0, 0); // Default text color
-
-      if (coverData?.coverNumber === "5") {
-        pdf.setTextColor(255, 255, 255); // White text for cover number 5
-      } else {
+    // Adjusted vertical spacing
+    const charSpacing = 3.1;
+    const drawTextVertically = (text) => {
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        pdf.setFontSize(fontSize);
+        pdf.setFont("Besley");
         pdf.setTextColor(0, 0, 0);
+
+        if (coverData?.coverNumber === "5") {
+          pdf.setTextColor(255, 255, 255);
+        } else {
+          pdf.setTextColor(0, 0, 0);
+        }
+        // pdf.text(char, textCenter, y + .8, { angle: 270 });
+        pdf.text(char, textCenter, y, { angle: 270 });
+        if (char === "I") {
+          y = y + 1.7;
+        } else if (char === "F" || char === "Y") {
+          y = y + 2.5;
+        } else if (char === "M") {
+          y = y + 3.7;
+        } else {
+          if (text[i + 1] === "O") {
+            y = y + 2.5
+          }
+          else {
+            y = y + charSpacing;
+          }
+        }
       }
-      pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3; // Move to the next line for each character
     }
 
+    drawTextVertically(text2);
     pdf.setFontSize(fontSize);
-    pdf.setFont("WorkSans");
+    pdf.setFont("Besley");
     if (coverData?.coverNumber === "5") {
-      pdf.setTextColor(255, 255, 255); // White text for cover number 5
+      pdf.setTextColor(255, 255, 255);
     } else {
       pdf.setTextColor(0, 0, 0);
-    } // Separator color
+    }
     pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
 
-    y = y + 6;
+    y = y + 6; // Reduced spacing after the separator
 
-    for (let i = 0; i < writter.length; i++) {
-      const char = writter[i];
-      pdf.setFontSize(fontSize);
-      pdf.setFont("WorkSans");
-      if (coverData?.coverNumber === "5") {
-        pdf.setTextColor(255, 255, 255); // White text for cover number 5
-      } else {
-        pdf.setTextColor(0, 0, 0);
-      }
-      pdf.text(char, textCenter, y, { angle: 270 });
-      y = y + 3; // Move to the next line for each character
-    }
+    drawTextVertically(writter);
 
-    // Set fixed logo size
-    const logoWidth = 5; // Fixed width for the logo
-    const logoHeight = 20; // Fixed height for the logo
-
+    const logoWidth = 5;
+    const logoHeight = 32;
     // Position the logo slightly above the bottom of the spine
     const logoUp = 5;
     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
