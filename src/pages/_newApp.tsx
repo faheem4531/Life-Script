@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import i18n from "../../i18n";
 import { updateLuluPaymentStatus } from "@/store/slices/authSlice";
-import LiveChat from "@/components/homepageComponent/LiveChat";
+import LiveChat from "@/components/liveChat/LiveChat";
 
 export default function NewApp({ children }) {
   const router = useRouter();
