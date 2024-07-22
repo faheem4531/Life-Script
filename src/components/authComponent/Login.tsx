@@ -51,7 +51,7 @@ const Login = () => {
   });
 
   const handleGoogleLoginSuccess = (e: any) => {
-    dispatch(googleLogin({ credential: e.access_token, type:"login" }))
+    dispatch(googleLogin({ credential: e.access_token, type: "login" }))
       .unwrap()
       .then((res) => {
         toast.success(t("login-page.loggedIn"));
@@ -108,10 +108,10 @@ const Login = () => {
       >
         <Box sx={{ textAlign: "center", m: "50px 0 30px", color: "#30422E" }}>
           <Typography sx={{ fontSize: "38px", fontWeight: 700, }}>
-          {t("login-page.loginToYourAccount") }
+            {t("login-page.loginToYourAccount")}
           </Typography>
           <Typography>
-          {t("login-page.continueToYourTrip") }
+            {t("login-page.continueToYourTrip")}
           </Typography>
         </Box>
         <Box>
@@ -209,36 +209,14 @@ const Login = () => {
               display: "flex",
               justifyContent: "flex-end",
               marginTop: "10px",
-              // gap: 15,
-              // marginLeft: { sm: "", md: "120px" },
-              // justifyContent: "center",
             }}
           >
-            {/* <Box>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={rememberMe}
-                    onChange={handleRememberMeChange}
-                    color="primary"
-                  />
-                }
-                label="Remember Me"
-                sx={{
-                  "& .MuiTypography-root": {
-                    fontSize: "16",
-                  },
-                }}
-              />
-            </Box> */}
             <Box
               sx={{ cursor: "pointer" }}
               onClick={(event: any) => router.push("/verify/forgetPassword")}
             >
               <Typography
                 sx={{
-                  // marginTop: "9px",
-                  // fontSize: { xs: 12, sm: 14, md: 12, lg: 16 },
                   color: "#30422E",
                   fontSize: { xs: 12, sm: 14, md: 16 },
                 }}
@@ -335,7 +313,7 @@ const Login = () => {
                 src={googleLogo}
                 alt="Google Logo"
               />
-              <Typography> {t("login-page.loginWithGoogle") }</Typography>
+              <Typography> {t("login-page.loginWithGoogle")}</Typography>
             </Button>
             <Button
               variant="contained"
@@ -359,7 +337,7 @@ const Login = () => {
                 src={facebookIcon}
                 alt="Facebook Logo"
               />
-              <Typography>{t("login-page.loginWithFaceBook") }</Typography>
+              <Typography>{t("login-page.loginWithFaceBook")}</Typography>
             </Button>
           </Box>
         </Box>

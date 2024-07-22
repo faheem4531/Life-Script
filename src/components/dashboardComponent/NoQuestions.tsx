@@ -8,11 +8,6 @@ export default function NoQuestions() {
   const { t } = useTranslation();
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      {/* <Typography
-        sx={{ textAlign: "center", color: "#B2B2B2", fontSize: { sm: "32px", xs: "22px" }, marginTop: { sm: "30px", xs: "25px" } }}
-      >
-        Start New Question
-      </Typography> */}
       <Box
         sx={{
           display: "flex",
@@ -24,7 +19,6 @@ export default function NoQuestions() {
           src={NoData}
           alt="No Data"
           height={150}
-        // width={300}
         />
       </Box>
       <Typography

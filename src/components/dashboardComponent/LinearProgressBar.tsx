@@ -10,7 +10,6 @@ function LinearProgressWithLabel(
     <Box
       sx={{
         display: "flex",
-        // padding: "6px 3px",
         alignItems: "center",
         position: "relative",
         height: "29px",
@@ -22,11 +21,10 @@ function LinearProgressWithLabel(
         <LinearProgress
           sx={{
             height: "27px", bgcolor: "rgba(127, 136, 107, 0.30)", borderRadius: "2px", "& .MuiLinearProgress-bar": {
-              backgroundColor: "#7f886b", // Custom color for the progress bar
+              backgroundColor: "#7f886b",
             },
           }}
           variant="determinate"
-          // color="inherit"
           {...props}
         />
       </Stack>
@@ -42,16 +40,6 @@ function LinearProgressWithLabel(
 }
 
 export default function LinearProgressBar({ percentage }: any) {
-  // const [progress, setProgress] = React.useState(10);
-
-  // React.useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
-  //   }, 800);
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, []);
 
   return (
     <Box sx={{ width: "100%", marginTop: "10px" }}>
@@ -87,11 +75,10 @@ function LoadingProgress(props: LinearProgressProps & { value: number }) {
         <LinearProgress
           sx={{
             height: "45px", bgcolor: "#d1cfb9", borderRadius: "5px", "& .MuiLinearProgress-bar": {
-              backgroundColor: "#7f886b", // Custom color for the progress bar
+              backgroundColor: "#7f886b",
             },
           }}
           variant="determinate"
-          // color="inherit"
           {...props}
         />
         <Box

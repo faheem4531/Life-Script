@@ -1,6 +1,4 @@
 import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
 import Image from "next/image";
 import * as React from "react";
 import { useState } from "react";
@@ -15,7 +13,6 @@ import { useEffect } from "react";
 import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import Carousel from "./Carousel";
 import Login from "./Login";
-import Signup from "./Signup";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,13 +44,6 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 export default function Register() {
   const router = useRouter();
   const { t } = useTranslation();
@@ -63,37 +53,12 @@ export default function Register() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  // const carouselItems = [
-  //   <Image
-  //     key="LoginImage"
-  //     src={LoginImage}
-  //     alt="login Image"
-  //     style={{
-  //       height: "100%",
-  //       maxHeight: "92vh",
-  //       minHeight: "92vh",
-  //       width: "100%",
-  //       objectFit: "contain",
-  //     }}
-  //   />,
-  //   <Image
-  //     key="SignupImage"
-  //     src={SignupImage}
-  //     style={{
-  //       height: "100%",
-  //       maxHeight: "92vh",
-  //       width: "100%",
-  //       objectFit: "contain",
-  //     }}
-  //     alt="Signup Image"
-  //   />,
-  // ];
+
   const carouselItems = [
     { path: Carousel1, alt: "Login Image" },
     { path: Carousel2, alt: "Signup Image" },
     { path: Carousel3, alt: "Signup Image" },
 
-    // Add more images as needed
   ];
 
   useEffect(() => {
@@ -160,64 +125,11 @@ export default function Register() {
                 display: "flex",
                 justifyContent: "center",
                 marginTop: "30px"
-                // pl: "20px",
               }}
             >
-              {/* <Box
-                sx={{
-                  marginTop: "20px",
-                  height: "auto",
-                  border: "1px solid black",
-                  maxWidth: "460px",
-                  width: "100%",
-                  background: "transparent",
-                  borderRadius: "2px",
-                }}
-              >
-                <Tabs
-                  sx={{
-                    "& .MuiTabs-flexContainer": {
-                      justifyContent: "center",
-                    },
-                    "& .MuiTabs-indicator": {
-                      display: "none", // Hide the indicator line
-                    },
-                    "& .MuiTab-root": {
-                      width: "50%",
-                      borderRadius: "2px",
-                      // backgroundColor: "wheat",
-
-                      color: "#30422E",
-                      "&.Mui-selected": {
-                        backgroundColor: "#30422E",
-                        color: "white",
-                      },
-                    },
-                  }}
-                  value={value}
-                  onChange={handleChange}
-                  aria-label="basic tabs example"
-                >
-                  <Tab
-                    label={t("Register.Login")}
-                    {...a11yProps(0)}
-                    sx={{ textTransform: "capitalize" }}
-                  />
-                  <Tab
-                    label={t("Register.Register")}
-                    {...a11yProps(1)}
-                    sx={{ textTransform: "capitalize" }}
-                  />
-                </Tabs>
-              </Box> */}
             </Box>
             <Box>
-              {/* <CustomTabPanel value={value} index={0}> */}
               <Login />
-              {/* </CustomTabPanel> */}
-              {/* <CustomTabPanel value={value} index={1}> */}
-              {/* <Signup signupClick={() => setValue(0)} /> */}
-              {/* </CustomTabPanel> */}
             </Box>
           </Box>
         </Box>

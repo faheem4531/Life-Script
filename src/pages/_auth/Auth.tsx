@@ -5,13 +5,6 @@ export default function AuthPage() {
   return (
     <Box>
       <Register />
-      {/* <ForgetPassword/> */}
-      {/* <ForgetPasswordLink/> */}
-      {/* <EmailVerification/> */}
-      {/* <EmailVerificationLink/> */}
-      {/* <LetsStarted /> */}
-      {/* <ResetPassword/> */}
-      {/* <GetTitle /> */}
     </Box>
   );
 }
