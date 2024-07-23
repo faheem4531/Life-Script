@@ -21,63 +21,63 @@ const Testimonial = () => {
   const Client = [
     {
       profile: Arthur,
-      name: t("landingPage.testimonialSection.testimonial1.name"), 
+      name: t("landingPage.testimonialSection.testimonial1.name"),
       age: t("landingPage.testimonialSection.testimonial1.age"),
       location: t("landingPage.testimonialSection.testimonial1.location"),
       details: t("landingPage.testimonialSection.testimonial1.details"),
     },
     {
       profile: Eleanor,
-      name: t("landingPage.testimonialSection.testimonial2.name"), 
+      name: t("landingPage.testimonialSection.testimonial2.name"),
       age: t("landingPage.testimonialSection.testimonial2.age"),
       location: t("landingPage.testimonialSection.testimonial2.location"),
       details: t("landingPage.testimonialSection.testimonial2.details"),
     },
     {
       profile: Margaret,
-      name: t("landingPage.testimonialSection.testimonial3.name"), 
+      name: t("landingPage.testimonialSection.testimonial3.name"),
       age: t("landingPage.testimonialSection.testimonial3.age"),
       location: t("landingPage.testimonialSection.testimonial3.location"),
       details: t("landingPage.testimonialSection.testimonial3.details"),
     },
     {
       profile: George,
-      name: t("landingPage.testimonialSection.testimonial4.name"), 
+      name: t("landingPage.testimonialSection.testimonial4.name"),
       age: t("landingPage.testimonialSection.testimonial4.age"),
       location: t("landingPage.testimonialSection.testimonial4.location"),
       details: t("landingPage.testimonialSection.testimonial4.details"),
     },
     {
       profile: Linda,
-      name: t("landingPage.testimonialSection.testimonial5.name"), 
+      name: t("landingPage.testimonialSection.testimonial5.name"),
       age: t("landingPage.testimonialSection.testimonial5.age"),
       location: t("landingPage.testimonialSection.testimonial5.location"),
       details: t("landingPage.testimonialSection.testimonial5.details"),
     },
     {
       profile: Derek,
-      name: t("landingPage.testimonialSection.testimonial6.name"), 
+      name: t("landingPage.testimonialSection.testimonial6.name"),
       age: t("landingPage.testimonialSection.testimonial6.age"),
       location: t("landingPage.testimonialSection.testimonial6.location"),
       details: t("landingPage.testimonialSection.testimonial6.details"),
     },
     {
       profile: Lilly,
-      name: t("landingPage.testimonialSection.testimonial7.name"), 
+      name: t("landingPage.testimonialSection.testimonial7.name"),
       age: t("landingPage.testimonialSection.testimonial7.age"),
       location: t("landingPage.testimonialSection.testimonial7.location"),
       details: t("landingPage.testimonialSection.testimonial7.details"),
     },
     {
       profile: Carlos,
-      name: t("landingPage.testimonialSection.testimonial8.name"), 
+      name: t("landingPage.testimonialSection.testimonial8.name"),
       age: t("landingPage.testimonialSection.testimonial8.age"),
       location: t("landingPage.testimonialSection.testimonial8.location"),
       details: t("landingPage.testimonialSection.testimonial8.details"),
     },
     {
       profile: Rachel,
-      name: t("landingPage.testimonialSection.testimonial9.name"), 
+      name: t("landingPage.testimonialSection.testimonial9.name"),
       age: t("landingPage.testimonialSection.testimonial9.age"),
       location: t("landingPage.testimonialSection.testimonial9.location"),
       details: t("landingPage.testimonialSection.testimonial9.details"),
@@ -88,7 +88,7 @@ const Testimonial = () => {
     <Box sx={{ marginTop: { lg: "120px", sm: "150px", xs: "100px" } }}>
       <PrimaryHeading showStyle={false} marked={t("landingPage.testimonialSection.title")} lineWidth="180px" />
       <Typography sx={{ color: "#495845", margin: { sm: "15px 0 100px", xs: "20px 0 50px" }, textAlign: "center", fontFamily: "Avenir" }}>
-      {t("landingPage.testimonialSection.subTitle")} 
+        {t("landingPage.testimonialSection.subTitle")}
       </Typography>
 
       <Marquee
@@ -104,7 +104,7 @@ const Testimonial = () => {
         />)}
       </Marquee>
 
-    </Box >
+    </Box>
   )
 }
 
@@ -117,7 +117,7 @@ function ReviewCard({ profile, name, location, details, age }) {
       borderRadius: "4px",
       padding: { md: "25px 32px 35px 40px", sm: "20px 25px 30px", xs: "20px 20px 25px" },
       minWidth: { sm: "380px", xs: "330px" },
-      height: { sm: "420px", xs: "390px" },
+      height: { lg: "495px", md: "495px", sm: "480px", xs: "425px" },
       bgcolor: "#F4F4F4",
       marginRight: { md: "38px", sm: "25px", xs: "20px" }
     }}>
@@ -129,7 +129,7 @@ function ReviewCard({ profile, name, location, details, age }) {
         borderBottom: "1px solid #BFC4B5"
       }}>
         <Image
-        loading='lazy'
+          loading='lazy'
           src={profile}
           alt="image"
           className={styles.clientImg}
