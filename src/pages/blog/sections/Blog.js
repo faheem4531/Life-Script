@@ -9,7 +9,7 @@ const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [blogsPerPage] = useState(5);
   const [paginateData, setPaginateData] = useState({});
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +19,6 @@ const Blogs = () => {
           // "http://localhost:1337/api/blogs?populate=*",
           // "https://strapi.thelifescript.com/api/blogs?populate=*",
           `https://strapi.thelifescript.com/api/blogs?pagination[page]=${currentPage}&pagination[pageSize]=${blogsPerPage}&populate=*`
-
           // {
           //   headers: {
           //     Authorization:
@@ -48,10 +47,10 @@ const Blogs = () => {
         );
         setBlogsData(sortedData);
         setPaginateData(responseData.meta.pagination);
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -72,7 +71,7 @@ const Blogs = () => {
   };
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
     >
 
       {/* Loader */}
@@ -87,14 +86,14 @@ const Blogs = () => {
           maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
         }}>
           <Circles
-              height="80"
-              width="80"
-              color="#B4522D"
-              ariaLabel="circles-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
+            height="80"
+            width="80"
+            color="#B4522D"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
         </Box>
       )}
       {!loading && (
@@ -120,22 +119,22 @@ const Blogs = () => {
 
           {/* Pagination */}
           <Box mt={2} display="flex" justifyContent="center">
-            <Button sx={{color:"black"}} onClick={prevPage} disabled={currentPage === 1}>
-            {t("blogSection.previous")}
+            <Button sx={{ color: "black" }} onClick={prevPage} disabled={currentPage === 1}>
+              {t("blogSection.previous")}
             </Button>
             {[...Array(paginateData.pageCount)].map((_, index) => (
               <Button
-              sx={{
-                padding: "2px",
-                margin: "2px",
-                color: "black",
-                borderColor:"black", // Set text color to orange
-                bgcolor: currentPage === index + 1 ? "#E1693B" : "transparent", // Set background color to orange for active page
-                "&:hover": {
-                  bgcolor: "#E1693B", // Change background color on hover
-                  color: "white", // Change text color on hover
-                },
-              }}
+                sx={{
+                  padding: "2px",
+                  margin: "2px",
+                  color: "black",
+                  borderColor: "black", // Set text color to orange
+                  bgcolor: currentPage === index + 1 ? "#E1693B" : "transparent", // Set background color to orange for active page
+                  "&:hover": {
+                    bgcolor: "#E1693B", // Change background color on hover
+                    color: "white", // Change text color on hover
+                  },
+                }}
                 key={index + 1}
                 onClick={() => paginate(index + 1)}
                 variant={currentPage === index + 1 ? "contained" : "outlined"}
@@ -144,7 +143,7 @@ const Blogs = () => {
               </Button>
             ))}
             <Button
-            sx={{color:"black"}}
+              sx={{ color: "black" }}
               onClick={nextPage}
               disabled={currentPage === paginateData.pageCount}
             >

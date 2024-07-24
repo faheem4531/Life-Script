@@ -18,9 +18,8 @@ const IntroductionBlog = () => {
 
       <Box sx={{
         margin: {
-          lg: "180px auto 120px", md: "200px 90px 150px ", sm: "120px 50px 120px", xs: "80px 20px 50px"
+          lg: "180px auto 20px", md: "200px 90px 20px ", sm: "120px 50px 20px", xs: "80px 20px 20px"
         },
-        paddingBottom: "35px",
         borderBottom: "1px solid #E1683B",
         maxWidth: "1050px"
       }}>

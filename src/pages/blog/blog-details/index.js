@@ -85,10 +85,10 @@ const BlogDetailPage = () => {
           <Box
             sx={{
               margin: {
-                lg: "200px auto 120px",
-                md: "180px auto 150px",
-                sm: "120px auto 100px",
-                xs: "100px 20px 80px",
+                lg: "200px auto 50px",
+                md: "180px auto 50px",
+                sm: "120px auto 50px",
+                xs: "100px 20px 30px",
               },
               maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
             }}
@@ -116,7 +116,7 @@ const BlogDetailPage = () => {
             maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
           }}
         >
-          <Box>
+          <Box sx={{ width: "70%", margin: "auto" }}>
             <Box
               sx={{
                 display: "flex",
@@ -132,26 +132,27 @@ const BlogDetailPage = () => {
             </Box>
             <Typography
               sx={{
-                fontSize: { sm: "40px", xs: "30px" },
+                fontSize: { sm: "28px", xs: "24px" },
                 fontWeight: 500,
-                marginBottom: "20px",
+                 marginBottom: "20px",
                 width: { md: "80%", sm: "100%", xs: "100%" },
                 fontFamily: "Besley !important",
-                lineHeight: { sm: "50px", xs: "36px" },
               }}
             >
               {/* Crafting Your Legacy: A Guide to Writing Your Autobiography */}
               {blogsDetailsData?.data?.attributes?.title}
             </Typography>
-            <Typography x={{ fontSize: "16px" }}>
+            <Typography x={{ fontSize: "16px"}}>
               {/* Published by Angel on January 12, 2024 */}
               {`Published by ${blogsDetailsData?.data?.attributes?.author} on ${blogsDetailsData?.data?.attributes?.datePublish}`}
             </Typography>
           </Box>
-          <img src={imageUrl} alt="img" className={styles.blogImg} />
-          <BlogDetails
-            details={blogsDetailsData?.data?.attributes?.description}
-          />
+          <Box sx={{ width: "70%", margin: "auto" }}>
+            <img src={imageUrl} alt="img" className={styles.blogImg} />
+            <BlogDetails
+              details={blogsDetailsData?.data?.attributes?.description}
+            />
+          </Box>
         </Box>
       )}
       <Box
