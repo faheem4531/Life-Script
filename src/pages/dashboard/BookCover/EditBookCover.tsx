@@ -271,11 +271,10 @@ const EditBookCover = () => {
       if (CoverNumber === "2" && elmId === "heading-text") {
         yAxisOffsetTwo = "38%";
         if (title.length !== 0) {
-          yAxisOffsetTwo = "44%";
+          yAxisOffsetTwo = "42%";
         }
         else {
-          yAxisOffsetTwo = "38%";
-          console.log(yAxisOffsetTwo, "notitle");
+          yAxisOffsetTwo = "36%";
         }
       }
       let yAxisOffsetTwoAuth = "80%"; // Default for CoverNumber 2 author
@@ -301,8 +300,12 @@ const EditBookCover = () => {
             !(CoverNumber === "5" && elmId === "author-text") &&
             !(CoverNumber === "4" && elmId === "author-text")
           ) {
-            defaultTspan.setAttribute("x", "50%");
-            defaultTspan.setAttribute("dy", "1.2em");
+            if (CoverNumber === "2" && elmId === "heading-text") {
+              defaultTspan.setAttribute("x", "47%");
+            } else {
+              defaultTspan.setAttribute("x", "50%");
+            }
+            defaultTspan.setAttribute("dy", "1.5em");
           }
           defaultTspan.appendChild(document.createTextNode(`${defaultText}`));
           headingText.appendChild(defaultTspan);
@@ -368,7 +371,11 @@ const EditBookCover = () => {
             !(CoverNumber === "5" && elmId === "author-text") &&
             !(CoverNumber === "4" && elmId === "author-text")
           ) {
-            tspan.setAttribute("x", "50%");
+            if (CoverNumber === "2" && elmId === "heading-text") {
+              tspan.setAttribute("x", "47%");
+            } else {
+              tspan.setAttribute("x", "50%");
+            }
             tspan.setAttribute("dy", index === 0 ? "0em" : "1.2em");
           }
           tspan.appendChild(document.createTextNode(line));
@@ -398,11 +405,12 @@ const EditBookCover = () => {
         // Adjust y attribute for title name when CoverNumber is 2
         if (CoverNumber === "2" && elmId === "heading-text") {
           headingText.setAttribute("y", yAxisOffsetTwo);
+          headingText.setAttribute("x", "20%");
         }
         // Adjust y attribute for author name when CoverNumber is 2
         if (CoverNumber === "2" && elmId === "author-text") {
           headingText.setAttribute("y", yAxisOffsetTwoAuth);
-          headingText.setAttribute("x", "69%");
+          headingText.setAttribute("x", "77%");
         }
       }
     }

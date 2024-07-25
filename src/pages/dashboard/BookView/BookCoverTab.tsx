@@ -7,13 +7,13 @@ import {
   uploadImage,
   uploadImageWithCloudinary
 } from "@/store/slices/chatSlice";
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import jsPDF from "jspdf";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { font } from "../../../styles/Besley";
-import Loading from "./components/Loading"
+import Loading from "./components/Loading";
 
 const BookCoverTab = ({ setSelectedTab, pages }) => {
   const { t } = useTranslation();
@@ -545,8 +545,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     const newImage = coverData && coverData?.coverPagePhoto;
 
-    // const newData = { imageUrl: newImage };
-    // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    const newData = { imageUrl: newImage };
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
@@ -554,7 +554,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const imageY = 0;
 
       pdf.addImage(
-        newImage,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -567,7 +567,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const imageY = 0;
 
       pdf.addImage(
-        newImage,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -580,7 +580,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       const imageY = 14;
 
       pdf.addImage(
-        newImage,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -589,7 +589,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       );
     } else {
       pdf.addImage(
-        newImage,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         offset,

@@ -873,8 +873,11 @@ const ViewBookCover = () => {
 
 
 
-    // const newData = { imageUrl: finalCover };
-    // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    const newData = { imageUrl: finalCover };
+    console.log(finalCover, "Final Cover");
+
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    console.log(newImageLink.payload, "new Image link");
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159; // Width of the image in mm
@@ -882,7 +885,7 @@ const ViewBookCover = () => {
       const imageY = 0;
 
       pdf.addImage(
-        finalCover,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -895,7 +898,7 @@ const ViewBookCover = () => {
       const imageY = 0;
 
       pdf.addImage(
-        finalCover,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -909,7 +912,7 @@ const ViewBookCover = () => {
       const imageY = 14;
 
       pdf.addImage(
-        finalCover,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         imageY,
@@ -919,7 +922,7 @@ const ViewBookCover = () => {
     }
     else {
       pdf.addImage(
-        finalCover,
+        newImageLink.payload,
         "png",
         offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
         offset,
