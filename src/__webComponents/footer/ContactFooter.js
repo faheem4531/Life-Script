@@ -79,21 +79,21 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
   };
 
   const getDate = (date) => {
-    
+
     const isoDate = new Date(date)
-    console.log('Converted Date to ISO:',isoDate);
+    console.log('Converted Date to ISO:', isoDate);
 
     setReminderData(prevValues => ({ ...prevValues, sendDate: isoDate }));
   };
-
 
   const handleSubmit = async () => {
     if (validate()) {
       try {
         const data = date ? reminderData : formValues;
         data.sendDate = moment(data.sendDate).format('YYYY-MM-DD');
-        console.log(data.sendDate);
+
         const res = date ? await dispatch(reminderForm(data)).unwrap() : await dispatch(contact(data)).unwrap();
+
         if (!date) {
           toast.success(res);
           setFormValues({
@@ -101,10 +101,7 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
             email: '',
             description: ''
           });
-
-
-        }
-        else {
+        } else {
           toast.success("Reminder set For You");
           setReminderData({
             email: "",
@@ -118,7 +115,6 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
       }
     }
   };
-
   return (
     <Box
       sx={{
@@ -199,7 +195,7 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
             :
             <TextField
               name="description"
-              value={formValues.description}
+              value={formValues.description} 
               onChange={handleChange}
               placeholder={input3}
               error={!!errors.description}
@@ -208,11 +204,13 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
               sx={{
                 '& .MuiInputBase-root': {
                   backgroundColor: 'white',
-                }, borderRadius: "5px"
+                },
+                borderRadius: "5px"
               }}
             />
           }
         </Box>
+
       </Box>
 
       <Box sx={{ width: { sm: "200px", xs: "100%" } }}>
@@ -239,6 +237,12 @@ function GetDate({ getDate, value, error }) {
   function handleCalander() {
     setIsOpen((prev) => !prev);
   }
+  const handleDateChange = (date) => {
+    if (date) {
+      getDate(date); 
+      setIsOpen(false); 
+    }
+  };
 
   return (
     <Box sx={{ position: "relative" }}>
@@ -261,8 +265,8 @@ function GetDate({ getDate, value, error }) {
             color: "#7e7e7e",
             border: "none"
           }}
-          // value={value}
-          onChange={(date) => getDate(date)}
+          value={value ? new Date(value) : null}
+          onChange={handleDateChange}
           open={isOpen}
           onClose={() => setIsOpen(false)}
           renderInput={(params) => (
