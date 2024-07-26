@@ -61,6 +61,9 @@ const EditBookCover = () => {
         coverImageElement.setAttribute("xlink:href", croppedImageBase64);
       }
 
+      // Force redraw in Safari
+      coverImageElement.parentElement?.appendChild(coverImageElement);
+
       setCropper(croppedImageBase64);
       return croppedImageBase64;
     }
@@ -316,6 +319,9 @@ const EditBookCover = () => {
       if (coverImageElement) {
         coverImageElement.setAttribute("xlink:href", base64Data);
       }
+
+      // Force redraw in Safari
+      coverImageElement.parentElement?.appendChild(coverImageElement);
     };
 
     reader.readAsDataURL(file);
@@ -363,6 +369,8 @@ const EditBookCover = () => {
           "xlink:href",
           `data:image/png;base64,${result}`
         );
+        // Force redraw in Safari
+        coverImageElement.parentElement?.appendChild(coverImageElement);
       });
     }
 
