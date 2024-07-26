@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-// import noData from "../../../public/noData.svg";
 import NoData from "@/_assets/svg/no-data-icon.svg"
 import { useTranslation } from "react-i18next";
 

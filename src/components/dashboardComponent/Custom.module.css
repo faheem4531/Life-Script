@@ -1,5 +1,4 @@
 /* Overview Profile  */
-
 .profileBox{
 position: absolute;
 width: 150px;
@@ -42,7 +41,6 @@ top: 0;
   right: 0;
   top: 0;
   width: 300px;
-  /* height: 230px; */
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -62,7 +60,6 @@ top: 0;
 
 /* OverView SubComponents  */
 
-
 @media (min-width: 1400px) and (max-width: 1800px) {
   .welcomeImage {
     width: 287px;
@@ -78,8 +75,6 @@ top: 0;
 }
 
 @media (max-width: 1400px) {
-
-
   /* Overview Welcome  */
 
   .welcomeImage {
@@ -106,9 +101,3 @@ top: 0;
   }
 }
 
-/* @media (min-width: 1000px) and (max-width: 1300px) {
-
-  .clockContainer {
-    width: 260px;
-  }
-} */

@@ -15,7 +15,6 @@ export default function Tooltip({
         border: "2px solid #E1683B",
         borderRadius: "4px",
         width: "360px",
-        // width: "auto",
         height: "auto",
         position: position,
         bottom: "30px",
@@ -31,7 +30,6 @@ export default function Tooltip({
           fontSize: "17px",
           fontWeight: 500,
           color: "#3e4f3c",
-          // marginBottom: "15px",
         }}
       >
         {title}

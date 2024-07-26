@@ -12,7 +12,6 @@ const SelectBookCoverHeader = ({ discription, img }) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        // maxWidth: "1149px",
         width: "100%",
         height: { xs: "auto", sm: "150px", md: "175px" },
         gap: "30px",
@@ -34,7 +33,6 @@ const SelectBookCoverHeader = ({ discription, img }) => {
           sx={{
             fontSize: { xs: "20px", sm: "28px", md: "32px", lg: "45px" },
             fontWeight: 700
-            // fontFamily: "Avenir8 !important"
           }}
         >
           {discription}

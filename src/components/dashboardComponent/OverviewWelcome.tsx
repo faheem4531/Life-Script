@@ -1,19 +1,16 @@
-import BgRounded from "@/_assets/png/overview-welcome-bg.png";
-import Welcome from "@/_assets/png/overview-welcome-card.png";
 import ContineWriting from "@/_assets/svg/continue-writing.svg";
 import Radius from "@/_assets/svg/profile-radius.svg";
+import DemoProfile from "@/_assets/svg/profile.svg";
+import { selectUser } from "@/store/slices/authSlice";
+import { quotes } from "@/utils/subscriptionLists";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Button from "../button/Button";
-import styles from "./Custom.module.css";
+import { useSelector } from "react-redux";
 import GlobelBtn from "../button/Button";
-import DemoProfile from "@/_assets/svg/profile.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserProfile, selectUser } from "@/store/slices/authSlice";
-import { quotes } from "@/utils/subscriptionLists";
+import styles from "./Custom.module.css";
 
 const WelcomeOverview = () => {
   const { t } = useTranslation();
@@ -27,7 +24,7 @@ const WelcomeOverview = () => {
   useEffect(() => {
     const name = localStorage.getItem("username");
     setUserNameFull(name);
-    const firstName = name ? name.split(" ")[0] : ""; // Get the part before the first space
+    const firstName = name ? name.split(" ")[0] : "";
     setUserName(firstName);
   }, []);
 
@@ -55,7 +52,6 @@ const WelcomeOverview = () => {
       }}
       className={styles.welcomeMain}
     >
-      {/* {t("overView.headerdescription")} */}
 
       <Box>
         <Typography sx={{ fontSize: "18.75px" }}>

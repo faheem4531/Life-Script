@@ -1,5 +1,4 @@
 import Tick from "@/_assets/svg/checked.svg";
-// import { default as Box, Divider, default as Typography } from "@mui/material";
 import { Divider, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";

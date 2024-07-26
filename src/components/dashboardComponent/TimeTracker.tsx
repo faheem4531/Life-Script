@@ -3,7 +3,6 @@ import Image from "next/image";
 import ClockImage from "@/_assets/svg/clockMain.svg";
 import Calander from "@/_assets/svg/calanderMain.svg";
 import styles from "./Custom.module.css";
-
 import {
   getAnswers,
   getChapters,
@@ -40,24 +39,17 @@ const TimeTracker = ({ onChange }) => {
     array.forEach((obj) => {
       const answerHTML = obj.userText;
 
-      // Remove HTML tags and extract text content
       const textContent = answerHTML.replace(/<[^>]*>/g, "");
 
-      // Remove escape characters and decode HTML entities
       const decodedText = decodeURIComponent(
         textContent.replace(/&nbsp;|&#160;/g, " ")
       );
-
-      // Split the text into words using whitespace as the delimiter
       const words = decodedText.split(/\s+/);
 
-      // Filter out empty strings from the array
       const nonEmptyWords = words.filter((word) => word.length > 0);
 
-      // Count the number of words for the current object
       const wordCount = nonEmptyWords.length;
 
-      // Add the word count to the total
       totalWords += wordCount;
       setWordsCount(totalWords);
     });

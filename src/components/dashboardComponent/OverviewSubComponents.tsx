@@ -102,14 +102,12 @@ export const ViewBook = () => {
                 md: "block",
                 xs: "block",
               },
-              // position: "absolute",
-              // mt: 1
             }}
           >
             <TooltipTab
               title=""
               text={t("overView.viewBtnSuggestion")}
-              transform="none" // adjust transform if needed
+              transform="none"
               top={undefined}
               left={undefined}
               bottom={"55px"}
@@ -303,7 +301,6 @@ export const PrintBook = () => {
                     md: "block",
                     xs: "block",
                   },
-                  // position: "absolute",
                 }}
               >
                 <TooltipTab

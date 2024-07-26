@@ -69,7 +69,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
       signOut();
       handleMoreClose();
       dispatch(resetChatState());
-      // router.push("/");
     }
   };
 
@@ -78,7 +77,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
     buttonsHide = true;
   }
 
-  // const options = [`${t("navBar.logout")}`];
   const options = [{ id: 1, title: `${t("navBar.logout")}` }];
 
   return (
@@ -122,7 +120,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
           />
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          {/* Notification Icon */}
           <IconButton
             aria-label="notifications"
             color="inherit"
@@ -132,7 +129,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             }}
           >
             <Badge badgeContent={notifications?.length} color="error">
-              {/* <NotificationsIcon /> */}
               <Box
                 sx={{
                   width: "20px",
@@ -150,7 +146,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             </Badge>
           </IconButton>
 
-          {/* Notification List */}
 
           <Menu
             anchorEl={notificationAnchorEl}
@@ -282,7 +277,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
               )}
             </Box>
           </Menu>
-          {/* More option :start */}
           <IconButton
             aria-label="more"
             id="long-button"
@@ -368,7 +362,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
               ))}
             </Box>
           </Menu>
-          {/* More option :end */}
         </Box>
       </Box>
     </Box>

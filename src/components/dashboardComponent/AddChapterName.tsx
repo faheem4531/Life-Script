@@ -1,15 +1,8 @@
-import { updateChapter } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
 import BookImage from "@/_assets/png/hero-book.png";
 import Back from "@/_assets/svg/back-icon.svg";
-import Check from "../../_assets/svg/bgTickIcon.svg";
 import Book from "../../_assets/svg/gift-book.svg";
 import styles from "./AddChapterName.module.css";
 import { useRouter } from "next/router";
@@ -34,18 +27,6 @@ const AddChapterName = ({
   editChapter: (value: boolean) => void;
 }) => {
   const [chapterName, setChapterName] = useState("");
-  const dispatch: any = useDispatch();
-  const { t } = useTranslation();
-
-  const saveChapterName = () => {
-    dispatch(updateChapter({ title: chapterName, id: chapterId }))
-      .then(() => {
-        toast.success("Chapter name updated successfully");
-      })
-      .catch(() => {
-        toast.error("Failed to update chapter name");
-      });
-  };
 
   useEffect(() => {
     chapter && setChapterName(chapter);
@@ -99,7 +80,6 @@ const AddChapterName = ({
         }}
       >
         <Box>
-          {/* {title === "templateView" && ( */}
           <Box
             sx={{
               display: "flex",

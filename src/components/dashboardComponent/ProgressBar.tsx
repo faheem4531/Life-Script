@@ -7,7 +7,7 @@ import StepLabel from '@mui/material/StepLabel';
 const steps = ['20%', '40%', '60%', '80%', '100%'];
 
 export default function ProgressBar() {
-  const activeStep =2; // Set the active step index (0-indexed)
+  const activeStep =2; 
 
   return (
     <Box sx={{ width: '100%' }}>

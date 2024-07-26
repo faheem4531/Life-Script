@@ -20,7 +20,7 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
 
   const filterOptions = (options, { inputValue }) => {
     return options.filter((option) => {
-      return option.label.includes(inputValue); // Change to phone property
+      return option.label.includes(inputValue); 
     });
   };
 
@@ -36,8 +36,7 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
         value={selectedCountry}
         onChange={handleCountryChange}
         autoHighlight
-        filterOptions={filterOptions} // Apply custom filter
-        // getOptionLabel={(option) => option.phone}
+        filterOptions={filterOptions}
         renderOption={(props, option) => (
           <Box
             component="li"
@@ -62,10 +61,8 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
             sx={{
               "& .MuiOutlinedInput-root": {
                 backgroundColor: backgroundColor,
-                // height: stripe ? "46px" : "56px",
                 mb: stripe ? "0px" : "0px",
                 borderRadius: stripe ? "0px" : "4px",
-                // pt: !stripe ? "6px" : "1.8px",
               },
               ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
                 border: "0px",

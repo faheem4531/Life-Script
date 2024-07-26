@@ -70,7 +70,6 @@ const Profile = ({ data}) => {
     const completedCount = array?.filter(
       (item) => item.status === "Completed"
     ).length;
-    // Calculate the percentage
     const percentage = (completedCount / array?.length) * 100;
 
     return percentage;
@@ -92,7 +91,7 @@ const Profile = ({ data}) => {
 
   useEffect(() => {
     const name = localStorage.getItem("username");
-    const firstName = name ? name.split(" ")[0] : ""; // Get the part before the first space
+    const firstName = name ? name.split(" ")[0] : ""; 
     setUserName(firstName);
     dispatch(getChapters());
     dispatch(getUserProfile());
@@ -415,9 +414,6 @@ export const RecentChapters = ({ title, percentage, id }) => {
   );
 };
 
-{
-  /* // Progress Bar code */
-}
 function CircularProgressWithLabel(props) {
   return (
     <Box sx={{ position: "relative", display: "inline-flex", width: "24px" }}>

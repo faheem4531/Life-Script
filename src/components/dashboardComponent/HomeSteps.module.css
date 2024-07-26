@@ -13,9 +13,6 @@
   .typo {
     bottom: 10px;
   }
-  /* .questionWidth{
-    width: 330px;
-  } */
 }
 
 @media (min-width: 1400px) {
@@ -23,9 +20,6 @@
     bottom: -5px;
   }
 
-  .questionWidth{
-    /* width: 330px !important; */
-  }
 }
 
 @media (max-width: 900px) {

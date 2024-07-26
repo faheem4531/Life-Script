@@ -1,7 +1,6 @@
 "use client";
 import Option from "@/_assets/png/X-menu.png";
 import Frame from "@/_assets/svg/Frame.svg";
-// import Completed from "@/_assets/svg/completed-icon.svg";
 import CompletedIcon from "@/_assets/svg/CompletedIcon.svg";
 import EditGreen from "@/_assets/svg/edit-icon-green.svg";
 import AddQuestion from "@/pages/events/addQuestion";
@@ -23,7 +22,7 @@ const ITEM_HEIGHT = 48;
 interface QuestionsProps {
   question?: any;
   number?: number;
-  answerClick?: (chapterName: string) => void; // Define the callback type here
+  answerClick?: (chapterName: string) => void; 
   templateQuestion?: (id: string) => void;
   questionChanged?: () => void;
   title?: string;
@@ -95,9 +94,8 @@ export default function Questions({
   };
 
   const handleSeeMoreClick = (event) => {
-    event.preventDefault(); // Prevent default behavior (navigation)
+    event.preventDefault(); 
     event.stopPropagation();
-    // Expand the text
     setExpanded(!expanded);
   };
 
@@ -137,7 +135,6 @@ export default function Questions({
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
-              // overflowX: "hidden",
               marginLeft: "15px",
             }}
           >

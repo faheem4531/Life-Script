@@ -26,7 +26,7 @@ interface DetailCardProps {
     option: string;
     chapterData: any;
     percentValue: any;
-  }) => void; // Define the callback type here
+  }) => void; 
   isChapter?: boolean;
   percentageCheck?: boolean;
   starterCh?: boolean;
@@ -68,7 +68,6 @@ export default function DetailCard({
     const completedCount = array?.filter(
       (item) => item.status === "Completed"
     ).length;
-    // Calculate the percentage
     const percentage = (completedCount / array?.length) * 100;
 
     return percentage;
@@ -90,9 +89,6 @@ export default function DetailCard({
         } ${t("ChName.chaptersCard.ago")}`;
     }
   }
-  // const options = [`${t("ChName.Del")}`, `${t("ChName.edit")}`];
-
-  // const options = ["Delete", "Edit"];
 
   const options = [
     { id: 1, title: t("ChName.chaptersCard.deleteBtn")  },
@@ -265,9 +261,6 @@ export default function DetailCard({
                       >
                         {question.text}
                       </Typography>
-                      {/* {question.text.length > 45
-                      ? question.text.slice(0, 42) + "..."
-                      : question.text} */}
                     </Typography>
                   ))
                 ) : (
@@ -325,24 +318,16 @@ export default function DetailCard({
           </CardContent>
         </Box>
       </Card>
-      {/* </Box>
-      </Box> */}
     </Box>
   );
 }
 
-{
-  /* // Progress Bar code */
-}
 function CircularProgressWithLabel(props) {
   return (
     <Box
       sx={{
         position: "relative",
         display: "inline-flex",
-        // marginBottom: { sm: "-8px", xs: "-20px" },
-        // width: { md: "30px", sm: "26.015px", xs: "20px" },
-        // backgroundColor:"#7f886b",
         borderRadius: "50px",
       }}
     >
@@ -364,7 +349,6 @@ function CircularProgressWithLabel(props) {
         }}
       >
         <Typography
-          // variant="caption"
           component="div"
           color="#E1683B"
           sx={{ fontSize: { md: "8px", sm: "7.804px", xs: "8px" } }}
