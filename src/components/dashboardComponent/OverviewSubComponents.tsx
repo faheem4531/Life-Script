@@ -1,7 +1,11 @@
 import ModalImage from "@/_assets/svg/Frame.svg";
 import Book from "@/_assets/svg/viewbook.svg";
 import FamilyTree from "@/_assets/svg/overview-family-tree.svg";
-import { getChapters, selectAllChapters } from "@/store/slices/chatSlice";
+import {
+  getChapters,
+  selectAllChapters,
+  getPrintingBookStatus,
+} from "@/store/slices/chatSlice";
 import { selectLuluPaymentStatus } from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -14,9 +18,7 @@ import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
 import styles from "./Custom.module.css";
 import TooltipTab from "@/__webComponents/tooltip/Tooltip";
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-
-
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 export const ViewBook = () => {
   const dispatch: any = useDispatch();
@@ -41,7 +43,7 @@ export const ViewBook = () => {
 
   useEffect(() => {
     dispatch(getChapters());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (chapters.length > 0) {
@@ -100,20 +102,23 @@ export const ViewBook = () => {
                 md: "block",
                 xs: "block",
               },
-              // position: "absolute", 
-              // mt: 1 
+              // position: "absolute",
+              // mt: 1
             }}
           >
             <TooltipTab
               title=""
               text={t("overView.viewBtnSuggestion")}
               transform="none" // adjust transform if needed
-              top={undefined} left={undefined} bottom={"55px"} right={undefined} position={"absolute"} />
-
+              top={undefined}
+              left={undefined}
+              bottom={"55px"}
+              right={undefined}
+              position={"absolute"}
+            />
           </Box>
         )}
       </Box>
-
 
       <CustomizationDialog
         open={openModal}
@@ -238,8 +243,20 @@ export const ViewTree = () => {
 
 export const PrintBook = () => {
   const { t } = useTranslation();
-  const [luluStatus, setLuluStatus] = useState("");
+  const dispatch: any = useDispatch();
+  const [luluStatus, setLuluStatus] = useState("Loading...");
   const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    dispatch(getPrintingBookStatus())
+      .then((response: any) => {
+        console.log("print a book status", response.payload.status);
+        setLuluStatus(response.payload.status);
+      })
+      .catch((error: any) => {
+        console.error("Error fetching book status:", error);
+      });
+  }, [dispatch]);
 
   return (
     <Box
@@ -258,19 +275,23 @@ export const PrintBook = () => {
       }}
     >
       <Box sx={{ width: { md: "65%", sm: "85%", xs: "90%" } }}>
-
-        <Box sx={{ display: "flex", alignItems: "center", gap: "10px", position: "relative" }}>
-
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            position: "relative",
+          }}
+        >
           <Typography
             sx={{ fontSize: { xl: "33px", sm: "28px" }, fontWeight: 700 }}
           >
             {t("overView.deliveryTracker")}
           </Typography>
-          <Box >
+          <Box>
             <Box
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
-            // sx={{ display: 'inline-block' }} 
             >
               <InfoOutlinedIcon sx={{ color: "#7F886B" }} />
             </Box>
@@ -282,16 +303,19 @@ export const PrintBook = () => {
                     md: "block",
                     xs: "block",
                   },
-                  // position: "absolute", 
-                  // mt: 1 
+                  // position: "absolute",
                 }}
               >
                 <TooltipTab
                   title=""
                   text={t("overView.suggestionIcon")}
                   transform="none"
-                  top={undefined} left={undefined} bottom={undefined} right={undefined} position={"absolute"} />
-
+                  top={undefined}
+                  left={undefined}
+                  bottom={undefined}
+                  right={undefined}
+                  position={"absolute"}
+                />
               </Box>
             )}
           </Box>
@@ -307,8 +331,7 @@ export const PrintBook = () => {
           isLulu={true}
           bgColor={luluStatus ? "#7F886B" : "#A9A9A9"}
           color="white"
-          btnText={luluStatus ? luluStatus : t("overView.printBtnText")}
-          // onClick={}
+          btnText={luluStatus}
           width={{ xl: "250px", sm: "180px" }}
         />
       </Box>

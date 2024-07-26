@@ -40,10 +40,11 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
 
   return (
     <Box
-      sx={{ width: "50%", margin: "auto", justifyContent : 'center', marginTop : 5 }}>
+      sx={{ width: "50%", margin: "auto", justifyContent: 'center', marginTop: 5 }}>
       <Box>
         <Typography
           sx={{
+            cursor: "pointer",
             fontSize: { sm: "30px", xs: "30px" },
             fontWeight: 500,
             marginBottom: "20px",
@@ -53,13 +54,14 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
         >
           {title}
         </Typography>
-        <Typography sx={{ fontSize: "16px", marginBottom : 1 }}>{date}</Typography>
+        <Typography sx={{ fontSize: "16px", marginBottom: 1 }}>{date}</Typography>
       </Box>
       <img
         src={image}
         alt="img"
         width={"100%"}
         height={"100%"}
+        style={{ cursor: "pointer" }}
       />
       {caption && (
         <Typography
@@ -73,7 +75,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
         </Typography>
       )}
 
-      <Typography sx={{ fontSize: "16px", marginTop : 2}}>
+      <Typography sx={{ fontSize: "16px", marginTop: 2 }}>
         <div
           dangerouslySetInnerHTML={{
             __html: showFullDetails ? details : truncatedDetails,

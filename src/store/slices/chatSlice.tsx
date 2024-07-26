@@ -29,6 +29,7 @@ import {
   getChapterNotificationsApi,
   getChapterbyIdApi,
   getChaptersApi,
+  getStatusOfPrintingBook,
   getHourApi,
   getOpenaiQuestionApi,
   getQuestionbyIdApi,
@@ -688,6 +689,18 @@ export const getChapters = createAsyncThunk<any[], void>(
   async () => {
     try {
       const response = await getChaptersApi();
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
+export const getPrintingBookStatus = createAsyncThunk<any, void>(
+  "chat/getStatus",
+  async () => {
+    try {
+      const response = await getStatusOfPrintingBook();
       return response;
     } catch (error: any) {
       throw new Error(error.props);
