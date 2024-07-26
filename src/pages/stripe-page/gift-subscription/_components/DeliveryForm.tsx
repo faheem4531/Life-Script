@@ -1,28 +1,37 @@
 // 3rd party libraries
-import { Box, Button, TextField, Typography } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
+import { Box, Button, TextField, Typography } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
 import { FormikHelpers, useFormik } from "formik";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 // Absolute imports
-import { signupWithGift, signupWithInAppGift } from '@/store/slices/authSlice';
+import { signupWithGift, signupWithInAppGift } from "@/store/slices/authSlice";
 
 // Relative imports
-import { DeliveryFormSchema } from '../../../../schema/deliveryFormSchema';
-import { FormValues } from '../../../../utils/interface/interface';
-import GiftPlanCard from './GiftPlanCard';
+import { DeliveryFormSchema } from "../../../../schema/deliveryFormSchema";
+import { FormValues } from "../../../../utils/interface/interface";
+import GiftPlanCard from "./GiftPlanCard";
 
-const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) => {
+const DeliveryForm = ({
+  onClick,
+  selectedTab,
+  inAppGiftFlow,
+  setGiftToUser,
+}) => {
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
   const router = useRouter();
-  const minDate = new Date().toISOString();
+  const minDate = moment().startOf("day").format("YYYY-MM-DD");
   const validationSchema = DeliveryFormSchema();
 
-  const handleSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
     try {
       if (inAppGiftFlow === "true") {
         await dispatch(signupWithInAppGift(values))
@@ -54,7 +63,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
     initialValues: {
       name: "",
       email: "",
-      sendGiftDate: null,
+      sendGiftDate: "",
       giftFrom: "",
       giftFromName: "",
       giftMessage: "",
@@ -64,31 +73,39 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
   });
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-      <Box className={'Container'} sx={{ width: '100%', maxWidth: '1370px', margin: { sm: '0 0 30px 70px', xs: '0 20px 30px 20px' } }}>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        className={"Container"}
+        sx={{
+          width: "100%",
+          maxWidth: "1370px",
+          margin: { sm: "0 0 30px 70px", xs: "0 20px 30px 20px" },
+        }}
+      >
         <Box>
-          <Typography sx={{ fontSize: '40px', marginBottom: '20px' }}>{t("stripeFlow.giftFlow.deliveryForm.title")}</Typography>
+          <Typography sx={{ fontSize: "40px", marginBottom: "20px" }}>
+            {t("stripeFlow.giftFlow.deliveryForm.title")}
+          </Typography>
         </Box>
 
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            columnGap: '50px',
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+            columnGap: "50px",
           }}
         >
-          <Box sx={{ maxWidth: { sm: '600px', xs: '100%' }, width: '100%' }}>
+          <Box sx={{ maxWidth: { sm: "600px", xs: "100%" }, width: "100%" }}>
             <form onSubmit={formik.handleSubmit}>
               <Box>
                 <Typography
                   sx={{
-                    color: '#30422E',
+                    color: "#30422E",
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
                   {t("stripeFlow.giftFlow.deliveryForm.nameField")}
-
                 </Typography>
                 <TextField
                   variant="outlined"
@@ -110,7 +127,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
               <Box>
                 <Typography
                   sx={{
-                    color: '#30422E',
+                    color: "#30422E",
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
@@ -137,45 +154,71 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
               <Box>
                 <Typography
                   sx={{
-                    color: '#30422E',
+                    color: "#30422E",
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
                   {t("stripeFlow.giftFlow.deliveryForm.sendGift")}
                 </Typography>
                 <DatePicker
-                  name='sendGiftDate'
-                  value={formik.values.sendGiftDate}
-                  onChange={(date) => formik.setFieldValue('sendGiftDate', date)}
+                  name="sendGiftDate"
+                  onChange={(date) =>
+                    formik.setFieldValue(
+                      "sendGiftDate",
+                      date ? moment(date).format("YYYY-MM-DD") : ""
+                    )
+                  }
                   minDate={minDate}
                   sx={{
-                    width: '100%',
-                    backgroundColor: 'white',
-                    borderRadius: '2px',
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderRadius: '2px',
+                    width: "100%",
+                    backgroundColor: "white",
+                    borderRadius: "2px",
+                    "& .MuiOutlinedInput-root": {
+                      "& fieldset": {
+                        borderRadius: "2px",
                       },
                     },
                   }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      error={
+                        formik.touched.sendGiftDate &&
+                        !!formik.errors.sendGiftDate
+                      }
+                      helperText={
+                        formik.touched.sendGiftDate &&
+                        formik.errors.sendGiftDate
+                      }
+                      sx={{
+                        width: "100%",
+                        backgroundColor: "white",
+                        borderRadius: "2px",
+                      }}
+                    />
+                  )}
                 />
               </Box>
               {formik.touched.sendGiftDate && formik.errors.sendGiftDate && (
-                <span style={{ color: "red" }}>{formik.errors.sendGiftDate}</span>
+                <span style={{ color: "red" }}>
+                  {formik.errors.sendGiftDate}
+                </span>
               )}
 
               <Box>
                 <Typography
                   sx={{
-                    color: '#30422E',
+                    color: "#30422E",
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
-                   {t("stripeFlow.giftFlow.deliveryForm.from")}
+                  {t("stripeFlow.giftFlow.deliveryForm.from")}
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder={t("stripeFlow.giftFlow.deliveryForm.fromPlaceholder")}
+                  placeholder={t(
+                    "stripeFlow.giftFlow.deliveryForm.fromPlaceholder"
+                  )}
                   name="giftFrom"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -193,7 +236,7 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
               <Box>
                 <Typography
                   sx={{
-                    color: '#30422E',
+                    color: "#30422E",
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
@@ -201,7 +244,9 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                 </Typography>
                 <TextField
                   variant="outlined"
-                  placeholder={t("stripeFlow.giftFlow.deliveryForm.fromNamePlaceholder")}
+                  placeholder={t(
+                    "stripeFlow.giftFlow.deliveryForm.fromNamePlaceholder"
+                  )}
                   name="giftFromName"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
@@ -213,31 +258,37 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                   }}
                 />
                 {formik.touched.giftFromName && formik.errors.giftFromName && (
-                  <span style={{ color: "red" }}>{formik.errors.giftFromName}</span>
+                  <span style={{ color: "red" }}>
+                    {formik.errors.giftFromName}
+                  </span>
                 )}
               </Box>
 
               <Box>
                 <Typography
                   sx={{
-                    color: '#30422E',
+                    color: "#30422E",
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 12 },
                   }}
                 >
                   {t("stripeFlow.giftFlow.deliveryForm.yourMessage")}
                 </Typography>
                 <TextField
-                  placeholder= {t("stripeFlow.giftFlow.deliveryForm.messagePlaceholder")}
+                  placeholder={t(
+                    "stripeFlow.giftFlow.deliveryForm.messagePlaceholder"
+                  )}
                   multiline
-                  rows={7} 
+                  rows={7}
                   name="giftMessage"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.giftMessage}
-                  sx={{ width: '100%', backgroundColor: '#FAFAFA' }}
+                  sx={{ width: "100%", backgroundColor: "#FAFAFA" }}
                 />
                 {formik.touched.giftMessage && formik.errors.giftMessage && (
-                  <span style={{ color: "red" }}>{formik.errors.giftMessage}</span>
+                  <span style={{ color: "red" }}>
+                    {formik.errors.giftMessage}
+                  </span>
                 )}
               </Box>
 
@@ -246,11 +297,11 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
                 variant="contained"
                 color="primary"
                 sx={{
-                  width: '200px',
-                  marginTop: '50px',
-                  bgcolor: '#e1693b',
-                  '&:hover': {
-                    backgroundColor: '#b5522d',
+                  width: "200px",
+                  marginTop: "50px",
+                  bgcolor: "#e1693b",
+                  "&:hover": {
+                    backgroundColor: "#b5522d",
                   },
                 }}
               >
@@ -261,8 +312,8 @@ const DeliveryForm = ({ onClick, selectedTab, inAppGiftFlow, setGiftToUser }) =>
 
           <Box
             sx={{
-              margin: '0 35px 35px 0',
-              display: { md: 'block', sm: 'none', xs: 'none' },
+              margin: "0 35px 35px 0",
+              display: { md: "block", sm: "none", xs: "none" },
             }}
           >
             <GiftPlanCard

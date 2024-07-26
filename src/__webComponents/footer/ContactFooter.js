@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux"
 import { contact, reminderForm } from "@/store/slices/authSlice"
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Shape from "@/__webAssets/svgs/input-shape.svg"
+import moment from 'moment';
 
 const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, button, marked, lineWidth }) => {
   const [formValues, setFormValues] = useState({
@@ -78,8 +79,11 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
   };
 
   const getDate = (date) => {
+    
+    const isoDate = new Date(date)
+    console.log('Converted Date to ISO:',isoDate);
 
-    setReminderData(prevValues => ({ ...prevValues, sendDate: date }));
+    setReminderData(prevValues => ({ ...prevValues, sendDate: isoDate }));
   };
 
 
@@ -87,6 +91,8 @@ const ContactFooter = ({ title, date = false, subTitle, input1, input2, input3, 
     if (validate()) {
       try {
         const data = date ? reminderData : formValues;
+        data.sendDate = moment(data.sendDate).format('YYYY-MM-DD');
+        console.log(data.sendDate);
         const res = date ? await dispatch(reminderForm(data)).unwrap() : await dispatch(contact(data)).unwrap();
         if (!date) {
           toast.success(res);
@@ -255,7 +261,7 @@ function GetDate({ getDate, value, error }) {
             color: "#7e7e7e",
             border: "none"
           }}
-          value={value}
+          // value={value}
           onChange={(date) => getDate(date)}
           open={isOpen}
           onClose={() => setIsOpen(false)}

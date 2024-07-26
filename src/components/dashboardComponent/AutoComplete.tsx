@@ -62,10 +62,10 @@ export default function CountrySelect({ onSelect, value = null, stripe = false, 
             sx={{
               "& .MuiOutlinedInput-root": {
                 backgroundColor: backgroundColor,
-                height: stripe ? "46px" : "56px",
+                // height: stripe ? "46px" : "56px",
                 mb: stripe ? "0px" : "0px",
                 borderRadius: stripe ? "0px" : "4px",
-                pt: !stripe ? "6px" : "1.8px",
+                // pt: !stripe ? "6px" : "1.8px",
               },
               ".css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
                 border: "0px",
