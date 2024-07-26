@@ -39,14 +39,6 @@ const EmailVerification = () => {
     var params = new URLSearchParams(queryString);
     return params.get("token");
   }
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const handleRememberMeChange = (event: any) => {
-    setRememberMe(event.target.checked);
-  };
-
   const router = useRouter();
   const currentUrl = router.asPath;
   const token = getTokenFromURL(currentUrl);
@@ -67,7 +59,6 @@ const EmailVerification = () => {
     { path: Carousel2, alt: "Signup Image" },
     { path: Carousel3, alt: "Signup Image" },
 
-    // Add more images as needed
   ];
 
   return (
@@ -91,7 +82,6 @@ const EmailVerification = () => {
         <Carousel items={carouselItems} />
       </Box>
       <Box
-        // textAlign={'center'}
         sx={{
           maxWidth: "460px",
           margin: "0 auto",
@@ -109,63 +99,12 @@ const EmailVerification = () => {
           </Typography>
         </Box>
         <Box sx={{ marginTop: "70px" }}>
-          {/* <Box>
-            <Typography
-              sx={{
-                marginRight: "300px",
-                marginTop: "56px",
-                fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
-              }}
-            >
-              {t("Verify.email")}
-            </Typography>
-            <TextField
-              variant="outlined"
-              name="email"
-              value={userEmail}
-              disabled
-              sx={{
-                marginTop: "15px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "50px", // Adjust the border radius as needed
-                },
-                width: "100%",
-              }}
-            />
-          </Box> */}
+          
           <Typography
             sx={{ marginTop: "23px", color: "#30422E", fontSize: "21px" }}
           >
             {t("Verify.emailVerified")}
-            {/* <br /> {t("Verify.proceedForward")} */}
           </Typography>
-
-          <Box
-            sx={{
-              justifyContent: "center",
-              textAlign: "center",
-              marginTop: "130px",
-            }}
-          >
-            {/* <Button
-              variant="contained"
-              disabled={!userEmail}
-              onClick={(event: any) => handleVerifyEmail()}
-              sx={{
-                borderRadius: "48px",
-                backgroundColor: "#186F65",
-                color: "white",
-                width: "310px",
-                marginTop: "20px",
-                "&:hover": {
-                  backgroundColor: "#186F65",
-                },
-                textTransform: "none",
-              }}
-            >
-              {t("Verify.letsBegin")}{" "}
-            </Button> */}
-          </Box>
         </Box>
       </Box>
     </Box>

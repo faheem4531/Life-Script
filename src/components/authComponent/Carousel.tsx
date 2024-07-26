@@ -16,8 +16,8 @@ const Carousel = ({ items }) => {
     autoplay: true,
     autoplaySpeed: 3000,
     afterChange: (index) => setActiveSlide(index),
-    nextArrow: null, // Remove next arrow
-    prevArrow: null, // Remove previous arrow
+    nextArrow: null, 
+    prevArrow: null, 
   };
 
   return (

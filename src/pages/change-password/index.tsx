@@ -96,8 +96,6 @@ const ResetPassword = () => {
     { path: Carousel1, alt: "Login Image" },
     { path: Carousel2, alt: "Signup Image" },
     { path: Carousel3, alt: "Signup Image" },
-
-    // Add more images as needed
   ];
   return (
 
@@ -134,8 +132,6 @@ const ResetPassword = () => {
           <Box>
             <Typography
               sx={{
-                // marginRight: "450px",
-
                 marginTop: "34px",
                 fontSize: "21px",
                 color: '#3e4f3c'
@@ -149,7 +145,7 @@ const ResetPassword = () => {
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
-                borderRadius: "4px", // Adjust the border radius as needed
+                borderRadius: "4px", 
               },
               width: "580px",
             }}
@@ -180,8 +176,6 @@ const ResetPassword = () => {
           <Box>
             <Typography
               sx={{
-                // marginRight: "450px",
-
                 marginTop: "40px",
                 fontSize: "21px",
                 color: '#3e4f3c'
@@ -196,7 +190,7 @@ const ResetPassword = () => {
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
                 backgroundColor: "white",
-                borderRadius: "4px", // Adjust the border radius as needed
+                borderRadius: "4px",
               },
               width: "580px",
             }}

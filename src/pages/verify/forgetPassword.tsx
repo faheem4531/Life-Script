@@ -18,21 +18,10 @@ import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import Carousel from "../../components/authComponent/Carousel";
 
 const ForgetPassword = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [sentFailed, setSentFailed] = useState(false);
   const dispatch: any = useDispatch();
-  const [emailSent, setEmailSent] = useState("");
   const router = useRouter();
   const { t } = useTranslation();
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const handleRememberMeChange = (event: any) => {
-    setRememberMe(event.target.checked);
-  };
 
   const formik = useFormik({
     initialValues: {
@@ -59,8 +48,6 @@ const ForgetPassword = () => {
     { path: Carousel1, alt: "Login Image" },
     { path: Carousel2, alt: "Signup Image" },
     { path: Carousel3, alt: "Signup Image" },
-
-    // Add more images as needed
   ];
 
   return (
@@ -107,9 +94,7 @@ const ForgetPassword = () => {
             </Typography>
             <Typography
               sx={{
-                // marginRight: "300px",
                 marginTop: "34px",
-                // fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 fontSize: "21px",
                 color: "#30422E"
               }}
@@ -127,7 +112,7 @@ const ForgetPassword = () => {
                 marginTop: "15px",
                 "& .MuiOutlinedInput-root": {
                   backgroundColor: "white",
-                  borderRadius: "2px", // Adjust the border radius as needed
+                  borderRadius: "2px", 
                 },
                 width: "100%",
               }}

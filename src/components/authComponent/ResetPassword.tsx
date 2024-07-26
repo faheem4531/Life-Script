@@ -3,11 +3,6 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   Box,
-  Checkbox,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,23 +10,16 @@ import Button from "@mui/material/Button";
 
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { useFormik } from "formik";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
-import SignupImage from "../../../public/Signup.svg";
-import fbLogo from "../../../public/fbIcon.svg";
-import googleLogo from "../../../public/googleIcon.svg";
 import Logo from "../../../public/logo.svg";
-import styles from "./Login.module.css";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -41,10 +29,6 @@ const ResetPassword = () => {
     setShowConfirmPassword(
       (prevShowConfirmPassword) => !prevShowConfirmPassword
     );
-  };
-
-  const handleRememberMeChange = (event: any) => {
-    setRememberMe(event.target.checked);
   };
 
   const formik = useFormik({
@@ -108,7 +92,7 @@ const ResetPassword = () => {
             sx={{
               marginTop: "15px",
               "& .MuiOutlinedInput-root": {
-                borderRadius: "50px", // Adjust the border radius as needed
+                borderRadius: "50px",
               },
               width: "100%",
             }}
@@ -143,7 +127,7 @@ const ResetPassword = () => {
           sx={{
             marginTop: "15px",
             "& .MuiOutlinedInput-root": {
-              borderRadius: "50px", // Adjust the border radius as needed
+              borderRadius: "50px",
             },
             width: "100%",
           }}

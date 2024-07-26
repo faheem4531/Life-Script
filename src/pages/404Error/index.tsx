@@ -6,7 +6,6 @@ import styles from "./404.module.css";
 const Errer404 = () => {
   return (
     <Box>
-      {/* <NavBar /> */}
       <Box
         sx={{
           height: "calc(100vh)",

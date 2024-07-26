@@ -38,11 +38,7 @@ const EmailVerification = () => {
 
       .unwrap()
       .then((res) => {
-
-
-
         toast.success(t("Verify.emailVerifiedSuccessfully"));
-        // const name = localStorage.getItem("username");
         router.push(`/_auth/Auth`);
       })
       .catch((error: any) => {
@@ -61,9 +57,6 @@ const EmailVerification = () => {
   const toggleCPasswordVisibility = () => {
     setShowCPassword((prevShowPassword) => !prevShowPassword);
   };
-  // const handleRememberMeChange = (event: any) => {
-  //   setRememberMe(event.target.checked);
-  // };
 
   const router = useRouter();
   const currentUrl = router.asPath;
@@ -86,7 +79,6 @@ const EmailVerification = () => {
     { path: Carousel2, alt: 'Signup Image' },
     { path: Carousel3, alt: 'Signup Image' },
 
-    // Add more images as needed
   ];
 
   const formik = useFormik({
@@ -139,18 +131,7 @@ const EmailVerification = () => {
       <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
         <Carousel items={carouselItems} />
       </Box>
-      {/* <Box sx={{ margin: 0, display: { md: "block", xs: "none" } }}> */}
-      {/* <Image
-          src={Email}
-          alt="image of login"
-          style={{ height: "100%", maxHeight: "92vh", width: "100%" }}
-        /> */}
-
-      {/* </Grid> */}
-      {/* </Box> */}
-      {/* <Grid item xs={12} md={6} sm={6} sx={{ textAlign: "center" }}> */}
       <Box
-        // textAlign={'center'}
         sx={{
           maxWidth: "460px",
           margin: "50px auto",
@@ -173,7 +154,6 @@ const EmailVerification = () => {
           </Typography>
         </Box>
         <form onSubmit={formik.handleBlur} style={{ marginTop: "70px" }}>
-          {/* Email  */}
           <Box>
             <Typography
               sx={{
@@ -199,8 +179,6 @@ const EmailVerification = () => {
               }}
             />
           </Box>
-
-          {/* Password  */}
           <Box>
             <Typography
               sx={{
@@ -249,11 +227,6 @@ const EmailVerification = () => {
       />
         
           </Box>
-          {/* {formik.touched.password && formik.errors.password && (
-            <span style={{ color: "red" }}>{formik.errors.password}</span>
-          )} */}
-
-          {/* Confirm passowrd  */}
           <Box>
             <Typography
               sx={{
@@ -300,10 +273,6 @@ const EmailVerification = () => {
               }
             />
           </Box>
-          {/* {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
-          )} */}
-          {/* Lets begin btn  */}
           <Box
             sx={{
               justifyContent: "center",
@@ -313,7 +282,6 @@ const EmailVerification = () => {
           >
             <Button
               variant="contained"
-              // disabled={!userEmail}
               onClick={(event) => {
 
                 formik.handleSubmit()

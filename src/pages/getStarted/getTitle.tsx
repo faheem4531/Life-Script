@@ -20,7 +20,7 @@ const getTitle = () => {
   const dispatch: any = useDispatch();
   const { userName } = router.query;
   const [text, setText] = useState(`Life of ${userName ? userName : name}`);
-  const maxLength = 30; // Set the maximum character count to 20
+  const maxLength = 30; 
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
 
@@ -36,7 +36,7 @@ const getTitle = () => {
       .unwrap()
       .then(() => {
         toast.success("Book title saved successfully");
-        router.push(`/dashboard/Questionnaire?userName=${userName}`);  //lead this to questionary area 
+        router.push(`/dashboard/Questionnaire?userName=${userName}`);  
       })
       .catch(() => {
         toast.error("Failed to save book title");
@@ -58,7 +58,6 @@ const getTitle = () => {
         } else {
           setTimeout(() => {
             setLoading(false);
-            // router.push(`/dashboard/Questionnaire?userName=${userName}`);
           }, 1000);
         }
       })
@@ -113,17 +112,6 @@ const getTitle = () => {
               justifyContent: "center"
             }}
           >
-            {/* <Typography
-              sx={{
-                fontSize: { md: "53px", sm: "40px", xs: "30px" },
-                fontWeight: "400",
-                marginTop: { sm: "120px" },
-              }}
-              className={styles.primaryText}
-            >
-              {t("getTitle.hi")}{" "}
-              <span style={{ fontWeight: "600" }}>{userName},</span>
-            </Typography> */}
             <Box sx={{ maxWidth: "70%" }}>
               <Typography
                 sx={{

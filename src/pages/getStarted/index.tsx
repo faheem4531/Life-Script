@@ -1,18 +1,17 @@
-import { useEffect } from "react";
 import { getBookTitle } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import i18n from "../../../i18n";
 import styles from "./GetTitle.module.css";
-import Image from "next/image";
 
-import Line from "@/_assets/svg/line-orange.svg";
-import Arrow from "@/_assets/svg/getStarted-aero.svg";
+import House from "@/_assets/png/bg-hunt.png";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
 import DotsRight from "@/_assets/svg/dots-right.svg";
-import House from "@/_assets/png/bg-hunt.png";
+import Arrow from "@/_assets/svg/getStarted-aero.svg";
 
 const getStarted = () => {
   const dispatch: any = useDispatch();
@@ -33,9 +32,7 @@ const getStarted = () => {
             router.push("/dashboard/chapters");
           }, 3000);
         } else {
-          // setTimeout(() => {
           router.push(`/getStarted/getTitle?userName=${name ? name : userName}`);
-          // }, 3000);
         }
       })
       .catch(() =>
