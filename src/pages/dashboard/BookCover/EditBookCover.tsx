@@ -51,9 +51,7 @@ const EditBookCover = () => {
   const onCrop = async () => {
     if (cropperRef.current?.cropper) {
       const croppedCanvas: any = cropperRef.current.cropper.getCroppedCanvas();
-
       const croppedImageBase64 = croppedCanvas.toDataURL();
-
 
       const coverImageElement = document.getElementById(
         "coverImage"
@@ -65,7 +63,6 @@ const EditBookCover = () => {
 
       setCropper(croppedImageBase64);
       return croppedImageBase64;
-
     }
   };
 
@@ -603,8 +600,8 @@ const EditBookCover = () => {
                       ref={cropperRef}
                       src={droppedImage}
                       style={{ height: 300, width: "100%" }}
-                      initialAspectRatio={1 / 2}
-                      aspectRatio={1.7 / 2.5}
+                      initialAspectRatio={1.7 / 2.6}
+                      aspectRatio={1.7 / 2.6}
                       background={false}
                       zoomTo={0}
                       viewMode={1}

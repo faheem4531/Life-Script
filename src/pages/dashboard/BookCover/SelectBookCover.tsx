@@ -1,12 +1,10 @@
+import Img from "@/_assets/book-cover";
+import BookCover from "@/_assets/svg/book-cover-header.svg";
 import Layout from "@/components/Layout/Layout";
-import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
 import { Box, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import Img from "@/_assets/book-cover";
-import Cover1 from "@/_assets/book-cover/Cover1.png";
-import BookCover from "@/_assets/svg/book-cover-header.svg";
 
 const SelectBookCover = () => {
   const router = useRouter();
@@ -15,7 +13,6 @@ const SelectBookCover = () => {
     return `/covers/Cover${coverNumber}.png`;
   };
   const myArray = [...Array(Object.keys(Img).length)].map((_, i) => i + 1)
-
 
   return (
     <div>
@@ -29,7 +26,6 @@ const SelectBookCover = () => {
           }}
         >
           <SelectBookCoverHeader img={BookCover} discription={`${t("BookCover.BookCover")}`} />
-
           <Grid container spacing={3} paddingTop={3}>
             {myArray.map((_, index) => (
               <Grid item xs={12} sm={6} md={4} key={index + 1}>
@@ -68,13 +64,11 @@ const SelectBookCover = () => {
                     )
                   }
                 >
-                  {/* <Img.Cover4 sx={{ fontSize: "300px" } } /> */}
                   <img
                     src={getCoverImage(index + 1)}
                     alt={`Cover ${index + 1}`}
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
-                  {/* {getCoverImage(index + 1)({ sx: { fontSize: "300px" } })} */}
                   <Typography
                     variant="body1"
                     component="p"
@@ -96,12 +90,6 @@ const SelectBookCover = () => {
               </Grid>
             ))}
           </Grid>
-          {/* <Box display="flex" justifyContent="flex-end" mt="40px">
-            <GlobelBtn
-              btnText={`${t("BookCover.viewMore")}`}
-              width={"180px"}
-            />
-          </Box> */}
         </Box>
       </Layout>
     </div>
