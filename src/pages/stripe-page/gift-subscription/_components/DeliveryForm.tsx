@@ -1,6 +1,6 @@
 // 3rd party libraries
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FormikHelpers, useFormik } from "formik";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
@@ -179,7 +179,9 @@ const DeliveryForm = ({
                       },
                     },
                   }}
-                  renderInput={(params) => (
+                  
+                />
+                {/* renderInput={(params) => (
                     <TextField
                       {...params}
                       error={
@@ -196,8 +198,7 @@ const DeliveryForm = ({
                         borderRadius: "2px",
                       }}
                     />
-                  )}
-                />
+                  )} */}
               </Box>
               {formik.touched.sendGiftDate && formik.errors.sendGiftDate && (
                 <span style={{ color: "red" }}>
