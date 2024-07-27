@@ -9,26 +9,29 @@ import { loadStripe } from "@stripe/stripe-js";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import CheckoutForm from "./components/CheckoutForm";
 import ShippingCard from "./components/ShippingCard";
 import { useTranslation } from "react-i18next";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY!);
-
-
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY!
+);
 
 const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [luluSuccess, setLuluSuccess] = useState(false);
   const [luluFailed, setLuluFailed] = useState(false);
   const [loading, setLoading] = useState(false);
-  const dispatch:any = useDispatch();
+  const dispatch: any = useDispatch();
   const { t } = useTranslation();
   const router = useRouter();
   const [payment, setPayment] = useState(0);
 
+  const luluBalance = useSelector(
+    (state: { auth: any }) => state.auth.luluBalance
+  );
   const handleFinish = () => {
     if (isChecked) {
       setLoading(true);
@@ -40,7 +43,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
         })
         .catch(() => {
           setLuluFailed(true);
-          toast.error("Failed to call Lulu api");
+          toast.error("Failed to call Lulu API");
           setLoading(false);
         });
     }
@@ -54,26 +57,69 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
     <>
       <Box sx={{ bgcolor: "white", borderRadius: "4.164px", p: "20px 24px" }}>
         <Box sx={{ display: "flex", alignItems: "start", mb: "40px" }}>
-          <Checkbox color="success" checked={isChecked} onChange={() => setIsChecked(!isChecked)} />
-          <Typography sx={{ fontSize: { md: "18.752px", sm: "16px", xs: "14px" }, width: "70%" }}>
+          <Checkbox
+            color="success"
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          <Typography
+            sx={{
+              fontSize: { md: "18.752px", sm: "16px", xs: "14px" },
+              width: "70%",
+            }}
+          >
             {t("checkout.description")}
           </Typography>
         </Box>
-        <Box display={"flex"} sx={{ flexDirection: { md: "row", xs: "column", sm: "column" }, gap: "30px", bgcolor: "#F3ECDA", borderRadius: "4px", p: "20px 30px" }}>
+        <Box
+          display={"flex"}
+          sx={{
+            flexDirection: { md: "row", xs: "column", sm: "column" },
+            gap: "30px",
+            bgcolor: "#F3ECDA",
+            borderRadius: "4px",
+            p: "20px 30px",
+          }}
+        >
           {payment > 0 && (
             <Elements stripe={stripePromise}>
               <CheckoutForm quantity={count} remainingPayment={payment} />
             </Elements>
           )}
-          <Box sx={{ flex: 1, display: "flex", justifyContent: payment > 0 ? "end" : "center" }}>
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              justifyContent: payment > 0 ? "end" : "center",
+            }}
+          >
             <Box width={"100%"}>
-              <Box sx={{ display: "flex", justifyContent: remainingPayment > 0 ? "end" : "center" }}>
-                <ShippingCard setPayment={setPayment} setCount={setCount} count={count} quantity />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: remainingPayment > 0 ? "end" : "center",
+                }}
+              >
+                <ShippingCard
+                  setPayment={setPayment}
+                  setCount={setCount}
+                  count={count}
+                  quantity={luluBalance?.quantity}
+                  amount={luluBalance?.amount}
+                />
               </Box>
             </Box>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "end", alignItems: "center", gap: 2, my: "20px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            gap: 2,
+            my: "20px",
+          }}
+        >
           <GlobelBtn
             btnText={t("checkout.backBtn")}
             color="#E1683B"
@@ -88,7 +134,6 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
             disabled={!isChecked}
             border="0px"
             onClick={!loading && handleFinish}
-
           />
         </Box>
       </Box>
@@ -104,16 +149,49 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
         marginTop={0}
       >
         <Box sx={{ textAlign: "center" }}>
-          <Box sx={{ width: { md: "120px", sm: "66.161px", xs: "47px" }, margin: "auto" }}>
-            <Image alt="image" src={ModalImage} width={100} height={100} style={{ width: "100%", height: "100%" }} />
+          <Box
+            sx={{
+              width: { md: "120px", sm: "66.161px", xs: "47px" },
+              margin: "auto",
+            }}
+          >
+            <Image
+              alt="image"
+              src={ModalImage}
+              width={100}
+              height={100}
+              style={{ width: "100%", height: "100%" }}
+            />
           </Box>
-          <Typography sx={{ fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" }, fontWeight: 700, color: "#30422E", margin: { md: "25px 0", sm: "15px 0px", xs: "5px" } }}>
+          <Typography
+            sx={{
+              fontSize: { md: "22px", sm: "21.679px", xs: "15.508px" },
+              fontWeight: 700,
+              color: "#30422E",
+              margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
+            }}
+          >
             Lulu Printing API
           </Typography>
-          <Typography sx={{ fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" }, color: "#30422E", width: { md: "400px", sm: "300px", xs: "180px" }, margin: { md: "0 120px", sm: "0px 55px", xs: "0px" } }}>
-            {luluSuccess ? t("checkout.luluPrintingModal.dipatchedText") : t("checkout.luluPrintingModal.failedText")}
+          <Typography
+            sx={{
+              fontSize: { md: "16.5px", sm: "16.259px", xs: "11.631px" },
+              color: "#30422E",
+              width: { md: "400px", sm: "300px", xs: "180px" },
+              margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
+            }}
+          >
+            {luluSuccess
+              ? t("checkout.luluPrintingModal.dipatchedText")
+              : t("checkout.luluPrintingModal.failedText")}
           </Typography>
-          <Box sx={{ margin: { md: "40px 0 30px", sm: "22px 0", xs: "16px 0" }, display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              margin: { md: "40px 0 30px", sm: "22px 0", xs: "16px 0" },
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <GlobelBtn
               btnText={t("checkout.luluPrintingModal.continueBtn")}
               bgColor="#E1683B"

@@ -409,8 +409,7 @@ export const selectUser = (state: { auth: any }) => state.auth.user;
 
 export const selectSocialUser = (state: { auth: any }) => state.auth.socialUser;
 
-export const selectLuluBalance = (state: { auth: any }) =>
-  state.auth.luluBalance;
+export const selectLuluBalance = (state: { auth: any }) => state.auth.luluBalance;
 
 export const selectLuluData = (state: { auth: any }) => state.auth.luluData;
 

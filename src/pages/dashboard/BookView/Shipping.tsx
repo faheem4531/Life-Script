@@ -19,7 +19,7 @@ const Shipping = ({
   setRemainingPaymenmt,
 }) => {
   const { t } = useTranslation();
-  const dispatch: any = useDispatch();
+  const dispatch : any = useDispatch();
   const [shippingDataId, setShippingDataId] = useState(null);
   const [shippingData, setShippingData] = useState({
     email: "",
@@ -35,13 +35,20 @@ const Shipping = ({
 
   const [tooltip, setTooltip] = useState(false);
   const luluBalance = useSelector(selectLuluBalance);
+  
   useEffect(() => {
     dispatch(getLuluBalance());
-  }, []);
+    console.log("lulubalance is ", luluBalance.amount);
+  }, [dispatch]);
 
   useEffect(() => {
-    count && setRemainingPaymenmt(count * 39 - luluBalance?.amount);
-  }, [count]);
+    const totalAmount = count * 39;
+    if (luluBalance.amount >= totalAmount) {
+      setRemainingPaymenmt(0);
+    } else {
+      setRemainingPaymenmt(totalAmount - luluBalance.amount);
+    }
+  }, [count, luluBalance.amount, setRemainingPaymenmt]);
 
   const handleNext = () => {
     const isAnyFieldEmpty = Object.values(shippingData).some(
@@ -71,7 +78,6 @@ const Shipping = ({
 
   return (
     <Box>
-
       <Box
         sx={{
           display: "flex",
@@ -111,14 +117,13 @@ const Shipping = ({
             }}
           >
             <ShippingCard
-              setPayment={() => { }}
+              setPayment={setRemainingPaymenmt}
               setCount={setCount}
               count={count}
               QuantityCheck={true}
               quantity={luluBalance?.quantity}
               amount={luluBalance?.amount}
             />
-
           </Box>
         </Box>
       </Box>

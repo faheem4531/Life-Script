@@ -356,7 +356,7 @@ export async function chapterResponseApi(data: { chapterId: string }) {
 
 export async function luluPrintingApi(data: any) {
   try {
-    const res = await api.post("/chapter-compile/printBook", data);
+    const res = await api.post("/chapter-compile/printBook/customizePrinting", data);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

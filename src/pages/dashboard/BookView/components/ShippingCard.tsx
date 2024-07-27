@@ -1,23 +1,24 @@
 import Counter from "@/components/dashboardComponent/QuantityInput";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import HalfBook from "@/_assets/png/halfBook.png";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import {
-  
-  selectCoverData,
-  
-} from "@/store/slices/chatSlice";
+import { selectCoverData } from "@/store/slices/chatSlice";
 import { useEffect } from "react";
 
-const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount=39, quantity  }) => {
+const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount, quantity }) => {
   const coverData = useSelector(selectCoverData);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    setPayment(count * 39 - amount);
-  }, []);
-  const {t}= useTranslation();
+    const totalCost = count * 39;
+    if (amount >= totalCost) {
+      setPayment(0);
+    } else {
+      setPayment(totalCost - amount);
+    }
+  }, [count, amount]);
+
   return (
     <Box
       sx={{
@@ -33,10 +34,11 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
           fontSize: { md: "20px", sm: "16px", xs: "14px" },
           fontWeight: 400,
           textTransform: "uppercase",
-          mb: "30px", color: "#30422E"
+          mb: "30px",
+          color: "#30422E",
         }}
       >
-      {t("shippingPage.orderSummary")}
+        {t("shippingPage.orderSummary")}
       </Typography>
       <Box
         sx={{
@@ -56,42 +58,27 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
           }}
         />
       </Box>
-      <Box mt={2} sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
-      
-        <Typography
-          sx={{
-            fontSize: {
-              lg: "18px",
-              md: "18.752px",
-              sm: "16.752px",
-              xs: "14px",
-            },
-            color: "#30422E",
-            fontWeight: 'bold'
-          }}
-        >
-          You can buy {quantity} Book
-        </Typography>
-    
-    </Box>
       <Box
         sx={{
-          mt: {
-            md: "57px",
-            sm: "40px",
-            xs: "20px",
-          },
+          mt: { md: "57px", sm: "40px", xs: "20px" },
           width: "80%",
           m: "auto",
         }}
       >
         <Box
           sx={{
-            fontSize: {
-              md: "18.752px",
-              sm: "16.752px",
-              xs: "14px",
-            },
+            fontSize: { md: "18.752px", sm: "16.752px", xs: "14px" },
+            display: "flex",
+            justifyContent: "space-between",
+            pb: "8px",
+          }}
+        >
+          <Typography sx={{ color: "#30422E" }}> {t("Book Credit")}</Typography>
+          <Typography sx={{ color: "#30422E" }}>{quantity}</Typography>
+        </Box>
+        <Box
+          sx={{
+            fontSize: { md: "18.752px", sm: "16.752px", xs: "14px" },
             display: "flex",
             justifyContent: "space-between",
             borderBottom: "1.2px solid #DCDCDC",
@@ -103,27 +90,19 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
         </Box>
         <Box
           sx={{
-            fontSize: {
-              md: "18.752px",
-              sm: "16.752px",
-              xs: "14px",
-            },
+            fontSize: { md: "18.752px", sm: "16.752px", xs: "14px" },
             display: "flex",
             justifyContent: "space-between",
             mt: "5px",
           }}
         >
           <Typography sx={{ color: "#30422E" }}> {t("shippingPage.price")}</Typography>
-          <Typography sx={{ color: "#30422E" }}>{count * 39 - amount} $</Typography>
+          <Typography sx={{ color: "#30422E" }}>{count * 39 - Math.min(amount, count * 39)} $</Typography>
         </Box>
         {!QuantityCheck && (
           <Box
             sx={{
-              fontSize: {
-                md: "18.752px",
-                sm: "16.752px",
-                xs: "14px",
-              },
+              fontSize: { md: "18.752px", sm: "16.752px", xs: "14px" },
               display: "flex",
               justifyContent: "space-between",
               borderTop: "1.2px solid #DCDCDC",
@@ -132,7 +111,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
             }}
           >
             <Typography sx={{ color: "#30422E" }}> {t("shippingPage.total")}</Typography>
-            <Typography sx={{ color: "#30422E" }}>{count * 39 - 39} $</Typography>
+            <Typography sx={{ color: "#30422E" }}>{Math.max(count * 39 - amount, 0)} $</Typography>
           </Box>
         )}
       </Box>
