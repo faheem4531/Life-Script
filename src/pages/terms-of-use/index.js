@@ -3,6 +3,7 @@
 import { Box } from "@mui/material";
 import Footer from "@/__webComponents/footer/Footer";
 import TermsAndConditions from "./TermsAndConditions";
+import Head from 'next/head';
 
 const TermsOfUse = () => {
   return (
