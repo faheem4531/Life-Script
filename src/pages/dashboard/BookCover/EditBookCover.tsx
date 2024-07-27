@@ -255,7 +255,7 @@ const EditBookCover = () => {
         }
         if (CoverNumber === "2" && elmId === "author-text") {
           headingText.setAttribute("y", yAxisOffsetTwoAuth);
-          headingText.setAttribute("x", "77%");
+          headingText.setAttribute("x", "76%");
         }
       }
     }

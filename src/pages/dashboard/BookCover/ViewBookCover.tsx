@@ -49,11 +49,11 @@ const ViewBookCover = () => {
     } else if (coverData?.coverNumber === "2") {
       pdfHeight = 229 + 30;
     } else {
-      pdfHeight = 229 + 40;  
+      pdfHeight = 229 + 40;
     }
-    const leftContentWidth = 144; 
-    const rightContentWidth = 144; 
-    const gutterWidth = 8; 
+    const leftContentWidth = 144;
+    const rightContentWidth = 144;
+    const gutterWidth = 8;
     const spineWidth = spine;
 
     let offset: any;
@@ -65,12 +65,12 @@ const ViewBookCover = () => {
     } else if (coverData?.coverNumber === "2") {
       offset = 8;
     } else {
-      offset = 20; 
+      offset = 20;
     }
     const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
     const pdf = new jsPDF({
-      unit: "mm", 
-      format: [pdfWidth, pdfHeight], 
+      unit: "mm",
+      format: [pdfWidth, pdfHeight],
       orientation: "landscape",
     });
 
@@ -102,12 +102,12 @@ const ViewBookCover = () => {
 
       // Section 3: Spine and inner spine
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); 
+      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F");
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); 
+      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F");
       pdf.setFillColor("#FFFFFF");
       const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
-      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); 
+      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F");
 
       // Section 4: Right gutter
       pdf.setFillColor("#FFFFFF");
@@ -129,12 +129,12 @@ const ViewBookCover = () => {
 
       // Section 3: Spine and inner spine
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F"); 
+      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F");
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F"); 
+      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F");
       pdf.setFillColor(bgcolor);
       const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
-      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F"); 
+      pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F");
 
       // Section 4: Right gutter
       pdf.setFillColor(bgcolor);
@@ -145,8 +145,8 @@ const ViewBookCover = () => {
 
     }
 
-    let y = 30; 
-    const fontSize = 10; 
+    let y = 30;
+    const fontSize = 10;
     const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
     const charSpacing = 3.1;
@@ -168,11 +168,11 @@ const ViewBookCover = () => {
           y = y + 1.7;
         } else if (char === "F" || char === "Y") {
           y = y + 2.5;
-        } else if (char === "M") {
+        } else if (char === "M" || char === "W") {
           y = y + 3.7;
         } else {
           if (text[i + 1] === "O") {
-            y = y + 2.5
+            y = y + 2.7
           }
           else {
             y = y + charSpacing;
@@ -191,7 +191,7 @@ const ViewBookCover = () => {
     }
     pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
 
-    y = y + 6; 
+    y = y + 6;
 
     drawTextVertically(writter);
 
@@ -200,7 +200,7 @@ const ViewBookCover = () => {
     const logoUp = 5;
     const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
     const verticalOffset = 8;
-    const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp; 
+    const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp;
 
     pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
 
@@ -212,7 +212,7 @@ const ViewBookCover = () => {
     console.log(newImageLink.payload, "new Image link");
 
     if (coverData?.coverNumber === "3") {
-      const imageWidth = 159; 
+      const imageWidth = 159;
       const imageHeight = 259;
       const imageY = 0;
 
@@ -225,7 +225,7 @@ const ViewBookCover = () => {
         imageHeight
       );
     } else if (coverData?.coverNumber === "2") {
-      const imageWidth = 155; 
+      const imageWidth = 155;
       const imageHeight = 259;
       const imageY = 0;
 
