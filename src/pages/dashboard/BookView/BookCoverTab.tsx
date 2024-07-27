@@ -57,7 +57,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     } else if (coverData?.coverNumber === "2") {
       pdfHeight = 229 + 30;
     } else {
-      pdfHeight = 229 + 40; 
+      pdfHeight = 229 + 40;
     }
 
     const leftContentWidth = 144;
@@ -70,7 +70,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     } else if (coverData?.coverNumber === "2") {
       offset = 8;
     } else {
-      offset = 20; 
+      offset = 20;
     }
 
     const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
@@ -161,11 +161,11 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
           y = y + 1.7;
         } else if (char === "F" || char === "Y") {
           y = y + 2.5;
-        } else if (char === "M") {
+        } else if (char === "M" || char === "W") {
           y = y + 3.7;
         } else {
           if (text[i + 1] === "O") {
-            y = y + 2.5
+            y = y + 2.7
           }
           else {
             y = y + charSpacing;
@@ -184,7 +184,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     }
     pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
 
-    y = y + 6; 
+    y = y + 6;
 
     drawTextVertically(writter);
 
@@ -291,7 +291,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   }, []);
 
   function calculatePageSize(pages: number) {
-    let dynamicValue = Math.min(Math.floor(pages / 100) * 0.6, 3.0); 
+    let dynamicValue = Math.min(Math.floor(pages / 100) * 0.6, 3.0);
     const spineSize = (pages / 10) * 0.5 + dynamicValue + 4;
     return spineSize;
   }
