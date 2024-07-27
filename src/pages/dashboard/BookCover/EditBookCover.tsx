@@ -10,6 +10,7 @@ import {
   selectCoverData,
   updateBookCover,
   uploadImage,
+  uploadImageForCover,
 } from "@/store/slices/chatSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import axios from "axios";
@@ -62,7 +63,7 @@ const EditBookCover = () => {
       }
 
       // Force redraw in Safari
-      coverImageElement.parentElement?.appendChild(coverImageElement);
+      coverImageElement?.parentElement?.appendChild(coverImageElement);
 
       setCropper(croppedImageBase64);
       return croppedImageBase64;
@@ -321,7 +322,7 @@ const EditBookCover = () => {
       }
 
       // Force redraw in Safari
-      coverImageElement.parentElement?.appendChild(coverImageElement);
+      coverImageElement?.parentElement?.appendChild(coverImageElement);
     };
 
     reader.readAsDataURL(file);
@@ -370,7 +371,7 @@ const EditBookCover = () => {
           `data:image/png;base64,${result}`
         );
         // Force redraw in Safari
-        coverImageElement.parentElement?.appendChild(coverImageElement);
+        coverImageElement?.parentElement?.appendChild(coverImageElement);
       });
     }
 
@@ -422,7 +423,7 @@ const EditBookCover = () => {
       .then((imgBlob) => {
         const formData = new FormData();
         formData.append("image", imgBlob);
-        dispatch(uploadImage(formData))
+        dispatch(uploadImageForCover(formData))
           .unwrap()
           .then((res) => {
             toast.success("image uploaded successfully");

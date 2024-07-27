@@ -25,15 +25,16 @@ import {
   getAnswerbyIdApi,
   getAnswersApi,
   getBookCoverApi,
+  getBookDataApi,
   getBookTitleApi,
   getChapterNotificationsApi,
   getChapterbyIdApi,
   getChaptersApi,
-  getStatusOfPrintingBook,
   getHourApi,
   getOpenaiQuestionApi,
   getQuestionbyIdApi,
   getQuestionsApi,
+  getStatusOfPrintingBook,
   getTemplatesApi,
   getTemplatesApiMain,
   getTocApi,
@@ -47,6 +48,7 @@ import {
   resetTreeDataApi,
   saveAnswerApi,
   selectedChaptersApi,
+  setBookDataApi,
   simpleChapterApi,
   stripPaymentApi,
   stripPaymentInAppGiftFlowApi,
@@ -60,9 +62,8 @@ import {
   uploadAudioApi,
   uploadImageApi,
   uploadImageApiFamilyTree,
-  setBookDataApi,
-  getBookDataApi,
   uploadImageCloudinaryApi,
+  uploadImageForCoverApi,
 } from "../api/chatApi";
 
 interface State {
@@ -332,10 +333,24 @@ export const uploadImage = createAsyncThunk<UserData, any>(
   }
 );
 
+export const uploadImageForCover = createAsyncThunk<UserData, any>(
+  "chat/upload-image",
+  async (data) => {
+    try {
+      const response = await uploadImageForCoverApi(data);
+      return response;
+    } catch (error: any) {
+      throw new Error(error.props);
+    }
+  }
+);
+
 export const uploadImageWithCloudinary = createAsyncThunk<UserData, any>(
   "chat/upload-image",
   async (data) => {
     try {
+      console.log("inside Dispatcher");
+
       const response = await uploadImageCloudinaryApi(data);
       return response;
     } catch (error: any) {

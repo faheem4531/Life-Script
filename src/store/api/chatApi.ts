@@ -356,7 +356,10 @@ export async function chapterResponseApi(data: { chapterId: string }) {
 
 export async function luluPrintingApi(data: any) {
   try {
-    const res = await api.post("/chapter-compile/printBook/customizePrinting", data);
+    const res = await api.post(
+      "/chapter-compile/printBook/customizePrinting",
+      data
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -399,6 +402,21 @@ export async function uploadImageApi(data) {
   }
 }
 
+export async function uploadImageForCoverApi(data) {
+  try {
+    console.log("inside Api");
+    const res = await api.post("/table-content/cover/image/upload-image", data);
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function uploadImageCloudinaryApi(data) {
   try {
     const res = await api.post("/users/cloudinary/upload-image", data);
@@ -415,7 +433,6 @@ export async function uploadImageCloudinaryApi(data) {
 
 export async function uploadImageApiFamilyTree(data) {
   try {
-
     const res = await api.post("/users/upload-image/familyTree", data);
     return res;
   } catch (error: any) {
@@ -427,7 +444,6 @@ export async function uploadImageApiFamilyTree(data) {
     }
   }
 }
-
 
 export async function setBookDataApi(data: {
   isInclude: boolean;
@@ -459,7 +475,6 @@ export async function getBookDataApi() {
     }
   }
 }
-
 
 export async function uploadAudioApi(data) {
   try {
@@ -603,9 +618,7 @@ export async function stripPaymentInAppGiftFlowApi(data: any) {
   }
 }
 
-export async function VerifyReferralCodeApi(data: {
-  id: string;
-}) {
+export async function VerifyReferralCodeApi(data: { id: string }) {
   try {
     const token = localStorage.getItem("token");
     const headers = {
@@ -613,9 +626,12 @@ export async function VerifyReferralCodeApi(data: {
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
     };
-    const res = await axios.get(`https://api.thelifescript.com/users/verify/referralCode/${data.id}`, {
-      headers,
-    });
+    const res = await axios.get(
+      `https://api.thelifescript.com/users/verify/referralCode/${data.id}`,
+      {
+        headers,
+      }
+    );
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -635,9 +651,12 @@ export async function GetReferralCodeApi() {
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
     };
-    const res = await axios.get("https://api.thelifescript.com/users/getReferralCode", {
-      headers,
-    });
+    const res = await axios.get(
+      "https://api.thelifescript.com/users/getReferralCode",
+      {
+        headers,
+      }
+    );
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -695,7 +714,9 @@ export async function getBookTitleApi() {
 
 export async function selectedChaptersApi(data: string[]) {
   try {
-    const res = await api.post("/chapters/cloneSelectedChapter/", { ids: data });
+    const res = await api.post("/chapters/cloneSelectedChapter/", {
+      ids: data,
+    });
 
     return res.data;
   } catch (error: any) {
@@ -721,7 +742,6 @@ export async function createChapterApi(data: { title: string }) {
     }
   }
 }
-
 
 export async function deleteChapterApi(data: { id: string }) {
   try {
@@ -811,7 +831,7 @@ export async function getChaptersApi() {
 export async function getStatusOfPrintingBook() {
   try {
     const res = await api.get("/chapter-compile/status/print-book");
-    console.log("response", res)
+    console.log("response", res);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -823,10 +843,11 @@ export async function getStatusOfPrintingBook() {
   }
 }
 
-
 export async function getTemplatesApiMain(data: any) {
   try {
-    const res: any = await api.get(`/default-chapter/language/${data.LanguagePreferences}`);
+    const res: any = await api.get(
+      `/default-chapter/language/${data.LanguagePreferences}`
+    );
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
