@@ -28,6 +28,7 @@ const ViewBookCover = () => {
   const [isLoading, setIsLoading] = useState(true);
   const elementRef = useRef(null);
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const generatePDFOne = async (
     title,
@@ -38,6 +39,7 @@ const ViewBookCover = () => {
     finalCover,
     spine = 10.2
   ) => {
+    setIsDownloading(true);
     const logo = CoverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
       : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
     let pdfHeight: any;
@@ -265,6 +267,7 @@ const ViewBookCover = () => {
 
 
     pdf.save("my_document2.pdf");
+    setIsDownloading(false);
   };
 
   useEffect(() => {
@@ -304,42 +307,39 @@ const ViewBookCover = () => {
             justifyContent="flex-end"
             flexWrap="wrap"
           >
-            <Box>
-              <GlobelBtn
-                btnText={`${t("BookCoverCard.viewPdf")}`}
-                fontSize={{ xs: "12px", md: "16px" }}
-                border="1px solid #E1683B"
-                color="#E1683B"
-                bgColor="transparent"
-                onClick={
-                  () =>
-                    generatePDFOne(
-                      byline,
-                      title,
-                      subtitle,
-                      imageLink,
-                      selectedColor,
-                      finalCover
-                    )
-                }
-                width={"180px"}
-              />
-            </Box>
-            <Box>
-              <GlobelBtn
-                btnText={`${t("BookCoverCard.editCover")}`}
-                bgColor="#30422E"
-                color="#fff"
-                fontSize={{ xs: "12px", md: "16px" }}
-                border="1px solid #197065"
-                width={"180px"}
-                onClick={() => {
-                  router.push(
-                    `/dashboard/BookCover/EditBookCover?CoverNumber=${CoverNumber}`
-                  );
-                }}
-              />
-            </Box>
+            <GlobelBtn
+              btnText={`${t("BookCoverCard.editCover")}`}
+              fontSize={{ xs: "12px", md: "16px" }}
+              border="1px solid #E1683B"
+              color="#E1683B"
+              bgColor="transparent"
+              width={"180px"}
+              onClick={() => {
+                router.push(
+                  `/dashboard/BookCover/EditBookCover?CoverNumber=${CoverNumber}`
+                );
+              }}
+            />
+            <GlobelBtn
+              btnText={!isDownloading ? ` ${t("BookCoverCard.viewPdf")}` : ""}
+              bgColor="#30422E"
+              color="#fff"
+              fontSize={{ xs: "12px", md: "16px" }}
+              border="1px solid #197065"
+              onClick={
+                () =>
+                  generatePDFOne(
+                    byline,
+                    title,
+                    subtitle,
+                    imageLink,
+                    selectedColor,
+                    finalCover
+                  )
+              }
+              width={"180px"}
+              isLoading={isDownloading}
+            />
           </Box>
           <Box
             sx={{
