@@ -10,7 +10,7 @@ import {
   selectCoverData,
   updateBookCover,
   uploadImage,
-  uploadImageForCover,
+  // uploadImageForCover,
 } from "@/store/slices/chatSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import axios from "axios";
@@ -423,7 +423,7 @@ const EditBookCover = () => {
       .then((imgBlob) => {
         const formData = new FormData();
         formData.append("image", imgBlob);
-        dispatch(uploadImageForCover(formData))
+        dispatch(uploadImage(formData))
           .unwrap()
           .then((res) => {
             toast.success("image uploaded successfully");

@@ -5,6 +5,7 @@ import {
   selectCoverData,
   updateBook,
   uploadImage,
+  uploadImageForCover,
   uploadImageWithCloudinary
 } from "@/store/slices/chatSlice";
 import { Box } from "@mui/material";
@@ -201,7 +202,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const newImage = coverData && coverData?.coverPagePhoto;
 
     const newData = { imageUrl: newImage };
-    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    const resp = await appendImageToFormData(newImage)
+    const newImageLink = await dispatch(uploadImageForCover(resp));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
@@ -257,6 +259,37 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
     return pdfContent;
   };
+
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous'; // If the image is from a different origin, this may be necessary.
+        img.src = src;
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+    });
+}
+
+function imageToBlob(img) {
+    return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(resolve, 'image/png');
+    });
+}
+
+async function appendImageToFormData(finalCover) {
+  const img = await loadImage(finalCover);
+  const blob: any = await imageToBlob(img);
+
+  const formData = new FormData();
+  formData.append("image", blob);
+
+  return formData;
+}
 
   const generateAndUploadPDF = async () => {
     const pdfContent = await generatePDFOne(

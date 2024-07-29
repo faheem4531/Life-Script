@@ -3,7 +3,7 @@ import Layout from "@/components/Layout/Layout";
 import GlobelBtn from "@/components/button/Button";
 import SelectBookCoverCard from "@/components/dashboardComponent/SelectBookCoverCard";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
-import { getBookCover, selectCoverData, uploadImageWithCloudinary } from "@/store/slices/chatSlice";
+import { getBookCover, selectCoverData, uploadImageForCover, uploadImageWithCloudinary } from "@/store/slices/chatSlice";
 
 import { Box } from "@mui/material";
 import { jsPDF } from "jspdf";
@@ -210,8 +210,11 @@ const ViewBookCover = () => {
     const newData = { imageUrl: finalCover };
     console.log(finalCover, "Final Cover");
 
-    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
-    console.log(newImageLink.payload, "new Image link");
+    const resp = await appendImageToFormData(finalCover)
+    console.log("resp", resp)
+
+    const newImageLink = await dispatch(uploadImageForCover(resp));
+    console.log(newImageLink, "new Image link");
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
@@ -269,6 +272,37 @@ const ViewBookCover = () => {
     pdf.save("my_document2.pdf");
     setIsDownloading(false);
   };
+
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous'; // If the image is from a different origin, this may be necessary.
+        img.src = src;
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+    });
+}
+
+function imageToBlob(img) {
+    return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob(resolve, 'image/png');
+    });
+}
+
+async function appendImageToFormData(finalCover) {
+  const img = await loadImage(finalCover);
+  const blob: any = await imageToBlob(img);
+
+  const formData = new FormData();
+  formData.append("image", blob);
+
+  return formData;
+}
 
   useEffect(() => {
     dispatch(getBookCover()).then((res) => {
