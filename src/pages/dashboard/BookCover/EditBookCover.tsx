@@ -477,7 +477,7 @@ const EditBookCover = () => {
       .then(async (imgBlob) => {
         const formData = new FormData();
         formData.append("image", imgBlob);
-        const res = await dispatch(uploadImage(formData)).unwrap();
+        const res = await dispatch(uploadImageForCover(formData)).unwrap();
 
         localStorage.removeItem("image1");
         localStorage.setItem("image1", res);
