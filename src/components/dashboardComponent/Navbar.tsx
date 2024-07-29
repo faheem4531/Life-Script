@@ -40,10 +40,12 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
     dispatch(readNotification({ id: notification?._id, isRead: true }))
       .unwrap()
       .then(() => {
-        dispatch(getChapterNotifications());
-        router.push(
-          `/dashboard/narrative?chapterId=${notification?.chapter}&openai=true`
-        );
+        if (notification?.chapter) {
+          dispatch(getChapterNotifications());
+          router.push(
+            `/dashboard/narrative?chapterId=${notification?.chapter}&openai=true`
+          );
+        }
       });
   };
 
@@ -99,7 +101,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
         }}
       >
         <Box
-          sx={{ display: { xs: "block", lg: "none" } ,cursor:"pointer"}}
+          sx={{ display: { xs: "block", lg: "none" }, cursor: "pointer" }}
           onClick={sideBarHandle}
         >
           <Image src={NavMenu} alt="logo" />
@@ -145,7 +147,6 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
               </Box>
             </Badge>
           </IconButton>
-
 
           <Menu
             anchorEl={notificationAnchorEl}
@@ -216,24 +217,45 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
                           }}
                         />
                       </Box>
-                      <Box
-                        sx={{
-                          whiteSpace: "wrap",
-                          fontSize: "12px",
-                          mt: "5px",
-                        }}
-                      >
-                        {t("navBar.notif1")}{" "}
-                        <span
-                          style={{
-                            fontWeight: "bold",
-                            textTransform: "capitalize",
+                      {notification?.chapter ? (
+                        <Box
+                          sx={{
+                            whiteSpace: "wrap",
+                            fontSize: "12px",
+                            mt: "5px",
                           }}
                         >
-                          {notification.title}
-                        </span>{" "}
-                        {t("navBar.notif2")}
-                      </Box>
+                          {t("navBar.notif1")}{" "}
+                          <span
+                            style={{
+                              fontWeight: "bold",
+                              textTransform: "capitalize",
+                            }}
+                          >
+                            {notification.title}
+                          </span>{" "}
+                          {t("navBar.notif2")}
+                        </Box>
+                      ) : (
+                        <Box
+                          sx={{
+                            whiteSpace: "wrap",
+                            fontSize: "12px",
+                            mt: "5px",
+                          }}
+                        >
+                          {/* {t("navBar.notif1")}{" "} */}
+                          <span
+                            style={{
+                              fontWeight: "bold",
+                              textTransform: "capitalize",
+                            }}
+                          >
+                            {notification.title}
+                          </span>{" "}
+                          {/* {t("navBar.notif2")} */}
+                        </Box>
+                      )}
                     </Box>
                   </MenuItem>
                 ))}
