@@ -61,10 +61,10 @@ const EditBookCover = () => {
       if (coverImageElement) {
         coverImageElement.setAttribute("xlink:href", croppedImageBase64);
       }
-
-      // Force redraw in Safari
-      coverImageElement?.parentElement?.appendChild(coverImageElement);
-
+      if (coverImageElement?.parentElement) {
+        // Force redraw in Safari
+        coverImageElement?.parentElement?.appendChild(coverImageElement);
+      }
       setCropper(croppedImageBase64);
       return croppedImageBase64;
     }
@@ -320,9 +320,10 @@ const EditBookCover = () => {
       if (coverImageElement) {
         coverImageElement.setAttribute("xlink:href", base64Data);
       }
-
-      // Force redraw in Safari
-      coverImageElement?.parentElement?.appendChild(coverImageElement);
+      if (coverImageElement?.parentElement) {
+        // Force redraw in Safari
+        coverImageElement?.parentElement?.appendChild(coverImageElement);
+      }
     };
 
     reader.readAsDataURL(file);
@@ -370,8 +371,10 @@ const EditBookCover = () => {
           "xlink:href",
           `data:image/png;base64,${result}`
         );
-        // Force redraw in Safari
-        coverImageElement?.parentElement?.appendChild(coverImageElement);
+        if (coverImageElement?.parentElement) {
+          // Force redraw in Safari
+          coverImageElement?.parentElement?.appendChild(coverImageElement);
+        }
       });
     }
 
@@ -474,7 +477,7 @@ const EditBookCover = () => {
       .then(async (imgBlob) => {
         const formData = new FormData();
         formData.append("image", imgBlob);
-        const res = await dispatch(uploadImage(formData)).unwrap();
+        const res = await dispatch(uploadImageForCover(formData)).unwrap();
 
         localStorage.removeItem("image1");
         localStorage.setItem("image1", res);

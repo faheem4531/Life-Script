@@ -8,21 +8,20 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 const CryptoJS = require("crypto-js");
 
+import Logo from "@/_assets/svg/logo.svg";
+import { ChangePassword } from "@/interface/authInterface";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import * as Yup from "yup";
-import Forget from "../../../public/ForgetPasswod.svg";
-import Logo from "@/_assets/svg/logo.svg";
 import { useTranslation } from "react-i18next";
-import { ChangePassword } from "@/interface/authInterface";
 import { toast } from "react-toastify";
-import Carousel from "../../components/authComponent/Carousel";
-import Carousel1 from "../../../public/carousel1.png";
+import * as Yup from "yup";
 import Carousel2 from "../../../public/carousel.png";
+import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
+import Carousel from "../../components/authComponent/Carousel";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -119,104 +118,108 @@ const ResetPassword = () => {
       </Box>
 
       <Box>
-        <Box textAlign={"center"}>
-          <Image src={Logo} width={330} height={125} alt="Logo Image" />
-          <Typography
-            sx={{ color: "#3e4f3c", fontSize: "30px", marginTop: "25px" }}
-          >
-            {t("ResetPassword.resetPassword")}
-          </Typography>
-        </Box>
+        <Box sx={{ textAlign: "center" }}>
 
-        <Box>
-          <Box>
+          <Box textAlign={"center"}>
+            <Image src={Logo} width={330} height={125} alt="Logo Image" />
             <Typography
-              sx={{
-                marginTop: "34px",
-                fontSize: "21px",
-                color: '#3e4f3c'
-              }}
+              sx={{ color: "#3e4f3c", fontSize: "30px", marginTop: "25px" }}
             >
-              {t("ResetPassword.password")}
+              {t("ResetPassword.resetPassword")}
             </Typography>
           </Box>
-          <TextField
-            sx={{
-              marginTop: "15px",
-              "& .MuiOutlinedInput-root": {
-                backgroundColor: "white",
-                borderRadius: "4px", 
-              },
-              width: "580px",
-            }}
-            placeholder={t("ResetPassword.password")}
-            type={showPassword ? "text" : "password"}
-            name="password"
-            value={formik.values.password}
-            onBlur={formik.handleBlur}
-            onChange={(event: any) =>
-              formik.setFieldValue("password", event.target.value)
-            }
-            variant="outlined"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={togglePasswordVisibility} edge="end">
-                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-        {formik.touched.password && formik.errors.password && (
-          <span style={{ color: "red" }}>{formik.errors.password}</span>
-        )}
-        <Box>
-          <Box>
-            <Typography
-              sx={{
-                marginTop: "40px",
-                fontSize: "21px",
-                color: '#3e4f3c'
 
+          <Box>
+            <Box>
+              <Typography
+                sx={{
+                  marginTop: "34px",
+                  fontSize: "21px",
+                  color: '#3e4f3c'
+                }}
+              >
+                {t("ResetPassword.password")}
+              </Typography>
+            </Box>
+            <TextField
+              sx={{
+                marginTop: "15px",
+                "& .MuiOutlinedInput-root": {
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                },
+                width: "580px",
               }}
-            >
-              {t("ResetPassword.confirmPassword")}
-            </Typography>
+              placeholder={t("ResetPassword.password")}
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formik.values.password}
+              onBlur={formik.handleBlur}
+              onChange={(event: any) =>
+                formik.setFieldValue("password", event.target.value)
+              }
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </Box>
-          <TextField
-            sx={{
-              marginTop: "15px",
-              "& .MuiOutlinedInput-root": {
-                backgroundColor: "white",
-                borderRadius: "4px",
-              },
-              width: "580px",
-            }}
-            placeholder={t("ResetPassword.confirmPassword")}
-            type={showPassword ? "text" : "password"}
-            name="password"
-            value={formik.values.confirmPassword}
-            onBlur={formik.handleBlur}
-            onChange={(event: any) =>
-              formik.setFieldValue("confirmPassword", event.target.value)
-            }
-            variant="outlined"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={togglePasswordVisibility} edge="end">
-                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+          {formik.touched.password && formik.errors.password && (
+            <span style={{ color: "red" }}>{formik.errors.password}</span>
+          )}
+          <Box>
+            <Box>
+              <Typography
+                sx={{
+                  marginTop: "40px",
+                  fontSize: "21px",
+                  color: '#3e4f3c'
+
+                }}
+              >
+                {t("ResetPassword.confirmPassword")}
+              </Typography>
+            </Box>
+            <TextField
+              sx={{
+                marginTop: "15px",
+                "& .MuiOutlinedInput-root": {
+                  backgroundColor: "white",
+                  borderRadius: "4px",
+                },
+                width: "580px",
+              }}
+              placeholder={t("ResetPassword.confirmPassword")}
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formik.values.confirmPassword}
+              onBlur={formik.handleBlur}
+              onChange={(event: any) =>
+                formik.setFieldValue("confirmPassword", event.target.value)
+              }
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Box>
+          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+            <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
+          )}
         </Box>
-        {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-          <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
-        )}
+
         <Box
           sx={{
             justifyContent: "center",
