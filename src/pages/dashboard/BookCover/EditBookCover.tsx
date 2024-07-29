@@ -10,7 +10,7 @@ import {
   selectCoverData,
   updateBookCover,
   uploadImage,
-  // uploadImageForCover,
+  uploadImageForCover,
 } from "@/store/slices/chatSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import axios from "axios";
