@@ -48,7 +48,7 @@ const useOptions = () => {
   return options;
 };
 
-const CheckoutForm = ({ quantity, remainingPayment }) => {
+const CheckoutForm = ({ quantity, remainingPayment, onTokenReceived }) => {
   const options = useOptions();
   const [isError, setIsError] = useState(false);
   const [cardHolderName, setCardHolderName] = useState("");
@@ -64,13 +64,16 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
   useEffect(() => {
     if (luluPaymentStatus === "success") {
       setStripeSucceed(true);
+    } else if (luluPaymentStatus === "failed") {
+      setStripeFailed(true);
     }
   }, [luluPaymentStatus]);
 
   useEffect(() => {
     dispatch(updateLuluPaymentStatus(" "));
     setStripeSucceed(false);
-  }, []);
+    setStripeFailed(false);
+  }, [dispatch]);
 
   const handleSubmit = async (event) => {
     setConfirmationStripe(false);
@@ -85,52 +88,62 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
       setLoading(false);
       setIsError(true);
       setStripeFailed(true);
-    } else {
-      dispatch(
-        stripPaymentLulu({
-          country: "USA",
-          amount: remainingPayment,
-          token: result.token,
-          quantity: quantity,
-          cardHolderName: cardHolderName,
-          processFrom: "printing"
-        })
-      )
-        .unwrap()
-        .then(async (res) => {
-          if (res?.status !== "succeeded") {
-            const secureResult = await stripe.confirmCardPayment(
-              res?.client_secret,
-              {
-                payment_method: {
-                  card: card,
-                },
-              }
-            );
-            if (secureResult?.paymentIntent?.status === "succeeded") {
-            } else {
-              setStripeFailed(true);
-            }
-          }
-        })
-        .catch((error) => {
-          setLoading(false);
-          setStripeFailed(true);
-        });
+      return;
     }
+
+    onTokenReceived(result.token);
+    dispatch(
+      stripPaymentLulu({
+        country: "USA",
+        amount: remainingPayment,
+        token: result.token,
+        quantity: quantity,
+        cardHolderName: cardHolderName,
+        processFrom: "printing",
+      })
+    )
+      .unwrap()
+      .then(async (res) => {
+        if (res?.status !== "succeeded") {
+          const secureResult = await stripe.confirmCardPayment(
+            res?.client_secret,
+            {
+              payment_method: {
+                card: card,
+              },
+            }
+          );
+          if (secureResult?.paymentIntent?.status === "succeeded") {
+            setStripeSucceed(true);
+          } else {
+            setStripeFailed(true);
+          }
+        } else {
+          setStripeSucceed(true);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setStripeFailed(true);
+      });
   };
+
   return (
     <>
       {stripeFailed ? (
         <Box
           sx={{
             bgcolor: "rgba(244, 244, 244, 0.90)",
-            borderRadius: "4px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "90%",
-            color: "#30422E"
+            color: "#30422E",
+            borderRadius: "6px",
+            height: "70dvh",
+            paddingTop: {xl :"120px",lg : "120px", md : "110px", sm : "100px", xs : "100px"},
+            paddingBottom: {xl :"120px",lg : "120px", md : "110px", sm : "100px", xs : "100px"},
+            width: { xl: "50%", lg: "50%", md: "50%", sm: "100%", xs: "100%" },
           }}
         >
           <Box>
@@ -143,7 +156,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
             >
               <Image
                 src={CrossBg}
-                alt="Success Icon"
+                alt="Failure Icon"
                 style={{
                   width: "100%",
                   height: "100%",
@@ -159,7 +172,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
                 textAlign: "center",
               }}
             >
-              Payment for Lulu api Failed
+              Payment for Lulu API Failed
             </Typography>
           </Box>
         </Box>
@@ -172,8 +185,8 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
             flexDirection: "column",
             gap: "20px",
             p: "30px 24px",
-            color: "#30422E"
-
+            color: "#30422E",
+            width: { xl: "50%", lg: "50%", md: "100%", sm: "100%", xs: "100%" },
           }}
         >
           <Typography
@@ -192,7 +205,8 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
               color: "#171725",
             }}
           >
-            {remainingPayment}{" $"}
+            {remainingPayment}
+            {" $"}
           </Typography>
           <Box mb="20px">
             <Typography
@@ -230,7 +244,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
             </Typography>
             <TextField
               variant="outlined"
-              onChange={(event: any) => setCardHolderName(event.target.value)}
+              onChange={(event) => setCardHolderName(event.target.value)}
               placeholder={"Cardholder Name"}
               name="title"
               sx={{
@@ -311,7 +325,9 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
             sx={{ opacity: loading || isError || !cardHolderName ? 0.6 : 1 }}
           ></Box>
           <GlobelBtn
-            btnText={loading ? "Loading..." : `${"Buy for $"} ${remainingPayment}`}
+            btnText={
+              loading ? "Loading..." : `${"Buy for $"} ${remainingPayment}`
+            }
             bgColor=" #E1683B"
             color="white"
             p="10px 0px"
@@ -330,13 +346,16 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "90%",
+            height: "70dvh",
+            paddingTop: {xl :"120px",lg : "120px", md : "80px", sm : "100px", xs : "100px"},
+            paddingBottom: {xl :"120px",lg : "120px", md : "80px", sm : "100px", xs : "100px"},
+            width: { xl: "50%", lg: "50%", md: "50%", sm: "100%", xs: "100%" },
           }}
         >
           <Box>
             <Box
               sx={{
-                width: "144px",
+                width: "100%",
                 height: "144px",
                 margin: "auto",
               }}
@@ -359,7 +378,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
                 textAlign: "center",
               }}
             >
-              Payment successful proceed to Submit
+              Payment successful, proceed to Submit
             </Typography>
           </Box>
         </Box>
@@ -367,7 +386,7 @@ const CheckoutForm = ({ quantity, remainingPayment }) => {
 
       <TransitionsDialog
         open={confirmationStripe}
-        heading="Lulu Api Payment"
+        heading="Lulu API Payment"
         description={`An amount of $${remainingPayment} will be deducted from your selected bank account. Do you really want to proceed?`}
         cancel={() => {
           setConfirmationStripe(false);

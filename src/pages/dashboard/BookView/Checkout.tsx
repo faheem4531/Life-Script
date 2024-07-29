@@ -3,7 +3,13 @@ import GlobelBtn from "@/components/button/Button";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import { getLuluBalance } from "@/store/slices/authSlice";
 import { luluPrinting } from "@/store/slices/chatSlice";
-import { Box, Checkbox, Typography } from "@mui/material";
+import {
+  Box,
+  Checkbox,
+  CircularProgress,
+  Typography,
+  colors,
+} from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Image from "next/image";
@@ -14,6 +20,7 @@ import { toast } from "react-toastify";
 import CheckoutForm from "./components/CheckoutForm";
 import ShippingCard from "./components/ShippingCard";
 import { useTranslation } from "react-i18next";
+import { doesSectionFormatHaveLeadingZeros } from "@mui/x-date-pickers/internals/hooks/useField/useField.utils";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY!
@@ -28,11 +35,22 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const [payment, setPayment] = useState(0);
+  const [stripeToken, setStripeToken] = useState<string | null>(null);
 
   const luluBalance = useSelector(
     (state: { auth: any }) => state.auth.luluBalance
   );
+
+  const handleTokenReceived = (token: string) => {
+    setStripeToken(token);
+  };
+
   const handleFinish = () => {
+    if (!stripeToken) {
+      toast.error(t("checkout.errorMessageNoToken"));
+      return;
+    }
+
     if (isChecked) {
       setLoading(true);
       dispatch(luluPrinting({ quantity: count }))
@@ -54,88 +72,95 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
   }, [dispatch]);
 
   return (
-    <>
-      <Box sx={{ bgcolor: "white", borderRadius: "4.164px", p: "20px 24px" }}>
-        <Box sx={{ display: "flex", alignItems: "start", mb: "40px" }}>
-          <Checkbox
-            color="success"
-            checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
-          />
-          <Typography
-            sx={{
-              fontSize: { md: "18.752px", sm: "16px", xs: "14px" },
-              width: "70%",
-            }}
-          >
-            {t("checkout.description")}
-          </Typography>
-        </Box>
-        <Box
-          display={"flex"}
+    <Box sx={{ bgcolor: "white", borderRadius: "4.164px" }}>
+      <Box sx={{ display: "flex", alignItems: "start", mb: "40px" }}>
+        <Checkbox
+          color="success"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
+        <Typography
           sx={{
-            flexDirection: { md: "row", xs: "column", sm: "column" },
-            gap: "30px",
-            bgcolor: "#F3ECDA",
-            borderRadius: "4px",
-            p: "20px 30px",
+            fontSize: { md: "18.752px", sm: "16px", xs: "14px" },
+            width: "70%",
           }}
         >
-          {payment > 0 && (
-            <Elements stripe={stripePromise}>
-              <CheckoutForm quantity={count} remainingPayment={payment} />
-            </Elements>
-          )}
-          <Box
-            sx={{
-              flex: 1,
-              display: "flex",
-              justifyContent: payment > 0 ? "end" : "center",
-            }}
-          >
-            <Box width={"100%"}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: remainingPayment > 0 ? "end" : "center",
-                }}
-              >
-                <ShippingCard
-                  setPayment={setPayment}
-                  setCount={setCount}
-                  count={count}
-                  quantity={luluBalance?.quantity}
-                  amount={luluBalance?.amount}
-                />
-              </Box>
-            </Box>
-          </Box>
-        </Box>
+          {t("checkout.description")}
+        </Typography>
+      </Box>
+      <Box
+        display={"flex"}
+        sx={{
+          flexDirection: { md: "row", xs: "column", sm: "column" },
+          justifyContent: "space-between",
+          bgcolor: "#F3ECDA",
+          borderRadius: "4px",
+          p: "20px 30px",
+          gap: "20px",
+        }}
+      >
+        {payment > 0 && (
+          <Elements stripe={stripePromise}>
+            <CheckoutForm
+              quantity={count}
+              remainingPayment={payment}
+              onTokenReceived={handleTokenReceived}
+            />
+          </Elements>
+        )}
         <Box
           sx={{
             display: "flex",
-            justifyContent: "end",
-            alignItems: "center",
-            gap: 2,
-            my: "20px",
+            justifyContent: "center",
           }}
         >
-          <GlobelBtn
-            btnText={t("checkout.backBtn")}
-            color="#E1683B"
-            border="1px solid #E1683B"
-            bgColor="#fff"
-            onClick={() => setSelectedTab(3)}
-          />
-          <GlobelBtn
-            bgColor="#E1683B"
-            color="white"
-            btnText={t("checkout.finishBtn")}
-            disabled={!isChecked}
-            border="0px"
-            onClick={!loading && handleFinish}
-          />
+          <Box width={"100%"}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <ShippingCard
+                setPayment={setPayment}
+                setCount={setCount}
+                count={count}
+                quantity={luluBalance?.quantity}
+                amount={luluBalance?.amount}
+              />
+            </Box>
+          </Box>
         </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "end",
+          alignItems: "center",
+          gap: 2,
+          my: "20px",
+        }}
+      >
+        <GlobelBtn
+          btnText={t("checkout.backBtn")}
+          color="#E1683B"
+          border="1px solid #E1683B"
+          bgColor="#fff"
+          onClick={() => setSelectedTab(3)}
+        />
+        <GlobelBtn
+          bgColor="#E1683B"
+          color="white"
+          btnText={t("checkout.finishBtn")}
+          disabled={!isChecked || !stripeToken || loading}
+          border="0px"
+          onClick={() => {
+            if (!loading) {
+              handleFinish();
+            }
+          }}
+          isLoading={loading}
+        />
       </Box>
       <CustomizationDialog
         open={luluSuccess || luluFailed}
@@ -171,7 +196,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
               margin: { md: "25px 0", sm: "15px 0px", xs: "5px" },
             }}
           >
-            Lulu Printing API
+            Printing API
           </Typography>
           <Typography
             sx={{
@@ -197,16 +222,15 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
               bgColor="#E1683B"
               color="white"
               onClick={() => {
-                router.push("/dashboard/overview");
                 setLuluSuccess(false);
-                setLuluFailed(false);
+                router.push("/dashboard/overview");
               }}
               width={{ md: "234px", sm: "153px", xs: "103px" }}
             />
           </Box>
         </Box>
       </CustomizationDialog>
-    </>
+    </Box>
   );
 };
 

@@ -4,11 +4,12 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { selectCoverData } from "@/store/slices/chatSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount, quantity }) => {
   const coverData = useSelector(selectCoverData);
   const { t } = useTranslation();
+  const [remainingCredits, setRemainingCredits] = useState(quantity);
 
   useEffect(() => {
     const totalCost = count * 39;
@@ -17,7 +18,10 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
     } else {
       setPayment(totalCost - amount);
     }
-  }, [count, amount]);
+
+    const newRemainingCredits = quantity - count;
+    setRemainingCredits(newRemainingCredits >= 0 ? newRemainingCredits : 0);
+  }, [count, amount, quantity, setPayment]);
 
   return (
     <Box
@@ -74,7 +78,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
           }}
         >
           <Typography sx={{ color: "#30422E" }}> {t("Book Credit")}</Typography>
-          <Typography sx={{ color: "#30422E" }}>{quantity}</Typography>
+          <Typography sx={{ color: "#30422E" }}>{remainingCredits}</Typography>
         </Box>
         <Box
           sx={{
