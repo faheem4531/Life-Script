@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import NextIcon from "@/_assets/svg/next-iconX.svg";
 import PreviousIcon from "@/_assets/svg/previous-icon.svg";
@@ -22,9 +22,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 interface PDFViewerProps {
   pdfUrl: string;
+  onPageChange: (pageNumber: number, numPages: number) => void; // Callback to send page info to parent
 }
 
-const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
+const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, onPageChange }) => {
   const theme = useTheme();
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
@@ -43,6 +44,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   let zoomValue = scale;
   let topPading = paddTop;
 
+  useEffect(() => {
+    if (numPages === 0) {
+      setPageNumber(1);
+    }
+  }, [numPages]);
+
+  console.log("Number of pages updated:", numPages);
 
   const changeScale = useCallback(
     debounce((offset: number) => {
@@ -57,12 +65,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
     }, 300),
     []
   );
-
-  useEffect(() => {
-    if (numPages === 0) {
-      setPageNumber(1);
-    }
-  }, [numPages]);
 
   const onPageLoadSuccess = (page) => {
     const originalPageWidth = page.originalWidth;
@@ -86,11 +88,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
   const onDocumentLoadSuccess = ({ numPages: nextNumPages }) => {
     setNumPages(nextNumPages);
+    onPageChange(pageNumber, nextNumPages);
   };
 
   const goToPage = (number: number) => {
     if (number <= numPages) {
       setPageNumber(number);
+      onPageChange(number, numPages);
     }
   };
 
@@ -112,8 +116,8 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             onClick={() => {
               zoomValue = zoomValue - 0.1;
               topPading = topPading - 6;
-              changeScale(zoomValue)
-              changePadding(topPading)
+              changeScale(zoomValue);
+              changePadding(topPading);
             }}
             disabled={scale <= 1}
             img={ZoomOut}
@@ -124,14 +128,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
           onClick={() => {
             zoomValue = zoomValue + 0.1;
             topPading = topPading + 6;
-            changeScale(zoomValue)
-            changePadding(topPading)
+            changeScale(zoomValue);
+            changePadding(topPading);
           }}
           disabled={scale >= 1.7}
           img={ZoomIn}
           iconSize={35}
         />
-
         <GlobelBtn
           bgColor="#E1683B"
           btnText={`PDF Download`}
@@ -143,13 +146,19 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
         />
       </Box>
 
-      <Box hidden={false}>
-        <Box display="flex" justifyContent={{ lg: "center", xs: "center" }} alignItems="center">
+      <Box>
+        <Box
+          display="flex"
+          justifyContent={{ lg: "center", xs: "center" }}
+          alignItems="center"
+        >
           <Box>
             <Button
-              onClick={() => {setTimeout(()=>{
-                setPageNumber(pageNumber - 1)
-              },500)}}
+              onClick={() => {
+                setTimeout(() => {
+                  setPageNumber(pageNumber - 1);
+                }, 500);
+              }}
               disabled={pageNumber <= 1}
               color="primary"
               sx={{ opacity: pageNumber <= 1 ? 0.2 : 1 }}
@@ -160,15 +169,15 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
 
           <Box
             sx={{
-              overflow: 'scroll',
-              maxHeight: '600px',
+              overflow: "scroll",
+              maxHeight: "600px",
               height: "550px",
               width: { sm: "500px", xs: "400" },
               maxWidth: { sm: "550px", xs: "400" },
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              paddingTop: { md: paddTop, sm: "0" }
+              paddingTop: { md: paddTop, sm: "0" },
             }}
           >
             <Document
@@ -192,13 +201,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             </Document>
           </Box>
 
-          <Box
-
-          >
+          <Box>
             <Button
-                onClick={() => {setTimeout(()=>{
-                  setPageNumber(pageNumber +1 )
-                },1000)}}
+              onClick={() => {
+                setTimeout(() => {
+                  setPageNumber(pageNumber + 1);
+                }, 1000);
+              }}
               color="primary"
               disabled={pageNumber >= numPages}
               sx={{ opacity: pageNumber >= numPages ? 0.2 : 1 }}
@@ -213,7 +222,7 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            m: "20px 0",
+            mt: "40px",
           }}
         >
           <Box>
@@ -252,9 +261,9 @@ export const ButtonIcons = ({ onClick, iconSize, img, disabled }) => {
       disabled={disabled}
       sx={{
         display: "flex",
-        justifyContent: { lg: "center'" },
+        justifyContent: "center",
         alignItems: "center",
-        columnGap: { lg: "8px" },
+        columnGap: "8px",
         "&:hover": {
           backgroundColor: "transparent",
           boxShadow: "none",

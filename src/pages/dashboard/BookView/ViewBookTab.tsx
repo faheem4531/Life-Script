@@ -1,10 +1,10 @@
 import { lazy, Suspense, useState } from "react";
+import { Box, Typography } from "@mui/material";
 import GlobelBtn from "@/components/button/Button";
-import { Box } from "@mui/material";
-import backArrow from "../../../_assets/svg/left.svg";
-import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import ShippingModal from "@/components/modal/ShippingModal";
 import { useTranslation } from "react-i18next";
+import alertImage from "@/_assets/png/alert.png";
+import Image from "next/image";
 
 const PDFViewer = lazy(() => import("@/pages/PDFBookView/view"));
 
@@ -13,22 +13,55 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
   const { t } = useTranslation();
   const pdfUrl = interior;
 
+  const [pageNumber, setPageNumber] = useState(1);
+  const [numPages, setNumPages] = useState(0);
+
+  const handlePageChange = (currentPage: number, totalPages: number) => {
+    setPageNumber(currentPage);
+    setNumPages(totalPages);
+    console.log("Page changed in ReviewInterior:", currentPage, totalPages);
+  };
+
   return (
     <Box>
+      {numPages < 60 && (
+        <Box
+          sx={{
+            backgroundColor: "#F2D2BD",
+            border: "1px solid black",
+            padding: "10px 10px 10px",
+            display : "flex",
+            gap : "10px",
+            borderRadius : "5px",
+          }}
+        >
+          <Box sx = {{padding : "1px"}}>
+          <Image src={alertImage} alt="alert.png" width={13} height={13}/></Box>
+          <Typography sx={{ color: "black" }}>
+            {t(
+              "reviewBook.pageLimitMessage",
+              "We can only print books with more than 60 pages. Please consider adding a few more chapters."
+            )}
+          </Typography>
+        </Box>
+      )}
       <Box
         sx={{
-          p: "30px 28px",
+          p: {
+            xl: "20px 20px",
+            lg: "20px 20px",
+            md: "20px 20px",
+            sm: "10px 10px",
+            xs: "10px 10px",
+          },
           bgcolor: "#F3ECDA",
-          borderRadius: "4",
-          height: "750px",
-          mt: "50px"
+          borderRadius: 4,
+          height: {xl  : "90vh", lg  : "90vh", md : "100vh", sm : "100vh", xs : "100vh"},
         }}
       >
-        <Box>
-          <Suspense fallback={<div>Loading PDF Viewer...</div>}>
-            <PDFViewer pdfUrl={pdfUrl} />
-          </Suspense>
-        </Box>
+        <Suspense fallback={<div>Loading PDF Viewer...</div>}>
+          <PDFViewer pdfUrl={pdfUrl} onPageChange={handlePageChange} />
+        </Suspense>
       </Box>
       <Box
         sx={{
@@ -36,35 +69,32 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
           justifyContent: "end",
           alignItems: "center",
           flexWrap: "wrap",
-          gap: 2, mt: "30px",
+          gap: 2,
+          mt: "30px",
         }}
       >
-        <Box sx={{}}>
-          <GlobelBtn
-            btnText={t("reviewBook.backBtn")}
-            color="#E1683B"
-            border="1px solid #E1683B"
-            bgColor='#fff'
-            width="110px"
-            onClick={() => {
-              setSelectedTab(1);
-            }}
-          />
-        </Box>
-
-        <Box>
-          <GlobelBtn
-            bgColor="#E1683B"
-            color="white"
-            width="110px"
-            btnText={t("reviewBook.nextBtn")}
-            onClick={() => {
-              setOpen(true);
-            }}
-          />
-        </Box>
+        <GlobelBtn
+          btnText={t("reviewBook.backBtn")}
+          color="#E1683B"
+          border="1px solid #E1683B"
+          bgColor="#fff"
+          width="110px"
+          onClick={() => setSelectedTab(1)}
+        />
+        <GlobelBtn
+          bgColor="#E1683B"
+          color="white"
+          width="110px"
+          btnText={t("reviewBook.nextBtn")}
+          onClick={() => setOpen(true)}
+          disabled={numPages < 60}
+        />
       </Box>
-      <ShippingModal open={open} setOpen={setOpen} setSelectedTab={setSelectedTab} />
+      <ShippingModal
+        open={open}
+        setOpen={setOpen}
+        setSelectedTab={setSelectedTab}
+      />
     </Box>
   );
 };
