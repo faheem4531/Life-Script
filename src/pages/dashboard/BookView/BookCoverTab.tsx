@@ -202,8 +202,10 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const newImage = coverData && coverData?.coverPagePhoto;
 
     const newData = { imageUrl: newImage };
-    const resp = await appendImageToFormData(newImage)
-    const newImageLink = await dispatch(uploadImageForCover(resp));
+    // const resp = await appendImageToFormData(newImage)
+    // const newImageLink = await dispatch(uploadImageForCover(resp));
+
+    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
