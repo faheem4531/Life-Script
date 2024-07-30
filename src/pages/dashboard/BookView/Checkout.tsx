@@ -20,7 +20,6 @@ import { toast } from "react-toastify";
 import CheckoutForm from "./components/CheckoutForm";
 import ShippingCard from "./components/ShippingCard";
 import { useTranslation } from "react-i18next";
-import { doesSectionFormatHaveLeadingZeros } from "@mui/x-date-pickers/internals/hooks/useField/useField.utils";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY!
@@ -45,25 +44,25 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
     setStripeToken(token);
   };
 
-  const handleFinish = () => {
-    if (!stripeToken) {
+  const handleFinish = async () => {
+    if (!isChecked) {
       toast.error(t("checkout.errorMessageNoToken"));
       return;
     }
 
-    if (isChecked) {
-      setLoading(true);
-      dispatch(luluPrinting({ quantity: count }))
-        .unwrap()
-        .then(() => {
-          setLuluSuccess(true);
-          setLoading(false);
-        })
-        .catch(() => {
-          setLuluFailed(true);
-          toast.error("Failed to call Lulu API");
-          setLoading(false);
-        });
+    setLoading(true);
+    try {
+      if (stripeToken || payment <= 0) {
+        await dispatch(luluPrinting({ quantity: count })).unwrap();
+        setLuluSuccess(true);
+      } else {
+        toast.error(t("checkout.errorMessageNoToken"));
+      }
+    } catch (error) {
+      setLuluFailed(true);
+      toast.error(t("checkout.errorMessagePaymentFailed"));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,11 +91,11 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
         display={"flex"}
         sx={{
           flexDirection: { md: "row", xs: "column", sm: "column" },
-          justifyContent: "space-between",
+          justifyContent: payment > 0 ? "space-between" : "center",
           bgcolor: "#F3ECDA",
           borderRadius: "4px",
           p: "20px 30px",
-          gap: "20px",
+          gap : "20px"
         }}
       >
         {payment > 0 && (
@@ -111,12 +110,17 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: payment > 0 ? "center" : "end",
+            width:
+              payment > 0
+                ? { xl: "37%", lg: "37%", md: "50%", sm: "100%", xs: "100%" }
+                : { xl: "35%", lg: "35%", md: "50%", sm: "75%", xs: "100%" },
           }}
         >
-          <Box width={"100%"}>
+          <Box>
             <Box
               sx={{
+                width: "100%",
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -152,7 +156,7 @@ const Checkout = ({ setSelectedTab, setCount, count, remainingPayment }) => {
           bgColor="#E1683B"
           color="white"
           btnText={t("checkout.finishBtn")}
-          disabled={!isChecked || !stripeToken || loading}
+          disabled={!isChecked || (payment > 0 && !stripeToken) || loading}
           border="0px"
           onClick={() => {
             if (!loading) {

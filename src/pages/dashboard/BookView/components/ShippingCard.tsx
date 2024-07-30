@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { selectCoverData } from "@/store/slices/chatSlice";
 import { useEffect, useState } from "react";
 
-const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount, quantity }) => {
+const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amount, quantity , shouldResetCount = false}) => {
   const coverData = useSelector(selectCoverData);
   const { t } = useTranslation();
   const [remainingCredits, setRemainingCredits] = useState(quantity);
@@ -22,6 +22,12 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
     const newRemainingCredits = quantity - count;
     setRemainingCredits(newRemainingCredits >= 0 ? newRemainingCredits : 0);
   }, [count, amount, quantity, setPayment]);
+
+  useEffect(() => {
+    if (shouldResetCount) {
+      setCount(0); 
+    }
+  }, [shouldResetCount, setCount]);
 
   return (
     <Box
@@ -142,7 +148,7 @@ const ShippingCard = ({ setCount, setPayment, count, QuantityCheck = false, amou
               justifyContent: "center",
             }}
           >
-            <Counter min={1} setCount={setCount} count={count} />
+            <Counter min={0} setCount={setCount} count={count} />
           </Box>
         </Box>
       )}

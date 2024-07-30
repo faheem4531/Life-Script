@@ -1,5 +1,9 @@
 import InputWithLabel from "@/components/Input";
-import { getLuluBalance, getLuluShipping, selectLuluData } from "@/store/slices/authSlice";
+import {
+  getLuluBalance,
+  getLuluShipping,
+  selectLuluData,
+} from "@/store/slices/authSlice";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CountrySelect from "@/components/dashboardComponent/AutoComplete";
@@ -20,12 +24,12 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
     postcode: "",
     state_code: "",
     street1: "",
-    apt:""
+    apt: "",
   });
 
   useEffect(() => {
     onChange(shippingData);
-  }, [shippingData])
+  }, [shippingData]);
 
   useEffect(() => {
     data && setShippingData(shippingData);
@@ -47,22 +51,23 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
         postcode: luluData?.postcode,
         state_code: luluData?.state_code,
         street1: luluData?.street1,
-        apt:luluData?.apt
+        apt: luluData?.apt,
       }));
       setShippingDataId(luluData?._id);
     }
-  }, [luluData])
+  }, [luluData]);
 
   return (
     <Box
       sx={{
-        flex: 1,
         p: { md: "30px 24px", sm: "25px 18px", xs: "20px 10px" },
         bgcolor: "#F8F6F9",
         borderRadius: "4px",
         display: "flex",
         flexDirection: "column",
+        justifyContent : "center",
         gap: "20px",
+        width : "100%",
       }}
     >
       <InputWithLabel
@@ -130,7 +135,7 @@ const ShippingForm = ({ onChange, data, setShippingDataId }) => {
               mb: "5px",
             }}
           >
-           {t("shippingPage.countryCode")}
+            {t("shippingPage.countryCode")}
           </Typography>
           <Box
             sx={{

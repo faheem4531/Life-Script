@@ -172,7 +172,7 @@ const CheckoutForm = ({ quantity, remainingPayment, onTokenReceived }) => {
                 textAlign: "center",
               }}
             >
-              Payment for Lulu API Failed
+              Payment Failed for the Printing
             </Typography>
           </Box>
         </Box>
@@ -386,7 +386,7 @@ const CheckoutForm = ({ quantity, remainingPayment, onTokenReceived }) => {
 
       <TransitionsDialog
         open={confirmationStripe}
-        heading="Lulu API Payment"
+        heading="API Payment"
         description={`An amount of $${remainingPayment} will be deducted from your selected bank account. Do you really want to proceed?`}
         cancel={() => {
           setConfirmationStripe(false);

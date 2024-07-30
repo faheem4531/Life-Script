@@ -19,7 +19,7 @@ const Shipping = ({
   setRemainingPaymenmt,
 }) => {
   const { t } = useTranslation();
-  const dispatch : any = useDispatch();
+  const dispatch: any = useDispatch();
   const [shippingDataId, setShippingDataId] = useState(null);
   const [shippingData, setShippingData] = useState({
     email: "",
@@ -30,12 +30,12 @@ const Shipping = ({
     postcode: "",
     state_code: "",
     street1: "",
-    apt:""
+    apt: "",
   });
 
   const [tooltip, setTooltip] = useState(false);
   const luluBalance = useSelector(selectLuluBalance);
-  
+
   useEffect(() => {
     dispatch(getLuluBalance());
     console.log("lulubalance is ", luluBalance.amount);
@@ -60,15 +60,15 @@ const Shipping = ({
     } else {
       shippingDataId
         ? dispatch(updateLuluShipping(shippingData))
-          .unwrap()
-          .then((res) => {
-            setSelectedTab(4);
-          })
+            .unwrap()
+            .then((res) => {
+              setSelectedTab(4);
+            })
         : dispatch(createLuluShipping(shippingData))
-          .unwrap()
-          .then((res) => {
-            setSelectedTab(4);
-          });
+            .unwrap()
+            .then((res) => {
+              setSelectedTab(4);
+            });
     }
   };
 
@@ -91,7 +91,7 @@ const Shipping = ({
         <Box
           sx={{
             flex: 1,
-            minWidth: "300px",
+            // minWidth: "300px",
           }}
         >
           <ShippingForm
@@ -123,6 +123,7 @@ const Shipping = ({
               QuantityCheck={true}
               quantity={luluBalance?.quantity}
               amount={luluBalance?.amount}
+              shouldResetCount={true}
             />
           </Box>
         </Box>
@@ -139,7 +140,7 @@ const Shipping = ({
         <Box>
           <GlobelBtn
             btnText={t("reviewBook.backBtn")}
-            bgColor='#fff'
+            bgColor="#fff"
             color="#E1683B"
             border="1px solid #E1683B"
             onClick={() => {
@@ -160,6 +161,10 @@ const Shipping = ({
                 btnText={t("reviewBook.nextBtn")}
                 border="0px"
                 onClick={handleNext}
+                disabled={
+                  Object.values(shippingData).some((value) => value === "") ||
+                  count <= 0
+                }
               />
             </Box>
           </Tooltip>
