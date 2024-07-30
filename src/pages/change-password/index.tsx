@@ -129,18 +129,16 @@ const ResetPassword = () => {
             </Typography>
           </Box>
 
-          <Box>
-            <Box>
-              <Typography
-                sx={{
-                  marginTop: "34px",
-                  fontSize: "21px",
-                  color: '#3e4f3c'
-                }}
-              >
-                {t("ResetPassword.password")}
-              </Typography>
-            </Box>
+          <Box sx={{ maxWidth: "470px", m: "0 auto" }}>
+            <Typography
+              sx={{
+                marginTop: "34px",
+                fontSize: "21px",
+                color: '#3e4f3c', textAlign: "left"
+              }}
+            >
+              {t("ResetPassword.password")}
+            </Typography>
             <TextField
               sx={{
                 marginTop: "15px",
@@ -148,7 +146,7 @@ const ResetPassword = () => {
                   backgroundColor: "white",
                   borderRadius: "4px",
                 },
-                width: "580px",
+                width: "100%",
               }}
               placeholder={t("ResetPassword.password")}
               type={showPassword ? "text" : "password"}
@@ -169,23 +167,21 @@ const ResetPassword = () => {
                 ),
               }}
             />
+            {formik.touched.password && formik.errors.password && (
+              <span style={{ color: "red" }}>{formik.errors.password}</span>
+            )}
           </Box>
-          {formik.touched.password && formik.errors.password && (
-            <span style={{ color: "red" }}>{formik.errors.password}</span>
-          )}
-          <Box>
-            <Box>
-              <Typography
-                sx={{
-                  marginTop: "40px",
-                  fontSize: "21px",
-                  color: '#3e4f3c'
+          <Box sx={{ maxWidth: "470px", m: "0 auto" }}>
+            <Typography
+              sx={{
+                marginTop: "40px",
+                fontSize: "21px",
+                color: '#3e4f3c', textAlign: "left"
 
-                }}
-              >
-                {t("ResetPassword.confirmPassword")}
-              </Typography>
-            </Box>
+              }}
+            >
+              {t("ResetPassword.confirmPassword")}
+            </Typography>
             <TextField
               sx={{
                 marginTop: "15px",
@@ -193,7 +189,7 @@ const ResetPassword = () => {
                   backgroundColor: "white",
                   borderRadius: "4px",
                 },
-                width: "580px",
+                width: "100%",
               }}
               placeholder={t("ResetPassword.confirmPassword")}
               type={showPassword ? "text" : "password"}
@@ -214,10 +210,10 @@ const ResetPassword = () => {
                 ),
               }}
             />
+            {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+              <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
+            )}
           </Box>
-          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <span style={{ color: "red" }}>{formik.errors.confirmPassword}</span>
-          )}
         </Box>
 
         <Box
