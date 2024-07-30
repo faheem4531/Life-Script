@@ -843,6 +843,22 @@ export async function getStatusOfPrintingBook() {
   }
 }
 
+export async function getMilestoneApi() {
+  try {
+    const res = await api.get("/users/mile-stone/completion");
+
+    console.log(res, "milsetone api");
+    return res;
+  } catch (error: any) {
+    if (typeof error?.response?.data?.message === "object") {
+      const errors = error?.response?.data?.message?.message;
+      throw new Error(errors ? errors[0] : "Failed");
+    } else {
+      throw new Error(error.response?.data?.message);
+    }
+  }
+}
+
 export async function getTemplatesApiMain(data: any) {
   try {
     const res: any = await api.get(

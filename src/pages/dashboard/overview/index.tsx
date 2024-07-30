@@ -7,10 +7,13 @@ import {
 } from "@/components/dashboardComponent/OverviewSubComponents";
 import WelcomeOverview from "@/components/dashboardComponent/OverviewWelcome";
 import TimeTracker from "@/components/dashboardComponent/TimeTracker";
+import { getMilestone } from "@/store/slices/chatSlice";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const OverView = () => {
+  const dispatch: any = useDispatch();
 
   const [achievements, setAchievements] = useState({
     words: 0,
@@ -18,6 +21,9 @@ const OverView = () => {
     chapters: 0,
   });
 
+  useEffect(() => {
+    dispatch(getMilestone());
+  }, [dispatch]);
 
   return (
     <Layout>
