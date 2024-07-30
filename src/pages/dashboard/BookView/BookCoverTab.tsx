@@ -23,6 +23,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const [imageLink, setImageLink] = useState("");
   const [byline, setByline] = useState("");
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
+  const [progressCompleted, setProgressCompleted] = useState(false);
+
 
   const dispatch: any = useDispatch();
   const [spineSize, setSpineSize] = useState(null);
@@ -316,6 +318,7 @@ async function appendImageToFormData(finalCover) {
           .unwrap()
           .then(() => {
             setLoading(false);
+            setProgressCompleted(true); 
             setSelectedTab(2);
           });
       });
@@ -361,7 +364,7 @@ async function appendImageToFormData(finalCover) {
             height: "100vh",
           }}
         >
-          <Loading />
+          <Loading complete={progressCompleted}/>
         </Box>
       ) : (
 

@@ -1,20 +1,18 @@
-// import styles from "@/styles/Dashboard.module.css";
+// components/Loading.jsx
 import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
-import LoadImage from "@/_assets/svg/loading.svg";
+import animationLogo from "@/_assets/svg/animationLogo.png";
+import Logo from "@/_assets/svg/Frame.svg";
 import { ReloadingBar } from "@/components/dashboardComponent/LinearProgressBar";
 import { isChapterLoaded } from "@/store/slices/chatSlice";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import styles from "./Loader.module.css"
-import animationLogo from "@/_assets/svg/animationLogo.png";
-import Logo from "@/_assets/svg/Frame.svg";
+import styles from "./Loader.module.css";
 
-const Loading = () => {
+const Loading = ({ complete }) => {
   const [progress, setProgress] = useState(10);
   const [showCompletion, setShowCompletion] = useState(true);
   const router = useRouter();
@@ -24,6 +22,12 @@ const Loading = () => {
   const { chapterId, openai } = router.query;
 
   useEffect(() => {
+    if (complete) {
+      setProgress(100);
+      setShowCompletion(false);
+      return;
+    }
+    
     const timer = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
@@ -46,7 +50,7 @@ const Loading = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [isLoaded]);
+  }, [isLoaded, complete]);
 
   return (
     <Box
