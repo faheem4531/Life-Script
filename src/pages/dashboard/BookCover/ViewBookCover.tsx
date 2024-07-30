@@ -210,12 +210,12 @@ const ViewBookCover = () => {
     const newData = { imageUrl: finalCover };
     console.log(finalCover, "Final Cover");
 
-    // const resp = await appendImageToFormData(finalCover)
-    // console.log("resp", resp)
-    // const newImageLink = await dispatch(uploadImageForCover(resp));
-    // console.log(newImageLink, "new Image link");
+    const resp = await appendImageToFormData(finalCover)
+    console.log("resp", resp)
+    const newImageLink = await dispatch(uploadImageForCover(resp));
+    console.log(newImageLink, "new Image link");
 
-    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
@@ -278,7 +278,7 @@ const ViewBookCover = () => {
     return new Promise((resolve, reject) => {
         const img = new Image();
         img.crossOrigin = 'Anonymous'; // If the image is from a different origin, this may be necessary.
-        img.src = src;
+        img.src = src + '?test=123'
         img.onload = () => resolve(img);
         img.onerror = reject;
     });

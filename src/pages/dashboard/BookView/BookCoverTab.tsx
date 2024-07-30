@@ -202,10 +202,10 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const newImage = coverData && coverData?.coverPagePhoto;
 
     const newData = { imageUrl: newImage };
-    // const resp = await appendImageToFormData(newImage)
-    // const newImageLink = await dispatch(uploadImageForCover(resp));
+    const resp = await appendImageToFormData(newImage)
+    const newImageLink = await dispatch(uploadImageForCover(resp));
 
-    const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
+    // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
 
     if (coverData?.coverNumber === "3") {
       const imageWidth = 159;
@@ -266,7 +266,7 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     return new Promise((resolve, reject) => {
         const img = new Image();
         img.crossOrigin = 'Anonymous'; // If the image is from a different origin, this may be necessary.
-        img.src = src;
+        img.src = src + '?test=123'
         img.onload = () => resolve(img);
         img.onerror = reject;
     });
