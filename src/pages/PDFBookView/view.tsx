@@ -22,10 +22,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 interface PDFViewerProps {
   pdfUrl: string;
-  onPageChange: (pageNumber: number, numPages: number) => void; // Callback to send page info to parent
+  
 }
 
-const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, onPageChange }) => {
+const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const theme = useTheme();
   const lg = useMediaQuery(theme.breakpoints.up("lg"));
   const md = useMediaQuery(theme.breakpoints.up("md"));
@@ -37,7 +37,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, onPageChange }) => {
   const [loading, setLoading] = useState(true);
   const [pageWidth, setPageWidth] = useState(450);
   const [pageHeight, setPageHeight] = useState(550);
-  const [goToPageNumber, setGoToPageNumber] = useState("1");
   const [scale, setScale] = useState(1.0);
   const [paddTop, setPaddTop] = useState(0);
 
@@ -50,7 +49,6 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, onPageChange }) => {
     }
   }, [numPages]);
 
-  console.log("Number of pages updated:", numPages);
 
   const changeScale = useCallback(
     debounce((offset: number) => {
@@ -88,13 +86,13 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl, onPageChange }) => {
 
   const onDocumentLoadSuccess = ({ numPages: nextNumPages }) => {
     setNumPages(nextNumPages);
-    onPageChange(pageNumber, nextNumPages);
+    
   };
 
   const goToPage = (number: number) => {
     if (number <= numPages) {
       setPageNumber(number);
-      onPageChange(number, numPages);
+      
     }
   };
 

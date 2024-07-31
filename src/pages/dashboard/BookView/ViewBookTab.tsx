@@ -8,23 +8,15 @@ import Image from "next/image";
 
 const PDFViewer = lazy(() => import("@/pages/PDFBookView/view"));
 
-const ReviewInterior = ({ setSelectedTab, interior }) => {
-  const [open, setOpen] = useState(false);
+const ReviewInterior = ({ setSelectedTab, interior, totalInteriorPages }) => {
+    const [open, setOpen] = useState(false);
   const { t } = useTranslation();
   const pdfUrl = interior;
 
-  const [pageNumber, setPageNumber] = useState(1);
-  const [numPages, setNumPages] = useState(0);
-
-  const handlePageChange = (currentPage: number, totalPages: number) => {
-    setPageNumber(currentPage);
-    setNumPages(totalPages);
-    console.log("Page changed in ReviewInterior:", currentPage, totalPages);
-  };
 
   return (
     <Box>
-      {numPages < 60 && (
+      {totalInteriorPages && totalInteriorPages < 60 && (
         <Box
           sx={{
             backgroundColor: "#F2D2BD",
@@ -60,7 +52,7 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
         }}
       >
         <Suspense fallback={<div>Loading PDF Viewer...</div>}>
-          <PDFViewer pdfUrl={pdfUrl} onPageChange={handlePageChange} />
+          <PDFViewer pdfUrl={pdfUrl}/>
         </Suspense>
       </Box>
       <Box
@@ -87,7 +79,7 @@ const ReviewInterior = ({ setSelectedTab, interior }) => {
           width="110px"
           btnText={t("reviewBook.nextBtn")}
           onClick={() => setOpen(true)}
-          disabled={numPages < 60}
+          disabled={totalInteriorPages < 60}
         />
       </Box>
       <ShippingModal

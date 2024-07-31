@@ -248,7 +248,6 @@ export const PrintBook = () => {
   useEffect(() => {
     dispatch(getPrintingBookStatus())
       .then((response: any) => {
-        console.log("print a book status", response.payload.status);
         setLuluStatus(response.payload.status);
       })
       .catch((error: any) => {

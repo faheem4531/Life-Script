@@ -10,12 +10,23 @@ import Values from "./sections/Values";
 import Head from 'next/head';
 import { NextSeo } from "next-seo";
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+
 const AboutUs = () => {
   const { t } = useTranslation();
-  return (
+  const footerRef = useRef(null);
+  const router = useRouter();
 
+  useEffect(() => {
+    if (router.asPath.includes('#ContactUs')) {
+      footerRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [router.asPath]);
+
+  return (
     <>
-       <Head>
+      <Head>
         <title>About us</title>
         <meta
           name="description"
@@ -39,10 +50,8 @@ const AboutUs = () => {
           canonical="https://www.thelifescript.com/about-us"
         />
       </Head>
-
-
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <FeaturesIntroduction heading={t("aboutSection.title")}width="75%" keyWorld={t("aboutSection.subTitle")} />
+        <FeaturesIntroduction heading={t("aboutSection.title")} width="75%" keyWorld={t("aboutSection.subTitle")} />
         <Mission />
         <Story />
         <Values />
@@ -56,11 +65,10 @@ const AboutUs = () => {
           input3={t("aboutSection.stillConfusedSection.input3")}
           button={t("aboutSection.stillConfusedSection.btnText")}
         />
-        <Footer />
+        <Footer ref={footerRef} />
       </Box>
     </>
-
-  )
-}
+  );
+};
 
 export default AboutUs;

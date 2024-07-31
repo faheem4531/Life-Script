@@ -404,7 +404,6 @@ export async function uploadImageApi(data) {
 
 export async function uploadImageForCoverApi(data) {
   try {
-    console.log("inside Api");
     const res = await api.post("/table-content/cover/image/upload-image", data);
     return res;
   } catch (error: any) {
@@ -831,7 +830,6 @@ export async function getChaptersApi() {
 export async function getStatusOfPrintingBook() {
   try {
     const res = await api.get("/chapter-compile/status/print-book");
-    console.log("response", res);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -846,8 +844,6 @@ export async function getStatusOfPrintingBook() {
 export async function getMilestoneApi() {
   try {
     const res = await api.get("/users/mile-stone/completion");
-
-    console.log(res, "milsetone api");
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {

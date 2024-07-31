@@ -1,7 +1,6 @@
 import { Box, Typography, Link } from "@mui/material";
 import Image from "next/image";
 import styles from "../ComponentsStyles.module.css";
-
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Insta from "@/__webAssets/svgs/insta.svg";
 import Fb from "@/__webAssets/svgs/fb.svg";
@@ -9,16 +8,24 @@ import Li from "@/__webAssets/svgs/li.svg";
 import X from "@/__webAssets/svgs/x.svg";
 import Tiktok from "@/__webAssets/svgs/tiktok.svg";
 import { useTranslation } from "react-i18next";
-// import Link from "next/link"
+import { useRouter } from "next/router";
+import React from "react";
 
-const Footer = () => {
+const Footer = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
+  const router = useRouter();
   const logo = {
     width: "25px",
     height: "auto",
   };
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    router.push('/about-us#ContactUs');
+  };
+
   return (
-    <Box>
+    <Box ref={ref}>
       <Box
         sx={{
           padding: {
@@ -33,7 +40,7 @@ const Footer = () => {
         }}
       >
         <Box>
-          <Image src={Logo} alt="logo" loading='lazy'/>
+          <Image src={Logo} alt="logo" loading='lazy' />
           <Typography
             sx={{
               width: "210px",
@@ -42,7 +49,7 @@ const Footer = () => {
               textAlign: { xs: "center", sm: "start" },
             }}
           >
-           {t("landingPage.footerSection.title")}
+            {t("landingPage.footerSection.title")}
           </Typography>
           <Box
             sx={{
@@ -64,27 +71,24 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Tiktok} alt="logo" style={logo} loading='lazy'/>
+              <Image src={Tiktok} alt="logo" style={logo} loading='lazy' />
             </a>
-
             <a
               href="https://www.facebook.com/profile.php?id=61554559332668"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Fb} alt="logo" style={logo} loading='lazy'/>
+              <Image src={Fb} alt="logo" style={logo} loading='lazy' />
             </a>
-
             <a
               href="https://twitter.com/thelifescript"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={X} alt="logo" style={logo} loading='lazy'/>
+              <Image src={X} alt="logo" style={logo} loading='lazy' />
             </a>
           </Box>
         </Box>
-
         <Box sx={{ display: "flex", columnGap: "45px" }}>
           <Box sx={{ display: { sm: "block", xs: "none" } }}>
             <Typography
@@ -117,7 +121,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-              {t("landingPage.footerSection.heading1.text3")}
+                {t("landingPage.footerSection.heading1.text3")}
               </Typography>
             </Link>
             <Link href="/blog">
@@ -137,9 +141,9 @@ const Footer = () => {
                 fontFamily: "Avenir8 !important",
               }}
             >
-             {t("landingPage.footerSection.heading2.title")}
+              {t("landingPage.footerSection.heading2.title")}
             </Typography>
-            <Link href="/about-us#ContactUs">
+            <Link href="/about-us#ContactUs" onClick={handleContactClick}>
               <Typography
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
@@ -160,7 +164,7 @@ const Footer = () => {
                 sx={{ fontSize: "16px", marginBottom: "19px" }}
                 className={styles.hoverLinks}
               >
-               {t("landingPage.footerSection.heading2.text3")}
+                {t("landingPage.footerSection.heading2.text3")}
               </Typography>
             </Link>
             <Link href="/privacy-policy">
@@ -174,7 +178,6 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-
       <Box
         sx={{
           textAlign: "center",
@@ -187,6 +190,6 @@ const Footer = () => {
       </Box>
     </Box>
   );
-};
+});
 
 export default Footer;

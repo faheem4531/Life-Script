@@ -89,7 +89,7 @@ const BookView = () => {
               <BookCoverTab setSelectedTab={setSelectedTab} pages={bookInterior?.pages} />
             )}
             {selectedTab === 2 && (
-              <ReviewInterior setSelectedTab={setSelectedTab} interior={bookInterior?.link} />
+              <ReviewInterior setSelectedTab={setSelectedTab} interior={bookInterior?.link} totalInteriorPages={bookInterior?.pages}/>
             )}
             {selectedTab === 3 && (
               <Shipping
