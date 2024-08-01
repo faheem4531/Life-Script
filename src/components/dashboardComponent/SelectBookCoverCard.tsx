@@ -5,9 +5,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-
-import { uploadImage } from "@/store/slices/chatSlice";
-import { styled } from '@mui/material/styles';
+import { getBookCover } from "@/store/slices/chatSlice";
+import { styled } from "@mui/material/styles";
 import GlobelBtn from "../button/Button";
 
 interface SelectBookCoverCardProps {
@@ -36,18 +35,34 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
   const { CoverNumber } = router.query;
+  const [coverNumber, setCoverNumber] = useState<string | null>(null);
+  const [Loading, setLoading] = useState(false);
 
-  const WhiteLogo = styled('img')({
-    filter: 'invert(70%) brightness(200%)',
+  const WhiteLogo = styled("img")({
+    filter: "invert(70%) brightness(200%)",
   });
 
+  const handleEditClick = () => {
+    setLoading(true);
+
+    if (landScape) {
+      router.push(
+        `/dashboard/BookCover/ViewBookCover?CoverNumber=${landScape}`
+      );
+    } else {
+      router.push("/dashboard/BookCover/SelectBookCover");
+    }
+  };
   return (
     <Box
       sx={{
         position: "relative",
         "&:hover .hoverBox": {
           display:
-            currentPath == "/dashboard/BookCover/SelectBookCover" && "flex",
+            currentPath ===
+            `/dashboard/BookCover/ViewBookCover?CoverNumber=${CoverNumber}`
+              ? "flex"
+              : "none",
           cursor: "pointer",
         },
       }}
@@ -58,14 +73,13 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
             display: "flex",
             justifyContent: "end",
             alignItems: "center",
-            m: "30px 0 20px"
+            m: "30px 0 20px",
           }}
         >
           <GlobelBtn
             btnText="Edit"
-            onClick={() => {
-              router.push("/dashboard/BookCover/SelectBookCover");
-            }}
+            onClick={handleEditClick}
+            isLoading={Loading}
           />
         </Box>
       )}
@@ -79,8 +93,6 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
           overflowX: "auto",
         }}
       >
-
-
         <Box
           sx={{
             display: "flex",
@@ -93,7 +105,12 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
               sx={{
                 width: { xs: "260px", md: "240px", lg: "287.611px" },
                 height: "414.319px",
-                bgcolor: CoverNumber === "2" || landScape === "2" ? "#FFFFFF" : (ColourPalette.length === 0 ? "#197065" : ColourPalette),
+                bgcolor:
+                  CoverNumber === "2" || landScape === "2"
+                    ? "#FFFFFF"
+                    : ColourPalette.length === 0
+                    ? "#197065"
+                    : ColourPalette,
                 color: "white",
                 textAlign: "center",
                 p: "10px",
@@ -102,9 +119,10 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
           )}
           <Box
             sx={{
-              bgcolor: CoverNumber === "2" || landScape === "2"
-                ? "#FFFFFF"
-                : ColourPalette && ColourPalette.length === 0
+              bgcolor:
+                CoverNumber === "2" || landScape === "2"
+                  ? "#FFFFFF"
+                  : ColourPalette && ColourPalette.length === 0
                   ? "#197065"
                   : ColourPalette,
               color: "white",
@@ -130,13 +148,13 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                   color: landScape === "5" ? "white" : "black",
                 }}
               >
-                {title.length == 0 ? (
+                {title.length === 0 ? (
                   <span> {t("BookCoverCard.title")}</span>
                 ) : (
                   title
                 )}{" "}
                 |{" "}
-                {subtitle.length == 0 ? (
+                {subtitle.length === 0 ? (
                   <span> {t("BookCoverCard.author")}</span>
                 ) : (
                   subtitle
@@ -146,17 +164,24 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                 sx={{
                   color: landScape === "5" ? "white" : "black",
                   transform: "rotate(0deg)",
-                  marginBottom: "10px"
+                  marginBottom: "10px",
                 }}
               >
-                {landScape === "5" || CoverNumber === "5" ? <WhiteLogo
-                  src="https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"
-                  alt="Logo"
-                  width={25}
-                  height={60}
-                /> : <Image src={"https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"} alt="" width={25} height={60}
-                />}
-
+                {landScape === "5" || CoverNumber === "5" ? (
+                  <WhiteLogo
+                    src="https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"
+                    alt="Logo"
+                    width={25}
+                    height={60}
+                  />
+                ) : (
+                  <Image
+                    src="https://lifescript-media.s3.eu-north-1.amazonaws.com/logo.svg"
+                    alt=""
+                    width={25}
+                    height={60}
+                  />
+                )}
               </Box>
             </Box>
           </Box>
@@ -177,7 +202,7 @@ const SelectBookCoverCard: React.FC<SelectBookCoverCardProps> = ({
                 width={290}
                 height={414}
                 src={finalCover}
-                alt=" Image"
+                alt="Cover Image"
               />
             )}
           </Box>

@@ -19,7 +19,6 @@ import * as Yup from "yup";
 import googleLogo from "../../../public/googleIcon.svg";
 import facebookIcon from "../../../public/facebookIcon.svg";
 
-
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPasswordClicked, setIsForgotPasswordClicked] = useState(false);
@@ -79,8 +78,8 @@ const Login = () => {
         .then((res) => {
           toast.success(t("login-page.loggedIn"));
           // setLoading(false);
-          router.push(`/getStarted?userName=${res?.name}`); //here it leades to get started 
-          // router.push(`/dashboard/Questionnaire?userName=${res?.name}`); //here it leades to get started 
+          router.push(`/getStarted?userName=${res?.name}`); //here it leades to get started
+          // router.push(`/dashboard/Questionnaire?userName=${res?.name}`); //here it leades to get started
         })
         .catch((error: any) => {
           setLoginFailed(true);
@@ -107,12 +106,10 @@ const Login = () => {
         }}
       >
         <Box sx={{ textAlign: "center", m: "50px 0 30px", color: "#30422E" }}>
-          <Typography sx={{ fontSize: "38px", fontWeight: 700, }}>
+          <Typography sx={{ fontSize: "38px", fontWeight: 700 }}>
             {t("login-page.loginToYourAccount")}
           </Typography>
-          <Typography>
-            {t("login-page.continueToYourTrip")}
-          </Typography>
+          <Typography>{t("login-page.continueToYourTrip")}</Typography>
         </Box>
         <Box>
           <Box>
@@ -163,7 +160,7 @@ const Login = () => {
                 "& .MuiOutlinedInput-root": {
                   borderRadius: "2px", // Adjust the border radius as needed
                   backgroundColor: "white",
-                  border: "1px solid #30422E"
+                  border: "1px solid #30422E",
                 },
                 width: "100%",
               }}
@@ -309,10 +306,7 @@ const Login = () => {
                 textTransform: "capitalize",
               }}
             >
-              <Image
-                src={googleLogo}
-                alt="Google Logo"
-              />
+              <Image src={googleLogo} alt="Google Logo" />
               <Typography> {t("login-page.loginWithGoogle")}</Typography>
             </Button>
             <Button
@@ -333,10 +327,7 @@ const Login = () => {
               }}
               onClick={handleSignin}
             >
-              <Image
-                src={facebookIcon}
-                alt="Facebook Logo"
-              />
+              <Image src={facebookIcon} alt="Facebook Logo" />
               <Typography>{t("login-page.loginWithFaceBook")}</Typography>
             </Button>
           </Box>
@@ -356,7 +347,9 @@ const Login = () => {
               cursor: "pointer",
               marginLeft: "8px",
             }}
-            onClick={() => { }}
+            onClick={() => {
+              router.push("/stripe-page");
+            }}
           >
             {t("login-page.register-now")}
           </a>

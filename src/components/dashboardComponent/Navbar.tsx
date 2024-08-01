@@ -46,6 +46,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             `/dashboard/narrative?chapterId=${notification?.chapter}&openai=true`
           );
         }
+        handleNotificationClose();
       });
   };
 

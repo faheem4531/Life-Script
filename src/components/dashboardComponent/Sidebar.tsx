@@ -33,7 +33,7 @@ import Logo from "@/_assets/svg/logo-dashboard.svg";
 import { getBookCover } from "@/store/slices/chatSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -42,14 +42,12 @@ import { useDispatch } from "react-redux";
 import styles from "./Sidebar.module.css";
 import TransitionsDialog from "../modal/TransitionDialog";
 
-
 interface SideBarProps {
   menuClick: () => void;
   handleSideCheck: any;
 }
 
 const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
-
   const [childsOpen, setChilsdOpen] = useState(false);
   const [supportChildsOpen, setSupportChilsdOpen] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
@@ -59,7 +57,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
   const currentRoute = router.pathname;
-
+  const [loading, setLoading] = useState(false);
   const childsOpenCheck = () => {
     if (
       currentRoute === "/dashboard/chapters" ||
@@ -107,7 +105,22 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
     }
   }, []);
 
-
+  const handleBookCoverClick = () => {
+    setLoading(true);
+    dispatch(getBookCover())
+      .unwrap()
+      .then((res) => {
+        setCoverNumber(res.coverNumber);
+        if (res.coverNumber) {
+          router.push(
+            `/dashboard/BookCover/ViewBookCover?CoverNumber=${res.coverNumber}`
+          );
+        } else {
+          router.push("/dashboard/BookCover/SelectBookCover");
+        }
+      })
+      .catch(() => router.push("/dashboard/BookCover/SelectBookCover"))
+  };
 
   return (
     <>
@@ -123,9 +136,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
               padding: "0 0 0 20px",
               height: "70px",
               bgcolor: "#30422E",
-              cursor: "pointer"
+              cursor: "pointer",
             }}
-            onClick={() => { router.push("/dashboard/overview")}}
+            onClick={() => {
+              router.push("/dashboard/overview");
+            }}
           >
             <Image src={Logo} alt="logo" className={styles.logo} />
           </Box>
@@ -158,11 +173,12 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* Overview  */}
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/overview" ||
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/overview" ||
                 currentRoute === "/dashboard/BookView"
-                ? styles.active
-                : ""
-                }`}
+                  ? styles.active
+                  : ""
+              }`}
               onClick={() => {
                 router.push("/dashboard/overview");
               }}
@@ -172,7 +188,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/overview" ||
-                    currentRoute === "/dashboard/BookView"
+                  currentRoute === "/dashboard/BookView"
                     ? OverViewWhite
                     : OverViewGreen
                 }
@@ -183,13 +199,14 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* chapters */}
           <Box className="step6-Chapters">
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/chapters" ||
                 currentRoute === "/dashboard/chapters/chapterName" ||
                 currentRoute === "/events"
-                ? styles.active
-                : currentRoute === "/dashboard/chapters/completedChapter" &&
-                styles.active
-                }`}
+                  ? styles.active
+                  : currentRoute === "/dashboard/chapters/completedChapter" &&
+                    styles.active
+              }`}
               onClick={() => {
                 setChilsdOpen(!childsOpen);
               }}
@@ -199,9 +216,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/chapters" ||
-                    currentRoute === "/dashboard/chapters/completedChapter" ||
-                    currentRoute === "/dashboard/chapters/chapterName" ||
-                    currentRoute === "/events"
+                  currentRoute === "/dashboard/chapters/completedChapter" ||
+                  currentRoute === "/dashboard/chapters/chapterName" ||
+                  currentRoute === "/events"
                     ? HomeWhite
                     : HomeGreen
                 }
@@ -227,12 +244,13 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
               <Box>
                 <Box sx={{ marginLeft: "20px" }} className={"step6-Chapters"}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/chapters" ||
                       currentRoute === "/dashboard/chapters/chapterName" ||
                       currentRoute === "/events"
-                      ? styles.active
-                      : ""
-                      }`}
+                        ? styles.active
+                        : ""
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/chapters");
                     }}
@@ -243,8 +261,8 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/chapters" ||
-                          currentRoute === "/dashboard/chapters/chapterName" ||
-                          currentRoute === "/events"
+                        currentRoute === "/dashboard/chapters/chapterName" ||
+                        currentRoute === "/events"
                           ? ProgressWhite
                           : ProgressGreen
                       }
@@ -254,9 +272,10 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/chapters/completedChapter" &&
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/chapters/completedChapter" &&
                       styles.active
-                      }`}
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/chapters/completedChapter");
                     }}
@@ -277,10 +296,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
             )}
           </Box>
           {/* TableOfContent */}
-          <Box className="step7-TableOfContent" >
+          <Box className="step7-TableOfContent">
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/TableOfContent" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/TableOfContent" && styles.active
+              }`}
               onClick={() => router.push("/dashboard/TableOfContent")}
             >
               <Image
@@ -298,8 +318,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* familyTree */}
           <Box className="step8-FamilyTree">
             <a
-              className={`${styles.link} ${currentRoute === "/familyTree" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/familyTree" && styles.active
+              }`}
               onClick={() => {
                 //   if (isPremium) {
                 router.push("/familyTree");
@@ -321,41 +342,25 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* BookCover */}
           <Box className="step9-BookCovers">
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/BookCover/SelectBookCover"
+               className={`${styles.link} ${currentRoute === "/dashboard/BookCover/SelectBookCover"
                 ? styles.active
                 : currentRoute === "/dashboard/BookCover/ViewBookCover"
                   ? styles.active
                   : currentRoute === "/dashboard/BookCover/EditBookCover" &&
                   styles.active
                 }`}
-              onClick={() => {
-                dispatch(getBookCover())
-                  .unwrap()
-                  .then((res) => {
-                    setCoverNumber(res.coverNumber);
-                    if (res.coverNumber) {
-                      router.push(
-                        `/dashboard/BookCover/ViewBookCover?CoverNumber=${res.coverNumber}`
-                      );
-                    } else {
-                      router.push("/dashboard/BookCover/SelectBookCover");
-                    }
-                  })
-                  .catch(() =>
-                    router.push("/dashboard/BookCover/SelectBookCover")
-                  );
-              }}
+              onClick={handleBookCoverClick}
             >
               <Image
                 alt="icon"
-                className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/BookCover/SelectBookCover" ||
-                    currentRoute === "/dashboard/BookCover/EditBookCover" ||
-                    currentRoute === "/dashboard/BookCover/ViewBookCover"
+                  currentRoute === "/dashboard/BookCover/EditBookCover" ||
+                  currentRoute === "/dashboard/BookCover/ViewBookCover"
                     ? BookCoverWhite
                     : BookCoverGreen
                 }
+                className={styles.sidebarIcon}
               />
               {t("sideBar.bookCover")}
             </a>
@@ -363,12 +368,13 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* SubscribePlans */}
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/SubscribePlans"
-                ? styles.active
-                : currentRoute ===
-                "/dashboard/SubscribePlans/SubscriptionPayment" &&
-                styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/SubscribePlans"
+                  ? styles.active
+                  : currentRoute ===
+                      "/dashboard/SubscribePlans/SubscriptionPayment" &&
+                    styles.active
+              }`}
               onClick={() => router.push("/dashboard/SubscribePlans")}
             >
               <Image
@@ -376,7 +382,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/SubscribePlans" ||
-                    currentRoute ===
+                  currentRoute ===
                     "/dashboard/SubscribePlans/SubscriptionPayment"
                     ? SubsWhite
                     : Subs
@@ -388,8 +394,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* profileSetting */}
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/profileSetting" && styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/profileSetting" && styles.active
+              }`}
               onClick={() => router.push("/dashboard/profileSetting")}
             >
               <Image
@@ -407,11 +414,12 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* ReferAFriend */}
           <Box>
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/Support/Gift" ||
                 currentRoute === "/dashboard/Support/ReferAFriend"
-                ? styles.active
-                : ""
-                }`}
+                  ? styles.active
+                  : ""
+              }`}
               onClick={() => {
                 router.push("/dashboard/Support/Gift");
               }}
@@ -422,7 +430,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support/Gift" ||
-                    currentRoute === "/dashboard/Support/ReferAFriend"
+                  currentRoute === "/dashboard/Support/ReferAFriend"
                     ? GiftWhite
                     : GiftGreen
                 }
@@ -440,11 +448,12 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
             className="step10-tutorials"
           >
             <a
-              className={`${styles.link} ${currentRoute === "/dashboard/Support"
-                ? styles.active
-                : currentRoute === "/dashboard/Support/Tutorials" &&
-                styles.active
-                }`}
+              className={`${styles.link} ${
+                currentRoute === "/dashboard/Support"
+                  ? styles.active
+                  : currentRoute === "/dashboard/Support/Tutorials" &&
+                    styles.active
+              }`}
               onClick={() => {
                 setSupportChilsdOpen(!supportChildsOpen);
               }}
@@ -454,7 +463,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support" ||
-                    currentRoute === "/dashboard/Support/Tutorials"
+                  currentRoute === "/dashboard/Support/Tutorials"
                     ? SuportWhite
                     : SuportGreen
                 }
@@ -478,13 +487,14 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
             </a>
             {supportChildsOpen && (
               <Box>
-                <Box sx={{ marginLeft: "20px" }} >
+                <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/Support/Tutorials" ||
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/Support/Tutorials" ||
                       currentRoute === "/dashboard/Support/TutorialsDetail"
-                      ? styles.active
-                      : ""
-                      }`}
+                        ? styles.active
+                        : ""
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/Support/Tutorials");
                     }}
@@ -495,7 +505,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/Support/Tutorials" ||
-                          currentRoute === "/dashboard/Support/TutorialsDetail"
+                        currentRoute === "/dashboard/Support/TutorialsDetail"
                           ? TutorialWhite
                           : TutorialGreen
                       }
@@ -505,8 +515,10 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" && styles.active
-                      }`}
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/emailPreference" &&
+                      styles.active
+                    }`}
                     onClick={() => router.push("/dashboard/emailPreference")}
                   >
                     <Image
@@ -523,8 +535,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${currentRoute === "/dashboard/Support" && styles.active
-                      }`}
+                    className={`${styles.link} ${
+                      currentRoute === "/dashboard/Support" && styles.active
+                    }`}
                     onClick={() => {
                       router.push("/dashboard/Support");
                     }}
@@ -545,7 +558,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
             )}
           </Box>
         </Box>
-      </Box >
+      </Box>
 
       <TransitionsDialog
         open={buyPremium}
