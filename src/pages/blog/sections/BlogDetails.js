@@ -12,8 +12,8 @@ const BlogDetails = ({ details, title, date, image }) => {
       <Box sx={{ width: "100%", margin: "auto" , marginTop : 3}}>
         <Box className={styles.blogImgContainer}>
             <section
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
           className={styles.content}
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
         </Box>
       </Box>

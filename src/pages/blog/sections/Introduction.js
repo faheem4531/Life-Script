@@ -25,18 +25,18 @@ const IntroductionBlog = () => {
       }}>
         <Box sx={{
           fontSize: { md: "52px", sm: "44px", xs: "32px" },
-          fontWeight: 500, marginBottom: "30px", fontFamily: "Besley !important"
+          fontWeight: 500, marginBottom: "30px", fontFamily: "Besley !important",
         }}>
           <h2 className={styles.pureHeadings}>
             {t("blogSection.title")}
             {" "}
             <span className={styles.lineBox}>
-            {t("blogSection.subTitle")}
+              {t("blogSection.subTitle")}
               <Image src={Line} alt="img" className={styles.line} />
             </span>
           </h2>
         </Box>
-        <Typography x={{ fontSize: "16px" }}>{t("blogSection.description")}</Typography>
+        <Typography sx={{ fontSize: "16px"}}> {t("blogSection.description")}</Typography>
       </Box>
     </Box>
   )

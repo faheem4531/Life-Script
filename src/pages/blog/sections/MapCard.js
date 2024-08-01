@@ -75,7 +75,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
         </Typography>
       )}
 
-      <Typography sx={{ fontSize: "16px", marginTop: 2 }}>
+      <Typography sx={{ fontSize: "20px", marginTop: 2,}}>
         <div
           dangerouslySetInnerHTML={{
             __html: showFullDetails ? details : truncatedDetails,
