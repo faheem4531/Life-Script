@@ -4,6 +4,7 @@ import {
   getChapters,
   simpleChapter,
   uploadImage,
+  uploadImageForCover,
 } from "@/store/slices/chatSlice"; //uploadImage
 import { Box, CircularProgress } from "@mui/material";
 import {
@@ -462,7 +463,7 @@ const RichText = ({ questionId }) => {
         form_data.append("image", file);
 
         try {
-          const res = await dispatch(uploadImage(form_data));
+          const res = await dispatch(uploadImageForCover(form_data));
 
 
           if (res && res.payload) {
