@@ -40,17 +40,18 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
 
   return (
     <Box
-      sx={{ width: "50%", margin: "auto", justifyContent: 'center', marginTop: 5 }}>
+      sx={{marginTop: 3,}}>
       <Box>
         <Typography
           sx={{
+            width: "100%",
             cursor: "pointer",
-            fontSize: { sm: "30px", xs: "30px" },
+            fontSize: { sm: "20px", xs: "18px", lg: "24px" },
             fontWeight: 500,
             marginBottom: "20px",
             fontFamily: "Besley !important",
-            lineHeight: { sm: "50px", xs: "36px" },
           }}
+          onClick={handleReadMoreClick}
         >
           {title}
         </Typography>
@@ -60,8 +61,9 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
         src={image}
         alt="img"
         width={"100%"}
-        height={"100%"}
+        height={"300px"}
         style={{ cursor: "pointer" }}
+        onClick={handleReadMoreClick}
       />
       {caption && (
         <Typography
@@ -75,19 +77,19 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
         </Typography>
       )}
 
-      <Typography sx={{ fontSize: "20px", marginTop: 2,}}>
+      {/* <Typography sx={{ fontSize: "px", marginTop: 2, }}>
         <div
           dangerouslySetInnerHTML={{
             __html: showFullDetails ? details : truncatedDetails,
           }}
-        />
-        {isTruncated && (
+        /> 
+         {isTruncated && (
           <span className={styles.readMore} onClick={handleReadMoreClick}>
             {showFullDetails ? "Read less " : "Read more "}
             <Image src={More} alt="more" />
           </span>
         )}
-      </Typography>
+      </Typography> */}
     </Box>
   );
 };

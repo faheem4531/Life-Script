@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import MapCard from "./MapCard";
 import { Circles } from "react-loader-spinner";
@@ -98,24 +98,28 @@ const Blogs = () => {
       )}
       {!loading && (
         <>
-          {blogsData &&
-            blogsData.map((item, index) => {
-              const imageUrl =
-                item.attributes.image.data[0] &&
-                item.attributes.image.data[0].attributes.url;
+          <Grid container spacing={2} width={"80%"} margin={"auto"}>
+            {blogsData &&
+              blogsData.map((item, index) => {
+                const imageUrl =
+                  item.attributes.image.data[0] &&
+                  item.attributes.image.data[0].attributes.url;
 
-              return (
-                <MapCard
-                  key={index}
-                  id={item.id}
-                  title={item.attributes?.title}
-                  date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
-                  image={imageUrl}
-                  details={item.attributes?.description}
-                  caption={item.attributes.image.data[0].attributes.caption}
-                />
-              );
-            })}
+                return (
+                  <Grid  item xs={12} sm={6} lg={4} >
+                    <MapCard
+                      key={index}
+                      id={item.id}
+                      title={item.attributes?.title}
+                      date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
+                      image={imageUrl}
+                      details={item.attributes?.description}
+                      caption={item.attributes.image.data[0].attributes.caption}
+                    />
+                  </Grid>
+                );
+              })}
+          </Grid>
 
           {/* Pagination */}
           <Box mt={2} display="flex" justifyContent="center">
@@ -151,7 +155,8 @@ const Blogs = () => {
             </Button>
           </Box>
         </>
-      )}
+      )
+      }
     </Box>
   );
 };

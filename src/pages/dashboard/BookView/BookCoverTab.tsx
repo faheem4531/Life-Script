@@ -6,9 +6,9 @@ import {
   updateBook,
   uploadImage,
   uploadImageForCover,
-  uploadImageWithCloudinary
+  uploadImageWithCloudinary,
 } from "@/store/slices/chatSlice";
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import jsPDF from "jspdf";
 import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
@@ -24,16 +24,17 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
   const [byline, setByline] = useState("");
   const [selectedColor, setSelectedColor] = useState<string>("#197065");
   const [progressCompleted, setProgressCompleted] = useState(false);
-
+  const [tooltip, setTooltip] = useState(false);
 
   const dispatch: any = useDispatch();
   const [spineSize, setSpineSize] = useState(null);
   const coverData = useSelector(selectCoverData);
   const [loading, setLoading] = useState(false);
   const [finalCover, setFinalCover] = useState("");
-  const handleClick = (event: any) => {
-    event.stopPropagation();
-  };
+
+  // const handleClick = (event: any) => {
+  //   event.stopPropagation();
+  // };
 
   const onClickHandler = async () => {
     setLoading(true);
@@ -44,15 +45,11 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     }
   };
 
-  const generatePDFOne = async (
-    title,
-    subtitle,
-    name,
-    imgUrl,
-    color,
-  ) => {
-    const logo = coverData?.coverNumber === "5" ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
-      : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
+  const generatePDFOne = async (title, subtitle, name, imgUrl, color) => {
+    const logo =
+      coverData?.coverNumber === "5"
+        ? "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo+(5)+LifeScript+2+(1).png"
+        : "https://lifescript-media.s3.eu-north-1.amazonaws.com/logo_lifescript+1.png";
 
     let pdfHeight;
     if (coverData?.coverNumber === "1" || coverData?.coverNumber === "3") {
@@ -76,7 +73,13 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       offset = 20;
     }
 
-    const pdfWidth = leftContentWidth + gutterWidth + spineWidth + gutterWidth + rightContentWidth + 2 * offset;
+    const pdfWidth =
+      leftContentWidth +
+      gutterWidth +
+      spineWidth +
+      gutterWidth +
+      rightContentWidth +
+      2 * offset;
 
     const pdf = new jsPDF({
       unit: "mm",
@@ -104,47 +107,109 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
       pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
 
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth,
+        offset,
+        gutterWidth,
+        pdfHeight - 2 * offset,
+        "F"
+      );
 
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth,
+        offset,
+        1,
+        pdfHeight - 2 * offset,
+        "F"
+      );
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth + 1,
+        offset,
+        spineWidth - 2,
+        pdfHeight - 2 * offset,
+        "F"
+      );
       pdf.setFillColor("#FFFFFF");
-      const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
+      const spineBorder2 =
+        offset + leftContentWidth + gutterWidth + spineWidth - 1;
       pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F");
 
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth + spineWidth,
+        offset,
+        gutterWidth,
+        pdfHeight - 2 * offset,
+        "F"
+      );
 
       pdf.setFillColor("#FFFFFF");
-      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
-
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
+        offset,
+        rightContentWidth,
+        pdfHeight - 2 * offset,
+        "F"
+      );
     } else {
       pdf.setFillColor(bgcolor);
       pdf.rect(offset, offset, leftContentWidth, pdfHeight - 2 * offset, "F");
 
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth,
+        offset,
+        gutterWidth,
+        pdfHeight - 2 * offset,
+        "F"
+      );
 
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth, offset, 1, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth,
+        offset,
+        1,
+        pdfHeight - 2 * offset,
+        "F"
+      );
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth + 1, offset, spineWidth - 2, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth + 1,
+        offset,
+        spineWidth - 2,
+        pdfHeight - 2 * offset,
+        "F"
+      );
       pdf.setFillColor(bgcolor);
-      const spineBorder2 = offset + leftContentWidth + gutterWidth + spineWidth - 1;
+      const spineBorder2 =
+        offset + leftContentWidth + gutterWidth + spineWidth - 1;
       pdf.rect(spineBorder2, offset, 1, pdfHeight - 2 * offset, "F");
 
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth, offset, gutterWidth, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth + spineWidth,
+        offset,
+        gutterWidth,
+        pdfHeight - 2 * offset,
+        "F"
+      );
 
       pdf.setFillColor(bgcolor);
-      pdf.rect(offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth, offset, rightContentWidth, pdfHeight - 2 * offset, "F");
+      pdf.rect(
+        offset + leftContentWidth + gutterWidth + spineWidth + gutterWidth,
+        offset,
+        rightContentWidth,
+        pdfHeight - 2 * offset,
+        "F"
+      );
     }
 
     let y = 30;
     const fontSize = 10;
-    const textCenter = offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
+    const textCenter =
+      offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1.3;
 
     const charSpacing = 3.1;
     const drawTextVertically = (text) => {
@@ -168,14 +233,13 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
           y = y + 3.7;
         } else {
           if (text[i + 1] === "O") {
-            y = y + 2.7
-          }
-          else {
+            y = y + 2.7;
+          } else {
             y = y + charSpacing;
           }
         }
       }
-    }
+    };
 
     drawTextVertically(text2);
     pdf.setFontSize(fontSize);
@@ -185,7 +249,12 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     } else {
       pdf.setTextColor(0, 0, 0);
     }
-    pdf.text("  |  ", offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1, y, { angle: 270 });
+    pdf.text(
+      "  |  ",
+      offset + leftContentWidth + gutterWidth + spineWidth / 2 - 1,
+      y,
+      { angle: 270 }
+    );
 
     y = y + 6;
 
@@ -195,16 +264,18 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
     const logoHeight = 32;
 
     const logoUp = 5;
-    const tailcenterX = offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
+    const tailcenterX =
+      offset + leftContentWidth + gutterWidth + (spineWidth - logoWidth) / 2;
     const verticalOffset = 8;
-    const tailcenterY = pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp;
+    const tailcenterY =
+      pdfHeight - logoHeight - offset - verticalOffset - gutterWidth - logoUp;
 
     pdf.addImage(logo, "png", tailcenterX, tailcenterY, logoWidth, logoHeight);
 
     const newImage = coverData && coverData?.coverPagePhoto;
 
     const newData = { imageUrl: newImage };
-    const resp = await appendImageToFormData(newImage)
+    const resp = await appendImageToFormData(newImage);
     const newImageLink = await dispatch(uploadImageForCover(resp));
 
     // const newImageLink = await dispatch(uploadImageWithCloudinary(newData));
@@ -266,34 +337,34 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
 
   function loadImage(src) {
     return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = 'Anonymous'; // If the image is from a different origin, this may be necessary.
-        img.src = src + '?test=123'
-        img.onload = () => resolve(img);
-        img.onerror = reject;
+      const img = new Image();
+      img.crossOrigin = "Anonymous"; // If the image is from a different origin, this may be necessary.
+      img.src = src + "?test=123";
+      img.onload = () => resolve(img);
+      img.onerror = reject;
     });
-}
+  }
 
-function imageToBlob(img) {
+  function imageToBlob(img) {
     return new Promise((resolve) => {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        canvas.toBlob(resolve, 'image/png');
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob(resolve, "image/png");
     });
-}
+  }
 
-async function appendImageToFormData(finalCover) {
-  const img = await loadImage(finalCover);
-  const blob: any = await imageToBlob(img);
+  async function appendImageToFormData(finalCover) {
+    const img = await loadImage(finalCover);
+    const blob: any = await imageToBlob(img);
 
-  const formData = new FormData();
-  formData.append("image", blob);
+    const formData = new FormData();
+    formData.append("image", blob);
 
-  return formData;
-}
+    return formData;
+  }
 
   const generateAndUploadPDF = async () => {
     const pdfContent = await generatePDFOne(
@@ -301,7 +372,7 @@ async function appendImageToFormData(finalCover) {
       coverData.title,
       coverData.subTitle,
       coverData.image,
-      coverData.color,
+      coverData.color
       // spineSize
     );
 
@@ -313,12 +384,11 @@ async function appendImageToFormData(finalCover) {
     dispatch(uploadImage(formData))
       .unwrap()
       .then((pdfUrl) => {
-
         dispatch(updateBook({ coverPdf: pdfUrl }))
           .unwrap()
           .then(() => {
             setLoading(false);
-            setProgressCompleted(true); 
+            setProgressCompleted(true);
             setSelectedTab(2);
           });
       });
@@ -326,6 +396,7 @@ async function appendImageToFormData(finalCover) {
 
   useEffect(() => {
     dispatch(getBookCover());
+    setTooltip(false);
   }, []);
 
   function calculatePageSize(pages: number) {
@@ -349,10 +420,16 @@ async function appendImageToFormData(finalCover) {
       setImageLink(coverData.image);
       setSelectedColor(coverData.color);
       setFinalCover(coverData.coverPagePhoto);
-
     }
   }, [coverData]);
 
+  const handleClick = () => {
+    if (!finalCover) {
+      setTooltip(true);
+    } else {
+      onClickHandler();
+    }
+  };
   return (
     <Box>
       {loading ? (
@@ -364,11 +441,10 @@ async function appendImageToFormData(finalCover) {
             height: "100vh",
           }}
         >
-          <Loading complete={progressCompleted}/>
+          <Loading complete={progressCompleted} />
         </Box>
       ) : (
-
-        <Box onClick={(e) => handleClick(e)}>
+        <Box onClick={handleClick}>
           <SelectBookCoverCard
             landScape={coverData.coverNumber?.toString()}
             title={title}
@@ -380,21 +456,21 @@ async function appendImageToFormData(finalCover) {
           />
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'end',
-              alignItems: 'baseline',
-              flexWrap: 'wrap',
+              display: "flex",
+              justifyContent: "end",
+              alignItems: "baseline",
+              flexWrap: "wrap",
               gap: 2,
-              mt: '40px',
+              mt: "40px",
             }}
           >
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
                 gap: 2,
-                pb: '20px',
+                pb: "20px",
               }}
             >
               <Box>
@@ -407,16 +483,25 @@ async function appendImageToFormData(finalCover) {
                   width="110px"
                 />
               </Box>
-              <Box>
-                <GlobelBtn
-                  bgColor="#E1683B"
-                  color="white"
-                  btnText={loading ? "Saving..." : t("reviewBook.nextBtn")}
-                  border="0px"
-                  width="110px"
-                  onClick={onClickHandler}
-                />
-              </Box>
+              <Tooltip
+                open={tooltip}
+                title={t(
+                  "Please create your book cover to continue to the next step"
+                )}
+                onClose={() => setTooltip(false)}
+              >
+                <span style={{cursor : "pointer"}}>
+                  <GlobelBtn
+                    bgColor="#E1683B"
+                    color="white"
+                    btnText={loading ? "Saving..." : t("reviewBook.nextBtn")}
+                    border="0px"
+                    width="110px"
+                    disabled={!finalCover}
+                    onClick={handleClick}
+                  />
+                </span>
+              </Tooltip>
             </Box>
           </Box>
         </Box>

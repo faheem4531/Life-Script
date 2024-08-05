@@ -148,7 +148,7 @@ const BlogDetailPage = () => {
             </Typography>
           </Box>
           <Box sx={{ width: "70%", margin: "auto" }}>
-            <img src={imageUrl} alt="img" className={styles.blogImg} />
+            {/* <img src={imageUrl} alt="img" className={styles.blogImg} /> */}
             <BlogDetails
               details={blogsDetailsData?.data?.attributes?.description}
             />

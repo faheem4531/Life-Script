@@ -1,4 +1,3 @@
-// components/Loading.jsx
 import BgLoadImage from "@/_assets/svg/bckgrnd-Loading.svg";
 import animationLogo from "@/_assets/svg/animationLogo.png";
 import Logo from "@/_assets/svg/Frame.svg";
@@ -10,6 +9,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from "./Loader.module.css";
 
 const Loading = ({ complete }) => {
@@ -39,6 +40,9 @@ const Loading = ({ complete }) => {
           return 99;
         } else {
           if (prevProgress === 99) {
+            if (isLoaded !== "loaded") {
+              toast.error("PDF generation has failed!please try again");
+            }
             return isLoaded === "loaded" ? prevProgress + 0 : prevProgress + 0;
           } else {
             return prevProgress + 5;
@@ -58,18 +62,18 @@ const Loading = ({ complete }) => {
         height: "100vh",
         bgcolor: "#FFF9F0",
         color: "#30422E",
-        width:"100%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
+      <ToastContainer />
       <Typography sx={{ fontSize: "30px", fontWeight: 300 }}>
         {progress <= 50 && `Reading Content `}
         {progress > 50 && progress !== 100 && "Preparing PDF"}
       </Typography>
-
 
       <Box className={styles.loadImageMain} sx={{ bgcolor: "re" }}>
         <Image
@@ -84,7 +88,7 @@ const Loading = ({ complete }) => {
         <ReloadingBar value={progress} />
       </Box>
       {progress === 100 && !showCompletion && isLoaded === "loaded" &&
-        < Button
+        <Button
           onClick={() =>
             router.push(
               `/dashboard/narrative?chapterId=${chapterId}&openai=${openai}`
@@ -102,7 +106,7 @@ const Loading = ({ complete }) => {
           {t("narrativeLoading.viewCh")}
         </Button>
       }
-    </Box >
+    </Box>
   );
 };
 

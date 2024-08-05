@@ -14,6 +14,10 @@
 .content {
   font-size: 20px;
 }
+.content ul {
+  margin-left: 15px;
+}
+
 .bgImage {
   position: absolute;
   height: 200px;
