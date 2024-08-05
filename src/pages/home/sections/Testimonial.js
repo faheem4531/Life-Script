@@ -136,7 +136,7 @@ function ReviewCard({ profile, name, location, details, age }) {
         />
         <Box>
           <Typography sx={{ fontSize: { sm: "20px", xs: "18px" }, color: "#E1683B", fontWeight: 800 }}>
-            {name} <Typography sx={{ display: "inline", fontSize: "20px", fontWeight: 500 }}>{age}</Typography>
+            {name} <Typography component="span" sx={{ display: "inline", fontSize: "20px", fontWeight: 500 }}>{age}</Typography>
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", marginTop: "5px", columnGap: "4px" }}>
             <Image src={Pin} alt="pin" loading='lazy' />

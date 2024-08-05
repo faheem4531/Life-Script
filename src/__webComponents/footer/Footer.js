@@ -192,4 +192,5 @@ const Footer = React.forwardRef((props, ref) => {
   );
 });
 
+Footer.displayName = 'Footer';
 export default Footer;
