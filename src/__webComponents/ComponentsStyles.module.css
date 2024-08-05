@@ -27,7 +27,8 @@
 
 /* ContactFooter  */
 .contactFooterBox {
-  background-image: url(../__webAssets/pngs/bg-footer.png);
+  /* background-image: url(../__webAssets/pngs/bg-footer.png); */
+  background-image: url(https://lifescript-media.s3.eu-north-1.amazonaws.com/bg-footer.png);
   background-size: 100% 120%;
 }
 
@@ -72,10 +73,12 @@
 
 /* Working  */
 .workingBox {
-  background-image: url(../__webAssets/pngs/bg-top-bottom.png);
+  /* background-image: url(../__webAssets/pngs/bg-top-bottom.png); */
+  background-image: url(https://lifescript-media.s3.eu-north-1.amazonaws.com/bg-top-bottom.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
 
 .check {
   width: 40px;

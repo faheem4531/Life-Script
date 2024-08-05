@@ -18,7 +18,6 @@ import OurBooks from "./sections/OurBooks";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 
 import Shape from "@/__webAssets/svgs/input-shape.svg"
-import Logo from "../../../public/lifescript-life-story-book-logo.svg"
 import Gift from "@/__webAssets/svgs/gift.svg"
 import { useTranslation } from "react-i18next";
 const HomePage = () => {

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -14,36 +14,36 @@ import Button from "@/__webComponents/button/Button";
 
 const images = [
   {
-    src: 'https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp',
-    alt: 'Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript',
+    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp",
+    alt: "Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript",
     className: styles.image1,
     width: 260,
     height: 290,
   },
   {
-    src: 'https://lifescript-media.s3.eu-north-1.amazonaws.com/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp',
-    alt: 'Children dancing and having fun with bubbles on a vintage photograph - LifeScript',
+    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp",
+    alt: "Children dancing and having fun with bubbles on a vintage photograph - LifeScript",
     className: styles.image3,
     width: 275,
     height: 330,
   },
   {
-    src: 'https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp',
-    alt: 'childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript',
+    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp",
+    alt: "childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript",
     className: styles.image2,
     width: 225,
     height: 245,
   },
   {
-    src: 'https://lifescript-media.s3.eu-north-1.amazonaws.com/grandma-and-grandpa-laughing-and-eating-ice+cream-happy-memories.webp',
-    alt: 'Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript',
+    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/grandma-and-grandpa-laughing-and-eating-ice+cream-happy-memories.webp",
+    alt: "Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript",
     className: styles.image4,
     width: 322,
     height: 290,
   },
   {
-    src: 'https://lifescript-media.s3.eu-north-1.amazonaws.com/old-opened-autobiography-book.webp',
-    alt: 'An old opened autobiography book - LifeScript',
+    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/old-opened-autobiography-book.webp",
+    alt: "An old opened autobiography book - LifeScript",
     className: styles.bookImg,
     width: 870,
     height: 380,
@@ -55,7 +55,7 @@ const Introduction = () => {
   const [Typed, setTyped] = useState(null);
 
   useEffect(() => {
-    console.log("modifynig typed.js");
+   
     let typedInstance;
     const loadTyped = async () => {
       if (!Typed) {
@@ -70,9 +70,12 @@ const Introduction = () => {
       const element = document.querySelector(".multiple-text");
       if (element) {
         typedInstance = new Typed(element, {
-          strings: [t("landingPage.hero.animationText1"), t("landingPage.hero.animationText2")],
-          typeSpeed: 100, 
-          backSpeed: 100, 
+          strings: [
+            t("landingPage.hero.animationText1"),
+            t("landingPage.hero.animationText2"),
+          ],
+          typeSpeed: 100,
+          backSpeed: 100,
           delaySpeed: 100,
           loop: true,
           showCursor: false,
@@ -87,33 +90,45 @@ const Introduction = () => {
     };
   }, [Typed, t]);
 
-  const color = { color: "#E1683B" }
+  const color = { color: "#E1683B" };
 
   return (
-    <Box sx={{ padding: { md: "90px 0 0 75px", sm: "100px 0 0 50px", xs: "40px 16px 40px" }, position: "relative" }}>
-      <Box sx={{ width: { md: '55%', sm: "100%", xs: "100%" }, zIndex: "20" }}>
-        <Typography sx={{
-          fontSize: { lg: '60px', md: "50px", sm: "44px", xs: "32px" },
-          lineHeight: { sm: '70px', xs: "37px" },
-          fontFamily: "Besley !important",
-          maxWidth: { sm: "700px", xs: "100%" },
-          minHeight: { sm: "150px", xs: "100px" },
-          zIndex: "10",
-          position: "relative"
-        }}
+    <Box
+      sx={{
+        padding: {
+          md: "90px 0 0 75px",
+          sm: "100px 0 0 50px",
+          xs: "40px 16px 40px",
+        },
+        position: "relative",
+      }}
+    >
+      <Box sx={{ width: { md: "55%", sm: "100%", xs: "100%" }, zIndex: "20" }}>
+        <Typography
+          sx={{
+            fontSize: { lg: "60px", md: "50px", sm: "44px", xs: "32px" },
+            lineHeight: { sm: "70px", xs: "37px" },
+            fontFamily: "Besley !important",
+            maxWidth: { sm: "700px", xs: "100%" },
+            minHeight: { sm: "150px", xs: "100px" },
+            zIndex: "10",
+            position: "relative",
+          }}
         >
           <h1 className={styles.pureHeadings}>
-            <span className="multiple-text" style={color}></span> {t("landingPage.hero.mainHeading")}
+            <span className="multiple-text" style={color}></span>{" "}
+            {t("landingPage.hero.mainHeading")}
           </h1>
         </Typography>
-        <Typography sx={{
-          fontSize: '16px',
-          lineHeight: '24px',
-          fontWeight: 500,
-          fontFamily: "Avenir",
-          margin: { sm: '90px 0 30px', xs: "32px 0 25px" },
-          width: { sm: '70%', xs: "100%" }
-        }}
+        <Typography
+          sx={{
+            fontSize: "16px",
+            lineHeight: "24px",
+            fontWeight: 500,
+            fontFamily: "Avenir",
+            margin: { sm: "90px 0 30px", xs: "32px 0 25px" },
+            width: { sm: "70%", xs: "100%" },
+          }}
         >
           {t("landingPage.hero.mainDescription")}
         </Typography>
@@ -129,27 +144,33 @@ const Introduction = () => {
         </Box>
         <Typography
           sx={{
-            fontSize: '11px', lineHeight: '24px', fontWeight: 500, fontFamily: "Avenir",
-            margin: { lg: '10px 0 100px', md: "10px 0 0px", sm: "10px 0 40px" }
+            fontSize: "11px",
+            lineHeight: "24px",
+            fontWeight: 500,
+            fontFamily: "Avenir",
+            margin: { lg: "10px 0 100px", md: "10px 0 0px", sm: "10px 0 40px" },
           }}
-        >{t("landingPage.hero.buttonDescription")}
+        >
+          {t("landingPage.hero.buttonDescription")}
         </Typography>
       </Box>
 
       {images.map((image, index) => (
         <Image
           key={index}
-          loading='lazy'
           src={image.src}
           alt={image.alt}
           title={image.alt}
           className={image.className}
           width={image.width}
           height={image.height}
+          //  loading='lazy'
+          loading={index === images.length - 1 ? undefined : "lazy"}
+          priority={index === images.length - 1} // Apply priority only to the last image
         />
       ))}
     </Box>
-  )
-}
+  );
+};
 
 export default Introduction;
