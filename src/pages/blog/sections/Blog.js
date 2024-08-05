@@ -7,7 +7,7 @@ const Blogs = () => {
   const { t } = useTranslation();
   const [blogsData, setBlogsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [blogsPerPage] = useState(5);
+  const [blogsPerPage] = useState(6);
   const [paginateData, setPaginateData] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -122,7 +122,7 @@ const Blogs = () => {
           </Grid>
 
           {/* Pagination */}
-          <Box mt={2} display="flex" justifyContent="center">
+          <Box mt={5} mb={3} display="flex" justifyContent="center">
             <Button sx={{ color: "black" }} onClick={prevPage} disabled={currentPage === 1}>
               {t("blogSection.previous")}
             </Button>
