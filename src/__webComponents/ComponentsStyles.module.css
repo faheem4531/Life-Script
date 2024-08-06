@@ -62,6 +62,7 @@
   position: absolute;
   right: -20px;
   bottom: -10px;
+  height: auto; 
 }
 
 /* Got Questions  */
@@ -88,6 +89,7 @@
 .fullStyle {
   max-width: 1140px;
   width: 100%;
+  height: auto;
 }
 
 .seeMorebtn:hover{
@@ -157,6 +159,7 @@ background-color: #a5a19737 !important;
 
 .headingStyles{
   width: 130px;
+  height: auto;
 }
 
 /* Feature Intro  */

@@ -11,6 +11,7 @@ const Working = ({ data, heading, subHeading = false, marked = false, width }) =
     position: "absolute",
     bottom: "-10px",
     right: "-10px",
+    height: "auto",
   }
   return (
     <Box sx={{ padding: { lg: '200px 25px 220px', md: "150px 20px 200px", sm: "150px 30px 200px", xs: "170px 0px" }, height: "" }}
