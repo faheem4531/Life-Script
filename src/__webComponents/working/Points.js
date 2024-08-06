@@ -25,7 +25,7 @@ const Points = ({ no = false, icon, title, discription,width }) => {
       </Typography>}
       {icon && <Image src={icon} alt="icon" className={styles.check} loading="lazy" />}
 
-      <Typography sx={{
+      <Typography component="div" sx={{
         color: "#F3ECDA",
         fontSize: { lg: "28px", md: "22px", sm: "28px", xs: "30px" },
         fontWeight: 500,
@@ -35,7 +35,7 @@ const Points = ({ no = false, icon, title, discription,width }) => {
         <h4 className={styles.pureHeadings}>{title}</h4>
       </Typography>
 
-      <Typography sx={{
+      <Typography component="div" sx={{
         color: "#F3ECDA",
         fontSize: "16px",
         marginTop: { md: "0", sm: "20px", xs: "20px" },

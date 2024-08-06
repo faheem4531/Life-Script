@@ -55,7 +55,7 @@ const Introduction = () => {
   const [Typed, setTyped] = useState(null);
 
   useEffect(() => {
-   
+    console.log("Dom resolved");
     let typedInstance;
     const loadTyped = async () => {
       if (!Typed) {
@@ -105,6 +105,7 @@ const Introduction = () => {
     >
       <Box sx={{ width: { md: "55%", sm: "100%", xs: "100%" }, zIndex: "20" }}>
         <Typography
+          component="div"
           sx={{
             fontSize: { lg: "60px", md: "50px", sm: "44px", xs: "32px" },
             lineHeight: { sm: "70px", xs: "37px" },

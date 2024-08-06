@@ -18,7 +18,7 @@ const Working = ({ data, heading, subHeading = false, marked = false, width }) =
     >
       <PrimaryHeading lineWidth="160px" showStyle={true} marked={marked} removeStyleMbl={data[0].icon ? true : false} heading={heading} color="#F3ECDA" />
       <Box sx={{ textAlign: "center" }}>
-        {subHeading && <Typography sx={{
+        {subHeading && <Typography component="div" sx={{
           fontSize: "32px",
           display: { lg: "inline-block", md: "inline-block", sm: "none", xs: "none" },
           fontWeight: 500,

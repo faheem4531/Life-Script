@@ -38,7 +38,7 @@ const Suggestion = () => {
         padding: "0 20px"
       }}
       >
-        <Typography sx={{
+        <Typography component="div" sx={{
           fontSize: { md: "52px", sm: "44px", xs: "32px" },
           margin: "0 auto",
           maxWidth: { sm: "100%", xs: "380px" },
