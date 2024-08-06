@@ -53,6 +53,7 @@
   .line {
     width: 120px !important;
     right: -20px;
+    height: auto;
   }
 }
 

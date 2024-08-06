@@ -148,6 +148,7 @@
   left: 50%;
   transform: translateX(-50%);
   max-width: 910px;
+  height: auto;
 }
 
 .suggestionImg{
@@ -183,6 +184,7 @@
   width:150px;
   right: -40px;
   bottom: -5px;
+  height: auto; 
 }
 
 /* GifTab  */

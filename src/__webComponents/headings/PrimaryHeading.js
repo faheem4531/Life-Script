@@ -9,6 +9,7 @@ const PrimaryHeading = ({ mdDirection = "row", direction = "row", heading, showS
 
   const styleLine = {
     width: lineWidth || "120px",
+    height: "auto",
   }
 
   return (

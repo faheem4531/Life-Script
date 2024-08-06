@@ -57,7 +57,7 @@ const Values = () => {
     >
       <Box sx={{ maxWidth: "1200px" }}>
 
-        <Typography sx={{
+        <Typography component="div" sx={{
           fontSize: { md: "52px", sm: "44px", xs: "32px" }, fontWeight: 500, paddingBottom: "20px", borderBottom: "1px solid #E1683B", fontFamily: "Besley !important"
         }}>
           <h2 className={styles.pureHeadings}>{t("aboutSection.ourValues.title")}</h2></Typography>
@@ -93,8 +93,8 @@ function Value({ title, icon, detail }) {
     <Box sx={{ maxWidth: { lg: "440px", md: "380px", sm: "80%", xs: "100%" }, display: "flex", columnGap: "15px", margin: "50px 0 0" }}>
       <Image src={icon} alt="icon" />
       <Box>
-        <Typography sx={{ fontSize: "20px", fontFamily: "Avenir8 !important", paddingBottom: "20px", }}><h3 className={styles.pureHeadings}> {title}</h3></Typography>
-        <Typography ><h4 className={styles.pureHeadings}>{detail}</h4></Typography>
+        <Typography component="div" sx={{ fontSize: "20px", fontFamily: "Avenir8 !important", paddingBottom: "20px", }}><h3 className={styles.pureHeadings}> {title}</h3></Typography>
+        <Typography component="div" ><h4 className={styles.pureHeadings}>{detail}</h4></Typography>
       </Box>
     </Box>
   )

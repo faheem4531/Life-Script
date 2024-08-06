@@ -106,9 +106,8 @@ const Blogs = () => {
                   item.attributes.image.data[0].attributes.url;
 
                 return (
-                  <Grid  item xs={12} sm={6} lg={4} >
+                  <Grid  item xs={12} sm={6} lg={4} key={index} >
                     <MapCard
-                      key={index}
                       id={item.id}
                       title={item.attributes?.title}
                       date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}

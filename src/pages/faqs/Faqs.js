@@ -8,6 +8,7 @@ import Points from "@/__webAssets/svgs/lifescript-frequently-asked-questions-ele
 import { useTranslation } from "react-i18next";
 const Faqs = () => {
   const { t } = useTranslation();
+  console.log("Faq page");
   const QAs = [
     {
       question: t("faqsSections.question1.question"),
@@ -95,6 +96,7 @@ const Faqs = () => {
         }}
       >
         <Typography
+          component="div"
           sx={{
             fontSize: { md: "60px", sm: "50px", xs: "32px" },
             fontWeight: 500,
@@ -105,8 +107,8 @@ const Faqs = () => {
         </Typography>
         {/* <Typography sx={{ fontSize: "16px", fontWeight: 500 }}> */}
         <Typography
-          variant="h2"
           fontFamily="Avenir"
+          variant="h2"
           className={styles.pureHeadings}
         >
           {t("faqsSections.description")}
@@ -173,6 +175,7 @@ function QuestionNo({ qs, ans, index }) {
           {"."}
         </Typography>
         <Typography
+          component="div"
           sx={{
             fontSize: { sm: "24px", xs: "20px" },
             fontFamily: "Avenir5 !important",

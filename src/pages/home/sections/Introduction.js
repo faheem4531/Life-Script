@@ -55,7 +55,7 @@ const Introduction = () => {
   const [Typed, setTyped] = useState(null);
 
   useEffect(() => {
-    console.log("Dom resolved");
+
     let typedInstance;
     const loadTyped = async () => {
       if (!Typed) {
