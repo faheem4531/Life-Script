@@ -16,7 +16,7 @@ const Story = () => {
       margin: { lg: "0 90px 0 145px", md: "0 50px 0 100px", sm: "0 50px", xs: "0 20px 0" },
     }}>
       <Box sx={{ maxWidth: "510px" }}>
-        <Typography sx={{
+        <Typography component="div" sx={{
           display: { md: "block", sm: "none", xs: "none" },
           fontSize: { md: "52px", sm: "44px", xs: "32px" },
           fontWeight: 500,

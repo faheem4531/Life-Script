@@ -87,7 +87,7 @@ const Faqs = () => {
         paddingBottom: { md: "35px", sx: "25px", xs: "15px" },
         paddingLeft: { sm: "0", xs: "15px" }
       }}>
-        <Typography sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>
+        <Typography component="div" sx={{ fontSize: { md: "60px", sm: "50px", xs: "32px" }, fontWeight: 500, fontFamily: "Besley !important" }}>
           <h1 className={styles.pureHeadings}>{t("faqsSections.title")}</h1>
         </Typography>
         {/* <Typography sx={{ fontSize: "16px", fontWeight: 500 }}> */}
@@ -136,7 +136,7 @@ function QuestionNo({ qs, ans, index }) {
         }}>
           {index + 1}{"."}
         </Typography>
-        <Typography sx={{
+        <Typography component="div" sx={{
           fontSize: { sm: "24px", xs: "20px" }, fontFamily: "Avenir5 !important"
         }}>
           <h3 className={styles.pureHeadings} >{qs}</h3>

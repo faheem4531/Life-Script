@@ -11,7 +11,7 @@ const Mission = () => {
   return (
     <Box sx={{ margin: { md: "50px 150px 80px", sm: "50px 0px 100px", xs: "40px 20px 50px" }, }}>
       <PrimaryHeading heading={t("aboutSection.ourMission.title")} marked={t("aboutSection.ourMission.subtitle")} showStyle={true} left={LeftStyle} right={RightStyle} />
-      <Typography sx={{
+      <Typography component="div" sx={{
         fontSize: "16px", textAlign: "center",
         margin: { md: "65px 30px 0", sm: "40px 30px 0", xs: "30px 0 0" },
         paddingBottom: "40px",
