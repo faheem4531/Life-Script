@@ -2,34 +2,34 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&display=swap");
 
-/* @font-face {
-  font-family: 'Avenir';
-  src: url('./fonts/AvenirLTStd-Black.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-BlackOblique.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-Book.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-BookOblique.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-Heavy.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-HeavyOblique.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-Light.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-LightOblique.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-Medium.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-MediumOblique.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-Oblique.otf') format('opentype');
-  src: url('./fonts/AvenirLTStd-Roman.otf') format('opentype');
+@font-face {
+  font-family: "Avenir";
+  src: url("/fonts/AvenirLTStd-Black.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-BlackOblique.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Book.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-BookOblique.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Heavy.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-HeavyOblique.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Light.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-LightOblique.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Medium.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-MediumOblique.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Oblique.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Roman.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
-} */
+}
 
 @font-face {
   font-family: "Avenir5";
-  src: url("./fonts/AvenirLTStd-Medium.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Avenir8";
-  src: url("./fonts/AvenirLTStd-Heavy.otf") format("opentype");
+  src: url("/fonts/AvenirLTStd-Heavy.otf") format("opentype");
   font-weight: 800;
   font-style: normal;
 }
