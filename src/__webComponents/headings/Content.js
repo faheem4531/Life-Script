@@ -9,7 +9,7 @@ export function Content({ heading, subHeading, marginB, subWidth, width, align, 
   }
   return (
     <Box sx={{ margin: { lg: "0 0 25px", sm: "0 0 20px", xs: "0 0 30px" } }} maxWidth={width || "505px"} marginBottom={marginB} textAlign={align}>
-      <Typography sx={{
+      <Typography component="div" sx={{
         fontSize: { md: "32px", sm: "28px", sx: "24px", xs: "28px" },
         color: { xs: mblcolor, md: clr, sm: "#3E4F3C" },
         fontWeight: 500,
