@@ -12,6 +12,7 @@ import styles from "./BlogSection.module.css";
 import Image from "next/image";
 import More from "@/__webAssets/svgs/read-more.svg";
 import { useRouter } from "next/router";
+import moment from 'moment';
 
 const truncateHtml = (html, maxLength) => {
   const div = document.createElement("div");
@@ -29,8 +30,8 @@ const truncateHtml = (html, maxLength) => {
   return truncatedDiv.innerHTML;
 };
 
-const MapCard = ({ title, date, image, details, caption, id }) => {
-
+const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
+  let formatedDate = moment(date).format("DD MMMM YYYY");
   const [showFullDetails, setShowFullDetails] = useState(false);
 
   const truncatedDetails = truncateHtml(details, 500);
@@ -54,8 +55,8 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
         sx={{
           width: "100%",
           backgroundColor: "transparent",
-          minHeight: "460px",
-          maxHeight: "460px",
+          minHeight: "420px",
+          maxHeight: "420px",
           display: "flex",
           // overflowY:"auto",
           flexDirection: "column",
@@ -80,9 +81,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
             sx={{ objectFit: "cover" }}
           />
           <CardContent sx={{ flexGrow: 1 }}>
-            <Typography sx={{ fontSize: "13px", marginBottom: 1 }}>
-              {date}
-            </Typography>
+           
             {/* <Typography
               sx={{
                 width: "100%",
@@ -97,7 +96,12 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
               {title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {cardDescription}
+              {/* {cardDescription} */}
+              {subtitle}
+   
+            </Typography>
+            <Typography sx={{ fontSize: "12px",marginTop:"10px", marginBottom: 0 }}>
+              {formatedDate}
             </Typography>
           </CardContent>
         </CardActionArea>

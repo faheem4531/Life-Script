@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import MapCard from "./MapCard";
 import { Circles } from "react-loader-spinner";
 import { useTranslation } from "react-i18next";
+
 const Blogs = () => {
   const { t } = useTranslation();
   const [blogsData, setBlogsData] = useState([]);
@@ -11,7 +12,7 @@ const Blogs = () => {
   const [paginateData, setPaginateData] = useState({});
   const [loading, setLoading] = useState(true);
 
-
+console.log("blogsData",blogsData)
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -111,9 +112,11 @@ const Blogs = () => {
                     <MapCard
                       id={item.id}
                       title={item.attributes?.title}
-                      date={`${item.attributes?.author} - ${item.attributes?.datePublish}`}
+                      date={`${item.attributes?.datePublish}`}
+                      // date={`${item.attributes?.author} - ${item.attributes?.datePublish}`}
                       image={imageUrl}
                       details={item.attributes?.description}
+                      subtitle={item.attributes?.subtitle}
                       caption={item.attributes.image.data[0].attributes.caption}
                     />
                   </Grid>
