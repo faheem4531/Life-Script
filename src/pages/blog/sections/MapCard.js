@@ -80,7 +80,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
             sx={{ objectFit: "cover" }}
           />
           <CardContent sx={{ flexGrow: 1 }}>
-            <Typography sx={{ fontSize: "16px", marginBottom: 1 }}>
+            <Typography sx={{ fontSize: "13px", marginBottom: 1 }}>
               {date}
             </Typography>
             {/* <Typography
