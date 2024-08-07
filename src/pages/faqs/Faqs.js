@@ -8,7 +8,7 @@ import Points from "@/__webAssets/svgs/lifescript-frequently-asked-questions-ele
 import { useTranslation } from "react-i18next";
 const Faqs = () => {
   const { t } = useTranslation();
-  console.log("Faq page");
+ 
   const QAs = [
     {
       question: t("faqsSections.question1.question"),
