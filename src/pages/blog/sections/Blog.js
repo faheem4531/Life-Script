@@ -111,7 +111,7 @@ const Blogs = () => {
                     <MapCard
                       id={item.id}
                       title={item.attributes?.title}
-                      date={`Published by ${item.attributes?.author} on ${item.attributes?.datePublish}`}
+                      date={`${item.attributes?.author} - ${item.attributes?.datePublish}`}
                       image={imageUrl}
                       details={item.attributes?.description}
                       caption={item.attributes.image.data[0].attributes.caption}

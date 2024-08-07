@@ -30,12 +30,12 @@ const truncateHtml = (html, maxLength) => {
 };
 
 const MapCard = ({ title, date, image, details, caption, id }) => {
-  console.log("title", title);
+
   const [showFullDetails, setShowFullDetails] = useState(false);
 
   const truncatedDetails = truncateHtml(details, 500);
   const isTruncated = details !== truncatedDetails;
-  const cardDescription = truncateHtml(details, 100);
+  const cardDescription = truncateHtml(details, 80);
 
   const router = useRouter();
   const handleReadMoreClick = () => {
@@ -57,7 +57,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
           minHeight: "460px",
           maxHeight: "460px",
           display: "flex",
-          overflowY:"auto",
+          // overflowY:"auto",
           flexDirection: "column",
           justifyContent: "space-between",
           "&:hover": {
@@ -93,7 +93,7 @@ const MapCard = ({ title, date, image, details, caption, id }) => {
                 fontFamily: "Besley !important",
               }}
             > */}
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h6" component="div">
               {title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
