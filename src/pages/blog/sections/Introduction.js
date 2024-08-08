@@ -17,11 +17,14 @@ const IntroductionBlog = () => {
       <Image src={BgImage} alt='img' className={styles.bgImage} />
 
       <Box sx={{
+      
         margin: {
           lg: "180px auto 20px", md: "200px 90px 20px ", sm: "120px 50px 20px", xs: "80px 20px 20px"
         },
         borderBottom: "1px solid #E1683B",
-        maxWidth: "1050px"
+        maxWidth: "1120px",
+        
+       
       }}>
         <Box sx={{
           fontSize: { md: "52px", sm: "44px", xs: "32px" },
@@ -32,7 +35,8 @@ const IntroductionBlog = () => {
             {" "}
             <span className={styles.lineBox}>
               {t("blogSection.subTitle")}
-              <Image src={Line} alt="img" className={styles.line} />
+              <Box sx={{ marginTop: "-40px" }}>
+              <Image src={Line} alt="img" className={styles.line} /></Box>
             </span>
           </h2>
         </Box>

@@ -1,7 +1,7 @@
 .content h1 {
   font-family: Besley !important;
   font-size: 28px;
-  font-weight: 700; 
+  font-weight: 700;
   margin-top: 5px;
 }
 
@@ -52,6 +52,7 @@
 
   .line {
     width: 120px !important;
+  
     right: -20px;
     height: auto;
   }

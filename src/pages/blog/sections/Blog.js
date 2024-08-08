@@ -12,7 +12,7 @@ const Blogs = () => {
   const [paginateData, setPaginateData] = useState({});
   const [loading, setLoading] = useState(true);
 
-console.log("blogsData",blogsData)
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
