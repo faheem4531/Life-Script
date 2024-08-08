@@ -2,7 +2,7 @@
 import { Box, Typography } from "@mui/material";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import styles from "./Terms.module.css"
-
+import Head from 'next/head';
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
 
 const TermsAndConditions = () => {
@@ -99,6 +99,10 @@ const TermsAndConditions = () => {
     },
   ]
   return (
+    <>    <Head>
+    <title>Terms of Use - LifeScript</title>
+    <meta name="description" content="Review the Terms of Use for LifeScript to understand how to use and access for our website and services." />
+  </Head>
     <Box className={styles.terms}>
       <NavBar color="#F3ECDA" logo={Logo} />
 
@@ -228,7 +232,9 @@ const TermsAndConditions = () => {
         </Box>
       </Box>
 
-    </Box>
+      </Box>
+      </>
+
   )
 }
 
