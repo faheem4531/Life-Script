@@ -82,17 +82,17 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
           />
           <CardContent sx={{ flexGrow: 1 }}>
            
-            {/* <Typography
+            <Typography
               sx={{
                 width: "100%",
                 cursor: "pointer",
-                fontSize: { sm: "20px", xs: "18px", lg: "24px" },
+                fontSize: { sm: "20px", xs: "18px", lg: "19px" },
                 fontWeight: 500,
-                marginBottom: "20px",
+                marginBottom: "10px",
                 fontFamily: "Besley !important",
               }}
-            > */}
-            <Typography gutterBottom variant="h6" component="div">
+            >
+            {/* <Typography gutterBottom variant="h5" component="div" fontWeight="bold"> */}
               {title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
