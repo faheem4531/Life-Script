@@ -87,7 +87,7 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
                 width: "100%",
                 cursor: "pointer",
                 fontSize: { sm: "20px", xs: "18px", lg: "19px" },
-                fontWeight: 500,
+                fontWeight: 600,
                 marginBottom: "10px",
                 fontFamily: "Besley !important",
               }}
@@ -100,7 +100,7 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
               {trimmedSubtitle}
    
             </Typography>
-            <Typography sx={{ fontSize: "12px",marginTop:"10px", marginBottom: 0 }}>
+            <Typography sx={{ fontSize: "12px",marginTop:"10px",color:"grey", marginBottom: 0 }}>
               {formatedDate}
             </Typography>
           </CardContent>
