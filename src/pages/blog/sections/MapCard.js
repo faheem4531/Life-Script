@@ -37,7 +37,7 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
   const truncatedDetails = truncateHtml(details, 500);
   const isTruncated = details !== truncatedDetails;
   const cardDescription = truncateHtml(details, 80);
-
+  const trimmedSubtitle = truncateHtml(subtitle, 120);
   const router = useRouter();
   const handleReadMoreClick = () => {
     setShowFullDetails(!showFullDetails);
@@ -55,8 +55,8 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
         sx={{
           width: "100%",
           backgroundColor: "transparent",
-          minHeight: "420px",
-          maxHeight: "420px",
+          minHeight: "460px",
+          maxHeight: "460px",
           display: "flex",
           // overflowY:"auto",
           flexDirection: "column",
@@ -97,7 +97,7 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {/* {cardDescription} */}
-              {subtitle}
+              {trimmedSubtitle}
    
             </Typography>
             <Typography sx={{ fontSize: "12px",marginTop:"10px", marginBottom: 0 }}>
