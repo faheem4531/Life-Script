@@ -22,7 +22,7 @@ import Gift from "@/__webAssets/svgs/gift.svg"
 import { useTranslation } from "react-i18next";
 const HomePage = () => {
   const { t } = useTranslation();
-console.log("meta description")
+
   const pointsArray = [
     {
       no: "01",

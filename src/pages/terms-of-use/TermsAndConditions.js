@@ -99,10 +99,11 @@ const TermsAndConditions = () => {
     },
   ]
   return (
-    <>    <Head>
+    <>
+      {/* <Head>
     <title>Terms of Use - LifeScript</title>
     <meta name="description" content="Review the Terms of Use for LifeScript to understand how to use and access for our website and services." />
-  </Head>
+  </Head> */}
     <Box className={styles.terms}>
       <NavBar color="#F3ECDA" logo={Logo} />
 
