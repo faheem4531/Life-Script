@@ -20,14 +20,14 @@ const BlogDetailPage = () => {
   const [blogsDetailsData, setBlogsDetailsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { id } = router.query;
+  const { slug } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!id) return; // Prevent fetching data if slug is not available yet
+        if (!slug) return; // Prevent fetching data if slug is not available yet
         const response = await fetch(
-          `https://strapi.thelifescript.com/api/blogs/${id}?populate=*`
+          `https://strapi.thelifescript.com/api/blogs/${slug}?populate=*`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -41,9 +41,9 @@ const BlogDetailPage = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [slug]);
 
-  if (!id || Object.keys(id).length === 0) {
+  if (!slug || Object.keys(slug).length === 0) {
     return (
       <Box
         sx={{

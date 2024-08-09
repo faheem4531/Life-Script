@@ -56,7 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");
-
+    const slug = queryParams.get("slug");
     if (window.location.search.includes("?via=install")) {
       setLoading(false);
       return; 
@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }: AppProps) {
     }
     if (publicRoutes.some((route) => route.includes(currentPath))) {
       if (!userLoggedIn)
-        id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
+        id ? router.push(`${currentPath}?id=${id}`) : slug ? router.push(`${currentPath}?slug=${slug}`) : router.push(currentPath);
       else if (currentPath === "/stripe-page/gift-subscription") {
         setLoading(false);
       } else router.push("/dashboard/chapters");

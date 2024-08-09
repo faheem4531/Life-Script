@@ -30,7 +30,7 @@ const truncateHtml = (html, maxLength) => {
   return truncatedDiv.innerHTML;
 };
 
-const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
+const MapCard = ({ title, date, image, details, caption, id, subtitle, slug }) => {
   let formatedDate = moment(date).format("DD MMMM YYYY");
   const [showFullDetails, setShowFullDetails] = useState(false);
 
@@ -42,12 +42,12 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
   const handleReadMoreClick = () => {
     setShowFullDetails(!showFullDetails);
     if (!showFullDetails) {
-      router.push({
-        pathname: "/blog/blog-details",
-        query: { id },
-      });
+      if(slug) {
+        router.push(`/blog/blog-details?slug=${slug}`);
+      }
     }
   };
+
 
   return (
     <Box onClick={handleReadMoreClick} sx={{ cursor: "pointer" }}>
@@ -81,7 +81,7 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
             sx={{ objectFit: "cover" }}
           />
           <CardContent sx={{ flexGrow: 1 }}>
-           
+
             <Typography
               sx={{
                 width: "100%",
@@ -92,15 +92,15 @@ const MapCard = ({ title, date, image, details, caption, id,subtitle }) => {
                 fontFamily: "Besley !important",
               }}
             >
-            {/* <Typography gutterBottom variant="h5" component="div" fontWeight="bold"> */}
+              {/* <Typography gutterBottom variant="h5" component="div" fontWeight="bold"> */}
               {title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {/* {cardDescription} */}
               {trimmedSubtitle}
-   
+
             </Typography>
-            <Typography sx={{ fontSize: "12px",marginTop:"10px",color:"grey", marginBottom: 0 }}>
+            <Typography sx={{ fontSize: "12px", marginTop: "10px", color: "grey", marginBottom: 0 }}>
               {formatedDate}
             </Typography>
           </CardContent>

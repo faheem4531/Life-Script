@@ -111,6 +111,7 @@ const Blogs = () => {
                   <Grid  item xs={12}  md={6} lg={4} key={index} >
                     <MapCard
                       id={item.id}
+                      slug={item.attributes?.slug}
                       title={item.attributes?.title}
                       date={`${item.attributes?.datePublish}`}
                       // date={`${item.attributes?.author} - ${item.attributes?.datePublish}`}
