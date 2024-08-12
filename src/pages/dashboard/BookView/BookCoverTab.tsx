@@ -444,7 +444,8 @@ const BookCoverTab = ({ setSelectedTab, pages }) => {
           <Loading complete={progressCompleted} />
         </Box>
       ) : (
-        <Box onClick={handleClick}>
+        // removed duplicate handleClick from Box element
+        <Box>
           <SelectBookCoverCard
             landScape={coverData.coverNumber?.toString()}
             title={title}
