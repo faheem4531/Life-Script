@@ -612,8 +612,10 @@ const EditBookCover = () => {
                       ref={cropperRef}
                       src={droppedImage}
                       style={{ height: 300, width: "100%" }}
-                      initialAspectRatio={1.7 / 2.6}
-                      aspectRatio={1.7 / 2.6}
+                      initialAspectRatio={1771 / 1680}
+                      aspectRatio={1771 / 1680}
+                      // initialAspectRatio={1.7 / 2.6}
+                      // aspectRatio={1.7 / 2.6}
                       background={false}
                       zoomTo={0}
                       viewMode={1}

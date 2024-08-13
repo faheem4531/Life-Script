@@ -38,9 +38,9 @@ function Cover1(props: any) {
         </text>
         <g transform="translate(-15, 0)">
           <rect
-            x="-510"
+            x="-170"
             y="850"
-            width="2850"
+            width="2100"
             height="1701"
             fill="url(#pattern0)"
           />
