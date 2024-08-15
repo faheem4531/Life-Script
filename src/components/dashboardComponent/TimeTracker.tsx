@@ -28,7 +28,9 @@ const TimeTracker = ({ onChange }) => {
     let totalQuestions = 0;
 
     allChapters.forEach((chapter) => {
-      totalQuestions += chapter.questions.length;
+      const completedQuestions = chapter.questions.filter(question => question.status === "Completed");
+      totalQuestions += completedQuestions.length;
+
     });
     setQuestionCount(totalQuestions);
   };
@@ -315,7 +317,9 @@ const TimeTracker = ({ onChange }) => {
               }}
             >
               {hoursCount}
-              <Typography sx={{ fontSize: "10px" }}>{t("overView.minutes")}</Typography>
+              <Typography sx={{ fontSize: "10px" }}>
+                {t("overView.minutes")}
+              </Typography>
             </Box>
           </Box>
         </Box>
