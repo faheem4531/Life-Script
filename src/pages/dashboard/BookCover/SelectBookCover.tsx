@@ -15,21 +15,24 @@ const SelectBookCover = () => {
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
 
-
-
   useEffect(() => {
     setIsLoading(true);
     dispatch(getBookCover())
       .unwrap()
       .then((res) => {
         setIsLoading(false);
+        // throw Error("Failed to fetch book cover");
         const destination = res?.coverNumber
           ? `/dashboard/BookCover/ViewBookCover?CoverNumber=${res?.coverNumber}`
           : "/dashboard/BookCover/SelectBookCover";
 
         router.push(destination);
       })
-      .catch((err) => console.error("Failed to fetch book cover:", err));
+
+      .catch((err) => {
+        setIsLoading(false);
+        console.error("Failed to fetch book cover:", err);
+      });
   }, []);
 
   const getCoverImage = (coverNumber: number) => {

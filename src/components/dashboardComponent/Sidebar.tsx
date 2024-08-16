@@ -54,10 +54,10 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
   const [buyPremium, setBuyPremium] = useState(false);
 
   const router = useRouter();
-  const dispatch: any = useDispatch();
+
   const { t } = useTranslation();
   const currentRoute = router.pathname;
-  const [loading, setLoading] = useState(false);
+
   const childsOpenCheck = () => {
     if (
       currentRoute === "/dashboard/chapters" ||
