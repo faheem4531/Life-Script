@@ -52,7 +52,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
   const [supportChildsOpen, setSupportChilsdOpen] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
   const [buyPremium, setBuyPremium] = useState(false);
-  const [coverNumber, setCoverNumber] = useState(null);
+
   const router = useRouter();
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
@@ -106,20 +106,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
   }, []);
 
   const handleBookCoverClick = () => {
-    setLoading(true);
-    dispatch(getBookCover())
-      .unwrap()
-      .then((res) => {
-        setCoverNumber(res.coverNumber);
-        if (res.coverNumber) {
-          router.push(
-            `/dashboard/BookCover/ViewBookCover?CoverNumber=${res.coverNumber}`
-          );
-        } else {
-          router.push("/dashboard/BookCover/SelectBookCover");
-        }
-      })
-      .catch(() => router.push("/dashboard/BookCover/SelectBookCover"))
+    router.push("/dashboard/BookCover/SelectBookCover")
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Img from "@/_assets/book-cover";
 import BookCover from "@/_assets/svg/book-cover-header.svg";
 import Layout from "@/components/Layout/Layout";
@@ -6,24 +6,36 @@ import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCov
 import { Box, Grid, Typography, CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { getBookCover } from "@/store/slices/chatSlice";
+import { useDispatch } from "react-redux";
 
 const SelectBookCover = () => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const dispatch: any = useDispatch();
   const { t } = useTranslation();
-  
+
+
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    
-    return () => clearTimeout(timer);
+    setIsLoading(true);
+    dispatch(getBookCover())
+      .unwrap()
+      .then((res) => {
+        setIsLoading(false);
+        const destination = res?.coverNumber
+          ? `/dashboard/BookCover/ViewBookCover?CoverNumber=${res?.coverNumber}`
+          : "/dashboard/BookCover/SelectBookCover";
+
+        router.push(destination);
+      })
+      .catch((err) => console.error("Failed to fetch book cover:", err));
   }, []);
 
   const getCoverImage = (coverNumber: number) => {
     return `/covers/Cover${coverNumber}.png`;
   };
-  
+
   const myArray = [...Array(Object.keys(Img).length)].map((_, i) => i + 1);
 
   return (
@@ -37,9 +49,17 @@ const SelectBookCover = () => {
             },
           }}
         >
-          <SelectBookCoverHeader img={BookCover} discription={`${t("BookCover.BookCover")}`} />
+          <SelectBookCoverHeader
+            img={BookCover}
+            discription={`${t("BookCover.BookCover")}`}
+          />
           {isLoading ? (
-            <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              height="100vh"
+            >
               <CircularProgress />
             </Box>
           ) : (
@@ -56,7 +76,7 @@ const SelectBookCover = () => {
                       maxHeight: "500px",
                       height: "100%",
                       padding: "22px",
-                      cursor: 'pointer',
+                      cursor: "pointer",
                       "&:hover": {
                         "&::before": {
                           content: '""',
@@ -76,14 +96,20 @@ const SelectBookCover = () => {
                     }}
                     onClick={() =>
                       router.push(
-                        `/dashboard/BookCover/EditBookCover?CoverNumber=${index + 1}`
+                        `/dashboard/BookCover/EditBookCover?CoverNumber=${
+                          index + 1
+                        }`
                       )
                     }
                   >
                     <img
                       src={getCoverImage(index + 1)}
                       alt={`Cover ${index + 1}`}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                     <Typography
                       variant="body1"

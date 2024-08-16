@@ -208,10 +208,10 @@ const ViewBookCover = () => {
 
 
     const newData = { imageUrl: finalCover };
-    console.log(finalCover, "Final Cover");
+    // console.log(finalCover, "Final Cover");
 
     const resp = await appendImageToFormData(finalCover)
-    console.log("resp", resp)
+    // console.log("resp", resp)
     const newImageLink = await dispatch(uploadImageForCover(resp));
     console.log(newImageLink, "new Image link");
 
