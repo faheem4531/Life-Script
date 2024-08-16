@@ -31,7 +31,6 @@ const SelectBookCover = () => {
 
       .catch((err) => {
         setIsLoading(false);
-        console.error("Failed to fetch book cover:", err);
       });
   }, []);
 
