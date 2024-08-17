@@ -181,7 +181,7 @@ const Footer = React.forwardRef((props, ref) => {
       <Box
         sx={{
           textAlign: "center",
-          padding: "23px 0",
+          padding: "12px 0",
           fontSize: { xs: "12px", sx: "14px" },
           fontFamily: "Avenir",
         }}
