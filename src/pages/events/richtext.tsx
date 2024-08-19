@@ -43,7 +43,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import backArrow from "../../_assets/svg/left.svg";
 import styles from "./styles.module.css";
 
@@ -97,12 +97,10 @@ const RichText = ({ questionId }) => {
       });
 
       mediaRecorderRef.current.addEventListener("start", () => {
-
         setRecording(true);
       });
 
       mediaRecorderRef.current.addEventListener("stop", () => {
-
         setRecording(false);
         setTranscript("");
         setDetecting(false);
@@ -121,12 +119,9 @@ const RichText = ({ questionId }) => {
       socket.onopen = () => {
         setDetecting(false);
         setListening(true);
-
       };
 
-      socket.onclose = () => {
-
-      };
+      socket.onclose = () => {};
 
       socket.onerror = (error) => {
         console.error("WebSocket error:", error);
@@ -302,12 +297,13 @@ const RichText = ({ questionId }) => {
   //   }
   // }, [loading]); //to import webspellcheckr
 
-
   useEffect(() => {
     if (typeof window !== "undefined" && !loading) {
       const initializeWProofreader = async () => {
         try {
-          const { default: WProofreaderSDK } = await import("@webspellchecker/wproofreader-sdk-js");
+          const { default: WProofreaderSDK } = await import(
+            "@webspellchecker/wproofreader-sdk-js"
+          );
           const container = document.getElementById("draftjs-rich-text-editor");
           if (container) {
             WProofreaderSDK.init({
@@ -327,7 +323,6 @@ const RichText = ({ questionId }) => {
       initializeWProofreader();
     }
   }, [loading]);
-
 
   //autosave answer
   useEffect(() => {
@@ -380,9 +375,7 @@ const RichText = ({ questionId }) => {
       //   (chapter) => chapter.introductionChapter || chapter.startDefaultChapter
       // );
 
-
       // if (chapter.introductionChapter || chapter.startDefaultChapter) {
-
 
       //   dispatch(simpleChapter({ chapterId: chapter?._id }));
       // }
@@ -465,7 +458,6 @@ const RichText = ({ questionId }) => {
         try {
           const res = await dispatch(uploadImageForCover(form_data));
 
-
           if (res && res.payload) {
             const caption = `Caption: ${file.name}`;
             const imageData = { data: { link: res.payload, caption: caption } };
@@ -485,34 +477,52 @@ const RichText = ({ questionId }) => {
   };
 
   const content = [
-    { title: "Narrative Fusion:", text: "All formatting (bold, size, font, bullets) will be removed when you apply Narrative Fusion after all questions have been answered. Make sure you leave formatting for when all your answers have been fused into a chapter. " },
-    { title: "Copy-Pasting with Formatting:", text: "To retain formatting when copying text from another source, right-click - > ‘’paste and match style’’ or just paste by pressing Shift + V + Ctrl/⌘" },
-    { title: "Typing Special Characters:", text: " For special letters, including Spanish characters, hold the key and select the desired character from the popup menu." },
-    { title: "Grammar and Style Suggestions:", text: " Click on any underlined words to see suggestions for grammar, spelling, or style corrections" },
+    {
+      title: "Narrative Fusion:",
+      text: "All formatting (bold, size, font, bullets) will be removed when you apply Narrative Fusion after all questions have been answered. Make sure you leave formatting for when all your answers have been fused into a chapter. ",
+    },
+    {
+      title: "Copy-Pasting with Formatting:",
+      text: "To retain formatting when copying text from another source, right-click - > ‘’paste and match style’’ or just paste by pressing Shift + V + Ctrl/⌘",
+    },
+    {
+      title: "Typing Special Characters:",
+      text: " For special letters, including Spanish characters, hold the key and select the desired character from the popup menu.",
+    },
+    {
+      title: "Grammar and Style Suggestions:",
+      text: " Click on any underlined words to see suggestions for grammar, spelling, or style corrections",
+    },
   ];
 
   return (
     <Box>
       {loading ? (
-        <Box sx={{
-          position: "fixed",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 6,
-        }}>
+        <Box
+          sx={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 6,
+          }}
+        >
           <CircularProgress />
         </Box>
       ) : (
-        <Box className="rich-editor" sx={{
-          border: "1px solid #197065", m: { sm: "20px 0 0 ", xs: "15px" },
-          borderRadius: "34px",
-          padding: {
-            xl: "30px 70px 100px",
-            sm: "20px 40px 80px",
-            xs: "20px 20px 50px",
-          },
-        }}>
+        <Box
+          className="rich-editor"
+          sx={{
+            border: "1px solid #197065",
+            m: { sm: "20px 0 0 ", xs: "15px" },
+            borderRadius: "34px",
+            padding: {
+              xl: "30px 70px 100px",
+              sm: "20px 40px 80px",
+              xs: "20px 20px 50px",
+            },
+          }}
+        >
           <Box
             sx={{
               display: "flex",
@@ -572,13 +582,15 @@ const RichText = ({ questionId }) => {
                 }}
               >
                 <GlobelBtn
-                  image={detecting ? MicRegular : listening ? MicListing : MicOff}
+                  image={
+                    detecting ? MicRegular : listening ? MicListing : MicOff
+                  }
                   btnText={
                     detecting
                       ? `${t("richText.detecte")}`
                       : listening
-                        ? `${t("richText.stop")}`
-                        : `${t("richText.STT")}`
+                      ? `${t("richText.stop")}`
+                      : `${t("richText.STT")}`
                   }
                   color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
                   bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
@@ -601,7 +613,10 @@ const RichText = ({ questionId }) => {
                 )}
                 {true && (
                   <GlobelBtn
-                    onClick={saveUserAnswer}
+                    onClick={() => {
+                      toast.success("Your answer has been saved"),
+                        saveUserAnswer;
+                    }}
                     disabled={
                       draftToHtml(convertToRaw(editorState.getCurrentContent()))
                         .length < 9
@@ -628,15 +643,18 @@ const RichText = ({ questionId }) => {
                           md: "block",
                           xs: "block",
                         },
-                        // position: "absolute", 
-                        // mt: 1 
+                        // position: "absolute",
+                        // mt: 1
                       }}
                     >
                       <MultiToolTip
                         content={content}
                         position="absolute"
-                        bottom={undefined} right={undefined} top={undefined} left={undefined} />
-
+                        bottom={undefined}
+                        right={undefined}
+                        top={undefined}
+                        left={undefined}
+                      />
                     </Box>
                   )}
                 </Box>

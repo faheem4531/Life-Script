@@ -360,7 +360,9 @@ export default function TabTwo({
           open={showTooltip}
           onClose={() => setShowTooltip(false)}
           title="Please fill in all fields before proceeding."
+           placement="top"
         >
+           <span>
           <GlobelBtn
             borderRadius="4px"
             bgColor="#E1683B"
@@ -368,7 +370,7 @@ export default function TabTwo({
             btnText={t("onboarding.step2.buttonText.next")}
             onClick={handleButtonClick}
             image2={NextArrow}
-          />
+          /></span>
         </Tooltip>
       </Box>
     </Box>

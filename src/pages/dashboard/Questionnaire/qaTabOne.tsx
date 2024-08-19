@@ -13,13 +13,11 @@ import { useEffect, useState } from "react";
 import i18n from "i18next";
 import NextArrow from "../../../_assets/svg/rightArrow.svg";
 import QaTabBars from "./qaTabBars";
-
+import { TooltipMsg } from "@/components/dashboardComponent/Tooltip";
 export default function TabOne({ onClick, data, setQaTab }) {
   const [selectedValue, setSelectedValue] = useState();
   const [langPre, setLangPre] = useState("");
   const [showTooltip, setShowTooltip] = useState(false);
-
-
 
   useEffect(() => {
     setSelectedValue(data || "MySelf");
@@ -34,7 +32,7 @@ export default function TabOne({ onClick, data, setQaTab }) {
   };
 
   const handleButtonClick = () => {
-    setShowTooltip(false);
+    // setShowTooltip(false);
     if (langPre === "") {
       setShowTooltip(true);
     } else {
@@ -214,15 +212,18 @@ export default function TabOne({ onClick, data, setQaTab }) {
         <Tooltip
           open={showTooltip}
           onClose={() => setShowTooltip(false)}
-          title="Please fill in all fields before proceeding."
+          title={"Please fill in all fields before proceeding."}
+          placement="top"
         >
-          <GlobelBtn
-            bgColor="#E1683B"
-            color="white"
-            btnText="Next"
-            onClick={handleButtonClick}
-            image2={NextArrow}
-          />
+          <span>
+            <GlobelBtn
+              bgColor="#E1683B"
+              color="white"
+              btnText="Next"
+              onClick={handleButtonClick}
+              image2={NextArrow}
+            />
+          </span>
         </Tooltip>
       </Box>
     </Box>
