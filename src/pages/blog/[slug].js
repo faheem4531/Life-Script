@@ -11,19 +11,20 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
-import GifTab from "../../home/sections/GifTab";
-import BlogDetails from "../sections/BlogDetails";
-import styles from "../sections/BlogSection.module.css";
+import GifTab from "../home/sections/GifTab";
+import BlogDetails from "./sections/BlogDetails";
+import styles from "./sections/BlogSection.module.css";
 
 const BlogDetailPage = () => {
   const router = useRouter();
   const [blogsDetailsData, setBlogsDetailsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const { slug } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         if (!slug) return; // Prevent fetching data if slug is not available yet
         const response = await fetch(
@@ -36,6 +37,7 @@ const BlogDetailPage = () => {
         setBlogsDetailsData(responseData);
         setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error("Error fetching data:", error);
       }
     };
@@ -59,8 +61,6 @@ const BlogDetailPage = () => {
       </Box>
     );
   }
-
-
 
   const imageUrl =
     blogsDetailsData?.data?.attributes?.image?.data[0] &&
@@ -134,7 +134,7 @@ const BlogDetailPage = () => {
               sx={{
                 fontSize: { sm: "28px", xs: "24px" },
                 fontWeight: 500,
-                 marginBottom: "20px",
+                marginBottom: "20px",
                 width: { md: "80%", sm: "100%", xs: "100%" },
                 fontFamily: "Besley !important",
               }}
@@ -142,9 +142,10 @@ const BlogDetailPage = () => {
               {/* Crafting Your Legacy: A Guide to Writing Your Autobiography */}
               {blogsDetailsData?.data?.attributes?.title}
             </Typography>
-            <Typography x={{ fontSize: "16px"}}>
-              {/* Published by Angel on January 12, 2024 */}
-              {`Published by ${blogsDetailsData?.data?.attributes?.author} on ${blogsDetailsData?.data?.attributes?.datePublish}`}
+            <Typography sx={{ fontSize: "16px" }}>
+              {blogsDetailsData?.data?.attributes?.author
+                ? `Published by ${blogsDetailsData.data.attributes.author} on ${blogsDetailsData.data.attributes.datePublish}`
+                : "No matching data found"}
             </Typography>
           </Box>
           <Box sx={{ width: "70%", margin: "auto" }}>

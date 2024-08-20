@@ -43,7 +43,8 @@ const MapCard = ({ title, date, image, details, caption, id, subtitle, slug }) =
     setShowFullDetails(!showFullDetails);
     if (!showFullDetails) {
       if(slug) {
-        router.push(`/blog/blog-details?slug=${slug}`);
+        // router.push(`/blog/blog-details?slug=${slug}`);
+        router.push(`/blog/${slug}`);
       }
     }
   };

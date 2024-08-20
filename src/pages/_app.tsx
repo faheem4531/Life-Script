@@ -39,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/change-password",
       "/home",
       "/blog",
+      "blog/*",
       "/blog/blog-details",
       "/about-us",
       "/gifting",
@@ -61,21 +62,35 @@ export default function App({ Component, pageProps }: AppProps) {
       setLoading(false);
       return; 
     }
-    if (currentPath.startsWith("/verify")) {
+    if (currentPath && currentPath.startsWith("/verify")) {
       const token = queryParams.get("token");
       if (token) {
         setLoading(false);
         return;
       }
     }
-    if (publicRoutes.some((route) => route.includes(currentPath))) {
-      if (!userLoggedIn)
-        id ? router.push(`${currentPath}?id=${id}`) : slug ? router.push(`${currentPath}?slug=${slug}`) : router.push(currentPath);
-      else if (currentPath === "/stripe-page/gift-subscription") {
-        setLoading(false);
-      } else router.push("/dashboard/chapters");
+
+    if (publicRoutes.some((route) => route === currentPath || route.startsWith('/blog'))) {
       setLoading(false);
-    } else if (currentPath == "/" && userLoggedIn) {
+      if (!userLoggedIn) {
+        // Redirect to the current path, passing id if available
+        setLoading(false);
+        if (currentPath) {
+          id ? router.push(`${currentPath}?id=${id}`) : router.push(currentPath);
+        }
+      } else {
+        if (currentPath === "/stripe-page/gift-subscription") {
+          setLoading(false);
+        } else if (currentPath?.startsWith('/blog/')) {
+          // Do nothing, stay on the current blog page
+          setLoading(false);
+        } else {
+          router.push("/dashboard/chapters");
+          setLoading(false);
+        }
+      }
+    }
+    else if (currentPath == "/" && userLoggedIn) {
       router.push("/dashboard/chapters");
     } else {
       if (!userLoggedIn) {
@@ -83,8 +98,32 @@ export default function App({ Component, pageProps }: AppProps) {
       }
       setLoading(false);
     }
+  }, [currentPath]);
+  //previous with slug and blog-details
+    // if (currentPath.startsWith("/verify")) {
+    //   const token = queryParams.get("token");
+    //   if (token) {
+    //     setLoading(false);
+    //     return;
+    //   }
+    // }
+    // if (publicRoutes.some((route) => route.includes(currentPath))) {
+    //   if (!userLoggedIn)
+    //     id ? router.push(`${currentPath}?id=${id}`) : slug ? router.push(`${currentPath}?slug=${slug}`) : router.push(currentPath);
+    //   else if (currentPath === "/stripe-page/gift-subscription") {
+    //     setLoading(false);
+    //   } else router.push("/dashboard/chapters");
+    //   setLoading(false);
+    // } else if (currentPath == "/" && userLoggedIn) {
+    //   router.push("/dashboard/chapters");
+    // } else {
+    //   if (!userLoggedIn) {
+    //     router.push("/");
+    //   }
+    //   setLoading(false);
+    // }
 
-    }, [currentPath]);
+    // }, [currentPath]);
 
   const [showCookieBar, setShowCookieBar] = useState(true);
 
