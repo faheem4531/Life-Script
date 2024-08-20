@@ -399,10 +399,11 @@ const NarrativeResponse = () => {
         open={saveResponseModal}
         heading={`${t("narrative.saveRes")}`}
         description={`${t("narrative.saveResDes")}`}
-        cancel={handleSaveResponse}
-        proceed={() => setSaveResponseModal(false)}
-        proceedText={`${t("narrative.saveResProcBtn")}`} // Customize the text for the "Yes" button
-        cancelText={`${t("narrative.saveResCancelBtn")}`} // Customize the text for the "No" button
+        cancel={() => setSaveResponseModal(false)}
+        proceed={handleSaveResponse}
+        cancelText ={`${t("narrative.saveResProcBtn")}`} // Customize the text for the "Yes" button
+        proceedText ={`${t("narrative.saveResCancelBtn")}`} // Customize the text for the "No" button
+       
       />
     </>
   );

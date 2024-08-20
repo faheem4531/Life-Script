@@ -9,8 +9,7 @@ import {
   getTreeData,
   resetTreeData,
   setBookData,
-  getBookData
-
+  getBookData,
 } from "@/store/slices/chatSlice";
 import { getBookInterior } from "@/store/slices/authSlice";
 import AddIcon from "@mui/icons-material/Add";
@@ -30,17 +29,17 @@ import { toast } from "react-toastify";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
-import { ClassNames } from '@emotion/react';
-import GlobelBtn from '@/components/button/Button';
-import TransitionsDialog from '@/components/modal/TransitionDialog';
-import Right from "@/_assets/svg/arrow-right.svg"
-import Reset from "@/_assets/svg/reset-family.svg"
-import DownloadFamily from "@/_assets/svg/download-family.svg"
-import ZoomIn from "@/_assets/svg/zoomin.svg"
-import ZoomOut from "@/_assets/svg/zoom-out.svg"
-import Image from 'next/image';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip"
+import { ClassNames } from "@emotion/react";
+import GlobelBtn from "@/components/button/Button";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
+import Right from "@/_assets/svg/arrow-right.svg";
+import Reset from "@/_assets/svg/reset-family.svg";
+import DownloadFamily from "@/_assets/svg/download-family.svg";
+import ZoomIn from "@/_assets/svg/zoomin.svg";
+import ZoomOut from "@/_assets/svg/zoom-out.svg";
+import Image from "next/image";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip";
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -58,18 +57,17 @@ const FamilyTree = ({ familyTreeData }) => {
   const [dd, setDd] = useState({});
   const [isPartner, setIsPartner] = useState(false);
   const [lastMousePosition, setLastMousePosition] = useState(null);
-  const [resetModal, setResetModal] = useState(false)
-  const [saveTreeModal, setSaveTreeModal] = useState(false)
-  const [removeTreeModal, setRemoveTreeModal] = useState(false)
+  const [resetModal, setResetModal] = useState(false);
+  const [saveTreeModal, setSaveTreeModal] = useState(false);
+  const [removeTreeModal, setRemoveTreeModal] = useState(false);
   const [hover, setHover] = useState(false);
   const [isPremium, setIsPremium] = useState(false);
-  const [isShown, setIsShown] = useState(false)
+  const [isShown, setIsShown] = useState(false);
   // const profileIcon =
   //   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1704374174/thelifescript/b7wxd4jnck7pbmzz4vdu.jpg";
 
   const Male = "./familyTreeRelations/male.svg";
   const Female = "./familyTreeRelations/female.svg";
-
 
   useEffect(() => {
     const jwt = require("jsonwebtoken");
@@ -88,8 +86,8 @@ const FamilyTree = ({ familyTreeData }) => {
       .unwrap()
       .then((res) => {
         setIsShown(res[0]?.isInclude);
-      })
-  }, [])
+      });
+  }, []);
 
   const handleAddedPerson = (data) => {
     setFamilyModal(false);
@@ -212,22 +210,15 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   const handleIconClick = (name, iconType, d) => {
-
-
     setUpdatedNode({});
     setFamilyEditModal(false);
     setRelations(["Sibling", "Child"]);
     if (iconType === "editspouse") {
-
-
       handleEditSpouse(name, d);
     } else if (iconType === "add") {
-
-
       handleAdd(name, d);
     } else if (iconType === "edit") {
       handleEdit(name, d);
-
     }
   };
 
@@ -261,11 +252,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
   useEffect(() => {
     if (!familyTreeData) {
-
-
       return;
     } else {
-
       const svgElement = d3.select(svgRef.current);
       d3.select(svgRef.current).selectAll("*").remove();
       d3.select("#download").on("click", function () {
@@ -281,7 +269,6 @@ const FamilyTree = ({ familyTreeData }) => {
 
         // Redraw the tree
         drawTree();
-
 
         const { src, height } = LogoSvg;
         // const { src: srcFamily, width: widthFamily } = FamilyTreeSVG;
@@ -305,7 +292,6 @@ const FamilyTree = ({ familyTreeData }) => {
           //   .select(dataFamily)
           //   .select("svg");
           // familyTreeGroupFamily.html(externalSvgContentFamily.html());
-
 
           const fullName =
             typeof window !== "undefined"
@@ -347,7 +333,6 @@ const FamilyTree = ({ familyTreeData }) => {
             scale: 1,
             backgroundColor: "#FFFFFF",
           }).then((data) => {
-
             setLoading(false);
             familyTreeGroup.remove();
             familyTreeGroupFamily.remove();
@@ -357,8 +342,6 @@ const FamilyTree = ({ familyTreeData }) => {
             scale: 1,
             backgroundColor: "#FFFFFF",
           }).then((uri) => {
-
-
             fetch(uri)
               .then((response) => response.blob())
               .then((imgBlob) => {
@@ -374,29 +357,50 @@ const FamilyTree = ({ familyTreeData }) => {
         });
       });
       drawTree();
-
     }
   }, [familyTreeData]);
 
   const panCanvas = (direction) => {
     const scaleFactor = 0.3;
     const svgElement = d3.select(svgRef.current);
-    const viewBox = svgElement.attr("viewBox") ? svgElement.attr("viewBox").split(" ").map(Number) : [0, 0, 1000, 1000];
+    const viewBox = svgElement.attr("viewBox")
+      ? svgElement.attr("viewBox").split(" ").map(Number)
+      : [0, 0, 1000, 1000];
     const moveDistance = 100 * scaleFactor; // Adjust this value to control the panning speed
 
     switch (direction) {
-      case 'top':
-        svgElement.attr("viewBox", `${viewBox[0]} ${viewBox[1] - moveDistance} ${viewBox[2]} ${viewBox[3]}`);
+      case "top":
+        svgElement.attr(
+          "viewBox",
+          `${viewBox[0]} ${viewBox[1] - moveDistance} ${viewBox[2]} ${
+            viewBox[3]
+          }`
+        );
 
         break;
-      case 'left':
-        svgElement.attr("viewBox", `${viewBox[0] - moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
+      case "left":
+        svgElement.attr(
+          "viewBox",
+          `${viewBox[0] - moveDistance} ${viewBox[1]} ${viewBox[2]} ${
+            viewBox[3]
+          }`
+        );
         break;
-      case 'bottom':
-        svgElement.attr("viewBox", `${viewBox[0]} ${viewBox[1] + moveDistance} ${viewBox[2]} ${viewBox[3]}`);
+      case "bottom":
+        svgElement.attr(
+          "viewBox",
+          `${viewBox[0]} ${viewBox[1] + moveDistance} ${viewBox[2]} ${
+            viewBox[3]
+          }`
+        );
         break;
-      case 'right':
-        svgElement.attr("viewBox", `${viewBox[0] + moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]}`);
+      case "right":
+        svgElement.attr(
+          "viewBox",
+          `${viewBox[0] + moveDistance} ${viewBox[1]} ${viewBox[2]} ${
+            viewBox[3]
+          }`
+        );
         break;
       default:
         break;
@@ -405,7 +409,9 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const zoomCanvas = (zoomIn) => {
     const svgElement = d3.select(svgRef.current);
-    const viewBox = svgElement.attr("viewBox") ? svgElement.attr("viewBox").split(" ").map(Number) : [0, 0, 1000, 1000];
+    const viewBox = svgElement.attr("viewBox")
+      ? svgElement.attr("viewBox").split(" ").map(Number)
+      : [0, 0, 1000, 1000];
     const zoomFactor = zoomIn ? 0.9 : 1.1; // Adjust these values to control the zoom speed
 
     const currentWidth = viewBox[2];
@@ -419,7 +425,7 @@ const FamilyTree = ({ familyTreeData }) => {
     const newX = viewBox[0] - deltaX;
     const newY = viewBox[1] - deltaY;
 
-    const finalX = zoomIn ? newX - 5 : newX
+    const finalX = zoomIn ? newX - 5 : newX;
 
     svgElement.attr("viewBox", `${finalX} ${newY} ${newWidth} ${newHeight}`);
   };
@@ -442,8 +448,14 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const { src, height } = LogoSvg;
     const mainSvg = d3.select(svgRef.current);
-    const familyTreeGroup = mainSvg.append("g").attr("id", "familyTreeGroup").attr("transform", "scale(1.8)");
-    const familyTreeGroupFamily = mainSvg.append("g").attr("id", "familyTreeGroupFamily").attr("transform", `translate(0, ${60}) scale(0.2)`);
+    const familyTreeGroup = mainSvg
+      .append("g")
+      .attr("id", "familyTreeGroup")
+      .attr("transform", "scale(1.8)");
+    const familyTreeGroupFamily = mainSvg
+      .append("g")
+      .attr("id", "familyTreeGroupFamily")
+      .attr("transform", `translate(0, ${60}) scale(0.2)`);
 
     d3.xml(src).then((data) => {
       const externalSvgContent = d3.select(data).select("svg");
@@ -451,7 +463,8 @@ const FamilyTree = ({ familyTreeData }) => {
       // Add external SVG content to the group
       familyTreeGroup.html(externalSvgContent.html());
 
-      const fullName = typeof window !== "undefined" ? localStorage.getItem("username") : null;
+      const fullName =
+        typeof window !== "undefined" ? localStorage.getItem("username") : null;
       const firstName = fullName ? fullName.split(" ")[0] : null;
 
       const newY = height + 60;
@@ -476,7 +489,10 @@ const FamilyTree = ({ familyTreeData }) => {
       const bboxHeight = bbox.height;
 
       // Center the SVG content
-      mainSvg.attr("viewBox", `${bbox.x - 20} ${bbox.y - 20} ${bboxWidth + 40} ${bboxHeight + 40}`);
+      mainSvg.attr(
+        "viewBox",
+        `${bbox.x - 20} ${bbox.y - 20} ${bboxWidth + 40} ${bboxHeight + 40}`
+      );
 
       svgAsPngUri(mainSvg.node(), "familytree.png", {
         scale: 1,
@@ -506,29 +522,24 @@ const FamilyTree = ({ familyTreeData }) => {
       });
   };
 
-
   const cancleTreeHandler = () => {
     dispatch(setBookData({ isInclude: false }))
       .unwrap()
       .then((res) => {
-        toast.success("Remove Tree from the book");
-
+        toast.success("Family tree removed successfully");
+        // toast.success("Remove Tree from the book");
       })
       .catch(() => toast.error("Failed to remove tree from the book "));
 
     setRemoveTreeModal(false);
     setIsShown(false);
-
-  }
-
+  };
 
   const uploadImageonCloud = (formData) => {
-
     dispatch(uploadImageFamilyTree(formData))
       .unwrap()
       .then((res) => {
         toast.success("Family tree added successfully");
-
       })
       .catch(() => toast.error("Failed to upload image"));
   };
@@ -537,11 +548,15 @@ const FamilyTree = ({ familyTreeData }) => {
     const totalNodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
 
     // Calculate the maximum number of siblings in any generation
-    const maxSiblings = Math.max(...totalNodes.descendants().map(d => d.children ? d.children.length : 0));
+    const maxSiblings = Math.max(
+      ...totalNodes
+        .descendants()
+        .map((d) => (d.children ? d.children.length : 0))
+    );
 
     // Define the height per sibling
-    const heightPerSibling = 300;  // Adjust as needed
-    const baseHeight = 500;  // Minimum base height
+    const heightPerSibling = 300; // Adjust as needed
+    const baseHeight = 500; // Minimum base height
 
     // Calculate the dynamic height
     const dynamicHeight = Math.max(baseHeight, maxSiblings * heightPerSibling);
@@ -584,8 +599,9 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const elbow = (d, i) => {
       const yOffset = d.target.data.spouseName ? -55 : 0;
-      return `M${d.source.y + 50},${d.source.x}H${d.target.y}V${d.target.x + yOffset
-        }H${d.target.y + 10}`;
+      return `M${d.source.y + 50},${d.source.x}H${d.target.y}V${
+        d.target.x + yOffset
+      }H${d.target.y + 10}`;
     };
 
     const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
@@ -617,14 +633,14 @@ const FamilyTree = ({ familyTreeData }) => {
 
   const renderNode = (personNode, d) => {
     const handleNodeClick = (isSpouse) => {
-      setIsPartner(isSpouse)
+      setIsPartner(isSpouse);
       setDd(d);
       setFamilyEditModal(true);
     };
 
-
     const renderRect = (x, y, height, className, isSpouse) => {
-      const rect = personNode.append("rect")
+      const rect = personNode
+        .append("rect")
         .attr("class", className)
         .attr("x", x)
         .attr("rx", 60)
@@ -635,7 +651,8 @@ const FamilyTree = ({ familyTreeData }) => {
     };
 
     const renderText = (x, y, text, className, isSpouse) => {
-      const textElement = personNode.append("text")
+      const textElement = personNode
+        .append("text")
         .attr("class", className)
         .attr("x", x)
         .attr("y", y)
@@ -643,18 +660,19 @@ const FamilyTree = ({ familyTreeData }) => {
         .on("click", () => handleNodeClick(isSpouse));
     };
 
-
     const renderImage = (x, y, image, className, isSpouse) => {
       const clipPathId = `clipPath-${x}-${y}`;
 
-      personNode.append("clipPath")
+      personNode
+        .append("clipPath")
         .attr("id", clipPathId)
         .append("circle")
         .attr("cx", x + 35) // Center of the circle is at (x + radius)
         .attr("cy", y + 35) // Center of the circle is at (y + radius)
         .attr("r", 35); // Radius of the circle
 
-      const imgElement = personNode.append("image")
+      const imgElement = personNode
+        .append("image")
         .attr("xlink:href", image)
         .attr("width", 70)
         .attr("height", 70)
@@ -666,9 +684,9 @@ const FamilyTree = ({ familyTreeData }) => {
         .on("click", () => handleNodeClick(isSpouse));
     };
 
-
     const renderForeignObject = (x, y, onClick, icon, d, iconType) => {
-      personNode.append("foreignObject")
+      personNode
+        .append("foreignObject")
         .attr("width", 20)
         .attr("height", 20)
         .attr("x", x)
@@ -686,18 +704,17 @@ const FamilyTree = ({ familyTreeData }) => {
         .attr("x2", x2 - 60)
         .attr("y2", y2)
         .style("stroke", "#30422E")
-        .style("stroke-width", 2)
+        .style("stroke-width", 2);
     };
 
     if (d.data.spouseName) {
-
-
       renderRect(10, -5, 100, `${styles.nameRect}`, false);
       renderImage(
         20,
         -120,
         d.data.image || (d.data.gender == "Male" ? Male : Female),
-        `${styles.circularImage}`, false
+        `${styles.circularImage}`,
+        false
       );
       renderText(30, -32, d.data.name || "", `${styles.name}`, false);
       //age
@@ -707,10 +724,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-            ? "b. " + born
-            : died
-              ? "d. " + died
-              : "b. Not Known";
+          ? "b. " + born
+          : died
+          ? "d. " + died
+          : "b. Not Known";
       renderText(30, -18, age || "", `${styles.dateLocation}`, false);
       // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
@@ -719,7 +736,8 @@ const FamilyTree = ({ familyTreeData }) => {
         14,
         10,
         d.data.spouseImage || (d.data.spouseGender == "Female" ? Female : Male),
-        `${styles.circularImage}`, true
+        `${styles.circularImage}`,
+        true
       );
       renderText(23, 94, d.data.spouseName || "", `${styles.name}`, true);
       const spouseBorn = d.data.spouseBorn?.slice(0, 4);
@@ -728,10 +746,10 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
-            ? "b. " + spouseBorn
-            : spouseDied
-              ? "d. " + spouseDied
-              : "b. Not Known";
+          ? "b. " + spouseBorn
+          : spouseDied
+          ? "d. " + spouseDied
+          : "b. Not Known";
       renderText(23, 110, spouseAge || "", `${styles.dateLocation}`, true);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
 
@@ -753,16 +771,17 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-            ? "b. " + born
-            : died
-              ? "d. " + died
-              : "b. Not Known";
+          ? "b. " + born
+          : died
+          ? "d. " + died
+          : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, false);
       renderImage(
         14,
         -45,
         d.data.image || (d.data.gender == "Male" ? Male : Female),
-        `${styles.circularImage}`, false
+        `${styles.circularImage}`,
+        false
       );
       renderText(20, 39, d.data.name || "", `${styles.name}`, false);
       renderText(20, 55, age || "", `${styles.dateLocation}`, false);
@@ -770,39 +789,82 @@ const FamilyTree = ({ familyTreeData }) => {
   };
 
   function handleResetFamily() {
-    dispatch(resetTreeData())
-    dispatch(getTreeData())
-    setResetModal(false)
+    dispatch(resetTreeData());
+    dispatch(getTreeData());
+    setResetModal(false);
   }
 
   const content = [
-    { title: "Add/Edit:", text: "Click an avatar to add or update information. " },
+    {
+      title: "Add/Edit:",
+      text: "Click an avatar to add or update information. ",
+    },
     { title: "Zoom:", text: "Use the + and - buttons for better view." },
-    { title: "Preview:", text: "  Download the PDF to preview the family tree layout." },
-    { title: "Note: ", text: " Deleting a member requires resetting the entire family tree." },
+    {
+      title: "Preview:",
+      text: "  Download the PDF to preview the family tree layout.",
+    },
+    {
+      title: "Note: ",
+      text: " Deleting a member requires resetting the entire family tree.",
+    },
   ];
 
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          {isPremium && <IconButton id="download" aria-label="download" sx={{
-            '&:hover': {
-              backgroundColor: 'transparent',
-              boxShadow: 'none',
-            },
-          }} >
-            <Box sx={{ width: "140px", border: "1px solid #e1693b", borderRadius: "4px", display: "flex", justifyContent: "center" }}>
-              <ButtonIcons
-                onClick={() => { }}
-                img={DownloadFamily}
-                iconSize={20}
-                btnText="PDF"
-              />
-            </Box>
-          </IconButton>}
-          <Box sx={{ display: "flex", alignItems: "center", gap: "10px", position: "relative" }}>
-            <Box sx={{ width: "140px", height: "38px", border: "1px solid #e1693b", borderRadius: "4px", }}>
+          {isPremium && (
+            <IconButton
+              id="download"
+              aria-label="download"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: "140px",
+                  border: "1px solid #e1693b",
+                  borderRadius: "4px",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <ButtonIcons
+                  onClick={() => {}}
+                  img={DownloadFamily}
+                  iconSize={20}
+                  btnText="PDF"
+                />
+              </Box>
+            </IconButton>
+          )}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              position: "relative",
+            }}
+          >
+            <Box
+              sx={{
+                width: "140px",
+                height: "38px",
+                border: "1px solid #e1693b",
+                borderRadius: "4px",
+              }}
+            >
               <ButtonIcons
                 onClick={() => setResetModal(true)}
                 img={Reset}
@@ -825,20 +887,22 @@ const FamilyTree = ({ familyTreeData }) => {
                       md: "block",
                       xs: "block",
                     },
-                    // position: "absolute", 
-                    // mt: 1 
+                    // position: "absolute",
+                    // mt: 1
                   }}
                 >
                   <MultiToolTip
                     content={content}
-                    top={undefined} left={"115px"} bottom={undefined} right={undefined} position={"absolute"} />
-
+                    top={undefined}
+                    left={"115px"}
+                    bottom={undefined}
+                    right={undefined}
+                    position={"absolute"}
+                  />
                 </Box>
               )}
             </Box>
-
           </Box>
-
         </Box>
 
         <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -860,12 +924,13 @@ const FamilyTree = ({ familyTreeData }) => {
           </Box>
           <Box>
             <GlobelBtn
-              onClick={() => { !isShown ? setSaveTreeModal(true) : setRemoveTreeModal(true) }}
-              btnText={!isShown ? 'Add in book' : "Remove from book"}
+              onClick={() => {
+                !isShown ? setSaveTreeModal(true) : setRemoveTreeModal(true);
+              }}
+              btnText={!isShown ? "Add in book" : "Remove from book"}
             />
           </Box>
         </Box>
-
       </Box>
       <Box sx={{ position: "relative", bgcolor: "", height: "100%" }}>
         <Box>
@@ -897,52 +962,69 @@ const FamilyTree = ({ familyTreeData }) => {
           ></svg>
         </Box>
 
-
-
-
-        <Box sx={{ position: "absolute", right: "0", top: "40%", transform: "translateY(-40%)" }}>
+        <Box
+          sx={{
+            position: "absolute",
+            right: "0",
+            top: "40%",
+            transform: "translateY(-40%)",
+          }}
+        >
           <ButtonIcons
-            onClick={() => panCanvas('right')}
+            onClick={() => panCanvas("right")}
             img={Right}
             iconSize={30}
             btnText=""
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "50%", top: "-65px", transform: "translateX(-50%) rotate(-90deg)" }}>
+        <Box
+          sx={{
+            position: "absolute",
+            left: "50%",
+            top: "-65px",
+            transform: "translateX(-50%) rotate(-90deg)",
+          }}
+        >
           <ButtonIcons
-            onClick={() => panCanvas('top')}
+            onClick={() => panCanvas("top")}
             img={Right}
             iconSize={30}
             btnText=""
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "50%", bottom: "12%", transform: "translateX(-50%) rotate(90deg)" }}>
+        <Box
+          sx={{
+            position: "absolute",
+            left: "50%",
+            bottom: "12%",
+            transform: "translateX(-50%) rotate(90deg)",
+          }}
+        >
           <ButtonIcons
-            onClick={() => panCanvas('bottom')}
+            onClick={() => panCanvas("bottom")}
             img={Right}
             iconSize={30}
             btnText=""
           />
         </Box>
 
-        <Box sx={{ position: "absolute", left: "0", top: "40%", transform: "translateY(-40%) rotate(180deg)" }}>
+        <Box
+          sx={{
+            position: "absolute",
+            left: "0",
+            top: "40%",
+            transform: "translateY(-40%) rotate(180deg)",
+          }}
+        >
           <ButtonIcons
-            onClick={() => panCanvas('left')}
+            onClick={() => panCanvas("left")}
             img={Right}
             iconSize={30}
             btnText=""
           />
         </Box>
-
-
-
-
-
-
-
-
 
         {/* Modals  */}
         <SelectRelationModal
@@ -990,7 +1072,7 @@ const FamilyTree = ({ familyTreeData }) => {
           heading={"Add Family Tree"}
           description="Are you sure that you want to add your family tree in your book?"
           cancel={() => {
-            setSaveTreeModal(false)
+            setSaveTreeModal(false);
           }}
           proceed={AddTreeHandler}
           closeModal={() => setSaveTreeModal(false)}
@@ -1001,20 +1083,17 @@ const FamilyTree = ({ familyTreeData }) => {
           heading={"Remove Family Tree"}
           description="Are you sure that you want to remove your family tree from your book?"
           cancel={() => {
-            setRemoveTreeModal(false)
+            setRemoveTreeModal(false);
           }}
           proceed={cancleTreeHandler}
           closeModal={() => setRemoveTreeModal(false)}
         />
-
-
       </Box>
     </>
   );
 };
 
 export default FamilyTree;
-
 
 export const ButtonIcons = ({ onClick, iconSize, img, btnText }) => {
   return (
@@ -1025,23 +1104,23 @@ export const ButtonIcons = ({ onClick, iconSize, img, btnText }) => {
         justifyContent: "center",
         alignItems: "center",
         columnGap: "8px",
-        '&:hover': {
-          backgroundColor: 'transparent',
-          boxShadow: 'none',
+        "&:hover": {
+          backgroundColor: "transparent",
+          boxShadow: "none",
         },
-      }}>
-      <Image
-        src={img}
-        alt="icon"
-        width={iconSize}
-      />
-      {btnText &&
-        <Typography sx={{
-          fontSize: "16px",
-          color: "#e1693b"
-        }}>
+      }}
+    >
+      <Image src={img} alt="icon" width={iconSize} />
+      {btnText && (
+        <Typography
+          sx={{
+            fontSize: "16px",
+            color: "#e1693b",
+          }}
+        >
           {btnText}
-        </Typography>}
+        </Typography>
+      )}
     </Button>
-  )
-}
+  );
+};
