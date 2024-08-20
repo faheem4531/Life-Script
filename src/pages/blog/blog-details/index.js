@@ -11,9 +11,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
-import GifTab from "../home/sections/GifTab";
-import BlogDetails from "./sections/BlogDetails";
-import styles from "./sections/BlogSection.module.css";
+import GifTab from "../../home/sections/GifTab";
+import BlogDetails from "../sections/BlogDetails";
+import styles from "../sections/BlogSection.module.css";
 
 const BlogDetailPage = () => {
   const router = useRouter();
