@@ -821,7 +821,9 @@ const EditBookCover = () => {
                   color="#E1683B"
                   fontSize={{ xs: "12px", md: "16px" }}
                   onClick={() => {
-                    router.push("/dashboard/BookCover/SelectBookCover");
+                    // router.push(`/dashboard/BookCover/SelectBookCover`);
+                    router.push(`/dashboard/BookCover/SelectBookCover?flag=true`);
+
                   }}
                   width={"180px"}
                 />

@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 const SelectBookCover = () => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const { flag } = router.query;
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
 
@@ -21,12 +22,17 @@ const SelectBookCover = () => {
       .unwrap()
       .then((res) => {
         setIsLoading(false);
-        // throw Error("Failed to fetch book cover");
-        const destination = res?.coverNumber
-          ? `/dashboard/BookCover/ViewBookCover?CoverNumber=${res?.coverNumber}`
-          : "/dashboard/BookCover/SelectBookCover";
 
-        router.push(destination);
+        if (flag === 'true') {
+          // Stay on the current page
+          return;
+        } else {
+          const destination = res?.coverNumber
+            ? `/dashboard/BookCover/ViewBookCover?CoverNumber=${res?.coverNumber}`
+            : "/dashboard/BookCover/SelectBookCover";
+    
+          router.push(destination);
+        }
       })
 
       .catch((err) => {
