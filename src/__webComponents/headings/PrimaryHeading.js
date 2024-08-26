@@ -9,6 +9,7 @@ const PrimaryHeading = ({
   mdDirection = "row",
   smDirection = "row",
   direction = "row",
+  lgDirection="row",
   heading,
   showStyle,
   color,
@@ -66,7 +67,7 @@ const PrimaryHeading = ({
           flexDirection: {
             sm: smDirection,
             md: mdDirection,
-            lg: "row",
+            lg: lgDirection,
             xs: direction,
           },
           columnGap: { md: "15px", sm: "10px", xs: "10px" },

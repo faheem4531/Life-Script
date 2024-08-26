@@ -12,6 +12,7 @@ import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.s
 import Experience from "@/__webComponents/experience/Experience";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
+import PricingDetails from "../pricing/sections/PricingDetails";
 import Introduction from "./sections/Introduction";
 
 const StoryworthAlternative = () => {
@@ -199,9 +200,7 @@ const StoryworthAlternative = () => {
         />
       </Head> */}
 
-      <Box
-        sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}
-      >
+      <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar color="#3e4f3c" logo={"home"} />
         <Introduction />
         <Working
@@ -213,18 +212,17 @@ const StoryworthAlternative = () => {
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
           <Experience heading="How we’re " marked="different" />
         </Box>
-        {/* <Box sx={{ margin: { sm: "100px 0 -100px", xs: " 10px 0 -50px" } }}>
+        <Box sx={{ margin: { sm: "100px 0 -100px", xs: " 10px 0 -50px" } }}>
           <PricingDetails
             cardsDetail={pricingDetails}
-            heading={t("pricingSection.bookDetails.title")}
-            marked={t("pricingSection.bookDetails.subTitle")}
+            heading={"LifeScript vs Storyworth cost"}
           />
           <PricingDetails
             cardsDetail={featuresDetails}
             heading={t("pricingSection.featureComparison.title")}
             marked={t("pricingSection.featureComparison.subTitle")}
           />
-        </Box> */}
+        </Box>
         <GotQuestions />
         <ContactFooter
           title={t("pricingSection.stillConfusedSection.title")}
