@@ -9,6 +9,7 @@ import { Box } from "@mui/material";
 
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
+import Experience from "@/__webComponents/experience/Experience";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
 import Introduction from "./sections/Introduction";
@@ -200,10 +201,8 @@ const StoryworthAlternative = () => {
 
       <Box
         sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}
-        // className={styles.pricingPage}
       >
         <NavBar color="#3e4f3c" logo={"home"} />
-        {/* <Pricing /> */}
         <Introduction />
         <Working
           data={pointsArray}
@@ -211,6 +210,9 @@ const StoryworthAlternative = () => {
           marked={t("landingPage.howItWorks.subHeading")}
           width={"300px"}
         />
+        <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
+          <Experience heading="How we’re " marked="different" />
+        </Box>
         {/* <Box sx={{ margin: { sm: "100px 0 -100px", xs: " 10px 0 -50px" } }}>
           <PricingDetails
             cardsDetail={pricingDetails}
