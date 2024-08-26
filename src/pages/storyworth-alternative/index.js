@@ -238,4 +238,4 @@ const StoryworthAlternative = () => {
   );
 };
 
-export default PricingPage;
+export default StoryworthAlternative;
