@@ -32,7 +32,6 @@
   background-size: 100% 120%;
 }
 
-
 /* Pricing Cards  */
 .midCard {
   background-color: #f4f4f4;
@@ -62,7 +61,7 @@
   position: absolute;
   right: -20px;
   bottom: -10px;
-  height: auto; 
+  height: auto;
 }
 
 /* Got Questions  */
@@ -80,7 +79,6 @@
   background-size: 100% 100%;
 }
 
-
 .check {
   width: 40px;
   height: 40px;
@@ -92,24 +90,24 @@
   height: auto;
 }
 
-.seeMorebtn:hover{
-background-color: #a5a19737 !important;
+.seeMorebtn:hover {
+  background-color: #a5a19737 !important;
 }
 
 /* Got Questions  */
-.questionIcon{
+.questionIcon {
   width: 44px;
   height: 44px;
- }
+}
 
- /* Primary Heading  */
- .headingLine{
+/* Primary Heading  */
+.headingLine {
   position: absolute;
   bottom: -10px;
   right: -20px;
 }
 
-.pureHeadings{
+.pureHeadings {
   font-size: inherit;
   font-weight: inherit;
   margin: 0;
@@ -117,96 +115,94 @@ background-color: #a5a19737 !important;
   display: inherit;
 }
 
-.points{
+.points {
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='white' stroke-width='1' stroke-dasharray='7%2c7' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
 }
 
 /* Footer  */
-.hoverLinks{
+.hoverLinks {
   color: #fff;
 }
 
-.hoverLinks:hover{
-  color: #E1683B;
+.hoverLinks:hover {
+  color: #e1683b;
 }
 
-
-@media screen and  (max-width: 1200px) and (min-width:899px) {
+@media screen and (max-width: 1200px) and (min-width: 899px) {
   .gif {
     width: 450px;
   }
-  
-  .questionIcon{
+
+  .questionIcon {
     width: 40px;
     height: 40px;
-   }
+  }
 
-   .fullStyle {
+  .fullStyle {
     max-width: 900px;
     width: 100%;
   }
-  
 }
-@media screen and  (max-width: 899px) {
-/* Working  */
-.workingBox {
-  background-size: 200vw 100%;
+@media screen and (max-width: 899px) {
+  /* Working  */
+  .workingBox {
+    background-size: 200vw 100%;
+  }
+
+  .headingLine {
+    bottom: -10px !important;
+    width: 100px !important;
+  }
+
+  .headingStyles {
+    width: 130px;
+    height: auto;
+  }
+
+  /* Feature Intro  */
+  .line {
+    width: 100px;
+  }
+
+  .questionIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Working  */
+  .workingBox {
+    background-size: 200% 100%;
+  }
+
+  /* Contact Footer  */
+  .footerLine {
+    width: 150px;
+  }
 }
 
-.headingLine{
-  width: 100px !important;
-}
-
-.headingStyles{
-  width: 130px;
-  height: auto;
-}
-
-/* Feature Intro  */
-.line {
- width: 100px;
-}
-
-.questionIcon{
-  width: 30px;
-  height: 30px;
- }
-
- /* Working  */
-.workingBox {
-  background-size: 200% 100%;
-}
-
-/* Contact Footer  */
-.footerLine{
-  width: 150px;
-}
-
-}
-
-@media screen and  (max-width: 600px) {
+@media screen and (max-width: 600px) {
   /* Working  */
   .workingBox {
     background-size: 250vw 100%;
   }
-  
-  .headingLine{
+
+  .headingLine {
     width: 70px !important;
   }
-  
-  .headingStyles{
+
+  .headingStyles {
     width: 78px;
     height: 27px;
   }
 
   /* ContactFooter  */
   .contactFooterBox {
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 
-  .footerLine{
-  width: 80px;
+  .footerLine {
+    width: 80px;
   }
 
   /* Feature Intro  */
@@ -215,21 +211,20 @@ background-color: #a5a19737 !important;
     right: -10px;
   }
 
-   /* Working  */
+  /* Working  */
   .workingBox {
     background-size: 250% 100%;
   }
-    
 
   /* Got Questions  */
   .gotQsBg {
     background-size: 220px 115px;
-    }
+  }
 
   /* Primary Heading  */
 
- .headingLine{
-  bottom: -10px;
-  right: -10px;
-}
+  .headingLine {
+    bottom: -10px;
+    right: -10px;
   }
+}
