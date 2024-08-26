@@ -12,6 +12,7 @@ import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.s
 import Experience from "@/__webComponents/experience/Experience";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
+import Testimonial from "../home/sections/Testimonial";
 import PricingDetails from "../pricing/sections/PricingDetails";
 import Introduction from "./sections/Introduction";
 
@@ -212,7 +213,15 @@ const StoryworthAlternative = () => {
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
           <Experience heading="How we’re " marked="different" />
         </Box>
-        <Box sx={{ margin: { sm: "100px 0 -100px", xs: " 10px 0 -50px" } }}>
+        <Box
+          sx={{
+            margin: {
+              md: "100px 0 100px",
+              sm: "100px 0 -90px",
+              xs: " 10px 0 -50px",
+            },
+          }}
+        >
           <PricingDetails
             cardsDetail={pricingDetails}
             heading={"LifeScript vs Storyworth cost"}
@@ -223,6 +232,7 @@ const StoryworthAlternative = () => {
             marked={t("pricingSection.featureComparison.subTitle")}
           />
         </Box>
+        <Testimonial />
         <GotQuestions />
         <ContactFooter
           title={t("pricingSection.stillConfusedSection.title")}
