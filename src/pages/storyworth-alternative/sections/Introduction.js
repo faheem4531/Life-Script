@@ -17,17 +17,20 @@ const Introduction = () => {
       sx={{
         padding: {
           md: "120px 0 0 0px",
-          sm: "100px 0 0 50px",
-          xs: "40px 16px 40px",
+          sm: "100px 0 0 0px",
+          xs: "60px 16px 0px",
         },
         position: "relative",
       }}
     >
       <Box sx={{ width: "100%", zIndex: "20", textAlign: "center" }}>
         <PrimaryHeading
-          lineWidth="180px"
+          lineWidth="280px"
           lineHeight="60px"
           mdDirection="column"
+          smDirection="column"
+          direction="column"
+          lineBottom="-24px"
           showStyle={false}
           heading={"LifeScript, the best Storyworth"}
           marked={"alternative"}
@@ -37,9 +40,10 @@ const Introduction = () => {
             fontSize: "18px",
             lineHeight: "24px",
             fontFamily: "Avenir",
-            margin: "40px auto",
+            margin: { md: "40px auto", sm: "20px auto", xs: "20px auto" },
             width: "100%",
-            maxWidth: "650px",
+            textAlign: "center",
+            maxWidth: { md: "650px", sm: "500px", xs: "100%" },
           }}
         >
           Save time, efforts and enjoy a more personalized, secure and
@@ -67,7 +71,7 @@ const Introduction = () => {
             lineHeight: "24px",
             fontWeight: 500,
             fontFamily: "Avenir",
-            margin: { lg: "10px 0 40px", md: "10px 0 0px", sm: "10px 0 40px" },
+            margin: { md: "10px 0 40px", sm: "10px 0 40px" },
           }}
         >
           {t("landingPage.hero.buttonDescription")}
