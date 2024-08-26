@@ -11,6 +11,7 @@ import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
+import Introduction from "./sections/Introduction";
 
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
@@ -203,6 +204,7 @@ const StoryworthAlternative = () => {
       >
         <NavBar color="#3e4f3c" logo={"home"} />
         {/* <Pricing /> */}
+        <Introduction />
         <Working
           data={pointsArray}
           heading={t("landingPage.howItWorks.heading")}
