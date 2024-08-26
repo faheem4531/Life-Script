@@ -9,9 +9,11 @@ import { Box } from "@mui/material";
 
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
+import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Experience from "@/__webComponents/experience/Experience";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
+import GifTab from "../home/sections/GifTab";
 import Testimonial from "../home/sections/Testimonial";
 import PricingDetails from "../pricing/sections/PricingDetails";
 import Introduction from "./sections/Introduction";
@@ -233,11 +235,27 @@ const StoryworthAlternative = () => {
           />
         </Box>
         <Testimonial />
+        <Box
+          sx={{
+            m: {
+              md: "140px 0 0 ",
+              sm: "90px 0 -50px",
+              xs: "100px 20px 0 30px",
+            },
+          }}
+        >
+          <GifTab
+            heading={"Not sure? Try it now for free!"}
+            button={"Free Trial"}
+            icon={Pen}
+            subHeading="no credit card required."
+          />
+        </Box>
         <GotQuestions />
         <ContactFooter
-          title={t("pricingSection.stillConfusedSection.title")}
-          marked={t("pricingSection.stillConfusedSection.title2")}
-          lineWidth={150}
+          title={"Still have any "}
+          marked={"questions?"}
+          lineWidth={170}
           subTitle={t("pricingSection.stillConfusedSection.subTitle")}
           input1={t("pricingSection.stillConfusedSection.input1")}
           input2={t("pricingSection.stillConfusedSection.input2")}
