@@ -11,6 +11,7 @@ import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Experience from "@/__webComponents/experience/Experience";
+import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
 import GifTab from "../home/sections/GifTab";
@@ -215,6 +216,7 @@ const StoryworthAlternative = () => {
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
           <Experience heading="How we’re " marked="different" />
         </Box>
+        <WhyLifeScript />
         <Box
           sx={{
             margin: {

@@ -142,7 +142,13 @@
     max-width: 900px;
     width: 100%;
   }
+
+  .bestIcons {
+    width: 50px;
+    height: max-content;
+  }
 }
+
 @media screen and (max-width: 899px) {
   /* Working  */
   .workingBox {
@@ -177,6 +183,11 @@
   /* Contact Footer  */
   .footerLine {
     width: 150px;
+  }
+
+  .bestIcons {
+    width: 60px;
+    height: max-content;
   }
 }
 
