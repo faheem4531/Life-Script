@@ -214,7 +214,11 @@ const StoryworthAlternative = () => {
           width={"300px"}
         />
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-          <Experience heading="How we’re " marked="different" />
+          <Experience
+            headingStyle={false}
+            heading="How we’re "
+            marked="different"
+          />
         </Box>
         <Box
           sx={{

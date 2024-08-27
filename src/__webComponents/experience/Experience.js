@@ -7,7 +7,7 @@ import styles from "../ComponentsStyles.module.css";
 import PrimaryHeading from "../headings/PrimaryHeading";
 import CustomizedAccordions from "./Accordion";
 
-const Experience = ({ heading, marked }) => {
+const Experience = ({ heading, marked, headingStyle = true }) => {
   const { t } = useTranslation();
   return (
     <Box
@@ -27,12 +27,14 @@ const Experience = ({ heading, marked }) => {
           heading={heading}
           marked={marked}
         />
-        <Image
-          src={FlowerLine}
-          alt="logo"
-          className={styles.fullStyle}
-          loading="lazy"
-        />
+        {headingStyle && (
+          <Image
+            src={FlowerLine}
+            alt="logo"
+            className={styles.fullStyle}
+            loading="lazy"
+          />
+        )}
       </Box>
 
       <Box

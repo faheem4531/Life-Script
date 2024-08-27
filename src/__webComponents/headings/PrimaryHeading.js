@@ -1,7 +1,7 @@
 import LeftStyle from "@/__webAssets/pngs/left-style.png";
 import RightStyle from "@/__webAssets/pngs/right-style.png";
 import Line from "@/__webAssets/svgs/line-orange.svg";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "../ComponentsStyles.module.css";
 
@@ -9,7 +9,7 @@ const PrimaryHeading = ({
   mdDirection = "row",
   smDirection = "row",
   direction = "row",
-  lgDirection="row",
+  lgDirection = "row",
   heading,
   showStyle,
   color,
@@ -20,6 +20,7 @@ const PrimaryHeading = ({
   removeStyleMbl = false,
   marked,
   lineBottom = "-10px",
+  variant = "h2",
 }) => {
   const styleLine = {
     width: lineWidth || "120px",
@@ -73,11 +74,15 @@ const PrimaryHeading = ({
           columnGap: { md: "15px", sm: "10px", xs: "10px" },
         }}
       >
-        <h2 className={styles.pureHeadings}>{heading}</h2>
+        <Typography className={styles.pureHeadings} variant={variant}>
+          {heading}
+        </Typography>
         {marked && (
           <Box>
-            <Box display="inline-block" position="relative">
-              <h2 className={styles.pureHeadings}>{marked}</h2>
+            <Box display="inline" position="relative">
+              <Typography className={styles.pureHeadings} variant={variant}>
+                {marked}
+              </Typography>
               <Image
                 src={Line}
                 style={styleLine}

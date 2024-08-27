@@ -142,6 +142,7 @@ const ReasonPoints = ({ heading, points, image }) => {
             fontSize: { lg: "35px", md: "28px", sm: "35px", xs: "30px" },
             mb: "8px",
           }}
+          variant="h3"
         >
           {heading}
         </Typography>

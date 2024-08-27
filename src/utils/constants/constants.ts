@@ -15,3 +15,5 @@ export const categoryArrayMapping = {
   Standard: createStandardArray,
   Premium: createPremiumArray,
 };
+
+

@@ -34,6 +34,7 @@ const Introduction = () => {
           showStyle={false}
           heading={"LifeScript, the best Storyworth"}
           marked={"alternative"}
+          variant="h1"
         />
         <Typography
           sx={{
