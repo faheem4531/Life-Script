@@ -216,7 +216,6 @@ const StoryworthAlternative = () => {
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
           <Experience heading="How we’re " marked="different" />
         </Box>
-        <WhyLifeScript />
         <Box
           sx={{
             margin: {
@@ -236,6 +235,7 @@ const StoryworthAlternative = () => {
             marked={t("pricingSection.featureComparison.subTitle")}
           />
         </Box>
+        <WhyLifeScript />
         <Testimonial />
         <Box
           sx={{
