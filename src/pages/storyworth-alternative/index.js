@@ -5,7 +5,8 @@ import Footer from "@/__webComponents/footer/Footer";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import { Box } from "@mui/material";
-// import styles from "./sections/Pricing.module.css";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
@@ -13,7 +14,6 @@ import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Experience from "@/__webComponents/experience/Experience";
 import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
-import { useTranslation } from "react-i18next";
 import GifTab from "../home/sections/GifTab";
 import Testimonial from "../home/sections/Testimonial";
 import PricingDetails from "../pricing/sections/PricingDetails";
@@ -196,13 +196,13 @@ const StoryworthAlternative = () => {
 
   return (
     <>
-      {/* <Head>
-        <title>Pricing Plans and Competitor Comparison</title>
+      <Head>
+        <title>The Best Storyworth Alternative - LifeScript</title>
         <meta
           name="description"
-          content="Each package includes lifetime access to our platform, premium full-color hardcover book and free shipping."
+          content="Save time, efforts and enjoy a more personalised, secure and supportive storytelling experience with no hidden costs. Try now for free!"
         />
-      </Head> */}
+      </Head>
 
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar color="#3e4f3c" logo={"home"} />
