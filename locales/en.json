@@ -422,9 +422,9 @@
         "data": {
           "yes": "Yes",
           "yesFor139": "Yes, for 139$",
-          "priceForAdditional": "39$ (up to 600 pages)",
+          "priceForAdditional": "39$ (up to 500 pages)",
           "languagesSupported": "English and Spanish",
-          "pageLimit": "600",
+          "pageLimit": "500",
           "unlimitedPhotoUploads": "Yes",
           "videoTutorials": "Yes"
         }
@@ -436,7 +436,7 @@
           "no": "No",
           "priceFor139": "No, only 12 months access for $139",
           "priceFor139Coment": "($99 + $40 for full-color book)",
-          "priceForFullColorBook": "For a full-color book, 40$ additional. Cannot be prepaid by gifter",
+          "priceForFullColorBook": "For a full-color book, 60$ additional. Cannot be prepaid by gifter",
           "priceForAdditionalBook": "79$ (up to 300 pages) ,99$ (up to 480 pages)",
           "noShippingOutsideUS": "No, only for US.",
           "languageSupported": "English",

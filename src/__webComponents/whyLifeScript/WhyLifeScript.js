@@ -32,13 +32,12 @@ const WhyLifeScript = () => {
       image: Cost,
     },
     {
-      heading: "More custom and professional book",
+      heading: "More support",
       points: [
-        "Q&A format or chapters format",
-        "More book cover designs to choose from",
-        "Formatting features for customization",
+        "Live chat support during business hours",
+        "Easy step-by-step tutorial videos",
       ],
-      image: Book,
+      image: Support,
     },
     {
       heading: "More personalized",
@@ -48,13 +47,15 @@ const WhyLifeScript = () => {
       ],
       image: Tree,
     },
+
     {
-      heading: "More support",
+      heading: "More custom and professional book",
       points: [
-        "Live chat support during business hours",
-        "Easy step-by-step tutorial videos",
+        "Q&A format or chapters format",
+        "More book cover designs to choose from",
+        "Formatting features for customization",
       ],
-      image: Support,
+      image: Book,
     },
     {
       heading: "More secure",
@@ -66,11 +67,10 @@ const WhyLifeScript = () => {
     <Box
       sx={{
         padding: {
-          md: "130px 20px 80px",
-          sm: "130px 20px 100px",
+          md: "130px 40px 50px",
+          sm: "130px 20px 60px",
           xs: "130px 20px 70px",
         },
-        height: "",
       }}
       className={styles.workingBox}
     >
@@ -84,23 +84,38 @@ const WhyLifeScript = () => {
       <Box
         sx={{
           margin: "70px auto",
-          display: "flex",
-          flexWrap: "wrap",
           justifyContent: { md: "space-between", sm: "center", xs: "center" },
           maxWidth: { lg: "1400px" },
-          rowGap: { lg: "60px", sm: "40px", xs: "40px" },
         }}
       >
-        {aboutLifeScript.map((item, index) => (
-          <ReasonPoints
-            key={index}
-            heading={item.heading}
-            points={item.points}
-            image={item.image}
-          />
-        ))}
         <Box
-          sx={{ margin: "0 100px 0 auto", maxWidth: "210px" }}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: { md: "space-between", sm: "center", xs: "center" },
+            maxWidth: { lg: "1400px" },
+            rowGap: { lg: "50px", sm: "40px", xs: "40px" },
+          }}
+        >
+          {aboutLifeScript.map((item, index) => (
+            <ReasonPoints
+              key={index}
+              heading={item.heading}
+              points={item.points}
+              image={item.image}
+            />
+          ))}
+        </Box>
+
+        <Box
+          sx={{
+            margin: {
+              md: "0 100px 0 auto",
+              sm: "40px 100px 0 auto",
+              xs: "40px 0 0",
+            },
+            maxWidth: "210px",
+          }}
         >
           <Link href="/stripe-page">
             <Button
@@ -161,7 +176,7 @@ const ReasonPoints = ({ heading, points, image }) => {
                 backgroundColor: "#F3ECDA",
               }}
             ></span>
-            <Typography>
+            <Typography sx={{ fontSize: { sm: "18px", xs: "16px" } }}>
               {step}
             </Typography>
           </Box>
