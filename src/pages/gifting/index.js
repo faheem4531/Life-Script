@@ -39,7 +39,7 @@ const GiftingPage = () => {
       </Box>
       <Working data={pointsArray} heading=" How it" marked="works" />
       <DesignCard />
-      <GotQuestions />
+      {/* <GotQuestions /> */}
       <ContactFooter
         title="Still have any questions?"
         subTitle="Contact us Now!!!"

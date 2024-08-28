@@ -194,6 +194,57 @@ const StoryworthAlternative = () => {
     },
   ];
 
+  const storyWorthAlternativeQs = [
+    {
+      qs: "How much does Storyworth cost?",
+      ans: "Storyworth costs $99 for 12 months of access, which includes a black-and-white book. To upgrade to a full-color book, there is an additional fee of $40 for up to 300 pages or $60 for 300 to 480 pages. For orders outside the US, additional delivery charges apply.",
+      panel: "panel1",
+      isexpanded: false,
+    },
+    {
+      qs: "How much does an additional book from Storyworth cost?",
+      ans: "An additional black-and-white book from Storyworth costs $39, while a full-color book costs $79 for up to 300 pages or $99 for 300 to 480 pages. Shipping costs are not included.",
+      panel: "panel2",
+      isexpanded: false,
+    },
+    {
+      qs: "Are Storyworth questions personalised?",
+      ans: "No, Storyworth questions are not personalised. The questions are sent regularly via email in random order and are not tailored to individual experiences.",
+      panel: "panel3",
+      isexpanded: false,
+    },
+    {
+      qs: "What are the best Storyworth alternatives?",
+      ans: "The best alternatives to Storyworth are LifeScript, Storii, Alifeuntold, Remento, Meminto, Mylifeinabook and other.",
+      panel: "panel4",
+      isexpanded: false,
+    },
+    {
+      qs: "Is Storyworth available in other languages?",
+      ans: "No, Storyworth is available only in English. If you are looking for a Storyworth alternative for Spanish speakers - LifeScript is available in Spanish.",
+      panel: "panel6",
+      isexpanded: false,
+    },
+    {
+      qs: "Does my father have to pay extra if I gift him Storyworth?",
+      ans: "Yes, if your father wants a full-color book, he will need to pay an additional $40–$60, and unfortunately, you can't prepay this fee. If he's located outside the US, he will also have to pay extra for delivery.",
+      panel: "panel7",
+      isexpanded: false,
+    },
+    {
+      qs: "What kind of customer support does Storyworth offer?",
+      ans: "Yes, only via email while LifeScript offers live chat support, email support and tutorial videos.",
+      panel: "panel8",
+      isexpanded: false,
+    },
+    {
+      qs: "Are there Storyworth alternatives in Australia,the UK or Canada?",
+      ans: "People often search for Storyworth alternatives in Australia, the UK, and Canada due to high shipping fees outside the US. LifeScript is the only alternative that offers free international delivery.",
+      panel: "panel5",
+      isexpanded: false,
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -257,7 +308,7 @@ const StoryworthAlternative = () => {
             subHeading="no credit card required."
           />
         </Box>
-        <GotQuestions />
+        <GotQuestions questions={storyWorthAlternativeQs} />
         <ContactFooter
           title={"Still have any "}
           marked={"questions?"}

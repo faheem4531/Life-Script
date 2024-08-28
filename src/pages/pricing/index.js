@@ -1,20 +1,20 @@
 "use client";
 
-import Head from "next/head";
-import { Box } from "@mui/material";
-import Footer from "@/__webComponents/footer/Footer";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
+import Footer from "@/__webComponents/footer/Footer";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
+import { Box } from "@mui/material";
+import Head from "next/head";
 import styles from "./sections/Pricing.module.css";
 
+import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
+import Check from "@/__webAssets/svgs/check-square.svg";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Pricing from "@/__webComponents/pricing/Pricing";
 import Working from "@/__webComponents/working/Working";
-import Check from "@/__webAssets/svgs/check-square.svg";
-import PricingDetails from "./sections/PricingDetails";
-import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import { useTranslation } from "react-i18next";
+import PricingDetails from "./sections/PricingDetails";
 
 const PricingPage = () => {
   const { t } = useTranslation();
@@ -186,6 +186,57 @@ const PricingPage = () => {
     },
   ];
 
+  const homeQuestionPanel = [
+    {
+      qs: t("landingPage.questionSection.question1.qs"),
+      ans: t("landingPage.questionSection.question1.ans"),
+      panel: "panel1",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question2.qs"),
+      ans: t("landingPage.questionSection.question2.ans"),
+      panel: "panel2",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question3.qs"),
+      ans: t("landingPage.questionSection.question3.ans"),
+      panel: "panel3",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question4.qs"),
+      ans: t("landingPage.questionSection.question4.ans"),
+      panel: "panel4",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question5.qs"),
+      ans: t("landingPage.questionSection.question5.ans"),
+      panel: "panel5",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question6.qs"),
+      ans: t("landingPage.questionSection.question6.ans"),
+      panel: "panel6",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question7.qs"),
+      ans: t("landingPage.questionSection.question7.ans"),
+      panel: "panel7",
+      isexpanded: false,
+    },
+    {
+      qs: t("landingPage.questionSection.question8.qs"),
+      ans: t("landingPage.questionSection.question8.ans"),
+      panel: "panel8",
+      isexpanded: false,
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -220,7 +271,7 @@ const PricingPage = () => {
             marked={t("pricingSection.featureComparison.subTitle")}
           />
         </Box>
-        <GotQuestions />
+        <GotQuestions questions={homeQuestionPanel} />
         <ContactFooter
           title={t("pricingSection.stillConfusedSection.title")}
           marked={t("pricingSection.stillConfusedSection.title2")}
