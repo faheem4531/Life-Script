@@ -1,15 +1,15 @@
-import { lazy, Suspense, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import alertImage from "@/_assets/png/alert.png";
 import GlobelBtn from "@/components/button/Button";
 import ShippingModal from "@/components/modal/ShippingModal";
-import { useTranslation } from "react-i18next";
-import alertImage from "@/_assets/png/alert.png";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { lazy, Suspense, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const PDFViewer = lazy(() => import("@/pages/PDFBookView/view"));
 
 const ReviewInterior = ({ setSelectedTab, interior, totalInteriorPages }) => {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const { t } = useTranslation();
   const pdfUrl = interior;
 
@@ -22,13 +22,14 @@ const ReviewInterior = ({ setSelectedTab, interior, totalInteriorPages }) => {
             backgroundColor: "#F2D2BD",
             border: "1px solid black",
             padding: "10px 10px 10px",
-            display : "flex",
-            gap : "10px",
-            borderRadius : "5px",
+            display: "flex",
+            gap: "10px",
+            borderRadius: "5px",
+            mb: "10px"
           }}
         >
-          <Box sx = {{padding : "1px"}}>
-          <Image src={alertImage} alt="alert.png" width={13} height={13}/></Box>
+          <Box sx={{ padding: "1px" }}>
+            <Image src={alertImage} alt="alert.png" width={13} height={13} /></Box>
           <Typography sx={{ color: "black" }}>
             {t(
               "reviewBook.pageLimitMessage",
@@ -48,11 +49,11 @@ const ReviewInterior = ({ setSelectedTab, interior, totalInteriorPages }) => {
           },
           bgcolor: "#F3ECDA",
           borderRadius: 4,
-          height: {xl  : "90vh", lg  : "90vh", md : "100vh", sm : "100vh", xs : "100vh"},
+          height: { xl: "90vh", lg: "90vh", md: "100vh", sm: "100vh", xs: "100vh" },
         }}
       >
         <Suspense fallback={<div>Loading PDF Viewer...</div>}>
-          <PDFViewer pdfUrl={pdfUrl}/>
+          <PDFViewer pdfUrl={pdfUrl} />
         </Suspense>
       </Box>
       <Box
