@@ -256,7 +256,7 @@ const StoryworthAlternative = () => {
       </Head>
 
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <NavBar color="#3e4f3c" logo={"home"} />
+        <NavBar color="#3e4f3c" logo="home" />
         <Introduction />
         <Working
           data={pointsArray}

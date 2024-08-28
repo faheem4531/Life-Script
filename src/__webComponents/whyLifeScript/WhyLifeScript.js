@@ -161,7 +161,7 @@ const ReasonPoints = ({ heading, points, image }) => {
                 backgroundColor: "#F3ECDA",
               }}
             ></span>
-            <Typography sx={{ maxWidth: { lg: "390px", md: "350px" } }}>
+            <Typography>
               {step}
             </Typography>
           </Box>

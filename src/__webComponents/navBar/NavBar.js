@@ -90,7 +90,11 @@ const NavBar = ({ color, logo }) => {
       )}
 
       <Image
-        src={pathname === "/" ? Menu : MenuW && (mobileState ? Menu : MenuW)}
+        src={
+          pathname === "/" || pathname === "/storyworth-alternative"
+            ? Menu
+            : MenuW && (mobileState ? Menu : MenuW)
+        }
         alt="icon"
         loading="lazy"
         onClick={handleMenu}
@@ -239,7 +243,7 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            {/* FAQ&apos;s */}
+            {/* FAQ's */}
             {t("landingPage.navBar.faq")}
           </Typography>
         </Link>

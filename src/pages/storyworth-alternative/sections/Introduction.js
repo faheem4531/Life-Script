@@ -25,12 +25,11 @@ const Introduction = () => {
     >
       <Box sx={{ width: "100%", zIndex: "20", textAlign: "center" }}>
         <PrimaryHeading
-          lineWidth="280px"
+          lineWidth="220px"
           lineHeight="60px"
           mdDirection="column"
           smDirection="column"
           direction="column"
-          lineBottom="-24px"
           showStyle={false}
           heading={"LifeScript, the best Storyworth"}
           marked={"alternative"}
