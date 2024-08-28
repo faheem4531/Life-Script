@@ -28,6 +28,25 @@ const PrimaryHeading = ({
     bottom: lineBottom,
   };
 
+  const sharedStyles = {
+    fontSize: { md: "52px", sm: "44px", xs: "32px" },
+    fontWeight: 500,
+    margin: { sm: "0 18px", xs: "0" },
+    fontFamily: "Besley !important",
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: {
+      sm: smDirection,
+      md: mdDirection,
+      lg: lgDirection,
+      xs: direction,
+    },
+    columnGap: { md: "15px", sm: "10px", xs: "10px" },
+    color: color,
+    lineHeight: lineHeight,
+  };
+
   return (
     <Box
       sx={{
@@ -54,33 +73,22 @@ const PrimaryHeading = ({
           />
         )}
       </Box>
-      <Box
-        color={color}
-        lineHeight={lineHeight}
-        sx={{
-          fontSize: { md: "52px", sm: "44px", xs: "32px" },
-          fontWeight: 500,
-          margin: { sm: "0 18px", xs: "0" },
-          fontFamily: "Besley !important",
-          textAlign: "center",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: {
-            sm: smDirection,
-            md: mdDirection,
-            lg: lgDirection,
-            xs: direction,
-          },
-          columnGap: { md: "15px", sm: "10px", xs: "10px" },
-        }}
-      >
-        <Typography className={styles.pureHeadings} variant={variant}>
+      <Box sx={sharedStyles}>
+        <Typography
+          sx={sharedStyles}
+          className={styles.pureHeadings}
+          variant={variant}
+        >
           {heading}
         </Typography>
         {marked && (
           <Box>
-            <Box display="inline" position="relative">
-              <Typography className={styles.pureHeadings} variant={variant}>
+            <Box display="inline-block" position="relative">
+              <Typography
+                sx={sharedStyles}
+                className={styles.pureHeadings}
+                variant={variant}
+              >
                 {marked}
               </Typography>
               <Image

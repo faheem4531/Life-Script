@@ -306,6 +306,7 @@ const StoryworthAlternative = () => {
             button={"Free Trial"}
             icon={Pen}
             subHeading="no credit card required."
+            btnLink={"/stripe-page"}
           />
         </Box>
         <GotQuestions questions={storyWorthAlternativeQs} />
