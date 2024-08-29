@@ -41,7 +41,6 @@ const ReviewInterior = ({ setSelectedTab, interior, totalInteriorPages }) => {
       <Box
         sx={{
           p: {
-            xl: "20px 20px",
             lg: "20px 20px",
             md: "20px 20px",
             sm: "10px 10px",
@@ -49,7 +48,6 @@ const ReviewInterior = ({ setSelectedTab, interior, totalInteriorPages }) => {
           },
           bgcolor: "#F3ECDA",
           borderRadius: 4,
-          height: { xl: "90vh", lg: "90vh", md: "100vh", sm: "100vh", xs: "100vh" },
         }}
       >
         <Suspense fallback={<div>Loading PDF Viewer...</div>}>
