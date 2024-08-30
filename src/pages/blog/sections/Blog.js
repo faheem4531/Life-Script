@@ -1,8 +1,8 @@
 import { Box, Button, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import MapCard from "./MapCard";
-import { Circles } from "react-loader-spinner";
 import { useTranslation } from "react-i18next";
+import { Circles } from "react-loader-spinner";
+import MapCard from "./MapCard";
 
 const Blogs = () => {
   const { t } = useTranslation();
@@ -11,7 +11,6 @@ const Blogs = () => {
   const [blogsPerPage] = useState(6);
   const [paginateData, setPaginateData] = useState({});
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,8 +58,6 @@ const Blogs = () => {
     fetchData();
   }, [currentPage]);
 
-
-
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const nextPage = () => {
@@ -73,20 +70,27 @@ const Blogs = () => {
   };
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        
+      }}
     >
-
       {/* Loader */}
       {loading && (
-        <Box sx={{
-          margin: {
-            lg: "200px auto 120px",
-            md: "180px auto 150px",
-            sm: "120px auto 100px",
-            xs: "100px 20px 80px",
-          },
-          maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
-        }}>
+        <Box
+          sx={{
+            margin: {
+              lg: "200px auto 120px",
+              md: "180px auto 150px",
+              sm: "120px auto 100px",
+              xs: "100px 20px 80px",
+            },
+            maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
+          }}
+        >
           <Circles
             height="80"
             width="80"
@@ -108,7 +112,7 @@ const Blogs = () => {
                   item.attributes.image.data[0].attributes.url;
 
                 return (
-                  <Grid  item xs={12}  md={6} lg={4} key={index} >
+                  <Grid item xs={12} md={6} lg={4} key={index}>
                     <MapCard
                       id={item.id}
                       slug={item.attributes?.slug}
@@ -126,8 +130,18 @@ const Blogs = () => {
           </Grid>
 
           {/* Pagination */}
-          <Box mt={5} mb={3} display="flex" justifyContent="center">
-            <Button sx={{ color: "black" }} onClick={prevPage} disabled={currentPage === 1}>
+          <Box
+            sx={{
+              m: {sm:"150px 0 80px",xs:"50px 0"},
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              sx={{ color: "black" }}
+              onClick={prevPage}
+              disabled={currentPage === 1}
+            >
               {t("blogSection.previous")}
             </Button>
             {[...Array(paginateData.pageCount)].map((_, index) => (
@@ -136,11 +150,12 @@ const Blogs = () => {
                   padding: "2px",
                   margin: "2px",
                   color: "black",
-                  borderColor: "black", // Set text color to orange
-                  bgcolor: currentPage === index + 1 ? "#E1693B" : "transparent", // Set background color to orange for active page
+                  borderColor: "black",
+                  bgcolor:
+                    currentPage === index + 1 ? "#E1693B" : "transparent",
                   "&:hover": {
-                    bgcolor: "#E1693B", // Change background color on hover
-                    color: "white", // Change text color on hover
+                    bgcolor: "#E1693B",
+                    color: "white",
                   },
                 }}
                 key={index + 1}
@@ -159,8 +174,7 @@ const Blogs = () => {
             </Button>
           </Box>
         </>
-      )
-      }
+      )}
     </Box>
   );
 };
