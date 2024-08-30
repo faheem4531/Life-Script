@@ -142,7 +142,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
 }
 
@@ -381,4 +381,8 @@ input[type="number"]::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.css-z4r21k {
+  text-decoration: none !important;
 }
