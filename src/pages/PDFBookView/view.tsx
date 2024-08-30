@@ -12,8 +12,8 @@ import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 
 interface PDFViewerProps {
   pdfUrl: string;
-
 }
+
 const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
@@ -37,13 +37,19 @@ const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
       </Box>
 
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center", m: "40px 0 50px" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          m: { sm: "40px 0 50px", xs: "20px 0" }
+        }}
       >
-        <Box sx={{ width: "100%", maxWidth: "800px", height: "650px" }}>
+        <Box sx={{ width: "100%", maxWidth: "800px", height: { sm: "650px", xs: "400px" } }}>
           <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
             <Viewer
               fileUrl={pdfUrl}
               plugins={[defaultLayoutPluginInstance]}
+              defaultScale={1}
             />
           </Worker>
         </Box>
