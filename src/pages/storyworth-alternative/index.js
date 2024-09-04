@@ -14,7 +14,9 @@ import Experience from "@/__webComponents/experience/Experience";
 import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
 import LandingIntro from "../../__webComponents/Introduction/LandingIntro";
+import DiscoverQuestions from "../../__webComponents/questions/DiscoverQuestions";
 import GifTab from "../home/sections/GifTab";
+import OurBooks from "../home/sections/OurBooks";
 import Testimonial from "../home/sections/Testimonial";
 import PricingDetails from "../pricing/sections/PricingDetails";
 
@@ -286,6 +288,8 @@ const StoryworthAlternative = () => {
           marked={t("landingPage.howItWorks.subHeading")}
           width={"300px"}
         />
+        <DiscoverQuestions />
+        <OurBooks />
         <Testimonial />
         <Box
           sx={{
