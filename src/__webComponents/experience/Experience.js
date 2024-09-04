@@ -12,7 +12,12 @@ const Experience = ({ heading, marked, headingStyle = true }) => {
   return (
     <Box
       sx={{
-        margin: { lg: "150px 0  100px", md: "170px 0 130px" },
+        margin: {
+          lg: "150px 0  100px",
+          md: "170px 0 130px",
+          sm: "80px 0 50px",
+          xs: "40px 20px",
+        },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -22,7 +27,6 @@ const Experience = ({ heading, marked, headingStyle = true }) => {
         <PrimaryHeading
           lineWidth="180px"
           lineHeight="60px"
-          mdDirection="column"
           showStyle={false}
           heading={heading}
           marked={marked}
@@ -39,8 +43,18 @@ const Experience = ({ heading, marked, headingStyle = true }) => {
 
       <Box
         sx={{
-          margin: { lg: "120px 60px 120px 130px", md: "100px 40px 70px 70px" },
+          margin: {
+            lg: "120px 60px 120px 130px",
+            md: "100px 40px 70px 70px",
+            sm: "30px 20px 50px",
+            xs: "30px 20px 50px",
+          },
           display: "flex",
+          flexDirection: {
+            md: "row",
+            sm: "column-reverse",
+            xs: "column-reverse",
+          },
           justifyContent: "center",
           columnGap: { lg: "140px", md: "70px" },
           alignItems: "center",

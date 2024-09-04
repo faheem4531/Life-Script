@@ -253,23 +253,14 @@ const StoryworthAlternative = () => {
           content="Save time, efforts and enjoy a more personalised, secure and supportive storytelling experience with no hidden costs. Try now for free!"
         />
       </Head>
-
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro />
-
-        <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-          <Experience
-            headingStyle={false}
-            heading="How we’re "
-            marked="different"
-          />
-        </Box>
-        <Working
-          data={pointsArray}
-          heading={t("landingPage.howItWorks.heading")}
-          marked={t("landingPage.howItWorks.subHeading")}
-          width={"300px"}
+        <Experience
+          headingStyle={false}
+          heading="How we’re "
+          marked="different"
         />
+        <WhyLifeScript />
         <Box
           sx={{
             margin: {
@@ -289,7 +280,12 @@ const StoryworthAlternative = () => {
             marked={t("pricingSection.featureComparison.subTitle")}
           />
         </Box>
-        <WhyLifeScript />
+        <Working
+          data={pointsArray}
+          heading={t("landingPage.howItWorks.heading")}
+          marked={t("landingPage.howItWorks.subHeading")}
+          width={"300px"}
+        />
         <Testimonial />
         <Box
           sx={{
