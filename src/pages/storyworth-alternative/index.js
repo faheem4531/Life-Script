@@ -2,7 +2,6 @@
 
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import Footer from "@/__webComponents/footer/Footer";
-import NavBar from "@/__webComponents/navBar/NavBar";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import { Box } from "@mui/material";
 import Head from "next/head";
@@ -14,10 +13,10 @@ import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Experience from "@/__webComponents/experience/Experience";
 import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
+import LandingIntro from "../../__webComponents/Introduction/LandingIntro";
 import GifTab from "../home/sections/GifTab";
 import Testimonial from "../home/sections/Testimonial";
 import PricingDetails from "../pricing/sections/PricingDetails";
-import Introduction from "./sections/Introduction";
 
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
@@ -256,14 +255,8 @@ const StoryworthAlternative = () => {
       </Head>
 
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <NavBar color="#3e4f3c" logo="home" />
-        <Introduction />
-        <Working
-          data={pointsArray}
-          heading={t("landingPage.howItWorks.heading")}
-          marked={t("landingPage.howItWorks.subHeading")}
-          width={"300px"}
-        />
+        <LandingIntro />
+
         <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
           <Experience
             headingStyle={false}
@@ -271,6 +264,12 @@ const StoryworthAlternative = () => {
             marked="different"
           />
         </Box>
+        <Working
+          data={pointsArray}
+          heading={t("landingPage.howItWorks.heading")}
+          marked={t("landingPage.howItWorks.subHeading")}
+          width={"300px"}
+        />
         <Box
           sx={{
             margin: {

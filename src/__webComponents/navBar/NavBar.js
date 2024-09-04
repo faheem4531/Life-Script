@@ -90,11 +90,7 @@ const NavBar = ({ color, logo }) => {
       )}
 
       <Image
-        src={
-          pathname === "/" || pathname === "/storyworth-alternative"
-            ? Menu
-            : MenuW && (mobileState ? Menu : MenuW)
-        }
+        src={pathname === "/" ? Menu : MenuW && (mobileState ? Menu : MenuW)}
         alt="icon"
         loading="lazy"
         onClick={handleMenu}
@@ -107,7 +103,7 @@ const NavBar = ({ color, logo }) => {
           alignItems: "center",
           flexDirection: { md: "row", sm: "column", xs: "column" },
         }}
-        color={mobileState ? "" : color}
+        color={mobileState ? "#3e4f3c" : color}
         className={`${
           mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide
         }`}
