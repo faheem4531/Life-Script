@@ -1,25 +1,31 @@
 "use client";
 
+import LeftStyle from "@/__webAssets/pngs/left-style2.png";
+import RightStyle from "@/__webAssets/pngs/right-style2.png";
 import { Box } from "@mui/material";
-
-import { useTranslation } from "react-i18next";
-import styles from "../ComponentsStyles.module.css";
+import PrimaryHeading from "../headings/PrimaryHeading";
 
 const DiscoverQuestions = ({ questions }) => {
-  const { t } = useTranslation();
-
   return (
     <Box
       sx={{
         padding: {
-          lg: "150px 160px  120px 110px",
-          md: "150px 50px 150px",
-          sm: "150px 100px 150px",
-          xs: "120px 20px 80px",
+          sm: "50px 0",
+          xs: "20px",
         },
       }}
-      className={styles.gotQsBg}
-    >hell</Box>
+    >
+      <PrimaryHeading
+        left={LeftStyle}
+        right={RightStyle}
+        lineWidth="160px"
+        showStyle={true}
+        marked={true}
+        removeStyleMbl={true}
+        heading={"Discover our questions"}
+        color="#3e4f3c"
+      />
+    </Box>
   );
 };
 export default DiscoverQuestions;
