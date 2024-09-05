@@ -1,18 +1,18 @@
 "use client";
 
+import NextIcon from "@/__webAssets/svgs/next.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import styles from "./NavBar.module.css";
-import Button from "../button/Button";
-import NextIcon from "@/__webAssets/svgs/next.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Button from "../button/Button";
 import LanguageOption from "./Language";
+import styles from "./NavBar.module.css";
 
-import Menu from "@/__webAssets/svgs/mobile-menu.svg";
 import MenuW from "@/__webAssets/svgs/mobile-menu-white.svg";
+import Menu from "@/__webAssets/svgs/mobile-menu.svg";
 import { useTranslation } from "react-i18next";
 const NavBar = ({ color, logo }) => {
   const { t } = useTranslation();
@@ -64,7 +64,12 @@ const NavBar = ({ color, logo }) => {
       {logo !== "home" && (
         <Link href="/">
           {!mobileState && (
-            <Image src={logo} alt="Logo" className={styles.logo} loading="lazy"/>
+            <Image
+              src={logo}
+              alt="Logo"
+              className={styles.logo}
+              loading="lazy"
+            />
           )}
         </Link>
       )}
@@ -194,7 +199,6 @@ const NavBar = ({ color, logo }) => {
           >
             {/* About Us */}
             {t("landingPage.navBar.about-us")}
-            
           </Typography>
         </Link>
 
@@ -237,14 +241,14 @@ const NavBar = ({ color, logo }) => {
           >
             {/* FAQ&apos;s */}
             {t("landingPage.navBar.faq")}
-
           </Typography>
         </Link>
 
         <Box sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}>
           <Link href="/_auth/Auth">
             <Button
-              title={t("landingPage.navBar.login")}
+              // title={t("landingPage.navBar.login")}
+              title="no loged in"
               width="140px"
               height="45px"
               img2={NextIcon}
