@@ -247,8 +247,7 @@ const NavBar = ({ color, logo }) => {
         <Box sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}>
           <Link href="/_auth/Auth">
             <Button
-              // title={t("landingPage.navBar.login")}
-              title="no loged in"
+              title={t("landingPage.navBar.login")}
               width="140px"
               height="45px"
               img2={NextIcon}
