@@ -27,7 +27,6 @@
 
 /* ContactFooter  */
 .contactFooterBox {
-  /* background-image: url(../__webAssets/pngs/bg-footer.png); */
   background-image: url(https://lifescript-media.s3.eu-north-1.amazonaws.com/bg-footer.png);
   background-size: 100% 120%;
 }
@@ -73,7 +72,6 @@
 
 /* Working  */
 .workingBox {
-  /* background-image: url(../__webAssets/pngs/bg-top-bottom.png); */
   background-image: url(https://lifescript-media.s3.eu-north-1.amazonaws.com/bg-top-bottom.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -128,6 +126,30 @@
   color: #e1683b;
 }
 
+/* Suggestion  */
+
+.suggestionImg {
+  width: 550px;
+  height: 680px;
+}
+
+.fullStyleS {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 910px;
+  height: auto;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  /* Suggestion  */
+  .suggestionImg {
+    width: 480px;
+    height: 590px;
+  }
+}
+
 @media screen and (max-width: 1200px) and (min-width: 899px) {
   .gif {
     width: 450px;
@@ -146,6 +168,16 @@
   .bestIcons {
     width: 50px;
     height: max-content;
+  }
+
+  /* Suggestion  */
+  .suggestionImg {
+    width: 400px;
+    height: 500px;
+  }
+
+  .fullStyleS {
+    max-width: 880px;
   }
 }
 
@@ -198,6 +230,21 @@
   .bestIcons {
     width: 60px;
     height: max-content;
+  }
+
+  /* Suggestion  */
+  .suggestionImg {
+    width: 400px;
+    height: 500px;
+  }
+
+  .fullStyleS {
+    bottom: -60px;
+    max-width: 95%;
+  }
+
+  .pointsLine {
+    display: none;
   }
 }
 
@@ -254,5 +301,18 @@
   .headingLine {
     bottom: -10px;
     right: -10px;
+  }
+
+  /* Suggestion  */
+  .suggestionImg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fullStyleS {
+    bottom: -30px;
+    max-width: 100%;
+    height: 30px;
+    padding: 0 7%;
   }
 }

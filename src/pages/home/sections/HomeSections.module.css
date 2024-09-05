@@ -51,7 +51,7 @@
   padding: 0;
   display: inherit;
 } */
-.pureHeadings{
+.pureHeadings {
   font-size: inherit;
   font-weight: inherit;
   margin: 0;
@@ -151,7 +151,7 @@
   height: auto;
 }
 
-.suggestionImg{
+.suggestionImg {
   width: 550px;
   height: 680px;
 }
@@ -164,27 +164,27 @@
   z-index: 100;
 }
 
-.index{
+.index {
   z-index: 10 !important;
 }
 
-.storyBg{
+.storyBg {
   position: absolute;
-  top:247px;
+  top: 247px;
   width: 100vw;
   z-index: 10;
 }
 
-.marked{
+.marked {
   position: relative;
 }
 
-.line{
+.line {
   position: absolute;
-  width:150px;
+  width: 150px;
   right: -40px;
   bottom: -5px;
-  height: auto; 
+  height: auto;
 }
 
 /* GifTab  */
@@ -201,7 +201,7 @@
   bottom: 10px;
 }
 
-.bandage{
+.bandage {
   display: none;
 }
 
@@ -229,8 +229,8 @@
   height: 580px;
 }
 
-.rightAero, 
-.leftAero{
+.rightAero,
+.leftAero {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -248,112 +248,110 @@
 }
 
 @media screen and (min-width: 1600px) {
-  .rightAero, 
-.leftAero{
-  width: 60px;
-  height: 60px;
-}
+  .rightAero,
+  .leftAero {
+    width: 60px;
+    height: 60px;
+  }
 
   .book {
     width: 550px;
     height: 800px;
   }
 
-  .storyBg{
+  .storyBg {
     width: initial;
   }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
-
   /* Suggestion  */
-.suggestionImg{
-  width: 480px;
-  height: 590px;
-}
+  .suggestionImg {
+    width: 480px;
+    height: 590px;
+  }
 }
 
 @media screen and (min-width: 899px) and (max-width: 1200px) {
-/* Introduction sec*/
-.bookImg {
-  bottom: -80px;
-  width: 550px;
-  height: 240px;
-}
-
-.image1 {
-  right: 210px;
-  top:120px;
-  bottom: 120px;
-  width: 170px;
-  height: 200px;
-}
-
-.image2 {
-  right: 110px;
-  top: 110px;
-  bottom: 120px;
-  width: 150px;
-  height: 170px;
-}
-
-.image3 {
-  top: 100px;   
-  bottom: 120px;
-  width: 170px;
-  height: 200px;
-}
-
-.image4 {
-  right: 100px;
-  bottom: 70px;
-  top: 210px;
- width: 200px;
-  height: 180px;
-}
-
-@keyframes image1 {
-  0% {
-    right: 100px;
-    bottom: -600px;
+  /* Introduction sec*/
+  .bookImg {
+    bottom: -80px;
+    width: 550px;
+    height: 240px;
   }
 
-  100% {
+  .image1 {
     right: 210px;
+    top: 120px;
     bottom: 120px;
-  }
-}
-
-@keyframes image2 {
-  0% {
-    bottom: -600px;
-  }
-  100% {
-    bottom: 170px;
+    width: 170px;
+    height: 200px;
   }
 
-}
-
-@keyframes image3 {
-  0% {
-    bottom: -600px;
-  }
-  100% {
+  .image2 {
+    right: 110px;
+    top: 110px;
     bottom: 120px;
+    width: 150px;
+    height: 170px;
   }
-}
 
-@keyframes image4 {
-  0% {
-    bottom: -600px;
+  .image3 {
+    top: 100px;
+    bottom: 120px;
+    width: 170px;
+    height: 200px;
   }
-  100% {
-  bottom: 70px;
+
+  .image4 {
+    right: 100px;
+    bottom: 70px;
+    top: 210px;
+    width: 200px;
+    height: 180px;
   }
-}
+
+  @keyframes image1 {
+    0% {
+      right: 100px;
+      bottom: -600px;
+    }
+
+    100% {
+      right: 210px;
+      bottom: 120px;
+    }
+  }
+
+  @keyframes image2 {
+    0% {
+      bottom: -600px;
+    }
+    100% {
+      bottom: 170px;
+    }
+  }
+
+  @keyframes image3 {
+    0% {
+      bottom: -600px;
+    }
+    100% {
+      bottom: 120px;
+    }
+  }
+
+  @keyframes image4 {
+    0% {
+      bottom: -600px;
+    }
+    100% {
+      bottom: 70px;
+    }
+  }
 
   /* Suggestion  */
-  .suggestionImg{
+  .suggestionImg {
     width: 400px;
     height: 500px;
   }
@@ -364,53 +362,51 @@
 
   /* GifTab  */
 
-.gifTabBox {
-  background-size: 100% 200px;
-}
+  .gifTabBox {
+    background-size: 100% 200px;
+  }
 
-.bgHurt {
-  height: 120px;
-  width:200px;
-  right: 120px;
-}
+  .bgHurt {
+    height: 120px;
+    width: 200px;
+    right: 120px;
+  }
 
-/* StoryTelling  */
-.stroyImages {
-  width: 400px;
-  height: 260px;
-}
+  /* StoryTelling  */
+  .stroyImages {
+    width: 400px;
+    height: 260px;
+  }
 
-.storyBg{
-display: none;
-}
+  .storyBg {
+    display: none;
+  }
 
-/* Books  */
-.book {
-  width: 310px;
-  height: 450px;
-}
+  /* Books  */
+  .book {
+    width: 310px;
+    height: 450px;
+  }
 
-.rightAero, 
-.leftAero{
-  width: 40px;
-  height: 40px;
-}
-
+  .rightAero,
+  .leftAero {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media screen and (max-width: 899px) {
-/* Introduction sec*/
-  .bookImg, 
-  .image1 , 
-  .image2, 
-  .image3, 
-  .image4, 
-  .pointsLine {
+  /* Introduction sec*/
+  .bookImg,
+  .image1,
+  .image2,
+  .image3,
+  .image4 {
     display: none;
   }
 
   /* Suggestion  */
-  .suggestionImg{
+  /* .suggestionImg{
     width: 400px;
     height: 500px;
   }
@@ -418,7 +414,7 @@ display: none;
 .fullStyle {
   bottom: -60px;
   max-width: 95%;
-}
+} */
 
   /* GifTab  */
 
@@ -428,54 +424,50 @@ display: none;
 
   .bgHurt {
     height: 80px;
-    width:160px;
+    width: 160px;
     right: 120px;
     bottom: 26px;
   }
 
   /* storyTelling  */
-  .storyBg{
-  display: none;
+  .storyBg {
+    display: none;
   }
 
-  .line{
+  .line {
     width: 100px;
     right: -20px;
   }
-  
+
   /* Books  */
   .book {
     width: 240px;
     height: 340px;
   }
 
-.rightAero, 
-.leftAero{
-  width: 40px;
-  height: 40px;
+  .rightAero,
+  .leftAero {
+    width: 40px;
+    height: 40px;
+  }
 }
-
-
-}
-
 
 @media screen and (max-width: 600px) {
-
-  .braker{
+  .braker {
     display: none;
   }
-    /* Suggestion  */
-    .suggestionImg{
-      width: 100%;
-      height: 100%;
-    }
-  
+  /* Suggestion  */
+  /* .suggestionImg {
+    width: 100%;
+    height: 100%;
+  }
+
   .fullStyle {
     bottom: -30px;
     max-width: 100%;
     height: 30px;
     padding: 0 7%;
-  }
+  } */
 
   /* GifTab  */
 
@@ -486,12 +478,12 @@ display: none;
 
   .bgHurt {
     height: 110px;
-    width:215px;
+    width: 215px;
     right: 0;
     bottom: 0;
   }
 
-  .bandage{
+  .bandage {
     display: block;
     position: absolute;
     top: -55px;
@@ -505,12 +497,12 @@ display: none;
     height: auto;
   }
 
-  .line{
+  .line {
     width: 60px;
     right: -10px;
   }
 
-/* Books  */
+  /* Books  */
   .slider {
     width: 200px;
   }
@@ -520,24 +512,23 @@ display: none;
     height: 270px;
   }
 
-  .rightAero, 
-.leftAero{
-  width: 28px;
-  height: 28px;
-}
+  .rightAero,
+  .leftAero {
+    width: 28px;
+    height: 28px;
+  }
 
   .rightAero {
     right: 30px;
   }
-  
+
   .leftAero {
     left: 30px;
   }
 
-/* Textimonial  */
+  /* Textimonial  */
   .clientImg {
     width: 70px;
     height: 70px;
   }
-
-  }
+}

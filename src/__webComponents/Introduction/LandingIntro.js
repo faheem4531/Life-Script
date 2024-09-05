@@ -4,15 +4,15 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Button from "@/__webComponents/button/Button";
 import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
-import { useTranslation } from "react-i18next";
-import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import NavBar from "@/__webComponents/navBar/NavBar";
+import { useTranslation } from "react-i18next";
 import styles from "../ComponentsStyles.module.css";
 
-const LandingIntro = ({ bgGreen = true }) => {
+const LandingIntro = ({ bgGreen = true, heading, marked, discription }) => {
   const { t } = useTranslation();
   return (
     <Box
@@ -41,8 +41,8 @@ const LandingIntro = ({ bgGreen = true }) => {
             smDirection="column"
             direction="column"
             showStyle={false}
-            heading={"LifeScript, the best Storyworth"}
-            marked={"alternative"}
+            heading={heading}
+            marked={marked}
             variant="h1"
             lineBottom="-20px"
           />
@@ -57,8 +57,7 @@ const LandingIntro = ({ bgGreen = true }) => {
               maxWidth: { md: "650px", sm: "500px", xs: "100%" },
             }}
           >
-            Save time, efforts and enjoy a more personalized, secure and
-            supportive storytelling experience with no hidden costs.
+            {discription}
           </Typography>
           <Box
             sx={{

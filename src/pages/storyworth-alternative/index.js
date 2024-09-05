@@ -256,7 +256,13 @@ const StoryworthAlternative = () => {
         />
       </Head>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <LandingIntro />
+        <LandingIntro
+          heading={"LifeScript, the best Storyworth"}
+          marked={"alternative"}
+          discription="Save time, efforts and enjoy a more personalized, secure and
+            supportive storytelling experience with no hidden costs."
+          buttonText="Start Writing for Free"
+        />
         <Experience
           headingStyle={false}
           heading="How we’re "
