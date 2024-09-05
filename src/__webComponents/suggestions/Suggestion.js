@@ -42,12 +42,14 @@ const Suggestion = ({ bgGreen = true, heading, content }) => {
         >
           <h2 className={styles.pureHeadings}>{heading}</h2>
         </Typography>
-        <Image
-          src={FlowerLine}
-          alt="logo"
-          className={bgGreen ? styles.fullStyle : styles.fullStyleS}
-          loading="lazy"
-        />
+        {!bgGreen && (
+          <Image
+            src={FlowerLine}
+            alt="logo"
+            className={styles.fullStyleS}
+            loading="lazy"
+          />
+        )}
       </Box>
       <Box
         sx={{
