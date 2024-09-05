@@ -244,7 +244,10 @@ const NavBar = ({ color, logo }) => {
           </Typography>
         </Link>
 
-        {!(pathname === "/storyworth-alternative") && (
+        {!(
+          pathname === "/storyworth-alternative" ||
+          pathname === "/retirement-gifts-for-men"
+        ) && (
           <Box
             sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}
           >
