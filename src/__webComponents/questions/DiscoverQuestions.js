@@ -44,7 +44,7 @@ const DiscoverQuestions = () => {
         heading={"Discover our questions"}
         color="#3e4f3c"
       />
-      <Box sx={{ margin: "100px 0 130px" }}>
+      <Box sx={{ margin: { sm: "100px 0 130px", xs: "90px 0" } }}>
         <Marquee speed={80} direction="right" pauseOnHover={true}>
           {SuggestedQuestions.map((item, index) => (
             <QuestionCard question={item} key={index} />
@@ -63,9 +63,15 @@ const DiscoverQuestions = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            flexDirection: { sm: "row", xs: "column" },
           }}
         >
-          <Typography sx={{ fontSize: { md: "26px", sm: "22px" } }}>
+          <Typography
+            sx={{
+              fontSize: { md: "26px", sm: "22px" },
+              mb: { sm: "0px", xs: "20px" },
+            }}
+          >
             LifeScript offers hundreds of thoughtfully curated questions, with
             the option to create your own or choose from personalised
             suggestions.
