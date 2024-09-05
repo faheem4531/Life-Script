@@ -12,6 +12,7 @@ import Experience from "@/__webComponents/experience/Experience";
 import Working from "@/__webComponents/working/Working";
 import LandingIntro from "../../__webComponents/Introduction/LandingIntro";
 import DiscoverQuestions from "../../__webComponents/questions/DiscoverQuestions";
+import Suggestion from "../../__webComponents/suggestions/Suggestion";
 import GifTab from "../home/sections/GifTab";
 import OurBooks from "../home/sections/OurBooks";
 import Testimonial from "../home/sections/Testimonial";
@@ -92,6 +93,29 @@ const StoryworthAlternative = () => {
     },
   ];
 
+  const retiredMenSuggestions = [
+    {
+      title: "Celebrate his life story",
+      subTitle:
+        "Retirement isn’t just an end—it’s a celebration of his entire life’s journey. Give him the opportunity to capture his legacy in his own words, creating a keepsake that honors his achievements and preserves his wisdom for years to come.",
+    },
+    {
+      title: "Share his story and wisdom",
+      subTitle:
+        "Every man has a story worth telling. Help him share the triumphs, challenges, and life lessons that have shaped him. This is his chance to inspire and guide his family with the wisdom he’s gained over a lifetime.",
+    },
+    {
+      title: "Connect him with his family",
+      subTitle:
+        "His stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring his voice is heard for generations.",
+    },
+    {
+      title: "Reflect on his life’s journey",
+      subTitle:
+        "Retirement is a time for reflection. Dive deep into the moments that defined his path, finding joy in the details that might have been forgotten. This is more than a gift—it’s a journey through his past.",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -107,6 +131,10 @@ const StoryworthAlternative = () => {
           heading="LifeScript, the best retirement gift for men"
           discription="Surprise him with an unforgettable trip down memory lane, where he can share his life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to his doorstep"
           buttonText="Buy Now"
+        />
+        <Suggestion
+          heading="A retirement gift empowering him to:"
+          content={retiredMenSuggestions}
         />
         <Experience
           headingStyle={false}

@@ -9,12 +9,12 @@ import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Working from "@/__webComponents/working/Working";
 import { Box } from "@mui/material";
 import Head from "next/head";
+import Suggestion from "../../__webComponents/suggestions/Suggestion";
 import GifTab from "./sections/GifTab";
 import Introduction from "./sections/Introduction";
 import OurBooks from "./sections/OurBooks";
 import Reviews from "./sections/Reviews";
 import StoryTelling from "./sections/StoryTelling";
-import Suggestion from "./sections/Suggestion";
 import Testimonial from "./sections/Testimonial";
 
 import Gift from "@/__webAssets/svgs/gift.svg";
@@ -97,6 +97,25 @@ const HomePage = () => {
     },
   ];
 
+  const homeSuggestions = [
+    {
+      title: t("landingPage.perfectSection.content1.title"),
+      subTitle: t("landingPage.perfectSection.content1.subTitle"),
+    },
+    {
+      title: t("landingPage.perfectSection.content2.title"),
+      subTitle: t("landingPage.perfectSection.content2.subTitle"),
+    },
+    {
+      title: t("landingPage.perfectSection.content3.title"),
+      subTitle: t("landingPage.perfectSection.content3.subTitle"),
+    },
+    {
+      title: t("landingPage.perfectSection.content4.title"),
+      subTitle: t("landingPage.perfectSection.content4.subTitle"),
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -108,7 +127,6 @@ const HomePage = () => {
           content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent."
         />
       </Head>
-
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C" />
         <Introduction />
@@ -118,7 +136,11 @@ const HomePage = () => {
           marked={t("landingPage.howItWorks.subHeading")}
           width={"300px"}
         />
-        <Suggestion />
+        <Suggestion
+          heading={t("landingPage.perfectSection.title")}
+          bgGreen={false}
+          content={homeSuggestions}
+        />
         <GifTab
           heading={t("landingPage.perfectSection.content5.cardText")}
           button={t("landingPage.perfectSection.content5.btntext")}
@@ -126,12 +148,10 @@ const HomePage = () => {
         />
         <StoryTelling />
         <Reviews />
-        <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-          <Experience
-            heading={t("landingPage.featureSection.title")}
-            marked={t("landingPage.featureSection.subTitle")}
-          />
-        </Box>
+        <Experience
+          heading={t("landingPage.featureSection.title")}
+          marked={t("landingPage.featureSection.subTitle")}
+        />
         <Pricing />
         <OurBooks />
         <Testimonial />
