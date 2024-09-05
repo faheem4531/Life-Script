@@ -56,7 +56,11 @@ export default function Question({
         <AccordionSummary
           sx={{ padding: { md: "10px 0 ", sm: "5px 0", xs: "5px 0" } }}
         >
-          <Typography sx={{ fontFamily: "Avenir" }} variant="h3" className={styles.pureHeadings}>
+          <Typography
+            sx={{ fontFamily: "Avenir" }}
+            variant="h3"
+            className={styles.pureHeadings}
+          >
             {qs}
           </Typography>
         </AccordionSummary>
@@ -70,6 +74,7 @@ export default function Question({
               },
               fontSize: "14px",
               fontFamily: "Avenir",
+              color: "#30422E",
             }}
             variant="h4"
             className={styles.pureHeadings}
