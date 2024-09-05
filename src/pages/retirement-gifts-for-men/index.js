@@ -7,25 +7,9 @@ import { Box } from "@mui/material";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
-import Pen from "@/__webAssets/svgs/writing-pen.svg";
-import Experience from "@/__webComponents/experience/Experience";
 import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
-import DiscoverQuestions from "@/__webComponents/questions/DiscoverQuestions";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
-import Working from "@/__webComponents/working/Working";
-import GifTab from "../home/sections/GifTab";
-import OurBooks from "../home/sections/OurBooks";
-
-import Arthur from "@/__webAssets/webp/testimonials/lifescript-customer-review-arthur-thompson.webp";
-import Carlos from "@/__webAssets/webp/testimonials/lifescript-customer-review-carlos-martinez.webp";
-import Derek from "@/__webAssets/webp/testimonials/lifescript-customer-review-derek-lee.webp";
-import Eleanor from "@/__webAssets/webp/testimonials/lifescript-customer-review-eleanor-rodriguez.webp";
-import George from "@/__webAssets/webp/testimonials/lifescript-customer-review-george-watkins.webp";
-import Lilly from "@/__webAssets/webp/testimonials/lifescript-customer-review-lilly-thompson.webp";
-import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-linda-morris.webp";
-import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
-import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
@@ -128,68 +112,32 @@ const StoryworthAlternative = () => {
 
   const noImageTestimonials = [
     {
-      profile: Arthur,
-      name: t("landingPage.testimonialSection.testimonial1.name"),
-      age: t("landingPage.testimonialSection.testimonial1.age"),
-      location: t("landingPage.testimonialSection.testimonial1.location"),
-      details: t("landingPage.testimonialSection.testimonial1.details"),
+      name: "Michael S.",
+      details:
+        "It’s been so meaningful to reflect on my life and share my memories with my family through LifeScript. I’ve enjoyed telling my grandkids about my past, something I might never have done in such a structured way. My grandkids gifted me this for my retirement, and it feels great knowing they want to learn about my early years.",
     },
     {
-      profile: Eleanor,
-      name: t("landingPage.testimonialSection.testimonial2.name"),
-      age: t("landingPage.testimonialSection.testimonial2.age"),
-      location: t("landingPage.testimonialSection.testimonial2.location"),
-      details: t("landingPage.testimonialSection.testimonial2.details"),
+      name: "Thomas C.",
+      details:
+        "LifeScript has turned into a fantastic retirement hobby. It’s heartwarming to reflect on my experiences and share them with my family. The hardcover book will be a lasting reminder of my journey, and I’m so glad my children thought of giving me this gift.",
     },
     {
-      profile: Margaret,
-      name: t("landingPage.testimonialSection.testimonial3.name"),
-      age: t("landingPage.testimonialSection.testimonial3.age"),
-      location: t("landingPage.testimonialSection.testimonial3.location"),
-      details: t("landingPage.testimonialSection.testimonial3.details"),
+      name: "Edward L.",
+      details:
+        "My daughter gave me LifeScript as a retirement gift, and I didn’t expect to enjoy it so much. It’s like going on a journey through my own life. I’ve been able to share stories that I’d almost forgotten about, and now they're preserved forever.",
     },
     {
-      profile: George,
-      name: t("landingPage.testimonialSection.testimonial4.name"),
-      age: t("landingPage.testimonialSection.testimonial4.age"),
-      location: t("landingPage.testimonialSection.testimonial4.location"),
-      details: t("landingPage.testimonialSection.testimonial4.details"),
+      name:"Kevin J.",
+      details: "This experience with LifeScript has been a lot of fun. I love documenting our family's stories so future generations can read them and feel a connection to our past. It feels like I'm keeping the memories of those who came before me alive, showing that their lives mattered.",
     },
     {
-      profile: Linda,
-      name: t("landingPage.testimonialSection.testimonial5.name"),
-      age: t("landingPage.testimonialSection.testimonial5.age"),
-      location: t("landingPage.testimonialSection.testimonial5.location"),
-      details: t("landingPage.testimonialSection.testimonial5.details"),
+      name: "George P.",
+      details:"I was hesitant at first when my wife gifted me LifeScript, but it has turned into one of the most rewarding experiences. I’ve been able to recount my life's adventures and leave a lasting legacy for my grandkids. The weekly questions really help keep me engaged.",
     },
     {
-      profile: Derek,
-      name: t("landingPage.testimonialSection.testimonial6.name"),
-      age: t("landingPage.testimonialSection.testimonial6.age"),
-      location: t("landingPage.testimonialSection.testimonial6.location"),
-      details: t("landingPage.testimonialSection.testimonial6.details"),
-    },
-    {
-      profile: Lilly,
-      name: t("landingPage.testimonialSection.testimonial7.name"),
-      age: t("landingPage.testimonialSection.testimonial7.age"),
-      location: t("landingPage.testimonialSection.testimonial7.location"),
-      details: t("landingPage.testimonialSection.testimonial7.details"),
-    },
-    {
-      profile: Carlos,
-      name: t("landingPage.testimonialSection.testimonial8.name"),
-      age: t("landingPage.testimonialSection.testimonial8.age"),
-      location: t("landingPage.testimonialSection.testimonial8.location"),
-      details: t("landingPage.testimonialSection.testimonial8.details"),
-    },
-    {
-      profile: Rachel,
-      name: t("landingPage.testimonialSection.testimonial9.name"),
-      age: t("landingPage.testimonialSection.testimonial9.age"),
-      location: t("landingPage.testimonialSection.testimonial9.location"),
-      details: t("landingPage.testimonialSection.testimonial9.details"),
-    },
+      name:"Henry K.",
+      details: "I never thought I'd be writing a book, but LifeScript has made it possible. My daughter bought this for my retirement, and it's given me a chance to share my memories, which are now beautifully bound in a book that my family can cherish forever.",
+    }
   ];
 
   return (

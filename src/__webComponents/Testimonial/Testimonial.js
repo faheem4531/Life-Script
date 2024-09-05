@@ -90,40 +90,44 @@ function ReviewCard({ profile, name, location, details, age }) {
         <Box>
           <Typography
             sx={{
-              fontSize: { sm: "20px", xs: "18px" },
+              fontSize: { sm: profile ? "20px" : "30px", xs: "18px" },
               color: "#E1683B",
               fontWeight: 800,
             }}
           >
             {name}{" "}
-            <Typography
-              component="span"
-              sx={{ display: "inline", fontSize: "20px", fontWeight: 500 }}
-            >
-              {age}
-            </Typography>
+            {age && (
+              <Typography
+                component="span"
+                sx={{ display: "inline", fontSize: "20px", fontWeight: 500 }}
+              >
+                {age}
+              </Typography>
+            )}
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              marginTop: "5px",
-              columnGap: "4px",
-            }}
-          >
-            <Image src={Pin} alt="pin" loading="lazy" />
-            <Typography
+          {location && (
+            <Box
               sx={{
-                fontSize: { sm: "20px", xs: "18px" },
-                marginTop: "4px",
-                lineHeight: "18px",
-                color: "#BFC4B5",
-                fontFamily: "Avenir",
+                display: "flex",
+                alignItems: "center",
+                marginTop: "5px",
+                columnGap: "4px",
               }}
             >
-              {location}
-            </Typography>
-          </Box>
+              <Image src={Pin} alt="pin" loading="lazy" />
+              <Typography
+                sx={{
+                  fontSize: { sm: "20px", xs: "18px" },
+                  marginTop: "4px",
+                  lineHeight: "18px",
+                  color: "#BFC4B5",
+                  fontFamily: "Avenir",
+                }}
+              >
+                {location}
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
       <Typography
