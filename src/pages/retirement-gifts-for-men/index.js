@@ -257,11 +257,10 @@ const StoryworthAlternative = () => {
       </Head>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
-          heading={"LifeScript, the best Storyworth"}
-          marked={"alternative"}
-          discription="Save time, efforts and enjoy a more personalized, secure and
-            supportive storytelling experience with no hidden costs."
-          buttonText="Start Writing for Free"
+          bgGreen={false}
+          heading="LifeScript, the best retirement gift for men"
+          discription="Surprise him with an unforgettable trip down memory lane, where he can share his life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to his doorstep"
+          buttonText="Buy Now"
         />
         <Experience
           headingStyle={false}
