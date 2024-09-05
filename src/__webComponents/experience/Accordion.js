@@ -332,7 +332,13 @@ export default function CustomizedAccordions() {
         </Accordion>
       </Box>
 
-      <Box sx={{ position: "relative" }}>
+      <Box
+        sx={{
+          position: "relative",
+          bgcolor: "",
+          minHeight: { sm: "380px", md: "", xs: "310px" },
+        }}
+      >
         {panelActive.panel1 && (
           <Image
             loading="lazy"
