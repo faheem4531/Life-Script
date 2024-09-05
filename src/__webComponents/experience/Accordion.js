@@ -95,6 +95,7 @@ export default function CustomizedAccordions() {
   const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     padding: theme.spacing(0),
     backgroundColor: "#F3ECDA",
+    color:"#30422E"
   }));
 
   useEffect(() => {
@@ -136,7 +137,7 @@ export default function CustomizedAccordions() {
             <Typography
               component="div"
               sx={{
-                color: "#494949",
+                color: "#30422E",
                 fontSize: "16px",
                 padding: "5px 0 20px 45px",
                 maxWidth: "370px",
@@ -172,7 +173,7 @@ export default function CustomizedAccordions() {
             <Typography
               component="div"
               sx={{
-                color: "#494949",
+                color: "#30422E",
                 fontSize: "16px",
                 padding: "5px 0 20px 35px",
                 maxWidth: "370px",
@@ -208,7 +209,7 @@ export default function CustomizedAccordions() {
             <Typography
               component="div"
               sx={{
-                color: "#494949",
+                color: "#30422E",
                 fontSize: "16px",
                 padding: "5px 0 20px 35px",
                 maxWidth: "370px",
@@ -244,7 +245,7 @@ export default function CustomizedAccordions() {
             <Typography
               component="div"
               sx={{
-                color: "#494949",
+                color: "#30422E",
                 fontSize: "16px",
                 padding: "5px 0 20px 35px",
                 maxWidth: "370px",
@@ -280,7 +281,7 @@ export default function CustomizedAccordions() {
             <Typography
               component="div"
               sx={{
-                color: "#494949",
+                color: "#30422E",
                 fontSize: "16px",
                 padding: "5px 0 20px 35px",
                 maxWidth: "370px",
@@ -317,7 +318,7 @@ export default function CustomizedAccordions() {
             <Typography
               component="div"
               sx={{
-                color: "#494949",
+                color: "#30422E",
                 fontSize: "16px",
                 padding: "5px 0 20px 35px",
                 maxWidth: "370px",
