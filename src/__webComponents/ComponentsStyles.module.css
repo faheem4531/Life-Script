@@ -142,6 +142,13 @@
   height: auto;
 }
 
+/* Textimonial  */
+.clientImg {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+}
+
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
   /* Suggestion  */
   .suggestionImg {
@@ -307,5 +314,11 @@
     max-width: 100%;
     height: 30px;
     padding: 0 7%;
+  }
+
+  /* Textimonial  */
+  .clientImg {
+    width: 70px;
+    height: 70px;
   }
 }

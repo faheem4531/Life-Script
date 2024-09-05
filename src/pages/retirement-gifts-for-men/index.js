@@ -9,13 +9,23 @@ import { useTranslation } from "react-i18next";
 
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Experience from "@/__webComponents/experience/Experience";
+import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
+import DiscoverQuestions from "@/__webComponents/questions/DiscoverQuestions";
+import Suggestion from "@/__webComponents/suggestions/Suggestion";
+import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
-import LandingIntro from "../../__webComponents/Introduction/LandingIntro";
-import DiscoverQuestions from "../../__webComponents/questions/DiscoverQuestions";
-import Suggestion from "../../__webComponents/suggestions/Suggestion";
 import GifTab from "../home/sections/GifTab";
 import OurBooks from "../home/sections/OurBooks";
-import Testimonial from "../home/sections/Testimonial";
+
+import Arthur from "@/__webAssets/webp/testimonials/lifescript-customer-review-arthur-thompson.webp";
+import Carlos from "@/__webAssets/webp/testimonials/lifescript-customer-review-carlos-martinez.webp";
+import Derek from "@/__webAssets/webp/testimonials/lifescript-customer-review-derek-lee.webp";
+import Eleanor from "@/__webAssets/webp/testimonials/lifescript-customer-review-eleanor-rodriguez.webp";
+import George from "@/__webAssets/webp/testimonials/lifescript-customer-review-george-watkins.webp";
+import Lilly from "@/__webAssets/webp/testimonials/lifescript-customer-review-lilly-thompson.webp";
+import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-linda-morris.webp";
+import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
+import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
@@ -116,6 +126,72 @@ const StoryworthAlternative = () => {
     },
   ];
 
+  const noImageTestimonials = [
+    {
+      profile: Arthur,
+      name: t("landingPage.testimonialSection.testimonial1.name"),
+      age: t("landingPage.testimonialSection.testimonial1.age"),
+      location: t("landingPage.testimonialSection.testimonial1.location"),
+      details: t("landingPage.testimonialSection.testimonial1.details"),
+    },
+    {
+      profile: Eleanor,
+      name: t("landingPage.testimonialSection.testimonial2.name"),
+      age: t("landingPage.testimonialSection.testimonial2.age"),
+      location: t("landingPage.testimonialSection.testimonial2.location"),
+      details: t("landingPage.testimonialSection.testimonial2.details"),
+    },
+    {
+      profile: Margaret,
+      name: t("landingPage.testimonialSection.testimonial3.name"),
+      age: t("landingPage.testimonialSection.testimonial3.age"),
+      location: t("landingPage.testimonialSection.testimonial3.location"),
+      details: t("landingPage.testimonialSection.testimonial3.details"),
+    },
+    {
+      profile: George,
+      name: t("landingPage.testimonialSection.testimonial4.name"),
+      age: t("landingPage.testimonialSection.testimonial4.age"),
+      location: t("landingPage.testimonialSection.testimonial4.location"),
+      details: t("landingPage.testimonialSection.testimonial4.details"),
+    },
+    {
+      profile: Linda,
+      name: t("landingPage.testimonialSection.testimonial5.name"),
+      age: t("landingPage.testimonialSection.testimonial5.age"),
+      location: t("landingPage.testimonialSection.testimonial5.location"),
+      details: t("landingPage.testimonialSection.testimonial5.details"),
+    },
+    {
+      profile: Derek,
+      name: t("landingPage.testimonialSection.testimonial6.name"),
+      age: t("landingPage.testimonialSection.testimonial6.age"),
+      location: t("landingPage.testimonialSection.testimonial6.location"),
+      details: t("landingPage.testimonialSection.testimonial6.details"),
+    },
+    {
+      profile: Lilly,
+      name: t("landingPage.testimonialSection.testimonial7.name"),
+      age: t("landingPage.testimonialSection.testimonial7.age"),
+      location: t("landingPage.testimonialSection.testimonial7.location"),
+      details: t("landingPage.testimonialSection.testimonial7.details"),
+    },
+    {
+      profile: Carlos,
+      name: t("landingPage.testimonialSection.testimonial8.name"),
+      age: t("landingPage.testimonialSection.testimonial8.age"),
+      location: t("landingPage.testimonialSection.testimonial8.location"),
+      details: t("landingPage.testimonialSection.testimonial8.details"),
+    },
+    {
+      profile: Rachel,
+      name: t("landingPage.testimonialSection.testimonial9.name"),
+      age: t("landingPage.testimonialSection.testimonial9.age"),
+      location: t("landingPage.testimonialSection.testimonial9.location"),
+      details: t("landingPage.testimonialSection.testimonial9.details"),
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -136,7 +212,12 @@ const StoryworthAlternative = () => {
           heading="A retirement gift empowering him to:"
           content={retiredMenSuggestions}
         />
-        <Experience
+        <Testimonial
+          reviews={noImageTestimonials}
+          heading="What our customers say"
+        />
+
+        {/* <Experience
           headingStyle={false}
           heading="How we’re "
           marked="different"
@@ -149,7 +230,7 @@ const StoryworthAlternative = () => {
         />
         <DiscoverQuestions />
         <OurBooks />
-        <Testimonial />
+
         <Box
           sx={{
             m: {
@@ -166,7 +247,7 @@ const StoryworthAlternative = () => {
             subHeading="no credit card required."
             btnLink={"/stripe-page"}
           />
-        </Box>
+        </Box> */}
         <GotQuestions questions={storyWorthAlternativeQs} />
         <ContactFooter
           title={"Still have any "}
