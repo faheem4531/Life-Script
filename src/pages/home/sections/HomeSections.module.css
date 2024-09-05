@@ -205,12 +205,7 @@
   display: none;
 }
 
-/* Textimonial  */
-.clientImg {
-  border-radius: 50%;
-  width: 75px;
-  height: 75px;
-}
+
 
 /* Our Books  */
 .slider {
@@ -526,9 +521,5 @@
     left: 30px;
   }
 
-  /* Textimonial  */
-  .clientImg {
-    width: 70px;
-    height: 70px;
-  }
+
 }
