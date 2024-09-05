@@ -337,6 +337,7 @@ export default function CustomizedAccordions() {
           position: "relative",
           bgcolor: "",
           minHeight: { sm: "380px", md: "", xs: "310px" },
+          minWidth: { sm: "390px", md: "", xs: "310px" },
         }}
       >
         {panelActive.panel1 && (
