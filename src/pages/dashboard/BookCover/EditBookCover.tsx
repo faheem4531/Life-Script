@@ -9,8 +9,7 @@ import {
   getBookCover,
   selectCoverData,
   updateBookCover,
-  uploadImage,
-  uploadImageForCover,
+  uploadImage
 } from "@/store/slices/chatSlice";
 import { Box, TextField, Typography } from "@mui/material";
 import axios from "axios";
@@ -40,6 +39,7 @@ const EditBookCover = () => {
   const [coverId, setCoverId] = useState("");
   const [cropper, setCropper] = useState(null);
   const cropperRef = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [selectedColor, setSelectedColor] = useState("#197065");
   const [droppedImage, setDroppedImage] = useState<
     string | ArrayBuffer | null | any
@@ -510,6 +510,26 @@ const EditBookCover = () => {
     return imgArray[coverNumber - 1];
   };
 
+  const handleCropMove = () => {
+    if (cropperRef.current) {
+      const cropper = cropperRef.current.cropper;
+      const cropBoxData = cropper.getCropBoxData();
+
+      if (cropBoxData.width < 150 && (CoverNumber === "1" || CoverNumber === "5" || CoverNumber === "3")) {
+        setErrorMessage(true);
+      }
+      else if (cropBoxData.width < 110 && CoverNumber === "2") {
+        setErrorMessage(true);
+      }
+      else if (cropBoxData.width < 130 && CoverNumber === "4") {
+        setErrorMessage(true);
+      }
+      else {
+        setErrorMessage(false);
+      }
+    }
+  };
+
   return (
     <Layout>
       <Box
@@ -619,15 +639,17 @@ const EditBookCover = () => {
                       background={false}
                       zoomTo={0}
                       viewMode={1}
-                      minCropBoxWidth={10}
-                      minCropBoxHeight={10}
-                      guides={false}
+                      minCropBoxWidth={20}
+                      minCropBoxHeight={20}
                       dragMode="move"
                       onInitialized={(instance) => setCropper(instance)}
                       crop={onCrop}
                       autoCropArea={1}
                       responsive={true}
-                      cropBoxResizable={false}
+                      cropBoxResizable={true}
+                      guides={false}
+                      checkOrientation={false}
+                      cropmove={handleCropMove}
                     />
                   )}
                   {droppedImage && CoverNumber === "2" && (
@@ -645,7 +667,8 @@ const EditBookCover = () => {
                       crop={onCrop}
                       autoCropArea={1}
                       responsive={true}
-                      cropBoxResizable={false}
+                      cropBoxResizable={true}
+                      cropmove={handleCropMove}
                     />
                   )}
                   {droppedImage && CoverNumber === "3" && (
@@ -654,6 +677,7 @@ const EditBookCover = () => {
                       src={droppedImage}
                       style={{ height: 300, width: "100%" }}
                       initialAspectRatio={1.7 / 2.6}
+                      aspectRatio={1.7 / 2.6}
                       background={false}
                       zoomTo={0}
                       viewMode={1}
@@ -665,7 +689,8 @@ const EditBookCover = () => {
                       crop={onCrop}
                       autoCropArea={1}
                       responsive={true}
-                      cropBoxResizable={false}
+                      cropBoxResizable={true}
+                      cropmove={handleCropMove}
                     />
                   )}
                   {droppedImage && CoverNumber === "4" && (
@@ -685,7 +710,8 @@ const EditBookCover = () => {
                       crop={onCrop}
                       autoCropArea={1}
                       responsive={true}
-                      cropBoxResizable={false}
+                      cropBoxResizable={true}
+                      cropmove={handleCropMove}
                     />
                   )}
                   {droppedImage && CoverNumber === "5" && (
@@ -705,8 +731,12 @@ const EditBookCover = () => {
                       crop={onCrop}
                       autoCropArea={1}
                       responsive={true}
-                      cropBoxResizable={false}
+                      cropBoxResizable={true}
+                      cropmove={handleCropMove}
                     />
+                  )}
+                  {errorMessage && (
+                    <div style={{ color: "red", margin: "8px", fontSize: "14px" }}>This photo is too small and won’t look well once printed. Please use a larger photo. </div>
                   )}
                   <div {...getRootProps()} style={{ cursor: "pointer" }}>
                     <input {...getInputProps()} />
@@ -880,6 +910,7 @@ const EditBookCover = () => {
                     }}
                     isLoading={buttonUpDateLoading}
                     width={"180px"}
+                    disabled={errorMessage}
                   />
                 </Box>
               )}

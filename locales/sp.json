@@ -422,9 +422,9 @@
         "data": {
           "yes": "Sí",
           "yesFor139": "Sí, por 139$",
-          "priceForAdditional": "39$ (hasta 600 páginas)",
+          "priceForAdditional": "39$ (hasta 500 páginas)",
           "languagesSupported": "Inglés y Español",
-          "pageLimit": "600",
+          "pageLimit": "500",
           "unlimitedPhotoUploads": "Sí",
           "videoTutorials": "Sí"
         }
@@ -436,7 +436,7 @@
           "no": "No",
           "priceFor139": "No, 12 meses de acceso para 139$",
           "priceFor139Coment": "($99 + $40 para libro a todo color)",
-          "priceForFullColorBook": "Para un libro a todo color, 40$ adicionales. El autor del regalo no puede pagarlo por adelantado",
+          "priceForFullColorBook": "Para un libro a todo color, 60$ adicionales. El autor del regalo no puede pagarlo por adelantado",
           "priceForAdditionalBook": "79$ (hasta 300 páginas), 99$ (hasta 480 páginas)",
           "noShippingOutsideUS": "No, solo para EE.UU.",
           "languageSupported": "Inglés",

@@ -2,7 +2,6 @@
 
 import Back from "@/__webAssets/svgs/back-aero.svg";
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
-import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Footer from "@/__webComponents/footer/Footer";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import { Box, Typography } from "@mui/material";
@@ -11,7 +10,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
-import GifTab from "../home/sections/GifTab";
 import BlogDetails from "./sections/BlogDetails";
 import styles from "./sections/BlogSection.module.css";
 
@@ -113,29 +111,52 @@ const BlogDetailPage = () => {
               sm: "120px auto 100px",
               xs: "100px 20px 80px",
             },
-            maxWidth: { lg: "1050px", md: "850px", sm: "570px", xs: "100%" },
+            maxWidth: { lg: "1050px", md: "850px", sm: "600px", xs: "100%" },
           }}
         >
-          <Box sx={{ width: "70%", margin: "auto" }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                columnGap: "8px",
-                marginBottom: { xs: "20px", sm: "0" },
-              }}
-            >
+          <Box
+            sx={{
+              width: { lg: "70%", md: "80%", sm: "90%", xs: "100%" },
+              margin: "auto",
+            }}
+          >
+            <Box sx={{ width: "200px" }}>
               <Link href="/blog">
-                <Image src={Back} alt="icon" />
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: "10px",
+                    width: "200px",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      border: "1px solid #E1683B",
+                      borderRadius: "4px",
+                      p: "6px 10px 5px",
+                    }}
+                  >
+                    <Image src={Back} alt="icon" />
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontSize: { sm: "20px", xs: "18px" },
+                      fontWeight: 600,
+                    }}
+                  >
+                    Back to Blog
+                  </Typography>
+                </Box>
               </Link>
-              <Typography>Back to Blog</Typography>
             </Box>
             <Typography
               sx={{
-                fontSize: { sm: "28px", xs: "24px" },
-                fontWeight: 500,
+                fontSize: { md: "48px", sm: "35px", xs: "32px" },
+                fontWeight: { md: 500, sm: 600, xs: 600 },
                 marginBottom: "20px",
-                width: { md: "80%", sm: "100%", xs: "100%" },
+                width: { md: "100%", sm: "100%", xs: "100%" },
                 fontFamily: "Besley !important",
               }}
             >
@@ -148,31 +169,18 @@ const BlogDetailPage = () => {
                 : "No matching data found"}
             </Typography>
           </Box>
-          <Box sx={{ width: "70%", margin: "auto" }}>
-            {/* <img src={imageUrl} alt="img" className={styles.blogImg} /> */}
+          <Box
+            sx={{
+              width: { lg: "70%", md: "80%", sm: "90%", xs: "100%" },
+              margin: "auto",
+            }}
+          >
             <BlogDetails
               details={blogsDetailsData?.data?.attributes?.description}
             />
           </Box>
         </Box>
       )}
-      <Box
-        sx={{
-          margin: {
-            lg: "80px auto",
-            md: "150px auto",
-            sm: "100px auto",
-            xs: "120px 0 80px",
-          },
-        }}
-      >
-        <GifTab
-          heading="Still not convinced? Try it now!"
-          subHeading="Don’t worry no credit card required."
-          button="Free Trial"
-          icon={Pen}
-        />
-      </Box>
       <Footer />
     </Box>
   );

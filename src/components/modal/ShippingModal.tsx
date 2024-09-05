@@ -1,14 +1,19 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import Checkbox from "@mui/material/Checkbox";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Modal,
+  Typography
+} from "@mui/material";
 import { grey } from "@mui/material/colors";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import FormControlLabel from '@mui/material/FormControlLabel';
 
 const style = {
   position: "absolute",
@@ -27,16 +32,16 @@ const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export default function ShippingModal({ open, setOpen, setSelectedTab }) {
   const { t } = useTranslation();
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = useState(false);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
 
-
   const handleContinue = () => {
     setSelectedTab(3);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -111,7 +116,6 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                         sx={{
                           display: "flex",
                           alignItems: "center",
-                          // flexWrap: "wrap",
                         }}
                       >
                         <Typography
@@ -147,7 +151,6 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
               {t("shippingModal.info3")}
             </Typography>
           </Box>
-
           <Box
             sx={{
               mt: 3,
@@ -181,10 +184,7 @@ export default function ShippingModal({ open, setOpen, setSelectedTab }) {
                 />
               }
             />
-
-
           </Box>
-
           <Box
             mt={3}
             sx={{

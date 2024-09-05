@@ -8,7 +8,7 @@ import Hurt from "@/__webAssets/pngs/bg-gift-tag.png"
 import Link from "next/link";
 import Bandage from "@/__webAssets/pngs/bandage.png"
 
-const GifTab = ({ heading, subHeading, icon, button }) => {
+const GifTab = ({ heading, subHeading, icon, button, btnLink = "/stripe-page/gift-subscription" }) => {
 
 
   return (
@@ -44,7 +44,7 @@ const GifTab = ({ heading, subHeading, icon, button }) => {
         </Box>
 
         <Box sx={{ width: { md: "180px", sm: "120px", xs: "100%" }, height: { md: "55px", sm: "43px", xs: "55px" }, marginTop: { xs: "30px" } }}>
-          <Link href="/stripe-page/gift-subscription">
+          <Link href={btnLink}>
             <Button
               title={button}
               width='100%'

@@ -103,7 +103,7 @@ const NavBar = ({ color, logo }) => {
           alignItems: "center",
           flexDirection: { md: "row", sm: "column", xs: "column" },
         }}
-        color={mobileState ? "" : color}
+        color={mobileState ? "#3e4f3c" : color}
         className={`${
           mobileState ? `${styles.menuItems} ${styles.show}` : styles.hide
         }`}
@@ -239,25 +239,29 @@ const NavBar = ({ color, logo }) => {
               styles.hoverLinks
             }`}
           >
-            {/* FAQ&apos;s */}
+            {/* FAQ's */}
             {t("landingPage.navBar.faq")}
           </Typography>
         </Link>
 
-        <Box sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}>
-          <Link href="/_auth/Auth">
-            <Button
-              title={t("landingPage.navBar.login")}
-              width="140px"
-              height="45px"
-              img2={NextIcon}
-              onClick={handleButtonClick}
-            />
-          </Link>
-          <Box className={styles.langBtn}>
-            <LanguageOption />
+        {!(pathname === "/storyworth-alternative") && (
+          <Box
+            sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}
+          >
+            <Link href="/_auth/Auth">
+              <Button
+                title={t("landingPage.navBar.login")}
+                width="140px"
+                height="45px"
+                img2={NextIcon}
+                onClick={handleButtonClick}
+              />
+            </Link>
+            <Box className={styles.langBtn}>
+              <LanguageOption />
+            </Box>
           </Box>
-        </Box>
+        )}
       </Box>
     </Box>
   );
