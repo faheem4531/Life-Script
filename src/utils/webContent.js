@@ -25,6 +25,13 @@ import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-c
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
+import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp";
+import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp";
+import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp";
+import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-animation.webp";
+import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
+import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
+
 export const UseStoryWorthAlternativeQs = (t) => [
   {
     qs: "How much does Storyworth cost?",
@@ -411,5 +418,62 @@ export const useFeaturesComparison = (t) => [
       t("pricingSection.featureComparison.featuresDetails3.data.no"),
       t("pricingSection.featureComparison.featuresDetails3.data.yes"),
     ],
+  },
+];
+
+export const useAlternativeFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "landingPage.featureSection.accordion1.description",
+    imageSrc: Narrative,
+    alt: "Narrative fusion feature demo animation showing how it works - LifeScript",
+    imgTitle: "Narrative Fusion demo animation",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "landingPage.featureSection.accordion2.description",
+    imageSrc: AssistedEditing,
+    alt: "Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript",
+    imgTitle: "Assisted Editing demo animation",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "landingPage.featureSection.accordion3.description",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript",
+    imgTitle: "Voice-to-text demo animation",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "landingPage.featureSection.accordion4.description",
+    imageSrc: FamilyTree,
+    alt: "Family Tree feature demo animation showing how your family members visualize across generations - LifeScript",
+    imgTitle: "Family tree demo animation",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "landingPage.featureSection.accordion5.description",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript",
+    imgTitle: "Formatting features demo animation",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "landingPage.featureSection.accordion6.description",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript",
+    imgTitle: "Auto photo improvement feature demo animation",
   },
 ];

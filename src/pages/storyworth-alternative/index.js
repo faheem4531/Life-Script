@@ -17,6 +17,7 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
 import {
+  useAlternativeFeaturesGif,
   useFeaturesComparison,
   useHomeTestimonials,
   useOurBookCoverforAlternative,
@@ -38,6 +39,7 @@ const StoryworthAlternative = () => {
   const whyLifeScript = useWhyLifeScript(t);
   const suggestedQuestions = useSuggestedQuestions(t);
   const ourBookCoverforAlternative = useOurBookCoverforAlternative(t);
+  const featuresGif = useAlternativeFeaturesGif(t);
 
   return (
     <>
@@ -59,6 +61,7 @@ const StoryworthAlternative = () => {
           imgTitle="Opened autobiography book - LifeScript as a Storyworth alternative"
         />
         <Experience
+          panelsData={featuresGif}
           headingStyle={false}
           heading="How we’re "
           marked="different"
