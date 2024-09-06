@@ -13,11 +13,11 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import Pricing from "@/__webComponents/pricing/Pricing";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Reviews from "@/__webComponents/reviews/Reviews";
+import StoryTelling from "@/__webComponents/storyTelling/StoryTelling";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
-import Introduction from "./sections/Introduction";
-import StoryTelling from "./sections/StoryTelling";
+import Introduction from "./components/Introduction";
 
 import Gift from "@/__webAssets/svgs/gift.svg";
 import Shape from "@/__webAssets/svgs/input-shape.svg";
@@ -38,6 +38,15 @@ import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cove
 import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp";
 import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp";
 import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp";
+
+const StoryImage1 =
+  "https://lifescript-media.s3.eu-north-1.amazonaws.com/happy-grandma-holding-her-granddaughter.webp";
+const StoryImage2 =
+  "https://lifescript-media.s3.eu-north-1.amazonaws.com/grandpa-writing-by-hand-his-memoir.webp";
+const StoryImage3 =
+  "https://lifescript-media.s3.eu-north-1.amazonaws.com/grandma-recording-her-memories-over-the-phone.webp";
+const StoryImage4 =
+  "https://lifescript-media.s3.eu-north-1.amazonaws.com/three-generations-family-smiling-at-the-camera.webp";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -234,6 +243,40 @@ const HomePage = () => {
     },
   ];
 
+  const stories = [
+    {
+      heading: t("landingPage.storyTelling.story1.heading"),
+      content: t("landingPage.storyTelling.story1.content"),
+      image: StoryImage1,
+      alt: t("landingPage.storyTelling.story1.alt"),
+      title: t("landingPage.storyTelling.story1.title"),
+      direction: t("landingPage.storyTelling.story1.direction"),
+    },
+    {
+      heading: t("landingPage.storyTelling.story2.heading"),
+      content: t("landingPage.storyTelling.story2.content"),
+      image: StoryImage2,
+      alt: t("landingPage.storyTelling.story2.alt"),
+      title: t("landingPage.storyTelling.story2.title"),
+      direction: t("landingPage.storyTelling.story2.direction"),
+    },
+    {
+      heading: t("landingPage.storyTelling.story3.heading"),
+      content: t("landingPage.storyTelling.story3.content"),
+      image: StoryImage3,
+      alt: t("landingPage.storyTelling.story3.alt"),
+      title: t("landingPage.storyTelling.story3.title"),
+      direction: t("landingPage.storyTelling.story3.direction"),
+    },
+    {
+      heading: t("landingPage.storyTelling.story4.heading"),
+      content: t("landingPage.storyTelling.story4.content"),
+      image: StoryImage4,
+      alt: t("landingPage.storyTelling.story4.alt"),
+      title: t("landingPage.storyTelling.story4.title"),
+      direction: t("landingPage.storyTelling.story4.direction"),
+    },
+  ];
   return (
     <>
       <Head>
@@ -264,7 +307,7 @@ const HomePage = () => {
           button={t("landingPage.perfectSection.content5.btntext")}
           icon={Gift}
         />
-        <StoryTelling />
+        <StoryTelling data={stories} />
         <Reviews />
         <Experience
           heading={t("landingPage.featureSection.title")}

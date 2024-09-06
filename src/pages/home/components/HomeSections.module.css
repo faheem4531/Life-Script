@@ -134,43 +134,6 @@
   }
 }
 
-/* StoryTelling  */
-.stroyImages {
-  width: 475px;
-  height: 300px;
-  position: relative;
-  z-index: 100;
-}
-
-.index {
-  z-index: 10 !important;
-}
-
-.storyBg {
-  position: absolute;
-  top: 247px;
-  width: 100vw;
-  z-index: 10;
-}
-
-.marked {
-  position: relative;
-}
-
-.line {
-  position: absolute;
-  width: 150px;
-  right: -40px;
-  bottom: -5px;
-  height: auto;
-}
-
-@media screen and (min-width: 1600px) {
-  .storyBg {
-    width: initial;
-  }
-}
-
 @media screen and (min-width: 899px) and (max-width: 1200px) {
   /* Introduction sec*/
   .bookImg {
@@ -248,16 +211,6 @@
       bottom: 70px;
     }
   }
-
-  /* StoryTelling  */
-  .stroyImages {
-    width: 400px;
-    height: 260px;
-  }
-
-  .storyBg {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 899px) {
@@ -268,28 +221,5 @@
   .image3,
   .image4 {
     display: none;
-  }
-
-  /* storyTelling  */
-  .storyBg {
-    display: none;
-  }
-
-  .line {
-    width: 100px;
-    right: -20px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  /* StoryTelling  */
-  .stroyImages {
-    width: 100%;
-    height: auto;
-  }
-
-  .line {
-    width: 60px;
-    right: -10px;
   }
 }
