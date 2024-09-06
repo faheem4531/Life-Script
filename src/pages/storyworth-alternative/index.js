@@ -5,16 +5,17 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
+import OurBooks from "@/__webComponents/books/OurBooks";
 import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import Footer from "@/__webComponents/footer/Footer";
+import GifTab from "@/__webComponents/gifTab/GifTab";
 import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
 import DiscoverQuestions from "@/__webComponents/questions/DiscoverQuestions";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
-import OurBooks from "@/__webComponents/books/OurBooks";
 import {
   useFeaturesComparison,
   useHomeTestimonials,
@@ -25,7 +26,6 @@ import {
   useWhyLifeScript,
   useWorkingDetails,
 } from "../../utils/webContent";
-import GifTab from "../home/sections/GifTab";
 import PricingDetails from "../pricing/sections/PricingDetails";
 
 const StoryworthAlternative = () => {

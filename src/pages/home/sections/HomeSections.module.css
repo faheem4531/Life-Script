@@ -187,23 +187,6 @@
   height: auto;
 }
 
-/* GifTab  */
-
-.gifTabBox {
-  background-image: url(../../../__webAssets/pngs/gifi-tab.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-
-.bgHurt {
-  position: absolute;
-  right: 150px;
-  bottom: 10px;
-}
-
-.bandage {
-  display: none;
-}
 
 
 @media screen and (min-width: 1600px) {
@@ -314,17 +297,7 @@
     max-width: 880px;
   }
 
-  /* GifTab  */
 
-  .gifTabBox {
-    background-size: 100% 200px;
-  }
-
-  .bgHurt {
-    height: 120px;
-    width: 200px;
-    right: 120px;
-  }
 
   /* StoryTelling  */
   .stroyImages {
@@ -360,18 +333,6 @@
   max-width: 95%;
 } */
 
-  /* GifTab  */
-
-  .gifTabBox {
-    background-size: 100% 150px;
-  }
-
-  .bgHurt {
-    height: 80px;
-    width: 160px;
-    right: 120px;
-    bottom: 26px;
-  }
 
   /* storyTelling  */
   .storyBg {
@@ -392,25 +353,7 @@
     display: none;
   }
 
-  .gifTabBox {
-    background-image: none;
-    background-color: #fff;
-  }
 
-  .bgHurt {
-    height: 110px;
-    width: 215px;
-    right: 0;
-    bottom: 0;
-  }
-
-  .bandage {
-    display: block;
-    position: absolute;
-    top: -55px;
-    left: -60px;
-    transform: rotate(95deg);
-  }
 
   /* StoryTelling  */
   .stroyImages {

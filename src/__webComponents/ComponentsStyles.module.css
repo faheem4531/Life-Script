@@ -166,6 +166,24 @@
   height: 580px;
 }
 
+/* GifTab  */
+.gifTabBox {
+  background-image: url(../__webAssets/pngs/gifi-tab.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.bgHurt {
+  position: absolute;
+  right: 150px;
+  bottom: 10px;
+}
+
+.bandageX {
+  display: none;
+}
+
+
 @media screen and (min-width: 1600px) {
 
   .book {
@@ -220,6 +238,18 @@
   .book {
     width: 310px;
     height: 450px;
+  }
+
+  /* GifTab  */
+
+  .gifTabBox {
+    background-size: 100% 200px;
+  }
+
+  .bgHurt {
+    height: 120px;
+    width: 200px;
+    right: 120px;
   }
 }
 
@@ -294,6 +324,20 @@
     width: 240px;
     height: 340px;
   }
+
+    /* GifTab  */
+
+    .gifTabBox {
+      background-size: 100% 150px;
+    }
+  
+    .bgHurt {
+      height: 80px;
+      width: 160px;
+      right: 120px;
+      bottom: 26px;
+    }
+  
 }
 
 @media screen and (max-width: 600px) {
@@ -374,5 +418,26 @@
   .book {
     width: 200px;
     height: 270px;
+  }
+
+/* GifTab  */
+  .gifTabBox {
+    background-image: none;
+    background-color: #fff;
+  }
+
+  .bgHurt {
+    height: 110px;
+    width: 215px;
+    right: 0;
+    bottom: 0;
+  }
+
+  .bandageX {
+    display: block;
+    position: absolute;
+    top: -55px;
+    left: -60px;
+    transform: rotate(95deg);
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import OurBooks from "@/__webComponents/books/OurBooks";
 import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import Footer from "@/__webComponents/footer/Footer";
@@ -11,8 +12,7 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import { Box } from "@mui/material";
 import Head from "next/head";
-import OurBooks from "@/__webComponents/books/OurBooks";
-import GifTab from "./sections/GifTab";
+import GifTab from "@/__webComponents/gifTab/GifTab";
 import Introduction from "./sections/Introduction";
 import Reviews from "./sections/Reviews";
 import StoryTelling from "./sections/StoryTelling";
