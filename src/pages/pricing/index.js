@@ -6,15 +6,15 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import { Box } from "@mui/material";
 import Head from "next/head";
-import styles from "./sections/Pricing.module.css";
+import styles from "./Pricing.module.css";
 
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import Check from "@/__webAssets/svgs/check-square.svg";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
+import ComparisonDetails from "@/__webComponents/comparisonDetails/ComparisonDetails";
 import Pricing from "@/__webComponents/pricing/Pricing";
 import Working from "@/__webComponents/working/Working";
 import { useTranslation } from "react-i18next";
-import PricingDetails from "./sections/PricingDetails";
 
 const PricingPage = () => {
   const { t } = useTranslation();
@@ -242,21 +242,21 @@ const PricingPage = () => {
       id: "basic",
       category: t("landingPage.pricingSection.category1"),
       price: "$139",
-      card: "1"
+      card: "1",
     },
     {
       id: "standard",
       category: t("landingPage.pricingSection.category2"),
       price: "$179",
-      card: "2"
+      card: "2",
     },
     {
       id: "primium",
       category: t("landingPage.pricingSection.category3"),
       price: "$239",
-      card: "3"
+      card: "3",
     },
-  ]
+  ];
 
   return (
     <>
@@ -273,7 +273,7 @@ const PricingPage = () => {
         className={styles.pricingPage}
       >
         <NavBar color="#F3ECDA" logo={LifeScriptLogo} />
-        <Pricing cardData={pricingCardDetails}/>
+        <Pricing cardData={pricingCardDetails} />
         <Working
           data={pointsArray}
           width="340px"
@@ -281,12 +281,12 @@ const PricingPage = () => {
           subHeading={t("pricingSection.subTitle")}
         />
         <Box sx={{ margin: { sm: "100px 0 -100px", xs: " 10px 0 -50px" } }}>
-          <PricingDetails
+          <ComparisonDetails
             cardsDetail={pricingDetails}
             heading={t("pricingSection.bookDetails.title")}
             marked={t("pricingSection.bookDetails.subTitle")}
           />
-          <PricingDetails
+          <ComparisonDetails
             cardsDetail={featuresDetails}
             heading={t("pricingSection.featureComparison.title")}
             marked={t("pricingSection.featureComparison.subTitle")}

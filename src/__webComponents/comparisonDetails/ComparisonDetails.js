@@ -1,7 +1,7 @@
 import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import styles from "./Pricing.module.css";
+import styles from "../ComponentsStyles.module.css";
 
 import LeftStyle from "@/__webAssets/pngs/left-style2.png";
 import RightStyle from "@/__webAssets/pngs/right-style2.png";
@@ -9,7 +9,7 @@ import No from "@/__webAssets/svgs/cross.svg";
 import Yes from "@/__webAssets/svgs/tick.svg";
 import { useTranslation } from "react-i18next";
 
-const PricingDetails = ({
+const ComparisonDetails = ({
   heading,
   cardsDetail,
   marked,
@@ -60,7 +60,7 @@ const PricingDetails = ({
   );
 };
 
-export default PricingDetails;
+export default ComparisonDetails;
 
 function DetailCard({
   header,

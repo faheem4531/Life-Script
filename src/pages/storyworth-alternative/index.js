@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import OurBooks from "@/__webComponents/books/OurBooks";
+import ComparisonDetails from "@/__webComponents/comparisonDetails/ComparisonDetails";
 import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import Footer from "@/__webComponents/footer/Footer";
@@ -26,8 +27,7 @@ import {
   useSuggestedQuestions,
   useWhyLifeScript,
   useWorkingDetails,
-} from "../../utils/webContent";
-import PricingDetails from "../pricing/sections/PricingDetails";
+} from "@/utils/webContent";
 
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
@@ -76,11 +76,11 @@ const StoryworthAlternative = () => {
             },
           }}
         >
-          <PricingDetails
+          <ComparisonDetails
             cardsDetail={pricingComparison}
             heading={"LifeScript vs Storyworth cost"}
           />
-          <PricingDetails
+          <ComparisonDetails
             cardsDetail={featuresComparison}
             heading={t("pricingSection.featureComparison.title")}
             marked={t("pricingSection.featureComparison.subTitle")}

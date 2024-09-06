@@ -214,6 +214,11 @@
   height: auto;
 }
 
+/* Comparison details  */
+.cardBorder > *:not(:last-child) {
+  border-bottom: 1px solid #b9b9a7;
+}
+
 @media screen and (min-width: 1600px) {
 
   .book {
@@ -385,6 +390,11 @@
   .suggestionUnderLine {
     width: 100px;
     right: -20px;
+  }
+  
+  /* Comparison details  */
+  .pricingPage {
+    background-size: 100% 150px;
   }
   
 }
