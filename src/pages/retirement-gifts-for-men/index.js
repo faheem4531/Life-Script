@@ -99,7 +99,7 @@ const StoryworthAlternative = () => {
         "Every man has a story worth telling. Help him share the triumphs, challenges, and life lessons that have shaped him. This is his chance to inspire and guide his family with the wisdom he’s gained over a lifetime.",
     },
     {
-      title: "Connect him with his family",
+      title: "Connect with his family",
       subTitle:
         "His stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring his voice is heard for generations.",
     },

@@ -14,12 +14,12 @@
       "animationText2": "Gift",
       "mainHeading": "a Personal Autobiography Book Easily",
       "mainDescription": "Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent",
-      "mainButton": "Start 7-Day Free Trial",
+      "mainButton": "Start 7-day free trial",
       "buttonDescription": "No credit card required"
     },
     "howItWorks": {
       "heading": "How it",
-      "subHeading": "Works",
+      "subHeading": "works",
       "step1": {
         "title": "Answer questions weekly",
         "description": "Or as often as you like"
@@ -99,7 +99,7 @@
     "featureSection": {
       "title": "Get a Feel for LifeScript’s",
       "subTitle": "Features",
-      "btnText": "See More",
+      "btnText": "See more",
       "accordion1": {
         "heading": "1. Narrative Fusion",
         "description": "Turns your answers into beautifully written chapters with a single click. No writing experience needed."
@@ -448,7 +448,7 @@
     },
     "featureComparison": {
       "title": "Feature",
-      "subTitle": "Comparison",
+      "subTitle": "comparison",
       "featuresDetails": {
         "header": "Features",
         "data": {
@@ -569,7 +569,7 @@
       "giftForSomeoneElse": "A gift for someone else",
       "preference": "Select Your Preference",
       "buyNow": "Buy Now",
-      "freeTrial": "Start 7-Day Free Trial",
+      "freeTrial": "Start 7-day free trial",
       "btnText": "Continue",
       "emailVerificationModal": {
         "verify": "verify",

@@ -21,7 +21,7 @@ const WhyLifeScript = ({ data }) => {
       <PrimaryHeading
         lineWidth="160px"
         showStyle={false}
-        heading="Why LifeScript is the Best Storyworth Alternative"
+        heading="Why LifeScript is the best Storyworth alternative"
         removeStyleMbl={true}
         color="#F3ECDA"
       />

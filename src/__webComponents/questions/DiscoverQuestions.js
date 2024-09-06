@@ -61,7 +61,7 @@ const DiscoverQuestions = ({ questions, cardData }) => {
             >
               {cardData}
             </Typography>
-            <Link href={"./"}>
+            <Link href={"./stripe-page"}>
               <Button
                 title={"Gift now"}
                 width="190px"
