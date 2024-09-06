@@ -11,9 +11,9 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import { Box } from "@mui/material";
 import Head from "next/head";
+import OurBooks from "@/__webComponents/books/OurBooks";
 import GifTab from "./sections/GifTab";
 import Introduction from "./sections/Introduction";
-import OurBooks from "./sections/OurBooks";
 import Reviews from "./sections/Reviews";
 import StoryTelling from "./sections/StoryTelling";
 

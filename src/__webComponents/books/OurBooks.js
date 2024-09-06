@@ -4,7 +4,7 @@ import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 import { Box } from "@mui/material";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
-import styles from "./HomeSections.module.css";
+import styles from "../ComponentsStyles.module.css";
 
 const OurBooks = ({ details, heading, marked }) => {
   return (

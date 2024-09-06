@@ -14,6 +14,7 @@ import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
+import OurBooks from "@/__webComponents/books/OurBooks";
 import {
   useFeaturesComparison,
   useHomeTestimonials,
@@ -25,7 +26,6 @@ import {
   useWorkingDetails,
 } from "../../utils/webContent";
 import GifTab from "../home/sections/GifTab";
-import OurBooks from "../home/sections/OurBooks";
 import PricingDetails from "../pricing/sections/PricingDetails";
 
 const StoryworthAlternative = () => {

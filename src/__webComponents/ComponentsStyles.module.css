@@ -154,6 +154,30 @@
   height: max-content;
 }
 
+/* Our Books  */
+.bookBox {
+  background-image: url(../__webAssets/pngs/bg-books.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.book {
+  width: 420px;
+  height: 580px;
+}
+
+@media screen and (min-width: 1600px) {
+
+  .book {
+    width: 550px;
+    height: 800px;
+  }
+
+  .storyBg {
+    width: initial;
+  }
+}
+
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
   /* Suggestion  */
   .suggestionImg {
@@ -190,6 +214,12 @@
 
   .fullStyleS {
     max-width: 880px;
+  }
+
+  /* Books  */
+  .book {
+    width: 310px;
+    height: 450px;
   }
 }
 
@@ -257,6 +287,12 @@
 
   .pointsLine {
     display: none;
+  }
+
+  /* Books  */
+  .book {
+    width: 240px;
+    height: 340px;
   }
 }
 
@@ -332,5 +368,11 @@
   .clientImg {
     width: 70px;
     height: 70px;
+  }
+
+  /* Our Books  */
+  .book {
+    width: 200px;
+    height: 270px;
   }
 }
