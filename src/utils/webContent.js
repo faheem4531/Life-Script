@@ -428,8 +428,8 @@ export const useAlternativeFeaturesGif = (t) => [
     heading: "landingPage.featureSection.accordion1.heading",
     description: "landingPage.featureSection.accordion1.description",
     imageSrc: Narrative,
-    alt: "Narrative fusion feature demo animation showing how it works - LifeScript",
-    imgTitle: "Narrative Fusion demo animation",
+    alt: "Narrative fusion demo animation showing the simplicity of LifeScript, the top Storyworth alternative.",
+    imgTitle: "LifeScript narrative fusion demo as a Storyworth alternative",
   },
   {
     panel: "panel2",
@@ -437,8 +437,8 @@ export const useAlternativeFeaturesGif = (t) => [
     heading: "landingPage.featureSection.accordion2.heading",
     description: "landingPage.featureSection.accordion2.description",
     imageSrc: AssistedEditing,
-    alt: "Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript",
-    imgTitle: "Assisted Editing demo animation",
+    alt: "Assisted editing demo showing advanced spelling and grammar check features in LifeScript, a leading Storyworth alternative.",
+    imgTitle: " Assisted editing demo - LifeScript vs. Storyworth",
   },
   {
     panel: "panel3",
@@ -446,8 +446,9 @@ export const useAlternativeFeaturesGif = (t) => [
     heading: "landingPage.featureSection.accordion3.heading",
     description: "landingPage.featureSection.accordion3.description",
     imageSrc: VoiceToText,
-    alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript",
-    imgTitle: "Voice-to-text demo animation",
+    alt: " Voice-to-text feature demo highlighting LifeScript’s ability to convert spoken words to text, making it a superior Storyworth alternative.",
+    imgTitle:
+      "Voice-to-text demo - LifeScript as the best Storyworth alternative",
   },
   {
     panel: "panel4",
@@ -455,8 +456,8 @@ export const useAlternativeFeaturesGif = (t) => [
     heading: "landingPage.featureSection.accordion4.heading",
     description: "landingPage.featureSection.accordion4.description",
     imageSrc: FamilyTree,
-    alt: "Family Tree feature demo animation showing how your family members visualize across generations - LifeScript",
-    imgTitle: "Family tree demo animation",
+    alt: "Family tree feature demo illustrating how LifeScript visualizes generational connections, a unique Storyworth alternative feature.",
+    imgTitle: "Family tree demo - LifeScript as a Storyworth alternative",
   },
   {
     panel: "panel5",
@@ -464,8 +465,8 @@ export const useAlternativeFeaturesGif = (t) => [
     heading: "landingPage.featureSection.accordion5.heading",
     description: "landingPage.featureSection.accordion5.description",
     imageSrc: FormattingFeatures,
-    alt: "Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript",
-    imgTitle: "Formatting features demo animation",
+    alt: "Formatting features demo showcasing LifeScript’s customizable text options, setting it apart as a top Storyworth alternative.",
+    imgTitle: " Formatting features demo - LifeScript vs. Storyworth",
   },
   {
     panel: "panel6",
@@ -473,7 +474,8 @@ export const useAlternativeFeaturesGif = (t) => [
     heading: "landingPage.featureSection.accordion6.heading",
     description: "landingPage.featureSection.accordion6.description",
     imageSrc: AutoPhoto,
-    alt: "Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript",
-    imgTitle: "Auto photo improvement feature demo animation",
+    alt: "Auto photo improvement demo showing LifeScript’s image enhancement capabilities, making it the best Storyworth alternative.",
+    imgTitle:
+      " Auto photo enhancement demo - LifeScript as a Storyworth alternative",
   },
 ];
