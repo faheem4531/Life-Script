@@ -22,6 +22,9 @@ const WhyLifeScript = () => {
         "Automatic photo improvement for printing purposes",
       ],
       image: Timer,
+      alt: "Icon representing less effort and time spent using LifeScript, the best Storyworth alternative with auto-editing and photo improvement features.",
+      ImgTitle:
+        "Less effort and time spent with LifeScript - Storyworth alternative",
     },
     {
       heading: "No hidden costs",
@@ -30,6 +33,8 @@ const WhyLifeScript = () => {
         "Free international delivery included in price",
       ],
       image: Cost,
+      alt: "Icon showing no hidden costs with LifeScript, a Storyworth alternative offering full-color hardcover books and free delivery.",
+      ImgTitle: " No hidden costs with LifeScript - Storyworth alternative",
     },
     {
       heading: "More support",
@@ -38,6 +43,8 @@ const WhyLifeScript = () => {
         "Easy step-by-step tutorial videos",
       ],
       image: Support,
+      alt: "Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",
+      ImgTitle: " Enhanced support with LifeScript - Storyworth alternative",
     },
     {
       heading: "More personalized",
@@ -46,6 +53,9 @@ const WhyLifeScript = () => {
         "Family Tree included at the end of your book",
       ],
       image: Tree,
+      alt: "Icon for more personalized experience with LifeScript, the best alternative to Storyworth, offering tailored questions and family tree inclusion.",
+      ImgTitle:
+        "Personalized experience with LifeScript - Storyworth alternative",
     },
 
     {
@@ -56,11 +66,16 @@ const WhyLifeScript = () => {
         "Formatting features for customization",
       ],
       image: Book,
+      alt: "Icon for more custom and professional books with LifeScript, a Storyworth alternative providing various book cover designs and formats.",
+      ImgTitle:
+        "Custom and professional book options - LifeScript as a Storyworth alternative",
     },
     {
       heading: "More secure",
       points: ["Latest security standards to keep your stories private."],
       image: Secure,
+      alt: " Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",
+      ImgTitle: " Enhanced support with LifeScript - Storyworth alternative",
     },
   ];
   return (
@@ -103,6 +118,8 @@ const WhyLifeScript = () => {
               heading={item.heading}
               points={item.points}
               image={item.image}
+              ImgTitle={item.ImgTitle}
+              alt={item.alt}
             />
           ))}
         </Box>
@@ -131,7 +148,7 @@ const WhyLifeScript = () => {
   );
 };
 
-const ReasonPoints = ({ heading, points, image }) => {
+const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
   return (
     <Box
       sx={{
@@ -144,12 +161,19 @@ const ReasonPoints = ({ heading, points, image }) => {
     >
       <Box
         sx={{
-          minWidth: { lg: "110px", md: "60px", sm: "80px" },
+          minWidth: { lg: "90px", md: "60px", sm: "80px" },
           display: "flex",
           justifyContent: "center",
         }}
       >
-        <Image src={image} alt="icon" className={styles.bestIcons} />
+        <Image
+          src={image}
+          alt={alt}
+          className={styles.bestIcons}
+          width={80}
+          height={50}
+          title={ImgTitle}
+        />
       </Box>
       <Box>
         <Typography

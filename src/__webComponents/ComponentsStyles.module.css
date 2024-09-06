@@ -149,6 +149,11 @@
   height: 75px;
 }
 
+.bestIcons {
+  width: 80px;
+  height: max-content;
+}
+
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
   /* Suggestion  */
   .suggestionImg {
@@ -262,7 +267,7 @@
     width: 100px;
     height: 100px;
   }
-  
+
   /* Working  */
   .workingBox {
     background-size: 250vw 100%;
