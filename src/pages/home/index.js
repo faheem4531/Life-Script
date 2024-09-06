@@ -31,6 +31,13 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
+import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp";
+import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp";
+import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp";
+import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp";
+import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp";
+import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp";
+
 const HomePage = () => {
   const { t } = useTranslation();
 
@@ -192,6 +199,40 @@ const HomePage = () => {
       details: t("landingPage.testimonialSection.testimonial9.details"),
     },
   ];
+
+  const ourBookCoverHome = [
+    {
+      coverImage: Book1,
+      alt: "A book cover design with an old man celebrating anniversary with his wife on a swing - LifeScript",
+      title: "Half picture-half title book cover design",
+    },
+    {
+      coverImage: Book2,
+      alt: "A full book cover picture design of a life story book with family standing in front of a lake - LifeScript",
+      title: "Full-picture book cover design",
+    },
+    {
+      coverImage: Book3,
+      alt: "A book cover design with an old couple celebrating grandma birthday - LifeScript",
+      title: "Full-picture book cover design",
+    },
+    {
+      coverImage: Book4,
+      alt: "A book cover design with a couple in the forest enjoying the sun and playing around - LifeScript",
+      title: "Side picture book cover design",
+    },
+    {
+      coverImage: Book5,
+      alt: "Memoir book cover design with small picture of author and customizable text - LifeScript",
+      title: "Memoir book cover design",
+    },
+    {
+      coverImage: Book6,
+      alt: "Simplistic design of autobiography book cover with minimalistic elements that you can customize - LifeScript",
+      title: "Simplistic design of autobiography book cover",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -229,8 +270,11 @@ const HomePage = () => {
           marked={t("landingPage.featureSection.subTitle")}
         />
         <Pricing />
-        <OurBooks />
-
+        <OurBooks
+          details={ourBookCoverHome}
+          heading={t("landingPage.bookSection.title")}
+          marked={t("landingPage.bookSection.subTitle")}
+        />
         <Testimonial
           reviews={homeTestimonials}
           marked={t("landingPage.testimonialSection.title")}

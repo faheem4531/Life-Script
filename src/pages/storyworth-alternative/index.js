@@ -37,6 +37,13 @@ import Secure from "@/__webAssets/pngs/whyLifeScript/more-secure.png";
 import Support from "@/__webAssets/pngs/whyLifeScript/more-support.png";
 import Cost from "@/__webAssets/pngs/whyLifeScript/no-hidden-cost.png";
 
+import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp";
+import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp";
+import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp";
+import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp";
+import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp";
+import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp";
+
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
   const pointsArray = [
@@ -394,6 +401,52 @@ const StoryworthAlternative = () => {
     },
   ];
 
+  const suggestedQuestions = [
+    "What's a lesson you learned the hard way?",
+    "What is one thing people would never guess about you?",
+    "If money was no object, what would you do all day?",
+    "What was the most breathtaking place you've ever visited?",
+    "What are your ingredients for happiness?",
+    "When you think of the word ‘home,’ which place comes to mind?",
+    "How did you meet your significant other?",
+    "What is the best job and the worst job you ever had?",
+    "What qualities do you value most in a friend?",
+    "What is your earliest memory?",
+  ];
+
+  const ourBookCoverforAlternative = [
+    {
+      coverImage: Book1,
+      alt: "Book cover with an elderly couple on a swing, highlighting LifeScript’s appeal as a Storyworth alternative.",
+      title: "Grandparents book cover - LifeScript as a Storyworth alternative",
+    },
+    {
+      coverImage: Book2,
+      alt: "Full-picture life story book cover featuring a family by a lake, exemplifying LifeScript as the best Storyworth alternative.",
+      title: "Full-picture book cover - LifeScript as a Storyworth alternative",
+    },
+    {
+      coverImage: Book3,
+      alt: "Book cover featuring an elderly couple celebrating grandma's birthday, showcasing LifeScript as a unique Storyworth alternative.",
+      title: " Birthday gift book cover - LifeScript vs. Storyworth",
+    },
+    {
+      coverImage: Book4,
+      alt: "Book cover design with grandparents enjoying nature, demonstrating LifeScript as a top alternative to Storyworth.",
+      title: "Grandparents book cover - LifeScript vs. Storyworth",
+    },
+    {
+      coverImage: Book5,
+      alt: "Memoir book cover with author’s photo, customizable with LifeScript, a leading Storyworth alternative.",
+      title: "Memoir book cover - LifeScript as a Storyworth alternative",
+    },
+    {
+      coverImage: Book6,
+      alt: "Minimalistic autobiography book cover design, demonstrating LifeScript as a top Storyworth alternative.",
+      title: "Minimalistic book cover - LifeScript vs. Storyworth",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -444,8 +497,16 @@ const StoryworthAlternative = () => {
           marked={t("landingPage.howItWorks.subHeading")}
           width={"300px"}
         />
-        <DiscoverQuestions />
-        <OurBooks />
+        <DiscoverQuestions
+          questions={suggestedQuestions}
+          cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
+          from personalised suggestions."
+        />
+        <OurBooks
+          details={ourBookCoverforAlternative}
+          heading={t("landingPage.bookSection.title")}
+          marked={t("landingPage.bookSection.subTitle")}
+        />
         <Testimonial
           reviews={homeTestimonials}
           heading="What our customers say"
