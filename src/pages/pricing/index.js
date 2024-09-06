@@ -237,6 +237,27 @@ const PricingPage = () => {
     },
   ];
 
+  const pricingCardDetails = [
+    {
+      id: "basic",
+      category: t("landingPage.pricingSection.category1"),
+      price: "$139",
+      card: "1"
+    },
+    {
+      id: "standard",
+      category: t("landingPage.pricingSection.category2"),
+      price: "$179",
+      card: "2"
+    },
+    {
+      id: "primium",
+      category: t("landingPage.pricingSection.category3"),
+      price: "$239",
+      card: "3"
+    },
+  ]
+
   return (
     <>
       <Head>
@@ -252,7 +273,7 @@ const PricingPage = () => {
         className={styles.pricingPage}
       >
         <NavBar color="#F3ECDA" logo={LifeScriptLogo} />
-        <Pricing />
+        <Pricing cardData={pricingCardDetails}/>
         <Working
           data={pointsArray}
           width="340px"

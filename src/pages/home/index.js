@@ -277,6 +277,26 @@ const HomePage = () => {
       direction: t("landingPage.storyTelling.story4.direction"),
     },
   ];
+  const pricingCardDetails = [
+    {
+      id: "basic",
+      category: t("landingPage.pricingSection.category1"),
+      price: "$139",
+      card: "1"
+    },
+    {
+      id: "standard",
+      category: t("landingPage.pricingSection.category2"),
+      price: "$179",
+      card: "2"
+    },
+    {
+      id: "primium",
+      category: t("landingPage.pricingSection.category3"),
+      price: "$239",
+      card: "3"
+    },
+  ]
   return (
     <>
       <Head>
@@ -313,7 +333,7 @@ const HomePage = () => {
           heading={t("landingPage.featureSection.title")}
           marked={t("landingPage.featureSection.subTitle")}
         />
-        <Pricing />
+        <Pricing cardData={pricingCardDetails}/>
         <OurBooks
           details={ourBookCoverHome}
           heading={t("landingPage.bookSection.title")}
