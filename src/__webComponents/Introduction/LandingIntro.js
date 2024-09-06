@@ -12,7 +12,14 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import { useTranslation } from "react-i18next";
 import styles from "../ComponentsStyles.module.css";
 
-const LandingIntro = ({ bgGreen = true, heading, marked, discription }) => {
+const LandingIntro = ({
+  bgGreen = true,
+  heading,
+  marked,
+  discription,
+  alt,
+  imgTitle,
+}) => {
   const { t } = useTranslation();
   return (
     <Box
@@ -100,10 +107,11 @@ const LandingIntro = ({ bgGreen = true, heading, marked, discription }) => {
         >
           <Image
             src="https://lifescript-media.s3.eu-north-1.amazonaws.com/old-opened-autobiography-book.webp"
-            alt="An old opened autobiography book - LifeScript"
+            alt={alt}
             width={600}
             height={280}
             style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            title={imgTitle}
           />
         </Box>
       </Box>

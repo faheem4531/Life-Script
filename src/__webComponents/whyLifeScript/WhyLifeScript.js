@@ -1,83 +1,12 @@
+import NextIcon from "@/__webAssets/svgs/next.svg";
+import Button from "@/__webComponents/button/Button";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../ComponentsStyles.module.css";
 import PrimaryHeading from "../headings/PrimaryHeading";
 
-import Timer from "@/__webAssets/pngs/whyLifeScript/less-effort.png";
-import Book from "@/__webAssets/pngs/whyLifeScript/more-custom.png";
-import Tree from "@/__webAssets/pngs/whyLifeScript/more-personalized.png";
-import Secure from "@/__webAssets/pngs/whyLifeScript/more-secure.png";
-import Support from "@/__webAssets/pngs/whyLifeScript/more-support.png";
-import Cost from "@/__webAssets/pngs/whyLifeScript/no-hidden-cost.png";
-import NextIcon from "@/__webAssets/svgs/next.svg";
-import Button from "@/__webComponents/button/Button";
-import Link from "next/link";
-
-const WhyLifeScript = () => {
-  const aboutLifeScript = [
-    {
-      heading: "Less Effort and Time Spent",
-      points: [
-        "Autoediting and Proofreading saves 3 to 4 weeks",
-        "Automatic photo improvement for printing purposes",
-      ],
-      image: Timer,
-      alt: "Icon representing less effort and time spent using LifeScript, the best Storyworth alternative with auto-editing and photo improvement features.",
-      ImgTitle:
-        "Less effort and time spent with LifeScript - Storyworth alternative",
-    },
-    {
-      heading: "No hidden costs",
-      points: [
-        "Full-color hardcover book included in price",
-        "Free international delivery included in price",
-      ],
-      image: Cost,
-      alt: "Icon showing no hidden costs with LifeScript, a Storyworth alternative offering full-color hardcover books and free delivery.",
-      ImgTitle: " No hidden costs with LifeScript - Storyworth alternative",
-    },
-    {
-      heading: "More support",
-      points: [
-        "Live chat support during business hours",
-        "Easy step-by-step tutorial videos",
-      ],
-      image: Support,
-      alt: "Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",
-      ImgTitle: " Enhanced support with LifeScript - Storyworth alternative",
-    },
-    {
-      heading: "More personalized",
-      points: [
-        "More personalized questions for a tailored experience",
-        "Family Tree included at the end of your book",
-      ],
-      image: Tree,
-      alt: "Icon for more personalized experience with LifeScript, the best alternative to Storyworth, offering tailored questions and family tree inclusion.",
-      ImgTitle:
-        "Personalized experience with LifeScript - Storyworth alternative",
-    },
-
-    {
-      heading: "More custom and professional book",
-      points: [
-        "Q&A format or chapters format",
-        "More book cover designs to choose from",
-        "Formatting features for customization",
-      ],
-      image: Book,
-      alt: "Icon for more custom and professional books with LifeScript, a Storyworth alternative providing various book cover designs and formats.",
-      ImgTitle:
-        "Custom and professional book options - LifeScript as a Storyworth alternative",
-    },
-    {
-      heading: "More secure",
-      points: ["Latest security standards to keep your stories private."],
-      image: Secure,
-      alt: " Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",
-      ImgTitle: " Enhanced support with LifeScript - Storyworth alternative",
-    },
-  ];
+const WhyLifeScript = ({ data }) => {
   return (
     <Box
       sx={{
@@ -112,7 +41,7 @@ const WhyLifeScript = () => {
             rowGap: { lg: "50px", sm: "40px", xs: "40px" },
           }}
         >
-          {aboutLifeScript.map((item, index) => (
+          {data.map((item, index) => (
             <ReasonPoints
               key={index}
               heading={item.heading}

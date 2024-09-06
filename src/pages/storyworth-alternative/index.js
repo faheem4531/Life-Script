@@ -30,6 +30,13 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
+import Timer from "@/__webAssets/pngs/whyLifeScript/less-effort.png";
+import Book from "@/__webAssets/pngs/whyLifeScript/more-custom.png";
+import Tree from "@/__webAssets/pngs/whyLifeScript/more-personalized.png";
+import Secure from "@/__webAssets/pngs/whyLifeScript/more-secure.png";
+import Support from "@/__webAssets/pngs/whyLifeScript/more-support.png";
+import Cost from "@/__webAssets/pngs/whyLifeScript/no-hidden-cost.png";
+
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
   const pointsArray = [
@@ -322,6 +329,71 @@ const StoryworthAlternative = () => {
     },
   ];
 
+  const whyLifeScript = [
+    {
+      heading: "Less Effort and Time Spent",
+      points: [
+        "Autoediting and Proofreading saves 3 to 4 weeks",
+        "Automatic photo improvement for printing purposes",
+      ],
+      image: Timer,
+      alt: "Icon representing less effort and time spent using LifeScript, the best Storyworth alternative with auto-editing and photo improvement features.",
+      ImgTitle:
+        "Less effort and time spent with LifeScript - Storyworth alternative",
+    },
+    {
+      heading: "No hidden costs",
+      points: [
+        "Full-color hardcover book included in price",
+        "Free international delivery included in price",
+      ],
+      image: Cost,
+      alt: "Icon showing no hidden costs with LifeScript, a Storyworth alternative offering full-color hardcover books and free delivery.",
+      ImgTitle: " No hidden costs with LifeScript - Storyworth alternative",
+    },
+    {
+      heading: "More support",
+      points: [
+        "Live chat support during business hours",
+        "Easy step-by-step tutorial videos",
+      ],
+      image: Support,
+      alt: "Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",
+      ImgTitle: " Enhanced support with LifeScript - Storyworth alternative",
+    },
+    {
+      heading: "More personalized",
+      points: [
+        "More personalized questions for a tailored experience",
+        "Family Tree included at the end of your book",
+      ],
+      image: Tree,
+      alt: "Icon for more personalized experience with LifeScript, the best alternative to Storyworth, offering tailored questions and family tree inclusion.",
+      ImgTitle:
+        "Personalized experience with LifeScript - Storyworth alternative",
+    },
+
+    {
+      heading: "More custom and professional book",
+      points: [
+        "Q&A format or chapters format",
+        "More book cover designs to choose from",
+        "Formatting features for customization",
+      ],
+      image: Book,
+      alt: "Icon for more custom and professional books with LifeScript, a Storyworth alternative providing various book cover designs and formats.",
+      ImgTitle:
+        "Custom and professional book options - LifeScript as a Storyworth alternative",
+    },
+    {
+      heading: "More secure",
+      points: ["Latest security standards to keep your stories private."],
+      image: Secure,
+      alt: " Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",
+      ImgTitle: " Enhanced support with LifeScript - Storyworth alternative",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -338,13 +410,15 @@ const StoryworthAlternative = () => {
           discription="Save time, efforts and enjoy a more personalized, secure and
             supportive storytelling experience with no hidden costs."
           buttonText="Start Writing for Free"
+          alt=" An opened autobiography book, showcasing LifeScript as the best Storyworth alternative for capturing life stories."
+          imgTitle="Opened autobiography book - LifeScript as a Storyworth alternative"
         />
         <Experience
           headingStyle={false}
           heading="How we’re "
           marked="different"
         />
-        <WhyLifeScript />
+        <WhyLifeScript data={whyLifeScript} />
         <Box
           sx={{
             margin: {
