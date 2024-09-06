@@ -44,13 +44,7 @@
   height: 290px;
   animation: image4 4s -2s forwards, slideIn 1s ease-in-out infinite alternate;
 }
-/* h1, h2,h3,h4,h5,h6{
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
-  padding: 0;
-  display: inherit;
-} */
+
 .pureHeadings {
   font-size: inherit;
   font-weight: inherit;
@@ -140,22 +134,6 @@
   }
 }
 
-/* Suggestion Component */
-
-.fullStyle {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 910px;
-  height: auto;
-}
-
-.suggestionImg {
-  width: 550px;
-  height: 680px;
-}
-
 /* StoryTelling  */
 .stroyImages {
   width: 475px;
@@ -187,25 +165,9 @@
   height: auto;
 }
 
-
-
 @media screen and (min-width: 1600px) {
-
-  .book {
-    width: 550px;
-    height: 800px;
-  }
-
   .storyBg {
     width: initial;
-  }
-}
-
-@media screen and (min-width: 1200px) and (max-width: 1400px) {
-  /* Suggestion  */
-  .suggestionImg {
-    width: 480px;
-    height: 590px;
   }
 }
 
@@ -287,18 +249,6 @@
     }
   }
 
-  /* Suggestion  */
-  .suggestionImg {
-    width: 400px;
-    height: 500px;
-  }
-
-  .fullStyle {
-    max-width: 880px;
-  }
-
-
-
   /* StoryTelling  */
   .stroyImages {
     width: 400px;
@@ -308,8 +258,6 @@
   .storyBg {
     display: none;
   }
-
-
 }
 
 @media screen and (max-width: 899px) {
@@ -322,18 +270,6 @@
     display: none;
   }
 
-  /* Suggestion  */
-  /* .suggestionImg{
-    width: 400px;
-    height: 500px;
-  }
-
-.fullStyle {
-  bottom: -60px;
-  max-width: 95%;
-} */
-
-
   /* storyTelling  */
   .storyBg {
     display: none;
@@ -343,18 +279,9 @@
     width: 100px;
     right: -20px;
   }
-
-
-
 }
 
 @media screen and (max-width: 600px) {
-  .braker {
-    display: none;
-  }
-
-
-
   /* StoryTelling  */
   .stroyImages {
     width: 100%;

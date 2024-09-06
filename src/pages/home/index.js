@@ -1,25 +1,26 @@
 "use client";
 
+import { Box } from "@mui/material";
+import Head from "next/head";
+import { useTranslation } from "react-i18next";
+
 import OurBooks from "@/__webComponents/books/OurBooks";
 import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import Footer from "@/__webComponents/footer/Footer";
+import GifTab from "@/__webComponents/gifTab/GifTab";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import Pricing from "@/__webComponents/pricing/Pricing";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
+import Reviews from "@/__webComponents/reviews/Reviews";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
-import { Box } from "@mui/material";
-import Head from "next/head";
-import GifTab from "@/__webComponents/gifTab/GifTab";
 import Introduction from "./sections/Introduction";
-import Reviews from "./sections/Reviews";
 import StoryTelling from "./sections/StoryTelling";
 
 import Gift from "@/__webAssets/svgs/gift.svg";
 import Shape from "@/__webAssets/svgs/input-shape.svg";
-import { useTranslation } from "react-i18next";
 
 import Arthur from "@/__webAssets/webp/testimonials/lifescript-customer-review-arthur-thompson.webp";
 import Carlos from "@/__webAssets/webp/testimonials/lifescript-customer-review-carlos-martinez.webp";
