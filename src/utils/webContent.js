@@ -309,8 +309,8 @@ export const usePricingComparison = (t) => [
   },
   {
     logo: LifeScriptLogo,
-    alt: t("pricingSection.additionalDetails.alt"),
-    title: t("pricingSection.additionalDetails.title"),
+    alt: t("pricingSection.bookDetails.additionalDetails.alt"),
+    title: t("pricingSection.bookDetails.additionalDetails.title"),
     bgColor: "#30422E",
     data: [
       t("pricingSection.bookDetails.additionalDetails.data.yes"),
@@ -328,8 +328,8 @@ export const usePricingComparison = (t) => [
   },
   {
     logo: StoryWorthy,
-    alt: t("pricingSection.additionalDetails2.alt"),
-    title: t("pricingSection.additionalDetails2.title"),
+    alt: t("pricingSection.bookDetails.additionalDetails2.alt"),
+    title: t("pricingSection.bookDetails.additionalDetails2.title"),
     bgColor: "#15372F",
     sCase: true,
     data: [
@@ -383,8 +383,8 @@ export const useFeaturesComparison = (t) => [
   },
   {
     logo: LifeScriptLogo,
-    alt: " the logo of LifeScript that represents a grandpa telling stories to his grandson under the cover of a book",
-    title: "LifeScript logo",
+    alt: t("pricingSection.featureComparison.featuresDetails2.alt"),
+    title: t("pricingSection.featureComparison.featuresDetails2.title"),
     bgColor: "#30422E",
     data: [
       t("pricingSection.featureComparison.featuresDetails2.data.yes"),
@@ -405,8 +405,8 @@ export const useFeaturesComparison = (t) => [
   },
   {
     logo: StoryWorthy,
-    alt: "the logo icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
-    title: "Storyworth",
+    alt: t("pricingSection.featureComparison.featuresDetails3.alt"),
+    title: t("pricingSection.featureComparison.featuresDetails3.title"),
     bgColor: "#15372F",
     data: [
       t("pricingSection.featureComparison.featuresDetails3.data.yes"),

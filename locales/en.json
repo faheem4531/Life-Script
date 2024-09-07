@@ -417,7 +417,7 @@
         }
       },
       "additionalDetails": {
-        "alt": "the logo of LifeScript that represents a grandpa telling stories to his grandson under the cover of a book",
+        "alt": "LifeScript logo",
         "title": "LifeScript logo",
         "data": {
           "yes": "Yes",
@@ -430,8 +430,8 @@
         }
       },
       "additionalDetails2": {
-        "alt": "the logo icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
-        "title": "Storyworth",
+        "alt": "Storyworth cost logo",
+        "title": "Storyworth cost logo",
         "data": {
           "no": "No",
           "priceFor139": "No, only 12 months access for $139",
@@ -463,12 +463,16 @@
         }
       },
       "featuresDetails2": {
+        "alt": "LifeScript logo",
+        "title": "LifeScript logo",
         "data": {
           "yes": "Yes",
           "yesInStandardPremium": "Yes, in Standard and Premium"
         }
       },
       "featuresDetails3": {
+        "alt": "Storyworth comparison - logo",
+        "title": "Storyworth comparison - logo",
         "data": {
           "yes": "Yes",
           "no": "No"
