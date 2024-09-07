@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import styles from "../ComponentsStyles.module.css";
 import Bandage from "@/__webAssets/pngs/bandage.png";
+import styles from "../ComponentsStyles.module.css";
 
 export default function CustomizedAccordions({ panelsData }) {
   const { t } = useTranslation();
@@ -61,7 +61,7 @@ export default function CustomizedAccordions({ panelsData }) {
   const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     padding: theme.spacing(0),
     backgroundColor: "#F3ECDA",
-    color: "#30422E",
+    color: "#3E4F3C",
   }));
 
   useEffect(() => {
@@ -104,7 +104,6 @@ export default function CustomizedAccordions({ panelsData }) {
               <Typography
                 component="div"
                 sx={{
-                  color: "#30422E",
                   fontSize: "16px",
                   padding: "5px 0 20px 35px",
                   maxWidth: "370px",

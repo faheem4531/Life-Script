@@ -41,6 +41,7 @@ const AccordionSummary = styled((props) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(0),
   backgroundColor: "#F3ECDA",
+  color: "#3E4F3C !important",
 }));
 
 export default function Question({
@@ -74,7 +75,6 @@ export default function Question({
               },
               fontSize: "14px",
               fontFamily: "Avenir",
-              color: "#30422E",
             }}
             variant="h4"
             className={styles.pureHeadings}
