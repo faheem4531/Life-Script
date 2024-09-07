@@ -151,7 +151,7 @@
     },
     "bookSection": {
       "title": "Our",
-      "subTitle": "Books"
+      "subTitle": "books"
     },
     "testimonialSection": {
       "title": "Testimonials",
@@ -212,8 +212,8 @@
       }
     },
     "questionSection": {
-      "title": "Got Questions?",
-      "subTitle": "We've Got Answers!",
+      "title": "Got questions?",
+      "subTitle": "We've got answers!",
       "btnText": "See More",
       "question1": {
         "qs": "What is included in each plan?",
@@ -268,10 +268,10 @@
       },
       "heading2": {
         "title": "HELP",
-        "text1": "Contact Us",
+        "text1": "Contact us",
         "text2": "FAQ",
         "text3": "Terms and conditions",
-        "text4": " Privacy Policy"
+        "text4": " Privacy policy"
       },
       "copyrightText": "© Copyright 2024 LifeScript"
     }
@@ -323,7 +323,7 @@
     "stillConfusedSection": {
       "title": "Still confused? Ask",
       "title2": "away!",
-      "subTitle": "Contact us Now!!!",
+      "subTitle": "Contact us now",
       "input1": "Your name",
       "input2": "Your email address",
       "input3": "What’s on your mind?",
@@ -372,12 +372,12 @@
         "title": "Inclusivity & Diversity:",
         "detail": "Our platform honors and preserves the diversity of all life stories, ensuring each narrative is valued and celebrated."
       },
-      "btnText": "Get Started"
+      "btnText": "Get started"
     },
     "stillConfusedSection": {
       "title": "Still confused? Ask",
       "title2": "away!",
-      "subTitle": "Contact us Now!!!",
+      "subTitle": "Contact us now",
       "input1": "Your name",
       "input2": "Your email address",
       "input3": "What’s on your mind?",
@@ -447,7 +447,7 @@
       }
     },
     "featureComparison": {
-      "title": "Feature",
+      "title": "Features",
       "subTitle": "comparison",
       "featuresDetails": {
         "header": "Features",
@@ -478,7 +478,7 @@
     "stillConfusedSection": {
       "title": "Still confused? Ask",
       "title2": "away!",
-      "subTitle": "Contact us Now!!!",
+      "subTitle": "Contact us now",
       "input1": "Your name",
       "input2": "Your email address",
       "input3": "What’s on your mind?",
@@ -555,7 +555,7 @@
     "stillConfusedSection": {
       "title": "Still confused? Ask",
       "title2": "away!",
-      "subTitle": "Contact us Now!!!",
+      "subTitle": "Contact us now",
       "input1": "Your name",
       "input2": "Your email address",
       "input3": "What’s on your mind?",

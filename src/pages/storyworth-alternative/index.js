@@ -79,6 +79,7 @@ const StoryworthAlternative = () => {
           <ComparisonDetails
             cardsDetail={pricingComparison}
             heading={"LifeScript vs Storyworth cost"}
+            
           />
           <ComparisonDetails
             cardsDetail={featuresComparison}
@@ -125,7 +126,7 @@ const StoryworthAlternative = () => {
         </Box>
         <GotQuestions questions={storyWorthAlternativeQs} />
         <ContactFooter
-          title={"Still have any "}
+          title={"Still have "}
           marked={"questions?"}
           lineWidth={170}
           subTitle={t("pricingSection.stillConfusedSection.subTitle")}
