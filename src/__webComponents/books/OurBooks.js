@@ -53,6 +53,8 @@ const OurBooks = ({ details, heading, marked }) => {
                 alt={item.alt}
                 title={item.title}
                 className={styles.book}
+                width={420}
+                height={580}
               />
             </Box>
           ))}

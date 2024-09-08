@@ -8,14 +8,12 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
-// import Timer from "@/__webAssets/pngs/whyLifeScript/less-effort.png";
-
-import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp";
-import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp";
-import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp";
-import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp";
-import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp";
-import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp";
+// import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp";
+// import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp";
+// import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp";
+// import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp";
+// import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp";
+// import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp";
 
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
@@ -27,8 +25,9 @@ import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-anima
 import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
 import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
 
-import { icons } from "./assetsUrl";
+import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
+const { bookCovers } = images;
 
 export const UseStoryWorthAlternativeQs = (t) => [
   {
@@ -227,32 +226,32 @@ export const useSuggestedQuestions = (t) => [
 
 export const useOurBookCoverforAlternative = (t) => [
   {
-    coverImage: Book1,
+    coverImage: bookCovers.cover1,
     alt: "Book cover with an elderly couple on a swing, highlighting LifeScript’s appeal as a Storyworth alternative.",
     title: "Grandparents book cover - LifeScript as a Storyworth alternative",
   },
   {
-    coverImage: Book2,
+    coverImage: bookCovers.cover2,
     alt: "Full-picture life story book cover featuring a family by a lake, exemplifying LifeScript as the best Storyworth alternative.",
     title: "Full-picture book cover - LifeScript as a Storyworth alternative",
   },
   {
-    coverImage: Book3,
+    coverImage: bookCovers.cover3,
     alt: "Book cover featuring an elderly couple celebrating grandma's birthday, showcasing LifeScript as a unique Storyworth alternative.",
     title: " Birthday gift book cover - LifeScript vs. Storyworth",
   },
   {
-    coverImage: Book4,
+    coverImage: bookCovers.cover4,
     alt: "Book cover design with grandparents enjoying nature, demonstrating LifeScript as a top alternative to Storyworth.",
     title: "Grandparents book cover - LifeScript vs. Storyworth",
   },
   {
-    coverImage: Book5,
+    coverImage: bookCovers.cover5,
     alt: "Memoir book cover with author’s photo, customizable with LifeScript, a leading Storyworth alternative.",
     title: "Memoir book cover - LifeScript as a Storyworth alternative",
   },
   {
-    coverImage: Book6,
+    coverImage: bookCovers.cover6,
     alt: "Minimalistic autobiography book cover design, demonstrating LifeScript as a top Storyworth alternative.",
     title: "Minimalistic book cover - LifeScript vs. Storyworth",
   },
