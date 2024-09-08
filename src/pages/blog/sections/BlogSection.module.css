@@ -1,3 +1,10 @@
+.blogs {
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725835915/assets/bg-for-navbar_mendp2.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 200px;
+  object-fit: cover;
+}
+
 .content h1 {
   font-family: Besley !important;
   font-size: 28px;
@@ -52,18 +59,24 @@
 
   .line {
     width: 120px !important;
-  
     right: -20px;
     height: auto;
   }
+  .blogs {
+    background-size: 100% 150px;
+  }
 }
 
-@media screen and (max-width: 899px) {
+@media screen and (max-width: 600px) {
   .bgImage {
     height: 120px;
   }
 
   .line {
     width: 80px !important;
+  }
+
+  .blogs {
+    background-size: 100% 120px;
   }
 }

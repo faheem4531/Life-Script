@@ -66,7 +66,7 @@ const BlogDetailPage = () => {
   return (
     <Box
       sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}
-      className={styles.introBlog}
+      className={styles.blogs}
     >
       <NavBar color="#F3ECDA" logo={Logo} />
       {loading ? (

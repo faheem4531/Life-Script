@@ -3,18 +3,20 @@ import { Box, Typography } from "@mui/material";
 import styles from "./BlogSection.module.css"
 
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg"
-import BgImage from "@/__webAssets/pngs/bg-blog.png"
+// import BgImage from "@/__webAssets/pngs/bg-blog.png"
 import Line from "@/__webAssets/svgs/line-orange.svg"
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
+
+const BgImage = "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725835915/assets/bg-for-navbar_mendp2.webp";
 const IntroductionBlog = () => {
   const { t } = useTranslation();
   return (
-    <Box sx={{ position: "relative" }} >
+    <Box sx={{ position: "relative" }} className={styles.blogs}>
 
       <NavBar color="#F3ECDA" logo={Logo} />
-      <Image src={BgImage} alt='img' className={styles.bgImage} />
+      {/* <Image src={BgImage} alt='img' className={styles.bgImage} height={200} width={1000}/> */}
 
       <Box sx={{
       
