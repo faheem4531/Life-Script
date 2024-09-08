@@ -1,12 +1,14 @@
 "use client";
 
-import Head from "next/head";
 import { Box } from "@mui/material";
-import Footer from "@/__webComponents/footer/Footer";
-import ContactFooter from "@/__webComponents/footer/ContactFooter";
-import IntroductionBlog from "./sections/Introduction";
-import Blogs from "./sections/Blog";
+import Head from "next/head";
 import { useTranslation } from "react-i18next";
+
+import ContactFooter from "@/__webComponents/footer/ContactFooter";
+import Footer from "@/__webComponents/footer/Footer";
+import Blogs from "./sections/Blog";
+import IntroductionBlog from "./sections/Introduction";
+
 const BlogPage = () => {
   const { t } = useTranslation();
   return (
@@ -38,7 +40,7 @@ const BlogPage = () => {
         <Footer />
       </Box>
     </>
-  )
-}
+  );
+};
 
 export default BlogPage;
