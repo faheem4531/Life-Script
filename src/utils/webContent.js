@@ -8,13 +8,6 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
-// import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp";
-// import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp";
-// import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp";
-// import Book4 from "@/__webAssets/webp/bookCovers/grandparents-book-cover-design.webp";
-// import Book5 from "@/__webAssets/webp/bookCovers/memoir-gift-book-cover-design.webp";
-// import Book6 from "@/__webAssets/webp/bookCovers/simplistic-autobiography-book-cover-design-minimalistic.webp";
-
 import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
@@ -474,5 +467,72 @@ export const useAlternativeFeaturesGif = (t) => [
     alt: "Auto photo improvement demo showing LifeScript’s image enhancement capabilities, making it the best Storyworth alternative.",
     imgTitle:
       " Auto photo enhancement demo - LifeScript as a Storyworth alternative",
+  },
+];
+
+export const faqQA = (t) => [
+  {
+    question: t("faqsSections.question1.question"),
+    answer: t("faqsSections.question1.answer"),
+  },
+  {
+    question: t("faqsSections.question2.question"),
+    answer: t("faqsSections.question2.answer"),
+  },
+  {
+    question: t("faqsSections.question3.question"),
+    answer: t("faqsSections.question3.answer"),
+  },
+  {
+    question: t("faqsSections.question4.question"),
+    answer: t("faqsSections.question4.answer"),
+  },
+  {
+    question: t("faqsSections.question5.question"),
+    answer: t("faqsSections.question5.answer"),
+  },
+  {
+    question: t("faqsSections.question6.question"),
+    answer: t("faqsSections.question6.answer"),
+  },
+  {
+    question: t("faqsSections.question7.question"),
+    answer: t("faqsSections.question7.answer"),
+  },
+  {
+    question: t("faqsSections.question8.question"),
+    answer: t("faqsSections.question8.answer"),
+  },
+  {
+    question: t("faqsSections.question9.question"),
+    answer: t("faqsSections.question9.answer"),
+  },
+  {
+    question: t("faqsSections.question10.question"),
+    answer: t("faqsSections.question10.answer"),
+  },
+  {
+    question: t("faqsSections.question11.question"),
+    answer: t("faqsSections.question11.answer"),
+  },
+  {
+    question: t("faqsSections.question12.question"),
+    answer: t("faqsSections.question12.answer"),
+  },
+  {
+    question: t("faqsSections.question13.question"),
+    answer: t("faqsSections.question13.answer"),
+  },
+  {
+    question: t("faqsSections.question14.question"),
+    answer: t("faqsSections.question14.answer"),
+  },
+  {
+    question: t("faqsSections.question15.question"),
+    answer: t("faqsSections.question15.answer"),
+  },
+  {
+    question: t("faqsSections.question16.question"),
+    answer: t("faqsSections.question16.answer"),
   },
 ];

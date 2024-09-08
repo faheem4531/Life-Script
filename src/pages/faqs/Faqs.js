@@ -2,79 +2,14 @@
 
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import styles from "./Faq.module.css";
 
 import Points from "@/__webAssets/svgs/lifescript-frequently-asked-questions-element.svg";
-import { useTranslation } from "react-i18next";
+import { faqQA } from "@/utils/webContent";
 const Faqs = () => {
   const { t } = useTranslation();
- 
-  const QAs = [
-    {
-      question: t("faqsSections.question1.question"),
-      answer: t("faqsSections.question1.answer"),
-    },
-    {
-      question: t("faqsSections.question2.question"),
-      answer: t("faqsSections.question2.answer"),
-    },
-    {
-      question: t("faqsSections.question3.question"),
-      answer: t("faqsSections.question3.answer"),
-    },
-    {
-      question: t("faqsSections.question4.question"),
-      answer: t("faqsSections.question4.answer"),
-    },
-    {
-      question: t("faqsSections.question5.question"),
-      answer: t("faqsSections.question5.answer"),
-    },
-    {
-      question: t("faqsSections.question6.question"),
-      answer: t("faqsSections.question6.answer"),
-    },
-    {
-      question: t("faqsSections.question7.question"),
-      answer: t("faqsSections.question7.answer"),
-    },
-    {
-      question: t("faqsSections.question8.question"),
-      answer: t("faqsSections.question8.answer"),
-    },
-    {
-      question: t("faqsSections.question9.question"),
-      answer: t("faqsSections.question9.answer"),
-    },
-    {
-      question: t("faqsSections.question10.question"),
-      answer: t("faqsSections.question10.answer"),
-    },
-    {
-      question: t("faqsSections.question11.question"),
-      answer: t("faqsSections.question11.answer"),
-    },
-    {
-      question: t("faqsSections.question12.question"),
-      answer: t("faqsSections.question12.answer"),
-    },
-    {
-      question: t("faqsSections.question13.question"),
-      answer: t("faqsSections.question13.answer"),
-    },
-    {
-      question: t("faqsSections.question14.question"),
-      answer: t("faqsSections.question14.answer"),
-    },
-    {
-      question: t("faqsSections.question15.question"),
-      answer: t("faqsSections.question15.answer"),
-    },
-    {
-      question: t("faqsSections.question16.question"),
-      answer: t("faqsSections.question16.answer"),
-    },
-  ];
+  const QAs = faqQA(t);
 
   return (
     <Box
@@ -105,7 +40,6 @@ const Faqs = () => {
         >
           <h1 className={styles.pureHeadings}>{t("faqsSections.title")}</h1>
         </Typography>
-        {/* <Typography sx={{ fontSize: "16px", fontWeight: 500 }}> */}
         <Typography
           fontFamily="Avenir"
           variant="h2"
@@ -113,7 +47,6 @@ const Faqs = () => {
         >
           {t("faqsSections.description")}
         </Typography>
-        {/* </Typography> */}
       </Box>
       <Box
         sx={{
