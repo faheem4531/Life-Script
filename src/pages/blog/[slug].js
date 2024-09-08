@@ -1,9 +1,5 @@
 "use client";
 
-import Back from "@/__webAssets/svgs/back-aero.svg";
-import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
-import Footer from "@/__webComponents/footer/Footer";
-import NavBar from "@/__webComponents/navBar/NavBar";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +7,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
 import BlogDetails from "./sections/BlogDetails";
+
+import Back from "@/__webAssets/svgs/back-aero.svg";
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
+import Footer from "@/__webComponents/footer/Footer";
+import NavBar from "@/__webComponents/navBar/NavBar";
 import styles from "./sections/BlogSection.module.css";
 
 const BlogDetailPage = () => {
@@ -160,7 +161,6 @@ const BlogDetailPage = () => {
                 fontFamily: "Besley !important",
               }}
             >
-              {/* Crafting Your Legacy: A Guide to Writing Your Autobiography */}
               {blogsDetailsData?.data?.attributes?.title}
             </Typography>
             <Typography sx={{ fontSize: "16px" }}>
