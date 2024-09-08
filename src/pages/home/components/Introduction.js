@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import styles from "./HomeSections.module.css";
 import { useTranslation } from "react-i18next";
+import styles from "./HomeSections.module.css";
 
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 
@@ -14,35 +14,35 @@ import Button from "@/__webComponents/button/Button";
 
 const images = [
   {
-    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach.webp",
+    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach_ksdqwe.webp",
     alt: "Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript",
     className: styles.image1,
     width: 260,
     height: 290,
   },
   {
-    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph.webp",
+    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832660/assets/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph_jwoc0i.webp",
     alt: "Children dancing and having fun with bubbles on a vintage photograph - LifeScript",
     className: styles.image3,
     width: 275,
     height: 330,
   },
   {
-    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories.webp",
+    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories_dypr3f.webp",
     alt: "childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript",
     className: styles.image2,
     width: 225,
     height: 245,
   },
   {
-    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/grandma-and-grandpa-laughing-and-eating-ice+cream-happy-memories.webp",
+    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/grandma-and-grandpa-laughing-and-eating-ice_cream-happy-memories_nsi0br.webp",
     alt: "Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript",
     className: styles.image4,
     width: 322,
     height: 290,
   },
   {
-    src: "https://lifescript-media.s3.eu-north-1.amazonaws.com/old-opened-autobiography-book.webp",
+    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832663/assets/old-opened-autobiography-book_bavh4s.webp",
     alt: "An old opened autobiography book - LifeScript",
     className: styles.bookImg,
     width: 870,
@@ -55,7 +55,6 @@ const Introduction = () => {
   const [Typed, setTyped] = useState(null);
 
   useEffect(() => {
-
     let typedInstance;
     const loadTyped = async () => {
       if (!Typed) {
@@ -165,9 +164,8 @@ const Introduction = () => {
           className={image.className}
           width={image.width}
           height={image.height}
-          //  loading='lazy'
           loading={index === images.length - 1 ? undefined : "lazy"}
-          priority={index === images.length - 1} // Apply priority only to the last image
+          priority={index === images.length - 1}
         />
       ))}
     </Box>

@@ -106,7 +106,7 @@ const LandingIntro = ({
           }}
         >
           <Image
-            src="https://lifescript-media.s3.eu-north-1.amazonaws.com/old-opened-autobiography-book.webp"
+            src="https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832663/assets/old-opened-autobiography-book_bavh4s.webp"
             alt={alt}
             width={600}
             height={280}

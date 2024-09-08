@@ -27,7 +27,7 @@
 
 /* ContactFooter  */
 .contactFooterBox {
-  background-image: url(https://lifescript-media.s3.eu-north-1.amazonaws.com/bg-footer.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832296/assets/bg-footer_kpg0gn.webp);
   background-size: 100% 120%;
 }
 
@@ -47,7 +47,7 @@
 /* Introduction  */
 
 .features {
-  background-image: url(../__webAssets/pngs/bg-feature.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725831434/assets/bg-for-topSec_qz1o8w.webp);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -72,7 +72,7 @@
 
 /* Working  */
 .workingBox {
-  background-image: url(https://lifescript-media.s3.eu-north-1.amazonaws.com/bg-top-bottom.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832072/assets/bg-top-bottom_q8qvxg.webp);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -156,7 +156,7 @@
 
 /* Our Books  */
 .bookBox {
-  background-image: url(../__webAssets/pngs/bg-books.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725831434/assets/bg-for-books_zvhht6.webp);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -168,7 +168,7 @@
 
 /* GifTab  */
 .gifTabBox {
-  background-image: url(../__webAssets/pngs/gifi-tab.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832565/assets/bg-for-gif-card_nfjx5w.webp);
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -220,7 +220,6 @@
 }
 
 @media screen and (min-width: 1600px) {
-
   .book {
     width: 550px;
     height: 800px;
@@ -286,15 +285,15 @@
     width: 200px;
     right: 120px;
   }
-    /* StoryTelling  */
-    .stroyImages {
-      width: 400px;
-      height: 260px;
-    }
-  
-    .storyBg {
-      display: none;
-    }
+  /* StoryTelling  */
+  .stroyImages {
+    width: 400px;
+    height: 260px;
+  }
+
+  .storyBg {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 899px) {
@@ -369,20 +368,20 @@
     height: 340px;
   }
 
-    /* GifTab  */
+  /* GifTab  */
 
-    .gifTabBox {
-      background-size: 100% 150px;
-    }
-  
-    .bgHurt {
-      height: 80px;
-      width: 160px;
-      right: 120px;
-      bottom: 26px;
-    }
+  .gifTabBox {
+    background-size: 100% 150px;
+  }
 
-      /* storyTelling  */
+  .bgHurt {
+    height: 80px;
+    width: 160px;
+    right: 120px;
+    bottom: 26px;
+  }
+
+  /* storyTelling  */
   .storyBg {
     display: none;
   }
@@ -391,12 +390,11 @@
     width: 100px;
     right: -20px;
   }
-  
+
   /* Comparison details  */
   .pricingPage {
     background-size: 100% 150px;
   }
-  
 }
 
 @media screen and (max-width: 600px) {
@@ -479,7 +477,7 @@
     height: 270px;
   }
 
-/* GifTab  */
+  /* GifTab  */
   .gifTabBox {
     background-image: none;
     background-color: #fff;
@@ -500,14 +498,14 @@
     transform: rotate(95deg);
   }
 
-    /* StoryTelling  */
-    .stroyImages {
-      width: 100%;
-      height: auto;
-    }
-  
-    .suggestionUnderLine {
-      width: 60px;
-      right: -10px;
-    }
+  /* StoryTelling  */
+  .stroyImages {
+    width: 100%;
+    height: auto;
+  }
+
+  .suggestionUnderLine {
+    width: 60px;
+    right: -10px;
+  }
 }
