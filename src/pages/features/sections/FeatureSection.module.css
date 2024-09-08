@@ -12,14 +12,14 @@
 }
 
 .featureBg{
-  background-image: url(../../../__webAssets/pngs/bg-top-bottom.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832072/assets/bg-top-bottom_q8qvxg.webp);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #F3ECDA;
 }
 
 .halfbg{
-  background-image: url(../../../__webAssets/pngs/bg-top-bottom.png);
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832072/assets/bg-top-bottom_q8qvxg.webp);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #F3ECDA;
