@@ -11,8 +11,9 @@ const WhyLifeScript = ({ data }) => {
     <Box
       sx={{
         padding: {
-          md: "130px 40px 50px",
-          sm: "130px 20px 60px",
+          lg: "130px 50px 50px 80px",
+          md: "130px 30px 50px 30px",
+          sm: "130px 20px 60px 50px",
           xs: "130px 20px 70px",
         },
       }}
@@ -84,13 +85,13 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
         display: "flex",
         columnGap: "15px",
         color: "#F3ECDA",
-        maxWidth: { lg: "560px", md: "450px" },
+        maxWidth: { lg: "510px", md: "450px" },
         width: "100%",
       }}
     >
       <Box
         sx={{
-          minWidth: { lg: "90px", md: "60px", sm: "80px" },
+          minWidth: { lg: "70px", md: "60px", sm: "80px" },
           display: "flex",
           justifyContent: "center",
         }}
@@ -107,7 +108,7 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
       <Box>
         <Typography
           sx={{
-            fontSize: { lg: "35px", md: "28px", sm: "35px", xs: "30px" },
+            fontSize: { lg: "34px", md: "28px", sm: "35px", xs: "30px" },
             mb: "8px",
           }}
           variant="h3"
@@ -129,7 +130,7 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
                 backgroundColor: "#F3ECDA",
               }}
             ></span>
-            <Typography sx={{ fontSize: { sm: "18px", xs: "16px" } }}>
+            <Typography>
               {step}
             </Typography>
           </Box>
