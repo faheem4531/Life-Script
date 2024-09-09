@@ -1,128 +1,28 @@
 "use client";
 
-import ContactFooter from "@/__webComponents/footer/ContactFooter";
-import Footer from "@/__webComponents/footer/Footer";
-import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import { Box } from "@mui/material";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
+import ContactFooter from "@/__webComponents/footer/ContactFooter";
+import Footer from "@/__webComponents/footer/Footer";
 import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
+import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
-
-import { useRetiredMenSuggestions } from "@/utils/webContent";
+import { 
+  useRetiredMenQA,
+  useRetiredMenSuggestions,
+  useRetiredMenTestimonials,
+  useWorkingDetails,
+} from "@/utils/webContent";
 
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
-  const pointsArray = [
-    {
-      no: "01",
-      title: t("landingPage.howItWorks.step1.title"),
-      discription: t("landingPage.howItWorks.step1.description"),
-    },
-    {
-      no: "02",
-      title: t("landingPage.howItWorks.step2.title"),
-      discription: t("landingPage.howItWorks.step2.description"),
-    },
-    {
-      no: "03",
-      title: t("landingPage.howItWorks.step3.title"),
-      discription: t("landingPage.howItWorks.step3.description"),
-    },
-    {
-      no: "04",
-      title: t("landingPage.howItWorks.step4.title"),
-      discription: t("landingPage.howItWorks.step4.description"),
-    },
-  ];
-
-  const storyWorthAlternativeQs = [
-    {
-      qs: "How much does Storyworth cost?",
-      ans: "Storyworth costs $99 for 12 months of access, which includes a black-and-white book. To upgrade to a full-color book, there is an additional fee of $40 for up to 300 pages or $60 for 300 to 480 pages. For orders outside the US, additional delivery charges apply.",
-      panel: "panel1",
-      isexpanded: false,
-    },
-    {
-      qs: "How much does an additional book from Storyworth cost?",
-      ans: "An additional black-and-white book from Storyworth costs $39, while a full-color book costs $79 for up to 300 pages or $99 for 300 to 480 pages. Shipping costs are not included.",
-      panel: "panel2",
-      isexpanded: false,
-    },
-    {
-      qs: "Are Storyworth questions personalised?",
-      ans: "No, Storyworth questions are not personalised. The questions are sent regularly via email in random order and are not tailored to individual experiences.",
-      panel: "panel3",
-      isexpanded: false,
-    },
-    {
-      qs: "What are the best Storyworth alternatives?",
-      ans: "The best alternatives to Storyworth are LifeScript, Storii, Alifeuntold, Remento, Meminto, Mylifeinabook and other.",
-      panel: "panel4",
-      isexpanded: false,
-    },
-    {
-      qs: "Is Storyworth available in other languages?",
-      ans: "No, Storyworth is available only in English. If you are looking for a Storyworth alternative for Spanish speakers - LifeScript is available in Spanish.",
-      panel: "panel6",
-      isexpanded: false,
-    },
-    {
-      qs: "Does my father have to pay extra if I gift him Storyworth?",
-      ans: "Yes, if your father wants a full-color book, he will need to pay an additional $40–$60, and unfortunately, you can't prepay this fee. If he's located outside the US, he will also have to pay extra for delivery.",
-      panel: "panel7",
-      isexpanded: false,
-    },
-    {
-      qs: "What kind of customer support does Storyworth offer?",
-      ans: "Yes, only via email while LifeScript offers live chat support, email support and tutorial videos.",
-      panel: "panel8",
-      isexpanded: false,
-    },
-    {
-      qs: "Are there Storyworth alternatives in Australia,the UK or Canada?",
-      ans: "People often search for Storyworth alternatives in Australia, the UK, and Canada due to high shipping fees outside the US. LifeScript is the only alternative that offers free international delivery.",
-      panel: "panel5",
-      isexpanded: false,
-    },
-  ];
-
+  const workingData = useWorkingDetails(t);
+  const retiredMenQA = useRetiredMenQA(t);
   const retiredMenSuggestions = useRetiredMenSuggestions(t);
-
-  const noImageTestimonials = [
-    {
-      name: "Michael S.",
-      details:
-        "It’s been so meaningful to reflect on my life and share my memories with my family through LifeScript. I’ve enjoyed telling my grandkids about my past, something I might never have done in such a structured way. My grandkids gifted me this for my retirement, and it feels great knowing they want to learn about my early years.",
-    },
-    {
-      name: "Thomas C.",
-      details:
-        "LifeScript has turned into a fantastic retirement hobby. It’s heartwarming to reflect on my experiences and share them with my family. The hardcover book will be a lasting reminder of my journey, and I’m so glad my children thought of giving me this gift.",
-    },
-    {
-      name: "Edward L.",
-      details:
-        "My daughter gave me LifeScript as a retirement gift, and I didn’t expect to enjoy it so much. It’s like going on a journey through my own life. I’ve been able to share stories that I’d almost forgotten about, and now they're preserved forever.",
-    },
-    {
-      name: "Kevin J.",
-      details:
-        "This experience with LifeScript has been a lot of fun. I love documenting our family's stories so future generations can read them and feel a connection to our past. It feels like I'm keeping the memories of those who came before me alive, showing that their lives mattered.",
-    },
-    {
-      name: "George P.",
-      details:
-        "I was hesitant at first when my wife gifted me LifeScript, but it has turned into one of the most rewarding experiences. I’ve been able to recount my life's adventures and leave a lasting legacy for my grandkids. The weekly questions really help keep me engaged.",
-    },
-    {
-      name: "Henry K.",
-      details:
-        "I never thought I'd be writing a book, but LifeScript has made it possible. My daughter bought this for my retirement, and it's given me a chance to share my memories, which are now beautifully bound in a book that my family can cherish forever.",
-    },
-  ];
+  const testimonials = useRetiredMenTestimonials(t);
 
   return (
     <>
@@ -144,10 +44,7 @@ const StoryworthAlternative = () => {
           heading="A retirement gift empowering him to:"
           data={retiredMenSuggestions}
         />
-        <Testimonial
-          reviews={noImageTestimonials}
-          heading="What our customers say"
-        />
+        <Testimonial reviews={testimonials} heading="What our customers say" />
 
         {/* <Experience
           headingStyle={false}
@@ -180,7 +77,7 @@ const StoryworthAlternative = () => {
             btnLink={"/stripe-page"}
           />
         </Box> */}
-        <GotQuestions questions={storyWorthAlternativeQs} />
+        <GotQuestions questions={retiredMenQA} />
         <ContactFooter
           title={"Still have any "}
           marked={"questions?"}

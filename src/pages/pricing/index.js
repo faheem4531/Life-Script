@@ -12,8 +12,6 @@ import NavBar from "@/__webComponents/navBar/NavBar";
 import Pricing from "@/__webComponents/pricing/Pricing";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Working from "@/__webComponents/working/Working";
-import styles from "./Pricing.module.css";
-
 import {
   useFeaturesComparison,
   useHomeQA,
@@ -21,6 +19,7 @@ import {
   usePricingComparison,
   usePricingWorkingData,
 } from "@/utils/webContent";
+import styles from "./Pricing.module.css";
 
 const PricingPage = () => {
   const { t } = useTranslation();

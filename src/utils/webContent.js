@@ -34,7 +34,6 @@ import VoiceLogo from "@/__webAssets/pngs/featuresLogos/voice-to-text-feature-ic
 
 import Check from "@/__webAssets/svgs/check-square.svg";
 
-
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others } = images;
@@ -817,39 +816,6 @@ export const useHomeSuggestions = (t) => {
   return { imageData, content };
 };
 
-export const useRetiredMenSuggestions = (t) => {
-  const imageData = {
-    src: others.homeSuggestion,
-    alt: "A heartfelt retirement gift for men featuring multi-generational family moments, symbolizing the importance of life stories and wisdom passed down - LifeScript",
-    title:
-      "Retirement gift for men featuring family moments and life stories - LifeScript",
-  };
-  const content = [
-    {
-      title: "Celebrate his life story",
-      subTitle:
-        "Retirement isn’t just an end—it’s a celebration of his entire life’s journey. Give him the opportunity to capture his legacy in his own words, creating a keepsake that honors his achievements and preserves his wisdom for years to come.",
-    },
-    {
-      title: "Share his story and wisdom",
-      subTitle:
-        "Every man has a story worth telling. Help him share the triumphs, challenges, and life lessons that have shaped him. This is his chance to inspire and guide his family with the wisdom he’s gained over a lifetime.",
-    },
-    {
-      title: "Connect with his family",
-      subTitle:
-        "His stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring his voice is heard for generations.",
-    },
-    {
-      title: "Reflect on his life’s journey",
-      subTitle:
-        "Retirement is a time for reflection. Dive deep into the moments that defined his path, finding joy in the details that might have been forgotten. This is more than a gift—it’s a journey through his past.",
-    },
-  ];
-
-  return { imageData, content };
-};
-
 export const useAboutUsValueData = (t) => [
   {
     title: t("aboutSection.ourValues.valueData1.title"),
@@ -964,7 +930,7 @@ export const useFeaturesData = (t) => [
   },
 ];
 
-export const usePricingWorkingData =(t)=> [
+export const usePricingWorkingData = (t) => [
   {
     icon: Check,
     title: t("pricingSection.pointsArray1.title"),
@@ -979,5 +945,122 @@ export const usePricingWorkingData =(t)=> [
     icon: Check,
     title: t("pricingSection.pointsArray3.title"),
     discription: t("pricingSection.pointsArray3.description"),
+  },
+];
+
+export const useRetiredMenSuggestions = (t) => {
+  const imageData = {
+    src: others.homeSuggestion,
+    alt: "A heartfelt retirement gift for men featuring multi-generational family moments, symbolizing the importance of life stories and wisdom passed down - LifeScript",
+    title:
+      "Retirement gift for men featuring family moments and life stories - LifeScript",
+  };
+  const content = [
+    {
+      title: "Celebrate his life story",
+      subTitle:
+        "Retirement isn’t just an end—it’s a celebration of his entire life’s journey. Give him the opportunity to capture his legacy in his own words, creating a keepsake that honors his achievements and preserves his wisdom for years to come.",
+    },
+    {
+      title: "Share his story and wisdom",
+      subTitle:
+        "Every man has a story worth telling. Help him share the triumphs, challenges, and life lessons that have shaped him. This is his chance to inspire and guide his family with the wisdom he’s gained over a lifetime.",
+    },
+    {
+      title: "Connect with his family",
+      subTitle:
+        "His stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring his voice is heard for generations.",
+    },
+    {
+      title: "Reflect on his life’s journey",
+      subTitle:
+        "Retirement is a time for reflection. Dive deep into the moments that defined his path, finding joy in the details that might have been forgotten. This is more than a gift—it’s a journey through his past.",
+    },
+  ];
+
+  return { imageData, content };
+};
+
+export const useRetiredMenTestimonials = (t) => [
+  {
+    name: "Michael S.",
+    details:
+      "It’s been so meaningful to reflect on my life and share my memories with my family through LifeScript. I’ve enjoyed telling my grandkids about my past, something I might never have done in such a structured way. My grandkids gifted me this for my retirement, and it feels great knowing they want to learn about my early years.",
+  },
+  {
+    name: "Thomas C.",
+    details:
+      "LifeScript has turned into a fantastic retirement hobby. It’s heartwarming to reflect on my experiences and share them with my family. The hardcover book will be a lasting reminder of my journey, and I’m so glad my children thought of giving me this gift.",
+  },
+  {
+    name: "Edward L.",
+    details:
+      "My daughter gave me LifeScript as a retirement gift, and I didn’t expect to enjoy it so much. It’s like going on a journey through my own life. I’ve been able to share stories that I’d almost forgotten about, and now they're preserved forever.",
+  },
+  {
+    name: "Kevin J.",
+    details:
+      "This experience with LifeScript has been a lot of fun. I love documenting our family's stories so future generations can read them and feel a connection to our past. It feels like I'm keeping the memories of those who came before me alive, showing that their lives mattered.",
+  },
+  {
+    name: "George P.",
+    details:
+      "I was hesitant at first when my wife gifted me LifeScript, but it has turned into one of the most rewarding experiences. I’ve been able to recount my life's adventures and leave a lasting legacy for my grandkids. The weekly questions really help keep me engaged.",
+  },
+  {
+    name: "Henry K.",
+    details:
+      "I never thought I'd be writing a book, but LifeScript has made it possible. My daughter bought this for my retirement, and it's given me a chance to share my memories, which are now beautifully bound in a book that my family can cherish forever.",
+  },
+];
+
+export const useRetiredMenQA = (t) => [
+  {
+    qs: "What is included in each plan?",
+    ans: "Lifetime access to our platform, full-color hardcover book and free delivery.",
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I gift LifeScript as a retirement gift for dad and how does that work?",
+    ans: "Absolutely, LifeScript is a thoughtful retirement gift for men by guiding them to share their life stories and memories through a simple, engaging platform. You simply provide his email and choose the date when you’d like the gift to be sent. Once the gift email is sent to your loved one, you'll also receive another confirmation to let you know it's been delivered.",
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: "Is LifeScript a good last-minute retirement gift idea for dads?",
+    ans: "LifeScript is a perfect last-minute gift for dads! You can purchase it even the night before his special day, and the gift email will be sent early in the morning on your selected date.",
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: "If now isn’t the perfect time for this gift, can I set a reminder so you’ll notify me when the right time to gift approaches?",
+    ans: "Yes, you can! Complete the form below, and we'll send you a reminder as your loved one's special day approaches.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Is international shipping available and how much does it cost?",
+    ans: "We ship internationally and provide delivery tracking. Oh, and it’s free.",
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: "How can I ensure his book and information remain private?",
+    ans: "We take privacy very seriously. We use advanced security technologies and encryption methods to protect his personal stories and information, ensuring they remain completely private.",
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I purchase extra books?",
+    ans: "Yes, additional full-color hardcover books are available for 39$ each.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Do you have any tutorials or instructions on how to use the platform and create my book?",
+    ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
+    panel: "panel5",
+    isexpanded: false,
   },
 ];
