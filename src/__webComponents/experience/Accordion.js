@@ -129,11 +129,13 @@ export default function CustomizedAccordions({ panelsData }) {
             panelActive[panel.panel] && (
               <Image
                 key={panel.panel}
-                loading="lazy"
                 src={panel.imageSrc}
                 alt={panel.alt}
                 title={panel.imgTitle}
                 className={styles.gif}
+                width={613}
+                height={300}
+                priority
               />
             )
         )}

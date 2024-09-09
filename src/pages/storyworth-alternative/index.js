@@ -29,6 +29,17 @@ import {
   useWorkingDetails,
 } from "@/utils/webContent";
 
+// import { images } from "@/utils/assetsUrl";
+// const { gif } = images;
+// const {
+//   assistedEditing,
+//   autoPhoto,
+//   familyTree,
+//   formatting,
+//   narrative,
+//   voiceToText,
+// } = gif;
+
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
   const workingDetails = useWorkingDetails(t);
@@ -50,6 +61,7 @@ const StoryworthAlternative = () => {
           content="Save time, efforts and enjoy a more personalised, secure and supportive storytelling experience with no hidden costs. Try now for free!"
         />
       </Head>
+
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
           heading={"LifeScript, the best Storyworth"}

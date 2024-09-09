@@ -10,7 +10,7 @@ import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-r
 
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
-import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp";
+import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp"; 
 import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp";
 import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp";
 import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-animation.webp";
@@ -28,7 +28,7 @@ import Check from "@/__webAssets/svgs/check-square.svg";
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons, other, featuresLogos } = icons;
-const { bookCovers, homeHeroImages, storyTelling, others } = images;
+const { bookCovers, homeHeroImages, storyTelling, others, gif } = images;
 
 export const UseAlternativeQA = (t) => [
   {
@@ -434,7 +434,7 @@ export const useAlternativeFeaturesGif = (t) => [
     timer: 6000,
     heading: "landingPage.featureSection.accordion2.heading",
     description: "landingPage.featureSection.accordion2.description",
-    imageSrc: AssistedEditing,
+    imageSrc: gif.assistedEditing,
     alt: "Assisted editing demo showing advanced spelling and grammar check features in LifeScript, a leading Storyworth alternative.",
     imgTitle: " Assisted editing demo - LifeScript vs. Storyworth",
   },
@@ -443,7 +443,7 @@ export const useAlternativeFeaturesGif = (t) => [
     timer: 10700,
     heading: "landingPage.featureSection.accordion3.heading",
     description: "landingPage.featureSection.accordion3.description",
-    imageSrc: VoiceToText,
+    imageSrc: gif.voiceToText,
     alt: " Voice-to-text feature demo highlighting LifeScript’s ability to convert spoken words to text, making it a superior Storyworth alternative.",
     imgTitle:
       "Voice-to-text demo - LifeScript as the best Storyworth alternative",
@@ -453,7 +453,7 @@ export const useAlternativeFeaturesGif = (t) => [
     timer: 10700,
     heading: "landingPage.featureSection.accordion4.heading",
     description: "landingPage.featureSection.accordion4.description",
-    imageSrc: FamilyTree,
+    imageSrc: gif.familyTree,
     alt: "Family tree feature demo illustrating how LifeScript visualizes generational connections, a unique Storyworth alternative feature.",
     imgTitle: "Family tree demo - LifeScript as a Storyworth alternative",
   },
@@ -462,7 +462,7 @@ export const useAlternativeFeaturesGif = (t) => [
     timer: 5000,
     heading: "landingPage.featureSection.accordion5.heading",
     description: "landingPage.featureSection.accordion5.description",
-    imageSrc: FormattingFeatures,
+    imageSrc: gif.formatting,
     alt: "Formatting features demo showcasing LifeScript’s customizable text options, setting it apart as a top Storyworth alternative.",
     imgTitle: " Formatting features demo - LifeScript vs. Storyworth",
   },
@@ -471,7 +471,7 @@ export const useAlternativeFeaturesGif = (t) => [
     timer: 7600,
     heading: "landingPage.featureSection.accordion6.heading",
     description: "landingPage.featureSection.accordion6.description",
-    imageSrc: AutoPhoto,
+    imageSrc: gif.autoPhoto,
     alt: "Auto photo improvement demo showing LifeScript’s image enhancement capabilities, making it the best Storyworth alternative.",
     imgTitle:
       " Auto photo enhancement demo - LifeScript as a Storyworth alternative",

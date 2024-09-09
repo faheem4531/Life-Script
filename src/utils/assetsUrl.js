@@ -66,4 +66,18 @@ export const images = {
     image4:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725880086/assets/three-generations-family-smiling-at-the-camera_nwj9dq.webp",
   },
+  gif: {
+    assistedEditing:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908509/assets/assisted-editing-demo-animation_yuajqe.webp",
+    autoPhoto:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908524/assets/Auto-photo-improvement-demo-animation_m3tx2c.webp",
+    familyTree:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908517/assets/family-tree-feature-demo-animation_gresa0.webp",
+    formatting:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908513/assets/formatting-features-demo-animation_tt3tbv.webp",
+    narrative:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908518/assets/narrative-fusion-demo-animation_unytxg.webp",
+    voiceToText:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908516/assets/voice-to-text-feature-demo-animation_csi19v.webp",
+  },
 };

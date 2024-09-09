@@ -7,7 +7,7 @@ import styles from "../ComponentsStyles.module.css";
 import PrimaryHeading from "../headings/PrimaryHeading";
 import CustomizedAccordions from "./Accordion";
 
-const Experience = ({ heading, marked, headingStyle = true,panelsData }) => {
+const Experience = ({ heading, marked, headingStyle = true, panelsData }) => {
   const { t } = useTranslation();
   return (
     <Box
@@ -60,7 +60,7 @@ const Experience = ({ heading, marked, headingStyle = true,panelsData }) => {
           alignItems: "center",
         }}
       >
-        <CustomizedAccordions panelsData={panelsData}/>
+        <CustomizedAccordions panelsData={panelsData} />
       </Box>
       <Link href="/features">
         <Typography
