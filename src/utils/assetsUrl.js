@@ -1,4 +1,8 @@
 export const icons = {
+  other: {
+    storyWorthLogo:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725893177/assets/storyworth-alternative-logo_umpoii.png",
+  },
   whyLifeScriptIcons: {
     timer:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725816515/assets/less-effort-time-spent-icon-storyworth-alternative_njj2ya.webp",
@@ -9,6 +13,20 @@ export const icons = {
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725816515/assets/more-support-icon-storyworth-alternative_avpsfq.webp",
     secure:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725816515/assets/effort-time-spent-icon-storyworth-alternative_vcxh4o.webp",
+  },
+  featuresLogos: {
+    assistedEditing:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899425/assets/assisted-editing-feature-icon_skkirx.webp",
+    autoPhoto:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899426/assets/auto-photo-improvement-feature-icon_kn9qbr.webp",
+    familyTree:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899426/assets/family-tree-feature-icon_halzgb.webp",
+    formatting:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899426/assets/formatting-features-icon_gttic2.webp",
+    narrative:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899428/assets/narrative-fusion-feature-icon_zxsdgb.webp",
+    voiceToText:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899429/assets/voice-to-text-feature-icon_dq0coc.webp",
   },
 };
 

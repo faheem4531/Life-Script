@@ -8,7 +8,6 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
-import StoryWorthy from "@/__webAssets/pngs/storyworth-alternative-logo.png";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
 import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp";
@@ -25,17 +24,10 @@ import Growth from "@/__webAssets/svgs/values/growth.svg";
 import Inspiration from "@/__webAssets/svgs/values/inspiration.svg";
 import Power from "@/__webAssets/svgs/values/power.svg";
 
-import AssistedLogo from "@/__webAssets/pngs/featuresLogos/assisted-editing-feature-icon.png";
-import AutoPhotoLogo from "@/__webAssets/pngs/featuresLogos/auto-photo-improvement-feature-icon.png";
-import FamilyLogo from "@/__webAssets/pngs/featuresLogos/family-tree-feature-icon.png";
-import Formatting from "@/__webAssets/pngs/featuresLogos/formatting-features-icon.png";
-import NarrativeLogo from "@/__webAssets/pngs/featuresLogos/narrative-fusion-feature-icon.png";
-import VoiceLogo from "@/__webAssets/pngs/featuresLogos/voice-to-text-feature-icon.png";
-
 import Check from "@/__webAssets/svgs/check-square.svg";
 
 import { icons, images } from "./assetsUrl";
-const { whyLifeScriptIcons } = icons;
+const { whyLifeScriptIcons, other, featuresLogos } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others } = images;
 
 export const UseAlternativeQA = (t) => [
@@ -333,7 +325,7 @@ export const usePricingComparison = (t) => [
     ],
   },
   {
-    logo: StoryWorthy,
+    logo: other.storyWorthLogo,
     alt: t("pricingSection.bookDetails.additionalDetails2.alt"),
     title: t("pricingSection.bookDetails.additionalDetails2.title"),
     bgColor: "#15372F",
@@ -410,7 +402,7 @@ export const useFeaturesComparison = (t) => [
     ],
   },
   {
-    logo: StoryWorthy,
+    logo: other.storyWorthLogo,
     alt: t("pricingSection.featureComparison.featuresDetails3.alt"),
     title: t("pricingSection.featureComparison.featuresDetails3.title"),
     bgColor: "#15372F",
@@ -852,7 +844,7 @@ export const useAboutUsValueData = (t) => [
 
 export const useFeaturesData = (t) => [
   {
-    logo: NarrativeLogo,
+    logo: featuresLogos.narrative,
     altLogo:
       "An icon of a lightbulb over a book that represents narrative fusion feature for assembling answers - LifeScript",
     titleLogo: "Narrative fusion feature icon",
@@ -864,7 +856,7 @@ export const useFeaturesData = (t) => [
     flex: "row",
   },
   {
-    logo: AssistedLogo,
+    logo: featuresLogos.assistedEditing,
     altLogo:
       "An icon of a pen over a book that represents assisted editing feature for automatic corrections - LifeScript",
     titleLogo: "Assisted editing feature icon",
@@ -877,7 +869,7 @@ export const useFeaturesData = (t) => [
     bg: true,
   },
   {
-    logo: VoiceLogo,
+    logo: featuresLogos.voiceToText,
     altLogo:
       "An icon of a microphone and window of text over it that represents recording memories via speech - LifeScript",
     titleLogo: "Voice-to-text feature icon",
@@ -889,7 +881,7 @@ export const useFeaturesData = (t) => [
     flex: "row",
   },
   {
-    logo: FamilyLogo,
+    logo: featuresLogos.familyTree,
     altLogo:
       "An icon of people connected between each other that represents visualizing family ancestry - LifeScript",
     titleLogo: "Family tree feature icon",
@@ -903,7 +895,7 @@ export const useFeaturesData = (t) => [
   },
 
   {
-    logo: Formatting,
+    logo: featuresLogos.formatting,
     altLogo:
       "An icon of paper with text on it that represents various formatting options - LifeScript",
     titleLogo: "Formatting features icon",
@@ -915,7 +907,7 @@ export const useFeaturesData = (t) => [
     flex: "row",
   },
   {
-    logo: AutoPhotoLogo,
+    logo: featuresLogos.autoPhoto,
     altLogo:
       "An icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
     titleLogo: "Auto photo improvement feature icon",

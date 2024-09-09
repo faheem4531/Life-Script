@@ -93,6 +93,8 @@ function DetailFeature({
             alt={altLogo}
             title={titleLogo}
             className={styles.gifIcon}
+            width={100}
+            height={90}
           />
           <Content
             subWidth="330px"

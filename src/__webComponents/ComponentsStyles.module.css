@@ -219,6 +219,10 @@
   border-bottom: 1px solid #b9b9a7;
 }
 
+.logoComparison{
+  height: auto;
+}
+
 @media screen and (min-width: 1600px) {
   .book {
     width: 550px;

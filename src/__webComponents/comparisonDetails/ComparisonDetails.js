@@ -98,7 +98,7 @@ function DetailCard({
         bgcolor={bgColor}
       >
         {header}
-        {logo && <Image src={logo} alt={alt} title={title} width={170} />}
+        {logo && <Image src={logo} alt={alt} title={title} width={170} height={30} />}
       </Box>
       <Box
         sx={{ padding: { sm: "10px 20px", xs: "10px 10px 10px 20px" } }}
