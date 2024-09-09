@@ -1,10 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import styles from "./AboutUs.module.css";
-
 import { useTranslation } from "react-i18next";
+
+import styles from "./AboutUs.module.css";
 const StoryImg =
   "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725882536/assets/about-story_wc5xan.webp";
+
 const Story = () => {
   const { t } = useTranslation();
   return (

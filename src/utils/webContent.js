@@ -18,6 +18,13 @@ import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-anima
 import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
 import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
 
+import Diversity from "@/__webAssets/svgs/values/diversity.svg"
+import Family from "@/__webAssets/svgs/values/family.svg"
+import Empathy from "@/__webAssets/svgs/values/empathy.svg"
+import Growth from "@/__webAssets/svgs/values/growth.svg"
+import Inspiration from "@/__webAssets/svgs/values/inspiration.svg"
+import Power from "@/__webAssets/svgs/values/power.svg"
+
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others } = images;
@@ -832,3 +839,37 @@ export const useRetiredMenSuggestions = (t) => {
 
   return { imageData, content };
 };
+
+export const useAboutUsValueData =(t)=> [
+  {
+    title: t("aboutSection.ourValues.valueData1.title"),
+    detail: t("aboutSection.ourValues.valueData1.detail"),
+    icon: Power
+  },
+  {
+    title: t("aboutSection.ourValues.valueData2.title"),
+    detail: t("aboutSection.ourValues.valueData2.detail"),
+    icon: Family
+  },
+  {
+    title: t("aboutSection.ourValues.valueData3.title"),
+    detail: t("aboutSection.ourValues.valueData3.detail"),
+    icon: Growth
+  },
+
+  {
+    title: t("aboutSection.ourValues.valueData4.title"),
+    detail: t("aboutSection.ourValues.valueData4.detail"),
+    icon: Inspiration
+  },
+  {
+    title: t("aboutSection.ourValues.valueData5.title"),
+    detail: t("aboutSection.ourValues.valueData5.detail"),
+    icon: Empathy
+  },
+  {
+    title: t("aboutSection.ourValues.valueData6.title"),
+    detail: t("aboutSection.ourValues.valueData6.detail"),
+    icon: Diversity
+  },
+]

@@ -1,26 +1,29 @@
-'use client'
+"use client";
 
 import { Box } from "@mui/material";
-import Footer from "@/__webComponents/footer/Footer";
+import { NextSeo } from "next-seo";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
+import Footer from "@/__webComponents/footer/Footer";
 import FeaturesIntroduction from "@/__webComponents/Introduction/Introduction";
+import { useAboutUsValueData } from "@/utils/webContent";
 import Mission from "./sections/Mission";
 import Story from "./sections/Stories";
 import Values from "./sections/Values";
-import Head from 'next/head';
-import { NextSeo } from "next-seo";
-import { useTranslation } from "react-i18next";
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/router";
 
 const AboutUs = () => {
   const { t } = useTranslation();
   const footerRef = useRef(null);
   const router = useRouter();
+  const valuesData = useAboutUsValueData(t);
 
   useEffect(() => {
-    if (router.asPath.includes('#ContactUs')) {
-      footerRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (router.asPath.includes("#ContactUs")) {
+      footerRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [router.asPath]);
 
@@ -32,10 +35,7 @@ const AboutUs = () => {
           name="description"
           content="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
         />
-        <meta
-          property="og:title"
-          content="About us"
-        />
+        <meta property="og:title" content="About us" />
         <meta
           property="og:description"
           content="We believe that every life is special and deserves to be remembered. That is why we have created an easy-to-use, affordable platform to help people preserve their memories."
@@ -51,10 +51,14 @@ const AboutUs = () => {
         />
       </Head>
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
-        <FeaturesIntroduction heading={t("aboutSection.title")} width="75%" keyWorld={t("aboutSection.subTitle")} />
+        <FeaturesIntroduction
+          heading={t("aboutSection.title")}
+          width="75%"
+          keyWorld={t("aboutSection.subTitle")}
+        />
         <Mission />
         <Story />
-        <Values />
+        <Values valuesData={valuesData} />
         <ContactFooter
           title={t("aboutSection.stillConfusedSection.title")}
           marked={t("aboutSection.stillConfusedSection.title2")}
