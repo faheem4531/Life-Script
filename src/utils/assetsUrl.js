@@ -34,4 +34,14 @@ export const images = {
     img4: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/grandma-and-grandpa-laughing-and-eating-ice_cream-happy-memories_nsi0br.webp",
     book: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832663/assets/old-opened-autobiography-book_bavh4s.webp",
   },
+  storyTelling: {
+    image1:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725880086/assets/happy-grandma-holding-her-granddaughter_s5s4kx.webp",
+    image2:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725880085/assets/grandpa-writing-by-hand-his-memoir_lgbbwn.webp",
+    image3:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725880085/assets/grandma-recording-her-memories-over-the-phone_musxpo.webp",
+    image4:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725880086/assets/three-generations-family-smiling-at-the-camera_nwj9dq.webp",
+  },
 };

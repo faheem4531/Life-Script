@@ -20,9 +20,9 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
-const { bookCovers, homeHeroImages } = images;
+const { bookCovers, homeHeroImages, storyTelling } = images;
 
-export const UseStoryWorthAlternativeQs = (t) => [
+export const UseAlternativeQA = (t) => [
   {
     qs: "How much does Storyworth cost?",
     ans: "Storyworth costs $99 for 12 months of access, which includes a black-and-white book. To upgrade to a full-color book, there is an additional fee of $40 for up to 300 pages or $60 for 300 to 480 pages. For orders outside the US, additional delivery charges apply.",
@@ -572,5 +572,221 @@ export const useHomeHero = () => [
     className: "bookImg",
     width: 870,
     height: 380,
+  },
+];
+
+export const useBookCoverHome = () => [
+  {
+    coverImage: bookCovers.cover1,
+    alt: "A book cover design with an old man celebrating anniversary with his wife on a swing - LifeScript",
+    title: "Half picture-half title book cover design",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "A full book cover picture design of a life story book with family standing in front of a lake - LifeScript",
+    title: "Full-picture book cover design",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "A book cover design with an old couple celebrating grandma birthday - LifeScript",
+    title: "Full-picture book cover design",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt: "A book cover design with a couple in the forest enjoying the sun and playing around - LifeScript",
+    title: "Side picture book cover design",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover design with small picture of author and customizable text - LifeScript",
+    title: "Memoir book cover design",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Simplistic design of autobiography book cover with minimalistic elements that you can customize - LifeScript",
+    title: "Simplistic design of autobiography book cover",
+  },
+];
+
+export const useStoryTelling = (t) => [
+  {
+    heading: t("landingPage.storyTelling.story1.heading"),
+    content: t("landingPage.storyTelling.story1.content"),
+    image: storyTelling.image1,
+    alt: t("landingPage.storyTelling.story1.alt"),
+    title: t("landingPage.storyTelling.story1.title"),
+    direction: t("landingPage.storyTelling.story1.direction"),
+  },
+  {
+    heading: t("landingPage.storyTelling.story2.heading"),
+    content: t("landingPage.storyTelling.story2.content"),
+    image: storyTelling.image2,
+    alt: t("landingPage.storyTelling.story2.alt"),
+    title: t("landingPage.storyTelling.story2.title"),
+    direction: t("landingPage.storyTelling.story2.direction"),
+  },
+  {
+    heading: t("landingPage.storyTelling.story3.heading"),
+    content: t("landingPage.storyTelling.story3.content"),
+    image: storyTelling.image3,
+    alt: t("landingPage.storyTelling.story3.alt"),
+    title: t("landingPage.storyTelling.story3.title"),
+    direction: t("landingPage.storyTelling.story3.direction"),
+  },
+  {
+    heading: t("landingPage.storyTelling.story4.heading"),
+    content: t("landingPage.storyTelling.story4.content"),
+    image: storyTelling.image4,
+    alt: t("landingPage.storyTelling.story4.alt"),
+    title: t("landingPage.storyTelling.story4.title"),
+    direction: t("landingPage.storyTelling.story4.direction"),
+  },
+];
+
+export const useHomeQA = (t) => [
+  {
+    qs: t("landingPage.questionSection.question1.qs"),
+    ans: t("landingPage.questionSection.question1.ans"),
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question2.qs"),
+    ans: t("landingPage.questionSection.question2.ans"),
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question3.qs"),
+    ans: t("landingPage.questionSection.question3.ans"),
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question4.qs"),
+    ans: t("landingPage.questionSection.question4.ans"),
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question5.qs"),
+    ans: t("landingPage.questionSection.question5.ans"),
+    panel: "panel5",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question6.qs"),
+    ans: t("landingPage.questionSection.question6.ans"),
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question7.qs"),
+    ans: t("landingPage.questionSection.question7.ans"),
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: t("landingPage.questionSection.question8.qs"),
+    ans: t("landingPage.questionSection.question8.ans"),
+    panel: "panel8",
+    isexpanded: false,
+  },
+];
+
+export const useHomeFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "landingPage.featureSection.accordion1.description",
+    imageSrc: Narrative,
+    alt: "Narrative fusion feature demo animation showing how it works - LifeScript",
+    imgTitle: "Narrative Fusion demo animation",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "landingPage.featureSection.accordion2.description",
+    imageSrc: AssistedEditing,
+    alt: "Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript",
+    imgTitle: "Assisted Editing demo animation",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "landingPage.featureSection.accordion3.description",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript",
+    imgTitle: "Voice-to-text demo animation",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "landingPage.featureSection.accordion4.description",
+    imageSrc: FamilyTree,
+    alt: "Family Tree feature demo animation showing how your family members visualize across generations - LifeScript",
+    imgTitle: "Family tree demo animation",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "landingPage.featureSection.accordion5.description",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript",
+    imgTitle: "Formatting features demo animation",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "landingPage.featureSection.accordion6.description",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript",
+    imgTitle: "Auto photo improvement feature demo animation",
+  },
+];
+
+export const usePricingCardDetails =(t)=> [
+  {
+    id: "basic",
+    category: t("landingPage.pricingSection.category1"),
+    price: "$139",
+    card: "1",
+  },
+  {
+    id: "standard",
+    category: t("landingPage.pricingSection.category2"),
+    price: "$179",
+    card: "2",
+  },
+  {
+    id: "primium",
+    category: t("landingPage.pricingSection.category3"),
+    price: "$239",
+    card: "3",
+  },
+];
+
+export const useHomeSuggestions =(t)=> [
+  {
+    title: t("landingPage.perfectSection.content1.title"),
+    subTitle: t("landingPage.perfectSection.content1.subTitle"),
+  },
+  {
+    title: t("landingPage.perfectSection.content2.title"),
+    subTitle: t("landingPage.perfectSection.content2.subTitle"),
+  },
+  {
+    title: t("landingPage.perfectSection.content3.title"),
+    subTitle: t("landingPage.perfectSection.content3.subTitle"),
+  },
+  {
+    title: t("landingPage.perfectSection.content4.title"),
+    subTitle: t("landingPage.perfectSection.content4.subTitle"),
   },
 ];

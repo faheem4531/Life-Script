@@ -19,11 +19,11 @@ import WhyLifeScript from "@/__webComponents/whyLifeScript/WhyLifeScript";
 import Working from "@/__webComponents/working/Working";
 import {
   useAlternativeFeaturesGif,
+  UseAlternativeQA,
   useFeaturesComparison,
   useHomeTestimonials,
   useOurBookCoverforAlternative,
   usePricingComparison,
-  UseStoryWorthAlternativeQs,
   useSuggestedQuestions,
   useWhyLifeScript,
   useWorkingDetails,
@@ -34,7 +34,7 @@ const StoryworthAlternative = () => {
   const workingDetails = useWorkingDetails(t);
   const pricingComparison = usePricingComparison(t);
   const featuresComparison = useFeaturesComparison(t);
-  const storyWorthAlternativeQs = UseStoryWorthAlternativeQs(t);
+  const storyWorthAlternativeQs = UseAlternativeQA(t);
   const homeTestimonials = useHomeTestimonials(t);
   const whyLifeScript = useWhyLifeScript(t);
   const suggestedQuestions = useSuggestedQuestions(t);
@@ -79,7 +79,6 @@ const StoryworthAlternative = () => {
           <ComparisonDetails
             cardsDetail={pricingComparison}
             heading={"LifeScript vs Storyworth cost"}
-            
           />
           <ComparisonDetails
             cardsDetail={featuresComparison}
