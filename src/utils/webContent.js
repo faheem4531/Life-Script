@@ -18,12 +18,19 @@ import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-anima
 import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
 import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
 
-import Diversity from "@/__webAssets/svgs/values/diversity.svg"
-import Family from "@/__webAssets/svgs/values/family.svg"
-import Empathy from "@/__webAssets/svgs/values/empathy.svg"
-import Growth from "@/__webAssets/svgs/values/growth.svg"
-import Inspiration from "@/__webAssets/svgs/values/inspiration.svg"
-import Power from "@/__webAssets/svgs/values/power.svg"
+import Diversity from "@/__webAssets/svgs/values/diversity.svg";
+import Empathy from "@/__webAssets/svgs/values/empathy.svg";
+import Family from "@/__webAssets/svgs/values/family.svg";
+import Growth from "@/__webAssets/svgs/values/growth.svg";
+import Inspiration from "@/__webAssets/svgs/values/inspiration.svg";
+import Power from "@/__webAssets/svgs/values/power.svg";
+
+import AssistedLogo from "@/__webAssets/pngs/featuresLogos/assisted-editing-feature-icon.png";
+import AutoPhotoLogo from "@/__webAssets/pngs/featuresLogos/auto-photo-improvement-feature-icon.png";
+import FamilyLogo from "@/__webAssets/pngs/featuresLogos/family-tree-feature-icon.png";
+import Formatting from "@/__webAssets/pngs/featuresLogos/formatting-features-icon.png";
+import NarrativeLogo from "@/__webAssets/pngs/featuresLogos/narrative-fusion-feature-icon.png";
+import VoiceLogo from "@/__webAssets/pngs/featuresLogos/voice-to-text-feature-icon.png";
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
@@ -840,36 +847,116 @@ export const useRetiredMenSuggestions = (t) => {
   return { imageData, content };
 };
 
-export const useAboutUsValueData =(t)=> [
+export const useAboutUsValueData = (t) => [
   {
     title: t("aboutSection.ourValues.valueData1.title"),
     detail: t("aboutSection.ourValues.valueData1.detail"),
-    icon: Power
+    icon: Power,
   },
   {
     title: t("aboutSection.ourValues.valueData2.title"),
     detail: t("aboutSection.ourValues.valueData2.detail"),
-    icon: Family
+    icon: Family,
   },
   {
     title: t("aboutSection.ourValues.valueData3.title"),
     detail: t("aboutSection.ourValues.valueData3.detail"),
-    icon: Growth
+    icon: Growth,
   },
 
   {
     title: t("aboutSection.ourValues.valueData4.title"),
     detail: t("aboutSection.ourValues.valueData4.detail"),
-    icon: Inspiration
+    icon: Inspiration,
   },
   {
     title: t("aboutSection.ourValues.valueData5.title"),
     detail: t("aboutSection.ourValues.valueData5.detail"),
-    icon: Empathy
+    icon: Empathy,
   },
   {
     title: t("aboutSection.ourValues.valueData6.title"),
     detail: t("aboutSection.ourValues.valueData6.detail"),
-    icon: Diversity
+    icon: Diversity,
   },
-]
+];
+
+export const useFeaturesData = (t) => [
+  {
+    logo: NarrativeLogo,
+    altLogo:
+      "An icon of a lightbulb over a book that represents narrative fusion feature for assembling answers - LifeScript",
+    titleLogo: "Narrative fusion feature icon",
+    gif: Narrative,
+    alt: "Narrative fusion feature demo animation showing how it works - LifeScript",
+    title: "Narrative Fusion demo animation",
+    heading: t("featurePage.Section1.heading"),
+    details: t("featurePage.Section1.details"),
+    flex: "row",
+  },
+  {
+    logo: AssistedLogo,
+    altLogo:
+      "An icon of a pen over a book that represents assisted editing feature for automatic corrections - LifeScript",
+    titleLogo: "Assisted editing feature icon",
+    gif: AssistedEditing,
+    alt: "Assisted Editing feature demo animation showing how the spelling and grammar check works - LifeScript",
+    title: "Assisted Editing demo animation",
+    heading: t("featurePage.Section2.heading"),
+    details: t("featurePage.Section2.details"),
+    flex: "row-reverse",
+    bg: true,
+  },
+  {
+    logo: VoiceLogo,
+    altLogo:
+      "An icon of a microphone and window of text over it that represents recording memories via speech - LifeScript",
+    titleLogo: "Voice-to-text feature icon",
+    gif: VoiceToText,
+    alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text - LifeScript",
+    title: "Voice-to-text demo animation",
+    heading: t("featurePage.Section3.heading"),
+    details: t("featurePage.Section3.details"),
+    flex: "row",
+  },
+  {
+    logo: FamilyLogo,
+    altLogo:
+      "An icon of people connected between each other that represents visualizing family ancestry - LifeScript",
+    titleLogo: "Family tree feature icon",
+    gif: FamilyTree,
+    alt: "Family Tree feature demo animation showing how your family members visualize across generations - LifeScript",
+    title: "Family tree demo animation",
+    heading: t("featurePage.Section4.heading"),
+    details: t("featurePage.Section4.details"),
+    flex: "row-reverse",
+    bg: true,
+  },
+
+  {
+    logo: Formatting,
+    altLogo:
+      "An icon of paper with text on it that represents various formatting options - LifeScript",
+    titleLogo: "Formatting features icon",
+    gif: FormattingFeatures,
+    alt: "Formatting Features demo animation showing how you can use bold, italics and other formatting - LifeScript",
+    title: "Formatting features demo animation",
+    heading: t("featurePage.Section5.heading"),
+    details: t("featurePage.Section5.details"),
+    flex: "row",
+  },
+  {
+    logo: AutoPhotoLogo,
+    altLogo:
+      "An icon of a picture with mountain landscape that represents photo upscaling and autofitting - LifeScript",
+    titleLogo: "Auto photo improvement feature icon",
+    gif: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how once you upload image we upscale and fit - LifeScript",
+    title: "Auto photo improvement feature demo animation",
+    heading: t("featurePage.Section6.heading"),
+    details: t("featurePage.Section6.details"),
+    flex: "row-reverse",
+    button: true,
+    bg: "half",
+  },
+];
