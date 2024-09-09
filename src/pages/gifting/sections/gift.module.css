@@ -1,6 +1,6 @@
 /* Gift Introduction  */
 .giftIntro {
-  background-image: url(../../../__webAssets/pngs/bg-feature.png);
+  /* background-image: url(../../../__webAssets/pngs/bg-feature.png); */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -13,7 +13,7 @@
 
 /* Designs Card */
 .designCard {
-  background-image: url(../../../__webAssets/pngs/gift-design.png);
+  /* background-image: url(../../../__webAssets/pngs/gift-design.png); */
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
@@ -39,14 +39,13 @@
   border-radius: 2px;
 }
 
-@media screen and (max-width: 899px)  {
-.designCard {
-  background-image: none;
+@media screen and (max-width: 899px) {
+  .designCard {
+    background-image: none;
+  }
 }
 
-}
-
-@media screen and (max-width: 600px)  {
+@media screen and (max-width: 600px) {
   .logo {
     width: 220px;
   }
@@ -57,4 +56,3 @@
     z-index: 1;
   }
 }
-
