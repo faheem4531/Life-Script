@@ -20,7 +20,7 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
-const { bookCovers, homeHeroImages, storyTelling } = images;
+const { bookCovers, homeHeroImages, storyTelling, others } = images;
 
 export const UseAlternativeQA = (t) => [
   {
@@ -751,7 +751,7 @@ export const useHomeFeaturesGif = (t) => [
   },
 ];
 
-export const usePricingCardDetails =(t)=> [
+export const usePricingCardDetails = (t) => [
   {
     id: "basic",
     category: t("landingPage.pricingSection.category1"),
@@ -772,21 +772,63 @@ export const usePricingCardDetails =(t)=> [
   },
 ];
 
-export const useHomeSuggestions =(t)=> [
-  {
-    title: t("landingPage.perfectSection.content1.title"),
-    subTitle: t("landingPage.perfectSection.content1.subTitle"),
-  },
-  {
-    title: t("landingPage.perfectSection.content2.title"),
-    subTitle: t("landingPage.perfectSection.content2.subTitle"),
-  },
-  {
-    title: t("landingPage.perfectSection.content3.title"),
-    subTitle: t("landingPage.perfectSection.content3.subTitle"),
-  },
-  {
-    title: t("landingPage.perfectSection.content4.title"),
-    subTitle: t("landingPage.perfectSection.content4.subTitle"),
-  },
-];
+export const useHomeSuggestions = (t) => {
+  const imageData = {
+    src: others.homeSuggestion,
+    alt: "A collage of a dad with kids and a grandpa sitting on top of life story books packaged as a gift - LifeScript",
+    title: "Family collage photo",
+  };
+  const content = [
+    {
+      title: t("landingPage.perfectSection.content1.title"),
+      subTitle: t("landingPage.perfectSection.content1.subTitle"),
+    },
+    {
+      title: t("landingPage.perfectSection.content2.title"),
+      subTitle: t("landingPage.perfectSection.content2.subTitle"),
+    },
+    {
+      title: t("landingPage.perfectSection.content3.title"),
+      subTitle: t("landingPage.perfectSection.content3.subTitle"),
+    },
+    {
+      title: t("landingPage.perfectSection.content4.title"),
+      subTitle: t("landingPage.perfectSection.content4.subTitle"),
+    },
+  ];
+
+  return { imageData, content };
+};
+
+export const useRetiredMenSuggestions = (t) => {
+  const imageData = {
+    src: others.homeSuggestion,
+    alt: "A heartfelt retirement gift for men featuring multi-generational family moments, symbolizing the importance of life stories and wisdom passed down - LifeScript",
+    title:
+      "Retirement gift for men featuring family moments and life stories - LifeScript",
+  };
+  const content = [
+    {
+      title: "Celebrate his life story",
+      subTitle:
+        "Retirement isn’t just an end—it’s a celebration of his entire life’s journey. Give him the opportunity to capture his legacy in his own words, creating a keepsake that honors his achievements and preserves his wisdom for years to come.",
+    },
+    {
+      title: "Share his story and wisdom",
+      subTitle:
+        "Every man has a story worth telling. Help him share the triumphs, challenges, and life lessons that have shaped him. This is his chance to inspire and guide his family with the wisdom he’s gained over a lifetime.",
+    },
+    {
+      title: "Connect with his family",
+      subTitle:
+        "His stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring his voice is heard for generations.",
+    },
+    {
+      title: "Reflect on his life’s journey",
+      subTitle:
+        "Retirement is a time for reflection. Dive deep into the moments that defined his path, finding joy in the details that might have been forgotten. This is more than a gift—it’s a journey through his past.",
+    },
+  ];
+
+  return { imageData, content };
+};

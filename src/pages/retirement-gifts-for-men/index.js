@@ -11,6 +11,8 @@ import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 
+import { useRetiredMenSuggestions } from "@/utils/webContent";
+
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
   const pointsArray = [
@@ -87,28 +89,7 @@ const StoryworthAlternative = () => {
     },
   ];
 
-  const retiredMenSuggestions = [
-    {
-      title: "Celebrate his life story",
-      subTitle:
-        "Retirement isn’t just an end—it’s a celebration of his entire life’s journey. Give him the opportunity to capture his legacy in his own words, creating a keepsake that honors his achievements and preserves his wisdom for years to come.",
-    },
-    {
-      title: "Share his story and wisdom",
-      subTitle:
-        "Every man has a story worth telling. Help him share the triumphs, challenges, and life lessons that have shaped him. This is his chance to inspire and guide his family with the wisdom he’s gained over a lifetime.",
-    },
-    {
-      title: "Connect with his family",
-      subTitle:
-        "His stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring his voice is heard for generations.",
-    },
-    {
-      title: "Reflect on his life’s journey",
-      subTitle:
-        "Retirement is a time for reflection. Dive deep into the moments that defined his path, finding joy in the details that might have been forgotten. This is more than a gift—it’s a journey through his past.",
-    },
-  ];
+  const retiredMenSuggestions = useRetiredMenSuggestions(t);
 
   const noImageTestimonials = [
     {
@@ -127,17 +108,20 @@ const StoryworthAlternative = () => {
         "My daughter gave me LifeScript as a retirement gift, and I didn’t expect to enjoy it so much. It’s like going on a journey through my own life. I’ve been able to share stories that I’d almost forgotten about, and now they're preserved forever.",
     },
     {
-      name:"Kevin J.",
-      details: "This experience with LifeScript has been a lot of fun. I love documenting our family's stories so future generations can read them and feel a connection to our past. It feels like I'm keeping the memories of those who came before me alive, showing that their lives mattered.",
+      name: "Kevin J.",
+      details:
+        "This experience with LifeScript has been a lot of fun. I love documenting our family's stories so future generations can read them and feel a connection to our past. It feels like I'm keeping the memories of those who came before me alive, showing that their lives mattered.",
     },
     {
       name: "George P.",
-      details:"I was hesitant at first when my wife gifted me LifeScript, but it has turned into one of the most rewarding experiences. I’ve been able to recount my life's adventures and leave a lasting legacy for my grandkids. The weekly questions really help keep me engaged.",
+      details:
+        "I was hesitant at first when my wife gifted me LifeScript, but it has turned into one of the most rewarding experiences. I’ve been able to recount my life's adventures and leave a lasting legacy for my grandkids. The weekly questions really help keep me engaged.",
     },
     {
-      name:"Henry K.",
-      details: "I never thought I'd be writing a book, but LifeScript has made it possible. My daughter bought this for my retirement, and it's given me a chance to share my memories, which are now beautifully bound in a book that my family can cherish forever.",
-    }
+      name: "Henry K.",
+      details:
+        "I never thought I'd be writing a book, but LifeScript has made it possible. My daughter bought this for my retirement, and it's given me a chance to share my memories, which are now beautifully bound in a book that my family can cherish forever.",
+    },
   ];
 
   return (
@@ -158,7 +142,7 @@ const StoryworthAlternative = () => {
         />
         <Suggestion
           heading="A retirement gift empowering him to:"
-          content={retiredMenSuggestions}
+          data={retiredMenSuggestions}
         />
         <Testimonial
           reviews={noImageTestimonials}

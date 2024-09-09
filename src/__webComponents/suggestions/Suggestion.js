@@ -1,15 +1,16 @@
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
+import { useTranslation } from "react-i18next";
+
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
 import ListPoints from "@/__webAssets/svgs/curved-list.svg";
 import Heroimage from "@/__webAssets/webp/family-collage-life-story-books.webp";
 import Content from "@/__webComponents/headings/Content";
-import { Box, Typography } from "@mui/material";
-import Image from "next/image";
-import { useTranslation } from "react-i18next";
 import styles from "../ComponentsStyles.module.css";
 
-const Suggestion = ({ bgGreen = true, heading, content }) => {
+const Suggestion = ({ bgGreen = true, heading, data }) => {
   const { t } = useTranslation();
-
+  const { imageData, content } = data;
   return (
     <Box
       sx={{
@@ -96,10 +97,12 @@ const Suggestion = ({ bgGreen = true, heading, content }) => {
         </Box>
         <Image
           loading="lazy"
-          src={Heroimage}
-          alt="A collage of a dad with kids and a grandpa sitting on top of life story books packaged as a gift - LifeScript"
-          title="Family collage photo"
+          src={imageData.src}
+          alt={imageData.alt}
+          title={imageData.title}
           className={styles.suggestionImg}
+          width= {550}
+          height= {680}
         />
       </Box>
     </Box>

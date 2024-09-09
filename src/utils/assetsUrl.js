@@ -13,6 +13,10 @@ export const icons = {
 };
 
 export const images = {
+  others: {
+    homeSuggestion:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725882536/assets/family-collage-life-story-books_xakcho.webp",
+  },
   bookCovers: {
     cover1:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725829168/assets/anniversary-celebration-gift-book-cover-design_efjahu.webp",

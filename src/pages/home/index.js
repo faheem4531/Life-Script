@@ -68,7 +68,7 @@ const HomePage = () => {
         <Suggestion
           heading={t("landingPage.perfectSection.title")}
           bgGreen={false}
-          content={homeSuggestions}
+          data={homeSuggestions}
         />
         <GifTab
           heading={t("landingPage.perfectSection.content5.cardText")}
