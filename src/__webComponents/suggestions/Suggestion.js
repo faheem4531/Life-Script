@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
 import ListPoints from "@/__webAssets/svgs/curved-list.svg";
-import Heroimage from "@/__webAssets/webp/family-collage-life-story-books.webp";
 import Content from "@/__webComponents/headings/Content";
 import styles from "../ComponentsStyles.module.css";
 
@@ -101,8 +100,8 @@ const Suggestion = ({ bgGreen = true, heading, data }) => {
           alt={imageData.alt}
           title={imageData.title}
           className={styles.suggestionImg}
-          width= {550}
-          height= {680}
+          width={550}
+          height={680}
         />
       </Box>
     </Box>
