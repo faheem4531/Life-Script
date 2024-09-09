@@ -32,6 +32,9 @@ import Formatting from "@/__webAssets/pngs/featuresLogos/formatting-features-ico
 import NarrativeLogo from "@/__webAssets/pngs/featuresLogos/narrative-fusion-feature-icon.png";
 import VoiceLogo from "@/__webAssets/pngs/featuresLogos/voice-to-text-feature-icon.png";
 
+import Check from "@/__webAssets/svgs/check-square.svg";
+
+
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others } = images;
@@ -958,5 +961,23 @@ export const useFeaturesData = (t) => [
     flex: "row-reverse",
     button: true,
     bg: "half",
+  },
+];
+
+export const usePricingWorkingData =(t)=> [
+  {
+    icon: Check,
+    title: t("pricingSection.pointsArray1.title"),
+    discription: t("pricingSection.pointsArray1.description"),
+  },
+  {
+    icon: Check,
+    title: t("pricingSection.pointsArray2.title"),
+    discription: t("pricingSection.pointsArray2.description"),
+  },
+  {
+    icon: Check,
+    title: t("pricingSection.pointsArray3.title"),
+    discription: t("pricingSection.pointsArray3.description"),
   },
 ];
