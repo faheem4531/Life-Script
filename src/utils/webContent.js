@@ -20,7 +20,7 @@ import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons } = icons;
-const { bookCovers } = images;
+const { bookCovers, homeHeroImages } = images;
 
 export const UseStoryWorthAlternativeQs = (t) => [
   {
@@ -470,7 +470,7 @@ export const useAlternativeFeaturesGif = (t) => [
   },
 ];
 
-export const faqQA = (t) => [
+export const useFaqQA = (t) => [
   {
     question: t("faqsSections.question1.question"),
     answer: t("faqsSections.question1.answer"),
@@ -534,5 +534,43 @@ export const faqQA = (t) => [
   {
     question: t("faqsSections.question16.question"),
     answer: t("faqsSections.question16.answer"),
+  },
+];
+
+export const useHomeHero = () => [
+  {
+    src: homeHeroImages.img1,
+    alt: "Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript",
+    className: "image1",
+    width: 260,
+    height: 290,
+  },
+  {
+    src: homeHeroImages.img2,
+    alt: "Children dancing and having fun with bubbles on a vintage photograph - LifeScript",
+    className: "image3",
+    width: 275,
+    height: 330,
+  },
+  {
+    src: homeHeroImages.img3,
+    alt: "childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript",
+    className: "image2",
+    width: 225,
+    height: 245,
+  },
+  {
+    src: homeHeroImages.img4,
+    alt: "Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript",
+    className: "image4",
+    width: 322,
+    height: 290,
+  },
+  {
+    src: homeHeroImages.book,
+    alt: "An old opened autobiography book - LifeScript",
+    className: "bookImg",
+    width: 870,
+    height: 380,
   },
 ];

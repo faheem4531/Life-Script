@@ -22,16 +22,6 @@ import Introduction from "./components/Introduction";
 import Gift from "@/__webAssets/svgs/gift.svg";
 import Shape from "@/__webAssets/svgs/input-shape.svg";
 
-import Arthur from "@/__webAssets/webp/testimonials/lifescript-customer-review-arthur-thompson.webp";
-import Carlos from "@/__webAssets/webp/testimonials/lifescript-customer-review-carlos-martinez.webp";
-import Derek from "@/__webAssets/webp/testimonials/lifescript-customer-review-derek-lee.webp";
-import Eleanor from "@/__webAssets/webp/testimonials/lifescript-customer-review-eleanor-rodriguez.webp";
-import George from "@/__webAssets/webp/testimonials/lifescript-customer-review-george-watkins.webp";
-import Lilly from "@/__webAssets/webp/testimonials/lifescript-customer-review-lilly-thompson.webp";
-import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-linda-morris.webp";
-import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
-import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
-
 import Book1 from "@/__webAssets/webp/bookCovers/anniversary-celebration-gift-book-cover-design.webp";
 import Book2 from "@/__webAssets/webp/bookCovers/family-full-picture-life-story-book-cover-design.webp";
 import Book3 from "@/__webAssets/webp/bookCovers/grandma-birthday-gift-book-cover-design.webp";
@@ -55,8 +45,11 @@ import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-anima
 import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
 import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
 
+import { useHomeHero, useHomeTestimonials } from "@/utils/webContent";
 const HomePage = () => {
   const { t } = useTranslation();
+  const heroSec = useHomeHero();
+  const testimonials = useHomeTestimonials(t);
 
   const pointsArray = [
     {
@@ -148,72 +141,6 @@ const HomePage = () => {
     {
       title: t("landingPage.perfectSection.content4.title"),
       subTitle: t("landingPage.perfectSection.content4.subTitle"),
-    },
-  ];
-
-  const homeTestimonials = [
-    {
-      profile: Arthur,
-      name: t("landingPage.testimonialSection.testimonial1.name"),
-      age: t("landingPage.testimonialSection.testimonial1.age"),
-      location: t("landingPage.testimonialSection.testimonial1.location"),
-      details: t("landingPage.testimonialSection.testimonial1.details"),
-    },
-    {
-      profile: Eleanor,
-      name: t("landingPage.testimonialSection.testimonial2.name"),
-      age: t("landingPage.testimonialSection.testimonial2.age"),
-      location: t("landingPage.testimonialSection.testimonial2.location"),
-      details: t("landingPage.testimonialSection.testimonial2.details"),
-    },
-    {
-      profile: Margaret,
-      name: t("landingPage.testimonialSection.testimonial3.name"),
-      age: t("landingPage.testimonialSection.testimonial3.age"),
-      location: t("landingPage.testimonialSection.testimonial3.location"),
-      details: t("landingPage.testimonialSection.testimonial3.details"),
-    },
-    {
-      profile: George,
-      name: t("landingPage.testimonialSection.testimonial4.name"),
-      age: t("landingPage.testimonialSection.testimonial4.age"),
-      location: t("landingPage.testimonialSection.testimonial4.location"),
-      details: t("landingPage.testimonialSection.testimonial4.details"),
-    },
-    {
-      profile: Linda,
-      name: t("landingPage.testimonialSection.testimonial5.name"),
-      age: t("landingPage.testimonialSection.testimonial5.age"),
-      location: t("landingPage.testimonialSection.testimonial5.location"),
-      details: t("landingPage.testimonialSection.testimonial5.details"),
-    },
-    {
-      profile: Derek,
-      name: t("landingPage.testimonialSection.testimonial6.name"),
-      age: t("landingPage.testimonialSection.testimonial6.age"),
-      location: t("landingPage.testimonialSection.testimonial6.location"),
-      details: t("landingPage.testimonialSection.testimonial6.details"),
-    },
-    {
-      profile: Lilly,
-      name: t("landingPage.testimonialSection.testimonial7.name"),
-      age: t("landingPage.testimonialSection.testimonial7.age"),
-      location: t("landingPage.testimonialSection.testimonial7.location"),
-      details: t("landingPage.testimonialSection.testimonial7.details"),
-    },
-    {
-      profile: Carlos,
-      name: t("landingPage.testimonialSection.testimonial8.name"),
-      age: t("landingPage.testimonialSection.testimonial8.age"),
-      location: t("landingPage.testimonialSection.testimonial8.location"),
-      details: t("landingPage.testimonialSection.testimonial8.details"),
-    },
-    {
-      profile: Rachel,
-      name: t("landingPage.testimonialSection.testimonial9.name"),
-      age: t("landingPage.testimonialSection.testimonial9.age"),
-      location: t("landingPage.testimonialSection.testimonial9.location"),
-      details: t("landingPage.testimonialSection.testimonial9.details"),
     },
   ];
 
@@ -375,7 +302,7 @@ const HomePage = () => {
       </Head>
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C" />
-        <Introduction />
+        <Introduction data={heroSec} />
         <Working
           data={pointsArray}
           heading={t("landingPage.howItWorks.heading")}
@@ -406,7 +333,7 @@ const HomePage = () => {
           marked={t("landingPage.bookSection.subTitle")}
         />
         <Testimonial
-          reviews={homeTestimonials}
+          reviews={testimonials}
           marked={t("landingPage.testimonialSection.title")}
           subTitle={t("landingPage.testimonialSection.subTitle")}
         />

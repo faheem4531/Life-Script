@@ -6,10 +6,10 @@ import { useTranslation } from "react-i18next";
 import styles from "./Faq.module.css";
 
 import Points from "@/__webAssets/svgs/lifescript-frequently-asked-questions-element.svg";
-import { faqQA } from "@/utils/webContent";
+import { useFaqQA } from "@/utils/webContent";
 const Faqs = () => {
   const { t } = useTranslation();
-  const QAs = faqQA(t);
+  const QAs = useFaqQA(t);
 
   return (
     <Box

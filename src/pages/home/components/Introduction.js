@@ -4,53 +4,14 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
 import { useTranslation } from "react-i18next";
-import styles from "./HomeSections.module.css";
 
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
-
 import Button from "@/__webComponents/button/Button";
+import { images } from "@/utils/assetsUrl";
+import styles from "./HomeSections.module.css";
 
-const images = [
-  {
-    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach_ksdqwe.webp",
-    alt: "Mom with dad and their two daughters having fun on the beach with stories about their lifes - LifeScript",
-    className: styles.image1,
-    width: 260,
-    height: 290,
-  },
-  {
-    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832660/assets/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph_jwoc0i.webp",
-    alt: "Children dancing and having fun with bubbles on a vintage photograph - LifeScript",
-    className: styles.image3,
-    width: 275,
-    height: 330,
-  },
-  {
-    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories_dypr3f.webp",
-    alt: "childhood memories with a vintage photograph of a kid having a laugh with a small kitten - LifeScript",
-    className: styles.image2,
-    width: 225,
-    height: 245,
-  },
-  {
-    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/grandma-and-grandpa-laughing-and-eating-ice_cream-happy-memories_nsi0br.webp",
-    alt: "Grandma and Grandpa eating ice cream and having fun reflecting on their life journey - LifeScript",
-    className: styles.image4,
-    width: 322,
-    height: 290,
-  },
-  {
-    src: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832663/assets/old-opened-autobiography-book_bavh4s.webp",
-    alt: "An old opened autobiography book - LifeScript",
-    className: styles.bookImg,
-    width: 870,
-    height: 380,
-  },
-];
-
-const Introduction = () => {
+const Introduction = ({ data }) => {
   const { t } = useTranslation();
   const [Typed, setTyped] = useState(null);
 
@@ -155,13 +116,13 @@ const Introduction = () => {
         </Typography>
       </Box>
 
-      {images.map((image, index) => (
+      {data.map((image, index) => (
         <Image
           key={index}
           src={image.src}
           alt={image.alt}
           title={image.alt}
-          className={image.className}
+          className={styles[image.className]}
           width={image.width}
           height={image.height}
           loading={index === images.length - 1 ? undefined : "lazy"}

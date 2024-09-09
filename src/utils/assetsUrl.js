@@ -27,4 +27,11 @@ export const images = {
     cover6:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725829167/assets/simplistic-autobiography-book-cover-design-minimalistic_wkvdgt.webp",
   },
+  homeHeroImages: {
+    img1: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/lifescript-happy-mom-and-dad-storytelling-to-children-on-the-beach_ksdqwe.webp",
+    img2: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832660/assets/children-dancing-and-having-fun-with-bubbles-on-vintage-photograph_jwoc0i.webp",
+    img3: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/lifescript-kid-having-fun-with-a-cat-in-vintage-photograph-memories_dypr3f.webp",
+    img4: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832662/assets/grandma-and-grandpa-laughing-and-eating-ice_cream-happy-memories_nsi0br.webp",
+    book: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832663/assets/old-opened-autobiography-book_bavh4s.webp",
+  },
 };
