@@ -77,11 +77,13 @@ const HomePage = () => {
         />
         <StoryTelling data={storyTelling} />
         <Reviews />
-        <Experience
-          panelsData={homeFeaturesGif}
-          heading={t("landingPage.featureSection.title")}
-          marked={t("landingPage.featureSection.subTitle")}
-        />
+        <Box sx={{ display: { sm: "none", xs: "none", md: "block" } }}>
+          <Experience
+            panelsData={homeFeaturesGif}
+            heading={t("landingPage.featureSection.title")}
+            marked={t("landingPage.featureSection.subTitle")}
+          />
+        </Box>
         <Pricing cardData={pricingCardDetails} />
         <OurBooks
           details={ourBookCoverHome}

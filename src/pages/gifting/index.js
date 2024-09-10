@@ -9,37 +9,39 @@ import Experience from "@/__webComponents/experience/Experience";
 import Working from "@/__webComponents/working/Working";
 import DesignCard from "./sections/DesignCard";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
+import { useTranslation } from "react-i18next";
+import {
+  useBookCoverHome,
+  useHomeFeaturesGif,
+  useHomeHero,
+  useHomeQA,
+  useHomeSuggestions,
+  useHomeTestimonials,
+  usePricingCardDetails,
+  useStoryTelling,
+  useWorkingDetails,
+} from "@/utils/webContent";
 
 const GiftingPage = () => {
-
-  const pointsArray = [
-    {
-      no: "01",
-      title: "Invite friends & family to contribute.",
-      discription: "We’ll follow up to remind people to share."
-    },
-    {
-      no: "02",
-      title: "People share their memories.",
-      discription: "You can review and reorganize everything in one place."
-    },
-    {
-      no: "03",
-      title: "Receive a beautiful keepsake book.",
-      discription: "Professionally-designed cover styles, and books made to last."
-    },
-  ]
+  const { t } = useTranslation();
+  const pointsArray = useWorkingDetails(t);
+  const homeFeaturesGif = useHomeFeaturesGif(t);
+  const homeQuestionPanel = useHomeQA(t);
 
   return (
     <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
       <HeroGifting />
       <Gifting />
-      <Box sx={{ display: { md: "block", sm: "none", xs: "none" } }}>
-        <Experience />
-      </Box>
+      <Box sx={{ display: { sm: "none", xs: "none", md: "block" } }}>
+          <Experience
+            panelsData={homeFeaturesGif}
+            heading={t("landingPage.featureSection.title")}
+            marked={t("landingPage.featureSection.subTitle")}
+          />
+        </Box>
       <Working data={pointsArray} heading=" How it" marked="works" />
       <DesignCard />
-      {/* <GotQuestions /> */}
+      <GotQuestions questions={homeQuestionPanel} />
       <ContactFooter
         title="Still have any questions?"
         subTitle="Contact us Now!!!"
