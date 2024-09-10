@@ -94,7 +94,10 @@ export default function CustomizedAccordions({ panelsData }) {
             >
               <Typography
                 component="div"
-                sx={{ fontSize: { lg: "32px", md: "26px" }, fontWeight: 500 }}
+                sx={{
+                  fontSize: { lg: "32px", md: "26px", sm: "25px", xs: "22px" },
+                  fontWeight: { sm: 500, xs: 600 },
+                }}
                 color={panelActive[panel.panel] ? "#3E4F3C" : ""}
               >
                 <h3 className={styles.pureHeadings}>{t(panel.heading)}</h3>
@@ -104,7 +107,7 @@ export default function CustomizedAccordions({ panelsData }) {
               <Typography
                 component="div"
                 sx={{
-                  fontSize: "16px",
+                  fontSize: {sm:"16px",xs:"14px"},
                   padding: "5px 0 20px 35px",
                   maxWidth: "370px",
                   fontFamily: "Avenir",
