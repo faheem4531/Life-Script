@@ -1,10 +1,10 @@
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
+import Line from "@/__webAssets/svgs/line-orange.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import styles from "../ComponentsStyles.module.css";
-import PrimaryHeading from "../headings/PrimaryHeading";
 import CustomizedAccordions from "./Accordion";
 
 const Experience = ({ heading, marked, headingStyle = true, panelsData }) => {
@@ -24,13 +24,25 @@ const Experience = ({ heading, marked, headingStyle = true, panelsData }) => {
       }}
     >
       <Box sx={{ textAlign: "center", width: "100%" }}>
-        <PrimaryHeading
-          lineWidth="180px"
-          lineHeight="60px"
-          showStyle={false}
-          heading={heading}
-          marked={marked}
-        />
+        <Box
+          sx={{
+            fontSize: { md: "54px", sm: "44px", xs: "32px" },
+            fontWeight: 500,
+            fontFamily: "Besley !important",
+            textAlign: { sm: "center", xs: "center" },
+          }}
+        >
+          {heading}{" "}
+          <span className={styles.marked}>
+            {marked}
+            <Image
+              src={Line}
+              alt="mark"
+              className={styles.suggestionUnderLine}
+              loading="lazy"
+            />
+          </span>
+        </Box>
         {headingStyle && (
           <Image
             src={FlowerLine}
