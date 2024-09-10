@@ -1,6 +1,6 @@
 /* Gift Introduction  */
 .giftIntro {
-  /* background-image: url(../../../__webAssets/pngs/bg-feature.png); */
+  background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725831434/assets/bg-for-topSec_qz1o8w.webp);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -13,7 +13,7 @@
 
 /* Designs Card */
 .designCard {
-  /* background-image: url(../../../__webAssets/pngs/gift-design.png); */
+  background-image: url(../../../__webAssets/pngs/gift-design.png);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
