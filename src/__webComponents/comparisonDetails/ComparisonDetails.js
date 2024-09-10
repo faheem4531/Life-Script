@@ -30,31 +30,38 @@ const ComparisonDetails = ({
       />
       <Box
         sx={{
-          margin: {
-            lg: "100px 0",
-            md: "100px 20px",
-            sm: "100px 0",
-            xs: "70px 0 0",
-          },
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: { md: "row", sm: "column", xs: "column" },
-          alignItems: "center",
-          columnGap: "16px",
+          overflowX: { xs: "auto", sm: "auto", md: "none" },
+          bgcolor: "",
         }}
       >
-        {cardsDetail.map((item, index) => (
-          <DetailCard
-            key={index}
-            header={item.header}
-            bgColor={item.bgColor}
-            sCase={item.sCase}
-            logo={item.logo}
-            title={item.title}
-            alt={item.alt}
-            points={item.data}
-          />
-        ))}
+        <Box
+          sx={{
+            margin: {
+              lg: "100px 0",
+              md: "100px 20px",
+              sm: "100px 20px",
+              xs: "70px 0 0",
+            },
+            display: "flex",
+            justifyContent: { md: "center", sm: "start", xs: "start" },
+            // flexDirection: { md: "row", sm: "column", xs: "column" },
+            alignItems: "center",
+            columnGap: "16px",
+          }}
+        >
+          {cardsDetail.map((item, index) => (
+            <DetailCard
+              key={index}
+              header={item.header}
+              bgColor={item.bgColor}
+              sCase={item.sCase}
+              logo={item.logo}
+              title={item.title}
+              alt={item.alt}
+              points={item.data}
+            />
+          ))}
+        </Box>
       </Box>
     </Box>
   );
@@ -81,6 +88,7 @@ function DetailCard({
         width: "100%",
         bgcolor: "#F4F4F4",
         borderRadius: "8px",
+        minWidth: "320px",
       }}
     >
       <Box
@@ -98,7 +106,9 @@ function DetailCard({
         bgcolor={bgColor}
       >
         {header}
-        {logo && <Image src={logo} alt={alt} title={title} width={170} height={30} />}
+        {logo && (
+          <Image src={logo} alt={alt} title={title} width={170} height={30} />
+        )}
       </Box>
       <Box
         sx={{ padding: { sm: "10px 20px", xs: "10px 10px 10px 20px" } }}

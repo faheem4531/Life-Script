@@ -8,8 +8,6 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
-import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
-
 // import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp"; 
 // import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp";
 // import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp";
@@ -24,7 +22,6 @@ import FormattingFeatures from "@/__webAssets/compressed-gifs/formatting-feature
 import Narrative from "@/__webAssets/compressed-gifs/narrative-fusion-demo-animation.gif";
 import VoiceToText from "@/__webAssets/compressed-gifs/voice-to-text-feature-demo-animation.gif";
 
-
 import Diversity from "@/__webAssets/svgs/values/diversity.svg";
 import Empathy from "@/__webAssets/svgs/values/empathy.svg";
 import Family from "@/__webAssets/svgs/values/family.svg";
@@ -33,6 +30,7 @@ import Inspiration from "@/__webAssets/svgs/values/inspiration.svg";
 import Power from "@/__webAssets/svgs/values/power.svg";
 
 import Check from "@/__webAssets/svgs/check-square.svg";
+import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons, other, featuresLogos } = icons;
