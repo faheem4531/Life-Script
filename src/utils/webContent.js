@@ -451,7 +451,7 @@ export const useAlternativeFeaturesGif = (t) => [
     timer: 10700,
     heading: "landingPage.featureSection.accordion3.heading",
     description: "landingPage.featureSection.accordion3.description",
-    imageSrc: voiceToText,
+    imageSrc: VoiceToText,
     alt: " Voice-to-text feature demo highlighting LifeScript’s ability to convert spoken words to text, making it a superior Storyworth alternative.",
     imgTitle:
       "Voice-to-text demo - LifeScript as the best Storyworth alternative",
