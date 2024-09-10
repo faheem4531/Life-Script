@@ -49,7 +49,7 @@
 .features {
   background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725831434/assets/bg-for-topSec_qz1o8w.webp);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: auto 100%;
 }
 
 .lineBox {
@@ -219,7 +219,7 @@
   border-bottom: 1px solid #b9b9a7;
 }
 
-.logoComparison{
+.logoComparison {
   height: auto;
 }
 
@@ -313,7 +313,7 @@
 
   /* Working  */
   .workingBox {
-    background-size: 200vw 100%;
+    background-size: auto 100%;
   }
 
   .headingLine {
@@ -334,11 +334,6 @@
   .questionIcon {
     width: 30px;
     height: 30px;
-  }
-
-  /* Working  */
-  .workingBox {
-    background-size: 200% 100%;
   }
 
   /* Contact Footer  */
@@ -411,7 +406,7 @@
 
   /* Working  */
   .workingBox {
-    background-size: 250vw 100%;
+    background-size: auto 100%;
   }
 
   .headingLine {
@@ -437,11 +432,6 @@
   .line {
     width: 80px;
     right: -10px;
-  }
-
-  /* Working  */
-  .workingBox {
-    background-size: 250% 100%;
   }
 
   /* Got Questions  */
