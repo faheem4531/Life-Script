@@ -31,20 +31,18 @@ const ComparisonDetails = ({
       <Box
         sx={{
           overflowX: { xs: "auto", sm: "auto", md: "none" },
-          bgcolor: "",
+          margin: {
+            lg: "100px 0",
+            md: "100px 20px",
+            sm: "100px 20px",
+            xs: "70px 0 ",
+          },
         }}
       >
         <Box
           sx={{
-            margin: {
-              lg: "100px 0",
-              md: "100px 20px",
-              sm: "100px 20px",
-              xs: "70px 0 0",
-            },
             display: "flex",
             justifyContent: { md: "center", sm: "start", xs: "start" },
-            // flexDirection: { md: "row", sm: "column", xs: "column" },
             alignItems: "center",
             columnGap: "16px",
           }}

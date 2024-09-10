@@ -204,7 +204,7 @@ export const useWhyLifeScript = (t) => [
       "More book cover designs to choose from",
       "Formatting features for customization",
     ],
-    image: whyLifeScriptIcons.tree,
+    image: whyLifeScriptIcons.book,
     alt: "Icon for more custom and professional books with LifeScript, a Storyworth alternative providing various book cover designs and formats.",
     ImgTitle:
       "Custom and professional book options - LifeScript as a Storyworth alternative",
