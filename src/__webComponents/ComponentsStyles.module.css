@@ -49,7 +49,7 @@
 .features {
   background-image: url(https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725831434/assets/bg-for-topSec_qz1o8w.webp);
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  background-size: 100% 100%;
 }
 
 .lineBox {
@@ -309,6 +309,10 @@
   .bandage {
     right: -50px;
     top: 0px;
+  }
+
+  .features {
+    background-size: auto 100%;
   }
 
   /* Working  */
