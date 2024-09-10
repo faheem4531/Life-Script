@@ -11,7 +11,6 @@ const WhyLifeScript = ({ data }) => {
     <Box
       sx={{
         padding: {
-          lg: "130px 50px 50px 80px",
           md: "130px 30px 50px 30px",
           sm: "130px 20px 60px 50px",
           xs: "130px 20px 70px",
@@ -30,7 +29,7 @@ const WhyLifeScript = ({ data }) => {
         sx={{
           margin: "70px auto",
           justifyContent: { md: "space-between", sm: "center", xs: "center" },
-          maxWidth: { lg: "1400px" },
+          maxWidth: { lg: "1300px" },
         }}
       >
         <Box
@@ -38,7 +37,7 @@ const WhyLifeScript = ({ data }) => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: { md: "space-between", sm: "center", xs: "center" },
-            maxWidth: { lg: "1400px" },
+            maxWidth: { lg: "1300px" },
             rowGap: { lg: "50px", sm: "40px", xs: "40px" },
           }}
         >
@@ -57,8 +56,8 @@ const WhyLifeScript = ({ data }) => {
         <Box
           sx={{
             margin: {
-              md: "0 100px 0 auto",
-              sm: "40px 100px 0 auto",
+              md: "0 0px 0 auto",
+              sm: "40px 0px 0 auto",
               xs: "40px 0 0",
             },
             maxWidth: "210px",
@@ -83,9 +82,9 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
     <Box
       sx={{
         display: "flex",
-        columnGap: "15px",
+        columnGap: { sm: "34px", xs: "20px" },
         color: "#F3ECDA",
-        maxWidth: { lg: "510px", md: "450px" },
+        maxWidth: { lg: "540px", md: "450px" },
         width: "100%",
       }}
     >
@@ -108,7 +107,7 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
       <Box>
         <Typography
           sx={{
-            fontSize: { lg: "34px", md: "28px", sm: "35px", xs: "30px" },
+            fontSize: { lg: "40px", md: "28px", sm: "35px", xs: "30px" },
             mb: "8px",
           }}
           variant="h3"
@@ -119,7 +118,7 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
         {points.map((step, index) => (
           <Box
             key={index}
-            sx={{ display: "flex", alignItems: "start", mb: "5px" }}
+            sx={{ display: "flex", alignItems: "start", mb: "5px", ml: "15px" }}
           >
             <span
               style={{
@@ -130,9 +129,7 @@ const ReasonPoints = ({ heading, points, image, ImgTitle, alt }) => {
                 backgroundColor: "#F3ECDA",
               }}
             ></span>
-            <Typography>
-              {step}
-            </Typography>
+            <Typography>{step}</Typography>
           </Box>
         ))}
       </Box>

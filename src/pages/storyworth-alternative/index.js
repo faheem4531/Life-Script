@@ -29,17 +29,6 @@ import {
   useWorkingDetails,
 } from "@/utils/webContent";
 
-// import { images } from "@/utils/assetsUrl";
-// const { gif } = images;
-// const {
-//   assistedEditing,
-//   autoPhoto,
-//   familyTree,
-//   formatting,
-//   narrative,
-//   voiceToText,
-// } = gif;
-
 const StoryworthAlternative = () => {
   const { t } = useTranslation();
   const workingDetails = useWorkingDetails(t);

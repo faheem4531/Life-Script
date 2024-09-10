@@ -33,8 +33,8 @@ const ComparisonDetails = ({
           overflowX: { xs: "auto", sm: "auto", md: "none" },
           margin: {
             lg: "100px 0",
-            md: "100px 20px",
-            sm: "100px 20px",
+            md: "100px 0px",
+            sm: "100px 0",
             xs: "70px 0 ",
           },
         }}
