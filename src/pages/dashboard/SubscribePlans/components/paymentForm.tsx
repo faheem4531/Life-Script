@@ -57,6 +57,8 @@ const PaymentForm = ({ packageName, price }) => {
   const elements = useElements();
   const { t } = useTranslation();
 
+  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY, "NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY")
+
   const handleSubmit = async (event) => {
     const subscriptionPrice = Number(price);
     setConfirmationStripe(false);
@@ -107,6 +109,8 @@ const PaymentForm = ({ packageName, price }) => {
         });
     }
   };
+
+  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY, 'process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY')
 
   return (
     <>
@@ -257,7 +261,7 @@ const PaymentForm = ({ packageName, price }) => {
             <GlobelBtn
               bgColor="#E1683B"
               color="white"
-              btnText={loading ? "Loading..." :  t("SubsPlan.buyNow")}
+              btnText={loading ? "Loading..." : t("SubsPlan.buyNow")}
               onClick={() => {
                 if (!loading && !isError && cardHolderName) {
                   setConfirmationStripe(true);
