@@ -26,7 +26,7 @@ const GifTab = ({
           lg: "100px 60px 40px 100px",
           md: "80px 40px 40px 80px",
           sm: "90px 20px 80px 50px",
-          xs: "20px 30px 30px",
+          xs: "20px 30px 20px",
         },
         position: "relative",
       }}

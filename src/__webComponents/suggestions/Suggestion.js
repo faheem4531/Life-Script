@@ -15,8 +15,8 @@ const Suggestion = ({ bgGreen = true, heading, data }) => {
       sx={{
         padding: {
           lg: "150px 0",
-          sm: "150px 0",
-          xs: " 150px 0 150px",
+          sm: "80px 0",
+          xs: " 40px 0",
         },
       }}
       className={bgGreen && styles.workingBox}

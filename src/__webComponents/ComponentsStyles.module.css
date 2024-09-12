@@ -491,9 +491,10 @@
   .bandageX {
     display: block;
     position: absolute;
-    top: -55px;
-    left: -60px;
-    transform: rotate(95deg);
+    top: -45px;
+    left: -40px;
+    width: 100px;
+    transform: rotate(80deg);
   }
 
   /* StoryTelling  */

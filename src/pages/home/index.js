@@ -75,7 +75,7 @@ const HomePage = () => {
           button={t("landingPage.perfectSection.content5.btntext")}
           icon={Gift}
         />
-        <StoryTelling data={storyTelling} />
+        <StoryTelling data={storyTelling} /> 
         <Reviews />
         <Experience
           panelsData={homeFeaturesGif}
