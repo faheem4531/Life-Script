@@ -1,7 +1,6 @@
 "use client";
 import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import styles from "../ComponentsStyles.module.css";
 import PrimaryHeading from "../headings/PrimaryHeading";
 import PricingCard from "./Card";
 const Pricing = ({ cardData }) => {
@@ -11,9 +10,9 @@ const Pricing = ({ cardData }) => {
     <Box
       sx={{
         margin: {
-          lg: "170px 95px  130px",
-          sm: "150px 30px",
-          xs: "80px 20px 100px",
+          lg: "170px 50px 130px",
+          sm: "150px 0px 100px",
+          xs: "80px 0px 60px",
         },
       }}
     >
@@ -53,27 +52,33 @@ const Pricing = ({ cardData }) => {
           </Typography>
         </Box>
       </Box>
-
       <Box
         sx={{
-          display: "flex",
-          flexDirection: { md: "row", sm: "column", xs: "column" },
-          alignItems: "center",
-          columnGap: "17px",
-          rowGap: "50px",
-          justifyContent: "center",
+          overflowX: { xs: "auto", sm: "auto", md: "none" },
+          padding: {
+            sm: "0 0 30px",
+            xs: "0 0 30px",
+          },
         }}
-        className={styles.cardsMain}
       >
-        {cardData.map((item) => (
-          <PricingCard
-            key={item.id}
-            category={item.category}
-            price={item.price}
-            card={item.card}
-            id={item.id}
-          />
-        ))}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: { lg: "center", sm: "start", xs: "start" },
+            alignItems: "center",
+            columnGap: "16px",
+          }}
+        >
+          {cardData.map((item) => (
+            <PricingCard
+              key={item.id}
+              category={item.category}
+              price={item.price}
+              card={item.card}
+              id={item.id}
+            />
+          ))}
+        </Box>
       </Box>
       <Typography
         sx={{
