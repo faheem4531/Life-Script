@@ -176,7 +176,7 @@ export const useWhyLifeScript = (t) => [
     ImgTitle: " No hidden costs with LifeScript - Storyworth alternative",
   },
   {
-    heading: "More support",
+    heading: "Better support",
     points: [
       "Live chat support during business hours",
       "Easy step-by-step tutorial videos",
@@ -210,7 +210,7 @@ export const useWhyLifeScript = (t) => [
       "Custom and professional book options - LifeScript as a Storyworth alternative",
   },
   {
-    heading: "More secure",
+    heading: "Better Security",
     points: ["Latest security standards to keep your stories private."],
     image: whyLifeScriptIcons.secure,
     alt: " Icon indicating more support with LifeScript, a Storyworth alternative providing live chat and step-by-step tutorials.",

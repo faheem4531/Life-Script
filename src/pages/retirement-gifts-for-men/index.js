@@ -10,7 +10,7 @@ import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
-import { 
+import {
   useRetiredMenQA,
   useRetiredMenSuggestions,
   useRetiredMenTestimonials,
@@ -40,10 +40,16 @@ const StoryworthAlternative = () => {
           discription="Surprise him with an unforgettable trip down memory lane, where he can share his life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to his doorstep"
           buttonText="Buy Now"
         />
-        <Suggestion
-          heading="A retirement gift empowering him to:"
-          data={retiredMenSuggestions}
-        />
+        <Box
+          sx={{
+            marginTop: "-110px",
+          }}
+        >
+          <Suggestion
+            heading="A retirement gift empowering him to:"
+            data={retiredMenSuggestions}
+          />
+        </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />
 
         {/* <Experience
