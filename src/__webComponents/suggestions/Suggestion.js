@@ -4,10 +4,12 @@ import { useTranslation } from "react-i18next";
 
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
 import ListPoints from "@/__webAssets/svgs/curved-list.svg";
+import Button from "@/__webComponents/button/Button";
 import Content from "@/__webComponents/headings/Content";
+import Link from "next/link";
 import styles from "../ComponentsStyles.module.css";
 
-const Suggestion = ({ bgGreen = true, heading, data }) => {
+const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
   const { t } = useTranslation();
   const { imageData, content } = data;
   return (
@@ -73,7 +75,7 @@ const Suggestion = ({ bgGreen = true, heading, data }) => {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center ",
+            alignItems: "start ",
             marginTop: { sm: "50px", md: "0", xs: "60px" },
           }}
         >
@@ -82,6 +84,7 @@ const Suggestion = ({ bgGreen = true, heading, data }) => {
             alt="points"
             className={styles.pointsLine}
             loading="lazy"
+            style={{ marginTop: "40px" }}
           />
           <Box sx={{ marginLeft: { md: "30px" } }}>
             {content.map((item, index) => (
@@ -92,6 +95,18 @@ const Suggestion = ({ bgGreen = true, heading, data }) => {
                 color={bgGreen ? "#F3ECDA" : "#3E4F3C"}
               />
             ))}
+            {btnTxt && (
+              <Box marginTop={7}>
+              <Link href={"./stripe-page"}>
+                <Button
+                  title={btnTxt}
+                  width="190px"
+                  height="56px"
+                  img1={btnImg}
+                />
+              </Link>
+            </Box>
+            )}
           </Box>
         </Box>
         <Image
