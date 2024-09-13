@@ -4,16 +4,26 @@ import { Box } from "@mui/material";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
+import Pen from "@/__webAssets/svgs/writing-pen.svg";
+import OurBooks from "@/__webComponents/books/OurBooks";
+import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
 import Footer from "@/__webComponents/footer/Footer";
+import GifTab from "@/__webComponents/gifTab/GifTab";
 import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
+import DiscoverQuestions from "@/__webComponents/questions/DiscoverQuestions";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
+import Reviews from "@/__webComponents/reviews/Reviews";
 import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
+import Working from "@/__webComponents/working/Working";
 import {
+  useAlternativeFeaturesGif,
+  useOurBookCoverforAlternative,
   useRetiredMenQA,
   useRetiredMenSuggestions,
   useRetiredMenTestimonials,
+  useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/webContent";
 
@@ -23,6 +33,9 @@ const StoryworthAlternative = () => {
   const retiredMenQA = useRetiredMenQA(t);
   const retiredMenSuggestions = useRetiredMenSuggestions(t);
   const testimonials = useRetiredMenTestimonials(t);
+  const suggestedQuestions = useSuggestedQuestions(t);
+  const ourBookCoverforAlternative = useOurBookCoverforAlternative(t);
+  const featuresGif = useAlternativeFeaturesGif(t);
 
   return (
     <>
@@ -51,28 +64,32 @@ const StoryworthAlternative = () => {
           />
         </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />
-
-        {/* <Experience
-          headingStyle={false}
-          heading="How we’re "
-          marked="different"
-        />
         <Working
-          data={pointsArray}
-          heading={t("landingPage.howItWorks.heading")}
-          marked={t("landingPage.howItWorks.subHeading")}
+          data={workingData}
+          heading={"How LifeScrip "}
+          marked={"works"}
           width={"300px"}
         />
-        <DiscoverQuestions />
-        <OurBooks />
-
+        <DiscoverQuestions
+          questions={suggestedQuestions}
+          cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
+          from personalised suggestions."
+        />
+        <OurBooks
+          details={ourBookCoverforAlternative}
+          heading={t("landingPage.bookSection.title")}
+          marked={t("landingPage.bookSection.subTitle")}
+        />
+        <Experience
+          panelsData={featuresGif}
+          headingStyle={false}
+          heading="Features that make it easy "
+          marked="easy"
+        />
+        <Reviews />
         <Box
           sx={{
-            m: {
-              md: "140px 0 0 ",
-              sm: "90px 0 -50px",
-              xs: "100px 20px 0 30px",
-            },
+            m: { md: "100px 0 0", sm: "70px 0 -70px", xs: "120px 0 -40px" },
           }}
         >
           <GifTab
@@ -82,7 +99,7 @@ const StoryworthAlternative = () => {
             subHeading="no credit card required."
             btnLink={"/stripe-page"}
           />
-        </Box> */}
+        </Box>
         <GotQuestions questions={retiredMenQA} />
         <ContactFooter
           title={"Still have any "}

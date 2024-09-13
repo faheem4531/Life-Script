@@ -89,8 +89,8 @@ const StoryworthAlternative = () => {
         </Box>
         <Working
           data={workingDetails}
-          heading={t("landingPage.howItWorks.heading")}
-          marked={t("landingPage.howItWorks.subHeading")}
+          heading={"How LifeScript "}
+          marked={"works"}
           width={"300px"}
         />
         <DiscoverQuestions

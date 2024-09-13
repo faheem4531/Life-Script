@@ -59,8 +59,8 @@ const PrimaryHeading = ({
         sx={{
           display: {
             md: "block",
-            sm: removeStyleMbl && "none",
-            xs: removeStyleMbl && "none",
+            sm: !removeStyleMbl && "none",
+            xs: !removeStyleMbl && "none",
           },
         }}
       >
@@ -106,8 +106,8 @@ const PrimaryHeading = ({
         sx={{
           display: {
             md: "block",
-            sm: removeStyleMbl && "none",
-            xs: removeStyleMbl && "none",
+            sm: !removeStyleMbl && "none",
+            xs: !removeStyleMbl && "none",
           },
         }}
       >

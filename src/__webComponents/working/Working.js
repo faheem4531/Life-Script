@@ -36,7 +36,6 @@ const Working = ({
         lineWidth="160px"
         showStyle={true}
         marked={marked}
-        removeStyleMbl={data[0].icon ? true : false}
         heading={heading}
         color="#F3ECDA"
       />
