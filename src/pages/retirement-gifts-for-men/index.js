@@ -56,6 +56,7 @@ const StoryworthAlternative = () => {
           imgTitle="Opened autobiography book for men’s retirement gift"
           alt="An opened autobiography book, a thoughtful retirement gift for men to share their life stories - LifeScript."
           subContentWidth = "900px"
+          lineWidth={150}
         />
         <Box
           sx={{

@@ -20,6 +20,7 @@ const LandingIntro = ({
   alt,
   imgTitle,
   subContentWidth = "650px",
+  lineWidth
 }) => {
   const { t } = useTranslation();
   return (
@@ -54,7 +55,12 @@ const LandingIntro = ({
             variant="h1"
             lineBottom="-20px"
           /> */}
-          <Heading heading={heading} marked={marked} color="#F3ECDA" lineWidth={250}/>
+          <Heading
+            heading={heading}
+            marked={marked}
+            color={bgGreen ? "#F3ECDA" : "#3e4f3c"}
+            lineWidth={lineWidth}
+          />
           <Typography
             sx={{
               fontSize: { sm: "18px", xs: "15px" },
