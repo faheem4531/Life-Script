@@ -1040,25 +1040,25 @@ export const useRetiredMenQA = (t) => [
   {
     qs: "Is international shipping available and how much does it cost?",
     ans: "We ship internationally and provide delivery tracking. Oh, and it’s free.",
-    panel: "panel6",
+    panel: "panel5",
     isexpanded: false,
   },
   {
     qs: "How can I ensure his book and information remain private?",
     ans: "We take privacy very seriously. We use advanced security technologies and encryption methods to protect his personal stories and information, ensuring they remain completely private.",
-    panel: "panel7",
+    panel: "panel6",
     isexpanded: false,
   },
   {
     qs: "Can I purchase extra books?",
     ans: "Yes, additional full-color hardcover books are available for 39$ each.",
-    panel: "panel4",
+    panel: "panel7",
     isexpanded: false,
   },
   {
     qs: "Do you have any tutorials or instructions on how to use the platform and create my book?",
     ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
-    panel: "panel5",
+    panel: "panel8",
     isexpanded: false,
   },
 ];
@@ -1090,8 +1090,7 @@ export const useRetiredMenFeaturesGif = (t) => [
     description: "landingPage.featureSection.accordion3.description",
     imageSrc: VoiceToText,
     alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text, making it a thoughtful gift idea for men retiring - LifeScript.",
-    imgTitle:
-      "Voice-to-text demo for retirement gift creation",
+    imgTitle: "Voice-to-text demo for retirement gift creation",
   },
   {
     panel: "panel4",
@@ -1118,12 +1117,11 @@ export const useRetiredMenFeaturesGif = (t) => [
     description: "landingPage.featureSection.accordion6.description",
     imageSrc: AutoPhoto,
     alt: "Auto photo improvement demo animation showing how uploaded images are upscaled and fitted, perfect for creating high-quality retirement gifts for men - LifeScript.",
-    imgTitle:
-      "Auto photo enhancement for retirement gift books",
+    imgTitle: "Auto photo enhancement for retirement gift books",
   },
 ];
 
-export const useOurBookCoverforRetiredMen= (t) => [
+export const useOurBookCoverforRetiredMen = (t) => [
   {
     coverImage: bookCovers.cover1,
     alt: "Book cover showing an elderly man on a swing with an elderly woman, perfect for retirement gift ideas for men - LifeScript.",
