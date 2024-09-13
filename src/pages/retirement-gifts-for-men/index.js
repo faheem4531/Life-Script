@@ -63,6 +63,8 @@ const StoryworthAlternative = () => {
           <Suggestion
             heading="A retirement gift empowering him to:"
             data={retiredMenSuggestions}
+            btnTxt="Gift now"
+            btnImg={Gift}
           />
         </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />
@@ -98,7 +100,7 @@ const StoryworthAlternative = () => {
           }}
         >
           <GifTab
-            heading="Surprise him with Lifescript and let him transform his memories into a keepsake book."
+            heading="Give the perfect retirement gift and let him turn a lifetime of memories into a beautiful keepsake."
             button={"Gift now"}
             icon={Gift}
             btnLink={"/stripe-page"}
