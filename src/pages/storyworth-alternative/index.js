@@ -60,6 +60,7 @@ const StoryworthAlternative = () => {
           buttonText="Start Writing for Free"
           alt=" An opened autobiography book, showcasing LifeScript as the best Storyworth alternative for capturing life stories."
           imgTitle="Opened autobiography book - LifeScript as a Storyworth alternative"
+          lineWidth={250}
         />
         <Experience
           panelsData={featuresGif}

@@ -49,11 +49,13 @@ const StoryworthAlternative = () => {
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
           bgGreen={false}
-          heading="LifeScript, the best retirement gift for men"
+          heading="LifeScript, the best retirement gift for "
+          marked = "men"
           discription="Surprise him with an unforgettable trip down memory lane, where he can share his life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to his doorstep"
           buttonText="Buy Now"
           imgTitle="Opened autobiography book for men’s retirement gift"
           alt="An opened autobiography book, a thoughtful retirement gift for men to share their life stories - LifeScript."
+          subContentWidth = "900px"
         />
         <Box
           sx={{

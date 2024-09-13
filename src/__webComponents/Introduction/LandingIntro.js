@@ -7,10 +7,10 @@ import Link from "next/link";
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Button from "@/__webComponents/button/Button";
-import PrimaryHeading from "@/__webComponents/headings/PrimaryHeading";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import { useTranslation } from "react-i18next";
 import styles from "../ComponentsStyles.module.css";
+import Heading from "../headings/Heading";
 
 const LandingIntro = ({
   bgGreen = true,
@@ -19,6 +19,7 @@ const LandingIntro = ({
   discription,
   alt,
   imgTitle,
+  subContentWidth = "650px",
 }) => {
   const { t } = useTranslation();
   return (
@@ -41,7 +42,7 @@ const LandingIntro = ({
         }}
       >
         <Box sx={{ width: "100%", zIndex: "20", textAlign: "center" }}>
-          <PrimaryHeading
+          {/* <PrimaryHeading
             lineWidth="220px"
             lineHeight="60px"
             mdDirection="column"
@@ -52,16 +53,17 @@ const LandingIntro = ({
             marked={marked}
             variant="h1"
             lineBottom="-20px"
-          />
+          /> */}
+          <Heading heading={heading} marked={marked} color="#F3ECDA" lineWidth={250}/>
           <Typography
             sx={{
-              fontSize: "18px",
+              fontSize: { sm: "18px", xs: "15px" },
               lineHeight: "24px",
               fontFamily: "Avenir",
               margin: { md: "40px auto", sm: "20px auto", xs: "20px auto" },
               width: "100%",
               textAlign: "center",
-              maxWidth: { md: "650px", sm: "500px", xs: "100%" },
+              maxWidth: { md: subContentWidth, sm: "500px", xs: "100%" },
             }}
           >
             {discription}
