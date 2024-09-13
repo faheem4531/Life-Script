@@ -58,9 +58,9 @@
 
 .line {
   position: absolute;
-  right: -20px;
+  right: -30px;
   bottom: -10px;
-  height: auto;
+  height: 20px;
 }
 
 /* Got Questions  */
@@ -332,7 +332,7 @@
 
   /* Feature Intro  */
   .line {
-    width: 100px;
+    width: 120px;
   }
 
   .questionIcon {
@@ -434,7 +434,7 @@
 
   /* Feature Intro  */
   .line {
-    width: 80px;
+    width: 100px;
     right: -10px;
   }
 
