@@ -8,14 +8,14 @@ import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-li
 import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
 import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
 
-// import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp"; 
+// import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp";
 // import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp";
 // import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp";
 // import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-animation.webp";
 // import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
 // import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
 
-import AssistedEditing from "@/__webAssets/compressed-gifs/assisted-editing-demo-animation.gif"; 
+import AssistedEditing from "@/__webAssets/compressed-gifs/assisted-editing-demo-animation.gif";
 import AutoPhoto from "@/__webAssets/compressed-gifs/Auto-photo-improvement-demo-animation.gif";
 import FamilyTree from "@/__webAssets/compressed-gifs/family-tree-feature-demo-animation.gif";
 import FormattingFeatures from "@/__webAssets/compressed-gifs/formatting-features-demo-animation.gif";
@@ -1060,5 +1060,98 @@ export const useRetiredMenQA = (t) => [
     ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
     panel: "panel5",
     isexpanded: false,
+  },
+];
+
+export const useRetiredMenFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "landingPage.featureSection.accordion1.description",
+    imageSrc: Narrative,
+    alt: "Demo animation showing how easy is LifeScript as retirement gift for dads",
+    imgTitle:
+      "Demo animation showing how easy is LifeScript as retirement gift for dads",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "landingPage.featureSection.accordion2.description",
+    imageSrc: AssistedEditing,
+    alt: "Assisted editing feature demo animation showing how the spelling and grammar check works, perfect for creating memorable retirement gifts for men",
+    imgTitle: "Assisted editing demo for creating retirement gift books",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "landingPage.featureSection.accordion3.description",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo animation showing how your recorded words translate into written text, making it a thoughtful gift idea for men retiring - LifeScript.",
+    imgTitle:
+      "Voice-to-text demo for retirement gift creation",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "landingPage.featureSection.accordion4.description",
+    imageSrc: FamilyTree,
+    alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized retirement gift for dads - LifeScript.",
+    imgTitle: "Family tree demo for creating a retirement gift",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "landingPage.featureSection.accordion5.description",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting features demo animation showcasing bold, italics, and other styles, enhancing the personal touch for retirement gift books for men - LifeScript.",
+    imgTitle: "Formatting features demo for retirement gift books",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "landingPage.featureSection.accordion6.description",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how uploaded images are upscaled and fitted, perfect for creating high-quality retirement gifts for men - LifeScript.",
+    imgTitle:
+      "Auto photo enhancement for retirement gift books",
+  },
+];
+
+export const useOurBookCoverforRetiredMen= (t) => [
+  {
+    coverImage: bookCovers.cover1,
+    alt: "Book cover showing an elderly man on a swing with an elderly woman, perfect for retirement gift ideas for men - LifeScript.",
+    title: "Grandparents on swing book cover for retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "Full-picture life story book cover featuring a family by a lake, ideal for gifts for retired men - LifeScript.",
+    title: "Full-picture family life story book cover for retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "Book cover featuring an elderly couple celebrating grandma's birthday, a thoughtful retirement gift for dad - LifeScript.",
+    title: "Birthday celebration book cover for retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt: "Book cover with a couple enjoying the sun in a forest, a heartwarming retirement gift for dad - LifeScript.",
+    title: "Grandparents enjoying nature book cover for retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover with author’s photo, customizable for the best retirement gift for a man - LifeScript.",
+    title: "Customizable memoir book cover for retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Minimalistic autobiography book cover design, perfect for a personalized retirement gift for dad - LifeScript..",
+    title: "Minimalistic autobiography book cover for retirement gifts",
   },
 ];

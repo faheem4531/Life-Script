@@ -26,7 +26,6 @@ const DiscoverQuestions = ({ questions, cardData }) => {
         lineWidth="160px"
         showStyle={true}
         marked={true}
-        removeStyleMbl={true}
         heading={"Discover our questions"}
         color="#3e4f3c"
       />

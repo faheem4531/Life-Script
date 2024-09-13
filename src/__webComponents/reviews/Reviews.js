@@ -2,7 +2,7 @@ import Stars from "@/__webAssets/pngs/review-stars.png";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-const Reviews = () => {
+const Reviews = ({ review, author }) => {
   const { t } = useTranslation();
 
   return (
@@ -41,11 +41,9 @@ const Reviews = () => {
           &#34;
         </Typography>
         <Box sx={{ maxWidth: "850px" }}>
-          <Typography sx={{ fontFamily: "Avenir" }}>
-            {t("landingPage.reviewSection.Description")}
-          </Typography>
+          <Typography sx={{ fontFamily: "Avenir" }}>{review}</Typography>
           <Typography sx={{ fontWeight: 900, marginTop: "20px" }}>
-            {t("landingPage.reviewSection.author")}
+            {author}
           </Typography>
         </Box>
         <Typography

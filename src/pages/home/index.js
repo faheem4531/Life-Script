@@ -33,6 +33,7 @@ import {
   useStoryTelling,
   useWorkingDetails,
 } from "@/utils/webContent";
+
 const HomePage = () => {
   const { t } = useTranslation();
   const heroSec = useHomeHero();
@@ -76,7 +77,10 @@ const HomePage = () => {
           icon={Gift}
         />
         <StoryTelling data={storyTelling} /> 
-        <Reviews />
+        <Reviews 
+        review={t("landingPage.reviewSection.Description")}
+        author={t("landingPage.reviewSection.author")}
+        />
         <Experience
           panelsData={homeFeaturesGif}
           heading={t("landingPage.featureSection.title")}
