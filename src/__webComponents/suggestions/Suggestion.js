@@ -97,15 +97,15 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
             ))}
             {btnTxt && (
               <Box marginTop={7}>
-              <Link href={"./stripe-page"}>
-                <Button
-                  title={btnTxt}
-                  width="190px"
-                  height="56px"
-                  img1={btnImg}
-                />
-              </Link>
-            </Box>
+                <Link href={"./stripe-page"}>
+                  <Button
+                    title={btnTxt}
+                    width="190px"
+                    height="56px"
+                    img1={btnImg}
+                  />
+                </Link>
+              </Box>
             )}
           </Box>
         </Box>
