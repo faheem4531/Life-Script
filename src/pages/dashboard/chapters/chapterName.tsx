@@ -117,15 +117,15 @@ const chapterName = () => {
   }, [openAiQuestionId]);
 
   const handleCancel = () => {
-    // if (!isPremium) {
-    //   setBuyPremium(true);
-    //   setOpenCustomizationDialog(false);
-    // } else {
+    if (!isPremium) {
+      setBuyPremium(true);
+      setOpenCustomizationDialog(false);
+    } else {
     if (areAllCompleted(allQuestions) === true) {
       gptSocketCall();
       setOpenCustomizationDialog(false);
     }
-    // }
+    }
   };
 
   const proceedFusion = () => {
@@ -771,10 +771,10 @@ const chapterName = () => {
         }}
         proceed={() => handleAddQuestion(emailQuestion.questionId)}
       />
-      {/* <TransitionsDialog
+      <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
-        description={`${t("richText.PreDes")}`}
+        description={`${t("richText.PreDesNF")}`}
         cancel={() => {
           setBuyPremium(false);
         }}
@@ -782,7 +782,7 @@ const chapterName = () => {
           setBuyPremium(false);
         }}
         proceed={() => router.push("/dashboard/SubscribePlans")}
-      /> */}
+      />
 
       {/* edit chapter name Modal */}
 
