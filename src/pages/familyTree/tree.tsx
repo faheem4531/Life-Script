@@ -1,45 +1,38 @@
+import LogoSvg from "@/_assets/svg/logo.svg";
 import FamilyTreeDataModal from "@/components/modal/FamilyTreeDataModal";
 import SelectRelationModal from "@/components/modal/SelectRelationModal";
 import {
-  updatePartner,
   addChildren,
   addParent,
-  uploadImage,
-  uploadImageFamilyTree,
+  getBookData,
   getTreeData,
   resetTreeData,
   setBookData,
-  getBookData,
+  updatePartner,
+  uploadImageFamilyTree
 } from "@/store/slices/chatSlice";
-import { getBookInterior } from "@/store/slices/authSlice";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
 import { Backdrop, Box, Button, IconButton, Typography } from "@mui/material";
 import * as d3 from "d3";
 import { zoom } from "d3";
 import { useEffect, useRef, useState } from "react";
 import ReactDOMServer from "react-dom/server";
 import { useDispatch } from "react-redux";
-import styles from "./FamilyTree.module.css";
-import { saveSvgAsPng, svgAsPngUri, svgAsDataUri } from "save-svg-as-png";
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import LogoSvg from "@/_assets/svg/logo.svg";
-import FamilyTreeSVG from "@/_assets/svg/family-tree-svg.svg";
 import { toast } from "react-toastify";
+import { saveSvgAsPng, svgAsPngUri } from "save-svg-as-png";
+import styles from "./FamilyTree.module.css";
 
-import CircularProgress from "@mui/material/CircularProgress";
-import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
-import { ClassNames } from "@emotion/react";
-import GlobelBtn from "@/components/button/Button";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
-import Right from "@/_assets/svg/arrow-right.svg";
-import Reset from "@/_assets/svg/reset-family.svg";
-import DownloadFamily from "@/_assets/svg/download-family.svg";
-import ZoomIn from "@/_assets/svg/zoomin.svg";
-import ZoomOut from "@/_assets/svg/zoom-out.svg";
-import Image from "next/image";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import MultiToolTip from "@/__webComponents/tooltip/MultiToolTip";
+import Right from "@/_assets/svg/arrow-right.svg";
+import DownloadFamily from "@/_assets/svg/download-family.svg";
+import Reset from "@/_assets/svg/reset-family.svg";
+import ZoomOut from "@/_assets/svg/zoom-out.svg";
+import ZoomIn from "@/_assets/svg/zoomin.svg";
+import GlobelBtn from "@/components/button/Button";
+import FamilyTreeAddModal from "@/components/modal/FamilyTreeAddModal";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import CircularProgress from "@mui/material/CircularProgress";
+import Image from "next/image";
 
 const FamilyTree = ({ familyTreeData }) => {
   const svgRef = useRef();
@@ -75,7 +68,10 @@ const FamilyTree = ({ familyTreeData }) => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      if (accessRole !== "FreePlan") {
+      if ((accessRole === "FreePlan") || (accessRole === "BasicPlan")) {
+        setIsPremium(false);
+      }
+      else{
         setIsPremium(true);
       }
     }
@@ -372,8 +368,7 @@ const FamilyTree = ({ familyTreeData }) => {
       case "top":
         svgElement.attr(
           "viewBox",
-          `${viewBox[0]} ${viewBox[1] - moveDistance} ${viewBox[2]} ${
-            viewBox[3]
+          `${viewBox[0]} ${viewBox[1] - moveDistance} ${viewBox[2]} ${viewBox[3]
           }`
         );
 
@@ -381,24 +376,21 @@ const FamilyTree = ({ familyTreeData }) => {
       case "left":
         svgElement.attr(
           "viewBox",
-          `${viewBox[0] - moveDistance} ${viewBox[1]} ${viewBox[2]} ${
-            viewBox[3]
+          `${viewBox[0] - moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]
           }`
         );
         break;
       case "bottom":
         svgElement.attr(
           "viewBox",
-          `${viewBox[0]} ${viewBox[1] + moveDistance} ${viewBox[2]} ${
-            viewBox[3]
+          `${viewBox[0]} ${viewBox[1] + moveDistance} ${viewBox[2]} ${viewBox[3]
           }`
         );
         break;
       case "right":
         svgElement.attr(
           "viewBox",
-          `${viewBox[0] + moveDistance} ${viewBox[1]} ${viewBox[2]} ${
-            viewBox[3]
+          `${viewBox[0] + moveDistance} ${viewBox[1]} ${viewBox[2]} ${viewBox[3]
           }`
         );
         break;
@@ -599,9 +591,8 @@ const FamilyTree = ({ familyTreeData }) => {
 
     const elbow = (d, i) => {
       const yOffset = d.target.data.spouseName ? -55 : 0;
-      return `M${d.source.y + 50},${d.source.x}H${d.target.y}V${
-        d.target.x + yOffset
-      }H${d.target.y + 10}`;
+      return `M${d.source.y + 50},${d.source.x}H${d.target.y}V${d.target.x + yOffset
+        }H${d.target.y + 10}`;
     };
 
     const nodes = d3.hierarchy(familyTreeData, (d) => d.childrens);
@@ -724,10 +715,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-          ? "b. " + born
-          : died
-          ? "d. " + died
-          : "b. Not Known";
+            ? "b. " + born
+            : died
+              ? "d. " + died
+              : "b. Not Known";
       renderText(30, -18, age || "", `${styles.dateLocation}`, false);
       // renderText(76, -40, d.data.location || "", `${styles.dateLocation}`);
       //for spouse
@@ -746,10 +737,10 @@ const FamilyTree = ({ familyTreeData }) => {
         spouseBorn && spouseDied
           ? spouseBorn + " - " + spouseDied
           : spouseBorn
-          ? "b. " + spouseBorn
-          : spouseDied
-          ? "d. " + spouseDied
-          : "b. Not Known";
+            ? "b. " + spouseBorn
+            : spouseDied
+              ? "d. " + spouseDied
+              : "b. Not Known";
       renderText(23, 110, spouseAge || "", `${styles.dateLocation}`, true);
       // renderText(76, 70, d.data.spouseLocation, `${styles.dateLocation}`);
 
@@ -771,10 +762,10 @@ const FamilyTree = ({ familyTreeData }) => {
         born && died
           ? born + " - " + died
           : born
-          ? "b. " + born
-          : died
-          ? "d. " + died
-          : "b. Not Known";
+            ? "b. " + born
+            : died
+              ? "d. " + died
+              : "b. Not Known";
       renderRect(10, -50, 100, `${styles.nameRect}`, false);
       renderImage(
         14,
@@ -841,7 +832,7 @@ const FamilyTree = ({ familyTreeData }) => {
                 }}
               >
                 <ButtonIcons
-                  onClick={() => {}}
+                  onClick={() => { }}
                   img={DownloadFamily}
                   iconSize={20}
                   btnText="PDF"
