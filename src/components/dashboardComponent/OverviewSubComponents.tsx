@@ -212,7 +212,7 @@ export const ViewTree = () => {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken?.accessRole;
 
-      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan" || accessRole === "FreePlan") {
         setIsPremium(true);
       } else {
         setIsPremium(false);

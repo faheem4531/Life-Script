@@ -1,46 +1,44 @@
-import BookCoverGreen from "@/_assets/svg/sidebar/book-cover-green.svg";
+import FaqGreen from "@/_assets/svg/TableOfContentIcon.svg";
 import AccountGreen from "@/_assets/svg/sidebar/account-green.svg";
 import AccountWhite from "@/_assets/svg/sidebar/account-white.svg";
+import BookCoverGreen from "@/_assets/svg/sidebar/book-cover-green.svg";
 import BookCoverWhite from "@/_assets/svg/sidebar/book-cover-white.svg";
 import CompletedGreen from "@/_assets/svg/sidebar/completed-green.svg";
 import CompletedWhite from "@/_assets/svg/sidebar/completed-white.svg";
-import FaqGreen from "@/_assets/svg/TableOfContentIcon.svg";
-import FaqWhite from "@/_assets/svg/sidebar/tableOfContent.svg";
+import ContactGreen from "@/_assets/svg/sidebar/contact-support-green.svg";
+import ContactWhite from "@/_assets/svg/sidebar/contact-support-white.svg";
+import EmailGreen from "@/_assets/svg/sidebar/email-green.svg";
+import EmailWhite from "@/_assets/svg/sidebar/email-white.svg";
+import GiftGreen from "@/_assets/svg/sidebar/gift-green.svg";
+import GiftWhite from "@/_assets/svg/sidebar/gift-white.svg";
 import HomeGreen from "@/_assets/svg/sidebar/home-green.svg";
 import HomeWhite from "@/_assets/svg/sidebar/home-white.svg";
 import ProgressGreen from "@/_assets/svg/sidebar/in-progress-green.svg";
 import ProgressWhite from "@/_assets/svg/sidebar/in-progress-white.svg";
-import MenuIcon from "@/_assets/svg/sidebar/menuIcon.svg";
 import MenuIconGreen from "@/_assets/svg/sidebar/menu-green.svg";
+import MenuIcon from "@/_assets/svg/sidebar/menuIcon.svg";
 import OverViewGreen from "@/_assets/svg/sidebar/overView-green.svg";
 import OverViewWhite from "@/_assets/svg/sidebar/overView-white.svg";
-import EmailGreen from "@/_assets/svg/sidebar/email-green.svg";
-import EmailWhite from "@/_assets/svg/sidebar/email-white.svg";
-import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
 import SuportGreen from "@/_assets/svg/sidebar/support-green.svg";
+import SuportWhite from "@/_assets/svg/sidebar/support-white.svg";
+import FaqWhite from "@/_assets/svg/sidebar/tableOfContent.svg";
 import TutorialGreen from "@/_assets/svg/sidebar/tutorial-green.svg";
 import TutorialWhite from "@/_assets/svg/sidebar/tutorial-white.svg";
-import GiftWhite from "@/_assets/svg/sidebar/gift-white.svg";
-import GiftGreen from "@/_assets/svg/sidebar/gift-green.svg";
-import ContactGreen from "@/_assets/svg/sidebar/contact-support-green.svg";
-import ContactWhite from "@/_assets/svg/sidebar/contact-support-white.svg";
-import FamilyTree from "../../_assets/svg/sidebar/family-tree.svg";
 import FamilyTreeWhite from "../../_assets/svg/sidebar/family-tree-white.svg";
+import FamilyTree from "../../_assets/svg/sidebar/family-tree.svg";
 
+import Logo from "@/_assets/svg/logo-dashboard.svg";
 import SubsWhite from "@/_assets/svg/subWhite.svg";
 import Subs from "@/_assets/svg/subs.svg";
-import Logo from "@/_assets/svg/logo-dashboard.svg";
-import { getBookCover } from "@/store/slices/chatSlice";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Box, CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
-import styles from "./Sidebar.module.css";
 import TransitionsDialog from "../modal/TransitionDialog";
+import styles from "./Sidebar.module.css";
 
 interface SideBarProps {
   menuClick: () => void;
@@ -97,7 +95,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken?.accessRole;
 
-      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan" || accessRole === "FreePlan") {
         setIsPremium(true);
       } else {
         setIsPremium(false);
@@ -160,12 +158,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* Overview  */}
           <Box>
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/overview" ||
-                currentRoute === "/dashboard/BookView"
+              className={`${styles.link} ${currentRoute === "/dashboard/overview" ||
+                  currentRoute === "/dashboard/BookView"
                   ? styles.active
                   : ""
-              }`}
+                }`}
               onClick={() => {
                 router.push("/dashboard/overview");
               }}
@@ -175,7 +172,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/overview" ||
-                  currentRoute === "/dashboard/BookView"
+                    currentRoute === "/dashboard/BookView"
                     ? OverViewWhite
                     : OverViewGreen
                 }
@@ -186,14 +183,13 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* chapters */}
           <Box className="step6-Chapters">
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/chapters" ||
-                currentRoute === "/dashboard/chapters/chapterName" ||
-                currentRoute === "/events"
+              className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
+                  currentRoute === "/dashboard/chapters/chapterName" ||
+                  currentRoute === "/events"
                   ? styles.active
                   : currentRoute === "/dashboard/chapters/completedChapter" &&
-                    styles.active
-              }`}
+                  styles.active
+                }`}
               onClick={() => {
                 setChilsdOpen(!childsOpen);
               }}
@@ -203,9 +199,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/chapters" ||
-                  currentRoute === "/dashboard/chapters/completedChapter" ||
-                  currentRoute === "/dashboard/chapters/chapterName" ||
-                  currentRoute === "/events"
+                    currentRoute === "/dashboard/chapters/completedChapter" ||
+                    currentRoute === "/dashboard/chapters/chapterName" ||
+                    currentRoute === "/events"
                     ? HomeWhite
                     : HomeGreen
                 }
@@ -231,13 +227,12 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
               <Box>
                 <Box sx={{ marginLeft: "20px" }} className={"step6-Chapters"}>
                   <a
-                    className={`${styles.link} ${
-                      currentRoute === "/dashboard/chapters" ||
-                      currentRoute === "/dashboard/chapters/chapterName" ||
-                      currentRoute === "/events"
+                    className={`${styles.link} ${currentRoute === "/dashboard/chapters" ||
+                        currentRoute === "/dashboard/chapters/chapterName" ||
+                        currentRoute === "/events"
                         ? styles.active
                         : ""
-                    }`}
+                      }`}
                     onClick={() => {
                       router.push("/dashboard/chapters");
                     }}
@@ -248,8 +243,8 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/chapters" ||
-                        currentRoute === "/dashboard/chapters/chapterName" ||
-                        currentRoute === "/events"
+                          currentRoute === "/dashboard/chapters/chapterName" ||
+                          currentRoute === "/events"
                           ? ProgressWhite
                           : ProgressGreen
                       }
@@ -259,10 +254,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${
-                      currentRoute === "/dashboard/chapters/completedChapter" &&
+                    className={`${styles.link} ${currentRoute === "/dashboard/chapters/completedChapter" &&
                       styles.active
-                    }`}
+                      }`}
                     onClick={() => {
                       router.push("/dashboard/chapters/completedChapter");
                     }}
@@ -285,9 +279,8 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* TableOfContent */}
           <Box className="step7-TableOfContent">
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/TableOfContent" && styles.active
-              }`}
+              className={`${styles.link} ${currentRoute === "/dashboard/TableOfContent" && styles.active
+                }`}
               onClick={() => router.push("/dashboard/TableOfContent")}
             >
               <Image
@@ -305,15 +298,14 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* familyTree */}
           <Box className="step8-FamilyTree">
             <a
-              className={`${styles.link} ${
-                currentRoute === "/familyTree" && styles.active
-              }`}
+              className={`${styles.link} ${currentRoute === "/familyTree" && styles.active
+                }`}
               onClick={() => {
-                  if (isPremium) {
-                router.push("/familyTree");
-                  } else {
-                    setBuyPremium(true);
-                  }
+                if (isPremium) {
+                  router.push("/familyTree");
+                } else {
+                  setBuyPremium(true);
+                }
               }}
             >
               <Image
@@ -329,7 +321,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* BookCover */}
           <Box className="step9-BookCovers">
             <a
-               className={`${styles.link} ${currentRoute === "/dashboard/BookCover/SelectBookCover"
+              className={`${styles.link} ${currentRoute === "/dashboard/BookCover/SelectBookCover"
                 ? styles.active
                 : currentRoute === "/dashboard/BookCover/ViewBookCover"
                   ? styles.active
@@ -342,8 +334,8 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 alt="icon"
                 src={
                   currentRoute === "/dashboard/BookCover/SelectBookCover" ||
-                  currentRoute === "/dashboard/BookCover/EditBookCover" ||
-                  currentRoute === "/dashboard/BookCover/ViewBookCover"
+                    currentRoute === "/dashboard/BookCover/EditBookCover" ||
+                    currentRoute === "/dashboard/BookCover/ViewBookCover"
                     ? BookCoverWhite
                     : BookCoverGreen
                 }
@@ -355,13 +347,12 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* SubscribePlans */}
           <Box>
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/SubscribePlans"
+              className={`${styles.link} ${currentRoute === "/dashboard/SubscribePlans"
                   ? styles.active
                   : currentRoute ===
-                      "/dashboard/SubscribePlans/SubscriptionPayment" &&
-                    styles.active
-              }`}
+                  "/dashboard/SubscribePlans/SubscriptionPayment" &&
+                  styles.active
+                }`}
               onClick={() => router.push("/dashboard/SubscribePlans")}
             >
               <Image
@@ -369,7 +360,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/SubscribePlans" ||
-                  currentRoute ===
+                    currentRoute ===
                     "/dashboard/SubscribePlans/SubscriptionPayment"
                     ? SubsWhite
                     : Subs
@@ -381,9 +372,8 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* profileSetting */}
           <Box>
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/profileSetting" && styles.active
-              }`}
+              className={`${styles.link} ${currentRoute === "/dashboard/profileSetting" && styles.active
+                }`}
               onClick={() => router.push("/dashboard/profileSetting")}
             >
               <Image
@@ -401,12 +391,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
           {/* ReferAFriend */}
           <Box>
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/Support/Gift" ||
-                currentRoute === "/dashboard/Support/ReferAFriend"
+              className={`${styles.link} ${currentRoute === "/dashboard/Support/Gift" ||
+                  currentRoute === "/dashboard/Support/ReferAFriend"
                   ? styles.active
                   : ""
-              }`}
+                }`}
               onClick={() => {
                 router.push("/dashboard/Support/Gift");
               }}
@@ -417,7 +406,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support/Gift" ||
-                  currentRoute === "/dashboard/Support/ReferAFriend"
+                    currentRoute === "/dashboard/Support/ReferAFriend"
                     ? GiftWhite
                     : GiftGreen
                 }
@@ -435,12 +424,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
             className="step10-tutorials"
           >
             <a
-              className={`${styles.link} ${
-                currentRoute === "/dashboard/Support"
+              className={`${styles.link} ${currentRoute === "/dashboard/Support"
                   ? styles.active
                   : currentRoute === "/dashboard/Support/Tutorials" &&
-                    styles.active
-              }`}
+                  styles.active
+                }`}
               onClick={() => {
                 setSupportChilsdOpen(!supportChildsOpen);
               }}
@@ -450,7 +438,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 className={styles.sidebarIcon}
                 src={
                   currentRoute === "/dashboard/Support" ||
-                  currentRoute === "/dashboard/Support/Tutorials"
+                    currentRoute === "/dashboard/Support/Tutorials"
                     ? SuportWhite
                     : SuportGreen
                 }
@@ -476,12 +464,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
               <Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${
-                      currentRoute === "/dashboard/Support/Tutorials" ||
-                      currentRoute === "/dashboard/Support/TutorialsDetail"
+                    className={`${styles.link} ${currentRoute === "/dashboard/Support/Tutorials" ||
+                        currentRoute === "/dashboard/Support/TutorialsDetail"
                         ? styles.active
                         : ""
-                    }`}
+                      }`}
                     onClick={() => {
                       router.push("/dashboard/Support/Tutorials");
                     }}
@@ -492,7 +479,7 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                       className={styles.sidebarIcon}
                       src={
                         currentRoute === "/dashboard/Support/Tutorials" ||
-                        currentRoute === "/dashboard/Support/TutorialsDetail"
+                          currentRoute === "/dashboard/Support/TutorialsDetail"
                           ? TutorialWhite
                           : TutorialGreen
                       }
@@ -502,10 +489,9 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${
-                      currentRoute === "/dashboard/emailPreference" &&
+                    className={`${styles.link} ${currentRoute === "/dashboard/emailPreference" &&
                       styles.active
-                    }`}
+                      }`}
                     onClick={() => router.push("/dashboard/emailPreference")}
                   >
                     <Image
@@ -522,9 +508,8 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 </Box>
                 <Box sx={{ marginLeft: "20px" }}>
                   <a
-                    className={`${styles.link} ${
-                      currentRoute === "/dashboard/Support" && styles.active
-                    }`}
+                    className={`${styles.link} ${currentRoute === "/dashboard/Support" && styles.active
+                      }`}
                     onClick={() => {
                       router.push("/dashboard/Support");
                     }}
