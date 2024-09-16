@@ -1,20 +1,37 @@
-import React, { useEffect, useState } from "react";
 import Img from "@/_assets/book-cover";
 import BookCover from "@/_assets/svg/book-cover-header.svg";
 import Layout from "@/components/Layout/Layout";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
-import { Box, Grid, Typography, CircularProgress } from "@mui/material";
-import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import { getBookCover } from "@/store/slices/chatSlice";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
 const SelectBookCover = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isPremium, setIsPremium] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false)
   const router = useRouter();
   const { flag } = router.query;
   const dispatch: any = useDispatch();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken?.accessRole;
+      if (accessRole === "PremiumPlan") {
+        setIsPremium(true);
+      } else {
+        setIsPremium(false);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,7 +47,7 @@ const SelectBookCover = () => {
           const destination = res?.coverNumber
             ? `/dashboard/BookCover/ViewBookCover?CoverNumber=${res?.coverNumber}`
             : "/dashboard/BookCover/SelectBookCover";
-    
+
           router.push(destination);
         }
       })
@@ -45,6 +62,26 @@ const SelectBookCover = () => {
   };
 
   const myArray = [...Array(Object.keys(Img).length)].map((_, i) => i + 1);
+
+  const handleCoverClick = (index: number) => {
+    if (index < 3) {
+      router.push(
+        `/dashboard/BookCover/EditBookCover?CoverNumber=${index + 1
+        }`
+      )
+    } else {
+      if (isPremium) {
+        router.push(
+          `/dashboard/BookCover/EditBookCover?CoverNumber=${index + 1
+          }`
+        )
+      }
+      else if (!isPremium) {
+        setBuyPremium(true);
+      }
+    }
+  }
+
 
   return (
     <div>
@@ -102,13 +139,7 @@ const SelectBookCover = () => {
                         },
                       },
                     }}
-                    onClick={() =>
-                      router.push(
-                        `/dashboard/BookCover/EditBookCover?CoverNumber=${
-                          index + 1
-                        }`
-                      )
-                    }
+                    onClick={() => handleCoverClick(index)}
                   >
                     <img
                       src={getCoverImage(index + 1)}
@@ -143,6 +174,22 @@ const SelectBookCover = () => {
           )}
         </Box>
       </Layout>
+
+      <TransitionsDialog
+        open={buyPremium}
+        heading={`${t("richText.ByPreHeading")}`}
+        description={t("richText.PreDesCovers")}
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => {
+          setBuyPremium(false);
+          router.push("/dashboard/SubscribePlans");
+        }}
+      />
     </div>
   );
 };
