@@ -940,10 +940,10 @@
     "STT": "Voice-to-text",
     "MAC": "Mark As Complete",
     "ByPreHeading": "Upgrade",
-    "PreDes": "Voice-to-text is only available for Standard and Premium users. Would you like to buy now?",
-    "PreDesNF": "Narrative Fusion is only available for Standard and Premium users. Would you like to buy now?",
+    "PreDes": "Voice-to-text is only available for Standard and Premium users. Would you like to upgrade now?",
+    "PreDesNF": "Narrative Fusion is only available for Standard and Premium users. Would you like to upgrade now?",
     "PreDesCovers": "Premium book covers are only available for Premium users. Would you like to upgrade now?",
-    "description": "Family Tree is only available for Standard and Premium users. Would you like to buy now?"
+    "description": "Family Tree is only available for Standard and Premium users. Would you like to upgrade now?"
   },
   "StartNewTem": {
     "StartNewTem": "Start new chapter",

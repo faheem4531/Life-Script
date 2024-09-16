@@ -1,12 +1,13 @@
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
 import ModalImage from "@/_assets/svg/Frame.svg";
-import Book from "@/_assets/svg/viewbook.svg";
 import FamilyTree from "@/_assets/svg/overview-family-tree.svg";
+import Book from "@/_assets/svg/viewbook.svg";
 import {
   getChapters,
-  selectAllChapters,
   getPrintingBookStatus,
+  selectAllChapters,
 } from "@/store/slices/chatSlice";
-import { selectLuluPaymentStatus } from "@/store/slices/authSlice";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -17,8 +18,6 @@ import GlobelBtn from "../button/Button";
 import CustomizationDialog from "../modal/CustomizationDialog";
 import TransitionsDialog from "../modal/TransitionDialog";
 import styles from "./Custom.module.css";
-import TooltipTab from "@/__webComponents/tooltip/Tooltip";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 export const ViewBook = () => {
   const dispatch: any = useDispatch();
@@ -203,39 +202,79 @@ export const ViewBook = () => {
 export const ViewTree = () => {
   const { t } = useTranslation();
   const router = useRouter();
-  const [luluStatus, setLuluStatus] = useState("");
+  const [isPremium, setIsPremium] = useState(false);
+  const [buyPremium, setBuyPremium] = useState(false);
+
   useEffect(() => {
-    const lulu = localStorage.getItem("luluStatus");
-    setLuluStatus(lulu);
+    const jwt = require("jsonwebtoken");
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwt.decode(token);
+      const accessRole = decodedToken?.accessRole;
+
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+        setIsPremium(true);
+      } else {
+        setIsPremium(false);
+      }
+    }
   }, []);
+
   return (
-    <Box
-      onClick={() => router.push("/familyTree")}
-      sx={{
-        bgcolor: "#E1683B",
-        cursor: "pointer",
-        color: "#fff",
-        width: "100%",
-        height: "50px",
-        borderRadius: "4px",
-        position: "relative",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        columnGap: "16px",
-      }}
-      className={styles.viewTree}
-    >
-      <Image alt="next" src={FamilyTree} />
-      <Typography
+    <>
+      <Box
+        onClick={() => {
+          if (isPremium) {
+            router.push("/familyTree");
+          } else {
+            setBuyPremium(true);
+          }
+        }
+        }
         sx={{
-          fontSize: { xl: "21px", sm: "18px", xs: "14px" },
-          fontWeight: 500,
+          bgcolor: "#E1683B",
+          cursor: "pointer",
+          color: "#fff",
+          width: "100%",
+          height: "50px",
+          borderRadius: "4px",
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          columnGap: "16px",
         }}
+        className={styles.viewTree}
       >
-        {t("overView.famliyTreeBtn")}
-      </Typography>
-    </Box>
+        <Image alt="next" src={FamilyTree} />
+        <Typography
+          sx={{
+            fontSize: { xl: "21px", sm: "18px", xs: "14px" },
+            fontWeight: 500,
+          }}
+        >
+          {t("overView.famliyTreeBtn")}
+        </Typography>
+      </Box>
+
+
+
+      <TransitionsDialog
+        open={buyPremium}
+        heading={`${t("richText.ByPreHeading")}`}
+        description={t("richText.description")}
+        cancel={() => {
+          setBuyPremium(false);
+        }}
+        closeModal={() => {
+          setBuyPremium(false);
+        }}
+        proceed={() => {
+          setBuyPremium(false);
+          router.push("/dashboard/SubscribePlans");
+        }}
+      />
+    </>
   );
 };
 
