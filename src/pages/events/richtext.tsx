@@ -44,6 +44,7 @@ import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
 import backArrow from "../../_assets/svg/left.svg";
 import styles from "./styles.module.css";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -142,12 +143,12 @@ const RichText = ({ questionId }) => {
   };
 
   const handleSpeechtoText = () => {
-    // if (isPremium) {
-    setDetecting(true);
-    handleToggleRecording();
-    // } else {
-    // setBuyPremium(true);
-    // }
+    if (isPremium) {
+      setDetecting(true);
+      handleToggleRecording();
+    } else {
+      setBuyPremium(true);
+    }
   };
 
   useEffect(() => {
@@ -590,11 +591,10 @@ const RichText = ({ questionId }) => {
                         ? `${t("richText.stop")}`
                         : `${t("richText.STT")}`
                   }
-                  color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
+                  color={!isPremium ? " grey" : detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
                   bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
                   border="1px solid #E1683B"
                   onClick={handleSpeechtoText}
-                  disabled={!isPremium}
                 />
 
                 {true && (
@@ -768,7 +768,7 @@ const RichText = ({ questionId }) => {
           </Box>
         </Box>
       )}
-      {/* 
+      
       <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}
@@ -780,7 +780,7 @@ const RichText = ({ questionId }) => {
           setBuyPremium(false);
         }}
         proceed={() => router.push("/dashboard/SubscribePlans")}
-      /> */}
+      />
     </Box>
   );
 };
