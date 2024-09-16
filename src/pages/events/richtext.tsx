@@ -3,8 +3,7 @@ import {
   compiledChapter,
   getChapters,
   simpleChapter,
-  uploadImage,
-  uploadImageForCover,
+  uploadImageForCover
 } from "@/store/slices/chatSlice"; //uploadImage
 import { Box, CircularProgress } from "@mui/material";
 import {
@@ -23,7 +22,6 @@ import MicOff from "@/_assets/svg/mic-off.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
 import TextSave from "@/_assets/svg/save-text-icon.svg";
 import { default as GlobelBtn } from "@/components/button/Button";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   getAnswerbyId,
   getQuestionbyId,
@@ -31,6 +29,7 @@ import {
   updateChapterResponse,
   updateQuestion,
 } from "@/store/slices/chatSlice";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import "core-js/stable";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
@@ -43,7 +42,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import backArrow from "../../_assets/svg/left.svg";
 import styles from "./styles.module.css";
 
@@ -121,7 +119,7 @@ const RichText = ({ questionId }) => {
         setListening(true);
       };
 
-      socket.onclose = () => {};
+      socket.onclose = () => { };
 
       socket.onerror = (error) => {
         console.error("WebSocket error:", error);
@@ -589,13 +587,14 @@ const RichText = ({ questionId }) => {
                     detecting
                       ? `${t("richText.detecte")}`
                       : listening
-                      ? `${t("richText.stop")}`
-                      : `${t("richText.STT")}`
+                        ? `${t("richText.stop")}`
+                        : `${t("richText.STT")}`
                   }
                   color={detecting ? "#E1683B" : listening ? "#fff" : "#E1683B"}
                   bgColor={detecting ? "#fff" : listening ? "#F06262" : "#fff"}
                   border="1px solid #E1683B"
                   onClick={handleSpeechtoText}
+                  disabled={!isPremium}
                 />
 
                 {true && (
