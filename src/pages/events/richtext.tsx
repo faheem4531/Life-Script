@@ -22,6 +22,7 @@ import MicOff from "@/_assets/svg/mic-off.svg";
 import MicRegular from "@/_assets/svg/mic-regular.svg";
 import TextSave from "@/_assets/svg/save-text-icon.svg";
 import { default as GlobelBtn } from "@/components/button/Button";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
 import {
   getAnswerbyId,
   getQuestionbyId,
@@ -44,7 +45,6 @@ import { toast } from "react-toastify";
 import "regenerator-runtime/runtime";
 import backArrow from "../../_assets/svg/left.svg";
 import styles from "./styles.module.css";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -157,7 +157,7 @@ const RichText = ({ questionId }) => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken?.accessRole;
-      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan" || accessRole === "FreePlan") {
         setIsPremium(true);
       } else {
         setIsPremium(false);
@@ -768,7 +768,7 @@ const RichText = ({ questionId }) => {
           </Box>
         </Box>
       )}
-      
+
       <TransitionsDialog
         open={buyPremium}
         heading={`${t("richText.ByPreHeading")}`}

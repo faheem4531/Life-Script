@@ -3,7 +3,6 @@ import Layout from "@/components/Layout/Layout";
 import AddChapterName from "@/components/dashboardComponent/AddChapterName";
 import NoQuestions from "@/components/dashboardComponent/NoQuestions";
 // import ProgressBar from "@/components/dashboardComponent/ProgressBar";
-import ModalImage from "@/_assets/png/view-template-modal.png";
 import Frame from "@/_assets/svg/Frame.svg";
 import GlobelBtn from "@/components/button/Button";
 import FloatButton from "@/components/button/FloatButton";
@@ -13,10 +12,12 @@ import Tooltip from "@/components/dashboardComponent/Tooltip";
 import CustomizationDialog from "@/components/modal/CustomizationDialog";
 import TransitionsDialog from "@/components/modal/TransitionDialog";
 import AddQuestion from "@/pages/events/addQuestion";
-import RichTextViewer from "@/pages/events/response";
-import { toast } from "react-toastify";
 import socket from "@/services/socketManager";
+import { toast } from "react-toastify";
 
+import TooltipTab from "@/__webComponents/tooltip/Tooltip";
+import addIcon from "@/_assets/svg/AddIcon.svg";
+import suggestionIcon from "@/_assets/svg/suggestionsIcon.svg";
 import {
   createQuestion,
   getChapterbyId,
@@ -24,28 +25,20 @@ import {
   getOpenaiQuestion,
   getaiQuestions,
   openaiQuestion,
+  selectAllChapters,
   selectChapter,
   simpleChapter,
-  createChapter,
-  deleteSelectedChapter,
-  selectAllChapters,
-  updateChapter,
+  updateChapter
 } from "@/store/slices/chatSlice";
-import { Box, InputAdornment, TextField, Typography } from "@mui/material";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Box, TextField, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import Check from "../../../../public/checkIcon.png";
-import addIcon from "@/_assets/svg/AddIcon.svg";
-import backArrow from "@/_assets/svg/left.svg";
-import suggestionIcon from "@/_assets/svg/suggestionsIcon.svg";
 import QuestionComponent from "./components/AIGeneration";
-import AddChapter from "./addChapter";
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import TooltipTab from "@/__webComponents/tooltip/Tooltip";
 
 
 const chapterName = () => {
@@ -121,10 +114,10 @@ const chapterName = () => {
       setBuyPremium(true);
       setOpenCustomizationDialog(false);
     } else {
-    if (areAllCompleted(allQuestions) === true) {
-      gptSocketCall();
-      setOpenCustomizationDialog(false);
-    }
+      if (areAllCompleted(allQuestions) === true) {
+        gptSocketCall();
+        setOpenCustomizationDialog(false);
+      }
     }
   };
 
@@ -328,7 +321,7 @@ const chapterName = () => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken?.accessRole;
-      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan") {
+      if (accessRole === "PremiumPlan" || accessRole === "GoldPlan" || accessRole === "FreePlan") {
         setIsPremium(true);
       } else {
         setIsPremium(false);
@@ -357,8 +350,8 @@ const chapterName = () => {
             sx={{
               display: { sm: "block", xs: "" },
               m: { sm: "0", xs: "20px 20px 0" },
-              marginRight:"20px"
-           
+              marginRight: "20px"
+
             }}
           >
             <AddChapterName
@@ -660,7 +653,7 @@ const chapterName = () => {
         description={`${t("ChName.NFDes")}`}
         cancel={proceedFusion}
         proceed={handleCancel}
-        proceedText= {`${t("ChName.NFuseBtn")}`}// Customize the text for the "Yes" button
+        proceedText={`${t("ChName.NFuseBtn")}`}// Customize the text for the "Yes" button
         cancelText={`${t("ChName.NFOriginBtn")}`} // Customize the text for the "No" button
         closeModal={() => setOpenCustomizationDialog(false)}
       />
