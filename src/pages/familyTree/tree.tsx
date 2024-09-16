@@ -68,7 +68,7 @@ const FamilyTree = ({ familyTreeData }) => {
     if (token) {
       const decodedToken = jwt.decode(token);
       const accessRole = decodedToken.accessRole;
-      if ((accessRole === "FreePlan") || (accessRole === "BasicPlan")) {
+      if (accessRole === "FreePlan") {
         setIsPremium(false);
       }
       else{

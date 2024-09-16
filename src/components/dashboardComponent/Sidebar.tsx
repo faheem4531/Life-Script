@@ -309,11 +309,11 @@ const SideBar: React.FC<SideBarProps> = ({ menuClick, handleSideCheck }) => {
                 currentRoute === "/familyTree" && styles.active
               }`}
               onClick={() => {
-                //   if (isPremium) {
+                  if (isPremium) {
                 router.push("/familyTree");
-                //   } else {
-                //     setBuyPremium(true);
-                //   }
+                  } else {
+                    setBuyPremium(true);
+                  }
               }}
             >
               <Image
