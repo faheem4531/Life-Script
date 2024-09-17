@@ -73,7 +73,7 @@ const RetiredMen = () => {
         <Testimonial reviews={testimonials} heading="What our customers say" />
         <Working
           data={workingData}
-          heading={"How LifeScrip "}
+          heading={"How LifeScript"}
           marked={"works"}
           width={"300px"}
         />
@@ -90,7 +90,7 @@ const RetiredMen = () => {
         <Experience
           panelsData={featuresGif}
           headingStyle={false}
-          heading="Features that make it easy "
+          heading="Features that make it "
           marked="easy"
         />
         <Reviews
