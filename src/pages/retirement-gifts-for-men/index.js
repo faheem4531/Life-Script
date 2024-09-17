@@ -27,7 +27,7 @@ import {
   useWorkingDetails,
 } from "@/utils/webContent";
 
-const StoryworthAlternative = () => {
+const RetiredMen = () => {
   const { t } = useTranslation();
   const workingData = useWorkingDetails(t);
   const retiredMenQA = useRetiredMenQA(t);
@@ -126,4 +126,4 @@ const StoryworthAlternative = () => {
   );
 };
 
-export default StoryworthAlternative;
+export default RetiredMen;
