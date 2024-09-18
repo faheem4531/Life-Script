@@ -18,7 +18,7 @@ import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
-  useOurBookCoverforRetiredMen,
+  useOurBookCoverforRetiredWomen,
   useRetiredMenFeaturesGif,
   useRetiredMenQA,
   useRetiredWomenSuggestions,
@@ -34,7 +34,7 @@ const RetiredWomen = () => {
   const retiredWomenSuggestions = useRetiredWomenSuggestions(t);
   const testimonials = useRetiredWomenTestimonials(t);
   const suggestedQuestions = useSuggestedQuestions(t);
-  const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
+  const ourBookCoverforRetiredWomen = useOurBookCoverforRetiredWomen(t);
   const featuresGif = useRetiredMenFeaturesGif(t);
 
   return (
@@ -53,8 +53,8 @@ const RetiredWomen = () => {
           marked="women"
           discription="Surprise her with an unforgettable trip down memory lane, where she can share her life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to her doorstep"
           buttonText="Buy Now"
-          imgTitle="Opened autobiography book for men’s retirement gift"
-          alt="An opened autobiography book, a thoughtful retirement gift for men to share their life stories - LifeScript."
+          imgTitle="Opened autobiography book for women’s retirement gift"
+          alt="An opened autobiography book, a thoughtful retirement gift for women to share their life stories - LifeScript."
           subContentWidth="900px"
           lineWidth={150}
         />
@@ -83,7 +83,7 @@ const RetiredWomen = () => {
           from personalised suggestions."
         />
         <OurBooks
-          details={ourBookCoverforAlternative}
+          details={ourBookCoverforRetiredWomen}
           heading={t("landingPage.bookSection.title")}
           marked={t("landingPage.bookSection.subTitle")}
         />

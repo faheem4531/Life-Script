@@ -1218,3 +1218,36 @@ export const useRetiredWomenTestimonials = (t) => [
       "Honestly, I didn’t think I’d have the patience for this, but LifeScript has been really fun. My daughter got it for me, and it’s been such a unique way to spend time during my retirement. I’ve been able to document all the little moments in my life, and now my story is all there in one beautiful book. My grandkids love hearing my stories, and that’s the best part for me.",
   },
 ];
+
+export const useOurBookCoverforRetiredWomen = (t) => [
+  {
+    coverImage: bookCovers.cover1,
+    alt:  "Book cover showing an elderly couple on a swing, perfect for retirement gift ideas for women - LifeScript.",
+    title: "Grandparents on swing book cover for women’s retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "Full-picture life story book cover featuring a family, ideal for retirement gift ideas for women - LifeScript.",
+    title: "Full-picture family book cover for women’s retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "Book cover featuring an elderly couple celebrating grandma’s birthday, a thoughtful retirement gift for women - LifeScript.",
+    title: "Birthday celebration book cover as retirement gift for woman",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt:  "Book cover with a couple enjoying the sun in a forest, a heartwarming retirement gift for women - LifeScript.",
+    title: "Grandparents enjoying nature book cover for women’s retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover with author’s photo, customizable for the best retirement gift for a woman - LifeScript.",
+    title: "Customizable memoir book cover for women’s retirement gifts",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Minimalistic autobiography book cover design, perfect for a personalized retirement gift for women - LifeScript.",
+    title:  "Minimalistic book cover for women’s retirement gifts",
+  },
+];
