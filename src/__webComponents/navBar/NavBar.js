@@ -246,7 +246,8 @@ const NavBar = ({ color, logo }) => {
 
         {!(
           pathname === "/storyworth-alternative" ||
-          pathname === "/retirement-gifts-for-men"
+          pathname === "/retirement-gifts-for-men" ||
+          pathname === "/retirement-gifts-for-women"
         ) && (
           <Box
             sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}

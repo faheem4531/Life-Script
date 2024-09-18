@@ -21,7 +21,7 @@ import {
   useOurBookCoverforRetiredMen,
   useRetiredMenFeaturesGif,
   useRetiredMenQA,
-  useRetiredMenSuggestions,
+  useRetiredWomenSuggestions,
   useRetiredMenTestimonials,
   useSuggestedQuestions,
   useWorkingDetails,
@@ -31,7 +31,7 @@ const RetiredWomen = () => {
   const { t } = useTranslation();
   const workingData = useWorkingDetails(t);
   const retiredMenQA = useRetiredMenQA(t);
-  const retiredMenSuggestions = useRetiredMenSuggestions(t);
+  const retiredWomenSuggestions = useRetiredWomenSuggestions(t);
   const testimonials = useRetiredMenTestimonials(t);
   const suggestedQuestions = useSuggestedQuestions(t);
   const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
@@ -50,8 +50,8 @@ const RetiredWomen = () => {
         <LandingIntro
           bgGreen={false}
           heading="LifeScript, the best retirement gift for "
-          marked="men"
-          discription="Surprise him with an unforgettable trip down memory lane, where he can share his life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to his doorstep"
+          marked="women"
+          discription="Surprise her with an unforgettable trip down memory lane, where she can share her life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to her doorstep"
           buttonText="Buy Now"
           imgTitle="Opened autobiography book for men’s retirement gift"
           alt="An opened autobiography book, a thoughtful retirement gift for men to share their life stories - LifeScript."
@@ -64,8 +64,8 @@ const RetiredWomen = () => {
           }}
         >
           <Suggestion
-            heading="A retirement gift empowering him to:"
-            data={retiredMenSuggestions}
+            heading="A retirement gift that helps her:"
+            data={retiredWomenSuggestions}
             btnTxt="Gift now"
             btnImg={Gift}
           />

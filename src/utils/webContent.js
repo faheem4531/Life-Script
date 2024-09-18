@@ -1153,3 +1153,36 @@ export const useOurBookCoverforRetiredMen = (t) => [
     title: "Minimalistic autobiography book cover for retirement gifts",
   },
 ];
+
+export const useRetiredWomenSuggestions = (t) => {
+  const imageData = {
+    src: others.homeSuggestionWomen,
+    alt: " A touching moment between grandmother and granddaughter, symbolizing a thoughtful retirement gift for women to share their life stories - LifeScript.",
+    title:
+      "Grandmother and granddaughter moment - Retirement gift for women",
+  };
+  const content = [
+    {
+      title: "Celebrate the journey so far",
+      subTitle:
+        "Retirement isn’t the end—it’s a chance to look back and celebrate everything she’s accomplished. This gift lets her share her stories, capturing the moments and milestones that made her who she is today.",
+    },
+    {
+      title: "Share stories that matter",
+      subTitle:
+        "She has stories that deserve to be told—the highs, the lows, the lessons learned. This is her chance to put them into words, creating something her family can hold on to and learn from for years to come.",
+    },
+    {
+      title: "Reconnect with family",
+      subTitle:
+        "Her stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring her voice is heard for generations.",
+    },
+    {
+      title: "Reflect on life’s moments",
+      subTitle:
+        "Retirement is the perfect time to look back on the moments that shaped her. This isn’t just a gift—it’s a way to relive the laughter, the love, and the journey that made her life truly special.",
+    },
+  ];
+
+  return { imageData, content };
+};

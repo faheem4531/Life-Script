@@ -34,6 +34,8 @@ export const images = {
   others: {
     homeSuggestion:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725882536/assets/family-collage-life-story-books_xakcho.webp",
+    homeSuggestionWomen:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726656794/assets/grandmother-granddaughter-book-gift_qxjohx.webp",
   },
   bookCovers: {
     cover1:
