@@ -11,6 +11,7 @@ export function Content({
   mblcolor,
   bg,
   color,
+  HeadMB
 }) {
   let clr = color || "#3E4F3C";
   if (bg == true || bg == "half") {
@@ -29,7 +30,7 @@ export function Content({
           fontSize: { md: "32px", sm: "28px", sx: "24px", xs: "28px" },
           color: { xs: color || mblcolor, md: clr, sm: color || "#3E4F3C" },
           fontWeight: 500,
-          marginBottom: { lg: "20px", md: "10px", xs: "10px" },
+          marginBottom: { lg: "10px", md: "10px", xs: "10px" },
           fontFamily: "Besley !important",
           lineHeight: { sm: "50px", xs: "36px" },
         }}

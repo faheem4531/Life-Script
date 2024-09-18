@@ -5,6 +5,7 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
 import Gift from "@/__webAssets/svgs/gift.svg";
+import Shape from "@/__webAssets/svgs/input-shape.svg";
 import OurBooks from "@/__webComponents/books/OurBooks";
 import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
@@ -19,8 +20,8 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
   useOurBookCoverforRetiredWomen,
-  useRetiredWomenQA,
   useRetiredWomenFeaturesGif,
+  useRetiredWomenQA,
   useRetiredWomenSuggestions,
   useRetiredWomenTestimonials,
   useSuggestedQuestions,
@@ -73,7 +74,7 @@ const RetiredWomen = () => {
         <Testimonial reviews={testimonials} heading="What our customers say" />
         <Working
           data={workingData}
-          heading={"How LifeScrip "}
+          heading={"How LifeScript "}
           marked={"works"}
           width={"300px"}
         />
@@ -90,7 +91,7 @@ const RetiredWomen = () => {
         <Experience
           panelsData={featuresGif}
           headingStyle={false}
-          heading="Features that make it easy "
+          heading="Features that make it "
           marked="easy"
         />
         <Reviews
@@ -111,14 +112,15 @@ const RetiredWomen = () => {
         </Box>
         <GotQuestions questions={retiredWomenQA} />
         <ContactFooter
-          title={"Still have any "}
-          marked={"questions?"}
-          lineWidth={170}
-          subTitle={t("pricingSection.stillConfusedSection.subTitle")}
-          input1={t("pricingSection.stillConfusedSection.input1")}
-          input2={t("pricingSection.stillConfusedSection.input2")}
-          input3={t("pricingSection.stillConfusedSection.input3")}
-          button={t("pricingSection.stillConfusedSection.btnText")}
+          title={"Not the right moment? Set a"}
+          marked={t("landingPage.reminderSection.subTitle")}
+          date={true}
+          subTitle={t("landingPage.reminderSection.description")}
+          input1={t("landingPage.reminderSection.input1")}
+          input2={t("landingPage.reminderSection.input2")}
+          input3={t("landingPage.reminderSection.input3")}
+          button={t("landingPage.reminderSection.btnText")}
+          shape={Shape}
         />
         <Footer />
       </Box>

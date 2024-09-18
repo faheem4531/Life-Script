@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
+import ListPointsG from "@/__webAssets/svgs/curved-list-for-greenbg.svg";
 import ListPoints from "@/__webAssets/svgs/curved-list.svg";
 import Button from "@/__webComponents/button/Button";
 import Content from "@/__webComponents/headings/Content";
@@ -80,11 +81,11 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
           }}
         >
           <Image
-            src={ListPoints}
+            src={bgGreen ? ListPointsG : ListPoints}
             alt="points"
             className={styles.pointsLine}
             loading="lazy"
-            style={{ marginTop: "40px" }}
+            style={{ marginTop: "30px" }}
           />
           <Box sx={{ marginLeft: { md: "30px" } }}>
             {content.map((item, index) => (
@@ -93,6 +94,7 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
                 heading={item.title}
                 subHeading={item.subTitle}
                 color={bgGreen ? "#F3ECDA" : "#3E4F3C"}
+                subFonts={bgGreen && "15px"}
               />
             ))}
             {btnTxt && (
