@@ -57,7 +57,7 @@ const StoryworthAlternative = () => {
           marked={"alternative"}
           discription="Save time, efforts and enjoy a more personalized, secure and
             supportive storytelling experience with no hidden costs."
-          buttonText="Start Writing for Free"
+          buttonText="Start writing for free"
           alt=" An opened autobiography book, showcasing LifeScript as the best Storyworth alternative for capturing life stories."
           imgTitle="Opened autobiography book - LifeScript as a Storyworth alternative"
           lineWidth={250}

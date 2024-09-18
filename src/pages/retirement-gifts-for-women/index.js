@@ -53,7 +53,7 @@ const RetiredWomen = () => {
           heading="LifeScript, the best retirement gift for "
           marked="women"
           discription="Surprise her with an unforgettable trip down memory lane, where she can share her life story, celebrate the ups and downs, reflect along the way, and receive a beautiful hardcover book delivered right to her doorstep"
-          buttonText="Buy Now"
+          buttonText="Buy now"
           imgTitle="Opened autobiography book for women’s retirement gift"
           alt="An opened autobiography book, a thoughtful retirement gift for women to share their life stories - LifeScript."
           subContentWidth="900px"

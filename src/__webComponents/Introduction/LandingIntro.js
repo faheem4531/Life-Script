@@ -20,7 +20,8 @@ const LandingIntro = ({
   alt,
   imgTitle,
   subContentWidth = "650px",
-  lineWidth
+  lineWidth,
+  buttonText,
 }) => {
   const { t } = useTranslation();
   return (
@@ -43,18 +44,6 @@ const LandingIntro = ({
         }}
       >
         <Box sx={{ width: "100%", zIndex: "20", textAlign: "center" }}>
-          {/* <PrimaryHeading
-            lineWidth="220px"
-            lineHeight="60px"
-            mdDirection="column"
-            smDirection="column"
-            direction="column"
-            showStyle={false}
-            heading={heading}
-            marked={marked}
-            variant="h1"
-            lineBottom="-20px"
-          /> */}
           <Heading
             heading={heading}
             marked={marked}
@@ -83,24 +72,26 @@ const LandingIntro = ({
           >
             <Link href="/stripe-page">
               <Button
-                title={t("landingPage.hero.mainButton")}
+                title={buttonText}
                 width="100%"
                 height="100%"
                 img1={Pen}
               />
             </Link>
           </Box>
-          <Typography
-            sx={{
-              fontSize: "11px",
-              lineHeight: "24px",
-              fontWeight: 500,
-              fontFamily: "Avenir",
-              margin: "0px",
-            }}
-          >
-            {t("landingPage.hero.buttonDescription")}
-          </Typography>
+          {buttonText !== "Buy now" && (
+            <Typography
+              sx={{
+                fontSize: "11px",
+                lineHeight: "24px",
+                fontWeight: 500,
+                fontFamily: "Avenir",
+                margin: "0px",
+              }}
+            >
+              {t("landingPage.hero.buttonDescription")}
+            </Typography>
+          )}
         </Box>
         <Box
           sx={{

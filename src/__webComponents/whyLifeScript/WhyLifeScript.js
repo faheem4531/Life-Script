@@ -1,4 +1,5 @@
-import NextIcon from "@/__webAssets/svgs/next.svg";
+import Gift from "@/__webAssets/svgs/gift.svg";
+
 import Button from "@/__webComponents/button/Button";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -64,12 +65,7 @@ const WhyLifeScript = ({ data }) => {
           }}
         >
           <Link href="/stripe-page">
-            <Button
-              title={"Try for free"}
-              width="210px"
-              height="55px"
-              img2={NextIcon}
-            />
+            <Button title={"Gift now"} width="180px" height="55px" img1={Gift} />
           </Link>
         </Box>
       </Box>
