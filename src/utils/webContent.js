@@ -32,6 +32,8 @@ import Power from "@/__webAssets/svgs/values/power.svg";
 import Check from "@/__webAssets/svgs/check-square.svg";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
+import NextLink from "next/link";
+
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons, other, featuresLogos } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others, gif } = images;
@@ -1045,7 +1047,19 @@ export const useRetiredMenQA = (t) => [
   },
   {
     qs: "How can I ensure his book and information remain private?",
-    ans: "We take privacy very seriously. We use advanced security technologies and encryption methods to protect his personal stories and information, ensuring they remain completely private.",
+    ans: (
+      <>
+        We take{" "}
+        <NextLink href="/privacy-policy" passHref>
+          <span style={{ color: "#30422E", fontFamily: "Avenir8" }}>
+            privacy
+          </span>
+        </NextLink>{" "}
+        very seriously. We use advanced security technologies and encryption
+        methods to protect his personal stories and information, ensuring they
+        remain completely private.
+      </>
+    ),
     panel: "panel6",
     isexpanded: false,
   },
@@ -1346,7 +1360,19 @@ export const useRetiredWomenQA = (t) => [
   },
   {
     qs: "How can I ensure her book and information remain private?",
-    ans: "We take privacy very seriously. We use advanced security technologies and encryption methods to protect her personal stories and information, ensuring they remain completely private.",
+    ans: (
+      <>
+        We take{" "}
+        <NextLink href="/privacy-policy" passHref>
+          <span style={{ color: "#30422E", fontFamily: "Avenir8" }}>
+            privacy
+          </span>
+        </NextLink>{" "}
+        very seriously. We use advanced security technologies and encryption
+        methods to protect her personal stories and information, ensuring they
+        remain completely private.
+      </>
+    ),
     panel: "panel6",
     isexpanded: false,
   },
