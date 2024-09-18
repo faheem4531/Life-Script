@@ -57,7 +57,6 @@ const RetiredWomen = () => {
           imgTitle="Opened autobiography book for women’s retirement gift"
           alt="An opened autobiography book, a thoughtful retirement gift for women to share their life stories - LifeScript."
           subContentWidth="900px"
-          lineWidth={150}
         />
         <Box
           sx={{
