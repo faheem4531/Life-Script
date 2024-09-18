@@ -19,8 +19,8 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
   useOurBookCoverforRetiredWomen,
-  useRetiredWomenFeaturesGif,
   useRetiredMenQA,
+  useRetiredWomenFeaturesGif,
   useRetiredWomenSuggestions,
   useRetiredWomenTestimonials,
   useSuggestedQuestions,
@@ -94,8 +94,8 @@ const RetiredWomen = () => {
           marked="easy"
         />
         <Reviews
-          review="When my daughter first gave me LifeScript as a retirement gift, I wasn’t sure what to make of it. I’m not much of a writer, and I didn’t think I had much to say. But after sitting down with it, I started remembering things I hadn’t thought about in years. I’m talking about little moments, stuff I thought was long forgotten. Now I’m hooked. It’s weird how it pulls stories out of you. My grandkids love hearing the tales, and I’m happy knowing they’ll have a piece of me when I’m gone. What started as a simple gift turned into something really meaningful."
-          author="Tom S. - retired firefighter"
+          review="When my daughter gave me LifeScript, I wasn’t sure I’d have much to say. But once I started going through the memories, it became something really special. I ended up writing about things I hadn’t thought about in years, and it led to some great conversations with my kids. They loved hearing stories from my past, things we never really talked about before. When I saw the finished book, it felt unreal—I never imagined I’d have a book of my own. It’s something I’m proud of and something my family will always have."
+          author="Alice J."
         />
         <Box
           sx={{
@@ -103,7 +103,7 @@ const RetiredWomen = () => {
           }}
         >
           <GifTab
-            heading="Give the perfect retirement gift and let him turn a lifetime of memories into a beautiful keepsake."
+            heading="Give the perfect retirement gift and let her turn a lifetime of memories into a beautiful keepsake."
             button={"Gift now"}
             icon={Gift}
             btnLink={"/stripe-page"}
