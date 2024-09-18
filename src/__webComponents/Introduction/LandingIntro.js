@@ -65,7 +65,10 @@ const LandingIntro = ({
           </Typography>
           <Box
             sx={{
-              width: { sm: "250px", xs: "100%" },
+              width: {
+                sm: buttonText === "Buy now" ? "180px" : " 250px",
+                xs: "100%",
+              },
               margin: "0 auto",
               height: "55px",
             }}
