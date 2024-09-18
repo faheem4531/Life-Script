@@ -62,12 +62,14 @@ const StoryworthAlternative = () => {
           imgTitle="Opened autobiography book - LifeScript as a Storyworth alternative"
           lineWidth={250}
         />
-        <Experience
-          panelsData={featuresGif}
-          headingStyle={false}
-          heading="How we’re "
-          marked="different"
-        />
+        <Box sx={{ mt: { md: "-120px", sm: "-80px", xs: "-20px" } }}>
+          <Experience
+            panelsData={featuresGif}
+            headingStyle={false}
+            heading="How we’re "
+            marked="different"
+          />
+        </Box>
         <WhyLifeScript data={whyLifeScript} />
         <Box
           sx={{
