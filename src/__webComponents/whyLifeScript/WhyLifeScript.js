@@ -1,9 +1,9 @@
-import Gift from "@/__webAssets/svgs/gift.svg";
-
-import Button from "@/__webComponents/button/Button";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+
+import Gift from "@/__webAssets/svgs/gift.svg";
+import Button from "@/__webComponents/button/Button";
 import styles from "../ComponentsStyles.module.css";
 import PrimaryHeading from "../headings/PrimaryHeading";
 
@@ -65,7 +65,12 @@ const WhyLifeScript = ({ data }) => {
           }}
         >
           <Link href="/stripe-page">
-            <Button title={"Gift now"} width="180px" height="55px" img1={Gift} />
+            <Button
+              title={"Gift now"}
+              width="180px"
+              height="55px"
+              img1={Gift}
+            />
           </Link>
         </Box>
       </Box>

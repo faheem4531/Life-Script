@@ -3,12 +3,12 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Pen from "@/__webAssets/svgs/writing-pen.svg";
 import Button from "@/__webComponents/button/Button";
 import NavBar from "@/__webComponents/navBar/NavBar";
-import { useTranslation } from "react-i18next";
 import styles from "../ComponentsStyles.module.css";
 import Heading from "../headings/Heading";
 

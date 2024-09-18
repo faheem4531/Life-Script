@@ -4,6 +4,8 @@ import { Box } from "@mui/material";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
+import Gift from "@/__webAssets/svgs/gift.svg";
+import Shape from "@/__webAssets/svgs/input-shape.svg";
 import OurBooks from "@/__webComponents/books/OurBooks";
 import Experience from "@/__webComponents/experience/Experience";
 import ContactFooter from "@/__webComponents/footer/ContactFooter";
@@ -18,9 +20,6 @@ import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import Introduction from "./components/Introduction";
-
-import Gift from "@/__webAssets/svgs/gift.svg";
-import Shape from "@/__webAssets/svgs/input-shape.svg";
 
 import {
   useBookCoverHome,
@@ -76,10 +75,10 @@ const HomePage = () => {
           button={t("landingPage.perfectSection.content5.btntext")}
           icon={Gift}
         />
-        <StoryTelling data={storyTelling} /> 
-        <Reviews 
-        review={t("landingPage.reviewSection.Description")}
-        author={t("landingPage.reviewSection.author")}
+        <StoryTelling data={storyTelling} />
+        <Reviews
+          review={t("landingPage.reviewSection.Description")}
+          author={t("landingPage.reviewSection.author")}
         />
         <Experience
           panelsData={homeFeaturesGif}

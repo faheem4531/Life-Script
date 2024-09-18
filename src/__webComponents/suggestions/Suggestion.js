@@ -1,13 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
 import ListPointsG from "@/__webAssets/svgs/curved-list-for-greenbg.svg";
 import ListPoints from "@/__webAssets/svgs/curved-list.svg";
 import Button from "@/__webComponents/button/Button";
 import Content from "@/__webComponents/headings/Content";
-import Link from "next/link";
 import styles from "../ComponentsStyles.module.css";
 
 const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {

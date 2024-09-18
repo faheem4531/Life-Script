@@ -11,7 +11,6 @@ export function Content({
   mblcolor,
   bg,
   color,
-  HeadMB
 }) {
   let clr = color || "#3E4F3C";
   if (bg == true || bg == "half") {
