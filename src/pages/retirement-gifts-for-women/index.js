@@ -22,7 +22,7 @@ import {
   useRetiredMenFeaturesGif,
   useRetiredMenQA,
   useRetiredWomenSuggestions,
-  useRetiredMenTestimonials,
+  useRetiredWomenTestimonials,
   useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/webContent";
@@ -32,7 +32,7 @@ const RetiredWomen = () => {
   const workingData = useWorkingDetails(t);
   const retiredMenQA = useRetiredMenQA(t);
   const retiredWomenSuggestions = useRetiredWomenSuggestions(t);
-  const testimonials = useRetiredMenTestimonials(t);
+  const testimonials = useRetiredWomenTestimonials(t);
   const suggestedQuestions = useSuggestedQuestions(t);
   const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
   const featuresGif = useRetiredMenFeaturesGif(t);

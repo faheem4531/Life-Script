@@ -1158,8 +1158,7 @@ export const useRetiredWomenSuggestions = (t) => {
   const imageData = {
     src: others.homeSuggestionWomen,
     alt: " A touching moment between grandmother and granddaughter, symbolizing a thoughtful retirement gift for women to share their life stories - LifeScript.",
-    title:
-      "Grandmother and granddaughter moment - Retirement gift for women",
+    title: "Grandmother and granddaughter moment - Retirement gift for women",
   };
   const content = [
     {
@@ -1186,3 +1185,36 @@ export const useRetiredWomenSuggestions = (t) => {
 
   return { imageData, content };
 };
+
+export const useRetiredWomenTestimonials = (t) => [
+  {
+    name: "Mary F.",
+    details:
+      "I was a bit skeptical at first, but this gift has honestly turned out to be such a special part of my retirement. My daughter thought I’d enjoy documenting my life, and she was right! I didn’t expect to have so many stories to tell. Now, I’m writing down things I haven’t thought of in years, and my grandkids are loving it. They’re asking for more stories!",
+  },
+  {
+    name: "Ellen G.",
+    details:
+      "My granddaughter gave me this as a retirement gift, and honestly, I didn’t think I’d use it much. But once I got started, I couldn’t stop! It’s made me reflect on all the phases of my life. Some memories brought tears, others laughter, but all of them are now part of my LifeScript. It’s a beautiful way to share my story with my family.",
+  },
+  {
+    name: "Nancy P.",
+    details:
+      "This was a lovely surprise! I never considered myself a storyteller, but LifeScript helped me put my thoughts in order. It’s been fun remembering all the old stories, and I even discovered things about myself along the way. My daughter gave me this for retirement, and it’s honestly been one of the most thoughtful gifts I’ve ever received.",
+  },
+  {
+    name: "Betty H.",
+    details:
+      "LifeScript has been a wonderful journey for me. My son gave this to me as a retirement gift, and it’s allowed me to share parts of my life I might not have ever talked about. It’s not always easy to sit down and write, but the prompts really helped. I never thought I'd have my own book, and now I do. It’s truly special.",
+  },
+  {
+    name: "Judith C.",
+    details:
+      "My family thought this would be a nice retirement gift for me, and I’ve been enjoying it more than I expected. I wasn’t sure I had much to write about, but turns out, I had plenty of stories to share! The questions really helped me think about parts of my life I hadn’t thought of in ages. Now my kids and grandkids will have this forever, and that makes me happy.",
+  },
+  {
+    name: "Ann W.",
+    details:
+      "Honestly, I didn’t think I’d have the patience for this, but LifeScript has been really fun. My daughter got it for me, and it’s been such a unique way to spend time during my retirement. I’ve been able to document all the little moments in my life, and now my story is all there in one beautiful book. My grandkids love hearing my stories, and that’s the best part for me.",
+  },
+];
