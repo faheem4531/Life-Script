@@ -19,7 +19,7 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
   useOurBookCoverforRetiredWomen,
-  useRetiredMenQA,
+  useRetiredWomenQA,
   useRetiredWomenFeaturesGif,
   useRetiredWomenSuggestions,
   useRetiredWomenTestimonials,
@@ -30,7 +30,7 @@ import {
 const RetiredWomen = () => {
   const { t } = useTranslation();
   const workingData = useWorkingDetails(t);
-  const retiredMenQA = useRetiredMenQA(t);
+  const retiredWomenQA = useRetiredWomenQA(t);
   const retiredWomenSuggestions = useRetiredWomenSuggestions(t);
   const testimonials = useRetiredWomenTestimonials(t);
   const suggestedQuestions = useSuggestedQuestions(t);
@@ -109,7 +109,7 @@ const RetiredWomen = () => {
             btnLink={"/stripe-page"}
           />
         </Box>
-        <GotQuestions questions={retiredMenQA} />
+        <GotQuestions questions={retiredWomenQA} />
         <ContactFooter
           title={"Still have any "}
           marked={"questions?"}

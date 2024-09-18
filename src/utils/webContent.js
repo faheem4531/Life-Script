@@ -1312,3 +1312,54 @@ export const useRetiredWomenFeaturesGif = (t) => [
       "Auto photo improvement for creating women’s retirement gift books",
   },
 ];
+
+export const useRetiredWomenQA = (t) => [
+  {
+    qs: "What is included in each plan?",
+    ans: "Lifetime access to our platform, full-color hardcover book and free delivery.",
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I gift LifeScript as a retirement gift for mom and how does that work?",
+    ans: "Absolutely, LifeScript is among the best retirement gifts for women by guiding them to share their life stories and memories through a simple, engaging platform. You simply provide her email and choose the date when you’d like the gift to be sent. Once the gift email is sent to your loved one, you'll also receive another confirmation to let you know it's been delivered.",
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: "Is LifeScript a good last-minute retirement gift idea for women?",
+    ans: "LifeScript is a perfect last-minute gift for moms! You can purchase it even the night before her special day, and the gift email will be sent early in the morning on your selected date.",
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: "If now isn’t the perfect time for this gift, can I set a reminder so you’ll notify me when the right time to gift approaches?",
+    ans: "Yes, you can! Complete the form below, and we'll send you a reminder as your loved one's special day approaches.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Is international shipping available and how much does it cost?",
+    ans: "We ship internationally and provide delivery tracking. Oh, and it’s free.",
+    panel: "panel5",
+    isexpanded: false,
+  },
+  {
+    qs: "How can I ensure her book and information remain private?",
+    ans: "We take privacy very seriously. We use advanced security technologies and encryption methods to protect her personal stories and information, ensuring they remain completely private.",
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I purchase extra books?",
+    ans: "Yes, additional full-color hardcover books are available for 39$ each.",
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: "Do you have any tutorials or instructions on how to use the platform and create my book?",
+    ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
+    panel: "panel8",
+    isexpanded: false,
+  },
+];
