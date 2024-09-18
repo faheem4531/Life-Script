@@ -19,7 +19,7 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
   useOurBookCoverforRetiredWomen,
-  useRetiredMenFeaturesGif,
+  useRetiredWomenFeaturesGif,
   useRetiredMenQA,
   useRetiredWomenSuggestions,
   useRetiredWomenTestimonials,
@@ -35,7 +35,7 @@ const RetiredWomen = () => {
   const testimonials = useRetiredWomenTestimonials(t);
   const suggestedQuestions = useSuggestedQuestions(t);
   const ourBookCoverforRetiredWomen = useOurBookCoverforRetiredWomen(t);
-  const featuresGif = useRetiredMenFeaturesGif(t);
+  const featuresGif = useRetiredWomenFeaturesGif(t);
 
   return (
     <>

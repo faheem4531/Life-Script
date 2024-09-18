@@ -1222,7 +1222,7 @@ export const useRetiredWomenTestimonials = (t) => [
 export const useOurBookCoverforRetiredWomen = (t) => [
   {
     coverImage: bookCovers.cover1,
-    alt:  "Book cover showing an elderly couple on a swing, perfect for retirement gift ideas for women - LifeScript.",
+    alt: "Book cover showing an elderly couple on a swing, perfect for retirement gift ideas for women - LifeScript.",
     title: "Grandparents on swing book cover for women’s retirement gifts",
   },
   {
@@ -1237,8 +1237,9 @@ export const useOurBookCoverforRetiredWomen = (t) => [
   },
   {
     coverImage: bookCovers.cover4,
-    alt:  "Book cover with a couple enjoying the sun in a forest, a heartwarming retirement gift for women - LifeScript.",
-    title: "Grandparents enjoying nature book cover for women’s retirement gifts",
+    alt: "Book cover with a couple enjoying the sun in a forest, a heartwarming retirement gift for women - LifeScript.",
+    title:
+      "Grandparents enjoying nature book cover for women’s retirement gifts",
   },
   {
     coverImage: bookCovers.cover5,
@@ -1248,6 +1249,66 @@ export const useOurBookCoverforRetiredWomen = (t) => [
   {
     coverImage: bookCovers.cover6,
     alt: "Minimalistic autobiography book cover design, perfect for a personalized retirement gift for women - LifeScript.",
-    title:  "Minimalistic book cover for women’s retirement gifts",
+    title: "Minimalistic book cover for women’s retirement gifts",
+  },
+];
+
+export const useRetiredWomenFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "landingPage.featureSection.accordion1.description",
+    imageSrc: Narrative,
+    alt: "Demo animation showing how easy LifeScript is to use as a retirement gift for women.",
+    imgTitle:
+      "Demo animation showing how LifeScript works as a retirement gift for women",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "landingPage.featureSection.accordion2.description",
+    imageSrc: AssistedEditing,
+    alt: "Assisted editing feature demo animation showing how spelling and grammar checks work, perfect for creating memorable retirement gifts for women.",
+    imgTitle:
+      "Assisted editing demo for creating women’s retirement gift books",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "landingPage.featureSection.accordion3.description",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo showing how your recorded words translate into written text, making it a thoughtful gift idea for women retiring - LifeScript.",
+    imgTitle: "Voice-to-text demo for women’s retirement gift creation",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "landingPage.featureSection.accordion4.description",
+    imageSrc: FamilyTree,
+    alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized retirement gift for women - LifeScript.",
+    imgTitle: "Family tree demo for creating women’s retirement gifts",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "landingPage.featureSection.accordion5.description",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting features demo showcasing bold, italics, and other customization options, perfect for creating personalized retirement gifts for women - LifeScript.",
+    imgTitle: "Formatting features demo for women’s retirement gift books",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "landingPage.featureSection.accordion6.description",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how uploaded images are enhanced and fitted, perfect for high-quality retirement gifts for women - LifeScript.",
+    imgTitle:
+      "Auto photo improvement for creating women’s retirement gift books",
   },
 ];
