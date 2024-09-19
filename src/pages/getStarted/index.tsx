@@ -1,4 +1,3 @@
-import { getBookTitle } from "@/store/slices/chatSlice";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -6,8 +5,9 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import i18n from "../../../i18n";
-import styles from "./GetTitle.module.css";
 
+import { getBookTitle } from "@/store/slices/chatSlice";
+import styles from "./GetTitle.module.css";
 import House from "@/_assets/png/bg-hunt.png";
 import DotsLeft from "@/_assets/svg/dots-left.svg";
 import DotsRight from "@/_assets/svg/dots-right.svg";
@@ -79,6 +79,7 @@ const getStarted = () => {
               sm: "-100px 0 80px",
               xs: "-80px 0 40px",
             },
+            color:"#f3f3f3"
           }}
         >
           {t("getTitle.hi")} {userName}{"!"}
@@ -86,6 +87,7 @@ const getStarted = () => {
         <Typography
           sx={{
             fontWeight: 700,
+            color:"#f3f3f3",
             fontSize: {
               md: "55px",
               sm: "40px",
