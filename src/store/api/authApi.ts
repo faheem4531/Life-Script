@@ -8,6 +8,7 @@ import {
 } from "@/interface/authInterface";
 import api from "@/services/api";
 import socket from "@/services/socketManager";
+import { currentBaseUrl } from "@/utils/constants/constants";
 import axios from "axios";
 import Error from "next/error";
 
@@ -56,7 +57,10 @@ export async function stripeDoneApi() {
   }
 }
 
-export async function googleLoginApi(data: { credential: string, type:string }) {
+export async function googleLoginApi(data: {
+  credential: string;
+  type: string;
+}) {
   localStorage.clear();
   try {
     const res = await api.post("/auth/google/callback/sign-in", data);
@@ -102,10 +106,12 @@ export async function facebookLoginApi(data: { credential: string }) {
   }
 }
 
-export async function googleSignupApi(data: { credential: string, type:string }) {
+export async function googleSignupApi(data: {
+  credential: string;
+  type: string;
+}) {
   // localStorage.clear();
   try {
-
     const res = await api.post("/auth/google/callback/sign-up", data);
     localStorage.setItem("accessRole", res?.data?.accessRole);
     localStorage.setItem("token", res.token);
@@ -172,13 +178,12 @@ export async function updateUserProfileApi(data: any) {
       "Content-Type": "application/json",
     };
     const userId = localStorage.getItem("userId");
-    const res = await axios.put(
-      `https://api.thelifescript.com/users/${userId}`,
-      data,
-      { headers }
-    );
+    const res = await axios.put(`${currentBaseUrl}/users/${userId}`, data, {
+      headers,
+    });
     res?.data?.name && localStorage.setItem("username", res?.data?.name);
-    res?.data?.language && localStorage.setItem("language", res?.data?.langugae);
+    res?.data?.language &&
+      localStorage.setItem("language", res?.data?.langugae);
     return res;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -229,7 +234,7 @@ export async function stripPaymentLuluApi(data: any) {
       "Content-Type": "application/json",
     };
     const res = await axios.post(
-      "https://api.thelifescript.com/chapter-compile/payment/stripe-lulu",
+      `${currentBaseUrl}/chapter-compile/payment/stripe-lulu`,
       data,
       { headers }
     );
@@ -398,7 +403,10 @@ export async function signupApiWithGift(data: any) {
 }
 export async function signupApiWithInAppGiftApi(data: any) {
   try {
-    const res = await api.post("/auth/create/gift/in-App", {...data, inAppGiftFlow:true});
+    const res = await api.post("/auth/create/gift/in-App", {
+      ...data,
+      inAppGiftFlow: true,
+    });
 
     // localStorage.setItem("accessRole", res?.data?.accessRole);
     // localStorage.setItem("token", res?.accessToken);
@@ -462,28 +470,20 @@ export async function changePasswordApi(data: ChangePassword) {
   }
 }
 
-export async function contactUs(data:Object){
+export async function contactUs(data: Object) {
   try {
-    const res = await api.post('/auth/lifescript/contact-us',data);
+    const res = await api.post("/auth/lifescript/contact-us", data);
     return res;
-
   } catch (error) {
     throw new Error(error.response?.data?.message);
-
   }
-
-
 }
 
-export async function reminder(data:Object){
+export async function reminder(data: Object) {
   try {
-    const res = await api.post('/auth/lifescripe/reminder-moment',data);
+    const res = await api.post("/auth/lifescripe/reminder-moment", data);
     return res;
-
   } catch (error) {
     throw new Error(error.response?.data?.message);
-
   }
-
-
 }

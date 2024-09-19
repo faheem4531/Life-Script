@@ -1,6 +1,7 @@
 import api from "@/services/api";
 import axios from "axios";
 import Error from "next/error";
+import { currentBaseUrl } from "@/utils/constants/constants";
 
 export async function chatApi(data: any) {
   try {
@@ -511,7 +512,7 @@ export async function getChapterNotificationsApi() {
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
     };
-    const res = await axios.get("https://api.thelifescript.com/notification", {
+    const res = await axios.get(`${currentBaseUrl}/notification`, {
       headers,
     });
     return res.data;
@@ -552,7 +553,7 @@ export async function stripPaymentApi(data: any) {
       "Content-Type": "application/json",
     };
     const res = await axios.post(
-      "https://api.thelifescript.com/users/stripe/payment",
+      `${currentBaseUrl}/users/stripe/payment`,
       data,
       { headers }
     );
@@ -576,8 +577,7 @@ export async function stripPaymentRegisterApi(data: any) {
       // "ngrok-skip-browser-warning": true,
     };
     const res = await axios.post(
-      "https://api.thelifescript.com/users/stripe/register-payment",
-      // "https://eab8-116-58-9-130.ngrok-free.app/users/stripe/register-payment",
+      `${currentBaseUrl}/users/stripe/register-payment`,
       data,
       { headers }
     );
@@ -601,8 +601,7 @@ export async function stripPaymentInAppGiftFlowApi(data: any) {
       "ngrok-skip-browser-warning": true,
     };
     const res = await axios.post(
-      "https://api.thelifescript.com/users/stripe/gift-payment/in-app",
-      // "https://eab8-116-58-9-130.ngrok-free.app/users/stripe/gift-payment/in-app",
+      `${currentBaseUrl}/users/stripe/gift-payment/in-app`,
       data,
       { headers }
     );
@@ -626,7 +625,7 @@ export async function VerifyReferralCodeApi(data: { id: string }) {
       "Content-Type": "application/json",
     };
     const res = await axios.get(
-      `https://api.thelifescript.com/users/verify/referralCode/${data.id}`,
+      `${currentBaseUrl}/users/verify/referralCode/${data.id}`,
       {
         headers,
       }
@@ -650,12 +649,9 @@ export async function GetReferralCodeApi() {
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
     };
-    const res = await axios.get(
-      "https://api.thelifescript.com/users/getReferralCode",
-      {
-        headers,
-      }
-    );
+    const res = await axios.get(`${currentBaseUrl}/users/getReferralCode`, {
+      headers,
+    });
     return res.data;
   } catch (error: any) {
     if (typeof error?.response?.data?.message === "object") {
@@ -675,7 +671,7 @@ export async function bookTitleApi(data: { title: string }) {
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
     };
-    const res = await axios.post("https://api.thelifescript.com/book", data, {
+    const res = await axios.post(`${currentBaseUrl}/book`, data, {
       headers,
     });
     return res;
@@ -697,7 +693,7 @@ export async function getBookTitleApi() {
       acceptinternalaccess: "acceptinternalaccess",
       "Content-Type": "application/json",
     };
-    const res = await axios.get("https://api.thelifescript.com/book", {
+    const res = await axios.get(`${currentBaseUrl}/book`, {
       headers,
     });
     return res.data;
