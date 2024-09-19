@@ -26,7 +26,7 @@ export default function Document() {
         />
 
         {/* Google Analytics Code */}
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-RGM8D41H5K"
         />
@@ -39,10 +39,21 @@ export default function Document() {
           
             gtag('config', 'G-RGM8D41H5K');
           `}
-        </Script>
+        </Script> */}
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-11454589354');
+              `,
+            }}
+          />
+          
 
-
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"
         ></Script>
@@ -52,7 +63,7 @@ export default function Document() {
   gtag('js', new Date());
 
   gtag('config', 'AW-11454589354');`}
-        </Script>
+        </Script> */}
 
         {/* Open Graph Protocol Meta Tags */}
         <meta property="og:title" content="The Lifescript" />
