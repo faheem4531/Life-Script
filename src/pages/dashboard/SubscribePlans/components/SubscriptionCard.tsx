@@ -1,13 +1,13 @@
-import SmallTick from "@/_assets/svg/smallTick.svg";
-import GlobelBtn from "@/components/button/Button";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
 import { useTranslation } from "react-i18next";
-import styles from "@/__webComponents/ComponentsStyles.module.css";
+import React from "react";
+
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
 import NextIcon from "@/__webAssets/svgs/next.svg";
+import styles from "@/__webComponents/ComponentsStyles.module.css";
+import GlobelBtn from "@/components/button/Button";
 
 interface SubscriptionCardProps {
   subList: { label: string }[];
@@ -92,7 +92,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
       basicStatus: false,
       dis: t("landingPage.pricingSection.pricingCardMapArray.dis9"),
     },
-   
+
   ];
   return (
     <Box
@@ -223,13 +223,14 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
               (CurrentPlan === category) ? "Current" :
                 (CurrentPlan === category) ? "Current" :
                   (CurrentPlan === category) ? "Current" :
-                    "Downgrade"
+                  "\u00A0\u00A0"
           }
           image2={!plan && NextIcon}
           p="15px 0"
           onClick={() => onClick(price)}
           disabled={plan}
           width={"100%"}
+
         />}
       </Box>
     </Box>
