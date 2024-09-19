@@ -1,4 +1,4 @@
-import More from "@/_assets/svg/nav-menue.svg";
+import More from "@/_assets/svg/logout.svg";
 import NavMenu from "@/_assets/svg/sidebar/menuIcon.svg";
 import Step1 from "@/_assets/svg/smallBook.svg";
 import Logo from "@/_assets/svg/logo-dashboard.svg";
@@ -314,6 +314,7 @@ const NavBar = ({ sideBarHandle }: { sideBarHandle?: () => void }) => {
             <Box
               sx={{
                 width: "20px",
+                marginLeft:"7px"
               }}
             >
               <Image
