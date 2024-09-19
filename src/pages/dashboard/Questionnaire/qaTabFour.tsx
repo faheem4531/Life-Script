@@ -174,14 +174,14 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
             position: "relative",
           }}
         >
-          {(markAllChecked || checkedIds.length > 3) && (
+          {(checkedIds.length !== 3) && (
             <TooltipMsg
               width="240px"
               bottom="80px"
               left=""
               right="40px"
               top=""
-              title="you cannot select more than 3 chapters"
+              title="Select 3 chapters to continue, please."
             />
           )}
           <GlobelBtn
@@ -195,7 +195,7 @@ export default function TabFour({ onClickBack, onClickNext, data, setQaTab }) {
           />
 
           <GlobelBtn
-            disabled={markAllChecked || checkedIds.length > 3}
+            disabled={markAllChecked || checkedIds.length !== 3}
             borderRadius="4px"
             bgColor="#E1683B"
             color="white"
