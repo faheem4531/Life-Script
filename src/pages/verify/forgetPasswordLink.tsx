@@ -1,46 +1,19 @@
-import { LoginData } from "@/interface/authInterface";
 import { Box, Typography } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import * as Yup from "yup";
-import Forget from "../../../public/ForgetPasswod.svg";
-import Logo from "../../../public/logo.svg";
-import Carousel from "../../components/authComponent/Carousel";
-import Carousel1 from "../../../public/carousel1.png";
+import { useTranslation } from "react-i18next";
+
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import Carousel2 from "../../../public/carousel.png";
+import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
+import Carousel from "../../components/authComponent/Carousel";
 
 const ForgetPasswordLink = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const router = useRouter();
   const { email } = router.query;
   const { t } = useTranslation();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const handleRememberMeChange = (event: any) => {
-    setRememberMe(event.target.checked);
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: async (data: LoginData) => {
-
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().email().required("Email is required"),
-      password: Yup.string().required("Password is required"),
-    }),
-  });
   const carouselItems = [
     { path: Carousel1, alt: "Login Image" },
     { path: Carousel2, alt: "Signup Image" },
@@ -77,9 +50,9 @@ const ForgetPasswordLink = () => {
         }}
       >
         <Box textAlign={"center"}>
-          <Image src={Logo} width={223} height={165} alt="Logo Image" />
+          <Image src={Logo} width={320} height={47} alt="Logo Image" />
           <Typography
-            sx={{ color: "#000000", fontSize: "30px", marginTop: "40px" }}
+            sx={{ color: "#30422E", fontSize: "30px", marginTop: "100px" }}
           >
             {t("ForgetPassswordLink.forgotPassword")}
           </Typography>
