@@ -206,7 +206,7 @@ const PricingCard = ({ price, category, card, id }) => {
           ))}
       </Box>
       <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
-        <Link href="/stripe-page">
+        <Link href="/purchase">
           <Button
             title={t("landingPage.pricingSection.btnText")}
             width="100%"

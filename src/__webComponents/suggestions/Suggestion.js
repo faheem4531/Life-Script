@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import FlowerLine from "@/__webAssets/pngs/full-style.png";
 import ListPointsG from "@/__webAssets/svgs/curved-list-for-greenbg.svg";
@@ -99,7 +99,7 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
             ))}
             {btnTxt && (
               <Box marginTop={7}>
-                <Link href={"./stripe-page"}>
+                <Link href={"./purchase"}>
                   <Button
                     title={btnTxt}
                     width="190px"

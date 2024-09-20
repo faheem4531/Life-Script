@@ -48,11 +48,11 @@ export default function App({ Component, pageProps }: AppProps) {
       "/_auth/Auth",
       "/terms-of-use",
       "/privacy-policy",
-      "/stripe-page",
-      "/stripe-page/subscription",
-      "/stripe-page/gift-subscription",
-      "/stripe-page/register-free-trial",
-      "/stripe-page/sso-redirecting",
+      "/purchase",
+      "/purchase/subscription",
+      "/purchase/gift-subscription",
+      "/purchase/register-free-trial",
+      "/purchase/sso-redirecting",
       "/_auth/fb-redirecting",
     ];
     const queryParams = new URLSearchParams(window.location.search);
@@ -106,7 +106,7 @@ export default function App({ Component, pageProps }: AppProps) {
     // if (publicRoutes.some((route) => route.includes(currentPath))) {
     //   if (!userLoggedIn)
     //     id ? router.push(`${currentPath}?id=${id}`) : slug ? router.push(`${currentPath}?slug=${slug}`) : router.push(currentPath);
-    //   else if (currentPath === "/stripe-page/gift-subscription") {
+    //   else if (currentPath === "/purchase/gift-subscription") {
     //     setLoading(false);
     //   } else router.push("/dashboard/chapters");
     //   setLoading(false);
@@ -142,7 +142,7 @@ export default function App({ Component, pageProps }: AppProps) {
               declineButtonText="Decline"
               buttonText="Accept"
               flipButtons
-              onDecline={() => {}}
+              onDecline={() => { }}
               setDeclineCookie={false}
               style={{
                 background: "#2A3724",

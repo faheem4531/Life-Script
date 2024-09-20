@@ -8,16 +8,16 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import googleLogo from "../../../public/googleIcon.svg";
 import facebookIcon from "../../../public/facebookIcon.svg";
+import googleLogo from "../../../public/googleIcon.svg";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -348,7 +348,7 @@ const Login = () => {
               marginLeft: "8px",
             }}
             onClick={() => {
-              router.push("/stripe-page");
+              router.push("/purchase");
             }}
           >
             {t("login-page.register-now")}

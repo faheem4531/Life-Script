@@ -1,15 +1,15 @@
 "use client";
 // External libraries and frameworks
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useFormik } from "formik";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useGoogleLogin } from "@react-oauth/google";
-import { useFormik } from "formik";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 // Custom components and modules
 import PaymentProcessingModal from '../../subscription/_components/Modal';
@@ -37,7 +37,7 @@ const RegisterFreeTrial = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: `/stripe-page/sso-redirecting`,
+      callbackUrl: `/purchase/sso-redirecting`,
     });
   };
 

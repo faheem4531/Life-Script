@@ -1,16 +1,16 @@
 'use client';
 // External libraries and frameworks
 import { Box } from '@mui/material';
+import { useGoogleLogin } from '@react-oauth/google';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { useGoogleLogin } from '@react-oauth/google';
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import { signOut, useSession } from 'next-auth/react';
 
 // Custom components and modules
 import NewTabBar from './_components/NewTabBar';
@@ -74,7 +74,7 @@ const SubscriptionPage = () => {
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
         if (paymentType === "buynow") {
-          router.push("/stripe-page/subscription");
+          router.push("/purchase/subscription");
           setSelectedTab(2);
         } else {
           router.push(`/getStarted?userName=${res?.name}`);

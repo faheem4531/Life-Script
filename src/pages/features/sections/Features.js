@@ -110,7 +110,7 @@ function DetailFeature({
                   padding: "0 20px 0 0",
                 }}
               >
-                <Link href="/stripe-page">
+                <Link href="/purchase">
                   <Button
                     title={t("featurePage.btnText")}
                     width="100%"

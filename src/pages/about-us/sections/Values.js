@@ -62,7 +62,7 @@ const Values = ({ valuesData }) => {
             display: { md: "block", sm: "none", xs: "none" },
           }}
         >
-          <Link href="/stripe-page">
+          <Link href="/purchase">
             <Button
               title={t("aboutSection.ourValues.btnText")}
               width="210px"

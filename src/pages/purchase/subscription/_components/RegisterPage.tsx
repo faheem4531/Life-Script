@@ -1,11 +1,11 @@
 "use client";
 // External libraries and frameworks
 import { Box, Button, Divider, TextField, Typography } from "@mui/material";
+import { useFormik } from "formik";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { useFormik } from "formik";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -34,7 +34,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/stripe-page/subscription",
+      callbackUrl: "/purchase/subscription",
     });
   };
 
@@ -69,7 +69,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
         sx={{ margin: { sm: "0 0 0 70px", xs: "0 20px" }, border: "2px soild green", width: "100%", maxWidth: "1370px" }}
       >
         <Typography variant="h4" sx={{ marginBottom: { sm: "60px", xs: "30px" } }}>
-        {t("stripeFlow.registerSection.title")}
+          {t("stripeFlow.registerSection.title")}
         </Typography>
 
         <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", columnGap: "50px" }}>
@@ -108,7 +108,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
                   fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                 }}
               >
-                 {t("stripeFlow.registerSection.email")}
+                {t("stripeFlow.registerSection.email")}
               </Typography>
               <TextField
                 variant="outlined"
@@ -232,7 +232,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
               }}
               onClick={(event) => formik.handleSubmit()}
             >
-             {t("stripeFlow.stripePage.btnText")}
+              {t("stripeFlow.stripePage.btnText")}
             </Button>
           </Box>
 

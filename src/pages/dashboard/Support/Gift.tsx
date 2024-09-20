@@ -1,11 +1,11 @@
 import Pack from "@/_assets/svg/gift-pack.svg";
 import Refer from "@/_assets/svg/refer-link.svg";
-import Layout from "@/components/Layout/Layout";
-import { Box, Typography } from "@mui/material";
 import AddChapterName from '@/components/dashboardComponent/AddChapterName';
-import GiftCard from './components/GiftCard';
-import { useRouter } from "next/router";
+import Layout from "@/components/Layout/Layout";
+import { Box } from "@mui/material";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import GiftCard from './components/GiftCard';
 
 const Gift = () => {
   const router = useRouter();
@@ -44,7 +44,7 @@ const Gift = () => {
               btntext={t("giftABook.giftCard1Description.textBtn")}
               onClick={() => {
                 router.push({
-                  pathname: "/stripe-page/gift-subscription",
+                  pathname: "/purchase/gift-subscription",
                   query: { inAppGiftFlow: "true" }
                 });
               }} disabled={undefined} />

@@ -73,7 +73,7 @@ const LandingIntro = ({
               height: "55px",
             }}
           >
-            <Link href="/stripe-page">
+            <Link href="/purchase">
               <Button
                 title={buttonText}
                 width="100%"

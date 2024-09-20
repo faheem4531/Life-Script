@@ -64,7 +64,7 @@ const WhyLifeScript = ({ data }) => {
             maxWidth: "210px",
           }}
         >
-          <Link href="/stripe-page">
+          <Link href="/purchase">
             <Button
               title={"Gift now"}
               width="180px"

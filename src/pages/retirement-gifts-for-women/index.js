@@ -106,7 +106,7 @@ const RetiredWomen = () => {
             heading="Give the perfect retirement gift and let her turn a lifetime of memories into a beautiful keepsake."
             button={"Gift now"}
             icon={Gift}
-            btnLink={"/stripe-page"}
+            btnLink={"/purchase"}
           />
         </Box>
         <GotQuestions questions={retiredWomenQA} />

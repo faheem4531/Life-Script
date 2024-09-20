@@ -26,17 +26,17 @@ const StripePage = () => {
 
   const handleContinue = () => {
     if (userType === "gift-of-someone-else") {
-      router.push("/stripe-page/gift-subscription");
+      router.push("/purchase/gift-subscription");
     } else {
       setShowSecondForm(true);
     }
   };
   const handleContinueNext = () => {
     if (paymentType === "free-trial") {
-      router.push("/stripe-page/register-free-trial");
+      router.push("/purchase/register-free-trial");
     } else {
       localStorage.setItem("paymentType", paymentType);
-      router.push("/stripe-page/subscription");
+      router.push("/purchase/subscription");
     }
   };
 
@@ -101,7 +101,8 @@ const StripePage = () => {
                   }}
                 >
                   <FormControlLabel
-                    value={t("stripeFlow.stripePage.title")}
+                    value="myself"
+                    defaultChecked
                     control={
                       <Radio
                         sx={{

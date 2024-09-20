@@ -33,7 +33,7 @@ const GiftPricingCard = ({
     localStorage.setItem("price", price);
     localStorage.setItem("category", category);
     router.push({
-      pathname: "/stripe-page/gift-subscription",
+      pathname: "/purchase/gift-subscription",
       query: { price, category },
     });
     onClick(selectedTab + 1);
@@ -85,7 +85,7 @@ const GiftPricingCard = ({
               fontFamily: "Avenir LT Std",
             }}
           >
-           { t("stripeFlow.pricePlanCard.popular")}
+            {t("stripeFlow.pricePlanCard.popular")}
           </Box>
         )}
         <Typography
@@ -123,22 +123,26 @@ const GiftPricingCard = ({
         )) ||
           (category == t("stripeFlow.pricePlanCard.TabPanel.category2") && (
             <Box>
-              {CheckArray && CheckArray?.map((item, index) => (
-                <Box
-                  sx={{
-                    display: "flex",
-                    columnGap: "25px",
-                    alignItems: "center",
-                    marginBottom: "24px",
-                  }}
-                  key={index}
-                >
-                  <Image src={item.standardStatus ? Check : Lock} alt="check" />
-                  <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
-                    {item.dis}
-                  </Typography>
-                </Box>
-              ))}
+              {CheckArray &&
+                CheckArray?.map((item, index) => (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      columnGap: "25px",
+                      alignItems: "center",
+                      marginBottom: "24px",
+                    }}
+                    key={index}
+                  >
+                    <Image
+                      src={item.standardStatus ? Check : Lock}
+                      alt="check"
+                    />
+                    <Typography sx={{ fontSize: "15px", fontFamily: "Avenir" }}>
+                      {item.dis}
+                    </Typography>
+                  </Box>
+                ))}
             </Box>
           )) ||
           (category == t("stripeFlow.pricePlanCard.TabPanel.category3") && (
@@ -164,7 +168,7 @@ const GiftPricingCard = ({
       </Box>
       <Box sx={{ position: "absolute", bottom: "0", left: "0", right: "0" }}>
         <Button
-          title={ t("stripeFlow.pricePlanCard.btnText")}
+          title={t("stripeFlow.pricePlanCard.btnText")}
           width="100%"
           height="75px"
           font="24px"

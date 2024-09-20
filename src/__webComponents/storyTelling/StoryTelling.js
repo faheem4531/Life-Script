@@ -10,7 +10,7 @@ import NextIcon from "@/__webAssets/svgs/next.svg";
 import Button from "@/__webComponents/button/Button";
 import { useTranslation } from "react-i18next";
 
-const StoryTelling = ({data}) => {
+const StoryTelling = ({ data }) => {
   const { t } = useTranslation();
 
   return (
@@ -124,7 +124,7 @@ function StoryWraper({
               zIndex: "100",
             }}
           >
-            <Link href="/stripe-page">
+            <Link href="/purchase">
               <Button
                 title="Get Started"
                 width="100%"

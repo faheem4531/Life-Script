@@ -94,7 +94,7 @@ const Introduction = ({ data }) => {
           {t("landingPage.hero.mainDescription")}
         </Typography>
         <Box sx={{ width: { sm: "250px", xs: "100%" }, height: "55px" }}>
-          <Link href="/stripe-page">
+          <Link href="/purchase">
             <Button
               title={t("landingPage.hero.mainButton")}
               width="100%"
