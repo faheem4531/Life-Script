@@ -85,6 +85,8 @@ function ReviewCard({ profile, name, location, details, age }) {
             src={profile}
             alt="image"
             className={styles.clientImg}
+            width={75}
+            height={75}
           />
         )}
         <Box>

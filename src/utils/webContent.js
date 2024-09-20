@@ -1,26 +1,11 @@
-import Arthur from "@/__webAssets/webp/testimonials/lifescript-customer-review-arthur-thompson.webp";
-import Carlos from "@/__webAssets/webp/testimonials/lifescript-customer-review-carlos-martinez.webp";
-import Derek from "@/__webAssets/webp/testimonials/lifescript-customer-review-derek-lee.webp";
-import Eleanor from "@/__webAssets/webp/testimonials/lifescript-customer-review-eleanor-rodriguez.webp";
-import George from "@/__webAssets/webp/testimonials/lifescript-customer-review-george-watkins.webp";
-import Lilly from "@/__webAssets/webp/testimonials/lifescript-customer-review-lilly-thompson.webp";
-import Linda from "@/__webAssets/webp/testimonials/lifescript-customer-review-linda-morris.webp";
-import Margaret from "@/__webAssets/webp/testimonials/lifescript-customer-review-margaret-campbell.webp";
-import Rachel from "@/__webAssets/webp/testimonials/lifescript-customer-review-rachel-nguyen.webp";
+import NextLink from "next/link";
 
-// import AssistedEditing from "@/__webAssets/gif/assisted-editing-demo-animation.webp";
-// import AutoPhoto from "@/__webAssets/gif/Auto-photo-improvement-demo-animation.webp";
-// import FamilyTree from "@/__webAssets/gif/family-tree-feature-demo-animation.webp";
-// import FormattingFeatures from "@/__webAssets/gif/formatting-features-demo-animation.webp";
-// import Narrative from "@/__webAssets/gif/narrative-fusion-demo-animation.webp";
-// import VoiceToText from "@/__webAssets/gif/voice-to-text-feature-demo-animation.webp";
-
-import AssistedEditing from "@/__webAssets/compressed-gifs/assisted-editing-demo-animation.gif";
-import AutoPhoto from "@/__webAssets/compressed-gifs/Auto-photo-improvement-demo-animation.gif";
-import FamilyTree from "@/__webAssets/compressed-gifs/family-tree-feature-demo-animation.gif";
-import FormattingFeatures from "@/__webAssets/compressed-gifs/formatting-features-demo-animation.gif";
-import Narrative from "@/__webAssets/compressed-gifs/narrative-fusion-demo-animation.gif";
-import VoiceToText from "@/__webAssets/compressed-gifs/voice-to-text-feature-demo-animation.gif";
+import AssistedEditing from "@/__webAssets/gifs/assisted-editing-demo-animation.gif";
+import AutoPhoto from "@/__webAssets/gifs/Auto-photo-improvement-demo-animation.gif";
+import FamilyTree from "@/__webAssets/gifs/family-tree-feature-demo-animation.gif";
+import FormattingFeatures from "@/__webAssets/gifs/formatting-features-demo-animation.gif";
+import Narrative from "@/__webAssets/gifs/narrative-fusion-demo-animation.gif";
+import VoiceToText from "@/__webAssets/gifs/voice-to-text-feature-demo-animation.gif";
 
 import Diversity from "@/__webAssets/svgs/values/diversity.svg";
 import Empathy from "@/__webAssets/svgs/values/empathy.svg";
@@ -32,11 +17,9 @@ import Power from "@/__webAssets/svgs/values/power.svg";
 import Check from "@/__webAssets/svgs/check-square.svg";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 
-import NextLink from "next/link";
-
 import { icons, images } from "./assetsUrl";
-const { whyLifeScriptIcons, other, featuresLogos } = icons;
-const { bookCovers, homeHeroImages, storyTelling, others, gif } = images;
+const { whyLifeScriptIcons, other, featuresLogos, testimonial } = icons;
+const { bookCovers, homeHeroImages, storyTelling, others } = images;
 
 export const UseAlternativeQA = (t) => [
   {
@@ -91,63 +74,63 @@ export const UseAlternativeQA = (t) => [
 
 export const useHomeTestimonials = (t) => [
   {
-    profile: Arthur,
+    profile: testimonial.Arthur,
     name: t("landingPage.testimonialSection.testimonial1.name"),
     age: t("landingPage.testimonialSection.testimonial1.age"),
     location: t("landingPage.testimonialSection.testimonial1.location"),
     details: t("landingPage.testimonialSection.testimonial1.details"),
   },
   {
-    profile: Eleanor,
+    profile: testimonial.Eleanor,
     name: t("landingPage.testimonialSection.testimonial2.name"),
     age: t("landingPage.testimonialSection.testimonial2.age"),
     location: t("landingPage.testimonialSection.testimonial2.location"),
     details: t("landingPage.testimonialSection.testimonial2.details"),
   },
   {
-    profile: Margaret,
+    profile: testimonial.Margaret,
     name: t("landingPage.testimonialSection.testimonial3.name"),
     age: t("landingPage.testimonialSection.testimonial3.age"),
     location: t("landingPage.testimonialSection.testimonial3.location"),
     details: t("landingPage.testimonialSection.testimonial3.details"),
   },
   {
-    profile: George,
+    profile: testimonial.George,
     name: t("landingPage.testimonialSection.testimonial4.name"),
     age: t("landingPage.testimonialSection.testimonial4.age"),
     location: t("landingPage.testimonialSection.testimonial4.location"),
     details: t("landingPage.testimonialSection.testimonial4.details"),
   },
   {
-    profile: Linda,
+    profile: testimonial.Linda,
     name: t("landingPage.testimonialSection.testimonial5.name"),
     age: t("landingPage.testimonialSection.testimonial5.age"),
     location: t("landingPage.testimonialSection.testimonial5.location"),
     details: t("landingPage.testimonialSection.testimonial5.details"),
   },
   {
-    profile: Derek,
+    profile: testimonial.Derek,
     name: t("landingPage.testimonialSection.testimonial6.name"),
     age: t("landingPage.testimonialSection.testimonial6.age"),
     location: t("landingPage.testimonialSection.testimonial6.location"),
     details: t("landingPage.testimonialSection.testimonial6.details"),
   },
   {
-    profile: Lilly,
+    profile: testimonial.Lilly,
     name: t("landingPage.testimonialSection.testimonial7.name"),
     age: t("landingPage.testimonialSection.testimonial7.age"),
     location: t("landingPage.testimonialSection.testimonial7.location"),
     details: t("landingPage.testimonialSection.testimonial7.details"),
   },
   {
-    profile: Carlos,
+    profile: testimonial.Carlos,
     name: t("landingPage.testimonialSection.testimonial8.name"),
     age: t("landingPage.testimonialSection.testimonial8.age"),
     location: t("landingPage.testimonialSection.testimonial8.location"),
     details: t("landingPage.testimonialSection.testimonial8.details"),
   },
   {
-    profile: Rachel,
+    profile: testimonial.Rachel,
     name: t("landingPage.testimonialSection.testimonial9.name"),
     age: t("landingPage.testimonialSection.testimonial9.age"),
     location: t("landingPage.testimonialSection.testimonial9.location"),
