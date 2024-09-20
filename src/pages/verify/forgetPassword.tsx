@@ -147,7 +147,7 @@ const ForgetPassword = () => {
                 width: "300px",
                 padding: "15px",
                 "&:hover": {
-                  backgroundColor: "#186F65",
+                  backgroundColor: "#30422E",
                 },
                 textTransform: "Capitalize",
               }}
