@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import Button from "@mui/material/Button";
 
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useFormik } from "formik";
@@ -15,7 +16,6 @@ import Image from "next/image";
 import { useState } from "react";
 import * as Yup from "yup";
 import Forget from "../../../public/ForgetPasswod.svg";
-import Logo from "../../../public/logo.svg";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -69,7 +69,7 @@ const ResetPassword = () => {
         marginX: { sx: "0 35px" }
       }}>
         <Box textAlign={"center"}>
-          <Image src={Logo} width={223} height={135} alt="Logo Image" />
+          <Image src={Logo} width={320} alt="Logo Image" />
           <Typography
             sx={{ color: "#000000", marginTop: "50px", fontSize: { sx: "15px", sm: "30px" } }}
           >
