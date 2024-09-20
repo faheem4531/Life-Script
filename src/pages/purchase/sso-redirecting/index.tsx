@@ -36,7 +36,7 @@ const SsoRedirecting = () => {
           .catch((error) => {
             setLoading(false)
             toast.error(t("stripeFlow.registerSection.userExist"));
-            router.push("/purchase/register-free-trial")
+            router.push("/purchase/free-trial")
           });
       }
     }

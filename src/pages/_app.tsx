@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/purchase",
       "/purchase/subscription",
       "/purchase/gift",
-      "/purchase/register-free-trial",
+      "/purchase/free-trial",
       "/purchase/sso-redirecting",
       "/_auth/fb-redirecting",
     ];
