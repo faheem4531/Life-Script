@@ -13,7 +13,7 @@ const GifTab = ({
   subHeading,
   icon,
   button,
-  btnLink = "/purchase/gift-subscription",
+  btnLink = "/purchase/gift",
 }) => {
   return (
     <Box

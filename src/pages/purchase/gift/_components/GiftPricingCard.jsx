@@ -33,7 +33,7 @@ const GiftPricingCard = ({
     localStorage.setItem("price", price);
     localStorage.setItem("category", category);
     router.push({
-      pathname: "/purchase/gift-subscription",
+      pathname: "/purchase/gift",
       query: { price, category },
     });
     onClick(selectedTab + 1);

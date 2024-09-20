@@ -26,7 +26,7 @@ const StripePage = () => {
 
   const handleContinue = () => {
     if (userType === "gift-of-someone-else") {
-      router.push("/purchase/gift-subscription");
+      router.push("/purchase/gift");
     } else {
       setShowSecondForm(true);
     }

@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/home/index.js", "src/pages/pricing/index.js", "src/pages/purchase/gift-subscription/index.tsx", "src/pages/purchase/register-free-trial/index.tsx", "src/pages/purchase/register-free-trial/_components/RegisterFreeTrial.tsx", "src/pages/purchase/sso-redirecting/index.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/home/index.js", "src/pages/pricing/index.js", "src/pages/purchase/gift/index.tsx", "src/pages/purchase/register-free-trial/index.tsx", "src/pages/purchase/register-free-trial/_components/RegisterFreeTrial.tsx", "src/pages/purchase/sso-redirecting/index.tsx"],
   "exclude": ["node_modules"]
 }

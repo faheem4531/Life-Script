@@ -44,7 +44,7 @@ const Gift = () => {
               btntext={t("giftABook.giftCard1Description.textBtn")}
               onClick={() => {
                 router.push({
-                  pathname: "/purchase/gift-subscription",
+                  pathname: "/purchase/gift",
                   query: { inAppGiftFlow: "true" }
                 });
               }} disabled={undefined} />

@@ -50,7 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/privacy-policy",
       "/purchase",
       "/purchase/subscription",
-      "/purchase/gift-subscription",
+      "/purchase/gift",
       "/purchase/register-free-trial",
       "/purchase/sso-redirecting",
       "/_auth/fb-redirecting",
@@ -106,7 +106,7 @@ export default function App({ Component, pageProps }: AppProps) {
     // if (publicRoutes.some((route) => route.includes(currentPath))) {
     //   if (!userLoggedIn)
     //     id ? router.push(`${currentPath}?id=${id}`) : slug ? router.push(`${currentPath}?slug=${slug}`) : router.push(currentPath);
-    //   else if (currentPath === "/purchase/gift-subscription") {
+    //   else if (currentPath === "/purchase/gift") {
     //     setLoading(false);
     //   } else router.push("/dashboard/chapters");
     //   setLoading(false);
