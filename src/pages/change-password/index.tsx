@@ -1,23 +1,24 @@
 "use client";
-import { changePassword } from "@/store/slices/authSlice";
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Box, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-const CryptoJS = require("crypto-js");
-
-import Logo from "@/_assets/svg/logo.svg";
-import { ChangePassword } from "@/interface/authInterface";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import { useFormik } from "formik";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
+const CryptoJS = require("crypto-js");
+
+import Logo from "@/_assets/svg/logo.svg";
+import { ChangePassword } from "@/interface/authInterface";
+import { changePassword } from "@/store/slices/authSlice";
 import Carousel2 from "../../../public/carousel.png";
 import Carousel1 from "../../../public/carousel1.png";
 import Carousel3 from "../../../public/carousel3.png";
@@ -108,7 +109,7 @@ const ResetPassword = () => {
         },
         gap: "1rem",
         backgroundColor: "#FFF7EA",
-        height: "100dvh",
+        minHeight: "100dvh",
         p: "20px",
         boxSizing: "border-box",
       }}
@@ -134,7 +135,8 @@ const ResetPassword = () => {
               sx={{
                 marginTop: "34px",
                 fontSize: "21px",
-                color: '#3e4f3c', textAlign: "left"
+                color: '#3e4f3c',
+                textAlign: "left"
               }}
             >
               {t("ResetPassword.password")}
@@ -176,8 +178,8 @@ const ResetPassword = () => {
               sx={{
                 marginTop: "40px",
                 fontSize: "21px",
-                color: '#3e4f3c', textAlign: "left"
-
+                color: '#3e4f3c',
+                textAlign: "left"
               }}
             >
               {t("ResetPassword.confirmPassword")}
@@ -232,7 +234,8 @@ const ResetPassword = () => {
               borderRadius: "4px",
               backgroundColor: "#3e4f3c",
               color: "white",
-              width: "404px",
+              width: "100%",
+              maxWidth: "400px",
               pt: "16px",
               pb: "16px",
 
