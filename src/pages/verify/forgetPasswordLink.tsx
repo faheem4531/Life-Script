@@ -4,23 +4,14 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
 import Logo from "@/_assets/svg/lifeScript-logo.svg";
-import Carousel2 from "../../../public/carousel.png";
-import Carousel1 from "../../../public/carousel1.png";
-import Carousel3 from "../../../public/carousel3.png";
 import Carousel from "../../components/authComponent/Carousel";
+import { useCarouselSliderImages } from "@/utils/webContent";
+
 
 const ForgetPasswordLink = () => {
   const router = useRouter();
   const { email } = router.query;
   const { t } = useTranslation();
-
-  const carouselItems = [
-    { path: Carousel1, alt: "Login Image" },
-    { path: Carousel2, alt: "Signup Image" },
-    { path: Carousel3, alt: "Signup Image" },
-
-    // Add more images as needed
-  ];
 
   return (
     <Box
@@ -39,7 +30,7 @@ const ForgetPasswordLink = () => {
       }}
     >
       <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items={carouselItems} />
+        <Carousel items={useCarouselSliderImages} />
       </Box>
 
       <Box
