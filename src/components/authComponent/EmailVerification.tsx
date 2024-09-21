@@ -1,6 +1,5 @@
 "use client";
-import Logo from "@/_assets/svg/lifeScript-logo.svg";
-import { verifyEmail } from "@/store/slices/authSlice";
+
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Box, TextField, Typography } from "@mui/material";
@@ -15,12 +14,11 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import Carousel2 from "../../../public/carousel.png";
-import Carousel1 from "../../../public/carousel1.png";
-import Carousel3 from "../../../public/carousel3.png";
+
+import Logo from "@/_assets/svg/lifeScript-logo.svg";
+import { verifyEmail } from "@/store/slices/authSlice";
+import { useCarouselSliderImages } from "@/utils/webContent";
 import Carousel from "./Carousel";
-
-
 
 const CryptoJS = require("crypto-js");
 
@@ -74,13 +72,7 @@ const EmailVerification = () => {
       setOtp(decryptedData.otp);
     }
   }, [ciphertext]);
-  const carouselItems = [
-    { path: Carousel1, alt: 'Login Image' },
-    { path: Carousel2, alt: 'Signup Image' },
-    { path: Carousel3, alt: 'Signup Image' },
-
-  ];
-
+  
   const formik = useFormik({
     initialValues: {
       email: userEmail,
@@ -100,13 +92,13 @@ const EmailVerification = () => {
     },
     validationSchema: Yup.object({
       password: Yup.string()
-      .min(8, t("signup-page.passwordLength"))
-      .matches(/[!@#$%^&*(),.?":{}|<>]/, t("signup-page.passwordSpecialChar"))
-      .matches(/\d/, t("signup-page.passwordNumber"))
-      .required(t("signup-page.passwordRequired")),
+        .min(8, t("signup-page.passwordLength"))
+        .matches(/[!@#$%^&*(),.?":{}|<>]/, t("signup-page.passwordSpecialChar"))
+        .matches(/\d/, t("signup-page.passwordNumber"))
+        .required(t("signup-page.passwordRequired")),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], t("signup-page.passwordsMustMatch"))
-        .min(8,t("signup-page.passwordSpecialChar"))
+        .min(8, t("signup-page.passwordSpecialChar"))
         .required(t("signup-page.passwordRequired"))
     }),
   });
@@ -129,7 +121,7 @@ const EmailVerification = () => {
       }}
     >
       <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items={carouselItems} />
+        <Carousel items={useCarouselSliderImages} />
       </Box>
       <Box
         sx={{
@@ -190,42 +182,42 @@ const EmailVerification = () => {
               {t("signup-page.password")}
             </Typography>
             <TextField
-        sx={{
-          margin: "10px 0",
-          "& .MuiOutlinedInput-root": {
-            borderRadius: "2px",
-            backgroundColor: "white",
-          },
-          width: "100%",
-        }}
-        placeholder="Enter your password"
-        name="password"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        value={formik.values.password}
-        type={showPassword ? "text" : "password"}
-        variant="outlined"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <IconButton onClick={togglePasswordVisibility} edge="end">
-                {showPassword ? (
-                  <VisibilityOffIcon />
-                ) : (
-                  <VisibilityIcon />
-                )}
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-        error={formik.touched.password && Boolean(formik.errors.password)}
-        helperText={
-          formik.touched.password && formik.errors.password
-            ? String(formik.errors.password)
-            : ''
-        }
-      />
-        
+              sx={{
+                margin: "10px 0",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "2px",
+                  backgroundColor: "white",
+                },
+                width: "100%",
+              }}
+              placeholder="Enter your password"
+              name="password"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              type={showPassword ? "text" : "password"}
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton onClick={togglePasswordVisibility} edge="end">
+                      {showPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={
+                formik.touched.password && formik.errors.password
+                  ? String(formik.errors.password)
+                  : ''
+              }
+            />
+
           </Box>
           <Box>
             <Typography
