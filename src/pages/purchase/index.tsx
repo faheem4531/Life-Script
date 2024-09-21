@@ -43,8 +43,8 @@ const StripePage = () => {
   return (
     <>
       <Head>
-        <title>Stripe Pages Flow</title>
-        <meta name="description" content="stripe Pages flow" />
+        <title>Purchase LifeScript</title>
+        <meta name="description" content="Purchase LifeScript" />
       </Head>
 
       <Box
