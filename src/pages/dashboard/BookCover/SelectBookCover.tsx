@@ -1,14 +1,26 @@
-import Img from "@/_assets/book-cover";
-import BookCover from "@/_assets/svg/book-cover-header.svg";
-import Layout from "@/components/Layout/Layout";
-import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
-import TransitionsDialog from "@/components/modal/TransitionDialog";
-import { getBookCover } from "@/store/slices/chatSlice";
 import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+
+// import Img from "@/_assets/book-cover";
+import BookCover from "@/_assets/svg/book-cover-header.svg";
+import Layout from "@/components/Layout/Layout";
+import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
+import TransitionsDialog from "@/components/modal/TransitionDialog";
+import { getBookCover } from "@/store/slices/chatSlice";
+
+import { images } from "@/utils/assetsUrl";
+const { bookCovers } = images;
+const coverImages = {
+  cover1: bookCovers.cover1,
+  cover2: bookCovers.cover4,
+  cover3: bookCovers.cover2,
+  cover4: bookCovers.cover5,
+  cover5: bookCovers.cover3,
+  cover6: bookCovers.cover6,
+};
 
 const SelectBookCover = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,10 +70,10 @@ const SelectBookCover = () => {
   }, []);
 
   const getCoverImage = (coverNumber: number) => {
-    return `/covers/Cover${coverNumber}.png`;
+    return coverImages[`cover${coverNumber}`];
   };
 
-  const myArray = [...Array(Object.keys(Img).length)].map((_, i) => i + 1);
+  const myArray = [...Array(Object.keys(coverImages).length)].map((_, i) => i + 1);
 
   const handleCoverClick = (index: number) => {
     if (index < 3) {
