@@ -1,8 +1,5 @@
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-
-import { ForgetPass } from "@/interface/authInterface";
-import { forgetPassword } from "@/store/slices/authSlice";
 import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -11,11 +8,12 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import Carousel2 from "../../../public/carousel.png";
-import Carousel1 from "../../../public/carousel1.png";
-import Carousel3 from "../../../public/carousel3.png";
+
 import Logo from "@/_assets/svg/lifeScript-logo.svg";
+import { ForgetPass } from "@/interface/authInterface";
+import { forgetPassword } from "@/store/slices/authSlice";
 import Carousel from "../../components/authComponent/Carousel";
+import { useCarouselSliderImages } from "@/utils/webContent";
 
 const ForgetPassword = () => {
   const [sentFailed, setSentFailed] = useState(false);
@@ -44,11 +42,6 @@ const ForgetPassword = () => {
       email: Yup.string().email().required(t("ForgetPassword.emailRequired")),
     }),
   });
-  const carouselItems = [
-    { path: Carousel1, alt: "Login Image" },
-    { path: Carousel2, alt: "Signup Image" },
-    { path: Carousel3, alt: "Signup Image" },
-  ];
 
   return (
     <Grid
@@ -68,7 +61,7 @@ const ForgetPassword = () => {
       }}
     >
       <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items={carouselItems} />
+        <Carousel items={useCarouselSliderImages} />
       </Box>
       <Box
         sx={{

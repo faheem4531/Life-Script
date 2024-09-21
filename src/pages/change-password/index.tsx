@@ -19,10 +19,9 @@ const CryptoJS = require("crypto-js");
 import Logo from "@/_assets/svg/logo.svg";
 import { ChangePassword } from "@/interface/authInterface";
 import { changePassword } from "@/store/slices/authSlice";
-import Carousel2 from "../../../public/carousel.png";
-import Carousel1 from "../../../public/carousel1.png";
-import Carousel3 from "../../../public/carousel3.png";
 import Carousel from "../../components/authComponent/Carousel";
+import { useCarouselSliderImages } from "@/utils/webContent";
+
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -92,11 +91,7 @@ const ResetPassword = () => {
         .oneOf([Yup.ref("password")], t("ResetPassword.passwordDoesn'tMatch")),
     }),
   });
-  const carouselItems = [
-    { path: Carousel1, alt: "Login Image" },
-    { path: Carousel2, alt: "Signup Image" },
-    { path: Carousel3, alt: "Signup Image" },
-  ];
+ 
   return (
 
     <Box
@@ -115,7 +110,7 @@ const ResetPassword = () => {
       }}
     >
       <Box sx={{ height: "auto", display: { md: "block", xs: "none" } }}>
-        <Carousel items={carouselItems} />
+        <Carousel items={useCarouselSliderImages} />
       </Box>
 
       <Box>
