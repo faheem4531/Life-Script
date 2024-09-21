@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 
-// import Img from "@/_assets/book-cover";
 import BookCover from "@/_assets/svg/book-cover-header.svg";
 import Layout from "@/components/Layout/Layout";
 import SelectBookCoverHeader from "@/components/dashboardComponent/SelectBookCoverHeader";
@@ -126,13 +125,13 @@ const SelectBookCover = () => {
                   <Box
                     sx={{
                       position: "relative",
-                      backgroundColor: "#F4F4F4",
+                      // backgroundColor: "#F4F4F4",
                       borderRadius: "4px",
                       width: "100%",
                       maxWidth: "375px",
                       maxHeight: "500px",
                       height: "100%",
-                      padding: "22px",
+                      padding: "10px",
                       cursor: "pointer",
                       "&:hover": {
                         "&::before": {
