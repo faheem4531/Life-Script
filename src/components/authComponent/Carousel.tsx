@@ -16,9 +16,10 @@ const Carousel = ({ items }) => {
     autoplay: true,
     autoplaySpeed: 3000,
     afterChange: (index) => setActiveSlide(index),
-    nextArrow: null, 
-    prevArrow: null, 
+    nextArrow: null,
+    prevArrow: null,
   };
+
 
   return (
     <div style={{ position: "relative" }}>
