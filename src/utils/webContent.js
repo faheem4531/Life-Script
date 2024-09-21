@@ -19,7 +19,8 @@ import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.s
 
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons, other, featuresLogos, testimonial } = icons;
-const { bookCovers, homeHeroImages, storyTelling, others } = images;
+const { bookCovers, homeHeroImages, storyTelling, others, sliderImages } =
+  images;
 
 export const UseAlternativeQA = (t) => [
   {
@@ -1370,5 +1371,23 @@ export const useRetiredWomenQA = (t) => [
     ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
     panel: "panel8",
     isexpanded: false,
+  },
+];
+
+export const useCarouselSliderImages = [
+  {
+    path: sliderImages.motherHiking,
+    alt: "Parent and Child Hiking for a Memoir Book Journey",
+    title: "A parent carrying a child while hiking through a forest, reflecting the journey of preserving memories and stories in a memoir book.",
+  },
+  {
+    path: sliderImages.readingBook,
+    alt: "Woman Enjoying Reading a Memoir Book",
+    title: "A woman drinking tea while reading a book by the window, representing reflection and the personal connection of reading a memoir.",
+  },
+  {
+    path: sliderImages.grandFather,
+    alt: "Grandfather standing with walking stick while child climbs a hill during an outdoor adventure, symbolizing shared memories in a lifestory book.",
+    title: "Grandpa and Child Hiking Together for LifeStory Creation",
   },
 ];

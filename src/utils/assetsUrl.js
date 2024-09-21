@@ -29,15 +29,24 @@ export const icons = {
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725899429/assets/voice-to-text-feature-icon_dq0coc.webp",
   },
   testimonial: {
-    Arthur: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871695/assets/lifescript-customer-review-arthur-thompson_dsk8aj.webp",
-    Carlos: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-carlos-martinez_u83sjc.webp",
-    Derek: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871695/assets/lifescript-customer-review-derek-lee_qmvbny.webp",
-    Eleanor: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-eleanor-rodriguez_cfban6.webp",
-    George: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-george-watkins_qgjewc.webp",
-    Lilly: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-lilly-thompson_mw9dtz.webp",
-    Linda: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-linda-morris_dvoqph.webp",
-    Margaret: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-margaret-campbell_y6en4t.webp",
-    Rachel: "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871697/assets/lifescript-customer-review-rachel-nguyen_gpm0pe.webp",
+    Arthur:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871695/assets/lifescript-customer-review-arthur-thompson_dsk8aj.webp",
+    Carlos:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-carlos-martinez_u83sjc.webp",
+    Derek:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871695/assets/lifescript-customer-review-derek-lee_qmvbny.webp",
+    Eleanor:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-eleanor-rodriguez_cfban6.webp",
+    George:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-george-watkins_qgjewc.webp",
+    Lilly:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-lilly-thompson_mw9dtz.webp",
+    Linda:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-linda-morris_dvoqph.webp",
+    Margaret:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871696/assets/lifescript-customer-review-margaret-campbell_y6en4t.webp",
+    Rachel:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726871697/assets/lifescript-customer-review-rachel-nguyen_gpm0pe.webp",
   },
 };
 
@@ -92,5 +101,13 @@ export const images = {
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908518/assets/narrative-fusion-demo-animation_unytxg.webp",
     voiceToText:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725908516/assets/voice-to-text-feature-demo-animation_csi19v.webp",
+  },
+  sliderImages: {
+    motherHiking:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726950946/assets/mother-child-hiking-memoir-book_bu85eh.webp",
+    readingBook:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726950947/assets/woman-reading-memoir-autobiography-book_gdgmg9.webp",
+    grandFather:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726950946/assets/grandfather-child-lifestory-book-creation_itzdmi.webp",
   },
 };

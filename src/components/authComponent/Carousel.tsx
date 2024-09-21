@@ -20,7 +20,6 @@ const Carousel = ({ items }) => {
     prevArrow: null,
   };
 
-
   return (
     <div style={{ position: "relative" }}>
       <Slider {...settings}>
@@ -28,13 +27,16 @@ const Carousel = ({ items }) => {
           <div key={index}>
             <Image
               src={item.path}
-              alt={`Slide ${index + 1}`}
+              alt={item.alt}
+              title={item.title}
               style={{
                 height: "100%",
                 maxHeight: "92vh",
                 width: "100%",
                 objectFit: "contain",
               }}
+              width={1000}
+              height={1000}
             />
           </div>
         ))}
