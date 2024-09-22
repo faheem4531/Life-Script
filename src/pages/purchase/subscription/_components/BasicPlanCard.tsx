@@ -1,18 +1,15 @@
 "use client";
-// External libraries and frameworks
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-// Assets
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
-import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
-import premiumBookImage from "../../../../../public/premiumBookImage.svg";
-import standardBookImage from "../../../../../public/standardBookImage.svg";
 
-// Utility functions or helpers
+import { images } from "@/utils/assetsUrl";
 import { createBasicArray, createPremiumArray, createStandardArray } from "../../../../utils/stripeFlowObjects";
+const { bookCovers } = images;
+const { cover1, cover2, cover3 } = bookCovers
 
 const BasicPlanCard = ({ price, category }) => {
   const { t } = useTranslation();
@@ -38,12 +35,13 @@ const BasicPlanCard = ({ price, category }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "10px",
+            marginTop: "30px",
           }}
         >
           <Image
-            src={grandmaBookImage}
-            alt="grandma Book Image "
+            src={cover3}
+            alt="An elderly couple embracing with heads together, symbolizing personal memories captured in the Basic plan for creating an autobiography or lifestory book."
+            title="Basic Plan - Creating Your Autobiography Book for a Personal LifeStory"
             width={250}
             height={348}
           />
@@ -56,12 +54,13 @@ const BasicPlanCard = ({ price, category }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "10px",
+              marginTop: "30px",
             }}
           >
             <Image
-              src={standardBookImage}
-              alt="grandma Book Image "
+              src={cover1}
+              alt="An elderly couple sharing a joyful moment on a swing, reflecting the celebration of life's memories captured in the Standard plan for an autobiography or memoir book."
+              title="Standard Plan - Crafting Your Memoir or Autobiography Book for Special Occasions"
               width={250}
               height={348}
             />
@@ -74,12 +73,13 @@ const BasicPlanCard = ({ price, category }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "10px",
+              marginTop: "30px",
             }}
           >
             <Image
-              src={premiumBookImage}
-              alt="grandma Book Image "
+              src={cover2}
+              alt="A multigenerational family gathered by the lake, capturing the essence of family stories in the Premium plan for creating a family memoir or autobiography book."
+              title="Premium Plan - Capturing Your Family’s Legacy in a Memoir or Autobiography Book"
               width={250}
               height={348}
             />
@@ -145,7 +145,7 @@ const BasicPlanCard = ({ price, category }) => {
                 ))}
               </Box>
             )) ||
-            (category == t("stripeFlow.pricePlanCard.TabPanel.category3")&& (
+            (category == t("stripeFlow.pricePlanCard.TabPanel.category3") && (
               <Box>
                 {PremiumArray.map((item, index) => (
                   <Box
