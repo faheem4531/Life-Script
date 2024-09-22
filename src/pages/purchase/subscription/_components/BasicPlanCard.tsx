@@ -6,10 +6,9 @@ import { useTranslation } from "react-i18next";
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
 
-import { images } from "@/utils/assetsUrl";
+import { purchaseBooks } from "@/utils/constants/constants";
 import { createBasicArray, createPremiumArray, createStandardArray } from "../../../../utils/stripeFlowObjects";
-const { bookCovers } = images;
-const { cover1, cover2, cover3 } = bookCovers
+const { Basic, Standard, Premium } = purchaseBooks;
 
 const BasicPlanCard = ({ price, category }) => {
   const { t } = useTranslation();
@@ -39,7 +38,7 @@ const BasicPlanCard = ({ price, category }) => {
           }}
         >
           <Image
-            src={cover3}
+            src={Basic}
             alt="An elderly couple embracing with heads together, symbolizing personal memories captured in the Basic plan for creating an autobiography or lifestory book."
             title="Basic Plan - Creating Your Autobiography Book for a Personal LifeStory"
             width={250}
@@ -58,7 +57,7 @@ const BasicPlanCard = ({ price, category }) => {
             }}
           >
             <Image
-              src={cover1}
+              src={Standard}
               alt="An elderly couple sharing a joyful moment on a swing, reflecting the celebration of life's memories captured in the Standard plan for an autobiography or memoir book."
               title="Standard Plan - Crafting Your Memoir or Autobiography Book for Special Occasions"
               width={250}
@@ -77,7 +76,7 @@ const BasicPlanCard = ({ price, category }) => {
             }}
           >
             <Image
-              src={cover2}
+              src={Premium}
               alt="A multigenerational family gathered by the lake, capturing the essence of family stories in the Premium plan for creating a family memoir or autobiography book."
               title="Premium Plan - Capturing Your Family’s Legacy in a Memoir or Autobiography Book"
               width={250}

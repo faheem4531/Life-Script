@@ -1,6 +1,6 @@
-import grandmaBookImage from "../../../public/grandmaBookImage.svg";
-import premiumBookImage from "../../../public/premiumBookImage.svg";
-import standardBookImage from "../../../public/standardBookImage.svg";
+import { images } from "@/utils/assetsUrl";
+const { bookCovers } = images;
+const { cover1, cover2, cover3 } = bookCovers
 
 import {
   createBasicArray,
@@ -8,10 +8,10 @@ import {
   createStandardArray,
 } from "../stripeFlowObjects";
 
-export const imageMapping = {
-  Basic: grandmaBookImage,
-  Standard: standardBookImage,
-  Premium: premiumBookImage,
+export const purchaseBooks = {
+  Basic: cover3,
+  Standard: cover1,
+  Premium: cover2,
 };
 
 export const categoryArrayMapping = {

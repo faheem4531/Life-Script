@@ -12,9 +12,9 @@ import { createBasicArray, createPremiumArray, createStandardArray } from "../..
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
-import { images } from "@/utils/assetsUrl";
-const { bookCovers } = images;
-const { cover1, cover2, cover3 } = bookCovers
+
+import { purchaseBooks } from "@/utils/constants/constants";
+const { Basic, Standard, Premium } = purchaseBooks;
 
 const GiftPlanCard = ({ price, category }) => {
   const { t } = useTranslation();
@@ -48,7 +48,7 @@ const GiftPlanCard = ({ price, category }) => {
           }}
         >
           <Image
-            src={cover3}
+            src={Basic}
             title="Basic Plan Gift - Giving the Gift of a Memoir or LifeStory Book"
             alt="A heartwarming image of an elderly couple in an embrace, representing the value of gifting a memoir or lifestory book through the Basic plan."
             width={250}
@@ -67,7 +67,7 @@ const GiftPlanCard = ({ price, category }) => {
             }}
           >
             <Image
-              src={cover1}
+              src={Standard}
               title="Standard Plan Gift - A Memoir or Autobiography Book for Cherished Moments"
               alt="An elderly couple enjoying a playful moment on a swing, symbolizing treasured memories preserved in a memoir or autobiography book, gifted through the Standard plan."
               width={250}
@@ -86,7 +86,7 @@ const GiftPlanCard = ({ price, category }) => {
             }}
           >
             <Image
-              src={cover2}
+              src={Premium}
               title="Premium Plan Gift - The Perfect Memoir or Autobiography Book for Family Legacy"
               alt="A warm family portrait at sunset by the lake, representing the shared memories and stories preserved in a gifted family memoir or autobiography book through the Premium plan."
               width={250}
