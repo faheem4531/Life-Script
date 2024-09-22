@@ -12,9 +12,9 @@ import { createBasicArray, createPremiumArray, createStandardArray } from "../..
 import Check from "@/__webAssets/svgs/check.svg";
 import Lock from "@/__webAssets/svgs/lock.svg";
 import EditIconPriceCard from "@/_assets/svg/EditIconPriceCard.svg";
-import grandmaBookImage from "../../../../../public/grandmaBookImage.svg";
-import premiumBookImage from "../../../../../public/premiumBookImage.svg";
-import standardBookImage from "../../../../../public/standardBookImage.svg";
+import { images } from "@/utils/assetsUrl";
+const { bookCovers } = images;
+const { cover1, cover2, cover3 } = bookCovers
 
 const GiftPlanCard = ({ price, category }) => {
   const { t } = useTranslation();
@@ -44,12 +44,13 @@ const GiftPlanCard = ({ price, category }) => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "10px",
+            marginTop: "30px",
           }}
         >
           <Image
-            src={grandmaBookImage}
-            alt="grandma Book Image "
+            src={cover3}
+            title="Basic Plan Gift - Giving the Gift of a Memoir or LifeStory Book"
+            alt="A heartwarming image of an elderly couple in an embrace, representing the value of gifting a memoir or lifestory book through the Basic plan."
             width={250}
             height={348}
           />
@@ -62,12 +63,13 @@ const GiftPlanCard = ({ price, category }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "10px",
+              marginTop: "30px",
             }}
           >
             <Image
-              src={standardBookImage}
-              alt="grandma Book Image "
+              src={cover1}
+              title="Standard Plan Gift - A Memoir or Autobiography Book for Cherished Moments"
+              alt="An elderly couple enjoying a playful moment on a swing, symbolizing treasured memories preserved in a memoir or autobiography book, gifted through the Standard plan."
               width={250}
               height={348}
             />
@@ -80,12 +82,13 @@ const GiftPlanCard = ({ price, category }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "10px",
+              marginTop: "30px",
             }}
           >
             <Image
-              src={premiumBookImage}
-              alt="grandma Book Image "
+              src={cover2}
+              title="Premium Plan Gift - The Perfect Memoir or Autobiography Book for Family Legacy"
+              alt="A warm family portrait at sunset by the lake, representing the shared memories and stories preserved in a gifted family memoir or autobiography book through the Premium plan."
               width={250}
               height={348}
             />
@@ -99,12 +102,12 @@ const GiftPlanCard = ({ price, category }) => {
             fontWeight: "700",
           }}
         >
-           {category ? `${category} ${t("stripeFlow.pricePlanCard.TabPanel.plan")}` : `${t("stripeFlow.pricePlanCard.TabPanel.choosePlan")}`}
+          {category ? `${category} ${t("stripeFlow.pricePlanCard.TabPanel.plan")}` : `${t("stripeFlow.pricePlanCard.TabPanel.choosePlan")}`}
         </Typography>
 
         <Box>
           <Typography>
-          {t("stripeFlow.pricePlanCard.TabPanel.commonText")}
+            {t("stripeFlow.pricePlanCard.TabPanel.commonText")}
           </Typography>
         </Box>
         <Box sx={{ marginTop: "30px" }}>
@@ -151,7 +154,7 @@ const GiftPlanCard = ({ price, category }) => {
                 ))}
               </Box>
             )) ||
-            (category == t("stripeFlow.pricePlanCard.TabPanel.category3")&& (
+            (category == t("stripeFlow.pricePlanCard.TabPanel.category3") && (
               <Box>
                 {PremiumArray.map((item, index) => (
                   <Box
