@@ -23,6 +23,7 @@ export default function TransitionsDialog({
   closeModal = () => { },
   proceedText = "",
   cancelText = "",
+  buttons = true
 }) {
   const { t } = useTranslation();
   return (
@@ -75,7 +76,7 @@ export default function TransitionsDialog({
           {description}
         </Typography>
 
-        <Box
+        {buttons && <Box
           sx={{
             display: "flex",
             gap: "15px",
@@ -104,7 +105,7 @@ export default function TransitionsDialog({
               onClick={proceed}
             />
           </Box>
-        </Box>
+        </Box>}
       </Box>
     </Dialog>
   );
