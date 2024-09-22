@@ -11,17 +11,17 @@ import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 
 // Custom components and modules
-import GiftPlanCard from "./GiftPlanCard";
 import PaymentProcessingModal from '../../subscription/_components/Modal';
+import GiftPlanCard from "./GiftPlanCard";
 
 // Assets
-import stripeLogo from "../../../../../public/stripeLogo.svg";
 import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
 import Check from "@/_assets/svg/varifiedCheck.svg";
+import stripeLogo from "../../../../../public/stripeLogo.svg";
 
 // Utility functions or helpers
-import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
 import { stripePaymentInAppGiftFlow, stripePaymentRegister, VerifyReferralCode } from "@/store/slices/chatSlice";
+import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
 
 // Icons or specific components
 import CheckIcon from '@mui/icons-material/Check';
@@ -230,21 +230,23 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Box className={"Container"} sx={{ width: "100%", maxWidth: "1370px", margin: { sm: "0 0 30px 70px", xs: "0 20px 30px 20px" } }}>
-          <Box>
-            <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>{t("stripeFlow.PurchaseForm.title")}</Typography>
-          </Box>
-
+        <Box className={"Container"}
+          sx={{
+            width: "100%",
+            maxWidth: "1370px",
+            margin: { sm: "0 0 30px 70px", xs: "0 20px 30px 20px" }
+          }}>
+          <Typography sx={{ fontSize: "30px", marginBottom: "20px" }}>{t("stripeFlow.PurchaseForm.title")}</Typography>
           <Box sx={{
             display: "flex",
             justifyContent: { md: "space-between" },
             flexDirection: { md: "row", sm: "column-reverse", xs: "column-reverse" },
-            alignItems: "center",
+            alignItems: "start",
             width: "100%",
             columnGap: "50px",
           }}>
 
-            <Box sx={{ maxWidth: { sm: "600px", xs: "100%" }, width: "100%" }}>
+            <Box sx={{ maxWidth: { sm: "600px", xs: "100%" }, width: "100%", mt:"20px" }}>
               <Box>
                 <Typography
                   sx={{
@@ -252,7 +254,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
                     fontSize: { xs: 12, sm: 14, md: 16, lg: 16 },
                   }}
                 >
-                 {t("stripeFlow.PurchaseForm.numberOfBook")}
+                  {t("stripeFlow.PurchaseForm.numberOfBook")}
                 </Typography>
                 <Select
                   value={selectedBooks}
@@ -408,7 +410,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
 
                     <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: "100%", marginTop: "20px" }}>
                       <Typography sx={{ fontSize: "14px" }}>
-                      {t("stripeFlow.PurchaseForm.checkOut.discription2")}
+                        {t("stripeFlow.PurchaseForm.checkOut.discription2")}
                       </Typography>
                     </Box>
                   </Box>
