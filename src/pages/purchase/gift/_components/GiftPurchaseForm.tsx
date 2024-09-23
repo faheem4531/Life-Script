@@ -468,6 +468,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
       <PaymentProcessingModal
         openModal={confirmationStripe}
         selectedTab={"gift"}
+        plan={category}
         handleClose={() => setConfirmationStripe(false)}
         stripeSucceed={stripeSucceed}
         stripeFailed={stripeFailed}
