@@ -56,7 +56,8 @@ const RegisterFreeTrial = () => {
       .unwrap()
       .then((res) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push(`/getStarted/getTitle?userName=${res?.name}`);
+        router.push(`/thank-you/free-trail?auth=${"google"}`);
+        // router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
       .catch(() => {
         toast.error(t("stripeFlow.registerSection.userExist"));
@@ -71,7 +72,6 @@ const RegisterFreeTrial = () => {
     dispatch(signup(data))
       .unwrap()
       .then(() => {
-        // toast.success(t("signup-page.verificationEmailSent"));
         setTimeout(() => {
           setOpenModal(true);
         }, 1000);

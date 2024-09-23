@@ -1,11 +1,12 @@
-import BgLogo from "@/_assets/svg/BgLogo.svg";
-import Logo from "@/_assets/svg/logo-dashboard.svg";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from 'next/link';
+
+import BgLogo from "@/_assets/svg/BgLogo.svg";
+import Logo from "@/_assets/svg/logo-dashboard.svg";
 import GlobelBtn from "../button/Button";
 
-const Thankyou = ({route,head1, head2, typo1, typo2}) => {
+const Thankyou = ({ onClick, head1, head2, typo1, typo2 }) => {
   return (
     <Box
       sx={{
@@ -38,13 +39,13 @@ const Thankyou = ({route,head1, head2, typo1, typo2}) => {
 
       <Box sx={{
         bgcolor: "#30422E",
-        maxWidth: {md:"730px",sm:"500px", xs:"90%"},
-        maxHeight: {md:"370px",sm:"260px",xs:"200px"},
+        maxWidth: { md: "730px", sm: "500px", xs: "90%" },
+        maxHeight: { md: "370px", sm: "260px", xs: "200px" },
         height: "100%",
         color: "#F3ECDA",
-        fontSize: {md:"50px",sm:"36px",xs:"24px"},
+        fontSize: { md: "50px", sm: "36px", xs: "24px" },
         fontWeight: 600,
-        mt:"5%",
+        mt: "5%",
         width: "100%",
         borderRadius: "10px",
         textAlign: "center",
@@ -52,19 +53,18 @@ const Thankyou = ({route,head1, head2, typo1, typo2}) => {
         flexDirection: "column",
         justifyContent: "center"
       }}>
-       {head1} <br /> {head2}
-        <Typography sx={{ mt: {md:"30px",sm:"20px",xs:"20px"}, fontSize: {sm:"15px",xs:"12px"}, fontWeight: 600 }}>
+        {head1} <br /> {head2}
+        <Typography sx={{ mt: { md: "30px", sm: "20px", xs: "20px" }, fontSize: { sm: "15px", xs: "12px" }, fontWeight: 600 }}>
           {typo1} <br /> {typo2}
         </Typography>
       </Box>
-      <Box mt={{md:"50px",sm:"30px",xs:"20px"}}>
-        <Link href={route} passHref>
-          <GlobelBtn
-            btnText="Continue"
-            width="210px"
-            fontSize={{ md: "21px", sm: "18px", xs: "16px" }}
-          />
-        </Link>
+      <Box mt={{ md: "50px", sm: "30px", xs: "20px" }}>
+        <GlobelBtn
+          btnText="Continue"
+          width="210px"
+          fontSize={{ md: "21px", sm: "18px", xs: "16px" }}
+          onClick={onClick}
+        />
       </Box>
 
       <Box
