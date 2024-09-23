@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import Thankyou from "@/components/webComponents/Thankyou";
 
-const UpgradeBasic = () => {
+const GiftBasic = () => {
   const router = useRouter();
 
   function handleRoutes() {
@@ -26,4 +26,4 @@ const UpgradeBasic = () => {
   )
 }
 
-export default UpgradeBasic
+export default GiftBasic
