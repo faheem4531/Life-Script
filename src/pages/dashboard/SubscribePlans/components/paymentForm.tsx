@@ -100,13 +100,13 @@ const PaymentForm = ({ packageName, price }) => {
             }
           } else {
             if (packageName === "BasicPlan") {
-              router.push(`/thank-you/upgrade?plan=${packageName}`);
+              router.push("/thank-you/upgrade-basic");
             }
             else if (packageName === "GoldPlan") {
-              router.push(`/thank-you/upgrade?plan=${"StandardPlan"}`);
+              router.push("/thank-you/upgrade-standard");
             }
             else {
-              router.push(`/thank-you/upgrade?plan=${packageName}`);
+              router.push("/thank-you/upgrade-premium");
             }
           }
         })
