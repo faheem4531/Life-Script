@@ -38,7 +38,7 @@ const EmailVerification = () => {
       .then((res) => {
         toast.success(t("Verify.emailVerifiedSuccessfully"));
         // router.push(`/_auth/Auth`);
-        router.push(`/thank-you/free-trail?auth=${"email"}`);
+        router.push(`/thank-you/free-trial?auth=${"email"}`);
       })
       .catch((error: any) => {
         toast.error(error || t("Verify.failedVerifyEmail"));
@@ -73,7 +73,7 @@ const EmailVerification = () => {
       setOtp(decryptedData.otp);
     }
   }, [ciphertext]);
-  
+
   const formik = useFormik({
     initialValues: {
       email: userEmail,

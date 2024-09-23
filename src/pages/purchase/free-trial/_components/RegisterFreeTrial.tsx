@@ -56,7 +56,7 @@ const RegisterFreeTrial = () => {
       .unwrap()
       .then((res) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
-        router.push(`/thank-you/free-trail?auth=${"google"}`);
+        router.push(`/thank-you/free-trial?auth=${"google"}`);
         // router.push(`/getStarted/getTitle?userName=${res?.name}`);
       })
       .catch(() => {
