@@ -40,6 +40,7 @@ export default function PaymentProcessingModal({
   selectedTab,
   stripeSucceed,
   stripeFailed,
+  plan
 }) {
   const [value, setValue] = useState(0);
   const [emailVerify, setEmailVerication] = useState(false);
@@ -79,7 +80,15 @@ export default function PaymentProcessingModal({
   useEffect(() => {
     if (value === 100 && selectedTab === "gift") {
       const timeoutId = setTimeout(() => {
-        router.push("/");
+        if (plan==="Basic") {
+          router.push("/thank-you/gift-basic");
+        }
+        else if (plan === "Standard"){
+          router.push("/thank-you/gift-standard");
+        }
+        else{
+          router.push("/thank-you/gift-premium");
+        }
       }, 5000);
 
       return () => {
@@ -87,7 +96,7 @@ export default function PaymentProcessingModal({
         localStorage.clear();
       };
     }
-  }, [value, selectedTab, router]);
+  }, [value, selectedTab, router, plan]);
 
   return (
     <Modal
