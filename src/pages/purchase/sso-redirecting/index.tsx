@@ -31,7 +31,8 @@ const SsoRedirecting = () => {
             setLoading(false)
 
             toast.success("login with facebook");
-            router.push(`/getStarted/getTitle?userName=${res?.name}`);
+            router.push(`/thank-you/free-trial?auth=${"facebook"}`);
+            // router.push(`/getStarted/getTitle?userName=${res?.name}`);
           })
           .catch((error) => {
             setLoading(false)

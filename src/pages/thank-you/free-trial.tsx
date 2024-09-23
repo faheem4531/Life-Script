@@ -9,7 +9,7 @@ const FreeTrail = () => {
     const auth = router.query.auth || '';
     const userName = localStorage.getItem("username");
 
-    if (auth === 'google') {
+    if (auth === 'google' || auth === 'facebook') {
       router.push(`/getStarted/getTitle?userName=${userName}`);
     } else {
       router.push('/_auth/Auth');
