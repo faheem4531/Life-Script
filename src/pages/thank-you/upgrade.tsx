@@ -9,7 +9,6 @@ const UpgradeBasic = () => {
   const [plan, setPlan] = useState("");
   const subPlan = router.query.plan || '';
 
-
   useEffect(() => {
     if (subPlan === "BasicPlan") {
       setPlan("Basic")
