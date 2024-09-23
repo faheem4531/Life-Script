@@ -25,8 +25,7 @@ const FreeTrail = () => {
         onClick={handleRoutes}
         head1={"WELCOME TO THE"}
         head2={"7-DAY FREE TRIAL!"}
-        typo1={"You’ve gifted the Basic Plan."}
-        typo2={"The recipient will receive their gift on the scheduled date."} />
+      />
     </>
   )
 }
