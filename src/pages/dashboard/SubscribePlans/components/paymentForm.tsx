@@ -57,7 +57,6 @@ const PaymentForm = ({ packageName, price }) => {
   const elements = useElements();
   const { t } = useTranslation();
 
-  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY, "NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY")
 
   const handleSubmit = async (event) => {
     const subscriptionPrice = Number(price);
@@ -100,7 +99,15 @@ const PaymentForm = ({ packageName, price }) => {
               setStripeFailed(true);
             }
           } else {
-            setStripeSucceed(true);
+            if (packageName === "BasicPlan") {
+              router.push(`/thank-you/upgrade?plan=${packageName}`);
+            }
+            else if (packageName === "GoldPlan") {
+              router.push(`/thank-you/upgrade?plan=${"StandardPlan"}`);
+            }
+            else {
+              router.push(`/thank-you/upgrade?plan=${packageName}`);
+            }
           }
         })
         .catch((error) => {
@@ -110,7 +117,6 @@ const PaymentForm = ({ packageName, price }) => {
     }
   };
 
-  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY, 'process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY')
 
   return (
     <>
@@ -273,6 +279,7 @@ const PaymentForm = ({ packageName, price }) => {
           </Box>
         </Box>
       </Box>
+
       <TransitionsDialog
         open={confirmationStripe}
         heading={`${t("SubsPlan.premPlan")}`}
@@ -287,15 +294,13 @@ const PaymentForm = ({ packageName, price }) => {
         }}
         proceed={handleSubmit}
       />
+
       <CustomizationDialog
-        open={stripeSucceed || stripeFailed}
+        open={stripeFailed}
         title=""
         handleClose={() => {
-          setStripeSucceed(false);
           setStripeFailed(false);
-          stripeFailed
-            ? router.push("/dashboard/SubscribePlans")
-            : router.push("/dashboard/chapters");
+          router.push("/dashboard/SubscribePlans")
         }}
         customStyles={{ backgroundColor: "auto" }}
         marginTop={0}
@@ -324,7 +329,7 @@ const PaymentForm = ({ packageName, price }) => {
               margin: "15px 0",
             }}
           >
-            {stripeFailed ? `${t("SubsPlan.Sorry")}` : `${t("SubsPlan.TY")}`}
+            {t("SubsPlan.Sorry")}
           </Typography>
           <Typography
             sx={{
@@ -334,9 +339,7 @@ const PaymentForm = ({ packageName, price }) => {
               margin: { md: "0 120px", sm: "0px 55px", xs: "0px" },
             }}
           >
-            {stripeFailed
-              ? `${t("SubsPlan.SorryDes")}`
-              : `${t("SubsPlan.TYDes")}`}
+            {t("SubsPlan.SorryDes")}
           </Typography>
 
           <Box
@@ -349,15 +352,9 @@ const PaymentForm = ({ packageName, price }) => {
             <GlobelBtn
               bgColor="#30422E"
               color="white"
-              btnText={
-                stripeFailed
-                  ? `${t("SubsPlan.sorryBtn")}`
-                  : `${t("SubsPlan.TYBtn")}`
-              }
+              btnText={t("SubsPlan.sorryBtn")}
               onClick={() => {
-                stripeFailed
-                  ? router.push("/dashboard/SubscribePlans")
-                  : router.push("/dashboard/chapters");
+                router.push("/dashboard/SubscribePlans")
                 setStripeSucceed(false);
                 setStripeFailed(false);
               }}
