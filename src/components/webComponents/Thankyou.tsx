@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import GlobelBtn from "../button/Button";
 
-const Thankyou = () => {
+const Thankyou = ({route,head1, head2, typo1, typo2}) => {
   return (
     <Box
       sx={{
@@ -52,13 +52,13 @@ const Thankyou = () => {
         flexDirection: "column",
         justifyContent: "center"
       }}>
-        WELCOME TO THE <br /> 7-DAY FREE TRIAL!
+       {head1} <br /> {head2}
         <Typography sx={{ mt: {md:"30px",sm:"20px",xs:"20px"}, fontSize: {sm:"15px",xs:"12px"}, fontWeight: 600 }}>
-          You’ve gifted the Basic Plan. <br /> The recipient will receive their gift on the scheduled date.
+          {typo1} <br /> {typo2}
         </Typography>
       </Box>
       <Box mt={{md:"50px",sm:"30px",xs:"20px"}}>
-        <Link href={'/'} passHref>
+        <Link href={route} passHref>
           <GlobelBtn
             btnText="Continue"
             width="210px"
