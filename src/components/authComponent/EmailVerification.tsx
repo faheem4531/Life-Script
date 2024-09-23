@@ -37,7 +37,8 @@ const EmailVerification = () => {
       .unwrap()
       .then((res) => {
         toast.success(t("Verify.emailVerifiedSuccessfully"));
-        router.push(`/_auth/Auth`);
+        // router.push(`/_auth/Auth`);
+        router.push(`/thank-you/free-trail?auth=${"email"}`);
       })
       .catch((error: any) => {
         toast.error(error || t("Verify.failedVerifyEmail"));
