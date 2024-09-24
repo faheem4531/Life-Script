@@ -21,7 +21,7 @@ import Working from "@/__webComponents/working/Working";
 import {
   useChristmasMomSuggestions,
   useOurBookCoverforChristmasMom,
-  // useRetiredMenFeaturesGif,
+  useChristmasMomFeaturesGif,
   // useRetiredMenQA,
   useChrismasMomTestimonials,
   useSuggestedQuestions,
@@ -36,7 +36,7 @@ const ChristmasMom = () => {
   // const retiredMenQA = useRetiredMenQA(t);
   const suggestedQuestions = useSuggestedQuestions(t);
   const ourBookCover = useOurBookCoverforChristmasMom(t);
-  // const featuresGif = useRetiredMenFeaturesGif(t);
+  const featuresGif = useChristmasMomFeaturesGif(t);
 
   return (
     <>
@@ -88,13 +88,13 @@ const ChristmasMom = () => {
           heading={t("landingPage.bookSection.title")}
           marked={t("landingPage.bookSection.subTitle")}
         />
-      {/*   <Experience
+      <Experience
           panelsData={featuresGif}
           headingStyle={false}
           heading="Features that make it "
           marked="easy"
         />
-        <Reviews
+        {/*   <Reviews
           review="When my daughter first gave me LifeScript as a retirement gift, I wasn’t sure what to make of it. I’m not much of a writer, and I didn’t think I had much to say. But after sitting down with it, I started remembering things I hadn’t thought about in years. I’m talking about little moments, stuff I thought was long forgotten. Now I’m hooked. It’s weird how it pulls stories out of you. My grandkids love hearing the tales, and I’m happy knowing they’ll have a piece of me when I’m gone. What started as a simple gift turned into something really meaningful."
           author="Tom S. - retired firefighter"
         />

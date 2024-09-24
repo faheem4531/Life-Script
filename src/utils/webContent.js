@@ -1490,3 +1490,61 @@ export const useOurBookCoverforChristmasMom = (t) => [
     title: "Minimalistic book cover for moms’ Christmas gifts",
   },
 ];
+
+export const useChristmasMomFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "landingPage.featureSection.accordion1.description",
+    imageSrc: Narrative,
+    alt: "Demo animation showing how easy LifeScript is to use as a personalized Christmas gift for mom.",
+    imgTitle:
+      "Demo animation showing how LifeScript works as a Christmas gift for moms.",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "landingPage.featureSection.accordion2.description",
+    imageSrc: AssistedEditing,
+    alt: "Assisted editing feature demo showing how spelling and grammar checks work, perfect for creating memorable Christmas gifts for moms.",
+    imgTitle: "Assisted editing demo for creating moms’ Christmas gift books",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "landingPage.featureSection.accordion3.description",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo showing how your recorded words translate into written text, making it a thoughtful Christmas gift for moms - LifeScript.",
+    imgTitle: "Voice-to-text demo for moms’ Christmas gift creation",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "landingPage.featureSection.accordion4.description",
+    imageSrc: FamilyTree,
+    alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized Christmas gift for moms - LifeScript.",
+    imgTitle: "Family tree demo for creating moms’ Christmas gifts",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "landingPage.featureSection.accordion5.description",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting features demo showcasing bold, italics, and other customization options, perfect for creating personalized Christmas gifts for moms - LifeScript.",
+    imgTitle: "Formatting features demo for moms’ Christmas gift books",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "landingPage.featureSection.accordion6.description",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how uploaded images are enhanced and fitted, perfect for high-quality Christmas gifts for moms - LifeScript.",
+    imgTitle: "Auto photo improvement for creating moms’ Christmas gift books",
+  },
+];
