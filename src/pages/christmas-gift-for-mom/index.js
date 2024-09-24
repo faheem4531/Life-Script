@@ -19,24 +19,24 @@ import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
-  useOurBookCoverforRetiredMen,
-  useRetiredMenFeaturesGif,
-  useRetiredMenQA,
-  useRetiredMenSuggestions,
-  useRetiredMenTestimonials,
-  useSuggestedQuestions,
-  useWorkingDetails,
+  useChristmasMomSuggestions,
+  // useOurBookCoverforRetiredMen,
+  // useRetiredMenFeaturesGif,
+  // useRetiredMenQA,
+  // useRetiredMenTestimonials,
+  // useSuggestedQuestions,
+  // useWorkingDetails,
 } from "@/utils/webContent";
 
 const ChristmasMom = () => {
   const { t } = useTranslation();
-  const workingData = useWorkingDetails(t);
-  const retiredMenQA = useRetiredMenQA(t);
-  const retiredMenSuggestions = useRetiredMenSuggestions(t);
-  const testimonials = useRetiredMenTestimonials(t);
-  const suggestedQuestions = useSuggestedQuestions(t);
-  const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
-  const featuresGif = useRetiredMenFeaturesGif(t);
+  const christmasMomSuggestions = useChristmasMomSuggestions(t);
+  // const workingData = useWorkingDetails(t);
+  // const retiredMenQA = useRetiredMenQA(t);
+  // const testimonials = useRetiredMenTestimonials(t);
+  // const suggestedQuestions = useSuggestedQuestions(t);
+  // const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
+  // const featuresGif = useRetiredMenFeaturesGif(t);
 
   return (
     <>
@@ -65,13 +65,13 @@ const ChristmasMom = () => {
           }}
         >
           <Suggestion
-            heading="A retirement gift empowering him to:"
-            data={retiredMenSuggestions}
+            heading="A Christmas gift that allows her to:"
+            data={christmasMomSuggestions}
             btnTxt="Gift now"
             btnImg={Gift}
           />
         </Box>
-        <Testimonial reviews={testimonials} heading="What our customers say" />
+        {/* <Testimonial reviews={testimonials} heading="What our customers say" />
         <Working
           data={workingData}
           heading={"How LifeScript"}
@@ -110,7 +110,7 @@ const ChristmasMom = () => {
             btnLink={"/purchase"}
           />
         </Box>
-        <GotQuestions questions={retiredMenQA} />
+        <GotQuestions questions={retiredMenQA} /> */}
         <ContactFooter
           title={"Not the right moment? Set a"}
           marked={t("landingPage.reminderSection.subTitle")}

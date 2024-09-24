@@ -1391,3 +1391,36 @@ export const useCarouselSliderImages = [
     title: "Grandpa and Child Hiking Together for LifeStory Creation",
   },
 ];
+
+export const useChristmasMomSuggestions = (t) => {
+  const imageData = {
+    src: others.homeSuggestion,
+    alt: "A touching moment between daughter and mom, symbolizing a special Christmas gift for moms to capture their life stories - LifeScript.",
+    title:
+      "Daughter and mom special moment - Christmas gift for mom",
+  };
+  const content = [
+    {
+      title: "Celebrate her life story",
+      subTitle:
+        "Christmas is a time for reflection, and what could be more meaningful than a gift that celebrates the journey she's traveled? Help her create a beautiful keepsake that honors her life story, filled with memories, achievements, and the moments that made her who she is today.",
+    },
+    {
+      title: "Share stories and wisdom",
+      subTitle:
+        "Moms have a lifetime of wisdom and stories worth passing down. This Christmas, offer her the chance to preserve those moments and share them with family. Her life lessons, cherished memories, and unique experiences can become a lasting legacy for generations to come.",
+    },
+    {
+      title: "Connect with family",
+      subTitle:
+        "Her stories are the threads that weave the fabric of family. Uncover memories that have never been shared, bringing loved ones closer and ensuring her voice is heard for generations.",
+    },
+    {
+      title: "Reflect on life’s journey",
+      subTitle:
+        "Give her the chance to look back on her journey, reliving the moments that shaped her. This is more than just a gift—it's an opportunity for her to reflect, to celebrate her life, and to share those priceless memories with the ones she loves most.",
+    },
+  ];
+
+  return { imageData, content };
+};
