@@ -472,6 +472,7 @@ const GiftPurchaseForm = ({ inAppGiftFlow, giftToUser }) => {
         handleClose={() => setConfirmationStripe(false)}
         stripeSucceed={stripeSucceed}
         stripeFailed={stripeFailed}
+        verificationReq={false}
       />
 
     </>
