@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import Link from 'next/link';
 
 import BgLogo from "@/_assets/svg/BgLogo.svg";
 import Logo from "@/_assets/svg/logo-dashboard.svg";
@@ -32,9 +31,7 @@ const Thankyou = ({ onClick, head1, head2, typo1 = undefined, typo2 = undefined 
           padding: "26px 0 26px 17px",
         }}
       >
-        <Link href={"./"}>
-          <Image src={Logo} alt="Logo" />
-        </Link>
+        <Image src={Logo} alt="Logo" />
       </Box>
 
       <Box sx={{
@@ -52,7 +49,7 @@ const Thankyou = ({ onClick, head1, head2, typo1 = undefined, typo2 = undefined 
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        zIndex:100
+        zIndex: 100
       }}>
         {head1} <br /> {head2}
         {typo1 && <Typography
