@@ -25,14 +25,14 @@ import {
   // useRetiredMenQA,
   useChrismasMomTestimonials,
   // useSuggestedQuestions,
-  // useWorkingDetails,
+  useWorkingDetails,
 } from "@/utils/webContent";
 
 const ChristmasMom = () => {
   const { t } = useTranslation();
   const christmasMomSuggestions = useChristmasMomSuggestions(t);
   const testimonials = useChrismasMomTestimonials(t);
-  // const workingData = useWorkingDetails(t);
+  const workingData = useWorkingDetails(t);
   // const retiredMenQA = useRetiredMenQA(t);
   // const suggestedQuestions = useSuggestedQuestions(t);
   // const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
@@ -72,13 +72,13 @@ const ChristmasMom = () => {
           />
         </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />
-       {/*  <Working
+       <Working
           data={workingData}
           heading={"How LifeScript"}
           marked={"works"}
           width={"300px"}
         />
-        <DiscoverQuestions
+        {/*  <DiscoverQuestions
           questions={suggestedQuestions}
           cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
           from personalised suggestions."
