@@ -22,6 +22,26 @@ const { whyLifeScriptIcons, other, featuresLogos, testimonial } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others, sliderImages } =
   images;
 
+export const useCarouselSliderImages = [
+  {
+    path: sliderImages.motherHiking,
+    alt: "Parent and Child Hiking for a Memoir Book Journey",
+    title:
+      "A parent carrying a child while hiking through a forest, reflecting the journey of preserving memories and stories in a memoir book.",
+  },
+  {
+    path: sliderImages.readingBook,
+    alt: "Woman Enjoying Reading a Memoir Book",
+    title:
+      "A woman drinking tea while reading a book by the window, representing reflection and the personal connection of reading a memoir.",
+  },
+  {
+    path: sliderImages.grandFather,
+    alt: "Grandfather standing with walking stick while child climbs a hill during an outdoor adventure, symbolizing shared memories in a lifestory book.",
+    title: "Grandpa and Child Hiking Together for LifeStory Creation",
+  },
+];
+
 export const UseAlternativeQA = (t) => [
   {
     qs: "How much does Storyworth cost?",
@@ -1374,30 +1394,11 @@ export const useRetiredWomenQA = (t) => [
   },
 ];
 
-export const useCarouselSliderImages = [
-  {
-    path: sliderImages.motherHiking,
-    alt: "Parent and Child Hiking for a Memoir Book Journey",
-    title: "A parent carrying a child while hiking through a forest, reflecting the journey of preserving memories and stories in a memoir book.",
-  },
-  {
-    path: sliderImages.readingBook,
-    alt: "Woman Enjoying Reading a Memoir Book",
-    title: "A woman drinking tea while reading a book by the window, representing reflection and the personal connection of reading a memoir.",
-  },
-  {
-    path: sliderImages.grandFather,
-    alt: "Grandfather standing with walking stick while child climbs a hill during an outdoor adventure, symbolizing shared memories in a lifestory book.",
-    title: "Grandpa and Child Hiking Together for LifeStory Creation",
-  },
-];
-
 export const useChristmasMomSuggestions = (t) => {
   const imageData = {
     src: others.homeSuggestion,
     alt: "A touching moment between daughter and mom, symbolizing a special Christmas gift for moms to capture their life stories - LifeScript.",
-    title:
-      "Daughter and mom special moment - Christmas gift for mom",
+    title: "Daughter and mom special moment - Christmas gift for mom",
   };
   const content = [
     {
@@ -1611,3 +1612,222 @@ export const useChristmasMomQA = (t) => [
     isexpanded: false,
   },
 ];
+
+export const useThanksgivingQA = (t) => [
+  {
+    qs: "What is included in each plan?",
+    ans: "Lifetime access to our platform, full-color hardcover book and free delivery.",
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I gift LifeScript as a Thanksgiving gift for mom and how does that work?",
+    ans: "Absolutely! LifeScript is one of the best Thanksgiving gifts for your mom, dad or anyone you deeply care about. You can gift it by providing her email and selecting the date you’d like the gift email to be sent. Once the email is delivered, you’ll receive a confirmation as well.",
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: "If now isn’t the perfect time for this gift, can I set a reminder?",
+    ans: "Of course! You can set a reminder below, and we’ll notify you when the right time to gift LifeScript approaches.",
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: "Is LifeScript a good last-minute Thanksgiving gift idea and is it suitable for my grandparents?",
+    ans: "LifeScript is a perfect last-minute Thanksgiving gift idea that is suitable and very often gifted to a grandparent as they have lots of stories to tell. You can purchase it even the night before their special day, and the gift email will be sent early in the morning on your selected date.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Is international shipping available and how much does it cost?",
+    ans: "We ship internationally and provide delivery tracking. Oh, and it’s free.",
+    panel: "panel5",
+    isexpanded: false,
+  },
+  {
+    qs: "How can I ensure her book and information remain private?",
+    ans: (
+      <>
+        We take{" "}
+        <NextLink href="/privacy-policy" passHref>
+          <span style={{ color: "#30422E", fontFamily: "Avenir8" }}>
+            privacy
+          </span>
+        </NextLink>{" "}
+        very seriously. We use advanced security technologies and encryption
+        methods to protect his personal stories and information, ensuring they
+        remain completely private.
+      </>
+    ),
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I purchase extra books?",
+    ans: "Yes, additional full-color hardcover books are available for 39$ each.",
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: "Do you have any tutorials or instructions on how to use the platform and create my book?",
+    ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
+    panel: "panel8",
+    isexpanded: false,
+  },
+];
+
+export const useThanksgivingTestimonials = (t) => [
+  {
+    name: "Michael L.",
+    details:
+      "Finding a gift for my dad that really meant something was hard until I found LifeScript. This Thanksgiving, I wanted to give him more than just another tool or gadget. Watching him dive into his memories and share them with us has been such a gift for all of us. He’s putting together stories I never knew about, and now they’ll be part of our family forever. It’s been amazing to see how much he’s enjoying it.",
+  },
+  {
+    name: "Hannah W.",
+    details:
+      "We wanted to surprise Grandma with something special this Thanksgiving, and LifeScript was the best decision. She’s been telling us stories we’ve never heard before—about her childhood, her parents, all the little things that make her who she is. She’s so proud of the book she’s putting together, and we’re all thrilled to read it when it’s finished. It’s a gift that truly brought our family closer.",
+  },
+  {
+    name: "David P.",
+    details:
+      "This year for Thanksgiving, we gave Grandpa LifeScript, and it’s turned into something so much more than just a gift. He’s been using it to write down his life story, and we’ve been sitting around the table listening to him share these incredible memories. It’s like we’re learning a whole new side of him. LifeScript has turned into a bonding experience for the whole family, and I couldn’t recommend it enough.",
+  },
+  {
+    name: "Rachel M.",
+    details:
+      "I gave my mom LifeScript for Thanksgiving, and it’s been so special watching her dive into her memories. Every time I see her, she’s excited to show me what she’s been writing, and I’m learning so much about her life. It’s like we’re connecting on a whole new level, and it’s such a beautiful way to preserve her stories. This gift is going to be passed down for generations, and I’m so glad I gave it to her.",
+  },
+  {
+    name: "Luke S.",
+    details:
+      "We wanted to do something really meaningful for Thanksgiving this year, so we gave my dad LifeScript. It’s been amazing watching him reflect on his life and share all those little stories that make up who he is. He’s always been quiet about his past, but now he’s excited to put it all down on paper. It’s turned into such a beautiful way for our family to connect.",
+  },
+  {
+    name: "Emma B.",
+    details:
+      "Thanksgiving is all about family, and this year, we gave Grandma a gift that really captured that—LifeScript. She’s always had so many stories, but now she’s finally putting them all together in a book. She loves showing us what she’s written so far, and it’s been such a joy to see her so excited about it. It’s more than just a gift—it’s a way to keep her memories alive for generations.",
+  },
+];
+
+export const useThanksgivingFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "landingPage.featureSection.accordion1.description",
+    imageSrc: Narrative,
+    alt: "Demo animation showing how easy LifeScript is to use as a personalized Thanksgiving gift.",
+    imgTitle:
+      "Demo animation showing how LifeScript works as a Thanksgiving gift",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "landingPage.featureSection.accordion2.description",
+    imageSrc: AssistedEditing,
+    alt: "Assisted editing feature demo showing how spelling and grammar checks work, perfect for creating memorable Thanksgiving gifts.",
+    imgTitle: "Assisted editing demo for creating Thanksgiving gift books",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "landingPage.featureSection.accordion3.description",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo showing how your recorded words translate into written text, making it a thoughtful Thanksgiving gift - LifeScript.",
+    imgTitle: "Voice-to-text demo for Thanksgiving gift creation",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "landingPage.featureSection.accordion4.description",
+    imageSrc: FamilyTree,
+    alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized Thanksgiving gift - LifeScript.",
+    imgTitle: "Family tree demo for creating Thanksgiving gifts",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "landingPage.featureSection.accordion5.description",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting features demo showcasing bold, italics, and other customization options, perfect for creating personalized Thanksgiving gifts - LifeScript",
+    imgTitle: "Formatting features demo for Thanksgiving gift books",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "landingPage.featureSection.accordion6.description",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how uploaded images are enhanced and fitted, perfect for high-quality Thanksgiving gifts - LifeScript",
+    imgTitle: "Auto photo improvement for creating Thanksgiving gift books",
+  },
+];
+
+export const useOurBookCoverforThanksgiving = (t) => [
+  {
+    coverImage: bookCovers.cover1,
+    alt: "Book cover showing an elderly couple on a swing, perfect for Thanksgiving gift ideas - LifeScript.",
+    title: "Grandparents on swing book cover for Thanksgiving gifts",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "Full-picture life story book cover featuring a family, ideal for Thanksgiving gift ideas - LifeScript.",
+    title: "Full-picture family book cover for Thanksgiving gifts",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "Book cover featuring an elderly couple celebrating grandma’s birthday, a thoughtful Thanksgiving gift - LifeScript.",
+    title: "Birthday celebration book cover as Thanksgiving gift",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt: "Book cover with a couple enjoying the sun in a forest, a heartwarming Thanksgiving gift - LifeScript.",
+    title: "Grandparents enjoying nature book cover for Thanksgiving gifts",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover with author’s photo, customizable for the best Thanksgiving gift - LifeScript.",
+    title: "Customizable memoir book cover for Thanksgiving gifts",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Minimalistic autobiography book cover design, perfect for a personalized Thanksgiving gift - LifeScript.",
+    title: "Minimalistic book cover for Thanksgiving gifts",
+  },
+];
+
+export const useThanksgivingSuggestions = (t) => {
+  const imageData = {
+    src: others.homeSuggestion,
+    alt: "A happy moment between grandparents and their grandchildren as a holiday gathering for Thanksgiving gift- LifeScript",
+    title: "Grandparents and grandchildren happy moment - Thanksgiving gift",
+  };
+  const content = [
+    {
+      title: "Celebrate their life story",
+      subTitle:
+        "Thanksgiving is a time to reflect and express gratitude for the people who’ve shaped our lives. Give them a Thanksgiving gift that honors their unique journey—a keepsake book that captures the memories, milestones, and defining moments that have made them who they are today.",
+    },
+    {
+      title: "Share stories and wisdom",
+      subTitle:
+        "The best gifts are the ones that we remember. This holiday, offer them the opportunity to preserve their experiences in a hardcover book so that future generations will cherish, ensuring their legacy lives on.",
+    },
+    {
+      title: "Connect with family",
+      subTitle:
+        "Thanksgiving is the perfect time to share the stories that bring your family closer. With this gift, your loved ones can recount cherished memories and discover new ones, deepening bonds and creating a lasting legacy for future generations.",
+    },
+    {
+      title: "Reflect on life’s journey",
+      subTitle:
+        "Offer your loved one a chance to relive the moments that defined them and capture the memories they hold dear. This thoughtful gift transforms their reflections into something timeless, creating a keepsake that will be cherished for years to come.",
+    },
+  ];
+
+  return { imageData, content };
+};

@@ -19,24 +19,24 @@ import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
-  useChrismasMomTestimonials,
-  useChristmasMomFeaturesGif,
-  useChristmasMomQA,
-  useChristmasMomSuggestions,
-  useOurBookCoverforChristmasMom,
+  useThanksgivingTestimonials,
+  useThanksgivingFeaturesGif,
+  useThanksgivingQA,
+  useThanksgivingSuggestions,
+  useOurBookCoverforThanksgiving,
   useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/webContent";
 
 const ThanksGiving = () => {
   const { t } = useTranslation();
-  const christmasMomSuggestions = useChristmasMomSuggestions(t);
-  const testimonials = useChrismasMomTestimonials(t);
+  const sugestionData = useThanksgivingSuggestions(t);
+  const testimonials = useThanksgivingTestimonials(t);
   const workingData = useWorkingDetails(t);
-  const christmasMomQA = useChristmasMomQA(t);
+  const shortQA = useThanksgivingQA(t);
   const suggestedQuestions = useSuggestedQuestions(t);
-  const ourBookCover = useOurBookCoverforChristmasMom(t);
-  const featuresGif = useChristmasMomFeaturesGif(t);
+  const ourBookCover = useOurBookCoverforThanksgiving(t);
+  const featuresGif = useThanksgivingFeaturesGif(t);
 
   return (
     <>
@@ -65,8 +65,8 @@ const ThanksGiving = () => {
           }}
         >
           <Suggestion
-            heading="A Christmas gift that allows her to:"
-            data={christmasMomSuggestions}
+            heading="A Thanksgiving gift that helps your loved one to"
+            data={sugestionData}
             btnTxt="Gift now"
             btnImg={Gift}
           />
@@ -95,8 +95,8 @@ const ThanksGiving = () => {
           marked="easy"
         />
         <Reviews
-          review="I’ve never seen my mom so excited about a gift. When I gave her LifeScript for Christmas, it became more than just a book—it became her way of sharing who she is with us. The process has brought us closer as a family, hearing the stories behind the photos she’s adding and the memories she’s writing down. This gift has given her something to look forward to, and it’s given me the gift of knowing her even more. I couldn’t recommend this more for anyone looking for something meaningful for their mom."
-          author="Emma R."
+          review="This Thanksgiving, I wanted to give my mom something meaningful, something that would really connect us as a family. LifeScript turned out to be the perfect gift. Every time we talk now, she shares a story I’ve never heard before, and it’s like I’m getting to know her in a whole new way. She’s so proud of the book she’s creating, and honestly, we’re all excited to read it. LifeScript brought us closer this holiday season, and I’m so grateful for that. It’s more than a gift—it’s a lasting memory."
+          author="Sarah G."
         />
         <Box
           sx={{
@@ -104,13 +104,14 @@ const ThanksGiving = () => {
           }}
         >
           <GifTab
-            heading="Surprise her with the best Christmas gift and let her transform memories into a keepsake book."
+            heading="Surprise your loved one with a Thanksgiving
+gift that will transform their memories into a beautiful book delivered to their doorstep."
             button={"Gift now"}
             icon={Gift}
             btnLink={"/purchase"}
           />
         </Box>
-        <GotQuestions questions={christmasMomQA} />
+        <GotQuestions questions={shortQA} />
         <ContactFooter
           title={"Not the right moment? Set a"}
           marked={t("landingPage.reminderSection.subTitle")}
