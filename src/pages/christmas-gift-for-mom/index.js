@@ -23,7 +23,7 @@ import {
   // useOurBookCoverforRetiredMen,
   // useRetiredMenFeaturesGif,
   // useRetiredMenQA,
-  // useRetiredMenTestimonials,
+  useChrismasMomTestimonials,
   // useSuggestedQuestions,
   // useWorkingDetails,
 } from "@/utils/webContent";
@@ -31,9 +31,9 @@ import {
 const ChristmasMom = () => {
   const { t } = useTranslation();
   const christmasMomSuggestions = useChristmasMomSuggestions(t);
+  const testimonials = useChrismasMomTestimonials(t);
   // const workingData = useWorkingDetails(t);
   // const retiredMenQA = useRetiredMenQA(t);
-  // const testimonials = useRetiredMenTestimonials(t);
   // const suggestedQuestions = useSuggestedQuestions(t);
   // const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
   // const featuresGif = useRetiredMenFeaturesGif(t);
@@ -71,8 +71,8 @@ const ChristmasMom = () => {
             btnImg={Gift}
           />
         </Box>
-        {/* <Testimonial reviews={testimonials} heading="What our customers say" />
-        <Working
+        <Testimonial reviews={testimonials} heading="What our customers say" />
+       {/*  <Working
           data={workingData}
           heading={"How LifeScript"}
           marked={"works"}

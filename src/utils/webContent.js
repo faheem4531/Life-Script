@@ -1424,3 +1424,36 @@ export const useChristmasMomSuggestions = (t) => {
 
   return { imageData, content };
 };
+
+export const useChrismasMomTestimonials = (t) => [
+  {
+    name: "Sarah K.",
+    details:
+      "I was looking for something unique to gift my mom for Christmas, and LifeScript turned out to be the perfect choice. She’s been reminiscing about her childhood and family stories, and now all those memories are in a beautifully bound book. It’s something that will be treasured for generations to come. Best gift I’ve ever given!",
+  },
+  {
+    name: "Emily R.",
+    details:
+      "I gave my mom LifeScript for Christmas, and it’s been so special watching her fill it out. She’s been sharing stories I’ve never heard before, and I can tell how much it means to her to pass them down. It’s not just a book—it’s our family’s history in her own words. Such a heartfelt gift.",
+  },
+  {
+    name: "Jenna S.",
+    details:
+      "This was a Christmas gift for my mom, and she’s absolutely loving it. She’s been working on her LifeScript for a few weeks now, and every time we talk, she tells me about a new memory she’s writing down. It’s such a thoughtful way to capture the essence of who she is, and I know it’ll be cherished for years.",
+  },
+  {
+    name: "Clara D.",
+    details:
+      "I was so excited to give my mom LifeScript this Christmas! She’s always been a storyteller, and now all her stories are being captured in one place. It’s brought us closer, hearing about her life experiences, and the fact that it’s all going into a book makes it even more special. A perfect gift for moms who love to reflect on their past.",
+  },
+  {
+    name: "Rebecca T.",
+    details:
+      "Christmas shopping for my mom has always been a challenge, but LifeScript was such a great find. It’s given her the chance to share all her stories, from her childhood to raising us. I didn’t expect it to be so meaningful for her, but she’s pouring her heart into it. It’s the kind of gift that keeps giving, and I know our whole family will treasure it.",
+  },
+  {
+    name: "Laura M.",
+    details:
+      "My mom is usually so hard to shop for, but this year I gave her LifeScript for Christmas, and she’s been thrilled. She’s always enjoyed looking back on the memories, and now she gets to organize them into a beautiful book. Every time we talk, she shares a new story she’s written down. It’s truly a gift that connects generations.",
+  },
+];
