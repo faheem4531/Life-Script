@@ -2,17 +2,17 @@
 // External libraries and frameworks
 import { Box, Button, Checkbox, Divider, FormControlLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 
 // Custom components and modules
+import { stripePaymentRegister, VerifyReferralCode } from '@/store/slices/chatSlice';
 import BasicPlanCard from './BasicPlanCard';
 import PaymentProcessingModal from './Modal';
-import { stripePaymentRegister, VerifyReferralCode } from '@/store/slices/chatSlice';
 
 // Assets
 import UnCheck from "@/_assets/svg/unVarifiedCheck.svg";
@@ -24,6 +24,7 @@ import { createDropDownOptions } from "../../../../utils/stripeFlowObjects";
 
 // Specific icons or components
 import CheckIcon from '@mui/icons-material/Check';
+import { useRouter } from 'next/router';
 
 const useOptions = () => {
   const fontSize = "16px";
@@ -50,7 +51,7 @@ const useOptions = () => {
   return options;
 };
 
-const PurchaseForm = ({ selectedTab }) => {
+const PurchaseForm = ({ selectedTab,verificationReq }) => {
   const dispatch: any = useDispatch();
   const options = useOptions();
   const stripe = useStripe();
@@ -70,6 +71,7 @@ const PurchaseForm = ({ selectedTab }) => {
   const [commissionState, setCommissionState] = useState(0);
   const [referralValidCode, setReferralValidCode] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const router = useRouter();
 
 
   const price = localStorage.getItem("price")
@@ -386,7 +388,7 @@ const PurchaseForm = ({ selectedTab }) => {
 
                     <Box sx={{ backgroundColor: "#c5c4ae", padding: "10px", width: "100%", marginTop: "20px" }}>
                       <Typography sx={{ fontSize: "14px" }}>
-                      {t("stripeFlow.PurchaseForm.checkOut.discription2")}
+                        {t("stripeFlow.PurchaseForm.checkOut.discription2")}
                       </Typography>
                     </Box>
                   </Box>
@@ -443,11 +445,13 @@ const PurchaseForm = ({ selectedTab }) => {
 
 
       <PaymentProcessingModal
+        plan={category}
         openModal={confirmationStripe}
-        selectedTab={selectedTab}
+        selectedTab={"buy"}
         handleClose={() => setConfirmationStripe(false)}
         stripeSucceed={stripeSucceed}
         stripeFailed={stripeFailed}
+        verificationReq={verificationReq}
       />
 
     </>

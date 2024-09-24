@@ -23,7 +23,7 @@ import { RegisterFormValues } from "@/utils/interface/interface";
 import { RegisterFormSchema } from "../../../../schema/registerFormSchema";
 
 
-const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
+const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin, verificationReq }) => {
   const dispatch: any = useDispatch();
   const router = useRouter();
   const { price, category } = router.query;
@@ -47,6 +47,7 @@ const RegisterPage = ({ onClick, selectedTab, handleGoogleLogin }) => {
     dispatch(signupWithBuy(data))
       .unwrap()
       .then(() => {
+        verificationReq(true)
         onClick(selectedTab + 1)
       })
       .catch((error: any) => {

@@ -32,6 +32,7 @@ const SubscriptionPage = () => {
   const router = useRouter();
   const { t } = useTranslation();
   const dispatch: any = useDispatch();
+  const [verificationReq, setVerificationReq] = useState(false);
   const [selectedTab, setSelectedTab] = useState(0);
   const { data: session } = useSession();
 
@@ -46,6 +47,7 @@ const SubscriptionPage = () => {
         dispatch(facebookLogin(payload))
           .unwrap()
           .then((res) => {
+            setVerificationReq(false)
             setSelectedTab(2);
             toast.success("login with facebook");
           })
@@ -73,6 +75,7 @@ const SubscriptionPage = () => {
       .unwrap()
       .then((res: any) => {
         toast.success(t("signup-page.signedUpSuccessfully"));
+        setVerificationReq(false)
         if (paymentType === "buynow") {
           router.push("/purchase/subscription");
           setSelectedTab(2);
@@ -133,10 +136,15 @@ const SubscriptionPage = () => {
         <Box sx={{ position: 'relative' }}>
           <Box mt="60px" sx={{ position: 'relative', zIndex: 10 }}>
             {selectedTab === 0 && <TabPanel selectedTab={selectedTab} onClick={handleTabClick} />}
-            {selectedTab === 1 && !session && <RegisterPage selectedTab={selectedTab} onClick={handleTabClick} handleGoogleLogin={handleGoogleLogin} />}
+            {selectedTab === 1 && !session && <RegisterPage
+              selectedTab={selectedTab}
+              onClick={handleTabClick}
+              handleGoogleLogin={handleGoogleLogin}
+              verificationReq={setVerificationReq}
+            />}
             {selectedTab === 2 &&
               <Elements stripe={stripePromise}>
-                <PurchaseForm selectedTab={selectedTab} />
+                <PurchaseForm selectedTab={selectedTab} verificationReq={verificationReq}/>
               </Elements>
             }
           </Box>
