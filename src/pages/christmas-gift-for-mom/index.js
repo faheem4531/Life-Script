@@ -19,11 +19,11 @@ import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
+  useChrismasMomTestimonials,
+  useChristmasMomFeaturesGif,
+  useChristmasMomQA,
   useChristmasMomSuggestions,
   useOurBookCoverforChristmasMom,
-  useChristmasMomFeaturesGif,
-  // useRetiredMenQA,
-  useChrismasMomTestimonials,
   useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/webContent";
@@ -33,7 +33,7 @@ const ChristmasMom = () => {
   const christmasMomSuggestions = useChristmasMomSuggestions(t);
   const testimonials = useChrismasMomTestimonials(t);
   const workingData = useWorkingDetails(t);
-  // const retiredMenQA = useRetiredMenQA(t);
+  const christmasMomQA = useChristmasMomQA(t);
   const suggestedQuestions = useSuggestedQuestions(t);
   const ourBookCover = useOurBookCoverforChristmasMom(t);
   const featuresGif = useChristmasMomFeaturesGif(t);
@@ -72,13 +72,13 @@ const ChristmasMom = () => {
           />
         </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />
-       <Working
+        <Working
           data={workingData}
           heading={"How LifeScript"}
           marked={"works"}
           width={"300px"}
         />
-         <DiscoverQuestions
+        <DiscoverQuestions
           questions={suggestedQuestions}
           cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
           from personalised suggestions."
@@ -88,17 +88,17 @@ const ChristmasMom = () => {
           heading={t("landingPage.bookSection.title")}
           marked={t("landingPage.bookSection.subTitle")}
         />
-      <Experience
+        <Experience
           panelsData={featuresGif}
           headingStyle={false}
           heading="Features that make it "
           marked="easy"
         />
-           <Reviews
+        <Reviews
           review="I’ve never seen my mom so excited about a gift. When I gave her LifeScript for Christmas, it became more than just a book—it became her way of sharing who she is with us. The process has brought us closer as a family, hearing the stories behind the photos she’s adding and the memories she’s writing down. This gift has given her something to look forward to, and it’s given me the gift of knowing her even more. I couldn’t recommend this more for anyone looking for something meaningful for their mom."
           author="Emma R."
         />
-      <Box
+        <Box
           sx={{
             m: { md: "100px 0 0", sm: "70px 0 -70px", xs: "120px 0 -40px" },
           }}
@@ -110,7 +110,7 @@ const ChristmasMom = () => {
             btnLink={"/purchase"}
           />
         </Box>
-        {/*  <GotQuestions questions={retiredMenQA} /> */}
+        <GotQuestions questions={christmasMomQA} />
         <ContactFooter
           title={"Not the right moment? Set a"}
           marked={t("landingPage.reminderSection.subTitle")}

@@ -1548,3 +1548,66 @@ export const useChristmasMomFeaturesGif = (t) => [
     imgTitle: "Auto photo improvement for creating moms’ Christmas gift books",
   },
 ];
+
+export const useChristmasMomQA = (t) => [
+  {
+    qs: "What is included in each plan?",
+    ans: "Lifetime access to our platform, full-color hardcover book and free delivery.",
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I gift LifeScript as a Christmas gift for mom and how does that work?",
+    ans: "Absolutely! LifeScript is one of the best Christmas gifts for your mom. You can gift it by providing her email and selecting the date you’d like the gift email to be sent. Once the email is delivered, you’ll receive a confirmation as well",
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: "If now isn’t the perfect time for this gift, can I set a reminder?",
+    ans: "Of course! You can set a reminder below, and we’ll notify you when the right time to gift LifeScript approaches.",
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: "Is LifeScript a good last-minute Christmas gift idea and is it suitable for my dad or grandparents?",
+    ans: "LifeScript is a perfect last-minute Christmas gift for your mom, dad, grandma, grandpa or any loved one you deeply care about. You can purchase it even the night before her special day, and the gift email will be sent early in the morning on your selected date.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Is international shipping available and how much does it cost?",
+    ans: "We ship internationally and provide delivery tracking. Oh, and it’s free.",
+    panel: "panel5",
+    isexpanded: false,
+  },
+  {
+    qs: "How can I ensure her book and information remain private?",
+    ans: (
+      <>
+        We take{" "}
+        <NextLink href="/privacy-policy" passHref>
+          <span style={{ color: "#30422E", fontFamily: "Avenir8" }}>
+            privacy
+          </span>
+        </NextLink>{" "}
+        very seriously. We use advanced security technologies and encryption
+        methods to protect his personal stories and information, ensuring they
+        remain completely private.
+      </>
+    ),
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I purchase extra books?",
+    ans: "Yes, additional full-color hardcover books are available for 39$ each.",
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: "Do you have any tutorials or instructions on how to use the platform and create my book?",
+    ans: "Yes! We offer comprehensive video tutorials that provide step-by-step instructions on how to use the platform, create, edit, and order your book. Additionally, our friendly support team is available via chat and email to assist with any questions you may have.",
+    panel: "panel8",
+    isexpanded: false,
+  },
+];
