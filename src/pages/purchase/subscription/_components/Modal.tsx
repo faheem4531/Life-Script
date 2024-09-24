@@ -1,17 +1,15 @@
 "use client";
 // External libraries and frameworks
-import * as React from "react";
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 // UI libraries or component libraries
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 
 // Assets
@@ -40,7 +38,8 @@ export default function PaymentProcessingModal({
   selectedTab,
   stripeSucceed,
   stripeFailed,
-  plan
+  plan,
+  verificationReq
 }) {
   const [value, setValue] = useState(0);
   const [emailVerify, setEmailVerication] = useState(false);
@@ -66,37 +65,62 @@ export default function PaymentProcessingModal({
     };
   }, [openModal]);
 
-  function handleLetMeIn() {
-    
-    setEmailVerication(true);
-    localStorage.clear();
-    setTimeout(()=>{
-      router.push(`/`);
-    },4000)
-    
-    
-    // router.push(`/getStarted?userName=${name}`);
+  const handleGiftPages = () => {
+    const timeoutId = setTimeout(() => {
+      if (plan === "Basic") {
+        router.push("/thank-you/gift-basic");
+      }
+      else if (plan === "Standard") {
+        router.push("/thank-you/gift-standard");
+      }
+      else {
+        router.push("/thank-you/gift-premium");
+      }
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeoutId);
+      localStorage.clear();
+    };
   }
+
+  const handleBuyPages = () => {
+    if (verificationReq) {
+      setEmailVerication(true);
+      localStorage.clear();
+      setTimeout(() => {
+        if (plan === "Basic") {
+          router.push("/thank-you/buy-basic");
+        }
+        else if (plan === "Standard") {
+          router.push("/thank-you/buy-standard");
+        } else {
+          router.push("/thank-you/buy-premium");
+        }
+      }, 4000)
+    }
+    else {
+
+      if (plan === "Basic") {
+        router.push(`/thank-you/buy-basic?auth=${"auto"}`);
+      }
+      else if (plan === "Standard") {
+        router.push(`/thank-you/buy-standard?auth=${"auto"}`);
+      } else {
+        router.push(`/thank-you/buy-premium?auth=${"auto"}`);
+      }
+    }
+  }
+
   useEffect(() => {
     if (value === 100 && selectedTab === "gift") {
-      const timeoutId = setTimeout(() => {
-        if (plan==="Basic") {
-          router.push("/thank-you/gift-basic");
-        }
-        else if (plan === "Standard"){
-          router.push("/thank-you/gift-standard");
-        }
-        else{
-          router.push("/thank-you/gift-premium");
-        }
-      }, 5000);
-
-      return () => {
-        clearTimeout(timeoutId);
-        localStorage.clear();
-      };
+      handleGiftPages();
     }
-  }, [value, selectedTab, router, plan]);
+
+    if (value === 100 && selectedTab === "buy") {
+      handleBuyPages();
+    }
+  }, [value, selectedTab, plan, verificationReq,]);
 
   return (
     <Modal
@@ -125,15 +149,15 @@ export default function PaymentProcessingModal({
           >
             {!emailVerify && value === 100 && selectedTab !== "verify" && stripeSucceed
               ? t(
-                  "stripeFlow.stripePage.emailVerificationModal.transactionSuccessful"
-                )
-              :!emailVerify &&  selectedTab !== "verify" && stripeFailed
-              ? t(
+                "stripeFlow.stripePage.emailVerificationModal.transactionSuccessful"
+              )
+              : !emailVerify && selectedTab !== "verify" && stripeFailed
+                ? t(
                   "stripeFlow.stripePage.emailVerificationModal.transactionFailed"
                 )
-              :!emailVerify && selectedTab !== "verify"
-              ? t("stripeFlow.stripePage.emailVerificationModal.Processing")
-              : ""}
+                : !emailVerify && selectedTab !== "verify"
+                  ? t("stripeFlow.stripePage.emailVerificationModal.Processing")
+                  : ""}
             {selectedTab == "verify" &&
               t(
                 "stripeFlow.stripePage.emailVerificationModal.emailVerification"
@@ -144,49 +168,31 @@ export default function PaymentProcessingModal({
               <ReloadingBar value={value} />
             </Box>
           )}
-          {!emailVerify && value == 100 && selectedTab == 2 && !stripeFailed && (
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              onClick={handleLetMeIn}
-              sx={{
-                width: "260px",
-                marginTop: { sm: "40px", xs: "25px" },
-                bgcolor: "#e1693b",
-                "&:hover": {
-                  backgroundColor: "#b5522d",
-                },
-              }}
-            >
-              {t("stripeFlow.stripePage.emailVerificationModal.letMeIn")}
-            </Button>
-          )}
           {!emailVerify && value == 100 && selectedTab == "gift" && (
-            
+
             <Typography sx={{ marginTop: { sm: "40px", xs: "25px" } }}>
               {!emailVerify && t("stripeFlow.stripePage.emailVerificationModal.giftRecipient")}
             </Typography>
           )}
-          {emailVerify  &&(
+          {emailVerify && (
             <Box textAlign={"center"}>
-             
-            
-             {selectedTab=="verify"?(null):(<Typography
-               sx={{ color: "#000000", fontSize: "30px"}}
-             >
-               {t("VerificationSent.emailVerification")}
-             </Typography>)}
-           
-            
-            <Typography sx={{ maxWidth: "400px" }}>
-              {t(
-                "stripeFlow.stripePage.emailVerificationModal.emailVerficationDescription"
-              )}
-            </Typography>
-           </Box>
+
+
+              {selectedTab == "verify" ? (null) : (<Typography
+                sx={{ color: "#000000", fontSize: "30px" }}
+              >
+                {t("VerificationSent.emailVerification")}
+              </Typography>)}
+
+
+              <Typography sx={{ maxWidth: "400px" }}>
+                {t(
+                  "stripeFlow.stripePage.emailVerificationModal.emailVerficationDescription"
+                )}
+              </Typography>
+            </Box>
           )}
-           {selectedTab === "verify" && (
+          {selectedTab === "verify" && (
             <Typography sx={{ maxWidth: "400px" }}>
               {t(
                 "stripeFlow.stripePage.emailVerificationModal.emailVerficationDescription"
