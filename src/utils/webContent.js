@@ -16,7 +16,8 @@ import Power from "@/__webAssets/svgs/values/power.svg";
 
 import Check from "@/__webAssets/svgs/check-square.svg";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
-
+import Mom from "@/__webAssets/mom.png"
+import TG from "@/__webAssets/thanks.png"
 import { icons, images } from "./assetsUrl";
 const { whyLifeScriptIcons, other, featuresLogos, testimonial } = icons;
 const { bookCovers, homeHeroImages, storyTelling, others, sliderImages } =
@@ -1396,7 +1397,7 @@ export const useRetiredWomenQA = (t) => [
 
 export const useChristmasMomSuggestions = (t) => {
   const imageData = {
-    src: others.homeSuggestion,
+    src: Mom,
     alt: "A touching moment between daughter and mom, symbolizing a special Christmas gift for moms to capture their life stories - LifeScript.",
     title: "Daughter and mom special moment - Christmas gift for mom",
   };
@@ -1802,7 +1803,7 @@ export const useOurBookCoverforThanksgiving = (t) => [
 
 export const useThanksgivingSuggestions = (t) => {
   const imageData = {
-    src: others.homeSuggestion,
+    src: TG,
     alt: "A happy moment between grandparents and their grandchildren as a holiday gathering for Thanksgiving gift- LifeScript",
     title: "Grandparents and grandchildren happy moment - Thanksgiving gift",
   };
