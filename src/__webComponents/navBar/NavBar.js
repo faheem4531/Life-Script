@@ -90,7 +90,7 @@ const NavBar = ({ color, logo }) => {
       )}
 
       <Image
-        src={pathname === "/" ? Menu : MenuW && (mobileState ? Menu : MenuW)}
+        src={logo === "home" ? Menu : MenuW && (mobileState ? Menu : MenuW)}
         alt="icon"
         loading="lazy"
         onClick={handleMenu}
@@ -247,7 +247,9 @@ const NavBar = ({ color, logo }) => {
         {!(
           pathname === "/storyworth-alternative" ||
           pathname === "/retirement-gifts-for-men" ||
-          pathname === "/retirement-gifts-for-women"
+          pathname === "/retirement-gifts-for-women" ||
+          pathname === "/christmas-gift-for-mom" ||
+          pathname === "/thanksgiving-gift"
         ) && (
           <Box
             sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}
