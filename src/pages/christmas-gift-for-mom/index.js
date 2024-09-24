@@ -24,7 +24,7 @@ import {
   // useRetiredMenFeaturesGif,
   // useRetiredMenQA,
   useChrismasMomTestimonials,
-  // useSuggestedQuestions,
+  useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/webContent";
 
@@ -34,7 +34,7 @@ const ChristmasMom = () => {
   const testimonials = useChrismasMomTestimonials(t);
   const workingData = useWorkingDetails(t);
   // const retiredMenQA = useRetiredMenQA(t);
-  // const suggestedQuestions = useSuggestedQuestions(t);
+  const suggestedQuestions = useSuggestedQuestions(t);
   // const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
   // const featuresGif = useRetiredMenFeaturesGif(t);
 
@@ -78,12 +78,12 @@ const ChristmasMom = () => {
           marked={"works"}
           width={"300px"}
         />
-        {/*  <DiscoverQuestions
+         <DiscoverQuestions
           questions={suggestedQuestions}
           cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
           from personalised suggestions."
         />
-        <OurBooks
+      {/*   <OurBooks
           details={ourBookCoverforAlternative}
           heading={t("landingPage.bookSection.title")}
           marked={t("landingPage.bookSection.subTitle")}
