@@ -1457,3 +1457,36 @@ export const useChrismasMomTestimonials = (t) => [
       "My mom is usually so hard to shop for, but this year I gave her LifeScript for Christmas, and she’s been thrilled. She’s always enjoyed looking back on the memories, and now she gets to organize them into a beautiful book. Every time we talk, she shares a new story she’s written down. It’s truly a gift that connects generations.",
   },
 ];
+
+export const useOurBookCoverforChristmasMom = (t) => [
+  {
+    coverImage: bookCovers.cover1,
+    alt: "Book cover showing an elderly couple on a swing, perfect for Christmas gift ideas for moms - LifeScript.",
+    title: "Grandparents on swing book cover for moms’ Christmas gifts",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "Full-picture life story book cover featuring a family, ideal for Christmas gift ideas for moms - LifeScript",
+    title: "Full-picture family book cover for moms’ Christmas gifts",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "Book cover featuring an elderly couple celebrating grandma’s birthday, a thoughtful Christmas gift for moms - LifeScript.",
+    title: " Birthday celebration book cover as Christmas gift for mom",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt: "Book cover with a couple enjoying the sun in a forest, a heartwarming Christmas gift for moms - LifeScript.",
+    title: "Grandparents enjoying nature book cover for moms’ Christmas gifts",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover with author’s photo, customizable for the best Christmas gift for mom - LifeScript.",
+    title: "Customizable memoir book cover for moms’ Christmas gifts",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Minimalistic autobiography book cover design, perfect for a personalized Christmas gift for moms - LifeScript.",
+    title: "Minimalistic book cover for moms’ Christmas gifts",
+  },
+];

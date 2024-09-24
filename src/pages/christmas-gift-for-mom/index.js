@@ -20,7 +20,7 @@ import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
   useChristmasMomSuggestions,
-  // useOurBookCoverforRetiredMen,
+  useOurBookCoverforChristmasMom,
   // useRetiredMenFeaturesGif,
   // useRetiredMenQA,
   useChrismasMomTestimonials,
@@ -35,7 +35,7 @@ const ChristmasMom = () => {
   const workingData = useWorkingDetails(t);
   // const retiredMenQA = useRetiredMenQA(t);
   const suggestedQuestions = useSuggestedQuestions(t);
-  // const ourBookCoverforAlternative = useOurBookCoverforRetiredMen(t);
+  const ourBookCover = useOurBookCoverforChristmasMom(t);
   // const featuresGif = useRetiredMenFeaturesGif(t);
 
   return (
@@ -83,12 +83,12 @@ const ChristmasMom = () => {
           cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
           from personalised suggestions."
         />
-      {/*   <OurBooks
-          details={ourBookCoverforAlternative}
+        <OurBooks
+          details={ourBookCover}
           heading={t("landingPage.bookSection.title")}
           marked={t("landingPage.bookSection.subTitle")}
         />
-        <Experience
+      {/*   <Experience
           panelsData={featuresGif}
           headingStyle={false}
           heading="Features that make it "
