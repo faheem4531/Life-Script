@@ -7,11 +7,6 @@ export default function Document() {
       <Head>
         <title>LifeScript</title>
 
-        {/* <meta
-          name="description"
-          content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad or grandparent. "
-        /> */}
-
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -25,21 +20,7 @@ export default function Document() {
           }}
         />
 
-        {/* Google Analytics Code */}
-        {/* <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-RGM8D41H5K"
-        />
-
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'G-RGM8D41H5K');
-          `}
-        </Script> */}
+        {/* Google Tag Manager Code */}
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"></script>
           <script
             dangerouslySetInnerHTML={{
@@ -51,19 +32,7 @@ export default function Document() {
               `,
             }}
           />
-          
 
-        {/* <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11454589354"
-        ></Script>
-        <Script id="google-ads">
-          {`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-11454589354');`}
-        </Script> */}
 
         {/* Open Graph Protocol Meta Tags */}
         <meta property="og:title" content="The Lifescript" />
