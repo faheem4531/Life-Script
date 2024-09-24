@@ -98,19 +98,19 @@ const ChristmasMom = () => {
           review="I’ve never seen my mom so excited about a gift. When I gave her LifeScript for Christmas, it became more than just a book—it became her way of sharing who she is with us. The process has brought us closer as a family, hearing the stories behind the photos she’s adding and the memories she’s writing down. This gift has given her something to look forward to, and it’s given me the gift of knowing her even more. I couldn’t recommend this more for anyone looking for something meaningful for their mom."
           author="Emma R."
         />
-       {/* <Box
+      <Box
           sx={{
             m: { md: "100px 0 0", sm: "70px 0 -70px", xs: "120px 0 -40px" },
           }}
         >
           <GifTab
-            heading="Give the perfect retirement gift and let him turn a lifetime of memories into a beautiful keepsake."
+            heading="Surprise her with the best Christmas gift and let her transform memories into a keepsake book."
             button={"Gift now"}
             icon={Gift}
             btnLink={"/purchase"}
           />
         </Box>
-        <GotQuestions questions={retiredMenQA} /> */}
+        {/*  <GotQuestions questions={retiredMenQA} /> */}
         <ContactFooter
           title={"Not the right moment? Set a"}
           marked={t("landingPage.reminderSection.subTitle")}
