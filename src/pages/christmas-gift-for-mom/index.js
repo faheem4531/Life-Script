@@ -56,7 +56,7 @@ const ChristmasMom = () => {
           buttonText="Buy now"
           imgTitle="Opened autobiography book for moms’ Christmas gift"
           alt="An opened autobiography book, a heartfelt Christmas gift for moms to share their cherished life stories - LifeScript."
-          subContentWidth="900px"
+          subContentWidth="1100px"
           lineWidth={150}
         />
         <Box
