@@ -94,11 +94,11 @@ const ChristmasMom = () => {
           heading="Features that make it "
           marked="easy"
         />
-        {/*   <Reviews
-          review="When my daughter first gave me LifeScript as a retirement gift, I wasn’t sure what to make of it. I’m not much of a writer, and I didn’t think I had much to say. But after sitting down with it, I started remembering things I hadn’t thought about in years. I’m talking about little moments, stuff I thought was long forgotten. Now I’m hooked. It’s weird how it pulls stories out of you. My grandkids love hearing the tales, and I’m happy knowing they’ll have a piece of me when I’m gone. What started as a simple gift turned into something really meaningful."
-          author="Tom S. - retired firefighter"
+           <Reviews
+          review="I’ve never seen my mom so excited about a gift. When I gave her LifeScript for Christmas, it became more than just a book—it became her way of sharing who she is with us. The process has brought us closer as a family, hearing the stories behind the photos she’s adding and the memories she’s writing down. This gift has given her something to look forward to, and it’s given me the gift of knowing her even more. I couldn’t recommend this more for anyone looking for something meaningful for their mom."
+          author="Emma R."
         />
-        <Box
+       {/* <Box
           sx={{
             m: { md: "100px 0 0", sm: "70px 0 -70px", xs: "120px 0 -40px" },
           }}
