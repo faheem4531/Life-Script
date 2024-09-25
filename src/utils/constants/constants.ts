@@ -1,6 +1,6 @@
 import { images } from "@/utils/assetsUrl";
 const { bookCovers } = images;
-const { cover1, cover2, cover3 } = bookCovers
+const { cover1, cover2, cover3 } = bookCovers;
 
 import {
   createBasicArray,
@@ -23,4 +23,4 @@ export const categoryArrayMapping = {
 const baseURL_Prod = "https://api.thelifescript.com";
 const baseURL_Dev = "http://localhost:8000";
 
-export const currentBaseUrl = baseURL_Prod;
+export const currentBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
