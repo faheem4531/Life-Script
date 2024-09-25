@@ -43,13 +43,13 @@ const LandingIntro = ({
           },
         }}
       >
-        <Box sx={{ width: "100%", zIndex: "20", textAlign: "center" }}>
+        <Box sx={{ width: "100%", zIndex: "20", textAlign: "center",bgcolor:"" }}>
           <Heading
             heading={heading}
             marked={marked}
             color={bgGreen ? "#F3ECDA" : "#3e4f3c"}
             lineWidth={lineWidth}
-          />
+            />
           <Typography
             sx={{
               fontSize: { sm: "18px", xs: "15px" },
