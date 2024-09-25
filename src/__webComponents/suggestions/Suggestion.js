@@ -85,7 +85,7 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
             alt="points"
             className={styles.pointsLine}
             loading="lazy"
-            style={{ marginTop:bgGreen ? "60px": "30px" }}
+            style={{ marginTop: bgGreen ? "60px" : "30px" }}
           />
           <Box sx={{ marginLeft: { md: "30px" } }}>
             {content.map((item, index) => (
