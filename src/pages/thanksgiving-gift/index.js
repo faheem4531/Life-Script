@@ -69,6 +69,7 @@ const ThanksGiving = () => {
             data={sugestionData}
             btnTxt="Gift now"
             btnImg={Gift}
+            bigImage={true}
           />
         </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />

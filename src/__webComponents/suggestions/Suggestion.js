@@ -10,7 +10,14 @@ import Button from "@/__webComponents/button/Button";
 import Content from "@/__webComponents/headings/Content";
 import styles from "../ComponentsStyles.module.css";
 
-const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
+const Suggestion = ({
+  bgGreen = true,
+  bigImage = false,
+  heading,
+  data,
+  btnTxt,
+  btnImg,
+}) => {
   const { t } = useTranslation();
   const { imageData, content } = data;
   return (
@@ -64,12 +71,13 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
           },
           display: "flex",
           flexDirection: {
-            md: "row",
+            lg: "row",
+            md: bigImage ? "column-reverse" : "row",
             sm: "column-reverse",
             xs: "column-reverse",
           },
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: { lg: "start", sm: "center", xs: "center" },
           columnGap: { lg: "100px", md: "50px" },
         }}
       >
@@ -116,7 +124,7 @@ const Suggestion = ({ bgGreen = true, heading, data, btnTxt, btnImg }) => {
           src={imageData.src}
           alt={imageData.alt}
           title={imageData.title}
-          className={styles.suggestionImg}
+          className={bigImage ? styles.suggestionImg1 : styles.suggestionImg}
           width={700}
           height={680}
         />
