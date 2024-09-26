@@ -41,7 +41,7 @@ const ChristmasMom = () => {
   return (
     <>
       <Head>
-        <title>The Best Christmas Gift for Mom - LifeScrip</title>
+        <title>The Best Christmas Gift for Mom - LifeScript</title>
         <meta
           name="description"
           content="Make her holiday special with the perfect Christmas gift for mom, a beautiful hardcover book that captures her life story, reflections, and cherished memories"
