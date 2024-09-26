@@ -3,7 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import { usePathname } from "next/navigation";
 
-import ChristmasCap from "@/__webAssets/svgs/cap.svg";
+import ChristmasCap from "@/__webAssets/svgs/christmas-hat-icon-christmas-gift-for-mom.svg";
 import Line from "@/__webAssets/svgs/line-orange.svg";
 import Image from "next/image";
 import styles from "../ComponentsStyles.module.css";
@@ -39,7 +39,12 @@ const Heading = ({ heading, marked, color = "#3e4f3c", lineWidth }) => {
             width: { xs: "60px", sm: "auto" },
           }}
         >
-          <Image src={ChristmasCap} alt="img" style={{ width: "100%" }} />
+          <Image
+            src={ChristmasCap}
+            alt="A festive Christmas hat, perfect for adding a holiday touch to thoughtful Christmas gifts for moms - LifeScript"
+            title="Christmas hat for moms’ Christmas gift page"
+            style={{ width: "100%" }}
+          />
         </Box>
       )}
     </Typography>
