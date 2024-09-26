@@ -2,7 +2,7 @@ import Thankyou from "@/components/webComponents/Thankyou";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const FreeTrail = () => {
+const FreeTrial = () => {
   const router = useRouter();
 
   function handleRoutes() {
@@ -30,4 +30,4 @@ const FreeTrail = () => {
   )
 }
 
-export default FreeTrail
+export default FreeTrial
