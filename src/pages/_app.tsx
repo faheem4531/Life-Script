@@ -31,7 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
 
-
     const publicRoutes = [
       "/pricing",
       "/verify/verificationSent",
