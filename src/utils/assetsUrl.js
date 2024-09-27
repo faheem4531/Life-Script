@@ -56,6 +56,10 @@ export const images = {
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725882536/assets/family-collage-life-story-books_xakcho.webp",
     homeSuggestionWomen:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1726656794/assets/grandmother-granddaughter-book-gift_qxjohx.webp",
+    christmasMomHeroImg:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727435836/assets/daughter-book-christmas-gift-for-mom_unjacc.webp",
+    thanksgivingHeroImg:
+      "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727435836/assets/grandma-grandpa-family-time-with-grandchildren-thanksgiving-gift_lwgwlz.webp",
   },
   bookCovers: {
     cover1:
