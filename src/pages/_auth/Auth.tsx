@@ -1,10 +1,19 @@
 import Register from "@/components/authComponent/Register";
-import { Box } from "@mui/material";
+import Head from "next/head";
 
 export default function AuthPage() {
   return (
-    <Box>
+    <>
+      <Head>
+        <title>
+          Login - LifeScript
+        </title>
+        <meta
+          name="description"
+          content="Login to LifeScript and continue creating your personalized autobiography book. Safely access your account and enjoy preserving life's special moments."
+        />
+      </Head>
       <Register />
-    </Box>
+    </>
   );
 }
