@@ -460,6 +460,10 @@
     height: 100%;
   }
 
+  .suggestionImg1 {
+    width: 100%;
+  }
+
   .fullStyleS {
     bottom: -30px;
     max-width: 100%;
