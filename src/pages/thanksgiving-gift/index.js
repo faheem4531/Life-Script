@@ -46,6 +46,7 @@ const ThanksGiving = () => {
           name="description"
           content="Make their holiday special with the most meaningful Thanksgiving gift, a beautiful book that captures their life story, reflections, and cherished memories."
         />
+        <link rel="canonical" href="https://www.thelifescript.com/thanksgiving-gift" />
       </Head>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
