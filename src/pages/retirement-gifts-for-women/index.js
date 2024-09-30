@@ -46,6 +46,7 @@ const RetiredWomen = () => {
           name="description"
           content="Surprise her with an unforgettable trip down memory lane, where she can share her life story, celebrate the ups and downs and receive a beautiful hardcover book."
         />
+        <link rel="canonical" href="https://www.thelifescript.com/retirement-gifts-for-women" />
       </Head>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
