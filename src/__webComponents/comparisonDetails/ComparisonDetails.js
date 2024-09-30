@@ -30,7 +30,6 @@ const ComparisonDetails = ({
       />
       <Box
         sx={{
-          overflowX: { xs: "auto", sm: "auto", md: "none" },
           margin: {
             lg: "100px 0",
             md: "100px 0px",
@@ -44,7 +43,7 @@ const ComparisonDetails = ({
             display: "flex",
             justifyContent: { md: "center", sm: "start", xs: "start" },
             alignItems: "center",
-            columnGap: "16px",
+            columnGap: {md:"16px",sm:"10px",xs:"4px"},
           }}
         >
           {cardsDetail.map((item, index) => (
@@ -85,8 +84,7 @@ function DetailCard({
         marginBottom: { md: "0", sm: "50px", xs: "50px" },
         width: "100%",
         bgcolor: "#F4F4F4",
-        borderRadius: "8px",
-        minWidth: "320px",
+        borderRadius: {sm:"8px",xs:"2px"},
       }}
     >
       <Box
@@ -94,22 +92,22 @@ function DetailCard({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "75px",
+          height: {sm:"75px",xs:"50px"},
           textAlign: "center",
-          fontSize: "20px",
+          fontSize: {sm:"20px",xs:"16px"},
           color: "#fff",
-          fontFamily: "Avenir8",
-          borderRadius: "8px 8px 0 0",
+          fontFamily:{sm: "Avenir8"},
+          borderRadius: {sm:"8px 8px 0 0",xs:"4px 4px 0 0"},
         }}
         bgcolor={bgColor}
       >
         {header}
         {logo && (
-          <Image src={logo} alt={alt} title={title} width={170} height={30} />
+          <Image src={logo} alt={alt} className={styles.comparisonLogo} title={title} width={170} height={30} />
         )}
       </Box>
       <Box
-        sx={{ padding: { sm: "10px 20px", xs: "10px 10px 10px 20px" } }}
+        sx={{ padding: { md: "10px 20px",sm:"10px", xs: "7px 5px 8px 5px" } }}
         className={styles.cardBorder}
       >
         {points.map((item, index) => (
@@ -117,29 +115,29 @@ function DetailCard({
             key={index}
             sx={{
               padding: "0px 0 0px 5px",
-              height: "58px",
+              height: {md:"58px",sm:"40px",xs:"35px"},
               display: "flex",
               flexDirection: "column",
               alignItems: logo ? "center" : "start",
-              fontSize: { lg: "16px", md: "14px", sm: "16px", xs: "16px" },
+              fontSize: { lg: "16px", md: "14px", sm: "12px", xs: "8px" },
               fontWeight: 800,
               fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important",
               justifyContent: "center",
             }}
           >
             {item === "Yes" ? (
-              <Image src={Yes} alt="tick" />
+              <Image src={Yes} alt="tick" className={styles.checkTC} />
             ) : item === "No" ? (
-              <Image src={No} alt="cross" />
+              <Image src={No} alt="cross" className={styles.checkTC} />
             ) : (
               <span>{item}</span>
             )}
             {index === 1 && sCase && (
               <Typography
                 sx={{
-                  fontSize: "14px",
-                  m: "5px 0 0 5px",
-                  lineHeight: "15px",
+                  fontSize: {md:"14px",sm:"10px",xs:"8px"},
+                  m: {md:"5px 0 0 5px",sm:"0"},
+                  lineHeight: {md:"15px",sm:"10px",xs:"9px"},
                   display: "block",
                 }}
               >

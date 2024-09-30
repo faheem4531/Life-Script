@@ -402,6 +402,14 @@
   .pricingPage {
     background-size: 100% 150px;
   }
+
+  .checkTC {
+    width: 17px;
+  }
+
+  .comparisonLogo {
+    width: 140px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -514,5 +522,15 @@
   .suggestionUnderLine {
     width: 60px;
     right: -10px;
+  }
+
+  /* Comparison details  */
+  .checkTC {
+    width: 14px;
+  }
+
+  .comparisonLogo {
+    width: 90px;
+height: auto;
   }
 }
