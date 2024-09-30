@@ -1,5 +1,5 @@
 import io from "socket.io-client";
 
-const socket = io("https://api.thelifescript.com");
+const socket = io(process.env.NEXT_PUBLIC_BASE_URL);
 
 export default socket;
