@@ -43,7 +43,7 @@ const ComparisonDetails = ({
             display: "flex",
             justifyContent: { md: "center", sm: "start", xs: "start" },
             alignItems: "center",
-            columnGap: {md:"16px",sm:"10px",xs:"4px"},
+            columnGap: { md: "16px", sm: "10px", xs: "4px" },
           }}
         >
           {cardsDetail.map((item, index) => (
@@ -76,7 +76,6 @@ function DetailCard({
   sCase,
 }) {
   const { t } = useTranslation();
-
   return (
     <Box
       sx={{
@@ -84,7 +83,7 @@ function DetailCard({
         marginBottom: { md: "0", sm: "50px", xs: "50px" },
         width: "100%",
         bgcolor: "#F4F4F4",
-        borderRadius: {sm:"8px",xs:"2px"},
+        borderRadius: { sm: "8px", xs: "2px" },
       }}
     >
       <Box
@@ -92,22 +91,29 @@ function DetailCard({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: {sm:"75px",xs:"50px"},
+          height: { sm: "75px", xs: "50px" },
           textAlign: "center",
-          fontSize: {sm:"20px",xs:"16px"},
+          fontSize: { sm: "20px", xs: "16px" },
           color: "#fff",
-          fontFamily:{sm: "Avenir8"},
-          borderRadius: {sm:"8px 8px 0 0",xs:"4px 4px 0 0"},
+          fontFamily: { sm: "Avenir8" },
+          borderRadius: { sm: "8px 8px 0 0", xs: "4px 4px 0 0" },
         }}
         bgcolor={bgColor}
       >
         {header}
         {logo && (
-          <Image src={logo} alt={alt} className={styles.comparisonLogo} title={title} width={170} height={30} />
+          <Image
+            src={logo}
+            alt={alt}
+            className={styles.comparisonLogo}
+            title={title}
+            width={170}
+            height={30}
+          />
         )}
       </Box>
       <Box
-        sx={{ padding: { md: "10px 20px",sm:"10px", xs: "7px 5px 8px 5px" } }}
+        sx={{ padding: { md: "10px 20px", sm: "10px", xs: "7px 5px 8px 5px" } }}
         className={styles.cardBorder}
       >
         {points.map((item, index) => (
@@ -115,7 +121,7 @@ function DetailCard({
             key={index}
             sx={{
               padding: "0px 0 0px 5px",
-              height: {md:"58px",sm:"55px",xs:"60px"},
+              height: { md: "58px", sm: "55px", xs: "60px" },
               display: "flex",
               flexDirection: "column",
               alignItems: logo ? "center" : "start",
@@ -135,9 +141,9 @@ function DetailCard({
             {index === 1 && sCase && (
               <Typography
                 sx={{
-                  fontSize: {md:"14px",sm:"10px",xs:"9px"},
-                  m: {md:"5px 0 0 5px",sm:"0",xs:"0"},
-                  lineHeight: {md:"15px",sm:"10px",xs:"10px"},
+                  fontSize: { md: "14px", sm: "10px", xs: "9px" },
+                  m: { md: "5px 0 0 5px", sm: "0", xs: "0" },
+                  lineHeight: { md: "15px", sm: "10px", xs: "10px" },
                   display: "block",
                 }}
               >
