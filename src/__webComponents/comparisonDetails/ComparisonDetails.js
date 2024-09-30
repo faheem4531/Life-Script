@@ -121,11 +121,11 @@ function DetailCard({
             key={index}
             sx={{
               padding: "0px 0 0px 5px",
-              height: { md: "58px", sm: "55px", xs: "60px" },
+              height: { md: "58px", sm: "90px", xs: "88px" },
               display: "flex",
               flexDirection: "column",
               alignItems: logo ? "center" : "start",
-              fontSize: { lg: "16px", md: "14px", sm: "13px", xs: "11px" },
+              fontSize: { lg: "16px", md: "14px", sm: "15px", xs: "13px" },
               fontWeight: 800,
               fontFamily: logo ? "Avenir8 !important" : "Avenir5 !important",
               justifyContent: "center",
@@ -141,7 +141,7 @@ function DetailCard({
             {index === 1 && sCase && (
               <Typography
                 sx={{
-                  fontSize: { md: "14px", sm: "10px", xs: "9px" },
+                  fontSize: { md: "14px", sm: "12px", xs: "10px" },
                   m: { md: "5px 0 0 5px", sm: "0", xs: "0" },
                   lineHeight: { md: "15px", sm: "10px", xs: "10px" },
                   display: "block",
