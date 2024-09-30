@@ -46,6 +46,7 @@ const ChristmasMom = () => {
           name="description"
           content="Make her holiday special with the perfect Christmas gift for mom, a beautiful hardcover book that captures her life story, reflections, and cherished memories"
         />
+        <link rel="canonical" href="https://www.thelifescript.com/christmas-gift-for-mom" />
       </Head>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
