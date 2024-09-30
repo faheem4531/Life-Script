@@ -49,6 +49,7 @@ const StoryworthAlternative = () => {
           name="description"
           content="Save time, efforts and enjoy a more personalised, secure and supportive storytelling experience with no hidden costs. Try now for free!"
         />
+        <link rel="canonical" href="https://www.thelifescript.com/storyworth-alternative" />
       </Head>
 
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
