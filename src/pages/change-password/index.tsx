@@ -14,7 +14,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-const CryptoJS = require("crypto-js");
 
 import Logo from "@/_assets/svg/logo.svg";
 import { ChangePassword } from "@/interface/authInterface";
@@ -22,6 +21,7 @@ import { changePassword } from "@/store/slices/authSlice";
 import { useCarouselSliderImages } from "@/utils/webContent";
 import Carousel from "../../components/authComponent/Carousel";
 
+const CryptoJS = require("crypto-js");
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
