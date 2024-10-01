@@ -13,10 +13,6 @@ import styles from "../ComponentsStyles.module.css";
 const Footer = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
   const router = useRouter();
-  const logo = {
-    width: "25px",
-    height: "auto",
-  };
 
   const handleContactClick = (e) => {
     e.preventDefault();
@@ -111,6 +107,29 @@ const Footer = React.forwardRef((props, ref) => {
     },
   ];
 
+  const footerIcons = [
+    {
+      href: "https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr",
+      icon: Insta,
+      alt: "Instagram",
+    },
+    {
+      href: "https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1",
+      icon: Tiktok,
+      alt: "Tiktok",
+    },
+    {
+      href: "https://www.facebook.com/profile.php?id=61554559332668",
+      icon: Fb,
+      alt: "Facebook",
+    },
+    {
+      href: "https://twitter.com/thelifescript",
+      icon: X,
+      alt: "Twitter",
+    },
+  ];
+
   return (
     <Box ref={ref}>
       <Box
@@ -147,34 +166,14 @@ const Footer = React.forwardRef((props, ref) => {
               alignItems: "center",
             }}
           >
-            <a
-              href="https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={Insta} alt="Instagram" style={logo} />
-            </a>
-            <a
-              href="https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={Tiktok} alt="logo" style={logo} loading="lazy" />
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61554559332668"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={Fb} alt="logo" style={logo} loading="lazy" />
-            </a>
-            <a
-              href="https://twitter.com/thelifescript"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={X} alt="logo" style={logo} loading="lazy" />
-            </a>
+            {footerIcons.map((item, index) => (
+              <SocialLogos
+                key={index}
+                href={item.href}
+                icon={item.icon}
+                alt={item.alt}
+              />
+            ))}
           </Box>
         </Box>
         <Box
@@ -236,5 +235,18 @@ const FooterColumn = ({ title, links }) => {
         </Link>
       ))}
     </Box>
+  );
+};
+
+const SocialLogos = ({ href, icon,alt }) => {
+  const logo = {
+    width: "25px",
+    height: "auto",
+  };
+
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <Image src={icon} alt={alt} style={logo} />
+    </a>
   );
 };
