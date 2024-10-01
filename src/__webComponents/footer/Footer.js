@@ -23,8 +23,8 @@ const Footer = React.forwardRef((props, ref) => {
     router.push("/about-us#ContactUs");
   };
 
-  const footerLinks = {
-    c1: {
+  const footerLinks = [
+    {
       title: t("landingPage.footerSection.heading1.title"),
       links: [
         {
@@ -49,7 +49,7 @@ const Footer = React.forwardRef((props, ref) => {
         },
       ],
     },
-    c2: {
+    {
       title: t("landingPage.footerSection.heading2.title"),
       links: [
         {
@@ -74,7 +74,7 @@ const Footer = React.forwardRef((props, ref) => {
         },
       ],
     },
-    c3: {
+    {
       title: "Comparisons",
       links: [
         {
@@ -84,17 +84,32 @@ const Footer = React.forwardRef((props, ref) => {
         },
       ],
     },
-    c4: {
+    {
       title: "Discover Gift Ideas",
       links: [
         {
-          path: "/storyworth-alternative",
-          text: "Storyworth alternative",
+          path: "/retirement-gifts-for-men",
+          text: "Retirement Gifts for Men",
           mb: true,
+        },
+        {
+          path: "/christmas-gift-for-mom",
+          text: "Christmas Gift for Mom",
+          mb: true,
+        },
+        {
+          path: "/retirement-gifts-for-women",
+          text: "Retirement Gifts for Women",
+          mb: true,
+        },
+        {
+          path: "/thanksgiving-gift",
+          text: "Thanksgiving Gift",
+          mb: false,
         },
       ],
     },
-  };
+  ];
 
   return (
     <Box ref={ref}>
@@ -102,13 +117,16 @@ const Footer = React.forwardRef((props, ref) => {
         sx={{
           padding: {
             lg: "44px 55px 40px 100px",
-            sm: "44px 30px 40px 70px",
-            xs: "40px 0",
+            md: "44px 30px 40px 70px",
+            sm: "44px 20px 40px 40px",
+            xs: "40px 20px",
           },
           bgcolor: "#30422E",
           color: "#F3ECDA",
           display: "flex",
-          justifyContent: { sm: "space-between", xs: "center" },
+          flexDirection: { lg: "row", sm: "column", xs: "column" },
+          gap: { lg: "0", sm: "50px" },
+          justifyContent: { lg: "space-between" },
         }}
       >
         <Box>
@@ -118,7 +136,6 @@ const Footer = React.forwardRef((props, ref) => {
               width: "210px",
               fontSize: "16px",
               margin: "23px 0",
-              textAlign: { xs: "center", sm: "start" },
             }}
           >
             {t("landingPage.footerSection.title")}
@@ -128,7 +145,6 @@ const Footer = React.forwardRef((props, ref) => {
               display: "flex",
               columnGap: "13px",
               alignItems: "center",
-              justifyContent: { xs: "center", sm: "start" },
             }}
           >
             <a
@@ -161,23 +177,16 @@ const Footer = React.forwardRef((props, ref) => {
             </a>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", columnGap: "45px" }}>
-          <FooterColumn
-            title={footerLinks.c1.title}
-            links={footerLinks.c1.links}
-          />
-          <FooterColumn
-            title={footerLinks.c2.title}
-            links={footerLinks.c2.links}
-          />
-          <FooterColumn
-            title={footerLinks.c3.title}
-            links={footerLinks.c3.links}
-          />
-          <FooterColumn
-            title={footerLinks.c4.title}
-            links={footerLinks.c4.links}
-          />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { sm: "row", xs: "column" },
+            columnGap: { sm: "45px" },
+          }}
+        >
+          {footerLinks.map((item, index) => (
+            <FooterColumn key={index} title={item.title} links={item.links} />
+          ))}
         </Box>
       </Box>
       <Box
@@ -199,12 +208,14 @@ export default Footer;
 
 const FooterColumn = ({ title, links }) => {
   return (
-    <Box sx={{ display: { sm: "block", xs: "none" } }}>
+    <Box sx={{}}>
       <Typography
         sx={{
           fontWeight: 800,
           marginBottom: "19px",
           fontFamily: "Avenir8 !important",
+          mt: { sm: "0", xs: "30px" },
+          fontSize: { lg: "16px", sm: "20px", xs: "20px" },
         }}
       >
         {title}
@@ -212,7 +223,12 @@ const FooterColumn = ({ title, links }) => {
       {links.map((item, index) => (
         <Link key={index} href={item.path}>
           <Typography
-            sx={{ fontSize: "16px", marginBottom: item.mb ? "19px" : "0" }}
+            sx={{
+              fontSize: "16px",
+              marginBottom: item.mb
+                ? { lg: "19px", sm: "15px", xs: "15px" }
+                : "0",
+            }}
             className={styles.hoverLinks}
           >
             {item.text}
