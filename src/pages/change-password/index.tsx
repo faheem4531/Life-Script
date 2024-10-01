@@ -19,8 +19,8 @@ const CryptoJS = require("crypto-js");
 import Logo from "@/_assets/svg/logo.svg";
 import { ChangePassword } from "@/interface/authInterface";
 import { changePassword } from "@/store/slices/authSlice";
-import Carousel from "../../components/authComponent/Carousel";
 import { useCarouselSliderImages } from "@/utils/webContent";
+import Carousel from "../../components/authComponent/Carousel";
 
 
 const ResetPassword = () => {
@@ -78,7 +78,7 @@ const ResetPassword = () => {
         .unwrap()
         .then(() => {
           toast.success(t("ResetPassword.passwordChangedSuccessfully"));
-          router.push("/_auth/Auth");
+          router.push("/login");
         })
         .catch((error: any) => {
           toast.error(error.message);
@@ -91,7 +91,7 @@ const ResetPassword = () => {
         .oneOf([Yup.ref("password")], t("ResetPassword.passwordDoesn'tMatch")),
     }),
   });
- 
+
   return (
 
     <Box

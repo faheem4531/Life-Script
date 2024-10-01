@@ -32,7 +32,7 @@ const NavBar = ({ color, logo }) => {
     if (userLoggedIn) {
       router.push("/dashboard/chapters");
     } else {
-      router.push("/_auth/Auth");
+      router.push("/login");
     }
   };
 
@@ -254,7 +254,7 @@ const NavBar = ({ color, logo }) => {
           <Box
             sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}
           >
-            <Link href="/_auth/Auth">
+            <Link href="/login">
               <Button
                 title={t("landingPage.navBar.login")}
                 width="140px"

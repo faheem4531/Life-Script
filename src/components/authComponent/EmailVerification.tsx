@@ -37,7 +37,7 @@ const EmailVerification = () => {
       .unwrap()
       .then((res) => {
         toast.success(t("Verify.emailVerifiedSuccessfully"));
-        // router.push(`/_auth/Auth`);
+        // router.push(`/login`);
         router.push(`/thank-you/free-trial?auth=${"email"}`);
       })
       .catch((error: any) => {

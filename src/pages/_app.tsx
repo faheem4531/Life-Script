@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/gifting",
       "/features",
       "/faqs",
-      "/_auth/Auth",
+      "/login",
       "/terms-of-use",
       "/privacy-policy",
       "/purchase",
@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
       "/purchase/gift",
       "/purchase/free-trial",
       "/purchase/sso-redirecting",
-      "/_auth/fb-redirecting",
+      "/login/fb-redirecting",
     ];
     const queryParams = new URLSearchParams(window.location.search);
     const id = queryParams.get("id");

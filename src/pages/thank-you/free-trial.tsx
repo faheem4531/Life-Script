@@ -12,7 +12,7 @@ const FreeTrial = () => {
     if (auth === 'google' || auth === 'facebook') {
       router.push(`/getStarted/getTitle?userName=${userName}`);
     } else {
-      router.push('/_auth/Auth');
+      router.push('/login');
     }
   }
 

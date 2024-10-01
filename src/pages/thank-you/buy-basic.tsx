@@ -8,12 +8,12 @@ const UpgradeBasic = () => {
 
   function handleRoutes() {
     const auth = router.query.auth || '';
-    
+
     if (auth === "auto") {
       const userName = localStorage.getItem("username");
       router.push(`/getStarted/getTitle?userName=${userName}`);
     } else {
-      router.push('/_auth/Auth');
+      router.push('/login');
     }
   }
 

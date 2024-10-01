@@ -13,7 +13,7 @@ const UpgradeBasic = () => {
       const userName = localStorage.getItem("username");
       router.push(`/getStarted/getTitle?userName=${userName}`);
     } else {
-      router.push('/_auth/Auth');
+      router.push('/login
     }
   }
 

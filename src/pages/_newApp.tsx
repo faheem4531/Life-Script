@@ -1,4 +1,6 @@
+import LiveChat from "@/components/liveChat/LiveChat";
 import socket from "@/services/socketManager";
+import { updateLuluPaymentStatus } from "@/store/slices/authSlice";
 import { getChapterNotifications } from "@/store/slices/chatSlice";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { usePathname } from "next/navigation";
@@ -10,14 +12,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "regenerator-runtime/runtime";
 import i18n from "../../i18n";
-import { updateLuluPaymentStatus } from "@/store/slices/authSlice";
-import LiveChat from "@/components/liveChat/LiveChat";
 
 export default function NewApp({ children }) {
   const router = useRouter();
   const dispatch: any = useDispatch();
   const currentPath = usePathname();
-  const publicRoutes = ["/_auth/Auth", "/verify/forgetPassword"];
+  const publicRoutes = ["/login", "/verify/forgetPassword"];
 
   useEffect(() => {
     dispatch(getChapterNotifications());

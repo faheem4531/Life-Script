@@ -32,7 +32,7 @@ const Login = () => {
   const handleSignin = async (e) => {
     e.preventDefault();
     signIn("facebook", {
-      callbackUrl: "/_auth/fb-redirecting",
+      callbackUrl: "/login/fb-redirecting",
     });
   };
 
