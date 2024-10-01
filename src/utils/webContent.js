@@ -16,6 +16,12 @@ import Power from "@/__webAssets/svgs/values/power.svg";
 
 import Check from "@/__webAssets/svgs/check-square.svg";
 import LifeScriptLogo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
+
+import Fb from "@/__webAssets/svgs/fb.svg";
+import Insta from "@/__webAssets/svgs/insta.svg";
+import Tiktok from "@/__webAssets/svgs/tiktok.svg";
+import X from "@/__webAssets/svgs/x.svg";
+
 import { icons, images } from "./assetsUrl";
 
 const { whyLifeScriptIcons, other, featuresLogos, testimonial } = icons;
@@ -39,6 +45,117 @@ export const useCarouselSliderImages = [
     path: sliderImages.grandFather,
     alt: "Grandfather standing with walking stick while child climbs a hill during an outdoor adventure, symbolizing shared memories in a lifestory book.",
     title: "Grandpa and Child Hiking Together for LifeStory Creation",
+  },
+];
+
+export const useFooterLinks = (t) => [
+  {
+    title: t("landingPage.footerSection.heading1.title"),
+    links: [
+      {
+        path: "/about-us",
+        text: t("landingPage.footerSection.heading1.text1"),
+        mb: true,
+      },
+      {
+        path: "/features",
+        text: t("landingPage.footerSection.heading1.text2"),
+        mb: true,
+      },
+      {
+        path: "/pricing",
+        text: t("landingPage.footerSection.heading1.text3"),
+        mb: true,
+      },
+      {
+        path: "/blog",
+        text: t("landingPage.footerSection.heading1.text4"),
+        mb: false,
+      },
+    ],
+  },
+  {
+    title: t("landingPage.footerSection.heading2.title"),
+    links: [
+      {
+        path: "/about-us#ContactUs",
+        text: t("landingPage.footerSection.heading2.text1"),
+        mb: true,
+      },
+      {
+        path: "/faqs",
+        text: t("landingPage.footerSection.heading2.text2"),
+        mb: true,
+      },
+      {
+        path: "/terms-of-use",
+        text: t("landingPage.footerSection.heading2.text3"),
+        mb: true,
+      },
+      {
+        path: "/privacy-policy",
+        text: t("landingPage.footerSection.heading2.text4"),
+        mb: false,
+      },
+    ],
+  },
+  {
+    title: "Comparisons",
+    links: [
+      {
+        path: "/storyworth-alternative",
+        text: "Storyworth alternative",
+        mb: true,
+      },
+    ],
+  },
+  {
+    title: "Discover Gift Ideas",
+    links: [
+      {
+        path: "/retirement-gifts-for-men",
+        text: "Retirement Gifts for Men",
+        mb: true,
+      },
+      {
+        path: "/christmas-gift-for-mom",
+        text: "Christmas Gift for Mom",
+        mb: true,
+      },
+      {
+        path: "/retirement-gifts-for-women",
+        text: "Retirement Gifts for Women",
+        mb: true,
+      },
+      {
+        path: "/thanksgiving-gift",
+        text: "Thanksgiving Gift",
+        mb: false,
+      },
+    ],
+  },
+];
+
+export const useFooterSocialIcons = [
+  {
+    href: "https://www.instagram.com/the.lifescript?igsh=ZWcyY3I1c2pmMzIw&utm_source=qr",
+    icon: Insta,
+    alt: "Instagram",
+  },
+  {
+    href: "https://www.tiktok.com/@the.lifescript?_t=8lYbtVKetST&_r=1",
+    icon: Tiktok,
+    alt: "Tiktok",
+  },
+  {
+    href: "https://www.facebook.com/profile.php?id=61554559332668",
+    icon: Fb,
+    alt: "Facebook",
+  },
+  {
+    href: "https://twitter.com/thelifescript",
+    icon: X,
+    alt: "Twitter",
   },
 ];
 
