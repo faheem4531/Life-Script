@@ -150,8 +150,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 fontSize: isMobile ? "10px" : isTablet ? "16px" : "18px",
                 padding: "1px",
                 display: "inline-block",
-                width: isMobile ? "85%" : isTablet ? "50%" : "400px",
+                width: isMobile ? "100%" : isTablet ? "50%" : "400px",
                 borderRadius: "0px 5px 0px 0px ",
+                textAlign: "center",
               }}
               buttonStyle={{
                 background: "#ff5722",
@@ -160,8 +161,8 @@ export default function App({ Component, pageProps }: AppProps) {
                 padding: "10px 20px",
                 borderRadius: "5px",
                 cursor: "pointer",
-                marginLeft: "23px",
                 textAlign: "center",
+                marginLeft:"auto",
                 width: isMobile ? "100px" : isTablet ? "100px" : "150px",
               }}
               declineButtonStyle={{
@@ -171,17 +172,18 @@ export default function App({ Component, pageProps }: AppProps) {
                 padding: "10px 20px",
                 borderRadius: "5px",
                 cursor: "pointer",
+                marginRight:"auto",
                 width: isMobile ? "100px" : isTablet ? "100px" : "150px",
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  padding: "2px",
-                  width: isMobile ? "81%" : isTablet ? "90%" : "90%",
-                  justifyContent: "center",
-                  marginLeft: "2%",
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '2px',
+                  width: { sm: "90%", xs: "100%" },
+                  justifyContent: 'center',
+                  alignItems: "center"
                 }}
               >
                 <Typography
@@ -196,12 +198,13 @@ export default function App({ Component, pageProps }: AppProps) {
                 </Typography>
                 <Typography
                   variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}
+                  textAlign={"center"}
                 >
                   This website uses cookies to ensure you get the best possible
                   experience. By clicking &apos;Accept&apos;, you agree to our
                   use of cookies.
                 </Typography>
-              </div>
+              </Box>
             </CookieConsent>
           )}
         </Grid>
