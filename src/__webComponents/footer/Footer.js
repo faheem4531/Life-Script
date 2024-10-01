@@ -1,15 +1,14 @@
-import { Box, Typography, Link } from "@mui/material";
-import Image from "next/image";
-import styles from "../ComponentsStyles.module.css";
-import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
-import Insta from "@/__webAssets/svgs/insta.svg";
 import Fb from "@/__webAssets/svgs/fb.svg";
-import Li from "@/__webAssets/svgs/li.svg";
-import X from "@/__webAssets/svgs/x.svg";
+import Insta from "@/__webAssets/svgs/insta.svg";
+import Logo from "@/__webAssets/svgs/lifescript-life-story-book-logo.svg";
 import Tiktok from "@/__webAssets/svgs/tiktok.svg";
-import { useTranslation } from "react-i18next";
+import X from "@/__webAssets/svgs/x.svg";
+import { Box, Link, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
+import { useTranslation } from "react-i18next";
+import styles from "../ComponentsStyles.module.css";
 
 const Footer = React.forwardRef((props, ref) => {
   const { t } = useTranslation();
@@ -21,7 +20,80 @@ const Footer = React.forwardRef((props, ref) => {
 
   const handleContactClick = (e) => {
     e.preventDefault();
-    router.push('/about-us#ContactUs');
+    router.push("/about-us#ContactUs");
+  };
+
+  const footerLinks = {
+    c1: {
+      title: t("landingPage.footerSection.heading1.title"),
+      links: [
+        {
+          path: "/about-us",
+          text: t("landingPage.footerSection.heading1.text1"),
+          mb: true,
+        },
+        {
+          path: "/features",
+          text: t("landingPage.footerSection.heading1.text2"),
+          mb: true,
+        },
+        {
+          path: "/pricing",
+          text: t("landingPage.footerSection.heading1.text3"),
+          mb: true,
+        },
+        {
+          path: "/blog",
+          text: t("landingPage.footerSection.heading1.text4"),
+          mb: false,
+        },
+      ],
+    },
+    c2: {
+      title: t("landingPage.footerSection.heading2.title"),
+      links: [
+        {
+          path: "/about-us#ContactUs",
+          text: t("landingPage.footerSection.heading2.text1"),
+          mb: true,
+        },
+        {
+          path: "/faqs",
+          text: t("landingPage.footerSection.heading2.text2"),
+          mb: true,
+        },
+        {
+          path: "/terms-of-use",
+          text: t("landingPage.footerSection.heading2.text3"),
+          mb: true,
+        },
+        {
+          path: "/privacy-policy",
+          text: t("landingPage.footerSection.heading2.text4"),
+          mb: false,
+        },
+      ],
+    },
+    c3: {
+      title: "Comparisons",
+      links: [
+        {
+          path: "/storyworth-alternative",
+          text: "Storyworth alternative",
+          mb: true,
+        },
+      ],
+    },
+    c4: {
+      title: "Discover Gift Ideas",
+      links: [
+        {
+          path: "/storyworth-alternative",
+          text: "Storyworth alternative",
+          mb: true,
+        },
+      ],
+    },
   };
 
   return (
@@ -40,7 +112,7 @@ const Footer = React.forwardRef((props, ref) => {
         }}
       >
         <Box>
-          <Image src={Logo} alt="logo" loading='lazy' />
+          <Image src={Logo} alt="logo" loading="lazy" />
           <Typography
             sx={{
               width: "210px",
@@ -71,111 +143,41 @@ const Footer = React.forwardRef((props, ref) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Tiktok} alt="logo" style={logo} loading='lazy' />
+              <Image src={Tiktok} alt="logo" style={logo} loading="lazy" />
             </a>
             <a
               href="https://www.facebook.com/profile.php?id=61554559332668"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={Fb} alt="logo" style={logo} loading='lazy' />
+              <Image src={Fb} alt="logo" style={logo} loading="lazy" />
             </a>
             <a
               href="https://twitter.com/thelifescript"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={X} alt="logo" style={logo} loading='lazy' />
+              <Image src={X} alt="logo" style={logo} loading="lazy" />
             </a>
           </Box>
         </Box>
         <Box sx={{ display: "flex", columnGap: "45px" }}>
-          <Box sx={{ display: { sm: "block", xs: "none" } }}>
-            <Typography
-              sx={{
-                fontWeight: 800,
-                marginBottom: "19px",
-                fontFamily: "Avenir8 !important",
-              }}
-            >
-              {t("landingPage.footerSection.heading1.title")}
-            </Typography>
-            <Link href="/about-us">
-              <Typography
-                sx={{ fontSize: "16px", marginBottom: "19px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading1.text1")}
-              </Typography>
-            </Link>
-            <Link href="/features">
-              <Typography
-                sx={{ fontSize: "16px", marginBottom: "19px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading1.text2")}
-              </Typography>
-            </Link>
-            <Link href="/pricing">
-              <Typography
-                sx={{ fontSize: "16px", marginBottom: "19px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading1.text3")}
-              </Typography>
-            </Link>
-            <Link href="/blog">
-              <Typography
-                sx={{ fontSize: "16px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading1.text4")}
-              </Typography>
-            </Link>
-          </Box>
-          <Box sx={{ display: { sm: "block", xs: "none" } }}>
-            <Typography
-              sx={{
-                fontWeight: 800,
-                marginBottom: "19px",
-                fontFamily: "Avenir8 !important",
-              }}
-            >
-              {t("landingPage.footerSection.heading2.title")}
-            </Typography>
-            <Link href="/about-us#ContactUs" onClick={handleContactClick}>
-              <Typography
-                sx={{ fontSize: "16px", marginBottom: "19px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading2.text1")}
-              </Typography>
-            </Link>
-            <Link href="/faqs">
-              <Typography
-                sx={{ fontSize: "16px", marginBottom: "19px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading2.text2")}
-              </Typography>
-            </Link>
-            <Link href="/terms-of-use">
-              <Typography
-                sx={{ fontSize: "16px", marginBottom: "19px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading2.text3")}
-              </Typography>
-            </Link>
-            <Link href="/privacy-policy">
-              <Typography
-                sx={{ fontSize: "16px" }}
-                className={styles.hoverLinks}
-              >
-                {t("landingPage.footerSection.heading2.text4")}
-              </Typography>
-            </Link>
-          </Box>
+          <FooterColumn
+            title={footerLinks.c1.title}
+            links={footerLinks.c1.links}
+          />
+          <FooterColumn
+            title={footerLinks.c2.title}
+            links={footerLinks.c2.links}
+          />
+          <FooterColumn
+            title={footerLinks.c3.title}
+            links={footerLinks.c3.links}
+          />
+          <FooterColumn
+            title={footerLinks.c4.title}
+            links={footerLinks.c4.links}
+          />
         </Box>
       </Box>
       <Box
@@ -192,5 +194,31 @@ const Footer = React.forwardRef((props, ref) => {
   );
 });
 
-Footer.displayName = 'Footer';
+Footer.displayName = "Footer";
 export default Footer;
+
+const FooterColumn = ({ title, links }) => {
+  return (
+    <Box sx={{ display: { sm: "block", xs: "none" } }}>
+      <Typography
+        sx={{
+          fontWeight: 800,
+          marginBottom: "19px",
+          fontFamily: "Avenir8 !important",
+        }}
+      >
+        {title}
+      </Typography>
+      {links.map((item, index) => (
+        <Link key={index} href={item.path}>
+          <Typography
+            sx={{ fontSize: "16px", marginBottom: item.mb ? "19px" : "0" }}
+            className={styles.hoverLinks}
+          >
+            {item.text}
+          </Typography>
+        </Link>
+      ))}
+    </Box>
+  );
+};
