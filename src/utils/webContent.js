@@ -1948,3 +1948,35 @@ export const useThanksgivingSuggestions = (t) => {
 
   return { imageData, content };
 };
+
+export const useGrandmaGiftSuggestions = (t) => {
+  const imageData = {
+    src: others.thanksgivingHeroImg,
+    alt: "A joyful moment of a grandma receiving a thoughtful gift from her granddaughter, symbolizing the perfect personalized gift for grandma - LifeScript.",
+    title: "Grandma receiving a gift from her granddaughter - gifts for grandma",
+  };
+  const content = [
+    {
+      title: "Celebrate her journey so far",
+      subTitle:
+        "LifeScript is one of the most thoughtful gifts for grandma, offering her the chance to look back and celebrate everything she’s achieved. It helps her capture those special moments and milestones that shaped her into the amazing person she is today.",
+    },
+    {
+      title: "Share stories that matter",
+      subTitle:
+        "Your grandma’s life is filled with stories—tales of triumphs, challenges, and lessons learned. LifeScript gives her the perfect platform to share these memories, creating a meaningful legacy that your family will cherish for generations.",
+    },
+    {
+      title: "Reconnect with family",
+      subTitle:
+        "Her stories are the threads that weave the fabric of your family’s history. With LifeScript, she can revisit those memories and uncover moments that have long been forgotten. It’s a gift that brings loved ones closer and ensures her voice will continue to be heard.",
+    },
+    {
+      title: "Reflect on life’s moments",
+      subTitle:
+        "She has lived a life rich in experiences, love, and laughter. Giving her the opportunity to reflect on those moments is thoughtful way to show that you care. With LifeScript, she’ll relive her most treasured memories and turn them into a lasting keepsake for your family to hold close.",
+    },
+  ];
+
+  return { imageData, content };
+};

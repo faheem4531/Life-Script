@@ -22,7 +22,7 @@ import {
   useThanksgivingTestimonials,
   useThanksgivingFeaturesGif,
   useThanksgivingQA,
-  useThanksgivingSuggestions,
+  useGrandmaGiftSuggestions,
   useOurBookCoverforThanksgiving,
   useSuggestedQuestions,
   useWorkingDetails,
@@ -30,7 +30,7 @@ import {
 
 const GiftForGrandma = () => {
   const { t } = useTranslation();
-  const sugestionData = useThanksgivingSuggestions(t);
+  const sugestionData = useGrandmaGiftSuggestions(t);
   const testimonials = useThanksgivingTestimonials(t);
   const workingData = useWorkingDetails(t);
   const shortQA = useThanksgivingQA(t);
@@ -46,7 +46,7 @@ const GiftForGrandma = () => {
           name="description"
           content="Give a personalized gift for grandma with an unforgettable journey through her life’s stories preserved in a beautiful hardcover book delivered to her doorstep."
         />
-        <link rel="canonical" href="https://www.thelifescript.com/thanksgiving-gift" />
+        <link rel="canonical" href="https://www.thelifescript.com/gifts-for-grandma" />
       </Head>
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
@@ -55,8 +55,8 @@ const GiftForGrandma = () => {
           marked="grandma"
           discription="Surprise her with an unforgettable journey through her cherished memories, where she can share the stories of her life, celebrate precious moments, and create a legacy with a beautifully crafted hardcover book delivered right to her doorstep."
           buttonText="Buy now"
-          imgTitle="Opened autobiography book as a Thanksgiving gift"
-          alt="An opened autobiography book, a heartfelt Thanksgiving gift for sharing cherished life stories - LifeScript."
+          imgTitle="Opened autobiography book as a gift for grandma"
+          alt="An opened autobiography book, a thoughtful gift for grandmas to share their cherished life stories - LifeScript."
           subContentWidth="1100px"
           lineWidth={140}
         />
