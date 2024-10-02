@@ -28,7 +28,7 @@ import {
   useWorkingDetails,
 } from "@/utils/webContent";
 
-const ThanksGiving = () => {
+const GiftForGrandma = () => {
   const { t } = useTranslation();
   const sugestionData = useThanksgivingSuggestions(t);
   const testimonials = useThanksgivingTestimonials(t);
@@ -51,13 +51,13 @@ const ThanksGiving = () => {
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
           bgGreen={false}
-          heading="LifeScript, the best Thanksgiving"
-          marked="gift"
-          discription="Give a timeless Thanksgiving gift by helping your loved one preserve their story, celebrate the moments that mattered, and receive a personalized hardcover book filled with memories."
+          heading="Among the best gifts for grandma"
+          marked="grandma"
+          discription="Surprise her with an unforgettable journey through her cherished memories, where she can share the stories of her life, celebrate precious moments, and create a legacy with a beautifully crafted hardcover book delivered right to her doorstep."
           buttonText="Buy now"
           imgTitle="Opened autobiography book as a Thanksgiving gift"
           alt="An opened autobiography book, a heartfelt Thanksgiving gift for sharing cherished life stories - LifeScript."
-          subContentWidth="900px"
+          subContentWidth="1100px"
           lineWidth={140}
         />
         <Box
@@ -66,7 +66,7 @@ const ThanksGiving = () => {
           }}
         >
           <Suggestion
-            heading="A Thanksgiving gift that helps your loved one to"
+            heading="A personalized gift for grandma to:"
             data={sugestionData}
             btnTxt="Gift now"
             btnImg={Gift}
@@ -97,8 +97,8 @@ const ThanksGiving = () => {
           marked="easy"
         />
         <Reviews
-          review="This Thanksgiving, I wanted to give my mom something meaningful, something that would really connect us as a family. LifeScript turned out to be the perfect gift. Every time we talk now, she shares a story I’ve never heard before, and it’s like I’m getting to know her in a whole new way. She’s so proud of the book she’s creating, and honestly, we’re all excited to read it. LifeScript brought us closer this holiday season, and I’m so grateful for that. It’s more than a gift—it’s a lasting memory."
-          author="Sarah G."
+          review="When I gave my grandma LifeScript, I wasn’t sure how much she’d enjoy it. But it turned out to be the best gift I could have given her. She started writing down stories from her life—things I had never heard before. It’s been so special hearing about her childhood, her parents, and everything that made her who she is. Watching her go through these memories has brought us even closer, and the fact that we’ll have this book forever means everything to me. LifeScript isn’t just a gift—it’s a way to keep her with us, in her own words."
+          author="Emma P."
         />
         <Box
           sx={{
@@ -106,8 +106,7 @@ const ThanksGiving = () => {
           }}
         >
           <GifTab
-            heading="Surprise your loved one with a Thanksgiving
-gift that will transform their memories into a beautiful book delivered to their doorstep."
+            heading="Give the perfect grandma gift and let her turn a lifetime of memories into a beautiful keepsake."
             button={"Gift now"}
             icon={Gift}
             btnLink={"/purchase"}
@@ -131,4 +130,4 @@ gift that will transform their memories into a beautiful book delivered to their
   );
 };
 
-export default ThanksGiving;
+export default GiftForGrandma;
