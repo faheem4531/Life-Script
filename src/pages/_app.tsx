@@ -145,8 +145,8 @@ export default function App({ Component, pageProps }: AppProps) {
               onDecline={() => { }}
               setDeclineCookie={false}
               style={{
-                background: "#2A3724",
-                color: "#fff",
+                background: "#F5F5F5",
+                color: "#2D3C27",
                 fontSize: isMobile ? "10px" : isTablet ? "16px" : "18px",
                 padding: "1px",
                 display: "inline-block",
@@ -159,21 +159,18 @@ export default function App({ Component, pageProps }: AppProps) {
                 color: "#fff",
                 fontSize: "14px",
                 padding: "10px 20px",
-                borderRadius: "5px",
                 cursor: "pointer",
                 textAlign: "center",
-                marginLeft:"auto",
-                width: isMobile ? "100px" : isTablet ? "100px" : "150px",
+                width: isMobile ? "130px" : isTablet ? "140px" : "150px",
+                marginRight:"-10px"
               }}
               declineButtonStyle={{
                 background: "#777",
                 color: "#fff",
                 fontSize: "14px",
                 padding: "10px 20px",
-                borderRadius: "5px",
                 cursor: "pointer",
-                marginRight:"auto",
-                width: isMobile ? "100px" : isTablet ? "100px" : "150px",
+                width: isMobile ? "130px" : isTablet ? "140px" : "150px",
               }}
             >
               <Box
@@ -194,7 +191,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     fontSize: "18px",
                   }}
                 >
-                  We Value Your Privacy
+                  We value your privacy
                 </Typography>
                 <Typography
                   variant={isMobile ? "body2" : isTablet ? "body1" : "body1"}
