@@ -54,7 +54,7 @@ const GiftForGrandma = () => {
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
           bgGreen={false}
-          heading="Among the best gifts for grandma"
+          heading="Among the best gifts for"
           marked="grandma"
           discription="Surprise her with an unforgettable journey through her cherished memories, where she can share the stories of her life, celebrate precious moments, and create a legacy with a beautifully crafted hardcover book delivered right to her doorstep."
           buttonText="Buy now"
