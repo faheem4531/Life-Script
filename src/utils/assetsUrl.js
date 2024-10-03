@@ -60,6 +60,7 @@ export const images = {
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727435836/assets/daughter-book-christmas-gift-for-mom_unjacc.webp",
     thanksgivingHeroImg:
       "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727435836/assets/grandma-grandpa-family-time-with-grandchildren-thanksgiving-gift_lwgwlz.webp",
+      grandmaGiftHeroImg:"https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727950565/assets/granddaughter-gifts-book-for-grandma_jqvb3o.webp",
   },
   bookCovers: {
     cover1:
