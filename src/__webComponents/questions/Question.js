@@ -58,7 +58,7 @@ export default function Question({
           sx={{ padding: { md: "10px 0 ", sm: "5px 0", xs: "5px 0" } }}
         >
           <Typography
-            sx={{ fontFamily: "Avenir" }}
+            sx={{ fontFamily: "Avenir8 !important" }}
             variant="h3"
             className={styles.pureHeadings}
           >
@@ -69,12 +69,12 @@ export default function Question({
           <Typography
             sx={{
               padding: {
-                md: "0px 0 10px 60px",
+                md: "0px 0 20px 60px",
                 sm: "0 0 10px 47px",
                 xs: "0px 0 10px 47px",
               },
               fontSize: "14px",
-              fontFamily: "Avenir",
+              fontFamily: "Avenir !important",
             }}
             variant="h4"
             className={styles.pureHeadings}

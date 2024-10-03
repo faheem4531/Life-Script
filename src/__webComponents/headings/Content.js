@@ -39,7 +39,11 @@ export function Content({
       </Typography>
       <Typography
         variant="h4"
-        sx={{ maxWidth: { lg: subWidth || "420px" }, fontFamily: "Avenir" }}
+        sx={{
+          maxWidth: { lg: subWidth || "420px" },
+          fontFamily:
+            color === "#F3ECDA" ? "Avenir3 !important" : "Avenir !important",
+        }}
         fontSize={subFonts || "16px"}
         color={color}
       >
