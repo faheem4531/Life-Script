@@ -130,6 +130,11 @@ export const useFooterLinks = (t) => [
       {
         path: "/thanksgiving-gift",
         text: "Thanksgiving Gift",
+        mb: true,
+      },
+      {
+        path: "/gifts-for-grandma",
+        text: "Gifts For Grandma",
         mb: false,
       },
     ],
