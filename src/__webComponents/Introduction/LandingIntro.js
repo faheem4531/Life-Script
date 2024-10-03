@@ -22,6 +22,10 @@ const LandingIntro = ({
   subContentWidth = "650px",
   lineWidth,
   buttonText,
+  miniImage = null,
+  miniImageAlt = "",
+  miniImageTitle = "",
+  miniImageWidth = "",
 }) => {
   const { t } = useTranslation();
   return (
@@ -41,15 +45,16 @@ const LandingIntro = ({
             sm: "100px 0 70px 0px",
             xs: "60px 16px 100px",
           },
+          position: "relative",
         }}
       >
-        <Box sx={{ width: "100%", zIndex: "20", textAlign: "center",bgcolor:"" }}>
+        <Box sx={{ width: "100%", zIndex: "20", textAlign: "center" }}>
           <Heading
             heading={heading}
             marked={marked}
             color={bgGreen ? "#F3ECDA" : "#3e4f3c"}
             lineWidth={lineWidth}
-            />
+          />
           <Typography
             sx={{
               fontSize: { sm: "18px", xs: "15px" },
@@ -102,7 +107,7 @@ const LandingIntro = ({
             height: "100%",
             maxWidth: { lg: "600px", md: "500px", sm: "400px" },
             maxHeight: { lg: "350px", md: "210px", sm: "180px" },
-            m: "-100px 0 0px auto",
+            m: "-100px -50px 0px auto",
             bgcolor: "rd",
             display: { xs: "none", sm: "block" },
           }}
@@ -116,6 +121,28 @@ const LandingIntro = ({
             title={imgTitle}
           />
         </Box>
+
+        {miniImage && (
+          <Box
+            sx={{
+              bgcolor: "",
+              width: { md: miniImageWidth, sm: "150px" },
+              display: { sm: "block", xs: "none" },
+              position: "absolute",
+              left: { md: "40px", sm: "20px" },
+              bottom: { md: "50px", sm: "20px" },
+            }}
+          >
+            <Image
+              src={miniImage}
+              alt={miniImageAlt}
+              title={miniImageTitle}
+              width={245}
+              height={270}
+              style={{ objectFit: "contain", width: "100%", height: "auto" }}
+            />
+          </Box>
+        )}
       </Box>
     </Box>
   );

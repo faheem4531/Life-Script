@@ -28,6 +28,8 @@ import {
   useWorkingDetails,
 } from "@/utils/landingPagesContent";
 
+const miniMainImage = "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727950980/assets/grandma-receiving-gift-from-granddaughter_x1dmkv.webp"
+
 const GiftForGrandma = () => {
   const { t } = useTranslation();
   const sugestionData = useGrandmaGiftSuggestions(t);
@@ -59,6 +61,10 @@ const GiftForGrandma = () => {
           alt="An opened autobiography book, a thoughtful gift for grandmas to share their cherished life stories - LifeScript."
           subContentWidth="1100px"
           lineWidth={200}
+          miniImage={miniMainImage}
+          miniImageAlt="A joyful moment of a grandma receiving a thoughtful gift from her granddaughter, symbolizing the perfect personalized gift for grandma - LifeScript."
+          miniImageTitle="Grandma receiving a gift from her granddaughter - gifts for grandma"
+          miniImageWidth={245}
         />
         <Box
           sx={{
