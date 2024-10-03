@@ -19,24 +19,24 @@ import Suggestion from "@/__webComponents/suggestions/Suggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
-  useThanksgivingTestimonials,
-  useThanksgivingFeaturesGif,
-  useThanksgivingQA,
+  useGrandmaGiftTestimonials,
+  useGrandmaGiftFeaturesGif,
+  useGrandmaGiftQA,
   useGrandmaGiftSuggestions,
-  useOurBookCoverforThanksgiving,
+  useOurBookCoverforGrandmaGift,
   useSuggestedQuestions,
   useWorkingDetails,
-} from "@/utils/webContent";
+} from "@/utils/landingPagesContent";
 
 const GiftForGrandma = () => {
   const { t } = useTranslation();
   const sugestionData = useGrandmaGiftSuggestions(t);
-  const testimonials = useThanksgivingTestimonials(t);
+  const testimonials = useGrandmaGiftTestimonials(t);
   const workingData = useWorkingDetails(t);
-  const shortQA = useThanksgivingQA(t);
+  const shortQA = useGrandmaGiftQA(t);
   const suggestedQuestions = useSuggestedQuestions(t);
-  const ourBookCover = useOurBookCoverforThanksgiving(t);
-  const featuresGif = useThanksgivingFeaturesGif(t);
+  const ourBookCover = useOurBookCoverforGrandmaGift(t);
+  const featuresGif = useGrandmaGiftFeaturesGif(t);
 
   return (
     <>
@@ -58,7 +58,7 @@ const GiftForGrandma = () => {
           imgTitle="Opened autobiography book as a gift for grandma"
           alt="An opened autobiography book, a thoughtful gift for grandmas to share their cherished life stories - LifeScript."
           subContentWidth="1100px"
-          lineWidth={140}
+          lineWidth={200}
         />
         <Box
           sx={{
