@@ -50,6 +50,7 @@ const GiftForGrandma = () => {
         />
         <link rel="canonical" href="https://www.thelifescript.com/gifts-for-grandma" />
       </Head>
+      
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
           bgGreen={false}
