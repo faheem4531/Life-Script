@@ -99,7 +99,7 @@
     "featureSection": {
       "title": "Get a Feel for LifeScript’s",
       "subTitle": "Features",
-      "btnText": "See more",
+      "btnText": "See more features",
       "accordion1": {
         "heading": "1. Narrative Fusion",
         "description": "Turns your answers into beautifully written chapters with a single click. No writing experience needed."
@@ -214,7 +214,7 @@
     "questionSection": {
       "title": "Got questions?",
       "subTitle": "We've got answers!",
-      "btnText": "See More",
+      "btnText": "See more questions",
       "question1": {
         "qs": "What is included in each plan?",
         "ans": "Lifetime access to our platform, full-color hardcover printed book and free delivery."
