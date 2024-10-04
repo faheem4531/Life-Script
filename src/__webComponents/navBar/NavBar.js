@@ -250,7 +250,8 @@ const NavBar = ({ color, logo }) => {
           pathname === "/retirement-gifts-for-women" ||
           pathname === "/christmas-gift-for-mom" ||
           pathname === "/thanksgiving-gift" ||
-          pathname === "/gifts-for-grandma"
+          pathname === "/gifts-for-grandma" ||
+          pathname === "/gifts-for-grandparents"
         ) && (
           <Box
             sx={{ paddingBottom: "10px", display: "flex", columnGap: "10px" }}
