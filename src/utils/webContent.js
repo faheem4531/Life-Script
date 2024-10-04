@@ -133,6 +133,11 @@ export const useFooterLinks = (t) => [
         mb: true,
       },
       {
+        path: "/gifts-for-grandparents",
+        text: "Gifts For Grandparents",
+        mb: true,
+      },
+      {
         path: "/gifts-for-grandma",
         text: "Gifts For Grandma",
         mb: false,
