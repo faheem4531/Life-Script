@@ -19,11 +19,11 @@ import LPSuggestion from "@/__webComponents/suggestions/LPSuggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
-  useGrandmaGiftFeaturesGif,
-  useGrandmaGiftQA,
-  useGrandmaGiftSuggestions,
-  useGrandmaGiftTestimonials,
-  useOurBookCoverforGrandmaGift,
+  useGrandparentsGiftFeaturesGif,
+  useGrandparentsGiftQA,
+  useGrandparentsGiftSuggestions,
+  useGrandparentsGiftTestimonials,
+  useOurBookCoverforGrandparentsGift,
   useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/landingPagesContent";
@@ -32,13 +32,13 @@ const miniMainImage ="https://res.cloudinary.com/dm3wjnhkv/image/upload/v1725832
 
 const GiftForGrandparents = () => {
   const { t } = useTranslation();
-  const sugestionData = useGrandmaGiftSuggestions(t);
-  const testimonials = useGrandmaGiftTestimonials(t);
+  const sugestionData = useGrandparentsGiftSuggestions(t);
+  const testimonials = useGrandparentsGiftTestimonials(t);
   const workingData = useWorkingDetails(t);
-  const shortQA = useGrandmaGiftQA(t);
+  const shortQA = useGrandparentsGiftQA(t);
   const suggestedQuestions = useSuggestedQuestions(t);
-  const ourBookCover = useOurBookCoverforGrandmaGift(t);
-  const featuresGif = useGrandmaGiftFeaturesGif(t);
+  const ourBookCover = useOurBookCoverforGrandparentsGift(t);
+  const featuresGif = useGrandparentsGiftFeaturesGif(t);
 
   return (
     <>
@@ -62,7 +62,7 @@ const GiftForGrandparents = () => {
           heading="The most meaningful gifts for"
           marked="grandparents"
           discription="Surprise your grandparents with an unforgettable journey through their cherished memories, allowing them to share their life stories, celebrate precious moments, and create a lasting legacy with a beautifully crafted hardcover book, delivered right to their doorstep."
-          buttonText="Gift now"
+          buttonText="Buy now"
           imgTitle="Opened autobiography book as a gift for grandparents"
           alt="An opened autobiography book, a thoughtful gift for grandparents to share their cherished life stories - LifeScript."
           subContentWidth="900px"
@@ -79,7 +79,7 @@ const GiftForGrandparents = () => {
           }}
         >
           <LPSuggestion
-            heading="A personalized gift for grandma to:"
+            heading="A gift for your grandparents to:"
             data={sugestionData}
             btnTxt="Gift now"
             btnImg={Gift}
@@ -93,7 +93,7 @@ const GiftForGrandparents = () => {
           }}
         >
           <GifTab
-            heading="Give the perfect grandma gift and let her turn a lifetime of memories into a beautiful keepsake."
+            heading="Give the perfect gift for grandparents day and let them turn a lifetime of memories into a beautiful keepsake."
             button={"Gift now"}
             icon={Gift}
             btnLink={"/purchase"}
@@ -122,8 +122,8 @@ const GiftForGrandparents = () => {
           from personalised suggestions."
         />
         <Reviews
-          review="When I gave my grandma LifeScript, I wasn’t sure how much she’d enjoy it. But it turned out to be the best gift I could have given her. She started writing down stories from her life—things I had never heard before. It’s been so special hearing about her childhood, her parents, and everything that made her who she is. Watching her go through these memories has brought us even closer, and the fact that we’ll have this book forever means everything to me. LifeScript isn’t just a gift—it’s a way to keep her with us, in her own words."
-          author="Emma P."
+          review="Giving LifeScript to my grandparents was hands down the best decision I’ve made. I had no idea how much they would enjoy it, but watching them light up as they share stories I’ve never heard before has been incredible. It’s not just a gift—it’s become a way for us to connect and understand each other on a whole new level. Seeing their stories come together in a beautiful book we’ll all have forever? That’s something I never imagined I’d be a part of, and it feels amazing."
+          author="Megan R."
         />
 
         <GotQuestions questions={shortQA} />
