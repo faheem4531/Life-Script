@@ -140,6 +140,11 @@ export const useFooterLinks = (t) => [
       {
         path: "/gifts-for-grandma",
         text: "Gifts For Grandma",
+        mb: true,
+      },
+      {
+        path: "/60th-birthday-gifts-for-men",
+        text: "60th birthday gifts for men",
         mb: false,
       },
     ],
