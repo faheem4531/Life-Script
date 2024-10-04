@@ -601,3 +601,272 @@ export const useOurBookCoverforGrandparentsGift = (t) => [
     title: "Minimalistic book cover for gifts for grandparents",
   },
 ];
+
+// 60th-birthday-gifts-for-men
+export const use60thGiftForMenSuggestions = (t) => {
+  const imageData = {
+    src: others.BirthdayGiftfor60thHeroImg,
+    alt: "A daughter giving her father a thoughtful present, an ideal 60th birthday gift idea for men - LifeScript.",
+    title:
+      "Daughter giving a personalized 60th birthday gift to father",
+  };
+  const content = [
+    {
+      title: "Celebrate a lifetime of memories",
+      subTitle:
+        "Help him honor his achievements, whether they’re big milestones or quiet memories that shaped him, with a gift that captures his story for generations.",
+    },
+    {
+      title: "Uncover untold stories",
+      subTitle:
+        "Give him the chance to share the moments he’s never spoken about—the stories that make up the missing pieces of his life’s puzzle.",
+    },
+    {
+      title: "Strengthen family bonds",
+      subTitle:
+        "This is a way for him to share memories that deepen family ties and create lasting connections with loved ones. His stories connect generations",
+    },
+    {
+      title: "Reflect on a life well-lived",
+      subTitle:
+        "60 years of experiences deserve to be celebrated. This gift offers him the chance to reflect on the moments that shaped him into the person he is today.",
+    },
+    {
+      title: "Spark meaningful conversations",
+      subTitle:
+        "This birthday gift opens up conversations you’ve never had before, bringing out forgotten memories and strengthening your relationship along the way.",
+    },
+    {
+      title: "Make him feel appreciated",
+      subTitle:
+        "Let him feel valued by showing you care about his life story. He’ll feel proud knowing his experiences are preserved in his very own personal autobiography.",
+    },
+    {
+      title: "Leave a lasting legacy",
+      subTitle:
+        "This birthday gift is a way to ensure his grandchildren and future generations will know his life story and cherish the lessons he’s learned along the way.",
+    },
+  ];
+
+  return { imageData, content };
+};
+
+export const use60thGiftForMenQA = (t) => [
+  {
+    qs: "What is included in each plan?",
+    ans: "Each plan provides lifetime access to our platform, a beautifully printed full-color hardcover book, and free delivery.",
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I gift LifeScript to my father? How does it work?",
+    ans: "Yes! All you need is their email and a date to send the gift. Once it’s delivered, you’ll receive a confirmation. It’s one of the easiest yet most meaningful 60th birthday gifts for men.",
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: "Is LifeScript a good last-minute gift for a 60th birthday?",
+    ans: "Absolutely! Even in the last-minute, It’s a thoughtful and personalized birthday gift. If you purchase it the night before, the gift email will be delivered first thing the next day.",
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: "Are there any tutorials to help?",
+    ans: "Yes! We provide step-by-step video guides to walk him through every part of the process, from creating to ordering the book. Our support team is also available via chat or email if they need assistance.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I order extra books?",
+    ans: "Yes, you can order additional full-color hardcover books for $39 each. It’s an ideal way to share his life story with family and friends, making the gift even more memorable and thoughtful",
+    panel: "panel5",
+    isexpanded: false,
+  },
+  {
+    qs: "How can I ensure his stories stay private?",
+    ans: (
+      <>
+        We take{" "}
+        <NextLink href="/privacy-policy" passHref>
+          <span style={{ color: "#30422E", fontFamily: "Avenir8" }}>
+            privacy.
+          </span>
+        </NextLink>{" "}
+        very seriously. His stories are protected by advanced security measures and encryption, ensuring his memories remain private and secure.
+      </>
+    ),
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I set a reminder if I’m not ready to gift it now?",
+    ans: "Of course! You can easily set a reminder, and we’ll let you know when it’s the perfect time to give one of the most thoughtful birthday gifts.",
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: "Do you offer international shipping? Is it free?",
+    ans: "Yes, we offer free international shipping with tracking. No matter where he is, shipping is always included.",
+    panel: "panel8",
+    isexpanded: false,
+  },
+];
+
+export const use60thGiftForMenTestimonials = (t) => [
+  {
+    name: "Liam G",
+    details: (
+      <>
+        Finding the right gift for my grandparents was always a challenge, but LifeScript made it so easy. Every time I visit, my grandma can’t wait to show me her latest stories. It’s like discovering a whole new side of her that I never knew. It’s more than a gift—it’s a{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+        treasure for the whole family.
+        </span>
+      </>
+    ),
+  },
+  {
+    name: "Sophia R.",
+    details: (
+      <>
+        I gave my grandparents LifeScript for their anniversary, and honestly, it’s{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+        the best gift I’ve ever given.{" "}
+        </span>
+        Watching them light up as they relive old memories has been amazing. It’s not just another present, it’s a way to connect with them in a whole new way. This book will definitely be passed down for generations.
+      </>
+    ),
+  },
+  {
+    name: "Ben T.",
+    details: (
+      <>
+        LifeScript turned out to be the perfect gift for my grandparents. They’ve been wanting to capture their life stories for a while, and this made it so easy.{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+        I never knew so much about their childhood and adventures,{" "}
+        </span>
+        and now we have it all in one place. If you&apos;re looking for meaningful gifts for grandparents, this is it.
+      </>
+    ),
+  },
+  {
+    name: "Maya H.",
+    details: (
+      <>
+        I wanted to give my grandparents something they would really appreciate, and LifeScript was perfect. They’ve been having a blast writing down their stories, and it’s been such a{" "}
+        <span style={{ fontFamily: "Avenir8" }}>fun bonding experience for the whole family</span>
+        If you’re on the hunt for unique gifts for grandparents, trust me, this is the one.
+      </>
+    ),
+  },
+  {
+    name: "Zoe K.",
+    details: (
+      <>
+        I had no clue what to get my grandparents, but LifeScript turned out to be exactly what they needed. They’ve had{" "}
+        <span style={{ fontFamily: "Avenir8" }}>so much fun sharing their life stories</span> {" "}
+        and organizing them into this book. The best part? It’s something that the whole family will always treasure.
+      </>
+    ),
+  },
+  {
+    name: "Ethan M.",
+    details: (
+      <>
+       We gave LifeScript to our grandparents, and it’s become one of the most special things in our family. They’ve been sharing stories we’d never heard before, and it’s{" "}
+        <span style={{ fontFamily: "Avenir8" }}>brought us all so much closer.</span>
+        Honestly, the best gift we’ve ever given them!
+      </>
+    ),
+  },
+];
+
+export const use60thGiftForMenFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "Transforms his answers into beautifully written chapters with a single click. No writing experience needed.",
+    imageSrc: Narrative,
+    alt: " Demo animation showing how LifeScript is used for personalized 60th birthday gifts for men.",
+    imgTitle:
+      "Demo animation showing LifeScript as a 60th birthday gift for men",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "Automatically edits and proofreads his text with real-time suggestions. Say goodbye to typos and errors.",
+    imageSrc: AssistedEditing,
+    alt: "Assisted editing demo showing spelling and grammar checks, ideal for 60th birthday gifts for men.",
+    imgTitle: "Assisted editing demo for creating 60th birthday gifts for men",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "Captures his spoken words, turning them into written text if he prefers speaking over typing.",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo illustrating how recordings translate into text, perfect for personalized 60th birthday gifts for men.",
+    imgTitle: "Voice-to-text demo for creating 60th birthday gifts for men",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "Visually represents his ancestry—from parents to distant relatives—creating a meaningful family tree at the end of his book.",
+    imageSrc: FamilyTree,
+    alt: "Family tree demo illustrating how families visualize across generations, perfect for unique 60th birthday gift ideas for men.",
+    imgTitle: "Family tree demo for creating 60th birthday gifts for men",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "Allows him to customize the text, font, style, size, color, layout, and more to personalize his life story.",
+    imageSrc: FormattingFeatures,
+    alt: "Demo showcasing formatting options like bold and italics, ideal for creating personalized 60th birthday gifts for men.",
+    imgTitle: "Formatting features demo for men’s 60th birthday gift books",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "Automatically enhances his photos for high-quality printing by adjusting size, resolution, and more.",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo showing how images are enhanced for high-quality 60th birthday gifts for men.",
+    imgTitle: "Auto photo improvement for creating personalized 60th birthday gifts for men",
+  },
+];
+
+export const use60thGiftForMenOurBookCover = (t) => [
+  {
+    coverImage: bookCovers.cover1,
+    alt: "Book cover showing an elderly couple, perfect for personalized 60th birthday gifts for men.",
+    title: "Grandparents enjoying a personalized book - 60th birthday gift for men",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "Full-picture life story book cover featuring a family, perfect for 60th birthday gift ideas for men.",
+    title: "Full-picture family book cover for 60th birthday gifts for men",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "Book cover featuring an elderly couple celebrating, a unique 60th birthday gift idea for men.",
+    title: "Birthday celebration book cover for 60th birthday gifts for men",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt: " A couple enjoying the outdoors, symbolizing a heartwarming 60th birthday gift for men.",
+    title: "Grandparents enjoying nature - 60th birthday gifts for men",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover with author’s photo, customizable for the best 60th birthday gifts for men.",
+    title: "Customizable memoir book cover for 60th birthday gifts for men",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Minimalistic autobiography book cover, ideal for a personalized 60th birthday gift for men.",
+    title: "Minimalistic book cover for 60th birthday gifts for men",
+  },
+];
