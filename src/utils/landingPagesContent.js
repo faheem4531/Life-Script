@@ -147,13 +147,13 @@ export const useGrandmaGiftQA = (t) => [
   },
   {
     qs: "Can I set a reminder if now isn’t the right time for this gift?",
-    ans: "Yes, additional full-color hardcover books are available for 39$ each.",
+    ans: "Of course! You can easily set a reminder, and we’ll notify you when the time is perfect to get your gift for grandma.",
     panel: "panel7",
     isexpanded: false,
   },
   {
     qs: "Do you offer international shipping? How much does it cost?",
-    ans: "Of course! You can easily set a reminder, and we’ll notify you when the time is perfect to get your gift for grandma.",
+    ans: "Yes, additional full-color hardcover books are available for 39$ each.",
     panel: "panel8",
     isexpanded: false,
   },
@@ -330,5 +330,274 @@ export const useOurBookCoverforGrandmaGift = (t) => [
     coverImage: bookCovers.cover6,
     alt: "Minimalistic autobiography book cover design, perfect for a personalized gift for grandma - LifeScript.",
     title: "Minimalistic book cover for gifts for grandma",
+  },
+];
+
+// Gifts for grandparents
+export const useGrandparentsGiftSuggestions = (t) => {
+  const imageData = {
+    src: others.grandparentsGiftHeroImg,
+    alt: "A happy moment between grandpa and grandma, symbolizing a personalized gift for grandparents to preserve their life stories - LifeScript.",
+    title:
+      "Grandpa and grandma happy moment - personalized gifts for grandparents",
+  };
+  const content = [
+    {
+      title: "Celebrate a lifetime of memories",
+      subTitle:
+        "Help them honor their achievements, whether they’re big milestones or quiet memories that shaped them, with a gift that captures their story for generations.",
+    },
+    {
+      title: "Uncover untold stories",
+      subTitle:
+        "Give your grandparents the chance to share the moments they’ve never spoken about—the stories that make up the missing pieces of their life’s puzzle.",
+    },
+    {
+      title: "Strengthen family bonds",
+      subTitle:
+        "This is a way for them to share memories that deepen family ties and create lasting connections with loved ones. Their stories connect generations.",
+    },
+    {
+      title: "Reflect on a life well-lived",
+      subTitle:
+        "A lifetime of experiences deserves to be celebrated. This gift offers them the chance to reflect on the moments that shaped them into the people they are today.",
+    },
+    {
+      title: "Spark meaningful conversations",
+      subTitle:
+        "This grandparents gift opens up conversations you’ve never had before, bringing forgotten memories to life and strengthening your relationship as they share stories.",
+    },
+    {
+      title: "Make them feel appreciated",
+      subTitle:
+        "Let them feel valued by showing that you care about their life story. They’ll feel proud that their experiences are preserved and worthy of an autobiography book.",
+    },
+    {
+      title: "Leave a lasting legacy",
+      subTitle:
+        "This book ensures their grandchildren will know their life story, learn from their experiences, and use their wisdom as a compass throughout life.",
+    },
+  ];
+
+  return { imageData, content };
+};
+
+export const useGrandparentsGiftQA = (t) => [
+  {
+    qs: "What is included in each plan?",
+    ans: "Each plan provides lifetime access to our platform, a beautifully printed full-color hardcover book, and free delivery.",
+    panel: "panel1",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I gift LifeScript to my grandparents? How does it work?",
+    ans: "Yes! All you need is their email and a date to send the gift. Once it’s delivered, you’ll receive a confirmation. It’s one of the easiest yet most meaningful gifts for grandparents.",
+    panel: "panel2",
+    isexpanded: false,
+  },
+  {
+    qs: "Is LifeScript a good last-minute gift for grandparents?",
+    ans: "Absolutely! It’s one of the best gifts for grandparents, even if you’re short on time. If you purchase it the night before, the gift email will be delivered first thing the next day.",
+    panel: "panel3",
+    isexpanded: false,
+  },
+  {
+    qs: "Are there any tutorials to help?",
+    ans: "Yes! We provide step-by-step video guides to walk them through every stage, and our support team is available via chat or email if they need assistance.",
+    panel: "panel4",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I order extra books?",
+    ans: "Yes, you can order additional hardcover books for $39 each. It’s a wonderful way to share your grandparents’ life story with the whole family.",
+    panel: "panel5",
+    isexpanded: false,
+  },
+  {
+    qs: " How can I ensure my grandparents' stories stay private?",
+    ans: (
+      <>
+        We take{" "}
+        <NextLink href="/privacy-policy" passHref>
+          <span style={{ color: "#30422E", fontFamily: "Avenir8" }}>
+            privacy.
+          </span>
+        </NextLink>{" "}
+        very seriously. Their stories are protected by advanced security measures and encryption, ensuring their memories remain private and secure.
+      </>
+    ),
+    panel: "panel6",
+    isexpanded: false,
+  },
+  {
+    qs: "Can I set a reminder if I’m not ready to gift it now?",
+    ans: "Of course! You can easily set a reminder, and we’ll let you know when it’s the perfect time to give one of the most thoughtful gifts for grandparents.",
+    panel: "panel7",
+    isexpanded: false,
+  },
+  {
+    qs: "Do you offer international shipping? Is it free?",
+    ans: "Yes, we offer free international shipping with tracking. No matter where your grandparents are, shipping is always included.",
+    panel: "panel8",
+    isexpanded: false,
+  },
+];
+
+export const useGrandparentsGiftTestimonials = (t) => [
+  {
+    name: "Liam G",
+    details: (
+      <>
+        Finding the right gift for my grandparents was always a challenge, but LifeScript made it so easy. Every time I visit, my grandma can’t wait to show me her latest stories. It’s like discovering a whole new side of her that I never knew. It’s more than a gift—it’s a{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+        treasure for the whole family.
+        </span>
+      </>
+    ),
+  },
+  {
+    name: "Sophia R.",
+    details: (
+      <>
+        I gave my grandparents LifeScript for their anniversary, and honestly, it’s{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+        the best gift I’ve ever given.{" "}
+        </span>
+        Watching them light up as they relive old memories has been amazing. It’s not just another present, it’s a way to connect with them in a whole new way. This book will definitely be passed down for generations.
+      </>
+    ),
+  },
+  {
+    name: "Ben T.",
+    details: (
+      <>
+        LifeScript turned out to be the perfect gift for my grandparents. They’ve been wanting to capture their life stories for a while, and this made it so easy.{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+        I never knew so much about their childhood and adventures,{" "}
+        </span>
+        and now we have it all in one place. If you&apos;re looking for meaningful gifts for grandparents, this is it.
+      </>
+    ),
+  },
+  {
+    name: "Maya H.",
+    details: (
+      <>
+        I wanted to give my grandparents something they would really appreciate, and LifeScript was perfect. They’ve been having a blast writing down their stories, and it’s been such a{" "}
+        <span style={{ fontFamily: "Avenir8" }}>fun bonding experience for the whole family</span>
+        If you’re on the hunt for unique gifts for grandparents, trust me, this is the one.
+      </>
+    ),
+  },
+  {
+    name: "Zoe K.",
+    details: (
+      <>
+        I had no clue what to get my grandparents, but LifeScript turned out to be exactly what they needed. They’ve had{" "}
+        <span style={{ fontFamily: "Avenir8" }}>so much fun sharing their life stories</span> {" "}
+        and organizing them into this book. The best part? It’s something that the whole family will always treasure.
+      </>
+    ),
+  },
+  {
+    name: "Ethan M.",
+    details: (
+      <>
+       We gave LifeScript to our grandparents, and it’s become one of the most special things in our family. They’ve been sharing stories we’d never heard before, and it’s{" "}
+        <span style={{ fontFamily: "Avenir8" }}>brought us all so much closer.</span>
+        Honestly, the best gift we’ve ever given them!
+      </>
+    ),
+  },
+];
+
+export const useGrandparentsGiftFeaturesGif = (t) => [
+  {
+    panel: "panel1",
+    timer: 11000,
+    heading: "landingPage.featureSection.accordion1.heading",
+    description: "Transforms their answers into beautifully written chapters with a single click. No writing experience needed.",
+    imageSrc: Narrative,
+    alt: "Demo animation showing how easy LifeScript is to use as a personalized gift for grandparents.",
+    imgTitle:
+      "Demo animation showing how LifeScript works as a gift for grandparents",
+  },
+  {
+    panel: "panel2",
+    timer: 6000,
+    heading: "landingPage.featureSection.accordion2.heading",
+    description: "Automatically edits and proofreads their text with real-time suggestions. Say goodbye to typos and errors.",
+    imageSrc: AssistedEditing,
+    alt: " Assisted editing feature demo showing how spelling and grammar checks work, perfect for creating memorable gifts for grandparents.",
+    imgTitle: "Assisted editing demo for creating gifts for grandparents",
+  },
+  {
+    panel: "panel3",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion3.heading",
+    description: "Captures your grandparents' spoken words, turning them into written text if they prefer speaking over typing.",
+    imageSrc: VoiceToText,
+    alt: "Voice-to-text feature demo showing how recorded words translate into text, making it a thoughtful gift for grandparents - LifeScript.",
+    imgTitle: "Voice-to-text demo for creating personalized gifts for grandparents",
+  },
+  {
+    panel: "panel4",
+    timer: 10700,
+    heading: "landingPage.featureSection.accordion4.heading",
+    description: "Visually represents their ancestry—from parents to distant relatives—creating a meaningful family tree at the end of their book.",
+    imageSrc: FamilyTree,
+    alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized gift for grandparents - LifeScript.",
+    imgTitle: "Family tree demo for creating gifts for grandparents",
+  },
+  {
+    panel: "panel5",
+    timer: 5000,
+    heading: "landingPage.featureSection.accordion5.heading",
+    description: "Allows them to customize the text, font, style, size, color, layout, and more to personalize their story.",
+    imageSrc: FormattingFeatures,
+    alt: "Formatting features demo showcasing bold, italics, and other customization options, perfect for creating personalized gifts for grandparents - LifeScript.",
+    imgTitle: "Formatting features demo for grandparents gifts",
+  },
+  {
+    panel: "panel6",
+    timer: 7600,
+    heading: "landingPage.featureSection.accordion6.heading",
+    description: "Automatically enhances their photos for high-quality printing by adjusting size, resolution, and more.",
+    imageSrc: AutoPhoto,
+    alt: "Auto photo improvement demo animation showing how uploaded images are enhanced and fitted, perfect for high-quality gifts for grandparents - LifeScript.",
+    imgTitle: "Auto photo improvement for creating personalized gifts for grandparents",
+  },
+];
+
+export const useOurBookCoverforGrandparentsGift = (t) => [
+  {
+    coverImage: bookCovers.cover1,
+    alt: "Book cover showing an elderly couple on a swing, perfect for personalized gifts for grandparents - LifeScript.",
+    title: "Grandparents on swing book cover for gifts for grandparents",
+  },
+  {
+    coverImage: bookCovers.cover2,
+    alt: "Full-picture life story book cover featuring a family, ideal for grandparents gifts - LifeScript.",
+    title: "Full-picture family book cover for gifts for grandparents",
+  },
+  {
+    coverImage: bookCovers.cover3,
+    alt: "Book cover featuring an elderly couple celebrating grandma’s birthday, a thoughtful gift for grandparents - LifeScript",
+    title: "Birthday celebration book cover as a gift for grandparents",
+  },
+  {
+    coverImage: bookCovers.cover4,
+    alt: "Book cover with a couple enjoying the sun in a forest, a heartwarming gift for grandparents - LifeScript.",
+    title: "Grandparents enjoying nature book cover for grandparents gifts",
+  },
+  {
+    coverImage: bookCovers.cover5,
+    alt: "Memoir book cover with author’s photo, customizable for the best gift for grandparents - LifeScript.",
+    title: "Customizable memoir book cover for grandparents gift",
+  },
+  {
+    coverImage: bookCovers.cover6,
+    alt: "Minimalistic autobiography book cover design, perfect for a personalized gift for grandparents - LifeScript.",
+    title: "Minimalistic book cover for gifts for grandparents",
   },
 ];
