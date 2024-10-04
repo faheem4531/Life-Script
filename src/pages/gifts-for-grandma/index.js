@@ -19,16 +19,17 @@ import LPSuggestion from "@/__webComponents/suggestions/LPSuggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
-  useGrandmaGiftTestimonials,
   useGrandmaGiftFeaturesGif,
   useGrandmaGiftQA,
   useGrandmaGiftSuggestions,
+  useGrandmaGiftTestimonials,
   useOurBookCoverforGrandmaGift,
   useSuggestedQuestions,
   useWorkingDetails,
 } from "@/utils/landingPagesContent";
 
-const miniMainImage = "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727950980/assets/grandma-receiving-gift-from-granddaughter_x1dmkv.webp"
+const miniMainImage =
+  "https://res.cloudinary.com/dm3wjnhkv/image/upload/v1727950980/assets/grandma-receiving-gift-from-granddaughter_x1dmkv.webp";
 
 const GiftForGrandma = () => {
   const { t } = useTranslation();
@@ -43,14 +44,19 @@ const GiftForGrandma = () => {
   return (
     <>
       <Head>
-        <title>Best Gifts for Grandma | Surprise her with a Beautiful Keepsake</title>
+        <title>
+          Best Gifts for Grandma | Surprise her with a Beautiful Keepsake
+        </title>
         <meta
           name="description"
           content="Give a personalized gift for grandma with an unforgettable journey through her life’s stories preserved in a beautiful hardcover book delivered to her doorstep."
         />
-        <link rel="canonical" href="https://www.thelifescript.com/gifts-for-grandma" />
+        <link
+          rel="canonical"
+          href="https://www.thelifescript.com/gifts-for-grandma"
+        />
       </Head>
-      
+
       <Box sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <LandingIntro
           bgGreen={false}
@@ -82,17 +88,18 @@ const GiftForGrandma = () => {
           />
         </Box>
         <Testimonial reviews={testimonials} heading="What our customers say" />
-        <Working
-          data={workingData}
-          heading={"How LifeScript"}
-          marked={"works"}
-          width={"300px"}
-        />
-        <DiscoverQuestions
-          questions={suggestedQuestions}
-          cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
-          from personalised suggestions."
-        />
+        <Box
+          sx={{
+            m: { md: "70px 0 40px", sm: "70px 0 0px", xs: "120px 0 20px" },
+          }}
+        >
+          <GifTab
+            heading="Give the perfect grandma gift and let her turn a lifetime of memories into a beautiful keepsake."
+            button={"Gift now"}
+            icon={Gift}
+            btnLink={"/purchase"}
+          />
+        </Box>
         <OurBooks
           details={ourBookCover}
           heading={t("landingPage.bookSection.title")}
@@ -104,22 +111,22 @@ const GiftForGrandma = () => {
           heading="Features that make it "
           marked="easy"
         />
+        <Working
+          data={workingData}
+          heading={"How LifeScript"}
+          marked={"works"}
+          width={"300px"}
+        />
+        <DiscoverQuestions
+          questions={suggestedQuestions}
+          cardData="LifeScript offers hundreds of thoughtfully curated questions, with the option to create your own or choose 
+          from personalised suggestions."
+        />
         <Reviews
           review="When I gave my grandma LifeScript, I wasn’t sure how much she’d enjoy it. But it turned out to be the best gift I could have given her. She started writing down stories from her life—things I had never heard before. It’s been so special hearing about her childhood, her parents, and everything that made her who she is. Watching her go through these memories has brought us even closer, and the fact that we’ll have this book forever means everything to me. LifeScript isn’t just a gift—it’s a way to keep her with us, in her own words."
           author="Emma P."
         />
-        <Box
-          sx={{
-            m: { md: "100px 0 0", sm: "70px 0 -70px", xs: "120px 0 -40px" },
-          }}
-        >
-          <GifTab
-            heading="Give the perfect grandma gift and let her turn a lifetime of memories into a beautiful keepsake."
-            button={"Gift now"}
-            icon={Gift}
-            btnLink={"/purchase"}
-          />
-        </Box>
+
         <GotQuestions questions={shortQA} />
         <ContactFooter
           title={"Not the right moment? Set a"}
@@ -137,6 +144,5 @@ const GiftForGrandma = () => {
     </>
   );
 };
-
 
 export default GiftForGrandma;

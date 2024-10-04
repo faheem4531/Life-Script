@@ -249,7 +249,7 @@
 @media screen and (max-width: 1200px) and (min-width: 899px) {
   /* Working  */
   .workingBox {
-    background-size: auto 100%;
+    background-size: 200% 100%;
   }
 
   .gif {
