@@ -26,6 +26,7 @@ const LandingIntro = ({
   miniImageAlt = "",
   miniImageTitle = "",
   miniImageWidth = "",
+  miniLeft = "60px",
 }) => {
   const { t } = useTranslation();
   return (
@@ -129,7 +130,7 @@ const LandingIntro = ({
               width: { md: miniImageWidth, sm: "150px" },
               display: { sm: "block", xs: "none" },
               position: "absolute",
-              left: { md: "40px", sm: "20px" },
+              left: { lg: miniLeft, md: "40px", sm: "20px" },
               bottom: { md: "50px", sm: "20px" },
             }}
           >

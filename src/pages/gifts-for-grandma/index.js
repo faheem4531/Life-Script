@@ -15,7 +15,7 @@ import LandingIntro from "@/__webComponents/Introduction/LandingIntro";
 import DiscoverQuestions from "@/__webComponents/questions/DiscoverQuestions";
 import GotQuestions from "@/__webComponents/questions/GotQuestions";
 import Reviews from "@/__webComponents/reviews/Reviews";
-import Suggestion from "@/__webComponents/suggestions/Suggestion";
+import LPSuggestion from "@/__webComponents/suggestions/LPSuggestion";
 import Testimonial from "@/__webComponents/Testimonial/Testimonial";
 import Working from "@/__webComponents/working/Working";
 import {
@@ -66,13 +66,14 @@ const GiftForGrandma = () => {
           miniImageAlt="A joyful moment of a grandma receiving a thoughtful gift from her granddaughter, symbolizing the perfect personalized gift for grandma - LifeScript."
           miniImageTitle="Grandma receiving a gift from her granddaughter - gifts for grandma"
           miniImageWidth={245}
+          miniLeft="150px"
         />
         <Box
           sx={{
             marginTop: "-110px",
           }}
         >
-          <Suggestion
+          <LPSuggestion
             heading="A personalized gift for grandma to:"
             data={sugestionData}
             btnTxt="Gift now"

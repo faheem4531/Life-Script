@@ -59,24 +59,39 @@ export const useGrandmaGiftSuggestions = (t) => {
   };
   const content = [
     {
-      title: "Celebrate her journey so far",
+      title: "Celebrate a lifetime of memories",
       subTitle:
-        "LifeScript is one of the most thoughtful gifts for grandma, offering her the chance to look back and celebrate everything she’s achieved. It helps her capture those special moments and milestones that shaped her into the amazing person she is today.",
+        "Help her honor the big achievements and the small everyday moments that shaped her with a gift that preserves her story for generations to come.",
     },
     {
-      title: "Share stories that matter",
+      title: "Uncover untold stories",
       subTitle:
-        "Your grandma’s life is filled with stories—tales of triumphs, challenges, and lessons learned. LifeScript gives her the perfect platform to share these memories, creating a meaningful legacy that your family will cherish for generations.",
+        "Give your grandma the chance to share the moments she’s never spoken about—the stories that make up the missing pieces of her life’s puzzle.  ",
     },
     {
-      title: "Reconnect with family",
+      title: "Strengthen family bonds",
       subTitle:
-        "Her stories are the threads that weave the fabric of your family’s history. With LifeScript, she can revisit those memories and uncover moments that have long been forgotten. It’s a gift that brings loved ones closer and ensures her voice will continue to be heard.",
+        "This is a way for her to share memories that deepen family ties and create lasting connections with loved ones. Her stories connect generations.",
     },
     {
-      title: "Reflect on life’s moments",
+      title: "Reflect on a life well-lived",
       subTitle:
-        "She has lived a life rich in experiences, love, and laughter. Giving her the opportunity to reflect on those moments is thoughtful way to show that you care. With LifeScript, she’ll relive her most treasured memories and turn them into a lasting keepsake for your family to hold close.",
+        "A lifetime of experiences deserves to be celebrated. This gift offers her the chance to reflect on the moments that made her the person she is today.",
+    },
+    {
+      title: "Spark meaningful conversations",
+      subTitle:
+        "This grandma gift opens up conversations you’ve never had before, bringing forgotten memories to life and strengthening your relationship as she shares stories.",
+    },
+    {
+      title: "Make her feel appreciated",
+      subTitle:
+        "Let her feel valued by showing that you care about her life story. She’ll be proud that her experiences are preserved and worthy of an autobiography book.",
+    },
+    {
+      title: "Leave a lasting legacy",
+      subTitle:
+        "This book ensures her grandchildren will know her life story, learn from her experiences, and use her wisdom as a compass throughout life.",
     },
   ];
 
