@@ -139,7 +139,9 @@ export const useGrandmaGiftQA = (t) => [
             privacy.
           </span>
         </NextLink>{" "}
-        Your grandma’s stories are protected with advanced security technologies and encryption, ensuring that her personal memories remain completely private and secure.
+        Your grandma’s stories are protected with advanced security technologies
+        and encryption, ensuring that her personal memories remain completely
+        private and secure.
       </>
     ),
     panel: "panel6",
@@ -225,8 +227,13 @@ export const useGrandmaGiftTestimonials = (t) => [
     name: "Lucy T.",
     details: (
       <>
-        I didn’t know what to get my grandma, but LifeScript turned out to be exactly what she needed. She’s been having so much fun sharing stories from her past and organizing them into this beautiful book. It’s truly a personalized gift for grandma, and the best part is that{" "}
-        <span style={{ fontFamily: "Avenir8" }}>it’s something we’ll all treasure forever. </span>
+        I didn’t know what to get my grandma, but LifeScript turned out to be
+        exactly what she needed. She’s been having so much fun sharing stories
+        from her past and organizing them into this beautiful book. It’s truly a
+        personalized gift for grandma, and the best part is that{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          it’s something we’ll all treasure forever.{" "}
+        </span>
       </>
     ),
   },
@@ -234,8 +241,14 @@ export const useGrandmaGiftTestimonials = (t) => [
     name: "Emily J.",
     details: (
       <>
-        We gave LifeScript as a gift for grandma, and she absolutely loved it. She’s always been the storyteller in the family, and now she gets to put all those stories into one place. This has become something really special for all of us. She’s writing down stories I’ve never heard before, and{" "}
-        <span style={{ fontFamily: "Avenir8" }}>it’s made us all feel so much closer to her.</span>
+        We gave LifeScript as a gift for grandma, and she absolutely loved it.
+        She’s always been the storyteller in the family, and now she gets to put
+        all those stories into one place. This has become something really
+        special for all of us. She’s writing down stories I’ve never heard
+        before, and{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          it’s made us all feel so much closer to her.
+        </span>
         Best grandma gift we’ve ever given!
       </>
     ),
@@ -247,7 +260,8 @@ export const useGrandmaGiftFeaturesGif = (t) => [
     panel: "panel1",
     timer: 11000,
     heading: "landingPage.featureSection.accordion1.heading",
-    description: "Turns her answers into beautifully written chapters with a single click. No writing experience needed.",
+    description:
+      "Turns her answers into beautifully written chapters with a single click. No writing experience needed.",
     imageSrc: Narrative,
     alt: "Demo animation showing how easy LifeScript is to use as a personalized gift for grandma.",
     imgTitle:
@@ -257,7 +271,8 @@ export const useGrandmaGiftFeaturesGif = (t) => [
     panel: "panel2",
     timer: 6000,
     heading: "landingPage.featureSection.accordion2.heading",
-    description: "Automatically edits and proofreads her text with real-time suggestions. No typos anymore.",
+    description:
+      "Automatically edits and proofreads her text with real-time suggestions. No typos anymore.",
     imageSrc: AssistedEditing,
     alt: "Assisted editing feature demo showing how spelling and grammar checks work, perfect for creating memorable grandma gifts.",
     imgTitle: "Assisted editing demo for creating gifts for grandma",
@@ -266,7 +281,8 @@ export const useGrandmaGiftFeaturesGif = (t) => [
     panel: "panel3",
     timer: 10700,
     heading: "landingPage.featureSection.accordion3.heading",
-    description: "Captures your grandma's spoken words, transforming them into written text if she doesn't feel like typing.",
+    description:
+      "Captures your grandma's spoken words, transforming them into written text if she doesn't feel like typing.",
     imageSrc: VoiceToText,
     alt: "Voice-to-text feature demo showing how recorded words translate into text, making it a thoughtful gift for grandma - LifeScript.",
     imgTitle: "Voice-to-text demo for creating personalized grandma gifts",
@@ -275,7 +291,8 @@ export const useGrandmaGiftFeaturesGif = (t) => [
     panel: "panel4",
     timer: 10700,
     heading: "landingPage.featureSection.accordion4.heading",
-    description: "Visually represents her ancestry from parents to distant ancestors at the end of her book.",
+    description:
+      "Visually represents her ancestry from parents to distant ancestors at the end of her book.",
     imageSrc: FamilyTree,
     alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized gift for grandma - LifeScript.",
     imgTitle: "Family tree demo for creating gifts for elderly women",
@@ -284,7 +301,8 @@ export const useGrandmaGiftFeaturesGif = (t) => [
     panel: "panel5",
     timer: 5000,
     heading: "landingPage.featureSection.accordion5.heading",
-    description: "Allows her to customize the text, its font, style, size, color, layout and more.",
+    description:
+      "Allows her to customize the text, its font, style, size, color, layout and more.",
     imageSrc: FormattingFeatures,
     alt: "Formatting features demo showcasing bold, italics, and other customization options, perfect for creating personalized gifts for grandma - LifeScript.",
     imgTitle: "Formatting features demo for grandma gifts",
@@ -293,10 +311,12 @@ export const useGrandmaGiftFeaturesGif = (t) => [
     panel: "panel6",
     timer: 7600,
     heading: "landingPage.featureSection.accordion6.heading",
-    description: "Automatically adjusts your photos for high-quality printing by managing size, resolution, and more.",
+    description:
+      "Automatically adjusts your photos for high-quality printing by managing size, resolution, and more.",
     imageSrc: AutoPhoto,
     alt: "Auto photo improvement demo animation showing how uploaded images are enhanced and fitted, perfect for high-quality gifts for grandma - LifeScript.",
-    imgTitle: "Auto photo improvement for creating personalized gifts for grandma",
+    imgTitle:
+      "Auto photo improvement for creating personalized gifts for grandma",
   },
 ];
 
@@ -423,7 +443,9 @@ export const useGrandparentsGiftQA = (t) => [
             privacy.
           </span>
         </NextLink>{" "}
-        very seriously. Their stories are protected by advanced security measures and encryption, ensuring their memories remain private and secure.
+        very seriously. Their stories are protected by advanced security
+        measures and encryption, ensuring their memories remain private and
+        secure.
       </>
     ),
     panel: "panel6",
@@ -448,9 +470,12 @@ export const useGrandparentsGiftTestimonials = (t) => [
     name: "Liam G",
     details: (
       <>
-        Finding the right gift for my grandparents was always a challenge, but LifeScript made it so easy. Every time I visit, my grandma can’t wait to show me her latest stories. It’s like discovering a whole new side of her that I never knew. It’s more than a gift—it’s a{" "}
+        Finding the right gift for my grandparents was always a challenge, but
+        LifeScript made it so easy. Every time I visit, my grandma can’t wait to
+        show me her latest stories. It’s like discovering a whole new side of
+        her that I never knew. It’s more than a gift—it’s a{" "}
         <span style={{ fontFamily: "Avenir8" }}>
-        treasure for the whole family.
+          treasure for the whole family.
         </span>
       </>
     ),
@@ -459,11 +484,14 @@ export const useGrandparentsGiftTestimonials = (t) => [
     name: "Sophia R.",
     details: (
       <>
-        I gave my grandparents LifeScript for their anniversary, and honestly, it’s{" "}
+        I gave my grandparents LifeScript for their anniversary, and honestly,
+        it’s{" "}
         <span style={{ fontFamily: "Avenir8" }}>
-        the best gift I’ve ever given.{" "}
+          the best gift I’ve ever given.{" "}
         </span>
-        Watching them light up as they relive old memories has been amazing. It’s not just another present, it’s a way to connect with them in a whole new way. This book will definitely be passed down for generations.
+        Watching them light up as they relive old memories has been amazing.
+        It’s not just another present, it’s a way to connect with them in a
+        whole new way. This book will definitely be passed down for generations.
       </>
     ),
   },
@@ -471,11 +499,14 @@ export const useGrandparentsGiftTestimonials = (t) => [
     name: "Ben T.",
     details: (
       <>
-        LifeScript turned out to be the perfect gift for my grandparents. They’ve been wanting to capture their life stories for a while, and this made it so easy.{" "}
+        LifeScript turned out to be the perfect gift for my grandparents.
+        They’ve been wanting to capture their life stories for a while, and this
+        made it so easy.{" "}
         <span style={{ fontFamily: "Avenir8" }}>
-        I never knew so much about their childhood and adventures,{" "}
+          I never knew so much about their childhood and adventures,{" "}
         </span>
-        and now we have it all in one place. If you&apos;re looking for meaningful gifts for grandparents, this is it.
+        and now we have it all in one place. If you&apos;re looking for
+        meaningful gifts for grandparents, this is it.
       </>
     ),
   },
@@ -483,9 +514,14 @@ export const useGrandparentsGiftTestimonials = (t) => [
     name: "Maya H.",
     details: (
       <>
-        I wanted to give my grandparents something they would really appreciate, and LifeScript was perfect. They’ve been having a blast writing down their stories, and it’s been such a{" "}
-        <span style={{ fontFamily: "Avenir8" }}>fun bonding experience for the whole family</span>
-        If you’re on the hunt for unique gifts for grandparents, trust me, this is the one.
+        I wanted to give my grandparents something they would really appreciate,
+        and LifeScript was perfect. They’ve been having a blast writing down
+        their stories, and it’s been such a{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          fun bonding experience for the whole family
+        </span>
+        If you’re on the hunt for unique gifts for grandparents, trust me, this
+        is the one.
       </>
     ),
   },
@@ -493,9 +529,13 @@ export const useGrandparentsGiftTestimonials = (t) => [
     name: "Zoe K.",
     details: (
       <>
-        I had no clue what to get my grandparents, but LifeScript turned out to be exactly what they needed. They’ve had{" "}
-        <span style={{ fontFamily: "Avenir8" }}>so much fun sharing their life stories</span> {" "}
-        and organizing them into this book. The best part? It’s something that the whole family will always treasure.
+        I had no clue what to get my grandparents, but LifeScript turned out to
+        be exactly what they needed. They’ve had{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          so much fun sharing their life stories
+        </span>{" "}
+        and organizing them into this book. The best part? It’s something that
+        the whole family will always treasure.
       </>
     ),
   },
@@ -503,8 +543,12 @@ export const useGrandparentsGiftTestimonials = (t) => [
     name: "Ethan M.",
     details: (
       <>
-       We gave LifeScript to our grandparents, and it’s become one of the most special things in our family. They’ve been sharing stories we’d never heard before, and it’s{" "}
-        <span style={{ fontFamily: "Avenir8" }}>brought us all so much closer.</span>
+        We gave LifeScript to our grandparents, and it’s become one of the most
+        special things in our family. They’ve been sharing stories we’d never
+        heard before, and it’s{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          brought us all so much closer.
+        </span>
         Honestly, the best gift we’ve ever given them!
       </>
     ),
@@ -516,7 +560,8 @@ export const useGrandparentsGiftFeaturesGif = (t) => [
     panel: "panel1",
     timer: 11000,
     heading: "landingPage.featureSection.accordion1.heading",
-    description: "Transforms their answers into beautifully written chapters with a single click. No writing experience needed.",
+    description:
+      "Transforms their answers into beautifully written chapters with a single click. No writing experience needed.",
     imageSrc: Narrative,
     alt: "Demo animation showing how easy LifeScript is to use as a personalized gift for grandparents.",
     imgTitle:
@@ -526,7 +571,8 @@ export const useGrandparentsGiftFeaturesGif = (t) => [
     panel: "panel2",
     timer: 6000,
     heading: "landingPage.featureSection.accordion2.heading",
-    description: "Automatically edits and proofreads their text with real-time suggestions. Say goodbye to typos and errors.",
+    description:
+      "Automatically edits and proofreads their text with real-time suggestions. Say goodbye to typos and errors.",
     imageSrc: AssistedEditing,
     alt: " Assisted editing feature demo showing how spelling and grammar checks work, perfect for creating memorable gifts for grandparents.",
     imgTitle: "Assisted editing demo for creating gifts for grandparents",
@@ -535,16 +581,19 @@ export const useGrandparentsGiftFeaturesGif = (t) => [
     panel: "panel3",
     timer: 10700,
     heading: "landingPage.featureSection.accordion3.heading",
-    description: "Captures your grandparents' spoken words, turning them into written text if they prefer speaking over typing.",
+    description:
+      "Captures your grandparents' spoken words, turning them into written text if they prefer speaking over typing.",
     imageSrc: VoiceToText,
     alt: "Voice-to-text feature demo showing how recorded words translate into text, making it a thoughtful gift for grandparents - LifeScript.",
-    imgTitle: "Voice-to-text demo for creating personalized gifts for grandparents",
+    imgTitle:
+      "Voice-to-text demo for creating personalized gifts for grandparents",
   },
   {
     panel: "panel4",
     timer: 10700,
     heading: "landingPage.featureSection.accordion4.heading",
-    description: "Visually represents their ancestry—from parents to distant relatives—creating a meaningful family tree at the end of their book.",
+    description:
+      "Visually represents their ancestry—from parents to distant relatives—creating a meaningful family tree at the end of their book.",
     imageSrc: FamilyTree,
     alt: "Family tree feature demo animation illustrating how family members visualize across generations, ideal for a personalized gift for grandparents - LifeScript.",
     imgTitle: "Family tree demo for creating gifts for grandparents",
@@ -553,7 +602,8 @@ export const useGrandparentsGiftFeaturesGif = (t) => [
     panel: "panel5",
     timer: 5000,
     heading: "landingPage.featureSection.accordion5.heading",
-    description: "Allows them to customize the text, font, style, size, color, layout, and more to personalize their story.",
+    description:
+      "Allows them to customize the text, font, style, size, color, layout, and more to personalize their story.",
     imageSrc: FormattingFeatures,
     alt: "Formatting features demo showcasing bold, italics, and other customization options, perfect for creating personalized gifts for grandparents - LifeScript.",
     imgTitle: "Formatting features demo for grandparents gifts",
@@ -562,10 +612,12 @@ export const useGrandparentsGiftFeaturesGif = (t) => [
     panel: "panel6",
     timer: 7600,
     heading: "landingPage.featureSection.accordion6.heading",
-    description: "Automatically enhances their photos for high-quality printing by adjusting size, resolution, and more.",
+    description:
+      "Automatically enhances their photos for high-quality printing by adjusting size, resolution, and more.",
     imageSrc: AutoPhoto,
     alt: "Auto photo improvement demo animation showing how uploaded images are enhanced and fitted, perfect for high-quality gifts for grandparents - LifeScript.",
-    imgTitle: "Auto photo improvement for creating personalized gifts for grandparents",
+    imgTitle:
+      "Auto photo improvement for creating personalized gifts for grandparents",
   },
 ];
 
@@ -607,8 +659,7 @@ export const use60thGiftForMenSuggestions = (t) => {
   const imageData = {
     src: others.BirthdayGiftfor60thHeroImg,
     alt: "A daughter giving her father a thoughtful present, an ideal 60th birthday gift idea for men - LifeScript.",
-    title:
-      "Daughter giving a personalized 60th birthday gift to father",
+    title: "Daughter giving a personalized 60th birthday gift to father",
   };
   const content = [
     {
@@ -692,7 +743,8 @@ export const use60thGiftForMenQA = (t) => [
             privacy.
           </span>
         </NextLink>{" "}
-        very seriously. His stories are protected by advanced security measures and encryption, ensuring his memories remain private and secure.
+        very seriously. His stories are protected by advanced security measures
+        and encryption, ensuring his memories remain private and secure.
       </>
     ),
     panel: "panel6",
@@ -714,67 +766,92 @@ export const use60thGiftForMenQA = (t) => [
 
 export const use60thGiftForMenTestimonials = (t) => [
   {
-    name: "Liam G",
+    name: "Samantha T.",
     details: (
       <>
-        Finding the right gift for my grandparents was always a challenge, but LifeScript made it so easy. Every time I visit, my grandma can’t wait to show me her latest stories. It’s like discovering a whole new side of her that I never knew. It’s more than a gift—it’s a{" "}
+        For my dad’s 60th birthday, I didn’t want just another typical gift.
+        LifeScript turned out to be something special. He’s been reminiscing
+        about his past, writing down stories that I’ve never heard before—it’s
+        been eye-opening. Honestly,{" "}
         <span style={{ fontFamily: "Avenir8" }}>
-        treasure for the whole family.
+          it’s sparked conversations we never had growing up,{" "}
+        </span>
+        and it’s brought us closer than I expected. He even said he looks
+        forward to the questions, which I didn’t see coming!
+      </>
+    ),
+  },
+  {
+    name: "Natalie B.",
+    details: (
+      <>
+        I got my dad LifeScript for his birthday, and{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          he’s been totally into it!{" "}
+        </span>
+        He’s not usually the type to sit down and write, but this has been
+        different for him. Every now and then, he’ll drop a story I didn’t even
+        know about, and it’s made our family dinners so much more fun. Can’t
+        believe how well it went over!
+      </>
+    ),
+  },
+  {
+    name: "Hannah G.",
+    details: (
+      <>
+        I had no clue what to get my dad, but{" "}
+        <span style={{ fontFamily: "Avenir8" }}>
+          LifeScript turned out to be the perfect idea.{" "}
+        </span>
+        He’s been using it to write down all these little stories from his
+        younger days, and honestly, it’s been great hearing about them. He even
+        said it’s one of the best gifts he’s ever gotten! And trust me, he’s a
+        tough one to shop for.
+      </>
+    ),
+  },
+  {
+    name: "Ashley K.",
+    details: (
+      <>
+        I wanted to give my dad something meaningful for his 60th birthday, not
+        just a gadget or bottle of whiskey. LifeScript was perfect. He’s been
+        diving into his past, writing about everything from his first job to his
+        travel adventures. He’s so proud of the stories he’s putting together
+        and seeing him this happy fills my heart. This was more than just a
+        birthday gift—
+        <span style={{ fontFamily: "Avenir8" }}>
+          it’s been a whole experience for him.
         </span>
       </>
     ),
   },
   {
-    name: "Sophia R.",
+    name: "Julia R.",
     details: (
       <>
-        I gave my grandparents LifeScript for their anniversary, and honestly, it’s{" "}
+        Honestly, LifeScript was a gamble, but it paid off. My dad has always
+        loved telling stories, but I didn’t think he’d actually sit down and
+        write them out. Turns out, he’s really into it. It’s given him a chance
+        to reflect on the cool moments in his life, and{" "}
         <span style={{ fontFamily: "Avenir8" }}>
-        the best gift I’ve ever given.{" "}
-        </span>
-        Watching them light up as they relive old memories has been amazing. It’s not just another present, it’s a way to connect with them in a whole new way. This book will definitely be passed down for generations.
+          I’ve learned a ton about him that I never knew.
+        </span>{" "}
+        Best gift I’ve given him in years.
       </>
     ),
   },
   {
-    name: "Ben T.",
+    name: "Tara M.",
     details: (
       <>
-        LifeScript turned out to be the perfect gift for my grandparents. They’ve been wanting to capture their life stories for a while, and this made it so easy.{" "}
-        <span style={{ fontFamily: "Avenir8" }}>
-        I never knew so much about their childhood and adventures,{" "}
-        </span>
-        and now we have it all in one place. If you&apos;re looking for meaningful gifts for grandparents, this is it.
-      </>
-    ),
-  },
-  {
-    name: "Maya H.",
-    details: (
-      <>
-        I wanted to give my grandparents something they would really appreciate, and LifeScript was perfect. They’ve been having a blast writing down their stories, and it’s been such a{" "}
-        <span style={{ fontFamily: "Avenir8" }}>fun bonding experience for the whole family</span>
-        If you’re on the hunt for unique gifts for grandparents, trust me, this is the one.
-      </>
-    ),
-  },
-  {
-    name: "Zoe K.",
-    details: (
-      <>
-        I had no clue what to get my grandparents, but LifeScript turned out to be exactly what they needed. They’ve had{" "}
-        <span style={{ fontFamily: "Avenir8" }}>so much fun sharing their life stories</span> {" "}
-        and organizing them into this book. The best part? It’s something that the whole family will always treasure.
-      </>
-    ),
-  },
-  {
-    name: "Ethan M.",
-    details: (
-      <>
-       We gave LifeScript to our grandparents, and it’s become one of the most special things in our family. They’ve been sharing stories we’d never heard before, and it’s{" "}
-        <span style={{ fontFamily: "Avenir8" }}>brought us all so much closer.</span>
-        Honestly, the best gift we’ve ever given them!
+        LifeScript was{" "}
+        <span style={{ fontFamily: "Avenir8" }}>hands down the best gift</span>I
+        could’ve gotten for my dad’s 60th. He’s been loving it—writing down
+        everything from his childhood to his career and travels. And it’s been
+        fun for me, too, hearing all these stories I never knew. I didn’t expect
+        it to have such an impact, but it’s been amazing for both of us
       </>
     ),
   },
@@ -785,7 +862,8 @@ export const use60thGiftForMenFeaturesGif = (t) => [
     panel: "panel1",
     timer: 11000,
     heading: "landingPage.featureSection.accordion1.heading",
-    description: "Transforms his answers into beautifully written chapters with a single click. No writing experience needed.",
+    description:
+      "Transforms his answers into beautifully written chapters with a single click. No writing experience needed.",
     imageSrc: Narrative,
     alt: " Demo animation showing how LifeScript is used for personalized 60th birthday gifts for men.",
     imgTitle:
@@ -795,7 +873,8 @@ export const use60thGiftForMenFeaturesGif = (t) => [
     panel: "panel2",
     timer: 6000,
     heading: "landingPage.featureSection.accordion2.heading",
-    description: "Automatically edits and proofreads his text with real-time suggestions. Say goodbye to typos and errors.",
+    description:
+      "Automatically edits and proofreads his text with real-time suggestions. Say goodbye to typos and errors.",
     imageSrc: AssistedEditing,
     alt: "Assisted editing demo showing spelling and grammar checks, ideal for 60th birthday gifts for men.",
     imgTitle: "Assisted editing demo for creating 60th birthday gifts for men",
@@ -804,7 +883,8 @@ export const use60thGiftForMenFeaturesGif = (t) => [
     panel: "panel3",
     timer: 10700,
     heading: "landingPage.featureSection.accordion3.heading",
-    description: "Captures his spoken words, turning them into written text if he prefers speaking over typing.",
+    description:
+      "Captures his spoken words, turning them into written text if he prefers speaking over typing.",
     imageSrc: VoiceToText,
     alt: "Voice-to-text feature demo illustrating how recordings translate into text, perfect for personalized 60th birthday gifts for men.",
     imgTitle: "Voice-to-text demo for creating 60th birthday gifts for men",
@@ -813,7 +893,8 @@ export const use60thGiftForMenFeaturesGif = (t) => [
     panel: "panel4",
     timer: 10700,
     heading: "landingPage.featureSection.accordion4.heading",
-    description: "Visually represents his ancestry—from parents to distant relatives—creating a meaningful family tree at the end of his book.",
+    description:
+      "Visually represents his ancestry—from parents to distant relatives—creating a meaningful family tree at the end of his book.",
     imageSrc: FamilyTree,
     alt: "Family tree demo illustrating how families visualize across generations, perfect for unique 60th birthday gift ideas for men.",
     imgTitle: "Family tree demo for creating 60th birthday gifts for men",
@@ -822,7 +903,8 @@ export const use60thGiftForMenFeaturesGif = (t) => [
     panel: "panel5",
     timer: 5000,
     heading: "landingPage.featureSection.accordion5.heading",
-    description: "Allows him to customize the text, font, style, size, color, layout, and more to personalize his life story.",
+    description:
+      "Allows him to customize the text, font, style, size, color, layout, and more to personalize his life story.",
     imageSrc: FormattingFeatures,
     alt: "Demo showcasing formatting options like bold and italics, ideal for creating personalized 60th birthday gifts for men.",
     imgTitle: "Formatting features demo for men’s 60th birthday gift books",
@@ -831,10 +913,12 @@ export const use60thGiftForMenFeaturesGif = (t) => [
     panel: "panel6",
     timer: 7600,
     heading: "landingPage.featureSection.accordion6.heading",
-    description: "Automatically enhances his photos for high-quality printing by adjusting size, resolution, and more.",
+    description:
+      "Automatically enhances his photos for high-quality printing by adjusting size, resolution, and more.",
     imageSrc: AutoPhoto,
     alt: "Auto photo improvement demo showing how images are enhanced for high-quality 60th birthday gifts for men.",
-    imgTitle: "Auto photo improvement for creating personalized 60th birthday gifts for men",
+    imgTitle:
+      "Auto photo improvement for creating personalized 60th birthday gifts for men",
   },
 ];
 
@@ -842,7 +926,8 @@ export const use60thGiftForMenOurBookCover = (t) => [
   {
     coverImage: bookCovers.cover1,
     alt: "Book cover showing an elderly couple, perfect for personalized 60th birthday gifts for men.",
-    title: "Grandparents enjoying a personalized book - 60th birthday gift for men",
+    title:
+      "Grandparents enjoying a personalized book - 60th birthday gift for men",
   },
   {
     coverImage: bookCovers.cover2,
