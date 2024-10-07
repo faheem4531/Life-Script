@@ -123,11 +123,6 @@ export const useFooterLinks = (t) => [
         mb: true,
       },
       {
-        path: "/retirement-gifts-for-women",
-        text: "Retirement Gifts for Women",
-        mb: true,
-      },
-      {
         path: "/thanksgiving-gift",
         text: "Thanksgiving Gift",
         mb: true,
@@ -135,11 +130,6 @@ export const useFooterLinks = (t) => [
       {
         path: "/gifts-for-grandparents",
         text: "Gifts For Grandparents",
-        mb: true,
-      },
-      {
-        path: "/gifts-for-grandma",
-        text: "Gifts For Grandma",
         mb: true,
       },
       {
