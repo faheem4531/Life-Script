@@ -99,46 +99,46 @@ export const useFooterLinks = (t) => [
       },
     ],
   },
-  {
-    title: "Comparisons",
-    links: [
-      {
-        path: "/storyworth-alternative",
-        text: "Storyworth alternative",
-        mb: true,
-      },
-    ],
-  },
-  {
-    title: "Discover Gift Ideas",
-    links: [
-      {
-        path: "/retirement-gifts-for-men",
-        text: "Retirement Gifts for Men",
-        mb: true,
-      },
-      {
-        path: "/christmas-gift-for-mom",
-        text: "Christmas Gift for Mom",
-        mb: true,
-      },
-      {
-        path: "/thanksgiving-gift",
-        text: "Thanksgiving Gift",
-        mb: true,
-      },
-      {
-        path: "/gifts-for-grandparents",
-        text: "Gifts For Grandparents",
-        mb: true,
-      },
-      {
-        path: "/60th-birthday-gifts-for-men",
-        text: "60th birthday gifts for men",
-        mb: false,
-      },
-    ],
-  },
+  // {
+  //   title: "Comparisons",
+  //   links: [
+  //     {
+  //       path: "/storyworth-alternative",
+  //       text: "Storyworth alternative",
+  //       mb: true,
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Discover Gift Ideas",
+  //   links: [
+  //     {
+  //       path: "/retirement-gifts-for-men",
+  //       text: "Retirement Gifts for Men",
+  //       mb: true,
+  //     },
+  //     {
+  //       path: "/christmas-gift-for-mom",
+  //       text: "Christmas Gift for Mom",
+  //       mb: true,
+  //     },
+  //     {
+  //       path: "/thanksgiving-gift",
+  //       text: "Thanksgiving Gift",
+  //       mb: true,
+  //     },
+  //     {
+  //       path: "/gifts-for-grandparents",
+  //       text: "Gifts For Grandparents",
+  //       mb: true,
+  //     },
+  //     {
+  //       path: "/60th-birthday-gifts-for-men",
+  //       text: "60th birthday gifts for men",
+  //       mb: false,
+  //     },
+  //   ],
+  // },
 ];
 
 export const useFooterSocialIcons = [
