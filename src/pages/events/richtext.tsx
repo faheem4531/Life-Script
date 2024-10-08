@@ -51,6 +51,8 @@ const Editor = dynamic(
   { ssr: false }
 );
 
+const MAX_CHAR_LIMIT = 50000;
+
 const RichText = ({ questionId }) => {
   const router = useRouter();
   let htmlToDraftJs;
@@ -60,6 +62,8 @@ const RichText = ({ questionId }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+  const [charCount, setCharCount] = useState(0);
+  const [limitReached, setLimitReached] = useState(false);
   const [questionData, setQuestionData] = useState<any>({});
   const [compileChapter, setCompileChapter] = useState();
   const [isPremium, setIsPremium] = useState(false);
@@ -75,6 +79,21 @@ const RichText = ({ questionId }) => {
   const { t } = useTranslation();
   const [hover, setHover] = useState(false);
   const loading = useSelector((state: any) => state.chat.loading);
+
+  const onEditorStateChange = (newEditorState) => {
+    const content = newEditorState.getCurrentContent();
+    const rawContent = convertToRaw(content);
+    const contentString = JSON.stringify(rawContent);
+    const currentCharCount = contentString.length;
+
+    if (currentCharCount <= MAX_CHAR_LIMIT) {
+      setEditorState(newEditorState);
+      setCharCount(currentCharCount);
+      setLimitReached(false);
+    } else {
+      setLimitReached(true);
+    }
+  };
 
   const startRecording = async () => {
     try {
@@ -602,7 +621,7 @@ const RichText = ({ questionId }) => {
                     onClick={handleCompleteAnswer}
                     disabled={
                       draftToHtml(convertToRaw(editorState.getCurrentContent()))
-                        .length < 9
+                        .length < 9 || limitReached
                     }
                     btnText={`${t("richText.MAC")}`}
                     color="#E1683B"
@@ -663,7 +682,7 @@ const RichText = ({ questionId }) => {
           <Box id="draftjs-rich-text-editor" sx={{ marginTop: "50px" }}>
             <Editor
               editorState={editorState}
-              onEditorStateChange={setEditorState}
+              onEditorStateChange={onEditorStateChange}
               placeholder="Click here to start typing.."
               wrapperClassName="wrapper-class"
               editorClassName="editor-class"
@@ -765,6 +784,18 @@ const RichText = ({ questionId }) => {
                 },
               }}
             />
+
+            <div>
+              {/* <p>
+       {charCount} / {MAX_CHAR_LIMIT} characters
+     </p> */}
+              {limitReached && (
+                <p style={{ color: "red" }}>
+                  You have reached the character limit. Further input is not allowed.
+                </p>
+              )}
+            </div>
+
           </Box>
         </Box>
       )}
