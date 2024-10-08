@@ -21,7 +21,6 @@ import Fb from "@/__webAssets/svgs/fb.svg";
 import Insta from "@/__webAssets/svgs/insta.svg";
 import Tiktok from "@/__webAssets/svgs/tiktok.svg";
 import X from "@/__webAssets/svgs/x.svg";
-
 import { icons, images } from "./assetsUrl";
 
 const { whyLifeScriptIcons, other, featuresLogos, testimonial } = icons;
