@@ -13,6 +13,7 @@ import Footer from "@/__webComponents/footer/Footer";
 import NavBar from "@/__webComponents/navBar/NavBar";
 import BlogDetails from "./sections/BlogDetails";
 import styles from "./sections/BlogSection.module.css";
+import Head from "next/head";
 
 const BlogDetailPage = () => {
   const router = useRouter();
@@ -65,6 +66,18 @@ const BlogDetailPage = () => {
     blogsDetailsData?.data?.attributes?.image?.data[0] &&
     blogsDetailsData?.data?.attributes?.image?.data[0]?.attributes?.url;
   return (
+    <>
+    <Head>
+      <title>{blogsDetailsData?.data?.attributes?.seo?.metaTitle}</title>
+      <meta
+          name="description"
+          content={blogsDetailsData?.data?.attributes?.seo?.metaDescription}
+        />
+        <link
+          rel="canonical"
+          href={blogsDetailsData?.data?.attributes?.seo?.canonicalUrl}
+        />
+    </Head>
     <Box
       sx={{ minHeight: "100vh", bgcolor: "#f3ecda", color: "#3e4f3c" }}
       className={styles.blogs}
@@ -183,6 +196,8 @@ const BlogDetailPage = () => {
       )}
       <Footer />
     </Box>
+    </>
+
   );
 };
 
