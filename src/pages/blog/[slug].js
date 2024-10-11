@@ -19,7 +19,6 @@ const BlogDetailPage = () => {
   const router = useRouter();
   const [blogsDetailsData, setBlogsDetailsData] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const { slug } = router.query;
 
   useEffect(() => {
