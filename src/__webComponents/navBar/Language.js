@@ -19,7 +19,6 @@ export default function SelectLabels() {
   const [selectedValue, setSelectedValue] = useState(10);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-
   useEffect(() => {
     const handleScroll = () => {
       setIsDropdownOpen(false);
