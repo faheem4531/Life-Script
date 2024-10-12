@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
   // verify auth
   useEffect(() => {
-    if (typeof window !== "undefined" && window.location.href.includes("es")) {
+    if (typeof window !== "undefined" && router.pathname.includes('/es')) {
       localStorage.setItem("language", "Spanish");
     }
     else{
