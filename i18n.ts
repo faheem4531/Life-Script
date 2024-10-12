@@ -4,7 +4,6 @@ import { initReactI18next } from "react-i18next";
 import enTranslation from "./locales/en.json";
 import spTranslation from "./locales/sp.json";
 
-
 // Check for language preference in local storage
 const storedLanguage =
   typeof window !== "undefined" ? localStorage.getItem("language") : null;
@@ -22,7 +21,6 @@ i18n.use(initReactI18next).init({
     },
   },
   lng: defaultLanguage,
-  // lng: 'en',
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,
@@ -31,29 +29,3 @@ i18n.use(initReactI18next).init({
 
 
 export default i18n;
-
-
-
-// import i18n from "i18next";
-// import { initReactI18next } from "react-i18next";
-
-// import enTranslation from "./locales/en.json";
-// import spTranslation from "./locales/sp.json";
-
-// i18n.use(initReactI18next).init({
-//   resources: {
-//     en: {
-//       translation: enTranslation,
-//     },
-//     sp: {
-//       translation: spTranslation,
-//     },
-//   },
-//   lng: "en",
-//   fallbackLng: "en",
-//   interpolation: {
-//     escapeValue: false,
-//   },
-// });
-
-// export default i18n;
