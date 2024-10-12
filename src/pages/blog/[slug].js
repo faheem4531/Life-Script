@@ -172,6 +172,7 @@ const BlogDetailPage = () => {
                 width: { md: "100%", sm: "100%", xs: "100%" },
                 fontFamily: "Besley !important",
               }}
+              variant="h1"
             >
               {blogsDetailsData?.data?.attributes?.title}
             </Typography>
