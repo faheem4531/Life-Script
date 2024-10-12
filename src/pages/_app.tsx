@@ -22,6 +22,7 @@ import Script from "next/script";
 import { useEffect, useState } from "react";
 import CookieConsent, { Cookies } from "react-cookie-consent";
 import { store } from "../store/store";
+import i18n from "i18next";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -29,6 +30,20 @@ export default function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
   // verify auth
   useEffect(() => {
+    if (typeof window !== "undefined" && window.location.href.includes("es")) {
+      localStorage.setItem("language", "Spanish");
+    }
+    else{
+      localStorage.setItem("language", "English");
+    }
+
+    const languageStored = localStorage.getItem("language");
+    const language = languageStored === "Spanish" ? "sp" : "en";
+    // console.log(language, "language");
+    i18n.changeLanguage(language);
+
+
+
     const userLoggedIn = localStorage.getItem("token");
 
     const publicRoutes = [
@@ -95,29 +110,7 @@ export default function App({ Component, pageProps }: AppProps) {
     } else {
       setLoading(false);
     }
-    //previous with slug and blog-details
-    // if (currentPath.startsWith("/verify")) {
-    //   const token = queryParams.get("token");
-    //   if (token) {
-    //     setLoading(false);
-    //     return;
-    //   }
-    // }
-    // if (publicRoutes.some((route) => route.includes(currentPath))) {
-    //   if (!userLoggedIn)
-    //     id ? router.push(`${currentPath}?id=${id}`) : slug ? router.push(`${currentPath}?slug=${slug}`) : router.push(currentPath);
-    //   else if (currentPath === "/purchase/gift") {
-    //     setLoading(false);
-    //   } else router.push("/dashboard/chapters");
-    //   setLoading(false);
-    // } else if (currentPath == "/" && userLoggedIn) {
-    //   router.push("/dashboard/chapters");
-    // } else {
-    //   if (!userLoggedIn) {
-    //     router.push("/");
-    //   }
-    //   setLoading(false);
-    // }
+
   }, [currentPath]);
 
   const [showCookieBar, setShowCookieBar] = useState(true);

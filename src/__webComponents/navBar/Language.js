@@ -25,6 +25,13 @@ export default function SelectLabels() {
       setIsDropdownOpen(false);
     };
 
+    const storedlanguage = localStorage.getItem("language");
+    if (storedlanguage === "Spanish") {
+      setSelectedValue(20);
+    } else {
+      setSelectedValue(10);
+    }
+
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -37,6 +44,12 @@ export default function SelectLabels() {
     const value = event.target.value;
     setSelectedValue(value);
     changeLanguage(value === 10 ? "en" : "sp");
+
+    // if (value === 10) {
+    //   localStorage.setItem("language", "English");
+    // } else {
+    //   localStorage.setItem("language", "Spanish");
+    // }
   };
 
   const changeLanguage = (language) => {
