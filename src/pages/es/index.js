@@ -45,6 +45,7 @@ const HomePage = () => {
   const pricingCardDetails = usePricingCardDetails(t);
   const homeFeaturesGif = useHomeFeaturesGif(t);
 
+  
   return (
     <>
       <Head>
