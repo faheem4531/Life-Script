@@ -44,7 +44,7 @@ const PricingPage = () => {
         className={styles.pricingPage}
       >
         <NavBar color="#F3ECDA" logo={LifeScriptLogo} />
-        <Pricing cardData={pricingCardDetails} />
+        <Pricing cardData={pricingCardDetails} variant="h1" />
         <Working
           data={pointsArray}
           width="340px"

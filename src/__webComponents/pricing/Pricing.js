@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import PrimaryHeading from "../headings/PrimaryHeading";
 import PricingCard from "./Card";
-const Pricing = ({ cardData }) => {
+const Pricing = ({ cardData,variant="h2" }) => {
   const { t } = useTranslation();
 
   return (
@@ -30,6 +30,7 @@ const Pricing = ({ cardData }) => {
           heading={t("landingPage.pricingSection.title")}
           marked={t("landingPage.pricingSection.subTitle")}
           showStyle={false}
+          variant={variant}
         />
 
         <Box
