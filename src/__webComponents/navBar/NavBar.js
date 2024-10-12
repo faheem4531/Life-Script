@@ -131,7 +131,7 @@ const NavBar = ({ color, logo }) => {
               fontSize: { lg: "18px", md: "17px", sm: "18px", xs: "18px" },
               fontFamily: "Avenir5",
             }}
-            className={`${pathname === "/" ? styles.underLine : ""} ${
+            className={`${pathname === "/" || pathname === "/es" ? styles.underLine : ""} ${
               styles.hoverLinks
             }`}
           >
