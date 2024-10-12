@@ -3,7 +3,6 @@
 import { Box } from "@mui/material";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
 
 import Gift from "@/__webAssets/svgs/gift.svg";
 import Shape from "@/__webAssets/svgs/input-shape.svg";
@@ -50,12 +49,16 @@ const HomePage = () => {
     <>
       <Head>
         <title>
-          Easily Create or Gift a Personal Autobiography Book - LifeScript
+          Crea o Regala Fácilmente un Libro de Autobiografía Personal - LifeScript
         </title>
         <meta
           name="description"
-          content="Turn your stories into a beautiful hardcover book to preserve memories and connect with family or gift this unparalleled experience to your mom, dad, or grandparent."
+          content="Convierte tus historias en un hermoso libro de tapa dura para preservar recuerdos y conectar con la familia, o regala esta experiencia inigualable a tu mamá, papá o abuelos."
         />
+        <link rel="alternate" href="https://www.thelifescript.com/es/" hreflang="es" />
+        <link rel="alternate" href="https://www.thelifescript.com/" hreflang="en" />
+        <link rel="canonical" href="https://www.thelifescript.com/es/" />
+
       </Head>
       <Box sx={{ bgcolor: "#f3ecda", color: "#3e4f3c" }}>
         <NavBar logo={"home"} color="#3E4F3C"/>
